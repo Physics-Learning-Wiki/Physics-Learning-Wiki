@@ -73,14 +73,14 @@ jobs:
           publish_dir: ./site
           force_orphan: true
       - name: Push to Baidu
-        if: ${{ github.event_name == 'push' && github.repository_owner == 'oi-wiki' }}
+        if: ${{ github.event_name == 'push' && github.repository_owner == 'Physics-Learning-Wiki' }}
         env:
-          SITE: oi-wiki.org
+          SITE: physics-learning-wiki.github.io/Physics-Learning-Wiki/
           BAIDU_TOKEN: ${{ secrets.BaiduToken }}
         run: ./scripts/post-deploy/baidu-push.sh
 
   update_feedback_sys_meta:
-    name: Update OI-Wiki Feedback System Meta
+    name: Update Physics-Learning-Wiki Feedback System Meta
     needs: build
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/master' }}

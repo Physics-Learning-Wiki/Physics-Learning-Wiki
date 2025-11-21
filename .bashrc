@@ -83,12 +83,12 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # User specific aliases and functions
-alias wiki-upd='export LC_ALL=C.UTF-8 && cd /OI-wiki && git pull origin master'
-alias wiki-theme='export LC_ALL=C.UTF-8 && cd /OI-wiki && ./scripts/pre-build/install-theme.sh'
-alias wiki-bld='export LC_ALL=C.UTF-8 && cd /OI-wiki && uv run mkdocs build -v'
-alias wiki-svr='export LC_ALL=C.UTF-8 && cd /OI-wiki && uv run mkdocs serve -v -a ${LISTEN_IP}:${LISTEN_PORT}'
-alias wiki-bld-math='export LC_ALL=C.UTF-8 && cd /OI-wiki && uv run mkdocs build -v && env NODE_OPTIONS="--max_old_space_size=3072" yarn ts-node-esm ./scripts/post-build/math/render_math.ts'
-alias wiki-o='export LC_ALL=C.UTF-8 && cd /OI-wiki && yarn remark ./docs -o --silent'
+alias wiki-upd='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && git pull origin master'
+alias wiki-theme='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && ./scripts/pre-build/install-theme.sh'
+alias wiki-bld='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && uv run mkdocs build -v'
+alias wiki-svr='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && uv run mkdocs serve -v -a ${LISTEN_IP}:${LISTEN_PORT}'
+alias wiki-bld-math='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && uv run mkdocs build -v && env NODE_OPTIONS="--max_old_space_size=3072" yarn ts-node-esm ./scripts/post-build/math/render_math.ts'
+alias wiki-o='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && yarn remark ./docs -o --silent'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

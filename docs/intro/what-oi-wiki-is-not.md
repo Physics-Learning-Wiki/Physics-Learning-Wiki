@@ -1,8 +1,7 @@
-???+ warning "注意"
-    该页面直接引用自 OI wiki，尚未进行本地化处理。
-
 author: abc1763613206, HeRaNO, NachtgeistW, r-value, Tiphereth-A, wlbksy, YZircon, 0zu-cc, real01bit
 
+???+ warning "注意"
+    该页面直接引用自 OI wiki，尚未进行本地化处理。
 ???+ warning "注意"
     作为项目方针的一部分，本页面十分重要，每个贡献者都应确保您的贡献满足如下条件。
 

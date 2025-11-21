@@ -2,13 +2,13 @@
 site_name: Physics Learning Wiki
 site_description: Physics Learning Wiki 是一个物理竞赛与物理学习知识整合站点，提供有趣又实用的物理知识以及其他有帮助的内容，帮助广大物理爱好者更快更深入地学习物理
 site_author: Physics Learning Wiki Team
-site_url: https://oi-wiki.org
+site_url: https://physics-learning-wiki.github.io/Physics-Learning-Wiki/
 strict: false
 
 # Repository
 repo_name: 'Physics-Learning-Wiki/Physics-Learning-Wiki'
 repo_url: 'https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki'
-edit_uri: 'https://oi-wiki.org/edit-landing/?ref='
+edit_uri: 'https://physics-learning-wiki.github.io/Physics-Learning-Wiki/edit-landing/?ref='
 
 # Copyright
 copyright: 'Copyright &copy; 2025 - 2025 Physics Learning Wiki Team'
@@ -163,7 +163,7 @@ hooks:
 
 # Customization
 extra:
-  disqus: 'OI-Wiki'
+  disqus: 'Physics-Learning-Wiki'
   copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
   pagetime: 'on'
   manifest: 'manifest.webmanifest'

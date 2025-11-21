@@ -32,7 +32,7 @@ jobs:
           sudo apt-get install curl git unzip imagemagick libwebp-dev librsvg2-dev fonts-noto-cjk fonts-noto-cjk-extra
           sudo apt-get remove fonts-noto-color-emoji
 
-          git clone --recurse-submodules --remote-submodules https://github.com/OI-wiki/OI-Wiki-export.git
+          git clone --recurse-submodules --remote-submodules https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki-export.git
           cd Physics-Learning-Wiki-export
           cd remark-snippet
           npm install
