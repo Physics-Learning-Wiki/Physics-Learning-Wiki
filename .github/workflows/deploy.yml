@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+# Mannul
+  workflow_dispatch:
+# Auto
+  #push:
+    #branches: [ main, master ]
+  #pull_request:
+    #branches: [ main, master ]
 
 permissions:
   contents: read
