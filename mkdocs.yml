@@ -1,0 +1,223 @@
+# Project Information
+site_name: Physics Learning Wiki
+site_description: Physics Learning Wiki 是一个物理竞赛与物理学习知识整合站点，提供有趣又实用的物理知识以及其他有帮助的内容，帮助广大物理爱好者更快更深入地学习物理
+site_author: Physics Learning Wiki Team
+site_url: https://oi-wiki.org
+strict: false
+
+# Repository
+repo_name: 'Physics-Learning-Wiki/Physics-Learning-Wiki'
+repo_url: 'https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki'
+edit_uri: 'https://oi-wiki.org/edit-landing/?ref='
+
+# Copyright
+copyright: 'Copyright &copy; 2025 - 2025 Physics Learning Wiki Team'
+
+# Contents
+nav:
+  - 简介:
+    - Getting Started: index.md
+    - 关于本项目: intro/about.md
+    - 如何参与: intro/htc.md
+    - Physics Learning Wiki 不是什么: intro/what-pl-wiki-is-not.md
+    - 格式手册: intro/format.md
+    - 数学符号表: intro/symbol.md
+    - F.A.Q.: intro/faq.md
+    - 镜像站列表: intro/mirrors.md
+    - 致谢: intro/thanks.md
+  - 竞赛相关:
+    - 竞赛简介: contest/index.md
+    - 赛事:
+      - CPhO (全国中学生物理竞赛): contest/cpho.md
+      - IPhO (国际物理奥林匹克): contest/ipho.md
+      - APhO (亚洲物理奥林匹克): contest/apho.md
+      - CUPT (中国大学生物理学术竞赛): contest/cupt.md
+    - 学习路线: contest/roadmap.md
+    - 学习资源: contest/resources.md
+    - 技巧:
+      - 考试策略: contest/strategy.md
+      - 常见错误: contest/common-mistakes.md
+  - 数学工具:
+    - 数学工具简介: math/index.md
+    - 微积分:
+      - 极限与连续: math/calculus/limit.md
+      - 导数与微分: math/calculus/derivative.md
+      - 积分: math/calculus/integral.md
+      - 常微分方程: math/calculus/ode.md
+      - 变分法: math/calculus/variational.md
+    - 线性代数:
+      - 向量与矩阵: math/linear-algebra/matrix.md
+      - 线性空间: math/linear-algebra/space.md
+    - 矢量分析:
+      - 梯度、散度与旋度: math/vector-analysis/operators.md
+      - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
+    - 复数与复变函数: math/complex.md
+    - 概率与统计: math/probability.md
+    - 常用特殊函数: math/special-functions.md
+  - 经典力学:
+    - 力学简介: mechanics/index.md
+    - 运动学: mechanics/kinematics.md
+    - 牛顿运动定律: mechanics/newton-laws.md
+    - 动量与能量: mechanics/momentum-energy.md
+    - 质点系动力学: mechanics/system-of-particles.md
+    - 刚体动力学: mechanics/rigid-body.md
+    - 流体力学: mechanics/fluid.md
+    - 振动与波: mechanics/oscillation-wave.md
+    - 万有引力与天体物理: mechanics/gravitation.md
+    - 分析力学:
+      - 拉格朗日力学: mechanics/analytical/lagrangian.md
+      - 哈密顿力学: mechanics/analytical/hamiltonian.md
+  - 热学与统计物理:
+    - 热学简介: thermodynamics/index.md
+    - 热力学系统与状态: thermodynamics/system-state.md
+    - 热力学定律: thermodynamics/laws.md
+    - 气体动理论: thermodynamics/kinetic-theory.md
+    - 相变与临界现象: thermodynamics/phase-change.md
+    - 统计物理基础: thermodynamics/statistical.md
+  - 电磁学:
+    - 电磁学简介: electromagnetism/index.md
+    - 静电场: electromagnetism/electrostatics.md
+    - 恒定电流与电路: electromagnetism/dc-circuit.md
+    - 恒定磁场: electromagnetism/magnetostatics.md
+    - 电磁感应: electromagnetism/induction.md
+    - 交流电路: electromagnetism/ac-circuit.md
+    - 麦克斯韦方程组与电磁波: electromagnetism/maxwell.md
+    - 物质中的电磁场: electromagnetism/matter.md
+  - 光学:
+    - 光学简介: optics/index.md
+    - 几何光学: optics/geometric.md
+    - 波动光学:
+      - 干涉: optics/interference.md
+      - 衍射: optics/diffraction.md
+      - 偏振: optics/polarization.md
+    - 现代光学基础: optics/modern.md
+  - 近代物理:
+    - 近代物理简介: modern/index.md
+    - 狭义相对论: modern/special-relativity.md
+    - 广义相对论基础: modern/general-relativity.md
+    - 量子力学基础:
+      - 波粒二象性: modern/quantum/wave-particle.md
+      - 薛定谔方程: modern/quantum/schrodinger.md
+      - 算符与测量: modern/quantum/operators.md
+    - 原子物理: modern/atomic.md
+    - 原子核与粒子物理: modern/nuclear-particle.md
+    - 固体物理基础: modern/solid-state.md
+  - 实验物理:
+    - 实验简介: experiment/index.md
+    - 误差分析与数据处理: experiment/error-analysis.md
+    - 常用测量仪器: experiment/instruments.md
+    - 基础物理实验: experiment/basic-experiments.md
+  - 计算物理与工具:
+    - 工具简介: tools/index.md
+    - LaTeX 物理写作: tools/latex.md
+    - Python 科学计算: tools/python-scicomp.md
+    - 模拟软件 (Mathematica/Matlab): tools/simulation.md
+    - 绘图工具: tools/plotting.md
+
+# Theme
+theme:
+  name: null
+  custom_dir: 'mkdocs-material/material/templates'
+  static_templates:
+    - 404.html
+  language: 'zh'
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: red
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  include_search_page: false
+  search_index_only: true
+  favicon: 'favicon.ico'
+  icon:
+    logo: 'material/school'
+  features:
+    - content.action.edit
+    - navigation.tabs
+    - navigation.instant
+    - content.code.copy
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Mono'
+
+plugins:
+- toggle-sidebar:
+    theme: material
+    toggle_button: all
+
+hooks:
+  - hooks/on_env.py
+
+# Customization
+extra:
+  disqus: 'OI-Wiki'
+  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
+  pagetime: 'on'
+  manifest: 'manifest.webmanifest'
+  githash: ''
+  analytics:
+    provider: google
+    property: UA-124485594-1
+
+extra_javascript:
+  - '_static/js/math-csr.js?math-csr'
+  - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
+  - '{OIWikiFeedbackSystemFrontendJS}' # see: scripts/pre-build/install-feedback-sys-frontend.ts
+  - '{OIWikiFeedbackSystemFrontendContentScript}' # see: scripts/pre-build/install-feedback-sys-frontend.ts
+
+extra_css:
+  - '_static/css/extra.css?v=16'
+  # - '_static/css/offset-inject-debug.css'
+  - '{OIWikiFeedbackSystemFrontendCSS}' # see: scripts/pre-build/install-feedback-sys-frontend.ts
+
+# Extensions
+markdown_extensions:
+  - document-offsets-injection:
+      # debug: true
+  - admonition
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: ""
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.highlight:
+      linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.progressbar
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.tabbed:
+      alternate_style: true
