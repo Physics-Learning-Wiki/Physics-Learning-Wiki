@@ -39,7 +39,7 @@ jobs:
     - name: Install theme
       run: |
         chmod +x ./scripts/pre-build/install-theme.sh
-        ./scripts/pre-build/install-theme.sh
+        chmod +x ./scripts/pre-build/install-theme-vendor.sh
 
     - name: Build with MkDocs
       run: uv run mkdocs build
