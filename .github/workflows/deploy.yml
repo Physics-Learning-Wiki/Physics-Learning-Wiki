@@ -1,10 +1,13 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+# Mannul
+  workflow_dispatch:
+# Auto
+  #push:
+    #branches: [ main, master ]
+  #pull_request:
+    #branches: [ main, master ]
 
 permissions:
   contents: read
@@ -39,7 +42,7 @@ jobs:
     - name: Install theme
       run: |
         chmod +x ./scripts/pre-build/install-theme.sh
-        ./scripts/pre-build/install-theme.sh
+        chmod +x ./scripts/pre-build/install-theme-vendor.sh
 
     - name: Build with MkDocs
       run: uv run mkdocs build
