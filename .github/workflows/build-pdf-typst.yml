@@ -1,0 +1,71 @@
+name: Build Typst document
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Physics-Learning-Typst Build
+    runs-on: ubuntu-latest
+    env:
+      LANG: C.UTF-8
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+
+      - name: Pre-build operations
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install curl git unzip imagemagick libwebp-dev librsvg2-dev fonts-noto-cjk fonts-noto-cjk-extra
+          sudo apt-get remove fonts-noto-color-emoji
+
+          git clone --recurse-submodules --remote-submodules https://github.com/OI-wiki/OI-Wiki-export.git
+          cd Physics-Learning-Wiki-export
+          cd remark-snippet
+          npm install
+          cd ..
+          cd remark-typst
+          npm install
+          cd ..
+          cd physics-learning-wiki-export-typst
+          npm install
+
+          mkdir .fonts
+          curl -L $(gh api /repos/lxgw/LxgwWenKai/releases/latest -q '.assets[].browser_download_url | select(contains("tar.gz"))') | tar xfz - -C .fonts
+          git clone --filter=blob:none --no-checkout --depth 1 --sparse https://github.com/google/fonts.git
+          cd fonts
+          git sparse-checkout add ofl/crimsontext
+          git checkout
+          cd ..
+          cp -r fonts/* .fonts
+
+      - uses: typst-community/setup-typst@v4
+        with:
+          typst-version: 0.13.1
+          cache-dependency-path: Physics-Learning-Wiki-export/physics-learning-wiki-export-typst/physics-learning-wiki.typ
+
+      - name: Build Typst document
+        run: |
+          cd Physics-Learning-Wiki-export
+          cd physics-learning-wiki-export-typst
+          node index.js ../../
+          typst compile physics-learning-wiki-export.typ --font-path .fonts
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Physics-Learning-Wiki-export
+          path: ./Physics-Learning-Wiki-export/physics-learning-wiki-export-typst/physics-learning-wiki-export.pdf

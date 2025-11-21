@@ -1,0 +1,67 @@
+name: Build LaTeX document
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: physics-learning-wiki LaTeX Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          latexmk_use_xelatex: true
+          latexmk_shell_escape: true
+          args: "-pdf -file-line-error -halt-on-error -interaction=batchmode -8bit"
+          extra_system_packages: |
+            unzip
+            wget
+            curl
+            coreutils
+            nodejs
+            npm
+            imagemagick
+            libwebp
+            librsvg
+            git
+            python3
+            py3-pygments
+            libxml2
+            sqlite-dev
+          pre_compile: |
+            umask 0 && npm config set cache /tmp/.npm
+            wget -O notosans.zip "https://noto-website-2.storage.googleapis.com/pkgs/NotoSans-hinted.zip"
+            wget -O notoserif.zip "https://noto-website-2.storage.googleapis.com/pkgs/NotoSerif-hinted.zip"
+            wget -O notoserifcjk.zip "https://noto-website-2.storage.googleapis.com/pkgs/NotoSerifCJKsc-hinted.zip"
+            wget -O notosanscjk.zip "https://noto-website-2.storage.googleapis.com/pkgs/NotoSansCJKsc-hinted.zip"
+            wget "https://mirror.math.princeton.edu/pub/CTAN/fonts/cm-unicode.zip" --no-check-certificate
+            git clone https://github.com/googlefonts/RobotoMono
+            unzip notosans.zip -d notosans
+            unzip notoserif.zip -d notoserif
+            unzip notosanscjk.zip -d notosanscjk
+            unzip notoserifcjk.zip -d notoserifcjk
+            unzip  ./cm-unicode.zip
+            cp -r notosans notoserif notosanscjk notoserifcjk cm-unicode/fonts/otf/* RobotoMono/fonts/ttf/* /usr/share/fonts
+            fc-cache
+            git clone https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki-export.git --depth=1
+            cd ./Physics-Learning-Wiki-export/remark-snippet
+            npm i
+            cd ../..
+            cd ./Physics-Learning-Wiki-export/remark-latex
+            npm i
+            cd ../..
+            cd ./Physics-Learning-Wiki-export/physics-learning-wiki-export
+            python3 increase-mem-limit.py
+            fmtutil-sys --all
+            npm i
+            node index.js ../../
+          root_file: |
+            physics-learning-wiki-export.tex
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Physics-Learning-Wiki-latex-export
+          path: ./Physics-Learning-Wiki-export/physics-learning-wiki-export/physics-learning-wiki-export.pdf
