@@ -1,3 +1,6 @@
 [submodule "mkdocs-material"]
 	path = mkdocs-material
 	url = https://github.com/Physics-Learning-Wiki/mkdocs-material
+[submodule "mkdocs-materia"]
+	path = mkdocs-materia
+	url = https://github.com/Physics-Learning-Wiki/mkdocs-material.git
