@@ -1,5 +1,8 @@
 name: Build Authors Cache
 
+permissions:
+  contents: write
+
 on:
   # schedule:
   #   - cron: '0 16 * * *'
