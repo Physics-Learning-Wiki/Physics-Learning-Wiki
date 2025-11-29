@@ -42,6 +42,7 @@ jobs:
         run: yarn --frozen-lockfile --production
       - name: Page Build
         run: |
+          chmod +x ./scripts/pre-build/pre-build.sh
           ./scripts/pre-build/pre-build.sh
           uv run mkdocs build -v
       - name: Post-process HTML
@@ -51,7 +52,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_OPTIONS: --max_old_space_size=3072
       - name: Minify html
-        run: ./scripts/post-build/minify-html/minify-html.sh
+        run: 
+         chmod +x ./scripts/post-build/minify-html/minify-html.sh
+         ./scripts/post-build/minify-html/minify-html.sh
       - name: Generate redirects
         run: uv run python scripts/post-build/redirect/generate-redirects.py
       - name: Check links
@@ -77,7 +80,9 @@ jobs:
         env:
           SITE: physics-learning-wiki.github.io/Physics-Learning-Wiki/
           BAIDU_TOKEN: ${{ secrets.BaiduToken }}
-        run: ./scripts/post-deploy/baidu-push.sh
+        run:
+          chmod +x ./scripts/post-deploy/baidu-push.sh
+         ./scripts/post-deploy/baidu-push.sh
 
   update_feedback_sys_meta:
     name: Update Physics-Learning-Wiki Feedback System Meta
