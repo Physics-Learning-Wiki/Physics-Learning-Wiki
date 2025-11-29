@@ -23,36 +23,36 @@ author: Physics-Learning-Wiki
 #### 平面极坐标系 (Polar Coordinates)
 适用于平面内的圆周运动或中心力场问题。
 定义径向单位矢量 $\hat{\boldsymbol{e}}_r$ 和横向（切向）单位矢量 $\hat{\boldsymbol{e}}_\theta$。注意这两个基矢量随位置变化，即随时间变化。
-*   **位置**: $\boldsymbol{r} = r\hat{\boldsymbol{e}}_r$
-*   **速度**:
+**位置**: $\boldsymbol{r} = r\hat{\boldsymbol{e}}_r$
+**速度**:
 
-    $$
-    \boldsymbol{v} = \frac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\hat{\boldsymbol{e}}}_r = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta
-    $$
+$$
+\boldsymbol{v} = \frac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\hat{\boldsymbol{e}}}_r = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta
+$$
 
-    其中 $\dot{r}$ 为径向速度，$r\dot{\theta}$ 为横向速度。
-*   **加速度**:
+其中 $\dot{r}$ 为径向速度，$r\dot{\theta}$ 为横向速度。
+**加速度**:
 
-    $$
-    \boldsymbol{a} = (\ddot{r} - r\dot{\theta}^2)\hat{\boldsymbol{e}}_r + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\hat{\boldsymbol{e}}_\theta
-    $$
+$$
+\boldsymbol{a} = (\ddot{r} - r\dot{\theta}^2)\hat{\boldsymbol{e}}_r + (r\ddot{\theta} + 2\dot{r}\dot{\theta})\hat{\boldsymbol{e}}_\theta
+$$
 
-    *   $\ddot{r}\hat{\boldsymbol{e}}_r$: 径向加速度分量。
-    *   $-r\dot{\theta}^2\hat{\boldsymbol{e}}_r$: **向心加速度**。
-    *   $r\ddot{\theta}\hat{\boldsymbol{e}}_\theta$: 切向加速度分量。
-    *   $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Coriolis acceleration) 的一部分形式。
+$\ddot{r}\hat{\boldsymbol{e}}_r$: 径向加速度分量。
+$-r\dot{\theta}^2\hat{\boldsymbol{e}}_r$: **向心加速度**。
+$r\ddot{\theta}\hat{\boldsymbol{e}}_\theta$: 切向加速度分量。
+$2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Coriolis acceleration) 的一部分形式。
 
 #### 自然坐标系 (Intrinsic Coordinates)
 以质点运动轨迹上的点为原点，沿切向 $\hat{\boldsymbol{\tau}}$ 和法向 $\hat{\boldsymbol{n}}$ 分解。
 *   **速度**: $\boldsymbol{v} = v\hat{\boldsymbol{\tau}}$
 *   **加速度**:
 
-    $$
-    \boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + \frac{v^2}{\rho}\hat{\boldsymbol{n}}
-    $$
+$$
+\boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + \frac{v^2}{\rho}\hat{\boldsymbol{n}}
+$$
 
-    *   $a_\tau = \frac{dv}{dt}$: 切向加速度，改变速度大小。
-    *   $a_n = \frac{v^2}{\rho}$: 法向加速度（向心加速度），改变速度方向，$\rho$ 为曲率半径。
+$a_\tau = \frac{dv}{dt}$: 切向加速度，改变速度大小。
+$a_n = \frac{v^2}{\rho}$: 法向加速度（向心加速度），改变速度方向，$\rho$ 为曲率半径。
 
 ## 2. 质点运动的描述
 

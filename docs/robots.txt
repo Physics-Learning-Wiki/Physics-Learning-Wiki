@@ -1,1 +1,1 @@
-Sitemap: https://physics-learning-wiki.org/sitemap.xml
+Sitemap: https://physics-learning-wiki.github.io/Physics-Learning-Wiki/sitemap.xml

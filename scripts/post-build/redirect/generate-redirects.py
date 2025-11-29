@@ -9,4 +9,4 @@ for cur in f.readlines():
     html_path = os.path.join('site', s.strip('/'), 'index.html')
     os.makedirs(os.path.dirname(html_path), exist_ok=True)
     with open(html_path, 'w') as html_file:
-        html_file.write(f'<!DOCTYPE html><html><head><link rel="canonical" href="https://oi-wiki.org{t}"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url={t}" /></head></html>')
+        html_file.write(f'<!DOCTYPE html><html><head><link rel="canonical" href="https://physics-learning-wiki.github.io/Physics-Learning-Wiki{t}"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url={t}" /></head></html>')

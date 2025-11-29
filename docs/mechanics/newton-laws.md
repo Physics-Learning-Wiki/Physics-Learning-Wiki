@@ -37,18 +37,19 @@ $$
 ### 物理意义
 1.  **因果关系**：力 $\boldsymbol{F}$ 是因，加速度 $\boldsymbol{a}$ 是果。
 2.  **矢量性**：方程在三个坐标轴方向上独立成立。
-    $$
-    \begin{cases}
-    F_x = ma_x \\
-    F_y = ma_y \\
-    F_z = ma_z
-    \end{cases}
-    $$
+$$
+\begin{cases}
+F_x = ma_x \\
+F_y = ma_y \\
+F_z = ma_z
+\end{cases}
+$$
 3.  **瞬时性**：力和加速度同时产生、同时变化、同时消失。
 4.  **叠加性**：若物体受到多个力作用，$\boldsymbol{F}$ 指的是 **合外力**。
-    $$
-    \sum \boldsymbol{F}_i = m\boldsymbol{a}
-    $$
+
+$$
+\sum \boldsymbol{F}_i = m\boldsymbol{a}
+$$
 
 ## 3. 牛顿第三定律 (Newton's Third Law)
 
@@ -56,9 +57,11 @@ $$
 > **两个物体之间的作用力和反作用力总是大小相等，方向相反，作用在同一条直线上。**
 
 ### 数学表达
+
 $$
 \boldsymbol{F}_{12} = -\boldsymbol{F}_{21}
 $$
+
 其中 $\boldsymbol{F}_{12}$ 是物体 2 施加给物体 1 的力，$\boldsymbol{F}_{21}$ 是物体 1 施加给物体 2 的力。
 
 ### 物理意义
@@ -71,28 +74,32 @@ $$
 在经典力学中，我们经常处理以下几种力：
 
 ### 4.1 万有引力 (Gravitational Force)
+
 $$
 \boldsymbol{F} = -G\frac{Mm}{r^2}\hat{\boldsymbol{r}}
 $$
-*   $G \approx 6.67 \times 10^{-11} \text{N}\cdot\text{m}^2/\text{kg}^2$。
-*   在地球表面附近，重力近似为 $\boldsymbol{G} = m\boldsymbol{g}$，其中 $g \approx 9.8 \text{m/s}^2$。
+
+$G \approx 6.67 \times 10^{-11} \text{N}\cdot\text{m}^2/\text{kg}^2$。
+在地球表面附近，重力近似为 $\boldsymbol{G} = m\boldsymbol{g}$，其中 $g \approx 9.8 \text{m/s}^2$。
 
 ### 4.2 弹性力 (Elastic Force)
 遵循 **胡克定律 (Hooke's Law)**：
+
 $$
 \boldsymbol{F} = -k\boldsymbol{x}
 $$
+
 *   $k$ 为劲度系数 (Stiffness constant)。
 *   方向总是指向平衡位置（恢复力）。
 
 ### 4.3 摩擦力 (Friction)
-*   **静摩擦力 (Static Friction)**: $0 \le f_s \le f_{s, \max} = \mu_s N$。方向与相对运动趋势相反。
-*   **动摩擦力 (Kinetic Friction)**: $f_k = \mu_k N$。方向与相对运动方向相反。
-    *   通常 $\mu_k < \mu_s$。
+**静摩擦力 (Static Friction)**: $0 \le f_s \le f_{s, \max} = \mu_s N$。方向与相对运动趋势相反。
+**动摩擦力 (Kinetic Friction)**: $f_k = \mu_k N$。方向与相对运动方向相反。
+- 通常 $\mu_k < \mu_s$。
 
 ### 4.4 流体阻力 (Fluid Resistance)
-*   低速时（层流）：$f \propto v$ (Stokes' Law)。
-*   高速时（湍流）：$f \propto v^2$。
+低速时（层流）：$f \propto v$ (Stokes' Law)。
+高速时（湍流）：$f \propto v^2$。
 
 ## 5. 牛顿定律的应用方法
 
@@ -121,4 +128,4 @@ $$
 1.  **平动惯性力**：参考系做平动加速时引入，$\boldsymbol{F} = -m\boldsymbol{a}$.
 2.  **离心力 (Centrifugal Force)**：在匀速转动参考系中，$\boldsymbol{F} = m\omega^2 r \hat{\boldsymbol{e}}_r$。
 3.  **科里奥利力 (Coriolis Force)**：当物体在转动参考系中有相对速度时产生，$\boldsymbol{F}_{cor} = -2m(\boldsymbol{\omega} \times \boldsymbol{v}_{\text{rel}})$。
-    *   科里奥利力是导致地球上季风偏转、河流冲刷右岸（北半球）的主要原因。
+- 科里奥利力是导致地球上季风偏转、河流冲刷右岸（北半球）的主要原因。
