@@ -35,7 +35,7 @@ title: Physics-Learning-Wiki
 
 ### 致谢
 
-本项目受 [OI Wiki](https://oi-wiki.org/) 与 [CTF Wiki](https://ctf-wiki.org/) 的启发。
+本项目受 [OI Wiki](https://oi-wiki.org/) 与 [CTF Wiki](https://ctf-wiki.org/) 的启发。在此表以诚挚的感谢。
 
 <script>
   // 尝试展开左侧导航栏
