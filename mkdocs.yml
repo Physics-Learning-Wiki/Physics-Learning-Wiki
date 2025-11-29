@@ -149,6 +149,8 @@ theme:
     - navigation.tabs
     - navigation.instant
     - content.code.copy
+    - content.math
+    - content.mathjax
   font:
     text: 'Fira Sans'
     code: 'Fira Mono'
