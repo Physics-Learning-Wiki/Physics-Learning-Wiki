@@ -113,7 +113,6 @@ nav:
     - Python 科学计算: tools/python-scicomp.md
     - 模拟软件 (Mathematica/Matlab): tools/simulation.md
     - 绘图工具: tools/plotting.md
-
 # Theme
 theme:
   name: null

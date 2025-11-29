@@ -45,9 +45,11 @@ $$
     -   一小段弧长 $ds = \sqrt{dx^2 + dy^2} = \sqrt{1 + (y')^2}dx$。
     -   走过这段弧长的时间 $dt = \frac{ds}{v} = \frac{\sqrt{1+(y')^2}}{\sqrt{2gy}}dx$。
     -   总时间就是对 $dt$ 的积分：
+
         $$
         T[y] = \int_A^B dt = \int_{x_A}^{x_B} \frac{\sqrt{1+(y')^2}}{\sqrt{2gy}} \,dx
         $$
+
     这就是我们要最小化的泛函。
 
 2.  **应用欧拉-拉格朗日方程**：
@@ -78,7 +80,7 @@ $$
 
 让我们看看这个优美的原理是如何导出我们熟悉的牛顿定律的。
 
-**问题**：对于一个在势能 $U(x)$ 中运动的一维粒子，其拉格朗日量为 $L = T - U = \frac{1}{2}m\dot{x}^2 - U(x)$。请用欧拉-拉格朗日方程找出其运动方程。
+**问题**：对于一个在势能 $U(x)$ 中运动的一维粒子，其拉格朗日量为 $L = T - U = \frac{1}{2}m\dot{x}^2 - U(x)$ 。请用欧拉-拉格朗日方程找出其运动方程。
 
 **解**：
 1.  **确定变量和拉格朗日量**:
@@ -88,17 +90,20 @@ $$
     -   $L(x, \dot{x}) = \frac{1}{2}m\dot{x}^2 - U(x)$。
 
 2.  **计算欧拉-拉格朗日方程的各项**:
-    -   $\frac{\partial L}{\partial x} = \frac{\partial}{\partial x} (\frac{1}{2}m\dot{x}^2 - U(x)) = -\frac{dU(x)}{dx}$。我们知道力 $F = -dU/dx$。所以这一项就是力 $F$。
-    -   $\frac{\partial L}{\partial \dot{x}} = \frac{\partial}{\partial \dot{x}} (\frac{1}{2}m\dot{x}^2 - U(x)) = m\dot{x}$。这正是动量 $p$。
-    -   $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = \frac{d}{dt}(m\dot{x}) = m\ddot{x}$。这是动量的变化率。
+    -   $\frac{\partial L}{\partial x} = \frac{\partial}{\partial x} (\frac{1}{2}m\dot{x}^2 - U(x)) = -\frac{dU(x)}{dx}$ 。我们知道力 $F = -dU/dx$。所以这一项就是力 $F$。
+    -   $\frac{\partial L}{\partial \dot{x}} = \frac{\partial}{\partial \dot{x}} (\frac{1}{2}m\dot{x}^2 - U(x)) = m\dot{x}$ 。这正是动量 $p$。
+    -   $\frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = \frac{d}{dt}(m\dot{x}) = m\ddot{x}$ 。这是动量的变化率。
 
 3.  **组合成方程**:
+
     $$
     \frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = 0
     $$
+
     $$
     F - m\ddot{x} = 0 \implies F = m\ddot{x}
     $$
+
     这正是牛顿第二定律 $F=ma$！
 
 我们从一个抽象的、关于整个路径的积分（作用量）的极值原理出发，竟然推导出了描述每一瞬间的、局部的运动定律。这展示了变分法的强大威力。拉格朗日力学和哈密顿力学正是建立在这一原理之上，为描述复杂系统提供了比牛顿力学更普适和强大的框架。

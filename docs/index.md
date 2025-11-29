@@ -28,6 +28,7 @@ title: Physics-Learning-Wiki
 1.  **按图索骥**：通过左侧导航栏快速定位到特定学科或章节。
 2.  **循序渐进**：参考 [学习路线 (Roadmap)](roadmap.md) 规划你的学习进度。
 3.  **查漏补缺**：利用 [术语表](glossary/) 快速回顾核心定义与符号约定。
+4.  **定向答疑**：通过页面右上角的 [GitHub Copilot Chat](https://github.com/copilot) 功能，选择 Physics-Learning-Wiki 作为参考源，进行智能问答。
 
 ### 参与贡献
 
