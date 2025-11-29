@@ -14,4 +14,6 @@ fi
 git submodule update --init --recursive
 git -C "$THEME_NAME" log -1
 
+chmod +x "$DIRNAME"/install-theme-vendor.sh
+
 "$DIRNAME"/install-theme-vendor.sh
