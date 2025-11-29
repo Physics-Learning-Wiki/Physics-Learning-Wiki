@@ -1,6 +1,6 @@
 author: Physics-Learning-Wiki
 
-# 运动学 (Kinematics)
+## 运动学 (Kinematics)
 
 运动学主要描述物体在空间中随时间变化的位置，而不涉及引起这些变化的原因（力）。它是力学的基础。
 

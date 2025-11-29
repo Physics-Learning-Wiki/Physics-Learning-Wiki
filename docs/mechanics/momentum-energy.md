@@ -1,6 +1,6 @@
 author: Physics-Learning-Wiki
 
-# 动量与能量 (Momentum and Energy)
+## 动量与能量 (Momentum and Energy)
 
 牛顿运动定律关注力的瞬时作用，而动量和能量的观点则关注力在时间或空间上的累积效果。它们提供了解决物理问题的另一套强大工具，特别是对于碰撞、变力做功等问题。
 

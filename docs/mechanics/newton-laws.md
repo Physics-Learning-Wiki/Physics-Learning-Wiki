@@ -1,6 +1,6 @@
 author: Physics-Learning-Wiki
 
-# 牛顿运动定律 (Newton's Laws of Motion)
+## 牛顿运动定律 (Newton's Laws of Motion)
 
 1687年，艾萨克·牛顿在《自然哲学的数学原理》中提出了三条运动定律，奠定了经典力学的基础。
 
