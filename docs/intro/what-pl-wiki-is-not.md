@@ -42,8 +42,8 @@
 
 ## Physics Learning Wiki 不是百科全书
 
-**Physics Learning Wiki** 收录的内容应限定在「已经被应用于研究或实践」的物理、数学等领域的部分知识。其他与编程竞赛无关的领域或知识均不适合收录于 **Physics Learning Wiki**。
+**Physics Learning Wiki** 收录的内容应限定在「已经被应用于研究或实践」的物理、数学等领域的部分知识。其他与物理学科无关的领域或知识均不适合收录于 **Physics Learning Wiki**。
 
-例如，如下的领域或知识 **不适合** 收录于 **OI Wiki**：
+例如，如下的领域或知识 **不适合** 收录于 **Physics Learning Wiki**：
 
 -   历史，艺术等无关领域；
