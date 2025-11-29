@@ -25,5 +25,5 @@ disqus:
         }
         return dft;
     }
-    document.getElementById("btn-startedit").href = "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/edit/master/docs" + getQueryVariable("ref", "");
+    document.getElementById("btn-startedit").href = "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/edit/main/docs" + getQueryVariable("ref", "");
 </script>
