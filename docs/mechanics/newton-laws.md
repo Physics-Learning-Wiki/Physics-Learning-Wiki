@@ -22,9 +22,11 @@ author: Physics-Learning-Wiki
 > **物体动量的变化率与作用在物体上的力成正比，且方向相同。**
 
 ### 数学表达
+
 $$
 \boldsymbol{F} = \frac{d\boldsymbol{p}}{dt}
 $$
+
 其中 $\boldsymbol{p} = m\boldsymbol{v}$ 是动量。
 
 当物体质量 $m$ 为常数时，公式简化为我们最熟悉的形式：

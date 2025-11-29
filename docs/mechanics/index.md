@@ -1,4 +1,4 @@
-author: Physics-Learning-Wiki
+author: Physics-Learning-Wiki, Leafuke
 
 # 经典力学简介
 
@@ -8,8 +8,8 @@ author: Physics-Learning-Wiki
 
 虽然经典力学在解释日常现象方面非常成功，但它并非万能。它的适用范围通常被界定为：
 
-*   **宏观尺度**：研究对象的尺度远大于原子尺寸（$L \gg 10^{-10} \text{m}$）。当尺度缩小到原子或亚原子级别时，必须使用 **量子力学 (Quantum Mechanics)**。
-*   **低速运动**：研究对象的运动速度远小于光速（$v \ll c \approx 3 \times 10^8 \text{m/s}$）。当速度接近光速时，必须使用 **狭义相对论 (Special Relativity)**。
+*   **宏观尺度**：研究对象的尺度远大于原子尺寸（ $L \gg 10^{-10} \text{m}$ ）。当尺度缩小到原子或亚原子级别时，必须使用 **量子力学 (Quantum Mechanics)**。
+*   **低速运动**：研究对象的运动速度远小于光速（ $v \ll c \approx 3 \times 10^8 \text{m/s}$ ）。当速度接近光速时，必须使用 **狭义相对论 (Special Relativity)**。
 *   **弱引力场**：当引力场极其强（如黑洞附近）时，必须使用 **广义相对论 (General Relativity)**。
 
 ## 2. 核心概念

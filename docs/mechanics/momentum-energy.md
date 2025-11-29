@@ -8,20 +8,26 @@ author: Physics-Learning-Wiki
 
 ### 1.1 动量定理 (Impulse-Momentum Theorem)
 力在 **时间** 上的累积称为 **冲量 (Impulse)**。
+
 $$
 \boldsymbol{I} = \int_{t_1}^{t_2} \boldsymbol{F} dt
 $$
+
 根据牛顿第二定律 $\boldsymbol{F} = d\boldsymbol{p}/dt$，积分可得动量定理：
+
 $$
 \boldsymbol{I}_{\text{total}} = \Delta \boldsymbol{p} = \boldsymbol{p}_2 - \boldsymbol{p}_1
 $$
+
 > **物体所受合外力的冲量等于其动量的增量。**
 
 ### 1.2 质点系动量定理
 对于由多个质点组成的系统：
+
 $$
 \frac{d\boldsymbol{P}}{dt} = \sum \boldsymbol{F}_{\text{ext}}
 $$
+
 其中 $\boldsymbol{P} = \sum m_i \boldsymbol{v}_i$ 是系统的总动量。
 *   **内力** (系统内部物体间的相互作用) 不改变系统的总动量，因为它们成对出现且相互抵消。
 
@@ -31,6 +37,7 @@ $$
 $$
 \boldsymbol{P} = \text{const}
 $$
+
 *   这是一个矢量方程，可以在某个分量方向上单独成立（例如水平方向不受外力，则水平动量守恒）。
 *   适用范围极广，从微观粒子碰撞到天体运动均适用。
 
@@ -38,25 +45,31 @@ $$
 
 ### 2.1 功 (Work)
 力在 **空间** 上的累积称为 **功**。
+
 $$
 W = \int_A^B \boldsymbol{F} \cdot d\boldsymbol{r}
 $$
+
 *   功是标量。
 *   只有力在位移方向上的分量才做功。
 
 ### 2.2 动能定理 (Work-Energy Theorem)
 合外力对物体所做的功等于物体 **动能 (Kinetic Energy)** 的变化。
+
 $$
 W_{\text{total}} = \Delta E_k = \frac{1}{2}mv_2^2 - \frac{1}{2}mv_1^2
 $$
+
 其中动能定义为 $E_k = \frac{1}{2}mv^2$。
 
 ### 2.3 保守力与势能 (Conservative Forces and Potential Energy)
 如果一个力做功只与始末位置有关，而与路径无关，则称该力为 **保守力**。
 对于保守力，可以定义 **势能 (Potential Energy, $E_p$)**：
+
 $$
 W_{\text{cons}} = -\Delta E_p = E_{p1} - E_{p2}
 $$
+
 > **保守力做正功，势能减少；保守力做负功，势能增加。**
 
 常见势能公式：
@@ -66,16 +79,20 @@ $$
 
 ### 2.4 机械能守恒定律 (Conservation of Mechanical Energy)
 对于一个系统，如果只有保守力做功（或者非保守力不做功），则系统的 **机械能** (动能 + 势能) 保持不变。
+
 $$
 E_k + E_p = \text{const}
 $$
+
 或者：
+
 $$
 \Delta E_k + \Delta E_p = 0
 $$
 
 ### 2.5 功能原理
 若存在非保守力（如摩擦力、爆炸力）做功 $W_{nc}$，则机械能不守恒，其变化量等于非保守力做的功：
+
 $$
 W_{nc} = \Delta E = \Delta E_k + \Delta E_p
 $$
@@ -90,21 +107,26 @@ $$
 *   例子：钢球碰撞、微观粒子散射。
 
 对于一维弹性碰撞，两物体碰后速度满足：
+
 $$
 v_{1f} = \frac{m_1 - m_2}{m_1 + m_2}v_{1i} + \frac{2m_2}{m_1 + m_2}v_{2i}
 $$
+
 $$
 v_{2f} = \frac{2m_1}{m_1 + m_2}v_{1i} + \frac{m_2 - m_1}{m_1 + m_2}v_{2i}
 $$
+
 特别地，若 $m_1 = m_2$，则两物体 **交换速度**。
 
 ### 3.2 非弹性碰撞 (Inelastic Collision)
 *   动量守恒。
 *   动能不守恒（部分动能转化为内能、热能、声能等）。
 *   **恢复系数 (Coefficient of Restitution, $e$)**:
+
     $$
     e = \frac{|v_{2f} - v_{1f}|}{|v_{2i} - v_{1i}|} = \frac{\text{分离速度}}{\text{接近速度}}
     $$
+
     *   $e=1$: 弹性碰撞。
     *   $0 < e < 1$: 非弹性碰撞。
     *   $e=0$: **完全非弹性碰撞** (碰后粘在一起，动能损失最大)。
@@ -117,7 +139,9 @@ $$
 
 ### 柯尼希定理 (Koenig's Theorem)
 质点系的总动能等于 **质心平动动能** 加上 **各质点相对于质心的动能**。
+
 $$
 E_k = \frac{1}{2}M v_C^2 + E_{k, \text{rel}}
 $$
+
 在碰撞问题中，$\frac{1}{2}M v_C^2$ 是“携带”动能，通常不变；只有 $E_{k, \text{rel}}$ 参与能量转化。

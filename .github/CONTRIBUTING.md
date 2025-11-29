@@ -1,10 +1,10 @@
 :+1::tada: 首先，感谢您抽出宝贵时间为 **Physics Learning Wiki** 做出贡献！ :tada::+1:
 
-请您在提交拉取请求（Pull Request）前再次阅读[如何参与的有关内容](https://oi-wiki.org/intro/htc/)，尤其应再次确认**对于目录和引用的变更**和**信息格式规范**。
+请您在提交拉取请求（Pull Request）前再次阅读[如何参与的有关内容](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/htc/)，尤其应再次确认**对于目录和引用的变更**和**信息格式规范**。
 
 如果有关内容**尚未完成**，请考虑先新建 issue 或本次作为 draft pr 提交。
 
-如果内容**已经完成**，您无需新建 issue ，但仍需要核对[格式手册](https://oi-wiki.org/intro/format/)中文档的基本格式要求。在机器人修改、测试构建完成后，建议您检查实际效果，并持续跟进审核或修改意见。
+如果内容**已经完成**，您无需新建 issue ，但仍需要核对[格式手册](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/format/)中文档的基本格式要求。在机器人修改、测试构建完成后，建议您检查实际效果，并持续跟进审核或修改意见。
 
 在提交 pull request 的[描述](.github/pull_request_template.md)中，勾选已阅读贡献指南，表明**您已知晓**：
 

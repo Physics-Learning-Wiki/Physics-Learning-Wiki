@@ -1,6 +1,3 @@
-???+ warning "注意"
-    该页面直接引用自 Physics Learning Wiki，尚未进行本地化处理。
-
 本文规定了 **Physics Learning Wiki** 中数学符号的推荐写法，并给出了一些应用范例。
 
 本文参考了 [GB/T 3102.11-1993](https://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=3DE79450D562E62D41CB6E79FF411054)、[ISO 80000-2:2019](https://www.iso.org/standard/64973.html) 和《具体数学》的符号表修订，故基本与国内通行教材的符号体系和物理学场景的惯用符号体系兼容。

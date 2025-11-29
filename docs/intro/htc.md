@@ -1,13 +1,10 @@
-???+ warning "注意"
-    该页面直接引用自 Physics Learning Wiki，尚未进行本地化处理。
-
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面。正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
 
 这篇文章将主要叙述参与 Physics Learning Wiki 编写的写作过程。请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容。
 
 ## 贡献指南
 
-请您在编辑前查看 [Physics Learning Wiki 贡献指南](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/.github/CONTRIBUTING.md) 和 [项目方针](./about.md#项目方针)，以更好地和社区贡献者进行合作、交流。
+请您在编辑前查看 [Physics Learning Wiki 贡献指南](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/main/.github/CONTRIBUTING.md) 和 [项目方针](./about.md#项目方针)，以更好地和社区贡献者进行合作、交流。
 
 ## 参与协作
 
@@ -107,19 +104,6 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 
 修改链接时，需要将当前页面中的 contributors 逐一填入 author 字段。
 
-### 重定向文件
-
-在修改链接时，为了避免在站外引用时出现死链，需要修改重定向文件。
-
-[`_redirects`](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/docs/_redirects) 文件用于生成 [netlify 的配置](https://docs.netlify.com/routing/redirects/#syntax-for-the-redirects-file) 和 [用于跳转的文件](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/scripts/gen_redirect.py)。
-
-每一行表示一个重定向规则，分别写跳转的起点和终点的 url（不包含域名）：
-
-```text
-/path/to/src /path/to/desc
-```
-
-注：所有跳转均为 301 跳转，只有在修改目录中 url 造成死链的时候需要修改。
 
 ### Commit 信息格式规范
 
@@ -172,10 +156,10 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 ### 协作流程
 
 1.  在收到一个新的 Pull Request 之后，GitHub 会给 reviewer 发送邮件；
-2.  与此同时，在 [GitHub Actions](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/actions) 和 [Netlify](https://app.netlify.com/sites/physics-learning-wiki) 上会运行两组测试，它们会把进度同步在 PR 页面的下方。GitHub Actions 主要用来确认 PR 中内容的修改不会影响到网站构建的进程；Netlify 用来把 PR 中的更新构建出来，方便 reviewer 审核（在测试完成后点击 Details 可以了解更多）；
+2.  与此同时，在 [GitHub Actions](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/actions)  上会运行测试，它会把进度同步在 PR 页面的下方。GitHub Actions 主要用来确认 PR 中内容的修改不会影响到网站构建的进程。
 3.  reviewer 可能会发现问题，并提出 `review` 或 `suggested changes`（建议更改，显示为灰色图标）/`requested changes`（强制更改，显示为红色图标，只会在 reviewer 拥有 repo 写权限时出现）。一般来说，reviewer 也会附上建议和需要进行的更改，在这时，您将会需要继续向 Pull Request 追加其他更改。更改的方法可以参考 `在 GitHub 上编辑` 或者 `使用 Git 在本地进行编辑` 部分的 `向 Pull Request 追加更改` 部分。
-4.  在足够多 reviewer 投票通过一个 PR 之后，这个 PR 才可以合并到 master 分支中；
-5.  在合并到 master 分支之后，GitHub Actions 会重新构建一遍网站内容，并更新到 gh-pages 分支；
+4.  在足够多 reviewer 投票通过一个 PR 之后，这个 PR 才可以合并到 main 分支中；
+5.  在合并到 main 分支之后，GitHub Actions 会重新构建一遍网站内容，并更新到 gh-pages 分支；
 6.  这时服务器才会拉取 gh-pages 分支的更新，并重新部署最新版本的内容。
 
 ## 参考资料与注释
