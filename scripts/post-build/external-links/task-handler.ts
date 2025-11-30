@@ -2,7 +2,7 @@ import { HTMLElement } from "node-html-parser";
 
 import { TaskHandler } from "../html-postprocess.js";
 
-const ROOT_URL = new URL("https://oi-wiki.org/");
+const ROOT_URL = new URL("https://physics-learning-wiki.github.io/Physics-Learning-Wiki/");
 
 export const taskHandler = new (class implements TaskHandler<void> {
   async process(document: HTMLElement) {

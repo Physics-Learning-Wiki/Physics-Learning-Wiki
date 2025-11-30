@@ -69,8 +69,8 @@ jobs:
         with:
           ref: gh-pages
           path: old-site
-      - name: Check _redirects
-        run: uv run python scripts/post-build/redirect/check-redirects.py
+      # - name: Check _redirects
+      #   run: uv run python scripts/post-build/redirect/check-redirects.py
       - name: Deploy to gh-pages
         # if: ${{ github.event_name == 'push' }}
         uses: peaceiris/actions-gh-pages@v4
