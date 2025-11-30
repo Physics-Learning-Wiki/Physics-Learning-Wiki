@@ -1,4 +1,7 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
+  
 概率论和统计学是研究随机现象的数学分支。在物理学中，它们是统计力学和量子力学的理论基础，并且在实验数据分析中不可或缺。
 
 ## 概率论基础

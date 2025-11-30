@@ -1,3 +1,6 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
+
 
 导数是微积分的“心脏”，它为我们提供了一个强大的工具来描述变化的快慢，即**瞬时变化率**。
 

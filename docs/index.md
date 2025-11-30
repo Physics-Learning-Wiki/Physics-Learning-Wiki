@@ -32,15 +32,10 @@ title: Physics-Learning-Wiki
 
 ### 参与贡献
 
-本项目处于早期构建阶段，内容框架正在逐步完善中。欢迎阅读 [贡献指南](contributing.md) 并提交 Pull Request 帮助我们改进。
+本项目处于早期构建阶段，内容框架正在逐步完善中。欢迎阅读 [如何参与](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/htc/) 并提交 Pull Request 帮助我们改进。
+
+如果你不会编写 LaTeX 代码，可以通过 [在线 LaTeX 编辑器](https://www.latexlive.com/) 生成公式代码，然后复制粘贴到相应位置。
 
 ### 致谢
 
 本项目受 [OI Wiki](https://oi-wiki.org/) 与 [CTF Wiki](https://ctf-wiki.org/) 的启发。在此表以诚挚的感谢。
-
-<script>
-  // 尝试展开左侧导航栏
-  try {
-    document.getElementsByClassName('md-nav__title')[1].click()
-  } catch (e) {}
-</script>

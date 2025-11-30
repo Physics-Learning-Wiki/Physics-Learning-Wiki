@@ -1,3 +1,5 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 如果说导数是把事物“分解”成瞬时变化，那么积分就是把这些无限小的部分“组装”起来，得到一个总和。积分是导数的逆运算，它能帮助我们计算曲线下的面积、累积的总量、变力所做的功等。
 

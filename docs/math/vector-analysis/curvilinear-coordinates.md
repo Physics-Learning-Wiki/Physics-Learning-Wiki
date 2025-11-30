@@ -1,3 +1,6 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
+
 
 在物理学中，虽然笛卡尔坐标系（Cartesian coordinates）是最基础和最直接的坐标系，但在处理具有特定对称性（如圆形、球形或柱形对称）的问题时，使用**曲线坐标系**（Curvilinear coordinates）会大大简化计算。最常见的曲线坐标系包括极坐标系、柱坐标系和球坐标系。
 

@@ -1,3 +1,5 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 ## 向量
 

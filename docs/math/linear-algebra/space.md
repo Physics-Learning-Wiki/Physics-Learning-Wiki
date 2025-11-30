@@ -1,3 +1,5 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 线性空间，又称向量空间，是现代数学中的一个基本概念，是线性代数研究的主要对象。它推广了我们熟悉的二维和三维欧几里得空间的概念。
 

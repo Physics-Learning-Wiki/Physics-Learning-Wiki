@@ -1,3 +1,6 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
+
 
 想象一下，你要求一个函数的最小值，你会求导并令其为零。但如果问题是：**在所有可能的函数（或路径）中，哪一个能使某个量（比如时间或能量）最小？** 这就是变分法要解决的问题。
 

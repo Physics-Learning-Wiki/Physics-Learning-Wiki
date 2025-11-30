@@ -1,3 +1,5 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 复数在物理学的许多领域中都扮演着至关重要的角色，尤其是在波动理论、交流电路分析、量子力学和信号处理中。它们提供了一种优雅而强大的数学语言来描述振荡和相位。
 

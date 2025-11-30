@@ -1,3 +1,6 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
+
 
 极限是整个微积分学的基石，它精确地描述了函数在某一点附近的“趋势”。在我们讨论瞬时速度、切线斜率或曲线下面积之前，我们都需要极限这个工具。
 

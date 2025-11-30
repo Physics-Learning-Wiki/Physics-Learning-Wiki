@@ -1,3 +1,5 @@
+???+ note "注意"
+    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 在求解物理问题，特别是微分方程时，我们经常会遇到一些不属于初等函数范畴的函数，这些函数被称为**特殊函数**。它们在数学物理方法中占有核心地位。
 
