@@ -56,7 +56,10 @@ nav:
     - 常用特殊函数: math/special-functions.md
   - 经典力学:
     - 力学简介: mechanics/index.md
-    - 运动学: mechanics/kinematics.md
+    - 运动学: 
+      - 原本的内容: mechanics/kinematics.md
+      - 匀变速直线运动: mechanics/uniformly-accelerated-motion.md
+      - 抛体运动: mechanics/projectile-motion.md
     - 牛顿运动定律: mechanics/newton-laws.md
     - 动量与能量: mechanics/momentum-energy.md
     - 质点系动力学: mechanics/system-of-particles.md
