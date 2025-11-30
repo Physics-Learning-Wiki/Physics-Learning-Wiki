@@ -20,7 +20,8 @@ author: Physics-Learning-Wiki
 -   **速度**: $\boldsymbol{v} = \frac{d\boldsymbol{r}}{dt} = \dot{x}\hat{\boldsymbol{i}} + \dot{y}\hat{\boldsymbol{j}} + \dot{z}\hat{\boldsymbol{k}}$
 -   **加速度**: $\boldsymbol{a} = \frac{d\boldsymbol{v}}{dt} = \ddot{x}\hat{\boldsymbol{i}} + \ddot{y}\hat{\boldsymbol{j}} + \ddot{z}\hat{\boldsymbol{k}}$
 
-![空间直角坐标系](docs/images/Cartesian-Coordinates.svg)
+![空间直角坐标系](../images/Cartesian-Coordinates.svg)
+<img src="../images/Cartesian-Coordinates.svg" alt="空间直角坐标系" width="200" />
 
 #### 平面极坐标系 (Polar Coordinates)
 适用于平面内的圆周运动或中心力场问题。
