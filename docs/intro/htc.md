@@ -24,6 +24,12 @@
 
 > 不要害怕编辑，勇于更新页面！[^ref1]
 
+### 太长不看版
+
+这里有一个位于视频网站 B 站的简短视频，简单介绍了如何参与 Physics Learning Wiki 的编写工作：[【Physics Learning Wiki】如何参与编写 Physics Learning Wiki？](https://www.bilibili.com/video/BV15ASqBSE3B)
+
+如果你对下方的文字头疼，那么不妨看看这个视频。
+
 ### 在 GitHub 上编辑
 
 参与 Physics Learning Wiki 的编写 **需要** 一个 GitHub 账号（可以前往 [GitHub 的账号注册页面](https://github.com/signup) 页面注册），但 **不需要** 高超的 GitHub 技巧，即使你是一名新手，只要按照下面所述的步骤操作，也能够 **非常出色** 地完成编辑。
