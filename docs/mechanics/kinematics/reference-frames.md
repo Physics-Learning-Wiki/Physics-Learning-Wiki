@@ -44,8 +44,6 @@ $$
 
 其中 $\dot{r}$ 为径向速度，$r\dot{\theta}$ 为横向速度。
 
-![平面极坐标系](../../images/Polar-Coordinates.svg)
-
 **加速度**:
 
 $$
@@ -60,9 +58,36 @@ $r\ddot{\theta}\hat{\boldsymbol{e}}_\theta$: 切向加速度分量。
 
 $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Coriolis acceleration) 的一部分形式。
 
+![极坐标系](../images/Polar-Coordinates.svg)
 
-??? note "速度与加速度形式的证明"
+??? note "证明"
     在极坐标系中，单位矢量 $\hat{\boldsymbol{e}}_r$ 和 $\hat{\boldsymbol{e}}_\theta$ 随角度 $\theta$ 变化，因此求导时需注意基矢量的变化。
+
+    **重要推论**
+    在图1中可以看出：
+    
+    $$
+    \begin{aligned}
+        \hat{\boldsymbol{e}}_r &= \cos\theta\,\hat{\boldsymbol{i}} + \sin\theta\,\hat{\boldsymbol{j}} \\
+        \hat{\boldsymbol{e}}_\theta &= -\sin\theta\,\hat{\boldsymbol{i}} + \cos\theta\,\hat{\boldsymbol{j}}
+    \end{aligned}
+    $$
+
+    $$
+    \begin{aligned}
+        \frac{d\hat{\boldsymbol{e}}_r}{d\theta} &= -\sin\theta\,\hat{\boldsymbol{i}} + \cos\theta\,\hat{\boldsymbol{j}} = \hat{\boldsymbol{e}}_\theta \\
+        \frac{d\hat{\boldsymbol{e}}_\theta}{d\theta} &= -\cos\theta\,\hat{\boldsymbol{i}} - \sin\theta\,\hat{\boldsymbol{j}} = -\hat{\boldsymbol{e}}_r
+    \end{aligned}
+    $$
+
+    则
+
+    $$
+    \begin{aligned}
+        \frac{d\hat{\boldsymbol{e}}_r}{dt} &= \frac{d\hat{\boldsymbol{e}}_r}{d\theta}\frac{d\theta}{dt} = \dot{\theta}\,\hat{\boldsymbol{e}}_\theta \\
+        \frac{d\hat{\boldsymbol{e}}_\theta}{dt} &= \frac{d\hat{\boldsymbol{e}}_\theta}{d\theta}\frac{d\theta}{dt} = -\dot{\theta}\,\hat{\boldsymbol{e}}_r
+    \end{aligned}
+    $$
 
     **1. 速度的推导：**
 
@@ -110,20 +135,146 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     
 
 #### 自然坐标系 (Intrinsic Coordinates)
-以质点运动轨迹上的点为原点，沿切向 $\hat{\boldsymbol{\tau}}$ 和法向 $\hat{\boldsymbol{n}}$ 分解。
-*   **速度**: $\boldsymbol{v} = v\hat{\boldsymbol{\tau}}$
-*   **加速度**:
 
-$$
-\boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + \frac{v^2}{\rho}\hat{\boldsymbol{n}}
-$$
+以质点运动轨迹上的点为原点，沿切向 $\hat{\boldsymbol{\tau}}$ 和法向 $\hat{\boldsymbol{n}}$ 分解。其中 $\rho$ 为曲率半径，$\Theta$ 为轨迹切线与某参考方向的夹角。
 
-$a_\tau = \frac{dv}{dt}$: 切向加速度，改变速度大小。
-$a_n = \frac{v^2}{\rho}$: 法向加速度（向心加速度），改变速度方向，$\rho$ 为曲率半径。
+$\hat{\boldsymbol{\tau}} = \frac{d\hat{\boldsymbol{r}}}{ds}$
+
+$\hat{\boldsymbol{n}} = \pm\frac{d\hat{\boldsymbol{\tau}}}{d\Theta}$
+
+$\rho = \pm\frac{ds}{d\Theta}$
+
+-   **速度**: $\boldsymbol{v} = v\hat{\boldsymbol{\tau}}$
+
+-   **切向加速度**:  $a_\tau = \dot{v}$
+
+-   **法向加速度**: $a_n =\frac{v^2}{\rho}$
+
+![自然坐标系](../images/Intrinsic-Coordinates.svg)
+
+??? note "证明"
+    在自然坐标系中，速度和加速度可分解为切向和法向分量。证明如下：
+
+    设质点在轨迹上的弧长为 $s$，速度大小为 $v = \frac{ds}{dt}$，切向单位矢量为 $\hat{\boldsymbol{\tau}}$，法向单位矢量为 $\hat{\boldsymbol{n}}$，曲率半径为 $\rho$。
+
+    **1. 速度表达式：**
+
+    位置矢量 $\boldsymbol{r}(s)$ 沿轨迹变化，速度为
+
+    $$
+    \boldsymbol{v} = \frac{d\boldsymbol{r}}{dt} = \frac{d\boldsymbol{r}}{ds} \frac{ds}{dt} = \hat{\boldsymbol{\tau}}\, v
+    $$
+
+    **2. 加速度分解：**
+
+    对速度求导：
+
+    $$
+    \boldsymbol{a} = \frac{d\boldsymbol{v}}{dt} = \frac{d}{dt}(v\hat{\boldsymbol{\tau}})
+    $$
+
+    展开为：
+
+    $$
+    \boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + v\frac{d\hat{\boldsymbol{\tau}}}{dt}
+    $$
+
+    其中，$\frac{dv}{dt}$ 是速度大小的变化，$\frac{d\hat{\boldsymbol{\tau}}}{dt}$ 是方向的变化。
+
+    又有
+
+    $$
+    \frac{d\hat{\boldsymbol{\tau}}}{dt} = \frac{d\hat{\boldsymbol{\tau}}}{ds} \frac{ds}{dt} = \frac{d\hat{\boldsymbol{\tau}}}{ds} v
+    $$
+
+    而 $\frac{d\hat{\boldsymbol{\tau}}}{ds} = \frac{1}{\rho} \hat{\boldsymbol{n}}$，所以
+
+    $$
+    \frac{d\hat{\boldsymbol{\tau}}}{dt} = \frac{v}{\rho} \hat{\boldsymbol{n}}
+    $$
+
+    代入加速度表达式：
+
+    $$
+    \boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + v \cdot \frac{v}{\rho} \hat{\boldsymbol{n}} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + \frac{v^2}{\rho}\hat{\boldsymbol{n}}
+    $$
+
+    **3. 切向加速度：**
+
+    $$
+    a_\tau = \frac{dv}{dt}
+    $$
+
+    表示速度大小的变化。
+
+    **4. 法向加速度：**
+
+    $$
+    a_n = \frac{v^2}{\rho}
+    $$
+
+    表示速度方向的变化，指向轨迹的曲率中心。
+
+    因此，自然坐标系下速度和加速度的分解式得证。
+
 
 
 ### 参考系与坐标系的转换
-在分析复杂运动时，常常需要在不同参考系和坐标系之间进行转换。掌握这些转换方法有助于简化问题并获得更清晰的物理理解。
-- **参考系转换**：通过平移或旋转参考系，可以将物体的运动描述转换到新的参考系中。
-- **坐标系转换**：通过数学变换（如旋转矩阵或极坐标与直角坐标的转换公式），可以在不同坐标系之间切换。
-### 总结
+
+在物理学中，复杂运动的分析常常需要在不同参考系和坐标系之间进行转换。这样做可以让问题变得更简单，或者让物理意义更加清晰。下面详细讲解两种常见的转换：
+
+#### 1. 参考系转换
+
+参考系转换就是改变我们观察和描述运动的“视角”。比如：
+
+- **平移参考系**：假设你在地面上看一辆行驶的汽车，汽车是运动的。如果你坐在汽车里，汽车对你来说是静止的，外面的景物在移动。这就是参考系的平移转换。
+- **旋转参考系**：比如在旋转的游乐场上，地面上的人看到你在做圆周运动，而你自己会感受到一种“离心力”，这是因为你所处的参考系在旋转。
+
+参考系转换的数学处理通常包括：
+- **速度的转换**：物体在新参考系中的速度 = 物体在原参考系中的速度 + 参考系本身的速度。
+- **加速度的转换**：如果参考系是非惯性的（比如加速或旋转），还要加上惯性力项。
+
+#### 2. 坐标系转换
+
+坐标系转换是改变我们描述位置和运动的“工具”。常见的有：
+
+- **直角坐标系与极坐标系的转换**：
+    - 直角坐标系用 $(x, y)$ 表示位置，极坐标系用 $(r, \theta)$ 表示位置。
+    - 转换公式：
+
+        $$
+        \begin{aligned}
+        x &= r\cos\theta \\
+        y &= r\sin\theta
+        \end{aligned}
+        $$
+
+        反过来：
+
+        $$
+        \begin{aligned}
+        r &= \sqrt{x^2 + y^2} \\
+        \theta &= \arctan\left(\frac{y}{x}\right)
+        \end{aligned}
+        $$
+
+- **旋转矩阵**：如果坐标轴发生旋转，可以用旋转矩阵把一个坐标系中的向量转换到另一个坐标系。例如，二维旋转角度为 $\phi$ 时：
+
+    $$
+    \begin{pmatrix}
+    x' \\
+    y'
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \cos\phi & -\sin\phi \\
+    \sin\phi & \cos\phi
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\
+    y
+    \end{pmatrix}
+    $$
+
+- 参考系转换是改变观察者的位置或运动状态，影响速度和加速度的表达。
+- 坐标系转换是改变描述位置和运动的数学方式，常用公式或矩阵进行转换。
