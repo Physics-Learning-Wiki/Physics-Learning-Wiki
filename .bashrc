@@ -83,7 +83,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # User specific aliases and functions
-alias wiki-upd='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && git pull origin master'
+alias wiki-upd='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && git pull origin main'
 alias wiki-theme='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && ./scripts/pre-build/install-theme.sh'
 alias wiki-bld='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && uv run mkdocs build -v'
 alias wiki-svr='export LC_ALL=C.UTF-8 && cd /Physics-Learning-Wiki && uv run mkdocs serve -v -a ${LISTEN_IP}:${LISTEN_PORT}'

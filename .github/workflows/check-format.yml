@@ -3,7 +3,7 @@ name: Check PR Format
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   check-format:

@@ -62,7 +62,7 @@
 #### 向 Pull Request 追加更改
 
 1.  打开 [Physics Learning Wiki 的 Pull Request 列表](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/pulls)，找到您提交的 Pull Request 并点击。
-2.  Pull Request 页面的标题下方将会有一段例如 `<您的ID> wants to merge x commits into Physics-Learning-Wiki:master from <您的ID>:patch-1` 的文字，点击 `<您的ID>:patch-1` 部分。
+2.  Pull Request 页面的标题下方将会有一段例如 `<您的ID> wants to merge x commits into Physics-Learning-Wiki:main from <您的ID>:patch-1` 的文字，点击 `<您的ID>:patch-1` 部分。
 3.  您应该会被重定向到您的分支仓库中，而且文件列表左上角的分支名称是你提交 Pull Request 的分支名称（在本示例中应为 `patch-1`）。
 4.  进行您需要的更改。
     -   如果您需要编辑单个文件或多个互相无关联的页面的内容，请直接找到你要的文件并进行更改，更改完成后滚动到页面下方，按照本文中 [commit 信息格式规范](#commit-信息格式规范) 填写 commit 信息，之后点击 **Commit changes** 按钮提交修改。
@@ -98,7 +98,7 @@
 
 ### 对于目录和引用的变更
 
-通常情况下，如果您需要添加一个新页面，或者修改已有页面在目录中的链接，您就需要对 [`mkdocs.yml`](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/mkdocs.yml) 文件作出改动。
+通常情况下，如果您需要添加一个新页面，或者修改已有页面在目录中的链接，您就需要对 [`mkdocs.yml`](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/main/mkdocs.yml) 文件作出改动。
 
 添加新页面可以参考既有的格式。但除非是进行重构或修正名词，否则 **我们不建议对既有页面的引用链接进行修改**，Pull Requests 中不必要的修改也将被驳回。
 
@@ -137,7 +137,7 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 
 1.  标题请写明本次 PR 的目的（做了 **什么** 工作，修复了 **什么** 问题）。
 2.  内容请简要叙述修改的内容。如果修复了一个 issue 的问题，请在内容中添加 `fix #xxxx` 字段，其中 `xxxx` 代表 issue 的编号。
-3.  请您仔细阅读 [贡献指南](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/.github/CONTRIBUTING.md) 和 [社区公约](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/master/CODE_OF_CONDUCT.md)，并在同意后勾选 PR 模板中的框，表示您同意了以上指南和公约。
+3.  请您仔细阅读 [贡献指南](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/main/.github/CONTRIBUTING.md) 和 [社区公约](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/main/CODE_OF_CONDUCT.md)，并在同意后勾选 PR 模板中的框，表示您同意了以上指南和公约。
 
 对于 Pull Request 的标题，推荐使用如下格式书写：
 

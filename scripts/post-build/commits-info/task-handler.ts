@@ -93,7 +93,7 @@ export const taskHandler = new (class implements TaskHandler<AuthorUserMap> {
     const sourceFilePath = ($(".page_edit_url").getAttribute("href") || "").split("?ref=")[1];
     if (sourceFilePath) {
       // Set link to git history
-      $(".edit_history").setAttribute("href", `https://github.com/${GITHUB_REPO}/commits/master/docs${sourceFilePath}`);
+      $(".edit_history").setAttribute("href", `https://github.com/${GITHUB_REPO}/commits/main/docs${sourceFilePath}`);
 
       const commitsLog = await readCommitsLog(sourceFilePath);
 
@@ -149,7 +149,7 @@ export const taskHandler = new (class implements TaskHandler<AuthorUserMap> {
         .join(", ");
     } else {
       // Pages without source
-      $(".edit_history").setAttribute("href", `https://github.com/${GITHUB_REPO}/commits/master`);
+      $(".edit_history").setAttribute("href", `https://github.com/${GITHUB_REPO}/commits/main`);
       $(".facts_modified").textContent = "无更新";
       $(".page_contributors").textContent = "（自动生成）";
       $(".page_edit_url").setAttribute("href", "#");

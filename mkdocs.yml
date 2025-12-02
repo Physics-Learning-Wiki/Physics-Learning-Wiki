@@ -56,17 +56,19 @@ nav:
     - 常用特殊函数: math/special-functions.md
   - 经典力学:
     - 力学简介: mechanics/index.md
-    - 运动学: 
+    - 质点运动学: 
       - 原本的内容: mechanics/kinematics.md
       - 基础概念: mechanics/kinematics/basic-concepts.md
       - 参考系与坐标系: mechanics/kinematics/reference-frames.md
       - 直线运动: mechanics/kinematics/linear-motion.md
       - 匀变速直线运动: mechanics/kinematics/uniformly-accelerated-motion.md
       - 抛体运动: mechanics/kinematics/projectile-motion.md
-      - 牛顿运动定律: mechanics/kinematics/newton-laws.md
-    - 动量: mechanics/momentum.md
-    - 能量: mechanics/energy.md
-    - 质点系动力学: mechanics/system-of-particles.md
+    - 质点动力学:
+      - 力的概念与分类: mechanics/dynamics/force-concepts.md
+      - 牛顿运动定律: mechanics/dynamics/newton-laws.md
+      - 动量与能量: mechanics/dynamics/momentum-energy.md
+      - 质点系动力学: mechanics/dynamics/system-of-particles.md
+    
     - 刚体动力学: mechanics/rigid-body.md
     - 流体力学: mechanics/fluid.md
     - 振动与波: mechanics/oscillation-wave.md

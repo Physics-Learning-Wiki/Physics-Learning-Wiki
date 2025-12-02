@@ -30,6 +30,7 @@ $$
 其中 $\boldsymbol{p} = m\boldsymbol{v}$ 是动量。
 
 当物体质量 $m$ 为常数时，公式简化为我们最熟悉的形式：
+
 $$
 \boldsymbol{F} = m\frac{d\boldsymbol{v}}{dt} = m\boldsymbol{a}
 $$
@@ -37,6 +38,7 @@ $$
 ### 物理意义
 1.  **因果关系**：力 $\boldsymbol{F}$ 是因，加速度 $\boldsymbol{a}$ 是果。
 2.  **矢量性**：方程在三个坐标轴方向上独立成立。
+
 $$
 \begin{cases}
 F_x = ma_x \\
@@ -44,6 +46,7 @@ F_y = ma_y \\
 F_z = ma_z
 \end{cases}
 $$
+
 3.  **瞬时性**：力和加速度同时产生、同时变化、同时消失。
 4.  **叠加性**：若物体受到多个力作用，$\boldsymbol{F}$ 指的是 **合外力**。
 
@@ -69,39 +72,8 @@ $$
 2.  **同性质**：作用力与反作用力性质相同（例如都是万有引力，或都是弹力）。
 3.  **异体作用**：分别作用在两个不同的物体上，因此不能求和抵消（除非研究包含这两个物体的系统整体）。
 
-## 4. 常见的几种力
 
-在经典力学中，我们经常处理以下几种力：
-
-### 4.1 万有引力 (Gravitational Force)
-
-$$
-\boldsymbol{F} = -G\frac{Mm}{r^2}\hat{\boldsymbol{r}}
-$$
-
-$G \approx 6.67 \times 10^{-11} \text{N}\cdot\text{m}^2/\text{kg}^2$。
-在地球表面附近，重力近似为 $\boldsymbol{G} = m\boldsymbol{g}$，其中 $g \approx 9.8 \text{m/s}^2$。
-
-### 4.2 弹性力 (Elastic Force)
-遵循 **胡克定律 (Hooke's Law)**：
-
-$$
-\boldsymbol{F} = -k\boldsymbol{x}
-$$
-
-*   $k$ 为劲度系数 (Stiffness constant)。
-*   方向总是指向平衡位置（恢复力）。
-
-### 4.3 摩擦力 (Friction)
-**静摩擦力 (Static Friction)**: $0 \le f_s \le f_{s, \max} = \mu_s N$。方向与相对运动趋势相反。
-**动摩擦力 (Kinetic Friction)**: $f_k = \mu_k N$。方向与相对运动方向相反。
-- 通常 $\mu_k < \mu_s$。
-
-### 4.4 流体阻力 (Fluid Resistance)
-低速时（层流）：$f \propto v$ (Stokes' Law)。
-高速时（湍流）：$f \propto v^2$。
-
-## 5. 牛顿定律的应用方法
+## 4. 牛顿定律的应用方法
 
 解决动力学问题的标准步骤：
 
@@ -111,7 +83,7 @@ $$
 4.  **列方程**：根据 $\sum F_x = ma_x$ 和 $\sum F_y = ma_y$ 列出方程组。
 5.  **求解与讨论**：解方程求出未知量，并检查结果的物理合理性。
 
-## 6. 非惯性系与惯性力 (Non-inertial Frames)
+## 5. 非惯性系与惯性力 (Non-inertial Frames)
 
 当参考系本身具有加速度 $\boldsymbol{a}_0$ 时，牛顿第二定律不再直接成立。为了在非惯性系中继续使用牛顿定律的形式，我们需要引入虚拟的 **惯性力 (Inertial Force)**。
 
@@ -120,6 +92,7 @@ $$
 $$
 
 其中惯性力定义为：
+
 $$
 \boldsymbol{F}_{\text{inertial}} = -m\boldsymbol{a}_0
 $$
@@ -128,4 +101,5 @@ $$
 1.  **平动惯性力**：参考系做平动加速时引入，$\boldsymbol{F} = -m\boldsymbol{a}$.
 2.  **离心力 (Centrifugal Force)**：在匀速转动参考系中，$\boldsymbol{F} = m\omega^2 r \hat{\boldsymbol{e}}_r$。
 3.  **科里奥利力 (Coriolis Force)**：当物体在转动参考系中有相对速度时产生，$\boldsymbol{F}_{cor} = -2m(\boldsymbol{\omega} \times \boldsymbol{v}_{\text{rel}})$。
+
 - 科里奥利力是导致地球上季风偏转、河流冲刷右岸（北半球）的主要原因。
