@@ -30,6 +30,66 @@ author: Leafuke
 
 ![空间直角坐标系](../../images/Cartesian-Coordinates.svg)
 
+??? note "例题：抛物运动"
+    一颗炮弹以 $v_0 = 50\,\mathrm{m/s}$ 的初速度从地面以 $\theta = 60^\circ$ 的仰角发射，忽略空气阻力，求：
+
+    1. 炮弹的飞行时间；
+    2. 最大高度；
+    3. 落地点与发射点的水平距离。
+
+    **解答：**
+
+    1. **飞行时间：**
+        - 初速度分解：
+
+          $$
+          v_{0x} = v_0 \cos\theta, \quad v_{0y} = v_0 \sin\theta
+          $$
+
+        - 飞行时间由垂直方向运动决定：
+
+          $$
+          t = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+          $$
+
+          代入 $v_0 = 50\,\mathrm{m/s}$，$\theta = 60^\circ$，$g = 9.8\,\mathrm{m/s^2}$：
+
+          $$
+          t \approx 8.84\,\mathrm{s}
+          $$
+
+    2. **最大高度：**
+        - 最大高度由垂直方向速度为零时的位置决定：
+
+          $$
+          h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
+          $$
+
+          代入数据：
+
+          $$
+          h \approx 95.92\,\mathrm{m}
+          $$
+
+    3. **水平距离：**
+        - 水平距离由水平速度和飞行时间决定：
+
+          $$
+          x = v_{0x} \cdot t = v_0 \cos\theta \cdot \frac{2v_0 \sin\theta}{g}
+          $$
+
+          利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
+
+          $$
+          x = \frac{v_0^2 \sin(2\theta)}{g}
+          $$
+
+          代入数据：
+
+          $$
+          x \approx 220.94\,\mathrm{m}
+          $$
+
 #### 平面极坐标系 (Polar Coordinates)
 
 使用距离和角度来描述位置，适用于圆周运动和旋转运动问题。
@@ -59,6 +119,7 @@ $r\ddot{\theta}\hat{\boldsymbol{e}}_\theta$: 切向加速度分量。
 $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Coriolis acceleration) 的一部分形式。
 
 ![极坐标系](../images/Polar-Coordinates.svg)
+
 
 ??? note "证明"
     在极坐标系中，单位矢量 $\hat{\boldsymbol{e}}_r$ 和 $\hat{\boldsymbol{e}}_\theta$ 随角度 $\theta$ 变化，因此求导时需注意基矢量的变化。
@@ -132,7 +193,54 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     $$
 
     这就是极坐标系下速度和加速度的标准表达式。
-    
+
+??? note "例题：圆周运动"
+    一颗卫星沿半径为 $r = 7000\,\mathrm{km}$ 的圆轨道匀速运行，周期为 $T = 90\,\mathrm{min}$，求：
+
+    1. 卫星的角速度；
+    2. 卫星的线速度；
+    3. 卫星的向心加速度。
+
+    **解答：**
+
+    1. **角速度：**
+        - 角速度由周期决定：
+
+          $$
+          \omega = \frac{2\pi}{T}
+          $$
+
+          代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
+
+          $$
+          \omega \approx 0.00116\,\mathrm{rad/s}
+          $$
+
+    2. **线速度：**
+        - 线速度由角速度和半径决定：
+
+          $$
+          v = \omega r
+          $$
+
+          代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
+
+          $$
+          v \approx 8136\,\mathrm{m/s}
+          $$
+
+    3. **向心加速度：**
+        - 向心加速度由线速度和半径决定：
+
+          $$
+          a_c = \frac{v^2}{r}
+          $$
+
+          代入数据：
+          
+          $$
+          a_c \approx 9.46\,\mathrm{m/s^2}
+          $$
 
 #### 自然坐标系 (Intrinsic Coordinates)
 
@@ -217,6 +325,40 @@ $\rho = \pm\frac{ds}{d\Theta}$
 
     因此，自然坐标系下速度和加速度的分解式得证。
 
+??? note "例题：弯道上的汽车"
+    一辆汽车以 $v = 20\,\mathrm{m/s}$ 的速度通过半径为 $r = 50\,\mathrm{m}$ 的水平弯道，求：
+
+    1. 汽车的向心加速度；
+    2. 如果弯道倾角为 $\theta = 15^\circ$，汽车不打滑所需的最小摩擦系数。
+
+    **解答：**
+
+    1. **向心加速度：**
+        - 向心加速度由速度和半径决定：
+
+          $$
+          a_c = \frac{v^2}{r}
+          $$
+
+          代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
+
+          $$
+          a_c = 8\,\mathrm{m/s^2}
+          $$
+
+    2. **最小摩擦系数：**
+        - 在倾斜弯道上，摩擦力和重力提供向心力：
+
+          $$
+          \mu \geq \frac{v^2}{rg \cos\theta} - \tan\theta
+          $$
+
+          代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
+
+          $$
+          \mu \geq 0.36
+          $$
+
 
 
 ### 参考系与坐标系的转换
@@ -236,7 +378,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
 
 #### 2. 坐标系转换
 
-坐标系转换是改变我们描述位置和运动的“工具”。常见的有：
+    坐标系转换是改变我们描述位置和运动的“工具”。常见的有：
 
 - **直角坐标系与极坐标系的转换**：
     - 直角坐标系用 $(x, y)$ 表示位置，极坐标系用 $(r, \theta)$ 表示位置。
@@ -278,3 +420,47 @@ $\rho = \pm\frac{ds}{d\Theta}$
 
 - 参考系转换是改变观察者的位置或运动状态，影响速度和加速度的表达。
 - 坐标系转换是改变描述位置和运动的数学方式，常用公式或矩阵进行转换。
+
+??? note "例题：船与水流"
+    一艘船以相对于水的速度 $v_b = 4\,\mathrm{m/s}$ 垂直于河岸划行，河水以 $v_w = 3\,\mathrm{m/s}$ 的速度平行于河岸流动。河宽为 $d = 100\,\mathrm{m}$。
+
+    1. 求船相对于地面的速度大小和方向；
+    2. 船到达对岸所需的时间；
+    3. 船到达对岸时与出发点的水平偏移距离。
+
+    **解答：**
+
+    1. **相对速度：**
+        - 船相对于地面的速度由矢量合成：
+
+          $$
+          \boldsymbol{v}_\text{地} = \boldsymbol{v}_b + \boldsymbol{v}_w
+          $$
+
+        - 速度大小：
+
+          $$
+          v_\text{地} = \sqrt{v_b^2 + v_w^2} = \sqrt{4^2 + 3^2} = 5\,\mathrm{m/s}
+          $$
+
+        - 方向：
+
+          $$
+          \theta = \arctan\left(\frac{v_w}{v_b}\right) = \arctan\left(\frac{3}{4}\right) \approx 36.87^\circ
+          $$
+
+          即偏离垂直方向 $36.87^\circ$。
+
+    2. **到达时间：**
+        - 到达时间由垂直方向运动决定：
+
+          $$
+          t = \frac{d}{v_b} = \frac{100}{4} = 25\,\mathrm{s}
+          $$
+
+    3. **水平偏移：**
+        - 水平偏移由水流速度和时间决定：
+
+          $$
+          x = v_w \cdot t = 3 \cdot 25 = 75\,\mathrm{m}
+          $$
