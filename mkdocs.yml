@@ -66,10 +66,13 @@ nav:
     - 质点动力学:
       - 力的概念与分类: mechanics/dynamics/force-concepts.md
       - 牛顿运动定律: mechanics/dynamics/newton-laws.md
+      - 惯性力: mechanics/dynamics/inertial-force.md
       - 动量与能量: mechanics/dynamics/momentum-energy.md
       - 质点系动力学: mechanics/dynamics/system-of-particles.md
-    
-    - 刚体动力学: mechanics/rigid-body.md
+    - 刚体力学: 
+      - 力矩、冲量矩、角动量与转动能: mechanics/rigid-body/torque-angular-momentum.md
+      - 刚体: mechanics/rigid-body/rigid-body.md
+      - 角动量守恒: mechanics/rigid-body/angular-momentum-conservation.md
     - 流体力学: mechanics/fluid.md
     - 振动与波: mechanics/oscillation-wave.md
     - 万有引力与天体物理: mechanics/gravitation.md

@@ -82,24 +82,3 @@ $$
 3.  **建立坐标系**：通常选取沿加速度方向和垂直加速度方向建立轴，以简化计算。
 4.  **列方程**：根据 $\sum F_x = ma_x$ 和 $\sum F_y = ma_y$ 列出方程组。
 5.  **求解与讨论**：解方程求出未知量，并检查结果的物理合理性。
-
-## 5. 非惯性系与惯性力 (Non-inertial Frames)
-
-当参考系本身具有加速度 $\boldsymbol{a}_0$ 时，牛顿第二定律不再直接成立。为了在非惯性系中继续使用牛顿定律的形式，我们需要引入虚拟的 **惯性力 (Inertial Force)**。
-
-$$
-\boldsymbol{F}_{\text{real}} + \boldsymbol{F}_{\text{inertial}} = m\boldsymbol{a}_{\text{rel}}
-$$
-
-其中惯性力定义为：
-
-$$
-\boldsymbol{F}_{\text{inertial}} = -m\boldsymbol{a}_0
-$$
-
-### 常见的惯性力
-1.  **平动惯性力**：参考系做平动加速时引入，$\boldsymbol{F} = -m\boldsymbol{a}$.
-2.  **离心力 (Centrifugal Force)**：在匀速转动参考系中，$\boldsymbol{F} = m\omega^2 r \hat{\boldsymbol{e}}_r$。
-3.  **科里奥利力 (Coriolis Force)**：当物体在转动参考系中有相对速度时产生，$\boldsymbol{F}_{cor} = -2m(\boldsymbol{\omega} \times \boldsymbol{v}_{\text{rel}})$。
-
-- 科里奥利力是导致地球上季风偏转、河流冲刷右岸（北半球）的主要原因。
