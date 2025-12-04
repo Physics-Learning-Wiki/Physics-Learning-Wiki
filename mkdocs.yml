@@ -56,8 +56,7 @@ nav:
     - 常用特殊函数: math/special-functions.md
   - 经典力学:
     - 力学简介: mechanics/index.md
-    - 质点运动学: 
-      - 原本的内容: mechanics/kinematics.md
+    - 质点运动学:       
       - 基础概念: mechanics/kinematics/basic-concepts.md
       - 参考系与坐标系: mechanics/kinematics/reference-frames.md
       - 直线运动: mechanics/kinematics/linear-motion.md
