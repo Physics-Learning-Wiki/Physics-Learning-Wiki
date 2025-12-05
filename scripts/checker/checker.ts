@@ -227,12 +227,12 @@ async function checkFile(file: string) {
     if (node.type === "text") {
       if (
         errFlag.OIWIKINotBold &&
-        node.value.search(/OI\sWIKI/) !== -1 &&
-        node.value.search(/\*\*OI\sWIKI\*\*/) === -1
+        node.value.search(/Physics\sLearning\sWIKI/) !== -1 &&
+        node.value.search(/\*\*Physics\sLearning\sWIKI\*\*/) === -1
       ) {
         errList.push(OIWIKINotBold(file, node.position?.start.line, node.position?.start.column));
 
-        if (parg.r) errList.push("[Info] Suggestion: '**OI WIKI**'");
+        if (parg.r) errList.push("[Info] Suggestion: '**Physics Learning WIKI**'");
       }
 
       if (errFlag.deleteLineUsed && node.value.search(/(\~\~)+/) !== -1 && node.value.search(/\$/) === -1) {
@@ -402,7 +402,7 @@ function wordUsageIllegal(file: string, line: number | undefined, column: number
 }
 
 function OIWIKINotBold(file: string, line: number | undefined, column: number | undefined) {
-  return "[Warning] [OIWIKINotBold] 'OI WIKI' is not bold in file " + file + ":" + line + ":" + column;
+  return "[Warning] [OIWIKINotBold] 'Physics Learning WIKI' is not bold in file " + file + ":" + line + ":" + column;
 }
 
 function deleteLineUsed(file: string, line: number | undefined, column: number | undefined) {

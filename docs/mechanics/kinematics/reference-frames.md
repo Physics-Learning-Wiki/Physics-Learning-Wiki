@@ -12,7 +12,7 @@ author: Leafuke
 - **惯性参考系**：在这种参考系中，牛顿第一定律成立，即物体在没有外力作用时保持静止或匀速直线运动。
     - 举例: 地面参考系、远离引力场的空间参考系等。
 
-- **非惯性参考系**：在这种参考系中，观察到的物体运动会受到额外的惯性力影响，例如旋转参考系中的离心力。
+- **非惯性参考系**：在这种参考系中，观察到的物体运动会受到额外的惯性力影响，例如旋转参考系中的离心力。关于非惯性参考系的详细讲解见 [惯性力](../dynamics/inertial-force.md)。
     - 举例: 加速中的汽车参考系、旋转的地球参考系等。
 
 ### 坐标系 (Coordinate Systems)
@@ -42,53 +42,53 @@ author: Leafuke
     1. **飞行时间：**
         - 初速度分解：
 
-          $$
-          v_{0x} = v_0 \cos\theta, \quad v_{0y} = v_0 \sin\theta
-          $$
+        $$
+        v_{0x} = v_0 \cos\theta, \quad v_{0y} = v_0 \sin\theta
+        $$
 
         - 飞行时间由垂直方向运动决定：
 
-          $$
-          t = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
-          $$
+        $$
+        t = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+        $$
 
-          代入 $v_0 = 50\,\mathrm{m/s}$，$\theta = 60^\circ$，$g = 9.8\,\mathrm{m/s^2}$：
+        代入 $v_0 = 50\,\mathrm{m/s}$，$\theta = 60^\circ$，$g = 9.8\,\mathrm{m/s^2}$：
 
-          $$
-          t \approx 8.84\,\mathrm{s}
-          $$
+        $$
+        t \approx 8.84\,\mathrm{s}
+        $$
 
     2. **最大高度：**
         - 最大高度由垂直方向速度为零时的位置决定：
 
-          $$
-          h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
-          $$
+        $$
+        h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
+        $$
 
           代入数据：
 
-          $$
-          h \approx 95.92\,\mathrm{m}
-          $$
+        $$
+        h \approx 95.92\,\mathrm{m}
+        $$
 
     3. **水平距离：**
         - 水平距离由水平速度和飞行时间决定：
 
-          $$
-          x = v_{0x} \cdot t = v_0 \cos\theta \cdot \frac{2v_0 \sin\theta}{g}
-          $$
+        $$
+        x = v_{0x} \cdot t = v_0 \cos\theta \cdot \frac{2v_0 \sin\theta}{g}
+        $$
 
           利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
 
-          $$
-          x = \frac{v_0^2 \sin(2\theta)}{g}
-          $$
+        $$
+        x = \frac{v_0^2 \sin(2\theta)}{g}
+        $$
 
           代入数据：
 
-          $$
-          x \approx 220.94\,\mathrm{m}
-          $$
+        $$
+        x \approx 220.94\,\mathrm{m}
+        $$
 
 #### 平面极坐标系 (Polar Coordinates)
 
@@ -206,41 +206,41 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     1. **角速度：**
         - 角速度由周期决定：
 
-          $$
-          \omega = \frac{2\pi}{T}
-          $$
+        $$
+        \omega = \frac{2\pi}{T}
+        $$
 
           代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
 
-          $$
-          \omega \approx 0.00116\,\mathrm{rad/s}
-          $$
+        $$
+        \omega \approx 0.00116\,\mathrm{rad/s}
+        $$
 
     2. **线速度：**
         - 线速度由角速度和半径决定：
 
-          $$
-          v = \omega r
-          $$
+        $$
+        v = \omega r
+        $$
 
           代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
 
-          $$
-          v \approx 8136\,\mathrm{m/s}
-          $$
+        $$
+        v \approx 8136\,\mathrm{m/s}
+        $$
 
     3. **向心加速度：**
         - 向心加速度由线速度和半径决定：
 
-          $$
-          a_c = \frac{v^2}{r}
-          $$
+        $$
+        a_c = \frac{v^2}{r}
+        $$
 
           代入数据：
           
-          $$
-          a_c \approx 9.46\,\mathrm{m/s^2}
-          $$
+        $$
+        a_c \approx 9.46\,\mathrm{m/s^2}
+        $$
 
 #### 自然坐标系 (Intrinsic Coordinates)
 
@@ -336,28 +336,28 @@ $\rho = \pm\frac{ds}{d\Theta}$
     1. **向心加速度：**
         - 向心加速度由速度和半径决定：
 
-          $$
-          a_c = \frac{v^2}{r}
-          $$
+        $$
+        a_c = \frac{v^2}{r}
+        $$
 
           代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
 
-          $$
-          a_c = 8\,\mathrm{m/s^2}
-          $$
+        $$
+        a_c = 8\,\mathrm{m/s^2}
+        $$
 
     2. **最小摩擦系数：**
         - 在倾斜弯道上，摩擦力和重力提供向心力：
 
-          $$
-          \mu \geq \frac{v^2}{rg \cos\theta} - \tan\theta
-          $$
+        $$
+        \mu \geq \frac{v^2}{rg \cos\theta} - \tan\theta
+        $$
 
           代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
 
-          $$
-          \mu \geq 0.36
-          $$
+        $$
+        \mu \geq 0.36
+        $$
 
 
 
@@ -433,34 +433,34 @@ $\rho = \pm\frac{ds}{d\Theta}$
     1. **相对速度：**
         - 船相对于地面的速度由矢量合成：
 
-          $$
-          \boldsymbol{v}_\text{地} = \boldsymbol{v}_b + \boldsymbol{v}_w
-          $$
+        $$
+        \boldsymbol{v}_\text{地} = \boldsymbol{v}_b + \boldsymbol{v}_w
+        $$
 
         - 速度大小：
 
-          $$
-          v_\text{地} = \sqrt{v_b^2 + v_w^2} = \sqrt{4^2 + 3^2} = 5\,\mathrm{m/s}
-          $$
+        $$
+        v_\text{地} = \sqrt{v_b^2 + v_w^2} = \sqrt{4^2 + 3^2} = 5\,\mathrm{m/s}
+        $$
 
         - 方向：
 
-          $$
-          \theta = \arctan\left(\frac{v_w}{v_b}\right) = \arctan\left(\frac{3}{4}\right) \approx 36.87^\circ
-          $$
+        $$
+        \theta = \arctan\left(\frac{v_w}{v_b}\right) = \arctan\left(\frac{3}{4}\right) \approx 36.87^\circ
+        $$
 
           即偏离垂直方向 $36.87^\circ$。
 
     2. **到达时间：**
         - 到达时间由垂直方向运动决定：
 
-          $$
-          t = \frac{d}{v_b} = \frac{100}{4} = 25\,\mathrm{s}
-          $$
+        $$
+        t = \frac{d}{v_b} = \frac{100}{4} = 25\,\mathrm{s}
+        $$
 
     3. **水平偏移：**
         - 水平偏移由水流速度和时间决定：
 
-          $$
-          x = v_w \cdot t = 3 \cdot 25 = 75\,\mathrm{m}
-          $$
+        $$
+        x = v_w \cdot t = 3 \cdot 25 = 75\,\mathrm{m}
+        $$
