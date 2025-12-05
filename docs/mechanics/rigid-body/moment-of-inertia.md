@@ -32,21 +32,21 @@ $$
 **推导过程**：
 1. 取细棒的微小质量元 $\mathrm{d}m$，其长度为 $\mathrm{d}x$，质量为：
 
-   $$
-   \mathrm{d}m = \frac{M}{L} \mathrm{d}x
-   $$
+$$
+\mathrm{d}m = \frac{M}{L} \mathrm{d}x
+$$
 
 2. 到转轴的距离为 $r = x$，转动惯量为：
 
-   $$
-   I = \int_{-L/2}^{L/2} x^2 \mathrm{d}m = \int_{-L/2}^{L/2} x^2 \frac{M}{L} \mathrm{d}x
-   $$
+$$
+I = \int_{-L/2}^{L/2} x^2 \mathrm{d}m = \int_{-L/2}^{L/2} x^2 \frac{M}{L} \mathrm{d}x
+$$
 
 3. 计算积分：
 
-   $$
-   I = \frac{M}{L} \int_{-L/2}^{L/2} x^2 \mathrm{d}x = \frac{M}{L} \cdot \frac{1}{3} \left[ x^3 \right]_{-L/2}^{L/2} = \frac{1}{12}ML^2
-   $$
+$$
+I = \frac{M}{L} \int_{-L/2}^{L/2} x^2 \mathrm{d}x = \frac{M}{L} \cdot \frac{1}{3} \left[ x^3 \right]_{-L/2}^{L/2} = \frac{1}{12}ML^2
+$$
 
 **结果**：
 
@@ -63,21 +63,21 @@ $$
 **推导过程**：
 1. 取圆盘上的微小质量元 $\mathrm{d}m$，其面积为 $\mathrm{d}A = 2\pi r \, \mathrm{d}r$，质量为：
 
-   $$
-   \mathrm{d}m = \frac{M}{\pi R^2} \cdot 2\pi r \, \mathrm{d}r = \frac{2M}{R^2} r \, \mathrm{d}r
-   $$
+$$
+\mathrm{d}m = \frac{M}{\pi R^2} \cdot 2\pi r \, \mathrm{d}r = \frac{2M}{R^2} r \, \mathrm{d}r
+$$
 
 2. 到转轴的距离为 $r$，转动惯量为：
 
-   $$
-   I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{2M}{R^2} r \, \mathrm{d}r
-   $$
+$$
+I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{2M}{R^2} r \, \mathrm{d}r
+$$
 
 3. 计算积分：
 
-   $$
-   I = \frac{2M}{R^2} \int_0^R r^3 \, \mathrm{d}r = \frac{2M}{R^2} \cdot \frac{1}{4}r^4 \Big|_0^R = \frac{1}{2}MR^2
-   $$
+$$
+I = \frac{2M}{R^2} \int_0^R r^3 \, \mathrm{d}r = \frac{2M}{R^2} \cdot \frac{1}{4}r^4 \Big|_0^R = \frac{1}{2}MR^2
+$$
 
 **结果**：
 
@@ -94,21 +94,21 @@ $$
 **推导过程**：
 1. 取球内的微小质量元 $\mathrm{d}m$，其体积为 $\mathrm{d}V = 4\pi r^2 \, \mathrm{d}r$，质量为：
 
-   $$
-   \mathrm{d}m = \frac{M}{\frac{4}{3}\pi R^3} \cdot 4\pi r^2 \, \mathrm{d}r = \frac{3M}{R^3} r^2 \, \mathrm{d}r
-   $$
+$$
+\mathrm{d}m = \frac{M}{\frac{4}{3}\pi R^3} \cdot 4\pi r^2 \, \mathrm{d}r = \frac{3M}{R^3} r^2 \, \mathrm{d}r
+$$
 
 2. 到转轴的距离为 $r$，转动惯量为：
 
-   $$
-   I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{3M}{R^3} r^2 \, \mathrm{d}r
-   $$
+$$
+I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{3M}{R^3} r^2 \, \mathrm{d}r
+$$
 
 3. 计算积分：
 
-   $$
-   I = \frac{3M}{R^3} \int_0^R r^4 \, \mathrm{d}r = \frac{3M}{R^3} \cdot \frac{1}{5}r^5 \Big|_0^R = \frac{2}{5}MR^2
-   $$
+$$
+I = \frac{3M}{R^3} \int_0^R r^4 \, \mathrm{d}r = \frac{3M}{R^3} \cdot \frac{1}{5}r^5 \Big|_0^R = \frac{2}{5}MR^2
+$$
 
 **结果**：
 
@@ -120,14 +120,17 @@ $$
 
 ## 3. 常见刚体的转动惯量表
 
-| 刚体类型       | 转轴位置               | 转动惯量 $I$                  |
-|----------------|-----------------------|-----------------------------|
-| 均匀细棒       | 通过中心垂直于棒的轴   | $\frac{1}{12}ML^2$          |
-| 均匀细棒       | 通过一端垂直于棒的轴   | $\frac{1}{3}ML^2$           |
-| 均匀圆盘       | 通过中心垂直于圆盘的轴 | $\frac{1}{2}MR^2$           |
-| 均匀圆环       | 通过中心垂直于圆环的轴 | $MR^2$                      |
-| 均匀实心球     | 通过直径               | $\frac{2}{5}MR^2$           |
-| 均匀空心球     | 通过直径               | $\frac{2}{3}MR^2$           |
+| 刚体类型       | 转轴位置                       | 转动惯量 $I$                  | 图示 |
+|----------------|-------------------------------|-----------------------------|------|
+| 均匀细棒       | 通过中心垂直于棒的轴           | $\frac{1}{12}ML^2$          | ![细棒中心轴](../images/rod_center_axis.png) |
+| 均匀细棒       | 通过一端垂直于棒的轴           | $\frac{1}{3}ML^2$           | ![细棒端轴](../images/rod_end_axis.png) |
+| 均匀圆盘       | 通过中心垂直于圆盘的轴         | $\frac{1}{2}MR^2$           | ![圆盘中心轴](../images/disk_center_axis.png) |
+| 均匀圆盘       | 通过直径                     | $\frac{1}{4}MR^2$           | ![圆盘直径轴](../images/disk_diameter_axis.png) |
+| 均匀圆环       | 通过中心垂直于圆环的轴         | $MR^2$                      | ![圆环中心轴](../images/ring_center_axis.png) |
+| 均匀实心球     | 通过直径                     | $\frac{2}{5}MR^2$           | ![实心球直径轴](../images/solid_sphere_diameter_axis.png) |
+| 均匀空心球     | 通过直径                     | $\frac{2}{3}MR^2$           | ![空心球直径轴](../images/hollow_sphere_diameter_axis.png) |
+| 均匀正方体     | 通过中心垂直于某一面           | $\frac{1}{6}Ma^2$           | ![正方体中心轴](../images/cube_center_axis.png) |
+| 均匀正方体     | 通过一条边                   | $\frac{1}{3}Ma^2$           | ![正方体边轴](../images/cube_edge_axis.png) |
 
 ---
 

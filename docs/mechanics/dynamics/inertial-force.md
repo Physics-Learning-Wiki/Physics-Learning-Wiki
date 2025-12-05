@@ -70,16 +70,16 @@ $$
 1. **惯性参考系中的变化率**：
    在惯性参考系中，矢量 $\boldsymbol{P}$ 的变化率为：
 
-   $$
-   \left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial}
-   $$
+$$
+\left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial}
+$$
 
 2. **旋转参考系中的变化率**：
    在旋转参考系中，矢量 $\boldsymbol{P}$ 的变化率不仅包括惯性参考系中的变化，还需要考虑参考系本身的旋转。设旋转参考系的角速度为 $\boldsymbol{\omega}$，则有：
 
-   $$
-   \left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial} = \left(\frac{d\boldsymbol{P}}{dt}\right)_\text{rotating} + \boldsymbol{\omega} \times \boldsymbol{P}
-   $$
+$$
+\left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial} = \left(\frac{d\boldsymbol{P}}{dt}\right)_\text{rotating} + \boldsymbol{\omega} \times \boldsymbol{P}
+$$
 
    其中：
 
@@ -92,16 +92,16 @@ $$
 1. **惯性参考系中的加速度**：
    惯性参考系中的加速度可以写为：
 
-   $$
-   \boldsymbol{a}_\text{inertial} = \frac{d\boldsymbol{v}_\text{inertial}}{dt}
-   $$
+$$
+\boldsymbol{a}_\text{inertial} = \frac{d\boldsymbol{v}_\text{inertial}}{dt}
+$$
 
 2. **旋转参考系中的加速度**：
    使用矢量变化率的关系式：
 
-   $$
-   \boldsymbol{a}_\text{inertial} = \boldsymbol{a}_\text{rotating} + 2(\boldsymbol{v} \times \boldsymbol{\omega}) + \boldsymbol{\omega} \times (\boldsymbol{\omega} \times \boldsymbol{r}) + \frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}
-   $$
+$$
+\boldsymbol{a}_\text{inertial} = \boldsymbol{a}_\text{rotating} + 2(\boldsymbol{v} \times \boldsymbol{\omega}) + \boldsymbol{\omega} \times (\boldsymbol{\omega} \times \boldsymbol{r}) + \frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}
+$$
 
    其中：
 
@@ -113,9 +113,9 @@ $$
 3. **科里奥利力的表达式**：
    在旋转参考系中，科里奥利力由科里奥利加速度产生，其表达式为：
    
-   $$
-   \boldsymbol{F}_\text{Coriolis} = 2m(\boldsymbol{v} \times \boldsymbol{\omega})
-   $$
+$$
+\boldsymbol{F}_\text{Coriolis} = 2m(\boldsymbol{v} \times \boldsymbol{\omega})
+$$
 
    其中：
    - $m$ 是物体的质量；

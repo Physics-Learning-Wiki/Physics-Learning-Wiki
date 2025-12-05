@@ -12,6 +12,8 @@
 - 单摆：假设摆锤为质点，摆长固定。
 - 复摆：刚体的质量分布和转动惯量需要考虑，摆动的等效长度由刚体的几何和质量分布决定。
 
+![复摆](../images/Compound-Pendulum.png)
+
 ---
 
 ## 2. 复摆的运动方程
@@ -108,17 +110,22 @@ $$
 
 **解答**：
 1. 转动惯量：
-   $$
-   I = \frac{1}{3}ML^2 = \frac{1}{3} \cdot 2 \cdot 1^2 = \frac{2}{3}\,\mathrm{kg \cdot m^2}
-   $$
+
+$$
+I = \frac{1}{3}ML^2 = \frac{1}{3} \cdot 2 \cdot 1^2 = \frac{2}{3}\,\mathrm{kg \cdot m^2}
+$$
+
 2. 重心到转轴的距离：
-   $$
-   h = \frac{L}{2} = \frac{1}{2} = 0.5\,\mathrm{m}
-   $$
+
+$$
+h = \frac{L}{2} = \frac{1}{2} = 0.5\,\mathrm{m}
+$$
+
 3. 周期：
-   $$
-   T = 2\pi \sqrt{\frac{I}{Mgh}} = 2\pi \sqrt{\frac{\frac{2}{3}}{2 \cdot 9.8 \cdot 0.5}} = 2\pi \sqrt{\frac{1}{29.4}} \approx 1.16\,\mathrm{s}
-   $$
+
+$$
+T = 2\pi \sqrt{\frac{I}{Mgh}} = 2\pi \sqrt{\frac{\frac{2}{3}}{2 \cdot 9.8 \cdot 0.5}} = 2\pi \sqrt{\frac{1}{29.4}} \approx 1.16\,\mathrm{s}
+$$
 
 **结果**：
 复摆的周期约为 $1.16\,\mathrm{s}$。
