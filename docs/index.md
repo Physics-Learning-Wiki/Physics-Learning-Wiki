@@ -12,11 +12,10 @@ title: Physics-Learning-Wiki
 
 我们按照物理学的学科逻辑，将内容划分为以下主要板块：
 
-*   **[基础与通用概念](fundamentals/)**：物理量、单位制、量纲分析、物理建模思维与近似方法。
-*   **[数学工具](math-tools/)**：微积分、向量分析、微分方程、线性代数等物理学必备数学基础。
+*   **[数学工具](math/index.md)**：微积分、向量分析、微分方程、线性代数等物理学必备数学基础。
 *   **[核心学科](mechanics/)**：
-    *   [力学](mechanics/)
-    *   [电磁学](electromagnetism/)
+    *   [力学](mechanics/linear-motion.md)
+    *   [电磁学](electromagnetism)
     *   [热学与统计](thermodynamics/)
     *   [光学](optics/)
     *   [近代物理](modern-physics/)（相对论、量子力学、原子核物理等）
@@ -26,8 +25,8 @@ title: Physics-Learning-Wiki
 ### 如何使用
 
 1.  **按图索骥**：通过左侧导航栏快速定位到特定学科或章节。
-2.  **循序渐进**：参考 [学习路线 (Roadmap)](roadmap.md) 规划你的学习进度。
-3.  **查漏补缺**：利用 [术语表](glossary/) 快速回顾核心定义与符号约定。
+2.  **循序渐进**：参考 学习路线 (Roadmap) 规划你的学习进度。
+3.  **查漏补缺**：利用 [术语表](glossary/glossary.md) 快速回顾核心定义与符号约定。
 4.  **定向答疑**：通过页面右上角的 [GitHub Copilot Chat](https://github.com/copilot) 功能，选择 Physics-Learning-Wiki 作为参考源，进行智能问答。
 
 ### 参与贡献

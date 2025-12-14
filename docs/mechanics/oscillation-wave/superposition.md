@@ -65,6 +65,14 @@ $$
 \tan\varphi=\frac{A_1\sin\varphi_1+A_2\sin\varphi_2}{A_1\cos\varphi_1+A_2\cos\varphi_2}.
 $$
 
+#### 旋转矢量法
+
+如果你觉得计算比较复杂，那么不妨通过矢量作图来理解相量法。将两个振动的振幅作为矢量的长度，相位作为矢量与水平轴的夹角，然后将两个矢量首尾相接，得到的合矢量的长度和方向即为合成振动的振幅和相位。
+
+![superposition_vector](../images/superposition_vector.png)
+
+你可以在上图中作合适的辅助线来计算合成振幅 $A$ 和相位 $\varphi$。
+
 ### 2.2 特殊情形
 
 - **同相**：$\Delta\varphi=0\Rightarrow A=A_1+A_2$（最大增强）。
@@ -93,7 +101,7 @@ $$
 \end{aligned}
 $$
 
-用恒等式 $\cos a+\cos b=2\cos\frac{a-b}{2}\cos\frac{a+b}{2}$ 得
+用和差化积公式 $\cos a+\cos b=2\cos\frac{a-b}{2}\cos\frac{a+b}{2}$ 得
 
 $$
  x(t)=2A\cos\left(\frac{\Delta\omega}{2}t\right)\cos\left(\bar\omega t\right),
@@ -108,6 +116,8 @@ $$
 $$
  f_{\text{beat}}=|f_1-f_2|=\frac{|\Delta\omega|}{2\pi}.
 $$
+
+![拍](../images/beats.png)
 
 ??? note "例题：拍频"
     两音叉频率分别为 $440\,\text{Hz}$ 与 $442\,\text{Hz}$，一起敲响，拍频是多少？

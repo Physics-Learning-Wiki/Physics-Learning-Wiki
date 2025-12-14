@@ -11,11 +11,11 @@ author: ChatGPT
 线性模型的强大之处在于：**可解、可叠加、可用频域方法统一处理**。本页覆盖单自由度线性振动的主干内容：简谐振动、阻尼振动、受迫振动与共振。
 
 ??? note "本章导航"
-	- [振动的合成与分解](oscillation-wave/superposition.md)
-	- [非线性振动](oscillation-wave/nonlinear.md)
-	- [简谐波](oscillation-wave/harmonic-wave.md)
-	- [连续介质中的波](oscillation-wave/wave-in-continuous-medium.md)
-	- [多普勒效应](oscillation-wave/doppler-effect.md)
+	- [振动的合成与分解](superposition.md)
+	- [非线性振动](nonlinear.md)
+	- [简谐波](harmonic-wave.md)
+	- [连续介质中的波](wave-in-continuous-medium.md)
+	- [多普勒效应](doppler-effect.md)
 
 ## 0. 建模：单自由度线性振子
 
@@ -77,7 +77,7 @@ $$
 
 - 方程的解空间是线性的（可做线性组合）。
 - 同频激励产生同频响应（稳态下尤为明显）。
-- 复杂振动可分解为简谐分量再叠加，详见 [振动的合成与分解](oscillation-wave/superposition.md)。
+- 复杂振动可分解为简谐分量再叠加，详见 [振动的合成与分解](superposition.md)。
 
 ## 2. 能量观点：等分与守恒
 
@@ -360,7 +360,7 @@ $$
 $$
 
 ??? warning "小角近似的边界"
-	当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](oscillation-wave/nonlinear.md) 中“频率随振幅变化”的讨论。
+	当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](nonlinear.md) 中“频率随振幅变化”的讨论。
 
 ## 7. 常见易错点清单
 
@@ -376,4 +376,4 @@ $$
 - 单个振子：$\ddot x+\omega_0^2 x=0$
 - 连续耦合：相邻点相互作用 $\Rightarrow$ 偏微分方程 $\Rightarrow$ 波动方程
 
-从振动过渡到波动的关键推导在 [连续介质中的波](oscillation-wave/wave-in-continuous-medium.md)。
+从振动过渡到波动的关键推导在 [连续介质中的波](wave-in-continuous-medium.md)。
