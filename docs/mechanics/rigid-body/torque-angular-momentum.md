@@ -13,6 +13,7 @@ $$
 $$
 
 其中：
+
 - $\boldsymbol{\tau}$ 是力矩，单位为牛顿·米（$\mathrm{N \cdot m}$）；
 - $\boldsymbol{r}$ 是力的作用点到转动轴的位矢；
 - $\boldsymbol{F}$ 是作用力；
@@ -119,11 +120,13 @@ $$
     **解答：**
 
     转动惯量：
+
     $$
     I = \frac{1}{2}MR^2 = \frac{1}{2} \times 5 \times 0.5^2 = 0.625\,\mathrm{kg \cdot m^2}
     $$
 
     转动能：
+    
     $$
     E_\text{rot} = \frac{1}{2}I\omega^2 = \frac{1}{2} \times 0.625 \times 10^2 = 31.25\,\mathrm{J}
     $$

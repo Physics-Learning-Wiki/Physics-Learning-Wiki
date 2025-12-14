@@ -69,13 +69,20 @@ nav:
       - 动量与能量: mechanics/dynamics/momentum-energy.md
       - 质点系动力学: mechanics/dynamics/system-of-particles.md
     - 刚体力学: 
-      - 力矩、冲量矩、角动量与转动能: mechanics/rigid-body/torque-angular-momentum.md
+      - 力矩、角动量与转动能: mechanics/rigid-body/torque-angular-momentum.md
       - 转动惯量: mechanics/rigid-body/moment-of-inertia.md
       - 刚体: mechanics/rigid-body/rigid-body.md
       - 角动量守恒: mechanics/rigid-body/angular-momentum-conservation.md
       - 复摆: mechanics/rigid-body/compound-pendulum.md
     - 流体力学: mechanics/fluid.md
-    - 振动与波: mechanics/oscillation-wave.md
+    - 振动与波: 
+      - 总览: mechanics/oscillation-wave/oscillation-wave.md
+      - 线性振动: mechanics/oscillation-wave/linear-oscillation.md
+      - 振动的合成与分解: mechanics/oscillation-wave/superposition.md
+      - 非线性振动: mechanics/oscillation-wave/nonlinear.md
+      - 简谐波: mechanics/oscillation-wave/harmonic-wave.md
+      - 连续介质中的波: mechanics/oscillation-wave/wave-in-continuous-medium.md
+      - 多普勒效应: mechanics/oscillation-wave/doppler-effect.md
     - 万有引力与天体物理: mechanics/gravitation.md
     - 分析力学:
       - 拉格朗日力学: mechanics/analytical/lagrangian.md

@@ -49,7 +49,7 @@ $$
 \vec{P} = M \vec{v}_c
 $$
 
-系统的总动量等于系统总质量乘以质心速度。
+系统的总动量等于系统总质量乘以质心速度。即惯性系中质点组的总动量等于质心的动量。
 
 对总动量对时间求导，并利用质心运动定理，我们得到**质点系动量定理**：
 
@@ -89,6 +89,35 @@ $$
 
 角动量守恒在天体运动（如行星的开普勒定律）和微观粒子物理中都扮演着核心角色。
 
+惯性系中质点组的总角动量等于质心的角动量加上质心系中质点组的总角动量。
+
+??? note "证明"
+    设惯性系原点为 O，质心位矢为 $\mathbf{R}_c$ ，质点相对质心的位矢为 $\mathbf{r}_i' = \mathbf{r}_i - \mathbf{R}_c$ 。总角动量为
+
+    $$
+    \mathbf{L}_O = \sum_i \mathbf{r}_i \times m_i \mathbf{v}_i
+    $$
+
+    利用 $\mathbf{v}_i = \mathbf{V}_c + \mathbf{v}_i'$，得
+
+    $$
+    \mathbf{L}_O = \sum_i (\mathbf{R}_c + \mathbf{r}_i') \times m_i (\mathbf{V}_c + \mathbf{v}_i')
+    $$ 
+
+    展开后为
+
+    $$
+    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \mathbf{R}_c \times \sum_i m_i \mathbf{v}_i' + \left( \sum_i m_i \mathbf{r}_i' \right) \times \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'
+    $$ 
+
+    由质心定义 $\sum_i m_i \mathbf{r}_i' = 0$ 及质心系中总动量 $\sum_i m_i \mathbf{v}_i' = 0$，中间两项为零，故
+
+    $$
+    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'
+    $$  
+
+    即质心对点 O 的角动量（轨道角动量）与质心系中总角动量之和。
+
 ## 质点系的能量
 
 ### 动能定理
@@ -99,7 +128,7 @@ $$
 E_k = \sum_i \frac{1}{2} m_i v_i^2
 $$
 
-**柯尼希定理 (König's Theorem)** 指出，系统的总动能可以分解为两部分：一部分是系统随质心平动的动能，另一部分是系统相对于质心运动的动能。
+**柯尼希定理 (König's Theorem)** 指出，系统的总动能可以分解为两部分：一部分是系统随质心平动的动能，另一部分是系统相对于质心运动的动能。即，惯性系中质点组的总动能等于质心的动能加上质心系中质点组的总动能。
 
 $$
 E_k = \frac{1}{2} M v_c^2 + \sum_i \frac{1}{2} m_i v_{i, rel}^2
@@ -125,6 +154,8 @@ $$
 - $U_{int}$ 是由保守内力产生的势能。
 
 如果存在非保守力（如摩擦力）做功，则机械能不守恒，其变化量等于非保守力做的功。
+
+注意：惯性系中质点组的总势能一般不等于质心的势能。总势能一般包括质点在外场中的势能和质点间的相互作用势能。
 
 ## 变质量系统：火箭方程
 

@@ -148,7 +148,7 @@ $$
     $$
 
     $$
-    \boldsymbol{F}_\text{Coriolis} = -2 \times 2 \times 0.5\hat{k} = -2\hat{k}\,\mathrm{N}
+    \boldsymbol{F}_\text{Coriolis} = 2 \times 2 \times 0.5\hat{k} = 2\hat{k}\,\mathrm{N}
     $$
 
     科里奥利力的大小为 $2\,\mathrm{N}$，方向竖直向上。
