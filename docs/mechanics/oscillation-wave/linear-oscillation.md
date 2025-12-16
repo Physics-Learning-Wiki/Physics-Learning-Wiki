@@ -200,6 +200,49 @@ $$
 简谐振动可以通过旋转矢量的投影来几何表示。设一个长度为 $A$ 的旋转矢量以角速度 $\omega$ 绕原点逆时针旋转，其在水平轴上的投影即为简谐振动的位移 $x(t)$：
 
 
+## 简正模
+
+在多自由度系统中，线性振动可以分解为若干个独立的简正模（Normal Modes）。每个简正模对应一个特定的频率和振动模式，系统的总振动可以看作这些简正模的叠加。
+
+### 用复数表示简谐振动
+简谐振动
+
+$$
+x(t) = A \cos(\omega t + \varphi)
+$$
+
+也可以用复数的实部和虚部表示：
+
+$$
+\widetilde{x}(t)=Ae^{i(\omega t+\varphi)}\
+$$
+
+其中，$A$ 为振幅，$\omega$ 为角频率，$\varphi$ 为初相位。
+
+上式的右端又可以写为 $ (Ae^{i\varphi})e^{i\omega t}=\widetilde{A}e^{i\omega t} $，其中 $Ae^{i\varphi}=\widetilde{A}$  是一个复常数，表示振动的初始状态，称为**复振幅**。
+
+$$
+\widetilde{x}(t)=\widetilde{A}e^{i\omega t}
+$$
+
+如果我们取上式的实部，就得到了简谐振动的标准形式：
+
+$$
+x(t)=\mathrm{Re}(\widetilde{x}(t))=\mathrm{Re}(\widetilde{A}e^{i\omega t})=A\cos(\omega t+\varphi)
+$$
+
+用 $ \widetilde{x}(t) $ 表示简谐振动，则速度和加速度为
+
+$$
+\begin{cases}
+\widetilde{v}(t)=\frac{d\widetilde{x}(t)}{dt}=i\omega \widetilde{A}e^{i\omega t}=i\omega \widetilde{x}(t)\\
+\widetilde{a}(t)=\frac{d\widetilde{v}(t)}{dt}=\frac{d^2\widetilde{x}(t)}{dt^2}=-\omega^2 \widetilde{A}e^{i\omega t}=-\omega^2 \widetilde{x}(t)
+\end{cases}
+$$
+
+??? note "例题"
+    已知一个线性三原子分子 $A_2B$ 的模型。假定相邻原子之间的结合力是弹性力，它们正比于原子的间距，求分子可能的纵向运动形式和相应的振动角频率。
+
 ## 阻尼振动
 
 ### 运动方程
@@ -224,11 +267,17 @@ $$
 
 其中 $\omega_d = \sqrt{\omega^2 - \beta^2}$ 为阻尼振动的角频率。
 
+??? note "图例"
+    ![欠阻尼振动](../images/underdamped_oscillation.png)
+
 2. **临界阻尼**（$\beta = \omega$）:
 
 $$
 x(t) = (C_1 + C_2 t)e^{-\beta t}
 $$
+
+??? note "图例"
+    ![临界阻尼振动](../images/critically_damped_oscillation.png)
 
 3. **过阻尼**（$\beta > \omega$）:
 
@@ -237,6 +286,10 @@ x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}
 $$
 
 其中 $r_1$ 和 $r_2$ 为两个负实根。
+
+??? note "图例"
+    ![过阻尼振动](../images/overdamped_oscillation.png)
+
 
 ### 能量衰减
 
