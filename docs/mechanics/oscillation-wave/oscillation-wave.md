@@ -11,6 +11,7 @@ author: ChatGPT
 线性模型的强大之处在于：**可解、可叠加、可用频域方法统一处理**。本页覆盖单自由度线性振动的主干内容：简谐振动、阻尼振动、受迫振动与共振。
 
 ??? note "本章导航"
+	- [线性振动](linear-oscillation.md)
 	- [振动的合成与分解](superposition.md)
 	- [非线性振动](nonlinear.md)
 	- [简谐波](harmonic-wave.md)
