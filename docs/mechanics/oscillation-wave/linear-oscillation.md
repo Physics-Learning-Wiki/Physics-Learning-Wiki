@@ -128,7 +128,7 @@ $$
 \theta = \omega t + \phi.
 $$
 
-相位表示振动在某一时刻所处的位置状态。规定 $ 0 < \theta < 2\pi $。
+相位表示振动在某一时刻所处的位置状态。规定 $0 < \theta < 2\pi$。
 
 对于两个同频简谐振动，其相位差 $\Delta \theta$ 为：
 
@@ -137,7 +137,7 @@ $$
 $$
 
 若 $\Delta \theta = 0$，则两振动**同相**，若 $\Delta \theta = \pi$，则两振动**反相**。
-若 $0 < \Delta \theta < \pi$，则称 $ x_1 $ 比 $ x_2 $ **超前**，若 $\pi < \Delta \theta < 2\pi$，则则称 $ x_1 $ 比 $ x_2 $ **落后**。
+若 $0 < \Delta \theta < \pi$，则称 $x_1$ 比 $x_2$ **超前**，若 $\pi < \Delta \theta < 2\pi$，则则称 $x_1$ 比 $x_2$ **落后**。
 
 #### x, v, a 三者的相位关系
 
@@ -219,7 +219,7 @@ $$
 
 其中，$A$ 为振幅，$\omega$ 为角频率，$\varphi$ 为初相位。
 
-上式的右端又可以写为 $ (Ae^{i\varphi})e^{i\omega t}=\widetilde{A}e^{i\omega t} $，其中 $Ae^{i\varphi}=\widetilde{A}$  是一个复常数，表示振动的初始状态，称为**复振幅**。
+上式的右端又可以写为 $(Ae^{i\varphi})e^{i\omega t}=\widetilde{A}e^{i\omega t}$，其中 $Ae^{i\varphi}=\widetilde{A}$  是一个复常数，表示振动的初始状态，称为**复振幅**。
 
 $$
 \widetilde{x}(t)=\widetilde{A}e^{i\omega t}
@@ -231,7 +231,7 @@ $$
 x(t)=\mathrm{Re}(\widetilde{x}(t))=\mathrm{Re}(\widetilde{A}e^{i\omega t})=A\cos(\omega t+\varphi)
 $$
 
-用 $ \widetilde{x}(t) $ 表示简谐振动，则速度和加速度为
+用 $\widetilde{x}(t)$ 表示简谐振动，则速度和加速度为
 
 $$
 \begin{cases}

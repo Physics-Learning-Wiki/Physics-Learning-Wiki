@@ -49,7 +49,7 @@ $$
 \lambda=\frac{2\pi}{k},\quad T=\frac{2\pi}{\omega},\quad f=\frac{1}{T}.
 $$
 
-我们可以用**相位传输法**来理解这个简谐波的方程。对于一个从原点开始上下振动的波源，其振动表达式为 $y(0,t)=A\cos(\omega t+\varphi)$。当波源在时间 $t$ 处于某一相位时，距离波源 $x$ 处的点需要等到时间 $t+\frac{x}{v}$ 才能感受到这个相位的变化（其中 $v$ 是波速）。因此，距离 $x$ 处的点的振动可以表示为：
+我们可以用**相位传输法**来理解这个简谐波的方程。对于一个从原点开始上下振动的波源，其振动表达式为 $y(0,t)=A\cos(\omega t+\varphi)$。当波源在时间 $t$ 处于某一相位时，距离波源 $x$ 处的点需要等到时间$t+\frac{x}{v}$才能感受到这个相位的变化（其中 $v$ 是波速）。因此，距离$x$处的点的振动可以表示为：
 
 $$
 y(x,t) = A\cos\left(\omega \left(t - \frac{x}{v}\right) + \varphi\right)
@@ -73,14 +73,14 @@ $$
  v_p=\frac{dx}{dt}=\frac{\omega}{k}.
 $$
 
-若改为 $kx+\omega t$，则表示向 $-x$ 传播。
+若改为 $kx+\omega t$，则表示向 $-x$传播。
 
 ??? note "相位的理解"
     相位相同意味着“波形上相同位置”（如同一个波峰）。相速度描述波形特征点移动的速度，不一定等于能量或信息传递速度（色散介质中尤为重要）。
 
 ## 2. 由波动方程得到简谐波
 
-一维无耗散波动方程（波速 $v$）
+一维无耗散波动方程（波速$v$）
 
 $$
 \frac{\partial^2 y}{\partial t^2}=v^2\frac{\partial^2 y}{\partial x^2}.
@@ -188,53 +188,112 @@ $$
 
 其中弦波速 $v=\sqrt{T/\mu}$（张力 $T$、线密度 $\mu$），推导见 [连续介质中的波](wave-in-continuous-medium.md)。
 
-## 5. 色散与群速度（进阶但常用）
+### 5. 色散与群速度
 
-若介质满足色散关系 $\omega=\omega(k)$，则
+#### 5.0 为什么需要群速度？—— 相速度的局限
 
-- 相速度：
+首先，我们熟知的**相速度**$v_p=\frac{\omega}{k}$描述的是一个**无限长、单一频率**的简谐波（也叫单色波）的波峰/波谷在空间中移动的速度。它回答的问题是：“这个特定相位的点跑得多快？”
 
-$$
- v_p=\frac{\omega}{k}
-$$
+但是，**现实中几乎不存在完美的单色波**。信息（如一个脉冲、一段声音、一个光信号）总是由**许多不同频率的简谐波叠加**而成，形成一个**波包**。在能传递信号的波包中，不同频率的波可能以略微不同的相速度传播，这会导致波包在传播过程中形状发生改变。
 
-- 群速度（波包包络速度）：
+这时就产生了一个关键问题：**这个承载着能量的“波包”整体，其运动速度是多少？** 这个速度就是**群速度**，它是波包中心或包络线的传播速度，通常也是能量和信息的传播速度。
 
-$$
- v_g=\frac{d\omega}{dk}.
-$$
+#### 5.1 从两个波的叠加开始理解
 
-### 5.1 两个近波数分量的波包推导
+为了最简单直观地理解波包和群速度，我们从“构建”一个最简单的波包开始：**把两个频率和波数都非常接近的简谐波叠加起来**。
 
-取两列波数接近的简谐波：
+设这两列波为：
 
 $$
 \begin{aligned}
- y_1 &= A\cos(k_1x-\omega_1 t),\\
- y_2 &= A\cos(k_2x-\omega_2 t),
+y_1 &= A \cos(k_1 x - \omega_1 t), \\
+y_2 &= A \cos(k_2 x - \omega_2 t).
 \end{aligned}
 $$
 
-相加得
+其中，$k_1 \approx k_2$，$\omega_1 \approx \omega_2$。
+
+**第一步：叠加**
+利用三角函数和差化积公式：$\cos\alpha+\cos\beta=2\cos\left(\frac{\alpha-\beta}{2}\right)\cos\left(\frac{\alpha+\beta}{2}\right)$。
+令$\alpha=k_1x-\omega_1t$，$\beta=k_2x-\omega_2t$，则：
 
 $$
- y=2A\cos\left(\frac{\Delta k}{2}x-\frac{\Delta\omega}{2}t\right)
-\cos\left(\bar k x-\bar\omega t\right),
+\begin{aligned}
+y = y_1 + y_2 &= 2A \cos\left( \frac{(k_1 - k_2)x - (\omega_1 - \omega_2)t}{2} \right) \cdot \cos\left( \frac{(k_1 + k_2)x - (\omega_1 + \omega_2)t}{2} \right)
+\end{aligned}
 $$
 
-其中 $\Delta k=k_1-k_2$，$\Delta\omega=\omega_1-\omega_2$，$\bar k=(k_1+k_2)/2$，$\bar\omega=(\omega_1+\omega_2)/2$。
+**第二步：引入“平均量”和“差量”概念**
+为了使式子更清晰，我们定义：
+- **平均波数** 和 **平均频率**：$\bar{k}=\frac{k_1+k_2}{2}$，$\bar{\omega}=\frac{\omega_1+\omega_2}{2}$
+- **波数差** 和 **频率差**：$\Delta k = k_1 - k_2$，$\Delta \omega = \omega_1 - \omega_2$（注意 $\Delta k$ 和 $\Delta \omega$ 都很小）
 
-包络相位保持常数给出包络传播速度
+代入上式，得到：
+$$
+\boxed{y(x,t) = \underbrace{2A \cos\left( \frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t \right)}_{\text{缓慢变化的包络}} \cdot \underbrace{\cos\left( \bar{k} x - \bar{\omega} t \right)}_{\text{快速振荡的载波}} }
+$$
+
+**第三步：解读这个结果——拍（Beat）**
+这个结果描绘了一个非常经典的物理图像：**拍**。
+1.  **载波**：高频部分 $\cos(\bar{k}x - \bar{\omega}t)$。它的波数约为 $\bar{k}$，频率约为 $\bar{\omega}$，以**平均相速度** $v_p = \bar{\omega} / \bar{k}$ 传播。
+2.  **包络**：低频部分 $2A \cos\left( \frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t \right)$。它像一个缓慢变化的振幅调制，形状像一条平滑的曲线，将载波“包裹”在里面。这个包络线就代表了我们直观看到的“波包”。
+
+下图清晰地展示了两列波叠加形成波包，以及包络（虚线）与载波（实线）的关系：
+
+![演示图](../images/beat_wave.png)
+
+*图中实线代表合成波 y(x,t)，虚线代表其包络。包络的移动速度即为群速度。*
+
+**第四步：求解包络的传播速度（群速度）**
+包络线是一个波动本身：$E(x,t) = 2A \cos\left( \frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t \right)$。
+要跟踪包络线上任何一个特定点（比如一个峰值）的移动，就需要该点的**相位保持恒定**。
+
+设包络的相位为常数：$\frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t = \text{常数}$。
+
+对这个方程两边关于时间 $t$求导（注意$x$是$t$ 的函数，因为我们跟踪的是那个固定的相位点）：
 
 $$
- v_{\text{env}}=\frac{\Delta\omega}{\Delta k}\xrightarrow[\Delta k\to 0]{}\frac{d\omega}{dk}=v_g.
+\frac{\Delta k}{2} \cdot \frac{dx}{dt} - \frac{\Delta \omega}{2} = 0
 $$
+
+$$
+\Rightarrow \frac{dx}{dt} = \frac{\Delta \omega}{\Delta k}
+$$
+
+这个 $dx/dt$ 就是包络峰值的移动速度，即**包络速度**。
+
+**第五步：从“两个波”推广到“连续多个波”——群速度的定义**
+我们刚才用的是两个频率分量的特殊波包。现实中的波包包含无数个频率连续分布的成分。
+当 $\Delta k \to 0$ 时，两个波数无限接近，上述的包络速度公式就变成了导数形式：
+
+$$
+v_g = \lim_{\Delta k \to 0} \frac{\Delta \omega}{\Delta k} = \boxed{\frac{d\omega}{dk}}
+$$
+
+这就是**群速度**的通用定义。它依赖于介质的一个基本属性——色散关系 $\omega(k)$。
+
+#### **5.2 核心对比与物理意义总结**
+
+| 特性 | 相速度 $v_p$ | 群速度 $v_g$ |
+| :--- | :--- | :--- |
+| **定义** | $v_p = \dfrac{\omega}{k}$ | $v_g = \dfrac{d\omega}{dk}$ |
+| **描述对象** | 单色简谐波的**等相位面**的移动速度 | 波包**包络（整体形状）**的移动速度 |
+| **物理角色** | 纯单色波的传播速度（不传递信息） | **能量与信息**的传播速度 |
+| **与色散关系** | 由色散关系直接给出 | 是色散关系的导数 |
+
+**比喻**：
+想象一场游行。**相速度**好比队列中每个成员**原地踏步**时，手臂上下挥动的波峰传递的速度（很快）。**群速度**好比整个游行**方阵**沿着大街向前行进的**整体速度**（较慢）。你看游行队伍时，首先注意到的是方阵整体的移动（群速度），而不是每个人手臂的挥动（相速度）。
+
+
+#### **5.3 与色散的关系**
+- **无色散介质**：$\omega$与$k$成正比，即$\omega = c k$（如真空中的电磁波）。此时 $v_p = c$，且 $v_g = d\omega/dk = c$。相速度等于群速度，波包在传播中**不会变形**。
+- **有色散介质**：$\omega(k)$ 不是简单的正比关系（如光在玻璃中，水波在深水中）。此时 $v_p \neq v_g$。波包在传播过程中**会逐渐扩散、变形**，因为其中不同频率的成分“跑”得不一样快。
 
 
 ## 6. 简谐波的能量
 
 ### 6.1 质元的能量
-波传播时，介质质元在振动，具有动能与势能。以弦波为例，弦上质元密度 $\rho$，取一体积为 $\Delta V$ 的质元，质元质量 $m=\rho \Delta V$。
+波传播时，介质质元在振动，具有动能与势能。以弦波为例，弦上质元密度 $\rho$，取一体积为 $\Delta V$的质元，质元质量$m=\rho \Delta V$。
 
 设该质元的振动表达式为
 
@@ -258,13 +317,13 @@ $$
     \Delta E_k = \frac{1}{2} m v_y^2 = \frac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx).
     $$
 
-    接下来计算质元的势能。考虑弦波中长度为 $\Delta x$ 的一小段弦，其原长为 $\Delta x$。当波传播时，该弦段发生形变，长度变为 $\Delta s$。弦的张力为 $T$，且在小振动下视为常量。势能等于张力乘以伸长量，即
+    接下来计算质元的势能。考虑弦波中长度为 $\Delta x$的一小段弦，其原长为$\Delta x$。当波传播时，该弦段发生形变，长度变为 $\Delta s$。弦的张力为 $T$，且在小振动下视为常量。势能等于张力乘以伸长量，即
 
     $$
     \Delta E_p = T (\Delta s - \Delta x).
     $$
 
-    计算伸长量 $\Delta s - \Delta x$。弦段两端点的横向位移分别为 $y(x,t)$ 和 $y(x+\Delta x, t)$，纵向位移忽略不计（横波）。弦段长度近似为
+    计算伸长量 $\Delta s - \Delta x$。弦段两端点的横向位移分别为 $y(x,t)$和$y(x+\Delta x, t)$，纵向位移忽略不计（横波）。弦段长度近似为
 
     $$
     \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \Delta x \left[ 1 + \frac{1}{2}\left( \frac{\partial y}{\partial x} \right)^2 \right],
@@ -294,9 +353,9 @@ $$
     \left( \frac{\partial y}{\partial x} \right)^2 = k^2 A^2 \sin^2(\omega t - kx).
     $$
 
-    弦上横波的波速 $v$ 满足 $v = \sqrt{T / \rho}$，其中 $\rho$ 为弦的体密度（若弦的横截面积为 $S$，则线密度 $\mu = \rho S$，波速也可表示为 $v = \sqrt{T / \mu}$）。因此 $T = \rho v^2$。另外，波数 $k$ 与角频率 $\omega$ 满足 $\omega = v k$，即 $v = \omega / k$。
+    弦上横波的波速 $v$满足$v = \sqrt{T / \rho}$，其中 $\rho$为弦的体密度（若弦的横截面积为$S$，则线密度 $\mu = \rho S$，波速也可表示为 $v = \sqrt{T / \mu}$）。因此 $T = \rho v^2$。另外，波数 $k$与角频率$\omega$满足$\omega = v k$，即 $v = \omega / k$。
 
-    将 $T$ 和 $\left( \frac{\partial y}{\partial x} \right)^2$ 代入 $\Delta E_p$：
+    将 $T$和$\left( \frac{\partial y}{\partial x} \right)^2$代入$\Delta E_p$：
     $$
     \Delta E_p = \frac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \frac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.
     $$
@@ -310,7 +369,7 @@ $$
 
     证明完毕。
 
-我们发现，对于单个质元，$ \Delta E_k + \Delta E_p \ne \text{const} $ ，这是因为波在传播过程中，能量在不同质元之间传递。所以对于整个振动系统，机械能依然是守恒的。
+我们发现，对于单个质元，$\Delta E_k + \Delta E_p \ne \text{const}$ ，这是因为波在传播过程中，能量在不同质元之间传递。所以对于整个振动系统，机械能依然是守恒的。
 
 ### 6.2 能量密度与能流
 
@@ -352,11 +411,11 @@ $$
 I_1 S_1 = I_2 S_2
 $$
 
-- 平面波：$ S_1=S_2 $，则 $ I_1=I_2 $，强度不变。$ A = \text{const} $
-- 球面波：$ S=4\pi r^2 $，则 $ I \propto \frac{1}{r^2} $，强度与距离平方成反比。$ A \propto \frac{1}{r} $
-- 柱面波：$ S=2\pi r h $，则 $ I \propto \frac{1}{r} $，强度与距离成反比。$ A \propto \frac{1}{\sqrt{r}} $
+- 平面波：$S_1=S_2$，则 $I_1=I_2$，强度不变。$A = \text{const}$
+- 球面波：$S=4\pi r^2$，则 $I \propto \frac{1}{r^2}$，强度与距离平方成反比。$A \propto \frac{1}{r}$
+- 柱面波：$S=2\pi r h$，则 $I \propto \frac{1}{r}$，强度与距离成反比。$A \propto \frac{1}{\sqrt{r}}$
 
-## 6. 能量与强度（不同介质形式略有差异）
+## 7. 能量与强度（不同介质形式略有差异）
 
 对具体介质（弦、声波、电磁波），能量密度与能流表达不同，但共同点是：
 
