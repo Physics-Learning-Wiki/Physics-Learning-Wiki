@@ -241,7 +241,75 @@ $$
 $$
 
 ??? note "例题"
-    已知一个线性三原子分子 $A_2B$ 的模型。假定相邻原子之间的结合力是弹性力，它们正比于原子的间距，求分子可能的纵向运动形式和相应的振动角频率。
+    已知一个线性三原子分子 $A_2B$ 的纵向振动模型：质量为 $m$ 的两个 $A$ 原子位于两端，质量为 $M$ 的 $B$ 原子位于中间；相邻原子间由劲度系数均为 $k$ 的弹簧连接（$A$–$B$ 与 $B$–$A$）。求简正模与对应角频率。
+
+    **解：**设三原子沿直线位移为 $x_1,x_2,x_3$（分别对应 $A,B,A$），取平衡位置为零。
+    弹簧形变为 $x_1-x_2$ 与 $x_3-x_2$，于是运动方程为
+
+    $$
+    \begin{cases}
+    m\ddot x_1=-k(x_1-x_2),\\
+    M\ddot x_2=-k(x_2-x_1)-k(x_2-x_3)=-k(2x_2-x_1-x_3),\\
+    m\ddot x_3=-k(x_3-x_2).
+    \end{cases}
+    $$
+
+    取简正模形式 $x_j(t)=a_j e^{i\omega t}$，得到代数方程
+
+    $$
+    \begin{cases}
+    m\omega^2 a_1=k(a_1-a_2),\\
+    M\omega^2 a_2=k(2a_2-a_1-a_3),\\
+    m\omega^2 a_3=k(a_3-a_2).
+    \end{cases}
+    $$
+
+    利用对称性分两类：
+
+    1) **整体平移模**：$a_1=a_2=a_3$，此时弹簧不伸长，$\omega_0=0$。
+
+    2) **反对称伸缩模**：$a_1=-a_3$，由对称性得 $a_2=0$。
+    代入第一式得 $m\omega^2 a_1=k a_1$，因此
+
+    $$
+    \omega_- = \sqrt{\frac{k}{m}},\quad (a_1,a_2,a_3)\propto(1,0,-1).
+    $$
+
+    3) **对称伸缩模**：$a_1=a_3=a$，$a_2=b$。
+    由第一式 $m\omega^2 a=k(a-b)$，第二式 $M\omega^2 b=2k(b-a)$。
+    联立消去 $b$ 可得
+
+    $$
+    \omega_+^2=\frac{k}{m}+\frac{2k}{M},\quad (a_1,a_2,a_3)\propto\left(1,-\frac{2m}{M},1\right).
+    $$
+
+    因此该分子有一个零频平移模与两个非零振动模 $\omega_-,\omega_+$。
+
+??? note "例题：受迫振动中“功率共振”的频率"
+    对线性受迫振动
+    $$
+    \ddot x+2\gamma\dot x+\omega_0^2x=\frac{F_0}{m}\cos(\Omega t),
+    $$
+    证明稳态下平均耗散功率 $\langle P\rangle$ 取最大值时的驱动频率为 $\Omega=\omega_0$。
+
+    **解：**稳态响应 $x=A\cos(\Omega t-\delta)$。
+    阻尼耗散功率 $P_d=b\dot x^2$，周期平均
+
+    $$
+    \langle P\rangle=b\langle\dot x^2\rangle=b\cdot\frac12A^2\Omega^2.
+    $$
+
+    用 $b=2m\gamma$ 与
+    $$
+    A^2=\frac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}
+    $$
+
+    得
+    $$
+    \langle P\rangle\propto \frac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
+    $$
+
+    对 $\Omega$ 求极值可得最大值发生在 $\Omega=\omega_0$。
 
 ## 阻尼振动
 

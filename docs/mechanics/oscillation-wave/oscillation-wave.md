@@ -261,6 +261,11 @@ $$
 
 $$
 x_p(t)=A\cos(\Omega t-\delta).
+
+??? note "图例"
+	![受迫振动的振幅与相位响应](../images/driven_response.png)
+	
+	上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化。
 $$
 
 ### 4.2 共振与共振频率
@@ -278,6 +283,35 @@ A(\omega_0)=\frac{F_0/m}{2\gamma\omega_0}.
 $$
 
 可见阻尼越小（$\gamma$ 越小），共振峰越高。
+
+??? note "例题：功率最大与振幅最大是否同频"
+	在线性受迫振动稳态下，证明：
+	1) 平均吸收功率 $\langle P\rangle$ 关于 $\Omega$ 的最大值出现在 $\Omega=\omega_0$；
+	2) 振幅 $A(\Omega)$ 的最大值出现在 $\Omega_r=\sqrt{\omega_0^2-2\gamma^2}$（欠阻尼）。
+
+	**解：**
+	稳态 $x=A\cos(\Omega t-\delta)$，速度 $\dot x=-A\Omega\sin(\Omega t-\delta)$。
+	阻尼耗散的平均功率（也等于外力平均做功率）为
+
+	$$
+	\langle P\rangle=b\langle \dot x^2\rangle=b\cdot\frac12A^2\Omega^2
+	=\frac12 m(2\gamma)A^2\Omega^2=m\gamma A^2\Omega^2.
+	$$
+
+	代入
+	$$
+	A^2=\frac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2},
+	$$
+	得
+	$$
+	\langle P\rangle\propto \frac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
+	$$
+	对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是“功率共振”）。
+	而 $A(\Omega)$ 的极值由分母最小给出，欠阻尼时可得
+	$$
+	\Omega_r=\sqrt{\omega_0^2-2\gamma^2}.
+	$$
+	因此：**功率共振与振幅共振一般不完全同频**（弱阻尼时两者都接近 $\omega_0$）。
 
 ### 4.3 功率与带宽（品质因数）
 

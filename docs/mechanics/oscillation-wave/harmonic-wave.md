@@ -188,6 +188,45 @@ $$
 
 其中弦波速 $v=\sqrt{T/\mu}$（张力 $T$、线密度 $\mu$），推导见 [连续介质中的波](wave-in-continuous-medium.md)。
 
+### 4.3 半波损失与驻波的产生
+
+当波在介质界面反射时，可能会发生**半波损失**（相位变化 $\pi$）。
+
+- 固定端反射：发生半波损失
+
+我们可以把固定端看作一个波节，反射波相对于入射波相位差 $\pi$，即 $y_2=-y_1=A\cos(kx+\omega t+\pi)=-A\cos(kx+\omega t)$。
+
+- 自由端反射：不发生半波损失
+
+我们可以把自由端看作一个波腹，反射波与入射波同相位。$y_2 = y_1 = A\cos(kx+\omega t)$。
+
+接下来我们通过一个例题来更好地理解半波损失。
+
+??? note "例题"
+    一列入射波沿弦向 $+x$ 方向传播，
+    $$
+    y_i(x,t)=A\cos(kx-\omega t).
+    $$
+    弦在 $x=0$ 处固定。求反射波 $y_r(x,t)$，并写出叠加后的波形，指出 $x=0$ 处为何一定是波节。
+
+    **解：**固定端边界条件为 $y(0,t)=0$，即
+    $$
+    y_i(0,t)+y_r(0,t)=0\quad\forall t.
+    $$
+    设反射波形如
+    $$
+    y_r(x,t)=A\cos(kx+\omega t+\phi).
+    $$
+    代入 $x=0$：$A\cos(-\omega t)+A\cos(\omega t+\phi)=0$ 对任意 $t$ 成立，需有 $\phi=\pi$，因此
+    $$
+    \boxed{\ y_r(x,t)=A\cos(kx+\omega t+\pi)=-A\cos(kx+\omega t)\ }.
+    $$
+    总波为
+    $$
+    y=y_i+y_r=A\cos(kx-\omega t)-A\cos(kx+\omega t)=2A\sin(kx)\sin(\omega t).
+    $$
+    可见 $x=0$ 处 $\sin(kx)=0$ 恒成立，故该端点为波节；这对应“固定端反射发生半波损失（相位反转 $\pi$）”。
+
 ### 5. 色散与群速度
 
 #### 5.0 为什么需要群速度？—— 相速度的局限
@@ -229,6 +268,7 @@ $$
 - **波数差** 和 **频率差**：$\Delta k = k_1 - k_2$，$\Delta \omega = \omega_1 - \omega_2$（注意 $\Delta k$ 和 $\Delta \omega$ 都很小）
 
 代入上式，得到：
+
 $$
 \boxed{y(x,t) = \underbrace{2A \cos\left( \frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t \right)}_{\text{缓慢变化的包络}} \cdot \underbrace{\cos\left( \bar{k} x - \bar{\omega} t \right)}_{\text{快速振荡的载波}} }
 $$
@@ -269,6 +309,11 @@ $$
 $$
 v_g = \lim_{\Delta k \to 0} \frac{\Delta \omega}{\Delta k} = \boxed{\frac{d\omega}{dk}}
 $$
+
+??? note "图例"
+    ![色散关系下的相速度与群速度示意](../images/dispersion_group_velocity.png)
+
+    图中虚线过原点的割线斜率为相速度 $v_p=\omega/k$；切线斜率为群速度 $v_g=d\omega/dk$。
 
 这就是**群速度**的通用定义。它依赖于介质的一个基本属性——色散关系 $\omega(k)$。
 
@@ -356,11 +401,13 @@ $$
     弦上横波的波速 $v$满足$v = \sqrt{T / \rho}$，其中 $\rho$为弦的体密度（若弦的横截面积为$S$，则线密度 $\mu = \rho S$，波速也可表示为 $v = \sqrt{T / \mu}$）。因此 $T = \rho v^2$。另外，波数 $k$与角频率$\omega$满足$\omega = v k$，即 $v = \omega / k$。
 
     将 $T$和$\left( \frac{\partial y}{\partial x} \right)^2$代入$\Delta E_p$：
+
     $$
     \Delta E_p = \frac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \frac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.
     $$
 
     注意到质元的体积 $\Delta V = S \Delta x$，其中 $S$ 为弦的横截面积。代入上式得
+
     $$
     \Delta E_p = \frac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta V.
     $$

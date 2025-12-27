@@ -159,6 +159,34 @@ $$
 
 当两个频率接近的振动相互作用时，可能会出现同步锁频现象，即两个振动最终以相同的频率振动。
 
+??? note "例题：用李萨如图形测相位差（同频）"
+    示波器 $X$、$Y$ 两通道分别输入
+
+    $$
+    x=A\cos(\omega t),\qquad y=A\cos(\omega t+\delta),\quad 0\le \delta\le \pi.
+    $$
+
+    在屏幕上观察到闭合椭圆。若测得椭圆与 $y$ 轴交点为 $y=\pm y_0$（即 $x=0$ 时的 $|y|$），求 $\delta$ 与 $y_0/A$ 的关系。
+
+    **解：**令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$。
+    代入 $y$：
+
+    $$
+    y=A\cos\left(\frac{\pi}{2}+\delta\right)=-A\sin\delta
+    $$
+
+    或
+
+    $$
+    y=A\cos\left(\frac{3\pi}{2}+\delta\right)=A\sin\delta.
+    $$
+
+    因此 $y_0=A|\sin\delta|$。在题设 $0\le\delta\le\pi$ 下 $\sin\delta\ge 0$，得到
+
+    $$
+    \boxed{\ \sin\delta=\frac{y_0}{A}\ },\qquad \delta=\arcsin\left(\frac{y_0}{A}\right).
+    $$
+
 ## 5. 振动的分解：傅里叶观点（最小必要版）
 
 任意“足够好”的周期函数 $x(t)$（周期 $T$）可展开为
