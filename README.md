@@ -12,12 +12,11 @@
 
 ---
 
-## 核心设计原则
+## 鸣谢
 
-- **分层**：基础 → 进阶 → 综合
-- **可扩展**：目录与模块易增删
-- **可复用**：统一术语与符号规范
-- **面向学习路径与自检**
+感谢 [OI wiki](https://oi-wiki.org/) 以及 OI wiki 的贡献者们提供的框架、内容与技术支持！
+感谢所有为 **Physics Learning Wiki** 做出贡献的朋友们！
+> 由于学物理的同学们并不常有GitHub账号，您在页面中可能会看到一些“匿名同学”做出的贡献，这些贡献大多为同学们联系项目成员帮忙提交的内容，也十分感谢他们的付出！
 
 ---
 
@@ -117,10 +116,3 @@ uv run mkdocs build -v
   howpublished = {\url{https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki}},
 }
 ```
-
----
-
-## 鸣谢
-
-感谢 [OI wiki](https://oi-wiki.org/) 以及 OI wiki 的贡献者们提供的框架、内容与技术支持！
-感谢所有为 **Physics-Learning-Wiki** 做出贡献的朋友们！
