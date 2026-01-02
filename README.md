@@ -4,13 +4,11 @@
 
 [![GitHub Actions](https://img.shields.io/github/actions/workflow/status/Physics-Learning-Wiki/Physics-Learning-Wiki/build.yml?style=flat-square&branch=main)](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/actions/workflows/build.yml)  [![GitHub stars](https://img.shields.io/github/stars/Physics-Learning-Wiki/Physics-Learning-Wiki.svg?style=social&label=Stars)](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki)
 
----
 
 ## 项目简介
 
 **Physics-Learning-Wiki** 是一个面向系统化物理学习与复习的结构化知识框架，旨在帮助学习者高效掌握物理学的基础与进阶知识。项目内容涵盖基础概念、各分支学科、数学与实验支撑、计算物理、题库、术语与参考资源。
 
----
 
 ## 鸣谢
 
@@ -18,7 +16,6 @@
 感谢所有为 **Physics Learning Wiki** 做出贡献的朋友们！
 > 由于学物理的同学们并不常有GitHub账号，您在页面中可能会看到一些“匿名同学”做出的贡献，这些贡献大多为同学们联系项目成员帮忙提交的内容，也十分感谢他们的付出！
 
----
 
 ## 目录总体框架
 
@@ -40,7 +37,6 @@
 - **contributing**：贡献指南
 - **structure**：结构说明
 
----
 
 ## 部署
 
@@ -94,7 +90,6 @@ uv run mkdocs build -v
 
 具体的贡献方式请参考 [贡献指南](docs/intro/htc.md)。
 
----
 
 ## 版权声明
 
