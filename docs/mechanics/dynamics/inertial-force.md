@@ -87,41 +87,124 @@ $$
    - $\boldsymbol{\omega} \times \boldsymbol{P}$ 是由于参考系旋转引入的附加项。
 
 #### 推导：
-我们现在具体推导科里奥利力的表达式。假设物体的质量为 $m$，在旋转参考系中的速度为 $\boldsymbol{v}$，旋转参考系的角速度为 $\boldsymbol{\omega}$。
 
-1. **惯性参考系中的加速度**：
-   惯性参考系中的加速度可以写为：
-
-$$
-\boldsymbol{a}_\text{inertial} = \frac{d\boldsymbol{v}_\text{inertial}}{dt}
-$$
-
-2. **旋转参考系中的加速度**：
-   使用矢量变化率的关系式：
+##### 1. 坐标系设置
+设惯性系 $S$ 的坐标为 $(x, y, z)$，对应基矢量为 $\hat{e}_x, \hat{e}_y, \hat{e}_z$。旋转系 $S'$ 的坐标为 $(x', y', z')$，对应基矢量为 $\hat{e}_{x'}, \hat{e}_{y'}, \hat{e}_{z'}$。两坐标系原点重合，且 $S'$ 绕 $z$ 轴以恒定角速度 $\omega$ 旋转，故角速度矢量 $\vec{\omega} = \omega \hat{e}_z$。为简化，设 $t=0$ 时两坐标系完全重合，则坐标变换关系为：
 
 $$
-\boldsymbol{a}_\text{inertial} = \boldsymbol{a}_\text{rotating} + 2(\boldsymbol{v} \times \boldsymbol{\omega}) + \boldsymbol{\omega} \times (\boldsymbol{\omega} \times \boldsymbol{r}) + \frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}
+\begin{aligned}
+x &= x' \cos(\omega t) - y' \sin(\omega t), \\
+y &= x' \sin(\omega t) + y' \cos(\omega t), \\
+z &= z'.
+\end{aligned}
 $$
 
-   其中：
+基矢量变换关系为：
 
-   - $\boldsymbol{a}_\text{rotating}$ 是物体在旋转参考系中的加速度；
-   - $2(\boldsymbol{v} \times \boldsymbol{\omega})$ 是科里奥利加速度；
-   - $\boldsymbol{\omega} \times (\boldsymbol{\omega} \times \boldsymbol{r})$ 是离心加速度；
-   - $\frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}$ 是欧拉加速度。
-
-3. **科里奥利力的表达式**：
-   在旋转参考系中，科里奥利力由科里奥利加速度产生，其表达式为：
-   
 $$
-\boldsymbol{F}_\text{Coriolis} = 2m(\boldsymbol{v} \times \boldsymbol{\omega})
+\begin{aligned}
+\hat{e}_{x'} &= \cos(\omega t) \hat{e}_x + \sin(\omega t) \hat{e}_y, \\
+\hat{e}_{y'} &= -\sin(\omega t) \hat{e}_x + \cos(\omega t) \hat{e}_y, \\
+\hat{e}_{z'} &= \hat{e}_z.
+\end{aligned}
 $$
 
-   其中：
-   - $m$ 是物体的质量；
-   - $\boldsymbol{v}$ 是物体相对于旋转参考系的速度；
-   - $\boldsymbol{\omega}$ 是旋转参考系的角速度；
-   - $\times$ 表示向量叉乘。
+![坐标系](../images/rotating_frame.png)
+
+##### 2. 位置矢量与速度变换
+位置矢量在惯性系和旋转系中表示为：
+
+$$
+\vec{r} = x \hat{e}_x + y \hat{e}_y + z \hat{e}_z = x' \hat{e}_{x'} + y' \hat{e}_{y'} + z' \hat{e}_{z'}.
+$$
+
+在惯性系中对时间求导得速度：
+
+$$
+\vec{v}_{\text{in}} = \frac{d\vec{r}}{dt} = \frac{d}{dt}(x' \hat{e}_{x'} + y' \hat{e}_{y'} + z' \hat{e}_{z'}).
+$$
+
+注意旋转系基矢量随时间变化，其导数为：
+
+$$
+\frac{d\hat{e}_{x'}}{dt} = \omega \hat{e}_{y'}, \quad \frac{d\hat{e}_{y'}}{dt} = -\omega \hat{e}_{x'}, \quad \frac{d\hat{e}_{z'}}{dt} = 0.
+$$
+
+代入得：
+
+$$
+\begin{aligned}
+\vec{v}_{\text{in}} &= \left( \frac{dx'}{dt} \hat{e}_{x'} + \frac{dy'}{dt} \hat{e}_{y'} + \frac{dz'}{dt} \hat{e}_{z'} \right) + \left( x' \omega \hat{e}_{y'} - y' \omega \hat{e}_{x'} \right) \\
+&= \vec{v}_{\text{rot}} + \omega (x' \hat{e}_{y'} - y' \hat{e}_{x'}),
+\end{aligned}
+$$
+
+其中 $\vec{v}_{\text{rot}} = \frac{dx'}{dt} \hat{e}_{x'} + \frac{dy'}{dt} \hat{e}_{y'} + \frac{dz'}{dt} \hat{e}_{z'}$ 为旋转系中测得的速度。而第二项可写为 $\vec{\omega} \times \vec{r}$，因为：
+
+$$
+\vec{\omega} \times \vec{r} = (\omega \hat{e}_{z'}) \times (x' \hat{e}_{x'} + y' \hat{e}_{y'} + z' \hat{e}_{z'}) = \omega x' \hat{e}_{y'} - \omega y' \hat{e}_{x'}.
+$$
+
+故速度变换公式为：
+
+$$
+\vec{v}_{\text{in}} = \vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}.
+$$
+
+##### 3. 加速度变换与科里奥利力项
+对惯性系速度再求导得加速度：
+
+$$
+\vec{a}_{\text{in}} = \frac{d\vec{v}_{\text{in}}}{dt} = \frac{d}{dt}(\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}).
+$$
+
+分别计算两项。首先，对旋转系中的速度矢量 $\vec{v}_{\text{rot}}$ 求导时，需考虑其基矢量的旋转，利用旋转系中对矢量的时间导数关系：
+
+$$
+\left( \frac{d\vec{Q}}{dt} \right)_{\text{in}} = \left( \frac{d\vec{Q}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{Q},
+$$
+
+其中 $\left( \frac{d\vec{Q}}{dt} \right)_{\text{rot}}$ 表示在旋转系中观察时 $\vec{Q}$ 的变化率（仅对分量求导，基矢量视为不变）。将 $\vec{Q}$ 取为 $\vec{v}_{\text{rot}}$，得：
+
+$$
+\frac{d\vec{v}_{\text{rot}}}{dt} = \left( \frac{d\vec{v}_{\text{rot}}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
+$$
+
+而 $\left( \frac{d\vec{v}_{\text{rot}}}{dt} \right)_{\text{rot}}$ 正是旋转系中测得的加速度 $\vec{a}_{\text{rot}}$。故：
+
+$$
+\frac{d\vec{v}_{\text{rot}}}{dt} = \vec{a}_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
+$$
+
+其次，对 $\vec{\omega} \times \vec{r}$ 求导（设 $\vec{\omega}$ 恒定）：
+
+$$
+\frac{d}{dt}(\vec{\omega} \times \vec{r}) = \vec{\omega} \times \frac{d\vec{r}}{dt} = \vec{\omega} \times \vec{v}_{\text{in}} = \vec{\omega} \times (\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}) = \vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times (\vec{\omega} \times \vec{r}).
+$$
+
+将两部分合并：
+
+$$
+\vec{a}_{\text{in}} = \vec{a}_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times (\vec{\omega} \times \vec{r}) = \vec{a}_{\text{rot}} + 2\vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times (\vec{\omega} \times \vec{r}).
+$$
+
+##### 4. 旋转系中的有效力
+在惯性系中，牛顿第二定律为 $m\vec{a}_{\text{in}} = \vec{F}_{\text{real}}$。代入加速度变换式：
+
+$$
+m\vec{a}_{\text{rot}} + 2m\vec{\omega} \times \vec{v}_{\text{rot}} + m\vec{\omega} \times (\vec{\omega} \times \vec{r}) = \vec{F}_{\text{real}}.
+$$
+
+移项得旋转系中的运动方程：
+
+$$
+m\vec{a}_{\text{rot}} = \vec{F}_{\text{real}} - 2m\vec{\omega} \times \vec{v}_{\text{rot}} - m\vec{\omega} \times (\vec{\omega} \times \vec{r}).
+$$
+
+因此，在旋转系中观察时，除了真实力 $\vec{F}_{\text{real}}$ 外，还需引入两个惯性力：
+
+- **科里奥利力**：$\vec{F}_{\text{cor}} = -2m\vec{\omega} \times \vec{v}_{\text{rot}}$，
+- **离心力**：$\vec{F}_{\text{cen}} = -m\vec{\omega} \times (\vec{\omega} \times \vec{r})$。
 
 #### 特点：
 - **方向**：科里奥利力的方向由右手法则确定。右手四指指向 $\boldsymbol{v}$ 的方向，弯向 $\boldsymbol{\omega}$ 的方向，大拇指指向科里奥利力的方向。
