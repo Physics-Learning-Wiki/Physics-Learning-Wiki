@@ -184,6 +184,22 @@ hooks:
 # Customization
 extra:
   disqus: 'Physics-Learning-Wiki'
+  # Giscus 评论系统（需要在 GitHub 仓库开启 Discussions 并安装 giscus app）
+  # 获取下列参数的最简单方式：打开 https://giscus.app/ 按提示生成配置，然后把对应值填到这里。
+  # 当 repo_id / category_id 为空时，评论区不会渲染。
+  giscus:
+    repo: 'Physics-Learning-Wiki/Physics-Learning-Wiki'
+    repo_id: 'R_kgDOQVakpw'
+    category: 'Comments'
+    category_id: 'DIC_kwDOQVakp84C2SEd'
+    mapping: 'pathname'
+    strict: '1'
+    reactions_enabled: '1'
+    emit_metadata: '0'
+    input_position: 'top'
+    theme: 'preferred_color_scheme'
+    lang: 'zh-CN'
+    loading: 'lazy'
   copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
   pagetime: 'on'
   manifest: 'manifest.webmanifest'
