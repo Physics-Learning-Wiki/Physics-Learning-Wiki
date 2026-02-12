@@ -173,6 +173,7 @@ theme:
     code: 'Fira Mono'
 
 plugins:
+- search
 - toggle-sidebar:
     theme: material
     toggle_button: all
