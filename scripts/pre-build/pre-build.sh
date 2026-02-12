@@ -8,5 +8,3 @@ chmod +x "$DIRNAME"/install-theme.sh
 "$DIRNAME"/install-theme.sh
 
 git rev-parse --short HEAD | xargs -I % sed -i "s/githash: ''/githash: '%'/g" mkdocs.yml
-
-node --loader ts-node/esm "$DIRNAME"/install-feedback-sys-frontend.ts
