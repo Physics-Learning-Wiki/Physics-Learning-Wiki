@@ -1,0 +1,24 @@
+name: Check Navigation Coverage
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check-nav-coverage:
+    name: Check Navigation Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PyYAML
+        run: pip install PyYAML==6.0.2
+      - name: Check MkDocs nav coverage
+        run: python scripts/check-nav-coverage.py --ignore-file scripts/nav-coverage-ignore.txt

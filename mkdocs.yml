@@ -88,6 +88,7 @@ nav:
       - 拉格朗日力学: mechanics/analytical/lagrangian.md
       - 哈密顿力学: mechanics/analytical/hamiltonian.md
   - 热学与统计物理:
+    - 热学章节编写说明: thermodynamics/thermodynamics-writing.md
     - 热学简介: thermodynamics/index.md
     - 热力学系统与状态: thermodynamics/system-state.md
     - 热力学定律: thermodynamics/laws.md

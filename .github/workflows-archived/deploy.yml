@@ -1,13 +1,16 @@
-name: Deploy to GitHub Pages
+# Archived on 2026-03-07.
+# The active production deployment pipeline is .github/workflows/build.yml.
+
+name: Deploy to GitHub Pages (Archived)
 
 on:
 # Mannul
   workflow_dispatch:
 # Auto
   #push:
-    #branches: [ main, master ]
+    #branches: [ main ]
   #pull_request:
-    #branches: [ main, master ]
+    #branches: [ main ]
 
 permissions:
   contents: read
