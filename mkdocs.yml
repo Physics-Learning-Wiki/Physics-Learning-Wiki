@@ -1,6 +1,6 @@
 # Project Information
 site_name: Physics Learning Wiki
-site_description: Physics Learning Wiki 是一个物理竞赛与物理学习知识整合站点，提供有趣又实用的物理知识以及其他有帮助的内容，帮助广大物理爱好者更快更深入地学习物理
+site_description: Physics Learning Wiki 是一个面向物理爱好者与大学本科生的系统化物理学习站点，提供主线导学、支撑模块与专题拓展内容
 site_author: Physics Learning Wiki Team
 site_url: https://physics-learning-wiki.github.io/Physics-Learning-Wiki/
 strict: false
@@ -17,8 +17,10 @@ copyright: 'Copyright &copy; 2025 - 2025 Physics Learning Wiki Team'
 nav:
   - 简介:
     - Getting Started: index.md
+    - 学习路线总览: intro/roadmap.md
     - 关于本项目: intro/about.md
     - 如何参与: intro/htc.md
+    - 内容编写指引: intro/writing.md
     - Physics Learning Wiki 不是什么: intro/what-pl-wiki-is-not.md
     - 格式手册: intro/format.md
     - 数学符号表: intro/symbol.md

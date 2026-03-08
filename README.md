@@ -7,7 +7,9 @@
 
 ## 项目简介
 
-**Physics-Learning-Wiki** 是一个面向系统化物理学习与复习的结构化知识框架，旨在帮助学习者高效掌握物理学的基础与进阶知识。项目内容涵盖基础概念、各分支学科、数学与实验支撑、计算物理、题库、术语与参考资源。
+**Physics-Learning-Wiki** 是一个面向物理爱好者与大学本科生的系统化物理学习站点。项目当前将“本科入门/自学主线”放在第一优先级，目标不是简单汇总零散条目，而是帮助读者建立一条可持续扩展的学习路径：先完成主线，再进入专题、竞赛和更进阶的内容。
+
+项目内容覆盖主线学科模块、数学与实验支撑模块、计算工具以及专题强化页面，并逐步补齐路线图、模块导学页和章节写作规范。
 
 
 ## 鸣谢
@@ -21,21 +23,14 @@
 
 项目的主要内容组织在 `docs/` 目录下，包含以下模块：
 
-- **fundamentals**：基础与通用概念
-- **math-tools**：数学工具
-- **mechanics**：力学
-- **thermodynamics**：热学与统计
-- **electromagnetism**：电磁学
-- **optics**：光学
-- **modern-physics**：近代物理（量子 / 原子 / 核 / 粒子 / 相对论）
-- **experimental**：实验与测量
-- **computational**：计算物理
-- **problem-bank**：题库与分类
-- **glossary**：术语与符号
-- **references**：参考与教材
-- **roadmap**：学习路线
-- **contributing**：贡献指南
-- **structure**：结构说明
+- **intro**：项目说明、学习路线、贡献入口与写作规范。
+- **math**：物理学习所需的数学工具。
+- **mechanics / thermodynamics / electromagnetism / optics / modern**：本科物理主线学科模块。
+- **experiment**：实验、测量、误差分析与仪器基础。
+- **tools**：LaTeX、Python、仿真和绘图等计算与表达工具。
+- **contest**：竞赛与专题强化页面，作为总站主线之外的支线模块。
+- **glossary / references / problem-bank**：术语、参考资料与后续扩展资源。
+- **structure**：关于知识分层与内容组织方式的结构说明。
 
 
 ## 部署
@@ -84,11 +79,11 @@ uv run mkdocs build -v
 
 我们欢迎所有对物理学习感兴趣的小伙伴参与贡献！
 
-- **贡献内容**：分享您的学习笔记、补充知识点或完善现有内容。
-- **报告问题**：通过 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues) 提交问题或建议。
-- **贡献代码**：修复错误、优化功能或改进文档。
+- **GitHub 协作**：通过 Pull Request 修正文案、补充内容或改进脚本与页面结构。
+- **邮箱投稿**：如果您不熟悉 GitHub，也可以把成稿、提纲、笔记或讲义发送到 [submit@folderrewind.top](mailto:submit@folderrewind.top)，由编辑组协助整理。
+- **报告问题**：通过 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues) 提交问题、建议或结构改进意见。
 
-具体的贡献方式请参考 [贡献指南](docs/intro/htc.md)。
+具体的贡献方式请参考 [贡献指南](docs/intro/htc.md) 与 [内容编写指引](docs/intro/writing.md)。
 
 
 ## 版权声明

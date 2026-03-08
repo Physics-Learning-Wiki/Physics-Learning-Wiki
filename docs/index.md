@@ -2,39 +2,56 @@ disqus:
 pagetime:
 title: Physics-Learning-Wiki
 
-## 欢迎来到 **Physics-Learning-Wiki**！
+## 欢迎来到 **Physics-Learning-Wiki**
 
-**Physics-Learning-Wiki** 致力于构建一个免费开放、结构严谨的 **物理学** 知识整合站点。
+**Physics-Learning-Wiki** 致力于为物理爱好者与大学本科生提供一条可持续扩展的系统化学习主线。我们当前优先解决的问题不是“条目够不够多”，而是“读者能不能顺着学下去”。
 
-本项目基于 [OI Wiki](https://oi-wiki.org/) 的架构进行改造，旨在为物理学习者提供从基础概念到进阶理论的清晰学习路径。无论你是需要复习大学物理的本科生，还是对物理感兴趣的自学者，都可以在这里找到结构化的知识内容。
+## 建议先从这里开始
 
-### 核心内容模块
+1. 阅读 [学习路线总览](intro/roadmap.md)，先确定自己的阶段和主线顺序。
+2. 进入对应学科的导学页，例如 [经典力学](mechanics/index.md)、[热学与统计物理](thermodynamics/index.md) 或 [电磁学](electromagnetism/index.md)。
+3. 遇到公式、符号或方法障碍时，回到 [数学工具](math/index.md)、[实验物理](experiment/index.md) 与 [计算物理与工具](tools/index.md) 补足支撑知识。
+4. 如果你想参与贡献，可以阅读 [如何参与](intro/htc.md)；如果你不会使用 GitHub，也可以直接发送稿件到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
 
-我们按照物理学的学科逻辑，将内容划分为以下主要板块：
+## 本站的组织方式
 
-*   **[数学工具](math/index.md)**：微积分、向量分析、微分方程、线性代数等物理学必备数学基础。
-*   **[核心学科](mechanics/)**：
-    *   [力学](mechanics/linear-motion.md)
-    *   [电磁学](electromagnetism)
-    *   [热学与统计](thermodynamics/)
-    *   [光学](optics/)
-    *   [近代物理](modern-physics/)（相对论、量子力学、原子核物理等）
-*   **[实验与计算](experimental/)**：实验误差分析、数据处理流程、计算物理方法与数值模拟。
-*   **[辅助资源](problem-bank/)**：[题库](problem-bank/)、[术语表](glossary/) 与 [参考资源](references/)。
+### 主线学习模块
 
-### 如何使用
+- [数学工具](math/index.md)：作为物理学习的基础支撑，与主线同步推进。
+- [经典力学](mechanics/index.md)：建立运动、受力、守恒律与建模的第一层框架。
+- [热学与统计物理](thermodynamics/index.md)：理解宏观系统、热现象方向性与统计描述。
+- [电磁学](electromagnetism/index.md)：从场与相互作用角度重建物理图景。
+- [光学](optics/index.md)：连接几何、波动与实验现象。
+- [近代物理](modern/index.md)：进入相对论、量子与微观世界的基本观念。
 
-1.  **按图索骥**：通过左侧导航栏快速定位到特定学科或章节。
-2.  **循序渐进**：参考 学习路线 (Roadmap) 规划你的学习进度。
-3.  **查漏补缺**：利用 [术语表](glossary/glossary.md) 快速回顾核心定义与符号约定。
-4.  **定向答疑**：通过页面右上角的 [GitHub Copilot Chat](https://github.com/copilot) 功能，选择 Physics-Learning-Wiki 作为参考源，进行智能问答。
+### 并行支撑模块
 
-### 参与贡献
+- [实验物理](experiment/index.md)：帮助理解测量、误差、数据与真实实验场景。
+- [计算物理与工具](tools/index.md)：提供计算、绘图与数值实验能力。
+- [术语表](glossary/glossary.md)：用于快速回顾定义、符号与常用名词。
 
-本项目处于早期构建阶段，内容框架正在逐步完善中。欢迎阅读 [如何参与](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/htc/) 并提交 Pull Request 帮助我们改进。
+### 专题支线
 
-如果你不会编写 LaTeX 代码，可以通过 [在线 LaTeX 编辑器](https://www.latexlive.com/) 生成公式代码，然后复制粘贴到相应位置。
+- [竞赛相关](contest/index.md)：面向竞赛与专题训练，但不再作为全站主入口。
+- 题库、参考资料与专题页会逐步补齐，用于第二遍学习和强化训练。
 
-### 致谢
+## 如何使用本站
 
-本项目受 [OI Wiki](https://oi-wiki.org/) 与 [CTF Wiki](https://ctf-wiki.org/) 的启发。在此表以诚挚的感谢。
+1. 先看导学页，再进入正文页，不要直接在目录里跳着读。
+2. 每读一页都先回答三个问题：它在解决什么问题、它依赖什么先修、它学完以后能干什么。
+3. 如果某一页暂时读不动，不要硬啃，先回到主线前面的页面或支撑模块补足背景。
+4. 竞赛、开放题和进阶证明建议放在完成主线第一遍之后再集中处理。
+
+## 欢迎投稿与协作
+
+我们欢迎三类贡献：
+
+- 修正错误、补充引用和改善表述。
+- 撰写完整页面或重构已有页面。
+- 提交半成品笔记、提纲、讲义、课堂整理或题目解析，由编辑组协助整理。
+
+如果你熟悉 GitHub，请走 Pull Request 流程；如果你不熟悉 GitHub，可以直接发送邮件到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。详细说明见 [如何参与](intro/htc.md) 与 [内容编写指引](intro/writing.md)。
+
+## 致谢
+
+本项目受 [OI Wiki](https://oi-wiki.org/) 与 [CTF Wiki](https://ctf-wiki.org/) 的启发。在此致以诚挚的感谢。

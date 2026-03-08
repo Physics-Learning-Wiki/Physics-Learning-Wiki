@@ -1,6 +1,6 @@
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面。正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
 
-这篇文章将主要叙述参与 Physics Learning Wiki 编写的写作过程。请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容。
+这篇文章将主要叙述参与 Physics Learning Wiki 编写的两种方式：通过 GitHub 协作，或者通过投稿邮箱提交成稿、笔记、提纲与讲义。请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容。
 
 ## 贡献指南
 
@@ -10,6 +10,8 @@
 
 ???+ warning "Warning"
     在开始编写一段内容之前，请查阅 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)，确认没有别人在做相同的工作之后，开个 [新 issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/new) 记录待编写的内容。
+
+如果你准备通过邮箱投稿完整章节或较大改写，也欢迎直接在邮件里说明选题、范围和当前进度，编辑组会协助你与现有计划对齐。
 
 ???+ tip "Tip"
     在 Issues 中也有很多待修复/解决的问题，尤其是我们的迭代计划（Iteration Plan）。从这里获取任务是一个很好的开始！
@@ -30,9 +32,42 @@
 
 如果你对下方的文字头疼，那么不妨看看这个视频。
 
+如果你只想先知道最重要的事情，可以记住下面四点：
+
+1.  熟悉 GitHub 的贡献者，推荐直接走 Pull Request 流程。
+2.  不熟悉 GitHub 也完全可以参与，可以把成稿、提纲、讲义或课堂整理发送到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
+3.  半成品也欢迎投稿，但请尽量附上来源、目标章节和希望的署名方式。
+4.  无论走哪条路径，都请先阅读 [内容编写指引](./writing.md) 与 [格式手册](./format.md)。
+
+### 通过邮箱投稿
+
+如果你不熟悉 GitHub，或者手头还只有半成品材料，也欢迎直接通过邮件投稿。邮箱地址为 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
+
+我们接受的内容包括：
+
+- 完整页面草稿。
+- 半成品笔记、提纲、讲义、课堂整理。
+- 题型总结、参考资料整理、路线图建议。
+- 对已有页面的勘误、补充和重构想法。
+
+为了方便编辑组整理，建议你在邮件中尽量提供以下信息：
+
+1.  你希望内容放入哪个章节或主题。
+2.  这份材料目前是成稿、提纲、笔记还是讲义。
+3.  主要参考资料来自哪里。
+4.  你希望使用什么署名方式（GitHub ID、姓名、网名或匿名）。
+5.  如果你愿意继续参与修改，也可以附上联系方式或说明后续可否继续沟通。
+
+编辑组通常会按下面的方式处理邮件投稿：
+
+1.  先确认选题和现有结构是否冲突。
+2.  判断这份材料是适合直接整理成页面，还是需要先拆成提纲。
+3.  由编辑组补齐格式、链接、导航位置和 author 信息。
+4.  在必要时与你确认内容细节后，再整理为正式页面或 Pull Request。
+
 ### 在 GitHub 上编辑
 
-参与 Physics Learning Wiki 的编写 **需要** 一个 GitHub 账号（可以前往 [GitHub 的账号注册页面](https://github.com/signup) 页面注册），但 **不需要** 高超的 GitHub 技巧，即使你是一名新手，只要按照下面所述的步骤操作，也能够 **非常出色** 地完成编辑。
+如果你选择通过 GitHub 直接编辑，则 **需要** 一个 GitHub 账号（可以前往 [GitHub 的账号注册页面](https://github.com/signup) 页面注册），但 **不需要** 高超的 GitHub 技巧，即使你是一名新手，只要按照下面所述的步骤操作，也能够 **非常出色** 地完成编辑。
 
 ???+ tip "Tip"
     在你的更改被合并到 Physics Learning Wiki 的主仓库之前，你对 Physics Learning Wiki 的内容所作出的修改均不会出现在主站上，所以无需担心你的修改会破坏主站上的内容。
