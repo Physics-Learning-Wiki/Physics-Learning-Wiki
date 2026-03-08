@@ -21,6 +21,8 @@ Physics Learning Wiki 当前优先服务两类读者：
 4. 例题服务于概念，不要让大量运算把主线淹没。
 5. 如果一段内容只适合已经学过该主题的人，应明确标成“进阶补充”，不要塞进主线正文。
 
+关于 `??? note`、`??? warning`、`???+ note` 等信息框应该装什么内容，见 [信息框与补充内容规范](./admonitions.md)。
+
 ## 推荐页面骨架
 
 一篇面向学习者的正文页，通常应包含以下八个部分：
@@ -100,6 +102,10 @@ Physics Learning Wiki 当前优先服务两类读者：
 
 总规范之外，各学科还应该有自己的章节级说明，用来规定叙事重点、常见误区和例题风格。目前已经开始建设的示例是：
 
+- [力学章节编写说明](../mechanics/mechanics-writing.md)
+- [电磁学章节编写说明](../electromagnetism/electromagnetism-writing.md)
+- [光学章节编写说明](../optics/optics-writing.md)
+- [近代物理章节编写说明](../modern/modern-writing.md)
 - [热学章节编写说明](../thermodynamics/thermodynamics-writing.md)
 
-后续力学、电磁学、光学、近代物理、实验物理和计算物理模块也应逐步补齐各自的章节说明。
+后续实验物理、计算物理与工具，以及更细分的学科子模块也应逐步补齐各自的章节说明。

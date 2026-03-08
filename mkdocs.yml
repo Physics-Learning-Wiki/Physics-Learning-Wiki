@@ -21,6 +21,7 @@ nav:
     - 关于本项目: intro/about.md
     - 如何参与: intro/htc.md
     - 内容编写指引: intro/writing.md
+    - 信息框与补充内容规范: intro/admonitions.md
     - Physics Learning Wiki 不是什么: intro/what-pl-wiki-is-not.md
     - 格式手册: intro/format.md
     - 数学符号表: intro/symbol.md
@@ -57,6 +58,7 @@ nav:
     - 概率与统计: math/probability.md
     - 常用特殊函数: math/special-functions.md
   - 经典力学:
+    - 力学章节编写说明: mechanics/mechanics-writing.md
     - 力学简介: mechanics/index.md
     - 质点运动学:       
       - 基础概念: mechanics/kinematics/basic-concepts.md
@@ -98,6 +100,7 @@ nav:
     - 相变与临界现象: thermodynamics/phase-change.md
     - 统计物理基础: thermodynamics/statistical.md
   - 电磁学:
+    - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md
     - 静电场: electromagnetism/electrostatics.md
     - 恒定电流与电路: electromagnetism/dc-circuit.md
@@ -107,6 +110,7 @@ nav:
     - 麦克斯韦方程组与电磁波: electromagnetism/maxwell.md
     - 物质中的电磁场: electromagnetism/matter.md
   - 光学:
+    - 光学章节编写说明: optics/optics-writing.md
     - 光学简介: optics/index.md
     - 几何光学: optics/geometric.md
     - 波动光学:
@@ -115,6 +119,7 @@ nav:
       - 偏振: optics/polarization.md
     - 现代光学基础: optics/modern.md
   - 近代物理:
+    - 近代物理章节编写说明: modern/modern-writing.md
     - 近代物理简介: modern/index.md
     - 狭义相对论: modern/special-relativity.md
     - 广义相对论基础: modern/general-relativity.md
