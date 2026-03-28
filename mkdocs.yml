@@ -94,11 +94,21 @@ nav:
   - 热学与统计物理:
     - 热学章节编写说明: thermodynamics/thermodynamics-writing.md
     - 热学简介: thermodynamics/index.md
-    - 热力学系统与状态: thermodynamics/system-state.md
-    - 热力学定律: thermodynamics/laws.md
-    - 气体动理论: thermodynamics/kinetic-theory.md
-    - 相变与临界现象: thermodynamics/phase-change.md
-    - 统计物理基础: thermodynamics/statistical.md
+    - 第一章 热学基本概念和物质聚集态:
+      - 章节导读: thermodynamics/chapter-1/index.md
+      - 1. 温度: thermodynamics/chapter-1/temperature.md
+      - 2. 热量及其本质: thermodynamics/chapter-1/heat-and-its-nature.md
+      - 3. 物质聚集态随状态参量的转化与共存: thermodynamics/chapter-1/phase-transitions-and-coexistence.md
+      - 4. 气体: thermodynamics/chapter-1/gas.md
+      - 5. 固体: thermodynamics/chapter-1/solid.md
+      - 6. 化学键: thermodynamics/chapter-1/chemical-bond.md
+      - 7. 液体: thermodynamics/chapter-1/liquid.md
+    - 第二章 热力学系统与状态: thermodynamics/system-state.md
+    - 第三章 热力学定律: thermodynamics/laws.md
+    - 第四章 气体动理论: thermodynamics/kinetic-theory.md
+    - 第五章 相变与统计观点:
+      - 相变与临界现象: thermodynamics/phase-change.md
+      - 统计物理基础: thermodynamics/statistical.md
   - 电磁学:
     - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md

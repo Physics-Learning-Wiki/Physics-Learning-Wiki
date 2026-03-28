@@ -11,3 +11,9 @@ node_modules/
 References/
 *.pyc
 *.txt
+.codex/
+.claude/
+.github/skills/
+copilot-instructions.md
+AGENTS.md
+CLAUDE.md
