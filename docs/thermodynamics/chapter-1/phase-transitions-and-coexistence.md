@@ -30,7 +30,7 @@ author: Physics Learning Wiki, Leafuke
 
 为了得到确定的实验规律，我们把单一的纯物质密封在闭合容器里，研究它们出于热平衡态下的性质。实验装置如图所示：
 
-![研究物质闭合系统状态变化的装置](./images/phase-transitions-triple-point-apparatus.png)
+![研究物质闭合系统状态变化的装置](./images/phase-transitions-closed-system.png)
 
 我们通过实验发现，被封存物质的三个状态参量 $p$、$T$ 和 $V$ 都是可调节的，但是它们并不能完全独立地设置，比如，在一定的温度下，压强增加必然会导致体积减小。我们发现，三个状态参量中只有两个是独立的，第三个状态参量可以由前两个状态参量唯一确定。也就是说，物质的状态可以用两个状态参量来描述。于是，我们可以做出某种物质的 $p$-$T$、$p$-$V$ 或 $T$-$V$ 图来描述它的状态变化规律。
 
@@ -98,7 +98,7 @@ $$
 
 如图，当等温线的温度升高时，气液共存线逐渐缩短，说明气、液体积的差别在减小。到 $T_K$ 时，共存线缩成一点 $K$，气液之间不再有突变，转变变为连续过程。$K$ 称为临界点，$T_K$ 称为临界温度。高于临界温度后，不能再用等温压缩把气体液化。
 
-![临界点示意图](./images/phase-transitions-critical-point.png)
+![临界点示意图](./images/phase-transitions-critical-point.jpg)
 
 #### 三相点
 
@@ -115,7 +115,7 @@ $$
 
 把 p-V-T 曲面投影到 p-T 面上，三相共存线和两相共存面的投影会合于三相点的投影 $\Theta$。其中 $\Theta K$、$\Theta L$、$\Theta S$ 分别是气液、固液、气固共存边界；$\Theta K$ 还是饱和蒸气压随温度变化的曲线，$S\Theta$ 则是固态共存时的饱和蒸气压曲线。临界点 $K$ 以上，气液之间没有清晰分界，过渡是连续的。
 
-![气液固三相图](./images/phase-transitions-triple-point-diagram.jpg)
+![气液固三相图](./images/phase-transitions-triple-point-diagram.png)
 
 这张图把各相的存在区和相互转变路径放在一起，适合用来判断某个温度和压强下物质处于哪一相区。
 
