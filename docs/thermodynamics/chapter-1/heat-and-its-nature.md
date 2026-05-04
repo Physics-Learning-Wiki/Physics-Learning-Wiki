@@ -93,9 +93,9 @@ author: Physics Learning Wiki, Leafuke
 
 | 平均动能与势能的关系 | 物质的状态 |
 | --- | --- |
-| $ \frac{1}{2}m\overline{v^2} << E_B$ | 固态 |
-| $ \frac{1}{2}m\overline{v^2} \approx E_B$ | 液态 |
-| $ \frac{1}{2}m\overline{v^2} >> E_B$ | 气态 |
+| $\frac{1}{2}m\overline{v^2} << E_B$ | 固态 |
+| $\frac{1}{2}m\overline{v^2} \approx E_B$ | 液态 |
+| $\frac{1}{2}m\overline{v^2} >> E_B$ | 气态 |
 
 ### 热量、内能、功到底怎么区分
 
