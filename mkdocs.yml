@@ -103,12 +103,19 @@ nav:
       - 5. 固体: thermodynamics/chapter-1/solid.md
       - 6. 化学键: thermodynamics/chapter-1/chemical-bond.md
       - 7. 液体: thermodynamics/chapter-1/liquid.md
-    - 热力学系统与状态: thermodynamics/system-state.md
-    - 热力学定律: thermodynamics/laws.md
-    - 气体动理论: thermodynamics/kinetic-theory.md 
-    - 相变与统计观点:
-      - 相变与临界现象: thermodynamics/phase-change.md
-      - 统计物理基础: thermodynamics/statistical.md
+    - 热平衡态的统计分布律:
+      - 章节导读: thermodynamics/chapter-2/index.md
+      - 1. 麦克斯韦速度分布率: thermodynamics/chapter-2/maxwell-velocity-distribution.md
+      - 2. 玻尔兹曼密度分布: thermodynamics/chapter-2/boltzmann-density-distribution.md
+      - 3. 量子气体中粒子按能级的分布: thermodynamics/chapter-2/quantum-gas-energy-level-distribution.md
+      - 4. 费米气体: thermodynamics/chapter-2/fermi-gas.md
+      - 5. 玻色气体: thermodynamics/chapter-2/bose-gas.md
+      - 6. 宏观态的概率和熵: thermodynamics/chapter-2/macrostate-probability-and-entropy.md
+    - 热力学第一定律:
+      - 章节导读: thermodynamics/chapter-3/index.md
+      - 1. 从能量守恒到热力学第一定律: thermodynamics/chapter-3/energy-conservation-to-first-law.md
+      - 2. 气体的热容 内能和焓: thermodynamics/chapter-3/gas-heat-capacity-internal-energy-enthalpy.md
+      - 3. 热力学第一定律对理想气体的应用: thermodynamics/chapter-3/first-law-ideal-gas.md
   - 电磁学:
     - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md
@@ -193,8 +200,8 @@ theme:
 plugins:
 - search
 - toggle-sidebar:
-    theme: material
-    toggle_button: all
+  theme: material
+  toggle_button: all
 
 hooks:
   - hooks/on_env.py
@@ -236,7 +243,7 @@ extra_css:
 
 # Extensions
 markdown_extensions:
-  - document-offsets-injection:
+  # - document-offsets-injection:
       # debug: true
   - admonition
   - def_list

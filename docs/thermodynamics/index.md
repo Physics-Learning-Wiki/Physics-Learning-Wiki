@@ -22,12 +22,8 @@ author: Physics Learning Wiki
 本模块正在从“几个大页”改成“章节导读 + 子页面”的学习路线。当前建议按下面的顺序推进：
 
 1. [第一章 热学基本概念和物质聚集态](./chapter-1/index.md)：先把温度、热量、物态和典型物质状态建立起来。
-2. [第二章 热力学系统与状态](./system-state.md)：把系统、边界、平衡态、状态参量这些宏观描述工具正式建立起来。
-3. [第三章 热力学定律](./laws.md)：讨论能量守恒、过程方向和可逆性。
-4. [第四章 气体动理论](./kinetic-theory.md)：用微观运动解释压强、温度等宏观量。
-5. 第五章 相变与统计观点：
-   - [相变与临界现象](./phase-change.md)
-   - [统计物理基础](./statistical.md)
+2. [第二章 热平衡态的统计分布律](./chapter-2/index.md)：先建立平衡态下粒子分布与统计描述的基本图景。
+3. [第三章 热力学第一定律](./chapter-3/index.md)：把能量守恒、热、功、内能和焓连接起来。
 
 其中第一章已进一步拆成下面七个主题页：
 
@@ -39,12 +35,27 @@ author: Physics Learning Wiki
 6. [化学键](./chapter-1/chemical-bond.md)
 7. [液体](./chapter-1/liquid.md)
 
+第二章已进一步拆成下面六个主题页：
+
+1. [麦克斯韦速度分布率](./chapter-2/maxwell-velocity-distribution.md)
+2. [玻尔兹曼密度分布](./chapter-2/boltzmann-density-distribution.md)
+3. [量子气体中粒子按能级的分布](./chapter-2/quantum-gas-energy-level-distribution.md)
+4. [费米气体](./chapter-2/fermi-gas.md)
+5. [玻色气体](./chapter-2/bose-gas.md)
+6. [宏观态的概率和熵](./chapter-2/macrostate-probability-and-entropy.md)
+
+第三章已进一步拆成下面三个主题页：
+
+1. [从能量守恒到热力学第一定律](./chapter-3/energy-conservation-to-first-law.md)
+2. [气体的热容 内能和焓](./chapter-3/gas-heat-capacity-internal-energy-enthalpy.md)
+3. [热力学第一定律对理想气体的应用](./chapter-3/first-law-ideal-gas.md)
+
 ## 阅读这部分时要特别注意
 
 1. 先分清状态量与过程量，不要把热量、功和内能混为一谈。
 2. 先建立经验概念与宏观热学语言，再逐步引入微观解释，不要一开始就把所有现象都塞进分子图景里。
 3. 看到公式时，先问清楚研究对象是谁、过程条件是什么、符号约定是什么。
-4. 第二定律相关内容要特别重视“为什么有方向性”，不要只记结论。
+4. 统计分布和热力学定律相关内容要特别重视“为什么有方向性”与“为什么要引入概率语言”，不要只记结论。
 
 ## 并行补充的支撑内容
 

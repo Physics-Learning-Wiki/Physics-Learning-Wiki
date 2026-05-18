@@ -29,6 +29,6 @@ author: Physics Learning Wiki
 ## 学习衔接
 
 - 建议先读：[物质聚集态随状态参量的转化与共存](./phase-transitions-and-coexistence.md)、[化学键](./chemical-bond.md)
-- 读完本页后可以继续阅读：[热力学系统与状态](../system-state.md)
+- 读完本页后可以继续阅读：[热平衡态的统计分布律](../chapter-2/index.md)
 
-第一章到这里会完成从经验概念到物态图景的铺垫，下一步就该进入更正式的 [热力学系统与状态](../system-state.md)。
+第一章到这里会完成从经验概念到物态图景的铺垫，下一步就该进入 [热平衡态的统计分布律](../chapter-2/index.md)。

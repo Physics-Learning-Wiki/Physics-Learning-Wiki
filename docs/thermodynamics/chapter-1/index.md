@@ -45,4 +45,4 @@ author: Physics Learning Wiki
 - 建议先读：[经典力学](../../mechanics/index.md)、[数学工具](../../math/index.md)
 - 读完本页后可以继续阅读：[温度](./temperature.md)
 
-这一章的最后会把你送到更正式的热力学语言中，也就是 [热力学系统与状态](../system-state.md)。
+这一章的最后会把你送到下一章，也就是 [热平衡态的统计分布律](../chapter-2/index.md)。
