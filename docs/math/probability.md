@@ -4,6 +4,19 @@
   
 概率论和统计学是研究随机现象的数学分支。在物理学中，它们是统计力学和量子力学的理论基础，并且在实验数据分析中不可或缺。
 
+## 本章建议阅读顺序
+
+1. [概率论的基本概念](./probability-statistics/basic-concepts.md)
+2. [一维随机变量及其分布](./probability-statistics/one-dimensional-random-variables-and-distributions.md)
+3. [多维随机变量及其分布](./probability-statistics/multivariate-random-variables-and-distributions.md)
+4. [随机变量的数字特征](./probability-statistics/characteristic-values-of-random-variables.md)
+5. [大数定律及中心极限定理](./probability-statistics/law-of-large-numbers-and-central-limit-theorem.md)
+6. [样本及抽样分布](./probability-statistics/sample-and-sampling-distribution.md)
+7. [参数估计](./probability-statistics/parameter-estimation.md)
+8. [假设检验](./probability-statistics/hypothesis-testing.md)
+9. [方差分析及回归分析](./probability-statistics/analysis-of-variance-and-regression-analysis.md)
+10. [附表](./probability-statistics/appendix-tables.md)
+
 ## 概率论基础
 
 ### 定义

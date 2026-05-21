@@ -55,7 +55,18 @@ nav:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
     - 复数与复变函数: math/complex.md
-    - 概率与统计: math/probability.md
+    - 概率与统计:
+      - 概率与统计简介: math/probability.md
+      - 概率论的基本概念: math/probability-statistics/basic-concepts.md
+      - 一维随机变量及其分布: math/probability-statistics/one-dimensional-random-variables-and-distributions.md
+      - 多维随机变量及其分布: math/probability-statistics/multivariate-random-variables-and-distributions.md
+      - 随机变量的数字特征: math/probability-statistics/characteristic-values-of-random-variables.md
+      - 大数定律及中心极限定理: math/probability-statistics/law-of-large-numbers-and-central-limit-theorem.md
+      - 样本及抽样分布: math/probability-statistics/sample-and-sampling-distribution.md
+      - 参数估计: math/probability-statistics/parameter-estimation.md
+      - 假设检验: math/probability-statistics/hypothesis-testing.md
+      - 方差分析及回归分析: math/probability-statistics/analysis-of-variance-and-regression-analysis.md
+      - 附表: math/probability-statistics/appendix-tables.md
     - 常用特殊函数: math/special-functions.md
   - 经典力学:
     - 力学章节编写说明: mechanics/mechanics-writing.md
@@ -107,15 +118,17 @@ nav:
       - 章节导读: thermodynamics/chapter-2/index.md
       - 1. 麦克斯韦速度分布率: thermodynamics/chapter-2/maxwell-velocity-distribution.md
       - 2. 玻尔兹曼密度分布: thermodynamics/chapter-2/boltzmann-density-distribution.md
-      - 3. 量子气体中粒子按能级的分布: thermodynamics/chapter-2/quantum-gas-energy-level-distribution.md
-      - 4. 费米气体: thermodynamics/chapter-2/fermi-gas.md
-      - 5. 玻色气体: thermodynamics/chapter-2/bose-gas.md
-      - 6. 宏观态的概率和熵: thermodynamics/chapter-2/macrostate-probability-and-entropy.md
+      - 3. 能均分定理与热容量: thermodynamics/chapter-2/equipartition-theorem-and-heat-capacity.md
+      - 4. 量子气体中粒子按能级的分布: thermodynamics/chapter-2/quantum-gas-energy-level-distribution.md
+      - 5. 费米气体: thermodynamics/chapter-2/fermi-gas.md
+      - 6. 玻色气体: thermodynamics/chapter-2/bose-gas.md
+      - 7. 宏观态的概率和熵: thermodynamics/chapter-2/macrostate-probability-and-entropy.md
     - 热力学第一定律:
       - 章节导读: thermodynamics/chapter-3/index.md
       - 1. 从能量守恒到热力学第一定律: thermodynamics/chapter-3/energy-conservation-to-first-law.md
       - 2. 气体的热容 内能和焓: thermodynamics/chapter-3/gas-heat-capacity-internal-energy-enthalpy.md
       - 3. 热力学第一定律对理想气体的应用: thermodynamics/chapter-3/first-law-ideal-gas.md
+      - 4. 循环过程和卡诺循环: thermodynamics/chapter-3/cycle-process-and-carnot-cycle.md
   - 电磁学:
     - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md
@@ -198,10 +211,10 @@ theme:
     code: 'Fira Mono'
 
 plugins:
-- search
-- toggle-sidebar:
-  theme: material
-  toggle_button: all
+  - search
+  - toggle-sidebar:
+      theme: material
+      toggle_button: all
 
 hooks:
   - hooks/on_env.py

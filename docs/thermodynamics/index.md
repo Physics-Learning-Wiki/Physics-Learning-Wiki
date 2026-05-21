@@ -35,20 +35,22 @@ author: Physics Learning Wiki
 6. [化学键](./chapter-1/chemical-bond.md)
 7. [液体](./chapter-1/liquid.md)
 
-第二章已进一步拆成下面六个主题页：
+第二章已进一步拆成下面七个主题页：
 
 1. [麦克斯韦速度分布率](./chapter-2/maxwell-velocity-distribution.md)
 2. [玻尔兹曼密度分布](./chapter-2/boltzmann-density-distribution.md)
-3. [量子气体中粒子按能级的分布](./chapter-2/quantum-gas-energy-level-distribution.md)
-4. [费米气体](./chapter-2/fermi-gas.md)
-5. [玻色气体](./chapter-2/bose-gas.md)
-6. [宏观态的概率和熵](./chapter-2/macrostate-probability-and-entropy.md)
+3. [能均分定理与热容量](./chapter-2/equipartition-theorem-and-heat-capacity.md)
+4. [量子气体中粒子按能级的分布](./chapter-2/quantum-gas-energy-level-distribution.md)
+5. [费米气体](./chapter-2/fermi-gas.md)
+6. [玻色气体](./chapter-2/bose-gas.md)
+7. [宏观态的概率和熵](./chapter-2/macrostate-probability-and-entropy.md)
 
 第三章已进一步拆成下面三个主题页：
 
 1. [从能量守恒到热力学第一定律](./chapter-3/energy-conservation-to-first-law.md)
 2. [气体的热容 内能和焓](./chapter-3/gas-heat-capacity-internal-energy-enthalpy.md)
 3. [热力学第一定律对理想气体的应用](./chapter-3/first-law-ideal-gas.md)
+4. [循环过程和卡诺循环](./chapter-3/cycle-process-and-carnot-cycle.md)
 
 ## 阅读这部分时要特别注意
 

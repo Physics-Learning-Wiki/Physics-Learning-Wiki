@@ -612,7 +612,7 @@ $$
  
 
 $$
-p = \frac{\nu R T}{V} \left[ 1 + \frac{\nu}{V} B(T) + \left( \frac{\nu}{V} \right)^2 C(T) + \cdots \right], \tag{1.36}
+p = \frac{\nu R T}{V} \left[ 1 + \frac{\nu}{V} B(T) + \left( \frac{\nu}{V} \right)^2 C(T) + \cdots \right]
 $$
 
  
@@ -636,3 +636,8 @@ T_B = \frac{a}{R b}
 $$
 
 处为0。这时物态方程与理想气体的玻意耳定律偏离最小，转折温度$T_B$称为玻意耳温度。
+
+## 学习衔接
+
+- 建议先读：[物质聚集态随状态参量的转化与共存](./phase-transitions-and-coexistence.md)
+- 读完本页后可以继续阅读：[固体](./solid.md)
