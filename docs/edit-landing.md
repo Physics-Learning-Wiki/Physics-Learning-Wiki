@@ -2,14 +2,14 @@ disqus:
 
 ## 编辑与投稿入口
 
-感谢你愿意为 **Physics Learning Wiki** 做出贡献。现在我们提供两条正式入口：
+感谢你愿意为 **Physics Learning Wiki** 做出贡献。现在我们提供三条正式入口：
 
 1. **GitHub 直接编辑**：适合熟悉 GitHub、希望直接修改页面内容的贡献者。
 2. **邮箱投稿**：适合不熟悉 GitHub，或手头只有笔记、提纲、讲义、课堂整理的同学。
 
 3. **Web 投稿**：直接在本站填写表单提交内容，无需 GitHub 账号。适合快速分享笔记、提交勘误或提出建议。
 
-<a href="/submit/" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 5px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.75em; margin-left: 0.75em;">📝 Web 投稿</a>
+<a href="../submit/" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 5px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.75em;">Web 投稿</a>
 
 开始之前，建议先阅读 [如何参与](./intro/htc.md)、[内容编写指引](./intro/writing.md) 与 [格式手册](./intro/format.md)。
 
