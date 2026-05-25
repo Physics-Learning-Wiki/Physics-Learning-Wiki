@@ -1,4 +1,5 @@
 {
+  "framework": null,
   "functions": {
     "api/submit.js": {
       "memory": 256,
