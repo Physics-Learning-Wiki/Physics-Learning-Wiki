@@ -303,7 +303,7 @@ MkDocs 源码 (docs/*.md) → GitHub Actions 构建 → GitHub Pages 部署
 社区提交 → 编辑组审核 → 打标签"已收录"
   ├─ → Actions 自动生成 /community/ 页面（status: community）
   └─ → 编辑组整理→发布到正式目录→改为 status: review
-        └─ → 编辑审阅通过→改为 status: stable
+        └─ → 编辑审阅通过→改为 status: review
               └─ → 有新修改→自动回退到 status: review
 ```
 
