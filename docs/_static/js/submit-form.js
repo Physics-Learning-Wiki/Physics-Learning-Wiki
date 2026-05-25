@@ -58,15 +58,24 @@ function populateChapterSelect() {
     }
   }
 
-  select.innerHTML = '<option value="">-- 可选，帮助编辑组分类 --</option>';
+  select.innerHTML = "";
   addOptions(NAV_TREE, "");
+  const defaultOpt = document.createElement("option");
+  defaultOpt.value = "";
+  defaultOpt.textContent = "-- 可选，帮助编辑组分类 --";
+  select.insertBefore(defaultOpt, select.firstChild);
 }
 
 let easyMDE;
 
+let _mathJaxTimer = null;
+
 function initEditor() {
+  const el = document.getElementById("submit-content");
+  if (!el) return;
+
   easyMDE = new EasyMDE({
-    element: document.getElementById("submit-content"),
+    element: el,
     spellChecker: false,
     placeholder: "在这里写你的内容... 支持 Markdown 和 LaTeX 公式",
     toolbar: [
@@ -107,7 +116,8 @@ function initEditor() {
     previewRender: function (plainText, previewElement) {
       const html = this.parent.markdown(plainText);
       previewElement.innerHTML = html;
-      setTimeout(() => {
+      clearTimeout(_mathJaxTimer);
+      _mathJaxTimer = setTimeout(() => {
         if (window.MathJax && window.MathJax.typesetPromise) {
           window.MathJax.typesetPromise([previewElement]).catch(console.error);
         }
