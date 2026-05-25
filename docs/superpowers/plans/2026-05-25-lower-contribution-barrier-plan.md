@@ -1462,8 +1462,8 @@ jobs:
             if not p.exists():
               continue
             text = p.read_text(encoding="utf-8")
-            if "status: stable" in text:
-              new_text = text.replace("status: stable", "status: review")
+            if "status: review" in text:
+              new_text = text.replace("status: review", "status: review")
               p.write_text(new_text, encoding="utf-8")
               downgraded.append(filepath)
               print(f"  ⬇ {filepath}: stable → review")
