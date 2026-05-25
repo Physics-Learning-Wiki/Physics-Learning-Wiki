@@ -1,0 +1,81 @@
+/* docs/_static/css/submit-form.css */
+.submit-field {
+  margin-bottom: 1.5rem;
+}
+.submit-field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.required {
+  color: #e53e3e;
+}
+.submit-field select,
+.submit-field input[type="text"] {
+  width: 100%;
+  max-width: 560px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+.submit-hint {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #718096;
+}
+.submit-radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.submit-radio-group label {
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.submit-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+#submit-btn {
+  padding: 0.65em 1.8em;
+  background: #6190e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+#submit-status {
+  font-size: 0.9rem;
+}
+#submit-status.error {
+  color: #e53e3e;
+}
+#submit-success {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 8px;
+}
+/* EasyMDE overrides */
+.EasyMDEContainer {
+  max-width: 100%;
+}
+.EasyMDEContainer .CodeMirror {
+  height: 400px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+}
+.editor-toolbar {
+  border-radius: 6px 6px 0 0;
+}

@@ -11,7 +11,7 @@ repo_url: 'https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki'
 edit_uri: 'https://physics-learning-wiki.github.io/Physics-Learning-Wiki/edit-landing/?ref='
 
 # Copyright
-copyright: 'Copyright &copy; 2025 - 2025 Physics Learning Wiki Team'
+copyright: 'Copyright &copy; 2025 - 2026 Physics Learning Wiki Team'
 
 # Contents
 nav:
@@ -28,6 +28,7 @@ nav:
     - F.A.Q.: intro/faq.md
     - 镜像站列表: intro/mirrors.md
     - 致谢: intro/thanks.md
+    - 投稿: submit.md
   - 竞赛相关:
     - 竞赛简介: contest/index.md
     - 赛事:
@@ -249,9 +250,11 @@ extra:
 extra_javascript:
   - '_static/js/math-csr.js?math-csr'
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
+  - '_static/js/submit-form.js?v=1'
 
 extra_css:
   - '_static/css/extra.css?v=16'
+  - '_static/css/submit-form.css?v=1'
   # - '_static/css/offset-inject-debug.css'
 
 # Extensions
