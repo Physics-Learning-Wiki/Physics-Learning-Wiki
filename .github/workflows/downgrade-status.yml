@@ -1,0 +1,69 @@
+# .github/workflows/downgrade-status.yml
+name: Downgrade Content Status on Change
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**/*.md"
+
+jobs:
+  downgrade:
+    name: Downgrade stable pages to review
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Downgrade changed stable pages
+        shell: python
+        run: |
+          import subprocess, sys
+          from pathlib import Path
+
+          result = subprocess.run(
+            ["git", "diff", "--name-only", "${{ github.event.before }}", "${{ github.event.after }}"],
+            capture_output=True, text=True
+          )
+          changed_files = [
+            f for f in result.stdout.strip().split("\n")
+            if f.startswith("docs/") and f.endswith(".md")
+          ]
+
+          if not changed_files:
+            print("No markdown files changed")
+            sys.exit(0)
+
+          downgraded = []
+          for filepath in changed_files:
+            p = Path(filepath)
+            if not p.exists():
+              continue
+            text = p.read_text(encoding="utf-8")
+            if "status: stable" in text:
+              new_text = text.replace("status: stable", "status: review")
+              p.write_text(new_text, encoding="utf-8")
+              downgraded.append(filepath)
+              print(f"  [DOWNGRADE] {filepath}: stable -> review")
+
+          if downgraded:
+            print(f"\nDowngraded {len(downgraded)} page(s)")
+          else:
+            print("No stable pages were changed")
+      - name: Commit downgrades
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          if git diff --staged --quiet; then
+            echo "No downgrades to commit"
+          else
+            git commit -m "chore: auto-downgrade stable pages to review [skip ci]"
+            git push
+          fi
