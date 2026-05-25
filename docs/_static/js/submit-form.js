@@ -170,3 +170,119 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 document.addEventListener("DOMContentLoaded", setupAttributionToggle);
+
+// 将此 URL 替换为 Task 1 部署后获得的实际 Vercel 地址
+const SUBMIT_ENDPOINT = "https://physics-learning-wiki.vercel.app/api/submit";
+
+let turnstileToken = null;
+
+function initTurnstile() {
+  if (typeof turnstile === "undefined") {
+    console.warn("Turnstile not loaded");
+    return;
+  }
+  turnstile.render("#turnstile-widget", {
+    sitekey: "YOUR_TURNSTILE_SITE_KEY",
+    callback: function (token) {
+      turnstileToken = token;
+    },
+    "expired-callback": function () {
+      turnstileToken = null;
+    },
+  });
+}
+
+// Turnstile 加载完成后自动初始化
+window.onloadTurnstileCallback = initTurnstile;
+
+async function handleSubmit(event) {
+  event.preventDefault();
+
+  const btn = document.getElementById("submit-btn");
+  const status = document.getElementById("submit-status");
+  const typeSelect = document.getElementById("submit-type");
+  const titleInput = document.getElementById("submit-title");
+  const chapterSelect = document.getElementById("submit-chapter");
+  const attributionInput = document.getElementById("submit-attribution");
+  const contactInput = document.getElementById("submit-contact");
+  const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
+
+  status.textContent = "";
+  status.className = "";
+
+  if (!easyMDE) {
+    status.textContent = "编辑器尚未初始化，请刷新页面后重试";
+    status.className = "error";
+    return;
+  }
+
+  const content = easyMDE.value().trim();
+  const title = titleInput.value.trim();
+  const type = typeSelect.value;
+
+  if (!title || !content || !type) {
+    status.textContent = "请填写标题、正文和投稿类型";
+    status.className = "error";
+    return;
+  }
+
+  if (!turnstileToken) {
+    status.textContent = "请完成人机验证";
+    status.className = "error";
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = "提交中...";
+
+  const typeLabels = {
+    "full-page": "完整页面",
+    "notes": "笔记/提纲",
+    "errata": "勘误纠错",
+    "suggestion": "建议/想法",
+  };
+
+  try {
+    const resp = await fetch(SUBMIT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        title,
+        content,
+        type,
+        typeLabel: typeLabels[type] || type,
+        chapter: chapterSelect.value,
+        attribution: anonRadio && anonRadio.checked
+          ? "匿名"
+          : (attributionInput.value.trim() || "匿名"),
+        contact: contactInput.value.trim(),
+        turnstileToken,
+      }),
+    });
+
+    const data = await resp.json();
+
+    if (!resp.ok) {
+      throw new Error(data.error || "提交失败");
+    }
+
+    // 显示成功页面
+    document.getElementById("submission-form").style.display = "none";
+    document.getElementById("submit-success").style.display = "block";
+    const link = document.getElementById("submit-issue-link");
+    link.href = data.issueUrl;
+    link.textContent = data.issueUrl;
+  } catch (err) {
+    status.textContent = err.message || "提交失败，请稍后重试。也可直接发送邮件至 submit@folderrewind.top";
+    status.className = "error";
+    btn.disabled = false;
+    btn.textContent = "提交投稿";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("submission-form");
+  if (form) {
+    form.addEventListener("submit", handleSubmit);
+  }
+});
