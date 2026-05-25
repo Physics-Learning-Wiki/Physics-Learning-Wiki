@@ -23,25 +23,21 @@ def check_file(filepath: Path) -> list[str]:
     for lineno, line in enumerate(lines, start=1):
         dollar_count += line.count("$$")
     if dollar_count % 2 != 0:
-        # 找到第一个不配对的位置
-        count = 0
-        for lineno, line in enumerate(lines, start=1):
-            for i, ch in enumerate(line):
-                if ch == "$" and i + 1 < len(line) and line[i + 1] == "$":
-                    count += 1
-                    if count > dollar_count // 2 * 2:
-                        issues.append(
-                            f"{filepath}:{lineno}: $$ 不配对 (共 {dollar_count} 个)"
-                        )
-                        break
+        issues.append(
+            f"{filepath}: $$ 不配对 (共 {dollar_count} 个)"
+        )
 
-    # 检查行间公式中 \frac 应为 \dfrac
+    # 检查行间公式中 \frac 应为 \dfrac（支持跨行 $$ 块）
+    in_display_math = False
     for lineno, line in enumerate(lines, start=1):
-        if line.strip().startswith("$$") or "$$" in line:
-            if "\\frac{" in line:
-                issues.append(
-                    f"{filepath}:{lineno}: 行间公式中建议用 \\dfrac 替代 \\frac"
-                )
+        stripped = line.strip()
+        if stripped.startswith("$$"):
+            in_display_math = not in_display_math
+            continue
+        if in_display_math and "\\frac{" in line:
+            issues.append(
+                f"{filepath}:{lineno}: 行间公式中建议用 \\dfrac 替代 \\frac"
+            )
 
     # 检查中英文混排空格
     # 中文后接英文/数字
