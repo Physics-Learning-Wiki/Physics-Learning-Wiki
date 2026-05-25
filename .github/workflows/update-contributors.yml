@@ -1,0 +1,36 @@
+# .github/workflows/update-contributors.yml
+name: Update Contributors Wall
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update contributor wall
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Generate contributors page
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/generate-contributors.py
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/intro/contributors.md
+          if git diff --staged --quiet; then
+            echo "No changes to contributors page"
+          else
+            git commit -m "chore: update contributors wall [skip ci]"
+            git push
+          fi
