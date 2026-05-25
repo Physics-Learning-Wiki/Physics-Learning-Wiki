@@ -7,7 +7,7 @@
   font-weight: 600;
   margin-bottom: 0.35rem;
 }
-.required {
+.submit-required {
   color: #e53e3e;
 }
 .submit-field select,
@@ -61,6 +61,7 @@
   color: #e53e3e;
 }
 #submit-success {
+  display: none;
   margin-top: 2rem;
   padding: 1.5rem;
   background: #f0fff4;
@@ -78,4 +79,20 @@
 }
 .editor-toolbar {
   border-radius: 6px 6px 0 0;
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] .submit-field select,
+[data-md-color-scheme="slate"] .submit-field input[type="text"] {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .submit-hint {
+  color: #a0aec0;
+}
+[data-md-color-scheme="slate"] #submit-success {
+  background: #1a3a2a;
+  border-color: #2f5e3f;
+  color: #c6f6d5;
 }

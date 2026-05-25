@@ -7,7 +7,7 @@
 
 <form id="submission-form">
   <div class="submit-field">
-    <label for="submit-type">投稿类型 <span class="required">*</span></label>
+    <label for="submit-type">投稿类型 <span class="submit-required">*</span></label>
     <select id="submit-type" name="type" required>
       <option value="">-- 请选择 --</option>
       <option value="full-page">完整页面 — 结构完整、可直接发布的文章</option>
@@ -25,13 +25,13 @@
   </div>
 
   <div class="submit-field">
-    <label for="submit-title">标题 <span class="required">*</span></label>
+    <label for="submit-title">标题 <span class="submit-required">*</span></label>
     <input type="text" id="submit-title" name="title" required
            placeholder="给你的投稿起个名字" maxlength="120">
   </div>
 
   <div class="submit-field">
-    <label for="submit-content">正文 <span class="required">*</span></label>
+    <label for="submit-content">正文 <span class="submit-required">*</span></label>
     <textarea id="submit-content" name="content" required></textarea>
     <div class="submit-hint" id="submit-hint"></div>
   </div>
@@ -62,7 +62,7 @@
   </div>
 </form>
 
-<div id="submit-success" style="display:none;">
+<div id="submit-success">
   <h2>投稿已提交！</h2>
   <p>编辑组将在 3-5 天内处理。如需跟进，请保存此链接：</p>
   <p><a id="submit-issue-link" href="#" target="_blank"></a></p>
