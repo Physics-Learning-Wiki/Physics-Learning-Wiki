@@ -174,6 +174,13 @@ document.addEventListener("DOMContentLoaded", setupAttributionToggle);
 // 将此 URL 替换为 Task 1 部署后获得的实际 Vercel 地址
 const SUBMIT_ENDPOINT = "https://physics-learning-wiki.vercel.app/api/submit";
 
+const TYPE_LABELS = {
+  "full-page": "完整页面",
+  "notes": "笔记/提纲",
+  "errata": "勘误纠错",
+  "suggestion": "建议/想法",
+};
+
 let turnstileToken = null;
 
 function initTurnstile() {
@@ -188,6 +195,14 @@ function initTurnstile() {
     },
     "expired-callback": function () {
       turnstileToken = null;
+    },
+    "error-callback": function () {
+      turnstileToken = null;
+      const status = document.getElementById("submit-status");
+      if (status) {
+        status.textContent = "人机验证加载失败，请刷新页面重试";
+        status.className = "error";
+      }
     },
   });
 }
@@ -235,13 +250,6 @@ async function handleSubmit(event) {
   btn.disabled = true;
   btn.textContent = "提交中...";
 
-  const typeLabels = {
-    "full-page": "完整页面",
-    "notes": "笔记/提纲",
-    "errata": "勘误纠错",
-    "suggestion": "建议/想法",
-  };
-
   try {
     const resp = await fetch(SUBMIT_ENDPOINT, {
       method: "POST",
@@ -250,7 +258,7 @@ async function handleSubmit(event) {
         title,
         content,
         type,
-        typeLabel: typeLabels[type] || type,
+        typeLabel: TYPE_LABELS[type] || type,
         chapter: chapterSelect.value,
         attribution: anonRadio && anonRadio.checked
           ? "匿名"
@@ -260,23 +268,34 @@ async function handleSubmit(event) {
       }),
     });
 
-    const data = await resp.json();
-
     if (!resp.ok) {
-      throw new Error(data.error || "提交失败");
+      let errorMsg = "提交失败";
+      try {
+        const errorData = await resp.json();
+        errorMsg = errorData.error || errorMsg;
+      } catch {}
+      throw new Error(errorMsg);
     }
+
+    const data = await resp.json();
 
     // 显示成功页面
     document.getElementById("submission-form").style.display = "none";
     document.getElementById("submit-success").style.display = "block";
     const link = document.getElementById("submit-issue-link");
-    link.href = data.issueUrl;
-    link.textContent = data.issueUrl;
+    if (link) {
+      link.href = data.issueUrl;
+      link.textContent = data.issueUrl;
+    }
   } catch (err) {
     status.textContent = err.message || "提交失败，请稍后重试。也可直接发送邮件至 submit@folderrewind.top";
     status.className = "error";
     btn.disabled = false;
     btn.textContent = "提交投稿";
+    if (typeof turnstile !== "undefined") {
+      turnstile.reset();
+    }
+    turnstileToken = null;
   }
 }
 
