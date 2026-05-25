@@ -8,3 +8,6 @@ chmod +x "$DIRNAME"/install-theme.sh
 "$DIRNAME"/install-theme.sh
 
 git rev-parse --short HEAD | xargs -I % sed -i "s/githash: ''/githash: '%'/g" mkdocs.yml
+
+echo "Generating nav tree..."
+uv run python scripts/generate-nav.py

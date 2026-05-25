@@ -1,0 +1,499 @@
+// 由 scripts/generate-nav.py 自动生成，勿手动编辑。
+// Last generated: auto
+const NAV_TREE = [
+  {
+    "label": "提交你的物理知识"
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "apho"
+      },
+      {
+        "label": "common-mistakes"
+      },
+      {
+        "label": "cpho"
+      },
+      {
+        "label": "cupt"
+      },
+      {
+        "label": "ipho"
+      },
+      {
+        "label": "resources"
+      },
+      {
+        "label": "roadmap"
+      },
+      {
+        "label": "strategy"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "ac-circuit"
+      },
+      {
+        "label": "dc-circuit"
+      },
+      {
+        "label": "electromagnetism-writing"
+      },
+      {
+        "label": "electrostatics"
+      },
+      {
+        "label": "induction"
+      },
+      {
+        "label": "magnetostatics"
+      },
+      {
+        "label": "matter"
+      },
+      {
+        "label": "maxwell"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "basic-experiments"
+      },
+      {
+        "label": "error-analysis"
+      },
+      {
+        "label": "instruments"
+      }
+    ]
+  },
+  {
+    "label": "glossary",
+    "children": [
+      {
+        "label": "glossary"
+      }
+    ]
+  },
+  {
+    "label": "intro",
+    "children": [
+      {
+        "label": "about"
+      },
+      {
+        "label": "admonitions"
+      },
+      {
+        "label": "faq"
+      },
+      {
+        "label": "format"
+      },
+      {
+        "label": "htc"
+      },
+      {
+        "label": "mirrors"
+      },
+      {
+        "label": "roadmap"
+      },
+      {
+        "label": "symbol"
+      },
+      {
+        "label": "thanks"
+      },
+      {
+        "label": "what-pl-wiki-is-not"
+      },
+      {
+        "label": "writing"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "complex"
+      },
+      {
+        "label": "probability"
+      },
+      {
+        "label": "special-functions"
+      },
+      {
+        "label": "calculus",
+        "children": [
+          {
+            "label": "derivative"
+          },
+          {
+            "label": "integral"
+          },
+          {
+            "label": "limit"
+          },
+          {
+            "label": "ode"
+          },
+          {
+            "label": "variational"
+          }
+        ]
+      },
+      {
+        "label": "linear-algebra",
+        "children": [
+          {
+            "label": "matrix"
+          },
+          {
+            "label": "space"
+          }
+        ]
+      },
+      {
+        "label": "probability-statistics",
+        "children": [
+          {
+            "label": "方差分析及回归分析"
+          },
+          {
+            "label": "附表"
+          },
+          {
+            "label": "概率论的基本概念"
+          },
+          {
+            "label": "随机变量的数字特征"
+          },
+          {
+            "label": "假设检验"
+          },
+          {
+            "label": "大数定律及中心极限定理"
+          },
+          {
+            "label": "多维随机变量及其分布"
+          },
+          {
+            "label": "一维随机变量及其分布"
+          },
+          {
+            "label": "参数估计"
+          },
+          {
+            "label": "样本及抽样分布"
+          }
+        ]
+      },
+      {
+        "label": "vector-analysis",
+        "children": [
+          {
+            "label": "curvilinear-coordinates"
+          },
+          {
+            "label": "operators"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "fluid"
+      },
+      {
+        "label": "gravitation"
+      },
+      {
+        "label": "mechanics-writing"
+      },
+      {
+        "label": "analytical",
+        "children": [
+          {
+            "label": "hamiltonian"
+          },
+          {
+            "label": "lagrangian"
+          }
+        ]
+      },
+      {
+        "label": "dynamics",
+        "children": [
+          {
+            "label": "力的概念 (Force Concepts)"
+          },
+          {
+            "label": "惯性力 (Inertial Forces)"
+          },
+          {
+            "label": "momentum-energy"
+          },
+          {
+            "label": "newton-laws"
+          },
+          {
+            "label": "system-of-particles"
+          }
+        ]
+      },
+      {
+        "label": "kinematics",
+        "children": [
+          {
+            "label": "基础概念（Basic Concepts）"
+          },
+          {
+            "label": "直线运动（Linear Motion）"
+          },
+          {
+            "label": "抛体运动（Projectile Motion）"
+          },
+          {
+            "label": "reference-frames"
+          },
+          {
+            "label": "匀变速直线运动（Uniformly Accelerated Motion）"
+          }
+        ]
+      },
+      {
+        "label": "oscillation-wave",
+        "children": [
+          {
+            "label": "doppler-effect"
+          },
+          {
+            "label": "harmonic-wave"
+          },
+          {
+            "label": "linear-oscillation"
+          },
+          {
+            "label": "nonlinear"
+          },
+          {
+            "label": "oscillation-wave"
+          },
+          {
+            "label": "superposition"
+          },
+          {
+            "label": "wave-in-continuous-medium"
+          }
+        ]
+      },
+      {
+        "label": "rigid-body",
+        "children": [
+          {
+            "label": "复摆 (Compound Pendulum)"
+          },
+          {
+            "label": "转动惯量 (Moment of Inertia)"
+          },
+          {
+            "label": "rigid-body"
+          },
+          {
+            "label": "torque-angular-momentum"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "atomic"
+      },
+      {
+        "label": "general-relativity"
+      },
+      {
+        "label": "modern-writing"
+      },
+      {
+        "label": "nuclear-particle"
+      },
+      {
+        "label": "solid-state"
+      },
+      {
+        "label": "special-relativity"
+      },
+      {
+        "label": "quantum",
+        "children": [
+          {
+            "label": "operators"
+          },
+          {
+            "label": "schrodinger"
+          },
+          {
+            "label": "wave-particle"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "diffraction"
+      },
+      {
+        "label": "geometric"
+      },
+      {
+        "label": "interference"
+      },
+      {
+        "label": "modern"
+      },
+      {
+        "label": "optics-writing"
+      },
+      {
+        "label": "polarization"
+      }
+    ]
+  },
+  {
+    "label": "superpowers",
+    "children": [
+      {
+        "label": "plans",
+        "children": [
+          {
+            "label": "降低贡献门槛 — 实现计划"
+          }
+        ]
+      },
+      {
+        "label": "specs",
+        "children": [
+          {
+            "label": "降低贡献门槛与调动贡献积极性 — 设计文档"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "热学与统计物理简介",
+    "children": [
+      {
+        "label": "thermodynamics-writing"
+      },
+      {
+        "label": "第一章 热学基本概念和物质聚集态",
+        "children": [
+          {
+            "label": "化学键"
+          },
+          {
+            "label": "气体"
+          },
+          {
+            "label": "热量及其本质"
+          },
+          {
+            "label": "液体"
+          },
+          {
+            "label": "物质聚集态随状态参量的转化与共存"
+          },
+          {
+            "label": "固体"
+          },
+          {
+            "label": "温度"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "boltzmann-density-distribution"
+          },
+          {
+            "label": "bose-gas"
+          },
+          {
+            "label": "能均分定理与热容量"
+          },
+          {
+            "label": "fermi-gas"
+          },
+          {
+            "label": "macrostate-probability-and-entropy"
+          },
+          {
+            "label": "maxwell-velocity-distribution"
+          },
+          {
+            "label": "quantum-gas-energy-level-distribution"
+          }
+        ]
+      },
+      {
+        "label": "第三章 热力学第一定律",
+        "children": [
+          {
+            "label": "循环过程和卡诺循环"
+          },
+          {
+            "label": "从能量守恒到热力学第一定律"
+          },
+          {
+            "label": "热力学第一定律对理想气体的应用"
+          },
+          {
+            "label": "气体的热容、内能和焓"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "latex"
+      },
+      {
+        "label": "plotting"
+      },
+      {
+        "label": "python-scicomp"
+      },
+      {
+        "label": "simulation"
+      }
+    ]
+  }
+];
