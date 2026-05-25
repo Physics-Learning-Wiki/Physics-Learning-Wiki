@@ -8,6 +8,10 @@
 
 ## 参与协作
 
+???+ info "无需 GitHub 账号的投稿方式"
+    如果你不熟悉 GitHub，现在可以直接在网站上提交内容。
+    访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进。
+
 ???+ warning "Warning"
     在开始编写一段内容之前，请查阅 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)，确认没有别人在做相同的工作之后，开个 [新 issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/new) 记录待编写的内容。
 
@@ -38,6 +42,7 @@
 2.  不熟悉 GitHub 也完全可以参与，可以把成稿、提纲、讲义或课堂整理发送到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
 3.  半成品也欢迎投稿，但请尽量附上来源、目标章节和希望的署名方式。
 4.  无论走哪条路径，都请先阅读 [内容编写指引](./writing.md) 与 [格式手册](./format.md)。
+5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit/) 填写表单即可提交内容、笔记或勘误。
 
 ### 通过邮箱投稿
 
