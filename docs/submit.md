@@ -32,7 +32,7 @@
 
   <div class="submit-field">
     <label for="submit-content">正文 <span class="submit-required">*</span></label>
-    <textarea id="submit-content" name="content" required></textarea>
+    <textarea id="submit-content" name="content"></textarea>
     <div class="submit-hint" id="submit-hint"></div>
   </div>
 
