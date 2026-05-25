@@ -11,3 +11,9 @@ git rev-parse --short HEAD | xargs -I % sed -i "s/githash: ''/githash: '%'/g" mk
 
 echo "Generating nav tree..."
 uv run python scripts/generate-nav.py
+
+# 自动更新 author 字段（仅 CI 环境，本地跳过）
+if [ -n "$CI" ]; then
+  echo "Updating author fields from git history..."
+  uv run python scripts/update-authors.py || echo "Author update skipped (non-critical)"
+fi
