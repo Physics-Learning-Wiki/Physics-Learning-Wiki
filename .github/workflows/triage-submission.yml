@@ -1,0 +1,69 @@
+# .github/workflows/triage-submission.yml
+name: Triage Submission
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  triage:
+    name: Triage new submission
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.labels.*.name, '投稿-待审核')
+    steps:
+      - name: Check content quality
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || "";
+            const contentMatch = body.match(/---\s*\n+(.+)$/s);
+            const content = contentMatch ? contentMatch[1].trim() : body;
+            const wordCount = content.replace(/\s/g, "").length;
+
+            const comments = [];
+
+            if (wordCount < 20) {
+              comments.push(
+                "[WARNING] 投稿内容过短（不足 20 字），请补充更多细节后重新提交。\n\n" +
+                "如果这是误操作，请在评论区说明，编辑组会关闭此 Issue。"
+              );
+            }
+
+            if (!context.payload.issue.title || context.payload.issue.title.trim().length < 2) {
+              comments.push("[WARNING] 标题过短，请补充有意义的标题。");
+            }
+
+            // 基础垃圾检测：大量重复字符或纯 URL
+            if (/^(.)\1{20,}$/s.test(content) || /^https?:\/\/\S+$/s.test(content)) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ["spam"],
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                state: "closed",
+              });
+              comments.push("此投稿被系统判定为无效内容，已自动关闭。如有误判请联系编辑组。");
+            }
+
+            if (comments.length > 0) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: comments.join("\n\n---\n\n"),
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body:
+                  "[OK] 投稿已收到！编辑组将在 3-5 天内审核。\n\n" +
+                  "审核期间如有问题，编辑组会在此 Issue 中与你沟通。",
+              });
+            }
