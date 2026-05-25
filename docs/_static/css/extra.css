@@ -104,3 +104,46 @@ mjx-container > img {
 div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   overflow: visible;
 }
+
+/* Content status banners */
+.md-status {
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.md-status__icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+.md-status--community {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+}
+.md-status--review {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+}
+.md-status__meta {
+  color: #9ca3af;
+  font-size: 0.8rem;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] .md-status--community {
+  background: #3b2e0a;
+  border-color: #6b5104;
+  color: #fde68a;
+}
+[data-md-color-scheme="slate"] .md-status--review {
+  background: #0a1e3b;
+  border-color: #063d6b;
+  color: #bfdbfe;
+}
