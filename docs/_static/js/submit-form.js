@@ -171,8 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 document.addEventListener("DOMContentLoaded", setupAttributionToggle);
 
-// 将此 URL 替换为 Task 1 部署后获得的实际 Vercel 地址
-const SUBMIT_ENDPOINT = "https://physics-learning-wiki-a4c895roj-leafukes-projects.vercel.app/api/submit";
+const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
 
 const TYPE_LABELS = {
   "full-page": "完整页面",

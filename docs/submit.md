@@ -5,7 +5,7 @@
 
 ---
 
-<form id="submission-form">
+<form id="submission-form" method="post" onsubmit="return false">
   <div class="submit-field">
     <label for="submit-type">投稿类型 <span class="submit-required">*</span></label>
     <select id="submit-type" name="type" required>

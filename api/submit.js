@@ -1,3 +1,6 @@
+// ⚠️ DEPRECATED: 此文件已被 Cloudflare Worker (workers/submit.js) 替代。
+// *.vercel.app 域名在中国大陆被 GFW 封锁，此函数不可用。
+// 保留作为备份参考，不删除。
 import { Octokit } from "octokit";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
