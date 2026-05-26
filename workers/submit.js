@@ -79,11 +79,9 @@ export default {
       }
 
       // Validate Turnstile
-      const clientIp = request.headers.get("CF-Connecting-IP");
       const formBody = new URLSearchParams({
         secret: env.TURNSTILE_SECRET_KEY,
         response: turnstileToken,
-        ...(clientIp && { remoteip: clientIp }),
       });
       const turnstileResult = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -95,6 +93,7 @@ export default {
       );
       const turnstileData = await turnstileResult.json();
       if (!turnstileData.success) {
+        console.error("Turnstile verification failed:", JSON.stringify(turnstileData));
         return jsonResponse({ error: "人机验证失败，请重试" }, 400);
       }
 
