@@ -27,15 +27,16 @@ function buildIssueBody(data) {
   return lines.join("\n");
 }
 
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    headers: { "Content-Type": "application/json", ...CORS_HEADERS },
   });
 }
 
@@ -43,14 +44,7 @@ export default {
   async fetch(request, env) {
     // CORS preflight
     if (request.method === "OPTIONS") {
-      return new Response(null, {
-        status: 204,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type",
-        },
-      });
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
 
     if (request.method !== "POST") {
@@ -80,16 +74,23 @@ export default {
         return jsonResponse({ error: "无效的投稿类型" }, 400);
       }
 
+      if (!turnstileToken) {
+        return jsonResponse({ error: "缺少人机验证令牌" }, 400);
+      }
+
       // Validate Turnstile
+      const clientIp = request.headers.get("CF-Connecting-IP");
+      const formBody = new URLSearchParams({
+        secret: env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+        ...(clientIp && { remoteip: clientIp }),
+      });
       const turnstileResult = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            secret: env.TURNSTILE_SECRET_KEY,
-            response: turnstileToken,
-          }),
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: formBody,
         }
       );
       const turnstileData = await turnstileResult.json();
@@ -105,7 +106,7 @@ export default {
         {
           method: "POST",
           headers: {
-            Authorization: `token ${env.GITHUB_TOKEN}`,
+            Authorization: `Bearer ${env.GITHUB_TOKEN}`,
             Accept: "application/vnd.github.v3+json",
             "User-Agent": "Physics-Learning-Wiki-Submit-Worker",
           },
