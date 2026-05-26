@@ -1,0 +1,6 @@
+name = "physics-learning-wiki-submit"
+main = "workers/submit.js"
+compatibility_date = "2024-01-01"
+
+# TURNSTILE_SECRET_KEY 和 GITHUB_TOKEN 通过 `wrangler secret put` 设置
+# 不要将密钥写入此文件
