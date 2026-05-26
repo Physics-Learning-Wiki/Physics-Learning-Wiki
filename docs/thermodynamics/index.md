@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 # 热学与统计物理简介
 

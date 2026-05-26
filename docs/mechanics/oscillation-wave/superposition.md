@@ -1,4 +1,6 @@
+---
 author: Leafuke
+---
 
 ## 振动的合成与分解（Superposition of Oscillations）
 

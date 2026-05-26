@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke
+---
 
 # 概率论的基本概念
 

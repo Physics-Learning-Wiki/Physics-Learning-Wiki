@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 信息框与补充内容规范
 

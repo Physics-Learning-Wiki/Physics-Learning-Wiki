@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke, ChatGPT
+---
 
 # 从能量守恒到热力学第一定律
 

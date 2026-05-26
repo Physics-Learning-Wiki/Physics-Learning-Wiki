@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## Python 科学计算简介
 

@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 热学章节编写说明
 

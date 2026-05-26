@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke
+---
 
 # 热量及其本质
 

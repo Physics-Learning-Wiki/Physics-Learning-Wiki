@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 竞赛学习路线
 

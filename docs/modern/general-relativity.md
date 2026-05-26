@@ -1,4 +1,6 @@
+---
 author: 匿名同学
+---
 
 ## 广义相对论基础（General Relativity Basics）
 

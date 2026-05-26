@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 计算物理与工具简介
 

@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## LaTeX 物理写作简介
 

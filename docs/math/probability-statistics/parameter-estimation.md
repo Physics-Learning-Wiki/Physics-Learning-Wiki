@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke
+---
 
 # 参数估计
 

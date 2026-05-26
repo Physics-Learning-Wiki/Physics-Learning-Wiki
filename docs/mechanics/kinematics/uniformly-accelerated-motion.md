@@ -1,4 +1,6 @@
+---
 author: Leafuke
+---
 
 # 匀变速直线运动（Uniformly Accelerated Motion）
 

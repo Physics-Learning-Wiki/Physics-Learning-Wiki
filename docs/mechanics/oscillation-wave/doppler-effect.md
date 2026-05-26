@@ -1,4 +1,6 @@
+---
 author: 匿名同学
+---
 
 ## 多普勒效应（Doppler Effect）
 

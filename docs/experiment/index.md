@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 实验物理简介
 

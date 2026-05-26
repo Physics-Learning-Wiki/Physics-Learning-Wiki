@@ -1,4 +1,6 @@
+---
 author: Physics-Learning-Wiki
+---
 
 ## 牛顿运动定律 (Newton's Laws of Motion)
 

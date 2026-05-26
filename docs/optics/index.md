@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 光学简介
 

@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke
+---
 
 # 热力学第一定律对理想气体的应用
 

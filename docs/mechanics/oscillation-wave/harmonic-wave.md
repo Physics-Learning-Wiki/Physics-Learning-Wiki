@@ -1,4 +1,6 @@
+---
 author: Leafuke
+---
 
 ## 简谐波（Harmonic Waves）
 

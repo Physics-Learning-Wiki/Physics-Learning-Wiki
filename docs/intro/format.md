@@ -1,4 +1,6 @@
+---
 author: OI-wiki, Physics-Learning-Wiki
+---
 
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面。正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
 

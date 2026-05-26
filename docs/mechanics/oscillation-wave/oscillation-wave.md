@@ -1,4 +1,6 @@
+---
 author: ChatGPT
+---
 
 ## 线性振动（Linear Oscillations）
 

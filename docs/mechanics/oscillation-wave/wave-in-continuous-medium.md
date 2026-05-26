@@ -1,4 +1,6 @@
+---
 author: 匿名同学
+---
 
 ## 连续介质中的波（Waves in Continuous Media）
 

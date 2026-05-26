@@ -1,4 +1,6 @@
+---
 author: Physics-Learning-Wiki, Leafuke
+---
 
 ???+ warning "注意"
     这部分内容正在重构中。欢迎有兴趣的读者参与重构，或者先阅读 [力学章节编写说明](./mechanics-writing.md) 来了解我们对力学内容的写作要求和目标。

@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 # 第一章 热学基本概念和物质聚集态
 

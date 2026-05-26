@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 内容编写指引
 

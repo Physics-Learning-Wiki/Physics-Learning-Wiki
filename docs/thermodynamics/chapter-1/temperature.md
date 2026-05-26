@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ??? note "参考"
     本页内容大量参考了《新概念物理教程 热学》第三版的内容。

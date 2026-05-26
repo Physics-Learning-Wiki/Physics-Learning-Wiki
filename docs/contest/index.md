@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 竞赛相关简介
 

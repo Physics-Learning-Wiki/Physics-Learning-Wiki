@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 绘图工具简介
 

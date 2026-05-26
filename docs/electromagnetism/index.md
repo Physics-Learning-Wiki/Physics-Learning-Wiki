@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 ## 电磁学简介
 

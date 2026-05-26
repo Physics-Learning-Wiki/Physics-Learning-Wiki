@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki, Leafuke, 匿名同学
+---
 
 # 能均分定理与热容量
 

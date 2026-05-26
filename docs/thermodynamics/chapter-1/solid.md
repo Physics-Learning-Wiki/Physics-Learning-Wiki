@@ -1,4 +1,6 @@
+---
 author: Physics Learning Wiki
+---
 
 # 固体
 
