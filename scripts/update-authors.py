@@ -69,6 +69,14 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
         print(f"  [SKIP] {filepath}: 手动维护，跳过")
         return False
 
+    # 不覆盖团队默认署名（这些文件的 author 由手动维护）
+    DEFAULT_AUTHORS = {"Physics Learning Wiki", "Physics-Learning-Wiki"}
+    if has_author_field and author_line_idx >= 0:
+        existing_author = lines[author_line_idx].split(":", 1)[1].strip()
+        if existing_author in DEFAULT_AUTHORS:
+            print(f"  [SKIP] {filepath}: 团队默认署名，跳过")
+            return False
+
     if not authors:
         return False
 
