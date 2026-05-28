@@ -68,13 +68,13 @@ function populateChapterSelect() {
 
 let easyMDE = null;
 
-let _mathJaxTimer = null;
+let attributionAbort = null;
 
 function debounce(fn, delay) {
   let timer = null;
-  return function () {
+  return function (...args) {
     clearTimeout(timer);
-    timer = setTimeout(fn, delay);
+    timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
 
@@ -154,6 +154,10 @@ function updateTypeHint() {
 }
 
 function setupAttributionToggle() {
+  if (attributionAbort) attributionAbort.abort();
+  attributionAbort = new AbortController();
+  const signal = attributionAbort.signal;
+
   const namedRadio = document.querySelector('input[name="attribution-type"][value="named"]');
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
   const attributionInput = document.getElementById("submit-attribution");
@@ -163,12 +167,12 @@ function setupAttributionToggle() {
   namedRadio.addEventListener("change", () => {
     attributionInput.disabled = false;
     attributionInput.placeholder = "你希望在页面上显示的署名";
-  });
+  }, { signal });
   anonRadio.addEventListener("change", () => {
     attributionInput.disabled = true;
     attributionInput.value = "";
     attributionInput.placeholder = "将显示为「匿名同学」";
-  });
+  }, { signal });
 }
 
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
