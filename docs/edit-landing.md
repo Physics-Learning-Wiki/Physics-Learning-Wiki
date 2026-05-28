@@ -9,7 +9,7 @@ disqus:
 
 3. **Web 投稿**：直接在本站填写表单提交内容，无需 GitHub 账号。适合快速分享笔记、提交勘误或提出建议。
 
-<a href="../submit/" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 5px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.75em;">Web 投稿</a>
+<a href="../submit/" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.4; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 6px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.9em;">Web 投稿</a>
 
 开始之前，建议先阅读 [如何参与](./intro/htc.md)、[内容编写指引](./intro/writing.md) 与 [格式手册](./intro/format.md)。
 
@@ -25,9 +25,9 @@ disqus:
 - 通过 GitHub 编辑时，请按现有规范维护文件头的 author 字段。
 - 通过邮箱投稿时，可以在邮件中注明希望使用的署名方式（GitHub ID、姓名、网名或匿名），编辑组会在整理时补入相应信息。
 
-<a id="btn-startedit" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #6190e8; border-radius: 5px; background-color: #6190e8; color: #fff; outline: none; font-size: 0.75em;">在 GitHub 上编辑</a>
+<a id="btn-startedit" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.4; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #6190e8; border-radius: 6px; background-color: #6190e8; color: #fff; outline: none; font-size: 0.9em;">在 GitHub 上编辑</a>
 
-<a href="mailto:submit@folderrewind.top?subject=%5BPhysics%20Learning%20Wiki%20%E6%8A%95%E7%A8%BF%5D" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #268c5a; border-radius: 5px; background-color: #268c5a; color: #fff; outline: none; font-size: 0.75em; margin-left: 0.75em;">通过邮箱投稿</a>
+<a href="mailto:submit@folderrewind.top?subject=%5BPhysics%20Learning%20Wiki%20%E6%8A%95%E7%A8%BF%5D" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.4; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #268c5a; border-radius: 6px; background-color: #268c5a; color: #fff; outline: none; font-size: 0.9em; margin-left: 0.75em;">通过邮箱投稿</a>
 
 <script>
     function getQueryVariable(name, dft)
