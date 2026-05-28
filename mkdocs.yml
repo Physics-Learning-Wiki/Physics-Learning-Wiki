@@ -251,10 +251,13 @@ extra:
 extra_javascript:
   - '_static/js/math-csr.js?math-csr'
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
+  - 'https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js'
+  - '_static/js/submit-form.js'
 
 extra_css:
   - '_static/css/extra.css?v=16'
   - '_static/css/submit-form.css?v=1'
+  - 'https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css'
   # - '_static/css/offset-inject-debug.css'
 
 # Extensions
