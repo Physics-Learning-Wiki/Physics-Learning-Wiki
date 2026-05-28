@@ -66,13 +66,27 @@ function populateChapterSelect() {
   select.insertBefore(defaultOpt, select.firstChild);
 }
 
-let easyMDE;
+let easyMDE = null;
 
 let _mathJaxTimer = null;
 
+function debounce(fn, delay) {
+  let timer = null;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(fn, delay);
+  };
+}
+
 function initEditor() {
   const el = document.getElementById("submit-content");
-  if (!el) return;
+  if (!el || typeof EasyMDE === "undefined") return;
+
+  // Destroy previous instance if it exists
+  if (easyMDE) {
+    easyMDE.toTextArea();
+    easyMDE = null;
+  }
 
   easyMDE = new EasyMDE({
     element: el,
@@ -113,17 +127,14 @@ function initEditor() {
       singleLineBreaks: false,
       codeSyntaxHighlighting: true,
     },
-    previewRender: function (plainText, previewElement) {
+    previewRender: debounce(function (plainText, previewElement) {
       const html = this.parent.markdown(plainText);
       previewElement.innerHTML = html;
-      clearTimeout(_mathJaxTimer);
-      _mathJaxTimer = setTimeout(() => {
-        if (window.MathJax && window.MathJax.typesetPromise) {
-          window.MathJax.typesetPromise([previewElement]).catch(console.error);
-        }
-      }, 100);
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([previewElement]).catch(console.error);
+      }
       return previewElement.innerHTML;
-    },
+    }, 300),
   });
 }
 
@@ -159,17 +170,6 @@ function setupAttributionToggle() {
     attributionInput.placeholder = "将显示为「匿名同学」";
   });
 }
-
-document.addEventListener("DOMContentLoaded", populateChapterSelect);
-document.addEventListener("DOMContentLoaded", initEditor);
-document.addEventListener("DOMContentLoaded", () => {
-  const typeSelect = document.getElementById("submit-type");
-  if (typeSelect) {
-    typeSelect.addEventListener("change", updateTypeHint);
-    updateTypeHint();
-  }
-});
-document.addEventListener("DOMContentLoaded", setupAttributionToggle);
 
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
 
@@ -298,9 +298,26 @@ async function handleSubmit(event) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// Single initialization point using mkdocs-material's document$ observable.
+// This fires on both initial page load and instant navigation.
+document$.subscribe(function () {
+  // Only run on the submit page
+  if (!document.getElementById("submission-form")) return;
+
+  populateChapterSelect();
+  initEditor();
+  setupAttributionToggle();
+  updateTypeHint();
+
+  const typeSelect = document.getElementById("submit-type");
+  if (typeSelect) {
+    typeSelect.removeEventListener("change", updateTypeHint);
+    typeSelect.addEventListener("change", updateTypeHint);
+  }
+
   const form = document.getElementById("submission-form");
   if (form) {
+    form.removeEventListener("submit", handleSubmit);
     form.addEventListener("submit", handleSubmit);
   }
 });
