@@ -160,24 +160,42 @@ $$
 
     - 内能变化：
 
-      $$
-      \Delta U = \nu C_V^{mol}(T_2-T_1)=\frac{5}{2}R\cdot 150.
-      $$
+    $$
+    \Delta U = \nu C_V^{mol}(T_2-T_1)=\frac{5}{2}R\cdot 150.
+    $$
 
     - 等压吸热：
 
-      $$
-      Q_p = \nu C_p^{mol}(T_2-T_1)=\frac{7}{2}R\cdot 150.
-      $$
+    $$
+    Q_p = \nu C_p^{mol}(T_2-T_1)=\frac{7}{2}R\cdot 150.
+    $$
 
     - 等压做功（理想气体）：
 
-      $$
-      A = \nu R(T_2-T_1)=R\cdot 150.
-      $$
+    $$
+    A = \nu R(T_2-T_1)=R\cdot 150.
+    $$
 
     并且满足第一定律 $Q_p=\Delta U + A$。
 
+### 内能
+
+内能 $U$ 定义为物质中所有分子无规则运动的动能和分子间相互作用势能的总和。
+
+- 温度 $T$ 反映分子的平均动能  
+- 体积 $V$ 或密度反映分子间的势能
+
+$$
+U = U(T,V)
+$$
+
+> 对理想气体，不考虑势能，$U=U(T)$  
+> 在焦耳的热功当量实验中，在不传热的量热器里进行（绝热过程），热力学内能的增量等于外界对系统所作的绝热功。而绝热功只与初态和末态有关，与具体过程无关。
+
+??? note "实际的内能"
+    1. 物体的内能不包括这个物体整体运动时的动能和它在重力场中的势能，或说不包括质心的动能和重力势能。
+    2. 原则上讲，物体的内能应该包括其中所有微观粒子的动能、势能、化学能、电离能和原子核内部的核能等能量的总和。
+    3. 但在一般热力学状态的变化过程中，物质的分子结构、原子结构和核结构不发生变化，所以可不考虑化学能、电离能和原子核内部的核能等能量的改变。
 
 ### 焓
 
@@ -470,47 +488,47 @@ $$
 $$
 
 ??? note "例题：用生成焓计算反应热"
-		**题目**：利用生成焓计算甲烷燃烧反应
-		$\text{CH}_4+2\text{O}_2\to \text{CO}_2+2\text{H}_2\text{O}(l)$
-		的标准反应焓 $\Delta_r H^\circ$。已知（单位 $\text{kJ}/\text{mol}$）：
-		$\Delta_f H^\circ(\text{CH}_4)=-74.8$，
-		$\Delta_f H^\circ(\text{CO}_2)=-393.5$，
-		$\Delta_f H^\circ(\text{H}_2\text{O}(l))=-285.8$，
-		$\Delta_f H^\circ(\text{O}_2)=0$。
+    **题目**：利用生成焓计算甲烷燃烧反应
+    $\text{CH}_4+2\text{O}_2\to \text{CO}_2+2\text{H}_2\text{O}(l)$
+    的标准反应焓 $\Delta_r H^\circ$。已知（单位 $\text{kJ}/\text{mol}$）：
+    $\Delta_f H^\circ(\text{CH}_4)=-74.8$，  
+    $\Delta_f H^\circ(\text{CO}_2)=-393.5$，  
+    $\Delta_f H^\circ(\text{H}_2\text{O}(l))=-285.8$，  
+    $\Delta_f H^\circ(\text{O}_2)=0$。  
 
-		**解答**：
-		套用赫斯定律：
+    **解答**：
+    套用赫斯定律：
+    
+    $$
+    \Delta_r H^\circ = \left[-393.5 + 2\times(-285.8)\right] - \left[-74.8 + 2\times 0\right] \text{ kJ}/\text{mol}.
+    $$
 
-		$$
-		\Delta_r H^\circ = \left[-393.5 + 2\times(-285.8)\right] - \left[-74.8 + 2\times 0\right] \text{ kJ}/\text{mol}.
-		$$
+    计算得
 
-		计算得
+    $$
+    \Delta_r H^\circ \approx -890.3\text{ kJ}/\text{mol}.
+    $$
 
-		$$
-		\Delta_r H^\circ \approx -890.3\text{ kJ}/\text{mol}.
-		$$
-
-		负号表示反应强烈放热。
+    负号表示反应强烈放热。
 
 ??? note "例题：定容量热得到的是 $\Delta U$ 还是 $\Delta H$"
-		**题目**：在“弹式量热计”（刚性密闭容器，体积近似不变）中测得某气相反应每进行 1 mol 放热 $Q_V=-100\text{ kJ}$（系统放热，故吸热为负）。若该反应在同温度下气体摩尔数变化 $\Delta\nu_g=+1$，估算定压反应焓 $\Delta_r H$。
+    **题目**：在“弹式量热计”（刚性密闭容器，体积近似不变）中测得某气相反应每进行 1 mol 放热 $Q_V=-100\text{ kJ}$（系统放热，故吸热为负）。若该反应在同温度下气体摩尔数变化 $\Delta\nu_g=+1$，估算定压反应焓 $\Delta_r H$。
 
-		**解答**：
-		刚性容器近似定容且不做体积功，故 $Q_V=\Delta U$。
-		由近似关系 $\Delta H\approx \Delta U + \Delta\nu_g RT$：
+    **解答**：
+    刚性容器近似定容且不做体积功，故 $Q_V=\Delta U$。
+    由近似关系 $\Delta H\approx \Delta U + \Delta\nu_g RT$：
 
-		$$
-		\Delta_r H \approx -100\text{ kJ} + (1)RT.
-		$$
+    $$
+    \Delta_r H \approx -100\text{ kJ} + (1)RT.
+    $$
 
-		若取 $T=300\text{ K}$，则 $RT\approx 2.49\text{ kJ}/\text{mol}$，所以
+    若取 $T=300\text{ K}$，则 $RT\approx 2.49\text{ kJ}/\text{mol}$，所以
 
-		$$
-		\Delta_r H \approx -97.5\text{ kJ}/\text{mol}.
-		$$
+    $$
+    \Delta_r H \approx -97.5\text{ kJ}/\text{mol}.
+    $$
 
-		可以看到：当反应生成更多气体（$\Delta\nu_g>0$）时，$\Delta H$ 往往比 $\Delta U$ 更“没那么负”（放热量略小）。
+    可以看到：当反应生成更多气体（$\Delta\nu_g>0$）时，$\Delta H$ 往往比 $\Delta U$ 更“没那么负”（放热量略小）。
 
 ## 常见误区与提醒
 
