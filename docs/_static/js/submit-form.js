@@ -70,6 +70,36 @@ let easyMDE = null;
 
 let attributionAbort = null;
 
+let mathJaxReady = null;
+
+function loadMathJax() {
+  if (mathJaxReady) return mathJaxReady;
+
+  mathJaxReady = new Promise(function (resolve) {
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+        processEscapes: true,
+      },
+      startup: {
+        typeset: false,
+        ready: function () {
+          MathJax.startup.defaultReady();
+          resolve(MathJax);
+        },
+      },
+    };
+
+    var script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+    script.async = true;
+    document.head.appendChild(script);
+  });
+
+  return mathJaxReady;
+}
+
 function debounce(fn, delay) {
   let timer = null;
   return function (...args) {
@@ -130,9 +160,11 @@ function initEditor() {
     previewRender: debounce(function (plainText, previewElement) {
       const html = this.parent.markdown(plainText);
       previewElement.innerHTML = html;
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        window.MathJax.typesetPromise([previewElement]).catch(console.error);
-      }
+      loadMathJax()
+        .then(function (mj) {
+          return mj.typesetPromise([previewElement]);
+        })
+        .catch(console.error);
       return previewElement.innerHTML;
     }, 300),
   });

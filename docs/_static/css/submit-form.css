@@ -16,7 +16,7 @@
 
 /* Unified form controls */
 .submit-field select,
-.submit-field input[type="text"] {
+.submit-field input {
   width: 100%;
   max-width: 560px;
   padding: 0.5rem 0.75rem;
@@ -114,7 +114,7 @@
 
 /* Dark mode overrides */
 [data-md-color-scheme="slate"] .submit-field select,
-[data-md-color-scheme="slate"] .submit-field input[type="text"],
+[data-md-color-scheme="slate"] .submit-field input,
 [data-md-color-scheme="slate"] .submit-field textarea {
   background: var(--md-default-bg-color);
   color: var(--md-default-fg-color);
