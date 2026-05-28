@@ -42,7 +42,7 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
 
     lines = text.split("\n")
 
-    has_manual = False
+    has_auto_source = False
     has_author_field = False
     author_line_idx = -1
     in_frontmatter = False
@@ -59,23 +59,17 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
                 frontmatter_end = i
                 break
         elif in_frontmatter:
-            if stripped.startswith("author_source:") and "manual" in stripped:
-                has_manual = True
+            if stripped.startswith("author_source:") and "auto" in stripped:
+                has_auto_source = True
             if stripped.startswith("author:"):
                 has_author_field = True
                 author_line_idx = i
 
-    if has_manual:
-        print(f"  [SKIP] {filepath}: 手动维护，跳过")
+    # 只有 author_source: auto 的文件才允许自动更新
+    # 手动写入的 author（无 author_source 或 author_source: manual）应保留
+    if has_author_field and not has_auto_source:
+        print(f"  [SKIP] {filepath}: 手动维护的 author，跳过")
         return False
-
-    # 不覆盖团队默认署名（这些文件的 author 由手动维护）
-    DEFAULT_AUTHORS = {"Physics Learning Wiki", "Physics-Learning-Wiki"}
-    if has_author_field and author_line_idx >= 0:
-        existing_author = lines[author_line_idx].split(":", 1)[1].strip()
-        if existing_author in DEFAULT_AUTHORS:
-            print(f"  [SKIP] {filepath}: 团队默认署名，跳过")
-            return False
 
     if not authors:
         return False

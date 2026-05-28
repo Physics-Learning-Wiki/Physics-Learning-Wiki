@@ -61,7 +61,9 @@ async function readCommitsLog(sourceFilePath: string): Promise<{ commitDate: Dat
 
 const GITHUB_REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki";
 const AUTHORS_CACHE_URL = `https://raw.githubusercontent.com/${GITHUB_REPO}/authors-cache/authors.json`;
-const AUTHORS_EXCLUDED = ["Physics-Learning-Wiki", "Physics Learning Wiki"];
+// Only exclude the template fallback default (hyphenated). The manually-written
+// "Physics Learning Wiki" in frontmatter is a real author entry and must be kept.
+const AUTHORS_EXCLUDED = ["Physics-Learning-Wiki"];
 
 export const taskHandler = new (class implements TaskHandler<AuthorUserMap> {
   async globalInitialize() {
