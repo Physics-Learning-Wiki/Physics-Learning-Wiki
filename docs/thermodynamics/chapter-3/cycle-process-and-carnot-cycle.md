@@ -62,12 +62,12 @@ $$
 - **正循环（Direct cycle）**：系统沿顺时针方向在 p-V 图上进行循环，净功 $A' > 0$，系统对外做功。此时 $Q_1 > Q_2'$，系统从高温热源吸热，向低温热源放热，称为**热机**。
 - **逆循环（Reverse cycle）**：系统沿逆时针方向在 p-V 图上进行循环，净功 $A < 0$，外界对系统做功。此时热量从低温热源传向高温热源，称为**制冷机**或**热泵**。
 
-![热机设备示意图](.\images\heat-engine-schematic.png)
-![热机热力学示意图](.\images\heat-engine-thermodynamic.png)
+![热机设备示意图](images/heat-engine-schematic.png)
+![热机热力学示意图](images/heat-engine-thermodynamic.png)
 > 热机示意图
 
-![制冷机设备示意图](.\images\refrigerator-schematic.png)
-![制冷循环示意图](.\images\refrigerator-thermodynamic.png)
+![制冷机设备示意图](images/refrigerator-schematic.png)
+![制冷循环示意图](images/refrigerator-thermodynamic.png)
 > 制冷机示意图
 
 #### 热机效率
@@ -144,7 +144,7 @@ $$
 T_2 V_4^{\gamma-1} = T_1 V_1^{\gamma-1}
 $$
 
-![卡诺循环p-V图](.\images\carnot-cycle-pv.png)
+![卡诺循环p-V图](images/carnot-cycle-pv.png)
 
 #### 卡诺效率的推导
 
@@ -212,7 +212,7 @@ $$
 
 **奥托循环**是四冲程汽油发动机的理想热力学循环，由德国工程师尼古拉斯·奥托（Nikolaus Otto）于 1876 年实现。
 
-![四冲程发动机工作示意图](.\images\four-stroke-engine.png)
+![四冲程发动机工作示意图](images/four-stroke-engine.png)
 
 ##### 工作原理
 
@@ -223,7 +223,7 @@ $$
 3. **c→d：绝热膨胀**：高温高压气体推动活塞向下运动，对外做功，体积从 $V_2$ 膨胀到 $V_1$
 4. **d→a：等体放热**：排气阀打开，压强迅速下降（热力学分析中简化为等体放热）
 
-![奥托循环p-V图](.\images\otto-cycle-pv.png)
+![奥托循环p-V图](images/otto-cycle-pv.png)
 
 ##### 过程分析
 
@@ -312,7 +312,7 @@ $$
 3. **3→4：绝热膨胀**：高温高压气体推动活塞做功
 4. **4→1：等体放热**：排气，压强下降
 
-![迪赛尔循环p-V图](.\images\diesel-cycle-pv.png)
+![迪赛尔循环p-V图](images/diesel-cycle-pv.png)
 
 ##### 过程分析
 
@@ -398,7 +398,7 @@ $$
 3. **C→D：等温膨胀**：气体与低温热源接触，等温膨胀，吸热 $Q_2$
 4. **D→A：等体加热**：气体体积不变，从回热器吸收热量，温度从 $T_2$ 回升到 $T_1$
 
-![斯特林循环p-V图](.\images\stirling-cycle-pv.png)
+![斯特林循环p-V图](images/stirling-cycle-pv.png)
 > 逆向斯特林循环
 
 ##### α型与β型斯特林循环
@@ -415,9 +415,9 @@ $$
 - 结构紧凑，密封性好
 - 适合小功率应用
 
-![α型斯特林循环示意图](.\images\stirling-alpha.png)
+![α型斯特林循环示意图](images/stirling-alpha.png)
 > $\alpha$ 型斯特林循环
-![β型斯特林循环示意图](.\images\stirling-beta.png)
+![β型斯特林循环示意图](images/stirling-beta.png)
 > $\beta$ 型斯特林循环
 
 ##### 过程分析
@@ -555,7 +555,7 @@ $$
 
 使用低沸点工质（如异丁烷、异戊烷），通过换热器从地热流体中吸收热量，工质蒸发后驱动汽轮机。
 
-![地热发电站](.\images\geothermal-plant.png)
+![地热发电站](images/geothermal-plant.png)
 
 ##### 热力学分析
 
@@ -619,7 +619,7 @@ $$
    └──给水泵──冷凝器──┘
 ```
 
-![沸水堆核电站示意图](.\images\bwr-nuclear-plant.png)
+![沸水堆核电站示意图](images/bwr-nuclear-plant.png)
 
 **热力学分析：**
 
@@ -658,7 +658,7 @@ $$
            └──给水泵──冷凝器──┘
 ```
 
-![压水堆核电站示意图](.\images\pwr-nuclear-plant.png)
+![压水堆核电站示意图](images/pwr-nuclear-plant.png)
 
 **热力学分析：**
 
@@ -675,6 +675,6 @@ $$
 
 ## 学习衔接
 
-- 建议先读：[热力学第一定律对理想气体的应用](.\images\./first-law-ideal-gas.md)（等温、绝热、等体、等压过程的分析）
-- 相关背景：[气体的热容 内能和焓](.\images\./gas-heat-capacity-internal-energy-enthalpy.md)（热容、内能、焓的概念）
-- 读完本页后可以继续阅读：[第四章 热力学第二定律](.\images\../chapter-4/index.md)（卡诺定理的严格证明、熵的概念、热力学第二定律的表述）
+- 建议先读：[热力学第一定律对理想气体的应用](images/./first-law-ideal-gas.md)（等温、绝热、等体、等压过程的分析）
+- 相关背景：[气体的热容 内能和焓](images/./gas-heat-capacity-internal-energy-enthalpy.md)（热容、内能、焓的概念）
+- 读完本页后可以继续阅读：[第四章 热力学第二定律](images/../chapter-4/index.md)（卡诺定理的严格证明、熵的概念、热力学第二定律的表述）
