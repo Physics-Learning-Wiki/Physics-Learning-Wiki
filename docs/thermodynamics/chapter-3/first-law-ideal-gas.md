@@ -203,3 +203,36 @@ $$
     $$
 
     由于 $n=1.25$ 介于 $1$ (等温) 和 $\gamma \approx 1.67$ (绝热) 之间，说明尽管体积膨胀温度降低（内能减小），但气体其实还在吸热。
+
+## 表格小结
+
+### 理想气体准静态过程公式
+
+物态方程 $pV=\nu RT$
+
+| 过程 | 过程方程 | 外界作功 $A$ | 吸收热量 $Q$ | 内能变化 $\Delta U$ | 热容量 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 等体 | $V=$常量 | $0$ | $C_V(T_2-T_1)$ | $C_V(T_2-T_1)$ | $C_V$ |
+| 等压 | $p=$常量 | $-p(V_2-V_1)$ | $C_p(T_2-T_1)$ | $C_V(T_2-T_1)$ | $C_p=C_V+\nu R$ |
+| 等温 | $pV=$常量 | $-\nu RT\ln(V_2/V_1)$ | $\nu RT\ln(V_2/V_1)$ | $0$ | $\infty$ |
+| 绝热 | $pV^\gamma=$常量<br>$TV^{\gamma-1}=$常量<br>$p^{1-\gamma}T^\gamma=$常量 | $\frac{1}{\gamma-1}(p_2V_2-p_1V_1)$<br>$=C_V(T_2-T_1)$ | $0$ | $C_V(T_2-T_1)$ | $0$ |
+| 多方 | $pV^n=$常量<br>$TV^{n-1}=$常量<br>$p^{1-n}T^n=$常量 | $\frac{1}{n-1}(p_2V_2-p_1V_1)$<br>$=\frac{\nu R}{n-1}(T_2-T_1)$ | $C_n(T_2-T_1)$ | $C_V(T_2-T_1)$ | $C_n=\frac{\gamma-n}{1-n}C_V$ |
+
+### 范德瓦耳斯气体准静态过程公式*
+
+物态方程 $p'V'=\nu RT$ $\left(p'=p+\frac{\nu^2 a}{V^2} \quad V'=V-\nu b\right)$
+
+| 过程 | 过程方程 | 外界作功 $A$ | 吸收热量 $Q$ | 内能变化 $\Delta U$ | 热容量 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 等体 | $V=$常量 | $0$ | $C_V(T_2-T_1)$ | $C_V(T_2-T_1)$ | $C_V$ |
+| 等压 | $p=$常量 | $-p(V_2-V_1)$ | $\int_{T_1}^{T_2} C_p \mathrm{d}T^{**}$ |  | $C_p=C_V+\frac{\nu R}{1-\frac{2\nu a(V-\nu b)^2}{R T V^3}}$ |
+| 等温 | $p'V'=$常量 | $-\nu RT\ln(V'_2/V'_1)$<br>$-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $\nu RT\ln(V'_2/V'_1)$ | $-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $\infty$ |
+| 绝热 | $p'V'^{\gamma}=$常量<br>$TV'^{\gamma-1}=$常量<br>$p'^{1-\gamma}T^\gamma=$常量<br>$\left(\gamma'=\frac{C_V+\nu R}{C_V}\right)$ | $C_V(T_2-T_1)$<br>$-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $0$ | $C_V(T_2-T_1)$<br>$-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $0$ |
+| 多方 | $p'V'^n=$常量<br>$TV'^{n-1}=$常量<br>$p'^{1-n}T^n=$常量 | $\frac{\nu R}{n-1}(T_2-T_1)$<br>$-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $C_n(T_2-T_1)$ | $C_V(T_2-T_1)$<br>$-\nu^2 a\left(\frac{1}{V_2}-\frac{1}{V_1}\right)$ | $C_n=C_V+\frac{\nu R}{1-n}$ |
+
+\* 设 $C_V$ 为常量。 \*\* $C_p$ 与 $V$、$T$ 有关，积分无显式。
+
+## 学习衔接
+
+- 建议先读：[气体的热容、内能和焓](./gas-heat-capacity-internal-energy-enthalpy.md)
+- 读完本页后可以继续阅读：[循环过程和卡诺循环](./cycle-process-and-carnot-cycle.md)
