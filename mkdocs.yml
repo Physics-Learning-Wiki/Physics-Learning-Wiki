@@ -131,6 +131,13 @@ nav:
       - 2. 气体的热容 内能和焓: thermodynamics/chapter-3/gas-heat-capacity-internal-energy-enthalpy.md
       - 3. 热力学第一定律对理想气体的应用: thermodynamics/chapter-3/first-law-ideal-gas.md
       - 4. 循环过程和卡诺循环: thermodynamics/chapter-3/cycle-process-and-carnot-cycle.md
+    - 热力学第二定律:
+      - 章节导读: thermodynamics/chapter-4/index.md
+      - 1. 热力学第二定律的表述和卡诺定理: thermodynamics/chapter-4/second-law-and-carnot-theorem.md
+      - 2. 卡诺定理的应用: thermodynamics/chapter-4/carnot-theorem-applications.md
+      - 3. 克劳修斯不等式与熵定理: thermodynamics/chapter-4/clausius-inequality-and-entropy.md
+      - 4. 热平衡与自由能: thermodynamics/chapter-4/thermal-equilibrium-and-free-energy.md
+
   - 电磁学:
     - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md
