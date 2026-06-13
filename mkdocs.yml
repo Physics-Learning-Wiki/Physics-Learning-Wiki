@@ -224,6 +224,7 @@ plugins:
   - toggle-sidebar:
       theme: material
       toggle_button: all
+  - glightbox
 
 hooks:
   - hooks/on_env.py
