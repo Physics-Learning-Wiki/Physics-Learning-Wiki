@@ -35,7 +35,7 @@
 **条件概率** $P(A|B)$ 是指在事件 $B$ 已经发生的条件下，事件 $A$ 发生的概率。
 
 $$
-P(A|B) = \frac{P(A \cap B)}{P(B)}
+P(A|B) = \dfrac{P(A \cap B)}{P(B)}
 $$
 
 其中 $P(A \cap B)$ 是 $A$ 和 $B$ 同时发生的概率。
@@ -45,7 +45,7 @@ $$
 **贝叶斯定理 (Bayes' Theorem)** 描述了在获得新证据后，如何更新一个假设的概率。
 
 $$
-P(A|B) = \frac{P(B|A)P(A)}{P(B)}
+P(A|B) = \dfrac{P(B|A)P(A)}{P(B)}
 $$
 
 - $P(A)$ 是**先验概率** (prior probability)。
@@ -92,7 +92,7 @@ $$
 - **泊松分布 (Poisson Distribution)**：描述在固定时间或空间内，一个事件发生固定次数的概率，如果这些事件以已知的平均速率独立发生。
 
   $$
-  P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}
+  P(X=k) = \dfrac{\lambda^k e^{-\lambda}}{k!}
   $$
 
   其中 $\lambda$ 是单位时间/空间内的平均事件数。在放射性衰变等物理现象中很常见。
@@ -103,7 +103,7 @@ $$
 - **正态分布 (Normal Distribution)** 或高斯分布 (Gaussian Distribution)：自然界和科学研究中最常见的分布。其概率密度函数为：
 
   $$
-  f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+  f(x) = \dfrac{1}{\sigma\sqrt{2\pi}} e^{-\dfrac{(x-\mu)^2}{2\sigma^2}}
   $$
 
   由均值 $\mu$ 和标准差 $\sigma$ 完全确定。中心极限定理表明，大量独立随机变量之和（或均值）近似服从正态分布。
@@ -121,7 +121,7 @@ $$
 根据泊松分布公式：
 
 $$
-P(X=3) = \frac{4^3 e^{-4}}{3!} = \frac{64 \cdot e^{-4}}{6} \approx 10.67 \cdot 0.0183 \approx 0.1954
+P(X=3) = \dfrac{4^3 e^{-4}}{3!} = \dfrac{64 \cdot e^{-4}}{6} \approx 10.67 \cdot 0.0183 \approx 0.1954
 $$
 
 所以，下一秒恰好记录到 3 次衰变的概率约为 19.5%。
@@ -143,7 +143,7 @@ $$
 **麦克斯韦-玻尔兹曼分布 (Maxwell-Boltzmann distribution)** 是一个描述理想气体在热平衡状态下，分子速率分布的概率密度函数。
 
 $$
-f(v) = 4\pi \left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\frac{mv^2}{2k_B T}}
+f(v) = 4\pi \left(\dfrac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-\dfrac{mv^2}{2k_B T}}
 $$
 
 这个分布可以从玻尔兹曼因子推导出来，是统计力学的一个经典结果。

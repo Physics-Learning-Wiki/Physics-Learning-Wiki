@@ -29,7 +29,7 @@ $$
 位移矢量 $d\vec{r}$ 在笛卡尔坐标系中为 $d\vec{r} = dx\hat{i} + dy\hat{j} + dz\hat{k}$。通过全微分，我们可以得到：
 
 $$
-d\vec{r} = \frac{\partial \vec{r}}{\partial q_1}dq_1 + \frac{\partial \vec{r}}{\partial q_2}dq_2 + \frac{\partial \vec{r}}{\partial q_3}dq_3
+d\vec{r} = \dfrac{\partial \vec{r}}{\partial q_1}dq_1 + \dfrac{\partial \vec{r}}{\partial q_2}dq_2 + \dfrac{\partial \vec{r}}{\partial q_3}dq_3
 $$
 
 我们定义曲线坐标系的基向量为 $\vec{e}_i = \frac{\partial \vec{r}}{\partial q_i}$。这些基向量通常不是单位向量。
@@ -38,7 +38,7 @@ $$
 标度因子 $h_i$ 定义为：
 
 $$
-h_i = \left| \frac{\partial \vec{r}}{\partial q_i} \right|
+h_i = \left| \dfrac{\partial \vec{r}}{\partial q_i} \right|
 $$
 
 因此，位移矢量可以写成：
@@ -59,22 +59,22 @@ $$
 - **梯度 (Gradient)**：
 
 $$
-\nabla f = \frac{1}{h_1}\frac{\partial f}{\partial q_1}\hat{e}_1 + \frac{1}{h_2}\frac{\partial f}{\partial q_2}\hat{e}_2 + \frac{1}{h_3}\frac{\partial f}{\partial q_3}\hat{e}_3
+\nabla f = \dfrac{1}{h_1}\dfrac{\partial f}{\partial q_1}\hat{e}_1 + \dfrac{1}{h_2}\dfrac{\partial f}{\partial q_2}\hat{e}_2 + \dfrac{1}{h_3}\dfrac{\partial f}{\partial q_3}\hat{e}_3
 $$
 
 - **散度 (Divergence)**：对于矢量场 $\vec{F} = F_1\hat{e}_1 + F_2\hat{e}_2 + F_3\hat{e}_3$
 
 $$
-\nabla \cdot \vec{F} = \frac{1}{h_1 h_2 h_3} \left[ \frac{\partial}{\partial q_1}(h_2 h_3 F_1) + \frac{\partial}{\partial q_2}(h_1 h_3 F_2) + \frac{\partial}{\partial q_3}(h_1 h_2 F_3) \right]
+\nabla \cdot \vec{F} = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}(h_2 h_3 F_1) + \dfrac{\partial}{\partial q_2}(h_1 h_3 F_2) + \dfrac{\partial}{\partial q_3}(h_1 h_2 F_3) \right]
 $$
 
 - **旋度 (Curl)**：
 
 $$
-\nabla \times \vec{F} = \frac{1}{h_1 h_2 h_3}
+\nabla \times \vec{F} = \dfrac{1}{h_1 h_2 h_3}
 \begin{vmatrix}
 h_1\hat{e}_1 & h_2\hat{e}_2 & h_3\hat{e}_3 \\
-\frac{\partial}{\partial q_1} & \frac{\partial}{\partial q_2} & \frac{\partial}{\partial q_3} \\
+\dfrac{\partial}{\partial q_1} & \dfrac{\partial}{\partial q_2} & \dfrac{\partial}{\partial q_3} \\
 h_1 F_1 & h_2 F_2 & h_3 F_3
 \end{vmatrix}
 $$
@@ -82,7 +82,7 @@ $$
 - **拉普拉斯算子 (Laplacian)**：
 
 $$
-\nabla^2 f = \frac{1}{h_1 h_2 h_3} \left[ \frac{\partial}{\partial q_1}\left(\frac{h_2 h_3}{h_1}\frac{\partial f}{\partial q_1}\right) + \frac{\partial}{\partial q_2}\left(\frac{h_1 h_3}{h_2}\frac{\partial f}{\partial q_2}\right) + \frac{\partial}{\partial q_3}\left(\frac{h_1 h_2}{h_3}\frac{\partial f}{\partial q_3}\right) \right]
+\nabla^2 f = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}\left(\dfrac{h_2 h_3}{h_1}\dfrac{\partial f}{\partial q_1}\right) + \dfrac{\partial}{\partial q_2}\left(\dfrac{h_1 h_3}{h_2}\dfrac{\partial f}{\partial q_2}\right) + \dfrac{\partial}{\partial q_3}\left(\dfrac{h_1 h_2}{h_3}\dfrac{\partial f}{\partial q_3}\right) \right]
 $$
 
 ## 柱坐标系 (Cylindrical Coordinates)
@@ -120,7 +120,7 @@ $$
 **拉普拉斯算子**：
 
 $$
-\nabla^2 f = \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial f}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 f}{\partial \theta^2} + \frac{\partial^2 f}{\partial z^2}
+\nabla^2 f = \dfrac{1}{r}\dfrac{\partial}{\partial r}\left(r\dfrac{\partial f}{\partial r}\right) + \dfrac{1}{r^2}\dfrac{\partial^2 f}{\partial \theta^2} + \dfrac{\partial^2 f}{\partial z^2}
 $$
 
 **例题：** 无限长均匀带电直线的电场。
@@ -128,19 +128,19 @@ $$
 我们使用高斯定律的积分形式。取一个半径为 $r$，高度为 $L$ 的圆柱形高斯面。
 
 $$
-\oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0}
+\oint \vec{E} \cdot d\vec{A} = \dfrac{Q_{enc}}{\epsilon_0}
 $$
 
 电通量只通过圆柱的侧面，上下底面的通量为零。
 
 $$
-E(r) \cdot (2\pi r L) = \frac{\lambda L}{\epsilon_0}
+E(r) \cdot (2\pi r L) = \dfrac{\lambda L}{\epsilon_0}
 $$
 
 解得：
 
 $$
-E(r) = \frac{\lambda}{2\pi\epsilon_0 r}
+E(r) = \dfrac{\lambda}{2\pi\epsilon_0 r}
 $$
 
 所以电场为 $\vec{E} = \frac{\lambda}{2\pi\epsilon_0 r}\hat{r}$。
@@ -181,7 +181,7 @@ $$
 **拉普拉斯算子**：
 
 $$
-\nabla^2 f = \frac{1}{\rho^2}\frac{\partial}{\partial \rho}\left(\rho^2\frac{\partial f}{\partial \rho}\right) + \frac{1}{\rho^2\sin\theta}\frac{\partial}{\partial \theta}\left(\sin\theta\frac{\partial f}{\partial \theta}\right) + \frac{1}{\rho^2\sin^2\theta}\frac{\partial^2 f}{\partial \phi^2}
+\nabla^2 f = \dfrac{1}{\rho^2}\dfrac{\partial}{\partial \rho}\left(\rho^2\dfrac{\partial f}{\partial \rho}\right) + \dfrac{1}{\rho^2\sin\theta}\dfrac{\partial}{\partial \theta}\left(\sin\theta\dfrac{\partial f}{\partial \theta}\right) + \dfrac{1}{\rho^2\sin^2\theta}\dfrac{\partial^2 f}{\partial \phi^2}
 $$
 
 这个算子在求解氢原子薛定谔方程时至关重要。
@@ -191,17 +191,17 @@ $$
 使用高斯定律，取一个半径为 $\rho$ 的球面作为高斯面。
 
 $$
-\oint \vec{E} \cdot d\vec{A} = \frac{Q_{enc}}{\epsilon_0}
+\oint \vec{E} \cdot d\vec{A} = \dfrac{Q_{enc}}{\epsilon_0}
 $$
 
 $$
-E(\rho) \cdot (4\pi \rho^2) = \frac{Q}{\epsilon_0}
+E(\rho) \cdot (4\pi \rho^2) = \dfrac{Q}{\epsilon_0}
 $$
 
 解得：
 
 $$
-E(\rho) = \frac{Q}{4\pi\epsilon_0 \rho^2}
+E(\rho) = \dfrac{Q}{4\pi\epsilon_0 \rho^2}
 $$
 
 所以电场为 $\vec{E} = \frac{1}{4\pi\epsilon_0}\frac{Q}{\rho^2}\hat{\rho}$，这正是库仑定律。使用球坐标系使推导变得异常简单。

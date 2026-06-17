@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 循环过程和卡诺循环
+## 循环过程和卡诺循环
 
 ## 学习目标
 
@@ -75,7 +75,7 @@ $$
 对于热机，我们关心的是：吸收的热量中有多少转化为有用的功。定义**热机效率**为：
 
 $$
-\eta = \frac{A'}{Q_1} = \frac{Q_1 - Q_2'}{Q_1} = 1 - \frac{Q_2'}{Q_1}
+\eta = \dfrac{A'}{Q_1} = \dfrac{Q_1 - Q_2'}{Q_1} = 1 - \dfrac{Q_2'}{Q_1}
 $$
 
 其中：
@@ -103,7 +103,7 @@ $$
 气体与高温热源 $T_1$ 接触，从状态 1 等温膨胀到状态 2。由于温度不变，内能不变（理想气体），根据热力学第一定律：
 
 $$
-Q_1 = A'_{1 \to 2} = \int_{V_1}^{V_2} p \,\mathrm{d}V = \nu R T_1 \ln\frac{V_2}{V_1}
+Q_1 = A'_{1 \to 2} = \int_{V_1}^{V_2} p \,\mathrm{d}V = \nu R T_1 \ln\dfrac{V_2}{V_1}
 $$
 
 气体从高温热源吸收热量 $Q_1$，对外做功。
@@ -127,7 +127,7 @@ $$
 气体与低温热源 $T_2$ 接触，从状态 3 等温压缩到状态 4。内能不变，外界对气体做功，气体向低温热源放出热量：
 
 $$
-Q_2' = -A_{3 \to 4} = -\int_{V_3}^{V_4} p \,\mathrm{d}V = \nu R T_2 \ln\frac{V_3}{V_4}
+Q_2' = -A_{3 \to 4} = -\int_{V_3}^{V_4} p \,\mathrm{d}V = \nu R T_2 \ln\dfrac{V_3}{V_4}
 $$
 
 **过程 4→1：绝热压缩（升温）**
@@ -151,13 +151,13 @@ $$
 根据热机效率定义：
 
 $$
-\eta_C = 1 - \frac{Q_2'}{Q_1}
+\eta_C = 1 - \dfrac{Q_2'}{Q_1}
 $$
 
 代入等温过程的热量表达式：
 
 $$
-\frac{Q_2'}{Q_1} = \frac{\nu R T_2 \ln(V_3/V_4)}{\nu R T_1 \ln(V_2/V_1)} = \frac{T_2 \ln(V_3/V_4)}{T_1 \ln(V_2/V_1)}
+\dfrac{Q_2'}{Q_1} = \dfrac{\nu R T_2 \ln(V_3/V_4)}{\nu R T_1 \ln(V_2/V_1)} = \dfrac{T_2 \ln(V_3/V_4)}{T_1 \ln(V_2/V_1)}
 $$
 
 利用两个绝热过程的约束条件：
@@ -169,19 +169,19 @@ $$
 两式相除：
 
 $$
-\frac{V_2^{\gamma-1}}{V_1^{\gamma-1}} = \frac{V_3^{\gamma-1}}{V_4^{\gamma-1}} \implies \frac{V_2}{V_1} = \frac{V_3}{V_4}
+\dfrac{V_2^{\gamma-1}}{V_1^{\gamma-1}} = \dfrac{V_3^{\gamma-1}}{V_4^{\gamma-1}} \implies \dfrac{V_2}{V_1} = \dfrac{V_3}{V_4}
 $$
 
 因此：
 
 $$
-\frac{Q_2'}{Q_1} = \frac{T_2}{T_1}
+\dfrac{Q_2'}{Q_1} = \dfrac{T_2}{T_1}
 $$
 
 最终得到**卡诺效率**：
 
 $$
-\boxed{\eta_C = 1 - \frac{T_2}{T_1}}
+\boxed{\eta_C = 1 - \dfrac{T_2}{T_1}}
 $$
 
 ???+ tip "重要结论"
@@ -232,7 +232,7 @@ $$
 压缩比定义为 $r = V_1/V_2$（$r > 1$）。由绝热方程：
 
 $$
-T_b = T_a \left(\frac{V_1}{V_2}\right)^{\gamma-1} = T_a r^{\gamma-1}
+T_b = T_a \left(\dfrac{V_1}{V_2}\right)^{\gamma-1} = T_a r^{\gamma-1}
 $$
 
 外界对气体做功，温度升高。
@@ -252,7 +252,7 @@ $$
 气体对外做功，温度降低：
 
 $$
-T_d = T_c \left(\frac{V_2}{V_1}\right)^{\gamma-1} = T_c \left(\frac{1}{r}\right)^{\gamma-1} = \frac{T_c}{r^{\gamma-1}}
+T_d = T_c \left(\dfrac{V_2}{V_1}\right)^{\gamma-1} = T_c \left(\dfrac{1}{r}\right)^{\gamma-1} = \dfrac{T_c}{r^{\gamma-1}}
 $$
 
 **过程 d→a：等体放热**
@@ -266,17 +266,17 @@ $$
 ##### 效率计算
 
 $$
-\eta_{\text{Otto}} = 1 - \frac{Q_2'}{Q_1} = 1 - \frac{T_d - T_a}{T_c - T_b}
+\eta_{\text{Otto}} = 1 - \dfrac{Q_2'}{Q_1} = 1 - \dfrac{T_d - T_a}{T_c - T_b}
 $$
 
 利用绝热关系 $T_b = T_a r^{\gamma-1}$ 和 $T_d = T_c / r^{\gamma-1}$：
 
 $$
-\eta_{\text{Otto}} = 1 - \frac{T_c/r^{\gamma-1} - T_a}{T_c - T_a r^{\gamma-1}} = 1 - \frac{1}{r^{\gamma-1}}
+\eta_{\text{Otto}} = 1 - \dfrac{T_c/r^{\gamma-1} - T_a}{T_c - T_a r^{\gamma-1}} = 1 - \dfrac{1}{r^{\gamma-1}}
 $$
 
 $$
-\boxed{\eta_{\text{Otto}} = 1 - \frac{1}{r^{\gamma-1}}}
+\boxed{\eta_{\text{Otto}} = 1 - \dfrac{1}{r^{\gamma-1}}}
 $$
 
 ##### 特点
@@ -292,7 +292,7 @@ $$
     代入奥托效率公式：
 
     $$
-    \eta_{\text{Otto}} = 1 - \frac{1}{r^{\gamma-1}} = 1 - \frac{1}{8^{0.4}} \approx 1 - 0.435 = 0.565
+    \eta_{\text{Otto}} = 1 - \dfrac{1}{r^{\gamma-1}} = 1 - \dfrac{1}{8^{0.4}} \approx 1 - 0.435 = 0.565
     $$
 
     理论效率约为 56.5%。实际汽油机效率通常在 25%~35% 之间，因为存在摩擦、散热损失、不完全燃烧等不可逆因素。
@@ -339,7 +339,7 @@ $$
 膨胀比为 $V_4/V_3 = (V_4/V_2) \cdot (V_2/V_3) = r/\rho$，因此：
 
 $$
-T_4 = T_3 \left(\frac{V_3}{V_4}\right)^{\gamma-1} = T_3 \left(\frac{\rho}{r}\right)^{\gamma-1} = T_1 \rho^\gamma
+T_4 = T_3 \left(\dfrac{V_3}{V_4}\right)^{\gamma-1} = T_3 \left(\dfrac{\rho}{r}\right)^{\gamma-1} = T_1 \rho^\gamma
 $$
 
 **过程 4→1：等体放热**
@@ -351,13 +351,13 @@ $$
 ##### 效率计算
 
 $$
-\eta_{\text{Diesel}} = 1 - \frac{Q_2'}{Q_1} = 1 - \frac{C_V^{mol} T_1(\rho^\gamma - 1)}{C_p^{mol} T_2(\rho - 1)} = 1 - \frac{1}{\gamma} \cdot \frac{\rho^\gamma - 1}{\rho - 1} \cdot \frac{T_1}{T_2}
+\eta_{\text{Diesel}} = 1 - \dfrac{Q_2'}{Q_1} = 1 - \dfrac{C_V^{mol} T_1(\rho^\gamma - 1)}{C_p^{mol} T_2(\rho - 1)} = 1 - \dfrac{1}{\gamma} \cdot \dfrac{\rho^\gamma - 1}{\rho - 1} \cdot \dfrac{T_1}{T_2}
 $$
 
 代入 $T_2 = T_1 r^{\gamma-1}$：
 
 $$
-\boxed{\eta_{\text{Diesel}} = 1 - \frac{1}{r^{\gamma-1}} \cdot \frac{\rho^\gamma - 1}{\gamma(\rho - 1)}}
+\boxed{\eta_{\text{Diesel}} = 1 - \dfrac{1}{r^{\gamma-1}} \cdot \dfrac{\rho^\gamma - 1}{\gamma(\rho - 1)}}
 $$
 
 ##### 特点
@@ -373,12 +373,12 @@ $$
 
     汽油机（奥托循环）：
     $$
-    \eta_{\text{Otto}} = 1 - \frac{1}{8^{0.4}} \approx 0.565 = 56.5\%
+    \eta_{\text{Otto}} = 1 - \dfrac{1}{8^{0.4}} \approx 0.565 = 56.5\%
     $$
 
     柴油机（迪赛尔循环）：
     $$
-    \eta_{\text{Diesel}} = 1 - \frac{1}{20^{0.4}} \cdot \frac{2^{1.4} - 1}{1.4(2-1)} \approx 1 - 0.301 \times 1.219 = 0.633 = 63.3\%
+    \eta_{\text{Diesel}} = 1 - \dfrac{1}{20^{0.4}} \cdot \dfrac{2^{1.4} - 1}{1.4(2-1)} \approx 1 - 0.301 \times 1.219 = 0.633 = 63.3\%
     $$
 
     柴油机效率更高，主要因为压缩比更大。
@@ -427,7 +427,7 @@ $$
 外界对气体做功，气体向高温热源 $T_1$ 放热：
 
 $$
-Q_1' = -A_{A \to B} = \nu R T_1 \ln\frac{V_1}{V_2}
+Q_1' = -A_{A \to B} = \nu R T_1 \ln\dfrac{V_1}{V_2}
 $$
 
 **过程 B→C：等体冷却**
@@ -443,7 +443,7 @@ $$
 气体从低温热源 $T_2$ 吸热，对外做功：
 
 $$
-Q_2 = A'_{C \to D} = \nu R T_2 \ln\frac{V_1}{V_2}
+Q_2 = A'_{C \to D} = \nu R T_2 \ln\dfrac{V_1}{V_2}
 $$
 
 （注意 $V_B = V_C = V_2$，$V_A = V_D = V_1$）
@@ -473,11 +473,11 @@ $$
 效率：
 
 $$
-\eta_{\text{Stirling}} = 1 - \frac{|Q_2|}{|Q_1'|} = 1 - \frac{T_2 \ln(V_1/V_2)}{T_1 \ln(V_1/V_2)} = 1 - \frac{T_2}{T_1}
+\eta_{\text{Stirling}} = 1 - \dfrac{|Q_2|}{|Q_1'|} = 1 - \dfrac{T_2 \ln(V_1/V_2)}{T_1 \ln(V_1/V_2)} = 1 - \dfrac{T_2}{T_1}
 $$
 
 $$
-\boxed{\eta_{\text{Stirling}} = 1 - \frac{T_2}{T_1} = \eta_C}
+\boxed{\eta_{\text{Stirling}} = 1 - \dfrac{T_2}{T_1} = \eta_C}
 $$
 
 ##### 特点
@@ -567,13 +567,13 @@ $$
 理论最大效率（卡诺效率）：
 
 $$
-\eta_{\text{max}} = 1 - \frac{T_2}{T_1}
+\eta_{\text{max}} = 1 - \dfrac{T_2}{T_1}
 $$
 
 例如，对于 200°C（473 K）的地热资源：
 
 $$
-\eta_{\text{max}} = 1 - \frac{300}{473} \approx 0.366 = 36.6\%
+\eta_{\text{max}} = 1 - \dfrac{300}{473} \approx 0.366 = 36.6\%
 $$
 
 实际地热发电效率通常在 10%~20% 之间，主要受以下因素限制：
@@ -629,7 +629,7 @@ $$
 理论最大效率：
 
 $$
-\eta_{\text{max}} = 1 - \frac{T_2}{T_1} = 1 - \frac{298}{558} \approx 0.466 = 46.6\%
+\eta_{\text{max}} = 1 - \dfrac{T_2}{T_1} = 1 - \dfrac{298}{558} \approx 0.466 = 46.6\%
 $$
 
 实际效率约为 30%~35%。

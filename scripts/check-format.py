@@ -18,18 +18,32 @@ def check_file(filepath: Path) -> list[str]:
 
     lines = text.split("\n")
 
-    # 检查 $$ 配对
+    # 预处理：标记哪些行在代码块内
+    in_code_block = [False] * len(lines)
+    in_fence = False
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith("```") or stripped.startswith("~~~"):
+            in_fence = not in_fence
+            in_code_block[i] = True  # 围栏行本身也算在代码块内
+        else:
+            in_code_block[i] = in_fence
+
+    # 检查 $$ 配对（跳过代码块内的行）
     dollar_count = 0
     for lineno, line in enumerate(lines, start=1):
-        dollar_count += line.count("$$")
+        if not in_code_block[lineno - 1]:
+            dollar_count += line.count("$$")
     if dollar_count % 2 != 0:
         issues.append(
             f"{filepath}: $$ 不配对 (共 {dollar_count} 个)"
         )
 
-    # 检查行间公式中 \frac 应为 \dfrac（支持跨行 $$ 块）
+    # 检查行间公式中 \frac 应为 \dfrac（支持跨行 $$ 块，跳过代码块）
     in_display_math = False
     for lineno, line in enumerate(lines, start=1):
+        if in_code_block[lineno - 1]:
+            continue
         stripped = line.strip()
         if stripped.startswith("$$"):
             in_display_math = not in_display_math
@@ -39,10 +53,12 @@ def check_file(filepath: Path) -> list[str]:
                 f"{filepath}:{lineno}: 行间公式中建议用 \\dfrac 替代 \\frac"
             )
 
-    # 检查中英文混排空格
+    # 检查中英文混排空格（跳过代码块）
     # 中文后接英文/数字
     zh_followed_by_en = re.compile(r"[一-鿿]([A-Za-z0-9])")
     for lineno, line in enumerate(lines, start=1):
+        if in_code_block[lineno - 1]:
+            continue
         for match in zh_followed_by_en.finditer(line):
             issues.append(
                 f"{filepath}:{lineno}:{match.start()}: 中文与英文/数字之间建议加空格"
@@ -51,13 +67,17 @@ def check_file(filepath: Path) -> list[str]:
     # 英文/数字后接中文
     en_followed_by_zh = re.compile(r"([A-Za-z0-9])[一-鿿]")
     for lineno, line in enumerate(lines, start=1):
+        if in_code_block[lineno - 1]:
+            continue
         for match in en_followed_by_zh.finditer(line):
             issues.append(
                 f"{filepath}:{lineno}:{match.start()}: 英文/数字与中文之间建议加空格"
             )
 
-    # 检查空行规范：标题前后应有空行
+    # 检查空行规范：标题前后应有空行（跳过代码块）
     for lineno, line in enumerate(lines, start=1):
+        if in_code_block[lineno - 1]:
+            continue
         if line.startswith("#"):
             if lineno > 1 and lines[lineno - 2].strip() != "":
                 issues.append(

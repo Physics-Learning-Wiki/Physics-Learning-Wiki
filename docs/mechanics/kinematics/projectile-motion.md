@@ -1,4 +1,4 @@
-# 抛体运动（Projectile Motion）
+## 抛体运动（Projectile Motion）
 
 抛体运动描述物体在重力作用下的平面曲线运动。它的关键在于：**加速度始终竖直向下且大小近似恒定**，因此二维运动可以分解成两个独立的一维运动。
 
@@ -60,7 +60,7 @@ $$
 2. 位移公式：
 
 $$
-y = v_{0y}t - \frac{1}{2}gt^2 = v_0 \sin\theta \cdot t - \frac{1}{2}gt^2
+y = v_{0y}t - \dfrac{1}{2}gt^2 = v_0 \sin\theta \cdot t - \dfrac{1}{2}gt^2
 $$
 
 3. 速度与位移关系：
@@ -97,7 +97,7 @@ $$
 将时间 $t$ 消去，得到抛物线方程：
 
 $$
-y = x \tan\theta - \frac{g}{2v_0^2 \cos^2\theta} x^2
+y = x \tan\theta - \dfrac{g}{2v_0^2 \cos^2\theta} x^2
 $$
 
 其中：
@@ -117,7 +117,7 @@ $$
 飞行时间由竖直方向运动决定，当物体回到初始高度时，$y = 0$：
 
 $$
-T = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+T = \dfrac{2v_{0y}}{g} = \dfrac{2v_0 \sin\theta}{g}
 $$
 
 ### 最大高度
@@ -125,7 +125,7 @@ $$
 最大高度由竖直方向速度为零时的位置决定：
 
 $$
-h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
+h = \dfrac{v_{0y}^2}{2g} = \dfrac{(v_0 \sin\theta)^2}{2g}
 $$
 
 ### 水平射程
@@ -133,7 +133,7 @@ $$
 水平射程由飞行时间和水平速度决定：
 
 $$
-R = v_{0x} \cdot T = \frac{v_0^2 \sin(2\theta)}{g}
+R = v_{0x} \cdot T = \dfrac{v_0^2 \sin(2\theta)}{g}
 $$
 
 ??? note "最远射程与最优角"
@@ -155,13 +155,13 @@ $$
 若从高度 $H$ 抛出并落地（取发射点为 $y=H$，地面为 $y=0$）：
 
 $$
-0=H-\frac12 gt^2\Rightarrow t=\sqrt{\frac{2H}{g}},
+0=H-\frac12 gt^2\Rightarrow t=\sqrt{\dfrac{2H}{g}},
 $$
 
 水平位移（落点距投影点的距离）
 
 $$
-R=v_0\,\sqrt{\frac{2H}{g}}.
+R=v_0\,\sqrt{\dfrac{2H}{g}}.
 $$
 
 ### 4.2 一般的“不同高度起落”
@@ -187,7 +187,7 @@ $$
 速度与水平夹角 $\phi$ 满足
 
 $$
-	an\phi=\frac{v_y}{v_x}=\frac{v_0\sin\theta-gt}{v_0\cos\theta}.
+	an\phi=\dfrac{v_y}{v_x}=\dfrac{v_0\sin\theta-gt}{v_0\cos\theta}.
 $$
 
 到最高点时 $v_y=0$，速度水平。
@@ -197,7 +197,7 @@ $$
 到顶时间 $t_{\max}=\frac{v_0\sin\theta}{g}$，代入 $x(t)$ 得
 
 $$
-x_{\max}=v_0\cos\theta\,t_{\max}=\frac{v_0^2\sin\theta\cos\theta}{g}=\frac{v_0^2\sin(2\theta)}{2g}.
+x_{\max}=v_0\cos\theta\,t_{\max}=\dfrac{v_0^2\sin\theta\cos\theta}{g}=\dfrac{v_0^2\sin(2\theta)}{2g}.
 $$
 
 可见在同高度起落时，最高点在射程中点（$x_{\max}=R/2$）。
@@ -224,19 +224,19 @@ $$
 1. **飞行时间：**
 
    $$
-   T = \frac{2v_0 \sin\theta}{g} = \frac{2 \cdot 50 \cdot \sin 60^\circ}{9.8} \approx 8.84\,\mathrm{s}
+   T = \dfrac{2v_0 \sin\theta}{g} = \dfrac{2 \cdot 50 \cdot \sin 60^\circ}{9.8} \approx 8.84\,\mathrm{s}
    $$
 
 2. **最大高度：**
 
    $$
-   h = \frac{(v_0 \sin\theta)^2}{2g} = \frac{(50 \cdot \sin 60^\circ)^2}{2 \cdot 9.8} \approx 95.92\,\mathrm{m}
+   h = \dfrac{(v_0 \sin\theta)^2}{2g} = \dfrac{(50 \cdot \sin 60^\circ)^2}{2 \cdot 9.8} \approx 95.92\,\mathrm{m}
    $$
 
 3. **水平射程：**
 
    $$
-   R = \frac{v_0^2 \sin(2\theta)}{g} = \frac{50^2 \cdot \sin 120^\circ}{9.8} \approx 220.94\,\mathrm{m}
+   R = \dfrac{v_0^2 \sin(2\theta)}{g} = \dfrac{50^2 \cdot \sin 120^\circ}{9.8} \approx 220.94\,\mathrm{m}
    $$
 
    ??? note "例题 2：水平抛（从高处）"
@@ -244,7 +244,7 @@ $$
 
       **解：**
       $$
-      t=\sqrt{\frac{2H}{g}}=\sqrt{\frac{40}{9.8}}\approx 2.02\,\mathrm{s},
+      t=\sqrt{\dfrac{2H}{g}}=\sqrt{\dfrac{40}{9.8}}\approx 2.02\,\mathrm{s},
       $$
       $$
       R=v_0 t\approx 10\times 2.02\approx 20.2\,\mathrm{m}.

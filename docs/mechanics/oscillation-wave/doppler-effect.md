@@ -31,7 +31,7 @@ author: 匿名同学
 观察者以速度 $v_o$ 迎向波前，相当于波前相对观察者的到达速度为 $v+v_o$，单位时间穿过观察者的波峰数为
 
 $$
- f' = \frac{v+v_o}{\lambda}=\frac{v+v_o}{v/f}=f\left(1+\frac{v_o}{v}\right).
+ f' = \dfrac{v+v_o}{\lambda}=\dfrac{v+v_o}{v/f}=f\left(1+\dfrac{v_o}{v}\right).
 $$
 
 若观察者远离声源（沿传播反方向运动），将 $v_o\to -|v_o|$ 即可。
@@ -45,19 +45,19 @@ $$
 - 声源向观察者运动（沿传播方向）：前方波长变为
 
 $$
- \lambda' = vT - v_sT=(v-v_s)T=\frac{v-v_s}{f}.
+ \lambda' = vT - v_sT=(v-v_s)T=\dfrac{v-v_s}{f}.
 $$
 
 观察者测得频率
 
 $$
- f' = \frac{v}{\lambda'}=\frac{v}{(v-v_s)/f}=\frac{f}{1-\frac{v_s}{v}}.
+ f' = \dfrac{v}{\lambda'}=\dfrac{v}{(v-v_s)/f}=\dfrac{f}{1-\dfrac{v_s}{v}}.
 $$
 
 - 声源远离观察者：$v_s\to -|v_s|$，即
 
 $$
- f' = \frac{f}{1+\frac{|v_s|}{v}}.
+ f' = \dfrac{f}{1+\dfrac{|v_s|}{v}}.
 $$
 
 ## 4. 一般情况：声源与观察者都运动
@@ -65,7 +65,7 @@ $$
 综合 2、3 两步（先由声源运动得到波长，再由观察者运动得到到达速率）：
 
 $$
- f' = f\frac{v+v_o}{v-v_s}.
+ f' = f\dfrac{v+v_o}{v-v_s}.
 $$
 
 这是声波多普勒最常用公式（在我们约定符号下）。
@@ -81,13 +81,13 @@ $$
 马赫数：
 
 $$
- \mathrm{Ma}=\frac{v_s}{v}.
+ \mathrm{Ma}=\dfrac{v_s}{v}.
 $$
 
 马赫角 $\theta$ 满足几何关系：
 
 $$
-\sin\theta=\frac{v}{v_s}=\frac{1}{\mathrm{Ma}}.
+\sin\theta=\dfrac{v}{v_s}=\dfrac{1}{\mathrm{Ma}}.
 $$
 
 ??? note "图例"
@@ -101,10 +101,10 @@ $$
 
     **解：**(1)
     $$
-    \mathrm{Ma}=\frac{v_s}{v}=\frac{510}{340}=1.5,
+    \mathrm{Ma}=\dfrac{v_s}{v}=\dfrac{510}{340}=1.5,
     $$
     $$
-    \sin\theta=\frac{1}{\mathrm{Ma}}=\frac{2}{3}\Rightarrow \theta\approx 41.8^\circ.
+    \sin\theta=\dfrac{1}{\mathrm{Ma}}=\dfrac{2}{3}\Rightarrow \theta\approx 41.8^\circ.
     $$
 
     (2) 因为 $v_s>v$，声源发出的波前在介质中传播速度不足以追上并传播到“声源前方”，波前在几何上形成包络（冲击波）。观察者只有在冲击波前沿到达时才会接收到高幅值的压力跃变，表现为爆音。
@@ -117,7 +117,7 @@ $$
     **解：**观察者静止 $v_o=0$，
 
     $$
-    f'=f\frac{v}{v-v_s}=800\cdot\frac{340}{340-30}\approx 877\,\text{Hz}.
+    f'=f\dfrac{v}{v-v_s}=800\cdot\dfrac{340}{340-30}\approx 877\,\text{Hz}.
     $$
 
 ??? note "例题2：观察者迎向声源"
@@ -126,7 +126,7 @@ $$
     **解：**
 
     $$
-    f'=f\left(1+\frac{v_o}{v}\right)=500\left(1+\frac{10}{340}\right)\approx 514.7\,\text{Hz}.
+    f'=f\left(1+\dfrac{v_o}{v}\right)=500\left(1+\dfrac{10}{340}\right)\approx 514.7\,\text{Hz}.
     $$
 
 ## 7. 相对论多普勒（电磁波，最简结果）
@@ -134,7 +134,7 @@ $$
 真空中电磁波无介质参考系。若相对速度为 $u$（沿视线方向，接近为正），则
 
 $$
- f'=f\sqrt{\frac{1+\beta}{1-\beta}},\quad \beta=\frac{u}{c}.
+ f'=f\sqrt{\dfrac{1+\beta}{1-\beta}},\quad \beta=\dfrac{u}{c}.
 $$
 
 远离则 $u\to -|u|$。

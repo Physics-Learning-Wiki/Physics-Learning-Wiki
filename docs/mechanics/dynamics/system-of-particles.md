@@ -6,7 +6,7 @@
 质心是一个非常重要的概念，它代表了整个系统质量分布的平均位置。对于一个由 $n$ 个质点组成的系统，其质心位置矢量 $\vec{r}_c$ 定义为：
 
 $$
-\vec{r}_c = \frac{\sum_{i=1}^n m_i \vec{r}_i}{\sum_{i=1}^n m_i} = \frac{1}{M} \sum_{i=1}^n m_i \vec{r}_i
+\vec{r}_c = \dfrac{\sum_{i=1}^n m_i \vec{r}_i}{\sum_{i=1}^n m_i} = \dfrac{1}{M} \sum_{i=1}^n m_i \vec{r}_i
 $$
 
 其中 $m_i$ 和 $\vec{r}_i$ 分别是第 $i$ 个质点的质量和位置矢量，$M = \sum m_i$ 是系统的总质量。
@@ -16,11 +16,11 @@ $$
 对质心位置的定义求导，我们可以得到质心的速度 $\vec{v}_c$ 和加速度 $\vec{a}_c$：
 
 $$
-\vec{v}_c = \frac{d\vec{r}_c}{dt} = \frac{1}{M} \sum_i m_i \vec{v}_i
+\vec{v}_c = \dfrac{d\vec{r}_c}{dt} = \dfrac{1}{M} \sum_i m_i \vec{v}_i
 $$
 
 $$
-\vec{a}_c = \frac{d\vec{v}_c}{dt} = \frac{1}{M} \sum_i m_i \vec{a}_i
+\vec{a}_c = \dfrac{d\vec{v}_c}{dt} = \dfrac{1}{M} \sum_i m_i \vec{a}_i
 $$
 
 根据牛顿第二定律 $\vec{F}_i = m_i \vec{a}_i$，我们有 $M\vec{a}_c = \sum_i \vec{F}_i$。系统所受的力可以分为**内力**（系统内质点间的相互作用力）和**外力**（系统外部施加的力）。根据牛顿第三定律，所有内力的矢量和为零 $\sum \vec{F}_{int} = 0$。
@@ -54,7 +54,7 @@ $$
 对总动量对时间求导，并利用质心运动定理，我们得到**质点系动量定理**：
 
 $$
-\frac{d\vec{P}}{dt} = M\vec{a}_c = \vec{F}_{ext, net}
+\dfrac{d\vec{P}}{dt} = M\vec{a}_c = \vec{F}_{ext, net}
 $$
 
 即，系统总动量的时间变化率等于系统所受的合外力。
@@ -78,7 +78,7 @@ $$
 对总角动量对时间求导，可以证明：
 
 $$
-\frac{d\vec{L}}{dt} = \sum_i (\vec{r}_i \times \vec{F}_{i, ext}) = \sum_i \vec{\tau}_{i, ext} = \vec{\tau}_{ext, net}
+\dfrac{d\vec{L}}{dt} = \sum_i (\vec{r}_i \times \vec{F}_{i, ext}) = \sum_i \vec{\tau}_{i, ext} = \vec{\tau}_{ext, net}
 $$
 
 其中 $\vec{\tau}_{ext, net}$ 是作用在系统上的总外力矩。这就是**质点系角动量定理**。它表明，系统总角动量的时间变化率等于作用于该系统的合外力矩。
@@ -125,13 +125,13 @@ $$
 系统的总动能 $E_k$ 是所有质点动能的标量和：
 
 $$
-E_k = \sum_i \frac{1}{2} m_i v_i^2
+E_k = \sum_i \dfrac{1}{2} m_i v_i^2
 $$
 
 **柯尼希定理 (König's Theorem)** 指出，系统的总动能可以分解为两部分：一部分是系统随质心平动的动能，另一部分是系统相对于质心运动的动能。即，惯性系中质点组的总动能等于质心的动能加上质心系中质点组的总动能。
 
 $$
-E_k = \frac{1}{2} M v_c^2 + \sum_i \frac{1}{2} m_i v_{i, rel}^2
+E_k = \dfrac{1}{2} M v_c^2 + \sum_i \dfrac{1}{2} m_i v_{i, rel}^2
 $$
 
 其中 $\vec{v}_{i, rel}$ 是质点 $i$ 相对于质心的速度。
@@ -178,7 +178,7 @@ $$
 这就是**齐奥尔科夫斯基火箭方程**的基本形式。对其积分可得：
 
 $$
-\Delta v = v_f - v_i = u \ln\left(\frac{M_i}{M_f}\right)
+\Delta v = v_f - v_i = u \ln\left(\dfrac{M_i}{M_f}\right)
 $$
 
 其中 $M_i$ 和 $M_f$ 分别是火箭的初始质量和最终质量。这个方程揭示了火箭能获得的速度增量 $\Delta v$ 取决于喷气速度 $u$ 和质量比 $M_i/M_f$。

@@ -45,28 +45,28 @@ $$
 小角度近似 $\sin\theta\approx \tan\theta\approx \partial y/\partial x$，于是
 
 $$
-F_y\approx T\left[\frac{\partial y}{\partial x}(x+\Delta x,t)-\frac{\partial y}{\partial x}(x,t)\right]
-\approx T\frac{\partial^2 y}{\partial x^2}\Delta x.
+F_y\approx T\left[\dfrac{\partial y}{\partial x}(x+\Delta x,t)-\dfrac{\partial y}{\partial x}(x,t)\right]
+\approx T\dfrac{\partial^2 y}{\partial x^2}\Delta x.
 $$
 
 由牛顿第二定律：
 
 $$
-\Delta m\frac{\partial^2 y}{\partial t^2}=F_y
+\Delta m\dfrac{\partial^2 y}{\partial t^2}=F_y
 \quad\Rightarrow\quad
-\mu\Delta x\frac{\partial^2 y}{\partial t^2}=T\frac{\partial^2 y}{\partial x^2}\Delta x.
+\mu\Delta x\dfrac{\partial^2 y}{\partial t^2}=T\dfrac{\partial^2 y}{\partial x^2}\Delta x.
 $$
 
 消去 $\Delta x$ 得到弦波动方程：
 
 $$
-\frac{\partial^2 y}{\partial t^2}=\frac{T}{\mu}\frac{\partial^2 y}{\partial x^2}.
+\dfrac{\partial^2 y}{\partial t^2}=\dfrac{T}{\mu}\dfrac{\partial^2 y}{\partial x^2}.
 $$
 
 因此弦上横波波速
 
 $$
- v=\sqrt{\frac{T}{\mu}}.
+ v=\sqrt{\dfrac{T}{\mu}}.
 $$
 
 ## 2. 一维纵波与声波：基本方程与声速
@@ -90,13 +90,13 @@ $$
 一维连续性方程：
 
 $$
-\frac{\partial \rho}{\partial t}+\frac{\partial (\rho u)}{\partial x}=0.
+\dfrac{\partial \rho}{\partial t}+\dfrac{\partial (\rho u)}{\partial x}=0.
 $$
 
 线性化（忽略二阶小量 $\rho' u$）：
 
 $$
-\frac{\partial \rho'}{\partial t}+\rho_0\frac{\partial u}{\partial x}=0.
+\dfrac{\partial \rho'}{\partial t}+\rho_0\dfrac{\partial u}{\partial x}=0.
 $$
 
 ### 2.3 欧拉方程（动量守恒，线性化）
@@ -104,13 +104,13 @@ $$
 无黏性一维欧拉方程：
 
 $$
-\rho\left(\frac{\partial u}{\partial t}+u\frac{\partial u}{\partial x}\right)=-\frac{\partial p}{\partial x}.
+\rho\left(\dfrac{\partial u}{\partial t}+u\dfrac{\partial u}{\partial x}\right)=-\dfrac{\partial p}{\partial x}.
 $$
 
 线性化（忽略 $u\partial u/\partial x$，并用 $\rho\approx\rho_0$）：
 
 $$
-\rho_0\frac{\partial u}{\partial t}=-\frac{\partial p'}{\partial x}.
+\rho_0\dfrac{\partial u}{\partial t}=-\dfrac{\partial p'}{\partial x}.
 $$
 
 ### 2.4 状态方程（闭合关系）
@@ -118,7 +118,7 @@ $$
 小扰动可近似为绝热过程：
 
 $$
- p'=c_s^2\rho',\quad c_s^2=\left(\frac{\partial p}{\partial \rho}\right)_s.
+ p'=c_s^2\rho',\quad c_s^2=\left(\dfrac{\partial p}{\partial \rho}\right)_s.
 $$
 
 其中 $c_s$ 即声速。
@@ -128,25 +128,25 @@ $$
 对连续性方程对时间再求导：
 
 $$
-\frac{\partial^2 \rho'}{\partial t^2}+\rho_0\frac{\partial}{\partial x}\left(\frac{\partial u}{\partial t}\right)=0.
+\dfrac{\partial^2 \rho'}{\partial t^2}+\rho_0\dfrac{\partial}{\partial x}\left(\dfrac{\partial u}{\partial t}\right)=0.
 $$
 
 用欧拉方程给出
 
 $$
-\frac{\partial u}{\partial t}=-\frac{1}{\rho_0}\frac{\partial p'}{\partial x},
+\dfrac{\partial u}{\partial t}=-\dfrac{1}{\rho_0}\dfrac{\partial p'}{\partial x},
 $$
 
 代入得
 
 $$
-\frac{\partial^2 \rho'}{\partial t^2}-\frac{\partial^2 p'}{\partial x^2}=0.
+\dfrac{\partial^2 \rho'}{\partial t^2}-\dfrac{\partial^2 p'}{\partial x^2}=0.
 $$
 
 再用 $p'=c_s^2\rho'$，得到压强扰动的波动方程：
 
 $$
-\frac{\partial^2 p'}{\partial t^2}=c_s^2\frac{\partial^2 p'}{\partial x^2}.
+\dfrac{\partial^2 p'}{\partial t^2}=c_s^2\dfrac{\partial^2 p'}{\partial x^2}.
 $$
 
 同理可得 $\rho'$、$u$ 也满足相同形式的波动方程，传播速度均为 $c_s$。
@@ -156,13 +156,13 @@ $$
 理想气体绝热过程 $p\rho^{-\gamma}=\text{常数}$，因此
 
 $$
- c_s^2=\left(\frac{\partial p}{\partial \rho}\right)_s=\gamma\frac{p_0}{\rho_0}.
+ c_s^2=\left(\dfrac{\partial p}{\partial \rho}\right)_s=\gamma\dfrac{p_0}{\rho_0}.
 $$
 
 又由 $p_0=\rho_0\frac{RT}{M}$ 得
 
 $$
- c_s=\sqrt{\gamma\frac{RT}{M}}.
+ c_s=\sqrt{\gamma\dfrac{RT}{M}}.
 $$
 
 ## 3. 通解：d'Alembert 形式（1D）
@@ -170,7 +170,7 @@ $$
 一维波动方程
 
 $$
-\frac{\partial^2 y}{\partial t^2}=v^2\frac{\partial^2 y}{\partial x^2}
+\dfrac{\partial^2 y}{\partial t^2}=v^2\dfrac{\partial^2 y}{\partial x^2}
 $$
 
 通解可写为
@@ -187,13 +187,13 @@ $$
 代入检验（给出关键步骤）：
 
 $$
-\frac{\partial y}{\partial t}=-v f'(x-vt)+v g'(x+vt),\quad
-\frac{\partial^2 y}{\partial t^2}=v^2 f''(x-vt)+v^2 g''(x+vt)
+\dfrac{\partial y}{\partial t}=-v f'(x-vt)+v g'(x+vt),\quad
+\dfrac{\partial^2 y}{\partial t^2}=v^2 f''(x-vt)+v^2 g''(x+vt)
 $$
 
 $$
-\frac{\partial y}{\partial x}=f'(x-vt)+g'(x+vt),\quad
-\frac{\partial^2 y}{\partial x^2}=f''(x-vt)+g''(x+vt)
+\dfrac{\partial y}{\partial x}=f'(x-vt)+g'(x+vt),\quad
+\dfrac{\partial^2 y}{\partial x^2}=f''(x-vt)+g''(x+vt)
 $$
 
 于是满足方程。
@@ -233,7 +233,7 @@ $$
 
   **解：**两侧波速
   $$
-  v_j=\sqrt{\frac{T}{\mu_j}},\quad k_j=\frac{\omega}{v_j}\ (j=1,2).
+  v_j=\sqrt{\dfrac{T}{\mu_j}},\quad k_j=\dfrac{\omega}{v_j}\ (j=1,2).
   $$
 
   连接处需满足（小振动线性近似下）两条边界条件：
@@ -256,13 +256,13 @@ $$
 
   解得
   $$
-  r=\frac{k_1-k_2}{k_1+k_2}=\frac{v_2-v_1}{v_2+v_1},\qquad
-  t=\frac{2k_1}{k_1+k_2}=\frac{2v_2}{v_1+v_2}.
+  r=\dfrac{k_1-k_2}{k_1+k_2}=\dfrac{v_2-v_1}{v_2+v_1},\qquad
+  t=\dfrac{2k_1}{k_1+k_2}=\dfrac{2v_2}{v_1+v_2}.
   $$
 
   常把 $Z=T/v=\sqrt{T\mu}$ 称作弦的“机械阻抗”（对能流更自然），也可写成
   $$
-  \boxed{\ r=\frac{Z_2-Z_1}{Z_2+Z_1},\qquad t=\frac{2Z_2}{Z_1+Z_2}\ }.
+  \boxed{\ r=\dfrac{Z_2-Z_1}{Z_2+Z_1},\qquad t=\dfrac{2Z_2}{Z_1+Z_2}\ }.
   $$
 
 ## 5. 弦波的能量与功率（时间平均）
@@ -270,16 +270,16 @@ $$
 对弦上横波 $y(x,t)$，小振幅下弦元的动能密度与势能密度分别可写为
 
 $$
-\mathcal{E}_K=\frac12\mu\left(\frac{\partial y}{\partial t}\right)^2,
+\mathcal{E}_K=\frac12\mu\left(\dfrac{\partial y}{\partial t}\right)^2,
 \quad
-\mathcal{E}_P=\frac12 T\left(\frac{\partial y}{\partial x}\right)^2.
+\mathcal{E}_P=\frac12 T\left(\dfrac{\partial y}{\partial x}\right)^2.
 $$
 
 对简谐行波 $y=A\cos(kx-\omega t)$：
 
 $$
-\frac{\partial y}{\partial t}=A\omega\sin(kx-\omega t),\quad
-\frac{\partial y}{\partial x}=-Ak\sin(kx-\omega t).
+\dfrac{\partial y}{\partial t}=A\omega\sin(kx-\omega t),\quad
+\dfrac{\partial y}{\partial x}=-Ak\sin(kx-\omega t).
 $$
 
 代入并用 $\omega=vk$ 与 $v^2=T/\mu$ 可得两者时间平均相等：

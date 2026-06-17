@@ -448,9 +448,9 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它。因此对�
 
         $$
         \begin{aligned}
-            \mathrm{e}^x &= \sum\limits_{n=0}^{\infty} \frac{x^n}{n!} \\
-            &= \phantom{+} 1 + x + \frac{x^2}{2} \\
-            & \phantom{=} + \frac{x^3}{6} + \frac{x^4}{24} + \dots \\
+            \mathrm{e}^x &= \sum\limits_{n=0}^{\infty} \dfrac{x^n}{n!} \\
+            &= \phantom{+} 1 + x + \dfrac{x^2}{2} \\
+            & \phantom{=} + \dfrac{x^3}{6} + \dfrac{x^4}{24} + \dots \\
         \end{aligned}
         $$
 

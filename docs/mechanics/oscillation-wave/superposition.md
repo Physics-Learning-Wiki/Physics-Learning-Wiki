@@ -64,7 +64,7 @@ $$
 相位满足
 
 $$
-\tan\varphi=\frac{A_1\sin\varphi_1+A_2\sin\varphi_2}{A_1\cos\varphi_1+A_2\cos\varphi_2}.
+\tan\varphi=\dfrac{A_1\sin\varphi_1+A_2\sin\varphi_2}{A_1\cos\varphi_1+A_2\cos\varphi_2}.
 $$
 
 #### 旋转矢量法
@@ -87,7 +87,7 @@ $$
     **解：**
 
     $$
-    A^2=3^2+4^2+2\cdot 3\cdot 4\cos\frac{\pi}{3}=9+16+24\cdot\frac12=37
+    A^2=3^2+4^2+2\cdot 3\cdot 4\cos\dfrac{\pi}{3}=9+16+24\cdot\frac12=37
     $$
 
     所以 $A=\sqrt{37}$。
@@ -106,7 +106,7 @@ $$
 用和差化积公式 $\cos a+\cos b=2\cos\frac{a-b}{2}\cos\frac{a+b}{2}$ 得
 
 $$
- x(t)=2A\cos\left(\frac{\Delta\omega}{2}t\right)\cos\left(\bar\omega t\right),
+ x(t)=2A\cos\left(\dfrac{\Delta\omega}{2}t\right)\cos\left(\bar\omega t\right),
 $$
 
 其中 $\Delta\omega=\omega_1-\omega_2$，$\bar\omega=(\omega_1+\omega_2)/2$。
@@ -116,7 +116,7 @@ $$
 - **拍频**（每秒振幅最大次数）：
 
 $$
- f_{\text{beat}}=|f_1-f_2|=\frac{|\Delta\omega|}{2\pi}.
+ f_{\text{beat}}=|f_1-f_2|=\dfrac{|\Delta\omega|}{2\pi}.
 $$
 
 值得注意的是，这里的拍频并不是 $\frac{|\Delta\omega|}{4\pi}$ ，从图中我们也可以看出，**振幅**（恒正）变化的周期是我们平常所说的振动变化周期的二分之一。
@@ -146,7 +146,7 @@ $$
 以 $\alpha=0$ 为例：
 
 $$
-\left(\frac{x}{A}\right)^2+\left(\frac{y}{B}\right)^2-2\frac{x}{A}\frac{y}{B}\cos\delta=\sin^2\delta,
+\left(\dfrac{x}{A}\right)^2+\left(\dfrac{y}{B}\right)^2-2\dfrac{x}{A}\dfrac{y}{B}\cos\delta=\sin^2\delta,
 \quad \delta=\beta-\alpha.
 $$
 
@@ -174,19 +174,19 @@ $$
     代入 $y$：
 
     $$
-    y=A\cos\left(\frac{\pi}{2}+\delta\right)=-A\sin\delta
+    y=A\cos\left(\dfrac{\pi}{2}+\delta\right)=-A\sin\delta
     $$
 
     或
 
     $$
-    y=A\cos\left(\frac{3\pi}{2}+\delta\right)=A\sin\delta.
+    y=A\cos\left(\dfrac{3\pi}{2}+\delta\right)=A\sin\delta.
     $$
 
     因此 $y_0=A|\sin\delta|$。在题设 $0\le\delta\le\pi$ 下 $\sin\delta\ge 0$，得到
 
     $$
-    \boxed{\ \sin\delta=\frac{y_0}{A}\ },\qquad \delta=\arcsin\left(\frac{y_0}{A}\right).
+    \boxed{\ \sin\delta=\dfrac{y_0}{A}\ },\qquad \delta=\arcsin\left(\dfrac{y_0}{A}\right).
     $$
 
 ## 5. 振动的分解：傅里叶观点（最小必要版）
@@ -194,15 +194,15 @@ $$
 任意“足够好”的周期函数 $x(t)$（周期 $T$）可展开为
 
 $$
- x(t)=\frac{a_0}{2}+\sum_{n=1}^\infty\left[a_n\cos(n\omega_0 t)+b_n\sin(n\omega_0 t)\right],\quad \omega_0=\frac{2\pi}{T}.
+ x(t)=\dfrac{a_0}{2}+\sum_{n=1}^\infty\left[a_n\cos(n\omega_0 t)+b_n\sin(n\omega_0 t)\right],\quad \omega_0=\dfrac{2\pi}{T}.
 $$
 
 系数由正交性给出：
 
 $$
 \begin{aligned}
- a_n &= \frac{2}{T}\int_0^T x(t)\cos(n\omega_0 t)\,dt,\\
- b_n &= \frac{2}{T}\int_0^T x(t)\sin(n\omega_0 t)\,dt.
+ a_n &= \dfrac{2}{T}\int_0^T x(t)\cos(n\omega_0 t)\,dt,\\
+ b_n &= \dfrac{2}{T}\int_0^T x(t)\sin(n\omega_0 t)\,dt.
 \end{aligned}
 $$
 

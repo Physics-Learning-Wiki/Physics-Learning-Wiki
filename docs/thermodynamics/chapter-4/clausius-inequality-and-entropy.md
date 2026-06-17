@@ -2,7 +2,7 @@
 author: Physics Learning Wiki
 ---
 
-# 克劳修斯不等式与熵定理
+## 克劳修斯不等式与熵定理
 
 热力学第二定律有两种定性表述——开尔文表述和克劳修斯表述，但它们只能告诉我们过程"能不能"发生，却无法定量描述过程进行的方向和限度。我们需要一个**定量的数学判据**来判断过程的方向。克劳修斯不等式正是从卡诺定理出发推导出的这一数学表述；而从克劳修斯不等式中，可以自然地引出一个重要的态函数——**熵**。
 
@@ -26,31 +26,31 @@ author: Physics Learning Wiki
 对于**可逆热机**，其效率等于卡诺效率：
 
 $$
-\eta = 1 - \frac{Q_2'}{Q_1} = 1 - \frac{T_2}{T_1}
+\eta = 1 - \dfrac{Q_2'}{Q_1} = 1 - \dfrac{T_2}{T_1}
 $$
 
 其中 $Q_1$ 是从高温热源吸收的热量，$Q_2'$ 是向低温热源放出的热量（绝对值）。整理得：
 
 $$
-\frac{Q_1}{T_1} = \frac{Q_2'}{T_2}
+\dfrac{Q_1}{T_1} = \dfrac{Q_2'}{T_2}
 $$
 
 注意：如果我们规定 $Q$ 表示系统**吸收**的热量（吸热为正，放热为负），则 $Q_2 = -Q_2'$，上式变为：
 
 $$
-\frac{Q_1}{T_1} + \frac{Q_2}{T_2} = 0 \quad \text{（可逆卡诺循环）}
+\dfrac{Q_1}{T_1} + \dfrac{Q_2}{T_2} = 0 \quad \text{（可逆卡诺循环）}
 $$
 
 对于**不可逆热机**，由卡诺定理 $\eta < \eta_C$，即：
 
 $$
-1 - \frac{Q_2'}{Q_1} < 1 - \frac{T_2}{T_1}
+1 - \dfrac{Q_2'}{Q_1} < 1 - \dfrac{T_2}{T_1}
 $$
 
 同样令 $Q_2 = -Q_2'$，可得：
 
 $$
-\frac{Q_1}{T_1} + \frac{Q_2}{T_2} < 0 \quad \text{（不可逆卡诺循环）}
+\dfrac{Q_1}{T_1} + \dfrac{Q_2}{T_2} < 0 \quad \text{（不可逆卡诺循环）}
 $$
 
 ### 可逆循环——克劳修斯等式
@@ -60,13 +60,13 @@ $$
 每个小卡诺循环都满足：
 
 $$
-\frac{\delta Q_1}{T_1} + \frac{\delta Q_2}{T_2} = 0
+\dfrac{\delta Q_1}{T_1} + \dfrac{\delta Q_2}{T_2} = 0
 $$
 
 当分割的卡诺循环数目趋于无穷时，所有小卡诺循环的等温线首尾相连，恰好构成原循环的边界。由于相邻小循环的公共绝热路径上的过程互为逆过程，热量相互抵消，因此对所有小循环求和的结果等于沿原循环边界路径的积分：
 
 $$
-\oint \frac{\delta Q}{T} = 0 \quad \text{（可逆循环）}
+\oint \dfrac{\delta Q}{T} = 0 \quad \text{（可逆循环）}
 $$
 
 ![alt text](images/reversible-cycle-decomposition.png)
@@ -75,7 +75,7 @@ $$
     对于**任意可逆循环**，有：
 
     $$
-    \oint \frac{\delta Q}{T} = 0
+    \oint \dfrac{\delta Q}{T} = 0
     $$
 
     其中 $\delta Q$ 为系统从温度为 $T$ 的热源吸收的微小热量，$T$ 为热源的温度。
@@ -93,13 +93,13 @@ $$
 对于不可逆循环，由卡诺定理，每个小卡诺循环的效率均低于卡诺效率，因此：
 
 $$
-\frac{\delta Q_1}{T_1} + \frac{\delta Q_2}{T_2} < 0
+\dfrac{\delta Q_1}{T_1} + \dfrac{\delta Q_2}{T_2} < 0
 $$
 
 对所有小卡诺循环求和并取极限，得到：
 
 $$
-\oint \frac{\delta Q}{T} < 0 \quad \text{（不可逆循环）}
+\oint \dfrac{\delta Q}{T} < 0 \quad \text{（不可逆循环）}
 $$
 
 ### 克劳修斯不等式的统一表述
@@ -110,7 +110,7 @@ $$
     对于**任意循环过程**（可逆或不可逆），有：
 
     $$
-    \oint \frac{\delta Q}{T} \leq 0
+    \oint \dfrac{\delta Q}{T} \leq 0
     $$
 
     其中等号"$=$"适用于可逆循环，不等号"$<$"适用于不可逆循环。
@@ -128,7 +128,7 @@ $$
     系统从状态 1 经**可逆过程**变化到状态 2 时，其熵变定义为：
 
     $$
-    \Delta S = S_2 - S_1 = \int_1^2 \left(\frac{\delta Q}{T}\right)_{\text{可逆}}
+    \Delta S = S_2 - S_1 = \int_1^2 \left(\dfrac{\delta Q}{T}\right)_{\text{可逆}}
     $$
 
     其中 $\delta Q$ 为系统在可逆过程中从温度为 $T$ 的热源吸收的微小热量。熵的国际单位为 $\text{J/K}$（焦耳每开尔文）。
@@ -162,7 +162,7 @@ $$
 对于理想气体，$\mathrm{d}U = \nu C_V^{\text{mol}} \mathrm{d}T$，且 $pV = \nu RT$，代入熵的定义：
 
 $$
-\mathrm{d}S = \frac{\delta Q}{T} = \frac{\nu C_V^{\text{mol}} \mathrm{d}T}{T} + \frac{p\,\mathrm{d}V}{T} = \nu C_V^{\text{mol}} \frac{\mathrm{d}T}{T} + \nu R \frac{\mathrm{d}V}{V}
+\mathrm{d}S = \dfrac{\delta Q}{T} = \dfrac{\nu C_V^{\text{mol}} \mathrm{d}T}{T} + \dfrac{p\,\mathrm{d}V}{T} = \nu C_V^{\text{mol}} \dfrac{\mathrm{d}T}{T} + \nu R \dfrac{\mathrm{d}V}{V}
 $$
 
 对上式从状态 1 到状态 2 积分，得到以 $(T, V)$ 为变量的熵变公式。类似地，利用 $V = \nu RT/p$ 消去体积，可以得到以 $(T, p)$ 为变量的熵变公式：
@@ -171,13 +171,13 @@ $$
     以 $(T, V)$ 为变量：
 
     $$
-    \Delta S(T, V) = \nu C_V^{\text{mol}} \ln\frac{T_2}{T_1} + \nu R \ln\frac{V_2}{V_1}
+    \Delta S(T, V) = \nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1} + \nu R \ln\dfrac{V_2}{V_1}
     $$
 
     以 $(T, p)$ 为变量：
 
     $$
-    \Delta S(T, p) = \nu C_p^{\text{mol}} \ln\frac{T_2}{T_1} - \nu R \ln\frac{p_2}{p_1}
+    \Delta S(T, p) = \nu C_p^{\text{mol}} \ln\dfrac{T_2}{T_1} - \nu R \ln\dfrac{p_2}{p_1}
     $$
 
     其中 $\nu$ 为物质的量，$C_V^{\text{mol}}$ 和 $C_p^{\text{mol}}$ 分别为摩尔定容热容和摩尔定压热容。
@@ -187,19 +187,19 @@ $$
 对于多方过程 $pV^n = \text{const}$，其体积-温度关系为：
 
 $$
-\frac{V_2}{V_1} = \left(\frac{T_2}{T_1}\right)^{\!\frac{1}{1-n}}
+\dfrac{V_2}{V_1} = \left(\dfrac{T_2}{T_1}\right)^{\!\dfrac{1}{1-n}}
 $$
 
 将此关系代入 $\Delta S(T, V)$ 公式：
 
 $$
-\Delta S = \nu C_V^{\text{mol}} \ln\frac{T_2}{T_1} + \nu R \cdot \frac{1}{1-n} \ln\frac{T_2}{T_1} = \nu \left(C_V^{\text{mol}} + \frac{R}{1-n}\right) \ln\frac{T_2}{T_1}
+\Delta S = \nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1} + \nu R \cdot \dfrac{1}{1-n} \ln\dfrac{T_2}{T_1} = \nu \left(C_V^{\text{mol}} + \dfrac{R}{1-n}\right) \ln\dfrac{T_2}{T_1}
 $$
 
 定义多方过程的摩尔热容 $C_n = C_V^{\text{mol}} + \dfrac{R}{1-n}$，则熵变可统一写为：
 
 $$
-\Delta S = \nu C_n \ln\frac{T_2}{T_1}
+\Delta S = \nu C_n \ln\dfrac{T_2}{T_1}
 $$
 
 ???+ tip "多方过程熵变的统一性"
@@ -224,15 +224,15 @@ $$
     先等温膨胀从 $a$ 到 $c$（$T = 300\;\text{K}$，$V_c = V_b$），再等体升温从 $c$ 到 $b$：
 
     $$
-    \Delta S_{ac} = \nu R \ln\frac{V_b}{V_a} = R \ln\frac{2.0}{3.0} = -R \ln\frac{3}{2}
+    \Delta S_{ac} = \nu R \ln\dfrac{V_b}{V_a} = R \ln\dfrac{2.0}{3.0} = -R \ln\dfrac{3}{2}
     $$
 
     $$
-    \Delta S_{cb} = \nu C_V^{\text{mol}} \ln\frac{T_b}{T_c} = \frac{3}{2}R \ln\frac{450}{300} = \frac{3}{2}R \ln\frac{3}{2}
+    \Delta S_{cb} = \nu C_V^{\text{mol}} \ln\dfrac{T_b}{T_c} = \dfrac{3}{2}R \ln\dfrac{450}{300} = \dfrac{3}{2}R \ln\dfrac{3}{2}
     $$
 
     $$
-    \Delta S_{ab} = -R \ln\frac{3}{2} + \frac{3}{2}R \ln\frac{3}{2} = \frac{1}{2}R \ln\frac{3}{2} \approx 1.69\;\text{J/K}
+    \Delta S_{ab} = -R \ln\dfrac{3}{2} + \dfrac{3}{2}R \ln\dfrac{3}{2} = \dfrac{1}{2}R \ln\dfrac{3}{2} \approx 1.69\;\text{J/K}
     $$
 
     **路径 2：可逆绝热 + 等体**
@@ -242,7 +242,7 @@ $$
     由绝热关系 $TV^{\gamma-1} = \text{const}$（$\gamma = 5/3$）：
 
     $$
-    T_d = T_a \left(\frac{V_a}{V_d}\right)^{\!\gamma-1} = 300 \times \left(\frac{3.0}{2.0}\right)^{\!2/3} \approx 393.1\;\text{K}
+    T_d = T_a \left(\dfrac{V_a}{V_d}\right)^{\!\gamma-1} = 300 \times \left(\dfrac{3.0}{2.0}\right)^{\!2/3} \approx 393.1\;\text{K}
     $$
 
     $$
@@ -250,7 +250,7 @@ $$
     $$
 
     $$
-    \Delta S_{db} = \frac{3}{2}R \ln\frac{450}{393.1} \approx \frac{3}{2} \times 8.314 \times 0.1352 \approx 1.69\;\text{J/K}
+    \Delta S_{db} = \dfrac{3}{2}R \ln\dfrac{450}{393.1} \approx \dfrac{3}{2} \times 8.314 \times 0.1352 \approx 1.69\;\text{J/K}
     $$
 
     $$
@@ -292,7 +292,7 @@ $$
 **可逆相变：** 在相变温度 $T$（如沸点、熔点）下，相变过程是可逆等温过程，其熵变为：
 
 $$
-\Delta S = \frac{L}{T}
+\Delta S = \dfrac{L}{T}
 $$
 
 其中 $L$ 为相变潜热（吸热时 $L > 0$，放热时 $L < 0$）。
@@ -313,7 +313,7 @@ $$
     **系统的熵变：**
 
     $$
-    \Delta S_{\text{sys}} = \int_{T'}^{273.15} \frac{C_{p,l}}{T}\,\mathrm{d}T - \frac{\Lambda}{273.15} + \int_{273.15}^{T'} \frac{C_{p,s}}{T}\,\mathrm{d}T
+    \Delta S_{\text{sys}} = \int_{T'}^{273.15} \dfrac{C_{p,l}}{T}\,\mathrm{d}T - \dfrac{\Lambda}{273.15} + \int_{273.15}^{T'} \dfrac{C_{p,s}}{T}\,\mathrm{d}T
     $$
 
     其中第二步放热，故取负号。
@@ -321,7 +321,7 @@ $$
     **环境的熵变：** 环境视为温度恒为 $T'$ 的大热源，其吸热量等于系统放热量的负值：
 
     $$
-    \Delta S_{\text{env}} = \frac{Q_{\text{env}}}{T'} = \frac{-Q_{\text{sys}}}{T'}
+    \Delta S_{\text{env}} = \dfrac{Q_{\text{env}}}{T'} = \dfrac{-Q_{\text{sys}}}{T'}
     $$
 
     其中系统实际放出的热量为 $Q_{\text{sys}} = -Q_{\text{env}}$，可由焓变计算。
@@ -381,7 +381,7 @@ $$
 对于一个**绝热系统**（$\delta Q = 0$），克劳修斯不等式变为：
 
 $$
-\oint \frac{\delta Q}{T} \leq 0 \implies \Delta S \geq 0
+\oint \dfrac{\delta Q}{T} \leq 0 \implies \Delta S \geq 0
 $$
 
 - 可逆绝热过程：$\Delta S = 0$（等熵过程）
@@ -423,7 +423,7 @@ $$
 气体向真空膨胀（绝热，不做功），是典型的不可逆过程。由玻尔兹曼熵或直接计算可得：
 
 $$
-\Delta S = \nu R \ln\frac{V_2}{V_1} > 0
+\Delta S = \nu R \ln\dfrac{V_2}{V_1} > 0
 $$
 
 由于 $V_2 > V_1$，熵变为正值，满足熵增原理。该过程的详细讨论将在玻尔兹曼熵部分展开。
@@ -440,7 +440,7 @@ $$
     **物体 A 的熵变：** 物体 A 经历等压过程从 $T_A$ 升温到 $T_B$，设计可逆等压路径：
 
     $$
-    \Delta S_A = \int_{T_A}^{T_B} \frac{C_p\,\mathrm{d}T}{T} = C_p \ln\frac{T_B}{T_A}
+    \Delta S_A = \int_{T_A}^{T_B} \dfrac{C_p\,\mathrm{d}T}{T} = C_p \ln\dfrac{T_B}{T_A}
     $$
 
     其中 $C_p$ 为物体 A 的定压热容。
@@ -448,19 +448,19 @@ $$
     **热源 B 的熵变：** 热源温度恒为 $T_B$，其释放的热量为 $Q = C_p(T_B - T_A)$（等于物体 A 吸收的热量），因此：
 
     $$
-    \Delta S_B = \frac{-Q}{T_B} = -\frac{C_p(T_B - T_A)}{T_B}
+    \Delta S_B = \dfrac{-Q}{T_B} = -\dfrac{C_p(T_B - T_A)}{T_B}
     $$
 
     **总熵变：**
 
     $$
-    \Delta S = \Delta S_A + \Delta S_B = C_p \ln\frac{T_B}{T_A} - C_p\frac{T_B - T_A}{T_B}
+    \Delta S = \Delta S_A + \Delta S_B = C_p \ln\dfrac{T_B}{T_A} - C_p\dfrac{T_B - T_A}{T_B}
     $$
 
     **证明 $\Delta S > 0$：** 令 $x = T_B / T_A > 1$，则：
 
     $$
-    \Delta S = C_p \left(\ln x - 1 + \frac{1}{x}\right)
+    \Delta S = C_p \left(\ln x - 1 + \dfrac{1}{x}\right)
     $$
 
     利用不等式 $\ln x > 1 - \dfrac{1}{x}$（当 $x > 1$ 时成立），可得 $\ln x - 1 + 1/x > 0$，因此：
@@ -512,7 +512,7 @@ $$
 熵变为：
 
 $$
-\Delta S = k \ln \frac{\Omega_2}{\Omega_1} = k \ln 2^N = Nk \ln 2
+\Delta S = k \ln \dfrac{\Omega_2}{\Omega_1} = k \ln 2^N = Nk \ln 2
 $$
 
 由 $N = \nu N_A$（$N_A$ 为阿伏伽德罗常数）和 $kN_A = R$，可得：
@@ -524,7 +524,7 @@ $$
 而从宏观热力学计算（自由膨胀，$V_2 = 2V_1$，等温）：
 
 $$
-\Delta S = \nu R \ln\frac{V_2}{V_1} = \nu R \ln 2
+\Delta S = \nu R \ln\dfrac{V_2}{V_1} = \nu R \ln 2
 $$
 
 两者完全一致！这证明了玻尔兹曼熵与克劳修斯熵的**统一性**。
@@ -536,13 +536,13 @@ $$
 考虑 $N$ 个粒子在左、右两部分的分布：$k$ 个粒子在左半部分的概率服从**二项分布**：
 
 $$
-P(k) = \binom{N}{k} \left(\frac{1}{2}\right)^N
+P(k) = \binom{N}{k} \left(\dfrac{1}{2}\right)^N
 $$
 
 当 $N$ 很大时，该分布在 $k/N = 1/2$ 附近变得极其尖锐。对于 $1\;\text{mol}$ 气体（$N = 6.023 \times 10^{23}$），所有粒子自发回到左半部分的概率为：
 
 $$
-P = \frac{1}{2^{6.023 \times 10^{23}}}
+P = \dfrac{1}{2^{6.023 \times 10^{23}}}
 $$
 
 这个概率小得令人难以置信——即使等待整个宇宙的年龄，也几乎不可能观察到这样的事件。因此，宏观上我们观测到的"熵增"实际上是**压倒性概率**的体现。

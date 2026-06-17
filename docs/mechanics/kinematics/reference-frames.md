@@ -51,7 +51,7 @@ author: Leafuke
         - 飞行时间由垂直方向运动决定：
 
         $$
-        t = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+        t = \dfrac{2v_{0y}}{g} = \dfrac{2v_0 \sin\theta}{g}
         $$
 
         代入 $v_0 = 50\,\mathrm{m/s}$，$\theta = 60^\circ$，$g = 9.8\,\mathrm{m/s^2}$：
@@ -64,7 +64,7 @@ author: Leafuke
         - 最大高度由垂直方向速度为零时的位置决定：
 
         $$
-        h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
+        h = \dfrac{v_{0y}^2}{2g} = \dfrac{(v_0 \sin\theta)^2}{2g}
         $$
 
           代入数据：
@@ -77,13 +77,13 @@ author: Leafuke
         - 水平距离由水平速度和飞行时间决定：
 
         $$
-        x = v_{0x} \cdot t = v_0 \cos\theta \cdot \frac{2v_0 \sin\theta}{g}
+        x = v_{0x} \cdot t = v_0 \cos\theta \cdot \dfrac{2v_0 \sin\theta}{g}
         $$
 
           利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
 
         $$
-        x = \frac{v_0^2 \sin(2\theta)}{g}
+        x = \dfrac{v_0^2 \sin(2\theta)}{g}
         $$
 
           代入数据：
@@ -103,7 +103,7 @@ author: Leafuke
 **速度**:
 
 $$
-\boldsymbol{v} = \frac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\hat{\boldsymbol{e}}}_r = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta
+\boldsymbol{v} = \dfrac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\hat{\boldsymbol{e}}}_r = \dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta
 $$
 
 其中 $\dot{r}$ 为径向速度，$r\dot{\theta}$ 为横向速度。
@@ -140,8 +140,8 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
 
     $$
     \begin{aligned}
-        \frac{d\hat{\boldsymbol{e}}_r}{d\theta} &= -\sin\theta\,\hat{\boldsymbol{i}} + \cos\theta\,\hat{\boldsymbol{j}} = \hat{\boldsymbol{e}}_\theta \\
-        \frac{d\hat{\boldsymbol{e}}_\theta}{d\theta} &= -\cos\theta\,\hat{\boldsymbol{i}} - \sin\theta\,\hat{\boldsymbol{j}} = -\hat{\boldsymbol{e}}_r
+        \dfrac{d\hat{\boldsymbol{e}}_r}{d\theta} &= -\sin\theta\,\hat{\boldsymbol{i}} + \cos\theta\,\hat{\boldsymbol{j}} = \hat{\boldsymbol{e}}_\theta \\
+        \dfrac{d\hat{\boldsymbol{e}}_\theta}{d\theta} &= -\cos\theta\,\hat{\boldsymbol{i}} - \sin\theta\,\hat{\boldsymbol{j}} = -\hat{\boldsymbol{e}}_r
     \end{aligned}
     $$
 
@@ -149,8 +149,8 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
 
     $$
     \begin{aligned}
-        \frac{d\hat{\boldsymbol{e}}_r}{dt} &= \frac{d\hat{\boldsymbol{e}}_r}{d\theta}\frac{d\theta}{dt} = \dot{\theta}\,\hat{\boldsymbol{e}}_\theta \\
-        \frac{d\hat{\boldsymbol{e}}_\theta}{dt} &= \frac{d\hat{\boldsymbol{e}}_\theta}{d\theta}\frac{d\theta}{dt} = -\dot{\theta}\,\hat{\boldsymbol{e}}_r
+        \dfrac{d\hat{\boldsymbol{e}}_r}{dt} &= \dfrac{d\hat{\boldsymbol{e}}_r}{d\theta}\dfrac{d\theta}{dt} = \dot{\theta}\,\hat{\boldsymbol{e}}_\theta \\
+        \dfrac{d\hat{\boldsymbol{e}}_\theta}{dt} &= \dfrac{d\hat{\boldsymbol{e}}_\theta}{d\theta}\dfrac{d\theta}{dt} = -\dot{\theta}\,\hat{\boldsymbol{e}}_r
     \end{aligned}
     $$
 
@@ -161,7 +161,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     对时间求导：
 
     $$
-    \boldsymbol{v} = \frac{d\boldsymbol{r}}{dt} = \frac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\frac{d\hat{\boldsymbol{e}}_r}{dt}
+    \boldsymbol{v} = \dfrac{d\boldsymbol{r}}{dt} = \dfrac{d}{dt}(r\hat{\boldsymbol{e}}_r) = \dot{r}\hat{\boldsymbol{e}}_r + r\dfrac{d\hat{\boldsymbol{e}}_r}{dt}
     $$
 
     由于 $\hat{\boldsymbol{e}}_r$ 随 $\theta$ 变化，$\frac{d\hat{\boldsymbol{e}}_r}{dt} = \dot{\theta}\hat{\boldsymbol{e}}_\theta$，所以：
@@ -175,19 +175,19 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     对速度再求导：
 
     $$
-    \boldsymbol{a} = \frac{d\boldsymbol{v}}{dt} = \frac{d}{dt}(\dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta)
+    \boldsymbol{a} = \dfrac{d\boldsymbol{v}}{dt} = \dfrac{d}{dt}(\dot{r}\hat{\boldsymbol{e}}_r + r\dot{\theta}\hat{\boldsymbol{e}}_\theta)
     $$
 
     展开后：
 
     $$
-    \boldsymbol{a} = \ddot{r}\hat{\boldsymbol{e}}_r + \dot{r}\frac{d\hat{\boldsymbol{e}}_r}{dt} + \dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta + r\ddot{\theta}\hat{\boldsymbol{e}}_\theta + r\dot{\theta}\frac{d\hat{\boldsymbol{e}}_\theta}{dt}
+    \boldsymbol{a} = \ddot{r}\hat{\boldsymbol{e}}_r + \dot{r}\dfrac{d\hat{\boldsymbol{e}}_r}{dt} + \dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta + r\ddot{\theta}\hat{\boldsymbol{e}}_\theta + r\dot{\theta}\dfrac{d\hat{\boldsymbol{e}}_\theta}{dt}
     $$
 
     其中
 
     $$
-    \frac{d\hat{\boldsymbol{e}}_r}{dt} = \dot{\theta}\hat{\boldsymbol{e}}_\theta,\quad \frac{d\hat{\boldsymbol{e}}_\theta}{dt} = -\dot{\theta}\hat{\boldsymbol{e}}_r
+    \dfrac{d\hat{\boldsymbol{e}}_r}{dt} = \dot{\theta}\hat{\boldsymbol{e}}_\theta,\quad \dfrac{d\hat{\boldsymbol{e}}_\theta}{dt} = -\dot{\theta}\hat{\boldsymbol{e}}_r
     $$
 
     代入后整理得：
@@ -211,7 +211,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
         - 角速度由周期决定：
 
         $$
-        \omega = \frac{2\pi}{T}
+        \omega = \dfrac{2\pi}{T}
         $$
 
           代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
@@ -237,7 +237,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
         - 向心加速度由线速度和半径决定：
 
         $$
-        a_c = \frac{v^2}{r}
+        a_c = \dfrac{v^2}{r}
         $$
 
           代入数据：
@@ -274,7 +274,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
     位置矢量 $\boldsymbol{r}(s)$ 沿轨迹变化，速度为
 
     $$
-    \boldsymbol{v} = \frac{d\boldsymbol{r}}{dt} = \frac{d\boldsymbol{r}}{ds} \frac{ds}{dt} = \hat{\boldsymbol{\tau}}\, v
+    \boldsymbol{v} = \dfrac{d\boldsymbol{r}}{dt} = \dfrac{d\boldsymbol{r}}{ds} \dfrac{ds}{dt} = \hat{\boldsymbol{\tau}}\, v
     $$
 
     **2. 加速度分解：**
@@ -282,13 +282,13 @@ $\rho = \pm\frac{ds}{d\Theta}$
     对速度求导：
 
     $$
-    \boldsymbol{a} = \frac{d\boldsymbol{v}}{dt} = \frac{d}{dt}(v\hat{\boldsymbol{\tau}})
+    \boldsymbol{a} = \dfrac{d\boldsymbol{v}}{dt} = \dfrac{d}{dt}(v\hat{\boldsymbol{\tau}})
     $$
 
     展开为：
 
     $$
-    \boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + v\frac{d\hat{\boldsymbol{\tau}}}{dt}
+    \boldsymbol{a} = \dfrac{dv}{dt}\hat{\boldsymbol{\tau}} + v\dfrac{d\hat{\boldsymbol{\tau}}}{dt}
     $$
 
     其中，$\frac{dv}{dt}$ 是速度大小的变化，$\frac{d\hat{\boldsymbol{\tau}}}{dt}$ 是方向的变化。
@@ -296,25 +296,25 @@ $\rho = \pm\frac{ds}{d\Theta}$
     又有
 
     $$
-    \frac{d\hat{\boldsymbol{\tau}}}{dt} = \frac{d\hat{\boldsymbol{\tau}}}{ds} \frac{ds}{dt} = \frac{d\hat{\boldsymbol{\tau}}}{ds} v
+    \dfrac{d\hat{\boldsymbol{\tau}}}{dt} = \dfrac{d\hat{\boldsymbol{\tau}}}{ds} \dfrac{ds}{dt} = \dfrac{d\hat{\boldsymbol{\tau}}}{ds} v
     $$
 
     而 $\frac{d\hat{\boldsymbol{\tau}}}{ds} = \frac{1}{\rho} \hat{\boldsymbol{n}}$，所以
 
     $$
-    \frac{d\hat{\boldsymbol{\tau}}}{dt} = \frac{v}{\rho} \hat{\boldsymbol{n}}
+    \dfrac{d\hat{\boldsymbol{\tau}}}{dt} = \dfrac{v}{\rho} \hat{\boldsymbol{n}}
     $$
 
     代入加速度表达式：
 
     $$
-    \boldsymbol{a} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + v \cdot \frac{v}{\rho} \hat{\boldsymbol{n}} = \frac{dv}{dt}\hat{\boldsymbol{\tau}} + \frac{v^2}{\rho}\hat{\boldsymbol{n}}
+    \boldsymbol{a} = \dfrac{dv}{dt}\hat{\boldsymbol{\tau}} + v \cdot \dfrac{v}{\rho} \hat{\boldsymbol{n}} = \dfrac{dv}{dt}\hat{\boldsymbol{\tau}} + \dfrac{v^2}{\rho}\hat{\boldsymbol{n}}
     $$
 
     **3. 切向加速度：**
 
     $$
-    a_\tau = \frac{dv}{dt}
+    a_\tau = \dfrac{dv}{dt}
     $$
 
     表示速度大小的变化。
@@ -322,7 +322,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
     **4. 法向加速度：**
 
     $$
-    a_n = \frac{v^2}{\rho}
+    a_n = \dfrac{v^2}{\rho}
     $$
 
     表示速度方向的变化，指向轨迹的曲率中心。
@@ -341,7 +341,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         - 向心加速度由速度和半径决定：
 
         $$
-        a_c = \frac{v^2}{r}
+        a_c = \dfrac{v^2}{r}
         $$
 
           代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
@@ -354,7 +354,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         - 在倾斜弯道上，摩擦力和重力提供向心力：
 
         $$
-        \mu \geq \frac{v^2}{rg \cos\theta} - \tan\theta
+        \mu \geq \dfrac{v^2}{rg \cos\theta} - \tan\theta
         $$
 
           代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
@@ -401,7 +401,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         $$
         \begin{aligned}
         r &= \sqrt{x^2 + y^2} \\
-        \theta &= \arctan\left(\frac{y}{x}\right)
+        \theta &= \arctan\left(\dfrac{y}{x}\right)
         \end{aligned}
         $$
 
@@ -451,7 +451,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         - 方向：
 
         $$
-        \theta = \arctan\left(\frac{v_w}{v_b}\right) = \arctan\left(\frac{3}{4}\right) \approx 36.87^\circ
+        \theta = \arctan\left(\dfrac{v_w}{v_b}\right) = \arctan\left(\dfrac{3}{4}\right) \approx 36.87^\circ
         $$
 
           即偏离垂直方向 $36.87^\circ$。
@@ -460,7 +460,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         - 到达时间由垂直方向运动决定：
 
         $$
-        t = \frac{d}{v_b} = \frac{100}{4} = 25\,\mathrm{s}
+        t = \dfrac{d}{v_b} = \dfrac{100}{4} = 25\,\mathrm{s}
         $$
 
     3. **水平偏移：**

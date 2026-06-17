@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 大数定律及中心极限定理
+## 大数定律及中心极限定理
 
 ## 学习目标
 

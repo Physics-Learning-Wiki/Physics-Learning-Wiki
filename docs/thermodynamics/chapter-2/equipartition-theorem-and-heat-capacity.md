@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke, 匿名同学
 ---
 
-# 能均分定理与热容量
+## 能均分定理与热容量
 
 ## 学习目标
 
@@ -68,13 +68,13 @@ author: Physics Learning Wiki, Leafuke, 匿名同学
 设一摩尔气体的分子总数为阿伏伽德罗常数 $N_A$。一个自由度为 $i$ 且无振动的分子，其平均能量为：
 
 $$
-\bar{\varepsilon} = i \frac{1}{2} k T
+\bar{\varepsilon} = i \dfrac{1}{2} k T
 $$
 
 一摩尔该理想气体的内能 $E_m$ 为：
 
 $$
-E_m = N_A \bar{\varepsilon} = \frac{i}{2} N_A k T = \frac{i}{2} R T
+E_m = N_A \bar{\varepsilon} = \dfrac{i}{2} N_A k T = \dfrac{i}{2} R T
 $$
 
 其中 $R = N_A k$ 为普适气体常量。
@@ -82,7 +82,7 @@ $$
 对于物质的量为 $\nu$ 摩尔的理想气体，总内能 $U$ 为：
 
 $$
-U = \frac{i}{2} \nu R T
+U = \dfrac{i}{2} \nu R T
 $$
 
 这说明：**一定量的理想气体，其内能仅仅是温度的函数。**
@@ -96,7 +96,7 @@ $$
 在等容过程中，气体不膨胀对外做功（$W = 0$）。根据热力学第一定律，系统吸收的热量全部用于增加内能（$dQ_V = dE_m$）。因此定容摩尔热容为：
 
 $$
-C_V^{mol} = \left( \frac{\partial E_m}{\partial T} \right)_V = \frac{d}{dT} \left( \frac{i}{2} R T \right) = \frac{i}{2} R
+C_V^{mol} = \left( \dfrac{\partial E_m}{\partial T} \right)_V = \dfrac{d}{dT} \left( \dfrac{i}{2} R T \right) = \dfrac{i}{2} R
 $$
 
 #### 定压摩尔热容
@@ -104,7 +104,7 @@ $$
 在等压过程中，气体吸热后不仅内能增加，还要膨胀对外做功。根据迈耶公式 ($C_p^{mol} - C_V^{mol} = R$)：
 
 $$
-C_p^{mol} = C_V^{mol} + R = \frac{i}{2} R + R = \frac{i + 2}{2} R
+C_p^{mol} = C_V^{mol} + R = \dfrac{i}{2} R + R = \dfrac{i + 2}{2} R
 $$
 
 #### 绝热指数（泊松比）
@@ -112,7 +112,7 @@ $$
 定压摩尔热容与定容摩尔热容的比值被称为绝热指数（或比热容比），通常用 $\gamma$ 表示：
 
 $$
-\gamma = \frac{C_p^{mol}}{C_V^{mol}} = \frac{\frac{i + 2}{2} R}{\frac{i}{2} R} = 1 + \frac{2}{i}
+\gamma = \dfrac{C_p^{mol}}{C_V^{mol}} = \dfrac{\dfrac{i + 2}{2} R}{\dfrac{i}{2} R} = 1 + \dfrac{2}{i}
 $$
 
 不同类型分子的理论摩尔热容及比热容比汇总如下表：
@@ -131,13 +131,13 @@ $$
     - **内能增量** $\Delta U$：
       
       $$
-      \Delta U = \nu \frac{i}{2} R \Delta T = 2 \times \frac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}
+      \Delta U = \nu \dfrac{i}{2} R \Delta T = 2 \times \dfrac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}
       $$
 
     - **吸收的热量** $Q_p$：
       
       $$
-      Q_p = \nu C_p^{mol} \Delta T = \nu \frac{i+2}{2} R \Delta T = 2 \times \frac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}
+      Q_p = \nu C_p^{mol} \Delta T = \nu \dfrac{i+2}{2} R \Delta T = 2 \times \dfrac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}
       $$
 
     - **对外做的功** $W$：
@@ -166,7 +166,7 @@ $$
 因此，一个固体原子在晶格中的总平均能量（3个平动动能项，3个振动势能项）为：
 
 $$
-\bar{\varepsilon} = 3 \times \left(\frac{1}{2} k T + \frac{1}{2} k T\right) = 3 k T
+\bar{\varepsilon} = 3 \times \left(\dfrac{1}{2} k T + \dfrac{1}{2} k T\right) = 3 k T
 $$
 
 一摩尔单原子固体内含有 $N_A$ 个原子，其总内能为：
@@ -178,7 +178,7 @@ $$
 由此得到的摩尔定容热容为：
 
 $$
-C_V^{mol} = \left( \frac{\partial E_m}{\partial T} \right)_V = 3 R
+C_V^{mol} = \left( \dfrac{\partial E_m}{\partial T} \right)_V = 3 R
 $$
 
 此时 $3R \approx 24.9 \text{ J}/(\text{mol}\cdot\text{K})$。这就是著名的**杜隆-珀蒂定律 (Dulong-Petit Law)**。它表明在常温及高温下，许多简单固体的摩尔热容大约都是这个常数。

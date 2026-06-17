@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 方差分析及回归分析
+## 方差分析及回归分析
 
 ## 学习目标
 

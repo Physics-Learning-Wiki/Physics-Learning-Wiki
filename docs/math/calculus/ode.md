@@ -26,7 +26,7 @@ $$
 1.  **建立方程**：根据题意，“衰变速率”是 $\frac{dN}{dt}$，“与当前数量成正比”意味着 $\frac{dN}{dt} \propto -N$ (负号表示数量在减少)。写成方程就是：
 
     $$
-    \frac{dN}{dt} = -\lambda N
+    \dfrac{dN}{dt} = -\lambda N
     $$
 
     这是一个一阶常微分方程。
@@ -34,13 +34,13 @@ $$
 2.  **求解方程 (分离变量法)**：我们将所有含 $N$ 的项移到一边，含 $t$ 的项移到另一边。
 
     $$
-    \frac{dN}{N} = -\lambda dt
+    \dfrac{dN}{N} = -\lambda dt
     $$
 
     然后对两边同时积分：
 
     $$
-    \int \frac{1}{N} \,dN = \int -\lambda \,dt
+    \int \dfrac{1}{N} \,dN = \int -\lambda \,dt
     $$
 
     得到：
@@ -89,13 +89,13 @@ $$
 1.  **建立方程**：
 
     $$
-    m\frac{d^2x}{dt^2} = -kx
+    m\dfrac{d^2x}{dt^2} = -kx
     $$
 
     整理后得到一个二阶常系数齐次线性微分方程：
     
     $$
-    \frac{d^2x}{dt^2} + \frac{k}{m}x = 0
+    \dfrac{d^2x}{dt^2} + \dfrac{k}{m}x = 0
     $$
 
     我们令 $\omega^2 = k/m$，其中 $\omega$ 称为角频率。方程变为：

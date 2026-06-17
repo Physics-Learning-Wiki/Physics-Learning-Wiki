@@ -2,7 +2,7 @@
 author: Physics Learning Wiki
 ---
 
-# 卡诺定理的应用
+## 卡诺定理的应用
 
 卡诺定理不仅给出了热机效率的理论上限，还为建立与物质无关的热力学温标奠定了基础。此外，将卡诺循环应用于相变问题，可以推导出描述相变曲线斜率的克拉珀龙方程。本节讨论这三个重要应用。
 
@@ -20,7 +20,7 @@ author: Physics Learning Wiki
 卡诺定理直接给出了热机效率的理论上限。对于工作在高温热源 $T_1$ 和低温热源 $T_2$ 之间的任何热机：
 
 $$
-\eta \leq \eta_C = 1 - \frac{T_2}{T_1}
+\eta \leq \eta_C = 1 - \dfrac{T_2}{T_1}
 $$
 
 其中等号仅对可逆热机成立。这意味着：
@@ -47,7 +47,7 @@ $$
     卡诺效率（理论最大效率）：
 
     $$
-    \eta_C = 1 - \frac{T_2}{T_1} = 1 - \frac{300}{600} = 0.5 = 50\%
+    \eta_C = 1 - \dfrac{T_2}{T_1} = 1 - \dfrac{300}{600} = 0.5 = 50\%
     $$
 
     实际效率 35% < 50%，符合卡诺定理，是合理的。实际效率低于卡诺效率，说明存在不可逆因素。
@@ -64,7 +64,7 @@ $$
 **热力学温标**的定义完全基于热力学第二定律，不依赖于任何物质的性质：
 
 $$
-\frac{Q_2'}{Q_1} = \frac{T_2}{T_1}
+\dfrac{Q_2'}{Q_1} = \dfrac{T_2}{T_1}
 $$
 
 对于理想气体卡诺循环，效率恰好为 $\eta = 1 - T_2/T_1$（其中 $T$ 是理想气体温度）。由于卡诺定理证明了可逆热机效率与工作物质无关，因此在理想气体温标有效的范围内：
@@ -102,7 +102,7 @@ $$
 根据卡诺效率公式：
 
 $$
-\eta = \frac{\mathrm{d}T}{T} = \frac{A'}{Q_1}
+\eta = \dfrac{\mathrm{d}T}{T} = \dfrac{A'}{Q_1}
 $$
 
 其中 $A'$ 是循环做的净功，$Q_1 = \Lambda^{\text{mol}}$ 是吸收的热量。
@@ -116,13 +116,13 @@ $$
 其中 $\mathrm{d}p$ 是压强沿相变曲线的变化。代入卡诺效率：
 
 $$
-\frac{\mathrm{d}T}{T} = \frac{\mathrm{d}p \cdot (V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})}{\Lambda^{\text{mol}}}
+\dfrac{\mathrm{d}T}{T} = \dfrac{\mathrm{d}p \cdot (V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})}{\Lambda^{\text{mol}}}
 $$
 
 整理得到**克拉珀龙方程**：
 
 $$
-\boxed{\frac{\mathrm{d}p}{\mathrm{d}T} = \frac{\Lambda^{\text{mol}}}{T(V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})}}
+\boxed{\dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{\Lambda^{\text{mol}}}{T(V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})}}
 $$
 
 其中：
@@ -157,13 +157,13 @@ $$
 代入克拉珀龙方程：
 
 $$
-\frac{\mathrm{d}p}{\mathrm{d}T} = \frac{\Lambda^{\text{mol}}}{T \cdot V_{\text{气}}^{\text{mol}}} = \frac{p\Lambda^{\text{mol}}}{RT^2}
+\dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{\Lambda^{\text{mol}}}{T \cdot V_{\text{气}}^{\text{mol}}} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}
 $$
 
 这就是 **Clausius-Clapeyron 方程**（近似形式）：
 
 $$
-\boxed{\frac{\mathrm{d}p}{\mathrm{d}T} = \frac{p\Lambda^{\text{mol}}}{RT^2}}
+\boxed{\dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}}
 $$
 
 这个近似在蒸气压不太高（远离临界点）时非常精确，广泛用于计算饱和蒸气压随温度的变化。
@@ -181,7 +181,7 @@ $$
 利用克拉珀龙方程解释：
 
 $$
-\frac{\mathrm{d}p}{\mathrm{d}T} = \frac{\Lambda^{\text{mol}}}{T(V_{\text{液}}^{\text{mol}} - V_{\text{固}}^{\text{mol}})}
+\dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{\Lambda^{\text{mol}}}{T(V_{\text{液}}^{\text{mol}} - V_{\text{固}}^{\text{mol}})}
 $$
 
 对于水：
@@ -212,19 +212,19 @@ $$
     利用 Clausius-Clapeyron 方程：
 
     $$
-    \frac{\mathrm{d}p}{\mathrm{d}T} = \frac{p\Lambda^{\text{mol}}}{RT^2}
+    \dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}
     $$
 
     代入数据（$p = 101325\,\text{Pa}$，$T = 373.15\,\text{K}$，$R = 8.314\,\text{J/(mol·K)}$）：
 
     $$
-    \frac{\mathrm{d}p}{\mathrm{d}T} = \frac{101325 \times 40700}{8.314 \times 373.15^2} \approx 3570 \,\text{Pa/K}
+    \dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{101325 \times 40700}{8.314 \times 373.15^2} \approx 3570 \,\text{Pa/K}
     $$
 
     因此：
 
     $$
-    \frac{\mathrm{d}T}{\mathrm{d}p} = \frac{1}{3570} \approx 2.8 \times 10^{-4} \,\text{K/Pa}
+    \dfrac{\mathrm{d}T}{\mathrm{d}p} = \dfrac{1}{3570} \approx 2.8 \times 10^{-4} \,\text{K/Pa}
     $$
 
     即压强每增加 $1\,\text{kPa}$，沸点升高约 $0.28\,\text{K}$。这就是**压力锅**的原理——增大压强可以提高沸点，从而提高烹饪温度，加快烹饪速度。

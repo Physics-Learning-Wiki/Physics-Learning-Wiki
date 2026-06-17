@@ -2,7 +2,7 @@
 author: Physics Learning Wiki
 ---
 
-# 热平衡与自由能
+## 热平衡与自由能
 
 熵增原理为孤立系统提供了判断过程方向的判据。然而，实际系统往往并非孤立系统——它们与恒温热源接触，或处于恒温恒压条件下。我们需要更一般的平衡判据，使之适用于这些常见的约束条件。亥姆霍兹自由能和吉布斯自由能正是为此目的而引入的热力学势函数，它们为不同约束下的自发过程方向和平衡条件提供了简洁而有力的判据。
 
@@ -48,7 +48,7 @@ $$
 其中 $\mathrm{d}S$ 为系统的熵变，$\mathrm{d}S'$ 为热源的熵变。热源温度恒为 $T$，其熵变为：
 
 $$
-\mathrm{d}S' = \frac{-\delta Q}{T}
+\mathrm{d}S' = \dfrac{-\delta Q}{T}
 $$
 
 注意：系统吸收的热量等于热源放出的热量，故热源的 $\delta Q' = -\delta Q$。
@@ -62,13 +62,13 @@ $$
 因此：
 
 $$
-\mathrm{d}S' = -\frac{\mathrm{d}U}{T}
+\mathrm{d}S' = -\dfrac{\mathrm{d}U}{T}
 $$
 
 代入总熵变不等式：
 
 $$
-\mathrm{d}S - \frac{\mathrm{d}U}{T} \geq 0
+\mathrm{d}S - \dfrac{\mathrm{d}U}{T} \geq 0
 $$
 
 两边乘以 $T$（$T > 0$）：
@@ -126,7 +126,7 @@ $$
 这是亥姆霍兹自由能的基本方程，其自然变量为 $T$ 和 $V$。由该方程可以读出：
 
 $$
-S = -\left(\frac{\partial F}{\partial T}\right)_V, \quad p = -\left(\frac{\partial F}{\partial V}\right)_T
+S = -\left(\dfrac{\partial F}{\partial T}\right)_V, \quad p = -\left(\dfrac{\partial F}{\partial V}\right)_T
 $$
 
 ## 定温定压条件下的热平衡判据 - 吉布斯自由能
@@ -144,7 +144,7 @@ $$
 热源温度恒为 $T$，其熵变为：
 
 $$
-\mathrm{d}S' = \frac{-\delta Q}{T}
+\mathrm{d}S' = \dfrac{-\delta Q}{T}
 $$
 
 对于系统，在恒压条件下（$\mathrm{d}p = 0$），吸收的热量等于焓变：
@@ -156,13 +156,13 @@ $$
 因此：
 
 $$
-\mathrm{d}S' = -\frac{\mathrm{d}H}{T}
+\mathrm{d}S' = -\dfrac{\mathrm{d}H}{T}
 $$
 
 代入总熵变不等式：
 
 $$
-\mathrm{d}S - \frac{\mathrm{d}H}{T} \geq 0
+\mathrm{d}S - \dfrac{\mathrm{d}H}{T} \geq 0
 $$
 
 两边乘以 $T$：
@@ -217,7 +217,7 @@ $$
 这是吉布斯自由能的基本方程，其自然变量为 $T$ 和 $p$。由该方程可以读出：
 
 $$
-S = -\left(\frac{\partial G}{\partial T}\right)_p, \quad V = \left(\frac{\partial G}{\partial p}\right)_T
+S = -\left(\dfrac{\partial G}{\partial T}\right)_p, \quad V = \left(\dfrac{\partial G}{\partial p}\right)_T
 $$
 
 ### 与非体积功的关系
@@ -279,7 +279,7 @@ $$
     由于 $263\;\text{K}$ 不是平衡相变温度（平衡温度为 $273.15\;\text{K}$），不能直接用 $\Delta G = 0$。我们可以利用 $\Delta G$ 与温度的关系：
 
     $$
-    \left(\frac{\partial \Delta G}{\partial T}\right)_p = -\Delta S
+    \left(\dfrac{\partial \Delta G}{\partial T}\right)_p = -\Delta S
     $$
 
     在 $273.15\;\text{K}$ 下，水和冰平衡共存，$\Delta G(273.15) = 0$。从 $273.15\;\text{K}$ 积分到 $263\;\text{K}$：
@@ -291,7 +291,7 @@ $$
     其中 $\Delta S = S_{\text{冰}} - S_{\text{水}}$，在温度 $T$ 附近：
 
     $$
-    \Delta S(T) = \Delta S(273.15) + \int_{273.15}^{T} \frac{C_{p,s} - C_{p,l}}{T'}\,\mathrm{d}T' = -\frac{\Lambda}{273.15} + (C_{p,s} - C_{p,l})\ln\frac{T}{273.15}
+    \Delta S(T) = \Delta S(273.15) + \int_{273.15}^{T} \dfrac{C_{p,s} - C_{p,l}}{T'}\,\mathrm{d}T' = -\dfrac{\Lambda}{273.15} + (C_{p,s} - C_{p,l})\ln\dfrac{T}{273.15}
     $$
 
     代入数值（$\Delta S(273.15) = -6004/273.15 \approx -21.98\;\text{J/(mol·K)}$）并积分，可得 $\Delta G(263) < 0$。因此在 $263\;\text{K}$ 下，水凝固成冰是自发过程——这与经验一致。
@@ -325,7 +325,7 @@ $$
 每个热力学势都有自己的基本微分方程和自然变量。由基本方程的全微分性质，可以得到所谓的**麦克斯韦关系**——这是由二阶偏导数的对称性（施瓦茨定理）所保证的：
 
 $$
-\frac{\partial^2 f}{\partial x \, \partial y} = \frac{\partial^2 f}{\partial y \, \partial x}
+\dfrac{\partial^2 f}{\partial x \, \partial y} = \dfrac{\partial^2 f}{\partial y \, \partial x}
 $$
 
 ???+ note "四个热力学势的完整关系"
@@ -356,7 +356,7 @@ $$
 由热力学基本关系 $\mathrm{d}S = \delta Q / T$，以及能量守恒 $\delta Q_A + \delta Q_B = 0$，可得：
 
 $$
-\mathrm{d}S = \frac{\delta Q_A}{T_A} + \frac{\delta Q_B}{T_B} = \delta Q_A \left( \frac{1}{T_A} - \frac{1}{T_B} \right) = 0
+\mathrm{d}S = \dfrac{\delta Q_A}{T_A} + \dfrac{\delta Q_B}{T_B} = \delta Q_A \left( \dfrac{1}{T_A} - \dfrac{1}{T_B} \right) = 0
 $$
 
 由于 $\delta Q_A$ 是任意的虚变动，因此：
@@ -373,7 +373,7 @@ $$
 设 $A$ 和 $B$ 两部分可以交换体积（通过移动活塞等），总内能和总体积不变。假设热平衡已建立（$T_A = T_B$），对体积的虚变动，平衡时总熵取极大值：
 
 $$
-\mathrm{d}S = \left( \frac{p_A}{T_A} - \frac{p_B}{T_B} \right) \mathrm{d}V_A = 0
+\mathrm{d}S = \left( \dfrac{p_A}{T_A} - \dfrac{p_B}{T_B} \right) \mathrm{d}V_A = 0
 $$
 
 结合热平衡条件 $T_A = T_B$，得到：
@@ -393,7 +393,7 @@ $$
     组分 $i$ 的化学势（chemical potential）定义为：
 
     $$
-    \mu_i = \left(\frac{\partial G}{\partial n_i}\right)_{T, p, n_{j \neq i}}
+    \mu_i = \left(\dfrac{\partial G}{\partial n_i}\right)_{T, p, n_{j \neq i}}
     $$
 
     即在恒温恒压下，保持其他组分物质的量不变，增加一摩尔组分 $i$ 所引起的吉布斯自由能变化。化学势反映了物质的"逃逸趋势"——物质总是倾向于从化学势高的相或区域流向化学势低的相或区域。

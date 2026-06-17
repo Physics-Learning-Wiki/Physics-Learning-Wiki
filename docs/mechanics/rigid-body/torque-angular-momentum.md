@@ -95,7 +95,7 @@ $$
 ### 定义：
 
 $$
-E_\text{rot} = \frac{1}{2}I\omega^2
+E_\text{rot} = \dfrac{1}{2}I\omega^2
 $$
 
 其中：
@@ -122,13 +122,13 @@ $$
     转动惯量：
 
     $$
-    I = \frac{1}{2}MR^2 = \frac{1}{2} \times 5 \times 0.5^2 = 0.625\,\mathrm{kg \cdot m^2}
+    I = \dfrac{1}{2}MR^2 = \dfrac{1}{2} \times 5 \times 0.5^2 = 0.625\,\mathrm{kg \cdot m^2}
     $$
 
     转动能：
     
     $$
-    E_\text{rot} = \frac{1}{2}I\omega^2 = \frac{1}{2} \times 0.625 \times 10^2 = 31.25\,\mathrm{J}
+    E_\text{rot} = \dfrac{1}{2}I\omega^2 = \dfrac{1}{2} \times 0.625 \times 10^2 = 31.25\,\mathrm{J}
     $$
 
     圆盘的转动能为 $31.25\,\mathrm{J}$。

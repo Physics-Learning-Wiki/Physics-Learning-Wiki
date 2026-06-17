@@ -37,7 +37,7 @@ $$
     $$
 
     $$
-    F_{\text{avg}} = \frac{\Delta \boldsymbol{p}}{\Delta t} = \frac{-5}{0.2} = -25\,\mathrm{N}
+    F_{\text{avg}} = \dfrac{\Delta \boldsymbol{p}}{\Delta t} = \dfrac{-5}{0.2} = -25\,\mathrm{N}
     $$
 
     守门员手对足球施加的平均力大小为 $25\,\mathrm{N}$，方向与足球初速度相反。
@@ -46,7 +46,7 @@ $$
 对于由多个质点组成的系统：
 
 $$
-\frac{d\boldsymbol{P}}{dt} = \sum \boldsymbol{F}_{\text{ext}}
+\dfrac{d\boldsymbol{P}}{dt} = \sum \boldsymbol{F}_{\text{ext}}
 $$
 
 其中 $\boldsymbol{P} = \sum m_i \boldsymbol{v}_i$ 是系统的总动量。
@@ -68,7 +68,7 @@ $$
     $$
 
     $$
-    v_2 = -\frac{m_1v_1}{m_2} = -\frac{50 \times 5}{200} = -1.25\,\mathrm{m/s}
+    v_2 = -\dfrac{m_1v_1}{m_2} = -\dfrac{50 \times 5}{200} = -1.25\,\mathrm{m/s}
     $$
 
     小船的反向速度为 $1.25\,\mathrm{m/s}$。
@@ -107,7 +107,7 @@ $$
     $$
 
     $$
-    3v_{B2} = -2 \implies v_{B2} = -\frac{2}{3}\,\mathrm{m/s}
+    3v_{B2} = -2 \implies v_{B2} = -\dfrac{2}{3}\,\mathrm{m/s}
     $$
     
     碰撞后，小车 B 的速度为 $-\frac{2}{3}\,\mathrm{m/s}$。
@@ -139,7 +139,7 @@ $$
 合外力对物体所做的功等于物体 **动能 (Kinetic Energy)** 的变化。
 
 $$
-W_{\text{total}} = \Delta E_k = \frac{1}{2}mv_2^2 - \frac{1}{2}mv_1^2
+W_{\text{total}} = \Delta E_k = \dfrac{1}{2}mv_2^2 - \dfrac{1}{2}mv_1^2
 $$
 
 其中动能定义为 $E_k = \frac{1}{2}mv^2$。
@@ -150,7 +150,7 @@ $$
     **解答：**
 
     $$
-    \Delta E_k = \frac{1}{2}m(v_2^2 - v_1^2) = \frac{1}{2} \times 1000 \times (20^2 - 0^2) = 200,000\,\mathrm{J}
+    \Delta E_k = \dfrac{1}{2}m(v_2^2 - v_1^2) = \dfrac{1}{2} \times 1000 \times (20^2 - 0^2) = 200,000\,\mathrm{J}
     $$
 
     汽车的动能变化量为 $200,000\,\mathrm{J}$。
@@ -207,7 +207,7 @@ $$
     $$
 
     $$
-    \frac{1}{2}mv^2 - 0 + 0 - mgh = 0
+    \dfrac{1}{2}mv^2 - 0 + 0 - mgh = 0
     $$
 
     $$
@@ -246,11 +246,11 @@ $$
 对于一维弹性碰撞，两物体碰后速度满足：
 
 $$
-v_{1f} = \frac{m_1 - m_2}{m_1 + m_2}v_{1i} + \frac{2m_2}{m_1 + m_2}v_{2i}
+v_{1f} = \dfrac{m_1 - m_2}{m_1 + m_2}v_{1i} + \dfrac{2m_2}{m_1 + m_2}v_{2i}
 $$
 
 $$
-v_{2f} = \frac{2m_1}{m_1 + m_2}v_{1i} + \frac{m_2 - m_1}{m_1 + m_2}v_{2i}
+v_{2f} = \dfrac{2m_1}{m_1 + m_2}v_{1i} + \dfrac{m_2 - m_1}{m_1 + m_2}v_{2i}
 $$
 
 特别地，若 $m_1 = m_2$，则两物体 **交换速度**。
@@ -262,7 +262,7 @@ $$
 *   **恢复系数 (Coefficient of Restitution, $e$)**:
 
 $$
-e = \frac{|v_{2f} - v_{1f}|}{|v_{2i} - v_{1i}|} = \frac{\text{分离速度}}{\text{接近速度}}
+e = \dfrac{|v_{2f} - v_{1f}|}{|v_{2i} - v_{1i}|} = \dfrac{\text{分离速度}}{\text{接近速度}}
 $$
 
 $e=1$: 弹性碰撞。
@@ -281,7 +281,7 @@ $e=0$: **完全非弹性碰撞** (碰后粘在一起，动能损失最大)。
 质点系的总动能等于 **质心平动动能** 加上 **各质点相对于质心的动能**。
 
 $$
-E_k = \frac{1}{2}M v_C^2 + E_{k, \text{rel}}
+E_k = \dfrac{1}{2}M v_C^2 + E_{k, \text{rel}}
 $$
 
 在碰撞问题中，$\frac{1}{2}M v_C^2$ 是“携带”动能，通常不变；只有 $E_{k, \text{rel}}$ 参与能量转化。

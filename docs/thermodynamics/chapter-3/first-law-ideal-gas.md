@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 热力学第一定律对理想气体的应用
+## 热力学第一定律对理想气体的应用
 
 在热力学中，理想气体是研究气态物质热力学性质的理想模型。热力学第一定律给出：
 
@@ -69,13 +69,13 @@ $$
 根据热力学第一定律，系统吸收的热量全部用来对外做功：
 
 $$
-Q_T = A = \int_{V_1}^{V_2} p \,\text{d}V = \int_{V_1}^{V_2} \frac{\nu RT}{V} \,\text{d}V = \nu RT \ln\frac{V_2}{V_1}
+Q_T = A = \int_{V_1}^{V_2} p \,\text{d}V = \int_{V_1}^{V_2} \dfrac{\nu RT}{V} \,\text{d}V = \nu RT \ln\dfrac{V_2}{V_1}
 $$
 
 由玻意耳定律 $p_1 V_1 = p_2 V_2$，做功及吸热也可表示为：
 
 $$
-Q_T = A = \nu RT \ln\frac{p_1}{p_2}
+Q_T = A = \nu RT \ln\dfrac{p_1}{p_2}
 $$
 
 ### 绝热过程
@@ -109,7 +109,7 @@ $$
 在绝热过程中，气体对外做功为：
 
 $$
-A = -\Delta U = -\nu C_V^{mol} (T_2 - T_1) = \frac{\nu R}{\gamma - 1}(T_1 - T_2) = \frac{p_1 V_1 - p_2 V_2}{\gamma - 1}
+A = -\Delta U = -\nu C_V^{mol} (T_2 - T_1) = \dfrac{\nu R}{\gamma - 1}(T_1 - T_2) = \dfrac{p_1 V_1 - p_2 V_2}{\gamma - 1}
 $$
 
 ### 实际应用
@@ -123,7 +123,7 @@ $$
 随着高度 $z$ 增加，周围大气压强 $p$ 下降，遵守流体静力学方程 $\text{d}p = -\rho g \,\text{d}z$。利用理想气体状态方程 $\rho = \frac{pM}{RT}$ 和绝热方程 $T \propto p^{\frac{\gamma-1}{\gamma}}$ 微分形式 $\frac{\text{d}T}{T} = \frac{\gamma-1}{\gamma}\frac{\text{d}p}{p}$，我们可以得到干绝热递减率（Dry adiabatic lapse rate）：
 
 $$
-\Gamma_d = -\frac{\text{d}T}{\text{d}z} = \frac{\gamma - 1}{\gamma} \frac{Mg}{R} = \frac{g}{c_p}
+\Gamma_d = -\dfrac{\text{d}T}{\text{d}z} = \dfrac{\gamma - 1}{\gamma} \dfrac{Mg}{R} = \dfrac{g}{c_p}
 $$
 
 其中 $c_p$ 是空气的比定压热容（比热容）。对于地球干空气，此数值约为 $9.8 \,^\circ \text{C}/\text{km}$。这意味着海拔每升高 1000 米，气温大约下降 9.8 摄氏度。
@@ -155,7 +155,7 @@ $$
 其中 $n$ 称为 **多方指数（Polytropic index）**，其与摩尔热容的关系为：
 
 $$
-n = \frac{C_m - C_p^{mol}}{C_m - C_V^{mol}}
+n = \dfrac{C_m - C_p^{mol}}{C_m - C_V^{mol}}
 $$
 
 多方过程涵盖了多种典型过程，不同 $n$ 值对应的经典热力学过程总结如下：
@@ -170,7 +170,7 @@ $$
 多方过程对外做功公式为（其中 $n \neq 1$）：
 
 $$
-A = \int_{V_1}^{V_2} p \,\text{d}V = \frac{p_1 V_1 - p_2 V_2}{n - 1} = \frac{\nu R(T_1 - T_2)}{n - 1}
+A = \int_{V_1}^{V_2} p \,\text{d}V = \dfrac{p_1 V_1 - p_2 V_2}{n - 1} = \dfrac{\nu R(T_1 - T_2)}{n - 1}
 $$
 
 ??? note "例题：多方过程的功与热"
@@ -181,19 +181,19 @@ $$
     末态温度 $T_2$为：
 
     $$
-    T_2 = T_0 \left(\frac{V_0}{2V_0}\right)^{n-1} = T_0 (0.5)^{1.25 - 1} = T_0 (0.5)^{0.25} \approx 0.841 T_0
+    T_2 = T_0 \left(\dfrac{V_0}{2V_0}\right)^{n-1} = T_0 (0.5)^{1.25 - 1} = T_0 (0.5)^{0.25} \approx 0.841 T_0
     $$
 
     1. 气体对外做功：
 
     $$
-    A = \frac{\nu R(T_0 - T_2)}{n - 1} = \frac{1 \cdot R \cdot (T_0 - 0.841 T_0)}{1.25 - 1} = \frac{0.159 R T_0}{0.25} = 0.636 R T_0
+    A = \dfrac{\nu R(T_0 - T_2)}{n - 1} = \dfrac{1 \cdot R \cdot (T_0 - 0.841 T_0)}{1.25 - 1} = \dfrac{0.159 R T_0}{0.25} = 0.636 R T_0
     $$
 
     2. 内能变化：
 
     $$
-    \Delta U = \nu C_V^{mol} (T_2 - T_0) = 1 \cdot \frac{3}{2}R \cdot (0.841 T_0 - T_0) = 1.5 R (-0.159 T_0) = -0.2385 R T_0
+    \Delta U = \nu C_V^{mol} (T_2 - T_0) = 1 \cdot \dfrac{3}{2}R \cdot (0.841 T_0 - T_0) = 1.5 R (-0.159 T_0) = -0.2385 R T_0
     $$
 
     3. 吸收热量（根据第一定律）：

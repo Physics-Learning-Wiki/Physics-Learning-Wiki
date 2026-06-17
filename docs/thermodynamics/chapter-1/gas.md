@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke, 匿名同学
 ---
 
-# 气体
+## 气体
 
 气体通常是热学里最先详细研究的物态，因为它最容易建立简洁模型。气体分子之间平均距离较大、相互作用相对容易近似处理，所以很多温度、压强和状态方程的直观关系，会先在气体这里变得清晰。
 
@@ -46,7 +46,7 @@ author: Physics Learning Wiki, Leafuke, 匿名同学
 3. **平衡态**分子速度按方向的分布是均匀的（各向同性）。  
 
 $$
-\overline{v_x} = \overline{v_y} = \overline{v_z} = 0, \quad \overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \frac{1}{3}\overline{v^2}, \quad \overline{v_\alpha^2} = \frac{1}{N}\sum_{i=1}^N v_{\alpha i}^2.
+\overline{v_x} = \overline{v_y} = \overline{v_z} = 0, \quad \overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \dfrac{1}{3}\overline{v^2}, \quad \overline{v_\alpha^2} = \dfrac{1}{N}\sum_{i=1}^N v_{\alpha i}^2.
 $$
 
 ???+ warning "注意"
@@ -61,7 +61,7 @@ $$
 现在我们仔细地考查一下两个分子碰撞中能量的交换。这两个分子可以都是气体中的，也可以一个是气体中的，另一个是器壁中的。设它们具有不同的质量 $m$ 和 $M$。令它们在碰撞前的速度分别为 $\boldsymbol{v}_0$ 和 $\boldsymbol{V}_0$，碰撞后的速度分别为 $\boldsymbol{v}$ 和 $\boldsymbol{V}$。把分子看成球形，取两球中心联线为直角坐标系的 $x$ 轴，由于碰撞中垂直于 $x$ 轴的速度分量不改变，问题就简化成只有 $x$ 方向一维了。在此方向上分子 $M$ 损失的动能为
 
 $$
-\Delta \varepsilon = \frac{1}{2}M\left(V_{0x}^2 - V_x^2\right) = \frac{1}{2}M\left(V_{0x}-V_x\right)\left(V_{0x}+V_x\right). \tag{1}
+\Delta \varepsilon = \dfrac{1}{2}M\left(V_{0x}^2 - V_x^2\right) = \dfrac{1}{2}M\left(V_{0x}-V_x\right)\left(V_{0x}+V_x\right). \tag{1}
 $$
 
 ![分子弹性碰撞](images/molecular-elastic-collision.png)
@@ -69,7 +69,7 @@ $$
 由于弹性碰撞中动能守恒，这也是分子 $m$ 获得的动能。根据我们在[动量与能量 - 弹性碰撞](../../mechanics/dynamics/momentum-energy.md)中得到的公式。把式中的符号适当地换过来，有
 
 $$
-V_x = \frac{(M-m)V_{0x} + 2mv_{0x}}{M+m},
+V_x = \dfrac{(M-m)V_{0x} + 2mv_{0x}}{M+m},
 $$
 
  
@@ -88,7 +88,7 @@ $$
 代入(1)式，得
 
 $$
-\Delta \varepsilon = \frac{2mM}{(M+m)^2}\left[MV_{0x}^2 + mv_{0x}^2 + (m-M)v_{0x}V_{0x}\right]. \tag{2}
+\Delta \varepsilon = \dfrac{2mM}{(M+m)^2}\left[MV_{0x}^2 + mv_{0x}^2 + (m-M)v_{0x}V_{0x}\right]. \tag{2}
 $$
 
 以上是单次碰撞的结果，$\Delta\varepsilon$ 可正可负。我们假定
@@ -99,13 +99,13 @@ $$
 $V_{0x}$ 和 $v_{0x}$ 的平均 $\overline{V_{0x}}=\overline{v_{0x}}=0$。再者，因 $M$、$m$ 两类分子的热运动都是随机的，且在方向上彼此没有关联，故 $\overline{v_{0x}V_{0x}}$ 也等于 0。取(2)式的平均，得
 
 $$
-\overline{\Delta\varepsilon} = \frac{2mM}{(M+m)^2}\left(M\overline{V_{0x}^2} - m\overline{v_{0x}^2}\right). \tag{3}
+\overline{\Delta\varepsilon} = \dfrac{2mM}{(M+m)^2}\left(M\overline{V_{0x}^2} - m\overline{v_{0x}^2}\right). \tag{3}
 $$
 
 上式右端正比于两分子碰撞前后 $x$ 方向平均动能之差。由于分子热运动是各向同性的，与 $x$ 垂直的另外两个方向平均动能与 $x$ 方向一样，故 $x$ 方向的平均动能是各方向平均动能的 1/3。故(3)式又可写为
 
 $$
-\overline{\Delta\varepsilon} = \frac{2mM}{3(M+m)^2}\left(M\overline{V^2} - m\overline{v^2}\right) \propto \frac{1}{2}M\overline{V^2} - \frac{1}{2}m\overline{v^2}. \tag{4}
+\overline{\Delta\varepsilon} = \dfrac{2mM}{3(M+m)^2}\left(M\overline{V^2} - m\overline{v^2}\right) \propto \dfrac{1}{2}M\overline{V^2} - \dfrac{1}{2}m\overline{v^2}. \tag{4}
 $$
 
 若 $M$ 类分子的平均动能大于 $m$ 类分子，则 $\overline{\Delta\varepsilon}>0$，动能由 $M$ 类分子传给 $m$ 类分子；反之，若 $M$ 类分子的平均动能小于 $m$ 类分子，则 $\overline{\Delta\varepsilon}<0$，动能由 $m$ 类分子传给 $M$ 类分子；$\overline{\Delta\varepsilon}=0$ 表示平均起来两类分子之间能量交换为0。
@@ -113,7 +113,7 @@ $$
 如[上节 - 热量及其本质](./heat-and-its-nature.md)所述，热量即热运动的能量，故 $\overline{\Delta\varepsilon}$ 的正负决定了热量传递的方向，$\overline{\Delta\varepsilon}=0$ 时 $M$、$m$ 两类分子之间达到热平衡。如此看来，按照热力学第零定律，分子的平均动能在宏观上具有温度的特征。我们暂时假定，分子的平均动能正比于热力学温度：
 
 $$
-\overline{\varepsilon} = \frac{1}{2}m\overline{v^2} = KT, \tag{1.26}
+\overline{\varepsilon} = \dfrac{1}{2}m\overline{v^2} = KT, \tag{1.26}
 $$
 
 - 其中 $\overline{\varepsilon}$ 是分子的平均动能，$K$ 是比例常量，$T$ 是热力学温度。
@@ -191,25 +191,25 @@ $\Delta t$ 时间内所有分子对 $\Delta S$ 的冲量：
 > 注意：$v_{ix} > 0$ 与 $v_{ix} < 0$ 分子各占一半。
 
 $$
-\Delta I = \sum_{v_{ix} > 0} \Delta I_i = \frac{1}{2} \sum_i \Delta I_i = \Delta t \Delta S \sum_i n_i p_{ix} v_{ix}
+\Delta I = \sum_{v_{ix} > 0} \Delta I_i = \dfrac{1}{2} \sum_i \Delta I_i = \Delta t \Delta S \sum_i n_i p_{ix} v_{ix}
 $$
 
 **压强：**
 
 $$
-= \frac{\Delta F}{\Delta S} = \frac{\Delta I}{\Delta t \Delta S} = \sum_i n_i p_{ix} v_{ix}
+= \dfrac{\Delta F}{\Delta S} = \dfrac{\Delta I}{\Delta t \Delta S} = \sum_i n_i p_{ix} v_{ix}
 $$
 
 #### 求统计平均值
 
 $$
-= \sum_i n_i p_{ix} v_{ix} = n \sum_i \frac{n_i}{n} p_{ix} v_{ix} = n \overline{p_x v_x}
+= \sum_i n_i p_{ix} v_{ix} = n \sum_i \dfrac{n_i}{n} p_{ix} v_{ix} = n \overline{p_x v_x}
 $$
 
 其中：
 
 $$
-\overline{p_x v_x} = \frac{1}{n} \sum_i n_i p_{ix} v_{ix} = \frac{\sum_i n_i p_{ix} v_{ix}}{\sum_i n_i}
+\overline{p_x v_x} = \dfrac{1}{n} \sum_i n_i p_{ix} v_{ix} = \dfrac{\sum_i n_i p_{ix} v_{ix}}{\sum_i n_i}
 $$
 
 由于动量和速度分布的各向同性，则：
@@ -225,7 +225,7 @@ $$
 故总压强公式可以写成如下形式：
 
 $$
-= \frac{1}{3} n \overline{\vec{p} \cdot \vec{v}} \quad \text{（理想气体的压强公式）}
+= \dfrac{1}{3} n \overline{\vec{p} \cdot \vec{v}} \quad \text{（理想气体的压强公式）}
 $$
 
 #### 不同情形下的压强公式
@@ -237,7 +237,7 @@ $$
 $$
 
 $$
-= \frac{1}{3} n \overline{\vec{p} \cdot \vec{v}} = \frac{1}{3} nm \overline{v^2} = \frac{2}{3} n \overline{\varepsilon_t}
+= \dfrac{1}{3} n \overline{\vec{p} \cdot \vec{v}} = \dfrac{1}{3} nm \overline{v^2} = \dfrac{2}{3} n \overline{\varepsilon_t}
 $$
 
 > **说明：** 三个统计平均量 $p, n$ 和 $\overline{\varepsilon_t}$ 之间相互联系的一个统计规律，而不是一个力学规律。
@@ -245,13 +245,13 @@ $$
 ##### 极端相对论情形
 
 $$
-p = \frac{m_0 \vec{v}}{\sqrt{1 - v^2 / c^2}}
+p = \dfrac{m_0 \vec{v}}{\sqrt{1 - v^2 / c^2}}
 $$
 
 当 $v \approx c$ 时：
 
 $$
-p = \frac{\sqrt{\varepsilon^2 - m_0^2 c^4}}{c} \approx \varepsilon / c
+p = \dfrac{\sqrt{\varepsilon^2 - m_0^2 c^4}}{c} \approx \varepsilon / c
 $$
 
 $$
@@ -261,7 +261,7 @@ $$
 代入压强公式：
 
 $$
-= \frac{1}{3} n \overline{\vec{p} \cdot \vec{v}} = \frac{1}{3} n \overline{\varepsilon}
+= \dfrac{1}{3} n \overline{\vec{p} \cdot \vec{v}} = \dfrac{1}{3} n \overline{\varepsilon}
 $$
 
 > 在讨论光子气体时大有用处！
@@ -280,7 +280,7 @@ $$
 从理想气体压强公式出发：
 
 $$
-p = \frac{2}{3} n \overline{\varepsilon}
+p = \dfrac{2}{3} n \overline{\varepsilon}
 $$
 
 其中：
@@ -290,7 +290,7 @@ $$
 代入得：
 
 $$
-pV = \frac{2}{3} N \alpha T
+pV = \dfrac{2}{3} N \alpha T
 $$
 
 引入物质的量 $\nu$ 和阿伏伽德罗常数 $N_A$：
@@ -302,7 +302,7 @@ $$
 则：
 
 $$
-pV = \nu \frac{2}{3} N_A \alpha T
+pV = \nu \dfrac{2}{3} N_A \alpha T
 $$
 
 ##### 与实验定律对比
@@ -310,19 +310,19 @@ $$
 对比之前根据气体三大定律推导出来的物态方程 $pV = \nu RT$，可知：
 
 $$
-\frac{2}{3} N_A \alpha = R
+\dfrac{2}{3} N_A \alpha = R
 $$
 
 解得：
 
 $$
-\alpha = \frac{3}{2} \frac{R}{N_A} = \frac{3}{2} k
+\alpha = \dfrac{3}{2} \dfrac{R}{N_A} = \dfrac{3}{2} k
 $$
 
 其中：
 
 $$
-k = \frac{R}{N_A} = 1.380649 \times 10^{-23} \text{ J/K}
+k = \dfrac{R}{N_A} = 1.380649 \times 10^{-23} \text{ J/K}
 $$
 
 $k$ 称为**玻尔兹曼常数**。
@@ -332,7 +332,7 @@ $k$ 称为**玻尔兹曼常数**。
 因此：
 
 $$
-\overline{\varepsilon_t} = \frac{3}{2} kT
+\overline{\varepsilon_t} = \dfrac{3}{2} kT
 $$
 
 压强公式可写为：
@@ -351,13 +351,13 @@ $$
 由：
 
 $$
-\overline{\varepsilon_t} = \frac{1}{2} m \overline{v^2} = \frac{3}{2} kT
+\overline{\varepsilon_t} = \dfrac{1}{2} m \overline{v^2} = \dfrac{3}{2} kT
 $$
 
 可得方均根速率：
 
 $$
-v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{M}}
+v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\dfrac{3kT}{m}} = \sqrt{\dfrac{3RT}{M}}
 $$
 
 其中：
@@ -374,7 +374,7 @@ $$
     由于平均平动动能只与温度有关：
     
     $$
-    \overline{\varepsilon_t} = \frac{3}{2} kT = \frac{3}{2} \times 1.38 \times 10^{-23} \times 273.15 \approx 5.65 \times 10^{-21} \text{ J}
+    \overline{\varepsilon_t} = \dfrac{3}{2} kT = \dfrac{3}{2} \times 1.38 \times 10^{-23} \times 273.15 \approx 5.65 \times 10^{-21} \text{ J}
     $$
 
     氢气和氧气分子的平均平动动能**相同**。
@@ -382,13 +382,13 @@ $$
     **氢气**（$M_{\text{H}_2} = 2 \times 10^{-3} \text{ kg/mol}$）：
 
     $$
-    v_{\text{rms, H}_2} = \sqrt{\frac{3RT}{M_{\text{H}_2}}} = \sqrt{\frac{3 \times 8.31 \times 273.15}{2 \times 10^{-3}}} = 1.84 \times 10^3 \text{ m/s}
+    v_{\text{rms, H}_2} = \sqrt{\dfrac{3RT}{M_{\text{H}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{2 \times 10^{-3}}} = 1.84 \times 10^3 \text{ m/s}
     $$
 
     **氧气**（$M_{\text{O}_2} = 32 \times 10^{-3} \text{ kg/mol}$）：
 
     $$
-    v_{\text{rms, O}_2} = \sqrt{\frac{3RT}{M_{\text{O}_2}}} = \sqrt{\frac{3 \times 8.31 \times 273.15}{32 \times 10^{-3}}} = 461 \text{ m/s}
+    v_{\text{rms, O}_2} = \sqrt{\dfrac{3RT}{M_{\text{O}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{32 \times 10^{-3}}} = 461 \text{ m/s}
     $$
 
     > **发现**：结果与声波在空气中传播的速率同数量级。
@@ -405,7 +405,7 @@ $$
 根据分子平均平动动能公式：
 
 $$
-\overline{\varepsilon_t} = \frac{3}{2} kT
+\overline{\varepsilon_t} = \dfrac{3}{2} kT
 $$
 
 玻尔兹曼常数 $k$ 可以看成是**温度与能量之间的单位换算比率**。它建立了微观粒子热运动能量（单位：焦耳 J）与宏观温度（单位：开尔文 K）之间的桥梁。
@@ -413,7 +413,7 @@ $$
 而根据摩尔内能公式：
 
 $$
-E_t^{\text{mol}} = N_A \overline{\varepsilon_t} = \frac{3}{2} RT
+E_t^{\text{mol}} = N_A \overline{\varepsilon_t} = \dfrac{3}{2} RT
 $$
 
 普适气体常数 $R$ 则是**温度与每摩尔物质所含能量之间的单位换算比率**。它连接的是宏观尺度下的“摩尔量”与温度。
@@ -473,7 +473,7 @@ $$
 $$
 
 $$
-\alpha = \frac{3}{2} \frac{R}{N_A} \text{ 普适} \rightarrow R \text{ 普适} \rightarrow \omega_0 \text{ 普适}
+\alpha = \dfrac{3}{2} \dfrac{R}{N_A} \text{ 普适} \rightarrow R \text{ 普适} \rightarrow \omega_0 \text{ 普适}
 $$
 
 ### 道尔顿分压定律
@@ -487,7 +487,7 @@ $$
 由于混合气体中各组分处于热平衡，它们的温度相同，因而各组分的分压强
 
 $$
-p_\alpha = \frac{2}{3} n_\alpha \overline{\varepsilon_\alpha} = n_\alpha kT, \quad p_\beta = \frac{2}{3} n_\beta \overline{\varepsilon_\beta} = n_\beta kT, \cdots
+p_\alpha = \dfrac{2}{3} n_\alpha \overline{\varepsilon_\alpha} = n_\alpha kT, \quad p_\beta = \dfrac{2}{3} n_\beta \overline{\varepsilon_\beta} = n_\beta kT, \cdots
 $$
 
 因而总压强
@@ -502,7 +502,7 @@ $$
     **解**：因温度相同，
     
     $$
-    \frac{p_\alpha}{p} = \frac{n_\alpha kT}{nkT} = \frac{n_\alpha}{n} = \frac{v_\alpha N_A / V}{v N_A / V} = \frac{v_\alpha}{v}
+    \dfrac{p_\alpha}{p} = \dfrac{n_\alpha kT}{nkT} = \dfrac{n_\alpha}{n} = \dfrac{v_\alpha N_A / V}{v N_A / V} = \dfrac{v_\alpha}{v}
     $$
     
     各组分的质量比
@@ -518,7 +518,7 @@ $$
     再归一，可得
 
     $$
-    \rho = \frac{v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} + v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} + v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}}}{v \cdot 22.4 \text{ L/mol}} = \frac{0.78 \times 28\text{g} + 0.21 \times 32\text{g} + 0.01 \times 40\text{g}}{22.4 \times 10^3 \text{ cm}^3}
+    \rho = \dfrac{v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} + v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} + v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}}}{v \cdot 22.4 \text{ L/mol}} = \dfrac{0.78 \times 28\text{g} + 0.21 \times 32\text{g} + 0.01 \times 40\text{g}}{22.4 \times 10^3 \text{ cm}^3}
     $$
     
     标准状态下空气的密度为
@@ -548,13 +548,13 @@ $$
 对于处在气体内部的一个分子，周围分子给它的吸引力平均说来抵消了，从而对它的自由飞行不产生影响，只要把体积的修正考虑进去，下式对描写$p_k$仍旧是有效的，即
 
 $$
-p_k = \frac{2}{3} n \overline{\varepsilon} = \frac{\nu R T}{V^*} = \frac{\nu R T}{V - \nu b}.
+p_k = \dfrac{2}{3} n \overline{\varepsilon} = \dfrac{\nu R T}{V^*} = \dfrac{\nu R T}{V - \nu b}.
 $$
 
 现在来看内压强 $p_U$，它代表气体的内聚力，正比于施力者和受力者的粒子数密度。
 
 $$
-p_U \propto n^2 \propto \frac{\nu^2}{V^2} \quad \text{或} \quad p_U = - \frac{\nu^2 a}{V^2}
+p_U \propto n^2 \propto \dfrac{\nu^2}{V^2} \quad \text{或} \quad p_U = - \dfrac{\nu^2 a}{V^2}
 $$
 
 > 其中 $a$ 是反映分子之间吸引力的常量（吸引势）。
@@ -562,7 +562,7 @@ $$
 则气体对器壁的实际压强 $p$ 为：
 
 $$
-p = p_k + p_U = \frac{\nu RT}{V - \nu b} - \frac{\nu^2 a}{V^2}
+p = p_k + p_U = \dfrac{\nu RT}{V - \nu b} - \dfrac{\nu^2 a}{V^2}
 $$
 
 > 这里的$p$是气体内部某一点的压强，作用在器壁上的压强怎么样？器壁对气体分子的吸引力会对压强产生什么影响？你不妨自己思考看看。
@@ -572,7 +572,7 @@ $$
 整理后得到**范德瓦尔斯物态方程**（1910年诺贝尔物理奖）：
 
 $$
-\left( p + \frac{\nu^2 a}{V^2} \right) (V - \nu b) = \nu RT
+\left( p + \dfrac{\nu^2 a}{V^2} \right) (V - \nu b) = \nu RT
 $$
 
 **问题**：那么， $a$ 和 $b$ 怎么定出来？  
@@ -596,7 +596,7 @@ $$
 三个临界参量之间还有一个简单的关系，$K$ 叫做**临界系数**：
 
 $$
-K = \frac{\nu R T_K}{p_K V_K} = \frac{8}{3} = 2.667
+K = \dfrac{\nu R T_K}{p_K V_K} = \dfrac{8}{3} = 2.667
 $$
 
 这个无量纲的比值 $K$ 叫做临界系数。利用临界参量可以把范德瓦尔斯方程**无量纲化**：
@@ -610,7 +610,7 @@ $$
 代入原方程可得**对应态方程**：
 
 $$
-\left( \pi + \frac{3}{\omega^2} \right) (3\omega - 1) = 8\tau \quad \text{或} \quad \pi = \frac{8\tau}{3\omega - 1} - \frac{3}{\omega^2}
+\left( \pi + \dfrac{3}{\omega^2} \right) (3\omega - 1) = 8\tau \quad \text{或} \quad \pi = \dfrac{8\tau}{3\omega - 1} - \dfrac{3}{\omega^2}
 $$
 
 此式是一个用对比参数表示的状态方程式。特点是式中不包含反映个别物质特性的常数。
@@ -622,7 +622,7 @@ $$
  
 
 $$
-p = \frac{\nu R T}{V} \left[ 1 + \frac{\nu}{V} B(T) + \left( \frac{\nu}{V} \right)^2 C(T) + \cdots \right]
+p = \dfrac{\nu R T}{V} \left[ 1 + \dfrac{\nu}{V} B(T) + \left( \dfrac{\nu}{V} \right)^2 C(T) + \cdots \right]
 $$
 
  
@@ -630,19 +630,19 @@ $$
 位力系数的表达式可由统计物理理论导出，其数值也可由实验来测定。将范德瓦耳斯方程按密度$(\nu/V)$的幂次展开，
 
 $$
-p = \frac{\nu R T}{V} \left( 1 - \frac{\nu b}{V} \right)^{-1} - \frac{\nu^2 a}{V^2} = \frac{\nu R T}{V} \left[ 1 + \frac{\nu b}{V} + \left( \frac{\nu b}{V} \right)^2 + \cdots \right] - \frac{\nu^2 a}{V^2},
+p = \dfrac{\nu R T}{V} \left( 1 - \dfrac{\nu b}{V} \right)^{-1} - \dfrac{\nu^2 a}{V^2} = \dfrac{\nu R T}{V} \left[ 1 + \dfrac{\nu b}{V} + \left( \dfrac{\nu b}{V} \right)^2 + \cdots \right] - \dfrac{\nu^2 a}{V^2},
 $$
  
 与范德瓦尔斯方程对比即可得范德瓦耳斯气体的位力系数：
 
 $$
-B(T) = b - \frac{a}{R T}, \quad C(T) = b^2.
+B(T) = b - \dfrac{a}{R T}, \quad C(T) = b^2.
 $$
 
 B(T)在低温下是负的，高温时变正，在转折点
 
 $$
-T_B = \frac{a}{R b}
+T_B = \dfrac{a}{R b}
 $$
 
 处为0。这时物态方程与理想气体的玻意耳定律偏离最小，转折温度$T_B$称为玻意耳温度。

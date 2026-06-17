@@ -1,10 +1,13 @@
 name: Incrementally Build LaTeX document
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    branches:
-      - main
+  # Disabled: Google Noto font CDN returns 403.
+  # Re-enable after fixing font download URLs or uploading fonts to a stable host.
+  # pull_request:
+  #   types: [opened, synchronize]
+  #   branches:
+  #     - main
+  workflow_dispatch:
 
 jobs:
   pre_build:

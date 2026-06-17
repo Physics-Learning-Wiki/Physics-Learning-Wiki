@@ -48,13 +48,13 @@ $$
 波长与周期：
 
 $$
-\lambda=\frac{2\pi}{k},\quad T=\frac{2\pi}{\omega},\quad f=\frac{1}{T}.
+\lambda=\dfrac{2\pi}{k},\quad T=\dfrac{2\pi}{\omega},\quad f=\dfrac{1}{T}.
 $$
 
 我们可以用**相位传输法**来理解这个简谐波的方程。对于一个从原点开始上下振动的波源，其振动表达式为 $y(0,t)=A\cos(\omega t+\varphi)$。当波源在时间 $t$ 处于某一相位时，距离波源 $x$ 处的点需要等到时间$t+\frac{x}{v}$才能感受到这个相位的变化（其中 $v$ 是波速）。因此，距离$x$处的点的振动可以表示为：
 
 $$
-y(x,t) = A\cos\left(\omega \left(t - \frac{x}{v}\right) + \varphi\right)
+y(x,t) = A\cos\left(\omega \left(t - \dfrac{x}{v}\right) + \varphi\right)
 $$
 
 令 $k=\frac{\omega}{v}$，则得到简谐波的标准形式：
@@ -72,7 +72,7 @@ $$
 **相速度（phase velocity）**：保持相位 $\omega t-kx+\varphi=\text{常数}$，得
 
 $$
- v_p=\frac{dx}{dt}=\frac{\omega}{k}.
+ v_p=\dfrac{dx}{dt}=\dfrac{\omega}{k}.
 $$
 
 若改为 $kx+\omega t$，则表示向 $-x$传播。
@@ -85,14 +85,14 @@ $$
 一维无耗散波动方程（波速$v$）
 
 $$
-\frac{\partial^2 y}{\partial t^2}=v^2\frac{\partial^2 y}{\partial x^2}.
+\dfrac{\partial^2 y}{\partial t^2}=v^2\dfrac{\partial^2 y}{\partial x^2}.
 $$
 
 代入试探解 $y=A\cos(kx-\omega t)$：
 
 $$
-\frac{\partial^2 y}{\partial t^2}=-\omega^2 A\cos(kx-\omega t),\quad
-\frac{\partial^2 y}{\partial x^2}=-k^2 A\cos(kx-\omega t).
+\dfrac{\partial^2 y}{\partial t^2}=-\omega^2 A\cos(kx-\omega t),\quad
+\dfrac{\partial^2 y}{\partial x^2}=-k^2 A\cos(kx-\omega t).
 $$
 
 满足方程需要
@@ -104,7 +104,7 @@ $$
 因此
 
 $$
- v_p=\frac{\omega}{k}=v.
+ v_p=\dfrac{\omega}{k}=v.
 $$
 
 **结论**：在“无色散”的理想介质中，相速度等于波动方程中的波速 $v$。
@@ -123,13 +123,13 @@ $$
 则
 
 $$
- y=y_1+y_2=2A\cos\left(\frac{\Delta\varphi}{2}\right)\cos\left(kx-\omega t+\frac{\Delta\varphi}{2}\right).
+ y=y_1+y_2=2A\cos\left(\dfrac{\Delta\varphi}{2}\right)\cos\left(kx-\omega t+\dfrac{\Delta\varphi}{2}\right).
 $$
 
 合成振幅
 
 $$
-A_{\text{res}}=2A\left|\cos\left(\frac{\Delta\varphi}{2}\right)\right|.
+A_{\text{res}}=2A\left|\cos\left(\dfrac{\Delta\varphi}{2}\right)\right|.
 $$
 
 若相位差来自程差 $\Delta x$：$\Delta\varphi=k\Delta x=\frac{2\pi}{\lambda}\Delta x$。
@@ -164,13 +164,13 @@ $$
 - 波节（node）：$\cos(kx)=0 \Rightarrow kx=(m+\tfrac12)\pi$
 
 $$
- x=\left(m+\frac12\right)\frac{\lambda}{2}
+ x=\left(m+\frac12\right)\dfrac{\lambda}{2}
 $$
 
 - 波腹（antinode）：$|\cos(kx)|=1 \Rightarrow kx=m\pi$
 
 $$
- x=m\frac{\lambda}{2}.
+ x=m\dfrac{\lambda}{2}.
 $$
 
 ### 4.2 弦的固有频率（两端固定）
@@ -179,13 +179,13 @@ $$
 驻波形式 $y=2A\sin(kx)\cos(\omega t)$（换用 $\sin$ 更满足边界），则
 
 $$
-\sin(kL)=0\Rightarrow k_n=\frac{n\pi}{L},\quad n=1,2,3,\dots
+\sin(kL)=0\Rightarrow k_n=\dfrac{n\pi}{L},\quad n=1,2,3,\dots
 $$
 
 频率
 
 $$
- f_n=\frac{\omega_n}{2\pi}=\frac{v k_n}{2\pi}=\frac{nv}{2L}.
+ f_n=\dfrac{\omega_n}{2\pi}=\dfrac{v k_n}{2\pi}=\dfrac{nv}{2L}.
 $$
 
 其中弦波速 $v=\sqrt{T/\mu}$（张力 $T$、线密度 $\mu$），推导见 [连续介质中的波](wave-in-continuous-medium.md)。
@@ -260,7 +260,7 @@ $$
 
 $$
 \begin{aligned}
-y = y_1 + y_2 &= 2A \cos\left( \frac{(k_1 - k_2)x - (\omega_1 - \omega_2)t}{2} \right) \cdot \cos\left( \frac{(k_1 + k_2)x - (\omega_1 + \omega_2)t}{2} \right)
+y = y_1 + y_2 &= 2A \cos\left( \dfrac{(k_1 - k_2)x - (\omega_1 - \omega_2)t}{2} \right) \cdot \cos\left( \dfrac{(k_1 + k_2)x - (\omega_1 + \omega_2)t}{2} \right)
 \end{aligned}
 $$
 
@@ -272,7 +272,7 @@ $$
 代入上式，得到：
 
 $$
-\boxed{y(x,t) = \underbrace{2A \cos\left( \frac{\Delta k}{2} x - \frac{\Delta \omega}{2} t \right)}_{\text{缓慢变化的包络}} \cdot \underbrace{\cos\left( \bar{k} x - \bar{\omega} t \right)}_{\text{快速振荡的载波}} }
+\boxed{y(x,t) = \underbrace{2A \cos\left( \dfrac{\Delta k}{2} x - \dfrac{\Delta \omega}{2} t \right)}_{\text{缓慢变化的包络}} \cdot \underbrace{\cos\left( \bar{k} x - \bar{\omega} t \right)}_{\text{快速振荡的载波}} }
 $$
 
 **第三步：解读这个结果——拍（Beat）**
@@ -295,11 +295,11 @@ $$
 对这个方程两边关于时间 $t$求导（注意$x$是$t$ 的函数，因为我们跟踪的是那个固定的相位点）：
 
 $$
-\frac{\Delta k}{2} \cdot \frac{dx}{dt} - \frac{\Delta \omega}{2} = 0
+\dfrac{\Delta k}{2} \cdot \dfrac{dx}{dt} - \dfrac{\Delta \omega}{2} = 0
 $$
 
 $$
-\Rightarrow \frac{dx}{dt} = \frac{\Delta \omega}{\Delta k}
+\Rightarrow \dfrac{dx}{dt} = \dfrac{\Delta \omega}{\Delta k}
 $$
 
 这个 $dx/dt$ 就是包络峰值的移动速度，即**包络速度**。
@@ -309,7 +309,7 @@ $$
 当 $\Delta k \to 0$ 时，两个波数无限接近，上述的包络速度公式就变成了导数形式：
 
 $$
-v_g = \lim_{\Delta k \to 0} \frac{\Delta \omega}{\Delta k} = \boxed{\frac{d\omega}{dk}}
+v_g = \lim_{\Delta k \to 0} \dfrac{\Delta \omega}{\Delta k} = \boxed{\dfrac{d\omega}{dk}}
 $$
 
 ??? note "图例"
@@ -351,7 +351,7 @@ $$
 则质元速度
 
 $$
-v_y=\frac{\partial y}{\partial t}=-\omega A\sin(\omega t - kx)
+v_y=\dfrac{\partial y}{\partial t}=-\omega A\sin(\omega t - kx)
 $$
 
 接下来我们证明质元的动能和势能具有相同的形式。
@@ -361,7 +361,7 @@ $$
     质元的动能为：
 
     $$
-    \Delta E_k = \frac{1}{2} m v_y^2 = \frac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx).
+    \Delta E_k = \dfrac{1}{2} m v_y^2 = \dfrac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx).
     $$
 
     接下来计算质元的势能。考虑弦波中长度为 $\Delta x$的一小段弦，其原长为$\Delta x$。当波传播时，该弦段发生形变，长度变为 $\Delta s$。弦的张力为 $T$，且在小振动下视为常量。势能等于张力乘以伸长量，即
@@ -373,31 +373,31 @@ $$
     计算伸长量 $\Delta s - \Delta x$。弦段两端点的横向位移分别为 $y(x,t)$和$y(x+\Delta x, t)$，纵向位移忽略不计（横波）。弦段长度近似为
 
     $$
-    \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \Delta x \left[ 1 + \frac{1}{2}\left( \frac{\partial y}{\partial x} \right)^2 \right],
+    \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \Delta x \left[ 1 + \dfrac{1}{2}\left( \dfrac{\partial y}{\partial x} \right)^2 \right],
     $$
 
     其中 $\Delta y = y(x+\Delta x,t) - y(x,t) \approx \frac{\partial y}{\partial x} \Delta x$。因此，
 
     $$
-    \Delta s - \Delta x \approx \frac{1}{2} \left( \frac{\partial y}{\partial x} \right)^2 \Delta x.
+    \Delta s - \Delta x \approx \dfrac{1}{2} \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.
     $$
 
     代入势能表达式得
 
     $$
-    \Delta E_p \approx \frac{1}{2} T \left( \frac{\partial y}{\partial x} \right)^2 \Delta x.
+    \Delta E_p \approx \dfrac{1}{2} T \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.
     $$
 
     对于给定的波函数 $y = A \cos(\omega t - kx)$，求偏导得
 
     $$
-    \frac{\partial y}{\partial x} = -k A \sin(\omega t - kx),
+    \dfrac{\partial y}{\partial x} = -k A \sin(\omega t - kx),
     $$
 
     所以
 
     $$
-    \left( \frac{\partial y}{\partial x} \right)^2 = k^2 A^2 \sin^2(\omega t - kx).
+    \left( \dfrac{\partial y}{\partial x} \right)^2 = k^2 A^2 \sin^2(\omega t - kx).
     $$
 
     弦上横波的波速 $v$满足$v = \sqrt{T / \rho}$，其中 $\rho$为弦的体密度（若弦的横截面积为$S$，则线密度 $\mu = \rho S$，波速也可表示为 $v = \sqrt{T / \mu}$）。因此 $T = \rho v^2$。另外，波数 $k$与角频率$\omega$满足$\omega = v k$，即 $v = \omega / k$。
@@ -405,13 +405,13 @@ $$
     将 $T$和$\left( \frac{\partial y}{\partial x} \right)^2$代入$\Delta E_p$：
 
     $$
-    \Delta E_p = \frac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \frac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \frac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.
+    \Delta E_p = \dfrac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \dfrac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.
     $$
 
     注意到质元的体积 $\Delta V = S \Delta x$，其中 $S$ 为弦的横截面积。代入上式得
 
     $$
-    \Delta E_p = \frac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta V.
+    \Delta E_p = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta V.
     $$
 
     这与动能表达式 $\Delta E_k = \frac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx)$ 形式完全相同。因此，质元的动能和势能具有相同的形式，且同步变化。
@@ -425,13 +425,13 @@ $$
 单位体积中波的能量称为**能量密度** $w$：
 
 $$
-w=w_k+w_p=\frac{\Delta E_k+\Delta E_p}{\Delta V}=\rho \omega^2 A^2 \sin^2(\omega t - kx)
+w=w_k+w_p=\dfrac{\Delta E_k+\Delta E_p}{\Delta V}=\rho \omega^2 A^2 \sin^2(\omega t - kx)
 $$
 
 时间平均能量密度：
 
 $$
-\langle w \rangle = \frac{1}{T}\int_0^T w \, dt = \frac{1}{T} \int_0^T \rho \omega^2 A^2 \sin^2(\omega t - kx) \, dt = \frac{1}{2} \rho \omega^2 A^2
+\langle w \rangle = \dfrac{1}{T}\int_0^T w \, dt = \dfrac{1}{T} \int_0^T \rho \omega^2 A^2 \sin^2(\omega t - kx) \, dt = \dfrac{1}{2} \rho \omega^2 A^2
 $$
 
 单位时间通过垂直于波传播方向某一面积的能量称为通过该面积的**能流** $P$ （单位为瓦特，$W$）：
@@ -443,13 +443,13 @@ $$
 时间平均能流：
 
 $$
-\langle P \rangle = \frac{1}{T} \int_0^T P \, dt = \frac{1}{T} \int_0^T \rho \omega^2 A^2 v \sin^2(\omega t - kx) S \, dt = \frac{1}{2} \rho \omega^2 A^2 v S
+\langle P \rangle = \dfrac{1}{T} \int_0^T P \, dt = \dfrac{1}{T} \int_0^T \rho \omega^2 A^2 v \sin^2(\omega t - kx) S \, dt = \dfrac{1}{2} \rho \omega^2 A^2 v S
 $$
 
 把平均能流除以面积 $S$，得到**能流密度** $I$，也把它称为波的**强度**：
 
 $$
-I=\frac{\langle P \rangle}{S}=\frac{1}{2} \rho \omega^2 A^2 v_p
+I=\dfrac{\langle P \rangle}{S}=\dfrac{1}{2} \rho \omega^2 A^2 v_p
 $$
 
 ### 6.3 

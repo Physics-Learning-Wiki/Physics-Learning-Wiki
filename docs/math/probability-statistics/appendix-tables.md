@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 附表
+## 附表
 
 ## 学习目标
 

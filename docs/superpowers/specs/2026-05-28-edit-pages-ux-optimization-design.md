@@ -4,7 +4,7 @@ date: 2026-05-28
 status: approved
 ---
 
-# Edit Pages UX Optimization Design
+## Edit Pages UX Optimization Design
 
 优化 edit-landing 和 submit 两个页面的用户体验，包括 Bug 修复、UI 微调统一和 LaTeX 预览渲染保障。
 

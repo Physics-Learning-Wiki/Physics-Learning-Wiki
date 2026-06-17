@@ -1,4 +1,4 @@
-# 转动惯量 (Moment of Inertia)
+## 转动惯量 (Moment of Inertia)
 
 转动惯量是描述刚体绕某一转轴转动时惯性大小的物理量。它是刚体力学中的一个重要概念，与线性运动中的质量有着密切的对应关系。转动惯量不仅取决于刚体的质量，还与质量分布及转轴的位置密切相关。
 
@@ -33,25 +33,25 @@ $$
 1. 取细棒的微小质量元 $\mathrm{d}m$，其长度为 $\mathrm{d}x$，质量为：
 
 $$
-\mathrm{d}m = \frac{M}{L} \mathrm{d}x
+\mathrm{d}m = \dfrac{M}{L} \mathrm{d}x
 $$
 
 2. 到转轴的距离为 $r = x$，转动惯量为：
 
 $$
-I = \int_{-L/2}^{L/2} x^2 \mathrm{d}m = \int_{-L/2}^{L/2} x^2 \frac{M}{L} \mathrm{d}x
+I = \int_{-L/2}^{L/2} x^2 \mathrm{d}m = \int_{-L/2}^{L/2} x^2 \dfrac{M}{L} \mathrm{d}x
 $$
 
 3. 计算积分：
 
 $$
-I = \frac{M}{L} \int_{-L/2}^{L/2} x^2 \mathrm{d}x = \frac{M}{L} \cdot \frac{1}{3} \left[ x^3 \right]_{-L/2}^{L/2} = \frac{1}{12}ML^2
+I = \dfrac{M}{L} \int_{-L/2}^{L/2} x^2 \mathrm{d}x = \dfrac{M}{L} \cdot \dfrac{1}{3} \left[ x^3 \right]_{-L/2}^{L/2} = \dfrac{1}{12}ML^2
 $$
 
 **结果**：
 
 $$
-I = \frac{1}{12}ML^2
+I = \dfrac{1}{12}ML^2
 $$
 
 ---
@@ -64,25 +64,25 @@ $$
 1. 取圆盘上的微小质量元 $\mathrm{d}m$，其面积为 $\mathrm{d}A = 2\pi r \, \mathrm{d}r$，质量为：
 
 $$
-\mathrm{d}m = \frac{M}{\pi R^2} \cdot 2\pi r \, \mathrm{d}r = \frac{2M}{R^2} r \, \mathrm{d}r
+\mathrm{d}m = \dfrac{M}{\pi R^2} \cdot 2\pi r \, \mathrm{d}r = \dfrac{2M}{R^2} r \, \mathrm{d}r
 $$
 
 2. 到转轴的距离为 $r$，转动惯量为：
 
 $$
-I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{2M}{R^2} r \, \mathrm{d}r
+I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \dfrac{2M}{R^2} r \, \mathrm{d}r
 $$
 
 3. 计算积分：
 
 $$
-I = \frac{2M}{R^2} \int_0^R r^3 \, \mathrm{d}r = \frac{2M}{R^2} \cdot \frac{1}{4}r^4 \Big|_0^R = \frac{1}{2}MR^2
+I = \dfrac{2M}{R^2} \int_0^R r^3 \, \mathrm{d}r = \dfrac{2M}{R^2} \cdot \dfrac{1}{4}r^4 \Big|_0^R = \dfrac{1}{2}MR^2
 $$
 
 **结果**：
 
 $$
-I = \frac{1}{2}MR^2
+I = \dfrac{1}{2}MR^2
 $$
 
 ---
@@ -95,25 +95,25 @@ $$
 1. 取球内的微小质量元 $\mathrm{d}m$，其体积为 $\mathrm{d}V = 4\pi r^2 \, \mathrm{d}r$，质量为：
 
 $$
-\mathrm{d}m = \frac{M}{\frac{4}{3}\pi R^3} \cdot 4\pi r^2 \, \mathrm{d}r = \frac{3M}{R^3} r^2 \, \mathrm{d}r
+\mathrm{d}m = \dfrac{M}{\dfrac{4}{3}\pi R^3} \cdot 4\pi r^2 \, \mathrm{d}r = \dfrac{3M}{R^3} r^2 \, \mathrm{d}r
 $$
 
 2. 到转轴的距离为 $r$，转动惯量为：
 
 $$
-I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \frac{3M}{R^3} r^2 \, \mathrm{d}r
+I = \int_0^R r^2 \mathrm{d}m = \int_0^R r^2 \cdot \dfrac{3M}{R^3} r^2 \, \mathrm{d}r
 $$
 
 3. 计算积分：
 
 $$
-I = \frac{3M}{R^3} \int_0^R r^4 \, \mathrm{d}r = \frac{3M}{R^3} \cdot \frac{1}{5}r^5 \Big|_0^R = \frac{2}{5}MR^2
+I = \dfrac{3M}{R^3} \int_0^R r^4 \, \mathrm{d}r = \dfrac{3M}{R^3} \cdot \dfrac{1}{5}r^5 \Big|_0^R = \dfrac{2}{5}MR^2
 $$
 
 **结果**：
 
 $$
-I = \frac{2}{5}MR^2
+I = \dfrac{2}{5}MR^2
 $$
 
 ---
@@ -152,7 +152,7 @@ $$
 平行轴定理在计算非质心轴转动惯量时非常有用。例如，计算一根均匀细棒绕一端转动的转动惯量时，可以利用平行轴定理：
 
 $$
-I = I_c + Md^2 = \frac{1}{12}ML^2 + M\left(\frac{L}{2}\right)^2 = \frac{1}{3}ML^2
+I = I_c + Md^2 = \dfrac{1}{12}ML^2 + M\left(\dfrac{L}{2}\right)^2 = \dfrac{1}{3}ML^2
 $$
 
 ---
@@ -176,7 +176,7 @@ $$
 - 绕垂直于圆盘平面的轴的转动惯量为：
 
 $$
-I_z = I_x + I_y = \frac{1}{4}MR^2 + \frac{1}{4}MR^2 = \frac{1}{2}MR^2
+I_z = I_x + I_y = \dfrac{1}{4}MR^2 + \dfrac{1}{4}MR^2 = \dfrac{1}{2}MR^2
 $$
 
 ---

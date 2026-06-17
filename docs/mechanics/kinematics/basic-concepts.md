@@ -2,7 +2,7 @@
 author: Leafuke
 ---
 
-# 基础概念（Basic Concepts）
+## 基础概念（Basic Concepts）
 
 本章给出质点运动学所需的“最小工具箱”：我们研究什么、如何做理想化、如何选参考系与坐标系、如何用时间与空间的计量去定义位移/速度/加速度，以及常见的符号约定。
 
@@ -111,13 +111,13 @@ $$
 平均速度（带方向）：
 
 $$
-\bar v = \frac{\Delta x}{\Delta t}.
+\bar v = \dfrac{\Delta x}{\Delta t}.
 $$
 
 平均速率（只看快慢）：
 
 $$
-\bar v_{\text{speed}} = \frac{s}{\Delta t} \ge 0.
+\bar v_{\text{speed}} = \dfrac{s}{\Delta t} \ge 0.
 $$
 
 ### 5.2 瞬时速度
@@ -125,7 +125,7 @@ $$
 当时间间隔趋近 0，平均速度的极限定义瞬时速度：
 
 $$
-v(t)=\lim_{\Delta t\to 0}\frac{\Delta x}{\Delta t}=\frac{dx}{dt}.
+v(t)=\lim_{\Delta t\to 0}\dfrac{\Delta x}{\Delta t}=\dfrac{dx}{dt}.
 $$
 
 几何意义：在 $x-t$ 图像上，速度等于切线斜率。
@@ -135,13 +135,13 @@ $$
 平均加速度：
 
 $$
-\bar a = \frac{\Delta v}{\Delta t}.
+\bar a = \dfrac{\Delta v}{\Delta t}.
 $$
 
 瞬时加速度：
 
 $$
-a(t)=\frac{dv}{dt}=\frac{d^2x}{dt^2}.
+a(t)=\dfrac{dv}{dt}=\dfrac{d^2x}{dt^2}.
 $$
 
 几何意义：在 $v-t$ 图像上，加速度等于切线斜率。
@@ -157,7 +157,7 @@ $$
 在一维中，三者关系为
 
 $$
-v=\frac{dx}{dt},\qquad a=\frac{dv}{dt}.
+v=\dfrac{dx}{dt},\qquad a=\dfrac{dv}{dt}.
 $$
 
 反过来，若已知 $a(t)$，则

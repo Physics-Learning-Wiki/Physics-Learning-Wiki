@@ -1,4 +1,4 @@
-# 复摆 (Compound Pendulum)
+## 复摆 (Compound Pendulum)
 
 复摆是刚体绕固定水平轴摆动的一种运动形式。与单摆不同，复摆不仅考虑质点的质量，还需要考虑刚体的质量分布和转动惯量。复摆是刚体力学中的重要内容，广泛应用于重力加速度的测量和机械系统的分析。
 
@@ -31,25 +31,25 @@ $$
 3. 根据转动定律：
 
 $$
-I \frac{\mathrm{d}^2\theta}{\mathrm{d}t^2} = \tau
+I \dfrac{\mathrm{d}^2\theta}{\mathrm{d}t^2} = \tau
 $$
 
 4. 联立得：
 
 $$
-I \frac{\mathrm{d}^2\theta}{\mathrm{d}t^2} + Mgh \sin\theta = 0
+I \dfrac{\mathrm{d}^2\theta}{\mathrm{d}t^2} + Mgh \sin\theta = 0
 $$
 
 当摆角 $\theta$ 较小时，$\sin\theta \approx \theta$，方程线性化为：
 
 $$
-\frac{\mathrm{d}^2\theta}{\mathrm{d}t^2} + \frac{Mgh}{I}\theta = 0
+\dfrac{\mathrm{d}^2\theta}{\mathrm{d}t^2} + \dfrac{Mgh}{I}\theta = 0
 $$
 
 这是一个简谐运动方程，其角频率为：
 
 $$
-\omega = \sqrt{\frac{Mgh}{I}}
+\omega = \sqrt{\dfrac{Mgh}{I}}
 $$
 
 ---
@@ -59,7 +59,7 @@ $$
 复摆的周期 $T$ 与角频率 $\omega$ 的关系为：
 
 $$
-T = \frac{2\pi}{\omega} = 2\pi \sqrt{\frac{I}{Mgh}}
+T = \dfrac{2\pi}{\omega} = 2\pi \sqrt{\dfrac{I}{Mgh}}
 $$
 
 其中：
@@ -74,13 +74,13 @@ $$
 复摆的周期公式可以写成与单摆类似的形式：
 
 $$
-T = 2\pi \sqrt{\frac{L_\text{eq}}{g}}
+T = 2\pi \sqrt{\dfrac{L_\text{eq}}{g}}
 $$
 
 其中 $L_\text{eq}$ 为复摆的等效长度，定义为：
 
 $$
-L_\text{eq} = \frac{I}{M h}
+L_\text{eq} = \dfrac{I}{M h}
 $$
 
 等效长度是一个虚拟的摆长，表示复摆的运动与单摆的等效关系。
@@ -92,7 +92,7 @@ $$
 复摆常用于测量重力加速度 $g$。通过测量复摆的周期 $T$ 和等效长度 $L_\text{eq}$，可以计算 $g$：
 
 $$
-T = 2\pi \sqrt{\frac{L_\text{eq}}{g}} \implies g = \frac{4\pi^2 L_\text{eq}}{T^2}
+T = 2\pi \sqrt{\dfrac{L_\text{eq}}{g}} \implies g = \dfrac{4\pi^2 L_\text{eq}}{T^2}
 $$
 
 实验步骤：
@@ -112,19 +112,19 @@ $$
 1. 转动惯量：
 
 $$
-I = \frac{1}{3}ML^2 = \frac{1}{3} \cdot 2 \cdot 1^2 = \frac{2}{3}\,\mathrm{kg \cdot m^2}
+I = \dfrac{1}{3}ML^2 = \dfrac{1}{3} \cdot 2 \cdot 1^2 = \dfrac{2}{3}\,\mathrm{kg \cdot m^2}
 $$
 
 2. 重心到转轴的距离：
 
 $$
-h = \frac{L}{2} = \frac{1}{2} = 0.5\,\mathrm{m}
+h = \dfrac{L}{2} = \dfrac{1}{2} = 0.5\,\mathrm{m}
 $$
 
 3. 周期：
 
 $$
-T = 2\pi \sqrt{\frac{I}{Mgh}} = 2\pi \sqrt{\frac{\frac{2}{3}}{2 \cdot 9.8 \cdot 0.5}} = 2\pi \sqrt{\frac{1}{29.4}} \approx 1.16\,\mathrm{s}
+T = 2\pi \sqrt{\dfrac{I}{Mgh}} = 2\pi \sqrt{\dfrac{\dfrac{2}{3}}{2 \cdot 9.8 \cdot 0.5}} = 2\pi \sqrt{\dfrac{1}{29.4}} \approx 1.16\,\mathrm{s}
 $$
 
 **结果**：

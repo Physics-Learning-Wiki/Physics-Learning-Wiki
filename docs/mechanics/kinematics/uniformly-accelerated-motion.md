@@ -2,7 +2,7 @@
 author: Leafuke
 ---
 
-# 匀变速直线运动（Uniformly Accelerated Motion）
+## 匀变速直线运动（Uniformly Accelerated Motion）
 
 匀变速直线运动是指物体在一维（直线）上运动，且**加速度为常量**：
 
@@ -34,7 +34,7 @@ $$
 由加速度定义 $a=\frac{dv}{dt}$ 且 $a$ 为常数：
 
 $$
-\frac{dv}{dt}=a
+\dfrac{dv}{dt}=a
 \quad\Rightarrow\quad
 v(t)=v_0+at.
 $$
@@ -44,7 +44,7 @@ $$
 又因为 $v=\frac{dx}{dt}$：
 
 $$
-\frac{dx}{dt}=v_0+at
+\dfrac{dx}{dt}=v_0+at
 \quad\Rightarrow\quad
 x(t)=x_0+v_0 t+\frac12 a t^2.
 $$
@@ -60,7 +60,7 @@ $$
 消去时间的一种常用做法是用链式法则：
 
 $$
-a=\frac{dv}{dt}=\frac{dv}{dx}\frac{dx}{dt}=v\frac{dv}{dx}.
+a=\dfrac{dv}{dt}=\dfrac{dv}{dx}\dfrac{dx}{dt}=v\dfrac{dv}{dx}.
 $$
 
 于是
@@ -90,13 +90,13 @@ $$
 若从 $t=0$ 到 $t$，速度从 $v_0$ 线性变到 $v$，则平均速度
 
 $$
-\bar v=\frac{\Delta x}{t}=\frac{v_0+v}{2}.
+\bar v=\dfrac{\Delta x}{t}=\dfrac{v_0+v}{2}.
 $$
 
 于是位移也可写为
 
 $$
-\Delta x=\bar v\,t=\frac{v_0+v}{2}\,t.
+\Delta x=\bar v\,t=\dfrac{v_0+v}{2}\,t.
 $$
 
 这在解题中非常高效（尤其是已知 $v_0$、$v$、$t$ 的情形）。
@@ -149,13 +149,13 @@ $$
 - 到达最高点时 $v=0$，因此到顶时间
 
 $$
-t_{\max}=\frac{v_0}{g}.
+t_{\max}=\dfrac{v_0}{g}.
 $$
 
 - 最大高度增量
 
 $$
-\Delta y_{\max}=\frac{v_0^2}{2g}.
+\Delta y_{\max}=\dfrac{v_0^2}{2g}.
 $$
 
 ### 4.3 刹车/制动距离
@@ -165,7 +165,7 @@ $$
 由 $v^2=v_0^2+2a\Delta x$ 得制动距离
 
 $$
-\Delta x_{\text{stop}}=\frac{-v_0^2}{2a}=\frac{v_0^2}{2|a|}.
+\Delta x_{\text{stop}}=\dfrac{-v_0^2}{2a}=\dfrac{v_0^2}{2|a|}.
 $$
 
 该结论在估算题中非常常用。
@@ -208,7 +208,7 @@ $$
 	**解：**
 	$$
 	0=v_0^2+2a\Delta x
-	\Rightarrow a=-\frac{v_0^2}{2\Delta x}
-	=-\frac{20^2}{2\times 30}
-	=-\frac{400}{60}\approx -6.67\,\mathrm{m/s^2}.
+	\Rightarrow a=-\dfrac{v_0^2}{2\Delta x}
+	=-\dfrac{20^2}{2\times 30}
+	=-\dfrac{400}{60}\approx -6.67\,\mathrm{m/s^2}.
 	$$

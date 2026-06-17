@@ -2,7 +2,7 @@
 author: Physics Learning Wiki
 ---
 
-# 热力学第二定律的表述和卡诺定理
+## 热力学第二定律的表述和卡诺定理
 
 热力学第一定律告诉我们能量守恒，但没有指明过程的方向。热量从高温传向低温不违反第一定律，反过来也不违反——但现实中只会自发发生前者。这种"方向性"正是热力学第二定律要回答的核心问题。
 
@@ -225,13 +225,13 @@ $$
 卡诺定理指出：所有可逆热机的效率与工作物质无关，只是两个热源温度的函数。对于工作在温度 $\Theta_1$ 和 $\Theta_2$（用某种温标表示）之间的可逆热机，其效率为：
 
 $$
-\eta = 1 - \frac{Q_2'}{Q_1}
+\eta = 1 - \dfrac{Q_2'}{Q_1}
 $$
 
 由于 $\eta$ 只是两个温度的函数，可以写成：
 
 $$
-\frac{Q_2'}{Q_1} = 1 - \eta = f(\Theta_1, \Theta_2)
+\dfrac{Q_2'}{Q_1} = 1 - \eta = f(\Theta_1, \Theta_2)
 $$
 
 其中 $f(\Theta_1, \Theta_2)$ 是一个待定函数。
@@ -251,7 +251,7 @@ $$
 将组合律改写为：
 
 $$
-\frac{Q_3'}{Q_1} = \frac{Q_3'}{Q_2'} \cdot \frac{Q_2'}{Q_1}
+\dfrac{Q_3'}{Q_1} = \dfrac{Q_3'}{Q_2'} \cdot \dfrac{Q_2'}{Q_1}
 $$
 
 即 $f(\Theta_3, \Theta_1) = f(\Theta_3, \Theta_2) / f(\Theta_1, \Theta_2)$。
@@ -259,13 +259,13 @@ $$
 这说明 $f$ 可以写成两个函数的比值：
 
 $$
-f(\Theta_1, \Theta_2) = \frac{\psi(\Theta_2)}{\psi(\Theta_1)}
+f(\Theta_1, \Theta_2) = \dfrac{\psi(\Theta_2)}{\psi(\Theta_1)}
 $$
 
 其中 $\psi$ 是某个待定函数。最简单的选取是令 $\psi(\Theta) = \Theta$，即：
 
 $$
-f(\Theta_1, \Theta_2) = \frac{\Theta_2}{\Theta_1}
+f(\Theta_1, \Theta_2) = \dfrac{\Theta_2}{\Theta_1}
 $$
 
 ### 热力学温标的定义
@@ -273,13 +273,13 @@ $$
 选取上述函数形式后，可逆热机的效率变为：
 
 $$
-\eta = 1 - \frac{Q_2'}{Q_1} = 1 - \frac{\Theta_2}{\Theta_1}
+\eta = 1 - \dfrac{Q_2'}{Q_1} = 1 - \dfrac{\Theta_2}{\Theta_1}
 $$
 
 即：
 
 $$
-\frac{Q_2'}{Q_1} = \frac{\Theta_2}{\Theta_1}
+\dfrac{Q_2'}{Q_1} = \dfrac{\Theta_2}{\Theta_1}
 $$
 
 这样定义的温标 $\Theta$ 称为**热力学温标**（或**开尔文温标**），单位为**开尔文（K）**。
