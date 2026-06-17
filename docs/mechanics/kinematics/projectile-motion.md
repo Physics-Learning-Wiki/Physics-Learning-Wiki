@@ -22,10 +22,10 @@ $$
 
 ## 1. 运动分解（最核心的方法）
 
-取 $x$ 水平向右、$y$ 竖直向上。
+取 $x$ 水平向右、 $y$ 竖直向上。
 
-- 水平方向：$a_x=0$，故为匀速运动。
-- 竖直方向：$a_y=-g$，故为匀加速运动。
+- 水平方向： $a_x=0$，故为匀速运动。
+- 竖直方向： $a_y=-g$，故为匀加速运动。
 
 ### 1.1 初速度分解
 
@@ -76,8 +76,8 @@ $$
 
 $$
 \begin{aligned}
-x(t)&=v_0\cos\theta\,t,\\
-y(t)&=v_0\sin\theta\,t-\frac12 gt^2.
+x(t)&=v_0\cos\theta\\cdot t,\\
+y(t)&=v_0\sin\theta\\cdot t-\frac12 gt^2.
 \end{aligned}
 $$
 
@@ -116,7 +116,7 @@ $$
 
 ### 飞行时间
 
-飞行时间由竖直方向运动决定，当物体回到初始高度时，$y = 0$：
+飞行时间由竖直方向运动决定，当物体回到初始高度时， $y = 0$：
 
 $$
 T = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
@@ -140,10 +140,7 @@ $$
 
 ??? note "最远射程与最优角"
    
-   	在同高度起落、忽略空气阻力时，$R\propto \sin(2\theta)$，故当 $2\theta=90^\circ$ 时射程最大，即
-	$$
-	\theta=45^\circ.
-	$$
+   	在同高度起落、忽略空气阻力时，$R\propto \sin(2\theta)$，故当 $2\theta=90^\circ$ 时射程最大，即 $\theta=45^\circ .$
 
 ## 4. 水平抛与“从高处抛出”
 
@@ -164,7 +161,7 @@ $$
 水平位移（落点距投影点的距离）
 
 $$
-R=v_0\,\sqrt{\frac{2H}{g}}.
+R=v_0\ \cdot \sqrt{\frac{2H}{g}}.
 $$
 
 ### 4.2 一般的“不同高度起落”
@@ -173,14 +170,14 @@ $$
 由
 
 $$
-\Delta y=v_0\sin\theta\,t-\frac12 gt^2
+\Delta y=v_0\sin\theta\ \cdot t-\frac12 gt^2
 $$
 
-解出飞行时间 $t$（通常取正根），再代入 $x=v_0\cos\theta\,t$ 得射程。
+解出飞行时间 $t$（通常取正根），再代入 $x=v_0\cos\theta\ \cdot t$ 得射程。
 
 ??? note "二次方程的物理选根"
 
-	解 $\Delta y=v_0\sin\theta\,t-\tfrac12 gt^2$ 得到两个根时：
+	解 $\Delta y=v_0\sin\theta\\cdot t-\tfrac12 gt^2$ 得到两个根时：
 	- 一个对应“上升途中/下降途中经过该高度”的时刻；
 	- 若落地点是更低高度（如地面），通常取更大的正根。
 
@@ -191,7 +188,7 @@ $$
 速度与水平夹角 $\phi$ 满足
 
 $$
-	an\phi=\frac{v_y}{v_x}=\frac{v_0\sin\theta-gt}{v_0\cos\theta}.
+	\tan\phi=\frac{v_y}{v_x}=\frac{v_0\sin\theta-gt}{v_0\cos\theta}.
 $$
 
 到最高点时 $v_y=0$，速度水平。
@@ -201,7 +198,7 @@ $$
 到顶时间 $t_{\max}=\frac{v_0\sin\theta}{g}$，代入 $x(t)$ 得
 
 $$
-x_{\max}=v_0\cos\theta\,t_{\max}=\frac{v_0^2\sin\theta\cos\theta}{g}=\frac{v_0^2\sin(2\theta)}{2g}.
+x_{\max}=v_0\cos\theta\\cdot t_{\max}=\frac{v_0^2\sin\theta\cos\theta}{g}=\frac{v_0^2\sin(2\theta)}{2g}.
 $$
 
 可见在同高度起落时，最高点在射程中点（$x_{\max}=R/2$）。
@@ -217,7 +214,7 @@ $$
 
 ### 例题 1：
 
-一颗炮弹以 $v_0 = 50\,\mathrm{m/s}$ 的初速度从地面以 $\theta = 60^\circ$ 的仰角发射，忽略空气阻力，求：
+一颗炮弹以 $v_0 = 50\ \mathrm{m/s}$ 的初速度从地面以 $\theta = 60^\circ$ 的仰角发射，忽略空气阻力，求：
 
 1. 炮弹的飞行时间；
 2. 最大高度；
@@ -227,30 +224,21 @@ $$
 
 1. **飞行时间：**
 
-   $$
-   T = \frac{2v_0 \sin\theta}{g} = \frac{2 \cdot 50 \cdot \sin 60^\circ}{9.8} \approx 8.84\,\mathrm{s}
-   $$
+	$T = \frac{2v_0 \sin\theta}{g} = \frac{2 \cdot 50 \cdot \sin 60^\circ}{9.8} \approx 8.84\ \mathrm{s}.$
 
 2. **最大高度：**
 
-   $$
-   h = \frac{(v_0 \sin\theta)^2}{2g} = \frac{(50 \cdot \sin 60^\circ)^2}{2 \cdot 9.8} \approx 95.92\,\mathrm{m}
-   $$
+   	$h = \frac{(v_0 \sin\theta)^2}{2g} = \frac{(50 \cdot \sin 60^\circ)^2}{2 \cdot 9.8} \approx 95.92\ \mathrm{m}.$
+   
+4. **水平射程：**
 
-3. **水平射程：**
-
-	$$
-	R = \frac{v_0^2 \sin(2\theta)}{g} = \frac{50^2 \cdot \sin 120^\circ}{9.8} \approx 220.94\,\mathrm{m}
-	$$
+	$R = \frac{v_0^2 \sin(2\theta)}{g} = \frac{50^2 \cdot \sin 120^\circ}{9.8} \approx 220.94\ \mathrm{m}.$
 
 	??? note "例题 2：水平抛（从高处）"
 
-		物体以水平速度 $v_0=10\,\mathrm{m/s}$ 从高度 $H=20\,\mathrm{m}$ 处抛出，忽略空气阻力，求落地时间与水平位移（取 $g=9.8\,\mathrm{m/s^2}$）。
+		物体以水平速度 $v_0=10\ \mathrm{m/s}$ 从高度 $H=20\ \mathrm{m}$ 处抛出，忽略空气阻力，求落地时间与水平位移（取 $g=9.8\ \mathrm{m/s^2}$）。
 		
 		**解：**
-		$$
-		t=\sqrt{\frac{2H}{g}}=\sqrt{\frac{40}{9.8}}\approx 2.02\,\mathrm{s},
-		$$
-		$$
-		R=v_0 t\approx 10\times 2.02\approx 20.2\,\mathrm{m}.
-		$$
+
+		$t=\sqrt{\frac{2H}{g}}=\sqrt{\frac{40}{9.8}}\approx 2.02\ \mathrm{s}, \\$
+		$R=v_0 t\approx 10\times 2.02\approx 20.2\ \mathrm{m}.$
