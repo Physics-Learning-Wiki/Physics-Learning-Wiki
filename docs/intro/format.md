@@ -1,5 +1,5 @@
 ---
-author: OI-wiki, Physics-Learning-Wiki
+author: OI-wiki, Physics Learning Wiki, Find-Light1130
 ---
 
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面。正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
@@ -45,12 +45,16 @@ author: OI-wiki, Physics-Learning-Wiki
     -   行间公式应写作
 
         ```text
+        空行
         $$
         a^{2}=b^{2}+c^{2}
         $$
+        空行
         ```
 
         而不是 `$$a^{2}=b^{2}+c^{2}$$`。详见 [LINT-5](#LINT-5)。
+
+    -   行内公式应该使用单个`$`并且应当使用单个空格与周围内容隔开，写作 `文字 $a^{2}=b^{2}+c^{2}$ 文字`而不是`文字$a^{2}=b^{2}+c^{2}$文字`。详见 [LINT-4.3](#LINT-4.3)。
 
     -   使用折叠框而不是块引用（Blockquotes）。详见 [MDFM-5](#MDFM-5)。
 
@@ -143,6 +147,7 @@ author: OI-wiki, Physics-Learning-Wiki
 -   <a id="LINT-4"></a>LINT-4：列表：
     -   <a id="LINT-4.1"></a>LINT-4.1：列表前要有空行，新开一段。
     -   <a id="LINT-4.2"></a>LINT-4.2：使用有序列表（如 `1. 例子`）时，点号后要有空格。
+    -   <a id="LINT-4.3"></a>LINT-4.3：使用行内公式时，如果`$`符号包裹的公式与周围内容紧邻，可能导致渲染问题。
 
 -   <a id="LINT-5"></a>LINT-5：行间公式前后各要有一行空行，否则会被当做是行内公式。
 
