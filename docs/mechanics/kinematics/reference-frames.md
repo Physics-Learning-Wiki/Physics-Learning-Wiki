@@ -22,7 +22,7 @@ author: Leafuke
 
 #### 直角坐标系 (Cartesian Coordinates)
 
-使用x、y、z轴来描述物体的位置，适用于大多数平面和空间运动问题。
+使用 x、y、z 轴来描述物体的位置，适用于大多数平面和空间运动问题。
 
 -   **位置矢量**: $\boldsymbol{r} = x\hat{\boldsymbol{i}} + y\hat{\boldsymbol{j}} + z\hat{\boldsymbol{k}}$
 
@@ -129,7 +129,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
     在极坐标系中，单位矢量 $\hat{\boldsymbol{e}}_r$ 和 $\hat{\boldsymbol{e}}_\theta$ 随角度 $\theta$ 变化，因此求导时需注意基矢量的变化。
 
     **重要推论**
-    在图1中可以看出：
+    在图 1 中可以看出：
     
     $$
     \begin{aligned}
