@@ -221,49 +221,49 @@ $$
 同理可得反射不反相（反射系数为 $+1$）。
 
 ??? note "例题：两段弦连接处的反射与透射（阻抗匹配）"
-  两段轻弦在 $x=0$ 处连接，张力均为 $T$，但线密度分别为 $\mu_1$（$x<0$）与 $\mu_2$（$x>0$）。
-  一列从左侧入射的简谐波
+    两段轻弦在 $x=0$ 处连接，张力均为 $T$，但线密度分别为 $\mu_1$（$x<0$）与 $\mu_2$（$x>0$）。
+    一列从左侧入射的简谐波
 
-  $$
-  y_i=A_i\cos(k_1x-\omega t)
-  $$
+    $$
+    y_i=A_i\cos(k_1x-\omega t)
+    $$
 
-  传播到连接处发生反射与透射。设反射与透射振幅为 $A_r,A_t$。
-  求振幅反射系数 $r=A_r/A_i$ 与透射系数 $t=A_t/A_i$。
+    传播到连接处发生反射与透射。设反射与透射振幅为 $A_r,A_t$。
+    求振幅反射系数 $r=A_r/A_i$ 与透射系数 $t=A_t/A_i$。
 
-  **解：**两侧波速
-  $$
-  v_j=\sqrt{\dfrac{T}{\mu_j}},\quad k_j=\dfrac{\omega}{v_j}\ (j=1,2).
-  $$
+    **解：**两侧波速
+    $$
+    v_j=\sqrt{\dfrac{T}{\mu_j}},\quad k_j=\dfrac{\omega}{v_j}\ (j=1,2).
+    $$
 
-  连接处需满足（小振动线性近似下）两条边界条件：
-  1) 位移连续：$y(0^-,t)=y(0^+,t)$；
-  2) 横向力连续：$T\,\partial y/\partial x$ 连续，即 $\partial y/\partial x$ 连续（因张力相同）。
+    连接处需满足（小振动线性近似下）两条边界条件：
+    1) 位移连续：$y(0^-,t)=y(0^+,t)$；
+    2) 横向力连续：$T\,\partial y/\partial x$ 连续，即 $\partial y/\partial x$ 连续（因张力相同）。
 
-  取复表示，令
-  $$
-  y_1=(A_i e^{ik_1x}+A_r e^{-ik_1x})e^{-i\omega t},\quad
-  y_2=(A_t e^{ik_2x})e^{-i\omega t}.
-  $$
+    取复表示，令
+    $$
+    y_1=(A_i e^{ik_1x}+A_r e^{-ik_1x})e^{-i\omega t},\quad
+    y_2=(A_t e^{ik_2x})e^{-i\omega t}.
+    $$
 
-  在 $x=0$ 处：
-  $$
-  A_i+A_r=A_t,
-  $$
-  $$
-  ik_1(A_i-A_r)=ik_2A_t.
-  $$
+    在 $x=0$ 处：
+    $$
+    A_i+A_r=A_t,
+    $$
+    $$
+    ik_1(A_i-A_r)=ik_2A_t.
+    $$
 
-  解得
-  $$
-  r=\dfrac{k_1-k_2}{k_1+k_2}=\dfrac{v_2-v_1}{v_2+v_1},\qquad
-  t=\dfrac{2k_1}{k_1+k_2}=\dfrac{2v_2}{v_1+v_2}.
-  $$
+    解得
+    $$
+    r=\dfrac{k_1-k_2}{k_1+k_2}=\dfrac{v_2-v_1}{v_2+v_1},\qquad
+    t=\dfrac{2k_1}{k_1+k_2}=\dfrac{2v_2}{v_1+v_2}.
+    $$
 
-  常把 $Z=T/v=\sqrt{T\mu}$ 称作弦的“机械阻抗”（对能流更自然），也可写成
-  $$
-  \boxed{\ r=\dfrac{Z_2-Z_1}{Z_2+Z_1},\qquad t=\dfrac{2Z_2}{Z_1+Z_2}\ }.
-  $$
+    常把 $Z=T/v=\sqrt{T\mu}$ 称作弦的“机械阻抗”（对能流更自然），也可写成
+    $$
+    \boxed{\ r=\dfrac{Z_2-Z_1}{Z_2+Z_1},\qquad t=\dfrac{2Z_2}{Z_1+Z_2}\ }.
+    $$
 
 ## 5. 弦波的能量与功率（时间平均）
 

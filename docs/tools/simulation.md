@@ -30,7 +30,7 @@ author: Physics Learning Wiki
 | GNU Octave | 类 MATLAB 语法的自由软件替代。 | 预算有限但想练 MATLAB 风格语法。 | 与 MATLAB 有兼容性差异，工具箱生态较弱。 |
 
 ???+ warning "先确认授权和课程要求"
-		Mathematica 和 MATLAB 都是商业软件。开始学习之前，最好先确认学校是否提供校园授权，或者课程是否已经给出统一安装说明。如果没有授权，又不需要课程硬性要求，优先使用 Python 或 GNU Octave 通常更现实。
+        Mathematica 和 MATLAB 都是商业软件。开始学习之前，最好先确认学校是否提供校园授权，或者课程是否已经给出统一安装说明。如果没有授权，又不需要课程硬性要求，优先使用 Python 或 GNU Octave 通常更现实。
 
 ## Mathematica 快速上手
 

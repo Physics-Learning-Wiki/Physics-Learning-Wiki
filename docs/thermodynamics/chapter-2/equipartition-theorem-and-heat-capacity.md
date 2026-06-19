@@ -130,23 +130,23 @@ $$
     氧气是双原子分子，自由度 $i = 5$。
     - **内能增量** $\Delta U$：
       
-      $$
-      \Delta U = \nu \dfrac{i}{2} R \Delta T = 2 \times \dfrac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}
-      $$
+        $$
+        \Delta U = \nu \dfrac{i}{2} R \Delta T = 2 \times \dfrac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}
+        $$
 
     - **吸收的热量** $Q_p$：
       
-      $$
-      Q_p = \nu C_p^{mol} \Delta T = \nu \dfrac{i+2}{2} R \Delta T = 2 \times \dfrac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}
-      $$
+        $$
+        Q_p = \nu C_p^{mol} \Delta T = \nu \dfrac{i+2}{2} R \Delta T = 2 \times \dfrac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}
+        $$
 
     - **对外做的功** $W$：
       
-      $$
-      W = Q_p - \Delta U = 5817 - 4155 = 1662 \text{ J}
-      $$
+        $$
+        W = Q_p - \Delta U = 5817 - 4155 = 1662 \text{ J}
+        $$
       
-      也可以通过等压膨胀做功公式直接计算：$W = p \Delta V = \nu R \Delta T = 2 \times 8.31 \times 100 = 1662 \text{ J}$。
+        也可以通过等压膨胀做功公式直接计算：$W = p \Delta V = \nu R \Delta T = 2 \times 8.31 \times 100 = 1662 \text{ J}$。
 
 #### 经典理论的局限性
 

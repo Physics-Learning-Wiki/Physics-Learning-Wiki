@@ -13,12 +13,12 @@ author: ChatGPT
 线性模型的强大之处在于：**可解、可叠加、可用频域方法统一处理**。本页覆盖单自由度线性振动的主干内容：简谐振动、阻尼振动、受迫振动与共振。
 
 ??? note "本章导航"
-	- [线性振动](linear-oscillation.md)
-	- [振动的合成与分解](superposition.md)
-	- [非线性振动](nonlinear.md)
-	- [简谐波](harmonic-wave.md)
-	- [连续介质中的波](wave-in-continuous-medium.md)
-	- [多普勒效应](doppler-effect.md)
+    - [线性振动](linear-oscillation.md)
+    - [振动的合成与分解](superposition.md)
+    - [非线性振动](nonlinear.md)
+    - [简谐波](harmonic-wave.md)
+    - [连续介质中的波](wave-in-continuous-medium.md)
+    - [多普勒效应](doppler-effect.md)
 
 ## 0. 建模：单自由度线性振子
 
@@ -118,19 +118,19 @@ $$
 $$
 
 ??? note "例题：由能量求速度"
-	质点做简谐振动，振幅 $A$，位移为 $x$ 时速度大小是多少？
+    质点做简谐振动，振幅 $A$，位移为 $x$ 时速度大小是多少？
 
-	**解：**能量守恒
+    **解：**能量守恒
 
-	$$
-	\frac12 m v^2+\frac12 kx^2=\frac12 kA^2
-	$$
+    $$
+    \frac12 m v^2+\frac12 kx^2=\frac12 kA^2
+    $$
 
-	得
+    得
 
-	$$
-	v=\omega_0\sqrt{A^2-x^2}.
-	$$
+    $$
+    v=\omega_0\sqrt{A^2-x^2}.
+    $$
 
 ## 3. 阻尼自由振动（Damped Free Oscillation）
 
@@ -265,9 +265,9 @@ $$
 x_p(t)=A\cos(\Omega t-\delta).
 
 ??? note "图例"
-	![受迫振动的振幅与相位响应](../images/driven_response.png)
+    ![受迫振动的振幅与相位响应](../images/driven_response.png)
 	
-	上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化。
+    上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化。
 $$
 
 ### 4.2 共振与共振频率
@@ -287,33 +287,33 @@ $$
 可见阻尼越小（$\gamma$ 越小），共振峰越高。
 
 ??? note "例题：功率最大与振幅最大是否同频"
-	在线性受迫振动稳态下，证明：
-	1) 平均吸收功率 $\langle P\rangle$ 关于 $\Omega$ 的最大值出现在 $\Omega=\omega_0$；
-	2) 振幅 $A(\Omega)$ 的最大值出现在 $\Omega_r=\sqrt{\omega_0^2-2\gamma^2}$（欠阻尼）。
+    在线性受迫振动稳态下，证明：
+    1) 平均吸收功率 $\langle P\rangle$ 关于 $\Omega$ 的最大值出现在 $\Omega=\omega_0$；
+    2) 振幅 $A(\Omega)$ 的最大值出现在 $\Omega_r=\sqrt{\omega_0^2-2\gamma^2}$（欠阻尼）。
 
-	**解：**
-	稳态 $x=A\cos(\Omega t-\delta)$，速度 $\dot x=-A\Omega\sin(\Omega t-\delta)$。
-	阻尼耗散的平均功率（也等于外力平均做功率）为
+    **解：**
+    稳态 $x=A\cos(\Omega t-\delta)$，速度 $\dot x=-A\Omega\sin(\Omega t-\delta)$。
+    阻尼耗散的平均功率（也等于外力平均做功率）为
 
-	$$
-	\langle P\rangle=b\langle \dot x^2\rangle=b\cdot\frac12A^2\Omega^2
-	=\frac12 m(2\gamma)A^2\Omega^2=m\gamma A^2\Omega^2.
-	$$
+    $$
+    \langle P\rangle=b\langle \dot x^2\rangle=b\cdot\frac12A^2\Omega^2
+    =\frac12 m(2\gamma)A^2\Omega^2=m\gamma A^2\Omega^2.
+    $$
 
-	代入
-	$$
-	A^2=\dfrac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2},
-	$$
-	得
-	$$
-	\langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
-	$$
-	对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是“功率共振”）。
-	而 $A(\Omega)$ 的极值由分母最小给出，欠阻尼时可得
-	$$
-	\Omega_r=\sqrt{\omega_0^2-2\gamma^2}.
-	$$
-	因此：**功率共振与振幅共振一般不完全同频**（弱阻尼时两者都接近 $\omega_0$）。
+    代入
+    $$
+    A^2=\dfrac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2},
+    $$
+    得
+    $$
+    \langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
+    $$
+    对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是“功率共振”）。
+    而 $A(\Omega)$ 的极值由分母最小给出，欠阻尼时可得
+    $$
+    \Omega_r=\sqrt{\omega_0^2-2\gamma^2}.
+    $$
+    因此：**功率共振与振幅共振一般不完全同频**（弱阻尼时两者都接近 $\omega_0$）。
 
 ### 4.3 功率与带宽（品质因数）
 
@@ -347,19 +347,19 @@ $$
 直观理解：$Q$ 越大，共振峰越尖锐，系统对频率更“挑剔”。
 
 ??? note "例题：由共振峰估算阻尼"
-	实验测得受迫振动在 $\Omega=100\,\text{rad/s}$ 附近共振，半功率点频率约为 $\Omega_1=98\,\text{rad/s}$、$\Omega_2=102\,\text{rad/s}$。估算 $\gamma$ 与 $Q$。
+    实验测得受迫振动在 $\Omega=100\,\text{rad/s}$ 附近共振，半功率点频率约为 $\Omega_1=98\,\text{rad/s}$、$\Omega_2=102\,\text{rad/s}$。估算 $\gamma$ 与 $Q$。
 
-	**解：**
+    **解：**
 
-	$$
-	\Delta\Omega=\Omega_2-\Omega_1\approx 4\,\text{rad/s}\approx 2\gamma
-	$$
+    $$
+    \Delta\Omega=\Omega_2-\Omega_1\approx 4\,\text{rad/s}\approx 2\gamma
+    $$
 
-	得 $\gamma\approx 2\,\text{s}^{-1}$。
+    得 $\gamma\approx 2\,\text{s}^{-1}$。
 
-	$$
-	Q\approx\dfrac{\omega_0}{2\gamma}\approx\dfrac{100}{4}=25.
-	$$
+    $$
+    Q\approx\dfrac{\omega_0}{2\gamma}\approx\dfrac{100}{4}=25.
+    $$
 
 ## 5. 暂态 + 稳态：为什么“久了只剩稳态”
 
@@ -397,7 +397,7 @@ $$
 $$
 
 ??? warning "小角近似的边界"
-	当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](nonlinear.md) 中“频率随振幅变化”的讨论。
+    当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](nonlinear.md) 中“频率随振幅变化”的讨论。
 
 ## 7. 常见易错点清单
 

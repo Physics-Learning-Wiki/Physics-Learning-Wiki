@@ -67,7 +67,7 @@ author: Leafuke
         h = \dfrac{v_{0y}^2}{2g} = \dfrac{(v_0 \sin\theta)^2}{2g}
         $$
 
-          代入数据：
+            代入数据：
 
         $$
         h \approx 95.92\,\mathrm{m}
@@ -80,13 +80,13 @@ author: Leafuke
         x = v_{0x} \cdot t = v_0 \cos\theta \cdot \dfrac{2v_0 \sin\theta}{g}
         $$
 
-          利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
+            利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
 
         $$
         x = \dfrac{v_0^2 \sin(2\theta)}{g}
         $$
 
-          代入数据：
+            代入数据：
 
         $$
         x \approx 220.94\,\mathrm{m}
@@ -214,7 +214,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
         \omega = \dfrac{2\pi}{T}
         $$
 
-          代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
+            代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
 
         $$
         \omega \approx 0.00116\,\mathrm{rad/s}
@@ -227,7 +227,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
         v = \omega r
         $$
 
-          代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
+            代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
 
         $$
         v \approx 8136\,\mathrm{m/s}
@@ -240,7 +240,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$: **科里奥利加速度** (Co
         a_c = \dfrac{v^2}{r}
         $$
 
-          代入数据：
+            代入数据：
           
         $$
         a_c \approx 9.46\,\mathrm{m/s^2}
@@ -344,7 +344,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         a_c = \dfrac{v^2}{r}
         $$
 
-          代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
+            代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
 
         $$
         a_c = 8\,\mathrm{m/s^2}
@@ -357,7 +357,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         \mu \geq \dfrac{v^2}{rg \cos\theta} - \tan\theta
         $$
 
-          代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
+            代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
 
         $$
         \mu \geq 0.36
@@ -454,7 +454,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         \theta = \arctan\left(\dfrac{v_w}{v_b}\right) = \arctan\left(\dfrac{3}{4}\right) \approx 36.87^\circ
         $$
 
-          即偏离垂直方向 $36.87^\circ$。
+            即偏离垂直方向 $36.87^\circ$。
 
     2. **到达时间：**
         - 到达时间由垂直方向运动决定：
