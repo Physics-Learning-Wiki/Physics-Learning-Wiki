@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 概率论的基本概念
+## 概率论的基本概念
 
 ## 学习目标
 

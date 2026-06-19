@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 气体的热容、内能和焓
+## 气体的热容、内能和焓
 
 在学习热力学第一定律时，很多困惑都来自一句话：
 
@@ -65,7 +65,7 @@ $$
 于是定容热容可以用状态量定义为
 
 $$
-C_V \equiv \left(\frac{\delta Q}{\text{d}T}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V.
+C_V \equiv \left(\dfrac{\delta Q}{\text{d}T}\right)_V = \left(\dfrac{\partial U}{\partial T}\right)_V.
 $$
 
 2. **定压过程**（$\text{d}p=0$）：定义焓（下一节详述）
@@ -95,7 +95,7 @@ $$
 于是
 
 $$
-C_p \equiv \left(\frac{\delta Q}{\text{d}T}\right)_p = \left(\frac{\partial H}{\partial T}\right)_p.
+C_p \equiv \left(\dfrac{\delta Q}{\text{d}T}\right)_p = \left(\dfrac{\partial H}{\partial T}\right)_p.
 $$
 
 这两条定义非常关键：它们把“热容”从一个含糊的经验量，变成了可以由状态函数 $U,H$ 的偏导数计算的量。
@@ -105,27 +105,27 @@ $$
 对一般流体，$C_p-C_V$ 不是常数，且反映了物质的可压缩性与热膨胀性质。可以证明（不作全推导）
 
 $$
-C_p - C_V = T\left(\frac{\partial p}{\partial T}\right)_V\left(\frac{\partial V}{\partial T}\right)_p.
+C_p - C_V = T\left(\dfrac{\partial p}{\partial T}\right)_V\left(\dfrac{\partial V}{\partial T}\right)_p.
 $$
 
 引入体膨胀系数 $\alpha$ 与等温压缩系数 $\kappa_T$：
 
 $$
-\alpha \equiv \frac{1}{V}\left(\frac{\partial V}{\partial T}\right)_p,\qquad
-\kappa_T \equiv -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T,
+\alpha \equiv \dfrac{1}{V}\left(\dfrac{\partial V}{\partial T}\right)_p,\qquad
+\kappa_T \equiv -\dfrac{1}{V}\left(\dfrac{\partial V}{\partial p}\right)_T,
 $$
 
 则上式可写成常用形式
 
 $$
-C_p - C_V = \frac{TV\alpha^2}{\kappa_T}.
+C_p - C_V = \dfrac{TV\alpha^2}{\kappa_T}.
 $$
 
 对于**理想气体**，由状态方程 $pV=\nu RT$ 得
 
 $$
-\left(\frac{\partial V}{\partial T}\right)_p = \frac{\nu R}{p},\qquad
-\left(\frac{\partial p}{\partial T}\right)_V = \frac{\nu R}{V},
+\left(\dfrac{\partial V}{\partial T}\right)_p = \dfrac{\nu R}{p},\qquad
+\left(\dfrac{\partial p}{\partial T}\right)_V = \dfrac{\nu R}{V},
 $$
 
 代回即可得到迈耶公式（Mayer's relation）：
@@ -141,7 +141,7 @@ $$
 定义热容比（绝热指数）
 
 $$
-\gamma \equiv \frac{C_p}{C_V}.
+\gamma \equiv \dfrac{C_p}{C_V}.
 $$
 
 对理想气体的准静态可逆绝热过程，可推出泊松方程
@@ -161,13 +161,13 @@ $$
     - 内能变化：
 
     $$
-    \Delta U = \nu C_V^{mol}(T_2-T_1)=\frac{5}{2}R\cdot 150.
+    \Delta U = \nu C_V^{mol}(T_2-T_1)=\dfrac{5}{2}R\cdot 150.
     $$
 
     - 等压吸热：
 
     $$
-    Q_p = \nu C_p^{mol}(T_2-T_1)=\frac{7}{2}R\cdot 150.
+    Q_p = \nu C_p^{mol}(T_2-T_1)=\dfrac{7}{2}R\cdot 150.
     $$
 
     - 等压做功（理想气体）：
@@ -306,7 +306,7 @@ $$
 对稳态流动，热力学第一定律常写成“稳流能量方程”（忽略控制体内部能量积累）：
 
 $$
-\dot{Q} - \dot{W}_s + \dot{m}\left(h_1+\frac{v_1^2}{2}+gz_1\right)=\dot{m}\left(h_2+\frac{v_2^2}{2}+gz_2\right).
+\dot{Q} - \dot{W}_s + \dot{m}\left(h_1+\dfrac{v_1^2}{2}+gz_1\right)=\dot{m}\left(h_2+\dfrac{v_2^2}{2}+gz_2\right).
 $$
 
 其中 $\dot{W}_s$ 是轴功（如涡轮输出功、压缩机输入功），$h$ 是比焓，$v$ 是流速。
@@ -335,7 +335,7 @@ $$
 把温度随压强变化的“等焓斜率”定义为焦耳-汤姆孙系数
 
 $$
-\mu_{JT} \equiv \left(\frac{\partial T}{\partial p}\right)_H.
+\mu_{JT} \equiv \left(\dfrac{\partial T}{\partial p}\right)_H.
 $$
 
 若气体从高压节流到低压，则 $\Delta p<0$。
@@ -346,7 +346,7 @@ $$
 可以证明一个很有用的表达式：
 
 $$
-\mu_{JT} = \frac{1}{C_p}\left[T\left(\frac{\partial V}{\partial T}\right)_p - V\right].
+\mu_{JT} = \dfrac{1}{C_p}\left[T\left(\dfrac{\partial V}{\partial T}\right)_p - V\right].
 $$
 
 由此看出：理想气体 $V=\nu RT/p$，括号内恰为零，因此 $\mu_{JT}=0$。
@@ -356,13 +356,13 @@ $$
 对范德瓦耳斯气体，在低压近似下可得到
 
 $$
-\mu_{JT} \approx \frac{1}{C_p}\left(\frac{2a}{RT}-b\right),
+\mu_{JT} \approx \dfrac{1}{C_p}\left(\dfrac{2a}{RT}-b\right),
 $$
 
 从而给出一个数量级估计的反转温度
 
 $$
-T_{inv} \approx \frac{2a}{Rb}.
+T_{inv} \approx \dfrac{2a}{Rb}.
 $$
 
 这说明：分子间吸引（$a$）越强，越容易在节流时降温；分子排斥体积（$b$）越大，越倾向于升温。
@@ -478,7 +478,7 @@ $$
 反应焓并非严格常数，会随温度改变。近似地，
 
 $$
-\left(\frac{\text{d}\Delta_r H}{\text{d}T}\right)_p = \Delta C_p,
+\left(\dfrac{\text{d}\Delta_r H}{\text{d}T}\right)_p = \Delta C_p,
 $$
 
 其中 $\Delta C_p$ 是反应中产物与反应物定压热容的差（按化学计量数加权）。若把 $\Delta C_p$ 视为常数，则

@@ -59,17 +59,29 @@ def collect_nav_paths(node, collected: set[str]) -> None:
             collect_nav_paths(value, collected)
 
 
-def load_ignore_file(path: Path) -> set[str]:
+def load_ignore_file(path: Path) -> tuple[set[str], set[str]]:
+    """Returns (exact_paths, prefix_dirs). prefix_dirs are directory prefixes ending with '/'."""
     if not path.exists():
-        return set()
+        return set(), set()
 
-    ignored: set[str] = set()
+    exact: set[str] = set()
+    dirs: set[str] = set()
     for raw_line in path.read_text(encoding="utf-8").splitlines():
         line = raw_line.strip()
         if not line or line.startswith("#"):
             continue
-        ignored.add(normalize_path(line))
-    return ignored
+        normalized = normalize_path(line)
+        if normalized.endswith("/"):
+            dirs.add(normalized)
+        else:
+            exact.add(normalized)
+    return exact, dirs
+
+
+def is_ignored(path: str, exact: set[str], dirs: set[str]) -> bool:
+    if path in exact:
+        return True
+    return any(path.startswith(d) for d in dirs)
 
 
 def list_markdown_pages(docs_dir: Path) -> set[str]:
@@ -107,12 +119,12 @@ def main() -> int:
     collect_nav_paths(nav_config, nav_paths)
 
     docs_pages = list_markdown_pages(docs_dir)
-    ignored_pages = load_ignore_file(ignore_file)
+    exact_ignored, dir_ignored = load_ignore_file(ignore_file)
 
     missing_pages = sorted(docs_pages - nav_paths)
-    ignored_missing = sorted(path for path in missing_pages if path in ignored_pages)
-    unexpected_missing = sorted(path for path in missing_pages if path not in ignored_pages)
-    stale_ignored = sorted(path for path in ignored_pages if path not in missing_pages)
+    ignored_missing = sorted(p for p in missing_pages if is_ignored(p, exact_ignored, dir_ignored))
+    unexpected_missing = sorted(p for p in missing_pages if not is_ignored(p, exact_ignored, dir_ignored))
+    stale_ignored = sorted(p for p in exact_ignored if p not in missing_pages and not any(p.startswith(d) for d in dir_ignored))
 
     if ignored_missing:
         print_group("Known pages outside mkdocs nav", ignored_missing)

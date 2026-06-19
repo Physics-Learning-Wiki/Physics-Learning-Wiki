@@ -31,9 +31,9 @@ $$
 定义三个常用参数：
 
 $$
-\omega_0=\sqrt{\frac{k}{m}},\quad
-2\gamma=\frac{b}{m},\quad
-f(t)=\frac{F(t)}{m}.
+\omega_0=\sqrt{\dfrac{k}{m}},\quad
+2\gamma=\dfrac{b}{m},\quad
+f(t)=\dfrac{F(t)}{m}.
 $$
 
 则方程写成标准形式
@@ -114,7 +114,7 @@ $$
 时间平均满足能量等分（这里指周期平均）：
 
 $$
-\langle K\rangle=\langle U\rangle=\frac{E}{2}.
+\langle K\rangle=\langle U\rangle=\dfrac{E}{2}.
 $$
 
 ??? note "例题：由能量求速度"
@@ -168,7 +168,7 @@ $$
 **对数减量**（衡量衰减）：若相邻两个峰值间隔约为 $T_d=2\pi/\omega_d$，则
 
 $$
-\delta=\ln\frac{x(t)}{x(t+T_d)}\approx \gamma T_d=\frac{2\pi\gamma}{\omega_d}.
+\delta=\ln\dfrac{x(t)}{x(t+T_d)}\approx \gamma T_d=\dfrac{2\pi\gamma}{\omega_d}.
 $$
 
 ### 3.2 临界阻尼（$\gamma=\omega_0$）
@@ -202,7 +202,7 @@ $$
 前两项与第三项可组合为能量导数：
 
 $$
-\frac{d}{dt}\left(\frac12 m\dot x^2+\frac12 kx^2\right)=-b\dot x^2\le 0.
+\dfrac{d}{dt}\left(\frac12 m\dot x^2+\frac12 kx^2\right)=-b\dot x^2\le 0.
 $$
 
 因此阻尼以功率 $b\dot x^2$ 消耗机械能。
@@ -212,13 +212,13 @@ $$
 考虑最常见外力
 
 $$
-F(t)=F_0\cos(\Omega t),\quad f(t)=\frac{F_0}{m}\cos(\Omega t).
+F(t)=F_0\cos(\Omega t),\quad f(t)=\dfrac{F_0}{m}\cos(\Omega t).
 $$
 
 方程
 
 $$
-\ddot x+2\gamma\dot x+\omega_0^2 x=\frac{F_0}{m}\cos(\Omega t).
+\ddot x+2\gamma\dot x+\omega_0^2 x=\dfrac{F_0}{m}\cos(\Omega t).
 $$
 
 总解 = 齐次解（暂态）+ 特解（稳态）。暂态随时间衰减，长时间后只剩稳态响应。
@@ -234,13 +234,13 @@ $$
 代入得
 
 $$
-(-\Omega^2+2i\gamma\Omega+\omega_0^2)\tilde X=\frac{F_0}{m}.
+(-\Omega^2+2i\gamma\Omega+\omega_0^2)\tilde X=\dfrac{F_0}{m}.
 $$
 
 因此
 
 $$
-	ilde X=\frac{F_0/m}{\omega_0^2-\Omega^2+2i\gamma\Omega}.
+	ilde X=\dfrac{F_0/m}{\omega_0^2-\Omega^2+2i\gamma\Omega}.
 $$
 
 稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 由
@@ -252,11 +252,11 @@ $$
 给出：
 
 $$
-A(\Omega)=\frac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}},
+A(\Omega)=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}},
 $$
 
 $$
-	an\delta=\frac{2\gamma\Omega}{\omega_0^2-\Omega^2}.
+	an\delta=\dfrac{2\gamma\Omega}{\omega_0^2-\Omega^2}.
 $$
 
 于是稳态响应可写为
@@ -281,7 +281,7 @@ $$
 在 $\Omega=\omega_0$ 时（常称“驱动频率等于固有频率”）
 
 $$
-A(\omega_0)=\frac{F_0/m}{2\gamma\omega_0}.
+A(\omega_0)=\dfrac{F_0/m}{2\gamma\omega_0}.
 $$
 
 可见阻尼越小（$\gamma$ 越小），共振峰越高。
@@ -302,11 +302,11 @@ $$
 
 	代入
 	$$
-	A^2=\frac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2},
+	A^2=\dfrac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2},
 	$$
 	得
 	$$
-	\langle P\rangle\propto \frac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
+	\langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
 	$$
 	对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是“功率共振”）。
 	而 $A(\Omega)$ 的极值由分母最小给出，欠阻尼时可得
@@ -334,13 +334,13 @@ $$
 在弱阻尼近共振时，定义品质因数
 
 $$
-Q=\frac{\omega_0}{2\gamma}.
+Q=\dfrac{\omega_0}{2\gamma}.
 $$
 
 也可用“半功率带宽”近似描述：
 
 $$
-\Delta\Omega\approx\frac{\omega_0}{Q}=2\gamma
+\Delta\Omega\approx\dfrac{\omega_0}{Q}=2\gamma
 \quad(\gamma\ll\omega_0).
 $$
 
@@ -358,7 +358,7 @@ $$
 	得 $\gamma\approx 2\,\text{s}^{-1}$。
 
 	$$
-	Q\approx\frac{\omega_0}{2\gamma}\approx\frac{100}{4}=25.
+	Q\approx\dfrac{\omega_0}{2\gamma}\approx\dfrac{100}{4}=25.
 	$$
 
 ## 5. 暂态 + 稳态：为什么“久了只剩稳态”
@@ -391,9 +391,9 @@ $$
 得到
 
 $$
-\ddot\theta+\frac{g}{\ell}\theta=0,
-\quad \omega_0=\sqrt{\frac{g}{\ell}},
-\quad T=2\pi\sqrt{\frac{\ell}{g}}.
+\ddot\theta+\dfrac{g}{\ell}\theta=0,
+\quad \omega_0=\sqrt{\dfrac{g}{\ell}},
+\quad T=2\pi\sqrt{\dfrac{\ell}{g}}.
 $$
 
 ??? warning "小角近似的边界"

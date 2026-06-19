@@ -13,7 +13,7 @@ author: Leafuke, 匿名同学
 简单谐振动是最基本的线性振动形式，其运动方程为：
 
 $$
-\frac{d^2x}{dt^2} + \omega^2 x = 0
+\dfrac{d^2x}{dt^2} + \omega^2 x = 0
 $$
 
 这一方程可以通过牛顿第二定律推导得到。例如，对于一个质量为 $m$ 的物体，受到的回复力 $F$ 满足胡克定律：
@@ -25,19 +25,19 @@ $$
 根据牛顿第二定律：
 
 $$
-F = m\frac{d^2x}{dt^2}
+F = m\dfrac{d^2x}{dt^2}
 $$
 
 代入回复力表达式：
 
 $$
-m\frac{d^2x}{dt^2} = -kx
+m\dfrac{d^2x}{dt^2} = -kx
 $$
 
 整理得：
 
 $$
-\frac{d^2x}{dt^2} + \frac{k}{m}x = 0
+\dfrac{d^2x}{dt^2} + \dfrac{k}{m}x = 0
 $$
 
 令 $\omega = \sqrt{\frac{k}{m}}$，即得简单谐振动的运动方程。
@@ -63,19 +63,19 @@ $$
     易得运动方程为：
 
     $$
-    \frac{d^2x}{dt^2} + \frac{k}{m}x = 0
+    \dfrac{d^2x}{dt^2} + \dfrac{k}{m}x = 0
     $$
     
     角频率：
     
     $$
-    \omega = \sqrt{\frac{k}{m}}
+    \omega = \sqrt{\dfrac{k}{m}}
     $$
     
     因此，运动方程为：
     
     $$
-    x(t) = A \cos\left(\sqrt{\frac{k}{m}}t + \phi\right)
+    x(t) = A \cos\left(\sqrt{\dfrac{k}{m}}t + \phi\right)
     $$
     
     其中 $A$ 和 $\phi$ 由初始条件决定。
@@ -86,25 +86,25 @@ $$
     **解：**
 
     $$
-    M = -mgl\sin\theta = I\beta = ml^2 \frac{d^2\theta}{dt^2}
+    M = -mgl\sin\theta = I\beta = ml^2 \dfrac{d^2\theta}{dt^2}
     $$
 
     对于小角度摆动， $$ \sin\theta \approx \theta $$，单摆的运动方程为：
 
     $$
-    \frac{d^2\theta}{dt^2} + \frac{g}{l}\theta = 0
+    \dfrac{d^2\theta}{dt^2} + \dfrac{g}{l}\theta = 0
     $$
 
     角频率：
 
     $$
-    \omega = \sqrt{\frac{g}{l}}
+    \omega = \sqrt{\dfrac{g}{l}}
     $$
 
     因此，运动方程为：
 
     $$
-    \theta(t) = A \cos\left(\sqrt{\frac{g}{l}}t + \phi\right)
+    \theta(t) = A \cos\left(\sqrt{\dfrac{g}{l}}t + \phi\right)
     $$
 
     其中 $A$ 和 $\phi$ 由初始条件决定。
@@ -120,7 +120,7 @@ $$
 振动的周期 $T$ 和频率 $f$ 分别为：
 
 $$
-T = \frac{2\pi}{\omega}, \quad f = \frac{1}{T} = \frac{\omega}{2\pi}.
+T = \dfrac{2\pi}{\omega}, \quad f = \dfrac{1}{T} = \dfrac{\omega}{2\pi}.
 $$
 
 ### 相位
@@ -148,7 +148,7 @@ x(t) = A \cos(\omega t + \phi)
 $$
 
 $$
-v(t) = -A\omega \cos(\omega t + \phi + \frac{\pi}{2}) = A\omega \sin(\omega t + \phi)
+v(t) = -A\omega \cos(\omega t + \phi + \dfrac{\pi}{2}) = A\omega \sin(\omega t + \phi)
 $$
 
 $$
@@ -166,25 +166,25 @@ $$
 - 动能：
 
 $$
-E_k = \frac{1}{2}mv^2 = \frac{1}{2}m\omega^2A^2\sin^2(\omega t + \phi)
+E_k = \dfrac{1}{2}mv^2 = \dfrac{1}{2}m\omega^2A^2\sin^2(\omega t + \phi)
 $$
 
 在一个周期内的平均值：
 
 $$
-\overline{E_k} = \frac{1}{T}\int_0^T E_k dt = \frac{1}{4}kA^2
+\overline{E_k} = \dfrac{1}{T}\int_0^T E_k dt = \dfrac{1}{4}kA^2
 $$
 
 - 势能：
 
 $$
-E_p = \frac{1}{2}kx^2 = \frac{1}{2}kA^2\cos^2(\omega t + \phi)
+E_p = \dfrac{1}{2}kx^2 = \dfrac{1}{2}kA^2\cos^2(\omega t + \phi)
 $$
 
 在一个周期内的平均值：
 
 $$
-\overline{E_p} = \frac{1}{T}\int_0^T E_p dt = \frac{1}{4}kA^2
+\overline{E_p} = \dfrac{1}{T}\int_0^T E_p dt = \dfrac{1}{4}kA^2
 $$
 
 ### 总能量守恒
@@ -192,7 +192,7 @@ $$
 总能量为动能与势能之和：
 
 $$
-E = E_k + E_p = \frac{1}{2}kA^2 = \frac{1}{2}m\omega^2A^2
+E = E_k + E_p = \dfrac{1}{2}kA^2 = \dfrac{1}{2}m\omega^2A^2
 $$
 
 总能量在振动过程中保持不变，动能和势能在振动过程中相互转化。
@@ -237,8 +237,8 @@ $$
 
 $$
 \begin{cases}
-\widetilde{v}(t)=\frac{d\widetilde{x}(t)}{dt}=i\omega \widetilde{A}e^{i\omega t}=i\omega \widetilde{x}(t)\\
-\widetilde{a}(t)=\frac{d\widetilde{v}(t)}{dt}=\frac{d^2\widetilde{x}(t)}{dt^2}=-\omega^2 \widetilde{A}e^{i\omega t}=-\omega^2 \widetilde{x}(t)
+\widetilde{v}(t)=\dfrac{d\widetilde{x}(t)}{dt}=i\omega \widetilde{A}e^{i\omega t}=i\omega \widetilde{x}(t)\\
+\widetilde{a}(t)=\dfrac{d\widetilde{v}(t)}{dt}=\dfrac{d^2\widetilde{x}(t)}{dt^2}=-\omega^2 \widetilde{A}e^{i\omega t}=-\omega^2 \widetilde{x}(t)
 \end{cases}
 $$
 
@@ -274,7 +274,7 @@ $$
     代入第一式得 $m\omega^2 a_1=k a_1$，因此
 
     $$
-    \omega_- = \sqrt{\frac{k}{m}},\quad (a_1,a_2,a_3)\propto(1,0,-1).
+    \omega_- = \sqrt{\dfrac{k}{m}},\quad (a_1,a_2,a_3)\propto(1,0,-1).
     $$
 
     3) **对称伸缩模**：$a_1=a_3=a$，$a_2=b$。
@@ -282,7 +282,7 @@ $$
     联立消去 $b$ 可得
 
     $$
-    \omega_+^2=\frac{k}{m}+\frac{2k}{M},\quad (a_1,a_2,a_3)\propto\left(1,-\frac{2m}{M},1\right).
+    \omega_+^2=\dfrac{k}{m}+\dfrac{2k}{M},\quad (a_1,a_2,a_3)\propto\left(1,-\dfrac{2m}{M},1\right).
     $$
 
     因此该分子有一个零频平移模与两个非零振动模 $\omega_-,\omega_+$。
@@ -290,7 +290,7 @@ $$
 ??? note "例题：受迫振动中“功率共振”的频率"
     对线性受迫振动
     $$
-    \ddot x+2\gamma\dot x+\omega_0^2x=\frac{F_0}{m}\cos(\Omega t),
+    \ddot x+2\gamma\dot x+\omega_0^2x=\dfrac{F_0}{m}\cos(\Omega t),
     $$
     证明稳态下平均耗散功率 $\langle P\rangle$ 取最大值时的驱动频率为 $\Omega=\omega_0$。
 
@@ -303,12 +303,12 @@ $$
 
     用 $b=2m\gamma$ 与
     $$
-    A^2=\frac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}
+    A^2=\dfrac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}
     $$
 
     得
     $$
-    \langle P\rangle\propto \frac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
+    \langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.
     $$
 
     对 $\Omega$ 求极值可得最大值发生在 $\Omega=\omega_0$。
@@ -320,7 +320,7 @@ $$
 当系统受到阻尼力作用时，振动会逐渐衰减，其运动方程为：
 
 $$
-\frac{d^2x}{dt^2} + 2\beta \frac{dx}{dt} + \omega^2 x = 0
+\dfrac{d^2x}{dt^2} + 2\beta \dfrac{dx}{dt} + \omega^2 x = 0
 $$
 
 其中 $\beta$ 为阻尼系数，描述阻尼的强弱。
@@ -376,7 +376,7 @@ $$
 当系统受到周期性外力作用时，其运动方程为：
 
 $$
-\frac{d^2x}{dt^2} + 2\beta \frac{dx}{dt} + \omega^2 x = F_0 \cos(\Omega t)
+\dfrac{d^2x}{dt^2} + 2\beta \dfrac{dx}{dt} + \omega^2 x = F_0 \cos(\Omega t)
 $$
 
 其中：
@@ -402,7 +402,7 @@ $$
 共振条件下的振幅为：
 
 $$
-A_{\text{res}} = \frac{F_0}{2\beta\omega}
+A_{\text{res}} = \dfrac{F_0}{2\beta\omega}
 $$
 
 ## 应用

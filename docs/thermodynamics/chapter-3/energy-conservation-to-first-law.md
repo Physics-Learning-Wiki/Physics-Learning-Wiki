@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke, ChatGPT
 ---
 
-# 从能量守恒到热力学第一定律
+## 从能量守恒到热力学第一定律
 
 热学里最容易让人困惑的一点是：同样是“能量改变”，有时我们说“吸热”，有时说“做功”，有时又说“内能增加”。这些话到底在记账什么？
 
@@ -244,7 +244,7 @@ $$
     准静态等温过程满足 $pV=\nu RT$ 且 $T=\text{const}$。体积功为
 
     $$
-    A = \int_{V_1}^{V_2} p\,\text{d}V = \int_{V_1}^{V_2} \frac{\nu RT}{V}\,\text{d}V = \nu RT\ln\frac{V_2}{V_1}.
+    A = \int_{V_1}^{V_2} p\,\text{d}V = \int_{V_1}^{V_2} \dfrac{\nu RT}{V}\,\text{d}V = \nu RT\ln\dfrac{V_2}{V_1}.
     $$
 
     对理想气体，内能只与温度有关，因此等温时
@@ -256,7 +256,7 @@ $$
     由第一定律 $Q=\Delta U + A$ 得
 
     $$
-    Q = A = \nu RT\ln\frac{V_2}{V_1}.
+    Q = A = \nu RT\ln\dfrac{V_2}{V_1}.
     $$
 
     由于 $V_2>V_1$，所以 $\ln\frac{V_2}{V_1}>0$，因此 $A>0$ 且 $Q>0$：气体需要吸热来“补偿”对外做功带走的能量。

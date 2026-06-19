@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 假设检验
+## 假设检验
 
 ## 学习目标
 

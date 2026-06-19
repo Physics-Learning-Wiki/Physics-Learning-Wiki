@@ -37,7 +37,7 @@ $$
 则恢复力
 
 $$
-F=-\frac{dU}{dx}=-kx-\alpha x^2-\beta x^3-\cdots
+F=-\dfrac{dU}{dx}=-kx-\alpha x^2-\beta x^3-\cdots
 $$
 
 代入牛顿第二定律：
@@ -53,7 +53,7 @@ $$
 Duffing 方程（含三次非线性）
 
 $$
-\ddot x+2\gamma\dot x+\omega_0^2 x+\varepsilon x^3=\frac{F_0}{m}\cos(\Omega t).
+\ddot x+2\gamma\dot x+\omega_0^2 x+\varepsilon x^3=\dfrac{F_0}{m}\cos(\Omega t).
 $$
 
 - $\varepsilon>0$：**硬化弹簧**（振幅越大，等效刚度越大，频率上移）。
@@ -72,19 +72,19 @@ $$
 则
 
 $$
- x^3=A^3\cos^3(\Omega t-\delta)=\frac{A^3}{4}\left[3\cos(\Omega t-\delta)+\cos(3\Omega t-3\delta)\right].
+ x^3=A^3\cos^3(\Omega t-\delta)=\dfrac{A^3}{4}\left[3\cos(\Omega t-\delta)+\cos(3\Omega t-3\delta)\right].
 $$
 
 若系统响应主要集中在驱动频率 $\Omega$，忽略 $3\Omega$ 的高次谐波项，得到
 
 $$
- x^3\approx \frac{3A^3}{4}\cos(\Omega t-\delta).
+ x^3\approx \dfrac{3A^3}{4}\cos(\Omega t-\delta).
 $$
 
 代回方程，把同频项系数匹配（将 $\cos(\Omega t-\delta)$ 和 $\sin(\Omega t-\delta)$ 分离），可得幅相关系：
 
 $$
-\left[\left(\omega_0^2+\frac{3\varepsilon}{4}A^2-\Omega^2\right)^2+(2\gamma\Omega)^2\right]A^2=\left(\frac{F_0}{m}\right)^2.
+\left[\left(\omega_0^2+\dfrac{3\varepsilon}{4}A^2-\Omega^2\right)^2+(2\gamma\Omega)^2\right]A^2=\left(\dfrac{F_0}{m}\right)^2.
 $$
 
 ??? note "图例"
@@ -97,7 +97,7 @@ $$
 ??? note "理解"
     线性受迫振动中，稳态振幅
     $$
-    A=\frac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}}
+    A=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}}
     $$
     现在只需把 $\omega_0^2$ 替换为一个随 $A$ 变化的等效量 $\omega_0^2+\frac{3\varepsilon}{4}A^2$。
 
@@ -124,13 +124,13 @@ $$
 周期可由积分给出（一般为椭圆积分）：
 
 $$
-T=4\int_0^A\frac{dx}{\sqrt{2(E-U(x))}}.
+T=4\int_0^A\dfrac{dx}{\sqrt{2(E-U(x))}}.
 $$
 
 在弱非线性 $|\varepsilon|A^2\ll\omega_0^2$ 下，可做近似得到频率修正（只给常用结果）：
 
 $$
-\omega(A)\approx \omega_0\left(1+\frac{3\varepsilon A^2}{8\omega_0^2}\right).
+\omega(A)\approx \omega_0\left(1+\dfrac{3\varepsilon A^2}{8\omega_0^2}\right).
 $$
 
 - $\varepsilon>0$：频率随振幅增大而增大。
@@ -182,11 +182,11 @@ $$
     在一个周期内做平均（只保留到 $A^4$ 的量级）：
     $$
     \langle \dot E\rangle\propto \left\langle (1-A^2\cos^2\omega_0 t)\,A^2\omega_0^2\sin^2\omega_0 t\right\rangle
-    =A^2\omega_0^2\left(\frac12-\frac{A^2}{8}\right).
+    =A^2\omega_0^2\left(\frac12-\dfrac{A^2}{8}\right).
     $$
     稳态极限环对应 $\langle \dot E\rangle=0$，因此
     $$
-    \frac12-\frac{A^2}{8}=0\Rightarrow \boxed{A\approx 2}.
+    \frac12-\dfrac{A^2}{8}=0\Rightarrow \boxed{A\approx 2}.
     $$
 
     这说明：在弱非线性下，Van der Pol 振子的稳定振幅是一个与初始条件无关的常数量级（约为 2）。

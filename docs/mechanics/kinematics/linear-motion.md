@@ -1,4 +1,4 @@
-# 直线运动（Linear Motion）
+## 直线运动（Linear Motion）
 
 直线运动是一维运动学的核心：所有位置都可以用一个坐标 $x$ 描述。
 本章会把“位移—速度—加速度”这条链条讲清楚，并给出图像法与分段运动的通用套路。
@@ -22,13 +22,13 @@
 平均速度：
 
 $$
-\bar v=\frac{\Delta x}{\Delta t}.
+\bar v=\dfrac{\Delta x}{\Delta t}.
 $$
 
 瞬时速度：
 
 $$
-v(t)=\frac{dx}{dt}.
+v(t)=\dfrac{dx}{dt}.
 $$
 
 ### 1.2 平均加速度与瞬时加速度
@@ -36,13 +36,13 @@ $$
 平均加速度：
 
 $$
-\bar a=\frac{\Delta v}{\Delta t}.
+\bar a=\dfrac{\Delta v}{\Delta t}.
 $$
 
 瞬时加速度：
 
 $$
-a(t)=\frac{dv}{dt}=\frac{d^2x}{dt^2}.
+a(t)=\dfrac{dv}{dt}=\dfrac{d^2x}{dt^2}.
 $$
 
 ??? note "加速度不等于“速度的大小变化率”"

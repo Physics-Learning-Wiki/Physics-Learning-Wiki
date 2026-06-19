@@ -67,13 +67,13 @@ $$
 对顶部而言，接收到的光发生相对论多普勒效应（弱速）：
 
 $$
-\frac{\nu_\text{rec}}{\nu_\text{emit}}\approx 1-\frac{\Delta v}{c}=1-\frac{ah}{c^2}.
+\dfrac{\nu_\text{rec}}{\nu_\text{emit}}\approx 1-\dfrac{\Delta v}{c}=1-\dfrac{ah}{c^2}.
 $$
 
 由等效原理，把匀加速与匀重力 $g=a$ 等价，得到引力场中“向上爬升”会**红移**：
 
 $$
-\boxed{\ \frac{\Delta\nu}{\nu}\approx-\frac{gh}{c^2}\ }\qquad (gh\ll c^2)
+\boxed{\ \dfrac{\Delta\nu}{\nu}\approx-\dfrac{gh}{c^2}\ }\qquad (gh\ll c^2)
 $$
 
 同理可得时间膨胀：上方的钟走得更快。
@@ -103,13 +103,13 @@ $$
 对时类轨迹（可作为粒子世界线），定义固有时：
 
 $$
-d\tau=\frac{1}{c}\sqrt{-ds^2}.
+d\tau=\dfrac{1}{c}\sqrt{-ds^2}.
 $$
 
 因此
 
 $$
-u^\mu=\frac{dx^\mu}{d\tau},\qquad u_\mu u^\mu=-c^2.
+u^\mu=\dfrac{dx^\mu}{d\tau},\qquad u_\mu u^\mu=-c^2.
 $$
 
 ### 2.3 指标升降
@@ -158,7 +158,7 @@ $$
 对该拉格朗日量做变分（略去常数并选取仿射参数），可得欧拉-拉格朗日方程最终化为：
 
 $$
-\boxed{\ \frac{d^2 x^\rho}{d\tau^2}+\Gamma^{\rho}_{\ \mu\nu}\frac{dx^\mu}{d\tau}\frac{dx^\nu}{d\tau}=0\ }
+\boxed{\ \dfrac{d^2 x^\rho}{d\tau^2}+\Gamma^{\rho}_{\ \mu\nu}\dfrac{dx^\mu}{d\tau}\dfrac{dx^\nu}{d\tau}=0\ }
 $$
 
 这就是测地线方程：自由落体“没有外力”，但坐标加速度可不为零。
@@ -174,7 +174,7 @@ $$
 测地线的空间分量（只保留一阶小量）给出
 
 $$
-\frac{d^2 x^i}{dt^2}\approx-\partial_i\Phi,
+\dfrac{d^2 x^i}{dt^2}\approx-\partial_i\Phi,
 $$
 
 即恢复牛顿引力势 $\Phi$ 的运动方程。
@@ -234,7 +234,7 @@ $$
 广义相对论最核心的方程：
 
 $$
-\boxed{\ G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}\ }
+\boxed{\ G_{\mu\nu}=\dfrac{8\pi G}{c^4}T_{\mu\nu}\ }
 $$
 
 其中 $T_{\mu\nu}$ 为能动量张量，描述能量密度、动量流、压强/剪应力等。
@@ -254,7 +254,7 @@ $$
     
 	 取总作用量
 	 $$
-	 S=\frac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x+S_{\text{matter}}.
+	 S=\dfrac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x+S_{\text{matter}}.
 	 $$
 	 对 $g_{\mu\nu}$ 变分可得 $G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}$。
     
@@ -299,7 +299,7 @@ $$
 下，Einstein 方程线性化为
 
 $$
-\boxed{\ \Box\bar h_{\mu\nu}=-\frac{16\pi G}{c^4}T_{\mu\nu}\ }\qquad (\Box\equiv-\frac{1}{c^2}\partial_t^2+\nabla^2)
+\boxed{\ \Box\bar h_{\mu\nu}=-\dfrac{16\pi G}{c^4}T_{\mu\nu}\ }\qquad (\Box\equiv-\dfrac{1}{c^2}\partial_t^2+\nabla^2)
 $$
 
 真空区 $T_{\mu\nu}=0$ 给出波动方程：$\Box\bar h_{\mu\nu}=0$。
@@ -332,15 +332,15 @@ $$
 
 $$
 \boxed{
-ds^2=-\left(1-\frac{2GM}{rc^2}\right)c^2dt^2
-+\left(1-\frac{2GM}{rc^2}\right)^{-1}dr^2+r^2(d\theta^2+\sin^2\theta\,d\phi^2)
+ds^2=-\left(1-\dfrac{2GM}{rc^2}\right)c^2dt^2
++\left(1-\dfrac{2GM}{rc^2}\right)^{-1}dr^2+r^2(d\theta^2+\sin^2\theta\,d\phi^2)
 }
 $$
 
 定义 Schwarzschild 半径
 
 $$
-r_s=\frac{2GM}{c^2}.
+r_s=\dfrac{2GM}{c^2}.
 $$
 
 当 $r=r_s$ 时，$g_{tt}$ 变号、$g_{rr}$ 发散（在该坐标系下）。这对应事件视界；更好的坐标（Eddington–Finkelstein、Kruskal）能消除坐标奇点。
@@ -350,7 +350,7 @@ $$
 对固定 $r,\theta,\phi$ 的静止钟，$dr=d\theta=d\phi=0$，有
 
 $$
-d\tau=\sqrt{1-\frac{r_s}{r}}\,dt.
+d\tau=\sqrt{1-\dfrac{r_s}{r}}\,dt.
 $$
 
 因此远处观察者看到近处的钟变慢。
@@ -362,8 +362,8 @@ $$
 Schwarzschild 度规对 $t$、$\phi$ 不显含，导致守恒量：
 
 $$
-E\equiv\left(1-\frac{r_s}{r}\right)c^2\frac{dt}{d\tau},\qquad
-L\equiv r^2\frac{d\phi}{d\tau}.
+E\equiv\left(1-\dfrac{r_s}{r}\right)c^2\dfrac{dt}{d\tau},\qquad
+L\equiv r^2\dfrac{d\phi}{d\tau}.
 $$
 
 在赤道面 $\theta=\pi/2$ 可将测地线化为“一维有效势”问题。
@@ -373,13 +373,13 @@ $$
 在几何单位 $G=c=1$ 下，$r_s=2M$，并可写成
 
 $$
-\left(\frac{dr}{d\tau}\right)^2+V_{\mathrm{eff}}(r)=E^2,
+\left(\dfrac{dr}{d\tau}\right)^2+V_{\mathrm{eff}}(r)=E^2,
 $$
 
 其中（典型形式）
 
 $$
-V_{\mathrm{eff}}(r)=\left(1-\frac{2M}{r}\right)\left(1+\frac{L^2}{r^2}\right).
+V_{\mathrm{eff}}(r)=\left(1-\dfrac{2M}{r}\right)\left(1+\dfrac{L^2}{r^2}\right).
 $$
 
 ![Schwarzschild 有效势示意](images/schwarzschild_effective_potential.png)
@@ -390,7 +390,7 @@ $$
 
 - **光子球（photon sphere）**：不稳定的圆形光子轨道
 	$$
-	\boxed{\ r_{\text{ph}}=3M=\frac{3}{2}r_s\ }
+	\boxed{\ r_{\text{ph}}=3M=\dfrac{3}{2}r_s\ }
 	$$
 - **最内稳定圆轨道（ISCO，时类）**：稳定圆轨道存在的内边界
 	$$
@@ -409,14 +409,14 @@ $$
 
 $$
 \boxed{
-\frac{\nu_2}{\nu_1}=\sqrt{\frac{1-r_s/r_1}{1-r_s/r_2}}
+\dfrac{\nu_2}{\nu_1}=\sqrt{\dfrac{1-r_s/r_1}{1-r_s/r_2}}
 }
 $$
 
 当 $r_2\to\infty$：
 
 $$
-\frac{\nu_\infty}{\nu_r}=\sqrt{1-\frac{r_s}{r}}.
+\dfrac{\nu_\infty}{\nu_r}=\sqrt{1-\dfrac{r_s}{r}}.
 $$
 
 ### 8.2 光线偏折（弱场近似）
@@ -424,7 +424,7 @@ $$
 对冲量参数（impact parameter）$b$，弱场一阶：
 
 $$
-\boxed{\ \alpha\approx\frac{4GM}{bc^2}\ }
+\boxed{\ \alpha\approx\dfrac{4GM}{bc^2}\ }
 $$
 
 ![弱场光线偏折角](images/light_deflection_weak_field.png)
@@ -434,7 +434,7 @@ $$
 椭圆轨道半长轴 $a$、偏心率 $e$，每一周额外进动角
 
 $$
-\boxed{\ \Delta\phi\approx\frac{6\pi GM}{a(1-e^2)c^2}\ }
+\boxed{\ \Delta\phi\approx\dfrac{6\pi GM}{a(1-e^2)c^2}\ }
 $$
 
 ### 8.4 Shapiro 时间延迟（选学）
@@ -442,7 +442,7 @@ $$
 雷达信号掠过质量 $M$ 的天体会产生额外往返时间延迟。对“从 $r_1$ 发出、掠过最近距离 $b$、到 $r_2$ 接收”的几何，弱场近似常见写法为
 
 $$
-\boxed{\ \Delta t_{\text{Shapiro}}\approx\frac{2GM}{c^3}\ln\left(\frac{4r_1 r_2}{b^2}\right)\ }
+\boxed{\ \Delta t_{\text{Shapiro}}\approx\dfrac{2GM}{c^3}\ln\left(\dfrac{4r_1 r_2}{b^2}\right)\ }
 $$
 
 （不同教材对几何定义略有差异，但共同点是：它随 $GM/c^3$ 线性增长，并含对数项。）
@@ -452,7 +452,7 @@ $$
 在“大尺度均匀各向同性”的宇宙假设下，度规可写为 FRW 形式：
 
 $$
-ds^2=-c^2dt^2+a(t)^2\left[\frac{dr^2}{1-kr^2}+r^2(d\theta^2+\sin^2\theta\,d\phi^2)\right],
+ds^2=-c^2dt^2+a(t)^2\left[\dfrac{dr^2}{1-kr^2}+r^2(d\theta^2+\sin^2\theta\,d\phi^2)\right],
 $$
 
 其中 $a(t)$ 为尺度因子，$k=0,\pm1$ 表示空间曲率符号。
@@ -460,19 +460,19 @@ $$
 代入 Einstein 方程并取物质为理想流体，可得 Friedmann 方程（最常用版本）：
 
 $$
-\boxed{\ \left(\frac{\dot a}{a}\right)^2=\frac{8\pi G}{3}\rho-\frac{kc^2}{a^2}+\frac{\Lambda c^2}{3}\ }
+\boxed{\ \left(\dfrac{\dot a}{a}\right)^2=\dfrac{8\pi G}{3}\rho-\dfrac{kc^2}{a^2}+\dfrac{\Lambda c^2}{3}\ }
 $$
 
 以及加速度方程
 
 $$
-\boxed{\ \frac{\ddot a}{a}=-\frac{4\pi G}{3}\left(\rho+\frac{3p}{c^2}\right)+\frac{\Lambda c^2}{3}\ }
+\boxed{\ \dfrac{\ddot a}{a}=-\dfrac{4\pi G}{3}\left(\rho+\dfrac{3p}{c^2}\right)+\dfrac{\Lambda c^2}{3}\ }
 $$
 
 并由 $\nabla_\mu T^{\mu\nu}=0$ 得到连续性方程
 
 $$
-\dot\rho+3\frac{\dot a}{a}\left(\rho+\frac{p}{c^2}\right)=0.
+\dot\rho+3\dfrac{\dot a}{a}\left(\rho+\dfrac{p}{c^2}\right)=0.
 $$
 
 ---
@@ -488,37 +488,37 @@ $$
 弱场中
 
 $$
-\frac{\Delta\nu}{\nu}\approx-\frac{\Delta\Phi}{c^2}.
+\dfrac{\Delta\nu}{\nu}\approx-\dfrac{\Delta\Phi}{c^2}.
 $$
 
 地球引力势（取无穷远为 0）为 $\Phi(r)=-GM/r$，因此
 
 $$
-\Delta\Phi=\Phi(R+h)-\Phi(R)=-\frac{GM}{R+h}+\frac{GM}{R}.
+\Delta\Phi=\Phi(R+h)-\Phi(R)=-\dfrac{GM}{R+h}+\dfrac{GM}{R}.
 $$
 
 当 $h\ll R$，用展开
 
 $$
-\frac{1}{R+h}\approx\frac{1}{R}\left(1-\frac{h}{R}\right),
+\dfrac{1}{R+h}\approx\dfrac{1}{R}\left(1-\dfrac{h}{R}\right),
 $$
 
 得
 
 $$
-\Delta\Phi\approx -\frac{GM}{R}\left(1-\frac{h}{R}\right)+\frac{GM}{R}=\frac{GM}{R^2}h=gh.
+\Delta\Phi\approx -\dfrac{GM}{R}\left(1-\dfrac{h}{R}\right)+\dfrac{GM}{R}=\dfrac{GM}{R^2}h=gh.
 $$
 
 所以
 
 $$
-\boxed{\ \frac{\Delta\nu}{\nu}\approx-\frac{gh}{c^2}\ }
+\boxed{\ \dfrac{\Delta\nu}{\nu}\approx-\dfrac{gh}{c^2}\ }
 $$
 
 若取 $h=1000\,\text{m}$、$g\approx 9.8\,\text{m/s}^2$，则
 
 $$
-\left|\frac{\Delta\nu}{\nu}\right|\approx\frac{9.8\times 1000}{(3.0\times 10^8)^2}\sim 1.1\times 10^{-13}.
+\left|\dfrac{\Delta\nu}{\nu}\right|\approx\dfrac{9.8\times 1000}{(3.0\times 10^8)^2}\sim 1.1\times 10^{-13}.
 $$
 
 **结论：**千米量级高度差带来 $10^{-13}$ 量级的频移（原子钟可测）。
@@ -534,19 +534,19 @@ $$
 静止钟有 $dr=d\theta=d\phi=0$，于是
 
 $$
-d\tau=\sqrt{1-\frac{r_s}{r}}\,dt.
+d\tau=\sqrt{1-\dfrac{r_s}{r}}\,dt.
 $$
 
 积分得到
 
 $$
-\Delta\tau(r)=\sqrt{1-\frac{r_s}{r}}\,\Delta t.
+\Delta\tau(r)=\sqrt{1-\dfrac{r_s}{r}}\,\Delta t.
 $$
 
 所以
 
 $$
-\boxed{\ \frac{\Delta\tau_1}{\Delta\tau_2}=\sqrt{\frac{1-r_s/r_1}{1-r_s/r_2}}\ }
+\boxed{\ \dfrac{\Delta\tau_1}{\Delta\tau_2}=\sqrt{\dfrac{1-r_s/r_1}{1-r_s/r_2}}\ }
 $$
 
 与引力红移公式一致（频率与时间尺度互为倒数）。
@@ -561,11 +561,11 @@ $$
 
 1. 弱场近似度规（各向同性形式）可写为
 	$$
-	ds^2\approx-(1+2\Phi/c^2)c^2dt^2+(1-2\Phi/c^2)(dx^2+dy^2+dz^2),\quad \Phi=-\frac{GM}{r}.
+	ds^2\approx-(1+2\Phi/c^2)c^2dt^2+(1-2\Phi/c^2)(dx^2+dy^2+dz^2),\quad \Phi=-\dfrac{GM}{r}.
 	$$
 2. 对光线 $ds^2=0$，可得到等效“折射率”
 	$$
-	n(r)\approx 1-\frac{2\Phi}{c^2}=1+\frac{2GM}{rc^2}.
+	n(r)\approx 1-\dfrac{2\Phi}{c^2}=1+\dfrac{2GM}{rc^2}.
 	$$
 3. 用几何光学近似（费马原理）
 	$$
@@ -574,8 +574,8 @@ $$
 	把光线当作在介质中传播的射线。
 4. 在小偏折近似中，偏折角约为
 	$$
-	\alpha\approx\int_{-\infty}^{+\infty}\frac{\partial}{\partial b}\left(\frac{2GM}{c^2\sqrt{x^2+b^2}}\right)dx
-	=\frac{4GM}{bc^2}.
+	\alpha\approx\int_{-\infty}^{+\infty}\dfrac{\partial}{\partial b}\left(\dfrac{2GM}{c^2\sqrt{x^2+b^2}}\right)dx
+	=\dfrac{4GM}{bc^2}.
 	$$
 
 ---
@@ -585,22 +585,22 @@ $$
 给出椭圆轨道的相对论修正导致的每周进动
 
 $$
-\Delta\phi\approx\frac{6\pi GM}{a(1-e^2)c^2}.
+\Delta\phi\approx\dfrac{6\pi GM}{a(1-e^2)c^2}.
 $$
 
 **推导要点：**
 
 1. 对 Schwarzschild 测地线，可得到轨道方程的近似形式（令 $u=1/r$）
 	$$
-	\frac{d^2u}{d\phi^2}+u=\frac{GM}{L^2}+3\frac{GM}{c^2}u^2.
+	\dfrac{d^2u}{d\phi^2}+u=\dfrac{GM}{L^2}+3\dfrac{GM}{c^2}u^2.
 	$$
 2. 把 $3\frac{GM}{c^2}u^2$ 视为小扰动，设开普勒解
 	$$
-	u_0=\frac{GM}{L^2}(1+e\cos\phi).
+	u_0=\dfrac{GM}{L^2}(1+e\cos\phi).
 	$$
 3. 扰动会把角频率从 1 改成 $1-\delta$，使得一周后相位多走
 	$$
-	\Delta\phi\approx 2\pi\delta=\frac{6\pi GM}{a(1-e^2)c^2}.
+	\Delta\phi\approx 2\pi\delta=\dfrac{6\pi GM}{a(1-e^2)c^2}.
 	$$
 
 （竞赛层面通常要求记结论并能解释“为何是小扰动导致的频率偏移”。）
@@ -615,19 +615,19 @@ $$
 
 1. 对赤道面运动，利用守恒量可把径向运动写成
 	$$
-	\left(\frac{dr}{d\lambda}\right)^2+V_{\text{eff}}(r)=E^2.
+	\left(\dfrac{dr}{d\lambda}\right)^2+V_{\text{eff}}(r)=E^2.
 	$$
 2. **圆轨道条件**：$r=\text{常数}$ 意味着
 	$$
-	\frac{dr}{d\lambda}=0\quad\Rightarrow\quad V_{\text{eff}}(r)=E^2,
+	\dfrac{dr}{d\lambda}=0\quad\Rightarrow\quad V_{\text{eff}}(r)=E^2,
 	$$
 	且要“保持在圆轨道上”还需
 	$$
-	\frac{dV_{\text{eff}}}{dr}=0.
+	\dfrac{dV_{\text{eff}}}{dr}=0.
 	$$
 3. **光子（零质量）**的有效势（形式上）为
 	$$
-	V_{\text{eff}}^{(\text{null})}(r)=\left(1-\frac{2M}{r}\right)\frac{L^2}{r^2}.
+	V_{\text{eff}}^{(\text{null})}(r)=\left(1-\dfrac{2M}{r}\right)\dfrac{L^2}{r^2}.
 	$$
 	求导并令 $dV/dr=0$ 得
 	$$
@@ -667,13 +667,13 @@ $$
 **解：**
 
 $$
-\alpha\approx\frac{4GM}{bc^2}.
+\alpha\approx\dfrac{4GM}{bc^2}.
 $$
 
 代入 $G\approx6.67\times10^{-11}$、$c\approx3.0\times10^8$，得
 
 $$
-\alpha\sim\frac{4\times 6.67\times10^{-11}\times2.0\times10^{30}}{7.0\times10^8\times (3.0\times10^8)^2}
+\alpha\sim\dfrac{4\times 6.67\times10^{-11}\times2.0\times10^{30}}{7.0\times10^8\times (3.0\times10^8)^2}
 \sim 8.5\times10^{-6}\,\text{rad}.
 $$
 
@@ -694,7 +694,7 @@ $$
 **解：**
 
 $$
-\Delta\phi\approx\frac{6\pi GM}{a(1-e^2)c^2}.
+\Delta\phi\approx\dfrac{6\pi GM}{a(1-e^2)c^2}.
 $$
 
 代入数值可得每一周（每绕太阳一圈）约 $\sim 5\times10^{-7}\,\text{rad}$ 量级，对应约 $0.1\,\text{arcsec}$ 量级。累积到每世纪（约 415 圈）即得到著名的 $\sim 43\,\text{arcsec/century}$。

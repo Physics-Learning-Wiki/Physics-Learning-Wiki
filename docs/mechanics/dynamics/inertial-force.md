@@ -1,4 +1,4 @@
-# 惯性力 (Inertial Forces)
+## 惯性力 (Inertial Forces)
 
 惯性力是一类虚拟力，它们出现在非惯性参考系中，用于解释物体在该参考系中的运动。由于非惯性参考系本身是加速的，因此需要引入惯性力来补偿加速度的影响，使牛顿运动定律在非惯性系中仍然适用。
 
@@ -71,14 +71,14 @@ $$
    在惯性参考系中，矢量 $\boldsymbol{P}$ 的变化率为：
 
 $$
-\left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial}
+\left(\dfrac{d\boldsymbol{P}}{dt}\right)_\text{inertial}
 $$
 
 2. **旋转参考系中的变化率**：
    在旋转参考系中，矢量 $\boldsymbol{P}$ 的变化率不仅包括惯性参考系中的变化，还需要考虑参考系本身的旋转。设旋转参考系的角速度为 $\boldsymbol{\omega}$，则有：
 
 $$
-\left(\frac{d\boldsymbol{P}}{dt}\right)_\text{inertial} = \left(\frac{d\boldsymbol{P}}{dt}\right)_\text{rotating} + \boldsymbol{\omega} \times \boldsymbol{P}
+\left(\dfrac{d\boldsymbol{P}}{dt}\right)_\text{inertial} = \left(\dfrac{d\boldsymbol{P}}{dt}\right)_\text{rotating} + \boldsymbol{\omega} \times \boldsymbol{P}
 $$
 
    其中：
@@ -121,20 +121,20 @@ $$
 在惯性系中对时间求导得速度：
 
 $$
-\vec{v}_{\text{in}} = \frac{d\vec{r}}{dt} = \frac{d}{dt}(x' \hat{e}_{x'} + y' \hat{e}_{y'} + z' \hat{e}_{z'}).
+\vec{v}_{\text{in}} = \dfrac{d\vec{r}}{dt} = \dfrac{d}{dt}(x' \hat{e}_{x'} + y' \hat{e}_{y'} + z' \hat{e}_{z'}).
 $$
 
 注意旋转系基矢量随时间变化，其导数为：
 
 $$
-\frac{d\hat{e}_{x'}}{dt} = \omega \hat{e}_{y'}, \quad \frac{d\hat{e}_{y'}}{dt} = -\omega \hat{e}_{x'}, \quad \frac{d\hat{e}_{z'}}{dt} = 0.
+\dfrac{d\hat{e}_{x'}}{dt} = \omega \hat{e}_{y'}, \quad \dfrac{d\hat{e}_{y'}}{dt} = -\omega \hat{e}_{x'}, \quad \dfrac{d\hat{e}_{z'}}{dt} = 0.
 $$
 
 代入得：
 
 $$
 \begin{aligned}
-\vec{v}_{\text{in}} &= \left( \frac{dx'}{dt} \hat{e}_{x'} + \frac{dy'}{dt} \hat{e}_{y'} + \frac{dz'}{dt} \hat{e}_{z'} \right) + \left( x' \omega \hat{e}_{y'} - y' \omega \hat{e}_{x'} \right) \\
+\vec{v}_{\text{in}} &= \left( \dfrac{dx'}{dt} \hat{e}_{x'} + \dfrac{dy'}{dt} \hat{e}_{y'} + \dfrac{dz'}{dt} \hat{e}_{z'} \right) + \left( x' \omega \hat{e}_{y'} - y' \omega \hat{e}_{x'} \right) \\
 &= \vec{v}_{\text{rot}} + \omega (x' \hat{e}_{y'} - y' \hat{e}_{x'}),
 \end{aligned}
 $$
@@ -155,31 +155,31 @@ $$
 对惯性系速度再求导得加速度：
 
 $$
-\vec{a}_{\text{in}} = \frac{d\vec{v}_{\text{in}}}{dt} = \frac{d}{dt}(\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}).
+\vec{a}_{\text{in}} = \dfrac{d\vec{v}_{\text{in}}}{dt} = \dfrac{d}{dt}(\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}).
 $$
 
 分别计算两项。首先，对旋转系中的速度矢量 $\vec{v}_{\text{rot}}$ 求导时，需考虑其基矢量的旋转，利用旋转系中对矢量的时间导数关系：
 
 $$
-\left( \frac{d\vec{Q}}{dt} \right)_{\text{in}} = \left( \frac{d\vec{Q}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{Q},
+\left( \dfrac{d\vec{Q}}{dt} \right)_{\text{in}} = \left( \dfrac{d\vec{Q}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{Q},
 $$
 
 其中 $\left( \frac{d\vec{Q}}{dt} \right)_{\text{rot}}$ 表示在旋转系中观察时 $\vec{Q}$ 的变化率（仅对分量求导，基矢量视为不变）。将 $\vec{Q}$ 取为 $\vec{v}_{\text{rot}}$，得：
 
 $$
-\frac{d\vec{v}_{\text{rot}}}{dt} = \left( \frac{d\vec{v}_{\text{rot}}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
+\dfrac{d\vec{v}_{\text{rot}}}{dt} = \left( \dfrac{d\vec{v}_{\text{rot}}}{dt} \right)_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
 $$
 
 而 $\left( \frac{d\vec{v}_{\text{rot}}}{dt} \right)_{\text{rot}}$ 正是旋转系中测得的加速度 $\vec{a}_{\text{rot}}$。故：
 
 $$
-\frac{d\vec{v}_{\text{rot}}}{dt} = \vec{a}_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
+\dfrac{d\vec{v}_{\text{rot}}}{dt} = \vec{a}_{\text{rot}} + \vec{\omega} \times \vec{v}_{\text{rot}}.
 $$
 
 其次，对 $\vec{\omega} \times \vec{r}$ 求导（设 $\vec{\omega}$ 恒定）：
 
 $$
-\frac{d}{dt}(\vec{\omega} \times \vec{r}) = \vec{\omega} \times \frac{d\vec{r}}{dt} = \vec{\omega} \times \vec{v}_{\text{in}} = \vec{\omega} \times (\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}) = \vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times (\vec{\omega} \times \vec{r}).
+\dfrac{d}{dt}(\vec{\omega} \times \vec{r}) = \vec{\omega} \times \dfrac{d\vec{r}}{dt} = \vec{\omega} \times \vec{v}_{\text{in}} = \vec{\omega} \times (\vec{v}_{\text{rot}} + \vec{\omega} \times \vec{r}) = \vec{\omega} \times \vec{v}_{\text{rot}} + \vec{\omega} \times (\vec{\omega} \times \vec{r}).
 $$
 
 将两部分合并：
@@ -242,7 +242,7 @@ $$
 #### 公式：
 
 $$
-\boldsymbol{F}_\text{Euler} = -m\frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}
+\boldsymbol{F}_\text{Euler} = -m\dfrac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r}
 $$
 
 其中：
@@ -260,7 +260,7 @@ $$
     **解答：**
 
     $$
-    \boldsymbol{F}_\text{Euler} = -m\frac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r} = -1 \times 0.2 \times 3 = -0.6\,\mathrm{N}
+    \boldsymbol{F}_\text{Euler} = -m\dfrac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r} = -1 \times 0.2 \times 3 = -0.6\,\mathrm{N}
     $$
 
     欧拉力的大小为 $0.6\,\mathrm{N}$，方向由右手法则确定。

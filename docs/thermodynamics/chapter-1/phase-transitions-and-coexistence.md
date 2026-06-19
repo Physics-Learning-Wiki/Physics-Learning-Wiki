@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 物质聚集态随状态参量的转化与共存
+## 物质聚集态随状态参量的转化与共存
 
 这一页负责把“温度”和“热量”进一步放进真实物质行为中来看。光知道系统会升温、降温还不够，我们还要问：为什么有时系统吸热后温度上升，有时却先发生熔化、沸腾或升华？为什么某些状态下两种物态还能同时存在？
 
@@ -68,13 +68,13 @@ $$
 其中 $\nu$ 是总摩尔数。设气、液两相的摩尔分数为
 
 $$
-x_g = \frac{v_g}{\nu},\qquad x_L = \frac{v_L}{\nu},\qquad x_g + x_L = 1,
+x_g = \dfrac{v_g}{\nu},\qquad x_L = \dfrac{v_L}{\nu},\qquad x_g + x_L = 1,
 $$
 
 并记平均摩尔体积
 
 $$
-\overline{V} = \frac{V}{\nu},
+\overline{V} = \dfrac{V}{\nu},
 $$
 
 则有
@@ -86,8 +86,8 @@ $$
 整理可得
 
 $$
-x_g = \frac{\overline{V} - V_L^\mathrm{mol}}{V_g^\mathrm{mol} - V_L^\mathrm{mol}},\qquad
-x_L = \frac{V_g^\mathrm{mol} - \overline{V}}{V_g^\mathrm{mol} - V_L^\mathrm{mol}}.\tag{1}
+x_g = \dfrac{\overline{V} - V_L^\mathrm{mol}}{V_g^\mathrm{mol} - V_L^\mathrm{mol}},\qquad
+x_L = \dfrac{V_g^\mathrm{mol} - \overline{V}}{V_g^\mathrm{mol} - V_L^\mathrm{mol}}.\tag{1}
 $$
 
 这就是气液共存的杠杆定则：平均摩尔体积在两端摩尔体积之间的位置，直接决定气、液两相的比例。

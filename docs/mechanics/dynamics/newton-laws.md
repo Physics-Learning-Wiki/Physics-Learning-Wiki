@@ -26,7 +26,7 @@ author: Physics-Learning-Wiki
 ### 数学表达
 
 $$
-\boldsymbol{F} = \frac{d\boldsymbol{p}}{dt}
+\boldsymbol{F} = \dfrac{d\boldsymbol{p}}{dt}
 $$
 
 其中 $\boldsymbol{p} = m\boldsymbol{v}$ 是动量。
@@ -34,7 +34,7 @@ $$
 当物体质量 $m$ 为常数时，公式简化为我们最熟悉的形式：
 
 $$
-\boldsymbol{F} = m\frac{d\boldsymbol{v}}{dt} = m\boldsymbol{a}
+\boldsymbol{F} = m\dfrac{d\boldsymbol{v}}{dt} = m\boldsymbol{a}
 $$
 
 ### 物理意义

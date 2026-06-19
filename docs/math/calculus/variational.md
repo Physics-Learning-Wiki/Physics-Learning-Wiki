@@ -26,7 +26,7 @@ $$
 这个函数 $y(x)$ 必须满足下面的**欧拉-拉格朗日方程**：
 
 $$
-\frac{\partial L}{\partial y} - \frac{d}{dx}\left(\frac{\partial L}{\partial y'}\right) = 0
+\dfrac{\partial L}{\partial y} - \dfrac{d}{dx}\left(\dfrac{\partial L}{\partial y'}\right) = 0
 $$
 
 这个方程看起来可能有点吓人，但它只是普通函数求极值（令导数为零）在泛函上的推广。
@@ -45,7 +45,7 @@ $$
     -   总时间就是对 $dt$ 的积分：
 
         $$
-        T[y] = \int_A^B dt = \int_{x_A}^{x_B} \frac{\sqrt{1+(y')^2}}{\sqrt{2gy}} \,dx
+        T[y] = \int_A^B dt = \int_{x_A}^{x_B} \dfrac{\sqrt{1+(y')^2}}{\sqrt{2gy}} \,dx
         $$
 
     这就是我们要最小化的泛函。
@@ -95,7 +95,7 @@ $$
 3.  **组合成方程**:
 
     $$
-    \frac{\partial L}{\partial x} - \frac{d}{dt}\left(\frac{\partial L}{\partial \dot{x}}\right) = 0
+    \dfrac{\partial L}{\partial x} - \dfrac{d}{dt}\left(\dfrac{\partial L}{\partial \dot{x}}\right) = 0
     $$
 
     $$

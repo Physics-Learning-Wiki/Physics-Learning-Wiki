@@ -13,7 +13,7 @@
 函数 $f(x)$ 在点 $x_0$ 的导数定义为：
 
 $$
-f'(x_0) = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+f'(x_0) = \lim_{\Delta x \to 0} \dfrac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
 $$
 
 如果这个极限存在，我们就说函数 $f(x)$ 在 $x_0$ 点可导。导数 $f'(x)$ 也记作 $\frac{dy}{dx}$。
@@ -27,19 +27,19 @@ $$
 让我们用定义来求这个基本函数的导数。
 
 $$
-f'(x) = \lim_{\Delta x \to 0} \frac{(x + \Delta x)^2 - x^2}{\Delta x}
+f'(x) = \lim_{\Delta x \to 0} \dfrac{(x + \Delta x)^2 - x^2}{\Delta x}
 $$
 
 展开分子中的平方项：
 
 $$
-f'(x) = \lim_{\Delta x \to 0} \frac{x^2 + 2x\Delta x + (\Delta x)^2 - x^2}{\Delta x}
+f'(x) = \lim_{\Delta x \to 0} \dfrac{x^2 + 2x\Delta x + (\Delta x)^2 - x^2}{\Delta x}
 $$
 
 消去 $x^2$ 项：
 
 $$
-f'(x) = \lim_{\Delta x \to 0} \frac{2x\Delta x + (\Delta x)^2}{\Delta x}
+f'(x) = \lim_{\Delta x \to 0} \dfrac{2x\Delta x + (\Delta x)^2}{\Delta x}
 $$
 
 在取极限之前，我们可以用 $\Delta x$ 来约分（因为 $\Delta x \to 0$ 但不等于 0）：

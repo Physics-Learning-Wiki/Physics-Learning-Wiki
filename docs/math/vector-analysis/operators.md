@@ -8,7 +8,7 @@
 在三维笛卡尔坐标系中，Nabla 算子定义为：
 
 $$
-\nabla = \hat{i} \frac{\partial}{\partial x} + \hat{j} \frac{\partial}{\partial y} + \hat{k} \frac{\partial}{\partial z}
+\nabla = \hat{i} \dfrac{\partial}{\partial x} + \hat{j} \dfrac{\partial}{\partial y} + \hat{k} \dfrac{\partial}{\partial z}
 $$
 
 它本身不是一个向量，而是一个矢量微分算符，可以作用于标量场或矢量场。
@@ -20,7 +20,7 @@ $$
 ### 定义
 
 $$
-\text{grad}(f) = \nabla f = \frac{\partial f}{\partial x}\hat{i} + \frac{\partial f}{\partial y}\hat{j} + \frac{\partial f}{\partial z}\hat{k}
+\text{grad}(f) = \nabla f = \dfrac{\partial f}{\partial x}\hat{i} + \dfrac{\partial f}{\partial y}\hat{j} + \dfrac{\partial f}{\partial z}\hat{k}
 $$
 
 ### 物理意义
@@ -36,7 +36,7 @@ $$
 首先计算电势 $V$ 的梯度：
 
 $$
-\nabla V = \frac{\partial}{\partial x}(2x^2y - z^3)\hat{i} + \frac{\partial}{\partial y}(2x^2y - z^3)\hat{j} + \frac{\partial}{\partial z}(2x^2y - z^3)\hat{k}
+\nabla V = \dfrac{\partial}{\partial x}(2x^2y - z^3)\hat{i} + \dfrac{\partial}{\partial y}(2x^2y - z^3)\hat{j} + \dfrac{\partial}{\partial z}(2x^2y - z^3)\hat{k}
 $$
 
 $$
@@ -64,7 +64,7 @@ $$
 散度可以看作是 $\nabla$ 算子与矢量场 $\vec{F}$ 的点积：
 
 $$
-\text{div}(\vec{F}) = \nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}
+\text{div}(\vec{F}) = \nabla \cdot \vec{F} = \dfrac{\partial F_x}{\partial x} + \dfrac{\partial F_y}{\partial y} + \dfrac{\partial F_z}{\partial z}
 $$
 
 ### 物理意义
@@ -85,7 +85,7 @@ $$
 **解：**
 
 $$
-\nabla \cdot \vec{F} = \frac{\partial}{\partial x}(x) + \frac{\partial}{\partial y}(y) + \frac{\partial}{\partial z}(z) = 1 + 1 + 1 = 3
+\nabla \cdot \vec{F} = \dfrac{\partial}{\partial x}(x) + \dfrac{\partial}{\partial y}(y) + \dfrac{\partial}{\partial z}(z) = 1 + 1 + 1 = 3
 $$
 
 由于散度为正，这个场在每一点都是一个源。
@@ -102,10 +102,10 @@ $$
 \text{curl}(\vec{F}) = \nabla \times \vec{F} = 
 \begin{vmatrix}
 \hat{i} & \hat{j} & \hat{k} \\
-\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
 F_x & F_y & F_z
 \end{vmatrix}
-= \left(\frac{\partial F_z}{\partial y} - \frac{\partial F_y}{\partial z}\right)\hat{i} + \left(\frac{\partial F_x}{\partial z} - \frac{\partial F_z}{\partial x}\right)\hat{j} + \left(\frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial y}\right)\hat{k}
+= \left(\dfrac{\partial F_z}{\partial y} - \dfrac{\partial F_y}{\partial z}\right)\hat{i} + \left(\dfrac{\partial F_x}{\partial z} - \dfrac{\partial F_z}{\partial x}\right)\hat{j} + \left(\dfrac{\partial F_y}{\partial x} - \dfrac{\partial F_x}{\partial y}\right)\hat{k}
 $$
 
 ### 物理意义
@@ -126,7 +126,7 @@ $$
 **解：**
 
 $$
-\nabla \times \vec{v} = \left(\frac{\partial (0)}{\partial y} - \frac{\partial (x)}{\partial z}\right)\hat{i} + \left(\frac{\partial (-y)}{\partial z} - \frac{\partial (0)}{\partial x}\right)\hat{j} + \left(\frac{\partial (x)}{\partial x} - \frac{\partial (-y)}{\partial y}\right)\hat{k}
+\nabla \times \vec{v} = \left(\dfrac{\partial (0)}{\partial y} - \dfrac{\partial (x)}{\partial z}\right)\hat{i} + \left(\dfrac{\partial (-y)}{\partial z} - \dfrac{\partial (0)}{\partial x}\right)\hat{j} + \left(\dfrac{\partial (x)}{\partial x} - \dfrac{\partial (-y)}{\partial y}\right)\hat{k}
 $$
 
 $$
@@ -159,7 +159,7 @@ $$
   标量场的梯度的散度定义为拉普拉斯算子 $\nabla^2$ 或 $\Delta$：
 
   $$
-  \nabla \cdot (\nabla f) = \nabla^2 f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}
+  \nabla \cdot (\nabla f) = \nabla^2 f = \dfrac{\partial^2 f}{\partial x^2} + \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2}
   $$
 
   拉普拉斯算子在许多物理方程中都非常重要，如拉普拉斯方程 $\nabla^2 f = 0$、泊松方程 $\nabla^2 f = \rho$ 和波动方程。

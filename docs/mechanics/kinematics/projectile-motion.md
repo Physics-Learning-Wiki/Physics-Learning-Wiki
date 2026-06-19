@@ -1,4 +1,4 @@
-# 抛体运动(Projectile Motion)
+## 抛体运动（Projectile Motion）
 
 抛体运动描述物体在重力作用下的平面曲线运动.它的关键在于:**加速度始终竖直向下且大小近似恒定**,因此二维运动可以分解成两个独立的一维运动.
 
@@ -61,7 +61,7 @@ $$
 2. 位移公式:
 
 $$
-y = v_{0y}t - \frac{1}{2}gt^2 = v_0 \sin\theta \cdot t - \frac{1}{2}gt^2
+y = v_{0y}t - \dfrac{1}{2}gt^2 = v_0 \sin\theta \cdot t - \dfrac{1}{2}gt^2
 $$
 
 3. 速度与位移关系:
@@ -98,7 +98,7 @@ $$
 将时间 $t$ 消去,得到抛物线方程:
 
 $$
-y = x \tan\theta - \frac{g}{2v_0^2 \cos^2\theta} x^2
+y = x \tan\theta - \dfrac{g}{2v_0^2 \cos^2\theta} x^2
 $$
 
 其中:
@@ -119,7 +119,7 @@ $$
 飞行时间由竖直方向运动决定,当物体回到初始高度时, $y = 0$:
 
 $$
-T = \frac{2v_{0y}}{g} = \frac{2v_0 \sin\theta}{g}
+T = \dfrac{2v_{0y}}{g} = \dfrac{2v_0 \sin\theta}{g}
 $$
 
 ### 最大高度
@@ -127,7 +127,7 @@ $$
 最大高度由竖直方向速度为零时的位置决定:
 
 $$
-h = \frac{v_{0y}^2}{2g} = \frac{(v_0 \sin\theta)^2}{2g}
+h = \dfrac{v_{0y}^2}{2g} = \dfrac{(v_0 \sin\theta)^2}{2g}
 $$
 
 ### 水平射程
@@ -135,7 +135,7 @@ $$
 水平射程由飞行时间和水平速度决定:
 
 $$
-R = v_{0x} \cdot T = \frac{v_0^2 \sin(2\theta)}{g}
+R = v_{0x} \cdot T = \dfrac{v_0^2 \sin(2\theta)}{g}
 $$
 
 ??? note "最远射程与最优角"
@@ -155,7 +155,7 @@ $$
 若从高度 $H$ 抛出并落地(取发射点为 $y=H$,地面为 $y=0$):
 
 $$
-0=H-\frac12 gt^2\Rightarrow t=\sqrt{\frac{2H}{g}},
+0=H-\frac12 gt^2\Rightarrow t=\sqrt{\dfrac{2H}{g}},
 $$
 
 水平位移(落点距投影点的距离)

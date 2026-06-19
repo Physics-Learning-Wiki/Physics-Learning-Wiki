@@ -46,7 +46,7 @@ $$
 - **欧拉反射公式**：
 
   $$
-  \Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)}
+  \Gamma(z)\Gamma(1-z) = \dfrac{\pi}{\sin(\pi z)}
   $$
 
 伽马函数在统计力学、弦理论和量子场论中都有应用。
@@ -66,7 +66,7 @@ $$
 ### 与伽马函数的关系
 
 $$
-B(x, y) = \frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+B(x, y) = \dfrac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
 $$
 
 这个关系使得贝塔函数的计算可以转化为伽马函数的计算。
@@ -78,7 +78,7 @@ $$
 贝塞尔方程为：
 
 $$
-x^2 \frac{d^2y}{dx^2} + x \frac{dy}{dx} + (x^2 - \nu^2)y = 0
+x^2 \dfrac{d^2y}{dx^2} + x \dfrac{dy}{dx} + (x^2 - \nu^2)y = 0
 $$
 
 其中 $\nu$ 是一个常数，称为贝塞尔函数的**阶**。
@@ -102,7 +102,7 @@ $$
 勒让德方程为：
 
 $$
-(1-x^2)\frac{d^2y}{dx^2} - 2x\frac{dy}{dx} + n(n+1)y = 0
+(1-x^2)\dfrac{d^2y}{dx^2} - 2x\dfrac{dy}{dx} + n(n+1)y = 0
 $$
 
 其中 $n$ 是非负整数。
@@ -112,7 +112,7 @@ $$
 ### 罗德里格斯公式
 
 $$
-P_n(x) = \frac{1}{2^n n!} \frac{d^n}{dx^n} (x^2 - 1)^n
+P_n(x) = \dfrac{1}{2^n n!} \dfrac{d^n}{dx^n} (x^2 - 1)^n
 $$
 
 前几个勒让德多项式为：
@@ -127,7 +127,7 @@ $$
 勒让德多项式在区间 $[-1, 1]$ 上是正交的：
 
 $$
-\int_{-1}^1 P_m(x) P_n(x) dx = \frac{2}{2n+1} \delta_{mn}
+\int_{-1}^1 P_m(x) P_n(x) dx = \dfrac{2}{2n+1} \delta_{mn}
 $$
 
 其中 $\delta_{mn}$ 是克罗内克符号。这种正交性使得它们可以作为函数空间的基，用于展开其他函数，这在多极展开和量子力学中非常有用。
@@ -141,7 +141,7 @@ $$
 球谐函数是**连带勒让德多项式** $P_l^m(\cos\theta)$ 和复指数的乘积：
 
 $$
-Y_l^m(\theta, \phi) = \sqrt{\frac{(2l+1)}{4\pi}\frac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}
+Y_l^m(\theta, \phi) = \sqrt{\dfrac{(2l+1)}{4\pi}\dfrac{(l-m)!}{(l+m)!}} P_l^m(\cos\theta) e^{im\phi}
 $$
 
 - $l$ 是非负整数，称为**角量子数**或**轨道量子数**，决定了总的角动量。

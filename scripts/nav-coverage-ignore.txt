@@ -1,0 +1,13 @@
+# Nav coverage ignore list
+# Pages listed here are intentionally excluded from mkdocs.yml nav.
+# See: scripts/check-nav-coverage.py
+
+# Edit landing page (used by edit_uri in mkdocs.yml)
+edit-landing.md
+
+# Glossary (internal reference, linked from other pages)
+glossary/glossary.md
+
+# Internal planning & design documents
+superpowers/plans/
+superpowers/specs/

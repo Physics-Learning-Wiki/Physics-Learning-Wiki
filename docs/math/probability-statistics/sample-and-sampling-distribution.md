@@ -2,7 +2,7 @@
 author: Physics Learning Wiki, Leafuke
 ---
 
-# 样本及抽样分布
+## 样本及抽样分布
 
 ## 学习目标
 

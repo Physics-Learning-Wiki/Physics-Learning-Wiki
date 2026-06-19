@@ -75,7 +75,7 @@ $$
 如果 $f(z) = u(x, y) + i v(x, y)$ 在某点解析，那么它的实部和虚部必须满足**柯西-黎曼条件 (Cauchy-Riemann conditions)**：
 
 $$
-\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \quad \text{and} \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} \quad \text{and} \quad \dfrac{\partial u}{\partial y} = -\dfrac{\partial v}{\partial x}
 $$
 
 这个条件是函数解析的必要条件。如果 $u$ 和 $v$ 的一阶偏导数连续且满足柯西-黎曼条件，那么这也是函数解析的充分条件。
@@ -87,11 +87,11 @@ $f(z) = (x+iy)^2 = (x^2 - y^2) + i(2xy)$。
 我们来检验柯西-黎曼条件：
 
 $$
-\frac{\partial u}{\partial x} = 2x, \quad \frac{\partial v}{\partial y} = 2x
+\dfrac{\partial u}{\partial x} = 2x, \quad \dfrac{\partial v}{\partial y} = 2x
 $$
 
 $$
-\frac{\partial u}{\partial y} = -2y, \quad \frac{\partial v}{\partial x} = 2y
+\dfrac{\partial u}{\partial y} = -2y, \quad \dfrac{\partial v}{\partial x} = 2y
 $$
 
 我们看到 $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$ 和 $\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}$ 在整个复平面上都成立。因此，$f(z) = z^2$ 是一个解析函数。
@@ -111,7 +111,7 @@ $$
 **柯西积分公式 (Cauchy's Integral Formula)**：如果 $f(z)$ 在包含闭合路径 $C$ 及其内部的区域内解析，那么对于 $C$ 内部的任何一点 $z_0$，有：
 
 $$
-f(z_0) = \frac{1}{2\pi i} \oint_C \frac{f(z)}{z - z_0} dz
+f(z_0) = \dfrac{1}{2\pi i} \oint_C \dfrac{f(z)}{z - z_0} dz
 $$
 
 这个惊人的公式表明，一个解析函数在某区域内部的值完全由其在该区域边界上的值所确定。
@@ -141,5 +141,5 @@ $e^z = 1 + z + \frac{z^2}{2!} + \dots$
 根据留数定理：
 
 $$
-\oint_C \frac{e^z}{z^2} dz = 2\pi i \cdot \text{Res}(f, 0) = 2\pi i
+\oint_C \dfrac{e^z}{z^2} dz = 2\pi i \cdot \text{Res}(f, 0) = 2\pi i
 $$

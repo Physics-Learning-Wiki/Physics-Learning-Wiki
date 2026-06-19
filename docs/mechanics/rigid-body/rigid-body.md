@@ -66,7 +66,7 @@ $$
     一个绕定轴以角速度 $\omega$ 转动的刚体，其动能为：
 
     $$
-    E_k = \frac{1}{2} I \omega^2
+    E_k = \dfrac{1}{2} I \omega^2
     $$
 
 -   **角动量 ($L$)**：
@@ -80,7 +80,7 @@ $$
     结合定轴转动定律，我们有：
 
     $$
-    \vec{\tau}_{net} = \frac{d\vec{L}}{dt}
+    \vec{\tau}_{net} = \dfrac{d\vec{L}}{dt}
     $$
 
     这正是角动量定理在定轴转动情况下的体现。如果合外力矩为零，则刚体的角动量守恒。
@@ -123,7 +123,7 @@ $$
 这导致 $\vec{L}$ 的方向发生改变，而不是其大小。角动量矢量的末端会描绘出一个圆，这就是进动。进动的角速度 $\Omega_p$ 为：
 
 $$
-\Omega_p = \frac{\tau}{L \sin\phi} = \frac{mgr}{I\omega}
+\Omega_p = \dfrac{\tau}{L \sin\phi} = \dfrac{mgr}{I\omega}
 $$
 
 其中 $m$ 是陀螺质量，$r$ 是质心到支点的距离，$\phi$ 是转轴与竖直方向的夹角。
