@@ -32,6 +32,7 @@
       "remark-lint-ordered-list-marker-value",
       "ordered"
     ],
+    "remark-frontmatter",
     "remark-gfm",
     [
       "remark-details",

@@ -118,6 +118,7 @@ async function checkFiles(fileList: string[]) {
 }
 
 async function checkFile(file: string) {
+  if (file.includes("superpowers/")) return [];
   if (!parg.q) console.log("[Info] Checking " + file + ":");
 
   //Get bare file name

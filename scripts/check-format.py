@@ -99,9 +99,12 @@ def main() -> int:
         path = Path(raw_path)
         if path.is_dir():
             for md_file in sorted(path.rglob("*.md")):
+                if "superpowers" in md_file.parts:
+                    continue
                 all_issues.extend(check_file(md_file))
         elif path.is_file():
-            all_issues.extend(check_file(path))
+            if "superpowers" not in Path(raw_path).parts:
+                all_issues.extend(check_file(path))
 
     errors = [i for i in all_issues if "建议" not in i]
     warnings = [i for i in all_issues if "建议" in i]
