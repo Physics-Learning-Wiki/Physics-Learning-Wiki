@@ -9,7 +9,7 @@
 ## 参与协作
 
 ???+ info "无需 GitHub 账号的投稿方式"
-    如果你不熟悉 GitHub，现在可以直接在网站上提交内容。
+    如果你不熟悉 GitHub，现在可以直接在网站上提交内容。  
     访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进。
 
 ???+ warning "Warning"

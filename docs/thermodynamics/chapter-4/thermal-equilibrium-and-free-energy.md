@@ -23,8 +23,8 @@ author: Physics Learning Wiki
 ???+ warning "孤立系统的熵判据"
     在保持内能和体积不变的约束下，平衡态与所有可能的虚变动态相比，其熵取极大值：
 
-    $$
-    \mathrm{d}S_{U,V} \geq 0
+    $$  
+    \mathrm{d}S_{U,V} \geq 0  
     $$
 
     等号 "$=$" 对应平衡态（可逆过程），不等号 "$>$" 对应不可逆过程（自发过程）。
@@ -88,8 +88,8 @@ $$
 ???+ warning "亥姆霍兹自由能"
     亥姆霍兹自由能（Helmholtz free energy）定义为：
 
-    $$
-    F = U - TS
+    $$  
+    F = U - TS  
     $$
 
     其中 $U$ 为内能，$T$ 为温度，$S$ 为熵。$F$ 是一个态函数，具有能量的量纲。
@@ -182,8 +182,8 @@ $$
 ???+ warning "吉布斯自由能"
     吉布斯自由能（Gibbs free energy）定义为：
 
-    $$
-    G = H - TS = U + pV - TS
+    $$  
+    G = H - TS = U + pV - TS  
     $$
 
     其中 $H$ 为焓，$U$ 为内能，$p$ 为压强，$V$ 为体积，$T$ 为温度，$S$ 为熵。$G$ 是一个态函数，具有能量的量纲。
@@ -265,8 +265,8 @@ $$
 ???+ tip "吉布斯自由能的物理意义"
     在可逆的等温等压过程中，系统对外做的非体积功等于吉布斯自由能的减少量：
 
-    $$
-    \delta A'_{\text{非体}} = -\mathrm{d}G
+    $$  
+    \delta A'_{\text{非体}} = -\mathrm{d}G  
     $$
 
     对于不可逆的等温等压过程，系统对外做的非体积功小于吉布斯自由能的减少量，即 $\delta A'_{\text{非体}} < -\mathrm{d}G$。因此，$-\Delta G$ 是等温等压过程中系统对外做非体积功的**最大值**。这也说明在等温等压条件下，$\Delta G < 0$ 的过程可以对外做功，具有自发进行的趋势。
@@ -278,20 +278,20 @@ $$
 
     由于 $263\;\text{K}$ 不是平衡相变温度（平衡温度为 $273.15\;\text{K}$），不能直接用 $\Delta G = 0$。我们可以利用 $\Delta G$ 与温度的关系：
 
-    $$
-    \left(\dfrac{\partial \Delta G}{\partial T}\right)_p = -\Delta S
+    $$  
+    \left(\dfrac{\partial \Delta G}{\partial T}\right)_p = -\Delta S  
     $$
 
     在 $273.15\;\text{K}$ 下，水和冰平衡共存，$\Delta G(273.15) = 0$。从 $273.15\;\text{K}$ 积分到 $263\;\text{K}$：
 
-    $$
-    \Delta G(263) = \Delta G(273.15) + \int_{273.15}^{263} (-\Delta S)\,\mathrm{d}T = -\int_{273.15}^{263} \Delta S\,\mathrm{d}T
+    $$  
+    \Delta G(263) = \Delta G(273.15) + \int_{273.15}^{263} (-\Delta S)\,\mathrm{d}T = -\int_{273.15}^{263} \Delta S\,\mathrm{d}T  
     $$
 
     其中 $\Delta S = S_{\text{冰}} - S_{\text{水}}$，在温度 $T$ 附近：
 
-    $$
-    \Delta S(T) = \Delta S(273.15) + \int_{273.15}^{T} \dfrac{C_{p,s} - C_{p,l}}{T'}\,\mathrm{d}T' = -\dfrac{\Lambda}{273.15} + (C_{p,s} - C_{p,l})\ln\dfrac{T}{273.15}
+    $$  
+    \Delta S(T) = \Delta S(273.15) + \int_{273.15}^{T} \dfrac{C_{p,s} - C_{p,l}}{T'}\,\mathrm{d}T' = -\dfrac{\Lambda}{273.15} + (C_{p,s} - C_{p,l})\ln\dfrac{T}{273.15}  
     $$
 
     代入数值（$\Delta S(273.15) = -6004/273.15 \approx -21.98\;\text{J/(mol·K)}$）并积分，可得 $\Delta G(263) < 0$。因此在 $263\;\text{K}$ 下，水凝固成冰是自发过程——这与经验一致。
@@ -330,11 +330,11 @@ $$
 
 ???+ note "四个热力学势的完整关系"
 
-    | 热力学势 | 基本方程 | 自然变量 | 麦克斯韦关系 |
-    |:---:|:---:|:---:|:---:|
-    | 内能 $U$ | $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V$ | $S, V$ | $\left(\dfrac{\partial T}{\partial V}\right)_S = -\left(\dfrac{\partial p}{\partial S}\right)_V$ |
-    | 焓 $H$ | $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$ | $S, p$ | $\left(\dfrac{\partial T}{\partial p}\right)_S = \left(\dfrac{\partial V}{\partial S}\right)_p$ |
-    | 亥姆霍兹自由能 $F$ | $\mathrm{d}F = -S\,\mathrm{d}T - p\,\mathrm{d}V$ | $T, V$ | $\left(\dfrac{\partial S}{\partial V}\right)_T = \left(\dfrac{\partial p}{\partial T}\right)_V$ |
+    | 热力学势 | 基本方程 | 自然变量 | 麦克斯韦关系 |  
+    |:---:|:---:|:---:|:---:|  
+    | 内能 $U$ | $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V$ | $S, V$ | $\left(\dfrac{\partial T}{\partial V}\right)_S = -\left(\dfrac{\partial p}{\partial S}\right)_V$ |  
+    | 焓 $H$ | $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$ | $S, p$ | $\left(\dfrac{\partial T}{\partial p}\right)_S = \left(\dfrac{\partial V}{\partial S}\right)_p$ |  
+    | 亥姆霍兹自由能 $F$ | $\mathrm{d}F = -S\,\mathrm{d}T - p\,\mathrm{d}V$ | $T, V$ | $\left(\dfrac{\partial S}{\partial V}\right)_T = \left(\dfrac{\partial p}{\partial T}\right)_V$ |  
     | 吉布斯自由能 $G$ | $\mathrm{d}G = -S\,\mathrm{d}T + V\,\mathrm{d}p$ | $T, p$ | $\left(\dfrac{\partial S}{\partial p}\right)_T = -\left(\dfrac{\partial V}{\partial T}\right)_p$ |
 
 麦克斯韦关系的意义在于：它将不易直接测量的量（如熵随体积或压强的变化）转化为容易测量的量（如温度、压强、体积之间的关系），在实际计算中极为有用。
@@ -392,8 +392,8 @@ $$
 ???+ warning "化学势"
     组分 $i$ 的化学势（chemical potential）定义为：
 
-    $$
-    \mu_i = \left(\dfrac{\partial G}{\partial n_i}\right)_{T, p, n_{j \neq i}}
+    $$  
+    \mu_i = \left(\dfrac{\partial G}{\partial n_i}\right)_{T, p, n_{j \neq i}}  
     $$
 
     即在恒温恒压下，保持其他组分物质的量不变，增加一摩尔组分 $i$ 所引起的吉布斯自由能变化。化学势反映了物质的"逃逸趋势"——物质总是倾向于从化学势高的相或区域流向化学势低的相或区域。

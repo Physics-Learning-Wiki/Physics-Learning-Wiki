@@ -74,8 +74,8 @@ $$
 ???+ warning "克劳修斯等式"
     对于**任意可逆循环**，有：
 
-    $$
-    \oint \dfrac{\delta Q}{T} = 0
+    $$  
+    \oint \dfrac{\delta Q}{T} = 0  
     $$
 
     其中 $\delta Q$ 为系统从温度为 $T$ 的热源吸收的微小热量，$T$ 为热源的温度。
@@ -109,13 +109,13 @@ $$
 ???+ warning "克劳修斯不等式"
     对于**任意循环过程**（可逆或不可逆），有：
 
-    $$
-    \oint \dfrac{\delta Q}{T} \leq 0
+    $$  
+    \oint \dfrac{\delta Q}{T} \leq 0  
     $$
 
     其中等号"$=$"适用于可逆循环，不等号"$<$"适用于不可逆循环。
 
-    - $\delta Q$ 为系统从温度为 $T$ 的热源吸收的微小热量；
+    - $\delta Q$ 为系统从温度为 $T$ 的热源吸收的微小热量；  
     - $T$ 为热源的温度（对于可逆过程等于系统温度）。
 
 ## 熵的定义
@@ -127,8 +127,8 @@ $$
 ???+ warning "熵的定义"
     系统从状态 1 经**可逆过程**变化到状态 2 时，其熵变定义为：
 
-    $$
-    \Delta S = S_2 - S_1 = \int_1^2 \left(\dfrac{\delta Q}{T}\right)_{\text{可逆}}
+    $$  
+    \Delta S = S_2 - S_1 = \int_1^2 \left(\dfrac{\delta Q}{T}\right)_{\text{可逆}}  
     $$
 
     其中 $\delta Q$ 为系统在可逆过程中从温度为 $T$ 的热源吸收的微小热量。熵的国际单位为 $\text{J/K}$（焦耳每开尔文）。
@@ -143,8 +143,8 @@ $$
 - 如果实际过程是不可逆的，则必须设计一个连接相同初末状态的假想可逆过程来计算 $\Delta S$
 
 ???+ tip "注意事项"
-    1. $\Delta S$ 只是状态 1 和状态 2 的函数，与连接这两个状态的实际过程无关。实际过程可以是可逆的，也可以是不可逆的。
-    2. 但在实际计算 $\Delta S$ 时，积分**必须**沿连接状态 1 和状态 2 的**任意可逆路径**进行！如果原来的正过程是不可逆的，则必须设计一个假想的可逆过程来计算 $\Delta S$！
+    1. $\Delta S$ 只是状态 1 和状态 2 的函数，与连接这两个状态的实际过程无关。实际过程可以是可逆的，也可以是不可逆的。  
+    2. 但在实际计算 $\Delta S$ 时，积分**必须**沿连接状态 1 和状态 2 的**任意可逆路径**进行！如果原来的正过程是不可逆的，则必须设计一个假想的可逆过程来计算 $\Delta S$！  
     3. 当系统由若干部分组成时，整个系统的熵变等于各部分熵变之和。熵是一个**广延量**，具有可加性。
 
 ## 熵的计算
@@ -170,14 +170,14 @@ $$
 ???+ warning "理想气体的熵变公式"
     以 $(T, V)$ 为变量：
 
-    $$
-    \Delta S(T, V) = \nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1} + \nu R \ln\dfrac{V_2}{V_1}
+    $$  
+    \Delta S(T, V) = \nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1} + \nu R \ln\dfrac{V_2}{V_1}  
     $$
 
     以 $(T, p)$ 为变量：
 
-    $$
-    \Delta S(T, p) = \nu C_p^{\text{mol}} \ln\dfrac{T_2}{T_1} - \nu R \ln\dfrac{p_2}{p_1}
+    $$  
+    \Delta S(T, p) = \nu C_p^{\text{mol}} \ln\dfrac{T_2}{T_1} - \nu R \ln\dfrac{p_2}{p_1}  
     $$
 
     其中 $\nu$ 为物质的量，$C_V^{\text{mol}}$ 和 $C_p^{\text{mol}}$ 分别为摩尔定容热容和摩尔定压热容。
@@ -205,11 +205,11 @@ $$
 ???+ tip "多方过程熵变的统一性"
     多方过程的熵变公式 $\Delta S = \nu C_n \ln(T_2/T_1)$ 将各种常见过程统一在一个表达式中。通过取不同的多方指数 $n$，可以得到对应的热容和熵变：
 
-    | 过程 | 多方指数 $n$ | 热容 $C_n$ | 熵变 $\Delta S$ |
-    |:---:|:---:|:---:|:---:|
-    | 等温 | $1$ | — | $\nu R \ln\dfrac{V_2}{V_1}$ |
-    | 等体 | $\infty$ | $C_V^{\text{mol}}$ | $\nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1}$ |
-    | 等压 | $0$ | $C_p^{\text{mol}}$ | $\nu C_p^{\text{mol}} \ln\dfrac{T_2}{T_1}$ |
+    | 过程 | 多方指数 $n$ | 热容 $C_n$ | 熵变 $\Delta S$ |  
+    |:---:|:---:|:---:|:---:|  
+    | 等温 | $1$ | — | $\nu R \ln\dfrac{V_2}{V_1}$ |  
+    | 等体 | $\infty$ | $C_V^{\text{mol}}$ | $\nu C_V^{\text{mol}} \ln\dfrac{T_2}{T_1}$ |  
+    | 等压 | $0$ | $C_p^{\text{mol}}$ | $\nu C_p^{\text{mol}} \ln\dfrac{T_2}{T_1}$ |  
     | 绝热（可逆） | $\gamma$ | $0$ | $0$ |
 
     注意等温过程中 $n=1$ 时 $C_n$ 发散，需要回到原始公式单独计算；可逆绝热过程是等熵过程，熵变为零。
@@ -223,16 +223,16 @@ $$
 
     先等温膨胀从 $a$ 到 $c$（$T = 300\;\text{K}$，$V_c = V_b$），再等体升温从 $c$ 到 $b$：
 
-    $$
-    \Delta S_{ac} = \nu R \ln\dfrac{V_b}{V_a} = R \ln\dfrac{2.0}{3.0} = -R \ln\dfrac{3}{2}
-    $$
-
-    $$
-    \Delta S_{cb} = \nu C_V^{\text{mol}} \ln\dfrac{T_b}{T_c} = \dfrac{3}{2}R \ln\dfrac{450}{300} = \dfrac{3}{2}R \ln\dfrac{3}{2}
+    $$  
+    \Delta S_{ac} = \nu R \ln\dfrac{V_b}{V_a} = R \ln\dfrac{2.0}{3.0} = -R \ln\dfrac{3}{2}  
     $$
 
+    $$  
+    \Delta S_{cb} = \nu C_V^{\text{mol}} \ln\dfrac{T_b}{T_c} = \dfrac{3}{2}R \ln\dfrac{450}{300} = \dfrac{3}{2}R \ln\dfrac{3}{2}  
     $$
-    \Delta S_{ab} = -R \ln\dfrac{3}{2} + \dfrac{3}{2}R \ln\dfrac{3}{2} = \dfrac{1}{2}R \ln\dfrac{3}{2} \approx 1.69\;\text{J/K}
+
+    $$  
+    \Delta S_{ab} = -R \ln\dfrac{3}{2} + \dfrac{3}{2}R \ln\dfrac{3}{2} = \dfrac{1}{2}R \ln\dfrac{3}{2} \approx 1.69\;\text{J/K}  
     $$
 
     **路径 2：可逆绝热 + 等体**
@@ -241,20 +241,20 @@ $$
 
     由绝热关系 $TV^{\gamma-1} = \text{const}$（$\gamma = 5/3$）：
 
-    $$
-    T_d = T_a \left(\dfrac{V_a}{V_d}\right)^{\!\gamma-1} = 300 \times \left(\dfrac{3.0}{2.0}\right)^{\!2/3} \approx 393.1\;\text{K}
-    $$
-
-    $$
-    \Delta S_{ad} = 0 \quad \text{（可逆绝热过程，等熵）}
+    $$  
+    T_d = T_a \left(\dfrac{V_a}{V_d}\right)^{\!\gamma-1} = 300 \times \left(\dfrac{3.0}{2.0}\right)^{\!2/3} \approx 393.1\;\text{K}  
     $$
 
-    $$
-    \Delta S_{db} = \dfrac{3}{2}R \ln\dfrac{450}{393.1} \approx \dfrac{3}{2} \times 8.314 \times 0.1352 \approx 1.69\;\text{J/K}
+    $$  
+    \Delta S_{ad} = 0 \quad \text{（可逆绝热过程，等熵）}  
     $$
 
+    $$  
+    \Delta S_{db} = \dfrac{3}{2}R \ln\dfrac{450}{393.1} \approx \dfrac{3}{2} \times 8.314 \times 0.1352 \approx 1.69\;\text{J/K}  
     $$
-    \Delta S_{ab} = 0 + 1.69 = 1.69\;\text{J/K}
+
+    $$  
+    \Delta S_{ab} = 0 + 1.69 = 1.69\;\text{J/K}  
     $$
 
     两条路径得到相同的结果 $\Delta S_{ab} \approx 1.69\;\text{J/K}$，验证了熵是态函数，熵变与路径无关。
@@ -278,8 +278,8 @@ $$
 ???+ warning "混合熵公式"
     不同理想气体在等温等压下混合的熵变为：
 
-    $$
-    \Delta S_{\text{mix}} = -\nu R \sum_i c_i \ln c_i
+    $$  
+    \Delta S_{\text{mix}} = -\nu R \sum_i c_i \ln c_i  
     $$
 
     由于 $0 < c_i < 1$，故 $\ln c_i < 0$，因此 $\Delta S_{\text{mix}} > 0$。混合过程是**不可逆**的，符合熵增原理。
@@ -306,22 +306,22 @@ $$
 
     **设计三步可逆路径：**
 
-    1. 将过冷水从 $T'$ 可逆等压升温至 $273.15\;\text{K}$
-    2. 在 $273.15\;\text{K}$ 下可逆等温凝固
+    1. 将过冷水从 $T'$ 可逆等压升温至 $273.15\;\text{K}$  
+    2. 在 $273.15\;\text{K}$ 下可逆等温凝固  
     3. 将冰从 $273.15\;\text{K}$ 可逆等压降温至 $T'$
 
     **系统的熵变：**
 
-    $$
-    \Delta S_{\text{sys}} = \int_{T'}^{273.15} \dfrac{C_{p,l}}{T}\,\mathrm{d}T - \dfrac{\Lambda}{273.15} + \int_{273.15}^{T'} \dfrac{C_{p,s}}{T}\,\mathrm{d}T
+    $$  
+    \Delta S_{\text{sys}} = \int_{T'}^{273.15} \dfrac{C_{p,l}}{T}\,\mathrm{d}T - \dfrac{\Lambda}{273.15} + \int_{273.15}^{T'} \dfrac{C_{p,s}}{T}\,\mathrm{d}T  
     $$
 
     其中第二步放热，故取负号。
 
     **环境的熵变：** 环境视为温度恒为 $T'$ 的大热源，其吸热量等于系统放热量的负值：
 
-    $$
-    \Delta S_{\text{env}} = \dfrac{Q_{\text{env}}}{T'} = \dfrac{-Q_{\text{sys}}}{T'}
+    $$  
+    \Delta S_{\text{env}} = \dfrac{Q_{\text{env}}}{T'} = \dfrac{-Q_{\text{sys}}}{T'}  
     $$
 
     其中系统实际放出的热量为 $Q_{\text{sys}} = -Q_{\text{env}}$，可由焓变计算。
@@ -354,22 +354,22 @@ $$
 ??? note "例题：光合作用的熵变"
     **题目**：计算光合作用的标准反应熵：
 
-    $$
-    6\text{CO}_2\text{(g)} + 6\text{H}_2\text{O(l)} \longrightarrow \text{C}_6\text{H}_{12}\text{O}_6\text{(s)} + 6\text{O}_2\text{(g)}
+    $$  
+    6\text{CO}_2\text{(g)} + 6\text{H}_2\text{O(l)} \longrightarrow \text{C}_6\text{H}_{12}\text{O}_6\text{(s)} + 6\text{O}_2\text{(g)}  
     $$
 
     **解答**：利用标准摩尔熵表，代入标准反应熵公式：
 
-    $$
-    \Delta S^\circ = \left[S^\circ(\text{C}_6\text{H}_{12}\text{O}_6) + 6\,S^\circ(\text{O}_2)\right] - \left[6\,S^\circ(\text{CO}_2) + 6\,S^\circ(\text{H}_2\text{O})\right]
-    $$
-
-    $$
-    = [212.1 + 6 \times 205.2] - [6 \times 213.8 + 6 \times 69.9]
+    $$  
+    \Delta S^\circ = \left[S^\circ(\text{C}_6\text{H}_{12}\text{O}_6) + 6\,S^\circ(\text{O}_2)\right] - \left[6\,S^\circ(\text{CO}_2) + 6\,S^\circ(\text{H}_2\text{O})\right]  
     $$
 
+    $$  
+    = [212.1 + 6 \times 205.2] - [6 \times 213.8 + 6 \times 69.9]  
     $$
-    = 1443.3 - 1702.2 = -258.9\;\text{J/(mol·K)}
+
+    $$  
+    = 1443.3 - 1702.2 = -258.9\;\text{J/(mol·K)}  
     $$
 
     **讨论**：系统（反应物和产物）的熵变为负值，这是因为反应将无序的气体分子转化为有序的固体（葡萄糖），系统的有序度增加。然而，光合作用的总熵变仍然满足热力学第二定律——太阳辐射为环境提供了大量低熵能量，使得环境的熵增加量足以补偿系统熵的减少，**宇宙的总熵仍然增加**。
@@ -390,12 +390,12 @@ $$
 ???+ warning "熵增加原理"
     对于一个**孤立系统**（或与外界无热交换、无功交换的绝热系统），其熵永不减少：
 
-    $$
-    \Delta S_{\text{孤立}} \geq 0
+    $$  
+    \Delta S_{\text{孤立}} \geq 0  
     $$
 
-    - "$=$"适用于可逆过程（系统处于平衡态）
-    - "$>$"适用于不可逆过程（自发过程）
+    - "$=$"适用于可逆过程（系统处于平衡态）  
+    - "$>$"适用于不可逆过程（自发过程）  
     - "$<$"是不可能发生的
 
     熵增加原理是热力学第二定律的**定量数学表述**，它给出了过程方向的判据：孤立系统的熵只能增加或保持不变，绝不会减少。
@@ -412,8 +412,8 @@ $$
     - $\Delta S_{\text{孤立}} < 0$：不可能发生
 
 ???+ tip "自发过程与不可逆过程的辨析"
-    1. 熵增原理只能判断绝热过程是否**不可逆**，但不能直接判断是否**自发**。然而，在孤立系统中，不可逆过程必然是自发的。
-    2. 自然界中的自发过程都是不可逆的，但不可逆过程**不一定**是自发的——例如，对系统做功可以使系统经历一个不可逆过程，但这个过程不是自发的。
+    1. 熵增原理只能判断绝热过程是否**不可逆**，但不能直接判断是否**自发**。然而，在孤立系统中，不可逆过程必然是自发的。  
+    2. 自然界中的自发过程都是不可逆的，但不可逆过程**不一定**是自发的——例如，对系统做功可以使系统经历一个不可逆过程，但这个过程不是自发的。  
     3. 绝热过程可以与环境交换**功**（但不交换热量），因此绝热系统不一定是孤立系统。只有同时隔绝热和功的系统才是孤立系统。
 
 ### 熵增原理的应用
@@ -439,34 +439,34 @@ $$
 
     **物体 A 的熵变：** 物体 A 经历等压过程从 $T_A$ 升温到 $T_B$，设计可逆等压路径：
 
-    $$
-    \Delta S_A = \int_{T_A}^{T_B} \dfrac{C_p\,\mathrm{d}T}{T} = C_p \ln\dfrac{T_B}{T_A}
+    $$  
+    \Delta S_A = \int_{T_A}^{T_B} \dfrac{C_p\,\mathrm{d}T}{T} = C_p \ln\dfrac{T_B}{T_A}  
     $$
 
     其中 $C_p$ 为物体 A 的定压热容。
 
     **热源 B 的熵变：** 热源温度恒为 $T_B$，其释放的热量为 $Q = C_p(T_B - T_A)$（等于物体 A 吸收的热量），因此：
 
-    $$
-    \Delta S_B = \dfrac{-Q}{T_B} = -\dfrac{C_p(T_B - T_A)}{T_B}
+    $$  
+    \Delta S_B = \dfrac{-Q}{T_B} = -\dfrac{C_p(T_B - T_A)}{T_B}  
     $$
 
     **总熵变：**
 
-    $$
-    \Delta S = \Delta S_A + \Delta S_B = C_p \ln\dfrac{T_B}{T_A} - C_p\dfrac{T_B - T_A}{T_B}
+    $$  
+    \Delta S = \Delta S_A + \Delta S_B = C_p \ln\dfrac{T_B}{T_A} - C_p\dfrac{T_B - T_A}{T_B}  
     $$
 
     **证明 $\Delta S > 0$：** 令 $x = T_B / T_A > 1$，则：
 
-    $$
-    \Delta S = C_p \left(\ln x - 1 + \dfrac{1}{x}\right)
+    $$  
+    \Delta S = C_p \left(\ln x - 1 + \dfrac{1}{x}\right)  
     $$
 
     利用不等式 $\ln x > 1 - \dfrac{1}{x}$（当 $x > 1$ 时成立），可得 $\ln x - 1 + 1/x > 0$，因此：
 
-    $$
-    \Delta S > 0
+    $$  
+    \Delta S > 0  
     $$
 
     这证明热传导是不可逆过程，满足熵增原理。
@@ -494,8 +494,8 @@ $$
 玻尔兹曼给出了熵的统计力学定义：
 
 ???+ warning "玻尔兹曼熵公式"
-    $$
-    S = k \ln \Omega
+    $$  
+    S = k \ln \Omega  
     $$
 
     其中 $k = 1.381 \times 10^{-23}\;\text{J/K}$ 为玻尔兹曼常数，$\Omega$ 为该宏观态对应的**微观状态数**（即实现该宏观态的所有可能微观构型的数目）。
@@ -552,9 +552,9 @@ $$
 在统计物理中可以一般性地证明：对于平衡态附近的过程，克劳修斯熵与玻尔兹曼熵是一致的——两者都正比于宏观态概率的对数。克劳修斯熵从宏观（唯象）角度出发，玻尔兹曼熵从微观（统计）角度出发，二者殊途同归。
 
 ???+ tip "熵的物理意义"
-    - **低熵** → 有序、集中、概率低的宏观态
-    - **高熵** → 无序、分散、概率高的宏观态
-    - $S = k\ln\Omega$：熵度量了孤立系统的**无序程度**
+    - **低熵** → 有序、集中、概率低的宏观态  
+    - **高熵** → 无序、分散、概率高的宏观态  
+    - $S = k\ln\Omega$：熵度量了孤立系统的**无序程度**  
     - 热量从高温物体流向低温物体，意味着能量在空间中更加**分散**和"降级"——这正是熵增的微观图景
 
 ### 能量品质的退化

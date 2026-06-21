@@ -50,7 +50,7 @@ $$
 $$
 
 ???+ warning "注意"
-    1. $dV$ 应是**宏观小微观大**的体积元。例如：标准状态下，$1\,\text{cm}^3$ 的空气中有 $2.7 \times 10^{19}$ 个分子。
+    1. $dV$ 应是**宏观小微观大**的体积元。例如：标准状态下，$1\,\text{cm}^3$ 的空气中有 $2.7 \times 10^{19}$ 个分子。  
     若 $dV = 10^{-15}\,\text{m}^3$，则 $dV$ 内有 $10^{10}$ 个分子！   
     2. 涨落：各时刻的 $\frac{dN}{dV}$ 值相对于平均值 $n$ 的差别。通常 $dV$ 取足够大，使这一涨落比起平均值 $n$ 可以小到忽略不计。
 
@@ -123,7 +123,7 @@ $$
 ???+ warning "注意"
     1. 温度 T 是描述热力学系统平衡态的宏观状态参量。  
     2. 温度 T 是一个统计概念，只能用来描述大量分子的集体状态，单个分子谈论它的温度毫无意义。  
-    3. 温度所反映的运动是分子的无规则运动(分子热运动 $\overline{\varepsilon_t}$ )，和物体的整体运动无关。是相对于系统的质心参考系测量的。系统内所有分子的平动动能的总和就是系统的内动能。
+    3. 温度所反映的运动是分子的无规则运动(分子热运动 $\overline{\varepsilon_t}$ )，和物体的整体运动无关。是相对于系统的质心参考系测量的。系统内所有分子的平动动能的总和就是系统的内动能。  
     4. 分子热运动的平均转动动能和平均振动动能也都和温度有直接的联系。
 
  
@@ -367,28 +367,28 @@ $$
 **重要性质**：同一温度下，质量大的分子其方均根速率小。
 
 ??? note "例题"
-    求零摄氏度时，氢气和氧气分子的平均平动动能和方均根速率。
-    解：
-    温度 $T = 0^\circ\text{C} = 273.15\text{ K}$
-    ##### 平均平动动能
+    求零摄氏度时，氢气和氧气分子的平均平动动能和方均根速率。  
+    解：  
+    温度 $T = 0^\circ\text{C} = 273.15\text{ K}$  
+    ##### 平均平动动能  
     由于平均平动动能只与温度有关：
     
-    $$
-    \overline{\varepsilon_t} = \dfrac{3}{2} kT = \dfrac{3}{2} \times 1.38 \times 10^{-23} \times 273.15 \approx 5.65 \times 10^{-21} \text{ J}
+    $$  
+    \overline{\varepsilon_t} = \dfrac{3}{2} kT = \dfrac{3}{2} \times 1.38 \times 10^{-23} \times 273.15 \approx 5.65 \times 10^{-21} \text{ J}  
     $$
 
-    氢气和氧气分子的平均平动动能**相同**。
-    ##### 方均根速率
+    氢气和氧气分子的平均平动动能**相同**。  
+    ##### 方均根速率  
     **氢气**（$M_{\text{H}_2} = 2 \times 10^{-3} \text{ kg/mol}$）：
 
-    $$
-    v_{\text{rms, H}_2} = \sqrt{\dfrac{3RT}{M_{\text{H}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{2 \times 10^{-3}}} = 1.84 \times 10^3 \text{ m/s}
+    $$  
+    v_{\text{rms, H}_2} = \sqrt{\dfrac{3RT}{M_{\text{H}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{2 \times 10^{-3}}} = 1.84 \times 10^3 \text{ m/s}  
     $$
 
     **氧气**（$M_{\text{O}_2} = 32 \times 10^{-3} \text{ kg/mol}$）：
 
-    $$
-    v_{\text{rms, O}_2} = \sqrt{\dfrac{3RT}{M_{\text{O}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{32 \times 10^{-3}}} = 461 \text{ m/s}
+    $$  
+    v_{\text{rms, O}_2} = \sqrt{\dfrac{3RT}{M_{\text{O}_2}}} = \sqrt{\dfrac{3 \times 8.31 \times 273.15}{32 \times 10^{-3}}} = 461 \text{ m/s}  
     $$
 
     > **发现**：结果与声波在空气中传播的速率同数量级。
@@ -440,25 +440,25 @@ $$
 > *注：$1\,\text{aJ} = 10^{-18}\,\text{J}$ （attojoule，阿焦耳）*
 
 ??? tip "使用说明"
-    - 表格中的数值表示：**1 单位行对应的能量 = 列标题单位的多少倍**。
+    - 表格中的数值表示：**1 单位行对应的能量 = 列标题单位的多少倍**。  
     - 例如：第一行第二列 “$1.16 \times 10^4$” 表示：  
 
-        $$
-        1\,\text{eV} = 1.16 \times 10^4\,\text{K} \cdot k
+        $$  
+        1\,\text{eV} = 1.16 \times 10^4\,\text{K} \cdot k  
         $$  
         
         即：1 电子伏特对应的“温度当量”约为 11600 K（通过 $E = kT$ 转换）。  
     - 同理，第三行第一列 “6.25” 表示：  
 
-    $$
-    1\,\text{aJ} = 6.25\,\text{eV}
+    $$  
+    1\,\text{aJ} = 6.25\,\text{eV}  
     $$  
     
     因为 $1\,\text{eV} = 1.602 \times 10^{-19}\,\text{J} = 0.1602\,\text{aJ}$，所以倒数即为 6.25。   
-    - 这些换算是基于以下基本常数：
-    - $k = 1.380649 \times 10^{-23}\,\text{J/K}$
-    - $N_A = 6.02214076 \times 10^{23}\,\text{mol}^{-1}$
-    - $1\,\text{eV} = 1.602176634 \times 10^{-19}\,\text{J}$
+    - 这些换算是基于以下基本常数：  
+    - $k = 1.380649 \times 10^{-23}\,\text{J/K}$  
+    - $N_A = 6.02214076 \times 10^{23}\,\text{mol}^{-1}$  
+    - $1\,\text{eV} = 1.602176634 \times 10^{-19}\,\text{J}$  
     - $1\,\text{kcal} = 4184\,\text{J}$
 
 
@@ -501,30 +501,30 @@ $$
 
     **解**：因温度相同，
     
-    $$
-    \dfrac{p_\alpha}{p} = \dfrac{n_\alpha kT}{nkT} = \dfrac{n_\alpha}{n} = \dfrac{v_\alpha N_A / V}{v N_A / V} = \dfrac{v_\alpha}{v}
+    $$  
+    \dfrac{p_\alpha}{p} = \dfrac{n_\alpha kT}{nkT} = \dfrac{n_\alpha}{n} = \dfrac{v_\alpha N_A / V}{v N_A / V} = \dfrac{v_\alpha}{v}  
     $$
     
     各组分的质量比
     
-    $$
-    v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} : v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} : v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}} = 0.78 \times 28 : 0.21 \times 32 : 0.01 \times 40
+    $$  
+    v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} : v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} : v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}} = 0.78 \times 28 : 0.21 \times 32 : 0.01 \times 40  
     $$
     
-    $$
-    m_{\text{N}_2} : m_{\text{O}_2} : m_{\text{Ar}} = 75.4\% : 23.2\% : 1.4\%
+    $$  
+    m_{\text{N}_2} : m_{\text{O}_2} : m_{\text{Ar}} = 75.4\% : 23.2\% : 1.4\%  
     $$
     
     再归一，可得
 
-    $$
-    \rho = \dfrac{v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} + v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} + v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}}}{v \cdot 22.4 \text{ L/mol}} = \dfrac{0.78 \times 28\text{g} + 0.21 \times 32\text{g} + 0.01 \times 40\text{g}}{22.4 \times 10^3 \text{ cm}^3}
+    $$  
+    \rho = \dfrac{v_{\text{N}_2} M_{\text{N}_2}^{\text{mol}} + v_{\text{O}_2} M_{\text{O}_2}^{\text{mol}} + v_{\text{Ar}} M_{\text{Ar}}^{\text{mol}}}{v \cdot 22.4 \text{ L/mol}} = \dfrac{0.78 \times 28\text{g} + 0.21 \times 32\text{g} + 0.01 \times 40\text{g}}{22.4 \times 10^3 \text{ cm}^3}  
     $$
     
     标准状态下空气的密度为
     
-    $$
-    = 1.29 \times 10^{-3} \text{ g/cm}^3 = 1.29 \text{ kg/m}^3
+    $$  
+    = 1.29 \times 10^{-3} \text{ g/cm}^3 = 1.29 \text{ kg/m}^3  
     $$
  
 ### 实际气体

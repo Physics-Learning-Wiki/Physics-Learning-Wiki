@@ -86,8 +86,8 @@ $$
 
     **解：**
 
-    $$
-    A^2=3^2+4^2+2\cdot 3\cdot 4\cos\dfrac{\pi}{3}=9+16+24\cdot\frac12=37
+    $$  
+    A^2=3^2+4^2+2\cdot 3\cdot 4\cos\dfrac{\pi}{3}=9+16+24\cdot\frac12=37  
     $$
 
     所以 $A=\sqrt{37}$。
@@ -164,29 +164,29 @@ $$
 ??? note "例题：用李萨如图形测相位差（同频）"
     示波器 $X$、$Y$ 两通道分别输入
 
-    $$
-    x=A\cos(\omega t),\qquad y=A\cos(\omega t+\delta),\quad 0\le \delta\le \pi.
+    $$  
+    x=A\cos(\omega t),\qquad y=A\cos(\omega t+\delta),\quad 0\le \delta\le \pi.  
     $$
 
     在屏幕上观察到闭合椭圆。若测得椭圆与 $y$ 轴交点为 $y=\pm y_0$（即 $x=0$ 时的 $|y|$），求 $\delta$ 与 $y_0/A$ 的关系。
 
-    **解：**令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$。
+    **解：**令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$。  
     代入 $y$：
 
-    $$
-    y=A\cos\left(\dfrac{\pi}{2}+\delta\right)=-A\sin\delta
+    $$  
+    y=A\cos\left(\dfrac{\pi}{2}+\delta\right)=-A\sin\delta  
     $$
 
     或
 
-    $$
-    y=A\cos\left(\dfrac{3\pi}{2}+\delta\right)=A\sin\delta.
+    $$  
+    y=A\cos\left(\dfrac{3\pi}{2}+\delta\right)=A\sin\delta.  
     $$
 
     因此 $y_0=A|\sin\delta|$。在题设 $0\le\delta\le\pi$ 下 $\sin\delta\ge 0$，得到
 
-    $$
-    \boxed{\ \sin\delta=\dfrac{y_0}{A}\ },\qquad \delta=\arcsin\left(\dfrac{y_0}{A}\right).
+    $$  
+    \boxed{\ \sin\delta=\dfrac{y_0}{A}\ },\qquad \delta=\arcsin\left(\dfrac{y_0}{A}\right).  
     $$
 
 ## 5. 振动的分解：傅里叶观点（最小必要版）

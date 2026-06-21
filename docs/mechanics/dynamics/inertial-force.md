@@ -22,8 +22,8 @@ $$
 
     **解答：**
 
-    $$
-    \boldsymbol{F}_\text{inertial} = -m\boldsymbol{a}_\text{ref} = -10 \times 2 = -20\,\mathrm{N}
+    $$  
+    \boldsymbol{F}_\text{inertial} = -m\boldsymbol{a}_\text{ref} = -10 \times 2 = -20\,\mathrm{N}  
     $$
 
     惯性力的大小为 $20\,\mathrm{N}$，方向与汽车加速度方向相反。
@@ -55,8 +55,8 @@ $$
 
     **解答：**
 
-    $$
-    \boldsymbol{F}_\text{centrifugal} = m\omega^2r = 5 \times 3^2 \times 2 = 90\,\mathrm{N}
+    $$  
+    \boldsymbol{F}_\text{centrifugal} = m\omega^2r = 5 \times 3^2 \times 2 = 90\,\mathrm{N}  
     $$
 
     物体受到的离心力为 $90\,\mathrm{N}$，方向远离旋转轴。
@@ -216,22 +216,22 @@ $$
 
     **解答：**
 
-    $$
-    \boldsymbol{F}_\text{Coriolis} = 2m(\boldsymbol{v} \times \boldsymbol{\omega})
+    $$  
+    \boldsymbol{F}_\text{Coriolis} = 2m(\boldsymbol{v} \times \boldsymbol{\omega})  
     $$
 
     设 $\boldsymbol{v} = 5\hat{i}$，$\boldsymbol{\omega} = 0.1\hat{j}$，则：
 
-    $$
-    \boldsymbol{v} \times \boldsymbol{\omega} = \begin{vmatrix}
-    \hat{i} & \hat{j} & \hat{k} \\
-    5 & 0 & 0 \\
-    0 & 0.1 & 0
-    \end{vmatrix} = \hat{k} \cdot (5 \times 0.1) = 0.5\hat{k}
+    $$  
+    \boldsymbol{v} \times \boldsymbol{\omega} = \begin{vmatrix}  
+    \hat{i} & \hat{j} & \hat{k} \\  
+    5 & 0 & 0 \\  
+    0 & 0.1 & 0  
+    \end{vmatrix} = \hat{k} \cdot (5 \times 0.1) = 0.5\hat{k}  
     $$
 
-    $$
-    \boldsymbol{F}_\text{Coriolis} = 2 \times 2 \times 0.5\hat{k} = 2\hat{k}\,\mathrm{N}
+    $$  
+    \boldsymbol{F}_\text{Coriolis} = 2 \times 2 \times 0.5\hat{k} = 2\hat{k}\,\mathrm{N}  
     $$
 
     科里奥利力的大小为 $2\,\mathrm{N}$，方向竖直向上。
@@ -259,8 +259,8 @@ $$
 
     **解答：**
 
-    $$
-    \boldsymbol{F}_\text{Euler} = -m\dfrac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r} = -1 \times 0.2 \times 3 = -0.6\,\mathrm{N}
+    $$  
+    \boldsymbol{F}_\text{Euler} = -m\dfrac{d\boldsymbol{\omega}}{dt} \times \boldsymbol{r} = -1 \times 0.2 \times 3 = -0.6\,\mathrm{N}  
     $$
 
     欧拉力的大小为 $0.6\,\mathrm{N}$，方向由右手法则确定。

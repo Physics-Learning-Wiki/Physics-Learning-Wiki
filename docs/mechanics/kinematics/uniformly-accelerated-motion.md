@@ -80,7 +80,7 @@ $$
 $$
 
 ??? note "什么时候用哪条公式？"
-    - 已知 $t$：优先用 $v=v_0+at$、$\Delta x=v_0 t+\tfrac12 a t^2$。
+    - 已知 $t$：优先用 $v=v_0+at$、$\Delta x=v_0 t+\tfrac12 a t^2$。  
     - 不想引入时间或题目不给 $t$：优先用 $v^2=v_0^2+2a\Delta x$。
 
 ## 2. 平均速度与位移的几何理解
@@ -195,20 +195,20 @@ $$
 ??? note "例题 1：已知 $v_0,a,t$ 求位移"
     一物体以 $v_0=5\,\mathrm{m/s}$ 做匀加速直线运动，加速度 $a=2\,\mathrm{m/s^2}$，求 $t=3\,\mathrm{s}$ 内的位移。
 
-    **解：**
-    $$
-    \Delta x=v_0 t+\frac12 a t^2
-    =5\times 3+\frac12\times 2\times 3^2
-    =15+9=24\,\mathrm{m}.
+    **解：**  
+    $$  
+    \Delta x=v_0 t+\frac12 a t^2  
+    =5\times 3+\frac12\times 2\times 3^2  
+    =15+9=24\,\mathrm{m}.  
     $$
 
 ??? note "例题 2：已知制动距离反求减速度"
     某车以 $v_0=20\,\mathrm{m/s}$ 刹车，$30\,\mathrm{m}$ 后停下，求其加速度（取前进方向为正）。
 
-    **解：**
-    $$
-    0=v_0^2+2a\Delta x
-    \Rightarrow a=-\dfrac{v_0^2}{2\Delta x}
-    =-\dfrac{20^2}{2\times 30}
-    =-\dfrac{400}{60}\approx -6.67\,\mathrm{m/s^2}.
+    **解：**  
+    $$  
+    0=v_0^2+2a\Delta x  
+    \Rightarrow a=-\dfrac{v_0^2}{2\Delta x}  
+    =-\dfrac{20^2}{2\times 30}  
+    =-\dfrac{400}{60}\approx -6.67\,\mathrm{m/s^2}.  
     $$

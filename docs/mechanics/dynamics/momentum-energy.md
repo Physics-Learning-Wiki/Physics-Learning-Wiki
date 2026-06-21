@@ -28,16 +28,16 @@ $$
 
     **解答：**
 
-    $$
-    \text{已知：} m = 0.5\,\mathrm{kg}, \quad v_1 = 10\,\mathrm{m/s}, \quad v_2 = 0, \quad \Delta t = 0.2\,\mathrm{s}
-    $$
-
-    $$
-    \Delta \boldsymbol{p} = m(v_2 - v_1) = 0.5(0 - 10) = -5\,\mathrm{kg\cdot m/s}
+    $$  
+    \text{已知：} m = 0.5\,\mathrm{kg}, \quad v_1 = 10\,\mathrm{m/s}, \quad v_2 = 0, \quad \Delta t = 0.2\,\mathrm{s}  
     $$
 
+    $$  
+    \Delta \boldsymbol{p} = m(v_2 - v_1) = 0.5(0 - 10) = -5\,\mathrm{kg\cdot m/s}  
     $$
-    F_{\text{avg}} = \dfrac{\Delta \boldsymbol{p}}{\Delta t} = \dfrac{-5}{0.2} = -25\,\mathrm{N}
+
+    $$  
+    F_{\text{avg}} = \dfrac{\Delta \boldsymbol{p}}{\Delta t} = \dfrac{-5}{0.2} = -25\,\mathrm{N}  
     $$
 
     守门员手对足球施加的平均力大小为 $25\,\mathrm{N}$，方向与足球初速度相反。
@@ -57,18 +57,18 @@ $$
 
     **解答：**
 
-    $$
-    \text{已知：} m_1 = 50\,\mathrm{kg}, \quad m_2 = 200\,\mathrm{kg}, \quad v_1 = 5\,\mathrm{m/s}, \quad v_2 = ?
+    $$  
+    \text{已知：} m_1 = 50\,\mathrm{kg}, \quad m_2 = 200\,\mathrm{kg}, \quad v_1 = 5\,\mathrm{m/s}, \quad v_2 = ?  
     $$
 
     根据动量守恒：
 
-    $$
-    0 = m_1v_1 + m_2v_2
+    $$  
+    0 = m_1v_1 + m_2v_2  
     $$
 
-    $$
-    v_2 = -\dfrac{m_1v_1}{m_2} = -\dfrac{50 \times 5}{200} = -1.25\,\mathrm{m/s}
+    $$  
+    v_2 = -\dfrac{m_1v_1}{m_2} = -\dfrac{50 \times 5}{200} = -1.25\,\mathrm{m/s}  
     $$
 
     小船的反向速度为 $1.25\,\mathrm{m/s}$。
@@ -88,26 +88,26 @@ $$
 
     **解答：**
 
-    $$
-    \text{已知：} m_A = 2\,\mathrm{kg}, \quad m_B = 3\,\mathrm{kg}, \quad v_{A1} = 3\,\mathrm{m/s}, \quad v_{B1} = -2\,\mathrm{m/s}, \quad v_{A2} = 1\,\mathrm{m/s}, \quad v_{B2} = ?
+    $$  
+    \text{已知：} m_A = 2\,\mathrm{kg}, \quad m_B = 3\,\mathrm{kg}, \quad v_{A1} = 3\,\mathrm{m/s}, \quad v_{B1} = -2\,\mathrm{m/s}, \quad v_{A2} = 1\,\mathrm{m/s}, \quad v_{B2} = ?  
     $$
 
     根据动量守恒：
 
-    $$
-    m_Av_{A1} + m_Bv_{B1} = m_Av_{A2} + m_Bv_{B2}
-    $$
-
-    $$
-    2 \times 3 + 3 \times (-2) = 2 \times 1 + 3 \times v_{B2}
+    $$  
+    m_Av_{A1} + m_Bv_{B1} = m_Av_{A2} + m_Bv_{B2}  
     $$
 
-    $$
-    6 - 6 = 2 + 3v_{B2}
+    $$  
+    2 \times 3 + 3 \times (-2) = 2 \times 1 + 3 \times v_{B2}  
     $$
 
+    $$  
+    6 - 6 = 2 + 3v_{B2}  
     $$
-    3v_{B2} = -2 \implies v_{B2} = -\dfrac{2}{3}\,\mathrm{m/s}
+
+    $$  
+    3v_{B2} = -2 \implies v_{B2} = -\dfrac{2}{3}\,\mathrm{m/s}  
     $$
     
     碰撞后，小车 B 的速度为 $-\frac{2}{3}\,\mathrm{m/s}$。
@@ -129,8 +129,8 @@ $$
 
     **解答：**
 
-    $$
-    W = F \cdot d = 10 \times 5 = 50\,\mathrm{J}
+    $$  
+    W = F \cdot d = 10 \times 5 = 50\,\mathrm{J}  
     $$
 
     拉力对小车所做的功为 $50\,\mathrm{J}$。
@@ -149,8 +149,8 @@ $$
 
     **解答：**
 
-    $$
-    \Delta E_k = \dfrac{1}{2}m(v_2^2 - v_1^2) = \dfrac{1}{2} \times 1000 \times (20^2 - 0^2) = 200,000\,\mathrm{J}
+    $$  
+    \Delta E_k = \dfrac{1}{2}m(v_2^2 - v_1^2) = \dfrac{1}{2} \times 1000 \times (20^2 - 0^2) = 200,000\,\mathrm{J}  
     $$
 
     汽车的动能变化量为 $200,000\,\mathrm{J}$。
@@ -176,8 +176,8 @@ $$
 
     **解答：**
 
-    $$
-    \Delta E_p = mgh_1 - mgh_2 = 2 \times 10 \times 10 - 2 \times 10 \times 0 = 200\,\mathrm{J}
+    $$  
+    \Delta E_p = mgh_1 - mgh_2 = 2 \times 10 \times 10 - 2 \times 10 \times 0 = 200\,\mathrm{J}  
     $$
 
     重力势能的变化量为 $200\,\mathrm{J}$。
@@ -202,16 +202,16 @@ $$
 
     根据机械能守恒：
 
-    $$
-    \Delta E_k + \Delta E_p = 0
-    $$
-
-    $$
-    \dfrac{1}{2}mv^2 - 0 + 0 - mgh = 0
+    $$  
+    \Delta E_k + \Delta E_p = 0  
     $$
 
+    $$  
+    \dfrac{1}{2}mv^2 - 0 + 0 - mgh = 0  
     $$
-    v = \sqrt{2gh} = \sqrt{2 \times 10 \times 5} = 10\,\mathrm{m/s}
+
+    $$  
+    v = \sqrt{2gh} = \sqrt{2 \times 10 \times 5} = 10\,\mathrm{m/s}  
     $$
 
     小球到达地面时的速度为 $10\,\mathrm{m/s}$。
@@ -228,8 +228,8 @@ $$
 
     **解答：**
 
-    $$
-    W_{nc} = F \cdot d = -50 \times 4 = -200\,\mathrm{J}
+    $$  
+    W_{nc} = F \cdot d = -50 \times 4 = -200\,\mathrm{J}  
     $$
 
     摩擦力对物体做的功为 $-200\,\mathrm{J}$。

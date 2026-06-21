@@ -94,26 +94,26 @@ $$
 ??? note "证明"
     设惯性系原点为 O，质心位矢为 $\mathbf{R}_c$ ，质点相对质心的位矢为 $\mathbf{r}_i' = \mathbf{r}_i - \mathbf{R}_c$ 。总角动量为
 
-    $$
-    \mathbf{L}_O = \sum_i \mathbf{r}_i \times m_i \mathbf{v}_i
+    $$  
+    \mathbf{L}_O = \sum_i \mathbf{r}_i \times m_i \mathbf{v}_i  
     $$
 
     利用 $\mathbf{v}_i = \mathbf{V}_c + \mathbf{v}_i'$，得
 
-    $$
-    \mathbf{L}_O = \sum_i (\mathbf{R}_c + \mathbf{r}_i') \times m_i (\mathbf{V}_c + \mathbf{v}_i')
+    $$  
+    \mathbf{L}_O = \sum_i (\mathbf{R}_c + \mathbf{r}_i') \times m_i (\mathbf{V}_c + \mathbf{v}_i')  
     $$ 
 
     展开后为
 
-    $$
-    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \mathbf{R}_c \times \sum_i m_i \mathbf{v}_i' + \left( \sum_i m_i \mathbf{r}_i' \right) \times \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'
+    $$  
+    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \mathbf{R}_c \times \sum_i m_i \mathbf{v}_i' + \left( \sum_i m_i \mathbf{r}_i' \right) \times \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'  
     $$ 
 
     由质心定义 $\sum_i m_i \mathbf{r}_i' = 0$ 及质心系中总动量 $\sum_i m_i \mathbf{v}_i' = 0$，中间两项为零，故
 
-    $$
-    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'
+    $$  
+    \mathbf{L}_O = \mathbf{R}_c \times M \mathbf{V}_c + \sum_i \mathbf{r}_i' \times m_i \mathbf{v}_i'  
     $$  
 
     即质心对点 O 的角动量（轨道角动量）与质心系中总角动量之和。

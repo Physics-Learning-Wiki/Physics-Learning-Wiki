@@ -205,28 +205,28 @@ $$
 接下来我们通过一个例题来更好地理解半波损失。
 
 ??? note "例题"
-    一列入射波沿弦向 $+x$ 方向传播，
-    $$
-    y_i(x,t)=A\cos(kx-\omega t).
-    $$
+    一列入射波沿弦向 $+x$ 方向传播，  
+    $$  
+    y_i(x,t)=A\cos(kx-\omega t).  
+    $$  
     弦在 $x=0$ 处固定。求反射波 $y_r(x,t)$，并写出叠加后的波形，指出 $x=0$ 处为何一定是波节。
 
-    **解：**固定端边界条件为 $y(0,t)=0$，即
-    $$
-    y_i(0,t)+y_r(0,t)=0\quad\forall t.
-    $$
-    设反射波形如
-    $$
-    y_r(x,t)=A\cos(kx+\omega t+\phi).
-    $$
-    代入 $x=0$：$A\cos(-\omega t)+A\cos(\omega t+\phi)=0$ 对任意 $t$ 成立，需有 $\phi=\pi$，因此
-    $$
-    \boxed{\ y_r(x,t)=A\cos(kx+\omega t+\pi)=-A\cos(kx+\omega t)\ }.
-    $$
-    总波为
-    $$
-    y=y_i+y_r=A\cos(kx-\omega t)-A\cos(kx+\omega t)=2A\sin(kx)\sin(\omega t).
-    $$
+    **解：**固定端边界条件为 $y(0,t)=0$，即  
+    $$  
+    y_i(0,t)+y_r(0,t)=0\quad\forall t.  
+    $$  
+    设反射波形如  
+    $$  
+    y_r(x,t)=A\cos(kx+\omega t+\phi).  
+    $$  
+    代入 $x=0$：$A\cos(-\omega t)+A\cos(\omega t+\phi)=0$ 对任意 $t$ 成立，需有 $\phi=\pi$，因此  
+    $$  
+    \boxed{\ y_r(x,t)=A\cos(kx+\omega t+\pi)=-A\cos(kx+\omega t)\ }.  
+    $$  
+    总波为  
+    $$  
+    y=y_i+y_r=A\cos(kx-\omega t)-A\cos(kx+\omega t)=2A\sin(kx)\sin(\omega t).  
+    $$  
     可见 $x=0$ 处 $\sin(kx)=0$ 恒成立，故该端点为波节；这对应“固定端反射发生半波损失（相位反转 $\pi$）”。
 
 ### 5. 色散与群速度
@@ -360,58 +360,58 @@ $$
 
     质元的动能为：
 
-    $$
-    \Delta E_k = \dfrac{1}{2} m v_y^2 = \dfrac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx).
+    $$  
+    \Delta E_k = \dfrac{1}{2} m v_y^2 = \dfrac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx).  
     $$
 
     接下来计算质元的势能。考虑弦波中长度为 $\Delta x$的一小段弦，其原长为$\Delta x$。当波传播时，该弦段发生形变，长度变为 $\Delta s$。弦的张力为 $T$，且在小振动下视为常量。势能等于张力乘以伸长量，即
 
-    $$
-    \Delta E_p = T (\Delta s - \Delta x).
+    $$  
+    \Delta E_p = T (\Delta s - \Delta x).  
     $$
 
     计算伸长量 $\Delta s - \Delta x$。弦段两端点的横向位移分别为 $y(x,t)$和$y(x+\Delta x, t)$，纵向位移忽略不计（横波）。弦段长度近似为
 
-    $$
-    \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \Delta x \left[ 1 + \dfrac{1}{2}\left( \dfrac{\partial y}{\partial x} \right)^2 \right],
+    $$  
+    \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2} \approx \Delta x \left[ 1 + \dfrac{1}{2}\left( \dfrac{\partial y}{\partial x} \right)^2 \right],  
     $$
 
     其中 $\Delta y = y(x+\Delta x,t) - y(x,t) \approx \frac{\partial y}{\partial x} \Delta x$。因此，
 
-    $$
-    \Delta s - \Delta x \approx \dfrac{1}{2} \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.
+    $$  
+    \Delta s - \Delta x \approx \dfrac{1}{2} \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.  
     $$
 
     代入势能表达式得
 
-    $$
-    \Delta E_p \approx \dfrac{1}{2} T \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.
+    $$  
+    \Delta E_p \approx \dfrac{1}{2} T \left( \dfrac{\partial y}{\partial x} \right)^2 \Delta x.  
     $$
 
     对于给定的波函数 $y = A \cos(\omega t - kx)$，求偏导得
 
-    $$
-    \dfrac{\partial y}{\partial x} = -k A \sin(\omega t - kx),
+    $$  
+    \dfrac{\partial y}{\partial x} = -k A \sin(\omega t - kx),  
     $$
 
     所以
 
-    $$
-    \left( \dfrac{\partial y}{\partial x} \right)^2 = k^2 A^2 \sin^2(\omega t - kx).
+    $$  
+    \left( \dfrac{\partial y}{\partial x} \right)^2 = k^2 A^2 \sin^2(\omega t - kx).  
     $$
 
     弦上横波的波速 $v$满足$v = \sqrt{T / \rho}$，其中 $\rho$为弦的体密度（若弦的横截面积为$S$，则线密度 $\mu = \rho S$，波速也可表示为 $v = \sqrt{T / \mu}$）。因此 $T = \rho v^2$。另外，波数 $k$与角频率$\omega$满足$\omega = v k$，即 $v = \omega / k$。
 
     将 $T$和$\left( \frac{\partial y}{\partial x} \right)^2$代入$\Delta E_p$：
 
-    $$
-    \Delta E_p = \dfrac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \dfrac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.
+    $$  
+    \Delta E_p = \dfrac{1}{2} \rho v^2 \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \dfrac{\omega^2}{k^2} \cdot k^2 A^2 \sin^2(\omega t - kx) \Delta x = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta x.  
     $$
 
     注意到质元的体积 $\Delta V = S \Delta x$，其中 $S$ 为弦的横截面积。代入上式得
 
-    $$
-    \Delta E_p = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta V.
+    $$  
+    \Delta E_p = \dfrac{1}{2} \rho \omega^2 A^2 \sin^2(\omega t - kx) \Delta V.  
     $$
 
     这与动能表达式 $\Delta E_k = \frac{1}{2} \rho \Delta V \omega^2 A^2 \sin^2(\omega t - kx)$ 形式完全相同。因此，质元的动能和势能具有相同的形式，且同步变化。

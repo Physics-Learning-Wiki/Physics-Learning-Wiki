@@ -14,7 +14,7 @@ title: Physics-Learning-Wiki
 4. 如果你想参与贡献，可以阅读 [如何参与](intro/htc.md)；如果你不会使用 GitHub，也可以直接发送稿件到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
 
 ???+ note "贡献你的物理知识"
-    不需要 GitHub 账号！直接访问 [投稿页面](submit.md) 分享你的笔记、勘误或建议。
+    不需要 GitHub 账号！直接访问 [投稿页面](submit.md) 分享你的笔记、勘误或建议。  
     每一份贡献都会被署名记录在 [贡献者墙](intro/contributors.md) 上。
 
 ## 本站的组织方式

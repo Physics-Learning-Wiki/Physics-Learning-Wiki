@@ -27,8 +27,8 @@ $$
 
     **解答：**
 
-    $$
-    F_g = mg = 10 \times 9.8 = 98\,\mathrm{N}
+    $$  
+    F_g = mg = 10 \times 9.8 = 98\,\mathrm{N}  
     $$
 
     物体受到的重力为 $98\,\mathrm{N}$。
@@ -58,8 +58,8 @@ $$
 
     **解答：**
 
-    $$
-    F_e = -kx = -200 \times 0.1 = -20\,\mathrm{N}
+    $$  
+    F_e = -kx = -200 \times 0.1 = -20\,\mathrm{N}  
     $$
 
     弹簧的弹力大小为 $20\,\mathrm{N}$，方向与拉伸方向相反。
@@ -95,12 +95,12 @@ $$
 
     **解答：**
 
-    $$
-    F_N = mg = 5 \times 9.8 = 49\,\mathrm{N}
+    $$  
+    F_N = mg = 5 \times 9.8 = 49\,\mathrm{N}  
     $$
 
-    $$
-    F_f = \mu F_N = 0.2 \times 49 = 9.8\,\mathrm{N}
+    $$  
+    F_f = \mu F_N = 0.2 \times 49 = 9.8\,\mathrm{N}  
     $$
 
     物体受到的最大静摩擦力为 $9.8\,\mathrm{N}$。
@@ -118,8 +118,8 @@ $$
 
     **解答：**
 
-    $$
-    T = mg = 2 \times 9.8 = 19.6\,\mathrm{N}
+    $$  
+    T = mg = 2 \times 9.8 = 19.6\,\mathrm{N}  
     $$
 
     绳子的拉力为 $19.6\,\mathrm{N}$。
@@ -150,8 +150,8 @@ $$
 
     **解答：**
 
-    $$
-    F_b = \rho V g = 1000 \times 0.05 \times 9.8 = 490\,\mathrm{N}
+    $$  
+    F_b = \rho V g = 1000 \times 0.05 \times 9.8 = 490\,\mathrm{N}  
     $$
 
     物体受到的浮力为 $490\,\mathrm{N}$。

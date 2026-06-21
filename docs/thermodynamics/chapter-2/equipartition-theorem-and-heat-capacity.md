@@ -126,24 +126,24 @@ $$
 ??? note "例题：理想气体的内能与做功"
     **问题**：有 2 mol 的氧气（视为刚性双原子分子理想气体），温度从 300 K 定压加热升高到 400 K。求该过程中气体吸收的热量、内能的增量和对外做的功。已知 $R \approx 8.31 \text{ J}/(\text{mol}\cdot\text{K})$。
     
-    **解答**：
-    氧气是双原子分子，自由度 $i = 5$。
+    **解答**：  
+    氧气是双原子分子，自由度 $i = 5$。  
     - **内能增量** $\Delta U$：
       
-        $$
-        \Delta U = \nu \dfrac{i}{2} R \Delta T = 2 \times \dfrac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}
+        $$  
+        \Delta U = \nu \dfrac{i}{2} R \Delta T = 2 \times \dfrac{5}{2} \times 8.31 \times (400 - 300) = 4155 \text{ J}  
         $$
 
     - **吸收的热量** $Q_p$：
       
-        $$
-        Q_p = \nu C_p^{mol} \Delta T = \nu \dfrac{i+2}{2} R \Delta T = 2 \times \dfrac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}
+        $$  
+        Q_p = \nu C_p^{mol} \Delta T = \nu \dfrac{i+2}{2} R \Delta T = 2 \times \dfrac{7}{2} \times 8.31 \times 100 = 5817 \text{ J}  
         $$
 
     - **对外做的功** $W$：
       
-        $$
-        W = Q_p - \Delta U = 5817 - 4155 = 1662 \text{ J}
+        $$  
+        W = Q_p - \Delta U = 5817 - 4155 = 1662 \text{ J}  
         $$
       
         也可以通过等压膨胀做功公式直接计算：$W = p \Delta V = \nu R \Delta T = 2 \times 8.31 \times 100 = 1662 \text{ J}$。

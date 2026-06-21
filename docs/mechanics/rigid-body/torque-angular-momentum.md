@@ -32,8 +32,8 @@ $$
 
     **解答：**
 
-    $$
-    \tau = rF\sin\theta = 2 \times 10 \times \sin 90^\circ = 20\,\mathrm{N \cdot m}
+    $$  
+    \tau = rF\sin\theta = 2 \times 10 \times \sin 90^\circ = 20\,\mathrm{N \cdot m}  
     $$
 
     力矩的大小为 $20\,\mathrm{N \cdot m}$。
@@ -80,8 +80,8 @@ $$
 
     **解答：**
 
-    $$
-    L = r \times p = r \times mv = 1 \times 2 \times 3 = 6\,\mathrm{kg \cdot m^2/s}
+    $$  
+    L = r \times p = r \times mv = 1 \times 2 \times 3 = 6\,\mathrm{kg \cdot m^2/s}  
     $$
 
     质点的角动量为 $6\,\mathrm{kg \cdot m^2/s}$。
@@ -121,14 +121,14 @@ $$
 
     转动惯量：
 
-    $$
-    I = \dfrac{1}{2}MR^2 = \dfrac{1}{2} \times 5 \times 0.5^2 = 0.625\,\mathrm{kg \cdot m^2}
+    $$  
+    I = \dfrac{1}{2}MR^2 = \dfrac{1}{2} \times 5 \times 0.5^2 = 0.625\,\mathrm{kg \cdot m^2}  
     $$
 
     转动能：
     
-    $$
-    E_\text{rot} = \dfrac{1}{2}I\omega^2 = \dfrac{1}{2} \times 0.625 \times 10^2 = 31.25\,\mathrm{J}
+    $$  
+    E_\text{rot} = \dfrac{1}{2}I\omega^2 = \dfrac{1}{2} \times 0.625 \times 10^2 = 31.25\,\mathrm{J}  
     $$
 
     圆盘的转动能为 $31.25\,\mathrm{J}$。

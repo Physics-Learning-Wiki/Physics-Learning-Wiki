@@ -95,10 +95,10 @@ $$
 这是 Duffing 振子最重要的结论之一：**共振曲线会因非线性而弯折，并可能出现多值与跳跃**。
 
 ??? note "理解"
-    线性受迫振动中，稳态振幅
-    $$
-    A=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}}
-    $$
+    线性受迫振动中，稳态振幅  
+    $$  
+    A=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}}  
+    $$  
     现在只需把 $\omega_0^2$ 替换为一个随 $A$ 变化的等效量 $\omega_0^2+\frac{3\varepsilon}{4}A^2$。
 
 ## 3. 非等时性：频率随振幅变化（无阻尼无驱动）
@@ -166,27 +166,27 @@ $$
 因此存在一个稳定的振幅区间，系统最终进入稳定周期运动。
 
 ??? note "例题：Van der Pol 极限环振幅的量级估计（小 $\mu$）"
-    对 Van der Pol 方程
-    $$
-    \ddot x-\mu(1-x^2)\dot x+\omega_0^2 x=0,\quad \mu>0,
-    $$
+    对 Van der Pol 方程  
+    $$  
+    \ddot x-\mu(1-x^2)\dot x+\omega_0^2 x=0,\quad \mu>0,  
+    $$  
     在 $\mu\ll 1$ 情况下用能量平均法估计极限环振幅的量级（给出结论即可）。
 
-    **解：**把系统视为“弱非线性振子 + 缓慢能量变化”。
-    近似取 $x\approx A\cos(\omega_0 t)$，则 $\dot x\approx -A\omega_0\sin(\omega_0 t)$。
-    能量满足
-    $$
-    \dot E=\mu(1-x^2)\dot x^2.
+    **解：**把系统视为“弱非线性振子 + 缓慢能量变化”。  
+    近似取 $x\approx A\cos(\omega_0 t)$，则 $\dot x\approx -A\omega_0\sin(\omega_0 t)$。  
+    能量满足  
+    $$  
+    \dot E=\mu(1-x^2)\dot x^2.  
     $$
 
-    在一个周期内做平均（只保留到 $A^4$ 的量级）：
-    $$
-    \langle \dot E\rangle\propto \left\langle (1-A^2\cos^2\omega_0 t)\,A^2\omega_0^2\sin^2\omega_0 t\right\rangle
-    =A^2\omega_0^2\left(\frac12-\dfrac{A^2}{8}\right).
-    $$
-    稳态极限环对应 $\langle \dot E\rangle=0$，因此
-    $$
-    \frac12-\dfrac{A^2}{8}=0\Rightarrow \boxed{A\approx 2}.
+    在一个周期内做平均（只保留到 $A^4$ 的量级）：  
+    $$  
+    \langle \dot E\rangle\propto \left\langle (1-A^2\cos^2\omega_0 t)\,A^2\omega_0^2\sin^2\omega_0 t\right\rangle  
+    =A^2\omega_0^2\left(\frac12-\dfrac{A^2}{8}\right).  
+    $$  
+    稳态极限环对应 $\langle \dot E\rangle=0$，因此  
+    $$  
+    \frac12-\dfrac{A^2}{8}=0\Rightarrow \boxed{A\approx 2}.  
     $$
 
     这说明：在弱非线性下，Van der Pol 振子的稳定振幅是一个与初始条件无关的常数量级（约为 2）。
