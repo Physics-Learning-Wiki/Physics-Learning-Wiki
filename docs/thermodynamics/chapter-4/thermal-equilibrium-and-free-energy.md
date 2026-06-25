@@ -339,6 +339,97 @@ $$
 
 麦克斯韦关系的意义在于：它将不易直接测量的量（如熵随体积或压强的变化）转化为容易测量的量（如温度、压强、体积之间的关系），在实际计算中极为有用。
 
+### 麦克斯韦关系的应用：能态方程与焓态方程
+
+麦克斯韦关系的一个重要应用是：将不易直接测量的物理量（如熵随体积或压强的变化）转化为容易测量的量（如物态方程中的 $p, V, T$ 关系）。
+
+#### 能态方程
+
+以 $T$ 和 $V$ 为自变量，将内能和熵展开为全微分：
+
+$$
+\mathrm{d}U = \left(\dfrac{\partial U}{\partial T}\right)_V \mathrm{d}T + \left(\dfrac{\partial U}{\partial V}\right)_T \mathrm{d}V
+$$
+
+$$
+\mathrm{d}S = \left(\dfrac{\partial S}{\partial T}\right)_V \mathrm{d}T + \left(\dfrac{\partial S}{\partial V}\right)_T \mathrm{d}V
+$$
+
+将 $\mathrm{d}S$ 代入热力学基本方程 $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V$：
+
+$$
+\mathrm{d}U = T\left(\dfrac{\partial S}{\partial T}\right)_V \mathrm{d}T + \left[T\left(\dfrac{\partial S}{\partial V}\right)_T - p\right] \mathrm{d}V
+$$
+
+比较两个 $\mathrm{d}U$ 表达式中 $\mathrm{d}V$ 的系数，并利用麦克斯韦关系 $\left(\dfrac{\partial S}{\partial V}\right)_T = \left(\dfrac{\partial p}{\partial T}\right)_V$，得到**能态方程**：
+
+???+ warning "能态方程"
+
+    $$
+    \left(\dfrac{\partial U}{\partial V}\right)_T = T\left(\dfrac{\partial p}{\partial T}\right)_V - p
+    $$
+
+    该方程将内能对体积的依赖转化为物态方程中 $p$ 与 $T$ 的关系，可通过实验直接测量。
+
+#### 焓态方程
+
+类似地，以 $T$ 和 $p$ 为自变量，将焓和熵展开，代入 $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$，利用麦克斯韦关系 $\left(\dfrac{\partial S}{\partial p}\right)_T = -\left(\dfrac{\partial V}{\partial T}\right)_p$，得到**焓态方程**：
+
+???+ warning "焓态方程"
+
+    $$
+    \left(\dfrac{\partial H}{\partial p}\right)_T = -T\left(\dfrac{\partial V}{\partial T}\right)_p + V
+    $$
+
+    该方程将焓对压强的依赖转化为物态方程中 $V$ 与 $T$ 的关系。
+
+#### 例题：范德瓦尔斯气体的热力学函数
+
+??? note "例题：范德瓦尔斯气体的内能和熵"
+    **题目**：求范德瓦尔斯气体的内能 $U(T, V)$ 和熵 $S(T, V)$。
+
+    范德瓦尔斯方程为：
+
+    $$
+    \left(p + \dfrac{\nu^2 a}{V^2}\right)(V - \nu b) = \nu RT
+    $$
+
+    **解答**：
+
+    **内能**：由能态方程，需要计算 $\left(\dfrac{\partial p}{\partial T}\right)_V$。从范德瓦尔斯方程解出 $p$：
+
+    $$
+    p = \dfrac{\nu RT}{V - \nu b} - \dfrac{\nu^2 a}{V^2}
+    $$
+
+    求偏导：
+
+    $$
+    \left(\dfrac{\partial p}{\partial T}\right)_V = \dfrac{\nu R}{V - \nu b}
+    $$
+
+    代入能态方程：
+
+    $$
+    \left(\dfrac{\partial U}{\partial V}\right)_T = T \cdot \dfrac{\nu R}{V - \nu b} - \left(\dfrac{\nu RT}{V - \nu b} - \dfrac{\nu^2 a}{V^2}\right) = \dfrac{\nu^2 a}{V^2}
+    $$
+
+    积分得到内能：
+
+    $$
+    U(T, V) = \int_{T_0}^{T} C_V(T')\,\mathrm{d}T' - \dfrac{\nu^2 a}{V} + \text{const}
+    $$
+
+    与理想气体相比，范德瓦尔斯气体的内能多了一项 $-\nu^2 a/V$，这反映了分子间引力的贡献。
+
+    **熵**：利用 $\left(\dfrac{\partial S}{\partial V}\right)_T = \left(\dfrac{\partial p}{\partial T}\right)_V = \dfrac{\nu R}{V - \nu b}$ 和 $\left(\dfrac{\partial S}{\partial T}\right)_V = \dfrac{C_V}{T}$，积分得到：
+
+    $$
+    S(T, V) = \int_{T_0}^{T} \dfrac{C_V(T')}{T'}\,\mathrm{d}T' + \nu R \ln(V - \nu b) + \text{const}
+    $$
+
+    其他热力学函数（$H, F, G$）可由定义 $H = U + pV$，$F = U - TS$，$G = H - TS$ 结合物态方程求得。
+
 ## 物体系内各部分之间的平衡条件
 
 前面讨论的熵判据、亥姆霍兹自由能判据和吉布斯自由能判据，都是针对系统整体是否达到稳定平衡的问题，每种判据对应特定的外部约束条件。现在我们转向另一类重要问题：**一个物体系内部各部分之间**要满足什么条件才能达到平衡？
