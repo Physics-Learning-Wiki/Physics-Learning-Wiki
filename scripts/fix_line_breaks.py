@@ -7,8 +7,9 @@
 
 跳过围栏代码块（``` 或 ~~~）内部的行。
 
-使用 --admonition-only 模式时，仅对 ??? 块内的内容行添加空格。
+使用 --admonition-only 模式时，仅对 ??? 和 !!! 块内的内容行添加空格。
 """
+
 from __future__ import annotations
 
 import argparse
@@ -17,12 +18,12 @@ from pathlib import Path
 
 import re
 
-# 匹配 ??? admonition 头行（???、???+、???-）
+# 匹配 ??? 和 !!! admonition 头行（???、???+、???-）
 ADMONITION_RE = re.compile(r"^\?{3}[+-]?\s")
 
 
 def _build_in_admonition(lines: list[str]) -> list[bool]:
-    """标记每行是否属于 ??? admonition 块的内容区域。"""
+    """标记每行是否属于 ??? !!! admonition 块的内容区域。"""
     in_admonition = [False] * len(lines)
     in_fence = False
     in_block = False
@@ -64,7 +65,7 @@ def fix_line_breaks(text: str, admonition_only: bool = False) -> str:
 
     Args:
         text: Markdown 文件内容。
-        admonition_only: 若为 True，仅处理 ??? admonition 块内的行。
+        admonition_only: 若为 True，仅处理 ??? !!! admonition 块内的行。
     """
     lines = text.split("\n")
     in_admonition = _build_in_admonition(lines) if admonition_only else None
@@ -105,15 +106,13 @@ def process_file(filepath: str | Path, admonition_only: bool = False) -> bool:
     return False
 
 
-parser = argparse.ArgumentParser(
-    description="为 Markdown 文件的单换行行尾添加两个空格"
-)
+parser = argparse.ArgumentParser(description="为 Markdown 文件的单换行行尾添加两个空格")
 parser.add_argument("directory", nargs="?", help="要递归处理的文件夹")
 parser.add_argument("-f", "--files", nargs="+", help="要处理的 Markdown 文件列表")
 parser.add_argument(
     "--admonition-only",
     action="store_true",
-    help="仅对 ??? admonition 块内的内容行添加空格",
+    help="仅对 ??? !!! admonition 块内的内容行添加空格",
 )
 
 if __name__ == "__main__":
@@ -122,9 +121,7 @@ if __name__ == "__main__":
     file_list: list[str] = []
 
     if args.files:
-        file_list.extend(
-            f for f in args.files if os.path.splitext(f)[1] == ".md"
-        )
+        file_list.extend(f for f in args.files if os.path.splitext(f)[1] == ".md")
     elif args.directory:
         for root, _, files in os.walk(args.directory):
             file_list.extend(
