@@ -197,10 +197,11 @@ $$
 ### 最终结果
 
 ???+ warning "麦克斯韦速度分布函数"
+
     $$
     f(\boldsymbol{v}) = \left(\dfrac{m}{2\pi kT}\right)^{3/2}\,\exp\!\left(-\dfrac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)
     $$
-
+    
     其中 $m$ 为分子质量，$k$ 为玻尔兹曼常数，$T$ 为热力学温度。
 
 各分量的分布是一维高斯分布：
