@@ -139,8 +139,8 @@ R = v_{0x} \cdot T = \dfrac{v_0^2 \sin(2\theta)}{g}
 $$
 
 ??? note "最远射程与最优角"
-   
-        在同高度起落、忽略空气阻力时,$R\propto \sin(2\theta)$,故当 $2\theta=90^\circ$ 时射程最大,即 $\theta=45^\circ .$
+
+	在同高度起落、忽略空气阻力时,$R\propto \sin(2\theta)$,故当 $2\theta=90^\circ$ 时射程最大,即 $\theta=45^\circ .$
 
 ## 4. 水平抛与「从高处抛出」
 
@@ -240,5 +240,7 @@ $$
 		
         **解:**
 
-        $$t=\sqrt{\frac{2H}{g}}=\sqrt{\frac{40}{9.8}}\approx 2.02 \mathrm{s}, $$
-        $$R=v_0 t\approx 10\times 2.02\approx 20.2 \mathrm{m}.$$
+        $$
+   		t=\sqrt{\frac{2H}{g}}=\sqrt{\frac{40}{9.8}}\approx 2.02 \mathrm{s}, \\
+        R=v_0 t\approx 10\times 2.02\approx 20.2 \mathrm{m}.
+   		$$
