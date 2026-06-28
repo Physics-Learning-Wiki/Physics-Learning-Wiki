@@ -78,11 +78,11 @@ export default {
         },
       });
     }
-
+    
     if (request.method !== "POST") {
       return jsonResponse({ error: "Method not allowed" }, 405);
     }
-
+    
     try {
       const {
         title,
@@ -94,18 +94,18 @@ export default {
         contact,
         turnstileToken,
       } = await request.json();
-
+      
       if (!title || !content || !type) {
         return jsonResponse(
           { error: "缺少必填字段：标题、正文、投稿类型" },
           400
         );
       }
-
+      
       if (!["full-page", "notes", "errata", "suggestion"].includes(type)) {
         return jsonResponse({ error: "无效的投稿类型" }, 400);
       }
-
+      
       // Validate Turnstile
       const turnstileResult = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -122,9 +122,9 @@ export default {
       if (!turnstileData.success) {
         return jsonResponse({ error: "人机验证失败，请重试" }, 400);
       }
-
+      
       const label = SUBMISSION_LABELS[type] || "投稿-待审核";
-
+      
       // Create GitHub Issue via REST API
       const issueResult = await fetch(
         `https://api.github.com/repos/${OWNER}/${REPO}/issues`,
@@ -150,15 +150,15 @@ export default {
           }),
         }
       );
-
+      
       if (!issueResult.ok) {
         const errorText = await issueResult.text();
         console.error("GitHub API error:", issueResult.status, errorText);
         return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
       }
-
+      
       const issue = await issueResult.json();
-
+      
       return jsonResponse({
         success: true,
         issueUrl: issue.html_url,

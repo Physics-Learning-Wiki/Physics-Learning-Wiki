@@ -15,7 +15,7 @@ $$
 
 ## 梯度 (Gradient)
 
-梯度作用于一个**标量场** $f(x, y, z)$，其结果是一个**矢量场**。这个矢量场指向标量场 $f$ 增长最快的方向，其大小为该方向上的变化率。
+梯度作用于一个 **标量场**  $f(x, y, z)$，其结果是一个 **矢量场**。这个矢量场指向标量场 $f$ 增长最快的方向，其大小为该方向上的变化率。
 
 ### 定义
 
@@ -25,15 +25,14 @@ $$
 
 ### 物理意义
 
-- **方向**：$\nabla f$ 的方向是函数 $f$ 在该点增加最快的方向。
-- **大小**：$|\nabla f|$ 是函数 $f$ 在该方向上的方向导数，也是其最大的方向导数。
+-   **方向**：$\nabla f$ 的方向是函数 $f$ 在该点增加最快的方向。
+-   **大小**：$|\nabla f|$ 是函数 $f$ 在该方向上的方向导数，也是其最大的方向导数。
 
 **例题：** 在物理学中，静电势 $V$ 是一个标量场，电场 $\vec{E}$ 是一个矢量场。它们之间的关系是电场是电势的负梯度：$\vec{E} = -\nabla V$。
 
 假设一个电势场由 $V(x, y, z) = 2x^2y - z^3$ 给出，求在点 $(1, 1, 1)$ 处的电场强度。
 
-**解：**
-首先计算电势 $V$ 的梯度：
+**解：** 首先计算电势 $V$ 的梯度：
 
 $$
 \nabla V = \dfrac{\partial}{\partial x}(2x^2y - z^3)\hat{i} + \dfrac{\partial}{\partial y}(2x^2y - z^3)\hat{j} + \dfrac{\partial}{\partial z}(2x^2y - z^3)\hat{k}
@@ -57,7 +56,7 @@ $$
 
 ## 散度 (Divergence)
 
-散度作用于一个**矢量场** $\vec{F}(x, y, z) = F_x\hat{i} + F_y\hat{j} + F_z\hat{k}$，其结果是一个**标量场**。它描述了矢量场在某一点的“源”或“汇”的强度。
+散度作用于一个 **矢量场** $\vec{F}(x, y, z) = F_x\hat{i} + F_y\hat{j} + F_z\hat{k}$，其结果是一个 **标量场**。它描述了矢量场在某一点的“源”或“汇”的强度。
 
 ### 定义
 
@@ -69,9 +68,9 @@ $$
 
 ### 物理意义
 
-- **$\nabla \cdot \vec{F} > 0$**：该点是一个**源 (source)**，矢量线从该点向外发散。
-- **$\nabla \cdot \vec{F} < 0$**：该点是一个**汇 (sink)**，矢量线向该点汇聚。
-- **$\nabla \cdot \vec{F} = 0$**：该点无源无汇，或者源和汇的强度相等。这样的矢量场称为**无散场**或**螺线管场**。
+-   **$\nabla \cdot \vec{F} > 0$**：该点是一个 **源 (source)**，矢量线从该点向外发散。
+-   **$\nabla \cdot \vec{F} < 0$**：该点是一个 **汇 (sink)**，矢量线向该点汇聚。
+-   **$\nabla \cdot \vec{F} = 0$**：该点无源无汇，或者源和汇的强度相等。这样的矢量场称为 **无散场** 或 **螺线管场**。
 
 **高斯散度定理** 将一个矢量场穿过一个闭合曲面的通量与该矢量场在曲面所围体积内的散度联系起来：
 
@@ -81,8 +80,7 @@ $$
 
 **例题：** 在电磁学中，高斯定律的微分形式为 $\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}$，其中 $\rho$ 是电荷密度。这表明电荷是电场的“源”。
 
-考虑一个矢量场 $\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}$。计算其散度。
-**解：**
+考虑一个矢量场 $\vec{F} = x\hat{i} + y\hat{j} + z\hat{k}$。计算其散度。**解：**
 
 $$
 \nabla \cdot \vec{F} = \dfrac{\partial}{\partial x}(x) + \dfrac{\partial}{\partial y}(y) + \dfrac{\partial}{\partial z}(z) = 1 + 1 + 1 = 3
@@ -92,7 +90,7 @@ $$
 
 ## 旋度 (Curl)
 
-旋度作用于一个**矢量场** $\vec{F}$，其结果是另一个**矢量场**。它描述了矢量场在某一点的旋转或涡旋的趋势。
+旋度作用于一个 **矢量场** $\vec{F}$，其结果是另一个 **矢量场**。它描述了矢量场在某一点的旋转或涡旋的趋势。
 
 ### 定义
 
@@ -110,9 +108,9 @@ $$
 
 ### 物理意义
 
-- **方向**：$\nabla \times \vec{F}$ 的方向是矢量场在该点旋转最剧烈的旋转轴的方向（遵循右手定则）。
-- **大小**：$|\nabla \times \vec{F}|$ 的大小描述了旋转的快慢程度。
-- **$\nabla \times \vec{F} = \vec{0}$**：该矢量场是**无旋场**。一个无旋场必定可以表示为某个标量场的梯度，即 $\vec{F} = \nabla f$。这样的场也称为**保守场**。
+-   **方向**：$\nabla \times \vec{F}$ 的方向是矢量场在该点旋转最剧烈的旋转轴的方向（遵循右手定则）。
+-   **大小**：$|\nabla \times \vec{F}|$ 的大小描述了旋转的快慢程度。
+-   **$\nabla \times \vec{F} = \vec{0}$**：该矢量场是 **无旋场**。一个无旋场必定可以表示为某个标量场的梯度，即 $\vec{F} = \nabla f$。这样的场也称为 **保守场**。
 
 **斯托克斯定理** 将一个矢量场沿一个闭合回路的环量与该矢量场穿过以该回路为边界的任意曲面的旋度的通量联系起来：
 
@@ -122,8 +120,7 @@ $$
 
 **例题：** 在电磁学中，法拉第电磁感应定律的微分形式为 $\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}$。这表明变化的磁场会产生旋转的电场。
 
-考虑一个流体速度场 $\vec{v} = -y\hat{i} + x\hat{j}$。计算其旋度并描述流体的运动。
-**解：**
+考虑一个流体速度场 $\vec{v} = -y\hat{i} + x\hat{j}$。计算其旋度并描述流体的运动。**解：**
 
 $$
 \nabla \times \vec{v} = \left(\dfrac{\partial (0)}{\partial y} - \dfrac{\partial (x)}{\partial z}\right)\hat{i} + \left(\dfrac{\partial (-y)}{\partial z} - \dfrac{\partial (0)}{\partial x}\right)\hat{j} + \left(\dfrac{\partial (x)}{\partial x} - \dfrac{\partial (-y)}{\partial y}\right)\hat{k}
@@ -139,27 +136,27 @@ $$
 
 以下是涉及梯度、散度和旋度的一些重要矢量恒等式：
 
-- **任意梯度的旋度为零**：
+-   **任意梯度的旋度为零**：
 
-  $$
-  \nabla \times (\nabla f) = \vec{0}
-  $$
+    $$
+    \nabla \times (\nabla f) = \vec{0}
+    $$
 
-  这证实了无旋场（旋度为零）可以表示为梯度的性质。
+    这证实了无旋场（旋度为零）可以表示为梯度的性质。
 
-- **任意旋度的散度为零**：
+-   **任意旋度的散度为零**：
 
-  $$
-  \nabla \cdot (\nabla \times \vec{F}) = 0
-  $$
+    $$
+    \nabla \cdot (\nabla \times \vec{F}) = 0
+    $$
 
-  这证实了无散场（散度为零）可以表示为旋度的性质。例如，磁场 $\vec{B}$ 是无散的（$\nabla \cdot \vec{B} = 0$），因此它可以表示为磁矢势 $\vec{A}$ 的旋度（$\vec{B} = \nabla \times \vec{A}$）。
+    这证实了无散场（散度为零）可以表示为旋度的性质。例如，磁场 $\vec{B}$ 是无散的（$\nabla \cdot \vec{B} = 0$），因此它可以表示为磁矢势 $\vec{A}$ 的旋度（$\vec{B} = \nabla \times \vec{A}$）。
 
-- **拉普拉斯算子 (Laplacian)**：
-  标量场的梯度的散度定义为拉普拉斯算子 $\nabla^2$ 或 $\Delta$：
+-   **拉普拉斯算子 (Laplacian)**：
+    标量场的梯度的散度定义为拉普拉斯算子 $\nabla^2$ 或 $\Delta$：
 
-  $$
-  \nabla \cdot (\nabla f) = \nabla^2 f = \dfrac{\partial^2 f}{\partial x^2} + \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2}
-  $$
+    $$
+    \nabla \cdot (\nabla f) = \nabla^2 f = \dfrac{\partial^2 f}{\partial x^2} + \dfrac{\partial^2 f}{\partial y^2} + \dfrac{\partial^2 f}{\partial z^2}
+    $$
 
-  拉普拉斯算子在许多物理方程中都非常重要，如拉普拉斯方程 $\nabla^2 f = 0$、泊松方程 $\nabla^2 f = \rho$ 和波动方程。
+    拉普拉斯算子在许多物理方程中都非常重要，如拉普拉斯方程 $\nabla^2 f = 0$、泊松方程 $\nabla^2 f = \rho$ 和波动方程。

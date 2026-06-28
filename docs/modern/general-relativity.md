@@ -8,8 +8,8 @@ author: 匿名同学
 
 为方便计算，本文会在不同小节切换单位：
 
-- **几何单位**：$c=G=1$（常用于黑洞/测地线推导）
-- **SI 单位**：保留 $c,G$（适合数值估算与实验量级）
+-   **几何单位**：$c=G=1$（常用于黑洞/测地线推导）
+-   **SI 单位**：保留 $c,G$（适合数值估算与实验量级）
 
 ??? note "符号约定（请先看）"
         - 指标：希腊字母 $\mu,\nu,\dots=0,1,2,3$，其中 $x^0=ct$。  
@@ -17,7 +17,7 @@ author: 匿名同学
         - 爱因斯坦求和约定：重复上下指标自动求和。  
         - 4-速度：$u^\mu=\dfrac{dx^\mu}{d\tau}$，其中 $\tau$ 为固有时。
 
----
+***
 
 ## 0. 从“引力是什么”到“时空几何”
 
@@ -29,14 +29,14 @@ $$
 
 然而两个关键事实迫使我们升级理论：
 
-1. **惯性质量 = 引力质量**（实验精度极高）
-2. 光也会被引力影响（偏折、延迟、红移），而光“没有静止质量”
+1.  **惯性质量 = 引力质量**（实验精度极高）
+2.  光也会被引力影响（偏折、延迟、红移），而光“没有静止质量”
 
 广义相对论的核心观点是：
 
-> 引力不是一种“额外的力”，而是**时空几何（度规）**的体现；自由落体沿着时空中的**测地线**运动。
+> 引力不是一种“额外的力”，而是 **时空几何（度规）**的体现；自由落体沿着时空中的**测地线** 运动。
 
----
+***
 
 ## 1. 等效原理：广义相对论的出发点
 
@@ -56,7 +56,7 @@ $$
 
 直观表述：
 
-- 封闭电梯里做实验：无法区分“处于均匀重力场静止”与“在无重力的空间做匀加速运动”。
+-   封闭电梯里做实验：无法区分“处于均匀重力场静止”与“在无重力的空间做匀加速运动”。
 
 ### 1.3 用等效原理推导引力红移（最经典的 1 页推导）
 
@@ -70,7 +70,7 @@ $$
 \dfrac{\nu_\text{rec}}{\nu_\text{emit}}\approx 1-\dfrac{\Delta v}{c}=1-\dfrac{ah}{c^2}.
 $$
 
-由等效原理，把匀加速与匀重力 $g=a$ 等价，得到引力场中“向上爬升”会**红移**：
+由等效原理，把匀加速与匀重力 $g=a$ 等价，得到引力场中“向上爬升”会 **红移**：
 
 $$
 \boxed{\ \dfrac{\Delta\nu}{\nu}\approx-\dfrac{gh}{c^2}\ }\qquad (gh\ll c^2)
@@ -78,7 +78,7 @@ $$
 
 同理可得时间膨胀：上方的钟走得更快。
 
----
+***
 
 ## 2. 最小数学工具箱：度规、张量与协变导数
 
@@ -98,7 +98,7 @@ $$
 
 物理意义：度规决定“距离/时间”的测量方式，因此也决定自由粒子的运动。
 
-### 2.2 固有时与 4-速度
+### 2.2 固有时与 4 - 速度
 
 对时类轨迹（可作为粒子世界线），定义固有时：
 
@@ -141,7 +141,7 @@ $$
 ??? note "小提醒：Christoffel 不是张量"
         它依赖坐标系选择（可以在某点选取局部惯性系使其为 0），但它组合成的曲率张量是坐标不变量。
 
----
+***
 
 ## 3. 测地线：自由落体的方程
 
@@ -155,7 +155,7 @@ $$
 
 其中 $\dot x^\mu=\dfrac{dx^\mu}{d\lambda}$，$\lambda$ 是参数。
 
-对该拉格朗日量做变分（略去常数并选取仿射参数），可得欧拉-拉格朗日方程最终化为：
+对该拉格朗日量做变分（略去常数并选取仿射参数），可得欧拉 - 拉格朗日方程最终化为：
 
 $$
 \boxed{\ \dfrac{d^2 x^\rho}{d\tau^2}+\Gamma^{\rho}_{\ \mu\nu}\dfrac{dx^\mu}{d\tau}\dfrac{dx^\nu}{d\tau}=0\ }
@@ -179,7 +179,7 @@ $$
 
 即恢复牛顿引力势 $\Phi$ 的运动方程。
 
----
+***
 
 ## 4. 曲率：引力的“强度”如何编码
 
@@ -225,7 +225,7 @@ $$
 
 这将迫使右边的物质源也满足能动量守恒：$\nabla_\mu T^{\mu\nu}=0$。
 
----
+***
 
 ## 5. 爱因斯坦场方程：几何 = 物质
 
@@ -243,15 +243,14 @@ $$
 
 我们希望左边是：
 
-1. 由度规及其一、二阶导数组成（对应“局域”引力）
-2. 对称二阶张量（与 $T_{\mu\nu}$ 匹配）
-3. 满足协变守恒 $\nabla_\mu(\text{左边})=0$
-4. 弱场极限还原泊松方程 $\nabla^2\Phi=4\pi G\rho$
+1.  由度规及其一、二阶导数组成（对应“局域”引力）
+2.  对称二阶张量（与 $T_{\mu\nu}$ 匹配）
+3.  满足协变守恒 $\nabla_\mu(\text{左边})=0$
+4.  弱场极限还原泊松方程 $\nabla^2\Phi=4\pi G\rho$
 
 在这些条件下，最自然且最简单的选择就是 $G_{\mu\nu}$。
 
 ??? note "更系统的推导：Hilbert–Einstein 作用量"
-    
         取总作用量  
         $$  
         S=\dfrac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x+S_{\text{matter}}.  
@@ -270,7 +269,7 @@ $$
 
 其中 $\rho$ 为质量密度（或能量密度除以 $c^2$），$p$ 为各向同性压强。
 
----
+***
 
 ## 6. 弱场近似与线性化引力（选学但很实用）
 
@@ -306,13 +305,13 @@ $$
 
 ### 6.2 引力波最小图景：TT 规范与应变
 
-对沿 $+z$ 传播的平面引力波，可在横向-无迹（TT）规范下写成
+对沿 $+z$ 传播的平面引力波，可在横向 - 无迹（TT）规范下写成
 
 $$
 ds^2\approx -c^2dt^2 + \left(1+h_+\right)dx^2+\left(1-h_+\right)dy^2+2h_\times dxdy+dz^2,
 $$
 
-其中 $h_+,h_\times$ 为两种偏振。它们对应干涉仪（LIGO 类）测到的**应变** $h\sim\Delta L/L$。
+其中 $h_+,h_\times$ 为两种偏振。它们对应干涉仪（LIGO 类）测到的 **应变**  $h\sim\Delta L/L$。
 
 对于入门最关键的是：在静态弱场、低速下
 
@@ -322,7 +321,7 @@ $$
 
 因此广义相对论与牛顿引力在日常尺度高度一致，只在精密实验/强引力处显著。
 
----
+***
 
 ## 7. Schwarzschild 时空：最重要的精确解
 
@@ -388,18 +387,18 @@ $$
 
 在几何单位 $G=c=1$ 的 Schwarzschild 时空：
 
-- **光子球（photon sphere）**：不稳定的圆形光子轨道
-	$$
-	\boxed{\ r_{\text{ph}}=3M=\dfrac{3}{2}r_s\ }
-	$$
-- **最内稳定圆轨道（ISCO，时类）**：稳定圆轨道存在的内边界
-	$$
-	\boxed{\ r_{\text{ISCO}}=6M=3r_s\ }
-	$$
+-   **光子球（photon sphere）**：不稳定的圆形光子轨道
+    $$
+    \boxed{\ r_{\text{ph}}=3M=\dfrac{3}{2}r_s\ }
+    $$
+-   **最内稳定圆轨道（ISCO，时类）**：稳定圆轨道存在的内边界
+    $$
+    \boxed{\ r_{\text{ISCO}}=6M=3r_s\ }
+    $$
 
 直观理解：越靠近黑洞，时空曲率越强，有效势的“势阱”结构改变，稳定圆轨道会消失。
 
----
+***
 
 ## 8. 经典检验与常用结果（入门必会）
 
@@ -475,7 +474,7 @@ $$
 \dot\rho+3\dfrac{\dot a}{a}\left(\rho+\dfrac{p}{c^2}\right)=0.
 $$
 
----
+***
 
 ## 9. 例题（含全过程推导与计算）
 
@@ -521,9 +520,9 @@ $$
 \left|\dfrac{\Delta\nu}{\nu}\right|\approx\dfrac{9.8\times 1000}{(3.0\times 10^8)^2}\sim 1.1\times 10^{-13}.
 $$
 
-**结论：**千米量级高度差带来 $10^{-13}$ 量级的频移（原子钟可测）。
+\*\* 结论：\*\* 千米量级高度差带来 $10^{-13}$ 量级的频移（原子钟可测）。
 
----
+***
 
 ### 例题 2：Schwarzschild 时空中的静止钟差（精确公式）
 
@@ -551,7 +550,7 @@ $$
 
 与引力红移公式一致（频率与时间尺度互为倒数）。
 
----
+***
 
 ### 例题 3：弱场光线偏折（给出标准推导骨架）
 
@@ -559,26 +558,33 @@ $$
 
 **解题思路骨架：**
 
-1. 弱场近似度规（各向同性形式）可写为
-	$$
-	ds^2\approx-(1+2\Phi/c^2)c^2dt^2+(1-2\Phi/c^2)(dx^2+dy^2+dz^2),\quad \Phi=-\dfrac{GM}{r}.
-	$$
-2. 对光线 $ds^2=0$，可得到等效“折射率”
-	$$
-	n(r)\approx 1-\dfrac{2\Phi}{c^2}=1+\dfrac{2GM}{rc^2}.
-	$$
-3. 用几何光学近似（费马原理）
-	$$
-	\delta\int n\,dl=0
-	$$
-	把光线当作在介质中传播的射线。
-4. 在小偏折近似中，偏折角约为
-	$$
-	\alpha\approx\int_{-\infty}^{+\infty}\dfrac{\partial}{\partial b}\left(\dfrac{2GM}{c^2\sqrt{x^2+b^2}}\right)dx
-	=\dfrac{4GM}{bc^2}.
-	$$
+1.  弱场近似度规（各向同性形式）可写为
 
----
+$$
+ds^2\approx-(1+2\Phi/c^2)c^2dt^2+(1-2\Phi/c^2)(dx^2+dy^2+dz^2),\quad \Phi=-\dfrac{GM}{r}.
+$$
+
+2.  对光线 $ds^2=0$，可得到等效“折射率”
+
+$$
+n(r)\approx 1-\dfrac{2\Phi}{c^2}=1+\dfrac{2GM}{rc^2}.
+$$
+
+3.  用几何光学近似（费马原理）
+
+$$
+\delta\int n\,dl=0
+$$
+
+把光线当作在介质中传播的射线。
+4\. 在小偏折近似中，偏折角约为
+
+$$
+\alpha\approx\int_{-\infty}^{+\infty}\dfrac{\partial}{\partial b}\left(\dfrac{2GM}{c^2\sqrt{x^2+b^2}}\right)dx
+=\dfrac{4GM}{bc^2}.
+$$
+
+***
 
 ### 例题 4：近日点进动公式（从有效势到近似解）
 
@@ -590,22 +596,27 @@ $$
 
 **推导要点：**
 
-1. 对 Schwarzschild 测地线，可得到轨道方程的近似形式（令 $u=1/r$）
-	$$
-	\dfrac{d^2u}{d\phi^2}+u=\dfrac{GM}{L^2}+3\dfrac{GM}{c^2}u^2.
-	$$
-2. 把 $3\frac{GM}{c^2}u^2$ 视为小扰动，设开普勒解
-	$$
-	u_0=\dfrac{GM}{L^2}(1+e\cos\phi).
-	$$
-3. 扰动会把角频率从 1 改成 $1-\delta$，使得一周后相位多走
-	$$
-	\Delta\phi\approx 2\pi\delta=\dfrac{6\pi GM}{a(1-e^2)c^2}.
-	$$
+1.  对 Schwarzschild 测地线，可得到轨道方程的近似形式（令 $u=1/r$）
+
+$$
+\dfrac{d^2u}{d\phi^2}+u=\dfrac{GM}{L^2}+3\dfrac{GM}{c^2}u^2.
+$$
+
+2.  把 $3\frac{GM}{c^2}u^2$ 视为小扰动，设开普勒解
+
+$$
+u_0=\dfrac{GM}{L^2}(1+e\cos\phi).
+$$
+
+3.  扰动会把角频率从 1 改成 $1-\delta$，使得一周后相位多走
+
+$$
+\Delta\phi\approx 2\pi\delta=\dfrac{6\pi GM}{a(1-e^2)c^2}.
+$$
 
 （竞赛层面通常要求记结论并能解释“为何是小扰动导致的频率偏移”。）
 
----
+***
 
 ### 例题 5：求 Schwarzschild 的光子球半径与 ISCO 半径
 
@@ -613,52 +624,64 @@ $$
 
 **解（思路 + 关键步骤）：**
 
-1. 对赤道面运动，利用守恒量可把径向运动写成
-	$$
-	\left(\dfrac{dr}{d\lambda}\right)^2+V_{\text{eff}}(r)=E^2.
-	$$
-2. **圆轨道条件**：$r=\text{常数}$ 意味着
-	$$
-	\dfrac{dr}{d\lambda}=0\quad\Rightarrow\quad V_{\text{eff}}(r)=E^2,
-	$$
-	且要“保持在圆轨道上”还需
-	$$
-	\dfrac{dV_{\text{eff}}}{dr}=0.
-	$$
-3. **光子（零质量）**的有效势（形式上）为
-	$$
-	V_{\text{eff}}^{(\text{null})}(r)=\left(1-\dfrac{2M}{r}\right)\dfrac{L^2}{r^2}.
-	$$
-	求导并令 $dV/dr=0$ 得
-	$$
-	r=3M.
-	$$
-4. **时类（有质量）**圆轨道的稳定性由二阶导数决定：稳定要求 $\dfrac{d^2V_{\text{eff}}}{dr^2}>0$。
-	对 Schwarzschild，稳定圆轨道存在于 $r>6M$；临界点为
-	$$
-	r_{\text{ISCO}}=6M.
-	$$
+1.  对赤道面运动，利用守恒量可把径向运动写成
 
----
+$$
+\left(\dfrac{dr}{d\lambda}\right)^2+V_{\text{eff}}(r)=E^2.
+$$
+
+2.  **圆轨道条件**：$r=\text{常数}$ 意味着
+
+$$
+\dfrac{dr}{d\lambda}=0\quad\Rightarrow\quad V_{\text{eff}}(r)=E^2,
+$$
+
+且要“保持在圆轨道上”还需
+
+$$
+\dfrac{dV_{\text{eff}}}{dr}=0.
+$$
+
+3.  \*\* 光子（零质量）\*\* 的有效势（形式上）为
+
+$$
+V_{\text{eff}}^{(\text{null})}(r)=\left(1-\dfrac{2M}{r}\right)\dfrac{L^2}{r^2}.
+$$
+
+求导并令 $dV/dr=0$ 得
+
+$$
+r=3M.
+$$
+
+4.  \*\* 时类（有质量）\*\* 圆轨道的稳定性由二阶导数决定：稳定要求 $\dfrac{d^2V_{\text{eff}}}{dr^2}>0$。
+    对 Schwarzschild，稳定圆轨道存在于 $r>6M$；临界点为
+
+$$
+r_{\text{ISCO}}=6M.
+$$
+
+***
 
 ### 例题 6：径向自由落体到达视界需要多少固有时？坐标时间会怎样？
 
 考虑从 $r=r_0$（静止释放）径向下落到 $r=r_s$。定性说明：
 
-- 自由落体者的固有时 $\tau$ 是否有限？
-- 远处静止观察者的坐标时间 $t$ 是否有限？
+-   自由落体者的固有时 $\tau$ 是否有限？
+-   远处静止观察者的坐标时间 $t$ 是否有限？
 
 **解（定性 + 关键结论）：**
 
-1. 对下落者，$\tau$ 是沿世界线积分得到的真实物理时间。
-2. 在 Schwarzschild 坐标下，$t$ 在靠近 $r_s$ 时会出现对数发散（这是坐标效应）。
-3. 结论：
-	- **固有时有限**：自由落体者在有限 $\tau$ 内穿过视界。
-	- **坐标时间发散**：远处观察者用 $t$ 描述会看到物体“永远接近但不穿过”视界。
+1.  对下落者，$\tau$ 是沿世界线积分得到的真实物理时间。
+2.  在 Schwarzschild 坐标下，$t$ 在靠近 $r_s$ 时会出现对数发散（这是坐标效应）。
+3.  结论：
+
+-   **固有时有限**：自由落体者在有限 $\tau$ 内穿过视界。
+-   **坐标时间发散**：远处观察者用 $t$ 描述会看到物体“永远接近但不穿过”视界。
 
 （若需要具体积分表达式，可在后续补充“径向测地线第一积分”并做积分计算。）
 
----
+***
 
 ### 例题 7：掠日光线偏折角的数量级估算
 
@@ -685,7 +708,7 @@ $$
 
 这就是经典的“掠日偏折约 1.75 角秒”。
 
----
+***
 
 ### 例题 8：水星近日点进动的数量级估算
 
@@ -699,61 +722,70 @@ $$
 
 代入数值可得每一周（每绕太阳一圈）约 $\sim 5\times10^{-7}\,\text{rad}$ 量级，对应约 $0.1\,\text{arcsec}$ 量级。累积到每世纪（约 415 圈）即得到著名的 $\sim 43\,\text{arcsec/century}$。
 
----
+***
 
 ## 10. 习题（含提示/答案要点）
 
 ### 10.1 基础题
 
-1. 证明：在局部惯性系中，某点可令 $\Gamma^{\rho}_{\ \mu\nu}=0$，但一般不能令 $\partial_\sigma g_{\mu\nu}=0$ 同时在邻域处处为 0。
-2. 设弱场度规 $g_{00}=-(1+2\Phi/c^2)$，证明静止钟的频移满足 $\Delta\nu/\nu\approx-\Delta\Phi/c^2$。
-3. 写出理想流体 $T^{\mu\nu}$ 并解释各项物理意义。
+1.  证明：在局部惯性系中，某点可令 $\Gamma^{\rho}_{\ \mu\nu}=0$，但一般不能令 $\partial_\sigma g_{\mu\nu}=0$ 同时在邻域处处为 0。
+2.  设弱场度规 $g_{00}=-(1+2\Phi/c^2)$，证明静止钟的频移满足 $\Delta\nu/\nu\approx-\Delta\Phi/c^2$。
+3.  写出理想流体 $T^{\mu\nu}$ 并解释各项物理意义。
 
 ### 10.2 计算题（更贴近竞赛/考题）
 
-1. **黑洞视界尺度估算**：太阳质量 $M_\odot\approx 2.0\times 10^{30}\,\text{kg}$，求 $r_s$ 的数量级。
-	- 答案要点：$r_s=2GM/c^2\approx 3\,\text{km}$。
-2. **引力时间膨胀**：若某天体 $r_s=10\,\text{km}$，在 $r=40\,\text{km}$ 静止的钟相对于无穷远的钟慢多少？
-	- 提示：$d\tau/dt=\sqrt{1-r_s/r}$。
-3. **光偏折角数值**：太阳半径 $R_\odot\approx 7.0\times 10^8\,\text{m}$，质量 $M_\odot$，估算掠日光线偏折角。
-	- 提示：$\alpha\approx 4GM/(bc^2)$，取 $b\approx R_\odot$。
+1.  **黑洞视界尺度估算**：太阳质量 $M_\odot\approx 2.0\times 10^{30}\,\text{kg}$，求 $r_s$ 的数量级。
 
-4. **光子球数值**：对某黑洞 $r_s=30\,\text{km}$，求光子球半径 $r_{\text{ph}}$ 与 ISCO 半径 $r_{\text{ISCO}}$。
-	- 答案要点：$r_{\text{ph}}=\tfrac{3}{2}r_s$，$r_{\text{ISCO}}=3r_s$。
+-   答案要点：$r_s=2GM/c^2\approx 3\,\text{km}$。
 
-5. **引力波应变量级**：若某引力波通过地球时的应变 $h\sim10^{-21}$，LIGO 级别的臂长 $L\sim4\,\text{km}$，估算长度变化 $\Delta L$。
-	- 答案要点：$\Delta L\sim hL\sim 4\times10^{-18}\,\text{m}$。
+2.  **引力时间膨胀**：若某天体 $r_s=10\,\text{km}$，在 $r=40\,\text{km}$ 静止的钟相对于无穷远的钟慢多少？
 
----
+-   提示：$d\tau/dt=\sqrt{1-r_s/r}$。
+
+3.  **光偏折角数值**：太阳半径 $R_\odot\approx 7.0\times 10^8\,\text{m}$，质量 $M_\odot$，估算掠日光线偏折角。
+
+-   提示：$\alpha\approx 4GM/(bc^2)$，取 $b\approx R_\odot$。
+
+4.  **光子球数值**：对某黑洞 $r_s=30\,\text{km}$，求光子球半径 $r_{\text{ph}}$ 与 ISCO 半径 $r_{\text{ISCO}}$。
+
+-   答案要点：$r_{\text{ph}}=\tfrac{3}{2}r_s$，$r_{\text{ISCO}}=3r_s$。
+
+5.  **引力波应变量级**：若某引力波通过地球时的应变 $h\sim10^{-21}$，LIGO 级别的臂长 $L\sim4\,\text{km}$，估算长度变化 $\Delta L$。
+
+-   答案要点：$\Delta L\sim hL\sim 4\times10^{-18}\,\text{m}$。
+
+***
 
 ## 11. 用 Python 复现/绘制示意图（可选）
 
 本文插图由 Python 生成并保存在 `docs/modern/images/`：
 
-- `schwarzschild_time_dilation_factor.png`
-- `schwarzschild_effective_potential.png`
-- `light_deflection_weak_field.png`
+-   `schwarzschild_time_dilation_factor.png`
+-   `schwarzschild_effective_potential.png`
+-   `light_deflection_weak_field.png`
 
 ??? note "示例代码（生成弱场光偏折图）"
     
-	 ```python
-	 import numpy as np
-	 import matplotlib.pyplot as plt
-	 M = 1.0
-	 b = np.linspace(4.0, 80.0, 800)
-	 alpha = 4*M/b
-	 plt.plot(b, alpha)
-	 plt.xlabel(r'$b/M$')
-	 plt.ylabel(r'$\alpha\;\mathrm{(rad)}$')
-	 plt.title(r'弱场近似：$\alpha \approx 4M/b$')
-	 plt.grid(True, alpha=0.25)
-	 plt.show()
-	 ```
 
----
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+M = 1.0
+b = np.linspace(4.0, 80.0, 800)
+alpha = 4 * M / b
+plt.plot(b, alpha)
+plt.xlabel(r"$b/M$")
+plt.ylabel(r"$\alpha\;\mathrm{(rad)}$")
+plt.title(r"弱场近似：$\alpha \approx 4M/b$")
+plt.grid(True, alpha=0.25)
+plt.show()
+```
+
+***
 
 ## 参考与延伸阅读
 
-- Misner, Thorne, Wheeler, *Gravitation*（体系最全，但很厚）
-- Schutz, *A First Course in General Relativity*（入门友好）
-- Carroll, *Spacetime and Geometry*（现代写法，推导清晰）
+-   Misner, Thorne, Wheeler,*Gravitation*（体系最全，但很厚）
+-   Schutz,*A First Course in General Relativity*（入门友好）
+-   Carroll,*Spacetime and Geometry*（现代写法，推导清晰）

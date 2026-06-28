@@ -10,32 +10,32 @@ author: Physics Learning Wiki
 
 读完这一章后，你应该能够：
 
-- 理解统计规律与确定性规律的本质区别，建立"分布函数"的思维方式
-- 推导麦克斯韦速率分布律，理解其物理意义和曲线特征
-- 计算分子的最概然速率、平均速率和方均根速率
-- 理解玻尔兹曼密度分布在重力场中的应用（等温气压公式）
-- 用能均分定理计算理想气体的内能和热容，理解经典理论的局限性
-- 了解量子统计（费米-狄拉克与玻色-爱因斯坦分布）的基本思想和适用条件
-- 理解宏观态概率与熵的统计意义
+-   理解统计规律与确定性规律的本质区别，建立 "分布函数" 的思维方式
+-   推导麦克斯韦速率分布律，理解其物理意义和曲线特征
+-   计算分子的最概然速率、平均速率和方均根速率
+-   理解玻尔兹曼密度分布在重力场中的应用（等温气压公式）
+-   用能均分定理计算理想气体的内能和热容，理解经典理论的局限性
+-   了解量子统计（费米 - 狄拉克与玻色 - 爱因斯坦分布）的基本思想和适用条件
+-   理解宏观态概率与熵的统计意义
 
 ## 本章建议阅读顺序
 
-1. [麦克斯韦速率分布律](./maxwell-velocity-distribution.md) — 从概率基础到分子速率分布
-2. [玻尔兹曼密度分布](./boltzmann-density-distribution.md) — 外场中的粒子密度分布
-3. [能均分定理与热容量](./equipartition-theorem-and-heat-capacity.md) — 经典统计的热容理论
-4. [量子气体中粒子按能级的分布](./quantum-gas-energy-level-distribution.md) — 从经典统计到量子统计的过渡
-5. [费米气体](./fermi-gas.md) — 电子气与简并压
-6. [玻色气体](./bose-gas.md) — 玻色-爱因斯坦凝聚
-7. [宏观态的概率和熵](./macrostate-probability-and-entropy.md) — 熵的统计物理诠释
+1.  [麦克斯韦速率分布律](./maxwell-velocity-distribution.md)—从概率基础到分子速率分布
+2.  [玻尔兹曼密度分布](./boltzmann-density-distribution.md)—外场中的粒子密度分布
+3.  [能均分定理与热容量](./equipartition-theorem-and-heat-capacity.md)—经典统计的热容理论
+4.  [量子气体中粒子按能级的分布](./quantum-gas-energy-level-distribution.md)—从经典统计到量子统计的过渡
+5.  [费米气体](./fermi-gas.md)—电子气与简并压
+6.  [玻色气体](./bose-gas.md)—玻色 - 爱因斯坦凝聚
+7.  [宏观态的概率和熵](./macrostate-probability-and-entropy.md)—熵的统计物理诠释
 
 ## 使用这一章的方式
 
-- 如果你刚开始学习统计物理，建议严格按上面的顺序阅读。前三个页面构成本章的主线：先建立分布函数的概念，再推广到外场中的分布，最后用能均分定理连接宏观热容。
-- 如果你已经熟悉麦克斯韦分布，可以直接从第 3 页（能均分定理）开始，重点关注经典理论的局限性和量子修正。
-- 如果你关心量子统计，第 4-7 页是重点。注意第 4 页是从经典到量子的过渡桥梁。
-- 如果你需要概率论基础，请先参阅 [概率论的基本概念](../math/probability-statistics/basic-concepts.md) 和 [一维随机变量及其分布](../math/probability-statistics/one-dimensional-random-variables-and-distributions.md)。
+-   如果你刚开始学习统计物理，建议严格按上面的顺序阅读。前三个页面构成本章的主线：先建立分布函数的概念，再推广到外场中的分布，最后用能均分定理连接宏观热容。
+-   如果你已经熟悉麦克斯韦分布，可以直接从第 3 页（能均分定理）开始，重点关注经典理论的局限性和量子修正。
+-   如果你关心量子统计，第 4-7 页是重点。注意第 4 页是从经典到量子的过渡桥梁。
+-   如果你需要概率论基础，请先参阅 [概率论的基本概念](../math/probability-statistics/basic-concepts.md) 和 [一维随机变量及其分布](../math/probability-statistics/one-dimensional-random-variables-and-distributions.md)。
 
 ## 学习衔接
 
-- 建议先读：[物质聚集态随状态参量的转化与共存](../chapter-1/phase-transitions-and-coexistence.md)
-- 读完本章后可以继续阅读：[热力学第一定律](../chapter-3/index.md)
+-   建议先读：[物质聚集态随状态参量的转化与共存](../chapter-1/phase-transitions-and-coexistence.md)
+-   读完本章后可以继续阅读：[热力学第一定律](../chapter-3/index.md)

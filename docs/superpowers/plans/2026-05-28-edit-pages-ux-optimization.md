@@ -174,7 +174,7 @@ const NAV_TREE = [
 function populateChapterSelect() {
   const select = document.getElementById("submit-chapter");
   if (!select) return;
-
+  
   function addOptions(children, prefix) {
     for (const item of children) {
       const label = prefix ? `${prefix} > ${item.label}` : item.label;
@@ -187,7 +187,7 @@ function populateChapterSelect() {
       }
     }
   }
-
+  
   select.innerHTML = "";
   addOptions(NAV_TREE, "");
   const defaultOpt = document.createElement("option");
@@ -211,13 +211,13 @@ function debounce(fn, delay) {
 function initEditor() {
   const el = document.getElementById("submit-content");
   if (!el || typeof EasyMDE === "undefined") return;
-
+  
   // Destroy previous instance if it exists
   if (easyMDE) {
     easyMDE.toTextArea();
     easyMDE = null;
   }
-
+  
   easyMDE = new EasyMDE({
     element: el,
     spellChecker: false,
@@ -287,9 +287,9 @@ function setupAttributionToggle() {
   const namedRadio = document.querySelector('input[name="attribution-type"][value="named"]');
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
   const attributionInput = document.getElementById("submit-attribution");
-
+  
   if (!namedRadio || !anonRadio || !attributionInput) return;
-
+  
   namedRadio.addEventListener("change", () => {
     attributionInput.disabled = false;
     attributionInput.placeholder = "你希望在页面上显示的署名";
@@ -341,7 +341,7 @@ window.onloadTurnstileCallback = initTurnstile;
 
 async function handleSubmit(event) {
   event.preventDefault();
-
+  
   const btn = document.getElementById("submit-btn");
   const status = document.getElementById("submit-status");
   const typeSelect = document.getElementById("submit-type");
@@ -350,35 +350,35 @@ async function handleSubmit(event) {
   const attributionInput = document.getElementById("submit-attribution");
   const contactInput = document.getElementById("submit-contact");
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
-
+  
   status.textContent = "";
   status.className = "";
-
+  
   if (!easyMDE) {
     status.textContent = "编辑器尚未初始化，请刷新页面后重试";
     status.className = "error";
     return;
   }
-
+  
   const content = easyMDE.value().trim();
   const title = titleInput.value.trim();
   const type = typeSelect.value;
-
+  
   if (!title || !content || !type) {
     status.textContent = "请填写标题、正文和投稿类型";
     status.className = "error";
     return;
   }
-
+  
   if (!turnstileToken) {
     status.textContent = "请完成人机验证";
     status.className = "error";
     return;
   }
-
+  
   btn.disabled = true;
   btn.textContent = "提交中...";
-
+  
   try {
     const resp = await fetch(SUBMIT_ENDPOINT, {
       method: "POST",
@@ -396,7 +396,7 @@ async function handleSubmit(event) {
         turnstileToken,
       }),
     });
-
+    
     if (!resp.ok) {
       let errorMsg = "提交失败";
       try {
@@ -405,9 +405,9 @@ async function handleSubmit(event) {
       } catch {}
       throw new Error(errorMsg);
     }
-
+    
     const data = await resp.json();
-
+    
     // 显示成功页面
     document.getElementById("submission-form").style.display = "none";
     document.getElementById("submit-success").style.display = "block";
@@ -433,18 +433,18 @@ async function handleSubmit(event) {
 document$.subscribe(function () {
   // Only run on the submit page
   if (!document.getElementById("submission-form")) return;
-
+  
   populateChapterSelect();
   initEditor();
   setupAttributionToggle();
   updateTypeHint();
-
+  
   const typeSelect = document.getElementById("submit-type");
   if (typeSelect) {
     typeSelect.removeEventListener("change", updateTypeHint);
     typeSelect.addEventListener("change", updateTypeHint);
   }
-
+  
   const form = document.getElementById("submission-form");
   if (form) {
     form.removeEventListener("submit", handleSubmit);

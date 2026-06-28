@@ -39,21 +39,21 @@
 如果你只想先知道最重要的事情，可以记住下面四点：
 
 1.  熟悉 GitHub 的贡献者，推荐直接走 Pull Request 流程。
-2.  不熟悉 GitHub 也完全可以参与，可以把成稿、提纲、讲义或课堂整理发送到 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
+2.  不熟悉 GitHub 也完全可以参与，可以把成稿、提纲、讲义或课堂整理发送到 <submit@folderrewind.top>。
 3.  半成品也欢迎投稿，但请尽量附上来源、目标章节和希望的署名方式。
 4.  无论走哪条路径，都请先阅读 [内容编写指引](./writing.md) 与 [格式手册](./format.md)。
 5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit/) 填写表单即可提交内容、笔记或勘误。
 
 ### 通过邮箱投稿
 
-如果你不熟悉 GitHub，或者手头还只有半成品材料，也欢迎直接通过邮件投稿。邮箱地址为 [submit@folderrewind.top](mailto:submit@folderrewind.top)。
+如果你不熟悉 GitHub，或者手头还只有半成品材料，也欢迎直接通过邮件投稿。邮箱地址为 <submit@folderrewind.top>。
 
 我们接受的内容包括：
 
-- 完整页面草稿。
-- 半成品笔记、提纲、讲义、课堂整理。
-- 题型总结、参考资料整理、路线图建议。
-- 对已有页面的勘误、补充和重构想法。
+-   完整页面草稿。
+-   半成品笔记、提纲、讲义、课堂整理。
+-   题型总结、参考资料整理、路线图建议。
+-   对已有页面的勘误、补充和重构想法。
 
 为了方便编辑组整理，建议你在邮件中尽量提供以下信息：
 
@@ -150,7 +150,6 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 
 修改链接时，需要将当前页面中的 contributors 逐一填入 author 字段。
 
-
 ### Commit 信息格式规范
 
 对于提交时需要填写的 commit 信息，请遵守以下几点基本要求：
@@ -202,7 +201,7 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 ### 协作流程
 
 1.  在收到一个新的 Pull Request 之后，GitHub 会给 reviewer 发送邮件；
-2.  与此同时，在 [GitHub Actions](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/actions)  上会运行测试，它会把进度同步在 PR 页面的下方。GitHub Actions 主要用来确认 PR 中内容的修改不会影响到网站构建的进程。
+2.  与此同时，在 [GitHub Actions](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/actions) 上会运行测试，它会把进度同步在 PR 页面的下方。GitHub Actions 主要用来确认 PR 中内容的修改不会影响到网站构建的进程。
 3.  reviewer 可能会发现问题，并提出 `review` 或 `suggested changes`（建议更改，显示为灰色图标）/`requested changes`（强制更改，显示为红色图标，只会在 reviewer 拥有 repo 写权限时出现）。一般来说，reviewer 也会附上建议和需要进行的更改，在这时，您将会需要继续向 Pull Request 追加其他更改。更改的方法可以参考 `在 GitHub 上编辑` 或者 `使用 Git 在本地进行编辑` 部分的 `向 Pull Request 追加更改` 部分。
 4.  在足够多 reviewer 投票通过一个 PR 之后，这个 PR 才可以合并到 main 分支中；
 5.  在合并到 main 分支之后，GitHub Actions 会重新构建一遍网站内容，并更新到 gh-pages 分支；

@@ -75,19 +75,19 @@ export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
-
+  
   try {
     const { title, content, type, chapter, attribution, contact, turnstileToken } =
       req.body;
-
+    
     if (!title || !content || !type) {
       return res.status(400).json({ error: "缺少必填字段：标题、正文、投稿类型" });
     }
-
+    
     if (!["full-page", "notes", "errata", "suggestion"].includes(type)) {
       return res.status(400).json({ error: "无效的投稿类型" });
     }
-
+    
     // Validate Turnstile
     const turnstileResult = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
@@ -104,9 +104,9 @@ export default async function handler(req, res) {
     if (!turnstileData.success) {
       return res.status(400).json({ error: "人机验证失败，请重试" });
     }
-
+    
     const label = SUBMISSION_LABELS[type] || "投稿-待审核";
-
+    
     const octokit = new Octokit({ auth: GITHUB_TOKEN });
     const issue = await octokit.rest.issues.create({
       owner: OWNER,
@@ -115,7 +115,7 @@ export default async function handler(req, res) {
       body: buildIssueBody({ title, content, type, chapter, attribution, contact }),
       labels: ["投稿-待审核", label],
     });
-
+    
     return res.status(200).json({
       success: true,
       issueUrl: issue.data.html_url,
@@ -189,26 +189,26 @@ git commit -m "feat: add submission endpoint (Vercel Function)"
       <option value="suggestion">建议/想法 — 对网站结构、内容方向的意见</option>
     </select>
   </div>
-
+  
   <div class="submit-field">
     <label for="submit-chapter">目标章节</label>
     <select id="submit-chapter" name="chapter">
       <option value="">-- 可选，帮助编辑组分类 --</option>
     </select>
   </div>
-
+  
   <div class="submit-field">
     <label for="submit-title">标题 <span class="required">*</span></label>
     <input type="text" id="submit-title" name="title" required
            placeholder="给你的投稿起个名字" maxlength="120">
   </div>
-
+  
   <div class="submit-field">
     <label for="submit-content">正文 <span class="required">*</span></label>
     <textarea id="submit-content" name="content" required></textarea>
     <div class="submit-hint" id="submit-hint"></div>
   </div>
-
+  
   <div class="submit-field">
     <label>署名方式</label>
     <div class="submit-radio-group">
@@ -218,17 +218,17 @@ git commit -m "feat: add submission endpoint (Vercel Function)"
     <input type="text" id="submit-attribution" name="attribution"
            placeholder="你希望在页面上显示的署名" maxlength="60">
   </div>
-
+  
   <div class="submit-field">
     <label for="submit-contact">联系方式（选填）</label>
     <input type="text" id="submit-contact" name="contact"
            placeholder="QQ/微信/邮箱，方便编辑组与你沟通修改">
   </div>
-
+  
   <div class="submit-field">
     <div id="turnstile-widget"></div>
   </div>
-
+  
   <div class="submit-actions">
     <button type="submit" id="submit-btn">提交投稿</button>
     <span id="submit-status"></span>
@@ -427,7 +427,7 @@ const NAV_TREE = [
 function populateChapterSelect() {
   const select = document.getElementById("submit-chapter");
   if (!select) return;
-
+  
   function addOptions(children, prefix) {
     for (const item of children) {
       const label = prefix ? `${prefix} > ${item.label}` : item.label;
@@ -549,9 +549,9 @@ function setupAttributionToggle() {
   const namedRadio = document.querySelector('input[name="attribution-type"][value="named"]');
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
   const attributionInput = document.getElementById("submit-attribution");
-
+  
   if (!namedRadio || !anonRadio || !attributionInput) return;
-
+  
   namedRadio.addEventListener("change", () => {
     attributionInput.disabled = false;
     attributionInput.placeholder = "你希望在页面上显示的署名";
@@ -610,7 +610,7 @@ window.onloadTurnstileCallback = initTurnstile;
 
 async function handleSubmit(event) {
   event.preventDefault();
-
+  
   const btn = document.getElementById("submit-btn");
   const status = document.getElementById("submit-status");
   const typeSelect = document.getElementById("submit-type");
@@ -619,42 +619,42 @@ async function handleSubmit(event) {
   const attributionInput = document.getElementById("submit-attribution");
   const contactInput = document.getElementById("submit-contact");
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
-
+  
   status.textContent = "";
   status.className = "";
-
+  
   if (!easyMDE) {
     status.textContent = "编辑器尚未初始化，请刷新页面后重试";
     status.className = "error";
     return;
   }
-
+  
   const content = easyMDE.value().trim();
   const title = titleInput.value.trim();
   const type = typeSelect.value;
-
+  
   if (!title || !content || !type) {
     status.textContent = "请填写标题、正文和投稿类型";
     status.className = "error";
     return;
   }
-
+  
   if (!turnstileToken) {
     status.textContent = "请完成人机验证";
     status.className = "error";
     return;
   }
-
+  
   btn.disabled = true;
   btn.textContent = "提交中...";
-
+  
   const typeLabels = {
     "full-page": "完整页面",
     "notes": "笔记/提纲",
     "errata": "勘误纠错",
     "suggestion": "建议/想法",
   };
-
+  
   try {
     const resp = await fetch(SUBMIT_ENDPOINT, {
       method: "POST",
@@ -672,13 +672,13 @@ async function handleSubmit(event) {
         turnstileToken,
       }),
     });
-
+    
     const data = await resp.json();
-
+    
     if (!resp.ok) {
       throw new Error(data.error || "提交失败");
     }
-
+    
     // 显示成功页面
     document.getElementById("submission-form").style.display = "none";
     document.getElementById("submit-success").style.display = "block";
@@ -786,9 +786,9 @@ def check_file(filepath: Path) -> list[str]:
         text = filepath.read_text(encoding="utf-8")
     except Exception:
         return [f"{filepath}: 无法读取文件"]
-
+    
     lines = text.split("\n")
-
+    
     # 检查 $$ 配对
     dollar_count = 0
     for lineno, line in enumerate(lines, start=1):
@@ -805,7 +805,7 @@ def check_file(filepath: Path) -> list[str]:
                             f"{filepath}:{lineno}: $$ 不配对 (共 {dollar_count} 个)"
                         )
                         break
-
+    
     # 检查行间公式中 \frac 应为 \dfrac
     for lineno, line in enumerate(lines, start=1):
         if line.strip().startswith("$$") or "$$" in line:
@@ -813,7 +813,7 @@ def check_file(filepath: Path) -> list[str]:
                 issues.append(
                     f"{filepath}:{lineno}: 行间公式中建议用 \\dfrac 替代 \\frac"
                 )
-
+    
     # 检查中英文混排空格
     # 中文后接英文/数字
     zh_followed_by_en = re.compile(r"[一-鿿]([A-Za-z0-9])")
@@ -822,7 +822,7 @@ def check_file(filepath: Path) -> list[str]:
             issues.append(
                 f"{filepath}:{lineno}:{match.start()}: 中文与英文/数字之间建议加空格"
             )
-
+    
     # 英文/数字后接中文
     en_followed_by_zh = re.compile(r"([A-Za-z0-9])[一-鿿]")
     for lineno, line in enumerate(lines, start=1):
@@ -830,7 +830,7 @@ def check_file(filepath: Path) -> list[str]:
             issues.append(
                 f"{filepath}:{lineno}:{match.start()}: 英文/数字与中文之间建议加空格"
             )
-
+    
     # 检查空行规范：标题前后应有空行
     for lineno, line in enumerate(lines, start=1):
         if line.startswith("#"):
@@ -838,7 +838,7 @@ def check_file(filepath: Path) -> list[str]:
                 issues.append(
                     f"{filepath}:{lineno}: 标题前应有空行"
                 )
-
+    
     return issues
 
 
@@ -847,10 +847,10 @@ def main() -> int:
     parser.add_argument("paths", nargs="*", default=["docs"], help="要检查的文件或目录")
     parser.add_argument("--strict", action="store_true", help="严格模式：警告也导致失败")
     args = parser.parse_args()
-
+    
     all_issues: list[str] = []
     docs_dir = Path("docs")
-
+    
     for raw_path in args.paths:
         path = Path(raw_path)
         if path.is_dir():
@@ -858,27 +858,27 @@ def main() -> int:
                 all_issues.extend(check_file(md_file))
         elif path.is_file():
             all_issues.extend(check_file(path))
-
+    
     errors = [i for i in all_issues if "建议" not in i]
     warnings = [i for i in all_issues if "建议" in i]
-
+    
     if warnings:
         print(f"\n⚠ 格式建议 ({len(warnings)}):")
         for w in warnings:
             print(f"  {w}")
-
+    
     if errors:
         print(f"\n❌ 格式错误 ({len(errors)}):")
         for e in errors:
             print(f"  {e}")
         return 1
-
+    
     if not warnings and not errors:
         print("✅ 格式检查通过")
-
+    
     if args.strict and warnings:
         return 1
-
+    
     return 0
 
 
@@ -948,7 +948,7 @@ jobs:
             const truncated = output.length > 60000
               ? output.slice(0, 60000) + "\n\n... (输出过长已截断)"
               : output;
-
+            
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
@@ -1031,15 +1031,15 @@ def build_nav(docs_dir: Path, current_dir: Path, indent: int = 0) -> list:
     """递归构建 nav 结构。返回 (nav_list, error_count)。"""
     items: list = []
     order = load_order(current_dir)
-
+    
     # index.md → 章节首页
     index_file = current_dir / "index.md"
     has_index = index_file.exists()
-
+    
     # 收集子目录和文件
     subdirs: list[Path] = []
     files: list[Path] = []
-
+    
     for entry in sorted(current_dir.iterdir()):
         if entry.name.startswith(EXCLUDE_DIR_PREFIXES):
             continue
@@ -1049,20 +1049,20 @@ def build_nav(docs_dir: Path, current_dir: Path, indent: int = 0) -> list:
             if entry.name == "index.md" or entry.name in EXCLUDE_FILES:
                 continue
             files.append(entry)
-
+    
     # 按 _order.txt 排序
     def sort_key(p: Path) -> int:
         return order.get(p.name, 9999)
-
+    
     files.sort(key=sort_key)
     subdirs.sort(key=sort_key)
-
+    
     # 添加子目录中的页面
     for file in files:
         rel_path = file.relative_to(docs_dir).as_posix()
         title = extract_title(file)
         items.append({title: rel_path})
-
+    
     # 递归处理子目录
     for subdir in subdirs:
         sub_items = build_nav(docs_dir, subdir, indent + 1)
@@ -1075,14 +1075,14 @@ def build_nav(docs_dir: Path, current_dir: Path, indent: int = 0) -> list:
                 # 扁平化：如果子目录只有一个条目且不是嵌套结构
                 pass
             items.append({sub_title: sub_items})
-
+    
     return items
 
 
 def generate_nav_tree_json(docs_dir: Path, output_path: Path) -> list:
     """生成前端章节下拉所需的 JSON 数据。"""
     nav = build_nav(docs_dir, docs_dir)
-
+    
     def convert(node):
         if isinstance(node, str):
             return None
@@ -1100,7 +1100,7 @@ def generate_nav_tree_json(docs_dir: Path, output_path: Path) -> list:
                     result.append({"label": key, "children": children})
             return result
         return None
-
+    
     tree = convert(nav) or []
     return tree
 
@@ -1108,13 +1108,13 @@ def generate_nav_tree_json(docs_dir: Path, output_path: Path) -> list:
 def main() -> int:
     docs_dir = Path("docs")
     output_path = Path("docs/_static/js/nav-tree.json")
-
+    
     # 生成 nav
     nav = build_nav(docs_dir, docs_dir)
-
+    
     # 生成前端 JSON
     tree = generate_nav_tree_json(docs_dir, output_path)
-
+    
     js_content = (
         "// 由 scripts/generate-nav.py 自动生成，勿手动编辑。\n"
         f"// Last generated: auto\n"
@@ -1122,10 +1122,10 @@ def main() -> int:
     )
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(js_content, encoding="utf-8")
-
+    
     print(f"✅ Nav tree JSON written to {output_path}")
     print(f"   Entries: {len(tree)} top-level chapters")
-
+    
     return 0
 
 
@@ -1211,9 +1211,9 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
         text = filepath.read_text(encoding="utf-8")
     except Exception:
         return False
-
+    
     lines = text.split("\n")
-
+    
     # 检查是否有手动指定的 author
     has_manual = False
     has_author_field = False
@@ -1221,7 +1221,7 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
     in_frontmatter = False
     frontmatter_start = -1
     frontmatter_end = -1
-
+    
     for i, line in enumerate(lines):
         stripped = line.strip()
         if stripped == "---":
@@ -1237,16 +1237,16 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
             if stripped.startswith("author:"):
                 has_author_field = True
                 author_line_idx = i
-
+    
     if has_manual:
         print(f"  ⏭ {filepath}: 手动维护，跳过")
         return False
-
+    
     if not authors:
         return False
-
+    
     new_author = ", ".join(authors)
-
+    
     if frontmatter_start >= 0 and frontmatter_end >= 0:
         if has_author_field and author_line_idx >= 0:
             lines[author_line_idx] = f"author: {new_author}"
@@ -1263,7 +1263,7 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
             "---",
             "",
         ] + lines
-
+    
     new_text = "\n".join(lines)
     if new_text != text:
         filepath.write_text(new_text, encoding="utf-8")
@@ -1273,25 +1273,25 @@ def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
 
 def main() -> int:
     docs_dir = Path("docs")
-
+    
     changed = 0
     skipped = 0
-
+    
     for md_file in sorted(docs_dir.rglob("*.md")):
         # 跳过后端生成的文件
         if "community" in md_file.parts:
             continue
-
+        
         authors = get_file_authors(md_file)
         if not authors:
             continue
-
+        
         if update_frontmatter(md_file, authors):
             print(f"  ✓ {md_file}: {', '.join(authors[:3])}{'...' if len(authors) > 3 else ''}")
             changed += 1
         else:
             skipped += 1
-
+    
     print(f"\nDone. Updated: {changed}, Skipped: {skipped}")
     return 0
 
@@ -1348,20 +1348,20 @@ jobs:
             const contentMatch = body.match(/---\s*\n+(.+)$/s);
             const content = contentMatch ? contentMatch[1].trim() : body;
             const wordCount = content.replace(/\s/g, "").length;
-
+            
             const comments = [];
-
+            
             if (wordCount < 20) {
               comments.push(
                 "⚠️ 投稿内容过短（不足 20 字），请补充更多细节后重新提交。\n\n" +
                 "如果这是误操作，请在评论区说明，编辑组会关闭此 Issue。"
               );
             }
-
+            
             if (!context.payload.issue.title || context.payload.issue.title.trim().length < 2) {
               comments.push("⚠️ 标题过短，请补充有意义的标题。");
             }
-
+            
             // 基础垃圾检测：大量重复字符或纯 URL
             if (/^(.)\1{20,}$/s.test(content) || /^https?:\/\/\S+$/s.test(content)) {
               await github.rest.issues.addLabels({
@@ -1378,7 +1378,7 @@ jobs:
               });
               comments.push("此投稿被系统判定为无效内容，已自动关闭。如有误判请联系编辑组。");
             }
-
+            
             if (comments.length > 0) {
               await github.rest.issues.createComment({
                 owner: context.repo.owner,
@@ -1440,7 +1440,7 @@ jobs:
         run: |
           import sys
           from pathlib import Path
-
+          
           # 在 GitHub Actions 中获取变更文件列表
           import subprocess
           result = subprocess.run(
@@ -1451,11 +1451,11 @@ jobs:
             f for f in result.stdout.strip().split("\\n")
             if f.startswith("docs/") and f.endswith(".md")
           ]
-
+          
           if not changed_files:
             print("No markdown files changed")
             sys.exit(0)
-
+          
           downgraded = []
           for filepath in changed_files:
             p = Path(filepath)
@@ -1467,7 +1467,7 @@ jobs:
               p.write_text(new_text, encoding="utf-8")
               downgraded.append(filepath)
               print(f"  ⬇ {filepath}: stable → review")
-
+          
           if downgraded:
             print(f"\\nDowngraded {len(downgraded)} page(s)")
           else:
@@ -1660,20 +1660,20 @@ def parse_issue_body(body: str) -> dict:
     info: dict = {"type": "未知", "chapter": "", "attribution": "匿名"}
     if not body:
         return info
-
+    
     # 提取投稿信息表格中的字段
     type_match = re.search(r"投稿类型\*\*:\s*(.+?)(?:\n|$)", body)
     if type_match:
         info["type"] = type_match.group(1).strip()
-
+    
     chapter_match = re.search(r"目标章节\*\*:\s*(.+?)(?:\n|$)", body)
     if chapter_match:
         info["chapter"] = chapter_match.group(1).strip()
-
+    
     attr_match = re.search(r"署名\*\*:\s*(.+?)(?:\n|$)", body)
     if attr_match:
         info["attribution"] = attr_match.group(1).strip()
-
+    
     return info
 
 
@@ -1684,13 +1684,13 @@ def generate_page(issue: dict, output_dir: Path) -> str:
     body = issue["body"] or ""
     info = parse_issue_body(body)
     created = issue["created_at"][:10]
-
+    
     # 提取正文（标题之后的内容）
     content = body
     separator_match = re.search(r"^---\s*$", body, re.MULTILINE)
     if separator_match:
         content = body[separator_match.end():].strip()
-
+    
     frontmatter = textwrap.dedent(f"""\
     ---
     status: community
@@ -1700,9 +1700,9 @@ def generate_page(issue: dict, output_dir: Path) -> str:
     title: {title}
     ---
     """)
-
+    
     page = f"{frontmatter}\n\n# {title}\n\n{content}\n"
-
+    
     output_file = output_dir / f"{number}.md"
     output_file.write_text(page, encoding="utf-8")
     return str(output_file)
@@ -1716,7 +1716,7 @@ def generate_index(issues: list[dict], output_dir: Path) -> None:
         "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考。",
         "",
     ]
-
+    
     if not issues:
         lines.append("*暂无社区投稿。快来[提交你的第一篇投稿](/submit/)吧！*")
     else:
@@ -1725,7 +1725,7 @@ def generate_index(issues: list[dict], output_dir: Path) -> None:
             title = issue["title"].replace("[投稿]", "").strip()
             info = parse_issue_body(issue["body"] or "")
             created = issue["created_at"][:10]
-
+            
             lines.append(f"## [{title}]({number}.md)")
             lines.append("")
             lines.append(
@@ -1738,7 +1738,7 @@ def generate_index(issues: list[dict], output_dir: Path) -> None:
             lines.append("")
             lines.append("---")
             lines.append("")
-
+    
     output_file = output_dir / "index.md"
     output_file.write_text("\n".join(lines), encoding="utf-8")
 
@@ -1746,23 +1746,23 @@ def generate_index(issues: list[dict], output_dir: Path) -> None:
 def main() -> int:
     output_dir = Path("docs/community")
     output_dir.mkdir(parents=True, exist_ok=True)
-
+    
     try:
         issues = fetch_issues()
     except Exception as e:
         print(f"⚠ Failed to fetch issues: {e}")
         print("Skipping community page generation.")
         return 0
-
+    
     print(f"Found {len(issues)} published community submissions")
-
+    
     for issue in issues:
         path = generate_page(issue, output_dir)
         print(f"  ✓ #{issue['number']}: {path}")
-
+    
     generate_index(issues, output_dir)
     print(f"  ✓ Community index: docs/community/index.md")
-
+    
     return 0
 
 
@@ -1875,7 +1875,7 @@ def get_issue_contributors() -> list[dict]:
             issues = json.loads(resp.read().decode())
     except Exception:
         return []
-
+    
     contributors: list[dict] = []
     seen = set()
     for issue in issues:
@@ -1908,10 +1908,10 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
         "| 贡献者 | 提交次数 |",
         "|--------|---------|",
     ]
-
+    
     for name, count in git_counter.most_common(50):
         lines.append(f"| {name} | {count} |")
-
+    
     if issue_contributors:
         lines.append("")
         lines.append("## 投稿贡献者")
@@ -1920,7 +1920,7 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
         lines.append("|--------|---------|")
         for c in issue_contributors:
             lines.append(f"| {c['name']} | [查看]({c['issue_url']}) |")
-
+    
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -1931,9 +1931,9 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
 def main() -> int:
     git_counter = get_git_contributors()
     issue_contributors = get_issue_contributors()
-
+    
     page = generate_page(git_counter, issue_contributors)
-
+    
     output = Path("docs/intro/contributors.md")
     output.write_text(page, encoding="utf-8")
     print(f"✅ Contributors page written to {output}")

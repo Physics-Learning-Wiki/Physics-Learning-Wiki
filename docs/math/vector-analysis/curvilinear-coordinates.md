@@ -1,12 +1,11 @@
 ???+ note "注意"
     该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
-
-在物理学中，虽然笛卡尔坐标系（Cartesian coordinates）是最基础和最直接的坐标系，但在处理具有特定对称性（如圆形、球形或柱形对称）的问题时，使用**曲线坐标系**（Curvilinear coordinates）会大大简化计算。最常见的曲线坐标系包括极坐标系、柱坐标系和球坐标系。
+在物理学中，虽然笛卡尔坐标系（Cartesian coordinates）是最基础和最直接的坐标系，但在处理具有特定对称性（如圆形、球形或柱形对称）的问题时，使用 **曲线坐标系**（Curvilinear coordinates）会大大简化计算。最常见的曲线坐标系包括极坐标系、柱坐标系和球坐标系。
 
 ## 正交曲线坐标系
 
-一个坐标系被称为**正交**的，如果它的坐标曲面在任何一点都相互垂直。这意味着在任何一点，基向量都是相互正交的。我们这里主要讨论正交曲线坐标系。
+一个坐标系被称为 **正交** 的，如果它的坐标曲面在任何一点都相互垂直。这意味着在任何一点，基向量都是相互正交的。我们这里主要讨论正交曲线坐标系。
 
 设一个点在笛卡尔坐标系中的坐标为 $(x, y, z)$，在曲线坐标系中的坐标为 $(q_1, q_2, q_3)$。它们之间的关系可以表示为：
 
@@ -24,7 +23,7 @@ $$
 
 ### 标度因子 (Scale Factors)
 
-在曲线坐标系中，基向量的大小通常不是 1，并且会随着位置的变化而变化。我们定义**标度因子** $h_i$ 来描述这种变化。
+在曲线坐标系中，基向量的大小通常不是 1，并且会随着位置的变化而变化。我们定义 **标度因子**  $h_i$ 来描述这种变化。
 
 位移矢量 $d\vec{r}$ 在笛卡尔坐标系中为 $d\vec{r} = dx\hat{i} + dy\hat{j} + dz\hat{k}$。通过全微分，我们可以得到：
 
@@ -48,27 +47,28 @@ d\vec{r} = h_1 dq_1 \hat{e}_1 + h_2 dq_2 \hat{e}_2 + h_3 dq_3 \hat{e}_3
 $$
 
 线元、面元和体元可以表示为：
-- **线元**：$ds^2 = |d\vec{r}|^2 = h_1^2 dq_1^2 + h_2^2 dq_2^2 + h_3^2 dq_3^2$
-- **面元**：$dA_1 = h_2 h_3 dq_2 dq_3$ (在 $q_1$ 方向)
-- **体元**：$dV = h_1 h_2 h_3 dq_1 dq_2 dq_3$
+
+-   **线元**：$ds^2 = |d\vec{r}|^2 = h_1^2 dq_1^2 + h_2^2 dq_2^2 + h_3^2 dq_3^2$
+-   **面元**：$dA_1 = h_2 h_3 dq_2 dq_3$（在 $q_1$ 方向）
+-   **体元**：$dV = h_1 h_2 h_3 dq_1 dq_2 dq_3$
 
 ### 梯度、散度、旋度和拉普拉斯算子
 
 在正交曲线坐标系 $(q_1, q_2, q_3)$ 中，矢量算子可以推广为：
 
-- **梯度 (Gradient)**：
+-   **梯度 (Gradient)**：
 
 $$
 \nabla f = \dfrac{1}{h_1}\dfrac{\partial f}{\partial q_1}\hat{e}_1 + \dfrac{1}{h_2}\dfrac{\partial f}{\partial q_2}\hat{e}_2 + \dfrac{1}{h_3}\dfrac{\partial f}{\partial q_3}\hat{e}_3
 $$
 
-- **散度 (Divergence)**：对于矢量场 $\vec{F} = F_1\hat{e}_1 + F_2\hat{e}_2 + F_3\hat{e}_3$
+-   **散度 (Divergence)**：对于矢量场 $\vec{F} = F_1\hat{e}_1 + F_2\hat{e}_2 + F_3\hat{e}_3$
 
 $$
 \nabla \cdot \vec{F} = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}(h_2 h_3 F_1) + \dfrac{\partial}{\partial q_2}(h_1 h_3 F_2) + \dfrac{\partial}{\partial q_3}(h_1 h_2 F_3) \right]
 $$
 
-- **旋度 (Curl)**：
+-   **旋度 (Curl)**：
 
 $$
 \nabla \times \vec{F} = \dfrac{1}{h_1 h_2 h_3}
@@ -79,7 +79,7 @@ h_1 F_1 & h_2 F_2 & h_3 F_3
 \end{vmatrix}
 $$
 
-- **拉普拉斯算子 (Laplacian)**：
+-   **拉普拉斯算子 (Laplacian)**：
 
 $$
 \nabla^2 f = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}\left(\dfrac{h_2 h_3}{h_1}\dfrac{\partial f}{\partial q_1}\right) + \dfrac{\partial}{\partial q_2}\left(\dfrac{h_1 h_3}{h_2}\dfrac{\partial f}{\partial q_2}\right) + \dfrac{\partial}{\partial q_3}\left(\dfrac{h_1 h_2}{h_3}\dfrac{\partial f}{\partial q_3}\right) \right]
@@ -88,9 +88,10 @@ $$
 ## 柱坐标系 (Cylindrical Coordinates)
 
 柱坐标系 $(r, \theta, z)$ 用于描述具有轴对称性的系统。
-- $r$：点到 $z$ 轴的径向距离 ($r \ge 0$)
-- $\theta$：径向矢量在 $xy$ 平面上的方位角 ($0 \le \theta < 2\pi$)
-- $z$：点的竖直高度
+
+-   $r$：点到 $z$ 轴的径向距离 ($r \ge 0$)
+-   $\theta$：径向矢量在 $xy$ 平面上的方位角 ($0 \le \theta < 2\pi$)
+-   $z$：点的竖直高度
 
 **与笛卡尔坐标的关系**：
 
@@ -106,8 +107,7 @@ $$
 z = z
 $$
 
-**标度因子**：
-$q_1=r, q_2=\theta, q_3=z$
+**标度因子**：$q_1=r, q_2=\theta, q_3=z$
 
 $$
 h_r = 1, \quad h_\theta = r, \quad h_z = 1
@@ -148,10 +148,10 @@ $$
 ## 球坐标系 (Spherical Coordinates)
 
 球坐标系 $(\rho, \theta, \phi)$ 用于描述具有球对称性的系统。
-- $\rho$：点到原点的径向距离 ($\rho \ge 0$)
-- $\theta$：径向矢量与正 $z$ 轴的夹角，称为**极角** ($0 \le \theta \le \pi$)
-- $\phi$：径向矢量在 $xy$ 平面上的投影与正 $x$ 轴的夹角，称为**方位角** ($0 \le \phi < 2\pi$)
-*(注意：物理学中常用 $(\rho, \theta, \phi)$，而数学中常用 $(r, \phi, \theta)$，这里的 $\theta, \phi$ 含义相反，需注意区分。)*
+
+-   $\rho$：点到原点的径向距离 ($\rho \ge 0$)
+-   $\theta$：径向矢量与正 $z$ 轴的夹角，称为 **极角**($0 \le \theta \le \pi$)
+-   $\phi$：径向矢量在 $xy$ 平面上的投影与正 $x$ 轴的夹角，称为 **方位角**($0 \le \phi < 2\pi$)*（注意：物理学中常用 $(\rho, \theta, \phi)$，而数学中常用 $(r, \phi, \theta)$，这里的 $\theta, \phi$ 含义相反，需注意区分。)*
 
 **与笛卡尔坐标的关系**：
 
@@ -167,8 +167,7 @@ $$
 z = \rho \cos\theta
 $$
 
-**标度因子**：
-$q_1=\rho, q_2=\theta, q_3=\phi$
+**标度因子**：$q_1=\rho, q_2=\theta, q_3=\phi$
 
 $$
 h_\rho = 1, \quad h_\theta = \rho, \quad h_\phi = \rho \sin\theta

@@ -4,7 +4,7 @@
 
 感谢你愿意为 Physics Learning Wiki 做出贡献！填写下方表单即可提交内容，无需 GitHub 账号。
 
----
+***
 
 <form id="submission-form" method="post" onsubmit="return false">
   <div class="submit-field">

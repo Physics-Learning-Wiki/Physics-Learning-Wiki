@@ -41,13 +41,13 @@ mkdocs-material 使用即时导航（`navigation.instant`），通过 AJAX 加�
 document$.subscribe(function() {
   // 仅在 submit 页面执行
   if (!document.getElementById("submission-form")) return;
-
+  
   // 清理旧的 EasyMDE 实例（防止重复初始化）
   if (easyMDE) {
     easyMDE.toTextArea();
     easyMDE = null;
   }
-
+  
   // 重新初始化所有组件
   populateChapterSelect();
   initEditor();

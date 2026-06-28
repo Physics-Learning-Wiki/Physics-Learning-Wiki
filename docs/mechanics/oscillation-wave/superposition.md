@@ -19,8 +19,8 @@ $$
 
 其中 $\mathcal{L}$ 是线性算子（例如 $m\ddot x+b\dot x+kx$），则有：
 
-- 若 $x_1$ 对应外力 $f_1$，$x_2$ 对应外力 $f_2$，则 $x=x_1+x_2$ 对应外力 $f=f_1+f_2$。
-- 特别地，齐次方程（$f=0$）的解满足任意线性组合仍为解。
+-   若 $x_1$ 对应外力 $f_1$，$x_2$ 对应外力 $f_2$，则 $x=x_1+x_2$ 对应外力 $f=f_1+f_2$。
+-   特别地，齐次方程（$f=0$）的解满足任意线性组合仍为解。
 
 这就是叠加原理在振动中的数学基础。
 
@@ -71,25 +71,25 @@ $$
 
 如果你觉得计算比较复杂，那么不妨通过矢量作图来理解相量法。将两个振动的振幅作为矢量的长度，相位作为矢量与水平轴的夹角，然后将两个矢量首尾相接，得到的合矢量的长度和方向即为合成振动的振幅和相位。
 
-![superposition_vector](../images/superposition_vector.png)
+![superposition\_vector](../images/superposition_vector.png)
 
 你可以在上图中作合适的辅助线来计算合成振幅 $A$ 和相位 $\varphi$。
 
 ### 2.2 特殊情形
 
-- **同相**：$\Delta\varphi=0\Rightarrow A=A_1+A_2$（最大增强）。
-- **反相**：$\Delta\varphi=\pi\Rightarrow A=|A_1-A_2|$（相消）。
-- **正交相位**：$\Delta\varphi=\pi/2\Rightarrow A=\sqrt{A_1^2+A_2^2}$。
+-   **同相**：$\Delta\varphi=0\Rightarrow A=A_1+A_2$（最大增强）。
+-   **反相**：$\Delta\varphi=\pi\Rightarrow A=|A_1-A_2|$（相消）。
+-   **正交相位**：$\Delta\varphi=\pi/2\Rightarrow A=\sqrt{A_1^2+A_2^2}$。
 
 ??? note "例题：两简谐同频合成"
     已知 $x_1=3\cos(\omega t)$，$x_2=4\cos(\omega t+\pi/3)$，求合成振幅。
-
+    
     **解：**
-
-    $$  
+    
+    $$
     A^2=3^2+4^2+2\cdot 3\cdot 4\cos\dfrac{\pi}{3}=9+16+24\cdot\frac12=37  
     $$
-
+    
     所以 $A=\sqrt{37}$。
 
 ## 3. 拍（Beats）：频率接近的简谐振动合成
@@ -111,21 +111,21 @@ $$
 
 其中 $\Delta\omega=\omega_1-\omega_2$，$\bar\omega=(\omega_1+\omega_2)/2$。
 
-- 快速振动角频率：$\bar\omega$。
-- 包络（振幅调制）角频率：$|\Delta\omega|/2$。
-- **拍频**（每秒振幅最大次数）：
+-   快速振动角频率：$\bar\omega$。
+-   包络（振幅调制）角频率：$|\Delta\omega|/2$。
+-   **拍频**（每秒振幅最大次数）：
 
 $$
  f_{\text{beat}}=|f_1-f_2|=\dfrac{|\Delta\omega|}{2\pi}.
 $$
 
-值得注意的是，这里的拍频并不是 $\frac{|\Delta\omega|}{4\pi}$ ，从图中我们也可以看出，**振幅**（恒正）变化的周期是我们平常所说的振动变化周期的二分之一。
+值得注意的是，这里的拍频并不是 $\frac{|\Delta\omega|}{4\pi}$，从图中我们也可以看出，**振幅**（恒正）变化的周期是我们平常所说的振动变化周期的二分之一。
 
 ![拍](../images/beats.png)
 
 ??? note "例题：拍频"
     两音叉频率分别为 $440\,\text{Hz}$ 与 $442\,\text{Hz}$，一起敲响，拍频是多少？
-
+    
     **解：** $f_{\text{beat}}=|442-440|=2\,\text{Hz}$。
 
 ## 4. 正交方向简谐振动合成：李萨如图形（Lissajous）
@@ -141,7 +141,7 @@ $$
 \end{cases}
 $$
 
-- 若 $\omega_x=\omega_y=\omega$，可消去 $t$ 得轨迹为椭圆；相位差决定椭圆形状。
+-   若 $\omega_x=\omega_y=\omega$，可消去 $t$ 得轨迹为椭圆；相位差决定椭圆形状。
 
 以 $\alpha=0$ 为例：
 
@@ -150,11 +150,12 @@ $$
 \quad \delta=\beta-\alpha.
 $$
 
-- 若 $\omega_x:\omega_y$ 为有理比，则轨迹闭合，常用于示波器测频与测相。
+-   若 $\omega_x:\omega_y$ 为有理比，则轨迹闭合，常用于示波器测频与测相。
 
 ![李萨如图形](../images/lissajous_figures.png)
 
 ### 李萨如图形的频率比判断方式
+
 观察李萨如图形时，可以通过数图形在水平方向和垂直方向上各自的最大交点数来判断频率比。例如，如果图形在水平方向上有 3 个最大交点，而在垂直方向上有 2 个最大交点，那么频率比就是 3:2。
 
 ### 同步锁频现象
@@ -163,29 +164,29 @@ $$
 
 ??? note "例题：用李萨如图形测相位差（同频）"
     示波器 $X$、$Y$ 两通道分别输入
-
-    $$  
+    
+    $$
     x=A\cos(\omega t),\qquad y=A\cos(\omega t+\delta),\quad 0\le \delta\le \pi.  
     $$
-
+    
     在屏幕上观察到闭合椭圆。若测得椭圆与 $y$ 轴交点为 $y=\pm y_0$（即 $x=0$ 时的 $|y|$），求 $\delta$ 与 $y_0/A$ 的关系。
-
-    **解：**令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$。  
+    
+    \*\* 解：\*\* 令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$。  
     代入 $y$：
-
-    $$  
+    
+    $$
     y=A\cos\left(\dfrac{\pi}{2}+\delta\right)=-A\sin\delta  
     $$
-
+    
     或
-
-    $$  
+    
+    $$
     y=A\cos\left(\dfrac{3\pi}{2}+\delta\right)=A\sin\delta.  
     $$
-
+    
     因此 $y_0=A|\sin\delta|$。在题设 $0\le\delta\le\pi$ 下 $\sin\delta\ge 0$，得到
-
-    $$  
+    
+    $$
     \boxed{\ \sin\delta=\dfrac{y_0}{A}\ },\qquad \delta=\arcsin\left(\dfrac{y_0}{A}\right).  
     $$
 

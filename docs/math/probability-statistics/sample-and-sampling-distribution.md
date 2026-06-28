@@ -8,11 +8,11 @@ author: Physics Learning Wiki, Leafuke
 
 读完本页后，你应该能够：
 
-- 
+-
 
 ## 本页将重点处理什么
 
-1. 
+1.
 
 ## 核心内容
 
