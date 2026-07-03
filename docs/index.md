@@ -1,6 +1,6 @@
-disqus:
-pagetime:
-title: Physics-Learning-Wiki
+---
+author: Physics Learning Wiki
+---
 
 ## 欢迎来到 **Physics-Learning-Wiki**
 
