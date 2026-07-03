@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 将投稿 API 从被 GFW 封锁的 Vercel 迁移到 Cloudflare Workers，同时修复 typeLabel 缺失和表单 GET 回退两个 Bug。
+**Goal:** 将投稿 API 从被 GFW 封锁的 Vercel 迁移到 Cloudflare Workers，同时修复 typeLabel 缺失和表单 GET 回退两个 Bug．
 
-**Architecture:** 前端 `submit-form.js` POST JSON 到 Cloudflare Worker，Worker 验证 Turnstile token 后通过 GitHub REST API 创建 Issue。使用原生 `fetch` 替代 Octokit，减少依赖。
+**Architecture:** 前端 `submit-form.js` POST JSON 到 Cloudflare Worker，Worker 验证 Turnstile token 后通过 GitHub REST API 创建 Issue．使用原生 `fetch` 替代 Octokit，减少依赖．
 
 **Tech Stack:** Cloudflare Workers (ES module format), Wrangler CLI, GitHub REST API v3, Cloudflare Turnstile
 
@@ -21,7 +21,7 @@
 mkdir -p workers
 ```
 
-创建 `workers/submit.js`，内容如下。这是从 `api/submit.js` 迁移而来的 Cloudflare Workers 版本，使用原生 fetch 替代 Octokit，并修复了 typeLabel 缺失的 Bug：
+创建 `workers/submit.js`，内容如下．这是从 `api/submit.js` 迁移而来的 Cloudflare Workers 版本，使用原生 fetch 替代 Octokit，并修复了 typeLabel 缺失的 Bug：
 
 ```javascript
 // workers/submit.js
@@ -243,7 +243,7 @@ npm install -g wrangler
 wrangler login
 ```
 
-浏览器会打开 Cloudflare 授权页面，点击授权。
+浏览器会打开 Cloudflare 授权页面，点击授权．
 
 - [ ] **Step 3: 部署 Worker**
 
@@ -258,7 +258,7 @@ Published physics-learning-wiki-submit (X.XX sec)
   https://physics-learning-wiki-submit.<your-subdomain>.workers.dev
 ```
 
-**记录输出的 Workers URL**，下一步需要。
+**记录输出的 Workers URL**，下一步需要．
 
 - [ ] **Step 4: 设置 Turnstile 秘钥**
 
@@ -266,7 +266,7 @@ Published physics-learning-wiki-submit (X.XX sec)
 wrangler secret put TURNSTILE_SECRET_KEY
 ```
 
-提示输入值时，粘贴你的 Cloudflare Turnstile secret key（从 Vercel Dashboard 或 Cloudflare Dashboard 获取）。
+提示输入值时，粘贴你的 Cloudflare Turnstile secret key（从 Vercel Dashboard 或 Cloudflare Dashboard 获取）．
 
 - [ ] **Step 5: 设置 GitHub Token**
 
@@ -274,7 +274,7 @@ wrangler secret put TURNSTILE_SECRET_KEY
 wrangler secret put GITHUB_TOKEN
 ```
 
-提示输入值时，粘贴你的 GitHub Personal Access Token（需 `issues:write` 权限）。
+提示输入值时，粘贴你的 GitHub Personal Access Token（需 `issues:write` 权限）．
 
 - [ ] **Step 6: 验证 Worker 可访问**
 
@@ -315,7 +315,7 @@ const SUBMIT_ENDPOINT = "https://physics-learning-wiki-a4c895roj-leafukes-projec
 const SUBMIT_ENDPOINT = "https://physics-learning-wiki-submit.<your-subdomain>.workers.dev";
 ```
 
-注意：Workers URL 不需要 `/api/submit` 路径后缀，因为 Worker 处理的是根路径。如果你在 wrangler.toml 中配置了路由，路径可能不同。
+注意：Workers URL 不需要 `/api/submit` 路径后缀，因为 Worker 处理的是根路径．如果你在 wrangler.toml 中配置了路由，路径可能不同．
 
 - [ ] **Step 2: 修复表单 GET 回退问题**
 
@@ -329,12 +329,12 @@ const SUBMIT_ENDPOINT = "https://physics-learning-wiki-submit.<your-subdomain>.w
 <form id="submission-form" method="post" onsubmit="return false">
 ```
 
-`method="post"` 确保原生表单提交使用 POST 而非 GET。`onsubmit="return false"` 防止 JS 未加载时表单以原生方式提交（会丢失页面状态）。JS 加载后 `handleSubmit` 中的 `event.preventDefault()` 会接管。
+`method="post"` 确保原生表单提交使用 POST 而非 GET．`onsubmit="return false"` 防止 JS 未加载时表单以原生方式提交（会丢失页面状态）．JS 加载后 `handleSubmit` 中的 `event.preventDefault()` 会接管．
 
 - [ ] **Step 3: 验证修改**
 
-确认 `submit-form.js` 中 `SUBMIT_ENDPOINT` 指向正确的 Workers URL。
-确认 `submit.md` 中 `<form>` 标签包含 `method="post"` 和 `onsubmit="return false"`。
+确认 `submit-form.js` 中 `SUBMIT_ENDPOINT` 指向正确的 Workers URL．
+确认 `submit.md` 中 `<form>` 标签包含 `method="post"` 和 `onsubmit="return false"`．
 
 - [ ] **Step 4: Commit**
 
@@ -356,9 +356,9 @@ git commit -m "fix: point submit API to Cloudflare Workers and prevent GET fallb
 
 ```javascript
 // api/submit.js
-// ⚠️ DEPRECATED: 此文件已被 Cloudflare Worker (workers/submit.js) 替代。
-// *.vercel.app 域名在中国大陆被 GFW 封锁，此函数不可用。
-// 保留作为备份参考，不删除。
+// ⚠️ DEPRECATED: 此文件已被 Cloudflare Worker (workers/submit.js) 替代．
+// *.vercel.app 域名在中国大陆被 GFW 封锁，此函数不可用．
+// 保留作为备份参考，不删除．
 ```
 
 - [ ] **Step 2: Commit**
@@ -381,7 +381,7 @@ cd d:\Programs\Physics-Learning-Wiki
 mkdocs build
 ```
 
-Expected: 构建成功，无错误。
+Expected: 构建成功，无错误．
 
 - [ ] **Step 2: 本地预览投稿页面**
 
@@ -419,7 +419,7 @@ Expected:
 
 - [ ] **Step 5: 验证线上站点**
 
-代码推送并 GitHub Pages 重新构建后，访问 `https://physics-learning-wiki.github.io/Physics-Learning-Wiki/submit/`，重复 Step 3-4 的验证。
+代码推送并 GitHub Pages 重新构建后，访问 `https://physics-learning-wiki.github.io/Physics-Learning-Wiki/submit/`，重复 Step 3-4 的验证．
 
 - [ ] **Step 6: 最终 Commit（如有修改）**
 

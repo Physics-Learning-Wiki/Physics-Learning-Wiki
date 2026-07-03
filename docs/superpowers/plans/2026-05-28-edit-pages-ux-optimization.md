@@ -129,7 +129,7 @@ Replace all of these with a single `document$.subscribe()` block. The complete r
 
 ```js
 // docs/_static/js/submit-form.js
-// 章节下拉数据。由 scripts/generate-nav.py 自动生成，勿手动编辑。
+// 章节下拉数据．由 scripts/generate-nav.py 自动生成，勿手动编辑．
 // Last generated: 2026-05-25
 const NAV_TREE = [
   { label: "数学工具", children: [
@@ -417,7 +417,7 @@ async function handleSubmit(event) {
       link.textContent = data.issueUrl;
     }
   } catch (err) {
-    status.textContent = err.message || "提交失败，请稍后重试。也可直接发送邮件至 submit@folderrewind.top";
+    status.textContent = err.message || "提交失败，请稍后重试．也可直接发送邮件至 submit@folderrewind.top";
     status.className = "error";
     btn.disabled = false;
     btn.textContent = "提交投稿";

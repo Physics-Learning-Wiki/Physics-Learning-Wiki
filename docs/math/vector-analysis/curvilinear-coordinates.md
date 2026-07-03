@@ -1,13 +1,13 @@
 ???+ note "注意"
-    该页面有待完善。如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
+    该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
-在物理学中，虽然笛卡尔坐标系（Cartesian coordinates）是最基础和最直接的坐标系，但在处理具有特定对称性（如圆形、球形或柱形对称）的问题时，使用 **曲线坐标系**（Curvilinear coordinates）会大大简化计算。最常见的曲线坐标系包括极坐标系、柱坐标系和球坐标系。
+在物理学中，虽然笛卡尔坐标系（Cartesian coordinates）是最基础和最直接的坐标系，但在处理具有特定对称性（如圆形、球形或柱形对称）的问题时，使用 **曲线坐标系**（Curvilinear coordinates）会大大简化计算．最常见的曲线坐标系包括极坐标系、柱坐标系和球坐标系．
 
 ## 正交曲线坐标系
 
-一个坐标系被称为 **正交** 的，如果它的坐标曲面在任何一点都相互垂直。这意味着在任何一点，基向量都是相互正交的。我们这里主要讨论正交曲线坐标系。
+一个坐标系被称为 **正交** 的，如果它的坐标曲面在任何一点都相互垂直．这意味着在任何一点，基向量都是相互正交的．我们这里主要讨论正交曲线坐标系．
 
-设一个点在笛卡尔坐标系中的坐标为 $(x, y, z)$，在曲线坐标系中的坐标为 $(q_1, q_2, q_3)$。它们之间的关系可以表示为：
+设一个点在笛卡尔坐标系中的坐标为 $(x, y, z)$，在曲线坐标系中的坐标为 $(q_1, q_2, q_3)$．它们之间的关系可以表示为：
 
 $$
 x = x(q_1, q_2, q_3)
@@ -23,16 +23,16 @@ $$
 
 ### 标度因子 (Scale Factors)
 
-在曲线坐标系中，基向量的大小通常不是 1，并且会随着位置的变化而变化。我们定义 **标度因子**  $h_i$ 来描述这种变化。
+在曲线坐标系中，基向量的大小通常不是 1，并且会随着位置的变化而变化．我们定义 **标度因子**  $h_i$ 来描述这种变化．
 
-位移矢量 $d\vec{r}$ 在笛卡尔坐标系中为 $d\vec{r} = dx\hat{i} + dy\hat{j} + dz\hat{k}$。通过全微分，我们可以得到：
+位移矢量 $d\vec{r}$ 在笛卡尔坐标系中为 $d\vec{r} = dx\hat{i} + dy\hat{j} + dz\hat{k}$．通过全微分，我们可以得到：
 
 $$
 d\vec{r} = \dfrac{\partial \vec{r}}{\partial q_1}dq_1 + \dfrac{\partial \vec{r}}{\partial q_2}dq_2 + \dfrac{\partial \vec{r}}{\partial q_3}dq_3
 $$
 
-我们定义曲线坐标系的基向量为 $\vec{e}_i = \frac{\partial \vec{r}}{\partial q_i}$。这些基向量通常不是单位向量。
-标准化的单位基向量为 $\hat{e}_i = \frac{1}{|\frac{\partial \vec{r}}{\partial q_i}|} \frac{\partial \vec{r}}{\partial q_i}$。
+我们定义曲线坐标系的基向量为 $\vec{e}_i = \frac{\partial \vec{r}}{\partial q_i}$．这些基向量通常不是单位向量．
+标准化的单位基向量为 $\hat{e}_i = \frac{1}{|\frac{\partial \vec{r}}{\partial q_i}|} \frac{\partial \vec{r}}{\partial q_i}$．
 
 标度因子 $h_i$ 定义为：
 
@@ -87,7 +87,7 @@ $$
 
 ## 柱坐标系 (Cylindrical Coordinates)
 
-柱坐标系 $(r, \theta, z)$ 用于描述具有轴对称性的系统。
+柱坐标系 $(r, \theta, z)$ 用于描述具有轴对称性的系统．
 
 -   $r$：点到 $z$ 轴的径向距离 ($r \ge 0$)
 -   $\theta$：径向矢量在 $xy$ 平面上的方位角 ($0 \le \theta < 2\pi$)
@@ -123,15 +123,15 @@ $$
 \nabla^2 f = \dfrac{1}{r}\dfrac{\partial}{\partial r}\left(r\dfrac{\partial f}{\partial r}\right) + \dfrac{1}{r^2}\dfrac{\partial^2 f}{\partial \theta^2} + \dfrac{\partial^2 f}{\partial z^2}
 $$
 
-**例题：** 无限长均匀带电直线的电场。
-假设电荷线密度为 $\lambda$，直线与 $z$ 轴重合。由于对称性，电场 $\vec{E}$ 必定只沿径向 $r$ 分布，且大小只与 $r$ 有关，即 $\vec{E} = E(r)\hat{r}$。
-我们使用高斯定律的积分形式。取一个半径为 $r$，高度为 $L$ 的圆柱形高斯面。
+**例题：** 无限长均匀带电直线的电场．
+假设电荷线密度为 $\lambda$，直线与 $z$ 轴重合．由于对称性，电场 $\vec{E}$ 必定只沿径向 $r$ 分布，且大小只与 $r$ 有关，即 $\vec{E} = E(r)\hat{r}$．
+我们使用高斯定律的积分形式．取一个半径为 $r$，高度为 $L$ 的圆柱形高斯面．
 
 $$
 \oint \vec{E} \cdot d\vec{A} = \dfrac{Q_{enc}}{\epsilon_0}
 $$
 
-电通量只通过圆柱的侧面，上下底面的通量为零。
+电通量只通过圆柱的侧面，上下底面的通量为零．
 
 $$
 E(r) \cdot (2\pi r L) = \dfrac{\lambda L}{\epsilon_0}
@@ -143,15 +143,15 @@ $$
 E(r) = \dfrac{\lambda}{2\pi\epsilon_0 r}
 $$
 
-所以电场为 $\vec{E} = \frac{\lambda}{2\pi\epsilon_0 r}\hat{r}$。
+所以电场为 $\vec{E} = \frac{\lambda}{2\pi\epsilon_0 r}\hat{r}$．
 
 ## 球坐标系 (Spherical Coordinates)
 
-球坐标系 $(\rho, \theta, \phi)$ 用于描述具有球对称性的系统。
+球坐标系 $(\rho, \theta, \phi)$ 用于描述具有球对称性的系统．
 
 -   $\rho$：点到原点的径向距离 ($\rho \ge 0$)
 -   $\theta$：径向矢量与正 $z$ 轴的夹角，称为 **极角**($0 \le \theta \le \pi$)
--   $\phi$：径向矢量在 $xy$ 平面上的投影与正 $x$ 轴的夹角，称为 **方位角**($0 \le \phi < 2\pi$)*（注意：物理学中常用 $(\rho, \theta, \phi)$，而数学中常用 $(r, \phi, \theta)$，这里的 $\theta, \phi$ 含义相反，需注意区分。)*
+-   $\phi$：径向矢量在 $xy$ 平面上的投影与正 $x$ 轴的夹角，称为 **方位角**($0 \le \phi < 2\pi$)*（注意：物理学中常用 $(\rho, \theta, \phi)$，而数学中常用 $(r, \phi, \theta)$，这里的 $\theta, \phi$ 含义相反，需注意区分．)*
 
 **与笛卡尔坐标的关系**：
 
@@ -183,11 +183,11 @@ $$
 \nabla^2 f = \dfrac{1}{\rho^2}\dfrac{\partial}{\partial \rho}\left(\rho^2\dfrac{\partial f}{\partial \rho}\right) + \dfrac{1}{\rho^2\sin\theta}\dfrac{\partial}{\partial \theta}\left(\sin\theta\dfrac{\partial f}{\partial \theta}\right) + \dfrac{1}{\rho^2\sin^2\theta}\dfrac{\partial^2 f}{\partial \phi^2}
 $$
 
-这个算子在求解氢原子薛定谔方程时至关重要。
+这个算子在求解氢原子薛定谔方程时至关重要．
 
-**例题：** 点电荷的电场。
-一个电量为 $Q$ 的点电荷位于原点。由于球对称性，电场必定只沿径向 $\rho$ 分布，且大小只与 $\rho$ 有关，即 $\vec{E} = E(\rho)\hat{\rho}$。
-使用高斯定律，取一个半径为 $\rho$ 的球面作为高斯面。
+**例题：** 点电荷的电场．
+一个电量为 $Q$ 的点电荷位于原点．由于球对称性，电场必定只沿径向 $\rho$ 分布，且大小只与 $\rho$ 有关，即 $\vec{E} = E(\rho)\hat{\rho}$．
+使用高斯定律，取一个半径为 $\rho$ 的球面作为高斯面．
 
 $$
 \oint \vec{E} \cdot d\vec{A} = \dfrac{Q_{enc}}{\epsilon_0}
@@ -203,4 +203,4 @@ $$
 E(\rho) = \dfrac{Q}{4\pi\epsilon_0 \rho^2}
 $$
 
-所以电场为 $\vec{E} = \frac{1}{4\pi\epsilon_0}\frac{Q}{\rho^2}\hat{\rho}$，这正是库仑定律。使用球坐标系使推导变得异常简单。
+所以电场为 $\vec{E} = \frac{1}{4\pi\epsilon_0}\frac{Q}{\rho^2}\hat{\rho}$，这正是库仑定律．使用球坐标系使推导变得异常简单．

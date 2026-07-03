@@ -12,7 +12,7 @@
 
 ## 前置决策
 
-计划默认使用 **Vercel Serverless Function** 作为后端代理（原因：项目尚未迁移 CloudFlare，Vercel 免费额度足够且部署简单）。迁移 CloudFlare 后可将 `api/submit.js` 迁移为 CloudFlare Worker，接口签名保持一致。
+计划默认使用 **Vercel Serverless Function** 作为后端代理（原因：项目尚未迁移 CloudFlare，Vercel 免费额度足够且部署简单）．迁移 CloudFlare 后可将 `api/submit.js` 迁移为 CloudFlare Worker，接口签名保持一致．
 
 ---
 
@@ -141,7 +141,7 @@ cd d:/Programs/Physics-Learning-Wiki
 npx vercel --prod
 ```
 
-记录部署后的 URL（如 `https://physics-learning-wiki.vercel.app`）。后续 Task 3 的表单提交目标使用此 URL。
+记录部署后的 URL（如 `https://physics-learning-wiki.vercel.app`）．后续 Task 3 的表单提交目标使用此 URL．
 
 - [ ] **Step 5: 测试端点**
 
@@ -151,7 +151,7 @@ curl -X POST https://<deployment-url>/api/submit \
   -d '{"title":"测试投稿","content":"这是一条测试内容","type":"suggestion","attribution":"测试者","turnstileToken":"test"}'
 ```
 
-预期：返回 400（Turnstile 验证失败，因为是测试 token），确认函数可访问。
+预期：返回 400（Turnstile 验证失败，因为是测试 token），确认函数可访问．
 
 - [ ] **Step 6: Commit**
 
@@ -174,7 +174,7 @@ git commit -m "feat: add submission endpoint (Vercel Function)"
 <!-- docs/submit.md -->
 # 提交你的物理知识
 
-感谢你愿意为 Physics Learning Wiki 做出贡献！填写下方表单即可提交内容，无需 GitHub 账号。
+感谢你愿意为 Physics Learning Wiki 做出贡献！填写下方表单即可提交内容，无需 GitHub 账号．
 
 ---
 
@@ -237,9 +237,9 @@ git commit -m "feat: add submission endpoint (Vercel Function)"
 
 <div id="submit-success" style="display:none;">
   <h2>投稿已提交！</h2>
-  <p>编辑组将在 3-5 天内处理。如需跟进，请保存此链接：</p>
+  <p>编辑组将在 3-5 天内处理．如需跟进，请保存此链接：</p>
   <p><a id="submit-issue-link" href="#" target="_blank"></a></p>
-  <p>如果你愿意注册 GitHub 账号并在 Issue 中参与讨论，修改会更高效。</p>
+  <p>如果你愿意注册 GitHub 账号并在 Issue 中参与讨论，修改会更高效．</p>
 </div>
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -374,15 +374,15 @@ git commit -m "feat: add submission page structure and styles"
 
 - [ ] **Step 1: 创建章节下拉数据生成逻辑**
 
-在 `submit-form.js` 开头，从 mkdocs.yml 的 nav 结构构建章节下拉选项。由于 MkDocs 静态页面中无法直接读取 YAML，采用预生成 JSON 的方案：
+在 `submit-form.js` 开头，从 mkdocs.yml 的 nav 结构构建章节下拉选项．由于 MkDocs 静态页面中无法直接读取 YAML，采用预生成 JSON 的方案：
 
-在 `docs/_static/js/` 下创建 `nav-tree.json`（由 Task 8 的 nav 生成脚本同步产出）。
+在 `docs/_static/js/` 下创建 `nav-tree.json`（由 Task 8 的 nav 生成脚本同步产出）．
 
 当前先手工维护一个简要版本，后续 Task 8 自动覆盖：
 
 ```javascript
 // docs/_static/js/submit-form.js
-// 章节下拉数据。由 scripts/generate-nav.py 自动生成，勿手动编辑。
+// 章节下拉数据．由 scripts/generate-nav.py 自动生成，勿手动编辑．
 // Last generated: 2026-05-25
 const NAV_TREE = [
   { label: "数学工具", children: [
@@ -686,7 +686,7 @@ async function handleSubmit(event) {
     link.href = data.issueUrl;
     link.textContent = data.issueUrl;
   } catch (err) {
-    status.textContent = err.message || "提交失败，请稍后重试。也可直接发送邮件至 submit@folderrewind.top";
+    status.textContent = err.message || "提交失败，请稍后重试．也可直接发送邮件至 submit@folderrewind.top";
     status.className = "error";
     btn.disabled = false;
     btn.textContent = "提交投稿";
@@ -703,9 +703,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 - [ ] **Step 2: 注册 Turnstile site key**
 
-在 `docs/submit.md` 末尾的 `<script>` 加载代码中，Turnstile 的 site key 通过 JS 变量传入（不暴露在 HTML 中）。将 `YOUR_TURNSTILE_SITE_KEY` 替换为从 CloudFlare Turnstile 控制台获取的实际 Site Key。
+在 `docs/submit.md` 末尾的 `<script>` 加载代码中，Turnstile 的 site key 通过 JS 变量传入（不暴露在 HTML 中）．将 `YOUR_TURNSTILE_SITE_KEY` 替换为从 CloudFlare Turnstile 控制台获取的实际 Site Key．
 
-获取方式：访问 https://dash.cloudflare.com/ → Turnstile → Add Site → 选择 "Invisible" 模式 → 获得 Site Key 和 Secret Key。
+获取方式：访问 https://dash.cloudflare.com/ → Turnstile → Add Site → 选择 "Invisible" 模式 → 获得 Site Key 和 Secret Key．
 
 - [ ] **Step 3: 本地测试**
 
@@ -740,7 +740,7 @@ git commit -m "feat: add form submission logic with Turnstile"
 在 `docs/edit-landing.md` 的两条现有入口之后、"署名说明"之前，增加投稿表单作为第三条路径：
 
 ```markdown
-3. **Web 投稿**：直接在本站填写表单提交内容，无需 GitHub 账号。适合快速分享笔记、提交勘误或提出建议。
+3. **Web 投稿**：直接在本站填写表单提交内容，无需 GitHub 账号．适合快速分享笔记、提交勘误或提出建议．
 
 <a href="/submit/" style="padding: 0.75em 1.25em; display: inline-block; line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 5px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.75em; margin-left: 0.75em;">📝 Web 投稿</a>
 ```
@@ -764,7 +764,7 @@ git commit -m "feat: add web submission link to edit-landing page"
 
 ```python
 # scripts/check-format.py
-"""检查 Markdown 文件的格式规范。在 CI 中运行，非零退出码表示检查未通过。"""
+"""检查 Markdown 文件的格式规范．在 CI 中运行，非零退出码表示检查未通过．"""
 from __future__ import annotations
 
 import argparse
@@ -780,7 +780,7 @@ LATEX_PATTERNS = [
 ]
 
 def check_file(filepath: Path) -> list[str]:
-    """检查单个文件，返回问题列表。"""
+    """检查单个文件，返回问题列表．"""
     issues: list[str] = []
     try:
         text = filepath.read_text(encoding="utf-8")
@@ -893,7 +893,7 @@ cd d:/Programs/Physics-Learning-Wiki
 uv run python scripts/check-format.py docs/intro/htc.md
 ```
 
-验证能正常检测格式问题。
+验证能正常检测格式问题．
 
 - [ ] **Step 3: Commit**
 
@@ -953,7 +953,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `## 📋 格式检查结果\n\n\`\`\`\n${truncated}\n\`\`\`\n\n请根据以上建议修改后重新提交。格式相关问题为**建议修改**（非阻断），但建议在合并前修正。`,
+              body: `## 📋 格式检查结果\n\n\`\`\`\n${truncated}\n\`\`\`\n\n请根据以上建议修改后重新提交．格式相关问题为**建议修改**（非阻断），但建议在合并前修正．`,
             });
 ```
 
@@ -976,7 +976,7 @@ git commit -m "feat: add content format check CI workflow"
 
 ```python
 # scripts/generate-nav.py
-"""从 docs/ 目录结构自动生成 MkDocs nav 配置，并产出前端章节下拉 JSON。
+"""从 docs/ 目录结构自动生成 MkDocs nav 配置，并产出前端章节下拉 JSON．
 
 规则：
 1. 每个目录下的 index.md 作为章节首页，其一号标题作为章节名
@@ -1003,7 +1003,7 @@ EXCLUDE_FILES = {
 
 
 def extract_title(md_path: Path) -> str:
-    """从 Markdown 文件中提取一级标题。"""
+    """从 Markdown 文件中提取一级标题．"""
     try:
         text = md_path.read_text(encoding="utf-8")
         match = re.search(r"^#\s+(.+)$", text, re.MULTILINE)
@@ -1015,7 +1015,7 @@ def extract_title(md_path: Path) -> str:
 
 
 def load_order(directory: Path) -> dict[str, int]:
-    """读取 _order.txt，返回 文件名→序号 的映射。"""
+    """读取 _order.txt，返回 文件名→序号 的映射．"""
     order_file = directory / "_order.txt"
     if not order_file.exists():
         return {}
@@ -1028,7 +1028,7 @@ def load_order(directory: Path) -> dict[str, int]:
 
 
 def build_nav(docs_dir: Path, current_dir: Path, indent: int = 0) -> list:
-    """递归构建 nav 结构。返回 (nav_list, error_count)。"""
+    """递归构建 nav 结构．返回 (nav_list, error_count)．"""
     items: list = []
     order = load_order(current_dir)
     
@@ -1080,7 +1080,7 @@ def build_nav(docs_dir: Path, current_dir: Path, indent: int = 0) -> list:
 
 
 def generate_nav_tree_json(docs_dir: Path, output_path: Path) -> list:
-    """生成前端章节下拉所需的 JSON 数据。"""
+    """生成前端章节下拉所需的 JSON 数据．"""
     nav = build_nav(docs_dir, docs_dir)
     
     def convert(node):
@@ -1116,7 +1116,7 @@ def main() -> int:
     tree = generate_nav_tree_json(docs_dir, output_path)
     
     js_content = (
-        "// 由 scripts/generate-nav.py 自动生成，勿手动编辑。\n"
+        "// 由 scripts/generate-nav.py 自动生成，勿手动编辑．\n"
         f"// Last generated: auto\n"
         f"const NAV_TREE = {json.dumps(tree, ensure_ascii=False, indent=2)};\n"
     )
@@ -1169,7 +1169,7 @@ git commit -m "feat: add nav auto-generation script"
 
 ```python
 # scripts/update-authors.py
-"""从 git 历史自动提取每页的贡献者，更新 frontmatter 中的 author 字段。
+"""从 git 历史自动提取每页的贡献者，更新 frontmatter 中的 author 字段．
 
 规则：
 - 不覆盖手动指定的 author（以 author_source: manual 为标记）
@@ -1185,7 +1185,7 @@ from pathlib import Path
 
 
 def get_file_authors(filepath: Path) -> list[str]:
-    """从 git 历史中提取文件的所有贡献者。"""
+    """从 git 历史中提取文件的所有贡献者．"""
     try:
         result = subprocess.run(
             ["git", "log", "--follow", "--format=%an", "--", str(filepath)],
@@ -1206,7 +1206,7 @@ def get_file_authors(filepath: Path) -> list[str]:
 
 
 def update_frontmatter(filepath: Path, authors: list[str]) -> bool:
-    """更新文件 frontmatter 中的 author 字段。返回是否实际修改。"""
+    """更新文件 frontmatter 中的 author 字段．返回是否实际修改．"""
     try:
         text = filepath.read_text(encoding="utf-8")
     except Exception:
@@ -1307,7 +1307,7 @@ cd d:/Programs/Physics-Learning-Wiki
 uv run python scripts/update-authors.py
 ```
 
-检查几个文件的 author 字段是否正确更新。
+检查几个文件的 author 字段是否正确更新．
 
 - [ ] **Step 3: Commit**
 
@@ -1353,13 +1353,13 @@ jobs:
             
             if (wordCount < 20) {
               comments.push(
-                "⚠️ 投稿内容过短（不足 20 字），请补充更多细节后重新提交。\n\n" +
-                "如果这是误操作，请在评论区说明，编辑组会关闭此 Issue。"
+                "⚠️ 投稿内容过短（不足 20 字），请补充更多细节后重新提交．\n\n" +
+                "如果这是误操作，请在评论区说明，编辑组会关闭此 Issue．"
               );
             }
             
             if (!context.payload.issue.title || context.payload.issue.title.trim().length < 2) {
-              comments.push("⚠️ 标题过短，请补充有意义的标题。");
+              comments.push("⚠️ 标题过短，请补充有意义的标题．");
             }
             
             // 基础垃圾检测：大量重复字符或纯 URL
@@ -1376,7 +1376,7 @@ jobs:
                 issue_number: context.issue.number,
                 state: "closed",
               });
-              comments.push("此投稿被系统判定为无效内容，已自动关闭。如有误判请联系编辑组。");
+              comments.push("此投稿被系统判定为无效内容，已自动关闭．如有误判请联系编辑组．");
             }
             
             if (comments.length > 0) {
@@ -1392,8 +1392,8 @@ jobs:
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
                 body:
-                  "✅ 投稿已收到！编辑组将在 3-5 天内审核。\n\n" +
-                  "审核期间如有问题，编辑组会在此 Issue 中与你沟通。",
+                  "✅ 投稿已收到！编辑组将在 3-5 天内审核．\n\n" +
+                  "审核期间如有问题，编辑组会在此 Issue 中与你沟通．",
               });
             }
 ```
@@ -1540,8 +1540,8 @@ git commit -m "feat: integrate author auto-extraction into build pipeline"
 <aside class="md-status md-status--community">
   <span class="md-status__icon">🌱</span>
   <span class="md-status__text">
-    本文来自<strong>社区投稿</strong>，内容未经 Physics Learning Wiki 团队审核，仅供交流参考。
-    如发现错误，欢迎在下方评论区指出或<a href="/submit/">提交勘误</a>。
+    本文来自<strong>社区投稿</strong>，内容未经 Physics Learning Wiki 团队审核，仅供交流参考．
+    如发现错误，欢迎在下方评论区指出或<a href="/submit/">提交勘误</a>．
   </span>
   {% if page.meta.submission_date %}
   <span class="md-status__meta">投稿日期：{{ page.meta.submission_date }}</span>
@@ -1551,9 +1551,9 @@ git commit -m "feat: integrate author auto-extraction into build pipeline"
 <aside class="md-status md-status--review">
   <span class="md-status__icon">✏️</span>
   <span class="md-status__text">
-    本页面状态：<strong>审校中</strong>。
+    本页面状态：<strong>审校中</strong>．
     {% if page.meta.review_notes %}待完善：{{ page.meta.review_notes }}{% endif %}
-    欢迎参与讨论或提交补充。
+    欢迎参与讨论或提交补充．
   </span>
 </aside>
 {% endif %}
@@ -1603,7 +1603,7 @@ cd d:/Programs/Physics-Learning-Wiki
 uv run mkdocs serve
 ```
 
-手动在某页面添加 `status: community` 或 `status: review` frontmatter，验证状态栏正确显示。
+手动在某页面添加 `status: community` 或 `status: review` frontmatter，验证状态栏正确显示．
 
 - [ ] **Step 4: Commit**
 
@@ -1624,7 +1624,7 @@ git commit -m "feat: add content status banners to page footer"
 
 ```python
 # scripts/generate-community.py
-"""从 GitHub Issues 中提取「投稿-已收录」标签的内容，生成社区角页面。"""
+"""从 GitHub Issues 中提取「投稿-已收录」标签的内容，生成社区角页面．"""
 from __future__ import annotations
 
 import json
@@ -1642,7 +1642,7 @@ REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki"
 
 
 def fetch_issues() -> list[dict]:
-    """通过 GitHub API 获取已收录的投稿 Issues。"""
+    """通过 GitHub API 获取已收录的投稿 Issues．"""
     url = f"https://api.github.com/repos/{REPO}/issues"
     params = "?labels=投稿-已收录&state=open&per_page=100"
     headers = {
@@ -1656,7 +1656,7 @@ def fetch_issues() -> list[dict]:
 
 
 def parse_issue_body(body: str) -> dict:
-    """解析 Issue 正文，提取投稿元数据。"""
+    """解析 Issue 正文，提取投稿元数据．"""
     info: dict = {"type": "未知", "chapter": "", "attribution": "匿名"}
     if not body:
         return info
@@ -1678,7 +1678,7 @@ def parse_issue_body(body: str) -> dict:
 
 
 def generate_page(issue: dict, output_dir: Path) -> str:
-    """为单个投稿生成 Markdown 页面。"""
+    """为单个投稿生成 Markdown 页面．"""
     number = issue["number"]
     title = issue["title"].replace("[投稿]", "").strip()
     body = issue["body"] or ""
@@ -1709,16 +1709,16 @@ def generate_page(issue: dict, output_dir: Path) -> str:
 
 
 def generate_index(issues: list[dict], output_dir: Path) -> None:
-    """生成社区角首页，展示所有投稿的卡片列表。"""
+    """生成社区角首页，展示所有投稿的卡片列表．"""
     lines = [
         "# 社区角",
         "",
-        "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考。",
+        "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考．",
         "",
     ]
     
     if not issues:
-        lines.append("*暂无社区投稿。快来[提交你的第一篇投稿](/submit/)吧！*")
+        lines.append("*暂无社区投稿．快来[提交你的第一篇投稿](/submit/)吧！*")
     else:
         for issue in issues:
             number = issue["number"]
@@ -1828,7 +1828,7 @@ git commit -m "feat: add community page generation script and workflow"
 
 ```python
 # scripts/generate-contributors.py
-"""从 git 历史 + Issue 投稿记录 生成贡献者墙页面。"""
+"""从 git 历史 + Issue 投稿记录 生成贡献者墙页面．"""
 from __future__ import annotations
 
 import json
@@ -1846,7 +1846,7 @@ REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki"
 
 
 def get_git_contributors() -> Counter:
-    """从 git 历史统计贡献者。"""
+    """从 git 历史统计贡献者．"""
     result = subprocess.run(
         ["git", "log", "--all", "--format=%an"],
         capture_output=True,
@@ -1861,7 +1861,7 @@ def get_git_contributors() -> Counter:
 
 
 def get_issue_contributors() -> list[dict]:
-    """从已收录的投稿 Issues 中提取贡献者署名。"""
+    """从已收录的投稿 Issues 中提取贡献者署名．"""
     url = f"https://api.github.com/repos/{REPO}/issues"
     params = "?labels=投稿-已收录&state=all&per_page=100"
     headers = {
@@ -1894,7 +1894,7 @@ def get_issue_contributors() -> list[dict]:
 
 
 def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
-    """生成贡献者墙 Markdown 页面。"""
+    """生成贡献者墙 Markdown 页面．"""
     now = datetime.utcnow().strftime("%Y-%m-%d")
     lines = [
         "# 贡献者墙",
@@ -1924,7 +1924,7 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
     lines.append("")
     lines.append("---")
     lines.append("")
-    lines.append("*此页面由 GitHub Actions 每月自动更新。*")
+    lines.append("*此页面由 GitHub Actions 每月自动更新．*")
     return "\n".join(lines)
 
 
@@ -2015,15 +2015,15 @@ git commit -m "feat: add contributor wall generation script and workflow"
 在 `docs/intro/htc.md` 的「太长不看版」末尾，增加第四条（现有四条之后）：
 
 ```markdown
-5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit/) 填写表单即可提交内容、笔记或勘误。
+5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit/) 填写表单即可提交内容、笔记或勘误．
 ```
 
 并在「参与协作」章节开头增加一段：
 
 ```markdown
 ???+ info "无需 GitHub 账号的投稿方式"
-    如果你不熟悉 GitHub，现在可以直接在网站上提交内容。
-    访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进。
+    如果你不熟悉 GitHub，现在可以直接在网站上提交内容．
+    访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进．
 ```
 
 - [ ] **Step 2: 更新首页**
@@ -2032,8 +2032,8 @@ git commit -m "feat: add contributor wall generation script and workflow"
 
 ```markdown
 ???+ note "📝 贡献你的物理知识"
-    不需要 GitHub 账号！直接访问 [投稿页面](submit.md) 分享你的笔记、勘误或建议。
-    每一份贡献都会被署名记录在 [贡献者墙](intro/contributors.md) 上。
+    不需要 GitHub 账号！直接访问 [投稿页面](submit.md) 分享你的笔记、勘误或建议．
+    每一份贡献都会被署名记录在 [贡献者墙](intro/contributors.md) 上．
 ```
 
 - [ ] **Step 3: Commit**

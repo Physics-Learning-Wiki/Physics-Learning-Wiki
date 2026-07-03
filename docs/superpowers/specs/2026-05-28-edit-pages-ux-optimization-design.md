@@ -6,22 +6,22 @@ status: approved
 
 ## Edit Pages UX Optimization Design
 
-优化 edit-landing 和 submit 两个页面的用户体验，包括 Bug 修复、UI 微调统一和 LaTeX 预览渲染保障。
+优化 edit-landing 和 submit 两个页面的用户体验，包括 Bug 修复、UI 微调统一和 LaTeX 预览渲染保障．
 
 ## Background
 
 Physics Learning Wiki 的编辑入口（edit-landing）和 Web 投稿（submit）页面存在以下问题：
 
-1. **Markdown 编辑器首次加载失败**：从其他页面导航到 submit 时，EasyMDE 编辑器不初始化，显示为一个小小的纯 textarea。只有刷新页面后才能正常显示工具栏。
-2. **"目标章节"下拉框首次加载失败**：同样由于初始化逻辑未执行，下拉框只有一个默认选项。
-3. **控件样式不统一**：edit-landing 页面的三个按钮尺寸和字体大小不一致，submit 页面的表单控件样式需要统一。
-4. **LaTeX 预览渲染**：需要确保修复后 LaTeX 在预览模式中正常工作。
+1. **Markdown 编辑器首次加载失败**：从其他页面导航到 submit 时，EasyMDE 编辑器不初始化，显示为一个小小的纯 textarea．只有刷新页面后才能正常显示工具栏．
+2. **"目标章节"下拉框首次加载失败**：同样由于初始化逻辑未执行，下拉框只有一个默认选项．
+3. **控件样式不统一**：edit-landing 页面的三个按钮尺寸和字体大小不一致，submit 页面的表单控件样式需要统一．
+4. **LaTeX 预览渲染**：需要确保修复后 LaTeX 在预览模式中正常工作．
 
 ## Root Cause Analysis
 
-mkdocs-material 使用即时导航（`navigation.instant`），通过 AJAX 加载页面内容。当从其他页面导航到 submit 页面时，浏览器不会触发 `DOMContentLoaded` 事件，而 `submit-form.js` 中所有初始化逻辑都绑定在这个事件上。
+mkdocs-material 使用即时导航（`navigation.instant`），通过 AJAX 加载页面内容．当从其他页面导航到 submit 页面时，浏览器不会触发 `DOMContentLoaded` 事件，而 `submit-form.js` 中所有初始化逻辑都绑定在这个事件上．
 
-对比：`math-csr.js` 正确使用了 `document$.subscribe()` 模式，所以在即时导航场景下 MathJax 能正常工作。
+对比：`math-csr.js` 正确使用了 `document$.subscribe()` 模式，所以在即时导航场景下 MathJax 能正常工作．
 
 ## Design
 
@@ -34,7 +34,7 @@ mkdocs-material 使用即时导航（`navigation.instant`），通过 AJAX 加�
 
 **方案：**
 
-将 `submit-form.js` 的初始化从 `DOMContentLoaded` 改为 `document$.subscribe()` 模式，与 `math-csr.js` 保持一致。
+将 `submit-form.js` 的初始化从 `DOMContentLoaded` 改为 `document$.subscribe()` 模式，与 `math-csr.js` 保持一致．
 
 ```js
 // 核心逻辑伪代码
@@ -76,9 +76,9 @@ document$.subscribe(function() {
 - `border-radius: 6px`
 - `line-height: 1.4`
 
-保留三种不同颜色以区分功能，但尺寸和间距保持一致。
+保留三种不同颜色以区分功能，但尺寸和间距保持一致．
 
-"GitHub 编辑"和"邮箱投稿"按钮水平并排显示。
+"GitHub 编辑"和"邮箱投稿"按钮水平并排显示．
 
 #### submit 页面表单控件统一
 
@@ -93,7 +93,7 @@ document$.subscribe(function() {
 **改动文件：**
 - `docs/_static/js/submit-form.js` — 优化 MathJax 调用逻辑
 
-**当前状态：** `previewRender` 函数已实现 MathJax 调用，使用 `setTimeout(100ms)` 延迟。
+**当前状态：** `previewRender` 函数已实现 MathJax 调用，使用 `setTimeout(100ms)` 延迟．
 
 **优化措施：**
 - 使用防抖（debounce 300ms）替代固定 100ms 延迟，避免快速输入时频繁调用 MathJax

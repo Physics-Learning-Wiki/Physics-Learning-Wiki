@@ -1,5 +1,6 @@
 # scripts/generate-contributors.py
 """从 git 历史 + Issue 投稿记录 生成贡献者墙页面。"""
+
 from __future__ import annotations
 
 import json
@@ -11,7 +12,6 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 from urllib.request import Request, urlopen
-
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki"
@@ -56,11 +56,13 @@ def get_issue_contributors() -> list[dict]:
         name = match.group(1).strip() if match else "匿名"
         if name not in seen and name != "匿名":
             seen.add(name)
-            contributors.append({
-                "name": name,
-                "submissions": 1,
-                "issue_url": issue["html_url"],
-            })
+            contributors.append(
+                {
+                    "name": name,
+                    "submissions": 1,
+                    "issue_url": issue["html_url"],
+                }
+            )
     return contributors
 
 
@@ -68,16 +70,16 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
     """生成贡献者墙 Markdown 页面。"""
     now = datetime.utcnow().strftime("%Y-%m-%d")
     lines = [
-        "# 贡献者墙",
+        "## 贡献者墙",
         "",
         f"> 最后更新：{now}",
         "",
-        "感谢每一位为 Physics Learning Wiki 做出贡献的朋友！",
+        "感谢每一位为 Physics Learning Wiki 做出贡献的朋友！当前这个页面只会记录 Git 提交者，仍需继续完善.",
         "",
         "## GitHub 贡献者",
         "",
-        "| 贡献者 | 提交次数 |",
-        "|--------|---------|",
+        "| 贡献者                     | 提交次数 |",
+        "| ----------------------- | ---- |",
     ]
 
     for name, count in git_counter.most_common(50):
@@ -87,8 +89,8 @@ def generate_page(git_counter: Counter, issue_contributors: list[dict]) -> str:
         lines.append("")
         lines.append("## 投稿贡献者")
         lines.append("")
-        lines.append("| 贡献者 | 投稿链接 |")
-        lines.append("|--------|---------|")
+        lines.append("| 贡献者                     | 投稿链接 |")
+        lines.append("| ----------------------- | ---- |")
         for c in issue_contributors:
             lines.append(f"| {c['name']} | [查看]({c['issue_url']}) |")
 

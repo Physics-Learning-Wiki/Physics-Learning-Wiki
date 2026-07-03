@@ -4,13 +4,13 @@ author: ChatGPT
 
 ## 线性振动（Linear Oscillations）
 
-线性振动研究“在平衡位置附近的小振幅运动”。其核心特征是：
+线性振动研究「在平衡位置附近的小振幅运动」．其核心特征是：
 
--   恢复力（或回复力矩）对位移近似成正比：$F\approx-kx$。
--   阻尼力对速度近似成正比：$F_d\approx-b\dot x$。
--   外驱动力若存在，可写为已知函数 $F(t)$（常见为简谐驱动）。
+-   恢复力（或回复力矩）对位移近似成正比：$F\approx-kx$．
+-   阻尼力对速度近似成正比：$F_d\approx-b\dot x$．
+-   外驱动力若存在，可写为已知函数 $F(t)$（常见为简谐驱动）．
 
-线性模型的强大之处在于：**可解、可叠加、可用频域方法统一处理**。本页覆盖单自由度线性振动的主干内容：简谐振动、阻尼振动、受迫振动与共振。
+线性模型的强大之处在于：**可解、可叠加、可用频域方法统一处理**．本页覆盖单自由度线性振动的主干内容：简谐振动、阻尼振动、受迫振动与共振．
 
 ??? note "本章导航"
     -   [线性振动](linear-oscillation.md)
@@ -22,7 +22,7 @@ author: ChatGPT
 
 ## 0. 建模：单自由度线性振子
 
-设质点位移为 $x(t)$，平衡位置取 $x=0$。线性弹簧与线性阻尼下：
+设质点位移为 $x(t)$，平衡位置取 $x=0$．线性弹簧与线性阻尼下：
 
 $$
 m\ddot x+b\dot x+kx=F(t).
@@ -42,7 +42,7 @@ $$
 \ddot x+2\gamma\dot x+\omega_0^2 x=f(t).
 $$
 
-其中 $\omega_0$ 是无阻尼固有角频率，$\gamma$ 描述阻尼强度。
+其中 $\omega_0$ 是无阻尼固有角频率，$\gamma$ 描述阻尼强度．
 
 ## 1. 无阻尼自由振动：简谐振动的推导
 
@@ -74,13 +74,13 @@ $$
 \ddot x=-\omega_0^2 x.
 $$
 
-### 1.2“线性”为什么重要
+### 1.2「线性」为什么重要
 
 线性意味着：
 
--   方程的解空间是线性的（可做线性组合）。
--   同频激励产生同频响应（稳态下尤为明显）。
--   复杂振动可分解为简谐分量再叠加，详见 [振动的合成与分解](superposition.md)。
+-   方程的解空间是线性的（可做线性组合）．
+-   同频激励产生同频响应（稳态下尤为明显）．
+-   复杂振动可分解为简谐分量再叠加，详见 [振动的合成与分解](superposition.md)．
 
 ## 2. 能量观点：等分与守恒
 
@@ -103,7 +103,7 @@ $$
 =m\dot x(\ddot x+\omega_0^2 x)=0.
 $$
 
-所以 $E$ 守恒。
+所以 $E$ 守恒．
 
 对 $x=A\cos(\omega_0 t+\varphi)$，可得
 
@@ -147,7 +147,7 @@ r^2+2\gamma r+\omega_0^2=0
 \Rightarrow r=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}.
 $$
 
-根据判别式大小分三类。
+根据判别式大小分三类．
 
 ### 3.1 欠阻尼（$\gamma<\omega_0$）
 
@@ -163,7 +163,7 @@ $$
 x(t)=Ae^{-\gamma t}\cos(\omega_d t+\varphi).
 $$
 
-振幅按 $e^{-\gamma t}$ 衰减，振动角频率从 $\omega_0$ 降为 $\omega_d$。
+振幅按 $e^{-\gamma t}$ 衰减，振动角频率从 $\omega_0$ 降为 $\omega_d$．
 
 **对数减量**（衡量衰减）：若相邻两个峰值间隔约为 $T_d=2\pi/\omega_d$，则
 
@@ -179,7 +179,7 @@ $$
 x(t)=(C_1+C_2 t)e^{-\omega_0 t}.
 $$
 
-此时系统回到平衡位置最快且不振荡。
+此时系统回到平衡位置最快且不振荡．
 
 ### 3.3 过阻尼（$\gamma>\omega_0$）
 
@@ -189,7 +189,7 @@ $$
 x(t)=C_1e^{r_1 t}+C_2e^{r_2 t},\quad r_{1,2}=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}.
 $$
 
-同样不发生振荡。
+同样不发生振荡．
 
 ### 3.4 阻尼下的能量衰减
 
@@ -205,7 +205,7 @@ $$
 \dfrac{d}{dt}\left(\frac12 m\dot x^2+\frac12 kx^2\right)=-b\dot x^2\le 0.
 $$
 
-因此阻尼以功率 $b\dot x^2$ 消耗机械能。
+因此阻尼以功率 $b\dot x^2$ 消耗机械能．
 
 ## 4. 简谐受迫振动（Driven Oscillation）
 
@@ -221,7 +221,7 @@ $$
 \ddot x+2\gamma\dot x+\omega_0^2 x=\dfrac{F_0}{m}\cos(\Omega t).
 $$
 
-总解 = 齐次解（暂态）+ 特解（稳态）。暂态随时间衰减，长时间后只剩稳态响应。
+总解 = 齐次解（暂态）+ 特解（稳态）．暂态随时间衰减，长时间后只剩稳态响应．
 
 ### 4.1 复数法求稳态特解
 
@@ -267,33 +267,33 @@ x_p(t)=A\cos(\Omega t-\delta).
 ??? note "图例"
     ![受迫振动的振幅与相位响应](../images/driven_response.png)
     
-    上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化。  
+    上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化．  
 $$
 
 ### 4.2 共振与共振频率
 
-振幅随 $\Omega$ 的峰值称共振。对欠阻尼（$\gamma\ll\omega_0$），最大振幅出现在
+振幅随 $\Omega$ 的峰值称共振．对欠阻尼（$\gamma\ll\omega_0$），最大振幅出现在
 
 $$
 \Omega_r\approx\sqrt{\omega_0^2-2\gamma^2}\approx \omega_0\quad(\gamma\ll\omega_0).
 $$
 
-在 $\Omega=\omega_0$ 时（常称“驱动频率等于固有频率”）
+在 $\Omega=\omega_0$ 时（常称「驱动频率等于固有频率」）
 
 $$
 A(\omega_0)=\dfrac{F_0/m}{2\gamma\omega_0}.
 $$
 
-可见阻尼越小（$\gamma$ 越小），共振峰越高。
+可见阻尼越小（$\gamma$ 越小），共振峰越高．
 
 ??? note "例题：功率最大与振幅最大是否同频"
     在线性受迫振动稳态下，证明：
     
     1.  平均吸收功率 $\langle P\rangle$ 关于 $\Omega$ 的最大值出现在 $\Omega=\omega_0$；
-    2.  振幅 $A(\Omega)$ 的最大值出现在 $\Omega_r=\sqrt{\omega_0^2-2\gamma^2}$（欠阻尼）。
+    2.  振幅 $A(\Omega)$ 的最大值出现在 $\Omega_r=\sqrt{\omega_0^2-2\gamma^2}$（欠阻尼）．
     
     **解：**   
-    稳态 $x=A\cos(\Omega t-\delta)$，速度 $\dot x=-A\Omega\sin(\Omega t-\delta)$。  
+    稳态 $x=A\cos(\Omega t-\delta)$，速度 $\dot x=-A\Omega\sin(\Omega t-\delta)$．  
     阻尼耗散的平均功率（也等于外力平均做功率）为
     
     $$
@@ -313,18 +313,18 @@ $$
     \langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.  
     $$
     
-    对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是“功率共振”）。  
+    对 $\Omega$ 取极值可得最大值发生在 $\Omega=\omega_0$（这是「功率共振」）．  
     而 $A(\Omega)$ 的极值由分母最小给出，欠阻尼时可得
     
     $$
     \Omega_r=\sqrt{\omega_0^2-2\gamma^2}.  
     $$
     
-    因此：**功率共振与振幅共振一般不完全同频**（弱阻尼时两者都接近 $\omega_0$）。
+    因此：**功率共振与振幅共振一般不完全同频**（弱阻尼时两者都接近 $\omega_0$）．
 
 ### 4.3 功率与带宽（品质因数）
 
-稳态下外力做功的平均功率等于阻尼耗散的平均功率。
+稳态下外力做功的平均功率等于阻尼耗散的平均功率．
 
 阻尼耗散功率：
 
@@ -344,17 +344,17 @@ $$
 Q=\dfrac{\omega_0}{2\gamma}.
 $$
 
-也可用“半功率带宽”近似描述：
+也可用「半功率带宽」近似描述：
 
 $$
 \Delta\Omega\approx\dfrac{\omega_0}{Q}=2\gamma
 \quad(\gamma\ll\omega_0).
 $$
 
-直观理解：$Q$ 越大，共振峰越尖锐，系统对频率更“挑剔”。
+直观理解：$Q$ 越大，共振峰越尖锐，系统对频率更「挑剔」．
 
 ??? note "例题：由共振峰估算阻尼"
-    实验测得受迫振动在 $\Omega=100\,\text{rad/s}$ 附近共振，半功率点频率约为 $\Omega_1=98\,\text{rad/s}$、$\Omega_2=102\,\text{rad/s}$。估算 $\gamma$ 与 $Q$。
+    实验测得受迫振动在 $\Omega=100\,\text{rad/s}$ 附近共振，半功率点频率约为 $\Omega_1=98\,\text{rad/s}$、$\Omega_2=102\,\text{rad/s}$．估算 $\gamma$ 与 $Q$．
     
     **解：**
     
@@ -362,13 +362,13 @@ $$
     \Delta\Omega=\Omega_2-\Omega_1\approx 4\,\text{rad/s}\approx 2\gamma  
     $$
     
-    得 $\gamma\approx 2\,\text{s}^{-1}$。
+    得 $\gamma\approx 2\,\text{s}^{-1}$．
     
     $$
     Q\approx\dfrac{\omega_0}{2\gamma}\approx\dfrac{100}{4}=25.  
     $$
 
-## 5. 暂态 + 稳态：为什么“久了只剩稳态”
+## 5. 暂态 + 稳态：为什么「久了只剩稳态」
 
 受迫振动的通解
 
@@ -376,10 +376,10 @@ $$
 x(t)=x_h(t)+x_p(t).
 $$
 
--   $x_h(t)$ 为齐次解（阻尼自由振动），含因子 $e^{-\gamma t}$（欠阻尼时）。
--   $x_p(t)$ 为稳态特解，频率等于驱动频率 $\Omega$。
+-   $x_h(t)$ 为齐次解（阻尼自由振动），含因子 $e^{-\gamma t}$（欠阻尼时）．
+-   $x_p(t)$ 为稳态特解，频率等于驱动频率 $\Omega$．
 
-因此当 $t\gg 1/\gamma$，$x_h$ 衰减到很小，实验上看到的就是稳态响应。
+因此当 $t\gg 1/\gamma$，$x_h$ 衰减到很小，实验上看到的就是稳态响应．
 
 ## 6. 典型模型：单摆的小角近似
 
@@ -404,20 +404,20 @@ $$
 $$
 
 ??? warning "小角近似的边界"
-    当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](nonlinear.md) 中“频率随振幅变化”的讨论。
+    当振幅较大时，单摆周期会随振幅增大而变长（非等时性），属于非线性效应，可参考 [非线性振动](nonlinear.md) 中「频率随振幅变化」的讨论．
 
 ## 7. 常见易错点清单
 
--   $\omega_0$（无阻尼固有频率）与 $\omega_d$（欠阻尼振动频率）不要混。
--   共振发生在“驱动频率附近”，严格最大点是 $\Omega_r\approx\sqrt{\omega_0^2-2\gamma^2}$。
--   相位滞后 $\delta$：低频时 $\delta\approx 0$，高频时 $\delta\to \pi$，在接近共振时 $\delta\approx \pi/2$。
--   使用 $Q\approx\omega_0/(2\gamma)$ 与 $\Delta\Omega\approx 2\gamma$ 的前提是弱阻尼。
+-   $\omega_0$（无阻尼固有频率）与 $\omega_d$（欠阻尼振动频率）不要混．
+-   共振发生在「驱动频率附近」，严格最大点是 $\Omega_r\approx\sqrt{\omega_0^2-2\gamma^2}$．
+-   相位滞后 $\delta$：低频时 $\delta\approx 0$，高频时 $\delta\to \pi$，在接近共振时 $\delta\approx \pi/2$．
+-   使用 $Q\approx\omega_0/(2\gamma)$ 与 $\Delta\Omega\approx 2\gamma$ 的前提是弱阻尼．
 
-## 8. 与“波”的衔接
+## 8. 与「波」的衔接
 
-波动可视为“无数个振子通过耦合连接起来”的结果：
+波动可视为「无数个振子通过耦合连接起来」的结果：
 
 -   单个振子：$\ddot x+\omega_0^2 x=0$
 -   连续耦合：相邻点相互作用 $\Rightarrow$ 偏微分方程 $\Rightarrow$ 波动方程
 
-从振动过渡到波动的关键推导在 [连续介质中的波](wave-in-continuous-medium.md)。
+从振动过渡到波动的关键推导在 [连续介质中的波](wave-in-continuous-medium.md)．

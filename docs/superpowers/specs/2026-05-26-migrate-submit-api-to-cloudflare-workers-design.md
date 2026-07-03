@@ -2,13 +2,13 @@
 
 ## 背景
 
-投稿页面（`/submit/`）的提交功能完全无法使用。根本原因是 Vercel 的 `*.vercel.app` 域名在中国大陆被 GFW 封锁，导致前端 `fetch()` 请求到 `physics-learning-wiki-a4c895roj-leafukes-projects.vercel.app/api/submit` 时连接超时（`ERR_CONNECTION_TIMED_OUT`）。
+投稿页面（`/submit/`）的提交功能完全无法使用．根本原因是 Vercel 的 `*.vercel.app` 域名在中国大陆被 GFW 封锁，导致前端 `fetch()` 请求到 `physics-learning-wiki-a4c895roj-leafukes-projects.vercel.app/api/submit` 时连接超时（`ERR_CONNECTION_TIMED_OUT`）．
 
-DNS 可解析该域名（→ 108.160.169.37），但 ICMP 和 TCP 均不通，确认为网络层封锁。
+DNS 可解析该域名（→ 108.160.169.37），但 ICMP 和 TCP 均不通，确认为网络层封锁．
 
 ## 目标
 
-将投稿 API 从 Vercel Serverless Function 迁移到 Cloudflare Workers，使中国大陆用户可以正常提交投稿。
+将投稿 API 从 Vercel Serverless Function 迁移到 Cloudflare Workers，使中国大陆用户可以正常提交投稿．
 
 ## 架构变更
 
@@ -68,21 +68,21 @@ compatibility_date = "2024-01-01"
 
 #### 4. `api/submit.js`（保留但弃用）
 
-保留文件作为备份/参考，不删除。在文件顶部添加注释标记为已弃用。
+保留文件作为备份/参考，不删除．在文件顶部添加注释标记为已弃用．
 
 ## 同时修复的 Bug
 
 ### Bug 1：API handler 缺少 `typeLabel` 字段
 
-**现状**：前端发送 `{ type: "suggestion", typeLabel: "建议/想法", ... }`，但 `api/submit.js:48` 的解构中没有 `typeLabel`，导致 `buildIssueBody()` 中 `data.typeLabel || data.type` 始终回退到原始英文值。
+**现状**：前端发送 `{ type: "suggestion", typeLabel: "建议/想法", ... }`，但 `api/submit.js:48` 的解构中没有 `typeLabel`，导致 `buildIssueBody()` 中 `data.typeLabel || data.type` 始终回退到原始英文值．
 
-**修复**：在 Worker 的请求体解构中加入 `typeLabel`，传递给 `buildIssueBody()`。
+**修复**：在 Worker 的请求体解构中加入 `typeLabel`，传递给 `buildIssueBody()`．
 
 ### Bug 2：表单可能以 GET 方式提交
 
-**现状**：用户控制台中看到 URL 参数形式的请求（`submit/?type=suggestion&chapter=&title=1...`），说明在某些情况下表单以 GET 方式提交而非通过 JS 的 `fetch POST`。
+**现状**：用户控制台中看到 URL 参数形式的请求（`submit/?type=suggestion&chapter=&title=1...`），说明在某些情况下表单以 GET 方式提交而非通过 JS 的 `fetch POST`．
 
-**修复**：在 `<form>` 标签上添加 `method="post"` 和 `onsubmit="return false"` 作为防御性措施，确保即使 JS 未加载也不会以 GET 方式提交表单数据到 URL。
+**修复**：在 `<form>` 标签上添加 `method="post"` 和 `onsubmit="return false"` 作为防御性措施，确保即使 JS 未加载也不会以 GET 方式提交表单数据到 URL．
 
 ## 环境变量
 
