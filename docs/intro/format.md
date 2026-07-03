@@ -74,6 +74,8 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
     -   尽可能简洁易懂，避免压行等不良习惯。尽可能保证可读性，突出算法思想。详见 [CONT-10](#CONT-10)。
 
     -   不推荐直接把代码插入 Markdown 文档中。详见 [CODE-1.1](#CODE-1.1)、[CODE-1.2](#CODE-1.2)。
+  
+    -   不推荐在无关场合滥用计算机工具，应先介绍物理内容的概念及思想，而非直接进行计算。
 
 ## 对本文档的格式要求
 
@@ -96,7 +98,7 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 
 -   <a id="SAVE-2"></a>SAVE-2：请务必确保文档中引用的 **外链** 图片已经全部转存到了 **本库内** 对应的 `images` 文件夹中（防止触发某些网站的防盗链），建议处理成 `MD 文档名称 + 编号` 的形式（可参考已有文档中图片的处理方式）。例如：本篇文档的文件名称为 format，则文档中引用的第一张图片的名字为 `format1.png`。
 
--   <a id="SAVE-3"></a>SAVE-3：推荐使用 SVG 格式的图片[^ref4]，以获取较好的清晰度和缩放效果。由于 **OI Wiki** 各组件对 SVG 标准的兼容性不同，所以您的图片应基于 [SVG 1.1](http://www.w3.org/TR/SVG11/) 标准。
+-   <a id="SAVE-3"></a>SAVE-3：推荐使用 SVG 格式的图片[^ref4]，以获取较好的清晰度和缩放效果。由于 **Physics Learning Wiki** 各组件对 SVG 标准的兼容性不同，所以您的图片应基于 [SVG 1.1](http://www.w3.org/TR/SVG11/) 标准。
 
 -   <a id="SAVE-4"></a>SAVE-4：动图如果无法或者不会制作 SVG 格式的，则推荐使用 APNG 格式[^apng]的文件。Windows 用户可使用 [ScreenToGif](https://www.screentogif.com) 录制，Linux 用户可使用 [Peek](https://github.com/phw/peek) 录制，注意需要在设置里调整为录制 APNG。其他情况则推荐先制作为 MP4 等视频文件再转换为 APNG，如果使用 ffmpeg 则可以使用 `ffmpeg -i filename.mp4 -f apng filename.apng -plays 0` 转换。[^intro-apng]
 
@@ -113,11 +115,11 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 -   <a id="STRC-1"></a>STRC-1：由浅入深，内容的难度应该具有渐进性。
 -   <a id="STRC-2"></a>STRC-2：逻辑性。
 
-    -   <a id="STRC-2.1"></a>STRC-2.1：对于算法或数学概念类内容的撰写应该尽量包含以下的内容：
+    -   <a id="STRC-2.1"></a>STRC-2.1：对于物理或数学概念类内容的撰写应该尽量包含以下的内容：
 
         1.  原理：说明该内容对应的原理；
         2.  例子：给出 1 \~ 2 个典型的例子；
-        3.  题目：在该标题下，**只需要给出题目名字和题目链接**。对于算法类题目，题目链接 OJ 的优先级为：原 OJ（国外 OJ 要求国内可流畅访问）> UOJ > LOJ > 洛谷。
+        3.  题目：例题需切合主题，提供引用链接或书目，并给出详细解答。
 
         示例页面：[IDA\*](../search/idastar.md)
 
@@ -128,15 +130,15 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 
         示例页面：[WSL (Windows 10)](../tools/wsl.md)
 
-除现有内容质量较低的情况外，建议尽量从 **补充** 的角度来做贡献，而非采取直接覆盖的方式。如果拿不准主意，可以参考 [关于本项目的交流方式](./about.md#交流方式) 一节，与 **OI Wiki** 项目组联系。
+除现有内容质量较低的情况外，建议尽量从 **补充** 的角度来做贡献，而非采取直接覆盖的方式。如果拿不准主意，可以参考 [关于本项目的交流方式](./about.md#交流方式) 一节，与 **Physics Learning Wiki** 项目组联系。
 
 ### 文档的基本格式要求
 
 #### Remark-lint 的格式要求
 
-[remark-lint](https://github.com/remarkjs/remark-lint) 可以自动给项目内文件统一风格。**OI Wiki** 现在启用的配置文件托管在 [.remarkrc](https://github.com/OI-wiki/OI-wiki/blob/master/.remarkrc)。
+[remark-lint](https://github.com/remarkjs/remark-lint) 可以自动给项目内文件统一风格。**Physics Learning Wiki** 现在启用的配置文件托管在 [.remarkrc](https://github.com/OI-wiki/OI-wiki/blob/master/.remarkrc)。
 
-在配置过程中 **OI Wiki** 项目组也遇到了一些 remark-lint 不能很好处理的问题，所以请严格按照下列要求编辑文档：
+在配置过程中 **Physics Learning Wiki** 项目组也遇到了一些 remark-lint 不能很好处理的问题，所以请严格按照下列要求编辑文档：
 
 -   <a id="LINT-1"></a>LINT-1：不要使用如 `<h1>` 或者 `# 标题` 的一级标题。
 
@@ -166,13 +168,6 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
         ␣␣␣␣
         ␣␣␣␣这个`???`是什么的问题会在 [下文](#MDFM-5) 解答。
         ```
-        
-        ???+ warning "Warning"
-            请记得在文本前面添加 4 个空格。其他的语法还是与 Markdown 语法一致。
-            
-            不添加 4 个空格的话，文本就不会出现在 Details 文本框里了。
-            
-            这个 `???` 是什么的问题会在 [下文](#MDFM-5) 解答。
 
 -   <a id="LINT-7"></a>LINT-7：代码样式的纯文本块请使用 ` ```text`。直接使用 ` ``` ` 而不指定纯文本块里的语言，可能会导致内容被错误地缩进。
 
@@ -339,12 +334,12 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 
 #### 文本内容的格式要求
 
--   <a id="CONT-1"></a>CONT-1：所有的 **OI Wiki** 文本都应使用粗体标记。
+-   <a id="CONT-1"></a>CONT-1：所有的 **Physics Learning Wiki** 文本都应使用粗体标记。
 
 -   <a id="CONT-2"></a>CONT-2：在页面的开头应有一段简短的文字（如「本页面将介绍……」），用于概述页面内容。
 
     ???+ success "示例"
-        本页面将列出在 **OI Wiki** 编写过程时推荐使用的格式规范与编辑方针。
+        本页面将列出在 **Physics Learning Wiki** 编写过程时推荐使用的格式规范与编辑方针。
 
 -   <a id="CONT-3"></a>CONT-3：涉及到「前置知识」的页面，请在开头添加一行 **前置知识：……**，放在页面概述前。格式如下：
 
@@ -357,7 +352,7 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 
 -   <a id="CONT-4"></a>CONT-4：请注意文档结构。文档结构应当十分条理，层次清晰。请不要让诸如「五级标题」这种事情再次发生了，一篇正常的文章是用不到如此复杂的结构层次的。
 
--   <a id="CONT-5"></a>CONT-5：请注意内容的表述。作为一个百科网站，**OI Wiki** 使用的语言应该是书面的，客观的。诸如「抖机灵」性质的，对读者理解帮助不大的内容，不应该出现在 **OI Wiki** 当中。
+-   <a id="CONT-5"></a>CONT-5：请注意内容的表述。作为一个百科网站，**Physics Learning Wiki** 使用的语言应该是书面的，客观的。诸如「抖机灵」性质的，对读者理解帮助不大的内容，不应该出现在 **Physics Learning Wiki** 当中。
 
 -   <a id="CONT-6"></a>CONT-6：请尽量为链接提供完整的标题、或者可被识别的提示，避免使用裸地址和「这」、「此」之类的模糊不清的描述。每一个超链接都应尽量对其加以清楚明确的描述，方便读者明白该超链接将指向何处。
 
@@ -420,7 +415,7 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
             -   第三个 `gcd` 接受超过两个整数，返回这些整数的最大公约数。
             -   第四个 `gcd` 接受一个容器，返回容器中所有数的最大公约数。
             
-            对 **OI Wiki** 来说，我们只关注最大公约数这个算法的思想，这份代码涵盖了过多无关且复杂的技术细节，是需要避免的。
+            对 **Physics Learning Wiki** 来说，我们只关注最大公约数这个算法的思想，这份代码涵盖了过多无关且复杂的技术细节，是需要避免的。
 
         ???+ success "推荐的写法"
             ```cpp
@@ -518,7 +513,7 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它。因此对�
 
 请注意，尽管上述输入公式的语法和真正的 LaTeX 排版系统非常相似，但 **MathJax 和 LaTeX 是两个完全没有关系的东西**，MathJax 仅仅使用了一部分与 LaTeX 非常相似的语法而已。实际上，二者之间有不少细节差别，而这些差别经常导致写出来的公式在二者之间不通用。
 
-由于 **OI Wiki** 使用 LaTeX 排版引擎开发了 PDF 导出工具，因此有必要强调公式在 MathJax 和 LaTeX 之间的兼容性。**请各位在 Wiki 中书写数学公式时注意以下几点。**
+由于 **Physics Learning Wiki** 使用 LaTeX 排版引擎开发了 PDF 导出工具，因此有必要强调公式在 MathJax 和 LaTeX 之间的兼容性。**请各位在 Wiki 中书写数学公式时注意以下几点。**
 
 这些规则已经向 MathJax 做了尽可能多的妥协。导出工具兼容了一部分原本仅能在 MathJax 中正常输出的写法。
 
@@ -622,34 +617,6 @@ $$
 
 -   <a id="CODE-2.2"></a>CODE-2.2：修改例题代码时，请保证你的代码是正确的。例题代码均拥有一组测试数据，存储在 `/docs/主题/examples/内容/内容_编号.in/ans` 中。
 
-如果你需要添加例题：
-
--   请在 `docs/主题/code/内容` 中添加你的例题代码，并编号。通常，该 `内容` 文件夹中已经有了一个或者多个代码。例子：如果需要修改 `dag.md` 的代码，那么路径为 `docs/dp/code/dag`，其中 `dp` 为主题，而 `dag` 为内容。
-
--   如果需要在所有例题的最后添加一个例题代码，请顺延目前的编号。比如已经存在了 `code/prefix-sum/prefix-sum_3.cpp`，如果需要在最后一个例题后继续添加一个例题，请将你的代码命名为 `prefix-sum_4.cpp` 并添加到 `docs/basic/code/prefix-sum` 中。
-
--   如果需要在文章中间添加一个例题代码，请插入并改变原先的编号。比如已经存在了 `prefix-sum_2.cpp` 和 `prefix-sum_3.cpp`，如果你需要在第二个例题和第三个例题中间再添加一个例题，请将你的代码命名为 `prefix-sum_3.cpp` 并将原先的 `prefix-sum_3.cpp` 改名为 `prefix-sum_4.cpp` 同时 **在 Markdown 文档和测试数据存放的文件夹中同步修改编号**。
-
--   **别忘记，你还要对你的代码添加一组测试数据，以保证这个代码是可以成功运行的。** 你需要在 `docs/主题/examples/内容` 文件夹中添加一组测试数据，将输入数据存储为 `内容_编号.in`，将标准答案存储为 `内容_编号.ans`。
-
--   最后，可以将代码添加到文档中了。请直接在文档中用添加代码块的格式，并将代码块内部直接写成 `--8<-- "你的代码路径"` 的格式就可以了。
-
-**OI Wiki** 会对例题代码进行全平台测试，为保证您的代码能够顺利通过测试，请遵守如下规则：
-
--   <a id="CODE-3.1"></a>CODE-3.1：您的代码需要同时支持在 C++14、C++17、C++20 标准下编译和运行。
--   <a id="CODE-3.2"></a>CODE-3.2：不要使用 `<bits/stdc++.h>`、`<bits/extc++.h>` 等非标准头文件。
--   <a id="CODE-3.3"></a>CODE-3.3：标准答案文件不要有多余空格。
--   <a id="CODE-3.4"></a>CODE-3.4：不要使用 [代用记号](https://en.cppreference.com/w/cpp/language/operator_alternative#Alternative_tokens)。
--   <a id="CODE-3.5"></a>CODE-3.5：使用 [聚合初始化](https://en.cppreference.com/w/cpp/language/aggregate_initialization) 时，`object{args}` 不可写成 `(object){args}`。
--   <a id="CODE-3.6"></a>CODE-3.6：使用 [运算符重载](https://en.cppreference.com/w/cpp/language/operators) 时注意格式，如重载比较运算符时，若使用成员函数写法，则不可省略 `const` 限定符。
--   <a id="CODE-3.7"></a>CODE-3.7：不要使用类似 `#define int long long` 的宏定义。
--   <a id="CODE-3.8"></a>CODE-3.8：若您需要使用 C 风格的 [有格式输入/输出](https://en.cppreference.com/w/cpp/io/c#Formatted_input.2Foutput)，请特别留意格式指示符的写法：如 `size_t` 对应 `%zu`，`ptrdiff_t` 对应 `%td`。例如输出某 STL 容器的大小时，代码应类似 `printf("%zu", container.size());`。
--   <a id="CODE-3.9"></a>CODE-3.9：由于当前测试环境 libstdc++ 的 `<chrono>` 库有 [BUG](https://github.com/actions/runner-images/issues/8659)，所以请避免使用 `<chrono>` 库。
--   <a id="CODE-3.10"></a>CODE-3.10：由于 `long` 与 `unsigned long` 在某些测试环境下为 32 位，而在另一些测试环境下为 64 位，为确保各平台代码行为一致，故不推荐使用这两种类型。推荐使用 [定宽整数类型](../lang/var.md#定宽整数类型)。
--   <a id="CODE-3.11"></a>CODE-3.11：不建议使用 `__gcd`、`__int128`、`__builtin_` 系列函数等非标准内容。如果您需要使用，则需确保您的代码能通过全平台测试，如 [此代码](https://github.com/OI-wiki/OI-wiki/blob/4af83d6db6017f4c36db6d4a7583bbc3f6257484/docs/ds/code/tree-decompose/tree-decompose_1.cpp#L24-L47) 提供了 libstdc++ 中 [std::bitset](../lang/csl/bitset.md) 特有成员函数 `_Find_first()` 的全平台实现。
-
-此外，为了提高代码的可读性，建议遵守 [CONT-10](#CONT-10)。
-
 ## 图解
 
 可能上述要求把握起来有些困难，接下来我们给出一些图片来具体分析哪种格式应该使用，哪种不该使用：
@@ -658,7 +625,7 @@ $$
 
 ![](./images/format-1.png)
 
-将复杂的 LaTeX 公式使用行间格式，可以使得页面错落有致。但 **OI Wiki** 作为一个以中文为主体的站点，我们希望大部分纲领性的信息（如标题）尽量使用中文（除英文专有名词）。
+将复杂的 LaTeX 公式使用行间格式，可以使得页面错落有致。但 **Physics Learning Wiki** 作为一个以中文为主体的站点，我们希望大部分纲领性的信息（如标题）尽量使用中文（除英文专有名词）。
 
 ### 例 2
 
