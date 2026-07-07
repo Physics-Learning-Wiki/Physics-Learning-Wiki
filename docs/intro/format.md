@@ -384,46 +384,6 @@ author: OI-wiki, Physics Learning Wiki, Find-Light1130
 
 -   <a id="CONT-9"></a>CONT-9：请尽量避免在标题中使用 MathJax 公式，无论是几级标题．在标题中使用公式有可能会导致目录显示错误．[^ref3]
 
--   <a id="CONT-10"></a>CONT-10：请注意代码的可读性．
-
-    -   <a id="CONT-10.1.1"></a>CONT-10.1.1：代码应拥有清晰的逻辑，尽可能简洁易懂．不要过度压行，不要引入过多无关代码．尽量避免与算法思想无关的内容．
-    -   <a id="CONT-10.1.2"></a>CONT-10.1.2：建议在参考代码中添加适当注释以方便读者理解．
-
-    对 C/C++ 类语言：
-
-    -   <a id="CONT-10.2.1"></a>CONT-10.2.1：尽量避免出现影响阅读的预编译指令和宏定义．
-
-    -   <a id="CONT-10.2.2"></a>CONT-10.2.2：不要用 `0` 代替 `false`/`NULL`/`nullptr` 等，不要用 `1` 代替 `true` 等．
-
-    -   <a id="CONT-10.2.3"></a>CONT-10.2.3：在声明 [类型别名](https://en.cppreference.com/w/cpp/language/type_alias) 时，不推荐使用 `typedef`，推荐使用 `using`．
-
-    -   <a id="CONT-10.2.4"></a>CONT-10.2.4：不推荐用宏定义定义常量，推荐直接使用 `constexpr`/`const` 等关键字定义常量．
-
-    -   <a id="CONT-10.2.5"></a>CONT-10.2.5：不推荐对函数使用 `inline` 关键字，详见 [编译优化](../lang/optimizations.md#inline---内联)．
-
-    -   <a id="CONT-10.2.6"></a>CONT-10.2.6：尽量避免类型萃取、偏特化等复杂的模板元编程技巧．如确需使用，则需添加注释解释含义．
-
-        ???+ failure "不推荐的写法"
-            ```cpp
-            --8<-- "docs/intro/code/format/format_1.cpp:not-recommended"
-            ```
-            
-            该代码给出了一个求 [最大公约数](../math/number-theory/gcd.md) 的复杂实现，其中：
-            
-            -   第一个 `gcd` 接受两个无符号整数 `x`，`y`，返回 `x`，`y` 的最大公约数，返回值类型的范围保证能同时包含 `x` 和 `y`．
-            -   第二个 `gcd` 接受两个整数 `x`，`y`，其中 `x`，`y` 至少有一个是有符号整数，返回 `x`，`y` 的最大公约数．
-            -   第三个 `gcd` 接受超过两个整数，返回这些整数的最大公约数．
-            -   第四个 `gcd` 接受一个容器，返回容器中所有数的最大公约数．
-            
-            对 **Physics Learning Wiki** 来说，我们只关注最大公约数这个算法的思想，这份代码涵盖了过多无关且复杂的技术细节，是需要避免的．
-
-        ???+ success "推荐的写法"
-            ```cpp
-            --8<-- "docs/intro/code/format/format_1.cpp:recommended"
-            ```
-            
-            诸如「添加类型检查」、「处理负数输入」、「让函数支持多参数」等更多是工程上关注的话题，我们的重点始终应该是算法的思想．
-
 #### LaTeX 公式的格式要求
 
 LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对于 LaTeX 的使用我们有严格的要求．如果您想要快速上手，可以阅读本章节末给出的表格．
@@ -471,8 +431,6 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对�
 -   <a id="MATH-1.9"></a>MATH-1.9：请注意，不要在非代码区域使用任何程序设计语言的表示方式，而是使用 LaTeX 公式．例如，使用 `$=$` 而不是 `$==$`（如 $a=b$，而不是 $a==b$）、使用 `` `a<<1` `` 或者 `$a\times 2$` 而不是 `$a<<1$`、使用 `$a\bmod b$` 代替 `$a\%b$`（如 $a\bmod b$，而不是 $a\%b$）等．
 
 -   <a id="MATH-1.10"></a>MATH-1.10：公式中不要使用中括号连缀（即 C++ 高维数组的表示方式）而多使用下标．即 $a_{i,j,k}$ 而不是 $a[i][j][k]$．在公式中下标较复杂的情况下建议改用多元函数（$f(i,j,k)$）或内联代码格式．对于一元简单函数使用 `$f_i$`、`$f(i)$` 或 `$f[i]$` 均可．
-
--   <a id="MATH-1.11"></a>MATH-1.11：为了统一且书写方便，复杂度分析时大 $O$ 记号请直接使用 `$O()$` 而不是 `$\mathcal O()$`．
 
 -   <a id="MATH-1.12"></a>MATH-1.12：在表示等价关系时，请使用 `$\iff$`，效果 $\iff$，而不是 `$\Leftrightarrow$`，效果 $\Leftrightarrow$．
 
@@ -587,35 +545,6 @@ $$
 \end{array}
 $$
 ```
-
-#### 代码块的格式要求
-
-代码块目前分为两种：片段和例题．
-
-关于片段代码：
-
--   <a id="CODE-1.1"></a>CODE-1.1：若代码片段足够短且没有必要测试，可以直接在 Markdown 文档中修改．
--   <a id="CODE-1.2"></a>CODE-1.2：由于 Markdown 文档中内嵌的代码难以实现自动化测试，所以推荐使用例题代码的格式插入片段代码．有如下两种方式可供选择：
-
-    1.  使用多文件编译方案．参见 [#5729](https://github.com/OI-wiki/OI-wiki/pull/5729)．
-
-        示例：[冒泡排序](https://github.com/OI-wiki/OI-wiki/blob/c35defebff6cea072d6cfeb359642f6fd84e66c7/docs/basic/bubble-sort.md?plain=1#L48)．正文引用 [bubble-sort\_1.cpp](https://github.com/OI-wiki/OI-wiki/blob/c35defebff6cea072d6cfeb359642f6fd84e66c7/docs/basic/code/bubble-sort/bubble-sort_1.cpp)，测试代码放在 [bubble-sort\_1.aux1.cpp](https://github.com/OI-wiki/OI-wiki/blob/c35defebff6cea072d6cfeb359642f6fd84e66c7/docs/basic/code/bubble-sort/bubble-sort_1.aux1.cpp) 中．
-
-    2.  在代码文件中用 `// --8<-- [start:name]` 和 `// --8<-- [end:name]` 标记片段的起始和结束，之后在文档中用 `--8<-- "你的代码路径:name"` 即可插入该片段．参见 [Snippet Sections](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippet-sections)．
-
-        示例：[前缀和](https://github.com/OI-wiki/OI-wiki/blob/c7cf6d6de13b44757f1d0528e952349beb921f8a/docs/basic/prefix-sum.md?plain=1#L37)．正文中不需要引用 [prefix-sum\_1.cpp](https://github.com/OI-wiki/OI-wiki/blob/c7cf6d6de13b44757f1d0528e952349beb921f8a/docs/basic/code/prefix-sum/prefix-sum_1.cpp) 中的测试部分，所以选择插入主要的代码片段．
-
-        **注意**：不要使用 [Snippet Lines](https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#snippet-lines) 语法．
-
-    3.  为了提高代码复用率，您也可以将代码拆分成头文件，测试时在不同的测试代码里引用．如果正文中需要出现完整的测试代码作为例题的参考实现，那么正文中应该另外用 Snippet Sections 语法拼接成单文件代码，以便读者阅读．
-
-        示例：[红黑树](https://github.com/OI-wiki/OI-wiki/blob/3b721e22ea60d59a2687a9b10555263de7bdc2f0/docs/ds/rbtree.md?plain=1#L218-L231)．
-
-关于例题代码：
-
--   <a id="CODE-2.1"></a>CODE-2.1：例题代码的表示形式为 `--8<-- "path"`，代码均存储在 `path` 中．路径通常为 `docs/主题/code/内容/内容_编号.cpp`．
-
--   <a id="CODE-2.2"></a>CODE-2.2：修改例题代码时，请保证你的代码是正确的．例题代码均拥有一组测试数据，存储在 `/docs/主题/examples/内容/内容_编号.in/ans` 中．
 
 ## 图解
 
