@@ -1,0 +1,26 @@
+schema_version: 1
+id: mech-kin-linear-0005
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.graph-slope-area
+secondary_objectives: []
+concepts: [kinematics.position-time-graph]
+type: single_choice
+stem: 在 $x-t$ 图像上，某段图线为斜率恒为负的直线。这说明什么？
+choices: [{id: A, content: 物体沿负方向匀速运动}, {id: B, content: 物体加速度恒为负}, {id: C, content: 物体位置始终为负}]
+answer: {choice: A}
+feedback:
+  choices: {A: 正确，斜率就是速度。, B: 直线斜率不变，对应加速度为零。, C: 斜率符号不决定位置符号。}
+  correct: 正确。
+  incorrect: $x-t$ 图的斜率表示速度。
+hints: [不要把图线高度当作速度。]
+solution: 恒定负斜率表示速度恒为负，因此物体沿负方向匀速运动。
+difficulty: 1
+cognitive_level: understand
+style: graphical
+estimated_seconds: 40
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-dyn-newton-0008
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.object-system-choice
+secondary_objectives: []
+concepts: [newton.system-boundary]
+type: numeric
+stem: 光滑水平面上，质量为 $2\,\mathrm{kg}$ 和 $3\,\mathrm{kg}$ 的两物体一起受到水平外力 $10\,\mathrm N$。把两物体作为整体，加速度是多少？
+answer:
+  value: 2
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}
+feedback: {correct: 正确，物体间内力在整体方程中不出现。, incorrect: 使用总质量和系统所受外力。}
+hints: [整体质量为两物体质量之和。]
+solution: $a=F/(m_1+m_2)=10/(2+3)=2\,\mathrm{m/s^2}$。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 55
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

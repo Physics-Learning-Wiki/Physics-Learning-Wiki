@@ -1,0 +1,29 @@
+schema_version: 1
+id: mechanics.kinematics.linear-motion
+page_id: mechanics.kinematics.linear-motion
+modes:
+  quick:
+    title: 3 题快速检查
+    total: 3
+    feedback_mode: immediate
+    slots:
+      - id: foundations
+        count: 1
+        objectives: [mech.kin.linear.sign-convention, mech.kin.linear.velocity-acceleration]
+      - id: graphs
+        count: 1
+        objectives: [mech.kin.linear.graph-slope-area]
+      - id: modeling
+        count: 1
+        objectives: [mech.kin.linear.uniform-motion, mech.kin.linear.piecewise-motion, mech.kin.linear.relative-motion]
+  full:
+    title: 8 题完整小测
+    total: 8
+    feedback_mode: deferred
+    slots:
+      - {id: sign, count: 2, objectives: [mech.kin.linear.sign-convention]}
+      - {id: definitions, count: 1, objectives: [mech.kin.linear.velocity-acceleration]}
+      - {id: graphs, count: 2, objectives: [mech.kin.linear.graph-slope-area]}
+      - {id: uniform, count: 1, objectives: [mech.kin.linear.uniform-motion]}
+      - {id: piecewise, count: 1, objectives: [mech.kin.linear.piecewise-motion]}
+      - {id: relative, count: 1, objectives: [mech.kin.linear.relative-motion]}

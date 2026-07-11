@@ -1,0 +1,30 @@
+schema_version: 1
+id: mech-dyn-newton-0001
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.first-law
+secondary_objectives: []
+concepts: [newton.inertia]
+type: multiple_choice
+stem: 关于惯性，下列哪些说法正确？
+choices:
+  - {id: A, content: 静止物体具有惯性}
+  - {id: B, content: 速度越大惯性越大}
+  - {id: C, content: 质量是惯性大小的量度}
+  - {id: D, content: 惯性是一种力}
+answer: {choices: [A, C]}
+feedback:
+  choices: {A: 正确。, B: 惯性不由速度决定。, C: 正确。, D: 惯性是性质而不是力。}
+  correct: 正确。
+  incorrect: 惯性与运动状态无关，并不是一种力。
+hints: [考虑惯性由什么物理量度量。]
+solution: 一切有质量的物体都有惯性，质量是惯性大小的量度。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

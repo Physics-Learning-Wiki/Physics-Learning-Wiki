@@ -1,0 +1,22 @@
+schema_version: 1
+id: mech-dyn-newton-0003
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.second-law
+secondary_objectives: []
+concepts: [newton.force-acceleration]
+type: true_false
+stem: 若物体所受合外力为零，则物体速度一定为零。
+answer: {value: false}
+feedback: {correct: 正确，合外力为零只说明加速度为零。, incorrect: 物体也可能做匀速直线运动。}
+hints: [回忆牛顿第一定律。]
+solution: 合外力为零时速度保持不变，该速度可以为零也可以不为零。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 25
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-kin-linear-0004
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.graph-slope-area
+secondary_objectives: []
+concepts: [kinematics.velocity-time-graph]
+type: numeric
+stem: 某物体在 $0$ 到 $4\,\mathrm s$ 内速度恒为 $-3\,\mathrm{m/s}$。这段时间的位移是多少？
+answer:
+  value: -12
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m, accepted: [m]}
+feedback: {correct: 正确，时间轴下方的面积带负号。, incorrect: 位移是 $v-t$ 图的有符号面积。}
+hints: [计算矩形的有符号面积。]
+solution: $\Delta x=vt=(-3)\times4=-12\,\mathrm m$。
+difficulty: 1
+cognitive_level: apply
+style: graphical
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

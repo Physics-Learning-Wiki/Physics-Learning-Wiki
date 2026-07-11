@@ -1,0 +1,26 @@
+schema_version: 1
+id: mech-dyn-newton-0004
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.third-law
+secondary_objectives: []
+concepts: [newton.action-reaction]
+type: single_choice
+stem: 一本书静止在桌面上。与地球对书的重力构成第三定律力对的是哪一个力？
+choices: [{id: A, content: 桌面对书的支持力}, {id: B, content: 书对桌面的压力}, {id: C, content: 书对地球的引力}, {id: D, content: 书受到的合力}]
+answer: {choice: C}
+feedback:
+  choices: {A: 与重力作用在同一物体上。, B: 它与桌面对书的支持力成对。, C: 正确，来自同一引力相互作用。, D: 合力不是单个相互作用力。}
+  correct: 正确。
+  incorrect: 第三定律力对作用在不同物体上，来自同一相互作用。
+hints: [写出施力物体和受力物体。]
+solution: 地球吸引书，书也以大小相等、方向相反的力吸引地球。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

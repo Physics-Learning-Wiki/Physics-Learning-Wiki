@@ -1,0 +1,22 @@
+schema_version: 1
+id: mech-kin-linear-0002
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.sign-convention
+secondary_objectives: []
+concepts: [kinematics.distance]
+type: true_false
+stem: 在一维运动中，物体的位移一定大于或等于零。
+answer: {value: false}
+feedback: {correct: 正确，位移是带符号的坐标差。, incorrect: 路程非负，但位移可以为负。}
+hints: [区分路程和位移。]
+solution: 位移由规定的正方向和坐标差决定，可以为正、负或零。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 25
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

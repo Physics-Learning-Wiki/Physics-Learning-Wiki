@@ -113,8 +113,8 @@ def validate_blueprint(document: SourceDocument, schema: dict[str, Any], pages: 
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
     for error in sorted(validator.iter_errors(data), key=lambda item: list(item.absolute_path)):
         issues.append(Issue.error(path, _field_path(error.absolute_path), error.message))
-    if data.get("id") != path.stem:
-        issues.append(Issue.error(path, "id", "blueprint file name must match id"))
+    if not isinstance(data.get("id"), str) or data["id"].rsplit(".", 1)[-1] != path.stem:
+        issues.append(Issue.error(path, "id", "blueprint file name must match the final id segment"))
     page = pages.get(data.get("page_id"))
     if not page:
         issues.append(Issue.error(path, "page_id", "unknown page id"))

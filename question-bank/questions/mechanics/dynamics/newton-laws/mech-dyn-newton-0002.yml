@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-dyn-newton-0002
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.second-law
+secondary_objectives: []
+concepts: [newton.net-force]
+type: numeric
+stem: 质量为 $2\,\mathrm{kg}$ 的物体受到向右 $10\,\mathrm N$ 和向左 $4\,\mathrm N$ 的力。取向右为正，加速度是多少？
+answer:
+  value: 3
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}
+feedback: {correct: 正确。, incorrect: 先求合外力，再除以质量。}
+hints: [合外力为两个有向力的矢量和。]
+solution: $F_{\rm net}=10-4=6\,\mathrm N$，故 $a=6/2=3\,\mathrm{m/s^2}$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

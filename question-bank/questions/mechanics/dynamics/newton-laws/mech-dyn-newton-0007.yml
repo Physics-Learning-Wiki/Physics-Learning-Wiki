@@ -1,0 +1,26 @@
+schema_version: 1
+id: mech-dyn-newton-0007
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.coordinate-equations
+secondary_objectives: []
+concepts: [newton.coordinate-system]
+type: single_choice
+stem: 滑块没有离开固定斜面。取垂直斜面方向为一个坐标轴，该方向应满足哪个条件？
+choices: [{id: A, content: '$a_\perp=0$'}, {id: B, content: '$v_\parallel=0$'}, {id: C, content: '$\sum F_\parallel=0$'}, {id: D, content: 重力为零}]
+answer: {choice: A}
+feedback:
+  choices: {A: 正确，这是接触约束。, B: 滑块可以沿斜面运动。, C: 沿斜面可以有加速度。, D: 重力始终存在。}
+  correct: 正确。
+  incorrect: 没有离开斜面意味着垂直方向位置不变。
+hints: [把约束转化为加速度条件。]
+solution: 接触约束给出 $a_\perp=0$，因而可列 $\sum F_\perp=0$。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

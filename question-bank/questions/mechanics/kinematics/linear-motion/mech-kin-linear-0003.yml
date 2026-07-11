@@ -1,0 +1,30 @@
+schema_version: 1
+id: mech-kin-linear-0003
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.velocity-acceleration
+secondary_objectives: []
+concepts: [kinematics.acceleration]
+type: multiple_choice
+stem: 关于一维运动的速度和加速度，下列哪些说法正确？
+choices:
+  - {id: A, content: 速度和加速度同号时速率增大}
+  - {id: B, content: 速度为零时加速度必为零}
+  - {id: C, content: 速度和加速度异号时速率减小}
+  - {id: D, content: 加速度只描述速度大小的变化}
+answer: {choices: [A, C]}
+feedback:
+  choices: {A: 正确。, B: 最高点等情形可反驳。, C: 正确。, D: 加速度描述带方向速度的变化。}
+  correct: 正确。
+  incorrect: 应比较速度和加速度的符号，并注意它们都是有向量。
+hints: [分别考虑同号和异号。]
+solution: 同号时速度绝对值增大，异号时减小；瞬时速度为零不要求加速度为零。
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 60
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0
