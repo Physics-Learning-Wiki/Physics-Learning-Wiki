@@ -34,7 +34,7 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     if args.command == "validate":
-        report = validate_repository(release=args.release)
+        report = validate_repository(release=args.release, include_drafts=args.include_drafts)
         for issue in report.issues:
             print(issue.render())
         summary = {"errors": len(report.errors), "warnings": len(report.warnings), "ok": report.ok}

@@ -9,7 +9,7 @@ from typing import Any
 
 from .markdown_renderer import render_markdown
 from .utils import canonical_json, fingerprint, tree_bytes
-from .validator import ValidationReport, validate_repository
+from .validator import ValidationReport, publication_readiness, validate_repository
 
 
 def _render_list(values: list[str]) -> list[str]:
@@ -74,11 +74,12 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             1 for document in report.data.questions
             if document.data.get("status") == "published" and page_id in document.data.get("scope", {}).get("pages", [])
         )
-        counts = {objective: 0 for objective in page.objectives}
-        for document in page_questions:
-            counts[document.data.get("primary_objective")] = counts.get(document.data.get("primary_objective"), 0) + 1
-        available = published_count >= 24 and all(count >= 4 for count in counts.values())
         blueprint = _blueprint_for(report, str(page.quiz.get("blueprint", "")))
+        published_sources = [
+            document.data for document in report.data.questions
+            if document.data.get("status") == "published" and page_id in document.data.get("scope", {}).get("pages", [])
+        ]
+        available, _ = publication_readiness(page, published_sources, blueprint)
         bundle = {
             "schemaVersion": 1,
             "bankFingerprint": bank_fingerprint,
@@ -142,7 +143,7 @@ def write_atomic(output: Path, files: dict[str, bytes]) -> bool:
 
 def compile_repository(root: Path | str = ".", output: Path | str | None = None, *, preview: bool = False) -> tuple[ValidationReport, dict[str, int | float | bool]]:
     started = time.perf_counter()
-    report = validate_repository(root)
+    report = validate_repository(root, include_drafts=preview)
     if not report.ok:
         return report, {"written": False, "seconds": time.perf_counter() - started, "bytes": 0, "files": 0}
     output_path = Path(output) if output else report.data.root / "docs" / "_generated" / "question-bank"

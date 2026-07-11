@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-from .validator import ValidationReport
+from .validator import ValidationReport, publication_readiness
 
 
 def coverage_data(report: ValidationReport, *, preview: bool = False) -> dict[str, Any]:
@@ -15,8 +15,10 @@ def coverage_data(report: ValidationReport, *, preview: bool = False) -> dict[st
         published = [item for item in questions if item.get("status") == "published"]
         included = [item for item in questions if item.get("status") == "draft"] + published if preview else published
         objective_counts = Counter(item.get("primary_objective") for item in included)
+        blueprint = next((item.data for item in report.data.blueprints if item.data.get("id") == page.quiz.get("blueprint")), {})
+        ready, _ = publication_readiness(page, published, blueprint)
         result[page_id] = {
-            "status": "available" if len(published) >= 24 and all(objective_counts[objective] >= 4 for objective in page.objectives) else "construction",
+            "status": "available" if ready else "construction",
             "published": len(published),
             "draft": sum(item.get("status") == "draft" for item in questions),
             "retired": sum(item.get("status") == "retired" for item in questions),

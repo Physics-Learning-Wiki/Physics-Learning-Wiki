@@ -135,7 +135,30 @@ def validate_blueprint(document: SourceDocument, schema: dict[str, Any], pages: 
     return issues
 
 
-def validate_repository(root: Path | str = ".", *, release: bool = False) -> ValidationReport:
+def publication_readiness(page: Any, questions: list[dict[str, Any]], blueprint: dict[str, Any]) -> tuple[bool, list[str]]:
+    reasons: list[str] = []
+    if len(questions) < 24:
+        reasons.append(f"{len(questions)}/24 published")
+    for objective in page.objectives:
+        objective_questions = [item for item in questions if item.get("primary_objective") == objective]
+        if len(objective_questions) < 4:
+            reasons.append(f"{objective}: {len(objective_questions)}/4")
+        if objective_questions and not any(item.get("style") == "conceptual" for item in objective_questions):
+            reasons.append(f"{objective}: missing conceptual question")
+        if objective_questions and not any(item.get("style") in {"computational", "modeling"} or item.get("cognitive_level") in {"apply", "analyze"} for item in objective_questions):
+            reasons.append(f"{objective}: missing application/modeling question")
+    if not blueprint:
+        reasons.append("blueprint is missing")
+    else:
+        for mode_name, mode in blueprint.get("modes", {}).items():
+            for slot in mode.get("slots", []):
+                candidates = [item for item in questions if item.get("primary_objective") in slot.get("objectives", [])]
+                if len(candidates) < slot.get("count", 0):
+                    reasons.append(f"blueprint {mode_name}.{slot.get('id')}: {len(candidates)}/{slot.get('count')} candidates")
+    return not reasons, reasons
+
+
+def validate_repository(root: Path | str = ".", *, release: bool = False, include_drafts: bool = False) -> ValidationReport:
     root = Path(root).resolve()
     pages, issues = discover_page_contracts(root)
     questions, question_load_issues = load_tree(root / "question-bank" / "questions")
@@ -154,6 +177,7 @@ def validate_repository(root: Path | str = ".", *, release: bool = False) -> Val
         issues.extend(validate_blueprint(document, blueprint_schema, pages))
         if blueprint_ids[str(document.data.get("id"))] > 1:
             issues.append(Issue.error(document.path, "id", "duplicate blueprint id"))
+    blueprint_by_id = {str(document.data.get("id")): document.data for document in blueprints}
     normalized_stems: dict[tuple[str, str], Path] = {}
     for document in questions:
         page_ids = document.data.get("scope", {}).get("pages", [])
@@ -167,11 +191,24 @@ def validate_repository(root: Path | str = ".", *, release: bool = False) -> Val
     for page in pages.values():
         if not page.quiz.get("enabled"):
             continue
-        page_questions = [item for item in published if page.page_id in item.data.get("scope", {}).get("pages", [])]
-        counts = Counter(item.data.get("primary_objective") for item in page_questions)
-        readiness = len(page_questions) >= 24 and all(counts[objective] >= 4 for objective in page.objectives)
+        page_questions = [item.data for item in published if page.page_id in item.data.get("scope", {}).get("pages", [])]
+        blueprint = blueprint_by_id.get(str(page.quiz.get("blueprint")), {})
+        readiness, reasons = publication_readiness(page, page_questions, blueprint)
         if not readiness:
             factory = Issue.error if release else Issue.warning
-            issues.append(factory(page.path, "quiz", f"construction state: {len(page_questions)}/24 published; each objective requires 4"))
+            issues.append(factory(page.path, "quiz", "construction state: " + "; ".join(reasons)))
+        candidate_questions = [
+            item.data for item in questions
+            if page.page_id in item.data.get("scope", {}).get("pages", [])
+            and item.data.get("status") == "published" or (
+                include_drafts and page.page_id in item.data.get("scope", {}).get("pages", []) and item.data.get("status") == "draft"
+            )
+        ]
+        if include_drafts and blueprint:
+            for mode_name, mode in blueprint.get("modes", {}).items():
+                for slot in mode.get("slots", []):
+                    count = sum(item.get("primary_objective") in slot.get("objectives", []) for item in candidate_questions)
+                    if count < slot.get("count", 0):
+                        issues.append(Issue.error(page.path, f"quiz.{mode_name}.{slot.get('id')}", f"preview blueprint requires {slot.get('count')} candidate(s), found {count}"))
     data = RepositoryData(root=root, questions=questions, blueprints=blueprints, pages=pages)
     return ValidationReport(sorted(set(issues)), data)
