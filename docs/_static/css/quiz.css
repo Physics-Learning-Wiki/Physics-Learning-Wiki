@@ -5,6 +5,24 @@
   font-weight: 700;
 }
 
+.plw-quiz-entry {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  background: var(--md-code-bg-color);
+}
+
+.plw-quiz-entry--building {
+  border-inline-start: 0.3rem solid var(--md-default-fg-color--lighter);
+}
+
+.plw-quiz-entry__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
 .plw-quiz-question progress {
   width: 100%;
 }
@@ -109,9 +127,14 @@
 }
 
 @media print {
+  .plw-quiz-entry__actions,
   .plw-quiz-actions,
   .plw-quiz-question,
   .plw-quiz-results {
     display: none !important;
+  }
+
+  .plw-quiz-entry::after {
+    content: "在线版本提供本页知识小测。";
   }
 }
