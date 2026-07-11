@@ -5,5 +5,7 @@ MathJax = {
 };
 
 document$.subscribe(function () {
-  MathJax.typesetPromise();
+  if (typeof MathJax.typesetPromise === "function") {
+    MathJax.typesetPromise();
+  }
 });
