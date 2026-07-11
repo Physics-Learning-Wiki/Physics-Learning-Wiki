@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://physics-learning-wiki.example/schemas/blueprint.schema.json",
+  "title": "Physics Learning Wiki quiz blueprint",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "page_id", "modes"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"$ref": "#/$defs/dottedId"},
+    "page_id": {"$ref": "#/$defs/dottedId"},
+    "modes": {
+      "type": "object", "additionalProperties": false, "required": ["quick", "full"],
+      "properties": {"quick": {"$ref": "#/$defs/mode"}, "full": {"$ref": "#/$defs/mode"}}
+    }
+  },
+  "$defs": {
+    "dottedId": {"type": "string", "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9-]*)+$"},
+    "mode": {
+      "type": "object", "additionalProperties": false, "required": ["title", "total", "feedback_mode", "slots"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "total": {"type": "integer", "minimum": 1, "maximum": 50},
+        "feedback_mode": {"enum": ["immediate", "deferred"]},
+        "slots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/slot"}}
+      }
+    },
+    "slot": {
+      "type": "object", "additionalProperties": false, "required": ["id", "count", "objectives"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+        "count": {"type": "integer", "minimum": 1},
+        "objectives": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/dottedId"}}
+      }
+    }
+  }
+}

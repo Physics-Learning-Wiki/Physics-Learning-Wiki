@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-kin-linear-0008
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.relative-motion
+secondary_objectives: []
+concepts: [kinematics.relative-velocity]
+type: numeric
+stem: A 在 B 后方 $20\,\mathrm m$，二者同向匀速，速度分别为 $6\,\mathrm{m/s}$ 和 $4\,\mathrm{m/s}$。A 多少秒后追上 B？
+answer:
+  value: 10
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: s, accepted: [s]}
+feedback: {correct: 正确。, incorrect: 用初始间距除以相对速度。}
+hints: [相对速度为 $v_A-v_B$。]
+solution: 相对速度为 $2\,\mathrm{m/s}$，追及时间为 $20/2=10\,\mathrm s$。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 60
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

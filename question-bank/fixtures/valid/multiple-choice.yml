@@ -1,0 +1,28 @@
+schema_version: 1
+id: fixture-multiple-01
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.second-law
+secondary_objectives: []
+concepts: [newton.second-law]
+type: multiple_choice
+stem: 关于合外力，下列哪些说法正确？
+choices:
+  - {id: A, content: 决定加速度方向}
+  - {id: B, content: 是所有外力的矢量和}
+  - {id: C, content: 必定与速度同向}
+answer: {choices: [A, B]}
+feedback:
+  choices: {A: 正确。, B: 正确。, C: 速度与加速度不必同向。}
+  correct: 正确。
+  incorrect: 请检查速度与加速度的区别。
+solution: 合外力决定加速度，而非直接决定速度方向。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 45
+provenance: {type: original, note: 自动测试原创题, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

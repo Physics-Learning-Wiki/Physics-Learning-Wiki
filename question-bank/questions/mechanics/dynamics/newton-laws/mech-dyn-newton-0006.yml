@@ -1,0 +1,30 @@
+schema_version: 1
+id: mech-dyn-newton-0006
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.free-body-diagram
+secondary_objectives: []
+concepts: [newton.free-body-diagram]
+type: multiple_choice
+stem: 斜面上的滑块沿斜面下滑。以滑块为研究对象，受力图中可能包含哪些力？
+choices:
+  - {id: A, content: 滑块所受重力}
+  - {id: B, content: 斜面对滑块的支持力}
+  - {id: C, content: 滑块对斜面的压力}
+  - {id: D, content: 若表面粗糙，滑块所受摩擦力}
+answer: {choices: [A, B, D]}
+feedback:
+  choices: {A: 正确。, B: 正确。, C: 该力作用在斜面上。, D: 正确。}
+  correct: 正确。
+  incorrect: 只画作用在滑块上的真实力。
+hints: [逐个检查每个力的受力物体。]
+solution: 滑块受重力、支持力和可能存在的摩擦力；滑块对斜面的压力不作用在滑块上。
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 60
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

@@ -1,0 +1,21 @@
+schema_version: 1
+id: fixture-boolean-001
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.first-law
+secondary_objectives: []
+concepts: [newton.inertia]
+type: true_false
+stem: 静止的物体也具有惯性。
+answer: {value: true}
+feedback: {correct: 正确。, incorrect: 惯性与运动状态无关。}
+solution: 一切有质量的物体都有惯性。
+difficulty: 1
+cognitive_level: remember
+style: conceptual
+estimated_seconds: 20
+provenance: {type: original, note: 自动测试原创题, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

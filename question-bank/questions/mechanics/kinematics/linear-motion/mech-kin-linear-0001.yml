@@ -1,0 +1,26 @@
+schema_version: 1
+id: mech-kin-linear-0001
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.sign-convention
+secondary_objectives: []
+concepts: [kinematics.displacement]
+type: single_choice
+stem: 规定向东为正，某人从 $x=3\,\mathrm m$ 走到 $x=-2\,\mathrm m$。位移是多少？
+choices: [{id: A, content: '$-5\,\mathrm m$'}, {id: B, content: '$5\,\mathrm m$'}, {id: C, content: '$1\,\mathrm m$'}]
+answer: {choice: A}
+feedback:
+  choices: {A: 位移等于末位置减初位置。, B: 这是位移大小，不含方向。, C: 不能把两个坐标直接相加。}
+  correct: 正确，负号表示位移向西。
+  incorrect: 使用 $\Delta x=x_2-x_1$。
+hints: [先写末位置减初位置。]
+solution: $\Delta x=-2-3=-5\,\mathrm m$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

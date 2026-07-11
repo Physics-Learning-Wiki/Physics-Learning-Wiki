@@ -1,0 +1,23 @@
+schema_version: 1
+id: mechanics.dynamics.newton-laws
+page_id: mechanics.dynamics.newton-laws
+modes:
+  quick:
+    title: 3 题快速检查
+    total: 3
+    feedback_mode: immediate
+    slots:
+      - {id: laws, count: 1, objectives: [mech.dyn.newton.first-law, mech.dyn.newton.second-law, mech.dyn.newton.third-law]}
+      - {id: diagram, count: 1, objectives: [mech.dyn.newton.free-body-diagram]}
+      - {id: modeling, count: 1, objectives: [mech.dyn.newton.coordinate-equations, mech.dyn.newton.object-system-choice]}
+  full:
+    title: 8 题完整小测
+    total: 8
+    feedback_mode: deferred
+    slots:
+      - {id: first, count: 1, objectives: [mech.dyn.newton.first-law]}
+      - {id: second, count: 2, objectives: [mech.dyn.newton.second-law]}
+      - {id: third, count: 2, objectives: [mech.dyn.newton.third-law]}
+      - {id: diagram, count: 1, objectives: [mech.dyn.newton.free-body-diagram]}
+      - {id: coordinates, count: 1, objectives: [mech.dyn.newton.coordinate-equations]}
+      - {id: system, count: 1, objectives: [mech.dyn.newton.object-system-choice]}

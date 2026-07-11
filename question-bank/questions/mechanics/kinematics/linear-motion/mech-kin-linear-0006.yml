@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-kin-linear-0006
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.uniform-motion
+secondary_objectives: []
+concepts: [kinematics.uniform-motion]
+type: numeric
+stem: 物体从 $x_0=-5\,\mathrm m$ 出发，以 $2\,\mathrm{m/s}$ 匀速运动。$4\,\mathrm s$ 后位置是多少？
+answer:
+  value: 3
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m, accepted: [m]}
+feedback: {correct: 正确。, incorrect: 位置等于初位置加位移。}
+hints: [使用 $x=x_0+vt$。]
+solution: $x=-5+2\times4=3\,\mathrm m$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

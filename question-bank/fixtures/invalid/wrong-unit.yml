@@ -1,0 +1,7 @@
+schema_version: 1
+id: fixture-unit-0001
+type: numeric
+answer:
+  value: 1
+  tolerance: {type: absolute, value: 0.1}
+  unit: {required: true, canonical: m, accepted: [s]}

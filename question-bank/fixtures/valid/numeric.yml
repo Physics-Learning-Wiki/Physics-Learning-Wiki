@@ -1,0 +1,24 @@
+schema_version: 1
+id: fixture-numeric-0001
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.uniform-motion
+secondary_objectives: []
+concepts: [motion.uniform]
+type: numeric
+stem: 速度为 $2\,\mathrm{m/s}$，3 秒内位移是多少？
+answer:
+  value: 6
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m, accepted: [m]}
+feedback: {correct: 正确。, incorrect: 使用 $\Delta x=vt$。}
+solution: $\Delta x=2\times3=6\,\mathrm m$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 30
+provenance: {type: original, note: 自动测试原创题, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

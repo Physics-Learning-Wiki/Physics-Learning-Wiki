@@ -1,0 +1,82 @@
+name: Check Question Bank
+
+on:
+  pull_request:
+    paths: &quiz-paths
+      - 'question-bank/**'
+      - 'scripts/question_bank/**'
+      - 'scripts/quiz/**'
+      - 'tests/question_bank/**'
+      - 'tests/integration/**'
+      - 'docs/quiz/**'
+      - 'docs/_static/js/quiz-app.js'
+      - 'docs/_static/css/quiz.css'
+      - 'docs/mechanics/kinematics/linear-motion.md'
+      - 'docs/mechanics/dynamics/newton-laws.md'
+      - 'hooks/question_bank.py'
+      - 'mkdocs.yml'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - 'package.json'
+      - 'yarn.lock'
+      - 'tsconfig.quiz.json'
+  push:
+    branches: [main]
+    paths: *quiz-paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      PLW_QUIZ_PREVIEW: ''
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: latest
+          enable-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: yarn
+      - name: Install Python dependencies
+        run: uv sync --dev --frozen
+      - name: Validate and test Python tools
+        run: |
+          test -z "$PLW_QUIZ_PREVIEW"
+          uv run python -m scripts.question_bank validate --include-drafts
+          uv run pytest tests/question_bank tests/integration
+      - name: Check deterministic compilation
+        run: |
+          uv run python -m scripts.question_bank build --output .tmp-bank-a
+          uv run python -m scripts.question_bank build --output .tmp-bank-b
+          diff -r .tmp-bank-a .tmp-bank-b
+          uv run python -m scripts.question_bank coverage --format json --output question-bank-coverage.json
+          uv run python -m scripts.question_bank benchmark --repeat 5 --json-output question-bank-benchmark.json
+      - name: Install JavaScript dependencies
+        run: yarn --frozen-lockfile
+      - name: Check quiz TypeScript and bundle
+        run: |
+          yarn quiz:format:check
+          yarn quiz:typecheck
+          yarn quiz:test
+          yarn quiz:build:check
+      - name: Build production site
+        run: |
+          test -z "$PLW_QUIZ_PREVIEW"
+          uv run mkdocs build --clean
+      - uses: actions/upload-artifact@v4
+        with:
+          name: question-bank-metrics
+          path: |
+            question-bank-coverage.json
+            question-bank-benchmark.json

@@ -1,0 +1,25 @@
+schema_version: 1
+id: mech-kin-linear-0007
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.piecewise-motion
+secondary_objectives: []
+concepts: [kinematics.piecewise-motion]
+type: numeric
+stem: 物体从原点出发，先以 $2\,\mathrm{m/s}$ 运动 $3\,\mathrm s$，再以 $-1\,\mathrm{m/s}$ 运动 $2\,\mathrm s$。最终位置是多少？
+answer:
+  value: 4
+  tolerance: {type: absolute, value: 0.01}
+  unit: {required: true, canonical: m, accepted: [m]}
+feedback: {correct: 正确，两段位置通过段末位置连接。, incorrect: 第二段应从第一段末位置开始。}
+hints: [分别计算两段位移后相加。]
+solution: $x=2\times3+(-1)\times2=4\,\mathrm m$。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 60
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

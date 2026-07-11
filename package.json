@@ -11,6 +11,11 @@
     "postinstall": "patch-package",
     "scripts:format": "prettier --write \"scripts/**/*.ts\"",
     "scripts:format:check": "prettier --check \"scripts/**/*.ts\"",
+    "quiz:typecheck": "tsc -p tsconfig.quiz.json",
+    "quiz:test": "node --loader ts-node/esm --test scripts/quiz/tests/index.test.ts",
+    "quiz:build": "node scripts/quiz/build.mjs",
+    "quiz:build:check": "node scripts/quiz/build.mjs --check",
+    "quiz:format:check": "prettier --check \"scripts/quiz/**/*.ts\"",
     "docs:format:remark": "remark docs/ -o",
     "docs:format:check": "node --loader ts-node/esm scripts/checker/checker.ts -i"
   },
@@ -66,7 +71,8 @@
     "@types/klaw": "^3.0.3",
     "@types/yargs": "^17.0.10",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.2"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
