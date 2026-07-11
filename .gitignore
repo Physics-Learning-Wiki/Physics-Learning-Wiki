@@ -1,6 +1,7 @@
 /authors.json
 _build/
 site/
+docs/_generated/question-bank/
 .vscode/
 .debug/
 .DS_Store
