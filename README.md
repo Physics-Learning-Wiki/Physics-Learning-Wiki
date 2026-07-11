@@ -12,6 +12,23 @@
 项目内容覆盖主线学科模块、数学与实验支撑模块、计算工具以及专题强化页面，并逐步补齐路线图、模块导学页和章节写作规范。
 
 
+## 题库开发与校验
+
+章节小测使用仓库根目录的 `question-bank/` 保存 YAML 源题，并在 MkDocs 构建时生成页面级 JSON。常用命令如下：
+
+```powershell
+uv run python -m scripts.question_bank validate --include-drafts
+uv run python -m scripts.question_bank coverage
+corepack yarn quiz:typecheck
+corepack yarn quiz:test
+corepack yarn quiz:build:check
+uv run mkdocs serve
+```
+
+需要在本地联调未经人工审核的草稿题时，显式设置 `$env:PLW_QUIZ_PREVIEW = "1"` 后运行 `uv run mkdocs serve`，结束后使用 `Remove-Item Env:PLW_QUIZ_PREVIEW` 清除。生产和 GitHub Actions 禁止启用该变量。正式发布题目前还必须运行 `uv run python -m scripts.question_bank validate --release`。
+
+详细格式、审核和版权要求见 [`question-bank/README.md`](question-bank/README.md)。
+
 ## 鸣谢
 
 感谢 [OI wiki](https://oi-wiki.org/) 以及 OI wiki 的贡献者们提供的框架、内容与技术支持！

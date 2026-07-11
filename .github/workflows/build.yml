@@ -33,6 +33,12 @@ jobs:
           check-latest: true
       - name: Install Python dependencies
         run: uv sync
+      - name: Validate question bank
+        env:
+          PLW_QUIZ_PREVIEW: ''
+        run: |
+          test -z "$PLW_QUIZ_PREVIEW"
+          uv run python -m scripts.question_bank validate --include-drafts
       - name: Cache Node.js dependencies
         uses: actions/cache@v4
         id: cache-node
@@ -44,7 +50,10 @@ jobs:
         if: steps.cache-node.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --production
       - name: Page Build
+        env:
+          PLW_QUIZ_PREVIEW: ''
         run: |
+          test -z "$PLW_QUIZ_PREVIEW"
           chmod +x ./scripts/pre-build/pre-build.sh
           ./scripts/pre-build/pre-build.sh
           uv run mkdocs build -v
