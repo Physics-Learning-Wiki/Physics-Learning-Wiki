@@ -75,7 +75,7 @@ def on_page_markdown(markdown, page, config, files, **kwargs):
         actions = []
         for mode, label in (("quick", "3 题快速检查"), ("full", "8 题完整小测")):
             query = urlencode({"page_id": page_id, "mode": mode})
-            actions.append(f'<a class="md-button" href="{html.escape(quiz_url)}?{query}">{label}</a>')
+            actions.append(f'<a class="md-button" data-no-instant href="{html.escape(quiz_url)}?{query}">{label}</a>')
         parts.append(f'<div class="plw-quiz-entry__actions">{" ".join(actions)}</div>')
         if preview:
             parts.append('<p class="plw-quiz-preview">草稿预览入口：题目未经人工审核。</p>')

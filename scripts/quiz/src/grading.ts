@@ -9,6 +9,15 @@ export function parseNumeric(value: string): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+export function isAnswerComplete(question: Question, answer: UserAnswer): boolean {
+  if (answer === null) return false;
+  if (question.type === "single_choice") return typeof answer === "string" && answer.length > 0;
+  if (question.type === "multiple_choice") return Array.isArray(answer) && answer.length > 0;
+  if (question.type === "true_false") return typeof answer === "boolean";
+  if (typeof answer !== "object" || Array.isArray(answer) || parseNumeric(answer.value) === null) return false;
+  return !question.answer.unit.required || Boolean(answer.unit && question.answer.unit.accepted.includes(answer.unit));
+}
+
 export function gradeQuestion(question: Question, answer: UserAnswer): boolean {
   if (answer === null) return false;
   if (question.type === "single_choice") return typeof answer === "string" && answer === question.answer.choice;

@@ -23,6 +23,18 @@
   gap: 0.7rem;
 }
 
+.plw-quiz-entry__actions .md-button {
+  color: var(--md-accent-fg-color);
+  background-color: transparent;
+  border-color: var(--md-accent-fg-color);
+}
+
+.plw-quiz-entry__actions .md-button:is(:hover, :focus-visible) {
+  color: var(--md-default-bg-color);
+  background-color: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+}
+
 .plw-quiz-question progress {
   width: 100%;
 }

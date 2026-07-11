@@ -51,5 +51,6 @@ def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
     assert manifest["preview"] is True
     linear = (site / "mechanics" / "kinematics" / "linear-motion" / "index.html").read_text(encoding="utf-8")
     assert "草稿预览入口" in linear
+    assert 'class="md-button" data-no-instant' in linear
     json_text = "".join(path.read_text(encoding="utf-8") for path in (site / "_generated" / "question-bank").rglob("*.json"))
     assert "mech-kin-linear-0001" in json_text

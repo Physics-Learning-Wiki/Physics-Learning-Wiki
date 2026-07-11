@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { gradeQuestion, parseNumeric, summarizeObjectives } from "../src/grading.js";
+import { gradeQuestion, isAnswerComplete, parseNumeric, summarizeObjectives } from "../src/grading.js";
 import type { Question } from "../src/types.js";
 
 const base = {
@@ -38,6 +38,18 @@ test("numeric parser rejects expressions and non-finite values", () => {
   assert.equal(parseNumeric("1e2"), 100);
   assert.equal(parseNumeric("1/2"), null);
   assert.equal(parseNumeric("Infinity"), null);
+});
+
+test("numeric answers become complete only after a valid value and required unit", () => {
+  const numeric = {
+    ...base,
+    type: "numeric",
+    answer: { value: 4, tolerance: { type: "absolute", value: 0.01 }, unit: { required: true, accepted: ["m"] } }
+  } as Question;
+  assert.equal(isAnswerComplete(numeric, null), false);
+  assert.equal(isAnswerComplete(numeric, { value: "10", unit: "" }), false);
+  assert.equal(isAnswerComplete(numeric, { value: "1/2", unit: "m" }), false);
+  assert.equal(isAnswerComplete(numeric, { value: "10", unit: "m" }), true);
 });
 
 test("objective summaries use only the primary objective", () => {

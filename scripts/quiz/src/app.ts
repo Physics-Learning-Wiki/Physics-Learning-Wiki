@@ -1,5 +1,5 @@
 import { loadBundle, loadManifest, readParameters } from "./data.js";
-import { makeResult, summarizeObjectives } from "./grading.js";
+import { isAnswerComplete, makeResult, summarizeObjectives } from "./grading.js";
 import { typeset } from "./math.js";
 import { newSeed } from "./random.js";
 import { selectQuestions, selectRetry } from "./selection.js";
@@ -77,7 +77,7 @@ class QuizApp {
         const full = this.quizLink(pageId, "full", newSeed());
         item.innerHTML = `<strong>${escapeHtml(
           page.title
-        )}</strong> — <a href="${quick}">3 题快速检查</a> · <a href="${full}">8 题完整小测</a>`;
+        )}</strong> — <a data-no-instant href="${quick}">3 题快速检查</a> · <a data-no-instant href="${full}">8 题完整小测</a>`;
       } else {
         item.textContent = `${page.title}（题库建设中：${page.publishedQuestionCount}/24）`;
       }
@@ -111,7 +111,12 @@ class QuizApp {
     }</p><h2 tabindex="-1">第 ${this.session.currentIndex + 1} 题</h2><div class="plw-quiz-stem">${
       question.stemHtml
     }</div>`;
-    section.append(this.answerControl(question, answer, locked));
+    let confirmButton: HTMLButtonElement | undefined;
+    section.append(
+      this.answerControl(question, answer, locked, updatedAnswer => {
+        if (confirmButton) confirmButton.disabled = !isAnswerComplete(question, updatedAnswer);
+      })
+    );
     const uncertainty = document.createElement("label");
     uncertainty.className = "plw-quiz-uncertain";
     uncertainty.innerHTML = `<input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""} ${
@@ -127,7 +132,8 @@ class QuizApp {
     actions.className = "plw-quiz-actions";
     actions.append(this.button("上一题", () => this.move(-1), this.session.currentIndex === 0));
     if (quick && !locked) {
-      actions.append(this.button("确认答案", () => this.confirmQuick(question), answer === null));
+      confirmButton = this.button("确认答案", () => this.confirmQuick(question), !isAnswerComplete(question, answer));
+      actions.append(confirmButton);
     } else if (this.session.currentIndex < this.questions.length - 1) {
       actions.append(this.button("下一题", () => this.move(1)));
     } else {
@@ -141,7 +147,12 @@ class QuizApp {
     void typeset(section);
   }
 
-  private answerControl(question: Question, answer: UserAnswer, locked: boolean): HTMLElement {
+  private answerControl(
+    question: Question,
+    answer: UserAnswer,
+    locked: boolean,
+    onAnswerChange: (answer: UserAnswer) => void
+  ): HTMLElement {
     const fieldset = document.createElement("fieldset");
     const legend = document.createElement("legend");
     legend.textContent = "请选择或填写答案";
@@ -197,8 +208,11 @@ class QuizApp {
       unit.innerHTML = `<option value="">选择单位</option>${question.answer.unit.accepted
         .map(item => `<option ${current.unit === item ? "selected" : ""}>${escapeHtml(item)}</option>`)
         .join("")}`;
-      const update = () =>
-        this.setAnswer(question.id, input.value.trim() ? { value: input.value, unit: unit.value } : null, false);
+      const update = () => {
+        const updatedAnswer = input.value.trim() ? { value: input.value, unit: unit.value } : null;
+        this.setAnswer(question.id, updatedAnswer, false);
+        onAnswerChange(updatedAnswer);
+      };
       input.addEventListener("input", update);
       unit.addEventListener("change", update);
       fieldset.append(input, unit);
