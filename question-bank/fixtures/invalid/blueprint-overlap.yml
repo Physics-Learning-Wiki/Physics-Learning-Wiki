@@ -1,0 +1,17 @@
+schema_version: 1
+id: mechanics.fixture.overlap
+page_id: mechanics.fixture.overlap
+modes:
+  quick:
+    title: 快速检查
+    total: 2
+    feedback_mode: immediate
+    slots:
+      - {id: first, count: 1, objectives: [mech.fixture.same]}
+      - {id: second, count: 1, objectives: [mech.fixture.same]}
+  full:
+    title: 完整小测
+    total: 1
+    feedback_mode: deferred
+    slots:
+      - {id: all, count: 1, objectives: [mech.fixture.same]}

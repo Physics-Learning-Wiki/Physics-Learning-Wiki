@@ -1,0 +1,27 @@
+schema_version: 1
+id: fixture-single-0001
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.kinematics.linear-motion]}
+primary_objective: mech.kin.linear.sign-convention
+secondary_objectives: []
+concepts: [motion.sign-convention]
+type: single_choice
+stem: 位移是否可能为负值？
+choices:
+  - {id: A, content: 可以}
+  - {id: B, content: 不可以}
+answer: {choice: A}
+feedback:
+  choices: {A: 位移由坐标差决定。, B: 路程非负，但位移可以为负。}
+  correct: 正确。
+  incorrect: 请区分路程与位移。
+solution: 位移是末位置与初位置之差。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 30
+provenance: {type: original, note: 自动测试原创题, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

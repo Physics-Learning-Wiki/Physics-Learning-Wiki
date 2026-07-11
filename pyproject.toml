@@ -12,11 +12,15 @@ dependencies = [
     "requests",
     "markdown==3.9",
     "python-markdown-document-offsets-injection-extension==0.5.16",
-    "mkdocs-toggle-sidebar-plugin==0.0.8"
+    "mkdocs-toggle-sidebar-plugin==0.0.8",
+    "PyYAML>=6,<7",
+    "jsonschema>=4,<5",
+    "bleach>=6,<7",
+    "python-frontmatter>=1,<2"
 ]
 
-[tool.uv]
-dev-dependencies = []
+[dependency-groups]
+dev = ["pytest>=8,<9"]
 
 [tool.uv.pip]
 index-url = "https://pypi.org/simple"

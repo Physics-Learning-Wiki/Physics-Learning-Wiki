@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://physics-learning-wiki.example/schemas/question.schema.json",
+  "title": "Physics Learning Wiki question",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "version", "status", "locale", "scope", "primary_objective", "secondary_objectives", "concepts", "type", "stem", "answer", "feedback", "solution", "difficulty", "cognitive_level", "style", "estimated_seconds", "provenance", "authors", "license"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{7,63}$"},
+    "version": {"type": "integer", "minimum": 1},
+    "status": {"enum": ["draft", "published", "retired"]},
+    "locale": {"const": "zh-CN"},
+    "scope": {
+      "type": "object", "additionalProperties": false, "required": ["pages"],
+      "properties": {"pages": {"type": "array", "minItems": 1, "maxItems": 1, "items": {"$ref": "#/$defs/dottedId"}}}
+    },
+    "primary_objective": {"$ref": "#/$defs/dottedId"},
+    "secondary_objectives": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/dottedId"}},
+    "concepts": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/dottedId"}},
+    "type": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric"]},
+    "stem": {"$ref": "#/$defs/nonEmpty"},
+    "choices": {"type": "array", "minItems": 2, "maxItems": 8, "items": {"$ref": "#/$defs/choice"}},
+    "answer": {"type": "object"},
+    "feedback": {"type": "object"},
+    "hints": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
+    "solution": {"$ref": "#/$defs/nonEmpty"},
+    "diagnostics": {"type": "object", "additionalProperties": {"$ref": "#/$defs/dottedId"}},
+    "difficulty": {"type": "integer", "minimum": 1, "maximum": 3},
+    "cognitive_level": {"enum": ["remember", "understand", "apply", "analyze"]},
+    "style": {"enum": ["conceptual", "graphical", "computational", "modeling"]},
+    "estimated_seconds": {"type": "integer", "minimum": 10, "maximum": 1800},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "authors": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/person"}},
+    "review": {"$ref": "#/$defs/review"},
+    "license": {"enum": ["CC-BY-SA-4.0"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"type": {"const": "single_choice"}}, "required": ["type"]},
+      "then": {
+        "required": ["choices"],
+        "properties": {
+          "choices": {"minItems": 2, "maxItems": 6},
+          "answer": {"$ref": "#/$defs/singleAnswer"},
+          "feedback": {"$ref": "#/$defs/choiceFeedback"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"type": {"const": "multiple_choice"}}, "required": ["type"]},
+      "then": {
+        "required": ["choices"],
+        "properties": {
+          "choices": {"minItems": 3, "maxItems": 8},
+          "answer": {"$ref": "#/$defs/multipleAnswer"},
+          "feedback": {"$ref": "#/$defs/choiceFeedback"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"type": {"const": "true_false"}}, "required": ["type"]},
+      "then": {
+        "not": {"required": ["choices"]},
+        "properties": {"answer": {"$ref": "#/$defs/booleanAnswer"}, "feedback": {"$ref": "#/$defs/basicFeedback"}}
+      }
+    },
+    {
+      "if": {"properties": {"type": {"const": "numeric"}}, "required": ["type"]},
+      "then": {
+        "not": {"required": ["choices"]},
+        "properties": {"answer": {"$ref": "#/$defs/numericAnswer"}, "feedback": {"$ref": "#/$defs/basicFeedback"}}
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "published"}}, "required": ["status"]},
+      "then": {"required": ["review"]}
+    },
+    {
+      "if": {"properties": {"provenance": {"properties": {"type": {"const": "adapted"}}, "required": ["type"]}}},
+      "then": {"properties": {"provenance": {"required": ["source", "permission"]}}}
+    }
+  ],
+  "$defs": {
+    "dottedId": {"type": "string", "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9-]*)+$"},
+    "nonEmpty": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "choice": {"type": "object", "additionalProperties": false, "required": ["id", "content"], "properties": {"id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]{0,7}$"}, "content": {"$ref": "#/$defs/nonEmpty"}}},
+    "singleAnswer": {"type": "object", "additionalProperties": false, "required": ["choice"], "properties": {"choice": {"type": "string"}}},
+    "multipleAnswer": {"type": "object", "additionalProperties": false, "required": ["choices"], "properties": {"choices": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string"}}}},
+    "booleanAnswer": {"type": "object", "additionalProperties": false, "required": ["value"], "properties": {"value": {"type": "boolean"}}},
+    "numericAnswer": {
+      "type": "object", "additionalProperties": false, "required": ["value", "tolerance", "unit"],
+      "properties": {
+        "value": {"type": "number"},
+        "tolerance": {"type": "object", "additionalProperties": false, "required": ["type", "value"], "properties": {"type": {"enum": ["absolute", "relative"]}, "value": {"type": "number", "minimum": 0, "maximum": 1}}},
+        "unit": {"type": "object", "additionalProperties": false, "required": ["required", "accepted"], "properties": {"required": {"type": "boolean"}, "canonical": {"type": "string"}, "accepted": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}}}
+      }
+    },
+    "basicFeedback": {"type": "object", "additionalProperties": false, "required": ["correct", "incorrect"], "properties": {"correct": {"$ref": "#/$defs/nonEmpty"}, "incorrect": {"$ref": "#/$defs/nonEmpty"}}},
+    "choiceFeedback": {"type": "object", "additionalProperties": false, "required": ["choices", "correct", "incorrect"], "properties": {"choices": {"type": "object", "additionalProperties": {"$ref": "#/$defs/nonEmpty"}}, "correct": {"$ref": "#/$defs/nonEmpty"}, "incorrect": {"$ref": "#/$defs/nonEmpty"}}},
+    "person": {"type": "object", "additionalProperties": false, "required": ["name", "kind"], "properties": {"name": {"$ref": "#/$defs/nonEmpty"}, "kind": {"enum": ["human", "ai"]}, "github": {"type": "string", "pattern": "^[A-Za-z0-9-]{1,39}$"}}},
+    "reviewer": {"type": "object", "additionalProperties": false, "required": ["github", "reviewed_on"], "properties": {"github": {"type": "string", "pattern": "^[A-Za-z0-9-]{1,39}$"}, "reviewed_on": {"type": "string", "format": "date"}}},
+    "review": {"type": "object", "additionalProperties": false, "required": ["physics", "pedagogy"], "properties": {"physics": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/reviewer"}}, "pedagogy": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/reviewer"}}}},
+    "provenance": {"type": "object", "additionalProperties": false, "required": ["type", "note"], "properties": {"type": {"enum": ["original", "adapted"]}, "note": {"$ref": "#/$defs/nonEmpty"}, "source": {"type": "string", "format": "uri"}, "permission": {"$ref": "#/$defs/nonEmpty"}, "ai_assisted": {"type": "boolean"}}}
+  }
+}
