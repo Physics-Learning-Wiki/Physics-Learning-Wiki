@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: fixture-boolean-001
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.first-law
 secondary_objectives: []
 concepts: [newton.inertia]
 type: true_false
+choice_order: fixed
 stem: 静止的物体也具有惯性。
 answer: {value: true}
 feedback: {correct: 正确。, incorrect: 惯性与运动状态无关。}

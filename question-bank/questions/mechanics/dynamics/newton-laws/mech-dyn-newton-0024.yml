@@ -1,0 +1,23 @@
+schema_version: 2
+id: mech-dyn-newton-0024
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.coordinate-equations
+secondary_objectives: []
+concepts: [newton.coordinate-system, newton.friction]
+type: numeric
+choice_order: fixed
+stem: 质量为 $5\,\mathrm{kg}$ 的物体在水平面上受向右 $30\,\mathrm N$ 拉力和向左 $10\,\mathrm N$ 摩擦力。取向右为正，求 $a_x$。
+answer: {value: 4, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
+feedback: {correct: 正确，符号与正方向一致。, incorrect: 写出 $30-10=5a_x$。}
+hints: [向左的摩擦力在所选坐标中取负号。]
+solution: $\sum F_x=30-10=20\,\mathrm N=5a_x$，故 $a_x=4\,\mathrm{m/s^2}$。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

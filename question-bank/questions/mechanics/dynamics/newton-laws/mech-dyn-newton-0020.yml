@@ -1,0 +1,25 @@
+schema_version: 2
+id: mech-dyn-newton-0020
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.free-body-diagram
+secondary_objectives: []
+concepts: [newton.free-body-diagram, newton.friction]
+type: single_choice
+choice_order: shuffle
+stem: "![粗糙斜面上的下滑方块](asset:block-incline)\n\n方块正沿粗糙斜面向下滑。以方块为研究对象，摩擦力方向是？"
+assets: [{id: block-incline, path: mechanics/dynamics/newton-laws/block-incline.svg}]
+choices: [{id: A, content: 沿斜面向上}, {id: B, content: 沿斜面向下}, {id: C, content: 垂直斜面向外}, {id: D, content: 竖直向上}]
+answer: {choice: A}
+feedback: {choices: {A: 正确，摩擦力阻碍接触面的相对滑动。, B: 这会促进而不是阻碍下滑。, C: 这是支持力方向。, D: 摩擦力沿接触面。}, correct: 正确判断了滑动摩擦力方向。, incorrect: 摩擦力沿接触面并阻碍相对滑动。}
+hints: [先确定方块相对斜面的运动方向。]
+solution: 方块相对斜面向下滑，因此斜面对方块的滑动摩擦力沿斜面向上。
+difficulty: 2
+cognitive_level: apply
+style: graphical
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿及示意图, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

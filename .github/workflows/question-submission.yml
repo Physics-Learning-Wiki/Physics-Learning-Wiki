@@ -1,0 +1,90 @@
+name: Import Question Submission
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: question-submission-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    if: >-
+      github.event.label.name == '题库-接受整理' &&
+      contains(github.event.issue.labels.*.name, '投稿-题目')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: question-submission/issue-${{ github.event.issue.number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: uv sync --dev --frozen
+      - name: Check for an existing draft PR
+        id: existing
+        run: |
+          url="$(gh pr list --head "$BRANCH" --state all --json url --jq '.[0].url // ""')"
+          if [ -z "$url" ] && git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null; then
+            url="$(gh pr create --draft --base main --head "$BRANCH" \
+              --title "content(question-bank): 整理题目投稿 #${{ github.event.issue.number }}" \
+              --body "Refs #${{ github.event.issue.number }}
+
+          检测到上次运行已推送的草稿分支，本次复用该分支创建 Draft PR。
+
+          Issue 标签和 PR 状态不构成题目审核签署。")"
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Extract structured payload
+        if: steps.existing.outputs.url == ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const body = context.payload.issue.body || "";
+            const match = body.match(/```json plw-question-submission-v1\s*\n(\{.*\})\s*\n```/s);
+            if (!match) core.setFailed("Issue does not contain a v1 question payload");
+            const payload = JSON.parse(match[1]);
+            payload.issueUrl = context.payload.issue.html_url;
+            fs.writeFileSync(".question-submission.json", JSON.stringify(payload));
+      - name: Import YAML draft
+        if: steps.existing.outputs.url == ''
+        id: imported
+        run: |
+          path="$(uv run python -m scripts.question_bank import-issue --input .question-submission.json)"
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+          echo "id=$(basename "$path" .yml)" >> "$GITHUB_OUTPUT"
+      - name: Validate and open draft PR
+        if: steps.existing.outputs.url == ''
+        id: pull
+        run: |
+          uv run python -m scripts.question_bank validate --include-drafts
+          git switch -c "$BRANCH"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "${{ steps.imported.outputs.path }}"
+          git commit -m "content(question-bank): import issue #${{ github.event.issue.number }}"
+          git push origin "$BRANCH"
+          url="$(gh pr create --draft --base main --head "$BRANCH" \
+            --title "content(question-bank): 整理题目投稿 #${{ github.event.issue.number }}" \
+            --body "Refs #${{ github.event.issue.number }}
+
+          自动导入题目 ID：\`${{ steps.imported.outputs.id }}\`
+
+          此 PR 仍是草稿；Issue 标签和 PR 状态不构成题目审核签署。")"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+      - name: Update submission Issue
+        run: |
+          url="${{ steps.existing.outputs.url || steps.pull.outputs.url }}"
+          gh issue comment "${{ github.event.issue.number }}" --body "已生成或找到题目草稿 PR：$url"
+          gh issue edit "${{ github.event.issue.number }}" \
+            --remove-label "投稿-待审核" \
+            --add-label "题库-已生成PR"

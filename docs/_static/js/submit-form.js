@@ -174,6 +174,7 @@ const TYPE_HINTS = {
   "full-page": "请包含：问题引入 → 核心概念 → 公式推导 → 例题 → 易错点",
   "notes": "半成品也没关系！把你的课堂笔记、复习提纲、思维导图粘贴进来即可",
   "errata": "请指出：具体章节 → 哪段文字/公式 → 错误描述 → 正确版本",
+  "question": "请提交一道完整题目；每次投稿只包含一道题，编辑组会在 Issue 中继续沟通",
   "suggestion": "对网站结构、内容方向、功能改进的任何想法都欢迎",
 };
 
@@ -182,7 +183,143 @@ function updateTypeHint() {
   const hint = document.getElementById("submit-hint");
   if (typeSelect && hint) {
     hint.textContent = TYPE_HINTS[typeSelect.value] || "";
+    const questionFields = document.getElementById("question-fields");
+    if (questionFields) questionFields.hidden = typeSelect.value !== "question";
   }
+}
+
+let questionCatalog = {};
+
+async function loadQuestionCatalog() {
+  const pageSelect = document.getElementById("question-page");
+  if (!pageSelect) return;
+  try {
+    const response = await fetch("../_generated/question-bank/manifest.json", { cache: "no-cache" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const manifest = await response.json();
+    questionCatalog = manifest.pages || {};
+    pageSelect.innerHTML = '<option value="">-- 请选择 --</option>';
+    for (const [pageId, page] of Object.entries(questionCatalog)) {
+      const option = document.createElement("option");
+      option.value = pageId;
+      option.textContent = page.title;
+      pageSelect.append(option);
+    }
+  } catch (error) {
+    console.warn("Unable to load question catalog", error);
+  }
+}
+
+function updateQuestionObjectives() {
+  const pageId = document.getElementById("question-page")?.value;
+  const objectiveSelect = document.getElementById("question-objective");
+  if (!objectiveSelect) return;
+  objectiveSelect.innerHTML = '<option value="">-- 请选择 --</option>';
+  for (const objective of questionCatalog[pageId]?.objectives || []) {
+    const option = document.createElement("option");
+    option.value = objective.id;
+    option.textContent = objective.title;
+    objectiveSelect.append(option);
+  }
+}
+
+function updateQuestionType() {
+  const type = document.getElementById("question-type")?.value;
+  document.querySelectorAll(".question-choice-only").forEach(element => {
+    element.hidden = type !== "single_choice" && type !== "multiple_choice";
+  });
+}
+
+function parsePairs(text, label) {
+  const result = {};
+  for (const line of text.split(/\r?\n/).map(item => item.trim()).filter(Boolean)) {
+    const separator = line.indexOf("|");
+    if (separator < 1 || !line.slice(separator + 1).trim()) throw new Error(`${label}格式应为“ID|内容”`);
+    const id = line.slice(0, separator).trim().toUpperCase();
+    if (result[id]) throw new Error(`${label}中 ID ${id} 重复`);
+    result[id] = line.slice(separator + 1).trim();
+  }
+  return result;
+}
+
+function buildQuestionPayload(content) {
+  const value = id => document.getElementById(id)?.value?.trim() || "";
+  const type = value("question-type");
+  const choicesById =
+    type === "single_choice" || type === "multiple_choice"
+      ? parsePairs(value("question-choices"), "选项")
+      : {};
+  const choiceFeedback =
+    type === "single_choice" || type === "multiple_choice"
+      ? parsePairs(value("question-choice-feedback"), "逐项反馈")
+      : {};
+  if (Object.keys(choicesById).join("\0") !== Object.keys(choiceFeedback).join("\0"))
+    throw new Error("逐项反馈必须与选项 ID 完全一致");
+  const answerText = value("question-answer");
+  let answer;
+  if (type === "single_choice") answer = { choice: answerText.toUpperCase() };
+  else if (type === "multiple_choice")
+    answer = { choices: answerText.split(",").map(item => item.trim().toUpperCase()).filter(Boolean) };
+  else if (type === "true_false") {
+    if (!["true", "false"].includes(answerText.toLowerCase())) throw new Error("判断题答案必须是 true 或 false");
+    answer = { value: answerText.toLowerCase() === "true" };
+  } else {
+    const numeric = Number(answerText);
+    if (!Number.isFinite(numeric)) throw new Error("数值题答案必须是有限数字");
+    answer = {
+      value: numeric,
+      tolerance: { type: "absolute", value: 0.01 },
+      unit: { required: false, accepted: [] },
+    };
+  }
+  const correct = value("question-correct-feedback");
+  const incorrect = value("question-incorrect-feedback");
+  const externalUrl = value("question-image-url");
+  const externalMedia = externalUrl
+    ? [{ url: externalUrl, alt: value("question-image-alt"), rights_note: value("question-image-rights") }]
+    : [];
+  const payload = {
+    page_id: value("question-page"),
+    primary_objective: value("question-objective"),
+    secondary_objectives: [],
+    concepts: value("question-concepts").split(",").map(item => item.trim()).filter(Boolean),
+    type,
+    choice_order: type === "single_choice" || type === "multiple_choice" ? "shuffle" : "fixed",
+    stem: content,
+    choices:
+      type === "single_choice" || type === "multiple_choice"
+        ? Object.entries(choicesById).map(([id, content]) => ({ id, content }))
+        : undefined,
+    answer,
+    feedback:
+      type === "single_choice" || type === "multiple_choice"
+        ? { choices: choiceFeedback, correct, incorrect }
+        : { correct, incorrect },
+    solution: value("question-solution"),
+    hints: value("question-hints").split(/\r?\n/).map(item => item.trim()).filter(Boolean),
+    difficulty: Number(value("question-difficulty")),
+    cognitive_level: value("question-cognitive"),
+    style: value("question-style"),
+    estimated_seconds: Number(value("question-seconds")),
+    attribution: document.querySelector('input[name="attribution-type"][value="anonymous"]')?.checked
+      ? "匿名投稿者"
+      : (document.getElementById("submit-attribution")?.value.trim() || "匿名投稿者"),
+    ai_assisted: Boolean(document.getElementById("question-ai-assisted")?.checked),
+    external_media: externalMedia,
+  };
+  if (
+    !payload.page_id ||
+    !payload.primary_objective ||
+    !payload.concepts.length ||
+    !payload.solution ||
+    !correct ||
+    !incorrect
+  )
+    throw new Error("请完整填写题目结构中的必填字段");
+  if (!document.getElementById("question-license")?.checked) throw new Error("请确认 CC BY-SA 4.0 授权");
+  if (externalUrl && (!externalUrl.startsWith("https://") || !externalMedia[0].alt || !externalMedia[0].rights_note))
+    throw new Error("图片投稿必须提供 HTTPS 链接、替代文本和授权说明");
+  return payload;
 }
 
 function setupAttributionToggle() {
@@ -213,6 +350,7 @@ const TYPE_LABELS = {
   "full-page": "完整页面",
   "notes": "笔记/提纲",
   "errata": "勘误纠错",
+  "question": "题目投稿",
   "suggestion": "建议/想法",
 };
 
@@ -255,6 +393,7 @@ async function handleSubmit(event) {
   const chapterSelect = document.getElementById("submit-chapter");
   const attributionInput = document.getElementById("submit-attribution");
   const contactInput = document.getElementById("submit-contact");
+  const contactPublic = document.getElementById("submit-contact-public");
   const anonRadio = document.querySelector('input[name="attribution-type"][value="anonymous"]');
 
   status.textContent = "";
@@ -272,6 +411,11 @@ async function handleSubmit(event) {
 
   if (!title || !content || !type) {
     status.textContent = "请填写标题、正文和投稿类型";
+    status.className = "error";
+    return;
+  }
+  if (contactInput.value.trim() && !contactPublic.checked) {
+    status.textContent = "联系方式会公开显示；请勾选公开同意，或清空联系方式";
     status.className = "error";
     return;
   }
@@ -299,6 +443,8 @@ async function handleSubmit(event) {
           ? "匿名"
           : (attributionInput.value.trim() || "匿名"),
         contact: contactInput.value.trim(),
+        contactPublicConsent: Boolean(contactPublic.checked),
+        question: type === "question" ? buildQuestionPayload(content) : undefined,
         turnstileToken,
       }),
     });
@@ -342,13 +488,39 @@ document$.subscribe(function () {
 
   populateChapterSelect();
   initEditor();
+  void loadQuestionCatalog();
   setupAttributionToggle();
   updateTypeHint();
+  updateQuestionType();
 
   const typeSelect = document.getElementById("submit-type");
   if (typeSelect) {
     typeSelect.removeEventListener("change", updateTypeHint);
     typeSelect.addEventListener("change", updateTypeHint);
+  }
+  const questionPage = document.getElementById("question-page");
+  if (questionPage) {
+    questionPage.removeEventListener("change", updateQuestionObjectives);
+    questionPage.addEventListener("change", updateQuestionObjectives);
+  }
+  const questionType = document.getElementById("question-type");
+  if (questionType) {
+    questionType.removeEventListener("change", updateQuestionType);
+    questionType.addEventListener("change", updateQuestionType);
+  }
+  const parameters = new URL(window.location.href).searchParams;
+  if (parameters.get("type") === "errata") {
+    typeSelect.value = "errata";
+    document.getElementById("submit-title").value = parameters.get("title") || "";
+    const prefill = [
+      `题目 ID：${parameters.get("question_id") || ""}`,
+      `题目版本：${parameters.get("question_version") || ""}`,
+      `页面 ID：${parameters.get("page_id") || ""}`,
+      "",
+      "问题描述：",
+    ].join("\n");
+    easyMDE?.value(prefill);
+    updateTypeHint();
   }
 
   const form = document.getElementById("submission-form");

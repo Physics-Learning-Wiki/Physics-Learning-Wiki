@@ -75,9 +75,11 @@ class QuizApp {
       if (usable) {
         const quick = this.quizLink(pageId, "quick", newSeed());
         const full = this.quizLink(pageId, "full", newSeed());
-        item.innerHTML = `<strong>${escapeHtml(
-          page.title
-        )}</strong> — <a data-no-instant href="${quick}">3 题快速检查</a> · <a data-no-instant href="${full}">8 题完整小测</a>`;
+        const quickTitle = page.modes.quick?.title ?? "快速检查";
+        const fullTitle = page.modes.full?.title ?? "完整小测";
+        item.innerHTML = `<strong>${escapeHtml(page.title)}</strong> — <a data-no-instant href="${quick}">${escapeHtml(
+          quickTitle
+        )}</a> · <a data-no-instant href="${full}">${escapeHtml(fullTitle)}</a>`;
       } else {
         item.textContent = `${page.title}（题库建设中：${page.publishedQuestionCount}/24）`;
       }
@@ -100,11 +102,16 @@ class QuizApp {
     const answer = this.session.answers[question.id] ?? null;
     const locked = Boolean(this.session.locked[question.id]);
     const quick = this.session.mode === "quick" || this.session.mode === "retry";
+    const modeTitle =
+      this.session.mode === "retry"
+        ? "错题重做"
+        : this.bundle.blueprint.modes[this.session.mode]?.title ?? (quick ? "快速检查" : "完整小测");
     const section = document.createElement("section");
     section.className = "plw-quiz-question";
+    section.dataset.questionId = question.id;
     section.innerHTML = `${
       this.bundle.preview ? '<p class="plw-quiz-preview" role="status">草稿预览：题目未经人工审核。</p>' : ""
-    }<p>${escapeHtml(this.bundle.page.title)} · ${quick ? "快速检查" : "完整小测"}</p><progress value="${
+    }<p>${escapeHtml(this.bundle.page.title)} · ${escapeHtml(modeTitle)}</p><progress value="${
       this.session.currentIndex + 1
     }" max="${this.questions.length}"></progress><p>${this.session.currentIndex + 1}/${
       this.questions.length
@@ -127,6 +134,14 @@ class QuizApp {
       this.persist();
     });
     section.append(uncertainty);
+    if (question.hintsHtml.length) {
+      const hints = document.createElement("details");
+      hints.className = "plw-quiz-hints";
+      hints.innerHTML = `<summary>查看提示</summary>${question.hintsHtml
+        .map((hint, index) => `<div><strong>提示 ${index + 1}</strong>${hint}</div>`)
+        .join("")}`;
+      section.append(hints);
+    }
     if (locked) section.append(this.feedback(question, answer));
     const actions = document.createElement("div");
     actions.className = "plw-quiz-actions";
@@ -143,6 +158,7 @@ class QuizApp {
     if (!this.store.persistent)
       section.insertAdjacentHTML("beforeend", '<p role="status">浏览器存储不可用，本次进度不会持久保存。</p>');
     this.root.replaceChildren(section);
+    this.hydrateAssets(section);
     section.querySelector<HTMLElement>("h2")?.focus();
     void typeset(section);
   }
@@ -231,6 +247,11 @@ class QuizApp {
     area.innerHTML = `<h3>${result.correct ? "回答正确" : "需要复习"}</h3>${targeted}${
       result.correct ? question.feedback.correctHtml : question.feedback.incorrectHtml
     }<details><summary>查看解析</summary>${question.solutionHtml}</details>`;
+    const report = document.createElement("a");
+    report.className = "plw-quiz-report";
+    report.href = this.reportLink(question);
+    report.textContent = "报告这道题的问题";
+    area.append(report);
     return area;
   }
 
@@ -304,6 +325,7 @@ class QuizApp {
       const question = this.questions[index];
       const article = document.createElement("article");
       article.className = "plw-quiz-review";
+      article.dataset.questionId = question.id;
       article.innerHTML = `<h3>第 ${index + 1} 题：${result.correct ? "正确" : result.unanswered ? "未作答" : "错误"}${
         result.uncertain ? "（不确定）" : ""
       }</h3>${question.stemHtml}`;
@@ -324,13 +346,14 @@ class QuizApp {
     actions.append(back);
     section.append(actions);
     this.root.replaceChildren(section);
+    this.hydrateAssets(section);
     section.querySelector<HTMLElement>("h2")?.focus();
     void typeset(section);
   }
 
   private startRetry(ids: string[]): void {
     if (!this.bundle || !this.session) return;
-    this.questions = selectRetry(this.bundle, ids);
+    this.questions = selectRetry(this.bundle, ids, this.session.seed);
     this.session = this.newSession(this.session.pageId, "retry", this.session.seed);
     this.renderQuestion();
   }
@@ -431,6 +454,32 @@ class QuizApp {
     const url = new URL(window.location.href);
     url.search = new URLSearchParams({ page_id: pageId, mode, seed }).toString();
     return url.href;
+  }
+
+  private reportLink(question: Question): string {
+    const url = new URL("../../submit/", this.manifestUrl);
+    url.search = new URLSearchParams({
+      type: "errata",
+      question_id: question.id,
+      question_version: String(question.version),
+      page_id: this.bundle?.page.id ?? "",
+      title: `[题目勘误] ${question.id}`
+    }).toString();
+    return url.href;
+  }
+
+  private hydrateAssets(container: HTMLElement): void {
+    if (!this.bundle) return;
+    const scopes: HTMLElement[] = container.dataset.questionId ? [container] : [];
+    scopes.push(...Array.from(container.querySelectorAll<HTMLElement>("[data-question-id]")));
+    for (const scope of scopes) {
+      const question = this.bundle.questions.find(item => item.id === scope.dataset.questionId);
+      if (!question) continue;
+      for (const image of Array.from(scope.querySelectorAll<HTMLImageElement>("img[data-plw-asset]"))) {
+        const relative = question.assets[image.dataset.plwAsset ?? ""];
+        if (relative) image.src = new URL(relative, this.manifestUrl).href;
+      }
+    }
   }
 
   private replaceQuery(pageId: string, mode: QuizMode, seed: string): void {

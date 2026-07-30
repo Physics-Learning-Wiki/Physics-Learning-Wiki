@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0001
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.first-law
 secondary_objectives: []
 concepts: [newton.inertia]
 type: multiple_choice
+choice_order: shuffle
 stem: 关于惯性，下列哪些说法正确？
 choices:
   - {id: A, content: 静止物体具有惯性}

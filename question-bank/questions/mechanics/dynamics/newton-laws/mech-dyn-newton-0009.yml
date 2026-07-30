@@ -1,0 +1,24 @@
+schema_version: 2
+id: mech-dyn-newton-0009
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.first-law
+secondary_objectives: []
+concepts: [newton.inertial-frame]
+type: single_choice
+choice_order: shuffle
+stem: 一只冰球在水平冰面上滑行。若可忽略阻力，在惯性参考系中松手后冰球将怎样运动？
+choices: [{id: A, content: 立即停止}, {id: B, content: 速度逐渐减小}, {id: C, content: 保持原速度做匀速直线运动}, {id: D, content: 沿重力方向加速}]
+answer: {choice: C}
+feedback: {choices: {A: 停止需要改变速度，必须有合外力。, B: 速度减小意味着存在反向合外力。, C: 正确，水平方向合外力为零。, D: 竖直方向支持力与重力平衡。}, correct: 正确地应用了牛顿第一定律。, incorrect: 忽略阻力后，合外力为零并不意味着速度为零。}
+hints: [先判断合外力，再判断加速度。]
+solution: 支持力与重力抵消，水平方向又无阻力，故合外力和加速度均为零；冰球保持松手瞬间的速度。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 45
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

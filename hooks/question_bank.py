@@ -73,7 +73,10 @@ def on_page_markdown(markdown, page, config, files, **kwargs):
     if usable:
         quiz_url = get_relative_url("quiz/", page.url)
         actions = []
-        for mode, label in (("quick", "3 题快速检查"), ("full", "8 题完整小测")):
+        modes = page_data.get("modes", {})
+        for mode in ("quick", "full"):
+            mode_data = modes.get(mode, {}) if isinstance(modes, dict) else {}
+            label = str(mode_data.get("title", mode))
             query = urlencode({"page_id": page_id, "mode": mode})
             actions.append(f'<a class="md-button" data-no-instant href="{html.escape(quiz_url)}?{query}">{label}</a>')
         parts.append(f'<div class="plw-quiz-entry__actions">{" ".join(actions)}</div>')

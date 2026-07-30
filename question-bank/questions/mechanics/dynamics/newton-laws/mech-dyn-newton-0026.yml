@@ -1,0 +1,24 @@
+schema_version: 2
+id: mech-dyn-newton-0026
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.coordinate-equations
+secondary_objectives: []
+concepts: [newton.coordinate-system]
+type: multiple_choice
+choice_order: shuffle
+stem: 选择动力学坐标轴时，下列哪些做法通常能简化方程？
+choices: [{id: A, content: 斜面问题取一轴沿斜面}, {id: B, content: 约束方向取为一条坐标轴}, {id: C, content: 每个力都各自建立一套正方向}, {id: D, content: 同一方向的力分量和加速度使用同一符号约定}]
+answer: {choices: [A, B, D]}
+feedback: {choices: {A: 常可减少分量个数。, B: 便于直接写出约束加速度。, C: 一道题必须使用一致的坐标系。, D: 这是列分量方程的基本要求。}, correct: 正确掌握了坐标选择原则。, incorrect: 坐标可灵活选择，但选定后符号约定必须一致。}
+hints: [目标是让约束和尽可能多的力与坐标轴对齐。]
+solution: A、B 可使约束或力分量更简单；D 保证方程符号一致。不能为每个力任意改变正方向。
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 60
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

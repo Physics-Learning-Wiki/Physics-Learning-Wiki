@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0008
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.relative-motion
 secondary_objectives: []
 concepts: [kinematics.relative-velocity]
 type: numeric
+choice_order: fixed
 stem: A 在 B 后方 $20\,\mathrm m$，二者同向匀速，速度分别为 $6\,\mathrm{m/s}$ 和 $4\,\mathrm{m/s}$。A 多少秒后追上 B？
 answer:
   value: 10

@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0004
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
 concepts: [newton.action-reaction]
 type: single_choice
+choice_order: shuffle
 stem: 一本书静止在桌面上。与地球对书的重力构成第三定律力对的是哪一个力？
 choices: [{id: A, content: 桌面对书的支持力}, {id: B, content: 书对桌面的压力}, {id: C, content: 书对地球的引力}, {id: D, content: 书受到的合力}]
 answer: {choice: C}

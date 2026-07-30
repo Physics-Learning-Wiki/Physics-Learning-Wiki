@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0006
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.free-body-diagram
 secondary_objectives: []
 concepts: [newton.free-body-diagram]
 type: multiple_choice
+choice_order: shuffle
 stem: 斜面上的滑块沿斜面下滑。以滑块为研究对象，受力图中可能包含哪些力？
 choices:
   - {id: A, content: 滑块所受重力}

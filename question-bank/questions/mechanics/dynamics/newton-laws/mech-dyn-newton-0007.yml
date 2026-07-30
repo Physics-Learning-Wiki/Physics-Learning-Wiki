@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0007
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.coordinate-equations
 secondary_objectives: []
 concepts: [newton.coordinate-system]
 type: single_choice
+choice_order: shuffle
 stem: 滑块没有离开固定斜面。取垂直斜面方向为一个坐标轴，该方向应满足哪个条件？
 choices: [{id: A, content: '$a_\perp=0$'}, {id: B, content: '$v_\parallel=0$'}, {id: C, content: '$\sum F_\parallel=0$'}, {id: D, content: 重力为零}]
 answer: {choice: A}

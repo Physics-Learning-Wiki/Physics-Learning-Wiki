@@ -16,6 +16,7 @@ export interface QuestionBase {
   id: string;
   version: number;
   type: QuestionType;
+  choiceOrder: "shuffle" | "fixed";
   primaryObjective: string;
   secondaryObjectives: string[];
   conceptIds: string[];
@@ -28,7 +29,10 @@ export interface QuestionBase {
   hintsHtml: string[];
   solutionHtml: string;
   difficulty: number;
+  cognitiveLevel: "remember" | "understand" | "apply" | "analyze";
+  style: "conceptual" | "graphical" | "computational" | "modeling";
   estimatedSeconds: number;
+  assets: Record<string, string>;
 }
 
 export interface SingleChoiceQuestion extends QuestionBase {
@@ -65,6 +69,12 @@ export interface BlueprintMode {
   total: number;
   feedback_mode: "immediate" | "deferred";
   slots: Array<{ id: string; count: number; objectives: string[] }>;
+  constraints: Array<{
+    field: "difficulty" | "type" | "style";
+    values: Array<string | number>;
+    min?: number;
+    max?: number;
+  }>;
 }
 
 export interface PageBundle {
@@ -83,7 +93,9 @@ export interface ManifestPage {
   status: "construction" | "available";
   publishedQuestionCount: number;
   previewQuestionCount: number;
-  modes: Record<string, number>;
+  modes: Record<string, { title: string; total: number }>;
+  objectives: Objective[];
+  questionPrefix: string;
 }
 
 export interface Manifest {

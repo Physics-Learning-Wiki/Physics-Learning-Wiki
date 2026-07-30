@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="title">
+  <title id="title">斜向细线拉动水平面上的方块</title>
+  <path d="M30 190H450" stroke="#607d8b" stroke-width="6"/>
+  <rect x="150" y="110" width="110" height="80" rx="4" fill="#a5d6a7" stroke="#2e7d32" stroke-width="4"/>
+  <path d="M260 120L390 45" stroke="#6d4c41" stroke-width="5"/>
+  <circle cx="390" cy="45" r="7" fill="#6d4c41"/>
+</svg>

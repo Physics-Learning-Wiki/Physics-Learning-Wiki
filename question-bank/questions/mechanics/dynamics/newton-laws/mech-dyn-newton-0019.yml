@@ -1,0 +1,25 @@
+schema_version: 2
+id: mech-dyn-newton-0019
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.free-body-diagram
+secondary_objectives: []
+concepts: [newton.free-body-diagram]
+type: single_choice
+choice_order: shuffle
+stem: "![水平面上静止方块的受力示意底图](asset:block-horizontal)\n\n方块静止在粗糙水平面上，且没有水平外力。正确的受力图应包含哪些力？"
+assets: [{id: block-horizontal, path: mechanics/dynamics/newton-laws/block-horizontal.svg}]
+choices: [{id: A, content: 只有重力}, {id: B, content: 重力和支持力}, {id: C, content: 重力、支持力和静摩擦力}, {id: D, content: 重力、支持力和向前的运动力}]
+answer: {choice: B}
+feedback: {choices: {A: 地面对方块有支持力。, B: 正确，且没有产生静摩擦的趋势。, C: 无水平外力时静摩擦力为零。, D: 不存在“运动力”。}, correct: 正确，只画实际作用在方块上的非零力。, incorrect: 接触并不必然产生非零摩擦力。}
+hints: [先列相互作用，再判断每个力是否为零。]
+solution: 方块受重力和地面支持力，二者平衡。没有水平外力或相对滑动趋势，静摩擦力为零，不画入受力图。
+difficulty: 1
+cognitive_level: understand
+style: graphical
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿及示意图, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

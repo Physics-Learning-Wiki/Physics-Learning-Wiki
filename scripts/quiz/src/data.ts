@@ -21,12 +21,12 @@ async function fetchJson<T>(url: URL, signal: AbortSignal, noCache = false): Pro
 
 export async function loadManifest(url: URL, signal: AbortSignal): Promise<Manifest> {
   const manifest = await fetchJson<Manifest>(url, signal, true);
-  if (manifest.schemaVersion !== 1) throw new Error("Unsupported manifest version");
+  if (manifest.schemaVersion !== 2) throw new Error("Unsupported manifest version");
   return manifest;
 }
 
 export async function loadBundle(manifestUrl: URL, relative: string, signal: AbortSignal): Promise<PageBundle> {
   const bundle = await fetchJson<PageBundle>(new URL(relative, manifestUrl), signal);
-  if (bundle.schemaVersion !== 1) throw new Error("Unsupported question bundle version");
+  if (bundle.schemaVersion !== 2) throw new Error("Unsupported question bundle version");
   return bundle;
 }

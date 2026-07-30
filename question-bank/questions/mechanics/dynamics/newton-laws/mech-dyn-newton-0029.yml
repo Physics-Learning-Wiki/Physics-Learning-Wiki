@@ -1,0 +1,24 @@
+schema_version: 2
+id: mech-dyn-newton-0029
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.object-system-choice
+secondary_objectives: []
+concepts: [newton.internal-external-force]
+type: single_choice
+choice_order: shuffle
+stem: 若把两个互相作用的物体共同选为系统，下列说法正确的是？
+choices: [{id: A, content: 两物体之间的相互作用力成为系统内力}, {id: B, content: 所有内力都从物理上消失}, {id: C, content: 系统不再受到任何外力}, {id: D, content: 内力可以改变系统总动量}]
+answer: {choice: A}
+feedback: {choices: {A: 正确，内外力取决于系统边界。, B: 内力仍存在，只是在总动量方程中成对抵消。, C: 系统仍可受环境作用。, D: 系统总动量由合外力改变。}, correct: 正确理解了系统边界。, incorrect: 内力并未消失，只是不改变系统总动量。}
+hints: [判断一支力的施力物体和受力物体是否都在系统内。]
+solution: 两物体之间的力是内力。它们作为第三定律力对在系统总动量方程中抵消，但仍会影响各物体的运动。
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

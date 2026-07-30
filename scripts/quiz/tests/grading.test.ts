@@ -7,6 +7,7 @@ import type { Question } from "../src/types.js";
 const base = {
   id: "q",
   version: 1,
+  choiceOrder: "fixed",
   primaryObjective: "obj",
   secondaryObjectives: [],
   conceptIds: [],
@@ -15,6 +16,9 @@ const base = {
   hintsHtml: [],
   solutionHtml: "",
   difficulty: 1,
+  cognitiveLevel: "understand",
+  style: "conceptual",
+  assets: {},
   estimatedSeconds: 10
 };
 

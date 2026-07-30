@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: fixture-single-0001
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.sign-convention
 secondary_objectives: []
 concepts: [motion.sign-convention]
 type: single_choice
+choice_order: shuffle
 stem: 位移是否可能为负值？
 choices:
   - {id: A, content: 可以}

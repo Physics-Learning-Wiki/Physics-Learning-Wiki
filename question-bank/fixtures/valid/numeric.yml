@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: fixture-numeric-0001
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.uniform-motion
 secondary_objectives: []
 concepts: [motion.uniform]
 type: numeric
+choice_order: fixed
 stem: 速度为 $2\,\mathrm{m/s}$，3 秒内位移是多少？
 answer:
   value: 6

@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0004
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.graph-slope-area
 secondary_objectives: []
 concepts: [kinematics.velocity-time-graph]
 type: numeric
+choice_order: fixed
 stem: 某物体在 $0$ 到 $4\,\mathrm s$ 内速度恒为 $-3\,\mathrm{m/s}$。这段时间的位移是多少？
 answer:
   value: -12

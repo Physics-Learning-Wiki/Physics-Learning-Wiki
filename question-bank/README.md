@@ -1,6 +1,6 @@
 # Physics Learning Wiki 题库
 
-题库源文件使用 UTF-8 YAML；一道题一个文件，文件名必须与题目 `id` 一致。生产构建只会编译 `status: published` 的题，`draft` 只能通过显式预览模式加载，`retired` 永不进入新测验。
+题库源文件使用 UTF-8 YAML；一道题一个文件，文件名必须与题目 `id` 一致。当前题目与蓝图均使用 Schema v2。生产构建只会编译 `status: published` 的题，`draft` 只能通过显式预览模式加载，`retired` 永不进入新测验。
 
 ## 数据关系
 
@@ -15,11 +15,14 @@
 - `schemas/`：题目与蓝图 JSON Schema。
 - `questions/`：生产题库源文件。
 - `blueprints/`：各页面测验蓝图。
+- `release-plans/`：经内容编排后等待人工审核与激活的首发清单。
 - `fixtures/`：自动测试数据，不参与生产编译。
 
 ## 状态与审核
 
-`published` 题必须同时记录物理审核和教学审核。两项审核可以由同一位维护者完成，但必须分别记录 GitHub 身份和审核日期。改编题还必须提供可核查来源与许可证说明。
+`published` 题必须记录物理、教学和版权三维审核。三项审核可以由同一位维护者完成，但必须分别记录 GitHub 身份、审核日期、题目版本和内容指纹。题目或受管资源发生改变后，旧签署自动失效。改编题还必须提供可核查来源与许可证说明。
+
+Issue 标签和 PR 审批只表示协作进度，不构成审核签署。页面还必须显式设置 `quiz.state: active` 才会向学习者开放。
 
 ## 常用命令
 
@@ -27,6 +30,9 @@
 uv run python -m scripts.question_bank validate --include-drafts
 uv run python -m scripts.question_bank coverage
 uv run python -m scripts.question_bank build
+uv run python -m scripts.question_bank import-issue --input submission.json
+uv run python -m scripts.question_bank attest --id QUESTION_ID --dimension physics --dimension pedagogy --dimension copyright --reviewer GITHUB_ID
+uv run python -m scripts.question_bank publish --id QUESTION_ID
 uv run pytest tests/question_bank tests/integration
 corepack yarn quiz:typecheck
 corepack yarn quiz:test
@@ -55,7 +61,9 @@ Remove-Item Env:PLW_QUIZ_PREVIEW
 
 ## 正式发布门槛
 
-每个页面至少需要 24 道 published 题，每个主目标至少 4 道，并同时具备概念题和应用或建模题。每道 published 题必须有完整解析、明确来源、CC BY-SA 4.0 许可，以及物理审核和教学审核记录。两项审核可以由同一人完成，但不得省略任一维度。
+每个 active 页面至少需要 24 道 published 题，每个主目标至少 4 道，并同时具备概念题和应用或建模题。每道 published 题必须有完整解析、明确来源、CC BY-SA 4.0 许可，以及物理、教学和版权审核记录。三项审核可以由同一人完成，但不得省略任一维度。
+
+图片使用 `![替代文本](asset:资源ID)` 引用，并在题目的 `assets` 中声明相对于 `question-bank/assets/` 的 SVG、PNG 或 WebP 路径。正式题不得引用远程图片。
 
 发布前运行：
 
@@ -66,3 +74,5 @@ uv run mkdocs build --clean
 ```
 
 AI 可以协助生成原创草稿，但不得代替物理正确性、教学适切性和版权审核，也不得自行将题目标记为 published。
+
+牛顿专题 v1 的 24 道预选题与 6 道保留草稿记录在 `release-plans/newton-laws-v1.yml`。人工审核若决定替换预选题，必须同步更新该清单并保持对应的题型、难度和学习目标分布测试通过。
