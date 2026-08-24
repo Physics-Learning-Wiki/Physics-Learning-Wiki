@@ -114,7 +114,13 @@ function communicate<
       to.on("message", onMessage);
     });
 
-  if (messageToPost) to.postMessage(typeof messageToPost === "string" ? { type: messageToPost } : messageToPost);
+  if (messageToPost)
+  to.postMessage(
+    typeof messageToPost === "string"
+      ? { type: messageToPost }
+      : messageToPost,
+    []
+  );
   return readyPromise;
 }
 
