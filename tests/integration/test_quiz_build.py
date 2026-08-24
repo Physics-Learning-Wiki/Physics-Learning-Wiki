@@ -15,6 +15,7 @@ def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
     environment.pop("PLW_QUIZ_PREVIEW", None)
     if preview:
         environment["PLW_QUIZ_PREVIEW"] = "1"
+        environment.pop("GITHUB_ACTIONS", None)
     subprocess.run(
         [
             sys.executable,

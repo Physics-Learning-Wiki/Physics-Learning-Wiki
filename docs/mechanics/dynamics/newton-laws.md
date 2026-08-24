@@ -22,7 +22,7 @@ learning_objectives:
     anchor: newton-object-system-choice
 quiz:
   enabled: true
-  state: construction
+  state: active
   question_prefix: mech-dyn-newton
   blueprint: mechanics.dynamics.newton-laws
   common_assessments:
