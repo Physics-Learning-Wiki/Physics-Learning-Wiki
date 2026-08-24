@@ -1,31 +1,67 @@
 schema_version: 2
 id: mech-dyn-newton-0003
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
-concepts: [newton.force-acceleration]
+concepts:
+- newton.force-acceleration
 type: multiple_choice
 choice_order: shuffle
 stem: 在惯性系中研究质量不变的物体。关于合外力、速度和加速度，下列哪些说法正确？
 choices:
-  - {id: A, content: 合外力为零时，加速度为零}
-  - {id: B, content: 加速度为零时，速度必为零}
-  - {id: C, content: 合外力的方向与加速度方向相同}
-  - {id: D, content: 物体速度方向必与合外力方向相同}
-answer: {choices: [A, C]}
+- id: A
+  content: 合外力为零时，加速度为零
+- id: B
+  content: 加速度为零时，速度必为零
+- id: C
+  content: 合外力的方向与加速度方向相同
+- id: D
+  content: 物体速度方向必与合外力方向相同
+answer:
+  choices:
+  - A
+  - C
 feedback:
-  choices: {A: 由牛顿第二定律可直接得到。, B: 加速度为零只表示速度不随时间改变。, C: 质量为正时二者同向。, D: 力决定速度的变化率，不要求与当前速度同向。}
+  choices:
+    A: 由牛顿第二定律可直接得到。
+    B: 加速度为零只表示速度不随时间改变。
+    C: 质量为正时二者同向。
+    D: 力决定速度的变化率，不要求与当前速度同向。
   correct: 你正确区分了速度、加速度和合外力。
   incorrect: 请把合外力直接与加速度联系，而不要把它与速度本身混同。
-hints: [从 $\sum\boldsymbol F=m\boldsymbol a$ 逐项判断。]
+hints:
+- 从 $\sum\boldsymbol F=m\boldsymbol a$ 逐项判断。
 solution: 对质量不变的物体，$\sum\boldsymbol F=m\boldsymbol a$，故 A、C 正确。加速度为零时物体可以静止，也可以做匀速直线运动；速度还可能与合外力垂直或反向。
 difficulty: 2
 cognitive_level: analyze
 style: conceptual
 estimated_seconds: 25
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7

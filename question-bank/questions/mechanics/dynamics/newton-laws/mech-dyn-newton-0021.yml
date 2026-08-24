@@ -1,25 +1,78 @@
 schema_version: 2
 id: mech-dyn-newton-0021
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.free-body-diagram
 secondary_objectives: []
-concepts: [newton.free-body-diagram, newton.tension]
+concepts:
+- newton.free-body-diagram
+- newton.tension
 type: multiple_choice
 choice_order: shuffle
-stem: "![由斜向细线拉住的方块](asset:block-tension)\n\n光滑水平面上的方块由一根斜向右上方的细线拉动。方块的受力图包含哪些力？"
-assets: [{id: block-tension, path: mechanics/dynamics/newton-laws/block-tension.svg}]
-choices: [{id: A, content: 重力}, {id: B, content: 地面支持力}, {id: C, content: 沿细线方向的拉力}, {id: D, content: 与运动方向相同的“运动力”}, {id: E, content: 水平摩擦力}]
-answer: {choices: [A, B, C]}
-feedback: {choices: {A: 地球对方块的作用。, B: 地面对方块的接触力。, C: 细线对方块的作用。, D: 不存在这种真实力。, E: 水平面光滑，摩擦力为零。}, correct: 正确列出了全部非零真实力。, incorrect: 只画作用在方块上的真实非零力。}
-hints: [逐一检查方块与地球、地面、细线的相互作用。]
+stem: '![由斜向细线拉住的方块](asset:block-tension)
+
+
+  光滑水平面上的方块由一根斜向右上方的细线拉动。方块的受力图包含哪些力？'
+assets:
+- id: block-tension
+  path: mechanics/dynamics/newton-laws/block-tension.svg
+choices:
+- id: A
+  content: 重力
+- id: B
+  content: 地面支持力
+- id: C
+  content: 沿细线方向的拉力
+- id: D
+  content: 与运动方向相同的“运动力”
+- id: E
+  content: 水平摩擦力
+answer:
+  choices:
+  - A
+  - B
+  - C
+feedback:
+  choices:
+    A: 地球对方块的作用。
+    B: 地面对方块的接触力。
+    C: 细线对方块的作用。
+    D: 不存在这种真实力。
+    E: 水平面光滑，摩擦力为零。
+  correct: 正确列出了全部非零真实力。
+  incorrect: 只画作用在方块上的真实非零力。
+hints:
+- 逐一检查方块与地球、地面、细线的相互作用。
 solution: 方块受重力、支持力和沿细线方向的拉力。光滑面不提供摩擦力，也不存在“运动力”。
 difficulty: 3
 cognitive_level: analyze
 style: graphical
 estimated_seconds: 75
-provenance: {type: original, note: Physics Learning Wiki 原创草稿及示意图, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿及示意图
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49

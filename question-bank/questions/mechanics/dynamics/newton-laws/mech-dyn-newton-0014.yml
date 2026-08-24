@@ -1,23 +1,59 @@
 schema_version: 2
 id: mech-dyn-newton-0014
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
-concepts: [newton.vector-components]
+concepts:
+- newton.vector-components
 type: numeric
 choice_order: fixed
 stem: 质量为 $2\,\mathrm{kg}$ 的质点所受合外力为 $\boldsymbol F=(6\,\hat{\boldsymbol i}-8\,\hat{\boldsymbol j})\,\mathrm N$。加速度大小是多少？
-answer: {value: 5, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
-feedback: {correct: 正确，你正确处理了矢量分量。, incorrect: 先分别除以质量得到加速度分量，再求矢量大小。}
-hints: [$a_x=F_x/m$，$a_y=F_y/m$。]
+answer:
+  value: 5
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+feedback:
+  correct: 正确，你正确处理了矢量分量。
+  incorrect: 先分别除以质量得到加速度分量，再求矢量大小。
+hints:
+- $a_x=F_x/m$，$a_y=F_y/m$。
 solution: $\boldsymbol a=(3\hat{\boldsymbol i}-4\hat{\boldsymbol j})\,\mathrm{m/s^2}$，故 $|\boldsymbol a|=\sqrt{3^2+(-4)^2}=5\,\mathrm{m/s^2}$。
 difficulty: 3
 cognitive_level: analyze
 style: computational
 estimated_seconds: 90
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87

@@ -1,24 +1,65 @@
 schema_version: 2
 id: mech-dyn-newton-0016
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
-concepts: [newton.action-reaction]
+concepts:
+- newton.action-reaction
 type: single_choice
 choice_order: shuffle
 stem: 人向后蹬地而向前加速。直接使人向前加速的力是？
-choices: [{id: A, content: 人对地面的向后摩擦力}, {id: B, content: 地面对人的向前摩擦力}, {id: C, content: 人的重力}, {id: D, content: 人的惯性}]
-answer: {choice: B}
-feedback: {choices: {A: 该力作用在地面上。, B: 正确，它作用在人身上。, C: 重力竖直向下。, D: 惯性不是力。}, correct: 正确找到了受力物体为人的水平力。, incorrect: 先确认每个力作用在哪个物体上。}
-hints: [研究对象是人，只列作用在人身上的力。]
+choices:
+- id: A
+  content: 人对地面的向后摩擦力
+- id: B
+  content: 地面对人的向前摩擦力
+- id: C
+  content: 人的重力
+- id: D
+  content: 人的惯性
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 该力作用在地面上。
+    B: 正确，它作用在人身上。
+    C: 重力竖直向下。
+    D: 惯性不是力。
+  correct: 正确找到了受力物体为人的水平力。
+  incorrect: 先确认每个力作用在哪个物体上。
+hints:
+- 研究对象是人，只列作用在人身上的力。
 solution: 人对地面施加向后的摩擦力，地面依牛顿第三定律对人施加向前的摩擦力，使人向前加速。
 difficulty: 2
 cognitive_level: apply
 style: modeling
 estimated_seconds: 45
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538

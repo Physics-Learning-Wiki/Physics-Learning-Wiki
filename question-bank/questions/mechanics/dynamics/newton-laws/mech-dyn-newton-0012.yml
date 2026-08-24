@@ -1,24 +1,67 @@
 schema_version: 2
 id: mech-dyn-newton-0012
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.first-law
 secondary_objectives: []
-concepts: [newton.inertial-frame]
+concepts:
+- newton.inertial-frame
 type: multiple_choice
 choice_order: shuffle
 stem: 下列哪些参考系在给定情形下通常可近似作为惯性系？
-choices: [{id: A, content: 匀速直线行驶的列车车厢}, {id: B, content: 正在急转弯的汽车}, {id: C, content: 实验室中研究短时小尺度运动时的地面}, {id: D, content: 正在加速上升的电梯}]
-answer: {choices: [A, C]}
-feedback: {choices: {A: 匀速直线运动的参考系相对惯性系仍是惯性系。, B: 转弯具有向心加速度。, C: 在常见基础问题中可作近似。, D: 加速电梯是非惯性系。}, correct: 正确识别了可用的惯性系近似。, incorrect: 判断参考系本身是否相对惯性系有加速度。}
-hints: [寻找有平动加速度或转动的参考系。]
+choices:
+- id: A
+  content: 匀速直线行驶的列车车厢
+- id: B
+  content: 正在急转弯的汽车
+- id: C
+  content: 实验室中研究短时小尺度运动时的地面
+- id: D
+  content: 正在加速上升的电梯
+answer:
+  choices:
+  - A
+  - C
+feedback:
+  choices:
+    A: 匀速直线运动的参考系相对惯性系仍是惯性系。
+    B: 转弯具有向心加速度。
+    C: 在常见基础问题中可作近似。
+    D: 加速电梯是非惯性系。
+  correct: 正确识别了可用的惯性系近似。
+  incorrect: 判断参考系本身是否相对惯性系有加速度。
+hints:
+- 寻找有平动加速度或转动的参考系。
 solution: A 相对地面做匀速直线运动；C 在题设尺度上可忽略地球自转影响。B、D 都有明显加速度。
 difficulty: 2
 cognitive_level: analyze
 style: conceptual
 estimated_seconds: 60
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737

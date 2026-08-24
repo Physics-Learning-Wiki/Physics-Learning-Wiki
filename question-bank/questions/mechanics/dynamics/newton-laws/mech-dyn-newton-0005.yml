@@ -1,23 +1,51 @@
 schema_version: 2
 id: mech-dyn-newton-0005
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
-concepts: [newton.balance-force]
+concepts:
+- newton.balance-force
 type: true_false
 choice_order: fixed
 stem: 静止书所受重力和桌面对书的支持力互为作用力与反作用力。
-answer: {value: false}
-feedback: {correct: 正确，它们是作用在同一物体上的平衡力。, incorrect: 第三定律力对必须作用在两个不同物体上。}
-hints: [检查两个力的受力物体是否相同。]
+answer:
+  value: false
+feedback:
+  correct: 正确，它们是作用在同一物体上的平衡力。
+  incorrect: 第三定律力对必须作用在两个不同物体上。
+hints:
+- 检查两个力的受力物体是否相同。
 solution: 重力与支持力都作用在书上；各自的反作用力作用在地球或桌面上。
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 30
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5

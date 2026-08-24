@@ -1,24 +1,69 @@
 schema_version: 2
 id: mech-dyn-newton-0017
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
-concepts: [newton.action-reaction, newton.balance-force]
+concepts:
+- newton.action-reaction
+- newton.balance-force
 type: multiple_choice
 choice_order: shuffle
 stem: 关于一对牛顿第三定律力，下列哪些性质必然成立？
-choices: [{id: A, content: 大小相等}, {id: B, content: 方向相反}, {id: C, content: 作用在同一物体上}, {id: D, content: 来自同一个相互作用}]
-answer: {choices: [A, B, D]}
-feedback: {choices: {A: 正确。, B: 正确。, C: 它们分别作用在两个物体上。, D: 正确，这是识别力对的关键。}, correct: 你准确掌握了第三定律力对的条件。, incorrect: 第三定律力对作用在不同物体上。}
-hints: [写成“甲对乙”和“乙对甲”。]
+choices:
+- id: A
+  content: 大小相等
+- id: B
+  content: 方向相反
+- id: C
+  content: 作用在同一物体上
+- id: D
+  content: 来自同一个相互作用
+answer:
+  choices:
+  - A
+  - B
+  - D
+feedback:
+  choices:
+    A: 正确。
+    B: 正确。
+    C: 它们分别作用在两个物体上。
+    D: 正确，这是识别力对的关键。
+  correct: 你准确掌握了第三定律力对的条件。
+  incorrect: 第三定律力对作用在不同物体上。
+hints:
+- 写成“甲对乙”和“乙对甲”。
 solution: 第三定律力对来自同一相互作用，大小相等、方向相反，分别作用于两个不同物体。
 difficulty: 2
 cognitive_level: analyze
 style: conceptual
 estimated_seconds: 50
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef

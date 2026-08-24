@@ -1,23 +1,59 @@
 schema_version: 2
 id: mech-dyn-newton-0013
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
-concepts: [newton.net-force]
+concepts:
+- newton.net-force
 type: numeric
 choice_order: fixed
 stem: 质量为 $4\,\mathrm{kg}$ 的物体在水平面上受到向右 $18\,\mathrm N$ 的拉力和向左 $6\,\mathrm N$ 的摩擦力。加速度大小是多少？
-answer: {value: 3, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
-feedback: {correct: 正确，先求合外力再除以质量。, incorrect: 两个水平力方向相反，不能直接相加其大小。}
-hints: [水平方向合外力为 $18-6$。]
+answer:
+  value: 3
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+feedback:
+  correct: 正确，先求合外力再除以质量。
+  incorrect: 两个水平力方向相反，不能直接相加其大小。
+hints:
+- 水平方向合外力为 $18-6$。
 solution: $\sum F_x=18-6=12\,\mathrm N$，故 $a=12/4=3\,\mathrm{m/s^2}$。
 difficulty: 2
 cognitive_level: apply
 style: computational
 estimated_seconds: 55
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398

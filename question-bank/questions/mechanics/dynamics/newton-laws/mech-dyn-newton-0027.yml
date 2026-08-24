@@ -1,23 +1,59 @@
 schema_version: 2
 id: mech-dyn-newton-0027
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.object-system-choice
 secondary_objectives: []
-concepts: [newton.system-boundary]
+concepts:
+- newton.system-boundary
 type: numeric
 choice_order: fixed
 stem: 光滑水平面上，$1\,\mathrm{kg}$、$2\,\mathrm{kg}$、$3\,\mathrm{kg}$ 三个相连物体受水平外力 $12\,\mathrm N$。把三者视为整体，求加速度。
-answer: {value: 2, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
-feedback: {correct: 正确，连接力是系统内力。, incorrect: 整体质量为三者质量之和。}
-hints: ['系统所受水平外力只有 $12\,\mathrm N$。']
+answer:
+  value: 2
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+feedback:
+  correct: 正确，连接力是系统内力。
+  incorrect: 整体质量为三者质量之和。
+hints:
+- 系统所受水平外力只有 $12\,\mathrm N$。
 solution: $a=F/(m_1+m_2+m_3)=12/(1+2+3)=2\,\mathrm{m/s^2}$。
 difficulty: 1
 cognitive_level: apply
 style: computational
 estimated_seconds: 45
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d

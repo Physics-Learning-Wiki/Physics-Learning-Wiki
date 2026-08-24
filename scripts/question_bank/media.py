@@ -51,14 +51,28 @@ def asset_source(root: Path, relative: str) -> Path | None:
 
 
 def question_content_fingerprint(data: dict[str, Any], root: Path) -> str:
-    payload = {key: value for key, value in data.items() if key not in {"status", "review", "submission"}}
+    payload = {
+        key: value
+        for key, value in data.items()
+        if key not in {"status", "review", "submission"}
+    }
     asset_bytes: dict[str, str] = {}
+
     for asset in data.get("assets", []):
         if not isinstance(asset, dict) or not isinstance(asset.get("path"), str):
             continue
+
         path = asset_source(root, asset["path"])
         if path and path.is_file():
-            asset_bytes[str(asset.get("id"))] = hashlib.sha256(path.read_bytes()).hexdigest()
+            content = path.read_bytes()
+
+            # SVG is text/XML. Normalize platform-dependent line endings
+            # before computing the review fingerprint.
+            if path.suffix.lower() == ".svg":
+                content = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+            asset_bytes[str(asset.get("id"))] = hashlib.sha256(content).hexdigest()
+
     return fingerprint({"question": payload, "assets": asset_bytes})
 
 
@@ -75,31 +89,63 @@ def validate_assets(data: dict[str, Any], path: Path, root: Path) -> list[Issue]
         if not isinstance(asset_id, str) or not isinstance(relative, str):
             continue
         if asset_id in by_id:
-            issues.append(Issue.error(path, f"assets[{index}].id", "asset ids must be unique"))
+            issues.append(
+                Issue.error(path, f"assets[{index}].id", "asset ids must be unique")
+            )
         by_id[asset_id] = asset
         source = asset_source(root, relative)
         if source is None:
-            issues.append(Issue.error(path, f"assets[{index}].path", "asset path escapes question-bank/assets"))
+            issues.append(
+                Issue.error(
+                    path,
+                    f"assets[{index}].path",
+                    "asset path escapes question-bank/assets",
+                )
+            )
             continue
         if source.suffix.lower() not in ALLOWED_EXTENSIONS:
-            issues.append(Issue.error(path, f"assets[{index}].path", "unsupported asset extension"))
+            issues.append(
+                Issue.error(
+                    path, f"assets[{index}].path", "unsupported asset extension"
+                )
+            )
             continue
         if not source.is_file():
-            issues.append(Issue.error(path, f"assets[{index}].path", "asset file does not exist"))
+            issues.append(
+                Issue.error(path, f"assets[{index}].path", "asset file does not exist")
+            )
             continue
         content = source.read_bytes()
         total += len(content)
         if len(content) > MAX_ASSET_BYTES:
-            issues.append(Issue.error(path, f"assets[{index}].path", "asset exceeds 1 MiB"))
-        if source.suffix.lower() == ".png" and not content.startswith(b"\x89PNG\r\n\x1a\n"):
-            issues.append(Issue.error(path, f"assets[{index}].path", "PNG signature is invalid"))
-        if source.suffix.lower() == ".webp" and not (content.startswith(b"RIFF") and content[8:12] == b"WEBP"):
-            issues.append(Issue.error(path, f"assets[{index}].path", "WebP signature is invalid"))
+            issues.append(
+                Issue.error(path, f"assets[{index}].path", "asset exceeds 1 MiB")
+            )
+        if source.suffix.lower() == ".png" and not content.startswith(
+            b"\x89PNG\r\n\x1a\n"
+        ):
+            issues.append(
+                Issue.error(path, f"assets[{index}].path", "PNG signature is invalid")
+            )
+        if source.suffix.lower() == ".webp" and not (
+            content.startswith(b"RIFF") and content[8:12] == b"WEBP"
+        ):
+            issues.append(
+                Issue.error(path, f"assets[{index}].path", "WebP signature is invalid")
+            )
         if source.suffix.lower() == ".svg":
             if b"<svg" not in content[:4096].lower():
-                issues.append(Issue.error(path, f"assets[{index}].path", "SVG root is missing"))
+                issues.append(
+                    Issue.error(path, f"assets[{index}].path", "SVG root is missing")
+                )
             if SVG_DANGEROUS_RE.search(content):
-                issues.append(Issue.error(path, f"assets[{index}].path", "SVG contains active or external content"))
+                issues.append(
+                    Issue.error(
+                        path,
+                        f"assets[{index}].path",
+                        "SVG contains active or external content",
+                    )
+                )
     if total > MAX_QUESTION_ASSET_BYTES:
         issues.append(Issue.error(path, "assets", "question assets exceed 3 MiB"))
 
@@ -109,15 +155,25 @@ def validate_assets(data: dict[str, Any], path: Path, root: Path) -> list[Issue]
             alt, asset_id = match.groups()
             referenced.add(asset_id)
             if not alt.strip():
-                issues.append(Issue.error(path, field, f"asset {asset_id} requires non-empty alternative text"))
+                issues.append(
+                    Issue.error(
+                        path,
+                        field,
+                        f"asset {asset_id} requires non-empty alternative text",
+                    )
+                )
             if asset_id not in by_id:
                 issues.append(Issue.error(path, field, f"unknown asset id {asset_id}"))
     for asset_id in by_id.keys() - referenced:
-        issues.append(Issue.warning(path, "assets", f"asset {asset_id} is declared but unused"))
+        issues.append(
+            Issue.warning(path, "assets", f"asset {asset_id} is declared but unused")
+        )
     return issues
 
 
-def compiled_assets(data: dict[str, Any], root: Path) -> tuple[dict[str, str], dict[str, bytes]]:
+def compiled_assets(
+    data: dict[str, Any], root: Path
+) -> tuple[dict[str, str], dict[str, bytes]]:
     references: dict[str, str] = {}
     files: dict[str, bytes] = {}
     for asset in data.get("assets", []):

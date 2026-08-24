@@ -1,24 +1,67 @@
 schema_version: 2
 id: mech-dyn-newton-0018
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
-concepts: [newton.action-reaction]
+concepts:
+- newton.action-reaction
 type: multiple_choice
 choice_order: shuffle
 stem: 小球用细线悬挂在天花板下静止。下列哪些力互为第三定律力对？
-choices: [{id: A, content: 细线对球的拉力与球对细线的拉力}, {id: B, content: 地球对球的重力与球对地球的引力}, {id: C, content: 球的重力与细线对球的拉力}, {id: D, content: 天花板对细线的力与细线对球的力}]
-answer: {choices: [A, B]}
-feedback: {choices: {A: 来自球与线的相互作用。, B: 来自球与地球的引力相互作用。, C: 两力都作用在球上，是平衡力。, D: 涉及不同相互作用和受力物体。}, correct: 正确识别了两组相互作用。, incorrect: 每一对都应能写成“甲对乙”和“乙对甲”。}
-hints: [逐一标出施力物体和受力物体。]
+choices:
+- id: A
+  content: 细线对球的拉力与球对细线的拉力
+- id: B
+  content: 地球对球的重力与球对地球的引力
+- id: C
+  content: 球的重力与细线对球的拉力
+- id: D
+  content: 天花板对细线的力与细线对球的力
+answer:
+  choices:
+  - A
+  - B
+feedback:
+  choices:
+    A: 来自球与线的相互作用。
+    B: 来自球与地球的引力相互作用。
+    C: 两力都作用在球上，是平衡力。
+    D: 涉及不同相互作用和受力物体。
+  correct: 正确识别了两组相互作用。
+  incorrect: 每一对都应能写成“甲对乙”和“乙对甲”。
+hints:
+- 逐一标出施力物体和受力物体。
 solution: A、B 分别是线—球和地球—球之间的相互作用力对。C 是作用在同一物体上的平衡力。
 difficulty: 2
 cognitive_level: analyze
 style: conceptual
 estimated_seconds: 65
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc

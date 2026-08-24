@@ -1,23 +1,59 @@
 schema_version: 2
 id: mech-dyn-newton-0023
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.coordinate-equations
 secondary_objectives: []
-concepts: [newton.incline-components]
+concepts:
+- newton.incline-components
 type: numeric
 choice_order: fixed
 stem: 质量为 $2\,\mathrm{kg}$ 的方块置于倾角 $30^\circ$ 的光滑斜面上，取沿斜面向下为正，$g=10\,\mathrm{m/s^2}$。沿斜面方向的加速度是多少？
-answer: {value: 5, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
-feedback: {correct: 正确，沿斜面只有重力分量。, incorrect: 沿斜面列 $mg\sin\theta=ma$。}
-hints: [支持力垂直斜面，不进入沿斜面方程。]
+answer:
+  value: 5
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+feedback:
+  correct: 正确，沿斜面只有重力分量。
+  incorrect: 沿斜面列 $mg\sin\theta=ma$。
+hints:
+- 支持力垂直斜面，不进入沿斜面方程。
 solution: $mg\sin30^\circ=ma$，消去质量得 $a=g\sin30^\circ=5\,\mathrm{m/s^2}$。
 difficulty: 1
 cognitive_level: apply
 style: computational
 estimated_seconds: 55
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603

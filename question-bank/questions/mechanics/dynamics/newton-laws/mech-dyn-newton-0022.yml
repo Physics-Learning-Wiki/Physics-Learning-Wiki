@@ -1,25 +1,74 @@
 schema_version: 2
 id: mech-dyn-newton-0022
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.free-body-diagram
 secondary_objectives: []
-concepts: [newton.free-body-diagram, newton.elevator]
+concepts:
+- newton.free-body-diagram
+- newton.elevator
 type: multiple_choice
 choice_order: shuffle
-stem: "![电梯中站在体重秤上的人](asset:person-elevator)\n\n电梯加速上升时，以人为研究对象，受力图中应出现哪些力？"
-assets: [{id: person-elevator, path: mechanics/dynamics/newton-laws/person-elevator.svg}]
-choices: [{id: A, content: 人受到的重力}, {id: B, content: 体重秤对人的支持力}, {id: C, content: 人对体重秤的压力}, {id: D, content: 方向向上的加速度力}]
-answer: {choices: [A, B]}
-feedback: {choices: {A: 正确。, B: 正确。, C: 该力作用在体重秤上。, D: 加速度不是一种力。}, correct: 正确区分了受力与运动学量。, incorrect: 研究对象是人，只画作用在人身上的真实力。}
-hints: [加速度由合力产生，但不是额外的一支力。]
+stem: '![电梯中站在体重秤上的人](asset:person-elevator)
+
+
+  电梯加速上升时，以人为研究对象，受力图中应出现哪些力？'
+assets:
+- id: person-elevator
+  path: mechanics/dynamics/newton-laws/person-elevator.svg
+choices:
+- id: A
+  content: 人受到的重力
+- id: B
+  content: 体重秤对人的支持力
+- id: C
+  content: 人对体重秤的压力
+- id: D
+  content: 方向向上的加速度力
+answer:
+  choices:
+  - A
+  - B
+feedback:
+  choices:
+    A: 正确。
+    B: 正确。
+    C: 该力作用在体重秤上。
+    D: 加速度不是一种力。
+  correct: 正确区分了受力与运动学量。
+  incorrect: 研究对象是人，只画作用在人身上的真实力。
+hints:
+- 加速度由合力产生，但不是额外的一支力。
 solution: 人只受重力和支持力。加速上升意味着支持力大于重力，但不能额外画“加速度力”。
 difficulty: 2
 cognitive_level: analyze
 style: graphical
 estimated_seconds: 60
-provenance: {type: original, note: Physics Learning Wiki 原创草稿及示意图, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿及示意图
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82

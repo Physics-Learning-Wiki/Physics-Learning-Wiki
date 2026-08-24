@@ -1,24 +1,65 @@
 schema_version: 2
 id: mech-dyn-newton-0015
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
-concepts: [newton.force-acceleration]
+concepts:
+- newton.force-acceleration
 type: single_choice
 choice_order: shuffle
 stem: 同一恒力先后单独作用于质量为 $m$ 和 $2m$ 的两个物体，第二个物体的加速度大小是第一个的多少？
-choices: [{id: A, content: $2$ 倍}, {id: B, content: $1/2$}, {id: C, content: 相同}, {id: D, content: $4$ 倍}]
-answer: {choice: B}
-feedback: {choices: {A: 加速度与质量成反比。, B: 正确。, C: 质量不同导致加速度不同。, D: 不是平方关系。}, correct: 正确应用了 $a=F/m$。, incorrect: 恒力相同时，加速度与质量成反比。}
-hints: [分别写出两个物体的 $a=F/m$。]
+choices:
+- id: A
+  content: $2$ 倍
+- id: B
+  content: $1/2$
+- id: C
+  content: 相同
+- id: D
+  content: $4$ 倍
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 加速度与质量成反比。
+    B: 正确。
+    C: 质量不同导致加速度不同。
+    D: 不是平方关系。
+  correct: 正确应用了 $a=F/m$。
+  incorrect: 恒力相同时，加速度与质量成反比。
+hints:
+- 分别写出两个物体的 $a=F/m$。
 solution: $a_1=F/m$，$a_2=F/(2m)=a_1/2$。
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 35
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8

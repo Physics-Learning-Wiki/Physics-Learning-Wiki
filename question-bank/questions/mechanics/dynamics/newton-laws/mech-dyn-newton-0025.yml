@@ -1,23 +1,60 @@
 schema_version: 2
 id: mech-dyn-newton-0025
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.coordinate-equations
 secondary_objectives: []
-concepts: [newton.incline-components, newton.friction]
+concepts:
+- newton.incline-components
+- newton.friction
 type: numeric
 choice_order: fixed
 stem: 方块沿倾角 $37^\circ$ 的粗糙斜面向下滑，动摩擦因数为 $0.25$。取沿斜面向下为正，$g=10\,\mathrm{m/s^2}$，$\sin37^\circ=0.6$，$\cos37^\circ=0.8$。求加速度。
-answer: {value: 4, tolerance: {type: absolute, value: 0.02}, unit: {required: true, canonical: m/s^2, accepted: [m/s^2]}}
-feedback: {correct: 正确，你同时使用了法向与切向方程。, incorrect: 先由垂直斜面方程求 $N=mg\cos\theta$。}
-hints: [摩擦力大小为 $\mu N$，方向沿斜面向上。]
+answer:
+  value: 4
+  tolerance:
+    type: absolute
+    value: 0.02
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+feedback:
+  correct: 正确，你同时使用了法向与切向方程。
+  incorrect: 先由垂直斜面方程求 $N=mg\cos\theta$。
+hints:
+- 摩擦力大小为 $\mu N$，方向沿斜面向上。
 solution: $N=mg\cos37^\circ$，沿斜面有 $mg\sin37^\circ-\mu N=ma$，所以 $a=10(0.6-0.25\times0.8)=4\,\mathrm{m/s^2}$。
 difficulty: 3
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 110
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988

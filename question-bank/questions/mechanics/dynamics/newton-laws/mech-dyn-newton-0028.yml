@@ -1,23 +1,60 @@
 schema_version: 2
 id: mech-dyn-newton-0028
 version: 1
-status: draft
+status: published
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
+scope:
+  pages:
+  - mechanics.dynamics.newton-laws
 primary_objective: mech.dyn.newton.object-system-choice
 secondary_objectives: []
-concepts: [newton.system-boundary, newton.contact-force]
+concepts:
+- newton.system-boundary
+- newton.contact-force
 type: numeric
 choice_order: fixed
 stem: 光滑水平面上，质量为 $2\,\mathrm{kg}$ 和 $3\,\mathrm{kg}$ 的 A、B 两物体接触。水平力 $20\,\mathrm N$ 作用在 A 上推动二者。求 A 对 B 的接触力。
-answer: {value: 12, tolerance: {type: absolute, value: 0.01}, unit: {required: true, canonical: N, accepted: [N]}}
-feedback: {correct: 正确，你先求整体加速度再隔离 B。, incorrect: 先用整体法求共同加速度，再以 B 为研究对象。}
-hints: [整体加速度为 $20/(2+3)$。]
+answer:
+  value: 12
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: N
+    accepted:
+    - N
+feedback:
+  correct: 正确，你先求整体加速度再隔离 B。
+  incorrect: 先用整体法求共同加速度，再以 B 为研究对象。
+hints:
+- 整体加速度为 $20/(2+3)$。
 solution: 整体加速度 $a=4\,\mathrm{m/s^2}$。隔离 B，水平方向只有 A 对 B 的接触力，故 $F_{AB}=m_Ba=3\times4=12\,\mathrm N$。
 difficulty: 3
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 100
-provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
-authors: [{name: Codex, kind: ai}]
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-08-24'
+    question_version: 1
+    content_fingerprint: sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730
