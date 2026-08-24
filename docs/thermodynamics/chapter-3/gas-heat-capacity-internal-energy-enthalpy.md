@@ -489,7 +489,7 @@ $$
 
 ??? note "例题：用生成焓计算反应热"
     **题目**：利用生成焓计算甲烷燃烧反应  
-     $\text{CH}_4+2\text{O}_2\to \text{CO}_2+2\text{H}_2\text{O}(l)$   
+    &#x20;$\text{CH}_4+2\text{O}_2\to \text{CO}_2+2\text{H}_2\text{O}(l)$   
     的标准反应焓 $\Delta_r H^\circ$．已知（单位 $\text{kJ}/\text{mol}$）：  
     $\Delta_f H^\circ(\text{CH}_4)=-74.8$，  
     $\Delta_f H^\circ(\text{CO}_2)=-393.5$，  

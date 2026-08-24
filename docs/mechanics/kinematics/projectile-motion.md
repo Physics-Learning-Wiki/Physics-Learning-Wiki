@@ -234,14 +234,14 @@ $T = \frac{2v_0 \sin\theta}{g} = \frac{2 \cdot 50 \cdot \sin 60^\circ}{9.8} \app
 $R = \frac{v_0^2 \sin(2\theta)}{g} = \frac{50^2 \cdot \sin 120^\circ}{9.8} \approx 220.94 \mathrm{m}.$
 
 ??? note "例题 2: 水平抛（从高处）"
-    物体以水平速度 $v_0 = 10 \mathrm{m/s}$ 从高度 $H = 20 \mathrm{m}$ 处抛出，忽略空气阻力，求落地时间与水平位移（取 $g = 9.8 \mathrm{m/s^2}$）。
-
+    物体以水平速度 $v_0 = 10 \mathrm{m/s}$ 从高度 $H = 20 \mathrm{m}$ 处抛出，忽略空气阻力，求落地时间与水平位移（取 $g = 9.8 \mathrm{m/s^2}$）．
+    
     **解：**
-
+    
     $$
     t = \sqrt{\frac{2H}{g}} = \sqrt{\frac{40}{9.8}} \approx 2.02 \mathrm{s},
     $$
-
+    
     $$
     R = v_0 t \approx 10 \times 2.02 \approx 20.2 \mathrm{m}.
     $$
