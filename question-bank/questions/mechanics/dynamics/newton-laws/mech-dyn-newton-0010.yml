@@ -1,0 +1,24 @@
+schema_version: 2
+id: mech-dyn-newton-0010
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.first-law
+secondary_objectives: []
+concepts: [newton.inertia, newton.motion-state]
+type: single_choice
+choice_order: shuffle
+stem: 公交车突然刹车时，站立乘客相对车厢向前倾。最恰当的解释是？
+choices: [{id: A, content: 乘客受到一个持续向前的惯性力}, {id: B, content: 乘客上身倾向保持原有向前速度}, {id: C, content: 刹车使乘客质量增大}, {id: D, content: 乘客的惯性随速度瞬间增大}]
+answer: {choice: B}
+feedback: {choices: {A: 惯性是性质，不是真实力。, B: 正确，上身尚未获得足够的向后加速度。, C: 质量没有因此改变。, D: 惯性由质量量度。}, correct: 你正确用运动状态的保持解释了现象。, incorrect: 不要把惯性当作力，也不要认为它由速度决定。}
+hints: [比较乘客脚部与上身速度改变的先后。]
+solution: 地板先通过摩擦使脚部减速，上身由于惯性仍倾向保持原来的向前速度，因此相对车厢向前倾。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 50
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

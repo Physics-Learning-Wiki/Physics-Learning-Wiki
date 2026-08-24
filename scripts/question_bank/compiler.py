@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from .markdown_renderer import render_markdown
+from .media import compiled_assets, question_content_fingerprint
 from .utils import canonical_json, fingerprint, tree_bytes
 from .validator import ValidationReport, publication_readiness, validate_repository
 
@@ -16,11 +17,12 @@ def _render_list(values: list[str]) -> list[str]:
     return [render_markdown(value) for value in values]
 
 
-def compile_question(source: dict[str, Any]) -> dict[str, Any]:
+def compile_question(source: dict[str, Any], asset_urls: dict[str, str]) -> dict[str, Any]:
     question: dict[str, Any] = {
         "id": source["id"],
         "version": source["version"],
         "type": source["type"],
+        "choiceOrder": source["choice_order"],
         "primaryObjective": source["primary_objective"],
         "secondaryObjectives": source.get("secondary_objectives", []),
         "conceptIds": source["concepts"],
@@ -39,6 +41,7 @@ def compile_question(source: dict[str, Any]) -> dict[str, Any]:
         "cognitiveLevel": source["cognitive_level"],
         "style": source["style"],
         "estimatedSeconds": source["estimated_seconds"],
+        "assets": asset_urls,
     }
     if "choices" in source:
         question["choices"] = [{"id": choice["id"], "contentHtml": render_markdown(choice["content"])} for choice in source["choices"]]
@@ -61,7 +64,13 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
         "preview": preview,
         "pages": {page_id: page.objectives for page_id, page in report.data.pages.items()},
         "blueprints": [document.data for document in report.data.blueprints],
-        "questions": [document.data for document in included],
+        "questions": [
+            {
+                "data": document.data,
+                "contentFingerprint": question_content_fingerprint(document.data, report.data.root),
+            }
+            for document in included
+        ],
     }
     bank_fingerprint = fingerprint(source_fingerprint)
     files: dict[str, bytes] = {}
@@ -80,8 +89,13 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             if document.data.get("status") == "published" and page_id in document.data.get("scope", {}).get("pages", [])
         ]
         available, _ = publication_readiness(page, published_sources, blueprint)
+        compiled_questions = []
+        for document in sorted(page_questions, key=lambda item: item.data["id"]):
+            asset_urls, asset_files = compiled_assets(document.data, report.data.root)
+            files.update(asset_files)
+            compiled_questions.append(compile_question(document.data, asset_urls))
         bundle = {
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "bankFingerprint": bank_fingerprint,
             "preview": preview,
             "page": {
@@ -91,22 +105,28 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
                 "objectives": list(page.objectives.values()),
             },
             "blueprint": blueprint,
-            "questions": [compile_question(document.data) for document in sorted(page_questions, key=lambda item: item.data["id"])],
+            "questions": compiled_questions,
         }
         digest = fingerprint(bundle).split(":", 1)[1][:12]
         bundle_path = f"pages/{page_id}.{digest}.json"
         files[bundle_path] = canonical_json(bundle)
-        modes = {name: mode.get("total", 0) for name, mode in blueprint.get("modes", {}).items()}
+        modes = {
+            name: {"title": mode.get("title", name), "total": mode.get("total", 0)}
+            for name, mode in blueprint.get("modes", {}).items()
+        }
+        active = page.quiz.get("state") == "active"
         manifest_pages[page_id] = {
             "title": page.title,
             "url": page.url,
             "bundle": bundle_path,
-            "status": "available" if available else "construction",
+            "status": "available" if active and available else "construction",
             "publishedQuestionCount": published_count,
             "previewQuestionCount": len(page_questions) if preview else 0,
             "modes": modes,
+            "objectives": list(page.objectives.values()),
+            "questionPrefix": page.quiz.get("question_prefix", ""),
         }
-    manifest = {"schemaVersion": 1, "bankFingerprint": bank_fingerprint, "preview": preview, "pages": manifest_pages}
+    manifest = {"schemaVersion": 2, "bankFingerprint": bank_fingerprint, "preview": preview, "pages": manifest_pages}
     files["manifest.json"] = canonical_json(manifest)
     return files
 

@@ -1,0 +1,24 @@
+schema_version: 2
+id: mech-dyn-newton-0030
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.object-system-choice
+secondary_objectives: []
+concepts: [newton.system-boundary, newton.method-choice]
+type: multiple_choice
+choice_order: shuffle
+stem: 两个相连物体一起加速。下列哪些求解策略恰当？
+choices: [{id: A, content: 求共同加速度时先把两物体视为整体}, {id: B, content: 求连接力时再隔离其中一个物体}, {id: C, content: 整体法中仍把连接力作为系统外力}, {id: D, content: 单体法和整体法求得的共同加速度应一致}]
+answer: {choices: [A, B, D]}
+feedback: {choices: {A: 可消去内力。, B: 连接力只在单体方程中作为外力出现。, C: 连接力是系统内力。, D: 两种边界描述同一运动。}, correct: 正确组合了整体法和隔离法。, incorrect: 先按未知量选择系统边界，并保持共同加速度一致。}
+hints: [整体法适合求加速度，单体法适合求内部联系力。]
+solution: A、B、D 正确。整体系统中连接力成对抵消；求连接力时必须缩小系统边界，使它成为所选单体的外力。
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 70
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0

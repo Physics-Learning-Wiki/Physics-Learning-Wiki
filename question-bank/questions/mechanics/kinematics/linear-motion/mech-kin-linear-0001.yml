@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0001
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.sign-convention
 secondary_objectives: []
 concepts: [kinematics.displacement]
 type: single_choice
+choice_order: shuffle
 stem: 规定向东为正，某人从 $x=3\,\mathrm m$ 走到 $x=-2\,\mathrm m$。位移是多少？
 choices: [{id: A, content: '$-5\,\mathrm m$'}, {id: B, content: '$5\,\mathrm m$'}, {id: C, content: '$1\,\mathrm m$'}]
 answer: {choice: A}

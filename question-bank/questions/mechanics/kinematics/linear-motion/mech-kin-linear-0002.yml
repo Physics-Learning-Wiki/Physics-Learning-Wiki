@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0002
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.sign-convention
 secondary_objectives: []
 concepts: [kinematics.distance]
 type: true_false
+choice_order: fixed
 stem: 在一维运动中，物体的位移一定大于或等于零。
 answer: {value: false}
 feedback: {correct: 正确，位移是带符号的坐标差。, incorrect: 路程非负，但位移可以为负。}

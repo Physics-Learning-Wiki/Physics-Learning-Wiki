@@ -13,6 +13,7 @@ def test_compiler_creates_manifest_and_page_bundles(tmp_path: Path) -> None:
     assert report.ok
     assert metrics["written"] is True
     manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["schemaVersion"] == 2
     assert set(manifest["pages"]) == {
         "mechanics.dynamics.newton-laws",
         "mechanics.kinematics.linear-motion",
@@ -37,3 +38,6 @@ def test_drafts_only_appear_in_explicit_preview(tmp_path: Path) -> None:
     assert "mech-kin-linear-0001" not in production_text
     assert "mech-kin-linear-0001" in preview_text
     assert '"preview":true' in preview_text
+    assert '"schemaVersion":2' in preview_text
+    assert "data-plw-asset" in preview_text
+    assert any(path.suffix == ".svg" for path in preview.rglob("*"))

@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mechanics.dynamics.newton-laws
 page_id: mechanics.dynamics.newton-laws
 modes:
@@ -6,6 +6,11 @@ modes:
     title: 3 题快速检查
     total: 3
     feedback_mode: immediate
+    constraints:
+      - {field: difficulty, values: [3], max: 0}
+      - {field: style, values: [conceptual], min: 1}
+      - {field: style, values: [graphical, computational, modeling], min: 1}
+      - {field: type, values: [numeric], max: 1}
     slots:
       - {id: laws, count: 1, objectives: [mech.dyn.newton.first-law, mech.dyn.newton.second-law, mech.dyn.newton.third-law]}
       - {id: diagram, count: 1, objectives: [mech.dyn.newton.free-body-diagram]}
@@ -14,6 +19,14 @@ modes:
     title: 8 题完整小测
     total: 8
     feedback_mode: deferred
+    constraints:
+      - {field: difficulty, values: [1], min: 2, max: 3}
+      - {field: difficulty, values: [2], min: 3, max: 5}
+      - {field: difficulty, values: [3], min: 1, max: 2}
+      - {field: style, values: [conceptual], min: 2, max: 4}
+      - {field: style, values: [graphical], min: 1}
+      - {field: type, values: [numeric], min: 2, max: 3}
+      - {field: type, values: [true_false], max: 1}
     slots:
       - {id: first, count: 1, objectives: [mech.dyn.newton.first-law]}
       - {id: second, count: 2, objectives: [mech.dyn.newton.second-law]}

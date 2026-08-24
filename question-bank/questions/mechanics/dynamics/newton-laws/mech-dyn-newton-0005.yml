@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0005
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.third-law
 secondary_objectives: []
 concepts: [newton.balance-force]
 type: true_false
+choice_order: fixed
 stem: 静止书所受重力和桌面对书的支持力互为作用力与反作用力。
 answer: {value: false}
 feedback: {correct: 正确，它们是作用在同一物体上的平衡力。, incorrect: 第三定律力对必须作用在两个不同物体上。}

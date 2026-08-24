@@ -22,6 +22,8 @@ learning_objectives:
     anchor: linear-relative-motion
 quiz:
   enabled: true
+  state: construction
+  question_prefix: mech-kin-linear
   blueprint: mechanics.kinematics.linear-motion
   common_assessments:
     - 概念辨析

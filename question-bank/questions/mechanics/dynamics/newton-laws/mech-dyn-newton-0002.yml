@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0002
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
 concepts: [newton.net-force]
 type: numeric
+choice_order: fixed
 stem: 质量为 $2\,\mathrm{kg}$ 的物体受到向右 $10\,\mathrm N$ 和向左 $4\,\mathrm N$ 的力。取向右为正，加速度是多少？
 answer:
   value: 3

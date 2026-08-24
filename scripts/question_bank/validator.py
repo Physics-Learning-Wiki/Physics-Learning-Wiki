@@ -4,6 +4,7 @@ import math
 import re
 from collections import Counter
 from dataclasses import dataclass
+from itertools import combinations
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -11,6 +12,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from .errors import Issue
 from .loader import load_json, load_tree
+from .media import question_content_fingerprint, validate_assets
 from .models import RepositoryData, SourceDocument
 from .page_contracts import discover_page_contracts
 
@@ -53,7 +55,12 @@ def _walk_strings(value: Any, field: str = "") -> Iterable[tuple[str, str]]:
             yield from _walk_strings(child, f"{field}[{index}]")
 
 
-def validate_question(document: SourceDocument, schema: dict[str, Any], pages: dict[str, Any]) -> list[Issue]:
+def validate_question(
+    document: SourceDocument,
+    schema: dict[str, Any],
+    pages: dict[str, Any],
+    root: Path | None = None,
+) -> list[Issue]:
     data, path = document.data, document.path
     issues: list[Issue] = []
     validator = Draft202012Validator(schema, format_checker=FormatChecker())
@@ -104,6 +111,26 @@ def validate_question(document: SourceDocument, schema: dict[str, Any], pages: d
         accepted = unit.get("accepted", [])
         if unit.get("required") and (not unit.get("canonical") or unit.get("canonical") not in accepted):
             issues.append(Issue.error(path, "answer.unit", "required canonical unit must appear in accepted units"))
+    if root is not None:
+        issues.extend(validate_assets(data, path, root))
+        if data.get("status") == "published" and isinstance(data.get("review"), dict):
+            current_fingerprint = question_content_fingerprint(data, root)
+            current_version = data.get("version")
+            for dimension in ("physics", "pedagogy", "copyright"):
+                attestations = data["review"].get(dimension, [])
+                if not any(
+                    isinstance(item, dict)
+                    and item.get("question_version") == current_version
+                    and item.get("content_fingerprint") == current_fingerprint
+                    for item in attestations
+                ):
+                    issues.append(
+                        Issue.error(
+                            path,
+                            f"review.{dimension}",
+                            "requires an attestation for the current version and content fingerprint",
+                        )
+                    )
     return issues
 
 
@@ -132,6 +159,13 @@ def validate_blueprint(document: SourceDocument, schema: dict[str, Any], pages: 
                 seen.add(objective)
                 if page and objective not in page.objectives:
                     issues.append(Issue.error(path, f"modes.{mode_name}.slots[{index}].objectives", f"unknown objective {objective}"))
+        for index, constraint in enumerate(mode.get("constraints", [])):
+            minimum = constraint.get("min", 0)
+            maximum = constraint.get("max", mode.get("total", 0))
+            if minimum > maximum:
+                issues.append(Issue.error(path, f"modes.{mode_name}.constraints[{index}]", "min must not exceed max"))
+            if maximum > mode.get("total", 0):
+                issues.append(Issue.error(path, f"modes.{mode_name}.constraints[{index}].max", "max exceeds mode total"))
     return issues
 
 
@@ -158,6 +192,37 @@ def publication_readiness(page: Any, questions: list[dict[str, Any]], blueprint:
     return not reasons, reasons
 
 
+def _satisfies_constraints(questions: list[dict[str, Any]], mode: dict[str, Any]) -> bool:
+    for constraint in mode.get("constraints", []):
+        count = sum(item.get(constraint.get("field")) in constraint.get("values", []) for item in questions)
+        if count < constraint.get("min", 0) or count > constraint.get("max", mode.get("total", 0)):
+            return False
+    return True
+
+
+def blueprint_mode_feasible(questions: list[dict[str, Any]], mode: dict[str, Any]) -> bool:
+    slots = mode.get("slots", [])
+
+    def search(index: int, selected: list[dict[str, Any]], selected_ids: set[str]) -> bool:
+        if index == len(slots):
+            return _satisfies_constraints(selected, mode)
+        slot = slots[index]
+        candidates = [
+            item
+            for item in questions
+            if item.get("primary_objective") in slot.get("objectives", [])
+            and item.get("id") not in selected_ids
+        ]
+        for chosen in combinations(candidates, slot.get("count", 0)):
+            next_selected = [*selected, *chosen]
+            next_ids = selected_ids | {str(item.get("id")) for item in chosen}
+            if search(index + 1, next_selected, next_ids):
+                return True
+        return False
+
+    return search(0, [], set())
+
+
 def validate_repository(root: Path | str = ".", *, release: bool = False, include_drafts: bool = False) -> ValidationReport:
     root = Path(root).resolve()
     pages, issues = discover_page_contracts(root)
@@ -170,7 +235,7 @@ def validate_repository(root: Path | str = ".", *, release: bool = False, includ
     ids: Counter[str] = Counter(str(item.data.get("id")) for item in questions)
     blueprint_ids: Counter[str] = Counter(str(item.data.get("id")) for item in blueprints)
     for document in questions:
-        issues.extend(validate_question(document, question_schema, pages))
+        issues.extend(validate_question(document, question_schema, pages, root))
         if ids[str(document.data.get("id"))] > 1:
             issues.append(Issue.error(document.path, "id", "duplicate question id"))
     for document in blueprints:
@@ -194,13 +259,23 @@ def validate_repository(root: Path | str = ".", *, release: bool = False, includ
         page_questions = [item.data for item in published if page.page_id in item.data.get("scope", {}).get("pages", [])]
         blueprint = blueprint_by_id.get(str(page.quiz.get("blueprint")), {})
         readiness, reasons = publication_readiness(page, page_questions, blueprint)
+        state = page.quiz.get("state", "construction")
+        if state not in {"construction", "active"}:
+            issues.append(Issue.error(page.path, "quiz.state", "must be construction or active"))
+        prefix = page.quiz.get("question_prefix")
+        if not isinstance(prefix, str) or not re.fullmatch(r"[a-z][a-z0-9-]{3,55}", prefix):
+            issues.append(Issue.error(page.path, "quiz.question_prefix", "valid stable question prefix is required"))
         if not readiness:
-            factory = Issue.error if release else Issue.warning
+            factory = Issue.error if state == "active" else Issue.warning
             issues.append(factory(page.path, "quiz", "construction state: " + "; ".join(reasons)))
+        elif release and state == "active":
+            pass
         candidate_questions = [
             item.data for item in questions
-            if page.page_id in item.data.get("scope", {}).get("pages", [])
-            and item.data.get("status") == "published" or (
+            if (
+                page.page_id in item.data.get("scope", {}).get("pages", [])
+                and item.data.get("status") == "published"
+            ) or (
                 include_drafts and page.page_id in item.data.get("scope", {}).get("pages", []) and item.data.get("status") == "draft"
             )
         ]
@@ -210,5 +285,23 @@ def validate_repository(root: Path | str = ".", *, release: bool = False, includ
                     count = sum(item.get("primary_objective") in slot.get("objectives", []) for item in candidate_questions)
                     if count < slot.get("count", 0):
                         issues.append(Issue.error(page.path, f"quiz.{mode_name}.{slot.get('id')}", f"preview blueprint requires {slot.get('count')} candidate(s), found {count}"))
+                if candidate_questions and not blueprint_mode_feasible(candidate_questions, mode):
+                    issues.append(
+                        Issue.error(
+                            page.path,
+                            f"quiz.{mode_name}.constraints",
+                            "no candidate set satisfies all blueprint constraints",
+                        )
+                    )
+        if state == "active" and blueprint:
+            for mode_name, mode in blueprint.get("modes", {}).items():
+                if page_questions and not blueprint_mode_feasible(page_questions, mode):
+                    issues.append(
+                        Issue.error(
+                            page.path,
+                            f"quiz.{mode_name}.constraints",
+                            "no published question set satisfies all blueprint constraints",
+                        )
+                    )
     data = RepositoryData(root=root, questions=questions, blueprints=blueprints, pages=pages)
     return ValidationReport(sorted(set(issues)), data)

@@ -22,6 +22,8 @@ learning_objectives:
     anchor: newton-object-system-choice
 quiz:
   enabled: true
+  state: construction
+  question_prefix: mech-dyn-newton
   blueprint: mechanics.dynamics.newton-laws
   common_assessments:
     - 定律概念辨析

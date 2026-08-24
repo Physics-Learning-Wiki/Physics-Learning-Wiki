@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .compiler import compile_repository
 from .coverage import coverage_data, render_coverage
+from .maintenance import attest, import_issue, publish
 from .validator import validate_repository
 
 
@@ -28,6 +29,20 @@ def _parser() -> argparse.ArgumentParser:
     benchmark = subcommands.add_parser("benchmark", help="benchmark compilation")
     benchmark.add_argument("--repeat", type=int, default=3)
     benchmark.add_argument("--json-output", type=Path)
+    import_parser = subcommands.add_parser("import-issue", help="import a structured question submission")
+    import_parser.add_argument("--input", type=Path, required=True)
+    attest_parser = subcommands.add_parser("attest", help="record a human review attestation")
+    attest_parser.add_argument("--id", required=True)
+    attest_parser.add_argument(
+        "--dimension",
+        action="append",
+        choices=["physics", "pedagogy", "copyright"],
+        required=True,
+    )
+    attest_parser.add_argument("--reviewer", required=True)
+    attest_parser.add_argument("--reviewed-on")
+    publish_parser = subcommands.add_parser("publish", help="publish a fully attested question")
+    publish_parser.add_argument("--id", required=True)
     return parser
 
 
@@ -74,4 +89,28 @@ def main(argv: list[str] | None = None) -> int:
             args.json_output.write_text(content, encoding="utf-8")
         print(content, end="")
         return 0 if report and report.ok else 1
+    if args.command == "import-issue":
+        try:
+            path = import_issue(Path.cwd(), args.input)
+        except ValueError as exc:
+            print(f"ERROR: {exc}")
+            return 1
+        print(path.as_posix())
+        return 0
+    if args.command == "attest":
+        try:
+            path = attest(Path.cwd(), args.id, args.dimension, args.reviewer, args.reviewed_on)
+        except ValueError as exc:
+            print(f"ERROR: {exc}")
+            return 1
+        print(path.as_posix())
+        return 0
+    if args.command == "publish":
+        try:
+            path = publish(Path.cwd(), args.id)
+        except ValueError as exc:
+            print(f"ERROR: {exc}")
+            return 1
+        print(path.as_posix())
+        return 0
     return 2

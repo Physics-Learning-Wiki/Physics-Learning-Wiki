@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mechanics.kinematics.linear-motion
 page_id: mechanics.kinematics.linear-motion
 modes:
@@ -6,6 +6,7 @@ modes:
     title: 3 题快速检查
     total: 3
     feedback_mode: immediate
+    constraints: []
     slots:
       - id: foundations
         count: 1
@@ -20,6 +21,7 @@ modes:
     title: 8 题完整小测
     total: 8
     feedback_mode: deferred
+    constraints: []
     slots:
       - {id: sign, count: 2, objectives: [mech.kin.linear.sign-convention]}
       - {id: definitions, count: 1, objectives: [mech.kin.linear.velocity-acceleration]}

@@ -9,6 +9,7 @@ const SUBMISSION_LABELS = {
   "full-page": "投稿-完整页面",
   "notes": "投稿-笔记/提纲",
   "errata": "投稿-勘误",
+  "question": "投稿-题目",
   "suggestion": "投稿-建议",
 };
 
@@ -21,11 +22,107 @@ function buildIssueBody(data) {
     `- **署名**: ${data.attribution || "匿名"}`,
   ];
   if (data.contact) {
-    lines.push(`- **联系方式**: ${data.contact}`);
+    lines.push(`- **公开联系方式**: ${data.contact}`);
   }
   lines.push(``, `---`, ``, data.content);
+  if (data.type === "question" && data.question) {
+    const question = data.question;
+    lines.push(
+      "",
+      "## 题目结构",
+      "",
+      `- **页面 ID**: \`${question.page_id}\``,
+      `- **主要学习目标**: \`${question.primary_objective}\``,
+      `- **题型**: \`${question.type}\``,
+      `- **难度**: ${question.difficulty}`,
+      "",
+      "## 机器可读载荷",
+      "",
+      "```json plw-question-submission-v1",
+      JSON.stringify({ schemaVersion: 1, question }),
+      "```"
+    );
+  }
   return lines.join("\n");
 }
+
+const QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "numeric"]);
+const COGNITIVE_LEVELS = new Set(["remember", "understand", "apply", "analyze"]);
+const STYLES = new Set(["conceptual", "graphical", "computational", "modeling"]);
+
+function nonEmptyString(value, max = 20000) {
+  return typeof value === "string" && value.trim().length > 0 && value.length <= max;
+}
+
+function unsafeMarkdown(value) {
+  return typeof value === "string" && /<(?:script|iframe|object|embed)\b|(?:javascript|data):/i.test(value);
+}
+
+function validHttpsUrl(value) {
+  try {
+    return new URL(value).protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+function validateQuestion(question) {
+  if (!question || typeof question !== "object") return "缺少结构化题目";
+  if (
+    !nonEmptyString(question.page_id, 120) ||
+    !nonEmptyString(question.primary_objective, 120) ||
+    !Array.isArray(question.concepts) ||
+    question.concepts.length === 0 ||
+    !question.concepts.every(item => nonEmptyString(item, 120))
+  )
+    return "页面、学习目标或概念 ID 无效";
+  if (!QUESTION_TYPES.has(question.type)) return "无效题型";
+  if (!nonEmptyString(question.stem) || !nonEmptyString(question.solution)) return "题干或解析为空";
+  if (unsafeMarkdown(JSON.stringify(question))) return "题目包含不安全的 Markdown 或 HTML";
+  if (!question.answer || typeof question.answer !== "object") return "答案无效";
+  if (!question.feedback || !nonEmptyString(question.feedback.correct) || !nonEmptyString(question.feedback.incorrect))
+    return "答题反馈不完整";
+  if (!Number.isInteger(question.difficulty) || question.difficulty < 1 || question.difficulty > 3)
+    return "难度无效";
+  if (!COGNITIVE_LEVELS.has(question.cognitive_level) || !STYLES.has(question.style)) return "认知层级或题目风格无效";
+  if (!Number.isInteger(question.estimated_seconds) || question.estimated_seconds < 10 || question.estimated_seconds > 1800)
+    return "预计作答时间无效";
+  if (question.type === "single_choice" || question.type === "multiple_choice") {
+    if (!Array.isArray(question.choices) || question.choices.length < 2) return "选项为空";
+    const choiceIds = question.choices.map(item => item?.id);
+    if (!choiceIds.every((id, index) => nonEmptyString(id, 8) && choiceIds.indexOf(id) === index))
+      return "选项 ID 无效或重复";
+    if (!question.choices.every(item => nonEmptyString(item?.content)))
+      return "选项内容为空";
+    const feedbackIds = Object.keys(question.feedback.choices || {});
+    if (feedbackIds.length !== choiceIds.length || !feedbackIds.every(id => choiceIds.includes(id)))
+      return "逐项反馈必须与选项一致";
+    if (!feedbackIds.every(id => nonEmptyString(question.feedback.choices[id])))
+      return "逐项反馈不能为空";
+    const selected =
+      question.type === "single_choice" ? [question.answer.choice] : question.answer.choices;
+    if (!Array.isArray(selected) || !selected.length || !selected.every(item => feedbackIds.includes(item)))
+      return "选择题答案与选项不一致";
+  } else if (question.type === "true_false" && typeof question.answer.value !== "boolean") {
+    return "判断题答案无效";
+  } else if (question.type === "numeric" && !Number.isFinite(question.answer.value)) {
+    return "数值题答案无效";
+  }
+  if (question.external_media?.length) {
+    for (const media of question.external_media) {
+      if (
+        !nonEmptyString(media.url, 2000) ||
+        !validHttpsUrl(media.url) ||
+        !nonEmptyString(media.alt, 500) ||
+        !nonEmptyString(media.rights_note, 2000)
+      )
+        return "图片链接、替代文本或授权说明无效";
+    }
+  }
+  return null;
+}
+
+export { buildIssueBody, validateQuestion };
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -60,6 +157,8 @@ export default {
         chapter,
         attribution,
         contact,
+        contactPublicConsent,
+        question,
         turnstileToken,
       } = await request.json();
 
@@ -70,8 +169,21 @@ export default {
         );
       }
 
-      if (!["full-page", "notes", "errata", "suggestion"].includes(type)) {
+      if (!["full-page", "notes", "errata", "question", "suggestion"].includes(type)) {
         return jsonResponse({ error: "无效的投稿类型" }, 400);
+      }
+      if (title.length > 120 || content.length > 50000 || (contact && contact.length > 500)) {
+        return jsonResponse({ error: "投稿字段超过长度限制" }, 400);
+      }
+      if (unsafeMarkdown(content)) {
+        return jsonResponse({ error: "投稿包含不安全的 Markdown 或 HTML" }, 400);
+      }
+      if (contact && !contactPublicConsent) {
+        return jsonResponse({ error: "联系方式将公开显示，必须明确同意公开" }, 400);
+      }
+      if (type === "question") {
+        const questionError = validateQuestion(question);
+        if (questionError) return jsonResponse({ error: questionError }, 400);
       }
 
       if (!turnstileToken) {
@@ -119,6 +231,7 @@ export default {
               chapter,
               attribution,
               contact,
+              question,
             }),
             labels: ["投稿-待审核", label],
           }),

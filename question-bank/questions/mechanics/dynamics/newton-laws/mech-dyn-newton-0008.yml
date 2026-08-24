@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-dyn-newton-0008
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.object-system-choice
 secondary_objectives: []
 concepts: [newton.system-boundary]
 type: numeric
+choice_order: fixed
 stem: 光滑水平面上，质量为 $2\,\mathrm{kg}$ 和 $3\,\mathrm{kg}$ 的两物体一起受到水平外力 $10\,\mathrm N$。把两物体作为整体，加速度是多少？
 answer:
   value: 2

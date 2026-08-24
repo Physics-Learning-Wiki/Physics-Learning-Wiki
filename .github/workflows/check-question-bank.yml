@@ -10,7 +10,12 @@ on:
       - 'tests/integration/**'
       - 'docs/quiz/**'
       - 'docs/_static/js/quiz-app.js'
+      - 'docs/_static/js/submit-form.js'
       - 'docs/_static/css/quiz.css'
+      - 'docs/_static/css/submit-form.css'
+      - 'docs/submit.md'
+      - 'workers/submit.js'
+      - 'workers/submit.test.js'
       - 'docs/mechanics/kinematics/linear-motion.md'
       - 'docs/mechanics/dynamics/newton-laws.md'
       - 'hooks/question_bank.py'
@@ -54,6 +59,7 @@ jobs:
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run python -m scripts.question_bank validate --include-drafts
+          uv run python -m scripts.question_bank validate --release
           uv run pytest tests/question_bank tests/integration
       - name: Check deterministic compilation
         run: |
@@ -69,6 +75,8 @@ jobs:
           yarn quiz:format:check
           yarn quiz:typecheck
           yarn quiz:test
+          yarn submit:check
+          yarn submit:test
           yarn quiz:build:check
       - name: Build production site
         run: |

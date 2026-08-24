@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: fixture-multiple-01
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.dyn.newton.second-law
 secondary_objectives: []
 concepts: [newton.second-law]
 type: multiple_choice
+choice_order: shuffle
 stem: 关于合外力，下列哪些说法正确？
 choices:
   - {id: A, content: 决定加速度方向}

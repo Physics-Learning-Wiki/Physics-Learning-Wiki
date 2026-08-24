@@ -150,3 +150,27 @@
     content: "在线版本提供本页知识小测。";
   }
 }
+.plw-quiz-stem img,
+.plw-quiz-feedback img,
+.plw-quiz-review img {
+  display: block;
+  height: auto;
+  margin: 1rem auto;
+  max-width: min(100%, 42rem);
+}
+
+.plw-quiz-hints {
+  margin: 1rem 0;
+}
+
+.plw-quiz-hints > div {
+  border-left: 0.2rem solid var(--md-accent-fg-color);
+  margin: 0.6rem 0;
+  padding-left: 0.8rem;
+}
+
+.plw-quiz-report {
+  display: inline-block;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+}

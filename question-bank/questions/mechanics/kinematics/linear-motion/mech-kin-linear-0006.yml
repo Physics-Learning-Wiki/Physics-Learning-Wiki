@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0006
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.uniform-motion
 secondary_objectives: []
 concepts: [kinematics.uniform-motion]
 type: numeric
+choice_order: fixed
 stem: 物体从 $x_0=-5\,\mathrm m$ 出发，以 $2\,\mathrm{m/s}$ 匀速运动。$4\,\mathrm s$ 后位置是多少？
 answer:
   value: 3

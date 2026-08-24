@@ -16,6 +16,8 @@
     "quiz:build": "node scripts/quiz/build.mjs",
     "quiz:build:check": "node scripts/quiz/build.mjs --check",
     "quiz:format:check": "prettier --check \"scripts/quiz/**/*.ts\"",
+    "submit:test": "node --test workers/submit.test.js",
+    "submit:check": "node --check docs/_static/js/submit-form.js && node --check workers/submit.js",
     "docs:format:remark": "remark docs/ -o",
     "docs:format:check": "node --loader ts-node/esm scripts/checker/checker.ts -i"
   },

@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "required": ["schema_version", "id", "page_id", "modes"],
   "properties": {
-    "schema_version": {"const": 1},
+    "schema_version": {"const": 2},
     "id": {"$ref": "#/$defs/dottedId"},
     "page_id": {"$ref": "#/$defs/dottedId"},
     "modes": {
@@ -17,12 +17,13 @@
   "$defs": {
     "dottedId": {"type": "string", "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9-]*)+$"},
     "mode": {
-      "type": "object", "additionalProperties": false, "required": ["title", "total", "feedback_mode", "slots"],
+      "type": "object", "additionalProperties": false, "required": ["title", "total", "feedback_mode", "slots", "constraints"],
       "properties": {
         "title": {"type": "string", "minLength": 1},
         "total": {"type": "integer", "minimum": 1, "maximum": 50},
         "feedback_mode": {"enum": ["immediate", "deferred"]},
-        "slots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/slot"}}
+        "slots": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/slot"}},
+        "constraints": {"type": "array", "items": {"$ref": "#/$defs/constraint"}}
       }
     },
     "slot": {
@@ -32,6 +33,19 @@
         "count": {"type": "integer", "minimum": 1},
         "objectives": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/dottedId"}}
       }
+    },
+    "constraint": {
+      "type": "object", "additionalProperties": false, "required": ["field", "values"],
+      "properties": {
+        "field": {"enum": ["difficulty", "type", "style"]},
+        "values": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": {"anyOf": [{"type": "integer", "minimum": 1, "maximum": 3}, {"type": "string"}]}
+        },
+        "min": {"type": "integer", "minimum": 0},
+        "max": {"type": "integer", "minimum": 0}
+      },
+      "anyOf": [{"required": ["min"]}, {"required": ["max"]}]
     }
   }
 }

@@ -1,4 +1,4 @@
-schema_version: 1
+schema_version: 2
 id: mech-kin-linear-0005
 version: 1
 status: draft
@@ -8,6 +8,7 @@ primary_objective: mech.kin.linear.graph-slope-area
 secondary_objectives: []
 concepts: [kinematics.position-time-graph]
 type: single_choice
+choice_order: shuffle
 stem: 在 $x-t$ 图像上，某段图线为斜率恒为负的直线。这说明什么？
 choices: [{id: A, content: 物体沿负方向匀速运动}, {id: B, content: 物体加速度恒为负}, {id: C, content: 物体位置始终为负}]
 answer: {choice: A}

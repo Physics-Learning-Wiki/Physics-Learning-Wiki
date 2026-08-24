@@ -1,6 +1,7 @@
-schema_version: 1
+schema_version: 2
 id: fixture-unit-0001
 type: numeric
+choice_order: fixed
 answer:
   value: 1
   tolerance: {type: absolute, value: 0.1}

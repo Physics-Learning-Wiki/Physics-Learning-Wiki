@@ -1,0 +1,23 @@
+schema_version: 2
+id: mech-dyn-newton-0011
+version: 1
+status: draft
+locale: zh-CN
+scope: {pages: [mechanics.dynamics.newton-laws]}
+primary_objective: mech.dyn.newton.first-law
+secondary_objectives: []
+concepts: [newton.inertia]
+type: true_false
+choice_order: fixed
+stem: 同一物体的质量不变时，无论静止还是运动，其惯性大小相同。
+answer: {value: true}
+feedback: {correct: 正确，质量是惯性大小的量度。, incorrect: 惯性不由物体的速度或运动状态决定。}
+hints: [回忆惯性的量度。]
+solution: 经典力学范围内，质量不变则惯性大小不变；静止和运动只是相对于参考系描述的状态。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 25
+provenance: {type: original, note: Physics Learning Wiki 原创草稿, ai_assisted: true}
+authors: [{name: Codex, kind: ai}]
+license: CC-BY-SA-4.0
