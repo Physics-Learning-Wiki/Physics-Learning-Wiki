@@ -11,3 +11,5 @@ glossary/glossary.md
 # Internal planning & design documents
 superpowers/plans/
 superpowers/specs/
+
+adr/

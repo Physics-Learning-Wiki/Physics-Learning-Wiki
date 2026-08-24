@@ -43,7 +43,7 @@
       </select>
     </div>
     <div class="submit-field question-choice-only">
-      <label for="question-choices">选项（每行“ID|内容”） <span class="submit-required">*</span></label>
+      <label for="question-choices">选项（每行「ID|内容」） <span class="submit-required">*</span></label>
       <textarea id="question-choices" placeholder="A|第一个选项&#10;B|第二个选项"></textarea>
     </div>
     <div class="submit-field">
@@ -51,7 +51,7 @@
       <input id="question-answer" placeholder="单选 A；多选 A,C；判断 true/false；数值 3">
     </div>
     <div class="submit-field question-choice-only">
-      <label for="question-choice-feedback">逐项反馈（每行“ID|反馈”） <span class="submit-required">*</span></label>
+      <label for="question-choice-feedback">逐项反馈（每行「ID|反馈」） <span class="submit-required">*</span></label>
       <textarea id="question-choice-feedback" placeholder="A|为什么正确或错误&#10;B|为什么正确或错误"></textarea>
     </div>
     <div class="submit-field">
