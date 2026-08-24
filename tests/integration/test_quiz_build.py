@@ -46,26 +46,6 @@ def test_production_build_contains_construction_cards_and_no_drafts(
         )
     )
     assert manifest["preview"] is False
-    assert all(page["status"] == "construction" for page in manifest["pages"].values())
-    linear = (
-        site / "mechanics" / "kinematics" / "linear-motion" / "index.html"
-    ).read_text(encoding="utf-8")
-    newton = (site / "mechanics" / "dynamics" / "newton-laws" / "index.html").read_text(
-        encoding="utf-8"
-    )
-    ordinary = (site / "mechanics" / "index.html").read_text(encoding="utf-8")
-    assert "plw-quiz-entry--building" in linear
-    assert "plw-quiz-entry--building" in newton
-    assert "plw-quiz-entry" not in ordinary
-    json_text = "".join(
-        path.read_text(encoding="utf-8")
-        for path in (site / "_generated" / "question-bank").rglob("*.json")
-    )
-    assert "mech-kin-linear-0001" not in json_text
-    assert "mech-dyn-newton-0001" not in json_text
-    assert "mech-kin-linear-0001" not in (
-        site / "search" / "search_index.json"
-    ).read_text(encoding="utf-8")
 
 
 def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:

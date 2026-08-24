@@ -59,14 +59,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-08-24'
     question_version: 1
-    content_fingerprint: sha256:5f3bda9d5cf2d15dc969f99b044c7eeb78ee9b718eae8790a343e487b11cd47c
+    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-08-24'
     question_version: 1
-    content_fingerprint: sha256:5f3bda9d5cf2d15dc969f99b044c7eeb78ee9b718eae8790a343e487b11cd47c
+    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
   copyright:
   - github: Leafuke
     reviewed_on: '2026-08-24'
     question_version: 1
-    content_fingerprint: sha256:5f3bda9d5cf2d15dc969f99b044c7eeb78ee9b718eae8790a343e487b11cd47c
+    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
