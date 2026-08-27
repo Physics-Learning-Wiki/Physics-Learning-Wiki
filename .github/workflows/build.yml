@@ -49,6 +49,8 @@ jobs:
       - name: Install Node.js dependencies
         if: steps.cache-node.outputs.cache-hit != 'true'
         run: yarn --frozen-lockfile --production
+      - name: Test SEO scripts
+        run: uv run pytest tests/seo
       - name: Page Build
         env:
           PLW_QUIZ_PREVIEW: ''
@@ -71,6 +73,8 @@ jobs:
         run: uv run python scripts/post-build/redirect/generate-redirects.py
       - name: Generate SEO sitemap
         run: uv run python scripts/post-build/seo/generate-sitemap.py --site-dir site --output site/sitemap.xml
+      - name: Validate SEO output
+        run: uv run python scripts/check-seo.py --site-dir site --docs-dir docs
       # - name: Check links
       #   uses: wjdp/htmltest-action@<pinned-ref>
       #   with:
