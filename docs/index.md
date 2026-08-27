@@ -1,6 +1,9 @@
-disqus:
-pagetime:
-title: Physics-Learning-Wiki
+---
+title: 物理学习百科
+description: Physics Learning Wiki 是面向物理爱好者与大学本科生的物理学习百科，提供经典力学、热学与统计物理、电磁学、光学、近代物理、数学工具、实验物理与计算工具等系统化学习内容。
+---
+
+# Physics Learning Wiki
 
 ## 欢迎来到 **Physics-Learning-Wiki**
 
