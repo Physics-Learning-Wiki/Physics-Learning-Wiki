@@ -257,9 +257,6 @@ extra:
   pagetime: 'on'
   manifest: 'manifest.webmanifest'
   githash: ''
-  analytics:
-    provider: google
-    property: UA-124485594-1
 
 extra_javascript:
   - '_static/js/math-csr.js?math-csr'
