@@ -1,5 +1,6 @@
 ---
 author: Physics-Learning-Wiki, Leafuke
+description: 从适用范围、空间时间、质量与力等基本概念出发，梳理运动学、动力学、守恒定律、质点系、刚体和分析力学的学习结构，并列出必要数学基础。
 ---
 
 ???+ warning "注意"

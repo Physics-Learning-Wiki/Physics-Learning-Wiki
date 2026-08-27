@@ -1,5 +1,6 @@
 ---
 author: Physics Learning Wiki
+description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业软件计算、绘图到量纲与极限检查的可复现工作流，帮助处理笔记、实验数据、数值实验和模型展示。
 ---
 
 ## 计算物理与工具简介

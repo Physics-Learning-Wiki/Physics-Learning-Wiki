@@ -1,5 +1,6 @@
 ---
 author: Physics-Learning-Wiki
+description: 系统讲解牛顿三大运动定律及其物理意义，重点训练惯性系判断、合外力与加速度分析、受力图、坐标分量方程以及单体法和整体法。
 page_id: mechanics.dynamics.newton-laws
 learning_objectives:
   - id: mech.dyn.newton.first-law

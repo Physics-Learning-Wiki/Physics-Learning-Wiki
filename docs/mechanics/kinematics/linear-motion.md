@@ -1,5 +1,6 @@
 ---
 author: Leafuke
+description: 从位置、位移和路程的符号约定出发，讲解平均与瞬时速度、加速度、x-t/v-t/a-t 图像、匀速与分段直线运动，以及追及相遇问题的建模方法。
 page_id: mechanics.kinematics.linear-motion
 learning_objectives:
   - id: mech.kin.linear.sign-convention
