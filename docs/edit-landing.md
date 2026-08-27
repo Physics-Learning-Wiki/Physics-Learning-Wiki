@@ -1,4 +1,8 @@
-disqus:
+---
+meta:
+  - name: robots
+    content: noindex, follow
+---
 
 ## 编辑与投稿入口
 

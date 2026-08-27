@@ -5,6 +5,10 @@ site_author: Physics Learning Wiki Team
 site_url: https://physics-learning-wiki.github.io/Physics-Learning-Wiki/
 strict: false
 
+exclude_docs: |
+  superpowers/
+  adr/
+
 # Repository
 repo_name: 'Physics-Learning-Wiki/Physics-Learning-Wiki'
 repo_url: 'https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki'
