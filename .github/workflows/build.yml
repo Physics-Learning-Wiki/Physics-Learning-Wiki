@@ -69,6 +69,8 @@ jobs:
           ./scripts/post-build/minify-html/minify-html.sh
       - name: Generate redirects
         run: uv run python scripts/post-build/redirect/generate-redirects.py
+      - name: Generate SEO sitemap
+        run: uv run python scripts/post-build/seo/generate-sitemap.py --site-dir site --output site/sitemap.xml
       # - name: Check links
       #   uses: wjdp/htmltest-action@<pinned-ref>
       #   with:
