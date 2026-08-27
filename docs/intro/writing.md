@@ -88,6 +88,50 @@ Physics Learning Wiki 当前优先服务两类读者：
 -   把进阶细节和主线正文混在一起，初学者第一遍就被淹没．
 -   章节之间没有连接，读者学完一页不知道下一步该看什么．
 
+## 页面元数据与搜索索引
+
+页面的内容状态决定其搜索索引状态，页面元数据应随内容一起维护．
+
+### 正式知识页
+
+普通正式页面默认允许搜索引擎 `index, follow`，并会在构建时进入 sitemap，不需要手工添加 `robots: index`．重要的入口页和核心知识页可以在 frontmatter 中添加独立的 `description`，准确说明本页学什么、能解决什么问题．description 应该符合页面真实内容、彼此独立、使用自然中文，不要承诺正文没有提供的内容．
+
+### 建设页
+
+如果页面正文暂时只是精确的 `TO DO`，必须显式标记为 `noindex, follow`：
+
+```yaml
+---
+meta:
+  - name: robots
+    content: noindex, follow
+---
+```
+
+页面内容完成后，按下面的顺序发布：
+
+1.  删除 `robots` 中的 `noindex`．
+2.  检查页面标题和正文结构．
+3.  如果页面是关键入口或核心知识页，补充独立 description．
+4.  执行构建并检查最终 HTML．
+5.  运行 SEO checker，确认页面自动进入 sitemap．
+
+不需要手工编辑 sitemap；内容完成并移除 noindex 后，构建流程会根据最终 HTML 自动更新它．
+
+### 内部工程资料
+
+planning、spec 和 ADR 等内部工程资料不应进入公开 build，应放在已经被 `exclude_docs` 覆盖的目录中．不要为了让它们不被索引而把它们当作公开知识页维护．
+
+### 不要做的事情
+
+-   不使用 `meta keywords`．
+-   不手工设置 sitemap 的 `priority` 或 `changefreq`．
+-   不为了 SEO 重复堆砌关键词．
+-   不为未完成页面编造 description．
+-   不伪造 sitemap 的 `lastmod`．
+
+本站目前部署在 GitHub Pages 子路径 `https://physics-learning-wiki.github.io/Physics-Learning-Wiki/` 下．项目子路径中的 `robots.txt` 不是主机根目录的 robots 文件，因此不要在 `docs/` 下创建一个看似有效的 robots.txt；未来迁移到自定义域名时，再配置真正位于主机顶层的 `/robots.txt`．
+
 ## 发布前自检
 
 在提交页面前，建议至少检查下面几件事：
