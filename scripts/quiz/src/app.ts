@@ -21,6 +21,8 @@ class QuizApp {
   private bundle?: PageBundle;
   private questions: Question[] = [];
   private session?: Session;
+  private stepperElement?: HTMLElement;
+  private confirmButtonElement?: HTMLButtonElement;
 
   constructor(private readonly root: HTMLElement) {
     this.root.addEventListener("click", this.handleClick, { signal: this.abort.signal });
@@ -116,20 +118,13 @@ class QuizApp {
       }
 
       if (selectedIndex >= 0) {
-        if (question.type === "single_choice" && selectedIndex < question.choices.length) {
+        const choiceLabels = this.root.querySelectorAll<HTMLLabelElement>(".plw-quiz-choice");
+        if (selectedIndex < choiceLabels.length) {
           event.preventDefault();
-          this.setAnswer(question.id, question.choices[selectedIndex].id);
-        } else if (question.type === "multiple_choice" && selectedIndex < question.choices.length) {
-          event.preventDefault();
-          const choiceId = question.choices[selectedIndex].id;
-          const current = Array.isArray(this.session.answers[question.id])
-            ? (this.session.answers[question.id] as string[])
-            : [];
-          const isSelected = current.includes(choiceId);
-          this.setAnswer(question.id, isSelected ? current.filter(item => item !== choiceId) : [...current, choiceId]);
-        } else if (question.type === "true_false" && selectedIndex < 2) {
-          event.preventDefault();
-          this.setAnswer(question.id, selectedIndex === 0);
+          const targetInput = choiceLabels[selectedIndex].querySelector<HTMLInputElement>("input");
+          if (targetInput) {
+            targetInput.click();
+          }
         }
       }
     }
@@ -137,6 +132,7 @@ class QuizApp {
 
   destroy(): void {
     this.abort.abort();
+    this.root.classList.remove("plw-quiz-in-progress");
     this.root.replaceChildren();
   }
 
@@ -170,10 +166,11 @@ class QuizApp {
   }
 
   private renderLanding(): void {
+    this.root.classList.remove("plw-quiz-in-progress");
     const container = document.createElement("section");
     container.className = "plw-quiz-landing";
     container.innerHTML =
-      '<h2 tabindex="-1">知识小测</h2><p>选择一个已经开放或可预览的章节。作答记录仅保存在当前浏览器，用于自我评估与查漏补缺。</p>';
+      '<h3 class="plw-quiz-landing__subtitle">选择自测章节</h3><p class="plw-quiz-landing__desc">请选择要测试的物理章节，作答记录仅保存在当前浏览器本地。</p>';
     if (this.manifest.preview)
       container.insertAdjacentHTML(
         "beforeend",
@@ -226,11 +223,12 @@ class QuizApp {
     }
 
     this.root.replaceChildren(container);
-    container.querySelector<HTMLElement>("h2")?.focus();
   }
 
   private renderQuestion(): void {
     if (!this.session || !this.bundle) return;
+    this.root.classList.add("plw-quiz-in-progress");
+
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
 
@@ -279,6 +277,8 @@ class QuizApp {
     const stepper = document.createElement("nav");
     stepper.className = "plw-quiz-stepper";
     stepper.setAttribute("aria-label", "题目导航");
+    this.stepperElement = stepper;
+
     this.questions.forEach((q, idx) => {
       const btn = document.createElement("button");
       btn.type = "button";
@@ -344,10 +344,11 @@ class QuizApp {
     section.append(stem);
 
     // 5. Answer Choices
-    let confirmButton: HTMLButtonElement | undefined;
     section.append(
       this.answerControl(question, answer, locked, updatedAnswer => {
-        if (confirmButton) confirmButton.disabled = !isAnswerComplete(question, updatedAnswer);
+        if (this.confirmButtonElement) {
+          this.confirmButtonElement.disabled = !isAnswerComplete(question, updatedAnswer);
+        }
       })
     );
 
@@ -375,13 +376,13 @@ class QuizApp {
     actions.append(prevBtn);
 
     if (quick && !locked) {
-      confirmButton = this.button(
+      this.confirmButtonElement = this.button(
         "确认答案 (Enter)",
         () => this.confirmQuick(question),
         !isAnswerComplete(question, answer)
       );
-      confirmButton.classList.add("plw-quiz-btn--primary");
-      actions.append(confirmButton);
+      this.confirmButtonElement.classList.add("plw-quiz-btn--primary");
+      actions.append(this.confirmButtonElement);
     } else if (this.session.currentIndex < this.questions.length - 1) {
       const nextBtn = this.button("下一题 (Enter)", () => this.move(1));
       nextBtn.classList.add("plw-quiz-btn--primary");
@@ -398,7 +399,7 @@ class QuizApp {
 
     this.root.replaceChildren(section);
     this.hydrateAssets(section);
-    section.querySelector<HTMLElement>("h2")?.focus();
+    section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
     void typeset(section);
   }
 
@@ -429,6 +430,8 @@ class QuizApp {
         const label = document.createElement("label");
         label.className = "plw-quiz-choice";
         const selected = Array.isArray(answer) ? answer.includes(choice.id) : answer === choice.id;
+        if (selected) label.classList.add("is-selected");
+
         label.innerHTML = `
           <span class="plw-quiz-choice__badge">${badgeLetter}</span>
           <input type="${question.type === "single_choice" ? "radio" : "checkbox"}" name="answer" value="${
@@ -436,17 +439,25 @@ class QuizApp {
         }" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
           <span class="plw-quiz-choice__content">${choice.contentHtml}</span>
         `;
-        label.querySelector("input")?.addEventListener("change", () => {
+
+        label.querySelector("input")?.addEventListener("change", e => {
           if (question.type === "single_choice") {
-            this.setAnswer(question.id, choice.id);
+            fieldset.querySelectorAll(".plw-quiz-choice").forEach(c => c.classList.remove("is-selected"));
+            label.classList.add("is-selected");
+            this.setAnswer(question.id, choice.id, false);
             onAnswerChange(choice.id);
+            this.updateStepDotAnswered(true);
           } else {
+            const isChecked = (e.target as HTMLInputElement).checked;
+            label.classList.toggle("is-selected", isChecked);
             const current = Array.isArray(this.session!.answers[question.id])
               ? (this.session!.answers[question.id] as string[])
               : [];
-            const updated = selected ? current.filter(item => item !== choice.id) : [...current, choice.id];
-            this.setAnswer(question.id, updated);
-            onAnswerChange(updated);
+            const updated = isChecked ? [...current, choice.id] : current.filter(item => item !== choice.id);
+            const finalAnswer = updated.length ? updated : null;
+            this.setAnswer(question.id, finalAnswer, false);
+            onAnswerChange(finalAnswer);
+            this.updateStepDotAnswered(finalAnswer != null);
           }
         });
         fieldset.append(label);
@@ -459,14 +470,20 @@ class QuizApp {
       options.forEach(item => {
         const label = document.createElement("label");
         label.className = "plw-quiz-choice";
+        const selected = answer === item.value;
+        if (selected) label.classList.add("is-selected");
+
         label.innerHTML = `
           <span class="plw-quiz-choice__badge">${item.badge}</span>
-          <input type="radio" name="answer" ${answer === item.value ? "checked" : ""} ${locked ? "disabled" : ""}>
+          <input type="radio" name="answer" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
           <span class="plw-quiz-choice__content">${item.label}</span>
         `;
         label.querySelector("input")?.addEventListener("change", () => {
-          this.setAnswer(question.id, item.value);
+          fieldset.querySelectorAll(".plw-quiz-choice").forEach(c => c.classList.remove("is-selected"));
+          label.classList.add("is-selected");
+          this.setAnswer(question.id, item.value, false);
           onAnswerChange(item.value);
+          this.updateStepDotAnswered(true);
         });
         fieldset.append(label);
       });
@@ -494,6 +511,7 @@ class QuizApp {
         const updatedAnswer = input.value.trim() ? { value: input.value, unit: unit.value } : null;
         this.setAnswer(question.id, updatedAnswer, false);
         onAnswerChange(updatedAnswer);
+        this.updateStepDotAnswered(updatedAnswer != null);
       };
 
       input.addEventListener("input", update);
@@ -502,6 +520,12 @@ class QuizApp {
       fieldset.append(wrap);
     }
     return fieldset;
+  }
+
+  private updateStepDotAnswered(isAnswered: boolean): void {
+    if (!this.session || !this.stepperElement) return;
+    const currentBtn = this.stepperElement.children[this.session.currentIndex] as HTMLElement | undefined;
+    currentBtn?.classList.toggle("is-answered", isAnswered);
   }
 
   private feedback(question: Question, answer: UserAnswer): HTMLElement {
@@ -583,6 +607,8 @@ class QuizApp {
 
   private renderResults(attempt: Attempt): void {
     if (!this.bundle || !this.session) return;
+    this.root.classList.add("plw-quiz-in-progress");
+
     const section = document.createElement("section");
     section.className = "plw-quiz-results";
 
@@ -746,7 +772,7 @@ class QuizApp {
 
     this.root.replaceChildren(section);
     this.hydrateAssets(section);
-    section.querySelector<HTMLElement>("h2")?.focus();
+    section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
     void typeset(section);
   }
 
@@ -827,7 +853,7 @@ class QuizApp {
       "./",
       document.baseURI
     )}">返回知识小测</a></p></section>`;
-    this.root.querySelector<HTMLElement>("h2")?.focus();
+    this.root.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
   }
 
   private renderStatus(message: string): void {
@@ -895,23 +921,41 @@ function escapeHtml(value: string): string {
 }
 
 function initialize(): void {
-  window.__plwQuizDestroy?.();
   const root = document.querySelector<HTMLElement>("#plw-quiz-root");
   if (!root) {
+    window.__plwQuizDestroy?.();
     window.__plwQuizDestroy = undefined;
     return;
   }
+  window.__plwQuizDestroy?.();
   const app = new QuizApp(root);
   window.__plwQuizDestroy = () => app.destroy();
   void app.start();
 }
 
-if (window.document$) window.document$.subscribe(initialize);
-else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initialize, { once: true });
-else initialize();
+if (typeof window !== "undefined") {
+  if (window.document$) {
+    window.document$.subscribe(initialize);
+  }
 
-window.addEventListener("popstate", () => {
-  if (document.querySelector<HTMLElement>("#plw-quiz-root")) {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialize, { once: true });
+  } else {
     initialize();
   }
-});
+
+  window.addEventListener("popstate", () => {
+    if (document.querySelector<HTMLElement>("#plw-quiz-root")) {
+      initialize();
+    }
+  });
+
+  // 针对 MkDocs Material instant navigation 的可靠观察器机制
+  const observer = new MutationObserver(() => {
+    const root = document.querySelector<HTMLElement>("#plw-quiz-root");
+    if (root && root.children.length === 0) {
+      initialize();
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+}
