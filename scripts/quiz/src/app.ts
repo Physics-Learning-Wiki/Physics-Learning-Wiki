@@ -22,7 +22,45 @@ class QuizApp {
   private questions: Question[] = [];
   private session?: Session;
 
-  constructor(private readonly root: HTMLElement) {}
+  constructor(private readonly root: HTMLElement) {
+    this.root.addEventListener("click", this.handleClick, { signal: this.abort.signal });
+  }
+
+  private handleClick = (event: MouseEvent): void => {
+    if (
+      event.button !== 0 ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    const target = event.target as HTMLElement | null;
+    const anchor = target?.closest<HTMLAnchorElement>("a");
+    if (!anchor || !anchor.href) return;
+    if (anchor.target && anchor.target !== "_self") return;
+    if (anchor.hasAttribute("download")) return;
+
+    let targetUrl: URL;
+    let currentUrl: URL;
+    try {
+      targetUrl = new URL(anchor.href, window.location.href);
+      currentUrl = new URL(window.location.href);
+    } catch {
+      return;
+    }
+
+    if (targetUrl.origin !== currentUrl.origin || targetUrl.pathname !== currentUrl.pathname) {
+      return;
+    }
+
+    event.preventDefault();
+    if (targetUrl.href !== currentUrl.href) {
+      history.pushState(null, "", targetUrl.href);
+    }
+    initialize();
+  };
 
   destroy(): void {
     this.abort.abort();
@@ -510,3 +548,10 @@ function initialize(): void {
 if (window.document$) window.document$.subscribe(initialize);
 else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initialize, { once: true });
 else initialize();
+
+window.addEventListener("popstate", () => {
+  if (document.querySelector<HTMLElement>("#plw-quiz-root")) {
+    initialize();
+  }
+});
+
