@@ -108,9 +108,44 @@ function debounce(fn, delay) {
   };
 }
 
-function initEditor() {
+let easyMDELoadPromise = null;
+function ensureEasyMDE() {
+  if (typeof EasyMDE !== "undefined") return Promise.resolve(EasyMDE);
+  if (easyMDELoadPromise) return easyMDELoadPromise;
+
+  easyMDELoadPromise = new Promise(function (resolve, reject) {
+    if (!document.querySelector("link[href*='easymde.min.css']")) {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css";
+      document.head.appendChild(link);
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js";
+    script.onload = function () {
+      resolve(window.EasyMDE);
+    };
+    script.onerror = function (err) {
+      easyMDELoadPromise = null;
+      reject(err);
+    };
+    document.head.appendChild(script);
+  });
+
+  return easyMDELoadPromise;
+}
+
+async function initEditor() {
   const el = document.getElementById("submit-content");
-  if (!el || typeof EasyMDE === "undefined") return;
+  if (!el) return;
+
+  try {
+    await ensureEasyMDE();
+  } catch (err) {
+    console.error("Failed to load EasyMDE", err);
+    return;
+  }
 
   // Destroy previous instance if it exists
   if (easyMDE) {
@@ -482,12 +517,12 @@ async function handleSubmit(event) {
 
 // Single initialization point using mkdocs-material's document$ observable.
 // This fires on both initial page load and instant navigation.
-document$.subscribe(function () {
+document$.subscribe(async function () {
   // Only run on the submit page
   if (!document.getElementById("submission-form")) return;
 
   populateChapterSelect();
-  initEditor();
+  await initEditor();
   void loadQuestionCatalog();
   setupAttributionToggle();
   updateTypeHint();

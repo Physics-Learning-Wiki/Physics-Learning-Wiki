@@ -220,9 +220,7 @@ theme:
     - navigation.tabs
     - navigation.instant
     - content.code.copy
-  font:
-    text: 'Fira Sans'
-    code: 'Fira Mono'
+  font: false
 
 plugins:
   - search
@@ -262,17 +260,13 @@ extra:
 extra_javascript:
   - '_static/js/math-csr.js?math-csr'
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
-  - 'https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js'
   - '_static/js/submit-form.js'
-  - 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
-  - '_static/js/mermaid-init.js'
   - '_static/js/quiz-app.js?v=2'
 
 extra_css:
   - '_static/css/extra.css?v=16'
   - '_static/css/submit-form.css?v=2'
   - '_static/css/quiz.css?v=2'
-  - 'https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css'
   # - '_static/css/offset-inject-debug.css'
 
 # Extensions
@@ -308,9 +302,6 @@ markdown_extensions:
         - name: math
           class: arithmatex
           format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde

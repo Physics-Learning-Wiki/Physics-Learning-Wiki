@@ -1,3 +1,10 @@
+:root {
+  --md-text-font-family: "Fira Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --md-code-font-family: "Fira Mono", ui-monospace, SFMono-Regular, "Roboto Mono",
+    Consolas, "Courier New", monospace;
+}
+
 /* Logo title */
 .md-header__topic:first-child {
   font-weight: initial !important;
