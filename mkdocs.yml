@@ -233,6 +233,7 @@ plugins:
 hooks:
   - hooks/on_env.py
   - hooks/question_bank.py
+  - hooks/clean_search_index.py
 
 # Customization
 extra:
