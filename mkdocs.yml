@@ -254,6 +254,8 @@ extra:
     emit_metadata: '0'
     input_position: 'top'
     theme: 'preferred_color_scheme'
+    light_theme: 'light'
+    dark_theme: 'dark'
     lang: 'zh-CN'
     loading: 'lazy'
   copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
