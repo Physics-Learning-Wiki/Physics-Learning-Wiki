@@ -20,7 +20,7 @@
     "submit:check": "node --check docs/_static/js/submit-form.js && node --check workers/submit.js",
     "docs:format:remark": "remark docs/ -o",
     "docs:format:check": "node --loader ts-node/esm scripts/checker/checker.ts -i",
-    "post-build:test": "node --loader ts-node/esm --test scripts/post-build/math/tests/ssr.test.ts"
+    "post-build:test": "node --loader ts-node/esm --test scripts/post-build/math/tests/ssr.test.ts scripts/post-build/commits-info/tests/commits-info.test.ts"
   },
   "repository": {
     "type": "git",

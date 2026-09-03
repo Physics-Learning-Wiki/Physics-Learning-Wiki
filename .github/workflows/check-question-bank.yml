@@ -19,6 +19,7 @@ on:
       - 'docs/mechanics/kinematics/linear-motion.md'
       - 'docs/mechanics/dynamics/newton-laws.md'
       - 'hooks/question_bank.py'
+      - 'scripts/post-build/**'
       - 'mkdocs.yml'
       - 'pyproject.toml'
       - 'uv.lock'
@@ -55,6 +56,8 @@ jobs:
           cache: yarn
       - name: Install Python dependencies
         run: uv sync --dev --frozen
+      - name: Install JavaScript dependencies
+        run: yarn --frozen-lockfile
       - name: Validate and test Python tools
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
@@ -68,13 +71,12 @@ jobs:
           diff -r .tmp-bank-a .tmp-bank-b
           uv run python -m scripts.question_bank coverage --format json --output question-bank-coverage.json
           uv run python -m scripts.question_bank benchmark --repeat 5 --json-output question-bank-benchmark.json
-      - name: Install JavaScript dependencies
-        run: yarn --frozen-lockfile
       - name: Check quiz TypeScript and bundle
         run: |
           yarn quiz:format:check
           yarn quiz:typecheck
           yarn quiz:test
+          yarn post-build:test
           yarn submit:check
           yarn submit:test
           yarn quiz:build:check
