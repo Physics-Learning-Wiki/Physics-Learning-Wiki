@@ -4,7 +4,7 @@ import path from "path";
 import url from "url";
 import stream from "stream/promises";
 import crypto from "crypto";
-import { HTMLElement } from "node-html-parser";
+import { parse, HTMLElement } from "node-html-parser";
 
 import { mathjax } from "@mathjax/src/js/mathjax.js";
 import { TeX } from "@mathjax/src/js/input/tex.js";
@@ -96,6 +96,73 @@ export class MathRenderer {
   }
 }
 
+/**
+ * Render LaTeX in an HTML string containing arithmatex spans/divs into MathJax CHTML.
+ */
+export function renderMathInHtml(html: string, renderer: MathRenderer): string {
+  if (!html || !html.includes("arithmatex")) {
+    return html;
+  }
+  const root = parse(`<div id="math-ssr-root">${html}</div>`);
+  const wrapper = root.querySelector("#math-ssr-root");
+  if (!wrapper) return html;
+
+  const mathElements = wrapper.querySelectorAll("div.arithmatex, span.arithmatex");
+  for (const element of mathElements) {
+    let texCode = element.textContent;
+    if (texCode.startsWith("\\(") && texCode.endsWith("\\)")) {
+      texCode = texCode.slice(2, -2);
+    } else if (texCode.startsWith("\\[") && texCode.endsWith("\\]")) {
+      texCode = texCode.slice(2, -2);
+    } else {
+      texCode = texCode.slice(2, -2);
+    }
+    const isDisplay = element.tagName === "DIV";
+    element.replaceWith(renderer.render(texCode, isDisplay));
+  }
+
+  return wrapper.innerHTML;
+}
+
+/**
+ * Render all HTML fields of a question object with MathJax CHTML SSR.
+ */
+export function renderMathInQuestion(question: any, renderer: MathRenderer): void {
+  if (!question || typeof question !== "object") return;
+
+  if (typeof question.stemHtml === "string") {
+    question.stemHtml = renderMathInHtml(question.stemHtml, renderer);
+  }
+  if (typeof question.solutionHtml === "string") {
+    question.solutionHtml = renderMathInHtml(question.solutionHtml, renderer);
+  }
+  if (Array.isArray(question.hintsHtml)) {
+    question.hintsHtml = question.hintsHtml.map((h: any) =>
+      typeof h === "string" ? renderMathInHtml(h, renderer) : h
+    );
+  }
+  if (Array.isArray(question.choices)) {
+    for (const choice of question.choices) {
+      if (choice && typeof choice.contentHtml === "string") {
+        choice.contentHtml = renderMathInHtml(choice.contentHtml, renderer);
+      }
+    }
+  }
+  if (question.feedback && typeof question.feedback === "object") {
+    for (const [key, value] of Object.entries(question.feedback)) {
+      if (typeof value === "string") {
+        question.feedback[key] = renderMathInHtml(value, renderer);
+      } else if (value && typeof value === "object") {
+        for (const [subKey, subVal] of Object.entries(value)) {
+          if (typeof subVal === "string") {
+            (value as Record<string, string>)[subKey] = renderMathInHtml(subVal, renderer);
+          }
+        }
+      }
+    }
+  }
+}
+
 export const taskHandler = new (class implements TaskHandler<void> {
   // Emit fonts and CSS file
   async globalInitialize(siteDir: string) {
@@ -122,9 +189,32 @@ export const taskHandler = new (class implements TaskHandler<void> {
     await fs.promises.mkdir(path.dirname(cssDestFile), { recursive: true });
     await fs.promises.writeFile(cssDestFile, renderer.getCSS(), "utf-8");
 
+    log("Rendering math in question bank bundles");
+    const qbPagesDir = path.join(siteDir, "_generated", "question-bank", "pages");
+    try {
+      const entries = await fs.promises.readdir(qbPagesDir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isFile() && entry.name.endsWith(".json")) {
+          const filePath = path.join(qbPagesDir, entry.name);
+          const raw = await fs.promises.readFile(filePath, "utf-8");
+          const bundle = JSON.parse(raw);
+          if (Array.isArray(bundle.questions)) {
+            for (const question of bundle.questions) {
+              renderMathInQuestion(question, renderer);
+            }
+            await fs.promises.writeFile(filePath, JSON.stringify(bundle), "utf-8");
+          }
+        }
+      }
+    } catch (e: any) {
+      if (e?.code !== "ENOENT") {
+        throw e;
+      }
+    }
+
     log("Remove client-side rendering assets");
-    await fs.promises.rm(path.join(siteDir, "_static/js/math-csr.js"));
-    await fs.promises.rm(path.join(siteDir, "assets/vendor/mathjax"), { recursive: true });
+    await fs.promises.rm(path.join(siteDir, "_static/js/math-csr.js"), { force: true });
+    await fs.promises.rm(path.join(siteDir, "assets/vendor/mathjax"), { recursive: true, force: true });
   }
 
   siteDir: string;
@@ -141,7 +231,14 @@ export const taskHandler = new (class implements TaskHandler<void> {
     const mathElements = document.querySelectorAll("div.arithmatex, span.arithmatex");
     mathElements.map(element => {
       // MKdocs outputs "\(xxxxxxx\)", so we need to remove the border
-      const texCode = element.textContent.slice(2, -2);
+      let texCode = element.textContent;
+      if (texCode.startsWith("\\(") && texCode.endsWith("\\)")) {
+        texCode = texCode.slice(2, -2);
+      } else if (texCode.startsWith("\\[") && texCode.endsWith("\\]")) {
+        texCode = texCode.slice(2, -2);
+      } else {
+        texCode = texCode.slice(2, -2);
+      }
       const isDisplay = element.tagName === "DIV";
 
       const html = this.renderer.render(texCode, isDisplay);
