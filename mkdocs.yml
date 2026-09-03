@@ -193,23 +193,31 @@ theme:
     - 404.html
   language: 'zh'
   palette:
-    # Palette toggle for light mode
+    # 模式 1：自适应系统主题（跟随系统偏好）
+    - media: "(prefers-color-scheme)"
+      primary: white
+      accent: red
+      toggle:
+        icon: material/brightness-auto
+        name: 切换至浅色模式
+
+    # 模式 2：浅色模式（固定浅色）
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: white
       accent: red
       toggle:
         icon: material/weather-sunny
-        name: Switch to dark mode
+        name: 切换至深色模式
 
-    # Palette toggle for dark mode
+    # 模式 3：深色模式（固定深色）
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: blue
       accent: blue
       toggle:
         icon: material/weather-night
-        name: Switch to light mode
+        name: 切换至跟随系统
   include_search_page: false
   search_index_only: true
   favicon: 'favicon.ico'
