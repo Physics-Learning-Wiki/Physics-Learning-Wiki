@@ -220,6 +220,10 @@ theme:
     - navigation.tabs
     - navigation.instant
     - content.code.copy
+    - navigation.footer
+    - navigation.tracking
+    - navigation.instant.progress
+    - search.highlight
   font: false
 
 plugins:
