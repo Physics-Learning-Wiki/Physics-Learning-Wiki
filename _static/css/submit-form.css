@@ -1,0 +1,183 @@
+/* docs/_static/css/submit-form.css */
+
+/* Form field layout */
+.submit-field {
+  margin-bottom: 1.5rem;
+}
+.submit-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+.submit-required {
+  color: #e53e3e;
+}
+
+/* Unified form controls */
+.submit-field select,
+.submit-field input {
+  width: 100%;
+  max-width: 560px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Textarea fallback (when EasyMDE fails to load) */
+.submit-field textarea {
+  width: 100%;
+  max-width: 560px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  min-height: 200px;
+  resize: vertical;
+}
+
+.submit-hint {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #718096;
+}
+.submit-radio-group {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.submit-radio-group label {
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.95rem;
+}
+.submit-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+#submit-btn {
+  padding: 0.65em 1.8em;
+  background: #6190e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#submit-btn:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+#submit-status {
+  font-size: 0.9rem;
+}
+#submit-status.error {
+  color: #e53e3e;
+}
+#submit-success {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 8px;
+}
+
+/* EasyMDE overrides */
+.EasyMDEContainer {
+  max-width: 100%;
+}
+.EasyMDEContainer .CodeMirror {
+  height: 400px;
+  font-size: 0.95rem;
+  border-radius: 0 0 6px 6px;
+}
+.editor-toolbar {
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #cbd5e0;
+  border-bottom: none;
+  background: #f7fafc;
+}
+.editor-toolbar button {
+  color: #4a5568 !important;
+}
+.editor-toolbar button:hover,
+.editor-toolbar button.active {
+  background: #e2e8f0;
+  border-color: #cbd5e0;
+}
+
+/* Dark mode overrides */
+[data-md-color-scheme="slate"] .submit-field select,
+[data-md-color-scheme="slate"] .submit-field input,
+[data-md-color-scheme="slate"] .submit-field textarea {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .submit-hint {
+  color: #a0aec0;
+}
+[data-md-color-scheme="slate"] #submit-success {
+  background: #1a3a2a;
+  border-color: #2f5e3f;
+  color: #c6f6d5;
+}
+
+/* Dark mode EasyMDE overrides */
+[data-md-color-scheme="slate"] .editor-toolbar {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .editor-toolbar button {
+  color: #e2e8f0 !important;
+}
+[data-md-color-scheme="slate"] .editor-toolbar button:hover,
+[data-md-color-scheme="slate"] .editor-toolbar button.active {
+  background: #4a5568;
+}
+[data-md-color-scheme="slate"] .EasyMDEContainer .CodeMirror {
+  background: #1a202c;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .EasyMDEContainer .CodeMirror-cursor {
+  border-left-color: #e2e8f0;
+}
+[data-md-color-scheme="slate"] .editor-statusbar {
+  color: #a0aec0;
+}
+[data-md-color-scheme="slate"] .editor-preview,
+[data-md-color-scheme="slate"] .editor-preview-side {
+  background: #1a202c;
+  color: #e2e8f0;
+}
+#question-fields {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.4rem;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.submit-question-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.submit-question-grid label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.submit-public-consent {
+  display: block;
+  color: var(--md-typeset-color);
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+}
