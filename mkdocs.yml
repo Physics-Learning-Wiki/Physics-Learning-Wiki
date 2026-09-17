@@ -72,6 +72,11 @@ nav:
       - 复变积分与柯西定理: math/complex-analysis/contour-integrals.md
       - 级数展开与奇点: math/complex-analysis/series-expansion.md
       - 留数定理与实积分计算: math/complex-analysis/residue-calculus.md
+    - 积分变换与广义函数:
+      - 狄拉克 Delta 函数: math/transforms/delta-function.md
+      - 傅里叶级数: math/transforms/fourier-series.md
+      - 傅里叶变换: math/transforms/fourier-transform.md
+      - 拉普拉斯变换: math/transforms/laplace-transform.md
     - 概率与统计:
       - 概率与统计简介: math/probability.md
       - 概率论的基本概念: math/probability-statistics/basic-concepts.md
