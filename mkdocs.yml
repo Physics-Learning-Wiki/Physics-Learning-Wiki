@@ -65,7 +65,13 @@ nav:
     - 矢量分析:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
-    - 复数与复变函数: math/complex.md
+    - 复数与复变函数:
+      - 模块概览: math/complex.md
+      - 复数与几何表示: math/complex-analysis/complex-numbers.md
+      - 解析函数与柯西-黎曼条件: math/complex-analysis/analytic-functions.md
+      - 复变积分与柯西定理: math/complex-analysis/contour-integrals.md
+      - 级数展开与奇点: math/complex-analysis/series-expansion.md
+      - 留数定理与实积分计算: math/complex-analysis/residue-calculus.md
     - 概率与统计:
       - 概率与统计简介: math/probability.md
       - 概率论的基本概念: math/probability-statistics/basic-concepts.md
