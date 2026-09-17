@@ -68,6 +68,10 @@ nav:
     - 线性代数:
       - 向量与矩阵: math/linear-algebra/matrix.md
       - 线性空间: math/linear-algebra/space.md
+      - 线性算符与矩阵表示: math/linear-algebra/operators.md
+      - 本征值与对角化: math/linear-algebra/eigenvalues.md
+      - 内积空间与希尔伯特空间: math/linear-algebra/inner-product.md
+      - 厄米算符与谱分解: math/linear-algebra/hermitian-unitary.md
     - 矢量分析:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
