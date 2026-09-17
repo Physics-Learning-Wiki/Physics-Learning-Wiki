@@ -61,6 +61,8 @@ nav:
       - 常微分方程基础: math/differential-equations/ode-intro.md
       - 二阶常系数线性微分方程: math/differential-equations/second-order-ode.md
       - 幂级数解法与Frobenius方法: math/differential-equations/series-solution.md
+      - 经典物理偏微分方程: math/differential-equations/pde-intro.md
+      - 偏微分方程分离变量法: math/differential-equations/separation-of-variables.md
     - 变分法:
       - 变分法基础与欧拉-拉格朗日方程: math/variational-methods/calculus-of-variations.md
     - 线性代数:
