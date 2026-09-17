@@ -21,37 +21,29 @@ description: 数学工具知识模块导学看板与知识骨架，系统梳理�
 
 ```mermaid
 flowchart TD
-    subgraph MathCore ["数学工具底层支撑 (docs/math/)"]
-        subgraph Col1 ["几何、分析与算符代数"]
-            M1["矢量分析 & 积分定理<br/>(grad, div, curl, Gauss/Stokes)"]
-            M2["变分法基础<br/>(泛函极值, Euler-Lagrange)"]
-            M6["线性代数与算符谱理论<br/>(内积空间, 厄米算符, 谱分解)"]
-        end
-
-        subgraph Col2 ["方程、变换与边值方法"]
-            M3["积分变换与广义函数<br/>(Fourier, Laplace, Dirac δ)"]
-            M4["偏微分方程与分离变量<br/>(波动、热传导、泊松/拉普拉斯)"]
-            M5["Sturm–Liouville 与特殊函数<br/>(自共轭算符, Legendre, Bessel)"]
-            M7["格林函数方法<br/>(点源脉冲响应, 积分反演)"]
-        end
+    subgraph T1 ["① 经典力学与分析力学主线"]
+        direction LR
+        M1["变分法基础<br/>(作用量原理, Euler-Lagrange)"] --> P1["经典力学 / 理论力学<br/>(分析力学体系, 广义坐标, 守恒律)"]
+        M2["矩阵与微振动<br/>(简正模, 本征值)"] --> P1
     end
 
-    subgraph PhysicsCore ["物理核心理论领域"]
-        P1["经典力学 / 理论力学"]
-        P2["电磁学 / 电动力学"]
-        P3["波动、光学与介质"]
-        P4["近代物理 / 量子力学"]
+    subgraph T2 ["② 电磁学与经典场论主线"]
+        direction LR
+        M3["矢量分析 & 积分定理<br/>(grad, div, curl, 高斯/斯托克斯)"] --> P2["电磁学 / 电动力学<br/>(麦克斯韦方程组微分/积分, 辐射场)"]
+        M4["偏微分方程 & 格林函数<br/>(边值定解, 点源响应, 推迟势)"] --> P2
     end
 
-    M2 ==>|"广义坐标与作用量原理"| P1
-    M5 ==>|"微振动简正模"| P1
-    M1 ==>|"麦克斯韦方程微分/积分"| P2
-    M4 ==>|"电磁边值问题定解"| P2
-    M7 ==>|"点电荷势与推迟势"| P2
-    M3 ==>|"频谱分解与波包色散"| P3
-    M4 ==>|"波动方程本征模"| P3
-    M5 ==>|"角动量本征态与中心势"| P4
-    M6 ==>|"态矢量与算符代数"| P4
+    subgraph T3 ["③ 波动理论与光学主线"]
+        direction LR
+        M5["偏微分方程分离变量<br/>(波动方程本征模)"] --> P3["波动物理、光学与介质<br/>(波包色散, 驻波谐振, 干涉衍射)"]
+        M6["积分变换与广义函数<br/>(Fourier, Laplace, 频域与波包)"] --> P3
+    end
+
+    subgraph T4 ["④ 近代物理与量子理论主线"]
+        direction LR
+        M7["算符谱理论 & 内积空间<br/>(Hilbert空间, 厄米算符)"] --> P4["近代物理 / 量子力学<br/>(态矢量演化, 氢原子能级, 中心势阱)"]
+        M8["Sturm–Liouville & 特殊函数<br/>(Legendre, Bessel, 球谐函数)"] --> P4
+    end
 ```
 
 ---

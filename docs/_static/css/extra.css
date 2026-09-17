@@ -165,25 +165,33 @@ aside.md-status::after {
   display: none !important;
 }
 
-/* Mermaid diagram responsive container & anti-squash protection */
+/* Mermaid diagram responsive container & scrollbar styling */
 .mermaid {
-  overflow-x: auto;
+  display: block !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
   text-align: center;
   margin: 1.5rem 0;
   padding: 0.5rem 0;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter, #cbd5e1) transparent;
 }
 
-.mermaid svg {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
+.mermaid::-webkit-scrollbar {
+  height: 8px;
+}
+.mermaid::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color--lighter, #f1f5f9);
+  border-radius: 4px;
+}
+.mermaid::-webkit-scrollbar-thumb {
+  background: var(--md-default-fg-color--lighter, #cbd5e1);
+  border-radius: 4px;
+}
+.mermaid::-webkit-scrollbar-thumb:hover {
+  background: var(--md-default-fg-color--light, #94a3b8);
 }
 
-@media screen and (max-width: 768px) {
-  .mermaid svg {
-    min-width: 480px;
-    max-width: none;
-  }
-}
 
