@@ -98,7 +98,14 @@ nav:
       - 假设检验: math/probability-statistics/hypothesis-testing.md
       - 方差分析及回归分析: math/probability-statistics/analysis-of-variance-and-regression-analysis.md
       - 附表: math/probability-statistics/appendix-tables.md
-    - 常用特殊函数: math/special-functions.md
+    - 常用特殊函数:
+      - 模块概览: math/special-functions.md
+      - 伽马与贝塔函数: math/special-functions/gamma-beta.md
+      - 勒让德多项式: math/special-functions/legendre.md
+      - 球谐函数: math/special-functions/spherical-harmonics.md
+      - 贝塞尔函数: math/special-functions/bessel.md
+      - 厄米多项式: math/special-functions/hermite.md
+      - 连带拉盖尔多项式: math/special-functions/laguerre.md
   - 经典力学:
     - 力学章节编写说明: mechanics/mechanics-writing.md
     - 力学简介: mechanics/index.md
@@ -301,6 +308,7 @@ extra_javascript:
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
   - '_static/js/submit-form.js'
   - '_static/js/quiz-app.js?v=2'
+  - 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
 
 extra_css:
   - '_static/css/extra.css?v=16'
@@ -343,6 +351,9 @@ markdown_extensions:
         - name: math
           class: arithmatex
           format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
