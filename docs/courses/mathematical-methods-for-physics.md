@@ -80,15 +80,15 @@ flowchart TD
 | 教学阶段 | 核心知识点与数学工具 | Wiki 对应知识页 | 成熟度状态 | 四大力学中的物理对应应用 |
 | :--- | :--- | :--- | :--- | :--- |
 | **1. 复变函数基础** | 复数几何表示、复变微分、解析性判别、柯西-黎曼条件 | - [复数与几何表示](../math/complex-analysis/complex-numbers.md)<br/>- [解析函数与柯西-黎曼条件](../math/complex-analysis/analytic-functions.md) | **[成熟]** | 交流电路复阻抗相量、二维不可压缩流体与静电复势 |
-| **2. 复积分与留数计算** | 柯西积分定理/公式、高阶微商、洛朗级数展开、孤立奇点、留数定理 | - [复变积分与柯西定理](../math/complex-analysis/contour-integrals.md)<br/>- [级数展开与奇点](../math/complex-analysis/series-expansion.md)<br/>- [留数定理与实积分](../math/complex-analysis/residue-calculus.md) | **[重点建设]** | 振动阻尼响应实积分、量子散射矩阵极点分析与因果色散（Kramers–Kronig 关系） |
-| **3. 积分变换与广义函数** | 狄拉克 $\delta$ 函数、连续与分立傅里叶变换、卷积定理、拉普拉斯变换 | - [狄拉克 Delta 函数](../math/transforms/delta-function.md)<br/>- [傅里叶级数](../math/transforms/fourier-series.md)<br/>- [傅里叶变换](../math/transforms/fourier-transform.md)<br/>- [拉普拉斯变换](../math/transforms/laplace-transform.md) | **[重点建设]** | 电磁波频域谱分析、光学衍射傅里叶光学、量子力学坐标与动量表象变换 |
-| **4. 物理偏微分方程建立** | 弦振动与电磁波动方程、热传导方程、稳恒静电势拉普拉斯/泊松方程、定解边界条件 | - [经典物理偏微分方程](../math/differential-equations/pde-intro.md) | **[重点建设]** | 经典电磁场高斯与安培环路定解、连续介质波动动力学 |
-| **5. 分离变量法** | 空间-时间分离、正交坐标系坐标分离、边界条件确定特征值与特征函数、级数叠加求通解 | - [分离变量法定解法](../math/differential-equations/separation-of-variables.md) | **[重点建设]** | 有限长两端固定弦的驻波振动、长方体空腔谐振腔电磁模、金属板热传导 |
-| **6. Sturm–Liouville 理论** | 线性微分算符自共轭性、本征值实数性、本征函数正交完备性、广义傅里叶级数展开 | - [Sturm–Liouville 理论](../math/eigenfunction-methods/sturm-liouville.md) | **[核心架构]** | 量子力学定态薛定谔方程本征态、全系正交函数展开的数学母体 |
-| **7. 特殊函数：柱对称与 Bessel 函数** | 柱坐标分离变量、Bessel 方程与第一/二类 Bessel 函数、半整数阶与虚宗量 Bessel 函数 | - [贝塞尔函数](../math/special-functions/bessel.md) | **[重点建设]** | 圆形鼓膜振动、圆柱形电磁波导模式（TE/TM 模）、圆孔弗朗禾费衍射 |
-| **8. 特殊函数：球对称与 Legendre/球谐函数** | 球坐标分离变量、Legendre 多项式、连带 Legendre 函数、单位球面正交归一球谐函数 $Y_l^m$ | - [勒让德多项式](../math/special-functions/legendre.md)<br/>- [球谐函数](../math/special-functions/spherical-harmonics.md) | **[重点建设]** | 静电场多极矩展开、球形导体边值问题、中心势场量子轨道角动量算符本征态 |
-| **9. 特殊函数：量子正交多项式** | 一维谐振子与 Hermite 多项式、氢原子库仑束缚态与 Laguerre 多项式 | - [厄米多项式](../math/special-functions/hermite.md)<br/>- [拉盖尔多项式](../math/special-functions/laguerre.md) | **[重点建设]** | 量子谐振子波函数节点、氢原子原子轨道能级与波函数径向分布 |
-| **10. 格林函数方法** | 点源脉冲响应、基本解、齐次边界格林函数、电磁泊松方程与波动方程积分反演 | - [格林函数方法](../math/eigenfunction-methods/greens-function.md) | **[重点建设]** | 静电场点电荷镜像法理论本质、电磁辐射推迟势、量子散射玻恩近似 |
+| **2. 复积分与留数计算** | 柯西积分定理/公式、高阶微商、洛朗级数展开、孤立奇点、留数定理 | - [复变积分与柯西定理](../math/complex-analysis/contour-integrals.md)<br/>- [级数展开与奇点](../math/complex-analysis/series-expansion.md)<br/>- [留数定理与实积分](../math/complex-analysis/residue-calculus.md) | **[成熟]** | 振动阻尼响应实积分、量子散射矩阵极点分析与因果色散（Kramers–Kronig 关系） |
+| **3. 积分变换与广义函数** | 狄拉克 $\delta$ 函数、连续与分立傅里叶变换、卷积定理、拉普拉斯变换 | - [狄拉克 Delta 函数](../math/transforms/delta-function.md)<br/>- [傅里叶级数](../math/transforms/fourier-series.md)<br/>- [傅里叶变换](../math/transforms/fourier-transform.md)<br/>- [拉普拉斯变换](../math/transforms/laplace-transform.md) | **[成熟]** | 电磁波频域谱分析、光学衍射傅里叶光学、量子力学坐标与动量表象变换 |
+| **4. 物理偏微分方程建立** | 弦振动与电磁波动方程、热传导方程、稳恒静电势拉普拉斯/泊松方程、定解边界条件 | - [经典物理偏微分方程](../math/differential-equations/pde-intro.md) | **[成熟]** | 经典电磁场高斯与安培环路定解、连续介质波动动力学 |
+| **5. 分离变量法** | 空间-时间分离、正交坐标系坐标分离、边界条件确定特征值与特征函数、级数叠加求通解 | - [分离变量法定解法](../math/differential-equations/separation-of-variables.md) | **[成熟]** | 有限长两端固定弦的驻波振动、长方体空腔谐振腔电磁模、金属板热传导 |
+| **6. Sturm–Liouville 理论** | 线性微分算符自共轭性、本征值实数性、本征函数正交完备性、广义傅里叶级数展开 | - [Sturm–Liouville 理论](../math/eigenfunction-methods/sturm-liouville.md) | **[成熟]** | 量子力学定态薛定谔方程本征态、全系正交函数展开的数学母体 |
+| **7. 特殊函数：柱对称与 Bessel 函数** | 柱坐标分离变量、Bessel 方程与第一/二类 Bessel 函数、半整数阶与虚宗量 Bessel 函数 | - [贝塞尔函数](../math/special-functions/bessel.md) | **[成熟]** | 圆形鼓膜振动、圆柱形电磁波导模式（TE/TM 模）、圆孔弗朗禾费衍射 |
+| **8. 特殊函数：球对称与 Legendre/球谐函数** | 球坐标分离变量、Legendre 多项式、连带 Legendre 函数、单位球面正交归一球谐函数 $Y_l^m$ | - [勒让德多项式](../math/special-functions/legendre.md)<br/>- [球谐函数](../math/special-functions/spherical-harmonics.md) | **[成熟]** | 静电场多极矩展开、球形导体边值问题、中心势场量子轨道角动量算符本征态 |
+| **9. 特殊函数：量子正交多项式** | 一维谐振子与 Hermite 多项式、氢原子库仑束缚态与 Laguerre 多项式 | - [厄米多项式](../math/special-functions/hermite.md)<br/>- [拉盖尔多项式](../math/special-functions/laguerre.md) | **[成熟]** | 量子谐振子波函数节点、氢原子原子轨道能级与波函数径向分布 |
+| **10. 格林函数方法** | 点源脉冲响应、基本解、齐次边界格林函数、电磁泊松方程与波动方程积分反演 | - [格林函数方法](../math/eigenfunction-methods/greens-function.md) | **[成熟]** | 静电场点电荷镜像法理论本质、电磁辐射推迟势、量子散射玻恩近似 |
 
 ---
 

@@ -74,6 +74,7 @@ nav:
       - 厄米算符与谱分解: math/linear-algebra/hermitian-unitary.md
     - 矢量分析:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
+      - 积分定理: math/vector-analysis/integral-theorems.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
     - 复数与复变函数:
       - 模块概览: math/complex.md

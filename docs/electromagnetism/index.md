@@ -67,5 +67,5 @@ Wiki 的电磁学模块正处于从骨架向完整正文迭代的建设阶段．
 
 ## 3. 学习与写作指引
 
-- **先修数学工具**：建议在进入磁场与麦克斯韦方程组前，先熟练阅读 [梯度、散度与旋度](../math/vector-analysis/operators.md) 以及 [曲线坐标系](../math/vector-analysis/curvilinear-coordinates.md)；
+- **先修数学工具**：建议在进入磁场与麦克斯韦方程组前，先熟练阅读 [梯度、散度与旋度](../math/vector-analysis/operators.md)、[矢量积分定理](../math/vector-analysis/integral-theorems.md) 以及 [曲线坐标系](../math/vector-analysis/curvilinear-coordinates.md)；在涉及静电边值与波动时，可结合 [三类物理偏微分方程](../math/differential-equations/pde-intro.md) 与 [格林函数方法](../math/eigenfunction-methods/greens-function.md) 进行深化；
 - **参与内容贡献**：本模块的写作规范详见 [电磁学章节编写说明](./electromagnetism-writing.md)．我们强烈欢迎贡献者按照规范逐步丰富各章节的物理推导与典型例题！
