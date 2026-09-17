@@ -112,8 +112,8 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   overflow: visible;
 }
 
-/* Content status banners */
-.md-status {
+/* Content status banners (used in comments.html for community / review banners) */
+aside.md-status {
   padding: 0.75rem 1rem;
   margin: 1rem 0;
   border-radius: 6px;
@@ -121,6 +121,10 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+}
+aside.md-status::after {
+  display: none !important;
+  content: none !important;
 }
 .md-status__icon {
   flex-shrink: 0;
@@ -154,3 +158,10 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   border-color: #063d6b;
   color: #bfdbfe;
 }
+
+/* Navigation status reset: prevent page frontmatter status metadata from rendering stray icons in nav */
+.md-nav .md-status,
+.md-nav__link .md-status {
+  display: none !important;
+}
+
