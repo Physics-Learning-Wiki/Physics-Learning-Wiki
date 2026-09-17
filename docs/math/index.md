@@ -21,14 +21,19 @@ description: 数学工具知识模块导学看板与知识骨架，系统梳理�
 
 ```mermaid
 flowchart TD
-    subgraph MathCore ["数学工具底层真源 (docs/math/)"]
-        M1["矢量分析 & 积分定理<br/>(grad, div, curl, 高斯/斯托克斯)"]
-        M2["变分法<br/>(泛函极值, Euler-Lagrange 方程)"]
-        M3["积分变换 & 广义函数<br/>(Fourier, Laplace, Dirac δ)"]
-        M4["偏微分方程 & 分离变量<br/>(波动、热传导、泊松/拉普拉斯)"]
-        M5["Sturm–Liouville & 特殊函数<br/>(自共轭算符, Legendre, Bessel)"]
-        M6["线性代数 & 算符谱理论<br/>(内积空间, 厄米算符, 谱分解)"]
-        M7["格林函数方法<br/>(点源脉冲响应, 积分反演)"]
+    subgraph MathCore ["数学工具底层支撑 (docs/math/)"]
+        subgraph Col1 ["几何、分析与算符代数"]
+            M1["矢量分析 & 积分定理<br/>(grad, div, curl, Gauss/Stokes)"]
+            M2["变分法基础<br/>(泛函极值, Euler-Lagrange)"]
+            M6["线性代数与算符谱理论<br/>(内积空间, 厄米算符, 谱分解)"]
+        end
+
+        subgraph Col2 ["方程、变换与边值方法"]
+            M3["积分变换与广义函数<br/>(Fourier, Laplace, Dirac δ)"]
+            M4["偏微分方程与分离变量<br/>(波动、热传导、泊松/拉普拉斯)"]
+            M5["Sturm–Liouville 与特殊函数<br/>(自共轭算符, Legendre, Bessel)"]
+            M7["格林函数方法<br/>(点源脉冲响应, 积分反演)"]
+        end
     end
 
     subgraph PhysicsCore ["物理核心理论领域"]
@@ -39,14 +44,14 @@ flowchart TD
     end
 
     M2 ==>|"广义坐标与作用量原理"| P1
-    M5 ==>|"多自由度微振动简正模"| P1
-    M1 ==>|"麦克斯韦方程组微分/积分形式"| P2
-    M4 ==>|"静电场与时变电磁波定解"| P2
-    M7 ==>|"泊松方程点电荷电势与推迟势"| P2
+    M5 ==>|"微振动简正模"| P1
+    M1 ==>|"麦克斯韦方程微分/积分"| P2
+    M4 ==>|"电磁边值问题定解"| P2
+    M7 ==>|"点电荷势与推迟势"| P2
     M3 ==>|"频谱分解与波包色散"| P3
     M4 ==>|"波动方程本征模"| P3
-    M5 ==>|"角动量本征态与中心势场"| P4
-    M6 ==>|"量子态矢量与力学量算符代数"| P4
+    M5 ==>|"角动量本征态与中心势"| P4
+    M6 ==>|"态矢量与算符代数"| P4
 ```
 
 ---

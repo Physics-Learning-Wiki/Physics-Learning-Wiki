@@ -165,3 +165,25 @@ aside.md-status::after {
   display: none !important;
 }
 
+/* Mermaid diagram responsive container & anti-squash protection */
+.mermaid {
+  overflow-x: auto;
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mermaid svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .mermaid svg {
+    min-width: 480px;
+    max-width: none;
+  }
+}
+
