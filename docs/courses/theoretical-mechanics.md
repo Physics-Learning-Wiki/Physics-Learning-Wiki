@@ -42,7 +42,7 @@ flowchart TD
 
 | 教学模块 | 核心物理与数学概念 | Wiki 对应知识页 | 状态与学习建议 |
 | :--- | :--- | :--- | :--- |
-| **1. 数学准备** | 常微分方程求解、曲线正交坐标系、泛函极值与变分法 | - [常微分方程](../math/calculus/ode.md)<br/>- [曲线坐标系](../math/vector-analysis/curvilinear-coordinates.md)<br/>- [变分法](../math/calculus/variational.md) | **[成熟]** 重点掌握欧拉-拉格朗日微分方程与泛函变分思想 |
+| **1. 数学准备** | 常微分方程求解、曲线正交坐标系、泛函极值与变分法 | - [常微分方程](../math/differential-equations/ode-intro.md)<br/>- [曲线坐标系](../math/vector-analysis/curvilinear-coordinates.md)<br/>- [变分法](../math/variational-methods/calculus-of-variations.md) | **[成熟]** 重点掌握欧拉-拉格朗日微分方程与泛函变分思想 |
 | **2. 质点运动学与动力学** | 矢径、速度、加速度、牛顿定律、非惯性系与惯性力（科里奥利力） | - [运动学基础概念](../mechanics/kinematics/basic-concepts.md)<br/>- [参考系与坐标系](../mechanics/kinematics/reference-frames.md)<br/>- [牛顿运动定律](../mechanics/dynamics/newton-laws.md)<br/>- [惯性力与转动参考系](../mechanics/dynamics/inertial-force.md) | **[成熟]** 可直接复用普物力学基础，重点强化非惯性系动力学 |
 | **3. 动量、能量与角动量** | 动能定理、保守力与势能、角动量守恒、质点系质心运动定理 | - [动量与能量](../mechanics/dynamics/momentum-energy.md)<br/>- [质点系动力学](../mechanics/dynamics/system-of-particles.md) | **[成熟]** 牢固建立守恒量与初积分的物理图景 |
 | **4. 刚体定轴转动与定点运动** | 刚体角速度矢量、惯量张量、主惯性轴、定点运动欧拉角、欧拉动力学方程 | - [力矩与角动量](../mechanics/rigid-body/torque-angular-momentum.md)<br/>- [转动惯量](../mechanics/rigid-body/moment-of-inertia.md)<br/>- [刚体平面平行运动](../mechanics/rigid-body/rigid-body.md)<br/>- [复摆](../mechanics/rigid-body/compound-pendulum.md) | **[部分待扩充]** 普物内容已完备；刚体主轴与欧拉角进阶部分正计划补齐 |

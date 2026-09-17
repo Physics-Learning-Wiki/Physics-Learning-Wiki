@@ -118,7 +118,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 -   [误差分析与数据处理](../experiment/error-analysis.md)：和 Python、绘图工具一起看效果最好．
 -   [热学与统计物理](../thermodynamics/index.md)：适合做分布、过程与模型可视化．
 -   [电磁学](../electromagnetism/index.md) 和 [光学](../optics/index.md)：适合做场分布和波动现象的数值展示．
--   [常微分方程](../math/calculus/ode.md)：几乎所有动力学数值实验都会用到．
+-   [常微分方程](../math/differential-equations/ode-intro.md)：几乎所有动力学数值实验都会用到．
 
 ## 这部分希望你获得什么能力
 

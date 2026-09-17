@@ -64,6 +64,6 @@ flowchart LR
 ```
 
 1. **普物基础阶段**：按 运动学 $\to$ 动力学 $\to$ 刚体力学 $\to$ 振动与波 顺次学习，建立扎实的受力分析、微分方程求解与守恒律思维；
-2. **理论深化阶段**：结合 [数学工具中的常微分方程](../math/calculus/ode.md) 与 [变分法](../math/calculus/variational.md)，进入 [理论力学课程路线](../courses/theoretical-mechanics.md) 学习分析力学的高阶方法．
+2. **理论深化阶段**：结合 [数学工具中的常微分方程](../math/differential-equations/ode-intro.md) 与 [变分法](../math/variational-methods/calculus-of-variations.md)，进入 [理论力学课程路线](../courses/theoretical-mechanics.md) 学习分析力学的高阶方法．
 
 如需了解本模块编写标准，请参阅 [力学章节编写说明](./mechanics-writing.md)．

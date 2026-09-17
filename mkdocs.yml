@@ -57,8 +57,12 @@ nav:
       - 极限与连续: math/calculus/limit.md
       - 导数与微分: math/calculus/derivative.md
       - 积分: math/calculus/integral.md
-      - 常微分方程: math/calculus/ode.md
-      - 变分法: math/calculus/variational.md
+    - 微分方程:
+      - 常微分方程基础: math/differential-equations/ode-intro.md
+      - 二阶常系数线性微分方程: math/differential-equations/second-order-ode.md
+      - 幂级数解法与Frobenius方法: math/differential-equations/series-solution.md
+    - 变分法:
+      - 变分法基础与欧拉-拉格朗日方程: math/variational-methods/calculus-of-variations.md
     - 线性代数:
       - 向量与矩阵: math/linear-algebra/matrix.md
       - 线性空间: math/linear-algebra/space.md
