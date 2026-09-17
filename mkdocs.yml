@@ -26,6 +26,7 @@ nav:
       - 课程路线总览: courses/index.md
       - 理论力学: courses/theoretical-mechanics.md
       - 电磁学: courses/electromagnetism.md
+      - 数学物理方法: courses/mathematical-methods-for-physics.md
     - 关于本项目: intro/about.md
     - 如何参与: intro/htc.md
     - 内容编写指引: intro/writing.md
