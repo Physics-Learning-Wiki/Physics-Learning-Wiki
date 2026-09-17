@@ -22,6 +22,10 @@ nav:
   - 简介:
     - 首页: index.md
     - 学习路线总览: intro/roadmap.md
+    - 课程路线:
+      - 课程路线总览: courses/index.md
+      - 理论力学: courses/theoretical-mechanics.md
+      - 电磁学: courses/electromagnetism.md
     - 关于本项目: intro/about.md
     - 如何参与: intro/htc.md
     - 内容编写指引: intro/writing.md
