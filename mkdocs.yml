@@ -83,6 +83,9 @@ nav:
       - 傅里叶级数: math/transforms/fourier-series.md
       - 傅里叶变换: math/transforms/fourier-transform.md
       - 拉普拉斯变换: math/transforms/laplace-transform.md
+    - 本征函数与格林函数:
+      - Sturm-Liouville 本征值理论: math/eigenfunction-methods/sturm-liouville.md
+      - 格林函数方法: math/eigenfunction-methods/greens-function.md
     - 概率与统计:
       - 概率与统计简介: math/probability.md
       - 概率论的基本概念: math/probability-statistics/basic-concepts.md
