@@ -273,7 +273,6 @@ def validate_set(
 def validate_repository(
     root: Path | str = ".",
     *,
-    release: bool = False,
     include_drafts: bool = False,
 ) -> ValidationReport:
     root = Path(root).resolve()
