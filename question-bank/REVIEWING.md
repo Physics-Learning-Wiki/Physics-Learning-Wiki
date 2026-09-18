@@ -1,36 +1,59 @@
-# 题目人工审核
+# 题库同行审阅与审核签署规范
 
-题目只有在仓库元数据中拥有与当前版本、当前内容指纹一致的三维签署后才能发布。Issue 标签、PR 审批、CI 通过和 AI 检查都不能替代人工签署。
+在 Physics Learning Wiki 题库中，一道题目从 `draft`（草稿）晋级为 `published`（已发布），必须在仓库元数据中记录与其当前版本及内容指纹完全一致的**物理正确性**、**教学适切性**与**版权合规**三维审核签署。
 
-## 固定 rubric
+Issue 讨论、PR 审批与自动化测试均不能代替人工审核签署。
 
-审核每道题时逐项确认：
+---
 
-1. 物理结论、数值、单位、符号和适用条件正确。
-2. 题意唯一，不依赖未说明的假设，不存在多个合理答案。
-3. 干扰项对应可诊断的常见误解，不使用纯文字陷阱。
-4. 逐项反馈和完整解析能解释正确答案及关键错误原因。
-5. 难度、认知层级和预计时间适合大学基础物理。
-6. 图像信息具有等价替代文本，视觉编码不只依赖颜色。
-7. 来源、原创/改编声明、AI 辅助披露和 CC BY-SA 4.0 许可完整；受管资源无外部依赖。
+## 审核维度与标准 (Rubric)
 
-## 牛顿专题 v1
+审核者在审阅题目时须逐项确认以下标准：
 
-首发预选与保留题记录在 `release-plans/newton-laws-v1.yml`。`@Leafuke` 应按题目实际完成审核的日期运行：
+### 1. 物理正确性 (Physics)
+- 物理概念界定严谨，公式推导与数值计算无误，单位与有效数字规范。
+- 题意清晰唯一，不存在未说明的前提假设或多义性解读。
+- 适用条件（如参考系、理想化模型假设、守恒条件）表述明确。
+
+### 2. 教学适切性 (Pedagogy)
+- 难度与认知层级符合大学基础物理或普通物理教学要求。
+- 选择题干扰项设计对应典型概念误解或认知盲区，而非单纯文字文字游戏。
+- 题干表述流畅，选项逐项反馈与深度解析能够有效引导学习者建立正确物理图景。
+- 若包含图表，图表具有清晰可访问的替代文本（alt text）。
+
+### 3. 版权与合规 (Copyright)
+- 题目为原创内容或改编自公共领域、CC-BY-SA 等相容开源授权资料。
+- 署名信息完整；若在编写过程中使用了 AI 辅助工具，须如实披露。
+- 涉及插图必须存放在 `question-bank/assets/` 且版权合法，严禁直接引用未经授权的外部图床链接。
+
+---
+
+## 签署与发布流程
+
+审核人员确认题目符合上述标准后，使用维护 CLI 记录签署：
 
 ```powershell
-uv run python -m scripts.question_bank attest --id QUESTION_ID --dimension physics --dimension pedagogy --dimension copyright --reviewer Leafuke
-uv run python -m scripts.question_bank publish --id QUESTION_ID
+# 记录三维签署（支持同日由同一人签署或多位审阅者分维度签署）
+uv run python -m scripts.question_bank attest --id <QUESTION_ID> --dimension physics --dimension pedagogy --dimension copyright --reviewer <GitHub_Username>
+
+# 签署完成后正式发布题目
+uv run python -m scripts.question_bank publish --id <QUESTION_ID>
 ```
 
-如三个维度不是同日完成，应分别运行 `attest` 并使用相应的实际日期。任何题干、答案、反馈、解析、来源或资源文件修改都会改变内容指纹；修改后必须重新审核和签署。
+> [!NOTE]
+> 任何对题干、选项、答案、解析或受管资源的修改都会导致内容指纹（Content Fingerprint）发生改变。一旦内容发生变更，旧签署将自动失效，必须重新完成审阅签署方可重新发布。
 
-24 道预选题全部发布后，将牛顿页面的 `quiz.state` 改为 `active`，再运行：
+---
+
+## 本地验收与防回归验证
+
+在提交包含新发布题目或测试集合的 PR 前，请确保完成全套自动化验证：
 
 ```powershell
-uv run python -m scripts.question_bank validate --release
+uv run python -m scripts.question_bank validate
+uv run python -m scripts.question_bank coverage
+uv run pytest tests/question_bank tests/integration
+corepack yarn quiz:typecheck
 corepack yarn quiz:build:check
 uv run mkdocs build --clean
 ```
-
-只有上述检查和人工浏览器验收全部通过后，才能合并激活 PR 并关闭总跟踪 Issue #22。
