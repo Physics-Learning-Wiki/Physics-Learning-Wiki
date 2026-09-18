@@ -40,13 +40,26 @@ def test_production_build_contains_assessment_cards_and_no_drafts(
 ) -> None:
     site = build_site(tmp_path)
     assert (site / "quiz" / "index.html").exists()
+    assert (site / "quiz" / "sets" / "index.html").exists()
+    assert (site / "quiz" / "questions" / "index.html").exists()
+    assert (site / "quiz" / "contribute" / "index.html").exists()
     assert (site / "quiz" / "play" / "index.html").exists()
     manifest = json.loads(
         (site / "_generated" / "question-bank" / "manifest.json").read_text(
             encoding="utf-8"
         )
     )
+    assert manifest["schemaVersion"] == 3
     assert manifest["preview"] is False
+
+    # Published sets exist in manifest and bundle output
+    assert "mechanics.dynamics.newton-laws.quick" in manifest["sets"]
+    newton_bundle_path = site / "_generated" / "question-bank" / manifest["sets"]["mechanics.dynamics.newton-laws.quick"]["bundle"]
+    assert newton_bundle_path.exists()
+
+    # Draft sets must not exist in production manifest or bundle output
+    assert "mechanics.kinematics.linear-motion.quick" not in manifest["sets"]
+    assert not list((site / "_generated" / "question-bank" / "sets").glob("mechanics.kinematics.linear-motion.*.json"))
 
     # Newton footer has new Set links and no legacy 24/24 text
     newton = (
@@ -71,7 +84,14 @@ def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
             encoding="utf-8"
         )
     )
+    assert manifest["schemaVersion"] == 3
     assert manifest["preview"] is True
+
+    # Draft set bundle exists in preview
+    assert "mechanics.kinematics.linear-motion.quick" in manifest["sets"]
+    draft_bundle_path = site / "_generated" / "question-bank" / manifest["sets"]["mechanics.kinematics.linear-motion.quick"]["bundle"]
+    assert draft_bundle_path.exists()
+
     linear = (
         site / "mechanics" / "kinematics" / "linear-motion" / "index.html"
     ).read_text(encoding="utf-8")
@@ -82,6 +102,7 @@ def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
         for path in (site / "_generated" / "question-bank").rglob("*.json")
     )
     assert "mech-kin-linear-0001" in json_text
+
 
 
 def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None:
