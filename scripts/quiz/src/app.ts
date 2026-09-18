@@ -313,6 +313,7 @@ class QuizApp {
 }
 
 import { InlineSurface } from "./surfaces/inline.js";
+import { QuestionsSurface } from "./surfaces/questions.js";
 import { SetsSurface } from "./surfaces/sets.js";
 
 class HomeSurface {
@@ -419,6 +420,7 @@ class HomeSurface {
 
 let runnerApp: QuizApp | undefined;
 let setsSurface: SetsSurface | undefined;
+let questionsSurface: QuestionsSurface | undefined;
 let homeSurface: HomeSurface | undefined;
 const inlineSurfaces: InlineSurface[] = [];
 
@@ -428,6 +430,9 @@ function initialize(): void {
 
   setsSurface?.destroy();
   setsSurface = undefined;
+
+  questionsSurface?.destroy();
+  questionsSurface = undefined;
 
   homeSurface?.destroy();
   homeSurface = undefined;
@@ -440,6 +445,8 @@ function initialize(): void {
     runnerApp = undefined;
     setsSurface?.destroy();
     setsSurface = undefined;
+    questionsSurface?.destroy();
+    questionsSurface = undefined;
     homeSurface?.destroy();
     homeSurface = undefined;
     for (const s of inlineSurfaces) s.destroy();
@@ -460,14 +467,21 @@ function initialize(): void {
     void setsSurface.start();
   }
 
-  // 3. Home root
+  // 3. Questions catalog root
+  const questionsRoot = document.querySelector<HTMLElement>("#plw-quiz-questions-root");
+  if (questionsRoot) {
+    questionsSurface = new QuestionsSurface(questionsRoot);
+    void questionsSurface.start();
+  }
+
+  // 4. Home root
   const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
   if (homeRoot) {
     homeSurface = new HomeSurface(homeRoot);
     void homeSurface.start();
   }
 
-  // 4. Inline roots
+  // 5. Inline roots
   const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
   for (const inlineRoot of Array.from(inlineRoots)) {
     const s = new InlineSurface(inlineRoot);
@@ -494,12 +508,14 @@ if (typeof window !== "undefined") {
   const observer = new MutationObserver(() => {
     const quizRoot = document.querySelector<HTMLElement>("#plw-quiz-root");
     const setsRoot = document.querySelector<HTMLElement>("#plw-quiz-sets-root");
+    const questionsRoot = document.querySelector<HTMLElement>("#plw-quiz-questions-root");
     const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
     const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
 
     const hasUninitialized =
       (quizRoot && quizRoot.children.length === 0) ||
       (setsRoot && setsRoot.children.length === 0) ||
+      (questionsRoot && questionsRoot.children.length === 0) ||
       (homeRoot && homeRoot.children.length === 0) ||
       (inlineRoots.length > 0 && inlineSurfaces.length === 0);
 

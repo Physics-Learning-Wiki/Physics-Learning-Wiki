@@ -1111,6 +1111,112 @@ body:has(#plw-quiz-root.plw-quiz-in-progress) .md-content__inner > .md-content__
 }
 
 /* --------------------------------------------------------------------------
+   题库浏览器 (Question Browser Surface /quiz/questions/)
+   -------------------------------------------------------------------------- */
+.plw-quiz-question-browser {
+  margin: 1rem 0;
+}
+
+.plw-quiz-questions__count-wrap {
+  margin: 0.75rem 0 1.25rem;
+}
+
+.plw-quiz-questions__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.plw-quiz-question-browser__card {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  background: var(--md-code-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plw-quiz-question-browser__card:hover {
+  border-color: var(--md-default-fg-color--lighter);
+}
+
+.plw-quiz-question-browser__card.is-targeted {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--md-accent-fg-color) 25%, transparent), 0 4px 12px rgba(0, 0, 0, 0.08);
+  outline: none;
+}
+
+.plw-quiz-question-browser__header {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--md-default-fg-color--lightest);
+}
+
+.plw-quiz-question-browser__id-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.plw-quiz-question-browser__permalink {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--md-default-fg-color);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.plw-quiz-question-browser__permalink:hover {
+  color: var(--md-accent-fg-color);
+  text-decoration: underline;
+}
+
+.plw-quiz-question-browser__trial-actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.plw-quiz-question-details {
+  margin: 1.25rem 0 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.45rem;
+  background: var(--md-default-bg-color);
+  overflow: hidden;
+}
+
+.plw-quiz-question-details summary {
+  padding: 0.6rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 4%, var(--md-default-bg-color));
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.plw-quiz-question-details summary:hover {
+  background: color-mix(in srgb, var(--md-accent-fg-color) 8%, var(--md-default-bg-color));
+}
+
+.plw-quiz-question-details__body {
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.plw-quiz-solution-text {
+  color: var(--md-default-fg-color);
+}
+
+
+/* --------------------------------------------------------------------------
    响应式与无障碍 (A11y & Responsiveness)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {

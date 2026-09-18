@@ -26,6 +26,14 @@ export function readRunnerParameters(url = new URL(window.location.href)): Runne
   return { setId, seed };
 }
 
+export interface QuestionsParameters {
+  questionId: string | null;
+}
+
+export function readQuestionsParameters(url = new URL(window.location.href)): QuestionsParameters {
+  return { questionId: url.searchParams.get("q") };
+}
+
 async function fetchJson<T>(url: URL, signal: AbortSignal, noCache = false): Promise<T> {
   const response = await fetch(url, { signal, cache: noCache ? "no-cache" : "default" });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
