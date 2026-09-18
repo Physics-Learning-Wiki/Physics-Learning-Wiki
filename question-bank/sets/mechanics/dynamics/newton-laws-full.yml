@@ -1,0 +1,87 @@
+schema_version: 1
+id: mechanics.dynamics.newton-laws.full
+title: 8 题完整小测
+description: 覆盖牛顿运动定律核心概念、受力分析和动力学建模。
+status: published
+tags:
+- 综合练习
+- 牛顿运动定律
+feedback_mode: deferred
+selection:
+  type: query
+  count: 8
+  filters:
+    related_pages:
+      any:
+      - mechanics.dynamics.newton-laws
+  slots:
+  - id: first
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.first-law
+  - id: second
+    count: 2
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.second-law
+  - id: third
+    count: 2
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.third-law
+  - id: diagram
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.free-body-diagram
+  - id: coordinates
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.coordinate-equations
+  - id: system
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.object-system-choice
+  constraints:
+  - field: difficulty
+    values:
+    - 1
+    min: 2
+    max: 3
+  - field: difficulty
+    values:
+    - 2
+    min: 3
+    max: 5
+  - field: difficulty
+    values:
+    - 3
+    min: 1
+    max: 2
+  - field: style
+    values:
+    - conceptual
+    min: 2
+    max: 4
+  - field: style
+    values:
+    - graphical
+    min: 1
+  - field: type
+    values:
+    - numeric
+    min: 2
+    max: 3
+  - field: type
+    values:
+    - true_false
+    max: 1

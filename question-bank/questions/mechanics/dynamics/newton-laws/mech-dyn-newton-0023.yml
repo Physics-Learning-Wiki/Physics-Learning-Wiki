@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0023
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.coordinate-equations
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.incline-components
+objectives:
+- mech.dyn.newton.coordinate-equations
+related_pages:
+- mechanics.dynamics.newton-laws
 type: numeric
 choice_order: fixed
 stem: 质量为 $2\,\mathrm{kg}$ 的方块置于倾角 $30^\circ$ 的光滑斜面上，取沿斜面向下为正，$g=10\,\mathrm{m/s^2}$。沿斜面方向的加速度是多少？
@@ -44,16 +45,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603
+    content_fingerprint: sha256:554eaf4510059ddc5e429404b18e8992043d67d25939cf7b31681ca6ce41a0aa
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603
+    content_fingerprint: sha256:554eaf4510059ddc5e429404b18e8992043d67d25939cf7b31681ca6ce41a0aa
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603
+    content_fingerprint: sha256:554eaf4510059ddc5e429404b18e8992043d67d25939cf7b31681ca6ce41a0aa

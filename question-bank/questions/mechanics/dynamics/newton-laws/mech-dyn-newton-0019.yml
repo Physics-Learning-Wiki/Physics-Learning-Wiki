@@ -1,24 +1,22 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0019
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.free-body-diagram
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.free-body-diagram
+objectives:
+- mech.dyn.newton.free-body-diagram
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
-stem: '![水平面上静止方块的受力示意底图](asset:block-horizontal)
+stem: |-
+  ![水平面上静止方块的受力示意底图](asset:block-horizontal)
 
-
-  方块静止在粗糙水平面上，且没有水平外力。正确的受力图应包含哪些力？'
-assets:
-- id: block-horizontal
-  path: mechanics/dynamics/newton-laws/block-horizontal.svg
+  方块静止在粗糙水平面上，且没有水平外力。正确的受力图应包含哪些力？
 choices:
 - id: A
   content: 只有重力
@@ -53,19 +51,22 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+assets:
+- id: block-horizontal
+  path: mechanics/dynamics/newton-laws/block-horizontal.svg
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8
+    content_fingerprint: sha256:1c42aeb50ab58014cc3edbfb534864fac085f6ac5b4100a897661902cefd4560
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8
+    content_fingerprint: sha256:1c42aeb50ab58014cc3edbfb534864fac085f6ac5b4100a897661902cefd4560
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8
+    content_fingerprint: sha256:1c42aeb50ab58014cc3edbfb534864fac085f6ac5b4100a897661902cefd4560

@@ -24,7 +24,7 @@ def test_build_page_registry_detects_conflicting_global_objectives() -> None:
         title="P1",
         url="p1/",
         objectives={"obj.shared": {"id": "obj.shared", "title": "Shared", "anchor": "a"}},
-        quiz={},
+        assessments=[],
     )
     p2 = PageContract(
         path=ROOT / "doc2.md",
@@ -32,7 +32,7 @@ def test_build_page_registry_detects_conflicting_global_objectives() -> None:
         title="P2",
         url="p2/",
         objectives={"obj.shared": {"id": "obj.shared", "title": "Shared", "anchor": "a"}},
-        quiz={},
+        assessments=[],
     )
     issues = validate_page_contracts({"page.one": p1, "page.two": p2})
     assert any("conflicts" in issue.message for issue in issues)

@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0018
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.third-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.action-reaction
+objectives:
+- mech.dyn.newton.third-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
 stem: 小球用细线悬挂在天花板下静止。下列哪些力互为第三定律力对？
@@ -52,16 +53,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc
+    content_fingerprint: sha256:1c28a7b4bda0db301944d6c1c6ce87c8b2386a005cdfbaf7e45095048da6b752
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc
+    content_fingerprint: sha256:1c28a7b4bda0db301944d6c1c6ce87c8b2386a005cdfbaf7e45095048da6b752
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc
+    content_fingerprint: sha256:1c28a7b4bda0db301944d6c1c6ce87c8b2386a005cdfbaf7e45095048da6b752

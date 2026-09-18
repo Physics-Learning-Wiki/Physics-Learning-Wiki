@@ -1,0 +1,54 @@
+schema_version: 1
+id: mechanics.kinematics.linear-motion.full
+title: 8 题完整小测
+description: 全面测试直线运动概念辨析、图像分析、分段建模与相对运动。
+status: draft
+tags:
+- 综合练习
+- 直线运动
+feedback_mode: deferred
+selection:
+  type: query
+  count: 8
+  filters:
+    related_pages:
+      any:
+      - mechanics.kinematics.linear-motion
+  slots:
+  - id: sign
+    count: 2
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.sign-convention
+  - id: definitions
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.velocity-acceleration
+  - id: graphs
+    count: 2
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.graph-slope-area
+  - id: uniform
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.uniform-motion
+  - id: piecewise
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.piecewise-motion
+  - id: relative
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.relative-motion
+  constraints: []

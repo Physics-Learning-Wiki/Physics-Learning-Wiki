@@ -1,0 +1,1082 @@
+[
+  {
+    "id": "mech-dyn-newton-0001",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385",
+    "new_fingerprint": "sha256:fff3f0c6d7395bb5098e7cc43073ab4a60f7bd62dd656ed4f86030dfc92db249",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0002",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:3db88e121cfddd238b4f839d5750f7d11cae59becbdb63c320d77c964db25db9",
+    "new_fingerprint": "sha256:34561cb2329c138d57fdeb9138a1ae14085efccf99c67ce32221111fb4c61721",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3db88e121cfddd238b4f839d5750f7d11cae59becbdb63c320d77c964db25db9"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3db88e121cfddd238b4f839d5750f7d11cae59becbdb63c320d77c964db25db9"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3db88e121cfddd238b4f839d5750f7d11cae59becbdb63c320d77c964db25db9"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0003",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7",
+    "new_fingerprint": "sha256:8ed7b90ce2e6a57a51d76d8c4b87b1e91b41ca1b2725ead2e1e6b48dc03e22a7",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1f49d49af7725d54f1cd2d66c7df2c5a65fbed3764268d949409df18450304c7"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0004",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:db53c5a1a666319b4ea0464f7c4dd5dc42eae60531a0de82dc55bf5731efb9fa",
+    "new_fingerprint": "sha256:8ae28bbf00d9ab11d640e20fa79233e7a460923eb300838b16cb7325c10f38b1",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:db53c5a1a666319b4ea0464f7c4dd5dc42eae60531a0de82dc55bf5731efb9fa"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:db53c5a1a666319b4ea0464f7c4dd5dc42eae60531a0de82dc55bf5731efb9fa"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:db53c5a1a666319b4ea0464f7c4dd5dc42eae60531a0de82dc55bf5731efb9fa"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0005",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5",
+    "new_fingerprint": "sha256:b04360c9036537af78c08df8bc066fd9312501e57c7d06402be7a86d4701852a",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4cbf779ba44a8c2e7a765cb6ecb4a48471ac877b9d1e5db356abdf5ca0264eb5"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0006",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea",
+    "new_fingerprint": "sha256:bc7ca1d9c37eb133d2718332bd42fba15b8ca9ac8caba5a0bb0830af7df61f04",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0007",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d",
+    "new_fingerprint": "sha256:ddbec9b16ab93537ed51e8d1d8034e976f18c9ed5962dda63f147bd6dac96d10",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0008",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f",
+    "new_fingerprint": "sha256:ac695426e439a9db2833bacb07be876568094ee22517152adff8a19b950e6586",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0009",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c",
+    "new_fingerprint": "sha256:58b0c3c02ec68f7e379b395f02114248ba17cd8413f602521f3a2a53d3751e3c",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0010",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270",
+    "new_fingerprint": "sha256:019260c5f899213ed677212ffe6817021714f56a591b38f321f6b99b2684251c",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0011",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee",
+    "new_fingerprint": "sha256:255ebf52345233dc8414e0cbcdc6ab67d966b19de66e9f51c007ca52b629441c",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0012",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737",
+    "new_fingerprint": "sha256:b4246fe476ea896ee4dfdcaf13437b36b69f36ac5dea4312222537ac680d1ad7",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:00d8bdeb2c4bf733eace08376045765ab82db3d1499b68bff0bf605b4cc94737"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0013",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398",
+    "new_fingerprint": "sha256:bea1ea0cee4f9e3dddb5aaea9c98a745dd9be7879418a56722c57fc8883f10ab",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0014",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87",
+    "new_fingerprint": "sha256:4467d1d3f8d50cd2673cbda10a4c8239b41eaf045a4fcd0f49fde359c61c279e",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9f29a58ec5f957ae36f782e794281ce8dd19c4dfedb87a6bbb27482e71e1fc87"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0015",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8",
+    "new_fingerprint": "sha256:d8793e17e083061bfbfa93f82010ede6860c7d29eb60dca35964fd770e4d66c9",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1a63083acfc8640cb45993486a95dcc76fb60d7e13de3162d7684a78a88ffaf8"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0016",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538",
+    "new_fingerprint": "sha256:d9c8e75ad27ff48c06964539492be25270aa78db0ec87499f8284b5d8c269c7e",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0017",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef",
+    "new_fingerprint": "sha256:6bc73754f2f057e34ff60bf71e32020d1a74b40de5b2f4ca1ed58518f90b9f52",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0018",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc",
+    "new_fingerprint": "sha256:1c28a7b4bda0db301944d6c1c6ce87c8b2386a005cdfbaf7e45095048da6b752",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:3acadc7f96ca1326fc594a4c3b3d6d49fbac3a40b3f34ab0a8e2129d172532bc"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0019",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8",
+    "new_fingerprint": "sha256:1c42aeb50ab58014cc3edbfb534864fac085f6ac5b4100a897661902cefd4560",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:2c4041d44fc1b196cb0eda70f9917f608d98b062f151e4d64aec7cfd490ac5f8"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0020",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833",
+    "new_fingerprint": "sha256:6641dc5991b62046dab12d1ff91896a8275008b7a88648832f5393d5a42e33ea",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0021",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49",
+    "new_fingerprint": "sha256:a6b5dc6a73f6037cae6e1343dedeada2e973ef3f017889a2d5580dd30ad955f9",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:cbc3db615c5f6a7478d1ab500d150523d9931bc7666f6925b3e2d26566e49b49"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0022",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82",
+    "new_fingerprint": "sha256:24c3ec2daee5a05cee57fc17adac2d6168d064f52e007360e0982a89417ca06b",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0023",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603",
+    "new_fingerprint": "sha256:554eaf4510059ddc5e429404b18e8992043d67d25939cf7b31681ca6ce41a0aa",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:376f180cb44157be0edf576c23d5c106e18b26183ec9aff724300c3de2d2d603"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0024",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9",
+    "new_fingerprint": "sha256:a93c7ff27b99f8ff81658eb75ab8a71ef7978b184674a7ef353841a6e8c5d439",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0025",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988",
+    "new_fingerprint": "sha256:388ff45dac1d570a9f908567b22ad224f1ee04218b7fd52b38c76a40eab04ce2",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:90a55e9c98549dac72cb278f2e6d32d2ff0dc752c4b2c68678159704bbb8b988"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0026",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:5f9f1ea1e2cf3b9a137d5013d1e9b42208b58d0e73976443c1289f6ab18e7257",
+    "new_fingerprint": "sha256:9ced4c3ff08c25ff54bffc37f2fddca6171f8684c664db2cd550fa3f6cb8f8e6",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:5f9f1ea1e2cf3b9a137d5013d1e9b42208b58d0e73976443c1289f6ab18e7257"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:5f9f1ea1e2cf3b9a137d5013d1e9b42208b58d0e73976443c1289f6ab18e7257"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:5f9f1ea1e2cf3b9a137d5013d1e9b42208b58d0e73976443c1289f6ab18e7257"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0027",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d",
+    "new_fingerprint": "sha256:088c18f23cc25f1d158835358692c2fe4114fb19e08a83699eac795685f24d0f",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0028",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730",
+    "new_fingerprint": "sha256:1e0888e2430e32bfce84758adb56764539601ddda093f075366ca012e291acd0",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:67c9b5bd23d6717171530646fd923192cf84425bdba78d7cbef4821bf136b730"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0029",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b",
+    "new_fingerprint": "sha256:3ebaa6f415e1da2bac150558074f923cfa17c8a4b9963f6542dd6cfd5de7c41f",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  },
+  {
+    "id": "mech-dyn-newton-0030",
+    "version": 1,
+    "status": "published",
+    "old_fingerprint": "sha256:aa96df292efdd998ff31d6c9220d2bb41b73cbf489eaad08097b3bc22fa47050",
+    "new_fingerprint": "sha256:c603a2ff5bf8de1ca6e0ca8e419f00696527283dbff1c88afb6a8e38df82b623",
+    "review": {
+      "physics": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:aa96df292efdd998ff31d6c9220d2bb41b73cbf489eaad08097b3bc22fa47050"
+        }
+      ],
+      "pedagogy": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:aa96df292efdd998ff31d6c9220d2bb41b73cbf489eaad08097b3bc22fa47050"
+        }
+      ],
+      "copyright": [
+        {
+          "github": "Leafuke",
+          "reviewed_on": "2026-08-24",
+          "question_version": 1,
+          "content_fingerprint": "sha256:aa96df292efdd998ff31d6c9220d2bb41b73cbf489eaad08097b3bc22fa47050"
+        }
+      ]
+    },
+    "re_signed": true,
+    "re_signed_by": "Leafuke",
+    "re_signed_on": "2026-09-19"
+  }
+]

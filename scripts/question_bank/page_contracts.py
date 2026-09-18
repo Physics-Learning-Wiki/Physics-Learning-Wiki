@@ -6,7 +6,7 @@ from pathlib import Path
 import frontmatter
 
 from .errors import Issue
-from .models import PageContract, PageRegistry
+from .models import AssessmentPlacement, PageContract, PageRegistry
 
 PAGE_ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)+$")
 
@@ -30,6 +30,10 @@ def discover_page_contracts(root: Path) -> tuple[dict[str, PageContract], list[I
         if page_id in pages:
             issues.append(Issue.error(path, "page_id", f"duplicate page id {page_id}"))
             continue
+
+        if "quiz" in post.metadata:
+            issues.append(Issue.error(path, "quiz", "legacy quiz front matter is forbidden in v3; use assessments"))
+
         objective_map: dict[str, dict[str, str]] = {}
         objectives = post.metadata.get("learning_objectives", [])
         if not isinstance(objectives, list):
@@ -51,6 +55,47 @@ def discover_page_contracts(root: Path) -> tuple[dict[str, PageContract], list[I
             if not re.search(rf'''id=["']{re.escape(anchor)}["']''', post.content):
                 issues.append(Issue.error(path, f"{field}.anchor", f"anchor {anchor!r} is absent from page source"))
             objective_map[objective_id] = {"id": objective_id, "title": title, "anchor": anchor}
+
+        raw_assessments = post.metadata.get("assessments", [])
+        assessment_placements: list[AssessmentPlacement] = []
+        if not isinstance(raw_assessments, list):
+            issues.append(Issue.error(path, "assessments", "must be a list"))
+            raw_assessments = []
+        for index, item in enumerate(raw_assessments):
+            field = f"assessments[{index}]"
+            if not isinstance(item, dict):
+                issues.append(Issue.error(path, field, "must be an object"))
+                continue
+            unknown_keys = set(item.keys()) - {"set", "placement", "anchor", "title"}
+            if unknown_keys:
+                issues.append(Issue.error(path, field, f"unknown keys: {', '.join(sorted(unknown_keys))}"))
+            set_id = item.get("set")
+            placement = item.get("placement")
+            anchor = item.get("anchor")
+            title = item.get("title")
+            if not isinstance(set_id, str) or not set_id:
+                issues.append(Issue.error(path, f"{field}.set", "set id is required"))
+                continue
+            if placement not in {"inline", "footer"}:
+                issues.append(Issue.error(path, f"{field}.placement", "placement must be 'inline' or 'footer'"))
+                continue
+            if placement == "inline":
+                if not isinstance(anchor, str) or not anchor:
+                    issues.append(Issue.error(path, f"{field}.anchor", "anchor is required for inline placement"))
+                elif not re.search(rf'''id=["']{re.escape(anchor)}["']''', post.content):
+                    issues.append(Issue.error(path, f"{field}.anchor", f"anchor {anchor!r} is absent from page source"))
+            if title is not None and not isinstance(title, str):
+                issues.append(Issue.error(path, f"{field}.title", "title must be a string"))
+
+            assessment_placements.append(
+                AssessmentPlacement(
+                    set_id=set_id,
+                    placement=placement,
+                    anchor=anchor if isinstance(anchor, str) else None,
+                    title=title if isinstance(title, str) else None,
+                )
+            )
+
         relative = path.relative_to(docs).with_suffix("").as_posix()
         title_match = re.search(r"^##\s+(.+)$", post.content, re.MULTILINE)
         pages[page_id] = PageContract(
@@ -59,7 +104,7 @@ def discover_page_contracts(root: Path) -> tuple[dict[str, PageContract], list[I
             title=str(post.metadata.get("title") or (title_match.group(1) if title_match else page_id)),
             url=f"../../{relative}/",
             objectives=objective_map,
-            quiz=post.metadata.get("quiz", {}) if isinstance(post.metadata.get("quiz", {}), dict) else {},
+            assessments=assessment_placements,
         )
     return pages, issues
 

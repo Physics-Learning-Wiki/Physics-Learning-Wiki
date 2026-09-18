@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0008
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.object-system-choice
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.system-boundary
+objectives:
+- mech.dyn.newton.object-system-choice
+related_pages:
+- mechanics.dynamics.newton-laws
 type: numeric
 choice_order: fixed
 stem: 光滑水平面上，质量为 $2\,\mathrm{kg}$ 和 $3\,\mathrm{kg}$ 的两物体一起受到水平外力 $10\,\mathrm N$。把两物体作为整体，加速度是多少？
@@ -44,16 +45,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f
+    content_fingerprint: sha256:ac695426e439a9db2833bacb07be876568094ee22517152adff8a19b950e6586
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f
+    content_fingerprint: sha256:ac695426e439a9db2833bacb07be876568094ee22517152adff8a19b950e6586
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:3394a4e5a1de7e33dcb27be088598db1f78ef61bc9d2fb444bed93b974446d1f
+    content_fingerprint: sha256:ac695426e439a9db2833bacb07be876568094ee22517152adff8a19b950e6586

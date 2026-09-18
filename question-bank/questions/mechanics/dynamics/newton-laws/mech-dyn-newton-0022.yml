@@ -1,25 +1,23 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0022
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.free-body-diagram
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.free-body-diagram
 - newton.elevator
+objectives:
+- mech.dyn.newton.free-body-diagram
+related_pages:
+- mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
-stem: '![电梯中站在体重秤上的人](asset:person-elevator)
+stem: |-
+  ![电梯中站在体重秤上的人](asset:person-elevator)
 
-
-  电梯加速上升时，以人为研究对象，受力图中应出现哪些力？'
-assets:
-- id: person-elevator
-  path: mechanics/dynamics/newton-laws/person-elevator.svg
+  电梯加速上升时，以人为研究对象，受力图中应出现哪些力？
 choices:
 - id: A
   content: 人受到的重力
@@ -56,19 +54,22 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+assets:
+- id: person-elevator
+  path: mechanics/dynamics/newton-laws/person-elevator.svg
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82
+    content_fingerprint: sha256:24c3ec2daee5a05cee57fc17adac2d6168d064f52e007360e0982a89417ca06b
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82
+    content_fingerprint: sha256:24c3ec2daee5a05cee57fc17adac2d6168d064f52e007360e0982a89417ca06b
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:4dd31c303ab6c142f5de0e1ca1a154ffb4200a5db3f36e51f5d55d1a39308a82
+    content_fingerprint: sha256:24c3ec2daee5a05cee57fc17adac2d6168d064f52e007360e0982a89417ca06b

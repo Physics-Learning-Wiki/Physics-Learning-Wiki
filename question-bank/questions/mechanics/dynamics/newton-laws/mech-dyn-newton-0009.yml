@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0009
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.first-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.inertial-frame
+objectives:
+- mech.dyn.newton.first-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
 stem: 一只冰球在水平冰面上滑行。若可忽略阻力，在惯性参考系中松手后冰球将怎样运动？
@@ -50,16 +51,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c
+    content_fingerprint: sha256:58b0c3c02ec68f7e379b395f02114248ba17cd8413f602521f3a2a53d3751e3c
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c
+    content_fingerprint: sha256:58b0c3c02ec68f7e379b395f02114248ba17cd8413f602521f3a2a53d3751e3c
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:ebb3ec08b4e1be627d8380f8a94bbc67ba5f63cd5b11767f9493f99df7c7fe6c
+    content_fingerprint: sha256:58b0c3c02ec68f7e379b395f02114248ba17cd8413f602521f3a2a53d3751e3c

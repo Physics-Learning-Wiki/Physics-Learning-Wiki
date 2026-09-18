@@ -1,36 +1,31 @@
 ---
+assessments:
+- placement: footer
+  set: mechanics.dynamics.newton-laws.quick
+- placement: footer
+  set: mechanics.dynamics.newton-laws.full
 author: Physics-Learning-Wiki
 description: 系统讲解牛顿三大运动定律及其物理意义，重点训练惯性系判断、合外力与加速度分析、受力图、坐标分量方程以及单体法和整体法。
-page_id: mechanics.dynamics.newton-laws
 learning_objectives:
-  - id: mech.dyn.newton.first-law
-    title: 解释惯性并判断惯性参考系中的运动状态
-    anchor: newton-first-law
-  - id: mech.dyn.newton.second-law
-    title: 使用合外力与牛顿第二定律分析加速度
-    anchor: newton-second-law
-  - id: mech.dyn.newton.third-law
-    title: 区分作用力与反作用力和平衡力
-    anchor: newton-third-law
-  - id: mech.dyn.newton.free-body-diagram
-    title: 为选定研究对象绘制正确的受力图
-    anchor: newton-free-body-diagram
-  - id: mech.dyn.newton.coordinate-equations
-    title: 选择坐标轴并列出分量形式的动力学方程
-    anchor: newton-coordinate-equations
-  - id: mech.dyn.newton.object-system-choice
-    title: 根据问题选择单体或系统并区分内力与外力
-    anchor: newton-object-system-choice
-quiz:
-  enabled: true
-  state: active
-  question_prefix: mech-dyn-newton
-  blueprint: mechanics.dynamics.newton-laws
-  common_assessments:
-    - 定律概念辨析
-    - 受力图
-    - 分量方程
-    - 单体法与整体法
+- anchor: newton-first-law
+  id: mech.dyn.newton.first-law
+  title: 解释惯性并判断惯性参考系中的运动状态
+- anchor: newton-second-law
+  id: mech.dyn.newton.second-law
+  title: 使用合外力与牛顿第二定律分析加速度
+- anchor: newton-third-law
+  id: mech.dyn.newton.third-law
+  title: 区分作用力与反作用力和平衡力
+- anchor: newton-free-body-diagram
+  id: mech.dyn.newton.free-body-diagram
+  title: 为选定研究对象绘制正确的受力图
+- anchor: newton-coordinate-equations
+  id: mech.dyn.newton.coordinate-equations
+  title: 选择坐标轴并列出分量形式的动力学方程
+- anchor: newton-object-system-choice
+  id: mech.dyn.newton.object-system-choice
+  title: 根据问题选择单体或系统并区分内力与外力
+page_id: mechanics.dynamics.newton-laws
 ---
 
 ## 牛顿运动定律 (Newton's Laws of Motion)

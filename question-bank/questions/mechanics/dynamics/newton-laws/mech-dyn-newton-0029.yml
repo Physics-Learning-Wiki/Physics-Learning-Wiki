@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0029
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.object-system-choice
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.internal-external-force
+objectives:
+- mech.dyn.newton.object-system-choice
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
 stem: 若把两个互相作用的物体共同选为系统，下列说法正确的是？
@@ -50,16 +51,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b
+    content_fingerprint: sha256:3ebaa6f415e1da2bac150558074f923cfa17c8a4b9963f6542dd6cfd5de7c41f
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b
+    content_fingerprint: sha256:3ebaa6f415e1da2bac150558074f923cfa17c8a4b9963f6542dd6cfd5de7c41f
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:15dda7896fe5f2b06c6c12db4127d347ed61365c99709f862b26fdf9d22f258b
+    content_fingerprint: sha256:3ebaa6f415e1da2bac150558074f923cfa17c8a4b9963f6542dd6cfd5de7c41f

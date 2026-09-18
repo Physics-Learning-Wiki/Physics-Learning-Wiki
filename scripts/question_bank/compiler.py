@@ -10,7 +10,7 @@ from typing import Any
 from .markdown_renderer import render_markdown
 from .media import compiled_assets, question_content_fingerprint
 from .utils import canonical_json, fingerprint, tree_bytes
-from .validator import ValidationReport, publication_readiness, validate_repository
+from .validator import ValidationReport, validate_repository
 
 
 def _render_list(values: list[str]) -> list[str]:

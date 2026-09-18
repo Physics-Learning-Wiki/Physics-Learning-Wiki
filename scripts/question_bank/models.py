@@ -12,13 +12,21 @@ class SourceDocument:
 
 
 @dataclass
+class AssessmentPlacement:
+    set_id: str
+    placement: str
+    anchor: str | None = None
+    title: str | None = None
+
+
+@dataclass
 class PageContract:
     path: Path
     page_id: str
     title: str
     url: str
     objectives: dict[str, dict[str, str]]
-    quiz: dict[str, Any]
+    assessments: list[AssessmentPlacement] = field(default_factory=list)
 
 
 @dataclass
@@ -116,7 +124,6 @@ class QuizSet:
 class RepositoryData:
     root: Path
     questions: list[SourceDocument] = field(default_factory=list)
-    blueprints: list[SourceDocument] = field(default_factory=list)
     sets: list[SourceDocument] = field(default_factory=list)
     pages: dict[str, PageContract] = field(default_factory=dict)
     page_registry: PageRegistry = field(default_factory=PageRegistry)

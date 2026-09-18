@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0013
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.second-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.net-force
+objectives:
+- mech.dyn.newton.second-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: numeric
 choice_order: fixed
 stem: 质量为 $4\,\mathrm{kg}$ 的物体在水平面上受到向右 $18\,\mathrm N$ 的拉力和向左 $6\,\mathrm N$ 的摩擦力。加速度大小是多少？
@@ -44,16 +45,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398
+    content_fingerprint: sha256:bea1ea0cee4f9e3dddb5aaea9c98a745dd9be7879418a56722c57fc8883f10ab
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398
+    content_fingerprint: sha256:bea1ea0cee4f9e3dddb5aaea9c98a745dd9be7879418a56722c57fc8883f10ab
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:d0262bd67ae4ebe54bc84cc91c1fbd9cbd09073ca139a8195b52b155373f8398
+    content_fingerprint: sha256:bea1ea0cee4f9e3dddb5aaea9c98a745dd9be7879418a56722c57fc8883f10ab

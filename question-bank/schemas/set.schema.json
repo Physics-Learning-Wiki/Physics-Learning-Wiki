@@ -30,10 +30,10 @@
     },
     "anyOrAll": {
       "type": "object",
-      "additionalProperties": false,
       "oneOf": [
         {
           "required": ["any"],
+          "additionalProperties": false,
           "properties": {
             "any": {
               "type": "array",
@@ -45,6 +45,7 @@
         },
         {
           "required": ["all"],
+          "additionalProperties": false,
           "properties": {
             "all": {
               "type": "array",

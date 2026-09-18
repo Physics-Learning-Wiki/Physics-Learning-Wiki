@@ -1,16 +1,17 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0024
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.coordinate-equations
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.coordinate-system
 - newton.friction
+objectives:
+- mech.dyn.newton.coordinate-equations
+related_pages:
+- mechanics.dynamics.newton-laws
 type: numeric
 choice_order: fixed
 stem: 质量为 $5\,\mathrm{kg}$ 的物体在水平面上受向右 $30\,\mathrm N$ 拉力和向左 $10\,\mathrm N$ 摩擦力。取向右为正，求 $a_x$。
@@ -45,16 +46,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9
+    content_fingerprint: sha256:a93c7ff27b99f8ff81658eb75ab8a71ef7978b184674a7ef353841a6e8c5d439
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9
+    content_fingerprint: sha256:a93c7ff27b99f8ff81658eb75ab8a71ef7978b184674a7ef353841a6e8c5d439
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:a5ab0ee29a7af364bfa059fbbf1fd4ea477d5edce64e49b5da601c2a01c433c9
+    content_fingerprint: sha256:a93c7ff27b99f8ff81658eb75ab8a71ef7978b184674a7ef353841a6e8c5d439

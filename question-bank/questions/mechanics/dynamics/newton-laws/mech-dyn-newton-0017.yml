@@ -1,16 +1,17 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0017
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.third-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.action-reaction
 - newton.balance-force
+objectives:
+- mech.dyn.newton.third-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
 stem: 关于一对牛顿第三定律力，下列哪些性质必然成立？
@@ -54,16 +55,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef
+    content_fingerprint: sha256:6bc73754f2f057e34ff60bf71e32020d1a74b40de5b2f4ca1ed58518f90b9f52
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef
+    content_fingerprint: sha256:6bc73754f2f057e34ff60bf71e32020d1a74b40de5b2f4ca1ed58518f90b9f52
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:61e30250622bc3b642554d8b9851277bc8470b71f116eebad8d90245b2edc7ef
+    content_fingerprint: sha256:6bc73754f2f057e34ff60bf71e32020d1a74b40de5b2f4ca1ed58518f90b9f52

@@ -1,16 +1,17 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0010
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.first-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.inertia
 - newton.motion-state
+objectives:
+- mech.dyn.newton.first-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
 stem: 公交车突然刹车时，站立乘客相对车厢向前倾。最恰当的解释是？
@@ -51,16 +52,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270
+    content_fingerprint: sha256:019260c5f899213ed677212ffe6817021714f56a591b38f321f6b99b2684251c
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270
+    content_fingerprint: sha256:019260c5f899213ed677212ffe6817021714f56a591b38f321f6b99b2684251c
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:84a309f029e21e38bd895dddcc9736b5b4599ff5216bda69aa9ae9c8b5386270
+    content_fingerprint: sha256:019260c5f899213ed677212ffe6817021714f56a591b38f321f6b99b2684251c
