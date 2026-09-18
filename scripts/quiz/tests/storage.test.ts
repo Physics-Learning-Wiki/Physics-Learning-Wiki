@@ -1,62 +1,144 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { QuizStore } from "../src/storage.js";
+import { QuizStore, STORAGE_KEY_PREVIEW, STORAGE_KEY_PROD } from "../src/storage.js";
+import type { Attempt, QuizSource, Session } from "../src/types.js";
+
+const mockSource: QuizSource = { type: "set", id: "mechanics.newton.quick" };
+
+const mockSession: Session = {
+  sessionId: "s-123",
+  preview: false,
+  selectionAlgorithmVersion: 1,
+  state: "active",
+  source: mockSource,
+  seed: "seed-1",
+  bankFingerprint: "fp",
+  questionRefs: [{ id: "q1", version: 1 }],
+  answers: {},
+  uncertain: {},
+  locked: {},
+  currentIndex: 0,
+  startedAt: "2026-01-01T00:00:00Z",
+  updatedAt: "2026-01-01T00:00:00Z"
+};
 
 test("storage failure degrades to memory", () => {
-  const store = new QuizStore({
-    getItem: () => null,
-    setItem: () => {
-      throw new Error("blocked");
-    }
-  });
+  const store = new QuizStore(
+    {
+      getItem: () => null,
+      setItem: () => {
+        throw new Error("blocked");
+      }
+    },
+    false
+  );
   assert.equal(store.persistent, false);
-  assert.equal(store.read().schemaVersion, 1);
+  assert.equal(store.read().schemaVersion, 2);
 });
 
-test("unknown storage versions reset safely", () => {
-  let value = JSON.stringify({ schemaVersion: 99 });
+test("storage keys separate production and preview", () => {
+  const recordedKeys = new Set<string>();
+  const mockStorage = {
+    getItem: (k: string) => {
+      recordedKeys.add(k);
+      return null;
+    },
+    setItem: (k: string) => {
+      recordedKeys.add(k);
+    }
+  };
+
+  new QuizStore(mockStorage, false);
+  assert.ok(recordedKeys.has(STORAGE_KEY_PROD));
+  assert.ok(!recordedKeys.has(STORAGE_KEY_PREVIEW));
+
+  recordedKeys.clear();
+  new QuizStore(mockStorage, true);
+  assert.ok(recordedKeys.has(STORAGE_KEY_PREVIEW));
+  assert.ok(!recordedKeys.has(STORAGE_KEY_PROD));
+});
+
+test("unknown storage versions or old schema v1 reset safely", () => {
+  let value = JSON.stringify({ schemaVersion: 1, attempts: [{ old: true }] });
   const store = new QuizStore({
     getItem: () => value,
     setItem: (_key, next) => {
       value = next;
     }
   });
-  assert.equal(store.read().schemaVersion, 1);
+  // Must reset to empty schemaVersion 2, ignoring v1
+  assert.equal(store.read().schemaVersion, 2);
+  assert.equal(store.read().attempts.length, 0);
 });
 
-test("discardSession removes specific session", () => {
-  let value = "";
-  const store = new QuizStore({
-    getItem: () => value || null,
-    setItem: (_key, next) => {
-      value = next;
+test("discardSession removes specific session by source and seed", () => {
+  let storageMap: Record<string, string> = {};
+  const mockStorage = {
+    getItem: (k: string) => storageMap[k] ?? null,
+    setItem: (k: string, v: string) => {
+      storageMap[k] = v;
     }
-  });
-  const sessionA = {
-    pageId: "page-1",
-    mode: "quick" as const,
-    seed: "seed-1",
-    bankFingerprint: "fp",
-    questionRefs: [],
-    answers: {},
-    uncertain: {},
-    locked: {},
-    currentIndex: 0,
-    startedAt: "",
-    updatedAt: ""
   };
-  const sessionB = {
-    ...sessionA,
-    mode: "full" as const,
-    seed: "seed-2"
-  };
+
+  const store = new QuizStore(mockStorage, false);
+  const sessionA = { ...mockSession, sessionId: "s-1", seed: "seed-1" };
+  const sessionB = { ...mockSession, sessionId: "s-2", seed: "seed-2" };
+
   store.saveSession(sessionA);
   store.saveSession(sessionB);
-  assert.equal(store.read().activeSessions["page-1"]?.length, 2);
+  assert.equal(store.getActiveSessions(mockSource).length, 2);
 
-  store.discardSession("page-1", "quick", "seed-1");
-  const remaining = store.read().activeSessions["page-1"];
-  assert.equal(remaining?.length, 1);
+  store.discardSession(mockSource, "seed-1");
+  const remaining = store.getActiveSessions(mockSource);
+  assert.equal(remaining.length, 1);
   assert.equal(remaining[0].seed, "seed-2");
+});
+
+test("saveAttempt is idempotent on sessionId and removes active session", () => {
+  let storageMap: Record<string, string> = {};
+  const mockStorage = {
+    getItem: (k: string) => storageMap[k] ?? null,
+    setItem: (k: string, v: string) => {
+      storageMap[k] = v;
+    }
+  };
+
+  const store = new QuizStore(mockStorage, false);
+  store.saveSession(mockSession);
+  assert.equal(store.getActiveSessions(mockSource).length, 1);
+
+  const attempt: Attempt = {
+    sessionId: "s-123",
+    source: mockSource,
+    seed: "seed-1",
+    bankFingerprint: "fp",
+    completedAt: "2026-01-01T01:00:00Z",
+    score: 0,
+    total: 1,
+    questionResults: [
+      {
+        questionId: "q1",
+        version: 1,
+        topicIds: [],
+        conceptIds: [],
+        objectiveIds: [],
+        answer: "wrong",
+        correct: false,
+        unanswered: false,
+        uncertain: false
+      }
+    ]
+  };
+
+  // First save
+  store.saveAttempt(attempt);
+  assert.equal(store.getActiveSessions(mockSource).length, 0);
+  assert.equal(store.getAttempts(mockSource).length, 1);
+  assert.deepEqual(store.getWrongQuestionIds(), ["q1"]);
+
+  // Duplicate save (idempotency check)
+  store.saveAttempt(attempt);
+  assert.equal(store.getAttempts(mockSource).length, 1);
+  assert.deepEqual(store.getWrongQuestionIds(), ["q1"]);
 });

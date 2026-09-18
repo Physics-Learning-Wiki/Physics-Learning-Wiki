@@ -1,10 +1,20 @@
-export type QuizMode = "quick" | "full" | "retry";
 export type QuestionType = "single_choice" | "multiple_choice" | "true_false" | "numeric";
+export type FeedbackMode = "immediate" | "deferred";
+export type SetStatus = "draft" | "published" | "retired";
 
-export interface Objective {
+export interface ObjectiveDetail {
   id: string;
   title: string;
+  pageId: string;
+  pageTitle: string;
+  url: string;
   anchor: string;
+}
+
+export interface RelatedPageDetail {
+  id: string;
+  title: string;
+  url: string;
 }
 
 export interface Choice {
@@ -15,15 +25,17 @@ export interface Choice {
 export interface QuestionBase {
   id: string;
   version: number;
+  status: "draft" | "published" | "retired";
   type: QuestionType;
   choiceOrder: "shuffle" | "fixed";
-  primaryObjective: string;
-  secondaryObjectives: string[];
+  topicIds: string[];
   conceptIds: string[];
+  objectiveIds: string[];
+  relatedPages: string[];
   stemHtml: string;
   feedback: {
-    correctHtml: string;
-    incorrectHtml: string;
+    correctHtml?: string;
+    incorrectHtml?: string;
     choicesHtml?: Record<string, string>;
   };
   hintsHtml: string[];
@@ -33,6 +45,9 @@ export interface QuestionBase {
   style: "conceptual" | "graphical" | "computational" | "modeling";
   estimatedSeconds: number;
   assets: Record<string, string>;
+  contentFingerprint?: string;
+  objectivesDetail?: ObjectiveDetail[];
+  relatedPagesDetail?: RelatedPageDetail[];
 }
 
 export interface SingleChoiceQuestion extends QuestionBase {
@@ -64,60 +79,131 @@ export interface NumericQuestion extends QuestionBase {
 export type Question = SingleChoiceQuestion | MultipleChoiceQuestion | BooleanQuestion | NumericQuestion;
 export type UserAnswer = string | string[] | boolean | { value: string; unit?: string } | null;
 
-export interface BlueprintMode {
-  title: string;
-  total: number;
-  feedback_mode: "immediate" | "deferred";
-  slots: Array<{ id: string; count: number; objectives: string[] }>;
-  constraints: Array<{
-    field: "difficulty" | "type" | "style";
-    values: Array<string | number>;
-    min?: number;
-    max?: number;
-  }>;
+export type FilterCriterion = { any: string[] } | { all: string[] };
+
+export interface DifficultyFilter {
+  min?: number;
+  max?: number;
 }
 
-export interface PageBundle {
+export interface SetFilters {
+  topics?: FilterCriterion;
+  concepts?: FilterCriterion;
+  objectives?: FilterCriterion;
+  related_pages?: FilterCriterion;
+  types?: QuestionType[];
+  cognitive_levels?: string[];
+  styles?: string[];
+  question_ids?: string[];
+  difficulty?: DifficultyFilter;
+}
+
+export interface SetSlot {
+  id: string;
+  count: number;
+  filters?: SetFilters;
+}
+
+export interface SetConstraint {
+  field: "difficulty" | "type" | "style";
+  values: Array<string | number>;
+  min?: number;
+  max?: number;
+}
+
+export interface SetSelectionFixed {
+  type: "fixed";
+  questions: string[];
+  order: "fixed" | "shuffle";
+}
+
+export interface SetSelectionQuery {
+  type: "query";
+  count: number;
+  filters?: SetFilters;
+  slots?: SetSlot[];
+  constraints?: SetConstraint[];
+}
+
+export type SetSelection = SetSelectionFixed | SetSelectionQuery;
+
+export interface QuizSetDef {
+  schema_version: 1;
+  id: string;
+  title: string;
+  description?: string;
+  tags?: string[];
+  status: SetStatus;
+  feedback_mode: FeedbackMode;
+  selection: SetSelection;
+}
+
+export interface SetBundle {
   schemaVersion: number;
   bankFingerprint: string;
+  selectionAlgorithmVersion: number;
   preview: boolean;
-  page: { id: string; title: string; url: string; objectives: Objective[] };
-  blueprint: { modes: { quick: BlueprintMode; full: BlueprintMode } };
+  set: QuizSetDef;
+  runnable: boolean;
+  unavailableReason: string | null;
   questions: Question[];
-}
-
-export interface ManifestPage {
-  title: string;
-  url: string;
-  bundle: string;
-  status: "construction" | "available";
-  publishedQuestionCount: number;
-  previewQuestionCount: number;
-  modes: Record<string, { title: string; total: number }>;
-  objectives: Objective[];
-  questionPrefix: string;
 }
 
 export interface Manifest {
   schemaVersion: number;
   bankFingerprint: string;
+  selectionAlgorithmVersion: number;
   preview: boolean;
-  pages: Record<string, ManifestPage>;
+  catalogs: {
+    questions: string;
+    sets: string;
+    taxonomy: string;
+  };
+  sets: Record<string, { title: string; status: SetStatus; bundle: string }>;
 }
 
-export interface QuestionResult {
-  questionId: string;
-  version: number;
-  primaryObjective: string;
-  answer: UserAnswer;
-  correct: boolean;
-  unanswered: boolean;
-  uncertain: boolean;
+export interface SetCatalogItem {
+  id: string;
+  title: string;
+  description: string;
+  tags: string[];
+  status: SetStatus;
+  selectionType: "fixed" | "query";
+  questionCount: number;
+  feedbackMode: FeedbackMode;
+  topicIds: string[];
+  runnable: boolean;
+  unavailableReason: string | null;
 }
+
+export interface TaxonomyTopic {
+  id: string;
+  title: string;
+  parent: string | null;
+}
+
+export interface TaxonomyConcept {
+  id: string;
+  title: string;
+  topics: string[];
+  aliases?: string[];
+}
+
+export interface TaxonomyCatalog {
+  topics: Record<string, TaxonomyTopic>;
+  concepts: Record<string, TaxonomyConcept>;
+}
+
+export type QuizSource =
+  | { type: "set"; id: string }
+  | { type: "adhoc"; questionIds: string[] };
 
 export interface Session {
-  pageId: string;
-  mode: QuizMode;
+  sessionId: string;
+  preview: boolean;
+  selectionAlgorithmVersion: number;
+  state: "active" | "completed" | "discarded";
+  source: QuizSource;
   seed: string;
   bankFingerprint: string;
   questionRefs: Array<{ id: string; version: number }>;
@@ -127,21 +213,41 @@ export interface Session {
   currentIndex: number;
   startedAt: string;
   updatedAt: string;
+  context?: {
+    surface: "runner" | "inline";
+    pageId?: string;
+  };
+}
+
+export interface QuestionResult {
+  questionId: string;
+  version: number;
+  topicIds: string[];
+  conceptIds: string[];
+  objectiveIds: string[];
+  answer: UserAnswer;
+  correct: boolean;
+  unanswered: boolean;
+  uncertain: boolean;
 }
 
 export interface Attempt {
-  pageId: string;
-  mode: QuizMode;
+  sessionId: string;
+  source: QuizSource;
   seed: string;
   bankFingerprint: string;
   completedAt: string;
   score: number;
   total: number;
   questionResults: QuestionResult[];
+  context?: {
+    surface: "runner" | "inline";
+    pageId?: string;
+  };
 }
 
 export interface QuizStorageData {
-  schemaVersion: 1;
+  schemaVersion: 2;
   activeSessions: Record<string, Session[]>;
   attempts: Attempt[];
   wrongQuestions: Record<string, string>;

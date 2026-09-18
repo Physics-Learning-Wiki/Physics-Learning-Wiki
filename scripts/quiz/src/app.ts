@@ -1,19 +1,17 @@
-import { loadBundle, loadManifest, readParameters } from "./data.js";
-import { isAnswerComplete, makeResult, summarizeObjectives } from "./grading.js";
-import { typeset } from "./math.js";
 import {
-  escapeHtml,
-  hydrateAssets,
-  renderAnswerControl,
-  renderFeedback,
-  renderHints,
-  renderQuestionStem
-} from "./question-renderer.js";
+  loadManifest,
+  loadSetBundle,
+  loadTaxonomyCatalog,
+  readRunnerParameters,
+  resolveSiteUrl
+} from "./data.js";
+import { escapeHtml } from "./question-renderer.js";
 import { newSeed } from "./random.js";
-import { selectQuestions, selectRetry } from "./selection.js";
-import { createSession, findRestorableSession } from "./session.js";
-import { QuizStore } from "./storage.js";
-import type { Attempt, Manifest, PageBundle, Question, QuizMode, Session, UserAnswer } from "./types.js";
+import { selectSetQuestions } from "./selection.js";
+import type { PlaySurfaceOptions } from "./surfaces/play.js";
+import { PlaySurface } from "./surfaces/play.js";
+import { QuizStore, sourceKey } from "./storage.js";
+import type { Manifest, Question, QuizSource, SetBundle, TaxonomyCatalog } from "./types.js";
 
 declare global {
   interface Window {
@@ -24,18 +22,33 @@ declare global {
 
 class QuizApp {
   private readonly abort = new AbortController();
-  private readonly store = new QuizStore(window.localStorage);
   private manifestUrl!: URL;
   private manifest!: Manifest;
-  private bundle?: PageBundle;
-  private questions: Question[] = [];
-  private session?: Session;
-  private stepperElement?: HTMLElement;
-  private confirmButtonElement?: HTMLButtonElement;
+  private store!: QuizStore;
+  private currentPlaySurface?: PlaySurface;
 
   constructor(private readonly root: HTMLElement) {
     this.root.addEventListener("click", this.handleClick, { signal: this.abort.signal });
-    document.addEventListener("keydown", this.handleKeyDown, { signal: this.abort.signal });
+  }
+
+  async start(): Promise<void> {
+    try {
+      const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
+      this.manifestUrl = new URL(manifestPath, window.location.href);
+      this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
+      this.store = new QuizStore(window.localStorage, this.manifest.preview);
+
+      await this.route();
+    } catch (error) {
+      if (this.abort.signal.aborted) return;
+      this.renderError(error instanceof Error ? error.message : "加载题库清单失败");
+    }
+  }
+
+  destroy(): void {
+    this.abort.abort();
+    this.currentPlaySurface?.destroy();
+    this.currentPlaySurface = undefined;
   }
 
   private handleClick = (event: MouseEvent): void => {
@@ -65,689 +78,223 @@ class QuizApp {
     if (targetUrl.href !== currentUrl.href) {
       history.pushState(null, "", targetUrl.href);
     }
-    initialize();
+    void this.route();
   };
 
-  private handleKeyDown = (event: KeyboardEvent): void => {
-    if (event.defaultPrevented || event.isComposing) return;
-    const target = event.target as HTMLElement | null;
-    const isTextInput =
-      target &&
-      ((target.tagName === "INPUT" && (target as HTMLInputElement).type === "text") || target.tagName === "TEXTAREA");
+  private async route(): Promise<void> {
+    this.currentPlaySurface?.destroy();
+    this.currentPlaySurface = undefined;
 
-    if (event.key === "Escape") {
-      const modal = this.root.querySelector<HTMLElement>(".plw-quiz-modal-backdrop");
-      if (modal) {
-        event.preventDefault();
-        modal.remove();
-        return;
-      }
-      if (this.session && this.bundle) {
-        event.preventDefault();
-        this.handleExit();
-        return;
-      }
-    }
-
-    if (!this.session || !this.bundle || this.questions.length === 0) return;
-    const question = this.questions[this.session.currentIndex];
-    if (!question) return;
-
-    const locked = Boolean(this.session.locked[question.id]);
-    const quick = this.session.mode === "quick" || this.session.mode === "retry";
-
-    // 1. 方向键 / 翻页键 切换上一题 / 下一题
-    if (!isTextInput) {
-      if (event.key === "ArrowLeft" || event.key === "PageUp") {
-        if (this.session.currentIndex > 0) {
-          event.preventDefault();
-          this.move(-1);
-          return;
-        }
-      }
-      if (event.key === "ArrowRight" || event.key === "PageDown") {
-        if (this.session.currentIndex < this.questions.length - 1) {
-          event.preventDefault();
-          this.move(1);
-          return;
-        }
-      }
-    }
-
-    // 2. Enter 键快捷确认 / 下一步 / 提交
-    if (event.key === "Enter" && !isTextInput) {
-      event.preventDefault();
-      if (quick && !locked) {
-        const answer = this.session.answers[question.id] ?? null;
-        if (isAnswerComplete(question, answer)) {
-          this.confirmQuick(question);
-        }
-      } else if (this.session.currentIndex < this.questions.length - 1) {
-        this.move(1);
-      } else {
-        this.submit(false);
-      }
+    const params = readRunnerParameters();
+    if (params.setId) {
+      await this.startSetRunner(params.setId, params.seed);
       return;
     }
 
-    // 3. A-D / 1-4 快捷选项
-    if (!isTextInput && !locked) {
-      let selectedIndex = -1;
-      const key = event.key.toUpperCase();
-      if (key >= "A" && key <= "Z") {
-        selectedIndex = key.charCodeAt(0) - 65;
-      } else if (key >= "1" && key <= "9") {
-        selectedIndex = parseInt(key, 10) - 1;
-      }
-
-      if (selectedIndex >= 0) {
-        const choiceLabels = this.root.querySelectorAll<HTMLLabelElement>(".plw-quiz-choice");
-        if (selectedIndex < choiceLabels.length) {
-          event.preventDefault();
-          const targetInput = choiceLabels[selectedIndex].querySelector<HTMLInputElement>("input");
-          if (targetInput) {
-            targetInput.click();
-          }
-        }
-      }
+    // If no setId specified
+    const isPlayRoute = window.location.pathname.includes("/quiz/play");
+    if (isPlayRoute) {
+      this.renderNoSetSelected();
+    } else {
+      this.renderLanding();
     }
-  };
-
-  destroy(): void {
-    this.abort.abort();
-    this.root.classList.remove("plw-quiz-in-progress");
-    this.root.replaceChildren();
   }
 
-  async start(): Promise<void> {
-    this.renderStatus("正在加载题库……");
-    try {
-      this.manifestUrl = new URL(
-        this.root.dataset.manifestUrl ?? "../_generated/question-bank/manifest.json",
-        document.baseURI
-      );
-      this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
-      const parameters = readParameters();
-      if (!parameters.pageId && !parameters.mode) return this.renderLanding();
-      if (!parameters.pageId || !parameters.mode || parameters.mode === "retry")
-        return this.renderError("小测参数无效，请返回小测首页重新选择。");
-      const page = this.manifest.pages[parameters.pageId];
-      if (!page) return this.renderError("找不到指定学习页面的小测。");
-      this.bundle = await loadBundle(this.manifestUrl, page.bundle, this.abort.signal);
-      if (!this.bundle.preview && page.status !== "available")
-        return this.renderConstruction(page.title, page.publishedQuestionCount);
-      if (this.bundle.questions.length === 0) return this.renderConstruction(page.title, page.publishedQuestionCount);
-      const seed = parameters.seed ?? newSeed();
-      if (!parameters.seed) this.replaceQuery(parameters.pageId, parameters.mode, seed);
-      this.questions = selectQuestions(this.bundle, parameters.mode, seed);
-      this.session = this.restoreOrCreate(parameters.pageId, parameters.mode, seed);
-      this.renderQuestion();
-    } catch (error) {
-      if (!this.abort.signal.aborted)
-        this.renderError(`题库数据加载失败：${error instanceof Error ? error.message : "未知错误"}`);
+  private async startSetRunner(setId: string, seedParam: string | null): Promise<void> {
+    this.renderStatus("正在加载测试集合题目...");
+
+    const setMeta = this.manifest.sets[setId];
+    if (!setMeta) {
+      this.renderError(`未找到指定测试集合：${setId}`);
+      return;
     }
+
+    if (setMeta.status === "retired") {
+      this.renderError("该小测集合已退役，无法进行答题。");
+      return;
+    }
+
+    if (setMeta.status === "draft" && !this.manifest.preview) {
+      this.renderError("该测试集合目前处于草稿阶段，仅在预览模式下可用。");
+      return;
+    }
+
+    let seed = seedParam;
+    if (!seed) {
+      seed = newSeed();
+      const current = new URL(window.location.href);
+      current.searchParams.set("set", setId);
+      current.searchParams.set("seed", seed);
+      history.replaceState(null, "", current.href);
+    }
+
+    let bundle: SetBundle;
+    try {
+      bundle = await loadSetBundle(this.manifestUrl, setMeta.bundle, this.abort.signal);
+    } catch (err) {
+      this.renderError(`加载测试数据失败：${err instanceof Error ? err.message : String(err)}`);
+      return;
+    }
+
+    if (!bundle.runnable) {
+      this.renderError(`测试集合暂不可用：${bundle.unavailableReason ?? "题目不足或约束无法满足"}`);
+      return;
+    }
+
+    let taxonomy: TaxonomyCatalog | undefined;
+    if (bundle.set.selection.type === "query" && this.manifest.catalogs.taxonomy) {
+      try {
+        taxonomy = await loadTaxonomyCatalog(this.manifestUrl, this.manifest.catalogs.taxonomy, this.abort.signal);
+      } catch {
+        // Taxonomy optional if not strictly needed
+      }
+    }
+
+    let questions: Question[];
+    try {
+      questions = selectSetQuestions(bundle, seed, taxonomy);
+    } catch (err) {
+      this.renderError(`选题失败：${err instanceof Error ? err.message : String(err)}`);
+      return;
+    }
+
+    const source: QuizSource = { type: "set", id: setId };
+    this.mountPlaySurface({
+      root: this.root,
+      manifestUrl: this.manifestUrl,
+      bundle,
+      questions,
+      seed,
+      source,
+      store: this.store,
+      signal: this.abort.signal,
+      onExit: () => this.exitToLanding(),
+      onRestart: (newSeedVal: string) => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("set", setId);
+        url.searchParams.set("seed", newSeedVal);
+        history.pushState(null, "", url.href);
+        void this.route();
+      },
+      onAdhoc: (adhocBundle: SetBundle, adhocQuestions: Question[]) => {
+        this.mountPlaySurface({
+          root: this.root,
+          manifestUrl: this.manifestUrl,
+          bundle: adhocBundle,
+          questions: adhocQuestions,
+          seed: newSeed(),
+          source: { type: "adhoc", questionIds: adhocQuestions.map(q => q.id) },
+          store: this.store,
+          signal: this.abort.signal,
+          onExit: () => this.exitToLanding(),
+          onRestart: (newSeedVal: string) => {
+            void this.startSetRunner(setId, newSeedVal);
+          }
+        });
+      }
+    });
+  }
+
+  private mountPlaySurface(options: PlaySurfaceOptions): void {
+    this.currentPlaySurface?.destroy();
+    this.currentPlaySurface = new PlaySurface(options);
+    this.currentPlaySurface.start();
   }
 
   private renderLanding(): void {
-    this.root.classList.remove("plw-quiz-in-progress");
-    const container = document.createElement("section");
+    this.root.innerHTML = "";
+    const container = document.createElement("div");
     container.className = "plw-quiz-landing";
-    container.innerHTML =
-      '<h2 class="plw-quiz-landing__subtitle">选择自测章节</h2><p class="plw-quiz-landing__desc">请选择要测试的物理章节，作答记录仅保存在当前浏览器本地。</p>';
-    if (this.manifest.preview)
-      container.insertAdjacentHTML(
-        "beforeend",
-        '<p class="plw-quiz-preview" role="status">草稿预览模式：题目未经人工审核，不代表正式发布内容。</p>'
-      );
 
-    const grid = document.createElement("ul");
-    grid.className = "plw-quiz-landing__grid";
-    const data = this.store.read();
+    // 1. Active sessions section
+    const allActive = this.store.getAllActiveSessions();
+    const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
 
-    for (const [pageId, page] of Object.entries(this.manifest.pages)) {
-      const item = document.createElement("li");
-      item.className = "plw-quiz-landing__card";
-      const usable = page.status === "available" || (this.manifest.preview && page.previewQuestionCount > 0);
-
-      if (usable) {
-        const activeList = (data.activeSessions[pageId] ?? []).filter(
-          (s): s is Session & { mode: "quick" | "full" } => s.mode === "quick" || s.mode === "full"
-        );
-        const activeSession = activeList[0];
-        let resumeButton = "";
-        if (activeSession && activeSession.questionRefs.length > 0) {
-          const answeredCount = Object.keys(activeSession.answers).filter(
-            id => activeSession.answers[id] != null
-          ).length;
-          const resumeUrl = this.quizLink(pageId, activeSession.mode, activeSession.seed);
-          resumeButton = `<a class="plw-quiz-landing__btn plw-quiz-landing__btn--resume" data-no-instant href="${resumeUrl}">▶ 继续上次未完 (${answeredCount}/${activeSession.questionRefs.length}题)</a>`;
-        }
-
-        const quick = this.quizLink(pageId, "quick", newSeed());
-        const full = this.quizLink(pageId, "full", newSeed());
-        const quickTitle = page.modes.quick?.title ?? "快速检查";
-        const fullTitle = page.modes.full?.title ?? "完整小测";
-        item.innerHTML = `
-          <div>
-            <h3>${escapeHtml(page.title)}</h3>
-            <div class="plw-quiz-landing__card-meta">题库包含 ${page.publishedQuestionCount} 道已审核题</div>
+    let activeHtml = "";
+    if (activeEntries.length > 0) {
+      activeHtml = `
+        <section class="plw-quiz-landing__resume">
+          <h2 class="plw-quiz-landing__subtitle">继续上次未完成的作答</h2>
+          <div class="plw-quiz-landing__grid">
+            ${activeEntries
+              .flatMap(([srcKey, sessions]) =>
+                sessions.map(s => {
+                  const title = s.source.type === "set" ? (this.manifest.sets[s.source.id]?.title ?? s.source.id) : "错题重做";
+                  const answered = Object.values(s.answers).filter(v => v != null).length;
+                  const total = s.questionRefs.length;
+                  const playUrl = s.source.type === "set"
+                    ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(s.source.id)}&seed=${encodeURIComponent(s.seed)}`
+                    : "#";
+                  return `
+                    <div class="plw-quiz-landing__card">
+                      <div>
+                        <h3>${escapeHtml(title)}</h3>
+                        <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(s.updatedAt).toLocaleDateString()}</p>
+                      </div>
+                      <div class="plw-quiz-landing__links">
+                        <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
+                      </div>
+                    </div>
+                  `;
+                })
+              )
+              .join("")}
           </div>
-          <div class="plw-quiz-landing__links">
-            ${resumeButton}
-            <a class="plw-quiz-landing__btn" data-no-instant href="${quick}">${escapeHtml(quickTitle)} (3题)</a>
-            <a class="plw-quiz-landing__btn" data-no-instant href="${full}">${escapeHtml(fullTitle)} (8题)</a>
-          </div>
-        `;
-      } else {
-        item.innerHTML = `
-          <div>
-            <h3>${escapeHtml(page.title)}</h3>
-            <div class="plw-quiz-landing__card-meta">题库建设中：${page.publishedQuestionCount}/24 题</div>
-          </div>
-        `;
-      }
-      grid.append(item);
-    }
-    container.append(grid);
-
-    if (data.attempts.length) {
-      const last = data.attempts[0];
-      const dateStr = new Date(last.completedAt).toLocaleDateString("zh-CN");
-      container.insertAdjacentHTML(
-        "beforeend",
-        `<p class="plw-quiz-landing__card-meta">本地最近完成小测：得分 <strong>${last.score}/${last.total}</strong>（${dateStr}）</p>`
-      );
-    }
-
-    this.root.replaceChildren(container);
-  }
-
-  private renderQuestion(): void {
-    if (!this.session || !this.bundle) return;
-    this.root.classList.add("plw-quiz-in-progress");
-
-    const question = this.questions[this.session.currentIndex];
-    if (!question) return;
-
-    const answer = this.session.answers[question.id] ?? null;
-    const locked = Boolean(this.session.locked[question.id]);
-    const quick = this.session.mode === "quick" || this.session.mode === "retry";
-    const modeTitle =
-      this.session.mode === "retry"
-        ? "错题重做"
-        : this.bundle.blueprint.modes[this.session.mode]?.title ?? (quick ? "快速检查" : "完整小测");
-
-    const typeLabels: Record<string, string> = {
-      single_choice: "单选题",
-      multiple_choice: "多选题",
-      true_false: "判断题",
-      numeric: "填空计算题"
-    };
-    const typeTitle = typeLabels[question.type] ?? "题目";
-
-    const section = document.createElement("section");
-    section.className = "plw-quiz-question";
-    section.dataset.questionId = question.id;
-
-    if (this.bundle.preview) {
-      section.insertAdjacentHTML(
-        "beforeend",
-        '<p class="plw-quiz-preview" role="status">草稿预览：题目未经人工审核。</p>'
-      );
-    }
-
-    // 1. Header with Page Title & Mode Tag
-    const header = document.createElement("div");
-    header.className = "plw-quiz-header";
-    header.innerHTML = `
-      <div class="plw-quiz-header__meta">
-        <strong>${escapeHtml(this.bundle.page.title)}</strong>
-        <span class="plw-quiz-badge-tag">${escapeHtml(modeTitle)}</span>
-      </div>
-      <div class="plw-quiz-header__status">
-        <span class="plw-quiz-progress-text">${this.session.currentIndex + 1} / ${this.questions.length}</span>
-      </div>
-    `;
-    section.append(header);
-
-    // 2. Segmented Stepper Bar
-    const stepper = document.createElement("nav");
-    stepper.className = "plw-quiz-stepper";
-    stepper.setAttribute("aria-label", "题目导航");
-    this.stepperElement = stepper;
-
-    this.questions.forEach((q, idx) => {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "plw-quiz-step-btn";
-      btn.textContent = String(idx + 1);
-      btn.setAttribute("aria-label", `第 ${idx + 1} 题`);
-
-      if (idx === this.session!.currentIndex) {
-        btn.classList.add("is-current");
-      }
-      const qAnswer = this.session!.answers[q.id];
-      if (qAnswer != null) {
-        btn.classList.add("is-answered");
-      }
-      if (this.session!.uncertain[q.id]) {
-        btn.classList.add("is-uncertain");
-      }
-      if (this.session!.locked[q.id]) {
-        const qResult = makeResult(q, qAnswer, Boolean(this.session!.uncertain[q.id]));
-        btn.classList.add(qResult.correct ? "is-correct" : "is-incorrect");
-      }
-
-      btn.addEventListener("click", () => {
-        this.goTo(idx);
-      });
-      stepper.append(btn);
-    });
-    section.append(stepper);
-
-    // 3. Question Meta Bar (Type tag + Decoupled Uncertainty Pill)
-    const metaBar = document.createElement("div");
-    metaBar.className = "plw-quiz-meta-bar";
-
-    const typeInfo = document.createElement("div");
-    typeInfo.className = "plw-quiz-type-info";
-    typeInfo.innerHTML = `
-      <span class="plw-quiz-type-tag">${typeTitle}</span>
-      <h2 tabindex="-1" style="display:inline; margin: 0; font-size: 1.25rem;">第 ${
-        this.session.currentIndex + 1
-      } 题</h2>
-    `;
-    metaBar.append(typeInfo);
-
-    const uncertainty = document.createElement("label");
-    uncertainty.className = "plw-quiz-uncertainty-pill";
-    uncertainty.innerHTML = `<input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""} ${
-      locked ? "disabled" : ""
-    }><span>🤔 标记存疑</span>`;
-    uncertainty.querySelector("input")?.addEventListener("change", event => {
-      const checked = (event.target as HTMLInputElement).checked;
-      this.session!.uncertain[question.id] = checked;
-      this.persist();
-      const currentBtn = stepper.children[this.session!.currentIndex] as HTMLElement | undefined;
-      currentBtn?.classList.toggle("is-uncertain", checked);
-    });
-    metaBar.append(uncertainty);
-    section.append(metaBar);
-
-    // 4. Question Stem
-    section.append(renderQuestionStem(question));
-
-    // 5. Answer Choices
-    section.append(
-      renderAnswerControl({
-        question,
-        answer,
-        locked,
-        onAnswerChange: updatedAnswer => {
-          this.setAnswer(question.id, updatedAnswer, false);
-          if (this.confirmButtonElement) {
-            this.confirmButtonElement.disabled = !isAnswerComplete(question, updatedAnswer);
-          }
-          this.updateStepDotAnswered(updatedAnswer != null);
-        }
-      })
-    );
-
-    // 6. Hints Accordion
-    const hints = renderHints(question);
-    if (hints) section.append(hints);
-
-    // 7. Feedback when locked
-    if (locked) {
-      section.append(
-        renderFeedback({
-          question,
-          answer,
-          uncertain: Boolean(this.session.uncertain[question.id]),
-          reportUrl: this.reportLink(question)
-        })
-      );
-    }
-
-    // 8. Action Buttons
-    const actions = document.createElement("div");
-    actions.className = "plw-quiz-actions";
-
-    const prevBtn = this.button("上一题", () => this.move(-1), this.session.currentIndex === 0);
-    prevBtn.classList.add("plw-quiz-btn--secondary");
-    actions.append(prevBtn);
-
-    const actionExitBtn = this.button("退出小测", () => this.handleExit());
-    actionExitBtn.classList.add("plw-quiz-btn--secondary");
-    actions.append(actionExitBtn);
-
-    if (quick && !locked) {
-      this.confirmButtonElement = this.button(
-        "确认答案 (Enter)",
-        () => this.confirmQuick(question),
-        !isAnswerComplete(question, answer)
-      );
-      this.confirmButtonElement.classList.add("plw-quiz-btn--primary");
-      actions.append(this.confirmButtonElement);
-    } else if (this.session.currentIndex < this.questions.length - 1) {
-      const nextBtn = this.button("下一题 (Enter)", () => this.move(1));
-      nextBtn.classList.add("plw-quiz-btn--primary");
-      actions.append(nextBtn);
-    } else {
-      const submitBtn = this.button(quick ? "查看结果" : "提交小测", () => this.submit(false));
-      submitBtn.classList.add("plw-quiz-btn--primary");
-      actions.append(submitBtn);
-    }
-    section.append(actions);
-
-    if (!this.store.persistent)
-      section.insertAdjacentHTML("beforeend", '<p role="status">浏览器存储不可用，本次进度不会持久保存。</p>');
-
-    this.root.replaceChildren(section);
-    hydrateAssets(section, this.bundle.questions, this.manifestUrl);
-    section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
-    void typeset(section);
-  }
-
-  private goTo(index: number): void {
-    if (!this.session) return;
-    if (index < 0 || index >= this.questions.length) return;
-    this.session.currentIndex = index;
-    this.persist();
-    this.renderQuestion();
-  }
-
-  private updateStepDotAnswered(isAnswered: boolean): void {
-    if (!this.session || !this.stepperElement) return;
-    const currentBtn = this.stepperElement.children[this.session.currentIndex] as HTMLElement | undefined;
-    currentBtn?.classList.toggle("is-answered", isAnswered);
-  }
-
-  private confirmQuick(question: Question): void {
-    if (!this.session || this.session.answers[question.id] == null) return;
-    this.session.locked[question.id] = true;
-    this.persist();
-    this.renderQuestion();
-  }
-
-  private submit(confirmed: boolean): void {
-    if (!this.session || !this.bundle) return;
-    const unanswered = this.questions.filter(question => this.session!.answers[question.id] == null).length;
-    if (unanswered && !confirmed && this.session.mode === "full") {
-      const alert = document.createElement("div");
-      alert.className = "plw-quiz-confirm";
-      alert.setAttribute("role", "alert");
-      alert.innerHTML = `<h3>提示</h3><p>还有 <strong>${unanswered}</strong> 道题尚未作答，直接提交将记为未作答（计0分）。</p>`;
-      const btnGroup = document.createElement("div");
-      btnGroup.className = "plw-quiz-actions";
-      const forceSubmit = this.button("仍然提交", () => this.submit(true));
-      forceSubmit.classList.add("plw-quiz-btn--primary");
-      const continueBtn = this.button("继续作答", () => this.renderQuestion());
-      continueBtn.classList.add("plw-quiz-btn--secondary");
-      btnGroup.append(forceSubmit, continueBtn);
-      alert.append(btnGroup);
-      this.root.replaceChildren(alert);
-      return;
-    }
-    const results = this.questions.map(question =>
-      makeResult(question, this.session!.answers[question.id] ?? null, Boolean(this.session!.uncertain[question.id]))
-    );
-    const score = results.filter(result => result.correct).length;
-    const attempt: Attempt = {
-      pageId: this.session.pageId,
-      mode: this.session.mode,
-      seed: this.session.seed,
-      bankFingerprint: this.session.bankFingerprint,
-      completedAt: new Date().toISOString(),
-      score,
-      total: results.length,
-      questionResults: results
-    };
-    this.store.saveAttempt(attempt);
-    this.renderResults(attempt);
-  }
-
-  private renderResults(attempt: Attempt): void {
-    if (!this.bundle || !this.session) return;
-    this.root.classList.add("plw-quiz-in-progress");
-
-    const section = document.createElement("section");
-    section.className = "plw-quiz-results";
-
-    const percentage = Math.round((attempt.score / attempt.total) * 100);
-    const wrongCount = attempt.total - attempt.score;
-    const uncertainCount = attempt.questionResults.filter(r => r.uncertain).length;
-
-    let evaluation = "📖 建议巩固复习";
-    if (percentage === 100) evaluation = "🌟 满分掌握！太棒了";
-    else if (percentage >= 80) evaluation = "🎉 掌握优秀，表现出色";
-    else if (percentage >= 60) evaluation = "👍 基本掌握，建议回看错题";
-
-    const contentDiv = document.createElement("div");
-    contentDiv.innerHTML = `
-      <h2 tabindex="-1">小测结果：${evaluation}</h2>
-      <p style="color: var(--md-default-fg-color--light);">本结果基于本次题组的自测表现，帮助针对性查漏补缺。</p>
-      
-      <div class="plw-quiz-dashboard">
-        <div class="plw-quiz-stat-card">
-          <div class="plw-quiz-stat-card__val">${percentage}%</div>
-          <div class="plw-quiz-stat-card__label">得分率 (${attempt.score}/${attempt.total} 题正确)</div>
-        </div>
-        <div class="plw-quiz-stat-card">
-          <div class="plw-quiz-stat-card__val" style="color: ${wrongCount ? "#ef4444" : "#10b981"};">${wrongCount}</div>
-          <div class="plw-quiz-stat-card__label">待复习错题数</div>
-        </div>
-        <div class="plw-quiz-stat-card">
-          <div class="plw-quiz-stat-card__val" style="color: #f59e0b;">${uncertainCount}</div>
-          <div class="plw-quiz-stat-card__label">存疑作答数</div>
-        </div>
-      </div>
-    `;
-    section.append(contentDiv);
-
-    // 知识目标掌握度
-    const summary = summarizeObjectives(attempt.questionResults);
-    const objSection = document.createElement("div");
-    objSection.innerHTML = '<h3 style="margin-top: 1.5rem;">📚 章节知识目标达成度</h3>';
-    const objList = document.createElement("ul");
-    objList.className = "plw-quiz-objectives";
-
-    for (const objective of this.bundle.page.objectives) {
-      const val = summary[objective.id];
-      const item = document.createElement("li");
-      item.className = "plw-quiz-objective-item";
-
-      if (!val) {
-        item.innerHTML = `
-          <div class="plw-quiz-objective-item__info">
-            <strong>${escapeHtml(objective.title)}</strong>
-          </div>
-          <span class="plw-quiz-objective-tag" style="background: var(--md-code-bg-color);">本次未覆盖</span>
-        `;
-      } else {
-        const isGood = val.correct === val.total && val.uncertain === 0;
-        const link = new URL(`${this.bundle.page.url}#${objective.anchor}`, this.manifestUrl).href;
-        item.innerHTML = `
-          <div class="plw-quiz-objective-item__info">
-            <strong>${escapeHtml(objective.title)}</strong>
-            <span class="plw-quiz-objective-tag ${isGood ? "is-good" : "is-review"}">
-              ${isGood ? "掌握良好" : "建议复习"} (${val.correct}/${val.total})
-            </span>
-          </div>
-          <a class="plw-quiz-landing__btn" style="padding: 0.25rem 0.6rem; font-size: 0.8rem;" href="${link}">回看章节内容 ↗</a>
-        `;
-      }
-      objList.append(item);
-    }
-    objSection.append(objList);
-    section.append(objSection);
-
-    // 错题与存疑过滤 Tabs
-    const filterTabs = document.createElement("div");
-    filterTabs.className = "plw-quiz-filter-tabs";
-    filterTabs.innerHTML = `
-      <button type="button" class="plw-quiz-filter-tab is-active" data-filter="all">全部题目 (${attempt.total})</button>
-      <button type="button" class="plw-quiz-filter-tab" data-filter="wrong">仅看错题 (${wrongCount})</button>
-      <button type="button" class="plw-quiz-filter-tab" data-filter="uncertain">存疑题目 (${uncertainCount})</button>
-    `;
-    section.append(filterTabs);
-
-    // 题目回顾列表
-    const reviewContainer = document.createElement("div");
-    reviewContainer.className = "plw-quiz-reviews-container";
-
-    attempt.questionResults.forEach((result, index) => {
-      const question = this.questions[index];
-      const article = document.createElement("article");
-      article.className = "plw-quiz-review";
-      article.dataset.questionId = question.id;
-      article.dataset.correct = String(result.correct);
-      article.dataset.uncertain = String(result.uncertain);
-
-      let statusBadge = result.correct
-        ? '<span style="color: #10b981; font-weight: bold;">✓ 正确</span>'
-        : result.unanswered
-        ? '<span style="color: #ef4444; font-weight: bold;">✕ 未作答</span>'
-        : '<span style="color: #ef4444; font-weight: bold;">✕ 错误</span>';
-      if (result.uncertain) {
-        statusBadge +=
-          ' <span class="plw-quiz-uncertainty-pill" style="padding: 0.1rem 0.4rem; font-size: 0.75rem;">🤔 标记存疑</span>';
-      }
-
-      article.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-          <h3 style="margin: 0;">第 ${index + 1} 题</h3>
-          <div>${statusBadge}</div>
-        </div>
-        <div class="plw-quiz-stem">${question.stemHtml}</div>
+        </section>
       `;
-      article.append(
-        renderFeedback({
-          question,
-          answer: result.answer,
-          uncertain: result.uncertain,
-          reportUrl: this.reportLink(question)
-        })
-      );
-      reviewContainer.append(article);
-    });
-    section.append(reviewContainer);
-
-    // Filter Tab 切换逻辑
-    filterTabs.addEventListener("click", event => {
-      const target = event.target as HTMLElement | null;
-      const tabBtn = target?.closest<HTMLButtonElement>(".plw-quiz-filter-tab");
-      if (!tabBtn) return;
-      filterTabs.querySelectorAll(".plw-quiz-filter-tab").forEach(tab => tab.classList.remove("is-active"));
-      tabBtn.classList.add("is-active");
-
-      const filter = tabBtn.dataset.filter;
-      Array.from(reviewContainer.children).forEach(child => {
-        const el = child as HTMLElement;
-        if (filter === "all") {
-          el.style.display = "";
-        } else if (filter === "wrong") {
-          el.style.display = el.dataset.correct === "false" ? "" : "none";
-        } else if (filter === "uncertain") {
-          el.style.display = el.dataset.uncertain === "true" ? "" : "none";
-        }
-      });
-    });
-
-    // 底部重练与回流操作栏
-    const actions = document.createElement("div");
-    actions.className = "plw-quiz-actions";
-
-    const wrong = attempt.questionResults.filter(result => !result.correct).map(result => result.questionId);
-    if (wrong.length) {
-      const retryWrongBtn = this.button(`🔥 只重做错题 (${wrong.length})`, () => this.startRetry(wrong));
-      retryWrongBtn.classList.add("plw-quiz-btn--primary");
-      actions.append(retryWrongBtn);
     }
 
-    const restartSame = this.button("重做同一组", () => this.restart(false));
-    restartSame.classList.add(wrong.length ? "plw-quiz-btn--secondary" : "plw-quiz-btn--primary");
-    actions.append(restartSame);
+    // 2. Available sets section
+    const sets = Object.entries(this.manifest.sets).filter(([_, s]) => this.manifest.preview || s.status === "published");
 
-    const restartNew = this.button("换一组新题", () => this.restart(true));
-    restartNew.classList.add("plw-quiz-btn--secondary");
-    actions.append(restartNew);
+    const setsHtml = `
+      <section class="plw-quiz-landing__sets">
+        <h2 class="plw-quiz-landing__subtitle">可用测试集合</h2>
+        <div class="plw-quiz-landing__grid">
+          ${sets
+            .map(([setId, s]) => {
+              const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}`;
+              const draftBadge = s.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : "";
+              return `
+                <div class="plw-quiz-landing__card">
+                  <div>
+                    <h3>${escapeHtml(s.title)} ${draftBadge}</h3>
+                    <p class="plw-quiz-landing__card-meta">标识符：<code>${escapeHtml(setId)}</code></p>
+                  </div>
+                  <div class="plw-quiz-landing__links">
+                    <a class="plw-quiz-landing__btn" href="${playUrl}">开始小测</a>
+                  </div>
+                </div>
+              `;
+            })
+            .join("")}
+        </div>
+      </section>
+    `;
 
-    const homeBtn = this.button("返回自测首页", () => this.exitToLanding());
-    homeBtn.classList.add("plw-quiz-btn--secondary");
-    actions.append(homeBtn);
+    container.innerHTML = `
+      ${activeHtml}
+      ${setsHtml}
+    `;
 
-    const back = document.createElement("a");
-    back.className = "plw-quiz-btn--secondary";
-    back.href = new URL(this.bundle.page.url, this.manifestUrl).href;
-    back.textContent = "返回学习页面 ↗";
-    actions.append(back);
-
-    section.append(actions);
-
-    this.root.replaceChildren(section);
-    hydrateAssets(section, this.bundle.questions, this.manifestUrl);
-    section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
-    void typeset(section);
+    this.root.append(container);
   }
 
-  private startRetry(ids: string[]): void {
-    if (!this.bundle || !this.session) return;
-    this.questions = selectRetry(this.bundle, ids, this.session.seed);
-    this.session = this.newSession(this.session.pageId, "retry", this.session.seed);
-    this.renderQuestion();
+  private renderNoSetSelected(): void {
+    this.root.innerHTML = `
+      <div class="plw-quiz-empty">
+        <h2>未指定测试集合</h2>
+        <p>答题运行器需要指定 <code>?set=&lt;set-id&gt;</code> 才能启动。</p>
+        <p><a class="plw-quiz-landing__btn" href="${resolveSiteUrl("quiz/")}">浏览测试集合</a></p>
+      </div>
+    `;
   }
 
-  private restart(newGroup: boolean): void {
-    if (!this.bundle || !this.session) return;
-    const mode: "quick" | "full" = this.session.mode === "full" ? "full" : "quick";
-    const seed = newGroup ? newSeed() : this.session.seed;
-    this.questions = selectQuestions(this.bundle, mode, seed);
-    this.session = this.newSession(this.session.pageId, mode, seed);
-    this.replaceQuery(this.session.pageId, mode, seed);
-    this.renderQuestion();
-  }
-
-  private move(delta: number): void {
-    if (!this.session) return;
-    this.session.currentIndex = Math.max(0, Math.min(this.questions.length - 1, this.session.currentIndex + delta));
-    this.persist();
-    this.renderQuestion();
-  }
-
-  private setAnswer(questionId: string, answer: UserAnswer, render = true): void {
-    if (!this.session || this.session.locked[questionId]) return;
-    this.session.answers[questionId] = answer;
-    this.persist();
-    if (render) this.renderQuestion();
-  }
-
-  private persist(): void {
-    if (!this.session) return;
-    this.session.updatedAt = new Date().toISOString();
-    this.store.saveSession(this.session);
-  }
-
-  private restoreOrCreate(pageId: string, mode: QuizMode, seed: string): Session {
-    const candidates = this.store.read().activeSessions[pageId] ?? [];
-    const found = findRestorableSession(candidates, mode, seed, this.bundle!.bankFingerprint, this.questions);
-    return found ?? this.newSession(pageId, mode, seed);
-  }
-
-  private newSession(pageId: string, mode: QuizMode, seed: string): Session {
-    const session = createSession(pageId, mode, seed, this.bundle!.bankFingerprint, this.questions);
-    this.store.saveSession(session);
-    return session;
-  }
-
-  private renderConstruction(title: string, count: number): void {
-    this.root.innerHTML = `<section class="plw-quiz-empty"><h2 tabindex="-1">${escapeHtml(
-      title
-    )}题库正在建设</h2><p>目前有 ${count}/24 道已审核题目，暂未开启正式小测。</p><p><a class="plw-quiz-landing__btn" href="${new URL(
-      "./",
-      document.baseURI
-    )}">返回知识小测</a></p></section>`;
-    this.root.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+  private exitToLanding(): void {
+    const url = new URL(window.location.href);
+    url.search = "";
+    history.pushState(null, "", url.href);
+    void this.route();
   }
 
   private renderStatus(message: string): void {
@@ -755,119 +302,13 @@ class QuizApp {
   }
 
   private renderError(message: string): void {
-    this.root.innerHTML = `<div class="plw-quiz-error" role="alert"><h2>无法开始小测</h2><p>${escapeHtml(
-      message
-    )}</p><p><a class="plw-quiz-landing__btn" href="${new URL("./", document.baseURI)}">返回知识小测</a></p></div>`;
-  }
-
-  private button(label: string, action: () => void, disabled = false): HTMLButtonElement {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = label;
-    button.disabled = disabled;
-    button.addEventListener("click", action);
-    return button;
-  }
-
-  private quizLink(pageId: string, mode: "quick" | "full", seed: string): string {
-    const url = new URL(window.location.href);
-    url.search = new URLSearchParams({ page_id: pageId, mode, seed }).toString();
-    return url.href;
-  }
-
-  private reportLink(question: Question): string {
-    const url = new URL("../../submit/", this.manifestUrl);
-    url.search = new URLSearchParams({
-      type: "errata",
-      question_id: question.id,
-      question_version: String(question.version),
-      page_id: this.bundle?.page.id ?? "",
-      title: `[题目勘误] ${question.id}`
-    }).toString();
-    return url.href;
-  }
-
-  private handleExit(): void {
-    if (!this.session) {
-      this.exitToLanding();
-      return;
-    }
-
-    const answeredCount = Object.keys(this.session.answers).filter(id => this.session!.answers[id] != null).length;
-
-    if (answeredCount === 0) {
-      this.exitToLanding();
-      return;
-    }
-
-    this.showExitModal(answeredCount);
-  }
-
-  private showExitModal(answeredCount: number): void {
-    const existingModal = this.root.querySelector<HTMLElement>(".plw-quiz-modal-backdrop");
-    if (existingModal) existingModal.remove();
-
-    const backdrop = document.createElement("div");
-    backdrop.className = "plw-quiz-modal-backdrop";
-    backdrop.setAttribute("role", "dialog");
-    backdrop.setAttribute("aria-modal", "true");
-    backdrop.setAttribute("aria-labelledby", "plw-exit-modal-title");
-
-    const modal = document.createElement("div");
-    modal.className = "plw-quiz-modal";
-
-    modal.innerHTML = `
-      <h3 id="plw-exit-modal-title">退出本次小测？</h3>
-      <p>当前已作答 <strong>${answeredCount}</strong> 道题目。你的作答进度已自动保存在本地浏览器中，你可以选择保存后退出，稍后随时返回继续作答，或放弃本次小测记录。</p>
-      <div class="plw-quiz-modal__actions">
-        <button type="button" class="plw-quiz-btn--primary" id="plw-exit-save">保存并退出</button>
-        <button type="button" class="plw-quiz-btn--danger" id="plw-exit-discard">放弃作答并退出</button>
-        <button type="button" class="plw-quiz-btn--secondary" id="plw-exit-cancel">继续作答</button>
+    this.root.innerHTML = `
+      <div class="plw-quiz-error" role="alert">
+        <h2>无法开始小测</h2>
+        <p>${escapeHtml(message)}</p>
+        <p><a class="plw-quiz-landing__btn" href="${resolveSiteUrl("quiz/")}">返回小测首页</a></p>
       </div>
     `;
-
-    backdrop.append(modal);
-
-    modal.querySelector("#plw-exit-save")?.addEventListener("click", () => {
-      this.persist();
-      backdrop.remove();
-      this.exitToLanding();
-    });
-
-    modal.querySelector("#plw-exit-discard")?.addEventListener("click", () => {
-      if (this.session) {
-        this.store.discardSession(this.session.pageId, this.session.mode, this.session.seed);
-      }
-      backdrop.remove();
-      this.exitToLanding();
-    });
-
-    modal.querySelector("#plw-exit-cancel")?.addEventListener("click", () => {
-      backdrop.remove();
-    });
-
-    backdrop.addEventListener("click", e => {
-      if (e.target === backdrop) backdrop.remove();
-    });
-
-    this.root.append(backdrop);
-    modal.querySelector<HTMLButtonElement>("#plw-exit-save")?.focus();
-  }
-
-  private exitToLanding(): void {
-    const url = new URL(window.location.href);
-    url.search = "";
-    history.pushState(null, "", url.href);
-    this.session = undefined;
-    this.bundle = undefined;
-    this.questions = [];
-    this.renderLanding();
-  }
-
-  private replaceQuery(pageId: string, mode: QuizMode, seed: string): void {
-    const url = new URL(window.location.href);
-    url.search = new URLSearchParams({ page_id: pageId, mode, seed }).toString();
-    history.replaceState(history.state, "", url);
   }
 }
 
@@ -901,7 +342,6 @@ if (typeof window !== "undefined") {
     }
   });
 
-  // 针对 MkDocs Material instant navigation 的可靠观察器机制
   const observer = new MutationObserver(() => {
     const root = document.querySelector<HTMLElement>("#plw-quiz-root");
     if (root && root.children.length === 0) {

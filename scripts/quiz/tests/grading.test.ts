@@ -1,23 +1,32 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { gradeQuestion, isAnswerComplete, parseNumeric, summarizeObjectives } from "../src/grading.js";
+import {
+  gradeQuestion,
+  isAnswerComplete,
+  makeResult,
+  parseNumeric,
+  summarizeConcepts,
+  summarizeObjectives
+} from "../src/grading.js";
 import type { Question } from "../src/types.js";
 
 const base = {
   id: "q",
   version: 1,
-  choiceOrder: "fixed",
-  primaryObjective: "obj",
-  secondaryObjectives: [],
-  conceptIds: [],
+  status: "published" as const,
+  choiceOrder: "fixed" as const,
+  topicIds: ["mechanics.dynamics"],
+  conceptIds: ["concept-1"],
+  objectiveIds: ["obj-1"],
+  relatedPages: [],
   stemHtml: "",
   feedback: { correctHtml: "", incorrectHtml: "" },
   hintsHtml: [],
   solutionHtml: "",
   difficulty: 1,
-  cognitiveLevel: "understand",
-  style: "conceptual",
+  cognitiveLevel: "understand" as const,
+  style: "conceptual" as const,
   assets: {},
   estimatedSeconds: 10
 };
@@ -56,17 +65,21 @@ test("numeric answers become complete only after a valid value and required unit
   assert.equal(isAnswerComplete(numeric, { value: "10", unit: "m" }), true);
 });
 
-test("objective summaries use only the primary objective", () => {
-  const summary = summarizeObjectives([
-    {
-      questionId: "q",
-      version: 1,
-      primaryObjective: "primary",
-      answer: "A",
-      correct: true,
-      unanswered: false,
-      uncertain: true
-    }
-  ]);
-  assert.deepEqual(summary, { primary: { correct: 1, total: 1, uncertain: 1 } });
+test("concept and objective summaries aggregate correctly", () => {
+  const q1 = { ...base, id: "q1", type: "single_choice", answer: { choice: "A" }, conceptIds: ["c1", "c2"], objectiveIds: ["o1"] } as unknown as Question;
+  const q2 = { ...base, id: "q2", type: "single_choice", answer: { choice: "B" }, conceptIds: ["c2"], objectiveIds: ["o2"] } as unknown as Question;
+
+  const r1 = makeResult(q1, "A", false);
+  const r2 = makeResult(q2, "wrong", true);
+
+  const conceptSum = summarizeConcepts([r1, r2]);
+  assert.equal(conceptSum["c1"].total, 1);
+  assert.equal(conceptSum["c1"].correct, 1);
+  assert.equal(conceptSum["c2"].total, 2);
+  assert.equal(conceptSum["c2"].uncertain, 1);
+
+  const objSum = summarizeObjectives([r1, r2]);
+  assert.equal(objSum["o1"].total, 1);
+  assert.equal(objSum["o2"].total, 1);
+  assert.equal(objSum["o2"].uncertain, 1);
 });
