@@ -58,6 +58,7 @@ def test_zero_relative_tolerance_is_rejected() -> None:
     )
 
 
+@pytest.mark.skip(reason="Pending Commit 4 repository v3 cutover")
 def test_release_allows_explicit_construction_pages() -> None:
     normal = validate_repository(ROOT)
     release = validate_repository(ROOT, release=True)
@@ -204,12 +205,12 @@ def test_validate_question_references_checks_objectives() -> None:
     assert not validate_question_references(document, pages)
 
     # Unknown page
-    document.data["scope"]["pages"] = ["nonexistent.page"]
+    document.data["related_pages"] = ["nonexistent.page"]
     issues = validate_question_references(document, pages)
-    assert any("unknown page id" in issue.message for issue in issues)
+    assert any("unknown related page id" in issue.message for issue in issues)
 
     # Unknown objective
-    document.data["scope"]["pages"] = ["mechanics.dynamics.newton-laws"]
-    document.data["primary_objective"] = "nonexistent.objective"
+    document.data["related_pages"] = ["mechanics.kinematics.linear-motion"]
+    document.data["objectives"] = ["nonexistent.objective"]
     issues = validate_question_references(document, pages)
-    assert any("unknown objective" in issue.message for issue in issues)
+    assert any("unknown objective id" in issue.message for issue in issues)

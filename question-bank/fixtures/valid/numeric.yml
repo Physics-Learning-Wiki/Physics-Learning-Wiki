@@ -1,12 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: fixture-numeric-0001
 version: 1
 status: draft
 locale: zh-CN
-scope: {pages: [mechanics.kinematics.linear-motion]}
-primary_objective: mech.kin.linear.uniform-motion
-secondary_objectives: []
-concepts: [motion.uniform]
+topics:
+  - mechanics.kinematics
+concepts:
+  - kinematics.uniform-motion
+objectives:
+  - mech.kin.linear.uniform-motion
+related_pages:
+  - mechanics.kinematics.linear-motion
 type: numeric
 choice_order: fixed
 stem: 速度为 $2\,\mathrm{m/s}$，3 秒内位移是多少？

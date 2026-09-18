@@ -1,12 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: fixture-single-0001
 version: 1
 status: draft
 locale: zh-CN
-scope: {pages: [mechanics.kinematics.linear-motion]}
-primary_objective: mech.kin.linear.sign-convention
-secondary_objectives: []
-concepts: [motion.sign-convention]
+topics:
+  - mechanics.kinematics
+concepts:
+  - kinematics.displacement
+objectives:
+  - mech.kin.linear.sign-convention
+related_pages:
+  - mechanics.kinematics.linear-motion
 type: single_choice
 choice_order: shuffle
 stem: 位移是否可能为负值？

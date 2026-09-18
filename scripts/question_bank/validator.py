@@ -13,8 +13,9 @@ from jsonschema import Draft202012Validator, FormatChecker
 from .errors import Issue
 from .loader import load_json, load_tree
 from .media import question_content_fingerprint, validate_assets
-from .models import PageRegistry, RepositoryData, SourceDocument
+from .models import PageRegistry, RepositoryData, SourceDocument, TaxonomyRegistry
 from .page_contracts import build_page_registry, discover_page_contracts, validate_page_contracts
+from .selection import solve_query_selection
 
 DANGEROUS = re.compile(r"<(?:script|iframe|object|embed)\b|javascript\s*:|\bon[a-z]+\s*=", re.I)
 
@@ -124,10 +125,32 @@ def validate_question_content(
 def validate_question_references(
     document: SourceDocument,
     pages: dict[str, Any] | PageRegistry,
+    taxonomy: TaxonomyRegistry | None = None,
 ) -> list[Issue]:
     data, path = document.data, document.path
     issues: list[Issue] = []
     page_map = pages.pages if isinstance(pages, PageRegistry) else pages
+    status = data.get("status", "draft")
+
+    if data.get("schema_version") == 3:
+        if taxonomy is not None:
+            for idx, top in enumerate(data.get("topics", [])):
+                if not taxonomy.is_valid_topic(top):
+                    factory = Issue.error if status == "published" else Issue.warning
+                    issues.append(factory(path, f"topics[{idx}]", f"unknown topic id {top!r}"))
+            for idx, con in enumerate(data.get("concepts", [])):
+                if not taxonomy.is_valid_concept(con):
+                    factory = Issue.error if status == "published" else Issue.warning
+                    issues.append(factory(path, f"concepts[{idx}]", f"unknown concept id {con!r}"))
+        for idx, obj in enumerate(data.get("objectives", [])):
+            if not any(obj in page.objectives for page in page_map.values()):
+                factory = Issue.error if status == "published" else Issue.warning
+                issues.append(factory(path, f"objectives[{idx}]", f"unknown objective id {obj!r}"))
+        for idx, page_id in enumerate(data.get("related_pages", [])):
+            if page_id not in page_map:
+                factory = Issue.error if status == "published" else Issue.warning
+                issues.append(factory(path, f"related_pages[{idx}]", f"unknown related page id {page_id!r}"))
+
     primary = data.get("primary_objective")
     secondary = data.get("secondary_objectives", [])
     if primary in secondary:
@@ -148,9 +171,116 @@ def validate_question(
     schema: dict[str, Any],
     pages: dict[str, Any] | PageRegistry,
     root: Path | None = None,
+    taxonomy: TaxonomyRegistry | None = None,
 ) -> list[Issue]:
     issues = validate_question_content(document, schema, root)
-    issues.extend(validate_question_references(document, pages))
+    issues.extend(validate_question_references(document, pages, taxonomy))
+    return issues
+
+
+def validate_set(
+    document: SourceDocument,
+    schema: dict[str, Any],
+    questions: dict[str, dict[str, Any]],
+    taxonomy: TaxonomyRegistry,
+    page_registry: PageRegistry | None = None,
+) -> list[Issue]:
+    data, path = document.data, document.path
+    issues: list[Issue] = []
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    for error in sorted(validator.iter_errors(data), key=lambda item: list(item.absolute_path)):
+        issues.append(Issue.error(path, _field_path(error.absolute_path), error.message))
+
+    set_id = data.get("id")
+    set_status = data.get("status", "draft")
+    selection = data.get("selection", {})
+    sel_type = selection.get("type")
+
+    # Fixed selection validation
+    if sel_type == "fixed":
+        q_ids = selection.get("questions", [])
+        if len(q_ids) != len(set(q_ids)):
+            issues.append(Issue.error(path, "selection.questions", "question ids must be unique"))
+        for idx, q_id in enumerate(q_ids):
+            if q_id not in questions:
+                issues.append(Issue.error(path, f"selection.questions[{idx}]", f"unknown question id {q_id!r}"))
+            else:
+                q_data = questions[q_id]
+                q_status = q_data.get("status")
+                if q_status == "retired":
+                    issues.append(Issue.error(path, f"selection.questions[{idx}]", f"referenced question {q_id!r} is retired"))
+                elif set_status == "published" and q_status != "published":
+                    issues.append(Issue.error(path, f"selection.questions[{idx}]", f"published set cannot reference draft question {q_id!r}"))
+
+    # Query selection validation
+    elif sel_type == "query":
+        count = selection.get("count", 0)
+        slots = selection.get("slots", [])
+        constraints = selection.get("constraints", [])
+
+        slot_total = sum(s.get("count", 0) for s in slots)
+        if slot_total > count:
+            issues.append(Issue.error(path, "selection.slots", f"sum of slot counts ({slot_total}) exceeds selection count ({count})"))
+
+        slot_ids: set[str] = set()
+        for s_idx, slot in enumerate(slots):
+            sid = slot.get("id")
+            if sid in slot_ids:
+                issues.append(Issue.error(path, f"selection.slots[{s_idx}].id", f"duplicate slot id {sid!r}"))
+            slot_ids.add(sid)
+
+        for c_idx, c in enumerate(constraints):
+            c_min = c.get("min")
+            c_max = c.get("max")
+            if c_min is not None and c_max is not None and c_min > c_max:
+                issues.append(Issue.error(path, f"selection.constraints[{c_idx}]", "min must not exceed max"))
+            if c_max is not None and c_max > count:
+                issues.append(Issue.error(path, f"selection.constraints[{c_idx}].max", "max exceeds selection count"))
+
+        def check_filters(filters: dict[str, Any], field_prefix: str) -> None:
+            if "topics" in filters:
+                t_crit = filters["topics"]
+                t_list = t_crit.get("any") or t_crit.get("all") or []
+                for t in t_list:
+                    if not taxonomy.is_valid_topic(t):
+                        factory = Issue.error if set_status == "published" else Issue.warning
+                        issues.append(factory(path, f"{field_prefix}.topics", f"unknown topic id {t!r}"))
+            if "concepts" in filters:
+                c_crit = filters["concepts"]
+                c_list = c_crit.get("any") or c_crit.get("all") or []
+                for c in c_list:
+                    if not taxonomy.is_valid_concept(c):
+                        factory = Issue.error if set_status == "published" else Issue.warning
+                        issues.append(factory(path, f"{field_prefix}.concepts", f"unknown concept id {c!r}"))
+            if "objectives" in filters and page_registry:
+                o_crit = filters["objectives"]
+                o_list = o_crit.get("any") or o_crit.get("all") or []
+                for o in o_list:
+                    if not page_registry.get_page_for_objective(o):
+                        factory = Issue.error if set_status == "published" else Issue.warning
+                        issues.append(factory(path, f"{field_prefix}.objectives", f"unknown objective id {o!r}"))
+            if "related_pages" in filters and page_registry:
+                p_crit = filters["related_pages"]
+                p_list = p_crit.get("any") or p_crit.get("all") or []
+                for p_id in p_list:
+                    if not page_registry.has_page(p_id):
+                        factory = Issue.error if set_status == "published" else Issue.warning
+                        issues.append(factory(path, f"{field_prefix}.related_pages", f"unknown page id {p_id!r}"))
+
+        check_filters(selection.get("filters", {}), "selection.filters")
+        for s_idx, slot in enumerate(slots):
+            check_filters(slot.get("filters", {}), f"selection.slots[{s_idx}].filters")
+
+        if set_status == "published":
+            pool = [q for q in questions.values() if q.get("status") == "published"]
+        else:
+            pool = [q for q in questions.values() if q.get("status") in {"published", "draft"}]
+
+        solution = solve_query_selection(pool, selection, taxonomy, set_id=str(set_id))
+        if solution is None:
+            factory = Issue.error if set_status == "published" else Issue.warning
+            issues.append(factory(path, "selection", "no candidate question set satisfies all selection slots and constraints"))
+
     return issues
 
 

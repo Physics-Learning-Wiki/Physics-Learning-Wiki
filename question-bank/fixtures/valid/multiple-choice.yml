@@ -1,12 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: fixture-multiple-01
 version: 1
 status: draft
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
-primary_objective: mech.dyn.newton.second-law
-secondary_objectives: []
-concepts: [newton.second-law]
+topics:
+  - mechanics.dynamics
+concepts:
+  - newton.net-force
+objectives:
+  - mech.dyn.newton.second-law
+related_pages:
+  - mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
 stem: 关于合外力，下列哪些说法正确？
