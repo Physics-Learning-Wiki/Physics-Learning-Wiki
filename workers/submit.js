@@ -18,9 +18,11 @@ function buildIssueBody(data) {
     `## 投稿信息`,
     ``,
     `- **投稿类型**: ${data.typeLabel || data.type}`,
-    `- **目标章节**: ${data.chapter || "未指定"}`,
     `- **署名**: ${data.attribution || "匿名"}`,
   ];
+  if (data.chapter) {
+    lines.push(`- **目标章节**: ${data.chapter}`);
+  }
   if (data.contact) {
     lines.push(`- **公开联系方式**: ${data.contact}`);
   }
@@ -31,15 +33,15 @@ function buildIssueBody(data) {
       "",
       "## 题目结构",
       "",
-      `- **页面 ID**: \`${question.page_id}\``,
-      `- **主要学习目标**: \`${question.primary_objective}\``,
       `- **题型**: \`${question.type}\``,
-      `- **难度**: ${question.difficulty}`,
+      `- **难度**: ${question.difficulty != null ? question.difficulty : "未指定"}`,
+      `- **主题**: ${question.topics && question.topics.length ? question.topics.join(", ") : "未指定"}`,
+      `- **概念**: ${question.concepts && question.concepts.length ? question.concepts.join(", ") : "未指定"}`,
       "",
       "## 机器可读载荷",
       "",
-      "```json plw-question-submission-v1",
-      JSON.stringify({ schemaVersion: 1, question }),
+      "```json plw-question-submission-v2",
+      JSON.stringify({ schemaVersion: 2, question }),
       "```"
     );
   }
@@ -68,25 +70,12 @@ function validHttpsUrl(value) {
 
 function validateQuestion(question) {
   if (!question || typeof question !== "object") return "缺少结构化题目";
-  if (
-    !nonEmptyString(question.page_id, 120) ||
-    !nonEmptyString(question.primary_objective, 120) ||
-    !Array.isArray(question.concepts) ||
-    question.concepts.length === 0 ||
-    !question.concepts.every(item => nonEmptyString(item, 120))
-  )
-    return "页面、学习目标或概念 ID 无效";
   if (!QUESTION_TYPES.has(question.type)) return "无效题型";
   if (!nonEmptyString(question.stem) || !nonEmptyString(question.solution)) return "题干或解析为空";
   if (unsafeMarkdown(JSON.stringify(question))) return "题目包含不安全的 Markdown 或 HTML";
   if (!question.answer || typeof question.answer !== "object") return "答案无效";
-  if (!question.feedback || !nonEmptyString(question.feedback.correct) || !nonEmptyString(question.feedback.incorrect))
-    return "答题反馈不完整";
-  if (!Number.isInteger(question.difficulty) || question.difficulty < 1 || question.difficulty > 3)
-    return "难度无效";
-  if (!COGNITIVE_LEVELS.has(question.cognitive_level) || !STYLES.has(question.style)) return "认知层级或题目风格无效";
-  if (!Number.isInteger(question.estimated_seconds) || question.estimated_seconds < 10 || question.estimated_seconds > 1800)
-    return "预计作答时间无效";
+
+  // Choice-based questions
   if (question.type === "single_choice" || question.type === "multiple_choice") {
     if (!Array.isArray(question.choices) || question.choices.length < 2) return "选项为空";
     const choiceIds = question.choices.map(item => item?.id);
@@ -94,20 +83,68 @@ function validateQuestion(question) {
       return "选项 ID 无效或重复";
     if (!question.choices.every(item => nonEmptyString(item?.content)))
       return "选项内容为空";
-    const feedbackIds = Object.keys(question.feedback.choices || {});
-    if (feedbackIds.length !== choiceIds.length || !feedbackIds.every(id => choiceIds.includes(id)))
-      return "逐项反馈必须与选项一致";
-    if (!feedbackIds.every(id => nonEmptyString(question.feedback.choices[id])))
-      return "逐项反馈不能为空";
-    const selected =
-      question.type === "single_choice" ? [question.answer.choice] : question.answer.choices;
-    if (!Array.isArray(selected) || !selected.length || !selected.every(item => feedbackIds.includes(item)))
-      return "选择题答案与选项不一致";
-  } else if (question.type === "true_false" && typeof question.answer.value !== "boolean") {
-    return "判断题答案无效";
-  } else if (question.type === "numeric" && !Number.isFinite(question.answer.value)) {
-    return "数值题答案无效";
+
+    // Optional choice feedback
+    if (question.feedback?.choices) {
+      const feedbackIds = Object.keys(question.feedback.choices);
+      if (feedbackIds.length !== choiceIds.length || !feedbackIds.every(id => choiceIds.includes(id)))
+        return "逐项反馈必须与选项一致";
+      if (!feedbackIds.every(id => nonEmptyString(question.feedback.choices[id])))
+        return "逐项反馈不能为空";
+    }
+
+    if (question.type === "single_choice") {
+      if (!nonEmptyString(question.answer.choice, 8) || !choiceIds.includes(question.answer.choice))
+        return "单选题答案与选项不一致";
+    } else {
+      const selected = question.answer.choices;
+      if (!Array.isArray(selected) || !selected.length || !selected.every(item => choiceIds.includes(item)))
+        return "多选题答案与选项不一致";
+    }
+  } else if (question.type === "true_false") {
+    if (typeof question.answer.value !== "boolean") return "判断题答案无效";
+  } else if (question.type === "numeric") {
+    if (typeof question.answer.value !== "number" || !Number.isFinite(question.answer.value))
+      return "数值题答案无效";
   }
+
+  // Optional global feedback validation
+  if (question.feedback) {
+    if (question.feedback.correct !== undefined && !nonEmptyString(question.feedback.correct))
+      return "答对反馈无效";
+    if (question.feedback.incorrect !== undefined && !nonEmptyString(question.feedback.incorrect))
+      return "答错反馈无效";
+  }
+
+  // Optional metadata validation
+  if (question.difficulty != null) {
+    if (!Number.isInteger(question.difficulty) || question.difficulty < 1 || question.difficulty > 3)
+      return "难度无效";
+  }
+  if (question.cognitive_level != null && !COGNITIVE_LEVELS.has(question.cognitive_level)) {
+    return "认知层级无效";
+  }
+  if (question.style != null && !STYLES.has(question.style)) {
+    return "题目风格无效";
+  }
+  if (question.estimated_seconds != null) {
+    if (
+      !Number.isInteger(question.estimated_seconds) ||
+      question.estimated_seconds < 10 ||
+      question.estimated_seconds > 1800
+    )
+      return "预计作答时间无效";
+  }
+  if (question.topics != null) {
+    if (!Array.isArray(question.topics) || !question.topics.every(t => nonEmptyString(t, 120)))
+      return "主题分类格式无效";
+  }
+  if (question.concepts != null) {
+    if (!Array.isArray(question.concepts) || !question.concepts.every(c => nonEmptyString(c, 120)))
+      return "概念分类格式无效";
+  }
+
+  // Optional external media validation
   if (question.external_media?.length) {
     for (const media of question.external_media) {
       if (
