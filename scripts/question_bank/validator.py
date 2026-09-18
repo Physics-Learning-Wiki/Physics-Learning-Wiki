@@ -13,8 +13,8 @@ from jsonschema import Draft202012Validator, FormatChecker
 from .errors import Issue
 from .loader import load_json, load_tree
 from .media import question_content_fingerprint, validate_assets
-from .models import RepositoryData, SourceDocument
-from .page_contracts import discover_page_contracts
+from .models import PageRegistry, RepositoryData, SourceDocument
+from .page_contracts import build_page_registry, discover_page_contracts, validate_page_contracts
 
 DANGEROUS = re.compile(r"<(?:script|iframe|object|embed)\b|javascript\s*:|\bon[a-z]+\s*=", re.I)
 
@@ -55,10 +55,9 @@ def _walk_strings(value: Any, field: str = "") -> Iterable[tuple[str, str]]:
             yield from _walk_strings(child, f"{field}[{index}]")
 
 
-def validate_question(
+def validate_question_content(
     document: SourceDocument,
     schema: dict[str, Any],
-    pages: dict[str, Any],
     root: Path | None = None,
 ) -> list[Issue]:
     data, path = document.data, document.path
@@ -74,18 +73,6 @@ def validate_question(
             issues.append(Issue.error(path, field, "raw dangerous HTML or URL is forbidden"))
         if any(ord(character) < 32 and character not in "\n\r\t" for character in text):
             issues.append(Issue.error(path, field, "control characters are forbidden"))
-    primary = data.get("primary_objective")
-    secondary = data.get("secondary_objectives", [])
-    if primary in secondary:
-        issues.append(Issue.error(path, "secondary_objectives", "must not repeat primary_objective"))
-    scoped_pages = data.get("scope", {}).get("pages", []) if isinstance(data.get("scope"), dict) else []
-    if len(scoped_pages) == 1 and scoped_pages[0] in pages:
-        page = pages[scoped_pages[0]]
-        for field, objective in [("primary_objective", primary), *[(f"secondary_objectives[{i}]", item) for i, item in enumerate(secondary)]]:
-            if objective not in page.objectives:
-                issues.append(Issue.error(path, field, f"unknown objective for page {page.page_id}"))
-    elif scoped_pages:
-        issues.append(Issue.error(path, "scope.pages", f"unknown page id {scoped_pages[0]!r}"))
     choices = data.get("choices", [])
     if isinstance(choices, list):
         ids = [choice.get("id") for choice in choices if isinstance(choice, dict)]
@@ -131,6 +118,39 @@ def validate_question(
                             "requires an attestation for the current version and content fingerprint",
                         )
                     )
+    return issues
+
+
+def validate_question_references(
+    document: SourceDocument,
+    pages: dict[str, Any] | PageRegistry,
+) -> list[Issue]:
+    data, path = document.data, document.path
+    issues: list[Issue] = []
+    page_map = pages.pages if isinstance(pages, PageRegistry) else pages
+    primary = data.get("primary_objective")
+    secondary = data.get("secondary_objectives", [])
+    if primary in secondary:
+        issues.append(Issue.error(path, "secondary_objectives", "must not repeat primary_objective"))
+    scoped_pages = data.get("scope", {}).get("pages", []) if isinstance(data.get("scope"), dict) else []
+    if len(scoped_pages) == 1 and scoped_pages[0] in page_map:
+        page = page_map[scoped_pages[0]]
+        for field, objective in [("primary_objective", primary), *[(f"secondary_objectives[{i}]", item) for i, item in enumerate(secondary)]]:
+            if objective not in page.objectives:
+                issues.append(Issue.error(path, field, f"unknown objective for page {page.page_id}"))
+    elif scoped_pages:
+        issues.append(Issue.error(path, "scope.pages", f"unknown page id {scoped_pages[0]!r}"))
+    return issues
+
+
+def validate_question(
+    document: SourceDocument,
+    schema: dict[str, Any],
+    pages: dict[str, Any] | PageRegistry,
+    root: Path | None = None,
+) -> list[Issue]:
+    issues = validate_question_content(document, schema, root)
+    issues.extend(validate_question_references(document, pages))
     return issues
 
 
@@ -226,6 +246,8 @@ def blueprint_mode_feasible(questions: list[dict[str, Any]], mode: dict[str, Any
 def validate_repository(root: Path | str = ".", *, release: bool = False, include_drafts: bool = False) -> ValidationReport:
     root = Path(root).resolve()
     pages, issues = discover_page_contracts(root)
+    page_registry, registry_issues = build_page_registry(pages)
+    issues.extend(registry_issues)
     questions, question_load_issues = load_tree(root / "question-bank" / "questions")
     blueprints, blueprint_load_issues = load_tree(root / "question-bank" / "blueprints")
     issues.extend(question_load_issues)
@@ -303,5 +325,11 @@ def validate_repository(root: Path | str = ".", *, release: bool = False, includ
                             "no published question set satisfies all blueprint constraints",
                         )
                     )
-    data = RepositoryData(root=root, questions=questions, blueprints=blueprints, pages=pages)
+    data = RepositoryData(
+        root=root,
+        questions=questions,
+        blueprints=blueprints,
+        pages=pages,
+        page_registry=page_registry,
+    )
     return ValidationReport(sorted(set(issues)), data)

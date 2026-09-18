@@ -5,7 +5,12 @@ import pytest
 from scripts.question_bank.loader import load_json, load_yaml
 from scripts.question_bank.media import question_content_fingerprint, validate_assets
 from scripts.question_bank.page_contracts import discover_page_contracts
-from scripts.question_bank.validator import validate_question, validate_repository
+from scripts.question_bank.validator import (
+    validate_question,
+    validate_question_content,
+    validate_question_references,
+    validate_repository,
+)
 
 ROOT = Path(__file__).parents[2]
 
@@ -181,3 +186,30 @@ def test_managed_media_rejects_unsafe_files_and_missing_alt(tmp_path: Path) -> N
     assert any("PNG signature" in message for message in messages)
     assert any("escapes" in message for message in messages)
     assert any("alternative text" in message for message in messages)
+
+
+def test_validate_question_content_is_independent_of_pages() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    assert not validate_question_content(document, schema)
+
+
+def test_validate_question_references_checks_objectives() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    pages, _ = discover_page_contracts(ROOT)
+    assert not validate_question_references(document, pages)
+
+    # Unknown page
+    document.data["scope"]["pages"] = ["nonexistent.page"]
+    issues = validate_question_references(document, pages)
+    assert any("unknown page id" in issue.message for issue in issues)
+
+    # Unknown objective
+    document.data["scope"]["pages"] = ["mechanics.dynamics.newton-laws"]
+    document.data["primary_objective"] = "nonexistent.objective"
+    issues = validate_question_references(document, pages)
+    assert any("unknown objective" in issue.message for issue in issues)

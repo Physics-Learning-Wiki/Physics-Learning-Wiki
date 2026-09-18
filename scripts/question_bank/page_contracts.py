@@ -6,7 +6,7 @@ from pathlib import Path
 import frontmatter
 
 from .errors import Issue
-from .models import PageContract
+from .models import PageContract, PageRegistry
 
 PAGE_ID_RE = re.compile(r"^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)+$")
 
@@ -62,3 +62,29 @@ def discover_page_contracts(root: Path) -> tuple[dict[str, PageContract], list[I
             quiz=post.metadata.get("quiz", {}) if isinstance(post.metadata.get("quiz", {}), dict) else {},
         )
     return pages, issues
+
+
+def build_page_registry(pages: dict[str, PageContract]) -> tuple[PageRegistry, list[Issue]]:
+    issues: list[Issue] = []
+    objective_to_page: dict[str, str] = {}
+    objective_paths: dict[str, Path] = {}
+    for page in pages.values():
+        for obj_id in page.objectives:
+            if obj_id in objective_to_page:
+                issues.append(
+                    Issue.error(
+                        page.path,
+                        "learning_objectives",
+                        f"global objective id {obj_id!r} conflicts with {objective_paths[obj_id]}",
+                    )
+                )
+            else:
+                objective_to_page[obj_id] = page.page_id
+                objective_paths[obj_id] = page.path
+    registry = PageRegistry(pages=pages, objective_to_page=objective_to_page)
+    return registry, issues
+
+
+def validate_page_contracts(pages: dict[str, PageContract]) -> list[Issue]:
+    _, issues = build_page_registry(pages)
+    return issues
