@@ -66,6 +66,20 @@ class QuizApp {
       target &&
       ((target.tagName === "INPUT" && (target as HTMLInputElement).type === "text") || target.tagName === "TEXTAREA");
 
+    if (event.key === "Escape") {
+      const modal = this.root.querySelector<HTMLElement>(".plw-quiz-modal-backdrop");
+      if (modal) {
+        event.preventDefault();
+        modal.remove();
+        return;
+      }
+      if (this.session && this.bundle) {
+        event.preventDefault();
+        this.handleExit();
+        return;
+      }
+    }
+
     if (!this.session || !this.bundle || this.questions.length === 0) return;
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
@@ -170,7 +184,7 @@ class QuizApp {
     const container = document.createElement("section");
     container.className = "plw-quiz-landing";
     container.innerHTML =
-      '<h3 class="plw-quiz-landing__subtitle">选择自测章节</h3><p class="plw-quiz-landing__desc">请选择要测试的物理章节，作答记录仅保存在当前浏览器本地。</p>';
+      '<h2 class="plw-quiz-landing__subtitle">选择自测章节</h2><p class="plw-quiz-landing__desc">请选择要测试的物理章节，作答记录仅保存在当前浏览器本地。</p>';
     if (this.manifest.preview)
       container.insertAdjacentHTML(
         "beforeend",
@@ -179,6 +193,7 @@ class QuizApp {
 
     const grid = document.createElement("ul");
     grid.className = "plw-quiz-landing__grid";
+    const data = this.store.read();
 
     for (const [pageId, page] of Object.entries(this.manifest.pages)) {
       const item = document.createElement("li");
@@ -186,6 +201,19 @@ class QuizApp {
       const usable = page.status === "available" || (this.manifest.preview && page.previewQuestionCount > 0);
 
       if (usable) {
+        const activeList = (data.activeSessions[pageId] ?? []).filter(
+          (s): s is Session & { mode: "quick" | "full" } => s.mode === "quick" || s.mode === "full"
+        );
+        const activeSession = activeList[0];
+        let resumeButton = "";
+        if (activeSession && activeSession.questionRefs.length > 0) {
+          const answeredCount = Object.keys(activeSession.answers).filter(
+            id => activeSession.answers[id] != null
+          ).length;
+          const resumeUrl = this.quizLink(pageId, activeSession.mode, activeSession.seed);
+          resumeButton = `<a class="plw-quiz-landing__btn plw-quiz-landing__btn--resume" data-no-instant href="${resumeUrl}">▶ 继续上次未完 (${answeredCount}/${activeSession.questionRefs.length}题)</a>`;
+        }
+
         const quick = this.quizLink(pageId, "quick", newSeed());
         const full = this.quizLink(pageId, "full", newSeed());
         const quickTitle = page.modes.quick?.title ?? "快速检查";
@@ -196,6 +224,7 @@ class QuizApp {
             <div class="plw-quiz-landing__card-meta">题库包含 ${page.publishedQuestionCount} 道已审核题</div>
           </div>
           <div class="plw-quiz-landing__links">
+            ${resumeButton}
             <a class="plw-quiz-landing__btn" data-no-instant href="${quick}">${escapeHtml(quickTitle)} (3题)</a>
             <a class="plw-quiz-landing__btn" data-no-instant href="${full}">${escapeHtml(fullTitle)} (8题)</a>
           </div>
@@ -212,7 +241,6 @@ class QuizApp {
     }
     container.append(grid);
 
-    const data = this.store.read();
     if (data.attempts.length) {
       const last = data.attempts[0];
       const dateStr = new Date(last.completedAt).toLocaleDateString("zh-CN");
@@ -374,6 +402,10 @@ class QuizApp {
     const prevBtn = this.button("上一题", () => this.move(-1), this.session.currentIndex === 0);
     prevBtn.classList.add("plw-quiz-btn--secondary");
     actions.append(prevBtn);
+
+    const actionExitBtn = this.button("退出小测", () => this.handleExit());
+    actionExitBtn.classList.add("plw-quiz-btn--secondary");
+    actions.append(actionExitBtn);
 
     if (quick && !locked) {
       this.confirmButtonElement = this.button(
@@ -621,7 +653,8 @@ class QuizApp {
     else if (percentage >= 80) evaluation = "🎉 掌握优秀，表现出色";
     else if (percentage >= 60) evaluation = "👍 基本掌握，建议回看错题";
 
-    section.innerHTML = `
+    const contentDiv = document.createElement("div");
+    contentDiv.innerHTML = `
       <h2 tabindex="-1">小测结果：${evaluation}</h2>
       <p style="color: var(--md-default-fg-color--light);">本结果基于本次题组的自测表现，帮助针对性查漏补缺。</p>
       
@@ -640,6 +673,7 @@ class QuizApp {
         </div>
       </div>
     `;
+    section.append(contentDiv);
 
     // 知识目标掌握度
     const summary = summarizeObjectives(attempt.questionResults);
@@ -761,6 +795,10 @@ class QuizApp {
     const restartNew = this.button("换一组新题", () => this.restart(true));
     restartNew.classList.add("plw-quiz-btn--secondary");
     actions.append(restartNew);
+
+    const homeBtn = this.button("返回自测首页", () => this.exitToLanding());
+    homeBtn.classList.add("plw-quiz-btn--secondary");
+    actions.append(homeBtn);
 
     const back = document.createElement("a");
     back.className = "plw-quiz-btn--secondary";
@@ -905,6 +943,83 @@ class QuizApp {
         if (relative) image.src = new URL(relative, this.manifestUrl).href;
       }
     }
+  }
+
+  private handleExit(): void {
+    if (!this.session) {
+      this.exitToLanding();
+      return;
+    }
+
+    const answeredCount = Object.keys(this.session.answers).filter(id => this.session!.answers[id] != null).length;
+
+    if (answeredCount === 0) {
+      this.exitToLanding();
+      return;
+    }
+
+    this.showExitModal(answeredCount);
+  }
+
+  private showExitModal(answeredCount: number): void {
+    const existingModal = this.root.querySelector<HTMLElement>(".plw-quiz-modal-backdrop");
+    if (existingModal) existingModal.remove();
+
+    const backdrop = document.createElement("div");
+    backdrop.className = "plw-quiz-modal-backdrop";
+    backdrop.setAttribute("role", "dialog");
+    backdrop.setAttribute("aria-modal", "true");
+    backdrop.setAttribute("aria-labelledby", "plw-exit-modal-title");
+
+    const modal = document.createElement("div");
+    modal.className = "plw-quiz-modal";
+
+    modal.innerHTML = `
+      <h3 id="plw-exit-modal-title">退出本次小测？</h3>
+      <p>当前已作答 <strong>${answeredCount}</strong> 道题目。你的作答进度已自动保存在本地浏览器中，你可以选择保存后退出，稍后随时返回继续作答，或放弃本次小测记录。</p>
+      <div class="plw-quiz-modal__actions">
+        <button type="button" class="plw-quiz-btn--primary" id="plw-exit-save">保存并退出</button>
+        <button type="button" class="plw-quiz-btn--danger" id="plw-exit-discard">放弃作答并退出</button>
+        <button type="button" class="plw-quiz-btn--secondary" id="plw-exit-cancel">继续作答</button>
+      </div>
+    `;
+
+    backdrop.append(modal);
+
+    modal.querySelector("#plw-exit-save")?.addEventListener("click", () => {
+      this.persist();
+      backdrop.remove();
+      this.exitToLanding();
+    });
+
+    modal.querySelector("#plw-exit-discard")?.addEventListener("click", () => {
+      if (this.session) {
+        this.store.discardSession(this.session.pageId, this.session.mode, this.session.seed);
+      }
+      backdrop.remove();
+      this.exitToLanding();
+    });
+
+    modal.querySelector("#plw-exit-cancel")?.addEventListener("click", () => {
+      backdrop.remove();
+    });
+
+    backdrop.addEventListener("click", e => {
+      if (e.target === backdrop) backdrop.remove();
+    });
+
+    this.root.append(backdrop);
+    modal.querySelector<HTMLButtonElement>("#plw-exit-save")?.focus();
+  }
+
+  private exitToLanding(): void {
+    const url = new URL(window.location.href);
+    url.search = "";
+    history.pushState(null, "", url.href);
+    this.session = undefined;
+    this.bundle = undefined;
+    this.questions = [];
+    this.renderLanding();
   }
 
   private replaceQuery(pageId: string, mode: QuizMode, seed: string): void {

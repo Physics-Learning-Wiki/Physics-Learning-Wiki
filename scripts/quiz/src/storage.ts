@@ -1,4 +1,4 @@
-import type { Attempt, QuizStorageData, Session } from "./types.js";
+import type { Attempt, QuizMode, QuizStorageData, Session } from "./types.js";
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -62,6 +62,13 @@ export class QuizStore {
     const sessions = data.activeSessions[session.pageId] ?? [];
     const withoutSame = sessions.filter(item => !(item.mode === session.mode && item.seed === session.seed));
     data.activeSessions[session.pageId] = [session, ...withoutSame].slice(0, 3);
+    this.write(data);
+  }
+
+  discardSession(pageId: string, mode: QuizMode, seed: string): void {
+    const data = this.read();
+    const sessions = data.activeSessions[pageId] ?? [];
+    data.activeSessions[pageId] = sessions.filter(item => !(item.mode === mode && item.seed === seed));
     this.write(data);
   }
 
