@@ -214,7 +214,11 @@ nav:
     - 实验简介: experiment/index.md
     - 误差分析与数据处理: experiment/error-analysis.md
     - 常用测量仪器: experiment/instruments.md
-  - 知识小测: quiz/index.md
+  - 知识小测:
+    - 首页: quiz/index.md
+    - 测试集合: quiz/sets.md
+    - 题库浏览: quiz/questions.md
+    - 贡献题目: quiz/contribute.md
   - 计算物理与工具:
     - 工具简介: tools/index.md
     - LaTeX 物理写作: tools/latex.md

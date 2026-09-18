@@ -313,32 +313,166 @@ class QuizApp {
 }
 
 import { InlineSurface } from "./surfaces/inline.js";
+import { SetsSurface } from "./surfaces/sets.js";
 
+class HomeSurface {
+  private readonly abort = new AbortController();
+
+  constructor(private readonly root: HTMLElement) {}
+
+  async start(): Promise<void> {
+    try {
+      const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
+      const manifestUrl = new URL(manifestPath, window.location.href);
+      const manifest = await loadManifest(manifestUrl, this.abort.signal);
+      const store = new QuizStore(window.localStorage, manifest.preview);
+
+      const allActive = store.getAllActiveSessions();
+      const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
+
+      this.root.innerHTML = "";
+      const container = document.createElement("div");
+      container.className = "plw-quiz-home-dynamic";
+
+      // 1. Unfinished active sessions
+      if (activeEntries.length > 0) {
+        const resumeSec = document.createElement("section");
+        resumeSec.className = "plw-quiz-landing__resume";
+        resumeSec.innerHTML = `
+          <h2 class="plw-quiz-landing__subtitle">继续上次未完成的作答</h2>
+          <div class="plw-quiz-landing__grid">
+            ${activeEntries
+              .flatMap(([_, sessions]) =>
+                sessions.map(s => {
+                  const title =
+                    s.source.type === "set" ? manifest.sets[s.source.id]?.title ?? s.source.id : "错题重做";
+                  const answered = Object.values(s.answers).filter(v => v != null).length;
+                  const total = s.questionRefs.length;
+                  const playUrl =
+                    s.source.type === "set"
+                      ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(s.source.id)}&seed=${encodeURIComponent(s.seed)}`
+                      : "#";
+                  return `
+                    <div class="plw-quiz-landing__card">
+                      <div>
+                        <h3>${escapeHtml(title)}</h3>
+                        <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答</p>
+                      </div>
+                      <div class="plw-quiz-landing__links">
+                        <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
+                      </div>
+                    </div>
+                  `;
+                })
+              )
+              .join("")}
+          </div>
+        `;
+        container.append(resumeSec);
+      }
+
+      // 2. Featured sets section
+      const publishedSets = Object.entries(manifest.sets).filter(
+        ([_, s]) => manifest.preview || s.status === "published"
+      );
+      if (publishedSets.length > 0) {
+        const featuredSec = document.createElement("section");
+        featuredSec.className = "plw-quiz-home-featured";
+        featuredSec.innerHTML = `
+          <h2 class="plw-quiz-landing__subtitle">精选测试推荐</h2>
+          <div class="plw-quiz-landing__grid">
+            ${publishedSets
+              .slice(0, 4)
+              .map(([setId, s]) => {
+                const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}`;
+                const draftBadge = s.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : "";
+                return `
+                  <div class="plw-quiz-landing__card">
+                    <div>
+                      <h3>${escapeHtml(s.title)} ${draftBadge}</h3>
+                      <p class="plw-quiz-landing__card-meta">标识符：<code>${escapeHtml(setId)}</code></p>
+                    </div>
+                    <div class="plw-quiz-landing__links">
+                      <a class="plw-quiz-landing__btn" href="${playUrl}">开始小测</a>
+                    </div>
+                  </div>
+                `;
+              })
+              .join("")}
+          </div>
+        `;
+        container.append(featuredSec);
+      }
+
+      this.root.append(container);
+    } catch {
+      if (this.abort.signal.aborted) return;
+      this.root.innerHTML = "";
+    }
+  }
+
+  destroy(): void {
+    this.abort.abort();
+    this.root.innerHTML = "";
+  }
+}
+
+let runnerApp: QuizApp | undefined;
+let setsSurface: SetsSurface | undefined;
+let homeSurface: HomeSurface | undefined;
 const inlineSurfaces: InlineSurface[] = [];
 
 function initialize(): void {
-  for (const surface of inlineSurfaces) {
-    surface.destroy();
-  }
+  runnerApp?.destroy();
+  runnerApp = undefined;
+
+  setsSurface?.destroy();
+  setsSurface = undefined;
+
+  homeSurface?.destroy();
+  homeSurface = undefined;
+
+  for (const s of inlineSurfaces) s.destroy();
   inlineSurfaces.length = 0;
 
-  const root = document.querySelector<HTMLElement>("#plw-quiz-root");
-  if (root) {
-    window.__plwQuizDestroy?.();
-    const app = new QuizApp(root);
-    window.__plwQuizDestroy = () => {
-      app.destroy();
-      for (const surface of inlineSurfaces) surface.destroy();
-      inlineSurfaces.length = 0;
-    };
-    void app.start();
+  window.__plwQuizDestroy = () => {
+    runnerApp?.destroy();
+    runnerApp = undefined;
+    setsSurface?.destroy();
+    setsSurface = undefined;
+    homeSurface?.destroy();
+    homeSurface = undefined;
+    for (const s of inlineSurfaces) s.destroy();
+    inlineSurfaces.length = 0;
+  };
+
+  // 1. Runner root
+  const quizRoot = document.querySelector<HTMLElement>("#plw-quiz-root");
+  if (quizRoot) {
+    runnerApp = new QuizApp(quizRoot);
+    void runnerApp.start();
   }
 
+  // 2. Sets catalog root
+  const setsRoot = document.querySelector<HTMLElement>("#plw-quiz-sets-root");
+  if (setsRoot) {
+    setsSurface = new SetsSurface(setsRoot);
+    void setsSurface.start();
+  }
+
+  // 3. Home root
+  const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
+  if (homeRoot) {
+    homeSurface = new HomeSurface(homeRoot);
+    void homeSurface.start();
+  }
+
+  // 4. Inline roots
   const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
   for (const inlineRoot of Array.from(inlineRoots)) {
-    const surface = new InlineSurface(inlineRoot);
-    inlineSurfaces.push(surface);
-    void surface.start();
+    const s = new InlineSurface(inlineRoot);
+    inlineSurfaces.push(s);
+    void s.start();
   }
 }
 
@@ -354,15 +488,22 @@ if (typeof window !== "undefined") {
   }
 
   window.addEventListener("popstate", () => {
-    if (document.querySelector<HTMLElement>("#plw-quiz-root") || document.querySelector<HTMLElement>(".plw-quiz-inline-root")) {
-      initialize();
-    }
+    initialize();
   });
 
   const observer = new MutationObserver(() => {
-    const root = document.querySelector<HTMLElement>("#plw-quiz-root");
+    const quizRoot = document.querySelector<HTMLElement>("#plw-quiz-root");
+    const setsRoot = document.querySelector<HTMLElement>("#plw-quiz-sets-root");
+    const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
     const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
-    if ((root && root.children.length === 0) || (inlineRoots.length > 0 && inlineSurfaces.length === 0)) {
+
+    const hasUninitialized =
+      (quizRoot && quizRoot.children.length === 0) ||
+      (setsRoot && setsRoot.children.length === 0) ||
+      (homeRoot && homeRoot.children.length === 0) ||
+      (inlineRoots.length > 0 && inlineSurfaces.length === 0);
+
+    if (hasUninitialized) {
       initialize();
     }
   });
