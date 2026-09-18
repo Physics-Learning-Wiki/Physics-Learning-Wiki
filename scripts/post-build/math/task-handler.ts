@@ -190,25 +190,36 @@ export const taskHandler = new (class implements TaskHandler<void> {
     await fs.promises.writeFile(cssDestFile, renderer.getCSS(), "utf-8");
 
     log("Rendering math in question bank bundles");
-    const qbPagesDir = path.join(siteDir, "_generated", "question-bank", "pages");
-    try {
-      const entries = await fs.promises.readdir(qbPagesDir, { withFileTypes: true });
-      for (const entry of entries) {
-        if (entry.isFile() && entry.name.endsWith(".json")) {
-          const filePath = path.join(qbPagesDir, entry.name);
-          const raw = await fs.promises.readFile(filePath, "utf-8");
-          const bundle = JSON.parse(raw);
-          if (Array.isArray(bundle.questions)) {
-            for (const question of bundle.questions) {
-              renderMathInQuestion(question, renderer);
+    const qbDirs = [
+      path.join(siteDir, "_generated", "question-bank", "sets"),
+      path.join(siteDir, "_generated", "question-bank", "catalog"),
+      path.join(siteDir, "_generated", "question-bank", "pages")
+    ];
+    for (const qbDir of qbDirs) {
+      try {
+        const entries = await fs.promises.readdir(qbDir, { withFileTypes: true });
+        for (const entry of entries) {
+          if (entry.isFile() && entry.name.endsWith(".json")) {
+            const filePath = path.join(qbDir, entry.name);
+            const raw = await fs.promises.readFile(filePath, "utf-8");
+            const data = JSON.parse(raw);
+            if (Array.isArray(data)) {
+              for (const item of data) {
+                renderMathInQuestion(item, renderer);
+              }
+              await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
+            } else if (data && typeof data === "object" && Array.isArray(data.questions)) {
+              for (const question of data.questions) {
+                renderMathInQuestion(question, renderer);
+              }
+              await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
             }
-            await fs.promises.writeFile(filePath, JSON.stringify(bundle), "utf-8");
           }
         }
-      }
-    } catch (e: any) {
-      if (e?.code !== "ENOENT") {
-        throw e;
+      } catch (e: any) {
+        if (e?.code !== "ENOENT") {
+          throw e;
+        }
       }
     }
 

@@ -874,6 +874,133 @@ body:has(#plw-quiz-root.plw-quiz-in-progress) .md-content__inner > .md-content__
   border-color: var(--md-accent-fg-color);
 }
 
+/* Footer Cards Grid */
+.plw-quiz-footer-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.plw-quiz-footer-card {
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.5rem;
+  background: var(--md-default-bg-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.plw-quiz-footer-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.plw-quiz-footer-card__desc {
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 0.5rem;
+}
+
+.plw-quiz-footer-card__meta {
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--lighter);
+  margin: 0 0 0.5rem;
+}
+
+/* Inline Assessment Container */
+.plw-quiz-inline-root {
+  margin: 1.5rem 0;
+}
+
+.plw-quiz-inline {
+  padding: 1.25rem 1.5rem;
+  border: 1.5px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.6rem;
+  background: var(--md-code-bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.plw-quiz-inline__title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.plw-quiz-inline__title-row h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.plw-quiz-inline__runner-link {
+  font-size: 0.85rem;
+  color: var(--md-accent-fg-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.plw-quiz-inline__hint {
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--md-accent-fg-color) 8%, var(--md-default-bg-color));
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color);
+}
+
+.plw-quiz-inline__card {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--md-default-fg-color--lightest);
+}
+
+.plw-quiz-inline__card:last-child {
+  border-bottom: none;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+
+.plw-quiz-inline__q-header {
+  margin-bottom: 0.5rem;
+}
+
+.plw-quiz-inline__q-num {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 0.3rem;
+  color: var(--md-default-fg-color);
+}
+
+.plw-quiz-inline__check-btn {
+  margin-top: 0.75rem;
+}
+
+.plw-quiz-inline__summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--md-default-bg-color);
+  border-radius: 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.plw-quiz-inline-diagnostic {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px dashed var(--md-accent-fg-color);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 5%, var(--md-default-bg-color));
+}
+
 /* --------------------------------------------------------------------------
    响应式与无障碍 (A11y & Responsiveness)
    -------------------------------------------------------------------------- */

@@ -35,17 +35,33 @@ def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
     return destination
 
 
-def test_production_build_contains_construction_cards_and_no_drafts(
+def test_production_build_contains_assessment_cards_and_no_drafts(
     tmp_path: Path,
 ) -> None:
     site = build_site(tmp_path)
     assert (site / "quiz" / "index.html").exists()
+    assert (site / "quiz" / "play" / "index.html").exists()
     manifest = json.loads(
         (site / "_generated" / "question-bank" / "manifest.json").read_text(
             encoding="utf-8"
         )
     )
     assert manifest["preview"] is False
+
+    # Newton footer has new Set links and no legacy 24/24 text
+    newton = (
+        site / "mechanics" / "dynamics" / "newton-laws" / "index.html"
+    ).read_text(encoding="utf-8")
+    assert "mechanics.dynamics.newton-laws.quick" in newton
+    assert "mechanics.dynamics.newton-laws.full" in newton
+    assert "24/24" not in newton
+
+    # Linear motion has draft sets, which must NOT leak into production build
+    linear = (
+        site / "mechanics" / "kinematics" / "linear-motion" / "index.html"
+    ).read_text(encoding="utf-8")
+    assert "草稿预览入口" not in linear
+    assert "mechanics.kinematics.linear-motion" not in linear
 
 
 def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
@@ -87,11 +103,11 @@ def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None
         text=True,
     )
 
-    qb_pages = list((site / "_generated" / "question-bank" / "pages").glob("*.json"))
-    assert len(qb_pages) > 0
+    qb_sets = list((site / "_generated" / "question-bank" / "sets").glob("*.json"))
+    assert len(qb_sets) > 0
 
     newton_bundle = None
-    for p in qb_pages:
+    for p in qb_sets:
         if "newton-laws" in p.name:
             newton_bundle = json.loads(p.read_text(encoding="utf-8"))
             break

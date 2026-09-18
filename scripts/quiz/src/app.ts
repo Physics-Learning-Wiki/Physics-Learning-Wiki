@@ -312,17 +312,34 @@ class QuizApp {
   }
 }
 
+import { InlineSurface } from "./surfaces/inline.js";
+
+const inlineSurfaces: InlineSurface[] = [];
+
 function initialize(): void {
-  const root = document.querySelector<HTMLElement>("#plw-quiz-root");
-  if (!root) {
-    window.__plwQuizDestroy?.();
-    window.__plwQuizDestroy = undefined;
-    return;
+  for (const surface of inlineSurfaces) {
+    surface.destroy();
   }
-  window.__plwQuizDestroy?.();
-  const app = new QuizApp(root);
-  window.__plwQuizDestroy = () => app.destroy();
-  void app.start();
+  inlineSurfaces.length = 0;
+
+  const root = document.querySelector<HTMLElement>("#plw-quiz-root");
+  if (root) {
+    window.__plwQuizDestroy?.();
+    const app = new QuizApp(root);
+    window.__plwQuizDestroy = () => {
+      app.destroy();
+      for (const surface of inlineSurfaces) surface.destroy();
+      inlineSurfaces.length = 0;
+    };
+    void app.start();
+  }
+
+  const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
+  for (const inlineRoot of Array.from(inlineRoots)) {
+    const surface = new InlineSurface(inlineRoot);
+    inlineSurfaces.push(surface);
+    void surface.start();
+  }
 }
 
 if (typeof window !== "undefined") {
@@ -337,16 +354,18 @@ if (typeof window !== "undefined") {
   }
 
   window.addEventListener("popstate", () => {
-    if (document.querySelector<HTMLElement>("#plw-quiz-root")) {
+    if (document.querySelector<HTMLElement>("#plw-quiz-root") || document.querySelector<HTMLElement>(".plw-quiz-inline-root")) {
       initialize();
     }
   });
 
   const observer = new MutationObserver(() => {
     const root = document.querySelector<HTMLElement>("#plw-quiz-root");
-    if (root && root.children.length === 0) {
+    const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
+    if ((root && root.children.length === 0) || (inlineRoots.length > 0 && inlineSurfaces.length === 0)) {
       initialize();
     }
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 }
+
