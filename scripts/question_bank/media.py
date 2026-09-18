@@ -181,6 +181,8 @@ def compiled_assets(
         if not source or not source.is_file():
             continue
         content = source.read_bytes()
+        if source.suffix.lower() == ".svg":
+            content = content.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
         digest = hashlib.sha256(content).hexdigest()[:16]
         relative = f"assets/{digest}{source.suffix.lower()}"
         references[asset["id"]] = relative

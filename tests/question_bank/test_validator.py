@@ -58,14 +58,10 @@ def test_zero_relative_tolerance_is_rejected() -> None:
     )
 
 
-@pytest.mark.skip(reason="Pending Commit 4 repository v3 cutover")
-def test_release_allows_explicit_construction_pages() -> None:
-    normal = validate_repository(ROOT)
-    release = validate_repository(ROOT, release=True)
-    assert normal.ok
-    assert normal.warnings
-    assert release.ok
-    assert release.warnings
+def test_validate_repository_succeeds_with_draft_set_warnings() -> None:
+    report = validate_repository(ROOT)
+    assert report.ok
+    assert len(report.warnings) == 2
 
 
 def test_published_question_requires_current_three_dimensional_review() -> None:

@@ -34,7 +34,7 @@ def on_config(config, **kwargs):
     _context.update({"preview": preview, "manifest": manifest})
     print(
         "[question-bank] "
-        f"{len(report.data.questions)} source questions, {len(manifest['pages'])} pages, "
+        f"{len(report.data.questions)} source questions, {len(manifest.get('sets', {}))} sets, "
         f"{metrics['bytes']} bytes in {metrics['seconds']:.3f}s"
     )
     return config

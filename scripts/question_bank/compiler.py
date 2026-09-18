@@ -9,6 +9,8 @@ from typing import Any
 
 from .markdown_renderer import render_markdown
 from .media import compiled_assets, question_content_fingerprint
+from .models import PageRegistry, TaxonomyRegistry
+from .selection import matches_filters, solve_query_selection
 from .utils import canonical_json, fingerprint, tree_bytes
 from .validator import ValidationReport, validate_repository
 
@@ -17,117 +19,280 @@ def _render_list(values: list[str]) -> list[str]:
     return [render_markdown(value) for value in values]
 
 
-def compile_question(source: dict[str, Any], asset_urls: dict[str, str]) -> dict[str, Any]:
+def _expand_topic_ancestors(topic_id: str, taxonomy: TaxonomyRegistry) -> set[str]:
+    result = {topic_id}
+    curr = topic_id
+    while curr in taxonomy.topics:
+        parent = taxonomy.topics[curr].parent
+        if parent:
+            result.add(parent)
+            curr = parent
+        else:
+            break
+    return result
+
+
+def compile_question(
+    source: dict[str, Any],
+    asset_urls: dict[str, str],
+    page_registry: PageRegistry | None = None,
+    root: Path | None = None,
+) -> dict[str, Any]:
     question: dict[str, Any] = {
         "id": source["id"],
         "version": source["version"],
+        "status": source.get("status", "draft"),
         "type": source["type"],
-        "choiceOrder": source["choice_order"],
-        "primaryObjective": source["primary_objective"],
-        "secondaryObjectives": source.get("secondary_objectives", []),
-        "conceptIds": source["concepts"],
-        "stemHtml": render_markdown(source["stem"]),
-        "answer": source["answer"],
-        "feedback": {
-            key + "Html" if key != "choices" else "choicesHtml": (
-                {choice: render_markdown(text) for choice, text in value.items()}
-                if isinstance(value, dict) else render_markdown(value)
-            )
-            for key, value in source["feedback"].items()
-        },
-        "hintsHtml": _render_list(source.get("hints", [])),
-        "solutionHtml": render_markdown(source["solution"]),
-        "difficulty": source["difficulty"],
-        "cognitiveLevel": source["cognitive_level"],
-        "style": source["style"],
-        "estimatedSeconds": source["estimated_seconds"],
+        "choiceOrder": source.get("choice_order", "shuffle"),
+        "topicIds": list(source.get("topics", [])),
+        "conceptIds": list(source.get("concepts", [])),
+        "objectiveIds": list(source.get("objectives", [])),
+        "relatedPages": list(source.get("related_pages", [])),
+        "stemHtml": render_markdown(source.get("stem", "")),
+        "answer": source.get("answer", {}),
         "assets": asset_urls,
     }
+
     if "choices" in source:
-        question["choices"] = [{"id": choice["id"], "contentHtml": render_markdown(choice["content"])} for choice in source["choices"]]
+        question["choices"] = [
+            {"id": choice["id"], "contentHtml": render_markdown(choice.get("content", ""))}
+            for choice in source["choices"]
+        ]
+
+    if "feedback" in source and isinstance(source["feedback"], dict):
+        feedback: dict[str, Any] = {}
+        for key, value in source["feedback"].items():
+            if key == "choices" and isinstance(value, dict):
+                feedback["choicesHtml"] = {cid: render_markdown(text) for cid, text in value.items()}
+            elif isinstance(value, str):
+                feedback[f"{key}Html"] = render_markdown(value)
+        question["feedback"] = feedback
+
+    if "hints" in source and isinstance(source["hints"], list):
+        question["hintsHtml"] = [render_markdown(hint) for hint in source["hints"]]
+
+    if "solution" in source and isinstance(source["solution"], str):
+        question["solutionHtml"] = render_markdown(source["solution"])
+
+    for field, target in [
+        ("difficulty", "difficulty"),
+        ("cognitive_level", "cognitiveLevel"),
+        ("style", "style"),
+        ("estimated_seconds", "estimatedSeconds"),
+    ]:
+        if field in source:
+            question[target] = source[field]
+
+    if root is not None:
+        question["contentFingerprint"] = question_content_fingerprint(source, root)
+
+    if page_registry is not None:
+        objectives_detail = []
+        for obj_id in source.get("objectives", []):
+            page_id = page_registry.get_page_for_objective(obj_id)
+            if page_id:
+                page = page_registry.get_page(page_id)
+                if page and obj_id in page.objectives:
+                    obj_info = page.objectives[obj_id]
+                    objectives_detail.append({
+                        "id": obj_id,
+                        "title": obj_info.get("title", obj_id),
+                        "pageId": page_id,
+                        "pageTitle": page.title,
+                        "url": page.url,
+                        "anchor": obj_info.get("anchor", ""),
+                    })
+        if objectives_detail:
+            question["objectivesDetail"] = objectives_detail
+
+        related_pages_detail = []
+        for page_id in source.get("related_pages", []):
+            page = page_registry.get_page(page_id)
+            if page:
+                related_pages_detail.append({
+                    "id": page_id,
+                    "title": page.title,
+                    "url": page.url,
+                })
+        if related_pages_detail:
+            question["relatedPagesDetail"] = related_pages_detail
+
     return question
 
 
-def _blueprint_for(report: ValidationReport, blueprint_id: str) -> dict[str, Any]:
-    for blueprint in report.data.blueprints:
-        if blueprint.data.get("id") == blueprint_id:
-            return blueprint.data
-    return {}
-
-
 def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
-    included = [
-        document for document in report.data.questions
-        if document.data.get("status") == "published" or (preview and document.data.get("status") == "draft")
-    ]
+    published_questions = [d for d in report.data.questions if d.data.get("status") == "published"]
+    draft_questions = [d for d in report.data.questions if d.data.get("status") == "draft"]
+    included_questions = published_questions + (draft_questions if preview else [])
+
+    published_sets = [d for d in report.data.sets if d.data.get("status") == "published"]
+    draft_sets = [d for d in report.data.sets if d.data.get("status") == "draft"]
+    included_sets = published_sets + (draft_sets if preview else [])
+
+    files: dict[str, bytes] = {}
+    compiled_questions: dict[str, dict[str, Any]] = {}
+    for doc in included_questions:
+        asset_urls, asset_files = compiled_assets(doc.data, report.data.root)
+        files.update(asset_files)
+        cq = compile_question(
+            doc.data,
+            asset_urls,
+            page_registry=report.data.page_registry,
+            root=report.data.root,
+        )
+        compiled_questions[cq["id"]] = cq
+
     source_fingerprint = {
         "preview": preview,
-        "pages": {page_id: page.objectives for page_id, page in report.data.pages.items()},
-        "blueprints": [document.data for document in report.data.blueprints],
         "questions": [
             {
-                "data": document.data,
-                "contentFingerprint": question_content_fingerprint(document.data, report.data.root),
+                "data": doc.data,
+                "contentFingerprint": question_content_fingerprint(doc.data, report.data.root),
             }
-            for document in included
+            for doc in sorted(included_questions, key=lambda d: str(d.data.get("id")))
         ],
+        "sets": [
+            doc.data
+            for doc in sorted(included_sets, key=lambda d: str(d.data.get("id")))
+        ],
+        "topics": {
+            tid: {"id": t.id, "title": t.title, "parent": t.parent}
+            for tid, t in sorted(report.data.taxonomy.topics.items())
+        },
+        "concepts": {
+            cid: {"id": c.id, "title": c.title, "topics": c.topics, "aliases": c.aliases}
+            for cid, c in sorted(report.data.taxonomy.concepts.items())
+        },
     }
     bank_fingerprint = fingerprint(source_fingerprint)
-    files: dict[str, bytes] = {}
-    manifest_pages: dict[str, Any] = {}
-    for page_id, page in sorted(report.data.pages.items()):
-        if not page.quiz.get("enabled"):
-            continue
-        page_questions = [document for document in included if page_id in document.data.get("scope", {}).get("pages", [])]
-        published_count = sum(
-            1 for document in report.data.questions
-            if document.data.get("status") == "published" and page_id in document.data.get("scope", {}).get("pages", [])
-        )
-        blueprint = _blueprint_for(report, str(page.quiz.get("blueprint", "")))
-        published_sources = [
-            document.data for document in report.data.questions
-            if document.data.get("status") == "published" and page_id in document.data.get("scope", {}).get("pages", [])
-        ]
-        available, _ = publication_readiness(page, published_sources, blueprint)
-        compiled_questions = []
-        for document in sorted(page_questions, key=lambda item: item.data["id"]):
-            asset_urls, asset_files = compiled_assets(document.data, report.data.root)
-            files.update(asset_files)
-            compiled_questions.append(compile_question(document.data, asset_urls))
+
+    # 1. Question Catalog
+    questions_catalog_data = [
+        compiled_questions[qid]
+        for qid in sorted(compiled_questions.keys())
+    ]
+    digest = fingerprint(questions_catalog_data).split(":", 1)[1][:12]
+    questions_catalog_path = f"catalog/questions.{digest}.json"
+    files[questions_catalog_path] = canonical_json(questions_catalog_data)
+
+    # 2. Taxonomy Catalog
+    taxonomy_catalog_data = {
+        "topics": {
+            tid: {"id": t.id, "title": t.title, "parent": t.parent}
+            for tid, t in sorted(report.data.taxonomy.topics.items())
+        },
+        "concepts": {
+            cid: {"id": c.id, "title": c.title, "topics": c.topics, "aliases": c.aliases}
+            for cid, c in sorted(report.data.taxonomy.concepts.items())
+        },
+    }
+    digest = fingerprint(taxonomy_catalog_data).split(":", 1)[1][:12]
+    taxonomy_catalog_path = f"catalog/taxonomy.{digest}.json"
+    files[taxonomy_catalog_path] = canonical_json(taxonomy_catalog_data)
+
+    # 3. Sets and Set Bundles
+    manifest_sets: dict[str, Any] = {}
+    sets_catalog_data: list[dict[str, Any]] = []
+
+    for set_doc in sorted(included_sets, key=lambda d: str(d.data.get("id"))):
+        set_data = set_doc.data
+        set_id = str(set_data["id"])
+        sel = set_data.get("selection", {})
+        sel_type = sel.get("type")
+
+        if sel_type == "fixed":
+            q_ids = sel.get("questions", [])
+            candidate_qs = [compiled_questions[qid] for qid in q_ids if qid in compiled_questions]
+            question_count = len(q_ids)
+            if len(candidate_qs) == len(q_ids):
+                runnable = True
+                unavailable_reason = None
+            else:
+                runnable = False
+                missing = set(q_ids) - set(compiled_questions.keys())
+                unavailable_reason = f"Missing referenced questions: {', '.join(sorted(missing))}"
+        else:  # query
+            question_count = sel.get("count", 0)
+            top_filters = sel.get("filters", {})
+            pool = [doc.data for doc in included_questions]
+            candidate_raw = [
+                q for q in pool
+                if matches_filters(q, top_filters, report.data.taxonomy)
+            ]
+            candidate_qs = [
+                compiled_questions[q["id"]]
+                for q in sorted(candidate_raw, key=lambda item: item["id"])
+                if q["id"] in compiled_questions
+            ]
+            solution = solve_query_selection(candidate_raw, sel, report.data.taxonomy, set_id=set_id)
+            if solution is not None:
+                runnable = True
+                unavailable_reason = None
+            else:
+                runnable = False
+                unavailable_reason = "No candidate questions satisfy selection slots and constraints"
+
+        # Derive topicIds
+        set_topics: set[str] = set()
+        for cq in candidate_qs:
+            for tid in cq.get("topicIds", []):
+                set_topics.update(_expand_topic_ancestors(tid, report.data.taxonomy))
+        sorted_topic_ids = sorted(set_topics)
+
+        # Set Bundle
         bundle = {
-            "schemaVersion": 2,
+            "schemaVersion": 3,
             "bankFingerprint": bank_fingerprint,
+            "selectionAlgorithmVersion": 1,
             "preview": preview,
-            "page": {
-                "id": page_id,
-                "title": page.title,
-                "url": page.url,
-                "objectives": list(page.objectives.values()),
-            },
-            "blueprint": blueprint,
-            "questions": compiled_questions,
+            "set": set_data,
+            "runnable": runnable,
+            "unavailableReason": unavailable_reason,
+            "questions": candidate_qs,
         }
         digest = fingerprint(bundle).split(":", 1)[1][:12]
-        bundle_path = f"pages/{page_id}.{digest}.json"
+        bundle_path = f"sets/{set_id}.{digest}.json"
         files[bundle_path] = canonical_json(bundle)
-        modes = {
-            name: {"title": mode.get("title", name), "total": mode.get("total", 0)}
-            for name, mode in blueprint.get("modes", {}).items()
-        }
-        active = page.quiz.get("state") == "active"
-        manifest_pages[page_id] = {
-            "title": page.title,
-            "url": page.url,
+
+        manifest_sets[set_id] = {
+            "title": set_data["title"],
+            "status": set_data["status"],
             "bundle": bundle_path,
-            "status": "available" if active and available else "construction",
-            "publishedQuestionCount": published_count,
-            "previewQuestionCount": len(page_questions) if preview else 0,
-            "modes": modes,
-            "objectives": list(page.objectives.values()),
-            "questionPrefix": page.quiz.get("question_prefix", ""),
         }
-    manifest = {"schemaVersion": 2, "bankFingerprint": bank_fingerprint, "preview": preview, "pages": manifest_pages}
+
+        sets_catalog_data.append({
+            "id": set_id,
+            "title": set_data["title"],
+            "description": set_data.get("description", ""),
+            "tags": set_data.get("tags", []),
+            "status": set_data["status"],
+            "selectionType": sel_type,
+            "questionCount": question_count,
+            "feedbackMode": set_data.get("feedback_mode", "immediate"),
+            "topicIds": sorted_topic_ids,
+            "runnable": runnable,
+            "unavailableReason": unavailable_reason,
+        })
+
+    digest = fingerprint(sets_catalog_data).split(":", 1)[1][:12]
+    sets_catalog_path = f"catalog/sets.{digest}.json"
+    files[sets_catalog_path] = canonical_json(sets_catalog_data)
+
+    # 4. Manifest v3
+    manifest = {
+        "schemaVersion": 3,
+        "bankFingerprint": bank_fingerprint,
+        "selectionAlgorithmVersion": 1,
+        "preview": preview,
+        "catalogs": {
+            "questions": questions_catalog_path,
+            "sets": sets_catalog_path,
+            "taxonomy": taxonomy_catalog_path,
+        },
+        "sets": manifest_sets,
+    }
     files["manifest.json"] = canonical_json(manifest)
+
     return files
 
 
@@ -161,7 +326,12 @@ def write_atomic(output: Path, files: dict[str, bytes]) -> bool:
     return True
 
 
-def compile_repository(root: Path | str = ".", output: Path | str | None = None, *, preview: bool = False) -> tuple[ValidationReport, dict[str, int | float | bool]]:
+def compile_repository(
+    root: Path | str = ".",
+    output: Path | str | None = None,
+    *,
+    preview: bool = False,
+) -> tuple[ValidationReport, dict[str, int | float | bool]]:
     started = time.perf_counter()
     report = validate_repository(root, include_drafts=preview)
     if not report.ok:
