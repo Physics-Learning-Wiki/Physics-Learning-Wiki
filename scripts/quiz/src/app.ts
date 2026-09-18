@@ -1,8 +1,17 @@
 import { loadBundle, loadManifest, readParameters } from "./data.js";
 import { isAnswerComplete, makeResult, summarizeObjectives } from "./grading.js";
 import { typeset } from "./math.js";
+import {
+  escapeHtml,
+  hydrateAssets,
+  renderAnswerControl,
+  renderFeedback,
+  renderHints,
+  renderQuestionStem
+} from "./question-renderer.js";
 import { newSeed } from "./random.js";
 import { selectQuestions, selectRetry } from "./selection.js";
+import { createSession, findRestorableSession } from "./session.js";
 import { QuizStore } from "./storage.js";
 import type { Attempt, Manifest, PageBundle, Question, QuizMode, Session, UserAnswer } from "./types.js";
 
@@ -366,34 +375,39 @@ class QuizApp {
     section.append(metaBar);
 
     // 4. Question Stem
-    const stem = document.createElement("div");
-    stem.className = "plw-quiz-stem";
-    stem.innerHTML = question.stemHtml;
-    section.append(stem);
+    section.append(renderQuestionStem(question));
 
     // 5. Answer Choices
     section.append(
-      this.answerControl(question, answer, locked, updatedAnswer => {
-        if (this.confirmButtonElement) {
-          this.confirmButtonElement.disabled = !isAnswerComplete(question, updatedAnswer);
+      renderAnswerControl({
+        question,
+        answer,
+        locked,
+        onAnswerChange: updatedAnswer => {
+          this.setAnswer(question.id, updatedAnswer, false);
+          if (this.confirmButtonElement) {
+            this.confirmButtonElement.disabled = !isAnswerComplete(question, updatedAnswer);
+          }
+          this.updateStepDotAnswered(updatedAnswer != null);
         }
       })
     );
 
     // 6. Hints Accordion
-    if (question.hintsHtml.length) {
-      const hints = document.createElement("details");
-      hints.className = "plw-quiz-hints";
-      hints.innerHTML = `<summary>💡 查看解题提示 (${
-        question.hintsHtml.length
-      })</summary><div class="plw-quiz-hints__body">${question.hintsHtml
-        .map((hint, index) => `<div><strong>提示 ${index + 1}</strong>${hint}</div>`)
-        .join("")}</div>`;
-      section.append(hints);
-    }
+    const hints = renderHints(question);
+    if (hints) section.append(hints);
 
     // 7. Feedback when locked
-    if (locked) section.append(this.feedback(question, answer));
+    if (locked) {
+      section.append(
+        renderFeedback({
+          question,
+          answer,
+          uncertain: Boolean(this.session.uncertain[question.id]),
+          reportUrl: this.reportLink(question)
+        })
+      );
+    }
 
     // 8. Action Buttons
     const actions = document.createElement("div");
@@ -430,7 +444,7 @@ class QuizApp {
       section.insertAdjacentHTML("beforeend", '<p role="status">浏览器存储不可用，本次进度不会持久保存。</p>');
 
     this.root.replaceChildren(section);
-    this.hydrateAssets(section);
+    hydrateAssets(section, this.bundle.questions, this.manifestUrl);
     section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
     void typeset(section);
   }
@@ -443,154 +457,10 @@ class QuizApp {
     this.renderQuestion();
   }
 
-  private answerControl(
-    question: Question,
-    answer: UserAnswer,
-    locked: boolean,
-    onAnswerChange: (answer: UserAnswer) => void
-  ): HTMLElement {
-    const fieldset = document.createElement("fieldset");
-    const legend = document.createElement("legend");
-    legend.textContent = "请选择或填写答案：";
-    fieldset.append(legend);
-
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    if (question.type === "single_choice" || question.type === "multiple_choice") {
-      question.choices.forEach((choice, index) => {
-        const badgeLetter = letters[index] ?? String(index + 1);
-        const label = document.createElement("label");
-        label.className = "plw-quiz-choice";
-        const selected = Array.isArray(answer) ? answer.includes(choice.id) : answer === choice.id;
-        if (selected) label.classList.add("is-selected");
-
-        label.innerHTML = `
-          <span class="plw-quiz-choice__badge">${badgeLetter}</span>
-          <input type="${question.type === "single_choice" ? "radio" : "checkbox"}" name="answer" value="${
-          choice.id
-        }" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
-          <span class="plw-quiz-choice__content">${choice.contentHtml}</span>
-        `;
-
-        label.querySelector("input")?.addEventListener("change", e => {
-          if (question.type === "single_choice") {
-            fieldset.querySelectorAll(".plw-quiz-choice").forEach(c => c.classList.remove("is-selected"));
-            label.classList.add("is-selected");
-            this.setAnswer(question.id, choice.id, false);
-            onAnswerChange(choice.id);
-            this.updateStepDotAnswered(true);
-          } else {
-            const isChecked = (e.target as HTMLInputElement).checked;
-            label.classList.toggle("is-selected", isChecked);
-            const current = Array.isArray(this.session!.answers[question.id])
-              ? (this.session!.answers[question.id] as string[])
-              : [];
-            const updated = isChecked ? [...current, choice.id] : current.filter(item => item !== choice.id);
-            const finalAnswer = updated.length ? updated : null;
-            this.setAnswer(question.id, finalAnswer, false);
-            onAnswerChange(finalAnswer);
-            this.updateStepDotAnswered(finalAnswer != null);
-          }
-        });
-        fieldset.append(label);
-      });
-    } else if (question.type === "true_false") {
-      const options = [
-        { label: "正确", value: true, badge: "A" },
-        { label: "错误", value: false, badge: "B" }
-      ];
-      options.forEach(item => {
-        const label = document.createElement("label");
-        label.className = "plw-quiz-choice";
-        const selected = answer === item.value;
-        if (selected) label.classList.add("is-selected");
-
-        label.innerHTML = `
-          <span class="plw-quiz-choice__badge">${item.badge}</span>
-          <input type="radio" name="answer" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
-          <span class="plw-quiz-choice__content">${item.label}</span>
-        `;
-        label.querySelector("input")?.addEventListener("change", () => {
-          fieldset.querySelectorAll(".plw-quiz-choice").forEach(c => c.classList.remove("is-selected"));
-          label.classList.add("is-selected");
-          this.setAnswer(question.id, item.value, false);
-          onAnswerChange(item.value);
-          this.updateStepDotAnswered(true);
-        });
-        fieldset.append(label);
-      });
-    } else {
-      const current = typeof answer === "object" && answer && !Array.isArray(answer) ? answer : { value: "", unit: "" };
-      const wrap = document.createElement("div");
-      wrap.className = "plw-quiz-numeric-wrap";
-
-      const input = document.createElement("input");
-      input.type = "text";
-      input.inputMode = "decimal";
-      input.placeholder = "输入数值计算结果";
-      input.value = current.value;
-      input.disabled = locked;
-      input.setAttribute("aria-label", "数值答案");
-
-      const unit = document.createElement("select");
-      unit.disabled = locked;
-      unit.setAttribute("aria-label", "单位");
-      unit.innerHTML = `<option value="">选择单位</option>${question.answer.unit.accepted
-        .map(item => `<option ${current.unit === item ? "selected" : ""}>${escapeHtml(item)}</option>`)
-        .join("")}`;
-
-      const update = () => {
-        const updatedAnswer = input.value.trim() ? { value: input.value, unit: unit.value } : null;
-        this.setAnswer(question.id, updatedAnswer, false);
-        onAnswerChange(updatedAnswer);
-        this.updateStepDotAnswered(updatedAnswer != null);
-      };
-
-      input.addEventListener("input", update);
-      unit.addEventListener("change", update);
-      wrap.append(input, unit);
-      fieldset.append(wrap);
-    }
-    return fieldset;
-  }
-
   private updateStepDotAnswered(isAnswered: boolean): void {
     if (!this.session || !this.stepperElement) return;
     const currentBtn = this.stepperElement.children[this.session.currentIndex] as HTMLElement | undefined;
     currentBtn?.classList.toggle("is-answered", isAnswered);
-  }
-
-  private feedback(question: Question, answer: UserAnswer): HTMLElement {
-    const result = makeResult(question, answer, Boolean(this.session?.uncertain[question.id]));
-    const area = document.createElement("div");
-    area.className = result.correct ? "plw-quiz-feedback is-correct" : "plw-quiz-feedback is-incorrect";
-    area.setAttribute("role", "status");
-
-    let targeted = "";
-    if (question.feedback.choicesHtml && typeof answer === "string") {
-      targeted = question.feedback.choicesHtml[answer]
-        ? `<p><strong>针对你的选择：</strong>${question.feedback.choicesHtml[answer]}</p>`
-        : "";
-    }
-
-    area.innerHTML = `
-      <h3>${result.correct ? "回答正确" : "需要复习"}</h3>
-      ${targeted}
-      <div class="plw-quiz-feedback-text">${
-        result.correct ? question.feedback.correctHtml : question.feedback.incorrectHtml
-      }</div>
-      <details>
-        <summary>📖 查看完整考点解析</summary>
-        <div style="margin-top: 0.5rem; line-height: 1.6;">${question.solutionHtml}</div>
-      </details>
-    `;
-
-    const report = document.createElement("a");
-    report.className = "plw-quiz-report";
-    report.href = this.reportLink(question);
-    report.textContent = "发现题目有误？点击报告问题";
-    area.append(report);
-    return area;
   }
 
   private confirmQuick(question: Question): void {
@@ -751,7 +621,14 @@ class QuizApp {
         </div>
         <div class="plw-quiz-stem">${question.stemHtml}</div>
       `;
-      article.append(this.feedback(question, result.answer));
+      article.append(
+        renderFeedback({
+          question,
+          answer: result.answer,
+          uncertain: result.uncertain,
+          reportUrl: this.reportLink(question)
+        })
+      );
       reviewContainer.append(article);
     });
     section.append(reviewContainer);
@@ -809,7 +686,7 @@ class QuizApp {
     section.append(actions);
 
     this.root.replaceChildren(section);
-    this.hydrateAssets(section);
+    hydrateAssets(section, this.bundle.questions, this.manifestUrl);
     section.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
     void typeset(section);
   }
@@ -853,33 +730,12 @@ class QuizApp {
 
   private restoreOrCreate(pageId: string, mode: QuizMode, seed: string): Session {
     const candidates = this.store.read().activeSessions[pageId] ?? [];
-    const found = candidates.find(
-      item =>
-        item.mode === mode &&
-        item.seed === seed &&
-        item.bankFingerprint === this.bundle!.bankFingerprint &&
-        item.questionRefs.every(reference =>
-          this.questions.some(question => question.id === reference.id && question.version === reference.version)
-        )
-    );
+    const found = findRestorableSession(candidates, mode, seed, this.bundle!.bankFingerprint, this.questions);
     return found ?? this.newSession(pageId, mode, seed);
   }
 
   private newSession(pageId: string, mode: QuizMode, seed: string): Session {
-    const now = new Date().toISOString();
-    const session: Session = {
-      pageId,
-      mode,
-      seed,
-      bankFingerprint: this.bundle!.bankFingerprint,
-      questionRefs: this.questions.map(({ id, version }) => ({ id, version })),
-      answers: {},
-      uncertain: {},
-      locked: {},
-      currentIndex: 0,
-      startedAt: now,
-      updatedAt: now
-    };
+    const session = createSession(pageId, mode, seed, this.bundle!.bankFingerprint, this.questions);
     this.store.saveSession(session);
     return session;
   }
@@ -929,20 +785,6 @@ class QuizApp {
       title: `[题目勘误] ${question.id}`
     }).toString();
     return url.href;
-  }
-
-  private hydrateAssets(container: HTMLElement): void {
-    if (!this.bundle) return;
-    const scopes: HTMLElement[] = container.dataset.questionId ? [container] : [];
-    scopes.push(...Array.from(container.querySelectorAll<HTMLElement>("[data-question-id]")));
-    for (const scope of scopes) {
-      const question = this.bundle.questions.find(item => item.id === scope.dataset.questionId);
-      if (!question) continue;
-      for (const image of Array.from(scope.querySelectorAll<HTMLImageElement>("img[data-plw-asset]"))) {
-        const relative = question.assets[image.dataset.plwAsset ?? ""];
-        if (relative) image.src = new URL(relative, this.manifestUrl).href;
-      }
-    }
   }
 
   private handleExit(): void {
@@ -1027,12 +869,6 @@ class QuizApp {
     url.search = new URLSearchParams({ page_id: pageId, mode, seed }).toString();
     history.replaceState(history.state, "", url);
   }
-}
-
-function escapeHtml(value: string): string {
-  const element = document.createElement("span");
-  element.textContent = value;
-  return element.innerHTML;
 }
 
 function initialize(): void {
