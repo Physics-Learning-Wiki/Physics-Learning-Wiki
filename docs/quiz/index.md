@@ -38,6 +38,6 @@ hide:
 
 ---
 
-<div id="plw-quiz-home-root" data-manifest-url="../_generated/question-bank/manifest.json">
+<div id="plw-quiz-home-root" data-manifest-url="../_generated/question-bank/manifest.json" data-featured-sets="mechanics.dynamics.newton-laws.quick,mechanics.dynamics.newton-laws.full">
   <noscript>此功能需要 JavaScript．请启用 JavaScript 后重新打开页面．</noscript>
 </div>

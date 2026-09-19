@@ -252,8 +252,8 @@ export class QuestionsSurface {
         const topicNames = (q.topicIds ?? []).map(t => this.taxonomy?.topics[t]?.title ?? t).join(" ");
         const conceptNames = (q.conceptIds ?? []).map(c => this.taxonomy?.concepts[c]?.title ?? c).join(" ");
         const choicesText =
-          "choices" in q && Array.isArray((q as { choices?: Array<{ textHtml?: string }> }).choices)
-            ? (q as { choices: Array<{ textHtml?: string }> }).choices.map(c => c.textHtml ?? "").join(" ")
+          "choices" in q && Array.isArray((q as { choices?: Array<{ contentHtml?: string }> }).choices)
+            ? (q as { choices: Array<{ contentHtml?: string }> }).choices.map(c => c.contentHtml ?? "").join(" ")
             : "";
         const text = `${q.id} ${q.stemHtml ?? ""} ${topicNames} ${conceptNames} ${choicesText} ${(q.conceptIds ?? []).join(" ")} ${(q.topicIds ?? []).join(" ")}`.toLowerCase();
         if (!text.includes(this.keyword)) return false;

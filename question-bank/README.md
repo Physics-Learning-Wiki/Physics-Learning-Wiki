@@ -29,7 +29,7 @@ Physics Learning Wiki 的自测题库基于**资源中心模型**构建，由 **
 ### 3. Taxonomy（知识体系与分类法）
 - 存储在 `question-bank/taxonomy/`：
   - `topics.yml`：物理主题层级树（如 `mechanics` → `mechanics.dynamics`）。
-  - `concepts.yml`：核心物理概念集合（如 `mechanics.newton.inertia` 等），支持定义归属主题与同义词别名。
+  - `concepts/` 目录（如 `concepts/mechanics.yml`）：核心物理概念集合（如 `newton.inertia` 等），支持定义归属主题与同义词别名。
 
 ### 4. Placement（页面内容嵌入）
 - 页面通过 Markdown Front Matter 中的 `assessments:` 字段声明引用，无需声明页面所有权或题目数量硬性门槛：
@@ -45,7 +45,7 @@ question-bank/
 ├── assets/          # 题目插图资源 (通过 asset:<name> 引用)
 ├── questions/       # 题目资源 YAML (支持子目录或 inbox/)
 ├── sets/            # 测试集合 YAML
-├── taxonomy/        # 物理分类法 (topics.yml, concepts.yml)
+├── taxonomy/        # 物理分类法 (topics.yml, concepts/mechanics.yml 等)
 ├── schemas/         # JSON Schema 约束定义 (question, set)
 ├── README.md        # 架构与维护说明
 └── REVIEWING.md     # 同行审阅与审核签署规范

@@ -100,6 +100,20 @@ export class SetsSurface {
             <option value="deferred" ${this.selectedFeedbackMode === "deferred" ? "selected" : ""}>整卷提交</option>
           </select>
         </div>
+        <div class="plw-quiz-select-wrap">
+          <select class="plw-quiz-filter-select" id="plw-select-tag" aria-label="按标签筛选">
+            <option value="all" ${this.selectedTag === "all" ? "selected" : ""}>所有测试标签</option>
+            ${Array.from(allTags)
+              .sort((a, b) => a.localeCompare(b, "zh-Hans-CN"))
+              .map(
+                tag =>
+                  `<option value="${escapeHtml(tag)}" ${
+                    this.selectedTag === tag ? "selected" : ""
+                  }>${escapeHtml(tag)}</option>`
+              )
+              .join("")}
+          </select>
+        </div>
       </div>
     `;
 
@@ -115,6 +129,11 @@ export class SetsSurface {
 
     filterBar.querySelector("#plw-select-mode")?.addEventListener("change", e => {
       this.selectedFeedbackMode = (e.target as HTMLSelectElement).value;
+      this.renderList(cardsGrid, countNotice);
+    });
+
+    filterBar.querySelector("#plw-select-tag")?.addEventListener("change", e => {
+      this.selectedTag = (e.target as HTMLSelectElement).value;
       this.renderList(cardsGrid, countNotice);
     });
 

@@ -370,17 +370,26 @@ class HomeSurface {
       }
 
       // 2. Featured sets section
-      const publishedSets = Object.entries(manifest.sets).filter(
-        ([_, s]) => manifest.preview || s.status === "published"
-      );
-      if (publishedSets.length > 0) {
+      const featuredConfig = this.root.dataset.featuredSets;
+      let targetSetEntries: [string, (typeof manifest.sets)[string]][];
+      if (featuredConfig) {
+        const configuredIds = featuredConfig.split(",").map(s => s.trim()).filter(Boolean);
+        targetSetEntries = configuredIds
+          .map(id => [id, manifest.sets[id]] as [string, (typeof manifest.sets)[string]])
+          .filter(([_, s]) => s && (manifest.preview || s.status === "published"));
+      } else {
+        targetSetEntries = Object.entries(manifest.sets)
+          .filter(([_, s]) => manifest.preview || s.status === "published")
+          .slice(0, 4);
+      }
+
+      if (targetSetEntries.length > 0) {
         const featuredSec = document.createElement("section");
         featuredSec.className = "plw-quiz-home-featured";
         featuredSec.innerHTML = `
           <h2 class="plw-quiz-landing__subtitle">精选测试推荐</h2>
           <div class="plw-quiz-landing__grid">
-            ${publishedSets
-              .slice(0, 4)
+            ${targetSetEntries
               .map(([setId, s]) => {
                 const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}`;
                 const draftBadge = s.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : "";

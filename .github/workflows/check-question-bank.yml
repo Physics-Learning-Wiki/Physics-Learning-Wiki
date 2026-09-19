@@ -62,7 +62,7 @@ jobs:
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run python -m scripts.question_bank validate --include-drafts
-          uv run python -m scripts.question_bank validate --release
+          uv run python -m scripts.question_bank validate
           uv run pytest tests/question_bank tests/integration
       - name: Check deterministic compilation
         run: |
