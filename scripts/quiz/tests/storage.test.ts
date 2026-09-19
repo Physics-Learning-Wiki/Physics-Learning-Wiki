@@ -102,6 +102,58 @@ test("corrupted json or structurally invalid storage resets with corrupt_data re
   });
   assert.equal(store2.getResetReason(), "corrupt_data");
   assert.equal(store2.read().schemaVersion, 2);
+
+  // Nested corrupt session
+  const storageMap3: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({
+      schemaVersion: 2,
+      activeSessions: { "set:x": null },
+      attempts: [],
+      wrongQuestions: {}
+    })
+  };
+  const store3 = new QuizStore({
+    getItem: (k: string) => storageMap3[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap3[k] = next;
+    }
+  });
+  assert.equal(store3.getResetReason(), "corrupt_data");
+  assert.equal(store3.read().schemaVersion, 2);
+
+  // Nested corrupt session object
+  const storageMap4: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({
+      schemaVersion: 2,
+      activeSessions: { "set:x": [{ invalid: true }] },
+      attempts: [],
+      wrongQuestions: {}
+    })
+  };
+  const store4 = new QuizStore({
+    getItem: (k: string) => storageMap4[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap4[k] = next;
+    }
+  });
+  assert.equal(store4.getResetReason(), "corrupt_data");
+
+  // Corrupt wrongQuestions values
+  const storageMap5: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({
+      schemaVersion: 2,
+      activeSessions: {},
+      attempts: [],
+      wrongQuestions: { q1: 123 }
+    })
+  };
+  const store5 = new QuizStore({
+    getItem: (k: string) => storageMap5[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap5[k] = next;
+    }
+  });
+  assert.equal(store5.getResetReason(), "corrupt_data");
 });
 
 test("consumeResetReason returns reset reason once and clears it", () => {

@@ -27,6 +27,66 @@ export function emptyData(): QuizStorageData {
 
 export type StorageResetReason = "corrupt_data" | "version_mismatch" | null;
 
+function isQuizSource(v: unknown): v is QuizSource {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  const s = v as any;
+  if (s.type === "set") return typeof s.id === "string" && s.id.length > 0;
+  if (s.type === "adhoc") {
+    return Array.isArray(s.questionIds) && s.questionIds.every((id: any) => typeof id === "string");
+  }
+  return false;
+}
+
+function isSession(v: unknown): v is Session {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  const s = v as any;
+  return (
+    typeof s.sessionId === "string" &&
+    s.sessionId.length > 0 &&
+    isQuizSource(s.source) &&
+    typeof s.seed === "string" &&
+    typeof s.bankFingerprint === "string" &&
+    typeof s.selectionAlgorithmVersion === "number" &&
+    typeof s.currentIndex === "number" &&
+    Array.isArray(s.questionRefs) &&
+    s.questionRefs.every((r: any) => r && typeof r.id === "string" && typeof r.version === "number") &&
+    s.answers !== null &&
+    typeof s.answers === "object" &&
+    !Array.isArray(s.answers) &&
+    s.uncertain !== null &&
+    typeof s.uncertain === "object" &&
+    !Array.isArray(s.uncertain) &&
+    s.locked !== null &&
+    typeof s.locked === "object" &&
+    !Array.isArray(s.locked) &&
+    typeof s.startedAt === "string" &&
+    typeof s.updatedAt === "string"
+  );
+}
+
+function isAttempt(v: unknown): v is Attempt {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  const a = v as any;
+  return (
+    typeof a.sessionId === "string" &&
+    isQuizSource(a.source) &&
+    typeof a.seed === "string" &&
+    typeof a.bankFingerprint === "string" &&
+    typeof a.score === "number" &&
+    typeof a.total === "number" &&
+    typeof a.completedAt === "string" &&
+    Array.isArray(a.questionResults)
+  );
+}
+
+function isWrongQuestions(v: unknown): boolean {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  for (const [k, val] of Object.entries(v as Record<string, unknown>)) {
+    if (typeof k !== "string" || typeof val !== "string") return false;
+  }
+  return true;
+}
+
 export class QuizStore {
   private memory = emptyData();
   private lastResetReason: StorageResetReason = null;
@@ -97,10 +157,24 @@ export class QuizStore {
         parsed.activeSessions === null ||
         Array.isArray(parsed.activeSessions) ||
         !Array.isArray(parsed.attempts) ||
-        typeof parsed.wrongQuestions !== "object" ||
-        parsed.wrongQuestions === null ||
-        Array.isArray(parsed.wrongQuestions)
+        !isWrongQuestions(parsed.wrongQuestions)
       ) {
+        this.lastResetReason = "corrupt_data";
+        const empty = emptyData();
+        this.write(empty);
+        return empty;
+      }
+
+      for (const [srcKey, list] of Object.entries(parsed.activeSessions)) {
+        if (!Array.isArray(list) || !list.every(isSession)) {
+          this.lastResetReason = "corrupt_data";
+          const empty = emptyData();
+          this.write(empty);
+          return empty;
+        }
+      }
+
+      if (!parsed.attempts.every(isAttempt)) {
         this.lastResetReason = "corrupt_data";
         const empty = emptyData();
         this.write(empty);

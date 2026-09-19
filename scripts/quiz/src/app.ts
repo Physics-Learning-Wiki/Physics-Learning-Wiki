@@ -103,16 +103,20 @@ class QuizApp {
   private async startSetRunner(setId: string, seedParam: string | null): Promise<void> {
     this.renderStatus("正在加载测试集合题目...");
 
+    const source: QuizSource = { type: "set", id: setId };
+    const activeSessions = this.store.getActiveSessions(source);
+
     const setMeta = this.manifest.sets[setId];
     if (!setMeta) {
+      if (activeSessions.length > 0) {
+        this.renderStaleSetNotice(source, "该小测集合已删除、退役或不再发布", activeSessions[0]);
+        return;
+      }
       this.renderError(`未找到指定测试集合：${setId}`);
       return;
     }
 
-    const source: QuizSource = { type: "set", id: setId };
-
     if (setMeta.status === "retired") {
-      const activeSessions = this.store.getActiveSessions(source);
       if (activeSessions.length > 0) {
         this.renderStaleSetNotice(source, "该小测集合已退役", activeSessions[0]);
         return;
@@ -423,8 +427,8 @@ class HomeSurface {
       if (noticeHtml) {
         const noticeWrap = document.createElement("div");
         noticeWrap.innerHTML = noticeHtml;
-        noticeWrap.querySelector(".plw-quiz-notice__close")?.addEventListener("click", () => {
-          noticeWrap.firstElementChild?.remove();
+        noticeWrap.querySelector(".plw-quiz-notice__close")?.addEventListener("click", e => {
+          (e.currentTarget as HTMLElement).closest(".plw-quiz-notice")?.remove();
         });
         if (noticeWrap.firstElementChild) {
           container.append(noticeWrap.firstElementChild);
