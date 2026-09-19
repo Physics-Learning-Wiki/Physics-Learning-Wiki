@@ -225,8 +225,24 @@ def validate_set(
             c_max = c.get("max")
             if c_min is not None and c_max is not None and c_min > c_max:
                 issues.append(Issue.error(path, f"selection.constraints[{c_idx}]", "min must not exceed max"))
+            if c_min is not None and c_min > count:
+                issues.append(Issue.error(path, f"selection.constraints[{c_idx}].min", "min exceeds selection count"))
             if c_max is not None and c_max > count:
                 issues.append(Issue.error(path, f"selection.constraints[{c_idx}].max", "max exceeds selection count"))
+            field = c.get("field")
+            values = c.get("values", [])
+            if field == "difficulty":
+                for v in values:
+                    if not isinstance(v, int) or v not in {1, 2, 3}:
+                        issues.append(Issue.error(path, f"selection.constraints[{c_idx}].values", f"invalid difficulty value {v!r}"))
+            elif field == "type":
+                for v in values:
+                    if v not in {"single_choice", "multiple_choice", "true_false", "numeric"}:
+                        issues.append(Issue.error(path, f"selection.constraints[{c_idx}].values", f"invalid type value {v!r}"))
+            elif field == "style":
+                for v in values:
+                    if v not in {"conceptual", "graphical", "computational", "modeling"}:
+                        issues.append(Issue.error(path, f"selection.constraints[{c_idx}].values", f"invalid style value {v!r}"))
 
         def check_filters(filters: dict[str, Any], field_prefix: str) -> None:
             if "topics" in filters:
@@ -257,6 +273,18 @@ def validate_set(
                     if not page_registry.has_page(p_id):
                         factory = Issue.error if set_status == "published" else Issue.warning
                         issues.append(factory(path, f"{field_prefix}.related_pages", f"unknown page id {p_id!r}"))
+            if "question_ids" in filters:
+                q_list = filters.get("question_ids") or []
+                for qid in q_list:
+                    if qid not in questions:
+                        factory = Issue.error if set_status == "published" else Issue.warning
+                        issues.append(factory(path, f"{field_prefix}.question_ids", f"unknown question id {qid!r}"))
+                    else:
+                        q_status = questions[qid].get("status")
+                        if q_status == "retired":
+                            issues.append(Issue.error(path, f"{field_prefix}.question_ids", f"referenced question {qid!r} is retired"))
+                        elif set_status == "published" and q_status != "published":
+                            issues.append(Issue.error(path, f"{field_prefix}.question_ids", f"published set cannot reference draft question {qid!r}"))
 
         check_filters(selection.get("filters", {}), "selection.filters")
         for s_idx, slot in enumerate(slots):

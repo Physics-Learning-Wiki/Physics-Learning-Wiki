@@ -123,15 +123,40 @@ def attest(
     return path
 
 
-def publish(root: Path, question_id: str) -> Path:
-    path, data = find_question(root, question_id)
+def find_set(root: Path, set_id: str) -> tuple[Path, dict[str, Any]]:
+    for document in load_tree(root / "question-bank" / "sets")[0]:
+        if document.data.get("id") == set_id:
+            return document.path, document.data
+    raise ValueError(f"unknown question or set id {set_id}")
+
+
+def publish(root: Path, resource_id: str) -> Path:
+    is_set = False
+    try:
+        path, data = find_question(root, resource_id)
+    except ValueError:
+        path, data = find_set(root, resource_id)
+        is_set = True
+
     original = data.get("status")
     data["status"] = "published"
     _write_yaml(path, data)
-    report = validate_repository(root)
-    errors = [issue for issue in report.errors if issue.path == path]
-    if errors:
+    try:
+        report = validate_repository(root)
+        errors = [issue for issue in report.errors if issue.path == path]
+        if errors:
+            raise ValueError("\n".join(issue.render() for issue in errors))
+
+        if is_set:
+            from .coverage import coverage_data
+
+            cov = coverage_data(report, preview=False)
+            target_set = cov.get("sets", {}).get(resource_id)
+            if not target_set or not target_set.get("feasible"):
+                raise ValueError(f"set {resource_id} is not feasible with currently published questions")
+    except Exception:
         data["status"] = original
         _write_yaml(path, data)
-        raise ValueError("\n".join(issue.render() for issue in errors))
+        raise
+
     return path

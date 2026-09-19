@@ -295,3 +295,115 @@ def test_validate_set_rules() -> None:
     draft_q_issues = validate_set(draft_query_doc, schema, questions, taxonomy)
     assert not [i for i in draft_q_issues if i.severity == "error"]
     assert any(i.severity == "warning" and "no candidate question set satisfies" in i.message for i in draft_q_issues)
+
+    # 7. Constraint min > count is error
+    c_min_count_doc = SourceDocument(
+        path=ROOT / "set8.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-c-min-count",
+            "title": "Constraint Min Count Test",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 2,
+                "constraints": [{"field": "difficulty", "values": [1], "min": 3}],
+            },
+        },
+    )
+    c_min_issues = validate_set(c_min_count_doc, schema, questions, taxonomy)
+    assert any("min exceeds selection count" in issue.message for issue in c_min_issues)
+
+    # 8. Constraint invalid values are error
+    c_invalid_diff = SourceDocument(
+        path=ROOT / "set9.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-c-invalid-diff",
+            "title": "Invalid Diff Test",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 2,
+                "constraints": [{"field": "difficulty", "values": [4], "min": 1}],
+            },
+        },
+    )
+    diff_issues = validate_set(c_invalid_diff, schema, questions, taxonomy)
+    assert any("invalid difficulty value" in issue.message for issue in diff_issues)
+
+    c_invalid_type = SourceDocument(
+        path=ROOT / "set10.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-c-invalid-type",
+            "title": "Invalid Type Test",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 2,
+                "constraints": [{"field": "type", "values": ["invalid_type"], "min": 1}],
+            },
+        },
+    )
+    type_issues = validate_set(c_invalid_type, schema, questions, taxonomy)
+    assert any("invalid type value" in issue.message for issue in type_issues)
+
+    # 9. Filter question_ids checks
+    draft_qid_unknown_doc = SourceDocument(
+        path=ROOT / "set11.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-qid-unknown-draft",
+            "title": "Draft QID Unknown",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 1,
+                "filters": {"question_ids": ["q-unknown"]},
+            },
+        },
+    )
+    qid_unknown_draft_issues = validate_set(draft_qid_unknown_doc, schema, questions, taxonomy)
+    assert any(i.severity == "warning" and "unknown question id 'q-unknown'" in i.message for i in qid_unknown_draft_issues)
+
+    pub_qid_draft_doc = SourceDocument(
+        path=ROOT / "set12.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-qid-draft-pub",
+            "title": "Pub QID Draft",
+            "status": "published",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 1,
+                "filters": {"question_ids": ["q-000002"]},
+            },
+        },
+    )
+    qid_draft_pub_issues = validate_set(pub_qid_draft_doc, schema, questions, taxonomy)
+    assert any(i.severity == "error" and "published set cannot reference draft question 'q-000002'" in i.message for i in qid_draft_pub_issues)
+
+    pub_qid_retired_doc = SourceDocument(
+        path=ROOT / "set13.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-qid-retired",
+            "title": "QID Retired",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "selection": {
+                "type": "query",
+                "count": 1,
+                "filters": {"question_ids": ["q-000003"]},
+            },
+        },
+    )
+    qid_retired_issues = validate_set(pub_qid_retired_doc, schema, questions, taxonomy)
+    assert any(i.severity == "error" and "referenced question 'q-000003' is retired" in i.message for i in qid_retired_issues)
+

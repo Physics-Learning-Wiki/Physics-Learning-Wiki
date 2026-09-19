@@ -37,3 +37,27 @@ def test_cli_validate_and_coverage_commands(capsys) -> None:
     assert code_cov == 0
     captured = capsys.readouterr()
     assert '"summary"' in captured.out
+
+
+def test_find_set_and_publish_infeasible_reverts() -> None:
+    import pytest
+    from scripts.question_bank.maintenance import find_set, publish
+
+    root = Path(__file__).parents[2]
+    path, data = find_set(root, "mechanics.kinematics.linear-motion.quick")
+    assert data["status"] == "draft"
+
+    with pytest.raises(ValueError, match="is not feasible"):
+        publish(root, "mechanics.kinematics.linear-motion.quick")
+
+    _, reverted = find_set(root, "mechanics.kinematics.linear-motion.quick")
+    assert reverted["status"] == "draft"
+
+
+def test_cli_publish_infeasible_set(capsys) -> None:
+    code = main(["publish", "--id", "mechanics.kinematics.linear-motion.quick"])
+    assert code == 1
+    captured = capsys.readouterr()
+    assert "ERROR:" in captured.out
+    assert "is not feasible" in captured.out
+

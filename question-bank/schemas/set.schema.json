@@ -122,12 +122,37 @@
         "values": {
           "type": "array",
           "minItems": 1,
-          "uniqueItems": true,
-          "items": {"type": ["string", "integer"]}
+          "uniqueItems": true
         },
         "min": {"type": "integer", "minimum": 0},
         "max": {"type": "integer", "minimum": 0}
       },
+      "oneOf": [
+        {
+          "properties": {
+            "field": {"const": "difficulty"},
+            "values": {
+              "items": {"type": "integer", "minimum": 1, "maximum": 3}
+            }
+          }
+        },
+        {
+          "properties": {
+            "field": {"const": "type"},
+            "values": {
+              "items": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric"]}
+            }
+          }
+        },
+        {
+          "properties": {
+            "field": {"const": "style"},
+            "values": {
+              "items": {"enum": ["conceptual", "graphical", "computational", "modeling"]}
+            }
+          }
+        }
+      ],
       "anyOf": [
         {"required": ["min"]},
         {"required": ["max"]}
