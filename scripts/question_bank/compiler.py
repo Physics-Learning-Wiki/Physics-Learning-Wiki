@@ -200,23 +200,27 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
         sel = set_data.get("selection", {})
         sel_type = sel.get("type")
 
+        set_status = set_data.get("status", "draft")
+        is_set_published = set_status == "published"
+        set_question_pool = [doc.data for doc in (published_questions if is_set_published else included_questions)]
+
         if sel_type == "fixed":
             q_ids = sel.get("questions", [])
-            candidate_qs = [compiled_questions[qid] for qid in q_ids if qid in compiled_questions]
+            valid_pool_ids = {q["id"] for q in set_question_pool}
+            candidate_qs = [compiled_questions[qid] for qid in q_ids if qid in compiled_questions and qid in valid_pool_ids]
             question_count = len(q_ids)
             if len(candidate_qs) == len(q_ids):
                 runnable = True
                 unavailable_reason = None
             else:
                 runnable = False
-                missing = set(q_ids) - set(compiled_questions.keys())
+                missing = set(q_ids) - valid_pool_ids
                 unavailable_reason = f"Missing referenced questions: {', '.join(sorted(missing))}"
         else:  # query
             question_count = sel.get("count", 0)
             top_filters = sel.get("filters", {})
-            pool = [doc.data for doc in included_questions]
             candidate_raw = [
-                q for q in pool
+                q for q in set_question_pool
                 if matches_filters(q, top_filters, report.data.taxonomy)
             ]
             candidate_qs = [

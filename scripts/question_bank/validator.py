@@ -83,9 +83,14 @@ def validate_question_content(
         for item in selected:
             if item not in ids:
                 issues.append(Issue.error(path, "answer", f"choice {item!r} does not exist"))
-        feedback_keys = set(data.get("feedback", {}).get("choices", {}))
-        if data.get("type") in {"single_choice", "multiple_choice"} and feedback_keys != set(ids):
-            issues.append(Issue.error(path, "feedback.choices", "feedback keys must exactly match choice ids"))
+        if data.get("type") in {"single_choice", "multiple_choice"}:
+            is_published = data.get("status") == "published"
+            fb = data.get("feedback")
+            has_fb_choices = isinstance(fb, dict) and "choices" in fb
+            if is_published or has_fb_choices:
+                feedback_keys = set(fb.get("choices", {})) if isinstance(fb, dict) else set()
+                if feedback_keys != set(ids):
+                    issues.append(Issue.error(path, "feedback.choices", "feedback keys must exactly match choice ids"))
     if data.get("type") == "numeric" and isinstance(data.get("answer"), dict):
         answer = data["answer"]
         value = answer.get("value")

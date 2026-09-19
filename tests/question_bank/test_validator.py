@@ -210,3 +210,28 @@ def test_validate_question_references_checks_objectives() -> None:
     document.data["objectives"] = ["nonexistent.objective"]
     issues = validate_question_references(document, pages)
     assert any("unknown objective id" in issue.message for issue in issues)
+
+
+def test_draft_choice_question_without_feedback_is_valid() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    # Turn into a minimal draft question with no feedback
+    document.data["status"] = "draft"
+    document.data.pop("feedback", None)
+    document.data.pop("review", None)
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert not issues, f"Draft choice question without feedback should be valid, got: {issues}"
+
+
+def test_published_choice_question_without_feedback_is_rejected() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["status"] = "published"
+    document.data.pop("feedback", None)
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert any("feedback" in issue.field for issue in issues)
+

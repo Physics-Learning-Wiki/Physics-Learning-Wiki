@@ -135,3 +135,22 @@ def test_set_bundles_structure_and_assets(tmp_path: Path) -> None:
     for svg_file in svg_files:
         content = svg_file.read_bytes()
         assert b"\r" not in content, f"{svg_file} has non-normalized line endings"
+
+
+def test_preview_published_set_does_not_contain_draft_questions(tmp_path: Path) -> None:
+    preview = tmp_path / "preview"
+    compile_repository(ROOT, preview, preview=True)
+
+    manifest = json.loads((preview / "manifest.json").read_text(encoding="utf-8"))
+    for set_id in [
+        "mechanics.dynamics.newton-laws.quick",
+        "mechanics.dynamics.newton-laws.full",
+    ]:
+        bundle_rel = manifest["sets"][set_id]["bundle"]
+        bundle = json.loads((preview / bundle_rel).read_text(encoding="utf-8"))
+        for q in bundle["questions"]:
+            # Draft questions start with mech-kin-linear in the baseline
+            assert not q["id"].startswith("mech-kin-linear"), (
+                f"Published set {set_id} bundled draft question {q['id']} in preview"
+            )
+

@@ -30,7 +30,6 @@ def coverage_data(report: ValidationReport, *, preview: bool = False) -> dict[st
 
     # Set feasibility summary
     sets_summary = {}
-    pool = questions if preview else published
     for s in report.data.sets:
         sdata = s.data
         sid = sdata.get("id")
@@ -39,18 +38,20 @@ def coverage_data(report: ValidationReport, *, preview: bool = False) -> dict[st
         stype = sel.get("type")
         feasible = False
         reason = None
+        # Published sets must strictly use published questions only
+        set_pool = published if status == "published" else (questions if preview else published)
         if status == "retired":
             reason = "已退役"
         elif stype == "fixed":
             req_ids = sel.get("questions", [])
-            existing_ids = {q.get("id") for q in pool}
+            existing_ids = {q.get("id") for q in set_pool}
             missing = [qid for qid in req_ids if qid not in existing_ids]
             if missing:
                 reason = f"缺少题目: {', '.join(missing)}"
             else:
                 feasible = True
         elif stype == "query":
-            solution = solve_query_selection(pool, sel, report.data.taxonomy, set_id=str(sid))
+            solution = solve_query_selection(set_pool, sel, report.data.taxonomy, set_id=str(sid))
             if solution is not None:
                 feasible = True
             else:
