@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createSession, findRestorableSession, isSessionRestorable } from "../src/session.js";
+import { createSession, findRestorableSession, inspectSessionStatus, isSessionRestorable } from "../src/session.js";
 import type { Question, QuizSource } from "../src/types.js";
 
 const mockQuestions: Question[] = [
@@ -95,3 +95,42 @@ test("findRestorableSession finds matching candidate", () => {
   const notFound = findRestorableSession(candidates, { type: "set", id: "other-set" }, "seed-2", "fp-1", 1, mockQuestions);
   assert.equal(notFound, undefined);
 });
+
+test("inspectSessionStatus distinguishes none, restorable, and stale with reason", () => {
+  const session = createSession(mockSource, "seed-1", "fp-current", 1, false, mockQuestions);
+  const candidates = [session];
+
+  // 1. None: seed does not match
+  const noneRes = inspectSessionStatus(candidates, mockSource, "different-seed", "fp-current", 1, mockQuestions);
+  assert.equal(noneRes.status, "none");
+
+  // 2. Restorable: all matched
+  const okRes = inspectSessionStatus(candidates, mockSource, "seed-1", "fp-current", 1, mockQuestions);
+  assert.equal(okRes.status, "restorable");
+  if (okRes.status === "restorable") {
+    assert.equal(okRes.session, session);
+  }
+
+  // 3. Stale on fingerprint mismatch
+  const staleFp = inspectSessionStatus(candidates, mockSource, "seed-1", "fp-updated", 1, mockQuestions);
+  assert.equal(staleFp.status, "stale");
+  if (staleFp.status === "stale") {
+    assert.ok(staleFp.reason.includes("指纹"));
+  }
+
+  // 4. Stale on algorithm version change
+  const staleAlgo = inspectSessionStatus(candidates, mockSource, "seed-1", "fp-current", 2, mockQuestions);
+  assert.equal(staleAlgo.status, "stale");
+  if (staleAlgo.status === "stale") {
+    assert.ok(staleAlgo.reason.includes("算法"));
+  }
+
+  // 5. Stale on question version change
+  const updatedQuestions = [{ ...mockQuestions[0], version: 2 }, mockQuestions[1]];
+  const staleQVer = inspectSessionStatus(candidates, mockSource, "seed-1", "fp-current", 1, updatedQuestions);
+  assert.equal(staleQVer.status, "stale");
+  if (staleQVer.status === "stale") {
+    assert.ok(staleQVer.reason.includes("版本"));
+  }
+});
+

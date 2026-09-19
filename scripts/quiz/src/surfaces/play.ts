@@ -11,7 +11,7 @@ import {
 } from "../question-renderer.js";
 import { newSeed } from "../random.js";
 import { selectRetry } from "../selection.js";
-import { createSession, findRestorableSession } from "../session.js";
+import { createSession, findRestorableSession, inspectSessionStatus } from "../session.js";
 import type { QuizStore } from "../storage.js";
 import type { Attempt, Question, QuestionResult, QuizSource, Session, SetBundle, UserAnswer } from "../types.js";
 
@@ -42,7 +42,7 @@ export class PlaySurface {
   private readonly onRestart: (newSeed: string) => void;
   private readonly onAdhoc?: (adhocBundle: SetBundle, questions: Question[]) => void;
 
-  private session: Session;
+  private session!: Session;
   private confirmButtonElement?: HTMLButtonElement;
 
   constructor(options: PlaySurfaceOptions) {
@@ -58,8 +58,11 @@ export class PlaySurface {
     this.onRestart = options.onRestart;
     this.onAdhoc = options.onAdhoc;
 
-    // Restore or create session
-    const existing = findRestorableSession(
+    document.addEventListener("keydown", this.handleKeyDown, { signal: this.signal });
+  }
+
+  start(): void {
+    const status = inspectSessionStatus(
       this.store.getActiveSessions(this.source),
       this.source,
       this.seed,
@@ -68,27 +71,70 @@ export class PlaySurface {
       this.questions
     );
 
-    if (existing) {
-      this.session = existing;
+    if (status.status === "restorable") {
+      this.session = status.session;
+      this.root.classList.add("plw-quiz-in-progress");
+      this.renderQuestion();
+    } else if (status.status === "stale") {
+      this.renderStaleNotice(status.reason, status.session);
     } else {
-      this.session = createSession(
-        this.source,
-        this.seed,
-        this.bundle.bankFingerprint,
-        this.bundle.selectionAlgorithmVersion,
-        this.bundle.preview,
-        this.questions,
-        { surface: "runner" }
-      );
-      this.store.saveSession(this.session);
+      this.startFresh();
     }
-
-    document.addEventListener("keydown", this.handleKeyDown, { signal: this.signal });
   }
 
-  start(): void {
+  private startFresh(): void {
+    this.session = createSession(
+      this.source,
+      this.seed,
+      this.bundle.bankFingerprint,
+      this.bundle.selectionAlgorithmVersion,
+      this.bundle.preview,
+      this.questions,
+      { surface: "runner" }
+    );
+    this.store.saveSession(this.session);
     this.root.classList.add("plw-quiz-in-progress");
     this.renderQuestion();
+  }
+
+  private renderStaleNotice(reason: string, staleSession: Session): void {
+    this.root.innerHTML = "";
+    const container = document.createElement("div");
+    container.className = "plw-quiz-runner";
+
+    const answeredCount = Object.values(staleSession.answers).filter(v => v != null).length;
+    const isRunnable = this.bundle.runnable;
+
+    container.innerHTML = `
+      <div class="plw-quiz-error" role="alert" style="max-width: 600px; margin: 2rem auto;">
+        <h2>作答进度已失效</h2>
+        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${staleSession.questionRefs.length} 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
+        ${
+          !isRunnable
+            ? `<p class="plw-quiz-badge--warning">当前测试集合暂不可用（${escapeHtml(this.bundle.unavailableReason ?? "")}），无法重新开始。</p>`
+            : ""
+        }
+        <div class="plw-quiz-modal__actions" style="margin-top: 1.5rem; justify-content: center; gap: 1rem;">
+          <button type="button" class="plw-quiz-btn--primary" id="plw-btn-restart-force" ${!isRunnable ? "disabled" : ""}>
+            清空旧进度并重新开始
+          </button>
+          <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-exit-stale">
+            返回小测发现页
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.querySelector("#plw-btn-restart-force")?.addEventListener("click", () => {
+      this.store.discardSession(this.source, this.seed);
+      this.startFresh();
+    });
+
+    container.querySelector("#plw-btn-exit-stale")?.addEventListener("click", () => {
+      this.onExit();
+    });
+
+    this.root.append(container);
   }
 
   destroy(): void {

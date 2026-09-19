@@ -78,3 +78,75 @@ export function findRestorableSession(
     isSessionRestorable(item, source, seed, bankFingerprint, selectionAlgorithmVersion, questions)
   );
 }
+
+export type SessionRestoreStatus =
+  | { status: "restorable"; session: Session }
+  | { status: "stale"; session: Session; reason: string }
+  | { status: "none" };
+
+export function inspectSessionStatus(
+  candidates: readonly Session[],
+  source: QuizSource,
+  seed: string,
+  bankFingerprint: string,
+  selectionAlgorithmVersion: number,
+  questions: readonly Question[]
+): SessionRestoreStatus {
+  const matching = candidates.find(session => {
+    if (session.source.type !== source.type) return false;
+    if (session.source.type === "set" && source.type === "set" && session.source.id !== source.id) return false;
+    if (session.source.type === "adhoc" && source.type === "adhoc") {
+      const sIds = [...session.source.questionIds].sort().join(",");
+      const tIds = [...source.questionIds].sort().join(",");
+      if (sIds !== tIds) return false;
+    }
+    return session.seed === seed;
+  });
+
+  if (!matching || matching.state !== "active") {
+    return { status: "none" };
+  }
+
+  if (matching.bankFingerprint !== bankFingerprint) {
+    return {
+      status: "stale",
+      session: matching,
+      reason: "题库指纹已变更（题目内容或元数据有更新）"
+    };
+  }
+
+  if (matching.selectionAlgorithmVersion !== selectionAlgorithmVersion) {
+    return {
+      status: "stale",
+      session: matching,
+      reason: "题库组卷算法版本已升级"
+    };
+  }
+
+  if (matching.questionRefs.length !== questions.length) {
+    return {
+      status: "stale",
+      session: matching,
+      reason: "小测题目数量与当前题库不一致"
+    };
+  }
+
+  for (let i = 0; i < questions.length; i += 1) {
+    if (matching.questionRefs[i].id !== questions[i].id) {
+      return {
+        status: "stale",
+        session: matching,
+        reason: `题目结构发生变化（第 ${i + 1} 题不匹配）`
+      };
+    }
+    if (matching.questionRefs[i].version !== questions[i].version) {
+      return {
+        status: "stale",
+        session: matching,
+        reason: `题目版本已更新（第 ${i + 1} 题已发布新版本）`
+      };
+    }
+  }
+
+  return { status: "restorable", session: matching };
+}

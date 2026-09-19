@@ -155,10 +155,11 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
   area.setAttribute("role", "status");
 
   let targeted = "";
-  if (question.feedback.choicesHtml && typeof answer === "string") {
-    targeted = question.feedback.choicesHtml[answer]
-      ? `<p><strong>针对你的选择：</strong>${question.feedback.choicesHtml[answer]}</p>`
-      : "";
+  if (question.feedback?.choicesHtml && typeof answer === "string") {
+    const choiceFb = question.feedback.choicesHtml[answer];
+    if (choiceFb) {
+      targeted = `<p><strong>针对你的选择：</strong>${choiceFb}</p>`;
+    }
   }
 
   const solutionBlock = showSolution
@@ -168,12 +169,15 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
       </details>`
     : "";
 
+  const defaultFeedback = result.correct ? "回答正确！" : "回答有误，请复习相关考点解析。";
+  const feedbackHtml = result.correct
+    ? (question.feedback?.correctHtml ?? defaultFeedback)
+    : (question.feedback?.incorrectHtml ?? defaultFeedback);
+
   area.innerHTML = `
     <h3>${result.correct ? "回答正确" : "需要复习"}</h3>
     ${targeted}
-    <div class="plw-quiz-feedback-text">${
-      result.correct ? question.feedback.correctHtml : question.feedback.incorrectHtml
-    }</div>
+    <div class="plw-quiz-feedback-text">${feedbackHtml}</div>
     ${solutionBlock}
   `;
 

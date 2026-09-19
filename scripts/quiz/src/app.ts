@@ -291,10 +291,7 @@ class QuizApp {
   }
 
   private exitToLanding(): void {
-    const url = new URL(window.location.href);
-    url.search = "";
-    history.pushState(null, "", url.href);
-    void this.route();
+    window.location.assign(resolveSiteUrl("quiz/"));
   }
 
   private renderStatus(message: string): void {

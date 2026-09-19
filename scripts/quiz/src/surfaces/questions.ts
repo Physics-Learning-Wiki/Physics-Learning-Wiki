@@ -325,7 +325,10 @@ export class QuestionsSurface {
         numeric: "数值计算题"
       };
 
-      const diffStars = "★".repeat(Math.max(1, Math.min(3, q.difficulty ?? 1)));
+      const diffBadge =
+        q.difficulty != null
+          ? `<span class="plw-quiz-badge">${"★".repeat(Math.max(1, Math.min(3, q.difficulty)))}</span>`
+          : "";
       const typeText = typeMap[q.type] ?? q.type;
 
       const permalinkUrl = `${resolveSiteUrl("quiz/questions/")}?q=${encodeURIComponent(q.id)}`;
@@ -337,7 +340,7 @@ export class QuestionsSurface {
           </a>
           <div class="plw-quiz-card-tags">
             <span class="plw-quiz-badge">${escapeHtml(typeText)}</span>
-            <span class="plw-quiz-badge">${diffStars}</span>
+            ${diffBadge}
             ${q.cognitiveLevel ? `<span class="plw-quiz-badge">${escapeHtml(q.cognitiveLevel)}</span>` : ""}
             ${q.style ? `<span class="plw-quiz-badge">${escapeHtml(q.style)}</span>` : ""}
             ${

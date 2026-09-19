@@ -83,3 +83,30 @@ test("concept and objective summaries aggregate correctly", () => {
   assert.equal(objSum["o2"].total, 1);
   assert.equal(objSum["o2"].uncertain, 1);
 });
+
+test("minimal draft question without feedback or metadata grades safely", () => {
+  const draftQuestion: Question = {
+    id: "q-draft",
+    version: 1,
+    status: "draft" as const,
+    type: "single_choice" as const,
+    choiceOrder: "fixed" as const,
+    topicIds: [],
+    conceptIds: [],
+    objectiveIds: [],
+    relatedPages: [],
+    stemHtml: "<p>stem</p>",
+    hintsHtml: [],
+    solutionHtml: "sol",
+    assets: {},
+    choices: [
+      { id: "A", contentHtml: "A" },
+      { id: "B", contentHtml: "B" }
+    ],
+    answer: { choice: "A" }
+  };
+  assert.equal(gradeQuestion(draftQuestion, "A"), true);
+  assert.equal(gradeQuestion(draftQuestion, "B"), false);
+  const res = makeResult(draftQuestion, "A", false);
+  assert.equal(res.correct, true);
+});

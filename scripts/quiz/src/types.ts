@@ -33,17 +33,17 @@ export interface QuestionBase {
   objectiveIds: string[];
   relatedPages: string[];
   stemHtml: string;
-  feedback: {
+  feedback?: {
     correctHtml?: string;
     incorrectHtml?: string;
     choicesHtml?: Record<string, string>;
   };
   hintsHtml: string[];
   solutionHtml: string;
-  difficulty: number;
-  cognitiveLevel: "remember" | "understand" | "apply" | "analyze";
-  style: "conceptual" | "graphical" | "computational" | "modeling";
-  estimatedSeconds: number;
+  difficulty?: number;
+  cognitiveLevel?: "remember" | "understand" | "apply" | "analyze";
+  style?: "conceptual" | "graphical" | "computational" | "modeling";
+  estimatedSeconds?: number;
   assets: Record<string, string>;
   contentFingerprint?: string;
   objectivesDetail?: ObjectiveDetail[];
