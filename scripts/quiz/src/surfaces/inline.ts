@@ -103,7 +103,9 @@ export class InlineSurface {
     header.innerHTML = `
       <div class="plw-quiz-inline__title-row">
         <h4>${escapeHtml(title)}</h4>
-        <a class="plw-quiz-inline__runner-link" href="${escapeHtml(runnerUrl)}" target="_blank" rel="noopener">全屏作答 ↗</a>
+        <a class="plw-quiz-inline__runner-link" href="${escapeHtml(
+          runnerUrl
+        )}" target="_blank" rel="noopener">全屏作答 ↗</a>
       </div>
     `;
     container.append(header);
@@ -124,7 +126,7 @@ export class InlineSurface {
 
     this.questions.forEach((question, index) => {
       const card = document.createElement("div");
-      card.className = "plw-quiz-inline__card";
+      card.className = "plw-quiz-inline__card plw-quiz-question";
       card.dataset.questionId = question.id;
 
       const qHeader = document.createElement("div");

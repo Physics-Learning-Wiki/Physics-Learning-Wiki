@@ -115,14 +115,20 @@ export class PlaySurface {
     container.innerHTML = `
       <div class="plw-quiz-error" role="alert" style="max-width: 600px; margin: 2rem auto;">
         <h2>作答进度已失效</h2>
-        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${staleSession.questionRefs.length} 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
+        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${
+      staleSession.questionRefs.length
+    } 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
         ${
           !isRunnable
-            ? `<p class="plw-quiz-badge--warning">当前测试集合暂不可用（${escapeHtml(this.bundle.unavailableReason ?? "")}），无法重新开始。</p>`
+            ? `<p class="plw-quiz-badge--warning">当前测试集合暂不可用（${escapeHtml(
+                this.bundle.unavailableReason ?? ""
+              )}），无法重新开始。</p>`
             : ""
         }
         <div class="plw-quiz-modal__actions" style="margin-top: 1.5rem; justify-content: center; gap: 1rem;">
-          <button type="button" class="plw-quiz-btn--primary" id="plw-btn-restart-force" ${!isRunnable ? "disabled" : ""}>
+          <button type="button" class="plw-quiz-btn--primary" id="plw-btn-restart-force" ${
+            !isRunnable ? "disabled" : ""
+          }>
             清空旧进度并重新开始
           </button>
           <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-exit-stale">
@@ -283,13 +289,13 @@ export class PlaySurface {
 
     this.root.innerHTML = "";
 
-    const container = document.createElement("div");
-    container.className = "plw-quiz-runner";
+    const container = document.createElement("section");
+    container.className = "plw-quiz-runner plw-quiz-question";
     container.dataset.questionId = question.id;
 
-    // 1. Header
+    // 1. Header with Title, Mode Badge, and Exit CTA
     const header = document.createElement("header");
-    header.className = "plw-quiz-runner__header";
+    header.className = "plw-quiz-header";
 
     const previewBanner = this.bundle.preview
       ? `<div class="plw-quiz-preview" role="note">草稿预览模式：当前小测包含未发布草稿内容，作答仅供检查</div>`
@@ -298,14 +304,12 @@ export class PlaySurface {
     const feedbackText = this.bundle.set.feedback_mode === "immediate" ? "即时反馈" : "整卷提交";
     header.innerHTML = `
       ${previewBanner}
-      <div class="plw-quiz-runner__title-row">
-        <div>
-          <h2 class="plw-quiz-runner__title">${escapeHtml(this.bundle.set.title)}</h2>
-          <div class="plw-quiz-runner__meta">
-            <span class="plw-quiz-badge">${feedbackText}</span>
-            <span>题目 ${this.session.currentIndex + 1} / ${this.questions.length}</span>
-          </div>
-        </div>
+      <div class="plw-quiz-header__meta">
+        <strong>${escapeHtml(this.bundle.set.title)}</strong>
+        <span class="plw-quiz-badge-tag">${escapeHtml(feedbackText)}</span>
+      </div>
+      <div class="plw-quiz-header__status">
+        <span class="plw-quiz-progress-text">${this.session.currentIndex + 1} / ${this.questions.length}</span>
         <button type="button" class="plw-quiz-btn--secondary plw-quiz-btn--sm" id="plw-btn-exit">保存并退出</button>
       </div>
     `;
@@ -313,7 +317,7 @@ export class PlaySurface {
     header.querySelector("#plw-btn-exit")?.addEventListener("click", () => this.handleExit());
     container.append(header);
 
-    // 2. Stepper
+    // 2. Segmented Stepper Bar
     const stepper = document.createElement("nav");
     stepper.className = "plw-quiz-stepper";
     stepper.setAttribute("aria-label", "题目导航");
@@ -321,7 +325,7 @@ export class PlaySurface {
     this.questions.forEach((q, idx) => {
       const stepBtn = document.createElement("button");
       stepBtn.type = "button";
-      stepBtn.className = "plw-quiz-stepper__item";
+      stepBtn.className = "plw-quiz-step-btn";
       if (idx === this.session.currentIndex) stepBtn.classList.add("is-current");
       if (this.session.answers[q.id] != null) stepBtn.classList.add("is-answered");
       if (this.session.uncertain[q.id]) stepBtn.classList.add("is-uncertain");
@@ -332,7 +336,7 @@ export class PlaySurface {
       }
 
       stepBtn.textContent = String(idx + 1);
-      stepBtn.setAttribute("aria-label", `跳转到第 ${idx + 1} 题`);
+      stepBtn.setAttribute("aria-label", `第 ${idx + 1} 题`);
       stepBtn.addEventListener("click", () => {
         this.session.currentIndex = idx;
         this.persist();
@@ -342,7 +346,45 @@ export class PlaySurface {
     });
     container.append(stepper);
 
-    // 3. Question Body
+    // 3. Question Meta Bar (Type tag + Decoupled Uncertainty Pill)
+    const typeLabels: Record<string, string> = {
+      single_choice: "单选题",
+      multiple_choice: "多选题",
+      true_false: "判断题",
+      numeric: "填空计算题"
+    };
+    const typeTitle = typeLabels[question.type] ?? "题目";
+
+    const metaBar = document.createElement("div");
+    metaBar.className = "plw-quiz-meta-bar";
+
+    const typeInfo = document.createElement("div");
+    typeInfo.className = "plw-quiz-type-info";
+    typeInfo.innerHTML = `
+      <span class="plw-quiz-type-tag">${typeTitle}</span>
+      <h2 tabindex="-1" style="display:inline; margin: 0; font-size: 1.25rem;">第 ${
+        this.session.currentIndex + 1
+      } 题</h2>
+    `;
+    metaBar.append(typeInfo);
+
+    const locked = Boolean(this.session.locked[question.id]);
+    const uncertainty = document.createElement("label");
+    uncertainty.className = "plw-quiz-uncertainty-pill";
+    uncertainty.innerHTML = `<input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""} ${
+      locked ? "disabled" : ""
+    }><span>🤔 标记存疑</span>`;
+    uncertainty.querySelector("input")?.addEventListener("change", event => {
+      const checked = (event.target as HTMLInputElement).checked;
+      this.session.uncertain[question.id] = checked;
+      this.persist();
+      const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
+      currentBtn?.classList.toggle("is-uncertain", checked);
+    });
+    metaBar.append(uncertainty);
+    container.append(metaBar);
+
+    // 4. Question Body (Stem & Answer Controls)
     const body = document.createElement("main");
     body.className = "plw-quiz-question-card";
 
@@ -351,14 +393,17 @@ export class PlaySurface {
 
     // Answer controls
     const answer = this.session.answers[question.id] ?? null;
-    const locked = Boolean(this.session.locked[question.id]);
     const immediate = this.bundle.set.feedback_mode === "immediate";
 
     const control = renderAnswerControl({
       question,
       answer,
       locked,
-      onAnswerChange: nextAnswer => this.setAnswer(question.id, nextAnswer, false)
+      onAnswerChange: nextAnswer => {
+        this.setAnswer(question.id, nextAnswer, false);
+        const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
+        currentBtn?.classList.toggle("is-answered", nextAnswer != null);
+      }
     });
     body.append(control);
 
@@ -380,23 +425,9 @@ export class PlaySurface {
 
     container.append(body);
 
-    // 4. Footer controls
-    const footer = document.createElement("footer");
-    footer.className = "plw-quiz-runner__footer";
-
-    // Uncertain checkbox
-    const uncertainWrap = document.createElement("label");
-    uncertainWrap.className = "plw-quiz-uncertain-toggle";
-    uncertainWrap.innerHTML = `
-      <input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""}>
-      <span>标记此题不确定</span>
-    `;
-    uncertainWrap.querySelector("input")?.addEventListener("change", () => this.toggleUncertain(question.id));
-    footer.append(uncertainWrap);
-
-    // Actions
+    // 5. Actions Bar
     const actions = document.createElement("div");
-    actions.className = "plw-quiz-runner__actions";
+    actions.className = "plw-quiz-actions";
 
     const prevBtn = document.createElement("button");
     prevBtn.type = "button";
@@ -411,7 +442,7 @@ export class PlaySurface {
         const confirmBtn = document.createElement("button");
         confirmBtn.type = "button";
         confirmBtn.className = "plw-quiz-btn--primary";
-        confirmBtn.textContent = "检查答案";
+        confirmBtn.textContent = "检查答案 (Enter)";
         confirmBtn.disabled = !isAnswerComplete(question, answer);
         confirmBtn.addEventListener("click", () => this.confirmImmediate(question));
         this.confirmButtonElement = confirmBtn;
@@ -420,7 +451,7 @@ export class PlaySurface {
         const nextBtn = document.createElement("button");
         nextBtn.type = "button";
         nextBtn.className = "plw-quiz-btn--primary";
-        nextBtn.textContent = "下一题";
+        nextBtn.textContent = "下一题 (Enter)";
         nextBtn.addEventListener("click", () => this.move(1));
         actions.append(nextBtn);
       } else {
@@ -437,24 +468,25 @@ export class PlaySurface {
         const nextBtn = document.createElement("button");
         nextBtn.type = "button";
         nextBtn.className = "plw-quiz-btn--primary";
-        nextBtn.textContent = "下一题";
+        nextBtn.textContent = "下一题 (Enter)";
         nextBtn.addEventListener("click", () => this.move(1));
         actions.append(nextBtn);
       }
       const submitBtn = document.createElement("button");
       submitBtn.type = "button";
-      submitBtn.className = this.session.currentIndex === this.questions.length - 1 ? "plw-quiz-btn--primary" : "plw-quiz-btn--secondary";
+      submitBtn.className =
+        this.session.currentIndex === this.questions.length - 1 ? "plw-quiz-btn--primary" : "plw-quiz-btn--secondary";
       submitBtn.textContent = "完成并交卷";
       submitBtn.addEventListener("click", () => this.submit());
       actions.append(submitBtn);
     }
 
-    footer.append(actions);
-    container.append(footer);
+    container.append(actions);
 
     this.root.append(container);
     hydrateAssets(container, this.questions, this.manifestUrl);
     typeset(container);
+    container.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
   }
 
   private submit(): void {
@@ -500,14 +532,16 @@ export class PlaySurface {
           <h3>考查核心概念分布</h3>
           <div class="plw-quiz-result__summary-grid">
             ${Object.entries(conceptSummary)
-              .map(([cid, stat]) => `
+              .map(
+                ([cid, stat]) => `
                 <div class="plw-quiz-result__summary-card">
                   <span class="plw-quiz-result__summary-id">${escapeHtml(cid)}</span>
                   <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total} 正确${
-                    stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
-                  }</span>
+                  stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
+                }</span>
                 </div>
-              `)
+              `
+              )
               .join("")}
           </div>
         </div>
@@ -521,14 +555,16 @@ export class PlaySurface {
           <h3>学习目标达成情况</h3>
           <div class="plw-quiz-result__summary-grid">
             ${Object.entries(objectiveSummary)
-              .map(([oid, stat]) => `
+              .map(
+                ([oid, stat]) => `
                 <div class="plw-quiz-result__summary-card">
                   <span class="plw-quiz-result__summary-id">${escapeHtml(oid)}</span>
                   <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total} 正确${
-                    stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
-                  }</span>
+                  stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
+                }</span>
                 </div>
-              `)
+              `
+              )
               .join("")}
           </div>
         </div>
@@ -546,7 +582,7 @@ export class PlaySurface {
         </div>
         ${conceptsHtml}
         ${objectivesHtml}
-        <div class="plw-quiz-result__actions">
+        <div class="plw-quiz-result__actions plw-quiz-actions">
           <button type="button" class="plw-quiz-btn--primary" id="plw-btn-restart-new">再测一次（换一组题目）</button>
           <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-restart-same">再做一次（同组题目）</button>
           ${

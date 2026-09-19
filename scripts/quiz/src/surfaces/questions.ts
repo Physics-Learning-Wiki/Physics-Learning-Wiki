@@ -43,11 +43,7 @@ export class QuestionsSurface {
       this.manifestUrl = new URL(manifestPath, window.location.href);
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
 
-      this.questions = await loadQuestionCatalog(
-        this.manifestUrl,
-        this.manifest.catalogs.questions,
-        this.abort.signal
-      );
+      this.questions = await loadQuestionCatalog(this.manifestUrl, this.manifest.catalogs.questions, this.abort.signal);
 
       if (this.manifest.catalogs.taxonomy) {
         try {
@@ -110,9 +106,9 @@ export class QuestionsSurface {
               .sort()
               .map(tid => {
                 const title = this.taxonomy?.topics[tid]?.title ?? tid;
-                return `<option value="${escapeHtml(tid)}" ${
-                  this.selectedTopic === tid ? "selected" : ""
-                }>${escapeHtml(title)}</option>`;
+                return `<option value="${escapeHtml(tid)}" ${this.selectedTopic === tid ? "selected" : ""}>${escapeHtml(
+                  title
+                )}</option>`;
               })
               .join("")}
           </select>
@@ -152,7 +148,9 @@ export class QuestionsSurface {
           <select class="plw-quiz-filter-select" id="plw-filter-cog" aria-label="认知层级">
             <option value="all" ${this.selectedCognitive === "all" ? "selected" : ""}>所有认知层级</option>
             <option value="remember" ${this.selectedCognitive === "remember" ? "selected" : ""}>识记 (Remember)</option>
-            <option value="understand" ${this.selectedCognitive === "understand" ? "selected" : ""}>理解 (Understand)</option>
+            <option value="understand" ${
+              this.selectedCognitive === "understand" ? "selected" : ""
+            }>理解 (Understand)</option>
             <option value="apply" ${this.selectedCognitive === "apply" ? "selected" : ""}>应用 (Apply)</option>
             <option value="analyze" ${this.selectedCognitive === "analyze" ? "selected" : ""}>分析 (Analyze)</option>
           </select>
@@ -162,7 +160,9 @@ export class QuestionsSurface {
             <option value="all" ${this.selectedStyle === "all" ? "selected" : ""}>所有考查风格</option>
             <option value="conceptual" ${this.selectedStyle === "conceptual" ? "selected" : ""}>概念辨析</option>
             <option value="graphical" ${this.selectedStyle === "graphical" ? "selected" : ""}>图像分析</option>
-            <option value="computational" ${this.selectedStyle === "computational" ? "selected" : ""}>数值/代数计算</option>
+            <option value="computational" ${
+              this.selectedStyle === "computational" ? "selected" : ""
+            }>数值/代数计算</option>
             <option value="modeling" ${this.selectedStyle === "modeling" ? "selected" : ""}>物理建模</option>
           </select>
         </div>
@@ -255,7 +255,9 @@ export class QuestionsSurface {
           "choices" in q && Array.isArray((q as { choices?: Array<{ contentHtml?: string }> }).choices)
             ? (q as { choices: Array<{ contentHtml?: string }> }).choices.map(c => c.contentHtml ?? "").join(" ")
             : "";
-        const text = `${q.id} ${q.stemHtml ?? ""} ${topicNames} ${conceptNames} ${choicesText} ${(q.conceptIds ?? []).join(" ")} ${(q.topicIds ?? []).join(" ")}`.toLowerCase();
+        const text = `${q.id} ${q.stemHtml ?? ""} ${topicNames} ${conceptNames} ${choicesText} ${(
+          q.conceptIds ?? []
+        ).join(" ")} ${(q.topicIds ?? []).join(" ")}`.toLowerCase();
         if (!text.includes(this.keyword)) return false;
       }
 
@@ -305,7 +307,7 @@ export class QuestionsSurface {
 
     for (const q of filtered) {
       const card = document.createElement("article");
-      card.className = "plw-quiz-question-browser__card";
+      card.className = "plw-quiz-question-browser__card plw-quiz-question";
       card.id = `q-${q.id}`;
       card.tabIndex = -1;
       card.dataset.questionId = q.id;
@@ -343,11 +345,7 @@ export class QuestionsSurface {
             ${diffBadge}
             ${q.cognitiveLevel ? `<span class="plw-quiz-badge">${escapeHtml(q.cognitiveLevel)}</span>` : ""}
             ${q.style ? `<span class="plw-quiz-badge">${escapeHtml(q.style)}</span>` : ""}
-            ${
-              this.manifest.preview && q.status === "draft"
-                ? `<span class="plw-quiz-badge--warning">草稿</span>`
-                : ""
-            }
+            ${this.manifest.preview && q.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : ""}
           </div>
         </div>
       `;
@@ -395,7 +393,7 @@ export class QuestionsSurface {
 
       // 4. Trial check button
       const trialActions = document.createElement("div");
-      trialActions.className = "plw-quiz-question-browser__trial-actions";
+      trialActions.className = "plw-quiz-question-browser__trial-actions plw-quiz-actions";
 
       if (!isLocked) {
         trialBtn = document.createElement("button");
@@ -427,17 +425,19 @@ export class QuestionsSurface {
         const feedback = renderFeedback({
           question: q,
           answer,
-          showSolution: true
+          showSolution: false
         });
         card.append(feedback);
       }
 
       // 6. Collapsible full solution
       const details = document.createElement("details");
-      details.className = "plw-quiz-question-details";
+      details.className = "plw-quiz-question-details plw-quiz-solution-details";
       details.innerHTML = `
-        <summary>📖 查看参考答案与考点解析</summary>
-        <div class="plw-quiz-question-details__body">
+        <summary class="plw-quiz-solution-details__summary">
+          <span class="plw-quiz-solution-details__title">📖 查看参考答案与考点解析</span>
+        </summary>
+        <div class="plw-quiz-solution-details__body">
           <div class="plw-quiz-solution-text">${q.solutionHtml || "<p>暂无文字解析</p>"}</div>
         </div>
       `;

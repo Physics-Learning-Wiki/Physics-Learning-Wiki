@@ -25,7 +25,9 @@ export interface AnswerControlOptions {
 export function renderAnswerControl(options: AnswerControlOptions): HTMLElement {
   const { question, answer, locked, onAnswerChange, inputName = "answer" } = options;
   const fieldset = document.createElement("fieldset");
+  fieldset.className = "plw-quiz-choice-group";
   const legend = document.createElement("legend");
+  legend.className = "plw-quiz-choice-group__legend";
   legend.textContent = "请选择或填写答案：";
   fieldset.append(legend);
 
@@ -99,6 +101,7 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
     wrap.className = "plw-quiz-numeric-wrap";
 
     const input = document.createElement("input");
+    input.className = "plw-quiz-numeric-input";
     input.type = "text";
     input.inputMode = "decimal";
     input.placeholder = "输入数值计算结果";
@@ -107,6 +110,7 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
     input.setAttribute("aria-label", "数值答案");
 
     const unit = document.createElement("select");
+    unit.className = "plw-quiz-numeric-unit";
     unit.disabled = locked;
     unit.setAttribute("aria-label", "单位");
     unit.innerHTML = `<option value="">选择单位</option>${question.answer.unit.accepted
@@ -131,9 +135,9 @@ export function renderHints(question: Question): HTMLElement | null {
   if (!question.hintsHtml || question.hintsHtml.length === 0) return null;
   const hints = document.createElement("details");
   hints.className = "plw-quiz-hints";
-  hints.innerHTML = `<summary>💡 查看解题提示 (${
+  hints.innerHTML = `<summary><span>💡 查看解题提示 (${
     question.hintsHtml.length
-  })</summary><div class="plw-quiz-hints__body">${question.hintsHtml
+  })</span></summary><div class="plw-quiz-hints__body">${question.hintsHtml
     .map((hint, index) => `<div><strong>提示 ${index + 1}</strong>${hint}</div>`)
     .join("")}</div>`;
   return hints;
@@ -163,16 +167,20 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
   }
 
   const solutionBlock = showSolution
-    ? `<details>
-        <summary>📖 查看完整考点解析</summary>
-        <div style="margin-top: 0.5rem; line-height: 1.6;">${question.solutionHtml}</div>
+    ? `<details class="plw-quiz-solution-details">
+        <summary class="plw-quiz-solution-details__summary">
+          <span class="plw-quiz-solution-details__title">📖 查看完整考点解析</span>
+        </summary>
+        <div class="plw-quiz-solution-details__body">
+          <div class="plw-quiz-solution-text">${question.solutionHtml || "<p>暂无文字解析</p>"}</div>
+        </div>
       </details>`
     : "";
 
   const defaultFeedback = result.correct ? "回答正确！" : "回答有误，请复习相关考点解析。";
   const feedbackHtml = result.correct
-    ? (question.feedback?.correctHtml ?? defaultFeedback)
-    : (question.feedback?.incorrectHtml ?? defaultFeedback);
+    ? question.feedback?.correctHtml ?? defaultFeedback
+    : question.feedback?.incorrectHtml ?? defaultFeedback;
 
   area.innerHTML = `
     <h3>${result.correct ? "回答正确" : "需要复习"}</h3>
