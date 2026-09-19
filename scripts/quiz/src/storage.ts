@@ -25,8 +25,11 @@ export function emptyData(): QuizStorageData {
   };
 }
 
+export type StorageResetReason = "corrupt_data" | "version_mismatch" | null;
+
 export class QuizStore {
   private memory = emptyData();
+  private lastResetReason: StorageResetReason = null;
   readonly persistent: boolean;
   private readonly storageKey: string;
 
@@ -45,14 +48,63 @@ export class QuizStore {
     this.memory = this.read();
   }
 
+  getResetReason(): StorageResetReason {
+    return this.lastResetReason;
+  }
+
   read(): QuizStorageData {
     if (!this.persistent || !this.storage) return this.memory;
     try {
       const raw = this.storage.getItem(this.storageKey);
-      if (!raw) return emptyData();
-      const parsed = JSON.parse(raw) as QuizStorageData;
-      return parsed.schemaVersion === 2 ? parsed : emptyData();
+      if (!raw) {
+        this.lastResetReason = null;
+        return emptyData();
+      }
+      let parsed: any;
+      try {
+        parsed = JSON.parse(raw);
+      } catch {
+        this.lastResetReason = "corrupt_data";
+        const empty = emptyData();
+        this.write(empty);
+        return empty;
+      }
+
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        this.lastResetReason = "corrupt_data";
+        const empty = emptyData();
+        this.write(empty);
+        return empty;
+      }
+
+      if (parsed.schemaVersion === 2) {
+        // matches current storage schema version
+      } else {
+        this.lastResetReason = "version_mismatch";
+        const empty = emptyData();
+        this.write(empty);
+        return empty;
+      }
+
+      if (
+        typeof parsed.activeSessions !== "object" ||
+        parsed.activeSessions === null ||
+        Array.isArray(parsed.activeSessions) ||
+        !Array.isArray(parsed.attempts) ||
+        typeof parsed.wrongQuestions !== "object" ||
+        parsed.wrongQuestions === null ||
+        Array.isArray(parsed.wrongQuestions)
+      ) {
+        this.lastResetReason = "corrupt_data";
+        const empty = emptyData();
+        this.write(empty);
+        return empty;
+      }
+
+      this.lastResetReason = null;
+      return parsed as QuizStorageData;
     } catch {
+      this.lastResetReason = "corrupt_data";
       return emptyData();
     }
   }

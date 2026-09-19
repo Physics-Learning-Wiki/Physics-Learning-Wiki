@@ -60,16 +60,48 @@ test("storage keys separate production and preview", () => {
 });
 
 test("unknown storage versions or old schema v1 reset safely", () => {
-  let value = JSON.stringify({ schemaVersion: 1, attempts: [{ old: true }] });
+  const storageMap: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({ schemaVersion: 1, attempts: [{ old: true }] })
+  };
   const store = new QuizStore({
-    getItem: () => value,
-    setItem: (_key, next) => {
-      value = next;
+    getItem: (k: string) => storageMap[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap[k] = next;
     }
   });
   // Must reset to empty schemaVersion 2, ignoring v1
+  assert.equal(store.getResetReason(), "version_mismatch");
   assert.equal(store.read().schemaVersion, 2);
   assert.equal(store.read().attempts.length, 0);
+  assert.ok(storageMap[STORAGE_KEY_PROD].includes('"schemaVersion":2'));
+});
+
+test("corrupted json or structurally invalid storage resets with corrupt_data reason", () => {
+  const storageMap: Record<string, string> = {
+    [STORAGE_KEY_PROD]: "invalid-json{{"
+  };
+  const store = new QuizStore({
+    getItem: (k: string) => storageMap[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap[k] = next;
+    }
+  });
+  assert.equal(store.getResetReason(), "corrupt_data");
+  assert.equal(store.read().schemaVersion, 2);
+  assert.ok(storageMap[STORAGE_KEY_PROD].includes('"schemaVersion":2'));
+
+  // Corrupt structure: attempts is an object instead of array
+  const storageMap2: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({ schemaVersion: 2, activeSessions: {}, attempts: {}, wrongQuestions: {} })
+  };
+  const store2 = new QuizStore({
+    getItem: (k: string) => storageMap2[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap2[k] = next;
+    }
+  });
+  assert.equal(store2.getResetReason(), "corrupt_data");
+  assert.equal(store2.read().schemaVersion, 2);
 });
 
 test("discardSession removes specific session by source and seed", () => {

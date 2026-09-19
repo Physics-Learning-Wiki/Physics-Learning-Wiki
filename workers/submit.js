@@ -68,6 +68,8 @@ function validHttpsUrl(value) {
   }
 }
 
+const CHOICE_ID_RE = /^[A-Z][A-Z0-9]{0,7}$/;
+
 function validateQuestion(question) {
   if (!question || typeof question !== "object") return "缺少结构化题目";
   if (!QUESTION_TYPES.has(question.type)) return "无效题型";
@@ -77,10 +79,12 @@ function validateQuestion(question) {
 
   // Choice-based questions
   if (question.type === "single_choice" || question.type === "multiple_choice") {
-    if (!Array.isArray(question.choices) || question.choices.length < 2) return "选项为空";
+    const maxChoices = question.type === "single_choice" ? 6 : 8;
+    if (!Array.isArray(question.choices) || question.choices.length < 2 || question.choices.length > maxChoices)
+      return `选项数量无效（需在 2 到 ${maxChoices} 之间）`;
     const choiceIds = question.choices.map(item => item?.id);
-    if (!choiceIds.every((id, index) => nonEmptyString(id, 8) && choiceIds.indexOf(id) === index))
-      return "选项 ID 无效或重复";
+    if (!choiceIds.every((id, index) => typeof id === "string" && CHOICE_ID_RE.test(id) && choiceIds.indexOf(id) === index))
+      return "选项 ID 无效或重复（需以大写字母开头，最长 8 位）";
     if (!question.choices.every(item => nonEmptyString(item?.content)))
       return "选项内容为空";
 
@@ -106,6 +110,25 @@ function validateQuestion(question) {
   } else if (question.type === "numeric") {
     if (typeof question.answer.value !== "number" || !Number.isFinite(question.answer.value))
       return "数值题答案无效";
+    if (question.answer.tolerance !== undefined) {
+      const tol = question.answer.tolerance;
+      if (!tol || typeof tol !== "object") return "数值题容差无效";
+      if (!["absolute", "relative"].includes(tol.type)) return "数值题容差类型无效";
+      if (typeof tol.value !== "number" || !Number.isFinite(tol.value) || tol.value < 0 || tol.value > 1)
+        return "数值题容差值无效（需在 0 到 1 之间）";
+      if (question.answer.value === 0 && tol.type === "relative") {
+        return "真值为 0 时容差类型必须为绝对容差";
+      }
+    }
+    if (question.answer.unit !== undefined) {
+      const unit = question.answer.unit;
+      if (!unit || typeof unit !== "object" || typeof unit.required !== "boolean" || !Array.isArray(unit.accepted)) {
+        return "数值题单位定义无效";
+      }
+      if (!unit.accepted.every(u => typeof u === "string")) {
+        return "数值题可接受单位必须为字符串数组";
+      }
+    }
   }
 
   // Optional global feedback validation

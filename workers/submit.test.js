@@ -106,3 +106,73 @@ test("embeds a versioned machine-readable payload (v2)", () => {
   assert.doesNotMatch(body, /页面 ID/);
   assert.doesNotMatch(body, /主要学习目标/);
 });
+
+test("rejects invalid choice IDs or excessive choices", () => {
+  const lowercaseChoiceId = {
+    ...fullChoiceQuestion,
+    choices: [
+      { id: "a", content: "小写A" },
+      { id: "B", content: "大写B" },
+    ],
+    answer: { choice: "B" },
+  };
+  assert.match(validateQuestion(lowercaseChoiceId), /选项 ID 无效/);
+
+  const tooManyChoices = {
+    ...fullChoiceQuestion,
+    choices: ["A", "B", "C", "D", "E", "F", "G"].map(id => ({ id, content: `选项 ${id}` })),
+    answer: { choice: "A" },
+  };
+  assert.match(validateQuestion(tooManyChoices), /选项数量无效/);
+});
+
+test("validates numeric tolerance and unit strictly", () => {
+  const validFullNumeric = {
+    type: "numeric",
+    stem: "计算重力加速度大小：",
+    answer: {
+      value: 9.8,
+      tolerance: { type: "absolute", value: 0.05 },
+      unit: { required: true, accepted: ["m/s^2", "N/kg"] },
+    },
+    solution: "解析：约为 9.8 m/s^2。",
+  };
+  assert.equal(validateQuestion(validFullNumeric), null);
+
+  const invalidTolType = {
+    ...validFullNumeric,
+    answer: {
+      ...validFullNumeric.answer,
+      tolerance: { type: "percent", value: 0.05 },
+    },
+  };
+  assert.match(validateQuestion(invalidTolType), /容差类型无效/);
+
+  const outOfBoundsTol = {
+    ...validFullNumeric,
+    answer: {
+      ...validFullNumeric.answer,
+      tolerance: { type: "relative", value: 1.5 },
+    },
+  };
+  assert.match(validateQuestion(outOfBoundsTol), /容差值无效/);
+
+  const zeroWithRelative = {
+    ...validFullNumeric,
+    answer: {
+      value: 0,
+      tolerance: { type: "relative", value: 0.05 },
+    },
+  };
+  assert.match(validateQuestion(zeroWithRelative), /真值为 0 时容差类型必须为绝对容差/);
+
+  const invalidUnit = {
+    ...validFullNumeric,
+    answer: {
+      ...validFullNumeric.answer,
+      unit: { required: "yes", accepted: [] },
+    },
+  };
+  assert.match(validateQuestion(invalidUnit), /单位定义无效/);
+});
+

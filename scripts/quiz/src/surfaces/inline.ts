@@ -22,9 +22,11 @@ export class InlineSurface {
   private bundle!: SetBundle;
   private questions: Question[] = [];
   private seed: string = newSeed();
+  private sessionId: string = generateSessionId();
   private answers: Record<string, UserAnswer> = {};
   private locked: Record<string, boolean> = {};
   private submitted = false;
+  private attemptSaved = false;
   private store!: QuizStore;
 
   constructor(private readonly root: HTMLElement) {}
@@ -145,7 +147,7 @@ export class InlineSurface {
             checkBtn.disabled = !isAnswerComplete(question, nextAnswer);
           }
         },
-        inputName: `inline-${this.bundle.set.id}-${question.id}`
+        inputName: `inline-${this.sessionId}-${question.id}`
       });
       card.append(control);
 
@@ -217,9 +219,11 @@ export class InlineSurface {
       restartBtn.textContent = "重新自测";
       restartBtn.addEventListener("click", () => {
         this.seed = newSeed();
+        this.sessionId = generateSessionId();
         this.answers = {};
         this.locked = {};
         this.submitted = false;
+        this.attemptSaved = false;
         this.render();
       });
       resultsBar.append(restartBtn);
@@ -238,7 +242,8 @@ export class InlineSurface {
   }
 
   private checkInlineCompletion(): void {
-    if (!this.isAllAnsweredOrChecked()) return;
+    if (!this.isAllAnsweredOrChecked() || this.attemptSaved) return;
+    this.attemptSaved = true;
 
     // Record attempt idempotently
     const questionResults: QuestionResult[] = this.questions.map(q => {
@@ -249,7 +254,7 @@ export class InlineSurface {
     const pageId = this.root.dataset.pageId;
 
     const attempt: Attempt = {
-      sessionId: generateSessionId(),
+      sessionId: this.sessionId,
       source: { type: "set", id: this.bundle.set.id },
       seed: this.seed,
       bankFingerprint: this.bundle.bankFingerprint,
