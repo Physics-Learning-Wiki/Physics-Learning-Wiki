@@ -68,15 +68,50 @@ function validHttpsUrl(value) {
   }
 }
 
+const ALLOWED_QUESTION_KEYS = new Set([
+  "type",
+  "choice_order",
+  "stem",
+  "solution",
+  "answer",
+  "choices",
+  "feedback",
+  "hints",
+  "difficulty",
+  "cognitive_level",
+  "style",
+  "estimated_seconds",
+  "topics",
+  "concepts",
+  "objectives",
+  "related_pages",
+  "external_media",
+  "attribution",
+  "ai_assisted",
+]);
+
 const CHOICE_ID_RE = /^[A-Z][A-Z0-9]{0,7}$/;
-const DOTTED_ID_RE = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]+)+$/;
+const DOTTED_ID_RE = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)+$/;
 
 function validateQuestion(question) {
-  if (!question || typeof question !== "object") return "缺少结构化题目";
+  if (!question || typeof question !== "object" || Array.isArray(question)) return "缺少结构化题目";
+
+  // Top-level whitelist DTO check
+  for (const key of Object.keys(question)) {
+    if (!ALLOWED_QUESTION_KEYS.has(key)) return `题目包含未知字段: ${key}`;
+  }
+
   if (!QUESTION_TYPES.has(question.type)) return "无效题型";
   if (!nonEmptyString(question.stem) || !nonEmptyString(question.solution)) return "题干或解析为空";
   if (unsafeMarkdown(JSON.stringify(question))) return "题目包含不安全的 Markdown 或 HTML";
-  if (!question.answer || typeof question.answer !== "object") return "答案无效";
+  if (!question.answer || typeof question.answer !== "object" || Array.isArray(question.answer)) return "答案无效";
+
+  // Optional choice_order
+  if (question.choice_order !== undefined) {
+    if (question.choice_order !== "shuffle" && question.choice_order !== "fixed") {
+      return "选项顺序设置无效（仅支持 shuffle 或 fixed）";
+    }
+  }
 
   // Choice-based questions
   if (question.type === "single_choice" || question.type === "multiple_choice") {
@@ -84,14 +119,26 @@ function validateQuestion(question) {
     const maxChoices = question.type === "single_choice" ? 6 : 8;
     if (!Array.isArray(question.choices) || question.choices.length < minChoices || question.choices.length > maxChoices)
       return `选项数量无效（${question.type === "single_choice" ? "单选需 2 到 6 个" : "多选需 3 到 8 个"}选项）`;
-    const choiceIds = question.choices.map(item => item?.id);
+
+    for (const item of question.choices) {
+      if (!item || typeof item !== "object" || Array.isArray(item)) return "选项结构无效";
+      const keys = Object.keys(item);
+      if (keys.length !== 2 || !keys.includes("id") || !keys.includes("content")) {
+        return "选项包含未知属性或缺少必要属性（仅允许 id 与 content）";
+      }
+    }
+
+    const choiceIds = question.choices.map(item => item.id);
     if (!choiceIds.every((id, index) => typeof id === "string" && CHOICE_ID_RE.test(id) && choiceIds.indexOf(id) === index))
       return "选项 ID 无效或重复（需以大写字母开头，最长 8 位）";
-    if (!question.choices.every(item => nonEmptyString(item?.content)))
+    if (!question.choices.every(item => nonEmptyString(item.content)))
       return "选项内容为空";
 
     // Optional choice feedback
-    if (question.feedback?.choices) {
+    if (question.feedback?.choices !== undefined) {
+      if (typeof question.feedback.choices !== "object" || question.feedback.choices === null || Array.isArray(question.feedback.choices)) {
+        return "逐项反馈格式无效";
+      }
       const feedbackIds = Object.keys(question.feedback.choices);
       if (feedbackIds.length !== choiceIds.length || !feedbackIds.every(id => choiceIds.includes(id)))
         return "逐项反馈必须与选项一致";
@@ -100,9 +147,13 @@ function validateQuestion(question) {
     }
 
     if (question.type === "single_choice") {
+      const ansKeys = Object.keys(question.answer);
+      if (ansKeys.length !== 1 || ansKeys[0] !== "choice") return "单选题答案格式无效（仅允许 choice 属性）";
       if (!nonEmptyString(question.answer.choice, 8) || !choiceIds.includes(question.answer.choice))
         return "单选题答案与选项不一致";
     } else {
+      const ansKeys = Object.keys(question.answer);
+      if (ansKeys.length !== 1 || ansKeys[0] !== "choices") return "多选题答案格式无效（仅允许 choices 属性）";
       const selected = question.answer.choices;
       if (!Array.isArray(selected) || selected.length < 2 || !selected.every(item => choiceIds.includes(item)))
         return "多选题答案无效（至少需包含 2 个有效选项）";
@@ -110,21 +161,41 @@ function validateQuestion(question) {
         return "多选题答案不能包含重复选项";
     }
   } else if (question.type === "true_false") {
+    if (question.choices !== undefined) return "判断题不能包含 choices 选项列表";
+    const ansKeys = Object.keys(question.answer);
+    if (ansKeys.length !== 1 || ansKeys[0] !== "value") return "判断题答案格式无效（仅允许 value 属性）";
     if (typeof question.answer.value !== "boolean") return "判断题答案无效";
   } else if (question.type === "numeric") {
+    if (question.choices !== undefined) return "数值题不能包含 choices 选项列表";
+    const ansKeys = Object.keys(question.answer);
+    if (ansKeys.length !== 3 || !ansKeys.includes("value") || !ansKeys.includes("tolerance") || !ansKeys.includes("unit")) {
+      return "数值题答案格式无效（必须且仅允许包含 value, tolerance, unit）";
+    }
     if (typeof question.answer.value !== "number" || !Number.isFinite(question.answer.value))
       return "数值题答案无效";
+
     const tol = question.answer.tolerance;
-    if (!tol || typeof tol !== "object") return "数值题容差无效";
+    if (!tol || typeof tol !== "object" || Array.isArray(tol)) return "数值题容差无效";
+    const tolKeys = Object.keys(tol);
+    if (tolKeys.length !== 2 || !tolKeys.includes("type") || !tolKeys.includes("value")) {
+      return "数值题容差包含未知属性（仅允许 type 与 value）";
+    }
     if (!["absolute", "relative"].includes(tol.type)) return "数值题容差类型无效";
     if (typeof tol.value !== "number" || !Number.isFinite(tol.value) || tol.value < 0 || tol.value > 1)
       return "数值题容差值无效（需在 0 到 1 之间）";
     if (question.answer.value === 0 && tol.type === "relative") {
       return "真值为 0 时容差类型必须为绝对容差";
     }
+
     const unit = question.answer.unit;
-    if (!unit || typeof unit !== "object" || typeof unit.required !== "boolean" || !Array.isArray(unit.accepted)) {
+    if (!unit || typeof unit !== "object" || Array.isArray(unit) || typeof unit.required !== "boolean" || !Array.isArray(unit.accepted)) {
       return "数值题单位定义无效";
+    }
+    const unitKeys = Object.keys(unit);
+    for (const uk of unitKeys) {
+      if (uk !== "required" && uk !== "accepted" && uk !== "canonical") {
+        return `数值题单位定义包含未知属性: ${uk}`;
+      }
     }
     if (!unit.accepted.every(u => nonEmptyString(u, 50))) {
       return "数值题可接受单位必须为非空字符串数组";
@@ -140,12 +211,28 @@ function validateQuestion(question) {
     }
   }
 
-  // Optional global feedback validation
-  if (question.feedback) {
+  // Optional feedback validation
+  if (question.feedback !== undefined) {
+    if (typeof question.feedback !== "object" || question.feedback === null || Array.isArray(question.feedback)) {
+      return "反馈定义格式无效";
+    }
+    const fbKeys = Object.keys(question.feedback);
+    for (const fk of fbKeys) {
+      if (fk !== "choices" && fk !== "correct" && fk !== "incorrect") {
+        return `反馈定义包含未知属性: ${fk}`;
+      }
+    }
     if (question.feedback.correct !== undefined && !nonEmptyString(question.feedback.correct))
       return "答对反馈无效";
     if (question.feedback.incorrect !== undefined && !nonEmptyString(question.feedback.incorrect))
       return "答错反馈无效";
+  }
+
+  // Optional hints validation
+  if (question.hints !== undefined) {
+    if (!Array.isArray(question.hints) || !question.hints.every(h => nonEmptyString(h))) {
+      return "提示内容必须为非空字符串数组";
+    }
   }
 
   // Optional metadata validation
@@ -167,18 +254,42 @@ function validateQuestion(question) {
     )
       return "预计作答时间无效";
   }
-  if (question.topics != null) {
+  if (question.topics !== undefined) {
     if (!Array.isArray(question.topics) || !question.topics.every(t => typeof t === "string" && DOTTED_ID_RE.test(t)))
       return "主题分类格式无效（需为点分小写命名空间，如 mechanics.dynamics）";
+    if (new Set(question.topics).size !== question.topics.length)
+      return "主题分类不能包含重复项";
   }
-  if (question.concepts != null) {
+  if (question.concepts !== undefined) {
     if (!Array.isArray(question.concepts) || !question.concepts.every(c => typeof c === "string" && DOTTED_ID_RE.test(c)))
       return "概念分类格式无效（需为点分小写命名空间，如 newton.inertia）";
+    if (new Set(question.concepts).size !== question.concepts.length)
+      return "概念分类不能包含重复项";
+  }
+  if (question.objectives !== undefined) {
+    if (!Array.isArray(question.objectives) || !question.objectives.every(o => typeof o === "string" && DOTTED_ID_RE.test(o)))
+      return "教学目标格式无效（需为点分命名空间）";
+    if (new Set(question.objectives).size !== question.objectives.length)
+      return "教学目标不能包含重复项";
+  }
+  if (question.related_pages !== undefined) {
+    if (!Array.isArray(question.related_pages) || !question.related_pages.every(p => typeof p === "string" && DOTTED_ID_RE.test(p)))
+      return "关联页面格式无效（需为点分命名空间）";
+    if (new Set(question.related_pages).size !== question.related_pages.length)
+      return "关联页面不能包含重复项";
   }
 
   // Optional external media validation
-  if (question.external_media?.length) {
+  if (question.external_media !== undefined) {
+    if (!Array.isArray(question.external_media) || question.external_media.length === 0) {
+      return "外部媒体必须为非空数组";
+    }
     for (const media of question.external_media) {
+      if (!media || typeof media !== "object" || Array.isArray(media)) return "外部媒体格式无效";
+      const mediaKeys = Object.keys(media);
+      if (mediaKeys.length !== 3 || !mediaKeys.includes("url") || !mediaKeys.includes("alt") || !mediaKeys.includes("rights_note")) {
+        return "外部媒体包含未知属性或缺少必要属性（仅允许 url, alt, rights_note）";
+      }
       if (
         !nonEmptyString(media.url, 2000) ||
         !validHttpsUrl(media.url) ||
@@ -188,6 +299,14 @@ function validateQuestion(question) {
         return "图片链接、替代文本或授权说明无效";
     }
   }
+
+  if (question.attribution !== undefined) {
+    if (!nonEmptyString(question.attribution, 200)) return "作者署名无效";
+  }
+  if (question.ai_assisted !== undefined) {
+    if (typeof question.ai_assisted !== "boolean") return "ai_assisted 必须为布尔值";
+  }
+
   return null;
 }
 

@@ -219,3 +219,31 @@ def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
         for path in imported_paths:
             path.unlink(missing_ok=True)
 
+
+def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
+    repo_root = Path.cwd()
+    fixture_path = repo_root / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
+    data = json.loads(fixture_path.read_text(encoding="utf-8"))
+
+    imported_paths = []
+    try:
+        for name, question in data["valid"].items():
+            payload = {
+                "schemaVersion": 2,
+                "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-{name}",
+                "question": question,
+            }
+            input_file = tmp_path / f"submission_contract_{name}.json"
+            input_file.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+            imported_path = import_issue(repo_root, input_file)
+            imported_paths.append(imported_path)
+
+        report = validate_repository(repo_root, include_drafts=True)
+        for path in imported_paths:
+            errors_for_file = [e for e in report.errors if e.path == path]
+            assert not errors_for_file, f"Errors for {path}: {errors_for_file}"
+    finally:
+        for path in imported_paths:
+            path.unlink(missing_ok=True)
+
+

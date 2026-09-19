@@ -83,7 +83,7 @@ test("validates numeric answers requiring finite numbers", () => {
     answer: { value: 9.8 },
     solution: "解析：约为 9.8 m/s^2。",
   };
-  assert.match(validateQuestion(missingTol), /数值题容差无效/);
+  assert.match(validateQuestion(missingTol), /数值题答案格式无效/);
 
   const invalidNumeric = {
     ...validNumeric,
@@ -257,4 +257,27 @@ test("validates dotted taxonomy ID format for topics and concepts", () => {
   };
   assert.match(validateQuestion(badConcept), /概念分类格式无效/);
 });
+
+import fs from "node:fs";
+
+const contractFixture = JSON.parse(
+  fs.readFileSync(new URL("../tests/question_bank/fixtures/submission_v2_contract.json", import.meta.url), "utf-8")
+);
+
+test("accepts all valid question payloads from submission_v2_contract fixture", () => {
+  for (const [name, q] of Object.entries(contractFixture.valid)) {
+    const error = validateQuestion(q);
+    assert.equal(error, null, `Expected valid ${name} to pass, got error: ${error}`);
+  }
+});
+
+test("rejects all invalid question payloads from submission_v2_contract fixture", () => {
+  for (const [name, inv] of Object.entries(contractFixture.invalid)) {
+    const baseObj = contractFixture.valid[inv.base];
+    const testObj = { ...baseObj, ...inv.override };
+    const error = validateQuestion(testObj);
+    assert.notEqual(error, null, `Expected invalid ${name} to be rejected, but it passed`);
+  }
+});
+
 
