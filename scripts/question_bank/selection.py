@@ -1,13 +1,27 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
+from itertools import combinations
 import re
-from typing import Any, TypeVar
+from typing import Any, Literal, TypeVar
 
 from .models import TaxonomyRegistry
 
 T = TypeVar("T")
 
 SELECTION_ALGORITHM_VERSION = 1
+
+
+@dataclass
+class SelectionResult:
+    status: Literal["ok", "infeasible", "exhausted"]
+    questions: list[dict[str, Any]] | None = None
+    reason_code: str | None = None
+    message: str | None = None
+
+    @property
+    def is_ok(self) -> bool:
+        return self.status == "ok"
 
 
 def _int32(val: int) -> int:
@@ -27,8 +41,8 @@ def _imul(a: int, b: int) -> int:
 
 def hash_seed(seed: str) -> int:
     h = 2166136261
-    for char in seed:
-        h = _uint32(h ^ ord(char))
+    for byte in seed.encode("utf-8"):
+        h = _uint32(h ^ byte)
         h = _uint32(_imul(h, 16777619))
     return h
 
@@ -175,13 +189,31 @@ def satisfies_constraints(selected: list[dict[str, Any]], constraints: list[dict
     return True
 
 
-def solve_query_selection(
+def can_satisfy_constraints(
+    selected: list[dict[str, Any]],
+    remaining_count: int,
+    constraints: list[dict[str, Any]],
+) -> bool:
+    for c in constraints:
+        field = c.get("field")
+        values = c.get("values", [])
+        min_val = c.get("min")
+        max_val = c.get("max")
+        matching = sum(1 for q in selected if q.get(field) in values)
+        if max_val is not None and matching > max_val:
+            return False
+        if min_val is not None and matching + remaining_count < min_val:
+            return False
+    return True
+
+
+def solve_query_selection_detailed(
     pool: list[dict[str, Any]],
     query: dict[str, Any],
     taxonomy: TaxonomyRegistry | None = None,
     seed: str | None = None,
     set_id: str = "",
-) -> list[dict[str, Any]] | None:
+) -> SelectionResult:
     count = query.get("count", 0)
     top_filters = query.get("filters", {})
     slots = query.get("slots", [])
@@ -192,7 +224,11 @@ def solve_query_selection(
     p_pool.sort(key=lambda q: str(q.get("id", "")))
 
     if len(p_pool) < count:
-        return None
+        return SelectionResult(
+            status="infeasible",
+            reason_code="insufficient_pool",
+            message=f"候选题目池数量不足（需要 {count} 道，当前仅有 {len(p_pool)} 道）",
+        )
 
     # Step 2: Slot candidates
     slot_candidates: list[list[dict[str, Any]]] = []
@@ -204,25 +240,49 @@ def solve_query_selection(
 
     total_slot_count = sum(s.get("count", 0) for s in slots)
     if total_slot_count > count:
-        return None
+        return SelectionResult(
+            status="infeasible",
+            reason_code="slot_conflict",
+            message=f"槽位需求题目总数 ({total_slot_count}) 超过测试选卷总量 ({count})",
+        )
 
-    # Step 3: Backtracking search
+    for idx, s in enumerate(slots):
+        req = s.get("count", 0)
+        available = len(slot_candidates[idx])
+        if available < req:
+            return SelectionResult(
+                status="infeasible",
+                reason_code="slot_insufficient_candidates",
+                message=f"槽位「{s.get('id')}」候选题目不足（需要 {req} 道，仅有 {available} 道）",
+            )
+
+    # Step 3: Backtracking search with constraint pruning and node budget
+    NODE_BUDGET = 5000
+    node_count = 0
+    exhausted = False
     assigned_slots: list[list[dict[str, Any]]] = []
     used_ids: set[str] = set()
 
-    def search_slots(slot_idx: int) -> list[dict[str, Any]] | None:
+    def search_slots(slot_idx: int, check_constraints: bool) -> list[dict[str, Any]] | None:
+        nonlocal node_count, exhausted
+        node_count += 1
+        if node_count > NODE_BUDGET:
+            exhausted = True
+            return None
+
+        flattened = [q for sublist in assigned_slots for q in sublist]
+        remaining_total = count - len(flattened)
+        if check_constraints and not can_satisfy_constraints(flattened, remaining_total, constraints):
+            return None
+
         if slot_idx == len(slots):
-            # All slots filled, now fill remaining questions from remaining pool
             remaining_needed = count - len(used_ids)
             remaining_cands = [q for q in p_pool if str(q.get("id")) not in used_ids]
             if len(remaining_cands) < remaining_needed:
                 return None
             if seed is not None:
                 remaining_cands = shuffle(remaining_cands, f"{set_id}:pool:{seed}")
-
-            # Search combination of remaining candidates that satisfies constraints
-            flattened_slots = [q for sublist in assigned_slots for q in sublist]
-            return search_remaining(0, remaining_needed, remaining_cands, flattened_slots)
+            return search_remaining(remaining_needed, remaining_cands, flattened, check_constraints)
 
         slot = slots[slot_idx]
         slot_need = slot.get("count", 0)
@@ -230,16 +290,16 @@ def solve_query_selection(
         if len(cands) < slot_need:
             return None
 
-        from itertools import combinations
-
         for chosen in combinations(cands, slot_need):
             chosen_ids = {str(q.get("id")) for q in chosen}
             used_ids.update(chosen_ids)
             assigned_slots.append(list(chosen))
 
-            result = search_slots(slot_idx + 1)
+            result = search_slots(slot_idx + 1, check_constraints)
             if result is not None:
                 return result
+            if exhausted:
+                return None
 
             assigned_slots.pop()
             used_ids.difference_update(chosen_ids)
@@ -247,35 +307,78 @@ def solve_query_selection(
         return None
 
     def search_remaining(
-        start_idx: int, needed: int, candidates: list[dict[str, Any]], current_selection: list[dict[str, Any]]
+        needed: int,
+        candidates: list[dict[str, Any]],
+        current_selection: list[dict[str, Any]],
+        check_constraints: bool,
     ) -> list[dict[str, Any]] | None:
+        nonlocal node_count, exhausted
         if needed == 0:
-            if satisfies_constraints(current_selection, constraints):
+            if not check_constraints or satisfies_constraints(current_selection, constraints):
                 return list(current_selection)
             return None
 
-        from itertools import combinations
-
         for chosen in combinations(candidates, needed):
+            node_count += 1
+            if node_count > NODE_BUDGET:
+                exhausted = True
+                return None
             trial = current_selection + list(chosen)
-            if satisfies_constraints(trial, constraints):
+            if not check_constraints or satisfies_constraints(trial, constraints):
                 return trial
 
         return None
 
-    solution = search_slots(0)
-    if solution is None:
-        return None
+    # First attempt: standard search with constraints
+    solution = search_slots(0, check_constraints=True)
+    if solution is not None:
+        if seed is not None:
+            final_questions = shuffle(solution, f"{set_id}:order:{seed}")
+            result_questions: list[dict[str, Any]] = []
+            for q in final_questions:
+                q_copy = dict(q)
+                if (
+                    q_copy.get("choice_order") == "shuffle"
+                    and "choices" in q_copy
+                    and isinstance(q_copy["choices"], list)
+                ):
+                    q_copy["choices"] = shuffle(q_copy["choices"], f"{set_id}:{q_copy['id']}:choices:{seed}")
+                result_questions.append(q_copy)
+            return SelectionResult(status="ok", questions=result_questions)
+        return SelectionResult(status="ok", questions=solution)
 
-    # If seed is provided, finalize question and choices shuffle
-    if seed is not None:
-        final_questions = shuffle(solution, f"{set_id}:order:{seed}")
-        result_questions: list[dict[str, Any]] = []
-        for q in final_questions:
-            q_copy = dict(q)
-            if q_copy.get("choice_order") == "shuffle" and "choices" in q_copy and isinstance(q_copy["choices"], list):
-                q_copy["choices"] = shuffle(q_copy["choices"], f"{set_id}:{q_copy['id']}:choices:{seed}")
-            result_questions.append(q_copy)
-        return result_questions
+    if exhausted:
+        return SelectionResult(
+            status="exhausted",
+            message="选题求解超出搜索节点预算，计算资源耗尽",
+        )
 
-    return solution
+    # Infeasible: check if failure was due to constraints or slot conflict
+    node_count = 0
+    assigned_slots.clear()
+    used_ids.clear()
+    unconstrained = search_slots(0, check_constraints=False) if constraints else None
+    if unconstrained is not None:
+        return SelectionResult(
+            status="infeasible",
+            reason_code="constraint_violation",
+            message="题目组合无法满足题型、难度或风格等分布约束",
+        )
+
+    return SelectionResult(
+        status="infeasible",
+        reason_code="slot_conflict",
+        message="不同槽位之间的候选题目竞争导致无法同时满足",
+    )
+
+
+def solve_query_selection(
+    pool: list[dict[str, Any]],
+    query: dict[str, Any],
+    taxonomy: TaxonomyRegistry | None = None,
+    seed: str | None = None,
+    set_id: str = "",
+) -> list[dict[str, Any]] | None:
+    res = solve_query_selection_detailed(pool, query, taxonomy, seed, set_id)
+    return res.questions if res.status == "ok" else None
+

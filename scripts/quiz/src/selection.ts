@@ -174,63 +174,138 @@ export function withShuffledChoices(question: Question, setId: string, seed?: st
   return question;
 }
 
-export function solveQuerySelection(
+export function canSatisfyConstraints(
+  selected: readonly Question[],
+  remainingCount: number,
+  constraints?: readonly SetConstraint[]
+): boolean {
+  if (!constraints || constraints.length === 0) return true;
+  for (const c of constraints) {
+    const values = c.values ?? [];
+    let count = 0;
+    for (const q of selected) {
+      const val =
+        (q as unknown as Record<string, unknown>)[c.field] ??
+        (c.field === "type" ? q.type : undefined);
+      if (values.includes(val as string | number)) {
+        count += 1;
+      }
+    }
+    if (c.max !== undefined && count > c.max) return false;
+    if (c.min !== undefined && count + remainingCount < c.min) return false;
+  }
+  return true;
+}
+
+export type InfeasibleReasonCode =
+  | "insufficient_pool"
+  | "slot_insufficient_candidates"
+  | "slot_conflict"
+  | "constraint_violation";
+
+export type SelectionOutcome =
+  | { status: "ok"; questions: Question[] }
+  | { status: "infeasible"; reasonCode: InfeasibleReasonCode; message: string }
+  | { status: "exhausted"; message: string };
+
+export function solveQuerySelectionDetailed(
   pool: readonly Question[],
   query: SetSelectionQuery,
   taxonomy?: TaxonomyCatalog,
   seed?: string,
   setId = ""
-): Question[] | null {
+): SelectionOutcome {
   const count = query.count;
   const topFilters = query.filters;
   const slots = query.slots ?? [];
   const constraints = query.constraints ?? [];
 
-  // Step 1: Filter pool by top-level filters and sort by ID ascending
+  // Step 1: Filter pool by top-level filters and sort by ID ascending (code-unit order)
   const pPool = pool.filter(q => matchesFilters(q, topFilters, taxonomy));
-  pPool.sort((a, b) => a.id.localeCompare(b.id));
+  pPool.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
 
-  if (pPool.length < count) return null;
+  if (pPool.length < count) {
+    return {
+      status: "infeasible",
+      reasonCode: "insufficient_pool",
+      message: `候选题目池数量不足（需要 ${count} 道，当前仅有 ${pPool.length} 道）`
+    };
+  }
 
   const totalSlotCount = slots.reduce((acc, s) => acc + s.count, 0);
-  if (totalSlotCount > count) return null;
+  if (totalSlotCount > count) {
+    return {
+      status: "infeasible",
+      reasonCode: "slot_conflict",
+      message: `槽位需求题目总数 (${totalSlotCount}) 超过测试选卷总量 (${count})`
+    };
+  }
 
   // Step 2: Slot candidates
   const slotCandidates: Question[][] = [];
-  for (const slot of slots) {
+  for (let idx = 0; idx < slots.length; idx += 1) {
+    const slot = slots[idx];
     let cands = pPool.filter(q => matchesFilters(q, slot.filters, taxonomy));
     if (seed !== undefined) {
       cands = shuffle(cands, `${setId}:slot:${slot.id}:${seed}`);
     }
+    if (cands.length < slot.count) {
+      return {
+        status: "infeasible",
+        reasonCode: "slot_insufficient_candidates",
+        message: `槽位「${slot.id}」候选题目不足（需要 ${slot.count} 道，仅有 ${cands.length} 道）`
+      };
+    }
     slotCandidates.push(cands);
   }
 
-  // Step 3: Backtracking search
+  // Step 3: Backtracking search with constraint pruning and node budget
+  const NODE_BUDGET = 5000;
+  let nodeCount = 0;
+  let exhausted = false;
   const assignedSlots: Question[][] = [];
   const usedIds = new Set<string>();
 
   function searchRemaining(
     needed: number,
     candidates: readonly Question[],
-    currentSelection: readonly Question[]
+    currentSelection: readonly Question[],
+    checkConstraints: boolean
   ): Question[] | null {
     if (needed === 0) {
-      if (satisfiesConstraints(currentSelection, constraints)) {
+      if (!checkConstraints || satisfiesConstraints(currentSelection, constraints)) {
         return [...currentSelection];
       }
       return null;
     }
 
     for (const chosen of combinations(candidates, needed)) {
+      nodeCount += 1;
+      if (nodeCount > NODE_BUDGET) {
+        exhausted = true;
+        return null;
+      }
       const trial = [...currentSelection, ...chosen];
-      if (satisfiesConstraints(trial, constraints)) {
+      if (!checkConstraints || satisfiesConstraints(trial, constraints)) {
         return trial;
       }
     }
     return null;
   }
 
-  function searchSlots(slotIdx: number): Question[] | null {
+  function searchSlots(slotIdx: number, checkConstraints: boolean): Question[] | null {
+    nodeCount += 1;
+    if (nodeCount > NODE_BUDGET) {
+      exhausted = true;
+      return null;
+    }
+
+    const flattened = assignedSlots.flat();
+    const remainingTotal = count - flattened.length;
+    if (checkConstraints && !canSatisfyConstraints(flattened, remainingTotal, constraints)) {
+      return null;
+    }
+
     if (slotIdx === slots.length) {
       const remainingNeeded = count - usedIds.size;
       let remainingCands = pPool.filter(q => !usedIds.has(q.id));
@@ -238,8 +313,7 @@ export function solveQuerySelection(
       if (seed !== undefined) {
         remainingCands = shuffle(remainingCands, `${setId}:pool:${seed}`);
       }
-      const flattened = assignedSlots.flat();
-      return searchRemaining(remainingNeeded, remainingCands, flattened);
+      return searchRemaining(remainingNeeded, remainingCands, flattened, checkConstraints);
     }
 
     const slot = slots[slotIdx];
@@ -252,8 +326,9 @@ export function solveQuerySelection(
       chosenIds.forEach(id => usedIds.add(id));
       assignedSlots.push(chosen);
 
-      const result = searchSlots(slotIdx + 1);
+      const result = searchSlots(slotIdx + 1, checkConstraints);
       if (result !== null) return result;
+      if (exhausted) return null;
 
       assignedSlots.pop();
       chosenIds.forEach(id => usedIds.delete(id));
@@ -262,15 +337,54 @@ export function solveQuerySelection(
     return null;
   }
 
-  const solution = searchSlots(0);
-  if (!solution) return null;
-
-  if (seed !== undefined) {
-    const finalQuestions = shuffle(solution, `${setId}:order:${seed}`);
-    return finalQuestions.map(q => withShuffledChoices(q, setId, seed));
+  const solution = searchSlots(0, true);
+  if (solution) {
+    if (seed !== undefined) {
+      const finalQuestions = shuffle(solution, `${setId}:order:${seed}`);
+      return {
+        status: "ok",
+        questions: finalQuestions.map(q => withShuffledChoices(q, setId, seed))
+      };
+    }
+    return { status: "ok", questions: solution };
   }
 
-  return solution;
+  if (exhausted) {
+    return {
+      status: "exhausted",
+      message: "选题求解超出搜索节点预算，计算资源耗尽"
+    };
+  }
+
+  // Check if failure was constraint-specific
+  nodeCount = 0;
+  assignedSlots.length = 0;
+  usedIds.clear();
+  const unconstrained = constraints.length > 0 ? searchSlots(0, false) : null;
+  if (unconstrained !== null) {
+    return {
+      status: "infeasible",
+      reasonCode: "constraint_violation",
+      message: "题目组合无法满足题型、难度或风格等分布约束"
+    };
+  }
+
+  return {
+    status: "infeasible",
+    reasonCode: "slot_conflict",
+    message: "不同槽位之间的候选题目竞争导致无法同时满足"
+  };
+}
+
+export function solveQuerySelection(
+  pool: readonly Question[],
+  query: SetSelectionQuery,
+  taxonomy?: TaxonomyCatalog,
+  seed?: string,
+  setId = ""
+): Question[] | null {
+  const outcome = solveQuerySelectionDetailed(pool, query, taxonomy, seed, setId);
+  return outcome.status === "ok" ? outcome.questions : null;
 }
 
 export function selectFixedSet(

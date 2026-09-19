@@ -53,6 +53,45 @@ def test_mulberry32_prng_deterministic_vector() -> None:
     assert s1 != items
 
 
+def test_shared_golden_fixture_selection_v1() -> None:
+    from scripts.question_bank.selection import solve_query_selection_detailed
+
+    fixture = load_json(ROOT / "tests" / "question_bank" / "fixtures" / "selection_v1_golden.json")
+
+    # 1. PRNG vectors
+    for item in fixture["prng_vectors"]:
+        rnd = create_random(item["seed"])
+        vals = [rnd(), rnd(), rnd()]
+        for idx, expected in enumerate(item["expected_floats"]):
+            assert abs(vals[idx] - expected) < 1e-6, f"PRNG mismatch for seed {item['seed']}"
+
+    # 2. Shuffle vectors
+    for item in fixture["shuffle_vectors"]:
+        shuffled = shuffle(item["input"], item["seed"])
+        assert shuffled == item["expected"], f"Shuffle mismatch for seed {item['seed']}"
+
+    # 3. Overlapping slots
+    solvers = fixture["solvers"]
+    os_case = solvers["overlapping_slots"]
+    sol = solve_query_selection(os_case["pool"], os_case["query"])
+    assert sol is not None
+    assert {q["id"] for q in sol} == set(os_case["expected_ids"])
+
+    # 4. Composition constraints
+    cc_case = solvers["composition_constraints"]
+    sol = solve_query_selection(cc_case["pool"], cc_case["query"])
+    assert sol is not None
+    assert {q["id"] for q in sol} == set(cc_case["expected_ids"])
+
+    # 5. Solver diagnostics
+    diag = solvers["diagnostics"]
+    for case_name, case_data in diag.items():
+        res = solve_query_selection_detailed(case_data["pool"], case_data["query"])
+        assert res.status == case_data["expected_status"], f"Expected {case_data['expected_status']} in {case_name}"
+        assert res.reason_code == case_data["expected_reason_code"], f"Expected {case_data['expected_reason_code']} in {case_name}"
+
+
+
 def test_filter_matching_with_taxonomy() -> None:
     registry, _ = load_taxonomy(ROOT / "question-bank" / "taxonomy")
     question = {

@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-from .selection import solve_query_selection
+from .selection import solve_query_selection, solve_query_selection_detailed
 from .validator import ValidationReport
 
 
@@ -51,11 +51,11 @@ def coverage_data(report: ValidationReport, *, preview: bool = False) -> dict[st
             else:
                 feasible = True
         elif stype == "query":
-            solution = solve_query_selection(set_pool, sel, report.data.taxonomy, set_id=str(sid))
-            if solution is not None:
+            solution_res = solve_query_selection_detailed(set_pool, sel, report.data.taxonomy, set_id=str(sid))
+            if solution_res.is_ok:
                 feasible = True
             else:
-                reason = "题目池不满足筛选槽或约束"
+                reason = solution_res.message or "题目池不满足筛选槽或约束"
 
         sets_summary[sid] = {
             "title": sdata.get("title"),

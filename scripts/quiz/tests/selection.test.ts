@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { createRandom, shuffle } from "../src/random.js";
 import {
@@ -9,9 +12,14 @@ import {
   selectRetry,
   selectSetQuestions,
   SelectionError,
-  solveQuerySelection
+  solveQuerySelection,
+  solveQuerySelectionDetailed
 } from "../src/selection.js";
 import type { Question, SetBundle, TaxonomyCatalog } from "../src/types.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const fixturePath = resolve(__dirname, "../../../tests/question_bank/fixtures/selection_v1_golden.json");
+const goldenFixture = JSON.parse(readFileSync(fixturePath, "utf-8"));
 
 const makeQuestion = (
   id: string,
@@ -68,6 +76,49 @@ test("mulberry32 PRNG and shuffle match golden vectors", () => {
   const s2 = shuffle(items, "seed-abc");
   assert.deepEqual(s1, s2);
   assert.deepEqual(s1, ["q2", "q3", "q5", "q1", "q4"]);
+});
+
+test("shared golden fixture selection v1 (PRNG, shuffle, backtracking, diagnostics)", () => {
+  // 1. PRNG vectors
+  for (const item of goldenFixture.prng_vectors) {
+    const rnd = createRandom(item.seed);
+    const vals = [rnd(), rnd(), rnd()];
+    for (let i = 0; i < item.expected_floats.length; i += 1) {
+      assert.ok(Math.abs(vals[i] - item.expected_floats[i]) < 1e-6, `PRNG mismatch for seed ${item.seed}`);
+    }
+  }
+
+  // 2. Shuffle vectors
+  for (const item of goldenFixture.shuffle_vectors) {
+    const shuffled = shuffle(item.input, item.seed);
+    assert.deepEqual(shuffled, item.expected, `Shuffle mismatch for seed ${item.seed}`);
+  }
+
+  // 3. Overlapping slots
+  const solvers = goldenFixture.solvers;
+  const osCase = solvers.overlapping_slots;
+  const osPool = osCase.pool.map((q: any) => makeQuestion(q.id, q));
+  const osSol = solveQuerySelection(osPool, osCase.query);
+  assert.ok(osSol !== null);
+  assert.deepEqual(new Set(osSol.map(q => q.id)), new Set(osCase.expected_ids));
+
+  // 4. Composition constraints
+  const ccCase = solvers.composition_constraints;
+  const ccPool = ccCase.pool.map((q: any) => makeQuestion(q.id, q));
+  const ccSol = solveQuerySelection(ccPool, ccCase.query);
+  assert.ok(ccSol !== null);
+  assert.deepEqual(new Set(ccSol.map(q => q.id)), new Set(ccCase.expected_ids));
+
+  // 5. Diagnostics
+  const diag = solvers.diagnostics;
+  for (const [caseName, caseData] of Object.entries<any>(diag)) {
+    const pool = caseData.pool.map((q: any) => makeQuestion(q.id, q));
+    const res = solveQuerySelectionDetailed(pool, caseData.query);
+    assert.equal(res.status, caseData.expected_status, `Status mismatch in ${caseName}`);
+    if (res.status === "infeasible") {
+      assert.equal(res.reasonCode, caseData.expected_reason_code, `Reason code mismatch in ${caseName}`);
+    }
+  }
 });
 
 test("filter matching with taxonomy and metadata", () => {

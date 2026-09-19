@@ -10,7 +10,11 @@ from typing import Any
 from .markdown_renderer import render_markdown
 from .media import compiled_assets, question_content_fingerprint
 from .models import PageRegistry, TaxonomyRegistry
-from .selection import matches_filters, solve_query_selection
+from .selection import (
+    matches_filters,
+    solve_query_selection,
+    solve_query_selection_detailed,
+)
 from .utils import canonical_json, fingerprint, tree_bytes
 from .validator import ValidationReport, validate_repository
 
@@ -228,13 +232,13 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
                 for q in sorted(candidate_raw, key=lambda item: item["id"])
                 if q["id"] in compiled_questions
             ]
-            solution = solve_query_selection(candidate_raw, sel, report.data.taxonomy, set_id=set_id)
-            if solution is not None:
+            solution_res = solve_query_selection_detailed(candidate_raw, sel, report.data.taxonomy, set_id=set_id)
+            if solution_res.is_ok:
                 runnable = True
                 unavailable_reason = None
             else:
                 runnable = False
-                unavailable_reason = "No candidate questions satisfy selection slots and constraints"
+                unavailable_reason = solution_res.message or "No candidate questions satisfy selection slots and constraints"
 
         # Derive topicIds
         set_topics: set[str] = set()
