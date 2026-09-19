@@ -57,7 +57,7 @@ function nonEmptyString(value, max = 20000) {
 }
 
 function unsafeMarkdown(value) {
-  return typeof value === "string" && /<(?:script|iframe|object|embed)\b|(?:javascript|data):/i.test(value);
+  return typeof value === "string" && /<(?:script|iframe|object|embed|form|input|button)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata):/i.test(value);
 }
 
 function validHttpsUrl(value) {
@@ -69,6 +69,7 @@ function validHttpsUrl(value) {
 }
 
 const CHOICE_ID_RE = /^[A-Z][A-Z0-9]{0,7}$/;
+const DOTTED_ID_RE = /^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]+)+$/;
 
 function validateQuestion(question) {
   if (!question || typeof question !== "object") return "缺少结构化题目";
@@ -79,9 +80,10 @@ function validateQuestion(question) {
 
   // Choice-based questions
   if (question.type === "single_choice" || question.type === "multiple_choice") {
+    const minChoices = question.type === "single_choice" ? 2 : 3;
     const maxChoices = question.type === "single_choice" ? 6 : 8;
-    if (!Array.isArray(question.choices) || question.choices.length < 2 || question.choices.length > maxChoices)
-      return `选项数量无效（需在 2 到 ${maxChoices} 之间）`;
+    if (!Array.isArray(question.choices) || question.choices.length < minChoices || question.choices.length > maxChoices)
+      return `选项数量无效（${question.type === "single_choice" ? "单选需 2 到 6 个" : "多选需 3 到 8 个"}选项）`;
     const choiceIds = question.choices.map(item => item?.id);
     if (!choiceIds.every((id, index) => typeof id === "string" && CHOICE_ID_RE.test(id) && choiceIds.indexOf(id) === index))
       return "选项 ID 无效或重复（需以大写字母开头，最长 8 位）";
@@ -102,31 +104,38 @@ function validateQuestion(question) {
         return "单选题答案与选项不一致";
     } else {
       const selected = question.answer.choices;
-      if (!Array.isArray(selected) || !selected.length || !selected.every(item => choiceIds.includes(item)))
-        return "多选题答案与选项不一致";
+      if (!Array.isArray(selected) || selected.length < 2 || !selected.every(item => choiceIds.includes(item)))
+        return "多选题答案无效（至少需包含 2 个有效选项）";
+      if (new Set(selected).size !== selected.length)
+        return "多选题答案不能包含重复选项";
     }
   } else if (question.type === "true_false") {
     if (typeof question.answer.value !== "boolean") return "判断题答案无效";
   } else if (question.type === "numeric") {
     if (typeof question.answer.value !== "number" || !Number.isFinite(question.answer.value))
       return "数值题答案无效";
-    if (question.answer.tolerance !== undefined) {
-      const tol = question.answer.tolerance;
-      if (!tol || typeof tol !== "object") return "数值题容差无效";
-      if (!["absolute", "relative"].includes(tol.type)) return "数值题容差类型无效";
-      if (typeof tol.value !== "number" || !Number.isFinite(tol.value) || tol.value < 0 || tol.value > 1)
-        return "数值题容差值无效（需在 0 到 1 之间）";
-      if (question.answer.value === 0 && tol.type === "relative") {
-        return "真值为 0 时容差类型必须为绝对容差";
-      }
+    const tol = question.answer.tolerance;
+    if (!tol || typeof tol !== "object") return "数值题容差无效";
+    if (!["absolute", "relative"].includes(tol.type)) return "数值题容差类型无效";
+    if (typeof tol.value !== "number" || !Number.isFinite(tol.value) || tol.value < 0 || tol.value > 1)
+      return "数值题容差值无效（需在 0 到 1 之间）";
+    if (question.answer.value === 0 && tol.type === "relative") {
+      return "真值为 0 时容差类型必须为绝对容差";
     }
-    if (question.answer.unit !== undefined) {
-      const unit = question.answer.unit;
-      if (!unit || typeof unit !== "object" || typeof unit.required !== "boolean" || !Array.isArray(unit.accepted)) {
-        return "数值题单位定义无效";
-      }
-      if (!unit.accepted.every(u => typeof u === "string")) {
-        return "数值题可接受单位必须为字符串数组";
+    const unit = question.answer.unit;
+    if (!unit || typeof unit !== "object" || typeof unit.required !== "boolean" || !Array.isArray(unit.accepted)) {
+      return "数值题单位定义无效";
+    }
+    if (!unit.accepted.every(u => nonEmptyString(u, 50))) {
+      return "数值题可接受单位必须为非空字符串数组";
+    }
+    if (new Set(unit.accepted).size !== unit.accepted.length) {
+      return "数值题可接受单位不能重复";
+    }
+    if (unit.canonical !== undefined) {
+      if (!nonEmptyString(unit.canonical, 50)) return "规范单位无效";
+      if (unit.required && !unit.accepted.includes(unit.canonical)) {
+        return "规范单位必须包含在可接受单位列表中";
       }
     }
   }
@@ -159,12 +168,12 @@ function validateQuestion(question) {
       return "预计作答时间无效";
   }
   if (question.topics != null) {
-    if (!Array.isArray(question.topics) || !question.topics.every(t => nonEmptyString(t, 120)))
-      return "主题分类格式无效";
+    if (!Array.isArray(question.topics) || !question.topics.every(t => typeof t === "string" && DOTTED_ID_RE.test(t)))
+      return "主题分类格式无效（需为点分小写命名空间，如 mechanics.dynamics）";
   }
   if (question.concepts != null) {
-    if (!Array.isArray(question.concepts) || !question.concepts.every(c => nonEmptyString(c, 120)))
-      return "概念分类格式无效";
+    if (!Array.isArray(question.concepts) || !question.concepts.every(c => typeof c === "string" && DOTTED_ID_RE.test(c)))
+      return "概念分类格式无效（需为点分小写命名空间，如 newton.inertia）";
   }
 
   // Optional external media validation

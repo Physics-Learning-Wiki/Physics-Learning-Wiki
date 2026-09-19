@@ -68,21 +68,40 @@ test("validates numeric answers requiring finite numbers", () => {
   const validNumeric = {
     type: "numeric",
     stem: "计算重力加速度大小（单位取 m/s^2）：",
-    answer: { value: 9.8 },
+    answer: {
+      value: 9.8,
+      tolerance: { type: "absolute", value: 0.05 },
+      unit: { required: false, accepted: ["m/s^2"] },
+    },
     solution: "地球表面附近重力加速度约为 9.8 m/s^2。",
   };
   assert.equal(validateQuestion(validNumeric), null);
 
+  const missingTol = {
+    type: "numeric",
+    stem: "计算重力加速度大小：",
+    answer: { value: 9.8 },
+    solution: "解析：约为 9.8 m/s^2。",
+  };
+  assert.match(validateQuestion(missingTol), /数值题容差无效/);
+
   const invalidNumeric = {
     ...validNumeric,
-    answer: { value: NaN },
+    answer: {
+      ...validNumeric.answer,
+      value: NaN,
+    },
   };
   assert.match(validateQuestion(invalidNumeric), /数值题答案无效/);
 });
 
-test("rejects unsafe Markdown and malformed image URLs", () => {
+test("rejects unsafe Markdown, event handlers, and malformed image URLs", () => {
   assert.match(
     validateQuestion({ ...minimalDraftQuestion, stem: "<script>alert(1)</script>" }),
+    /不安全/
+  );
+  assert.match(
+    validateQuestion({ ...minimalDraftQuestion, stem: '<img src="x" onerror="alert(1)">' }),
     /不安全/
   );
   assert.match(
@@ -126,6 +145,45 @@ test("rejects invalid choice IDs or excessive choices", () => {
   assert.match(validateQuestion(tooManyChoices), /选项数量无效/);
 });
 
+test("enforces multiple choice question and answer constraints strictly", () => {
+  const mcQuestion = {
+    type: "multiple_choice",
+    stem: "下列属于理想化物理模型的是：",
+    choices: [
+      { id: "A", content: "质点" },
+      { id: "B", content: "刚体" },
+      { id: "C", content: "点电荷" },
+    ],
+    answer: { choices: ["A", "B"] },
+    solution: "质点、刚体和点电荷均为物理理想模型。",
+  };
+  assert.equal(validateQuestion(mcQuestion), null);
+
+  // Less than 3 choices in multiple_choice rejected
+  const mcFewChoices = {
+    ...mcQuestion,
+    choices: [
+      { id: "A", content: "质点" },
+      { id: "B", content: "刚体" },
+    ],
+  };
+  assert.match(validateQuestion(mcFewChoices), /多选需 3 到 8 个/);
+
+  // Less than 2 answer choices in multiple_choice rejected
+  const mcSingleAns = {
+    ...mcQuestion,
+    answer: { choices: ["A"] },
+  };
+  assert.match(validateQuestion(mcSingleAns), /至少需包含 2 个有效选项/);
+
+  // Duplicate answer choices rejected
+  const mcDuplicateAns = {
+    ...mcQuestion,
+    answer: { choices: ["A", "A"] },
+  };
+  assert.match(validateQuestion(mcDuplicateAns), /多选题答案不能包含重复选项/);
+});
+
 test("validates numeric tolerance and unit strictly", () => {
   const validFullNumeric = {
     type: "numeric",
@@ -133,7 +191,7 @@ test("validates numeric tolerance and unit strictly", () => {
     answer: {
       value: 9.8,
       tolerance: { type: "absolute", value: 0.05 },
-      unit: { required: true, accepted: ["m/s^2", "N/kg"] },
+      unit: { required: true, accepted: ["m/s^2", "N/kg"], canonical: "m/s^2" },
     },
     solution: "解析：约为 9.8 m/s^2。",
   };
@@ -162,6 +220,7 @@ test("validates numeric tolerance and unit strictly", () => {
     answer: {
       value: 0,
       tolerance: { type: "relative", value: 0.05 },
+      unit: { required: false, accepted: [] },
     },
   };
   assert.match(validateQuestion(zeroWithRelative), /真值为 0 时容差类型必须为绝对容差/);
@@ -174,5 +233,28 @@ test("validates numeric tolerance and unit strictly", () => {
     },
   };
   assert.match(validateQuestion(invalidUnit), /单位定义无效/);
+
+  const missingCanonical = {
+    ...validFullNumeric,
+    answer: {
+      ...validFullNumeric.answer,
+      unit: { required: true, accepted: ["m/s^2"], canonical: "N/kg" },
+    },
+  };
+  assert.match(validateQuestion(missingCanonical), /规范单位必须包含在可接受单位列表中/);
+});
+
+test("validates dotted taxonomy ID format for topics and concepts", () => {
+  const badTopic = {
+    ...fullChoiceQuestion,
+    topics: ["INVALID_TOPIC"],
+  };
+  assert.match(validateQuestion(badTopic), /主题分类格式无效/);
+
+  const badConcept = {
+    ...fullChoiceQuestion,
+    concepts: ["Invalid.Concept!"],
+  };
+  assert.match(validateQuestion(badConcept), /概念分类格式无效/);
 });
 

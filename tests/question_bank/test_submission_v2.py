@@ -134,3 +134,88 @@ def test_import_issue_rejects_v1_payload(tmp_path: Path) -> None:
 
     with pytest.raises(ValueError, match="unsupported question submission payload"):
         import_issue(Path.cwd(), input_file)
+
+
+def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
+    repo_root = Path.cwd()
+    payloads = [
+        {
+            "schemaVersion": 2,
+            "issueUrl": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/1001",
+            "question": {
+                "type": "single_choice",
+                "stem": "关于加速度的方向，下列说法正确的是：",
+                "choices": [
+                    {"id": "A", "content": "一定与速度方向相同"},
+                    {"id": "B", "content": "一定与合外力方向相同"},
+                    {"id": "C", "content": "一定与位移方向相同"},
+                ],
+                "answer": {"choice": "B"},
+                "solution": "根据牛顿第二定律 F=ma，加速度方向恒与合外力方向相同。",
+                "topics": ["mechanics.dynamics"],
+                "concepts": ["mechanics.newton.second-law"],
+            },
+        },
+        {
+            "schemaVersion": 2,
+            "issueUrl": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/1002",
+            "question": {
+                "type": "multiple_choice",
+                "stem": "下列属于矢量的物理量有：",
+                "choices": [
+                    {"id": "A", "content": "位移"},
+                    {"id": "B", "content": "力"},
+                    {"id": "C", "content": "温度"},
+                ],
+                "answer": {"choices": ["A", "B"]},
+                "solution": "位移和力是矢量，具有大小和方向；温度是标量。",
+                "topics": ["mechanics.kinematics"],
+                "concepts": ["mechanics.vectors.basic"],
+            },
+        },
+        {
+            "schemaVersion": 2,
+            "issueUrl": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/1003",
+            "question": {
+                "type": "true_false",
+                "stem": "两个相互作用的物体受到的作用力与反作用力大小相等、方向相反。",
+                "answer": {"value": True},
+                "solution": "牛顿第三定律指出作用力与反作用力大小相等、方向相反、作用在不同物体上。",
+                "topics": ["mechanics.dynamics"],
+                "concepts": ["mechanics.newton.third-law"],
+            },
+        },
+        {
+            "schemaVersion": 2,
+            "issueUrl": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/1004",
+            "question": {
+                "type": "numeric",
+                "stem": "真空中光速约为多少（以米每秒为单位，取三位有效数字）：",
+                "answer": {
+                    "value": 3.0e8,
+                    "tolerance": {"type": "relative", "value": 0.01},
+                    "unit": {"required": True, "accepted": ["m/s", "m s^-1"], "canonical": "m/s"},
+                },
+                "solution": "真空中光速约为 3.00 * 10^8 m/s。",
+                "topics": ["optics.wave"],
+                "concepts": ["optics.light-speed"],
+            },
+        },
+    ]
+
+    imported_paths = []
+    try:
+        for i, payload in enumerate(payloads):
+            input_file = tmp_path / f"submission_{i}.json"
+            input_file.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+            imported_path = import_issue(repo_root, input_file)
+            imported_paths.append(imported_path)
+
+        report = validate_repository(repo_root, include_drafts=True)
+        for path in imported_paths:
+            errors_for_file = [e for e in report.errors if e.path == path]
+            assert not errors_for_file, f"Errors for {path}: {errors_for_file}"
+    finally:
+        for path in imported_paths:
+            path.unlink(missing_ok=True)
+
