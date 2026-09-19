@@ -1,4 +1,4 @@
-import type { Attempt, QuizSource, QuizStorageData, Session } from "./types.js";
+import type { Attempt, QuestionResult, QuizSource, QuizStorageData, Session } from "./types.js";
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -43,24 +43,58 @@ function isSession(v: unknown): v is Session {
   return (
     typeof s.sessionId === "string" &&
     s.sessionId.length > 0 &&
+    typeof s.preview === "boolean" &&
+    ["active", "completed", "discarded"].includes(s.state) &&
     isQuizSource(s.source) &&
     typeof s.seed === "string" &&
     typeof s.bankFingerprint === "string" &&
     typeof s.selectionAlgorithmVersion === "number" &&
-    typeof s.currentIndex === "number" &&
+    Number.isInteger(s.currentIndex) &&
+    s.currentIndex >= 0 &&
     Array.isArray(s.questionRefs) &&
-    s.questionRefs.every((r: any) => r && typeof r.id === "string" && typeof r.version === "number") &&
+    s.questionRefs.every(
+      (r: any) =>
+        r &&
+        typeof r.id === "string" &&
+        r.id.length > 0 &&
+        typeof r.version === "number" &&
+        Number.isInteger(r.version) &&
+        r.version >= 1
+    ) &&
     s.answers !== null &&
     typeof s.answers === "object" &&
     !Array.isArray(s.answers) &&
     s.uncertain !== null &&
     typeof s.uncertain === "object" &&
     !Array.isArray(s.uncertain) &&
+    Object.values(s.uncertain).every(val => typeof val === "boolean") &&
     s.locked !== null &&
     typeof s.locked === "object" &&
     !Array.isArray(s.locked) &&
+    Object.values(s.locked).every(val => typeof val === "boolean") &&
     typeof s.startedAt === "string" &&
     typeof s.updatedAt === "string"
+  );
+}
+
+function isQuestionResult(v: unknown): v is QuestionResult {
+  if (!v || typeof v !== "object" || Array.isArray(v)) return false;
+  const r = v as any;
+  return (
+    typeof r.questionId === "string" &&
+    r.questionId.length > 0 &&
+    typeof r.version === "number" &&
+    Number.isInteger(r.version) &&
+    r.version >= 1 &&
+    Array.isArray(r.topicIds) &&
+    r.topicIds.every((id: any) => typeof id === "string") &&
+    Array.isArray(r.conceptIds) &&
+    r.conceptIds.every((id: any) => typeof id === "string") &&
+    Array.isArray(r.objectiveIds) &&
+    r.objectiveIds.every((id: any) => typeof id === "string") &&
+    typeof r.correct === "boolean" &&
+    typeof r.unanswered === "boolean" &&
+    typeof r.uncertain === "boolean"
   );
 }
 
@@ -69,13 +103,15 @@ function isAttempt(v: unknown): v is Attempt {
   const a = v as any;
   return (
     typeof a.sessionId === "string" &&
+    a.sessionId.length > 0 &&
     isQuizSource(a.source) &&
     typeof a.seed === "string" &&
     typeof a.bankFingerprint === "string" &&
     typeof a.score === "number" &&
     typeof a.total === "number" &&
     typeof a.completedAt === "string" &&
-    Array.isArray(a.questionResults)
+    Array.isArray(a.questionResults) &&
+    a.questionResults.every(isQuestionResult)
   );
 }
 
@@ -157,7 +193,11 @@ export class QuizStore {
         parsed.activeSessions === null ||
         Array.isArray(parsed.activeSessions) ||
         !Array.isArray(parsed.attempts) ||
-        !isWrongQuestions(parsed.wrongQuestions)
+        !isWrongQuestions(parsed.wrongQuestions) ||
+        !parsed.preferences ||
+        typeof parsed.preferences !== "object" ||
+        Array.isArray(parsed.preferences) ||
+        typeof parsed.preferences.restoreSession !== "boolean"
       ) {
         this.lastResetReason = "corrupt_data";
         const empty = emptyData();

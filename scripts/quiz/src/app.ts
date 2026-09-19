@@ -105,11 +105,14 @@ class QuizApp {
 
     const source: QuizSource = { type: "set", id: setId };
     const activeSessions = this.store.getActiveSessions(source);
+    const activeSession = seedParam
+      ? (activeSessions.find(s => s.seed === seedParam) ?? null)
+      : (activeSessions[0] ?? null);
 
     const setMeta = this.manifest.sets[setId];
     if (!setMeta) {
-      if (activeSessions.length > 0) {
-        this.renderStaleSetNotice(source, "该小测集合已删除、退役或不再发布", activeSessions[0]);
+      if (activeSession) {
+        this.renderStaleSetNotice(source, "该小测集合已删除、退役或不再发布", activeSession);
         return;
       }
       this.renderError(`未找到指定测试集合：${setId}`);
@@ -117,8 +120,8 @@ class QuizApp {
     }
 
     if (setMeta.status === "retired") {
-      if (activeSessions.length > 0) {
-        this.renderStaleSetNotice(source, "该小测集合已退役", activeSessions[0]);
+      if (activeSession) {
+        this.renderStaleSetNotice(source, "该小测集合已退役", activeSession);
         return;
       }
       this.renderError("该小测集合已退役，无法进行答题。");
@@ -148,12 +151,14 @@ class QuizApp {
     }
 
     if (!bundle.runnable) {
-      const activeSessions = this.store.getActiveSessions(source);
-      if (activeSessions.length > 0) {
+      const runnableActiveSession = this.store
+        .getActiveSessions(source)
+        .find(s => s.seed === seed) ?? activeSession;
+      if (runnableActiveSession) {
         this.renderStaleSetNotice(
           source,
           bundle.unavailableReason ?? "题目不足或约束无法满足",
-          activeSessions[0]
+          runnableActiveSession
         );
         return;
       }
