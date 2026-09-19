@@ -100,6 +100,36 @@
         },
         "expected_status": "infeasible",
         "expected_reason_code": "constraint_violation"
+      },
+      "exhausted": {
+        "pool_count": 30,
+        "pool_difficulty": 2,
+        "query": {
+          "type": "query",
+          "count": 8,
+          "constraints": [
+            {"field": "difficulty", "values": [1], "min": 1}
+          ]
+        },
+        "expected_status": "exhausted"
+      }
+    },
+    "seeded_solver_with_choices": {
+      "seed": "quantum-🚀-2026",
+      "set_id": "test-set-1",
+      "pool": [
+        {"id": "q1", "type": "single_choice", "choice_order": "shuffle", "choices": [{"id": "A"}, {"id": "B"}, {"id": "C"}]},
+        {"id": "q2", "type": "single_choice", "choice_order": "shuffle", "choices": [{"id": "A"}, {"id": "B"}, {"id": "C"}]},
+        {"id": "q3", "type": "single_choice", "choice_order": "shuffle", "choices": [{"id": "A"}, {"id": "B"}, {"id": "C"}]}
+      ],
+      "query": {
+        "type": "query",
+        "count": 2
+      },
+      "expected_question_ids": ["q3", "q2"],
+      "expected_choice_ids": {
+        "q3": ["C", "A", "B"],
+        "q2": ["C", "A", "B"]
       }
     }
   }

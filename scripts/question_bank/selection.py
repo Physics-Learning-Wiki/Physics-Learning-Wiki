@@ -358,6 +358,11 @@ def solve_query_selection_detailed(
     assigned_slots.clear()
     used_ids.clear()
     unconstrained = search_slots(0, check_constraints=False) if constraints else None
+    if exhausted:
+        return SelectionResult(
+            status="exhausted",
+            message="选题求解超出搜索节点预算，计算资源耗尽",
+        )
     if unconstrained is not None:
         return SelectionResult(
             status="infeasible",

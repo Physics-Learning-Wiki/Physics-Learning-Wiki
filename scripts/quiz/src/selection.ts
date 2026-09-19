@@ -14,15 +14,32 @@ export const SELECTION_ALGORITHM_VERSION = 1;
 
 export class SelectionError extends Error {}
 
-export function combinations<T>(items: readonly T[], count: number): T[][] {
-  if (count === 0) return [[]];
-  const result: T[][] = [];
-  for (let index = 0; index <= items.length - count; index += 1) {
-    for (const tail of combinations(items.slice(index + 1), count - 1)) {
-      result.push([items[index], ...tail]);
-    }
+export function* combinations<T>(items: readonly T[], count: number): Generator<T[]> {
+  if (count <= 0) {
+    yield [];
+    return;
   }
-  return result;
+  if (count > items.length) {
+    return;
+  }
+  const n = items.length;
+  const indices = Array.from({ length: count }, (_, i) => i);
+  yield indices.map(i => items[i]);
+
+  while (true) {
+    let i = count - 1;
+    while (i >= 0 && indices[i] === i + n - count) {
+      i -= 1;
+    }
+    if (i < 0) {
+      return;
+    }
+    indices[i] += 1;
+    for (let j = i + 1; j < count; j += 1) {
+      indices[j] = indices[j - 1] + 1;
+    }
+    yield indices.map(idx => items[idx]);
+  }
 }
 
 export function getTopicDescendantsAndSelf(topicId: string, taxonomy?: TaxonomyCatalog): Set<string> {
@@ -361,6 +378,12 @@ export function solveQuerySelectionDetailed(
   assignedSlots.length = 0;
   usedIds.clear();
   const unconstrained = constraints.length > 0 ? searchSlots(0, false) : null;
+  if (exhausted) {
+    return {
+      status: "exhausted",
+      message: "选题求解超出搜索节点预算，计算资源耗尽"
+    };
+  }
   if (unconstrained !== null) {
     return {
       status: "infeasible",

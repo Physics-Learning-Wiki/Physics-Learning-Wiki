@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 import { createRandom, shuffle } from "../src/random.js";
 import {
+  combinations,
   matchesFilters,
   satisfiesConstraints,
   selectFixedSet,
@@ -112,13 +113,77 @@ test("shared golden fixture selection v1 (PRNG, shuffle, backtracking, diagnosti
   // 5. Diagnostics
   const diag = solvers.diagnostics;
   for (const [caseName, caseData] of Object.entries<any>(diag)) {
-    const pool = caseData.pool.map((q: any) => makeQuestion(q.id, q));
+    let pool: Question[];
+    if (caseName === "exhausted") {
+      pool = Array.from({ length: caseData.pool_count }, (_, i) =>
+        makeQuestion(`q${String(i + 1).padStart(2, "0")}`, { difficulty: caseData.pool_difficulty })
+      );
+    } else {
+      pool = caseData.pool.map((q: any) => makeQuestion(q.id, q));
+    }
     const res = solveQuerySelectionDetailed(pool, caseData.query);
     assert.equal(res.status, caseData.expected_status, `Status mismatch in ${caseName}`);
     if (res.status === "infeasible") {
       assert.equal(res.reasonCode, caseData.expected_reason_code, `Reason code mismatch in ${caseName}`);
     }
   }
+
+  // 6. Seeded solver with choices
+  if (solvers.seeded_solver_with_choices) {
+    const scCase = solvers.seeded_solver_with_choices;
+    const scPool = scCase.pool.map((q: any) => makeQuestion(q.id, q));
+    const scRes = solveQuerySelectionDetailed(scPool, scCase.query, undefined, scCase.seed, scCase.set_id);
+    assert.equal(scRes.status, "ok");
+    assert.deepEqual(
+      scRes.questions.map(q => q.id),
+      scCase.expected_question_ids
+    );
+    for (const q of scRes.questions) {
+      const expectedChoices = scCase.expected_choice_ids[q.id];
+      assert.deepEqual(
+        q.choices?.map(c => c.id),
+        expectedChoices
+      );
+    }
+  }
+});
+
+test("combinations generator evaluates lazily and avoids combinatorial blowup", () => {
+  // 1. Correctness of lexicographical generation
+  const small = ["a", "b", "c", "d"];
+  const gen = Array.from(combinations(small, 2));
+  assert.equal(gen.length, 6);
+  assert.deepEqual(gen, [
+    ["a", "b"],
+    ["a", "c"],
+    ["a", "d"],
+    ["b", "c"],
+    ["b", "d"],
+    ["c", "d"]
+  ]);
+
+  // 2. Huge combinations: C(40, 20) is 137,846,528,820!
+  // Eager allocation would immediately freeze or crash the process.
+  // Generator should return first item in < 1ms:
+  const large = Array.from({ length: 40 }, (_, i) => `item-${i}`);
+  const largeGen = combinations(large, 20);
+  const first = largeGen.next();
+  assert.equal(first.done, false);
+  assert.equal(first.value.length, 20);
+
+  // 3. Solver on large pool (30 items, need 15) finishes in milliseconds without OOM
+  const pool = Array.from({ length: 30 }, (_, i) =>
+    makeQuestion(`q-${i}`, { difficulty: 2 })
+  );
+  const start = performance.now();
+  const res = solveQuerySelectionDetailed(pool, {
+    type: "query",
+    count: 15,
+    constraints: [{ field: "difficulty", values: [1], min: 1 }]
+  });
+  const elapsed = performance.now() - start;
+  assert.equal(res.status, "exhausted");
+  assert.ok(elapsed < 200, `Expected search to terminate within 200ms, took ${elapsed}ms`);
 });
 
 test("filter matching with taxonomy and metadata", () => {

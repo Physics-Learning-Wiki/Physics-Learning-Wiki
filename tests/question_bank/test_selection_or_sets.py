@@ -86,9 +86,33 @@ def test_shared_golden_fixture_selection_v1() -> None:
     # 5. Solver diagnostics
     diag = solvers["diagnostics"]
     for case_name, case_data in diag.items():
+        if case_name == "exhausted":
+            pool = [
+                {"id": f"q{i:02d}", "difficulty": case_data["pool_difficulty"]}
+                for i in range(1, case_data["pool_count"] + 1)
+            ]
+            res = solve_query_selection_detailed(pool, case_data["query"])
+            assert res.status == "exhausted", f"Expected exhausted in {case_name}"
+            continue
         res = solve_query_selection_detailed(case_data["pool"], case_data["query"])
         assert res.status == case_data["expected_status"], f"Expected {case_data['expected_status']} in {case_name}"
         assert res.reason_code == case_data["expected_reason_code"], f"Expected {case_data['expected_reason_code']} in {case_name}"
+
+    # 6. Seeded solver with choices
+    if "seeded_solver_with_choices" in solvers:
+        sc_case = solvers["seeded_solver_with_choices"]
+        sc_res = solve_query_selection_detailed(
+            sc_case["pool"],
+            sc_case["query"],
+            seed=sc_case["seed"],
+            set_id=sc_case["set_id"],
+        )
+        assert sc_res.status == "ok"
+        assert [q["id"] for q in sc_res.questions] == sc_case["expected_question_ids"]
+        for q in sc_res.questions:
+            expected_choices = sc_case["expected_choice_ids"][q["id"]]
+            actual_choices = [c["id"] for c in q["choices"]]
+            assert actual_choices == expected_choices
 
 
 
