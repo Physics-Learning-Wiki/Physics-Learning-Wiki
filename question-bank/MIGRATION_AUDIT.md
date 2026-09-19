@@ -30,18 +30,31 @@
   - **Commit 23** (`7903b55`): `fix(submit): 严格对齐 Worker 投稿校验与题库导入 Schema 契约`
   - **Commit 24** (`402fed2`): `fix(quiz): 修复失效小测键盘异常、闭环集合不可行失效流程与存储提示`
   - **Commit 25** (`ec7237f`): `docs(question-bank): 修正审计报告表述、相对链接与分支合并基线说明`
-- **第四阶段：最终协议闭环与合规强化 (Commit 26 ~ Commit 28)**
-  - **Commit 26** (`b85174b`): `fix(submit): 建立投稿合约共享测试集并落实 Worker 白名单 DTO 校验`
+- **文档增强提交（包含在分支中）**
+  - **Commit 26** (`bc1f844`): `fix(nav): 添加计算物理与工具章节`（主站导航结构更新，无题库代码冲突）
+- **第四阶段：最终协议闭环与合规强化 (Commit 27 ~ Commit 31)**
+  - **Commit 27** (`b85174b`): `fix(submit): 建立投稿合约共享测试集并落实 Worker 白名单 DTO 校验`
     - 建立跨语言共享投稿合约测试集 `tests/question_bank/fixtures/submission_v2_contract.json`，覆盖合法四类题型及所有非法属性构造；
     - Worker 端实现严格的白名单 DTO 校验与深层属性防逃逸，杜绝未知字段穿透导致 Schema 拒绝；
     - Python 端执行端到端全题型导入与校验，证明 $WorkerAccepted \subseteq ImporterAccepted$。
-  - **Commit 27** (`ade90ea`): `fix(quiz): 闭环缺失集合失效流程、补全存储深层校验并修复提示交互`
+  - **Commit 28** (`ade90ea`): `fix(quiz): 闭环缺失集合失效流程、补全存储深层校验并修复提示交互`
     - `startSetRunner()` 将活跃会话检测前置至 `setMeta` 查找之前，闭环退役、下架或删除 Set 的失效处理与清理引导；
     - `storage.ts` 引入 `isSession`, `isAttempt`, `isWrongQuestions` 递归类型守卫，杜绝嵌套坏数据引发前端解构崩溃；
     - 修复首页动态挂载横幅的关闭按钮事件引用失效问题；
     - 放宽求解器单元测试时间上限至 5000ms，消除共享虚拟机 CI 偶发抖动。
-  - **Commit 28**: `docs(question-bank): 更新审计报告合规矩阵与标准化验证指南`
+  - **Commit 29** (`505061d`): `docs(question-bank): 更新审计报告合规矩阵与标准化验证指南`
     - 完备记录最新提交链，提供与项目 CI 一致的标准化复现指令。
+  - **Commit 30** (`b62be1f`): `fix(submit): 强制要求单位包含规范单位并消除控制字符与安全边界差异`
+    - Worker 端要求单位时强制要求有效规范单位且必须属于 `accepted`，杜绝 Python 校验反例；
+    - 递归过滤 `< 32` ASCII 非法控制字符及 `\x7F`，防止底层序列化不一致；
+    - 收紧 Markdown 与 URL 安全正则，防范 `javascript\s*:` / `data\s*:` 空白绕过与外部图片未转义空格；
+    - Python 导入器与 Schema 均收紧白名单 DTO 与 URI 校验，实现两端合约严格对称。
+  - **Commit 31** (`c6d90de`): `fix(quiz): 精确匹配多会话失效状态并补齐存储深层类型守卫`
+    - `startSetRunner()` 精确按 `seedParam` 匹配活跃会话，杜绝多会话集合下非目标种子误显示为失效小测；
+    - `storage.ts` 落地 `isQuestionResult` 深层校验，并在 `isSession` 与 `read()` 补齐整数索引、布尔映射字典及 `preferences.restoreSession` 检查。
+- **最终收口提交**
+  - **Commit 32**: `docs(question-bank): 修正审计提交链、合规矩阵与最终就绪状态`
+    - 准确记录全部 32 个演进提交，更新 DoD 核对清单与全量自动化测试记录。
 
 ---
 
@@ -82,10 +95,10 @@
 
 ### 维度三：组件独立性、作答状态机与投稿对齐
 - [x] **#14 页面内嵌自测实例隔离与作答幂等**: 采用动态 `sessionId` 隔离单选 radio 的 `name` 属性，`checkInlineCompletion()` 增加布尔防重锁；
-- [x] **#15 LocalStorage 异常自愈恢复、重置通知与深层类型守护**: 引入 `isSession`, `isAttempt`, `isWrongQuestions` 递归校验，异常时自动重置并通过 `consumeResetReason()` 向用户展示一次性通知横幅；
-- [x] **#16 Cloudflare Worker 投稿规则白名单化与契约共享测试集**: 建立 `submission_v2_contract.json`，多选限制 3~8 项且 2+ 答案，数值强制容差与单位，分类法限制点分小写命名空间，防范 XSS 与属性事件注入，全字段白名单拦截未知属性；
+- [x] **#15 LocalStorage 异常自愈恢复、重置通知与深层类型守护**: 引入 `isQuestionResult`, `isAttempt`, `isSession` 及 `preferences.restoreSession` 递归类型守护，确保整数题目索引与布尔字典合法性，异常时自动安全重置并展示一次性通知横幅；
+- [x] **#16 Cloudflare Worker 投稿规则与题库导入契约严格对称**: 建立 `submission_v2_contract.json`，强制单位必须包含规范单位，消除控制字符与 Markdown/URL 绕过漏洞，两端白名单 DTO 拦截未知属性，无条件保证 $WorkerAccepted \subseteq ImporterAccepted$；
 - [x] **#17 失效小测键盘交互安全防卫**: `PlaySurface` 在无有效 session 状态下安全拦截按键，仅允许 Escape 退出，杜绝控制流未定义属性异常；
-- [x] **#18 退役、下架与不可用集合状态闭环**: 对退役（retired）、删除下架或题目不可行（infeasible）的 Set，均提供明确的失效通知与历史会话清除动作；
+- [x] **#18 退役、下架与不可用集合状态闭环与多会话隔离**: 对退役（retired）、删除下架或题目不可行（infeasible）的 Set，按 `seedParam` 精确匹配对应会话并提供明确的失效通知与历史会话清除动作；
 - [x] **#19 错题重做临时会话隔离**: 错题重做标记为页面内临时会话，退出即销毁，不持久化到 LocalStorage 污染正常集合进度。
 
 ### 维度四：探索界面、测试配置与文档漂移
@@ -111,22 +124,22 @@ uv run python -m scripts.question_bank validate
 # 2. 题库健康度报告生成
 uv run python -m scripts.question_bank coverage --format json
 
-# 3. Python 单元与集成测试套件 (64 passed)
+# 3. Python 单元与集成测试套件 (65 passed)
 uv run pytest tests/question_bank tests/integration
 
 # 4. 前端 TypeScript 类型检查 (0 error)
-corepack yarn quiz:typecheck
+npm run quiz:typecheck
 
-# 5. 前端 JavaScript 单元测试 (29 passed)
-corepack yarn quiz:test
+# 5. 前端 JavaScript 单元测试 (30 passed)
+npm run quiz:test
 
 # 6. 前端构建产物一致性校验 (Clean)
-corepack yarn quiz:build:check
+npm run quiz:build:check
 
 # 7. Cloudflare Worker 测试与检查 (13 passed, 0 error)
-corepack yarn submit:test
-corepack yarn submit:check
+npm run submit:test
+npm run submit:check
 
-# 8. 生产站点完整文档构建 (0 error, 3.3s build success)
+# 8. 生产站点完整文档构建 (0 error, 3.7s build success)
 uv run mkdocs build --clean
 ```
