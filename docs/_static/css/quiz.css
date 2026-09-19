@@ -35,6 +35,37 @@ body:has(#plw-quiz-root.plw-quiz-in-progress) .md-content__inner > .md-content__
   font-size: 0.9rem;
 }
 
+/* 本地存储重置或轻量系统通知 */
+.plw-quiz-notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0 1.25rem;
+  border: 1px solid #f59e0b;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, #f59e0b 12%, var(--md-default-bg-color));
+  color: var(--md-default-fg-color);
+  font-size: 0.9rem;
+}
+
+.plw-quiz-notice__close {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  padding: 0 0.25rem;
+  flex-shrink: 0;
+}
+
+.plw-quiz-notice__close:hover {
+  color: var(--md-default-fg-color);
+}
+
+
 /* --------------------------------------------------------------------------
    小测首页 (Landing Page)
    -------------------------------------------------------------------------- */

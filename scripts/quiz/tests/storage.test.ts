@@ -104,6 +104,21 @@ test("corrupted json or structurally invalid storage resets with corrupt_data re
   assert.equal(store2.read().schemaVersion, 2);
 });
 
+test("consumeResetReason returns reset reason once and clears it", () => {
+  const storageMap: Record<string, string> = {
+    [STORAGE_KEY_PROD]: JSON.stringify({ schemaVersion: 1 })
+  };
+  const store = new QuizStore({
+    getItem: (k: string) => storageMap[k] ?? null,
+    setItem: (k: string, next: string) => {
+      storageMap[k] = next;
+    }
+  });
+  assert.equal(store.consumeResetReason(), "version_mismatch");
+  assert.equal(store.consumeResetReason(), null);
+  assert.equal(store.getResetReason(), null);
+});
+
 test("discardSession removes specific session by source and seed", () => {
   let storageMap: Record<string, string> = {};
   const mockStorage = {

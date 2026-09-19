@@ -11,7 +11,7 @@ import { selectSetQuestions } from "./selection.js";
 import type { PlaySurfaceOptions } from "./surfaces/play.js";
 import { PlaySurface } from "./surfaces/play.js";
 import { QuizStore, sourceKey } from "./storage.js";
-import type { Manifest, Question, QuizSource, SetBundle, TaxonomyCatalog } from "./types.js";
+import type { Manifest, Question, QuizSource, Session, SetBundle, TaxonomyCatalog } from "./types.js";
 
 declare global {
   interface Window {
@@ -109,7 +109,14 @@ class QuizApp {
       return;
     }
 
+    const source: QuizSource = { type: "set", id: setId };
+
     if (setMeta.status === "retired") {
+      const activeSessions = this.store.getActiveSessions(source);
+      if (activeSessions.length > 0) {
+        this.renderStaleSetNotice(source, "该小测集合已退役", activeSessions[0]);
+        return;
+      }
       this.renderError("该小测集合已退役，无法进行答题。");
       return;
     }
@@ -137,6 +144,15 @@ class QuizApp {
     }
 
     if (!bundle.runnable) {
+      const activeSessions = this.store.getActiveSessions(source);
+      if (activeSessions.length > 0) {
+        this.renderStaleSetNotice(
+          source,
+          bundle.unavailableReason ?? "题目不足或约束无法满足",
+          activeSessions[0]
+        );
+        return;
+      }
       this.renderError(`测试集合暂不可用：${bundle.unavailableReason ?? "题目不足或约束无法满足"}`);
       return;
     }
@@ -157,8 +173,6 @@ class QuizApp {
       this.renderError(`选题失败：${err instanceof Error ? err.message : String(err)}`);
       return;
     }
-
-    const source: QuizSource = { type: "set", id: setId };
     this.mountPlaySurface({
       root: this.root,
       manifestUrl: this.manifestUrl,
@@ -206,9 +220,27 @@ class QuizApp {
     const container = document.createElement("div");
     container.className = "plw-quiz-landing";
 
-    // 1. Active sessions section
+    // 0. Storage reset notice banner
+    const resetReason = this.store.consumeResetReason();
+    let noticeHtml = "";
+    if (resetReason) {
+      const msg =
+        resetReason === "version_mismatch"
+          ? "已升级答题引擎版本，先前的旧版本地作答进度已自动安全重置。"
+          : "检测到损坏的本地小测作答记录，已自动安全重置。";
+      noticeHtml = `
+        <div class="plw-quiz-notice plw-quiz-notice--dismissible" role="status">
+          <span>⚠️ ${escapeHtml(msg)}</span>
+          <button type="button" class="plw-quiz-notice__close" aria-label="关闭通知">&times;</button>
+        </div>
+      `;
+    }
+
+    // 1. Active sessions section (only set sources)
     const allActive = this.store.getAllActiveSessions();
-    const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
+    const activeEntries = Object.entries(allActive).filter(([_, list]) =>
+      list.some(s => s.source.type === "set")
+    );
 
     let activeHtml = "";
     if (activeEntries.length > 0) {
@@ -218,25 +250,26 @@ class QuizApp {
           <div class="plw-quiz-landing__grid">
             ${activeEntries
               .flatMap(([srcKey, sessions]) =>
-                sessions.map(s => {
-                  const title = s.source.type === "set" ? (this.manifest.sets[s.source.id]?.title ?? s.source.id) : "错题重做";
-                  const answered = Object.values(s.answers).filter(v => v != null).length;
-                  const total = s.questionRefs.length;
-                  const playUrl = s.source.type === "set"
-                    ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(s.source.id)}&seed=${encodeURIComponent(s.seed)}`
-                    : "#";
-                  return `
-                    <div class="plw-quiz-landing__card">
-                      <div>
-                        <h3>${escapeHtml(title)}</h3>
-                        <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(s.updatedAt).toLocaleDateString()}</p>
+                sessions
+                  .filter(s => s.source.type === "set")
+                  .map(s => {
+                    const setId = (s.source as { type: "set"; id: string }).id;
+                    const title = this.manifest.sets[setId]?.title ?? setId;
+                    const answered = Object.values(s.answers).filter(v => v != null).length;
+                    const total = s.questionRefs.length;
+                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(s.seed)}`;
+                    return `
+                      <div class="plw-quiz-landing__card">
+                        <div>
+                          <h3>${escapeHtml(title)}</h3>
+                          <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(s.updatedAt).toLocaleDateString()}</p>
+                        </div>
+                        <div class="plw-quiz-landing__links">
+                          <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
+                        </div>
                       </div>
-                      <div class="plw-quiz-landing__links">
-                        <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
-                      </div>
-                    </div>
-                  `;
-                })
+                    `;
+                  })
               )
               .join("")}
           </div>
@@ -273,9 +306,14 @@ class QuizApp {
     `;
 
     container.innerHTML = `
+      ${noticeHtml}
       ${activeHtml}
       ${setsHtml}
     `;
+
+    container.querySelector(".plw-quiz-notice__close")?.addEventListener("click", e => {
+      (e.currentTarget as HTMLElement).closest(".plw-quiz-notice")?.remove();
+    });
 
     this.root.append(container);
   }
@@ -307,6 +345,39 @@ class QuizApp {
       </div>
     `;
   }
+
+  private renderStaleSetNotice(source: QuizSource, reason: string, session: Session): void {
+    this.root.innerHTML = "";
+    const container = document.createElement("div");
+    container.className = "plw-quiz-runner";
+    const answeredCount = Object.values(session.answers).filter(v => v != null).length;
+
+    container.innerHTML = `
+      <div class="plw-quiz-error" role="alert" style="max-width: 600px; margin: 2rem auto;">
+        <h2>作答进度已失效</h2>
+        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${session.questionRefs.length} 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
+        <div class="plw-quiz-modal__actions" style="margin-top: 1.5rem; justify-content: center; gap: 1rem;">
+          <button type="button" class="plw-quiz-btn--danger" id="plw-btn-discard-stale">
+            清空此失效进度并返回
+          </button>
+          <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-back-stale">
+            返回小测发现页
+          </button>
+        </div>
+      </div>
+    `;
+
+    container.querySelector("#plw-btn-discard-stale")?.addEventListener("click", () => {
+      this.store.discardSession(source, session.seed);
+      this.exitToLanding();
+    });
+
+    container.querySelector("#plw-btn-back-stale")?.addEventListener("click", () => {
+      this.exitToLanding();
+    });
+
+    this.root.append(container);
+  }
 }
 
 import { InlineSurface } from "./surfaces/inline.js";
@@ -325,12 +396,40 @@ class HomeSurface {
       const manifest = await loadManifest(manifestUrl, this.abort.signal);
       const store = new QuizStore(window.localStorage, manifest.preview);
 
+      const resetReason = store.consumeResetReason();
+      let noticeHtml = "";
+      if (resetReason) {
+        const msg =
+          resetReason === "version_mismatch"
+            ? "已升级答题引擎版本，先前的旧版本地作答进度已自动安全重置。"
+            : "检测到损坏的本地小测作答记录，已自动安全重置。";
+        noticeHtml = `
+          <div class="plw-quiz-notice plw-quiz-notice--dismissible" role="status">
+            <span>⚠️ ${escapeHtml(msg)}</span>
+            <button type="button" class="plw-quiz-notice__close" aria-label="关闭通知">&times;</button>
+          </div>
+        `;
+      }
+
       const allActive = store.getAllActiveSessions();
-      const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
+      const activeEntries = Object.entries(allActive).filter(([_, list]) =>
+        list.some(s => s.source.type === "set")
+      );
 
       this.root.innerHTML = "";
       const container = document.createElement("div");
       container.className = "plw-quiz-home-dynamic";
+
+      if (noticeHtml) {
+        const noticeWrap = document.createElement("div");
+        noticeWrap.innerHTML = noticeHtml;
+        noticeWrap.querySelector(".plw-quiz-notice__close")?.addEventListener("click", () => {
+          noticeWrap.firstElementChild?.remove();
+        });
+        if (noticeWrap.firstElementChild) {
+          container.append(noticeWrap.firstElementChild);
+        }
+      }
 
       // 1. Unfinished active sessions
       if (activeEntries.length > 0) {
@@ -341,27 +440,26 @@ class HomeSurface {
           <div class="plw-quiz-landing__grid">
             ${activeEntries
               .flatMap(([_, sessions]) =>
-                sessions.map(s => {
-                  const title =
-                    s.source.type === "set" ? manifest.sets[s.source.id]?.title ?? s.source.id : "错题重做";
-                  const answered = Object.values(s.answers).filter(v => v != null).length;
-                  const total = s.questionRefs.length;
-                  const playUrl =
-                    s.source.type === "set"
-                      ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(s.source.id)}&seed=${encodeURIComponent(s.seed)}`
-                      : "#";
-                  return `
-                    <div class="plw-quiz-landing__card">
-                      <div>
-                        <h3>${escapeHtml(title)}</h3>
-                        <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答</p>
+                sessions
+                  .filter(s => s.source.type === "set")
+                  .map(s => {
+                    const setId = (s.source as { type: "set"; id: string }).id;
+                    const title = manifest.sets[setId]?.title ?? setId;
+                    const answered = Object.values(s.answers).filter(v => v != null).length;
+                    const total = s.questionRefs.length;
+                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(s.seed)}`;
+                    return `
+                      <div class="plw-quiz-landing__card">
+                        <div>
+                          <h3>${escapeHtml(title)}</h3>
+                          <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答</p>
+                        </div>
+                        <div class="plw-quiz-landing__links">
+                          <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
+                        </div>
                       </div>
-                      <div class="plw-quiz-landing__links">
-                        <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
-                      </div>
-                    </div>
-                  `;
-                })
+                    `;
+                  })
               )
               .join("")}
           </div>

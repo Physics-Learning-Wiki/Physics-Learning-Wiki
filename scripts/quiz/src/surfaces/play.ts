@@ -62,6 +62,11 @@ export class PlaySurface {
   }
 
   start(): void {
+    if (this.source.type !== "set") {
+      this.startFresh();
+      return;
+    }
+
     const status = inspectSessionStatus(
       this.store.getActiveSessions(this.source),
       this.source,
@@ -92,7 +97,9 @@ export class PlaySurface {
       this.questions,
       { surface: "runner" }
     );
-    this.store.saveSession(this.session);
+    if (this.source.type === "set") {
+      this.store.saveSession(this.session);
+    }
     this.root.classList.add("plw-quiz-in-progress");
     this.renderQuestion();
   }
@@ -131,6 +138,7 @@ export class PlaySurface {
     });
 
     container.querySelector("#plw-btn-exit-stale")?.addEventListener("click", () => {
+      this.store.discardSession(this.source, this.seed);
       this.onExit();
     });
 
@@ -142,6 +150,7 @@ export class PlaySurface {
   }
 
   private persist(): void {
+    if (!this.session || this.source.type !== "set") return;
     this.session.updatedAt = new Date().toISOString();
     this.store.saveSession(this.session);
   }
@@ -165,7 +174,7 @@ export class PlaySurface {
       return;
     }
 
-    if (this.questions.length === 0) return;
+    if (!this.session || this.questions.length === 0) return;
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
 
@@ -645,6 +654,10 @@ export class PlaySurface {
   }
 
   private handleExit(): void {
+    if (!this.session || this.source.type !== "set") {
+      this.onExit();
+      return;
+    }
     const answeredCount = Object.keys(this.session.answers).filter(id => this.session.answers[id] != null).length;
 
     if (answeredCount === 0) {

@@ -140,10 +140,8 @@ test("shared golden fixture selection v1 (PRNG, shuffle, backtracking, diagnosti
     );
     for (const q of scRes.questions) {
       const expectedChoices = scCase.expected_choice_ids[q.id];
-      assert.deepEqual(
-        q.choices?.map(c => c.id),
-        expectedChoices
-      );
+      const actualChoices = (q.type === "single_choice" || q.type === "multiple_choice") ? q.choices.map(c => c.id) : undefined;
+      assert.deepEqual(actualChoices, expectedChoices);
     }
   }
 });

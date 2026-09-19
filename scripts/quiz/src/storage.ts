@@ -52,6 +52,12 @@ export class QuizStore {
     return this.lastResetReason;
   }
 
+  consumeResetReason(): StorageResetReason {
+    const reason = this.lastResetReason;
+    this.lastResetReason = null;
+    return reason;
+  }
+
   read(): QuizStorageData {
     if (!this.persistent || !this.storage) return this.memory;
     try {
