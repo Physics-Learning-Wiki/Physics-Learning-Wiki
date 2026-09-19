@@ -18,6 +18,13 @@ from .selection import solve_query_selection
 
 DANGEROUS = re.compile(r"<(?:script|iframe|object|embed)\b|javascript\s*:|\bon[a-z]+\s*=", re.I)
 
+FORMAT_CHECKER = FormatChecker()
+if "uri" not in FORMAT_CHECKER.checkers:
+
+    @FORMAT_CHECKER.checks("uri")
+    def _check_uri(value: Any) -> bool:
+        return isinstance(value, str) and bool(re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*://\S+$", value))
+
 
 @dataclass
 class ValidationReport:
@@ -62,7 +69,7 @@ def validate_question_content(
 ) -> list[Issue]:
     data, path = document.data, document.path
     issues: list[Issue] = []
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    validator = Draft202012Validator(schema, format_checker=FORMAT_CHECKER)
     for error in sorted(validator.iter_errors(data), key=lambda item: list(item.absolute_path)):
         issues.append(Issue.error(path, _field_path(error.absolute_path), error.message))
     question_id = data.get("id")
@@ -178,7 +185,7 @@ def validate_set(
 ) -> list[Issue]:
     data, path = document.data, document.path
     issues: list[Issue] = []
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    validator = Draft202012Validator(schema, format_checker=FORMAT_CHECKER)
     for error in sorted(validator.iter_errors(data), key=lambda item: list(item.absolute_path)):
         issues.append(Issue.error(path, _field_path(error.absolute_path), error.message))
 

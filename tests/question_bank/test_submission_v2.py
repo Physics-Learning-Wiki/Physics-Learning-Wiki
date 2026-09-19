@@ -247,3 +247,28 @@ def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
             path.unlink(missing_ok=True)
 
 
+def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None:
+    repo_root = Path.cwd()
+    fixture_path = repo_root / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
+    data = json.loads(fixture_path.read_text(encoding="utf-8"))
+
+    for name, inv in data["invalid"].items():
+        base_obj = data["valid"][inv["base"]]
+        test_obj = {**base_obj, **inv["override"]}
+        payload = {
+            "schemaVersion": 2,
+            "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-invalid-{name}",
+            "question": test_obj,
+        }
+        input_file = tmp_path / f"sub_invalid_{name}.json"
+        input_file.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+        imported_path = None
+        try:
+            with pytest.raises(ValueError):
+                imported_path = import_issue(repo_root, input_file)
+        finally:
+            if imported_path and imported_path.exists():
+                imported_path.unlink()
+
+
+

@@ -159,6 +159,36 @@
       "override": {
         "topics": ["mechanics.dynamics", "mechanics.dynamics"]
       }
+    },
+    "numeric_required_unit_missing_canonical": {
+      "base": "numeric",
+      "override": {
+        "answer": {
+          "value": 300000000.0,
+          "tolerance": {"type": "relative", "value": 0.01},
+          "unit": {"required": true, "accepted": ["m/s"]}
+        }
+      }
+    },
+    "control_character": {
+      "base": "true_false",
+      "override": {
+        "stem": "正常\u0001控制字符"
+      }
+    },
+    "javascript_scheme_with_whitespace": {
+      "base": "true_false",
+      "override": {
+        "stem": "[x](javascript   :alert(1))"
+      }
+    },
+    "external_media_unescaped_space": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "https://example.com/a b.png", "alt": "img", "rights_note": "note"}
+        ]
+      }
     }
   }
 }

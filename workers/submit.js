@@ -57,15 +57,26 @@ function nonEmptyString(value, max = 20000) {
 }
 
 function unsafeMarkdown(value) {
-  return typeof value === "string" && /<(?:script|iframe|object|embed|form|input|button)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata):/i.test(value);
+  return typeof value === "string" && /<(?:script|iframe|object|embed|form|input|button)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata)\s*:/i.test(value);
 }
 
 function validHttpsUrl(value) {
+  if (typeof value !== "string" || /\s/.test(value)) return false;
   try {
     return new URL(value).protocol === "https:";
   } catch {
     return false;
   }
+}
+
+function hasControlCharacters(value) {
+  if (typeof value === "string") {
+    return /[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/.test(value);
+  }
+  if (value && typeof value === "object") {
+    return Object.values(value).some(hasControlCharacters);
+  }
+  return false;
 }
 
 const ALLOWED_QUESTION_KEYS = new Set([
@@ -104,6 +115,7 @@ function validateQuestion(question) {
   if (!QUESTION_TYPES.has(question.type)) return "无效题型";
   if (!nonEmptyString(question.stem) || !nonEmptyString(question.solution)) return "题干或解析为空";
   if (unsafeMarkdown(JSON.stringify(question))) return "题目包含不安全的 Markdown 或 HTML";
+  if (hasControlCharacters(question)) return "题目包含非法控制字符";
   if (!question.answer || typeof question.answer !== "object" || Array.isArray(question.answer)) return "答案无效";
 
   // Optional choice_order
@@ -203,9 +215,16 @@ function validateQuestion(question) {
     if (new Set(unit.accepted).size !== unit.accepted.length) {
       return "数值题可接受单位不能重复";
     }
-    if (unit.canonical !== undefined) {
+    if (unit.required) {
+      if (!nonEmptyString(unit.canonical, 50)) {
+        return "要求单位时必须指定规范单位";
+      }
+      if (!unit.accepted.includes(unit.canonical)) {
+        return "规范单位必须包含在可接受单位列表中";
+      }
+    } else if (unit.canonical !== undefined) {
       if (!nonEmptyString(unit.canonical, 50)) return "规范单位无效";
-      if (unit.required && !unit.accepted.includes(unit.canonical)) {
+      if (!unit.accepted.includes(unit.canonical)) {
         return "规范单位必须包含在可接受单位列表中";
       }
     }

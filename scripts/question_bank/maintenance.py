@@ -42,11 +42,38 @@ def next_question_id(root: Path) -> tuple[str, Path]:
     return new_id, inbox_dir / f"{new_id}.yml"
 
 
+ALLOWED_SUBMISSION_QUESTION_KEYS = {
+    "type",
+    "choice_order",
+    "stem",
+    "solution",
+    "answer",
+    "choices",
+    "feedback",
+    "hints",
+    "difficulty",
+    "cognitive_level",
+    "style",
+    "estimated_seconds",
+    "topics",
+    "concepts",
+    "objectives",
+    "related_pages",
+    "external_media",
+    "attribution",
+    "ai_assisted",
+    "ai_name",
+}
+
+
 def import_issue(root: Path, input_path: Path) -> Path:
     payload = json.loads(input_path.read_text(encoding="utf-8"))
     if payload.get("schemaVersion") != 2 or not isinstance(payload.get("question"), dict):
         raise ValueError("unsupported question submission payload")
     source = payload["question"]
+    unknown_keys = set(source.keys()) - ALLOWED_SUBMISSION_QUESTION_KEYS
+    if unknown_keys:
+        raise ValueError(f"submission question contains unknown properties: {', '.join(sorted(unknown_keys))}")
     question_id, output = next_question_id(root)
     authors = [{"name": str(source.get("attribution") or "匿名投稿者"), "kind": "human"}]
     if source.get("ai_assisted"):
@@ -90,7 +117,7 @@ def import_issue(root: Path, input_path: Path) -> Path:
 
     _write_yaml(output, question)
     report = validate_repository(root, include_drafts=True)
-    errors = [issue for issue in report.errors if issue.path == output]
+    errors = [issue for issue in report.errors if Path(issue.path) == Path(output)]
     if errors:
         output.unlink(missing_ok=True)
         raise ValueError("\n".join(issue.render() for issue in errors))
