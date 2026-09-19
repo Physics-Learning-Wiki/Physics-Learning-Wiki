@@ -52,6 +52,11 @@ const QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false"
 const COGNITIVE_LEVELS = new Set(["remember", "understand", "apply", "analyze"]);
 const STYLES = new Set(["conceptual", "graphical", "computational", "modeling"]);
 
+const URI_SCHEME_RE = /^[A-Za-z][A-Za-z0-9+.-]*:/;
+const VISIBLE_ASCII_RE = /^[\x21-\x7E]+$/;
+const INVALID_PERCENT_ESCAPE_RE = /%(?![0-9A-Fa-f]{2})/;
+const INVALID_URI_CHARACTER_RE = /[<>"{}|\\^`\[\]]/;
+
 function nonEmptyString(value, max = 20000) {
   return typeof value === "string" && value.trim().length > 0 && value.length <= max;
 }
@@ -61,7 +66,15 @@ function unsafeMarkdown(value) {
 }
 
 function validHttpsUrl(value) {
-  if (typeof value !== "string" || /\s/.test(value)) return false;
+  if (
+    typeof value !== "string" ||
+    !VISIBLE_ASCII_RE.test(value) ||
+    !value.startsWith("https://") ||
+    !URI_SCHEME_RE.test(value) ||
+    INVALID_PERCENT_ESCAPE_RE.test(value) ||
+    INVALID_URI_CHARACTER_RE.test(value)
+  )
+    return false;
   try {
     return new URL(value).protocol === "https:";
   } catch {

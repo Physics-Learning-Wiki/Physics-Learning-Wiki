@@ -189,6 +189,22 @@
           {"url": "https://example.com/a b.png", "alt": "img", "rights_note": "note"}
         ]
       }
+    },
+    "external_media_invalid_percent_escape": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "https://example.com/%ZZ", "alt": "img", "rights_note": "note"}
+        ]
+      }
+    },
+    "external_media_noncanonical_https_scheme": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "HTTPS://example.com/img.png", "alt": "img", "rights_note": "note"}
+        ]
+      }
     }
   }
 }

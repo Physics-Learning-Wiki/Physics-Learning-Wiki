@@ -113,33 +113,34 @@
 
 ---
 
-## 4. 全量验证指令与通过记录
+## 4. 本地验证记录与 CI 复现范围
 
-与 GitHub Actions CI 流水线标准完全一致，执行以下命令全部通过且 0 错误（远端 CI 将在正式发起 PR 后独立触发复核）：
+以下为本地核心验证记录；正式 GitHub Actions 还包括 draft validation、deterministic compilation、benchmark、format check 与 post-build tests。下面列出 CI 的完整命令范围；只有实际执行结果才计入本地通过记录（JavaScript 使用 Yarn；远端 CI 将在正式发起 PR 后独立触发复核）：
 
-```powershell
+```bash
 # 1. 题库校验 (0 error, 2 expected draft warnings)
+uv run python -m scripts.question_bank validate --include-drafts
 uv run python -m scripts.question_bank validate
 
-# 2. 题库健康度报告生成
-uv run python -m scripts.question_bank coverage --format json
-
-# 3. Python 单元与集成测试套件 (65 passed)
+# 2. Python 单元与集成测试套件 (65 passed)
 uv run pytest tests/question_bank tests/integration
 
-# 4. 前端 TypeScript 类型检查 (0 error)
-npm run quiz:typecheck
+# 3. 确定性编译、覆盖率与基准测试
+uv run python -m scripts.question_bank build --output .tmp-bank-a
+uv run python -m scripts.question_bank build --output .tmp-bank-b
+diff -r .tmp-bank-a .tmp-bank-b
+uv run python -m scripts.question_bank coverage --format json --output question-bank-coverage.json
+uv run python -m scripts.question_bank benchmark --repeat 5 --json-output question-bank-benchmark.json
 
-# 5. 前端 JavaScript 单元测试 (30 passed)
-npm run quiz:test
+# 4. 前端格式、TypeScript 类型与 JavaScript 测试
+yarn quiz:format:check
+yarn quiz:typecheck
+yarn quiz:test
+yarn post-build:test
+yarn submit:check
+yarn submit:test
+yarn quiz:build:check
 
-# 6. 前端构建产物一致性校验 (Clean)
-npm run quiz:build:check
-
-# 7. Cloudflare Worker 测试与检查 (13 passed, 0 error)
-npm run submit:test
-npm run submit:check
-
-# 8. 生产站点完整文档构建 (0 error, 3.7s build success)
+# 5. 生产站点完整文档构建 (0 error, 3.7s build success)
 uv run mkdocs build --clean
 ```

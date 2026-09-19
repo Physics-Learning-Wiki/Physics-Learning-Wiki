@@ -6,6 +6,7 @@ from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable
+from urllib.parse import urlsplit
 
 from jsonschema import Draft202012Validator, FormatChecker
 
@@ -19,11 +20,39 @@ from .selection import solve_query_selection
 DANGEROUS = re.compile(r"<(?:script|iframe|object|embed)\b|javascript\s*:|\bon[a-z]+\s*=", re.I)
 
 FORMAT_CHECKER = FormatChecker()
-if "uri" not in FORMAT_CHECKER.checkers:
+URI_SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.-]*:")
+VISIBLE_ASCII_RE = re.compile(r"^[\x21-\x7E]+$")
+INVALID_PERCENT_ESCAPE_RE = re.compile(r"%(?![0-9A-Fa-f]{2})")
+INVALID_URI_CHARACTER_RE = re.compile(r'[<>"{}|\\^`\[\]]')
 
-    @FORMAT_CHECKER.checks("uri")
-    def _check_uri(value: Any) -> bool:
-        return isinstance(value, str) and bool(re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*://\S+$", value))
+
+@FORMAT_CHECKER.checks("uri")
+def _check_uri(value: Any) -> bool:
+    """Apply the URI policy shared by the repository validator and Worker.
+
+    WHATWG URL parsing accepts and normalizes inputs such as ``%ZZ`` and raw
+    Unicode host names. Submission URLs are kept to absolute, visible-ASCII
+    URIs with valid percent escapes so the importer and Worker accept the same
+    strings.
+    """
+    if (
+        not isinstance(value, str)
+        or not VISIBLE_ASCII_RE.fullmatch(value)
+        or not URI_SCHEME_RE.match(value)
+        or INVALID_PERCENT_ESCAPE_RE.search(value)
+        or INVALID_URI_CHARACTER_RE.search(value)
+    ):
+        return False
+
+    try:
+        parsed = urlsplit(value)
+        if value[len(parsed.scheme) :].startswith("//"):
+            if not parsed.netloc or parsed.hostname is None:
+                return False
+            parsed.port
+    except ValueError:
+        return False
+    return True
 
 
 @dataclass
