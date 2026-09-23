@@ -221,7 +221,13 @@ nav:
     - 贡献题目: quiz/contribute.md
   - 计算物理与工具:
     - 工具简介: tools/index.md
-    - LaTeX 物理写作: tools/latex.md
+    - LaTeX 物理写作:
+      - 概览与学习路线: tools/latex/index.md
+      - 环境搭建 (VS Code + TeX Live): tools/latex/installation.md
+      - 物理公式与专业宏包: tools/latex/math-and-physics.md
+      - 图表、文献与长文档管理: tools/latex/figures-tables-bib.md
+      - 物理实战模板与期刊排版: tools/latex/templates.md
+      - 常见问题与排错指南: tools/latex/troubleshooting.md
     - Python 科学计算: tools/python-scicomp.md
     - 模拟软件 (Mathematica/Matlab): tools/simulation.md
     - 绘图工具: tools/plotting.md

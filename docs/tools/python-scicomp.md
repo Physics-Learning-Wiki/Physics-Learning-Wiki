@@ -23,7 +23,7 @@ author: Physics Learning Wiki
 1.  语法相对容易上手，学习门槛低于很多传统工程语言．
 2.  科学计算生态成熟，NumPy、SciPy、Matplotlib、SymPy、Jupyter 等工具之间衔接自然．
 3.  既适合做快速验证，也适合做较严肃的小型项目．
-4.  与 [绘图工具](./plotting.md) 和 [LaTeX 物理写作](./latex.md) 很容易拼成一条完整工作流．
+4.  与 [绘图工具](./plotting.md) 和 [LaTeX 物理写作](./latex/index.md) 很容易拼成一条完整工作流．
 5.  免费、跨平台、文档丰富、社区大．
 
 ## 推荐的安装思路

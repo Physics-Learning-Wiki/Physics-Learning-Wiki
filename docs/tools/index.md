@@ -38,7 +38,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 2.  建立模型：写出核心假设、守恒关系、微分方程或统计模型．
 3.  选工具：
 
--   需要写公式、整理推导时，优先用 [LaTeX 物理写作](./latex.md)．
+-   需要写公式、整理推导时，优先用 [LaTeX 物理写作](./latex/index.md)．
 -   需要数值计算、数据处理和基础符号运算时，优先用 [Python 科学计算](./python-scicomp.md)．
 -   需要快速做较重的符号计算、矩阵计算或课程指定软件练习时，考虑 [模拟软件 (Mathematica/Matlab)](./simulation.md)．
 -   需要清楚展示结果时，进入 [绘图工具](./plotting.md)．
@@ -51,7 +51,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 
 ## 推荐阅读顺序
 
-1.  [LaTeX 物理写作](./latex.md)：先学会把公式、符号、图表和参考文献写规范．
+1.  [LaTeX 物理写作](./latex/index.md)：先学会把公式、符号、图表和参考文献写规范．
 2.  [Python 科学计算](./python-scicomp.md)：用最常见、最通用的科学计算工具做数值实验、数据处理和基础符号计算．
 3.  [模拟软件 (Mathematica/Matlab)](./simulation.md)：在课程要求、符号运算较重、矩阵计算较多或需要现成交互界面的场景下使用专业软件．
 4.  [绘图工具](./plotting.md)：把数据、模型和结论表达成清晰、可检查、可分享的图像．
@@ -72,15 +72,15 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 
 ### 只想尽快把笔记写规范
 
-先读 [LaTeX 物理写作](./latex.md)，学会最小模板、公式环境、插图和引用；然后补一部分 [绘图工具](./plotting.md)，至少掌握如何生成一张带坐标轴和单位的图．
+先读 [LaTeX 物理写作](./latex/index.md)，学会最小模板、公式环境、插图和引用；然后补一部分 [绘图工具](./plotting.md)，至少掌握如何生成一张带坐标轴和单位的图．
 
 ### 想做数据处理和数值实验
 
-先读 [Python 科学计算](./python-scicomp.md)，装好环境并跑通一个简单脚本；再读 [绘图工具](./plotting.md)，把计算结果变成图像；最后回到 [LaTeX 物理写作](./latex.md)，整理成实验报告或学习笔记．
+先读 [Python 科学计算](./python-scicomp.md)，装好环境并跑通一个简单脚本；再读 [绘图工具](./plotting.md)，把计算结果变成图像；最后回到 [LaTeX 物理写作](./latex/index.md)，整理成实验报告或学习笔记．
 
 ### 想做较复杂的符号计算或课程仿真
 
-先读 [模拟软件 (Mathematica/Matlab)](./simulation.md)，理解这些专业软件和 Python 的分工；同时保留 [LaTeX 物理写作](./latex.md) 作为最终写作出口，因为真正可复用、可交流的结论仍然需要清晰记录．
+先读 [模拟软件 (Mathematica/Matlab)](./simulation.md)，理解这些专业软件和 Python 的分工；同时保留 [LaTeX 物理写作](./latex/index.md) 作为最终写作出口，因为真正可复用、可交流的结论仍然需要清晰记录．
 
 ## 选工具时最重要的四个标准
 
