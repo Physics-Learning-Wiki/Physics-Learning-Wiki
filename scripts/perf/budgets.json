@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "blocking": {
+    "auditCompletes": true,
+    "duplicateGeneratedPaths": true,
+    "largeImageAllowlistMustExist": true,
+    "largeImageAllowlistNoDuplicatesOrGlobs": true,
+    "largeImageThresholdBytes": 512000,
+    "enforceLargeImageAllowlist": false
+  },
+  "reportOnly": {
+    "experience": {
+      "coldLoadRequests": null,
+      "transferredBytes": null,
+      "fontRequests": null,
+      "largestContentfulPaintMs": null,
+      "cumulativeLayoutShift": null
+    },
+    "targetArchitecture": {
+      "ordinaryPageFeatureRequests": 0,
+      "mathjaxCssMaxBytes": 786432,
+      "runtimeLoaderMaxBytes": 25600,
+      "legacySearchIndexPresent": false
+    },
+    "representativeHtmlMaxBytes": {
+      "modern/general-relativity/index.html": 460800,
+      "thermodynamics/chapter-1/gas/index.html": 460800,
+      "mechanics/oscillation-wave/harmonic-wave/index.html": 384000,
+      "intro/symbol/index.html": 1048576
+    }
+  }
+}
