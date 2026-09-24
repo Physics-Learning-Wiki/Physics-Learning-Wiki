@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -31,6 +33,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -46,23 +50,50 @@ jobs:
       - name: Install dependencies
         run: yarn install
       
-      - name: Pre process
+      - name: Format changed files
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        shell: bash
         run: |
-          python3 scripts/linter_patch.py ./docs --mode pre
-      
-      - name: Run bot formatter
-        run: |
-          yarn docs:format:remark
-      - name: Run clang-format
-        run: |
-          find . -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) -print0 | xargs -0 clang-format -i
-      - name: Run ruff
-        run: |
-          ruff format ./docs
-      
-      - name: Post process
-        run: |
-          python3 scripts/linter_patch.py ./docs --mode post
+          set -euo pipefail
+          mapfile -d '' -t changed_files < <(git diff --name-only --diff-filter=ACMR -z "$BASE_SHA" "$HEAD_SHA")
+          markdown_files=()
+          remark_files=()
+          python_files=()
+          clang_files=()
+          for file in "${changed_files[@]}"; do
+            [[ -f "$file" ]] || continue
+            case "$file" in
+              docs/*.md)
+                markdown_files+=("$file")
+                case "$file" in
+                  docs/superpowers/*) ;;
+                  */op.md|*/bit.md|*/binary-set.md) ;;
+                  *) remark_files+=("$file") ;;
+                esac
+                ;;
+              docs/*.py) python_files+=("$file") ;;
+            esac
+            case "$file" in
+              *.c|*.cpp|*.h|*.hpp) clang_files+=("$file") ;;
+            esac
+          done
+          if ((${#markdown_files[@]})); then
+            python3 scripts/linter_patch.py --files "${markdown_files[@]}" --mode pre
+          fi
+          if ((${#remark_files[@]})); then
+            yarn remark "${remark_files[@]}" -o
+          fi
+          if ((${#python_files[@]})); then
+            ruff format "${python_files[@]}"
+          fi
+          if ((${#clang_files[@]})); then
+            clang-format -i "${clang_files[@]}"
+          fi
+          if ((${#markdown_files[@]})); then
+            python3 scripts/linter_patch.py --files "${markdown_files[@]}" --mode post
+          fi
       
       - name: Generate patch
         run: |
