@@ -10,7 +10,8 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
       url.pathname.endsWith("/features/quiz.js") ||
       url.pathname.endsWith("/css/quiz.css") ||
       url.pathname.endsWith("/manifest.json") ||
-      /\/catalog\/(?:sets|questions)\.[^/]+\.json$/.test(url.pathname)
+      /\/catalog\/(?:sets|questions)\.[^/]+\.json$/.test(url.pathname) ||
+      url.pathname.includes("/_generated/question-bank/")
     ) {
       quizRequests.push(url.pathname);
     }
@@ -43,9 +44,16 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await expect(page).toHaveURL(/\/intro\/about\/$/);
   await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
   expect(await page.evaluate(() => localStorage.getItem("plw.quiz.v2"))).toBe(savedSession);
+  const questionBankRequestsAtExit = quizRequests.filter(path => path.includes("/_generated/question-bank/")).length;
+  await page.waitForTimeout(300);
+  expect(quizRequests.filter(path => path.includes("/_generated/question-bank/")).length).toBe(
+    questionBankRequestsAtExit
+  );
 
   await page.goForward();
   await expect(page).toHaveURL(/\/Physics-Learning-Wiki\/quiz\/$/);
+  await expect(page.locator(".plw-quiz-home-featured")).toHaveCount(1);
+  await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "继续上次未完成的作答" })).toBeVisible();
   await page.getByRole("link", { name: "继续作答" }).click();
   await expect(page).toHaveURL(/\/quiz\/play\/\?set=[^&]+&seed=[^&]+/);
@@ -109,12 +117,15 @@ test("a direct runner honors its seed and shows stale-session recovery", async (
   await expect(page).toHaveURL(new RegExp(`set=${setId}&seed=${seed}$`));
   await expect(page.locator(".plw-quiz-question")).toBeVisible();
 
-  await page.evaluate(({ setId: activeSetId }) => {
-    const storage = JSON.parse(localStorage.getItem("plw.quiz.v2")!);
-    const activeSession = storage.activeSessions[`set:${activeSetId}`][0];
-    activeSession.bankFingerprint = "sha256:stale-fixture";
-    localStorage.setItem("plw.quiz.v2", JSON.stringify(storage));
-  }, { setId });
+  await page.evaluate(
+    ({ setId: activeSetId }) => {
+      const storage = JSON.parse(localStorage.getItem("plw.quiz.v2")!);
+      const activeSession = storage.activeSessions[`set:${activeSetId}`][0];
+      activeSession.bankFingerprint = "sha256:stale-fixture";
+      localStorage.setItem("plw.quiz.v2", JSON.stringify(storage));
+    },
+    { setId }
+  );
   await page.reload();
   await expect(page.getByRole("heading", { name: "作答进度已失效" })).toBeVisible();
   await expect(page.getByRole("button", { name: "清空旧进度并重新开始" })).toBeVisible();

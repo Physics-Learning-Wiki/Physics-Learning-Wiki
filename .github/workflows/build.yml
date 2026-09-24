@@ -70,12 +70,8 @@ jobs:
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           ./scripts/build/build-site.sh
-      - name: Run browser smoke test
-        run: corepack yarn e2e:smoke
-      - name: Run browser search test
-        run: corepack yarn e2e:search
-      - name: Run browser quiz test
-        run: corepack yarn e2e:quiz
+      - name: Run browser behavior gate
+        run: corepack yarn e2e
       # - name: Check links
       #   uses: wjdp/htmltest-action@<pinned-ref>
       #   with:

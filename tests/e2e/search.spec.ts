@@ -9,7 +9,7 @@ test("Pagefind loads on the first search and returns Chinese results under the s
   });
 
   await page.goto(`${basePath}intro/about/`);
-  expect(await page.locator("html").getAttribute("lang")).toBe("zh");
+  expect(await page.locator("html").getAttribute("lang")).toBe("zh-Hans");
   expect(pagefindRequests).toEqual([]);
 
   const input = page.locator(".md-search__input");
@@ -19,6 +19,8 @@ test("Pagefind loads on the first search and returns Chinese results under the s
   await expect(firstResult).toBeVisible();
   await expect(firstResult).toHaveAttribute("href", /\/Physics-Learning-Wiki\//);
   expect(pagefindRequests.some(url => url.includes("/pagefind/pagefind.js"))).toBe(true);
+  expect(pagefindRequests.filter(url => new URL(url).pathname.endsWith("/pagefind/pagefind.js"))).toHaveLength(1);
+  expect(pagefindRequests.every(url => new URL(url).pathname.startsWith(`${basePath}pagefind/`))).toBe(true);
 
   await input.press("Enter");
   await expect(page).toHaveURL(/\/Physics-Learning-Wiki\//);
@@ -64,7 +66,15 @@ test("math page search excerpts omit raw TeX commands", async ({ page }) => {
 
 test("404 retains working search and is excluded from its own results on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto(`${basePath}page-that-does-not-exist/`);
+  const legacySearchRequests: string[] = [];
+  page.on("request", request => {
+    const pathname = new URL(request.url()).pathname;
+    if (/\/search_index\.json$|\/workers\/search\.[^/]+\.min\.js$/i.test(pathname)) {
+      legacySearchRequests.push(pathname);
+    }
+  });
+  const missingPageResponse = await page.goto(`${basePath}page-that-does-not-exist/`);
+  expect(missingPageResponse?.status()).toBe(404);
   const searchButton = page.locator('label[for="__search"]').first();
   await searchButton.click();
 
@@ -75,6 +85,7 @@ test("404 retains working search and is excluded from its own results on mobile"
 
   const resultLinks = page.locator(".md-search-result__link");
   await expect(resultLinks.first()).toBeVisible();
+  expect(legacySearchRequests).toEqual([]);
   for (const href of await resultLinks.evaluateAll(links => links.map(link => (link as HTMLAnchorElement).href))) {
     expect(href).not.toContain("404.html");
     expect(href).toContain("/Physics-Learning-Wiki/");
