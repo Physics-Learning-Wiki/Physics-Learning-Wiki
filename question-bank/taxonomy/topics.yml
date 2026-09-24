@@ -1,0 +1,10 @@
+mechanics:
+  title: 经典力学
+
+mechanics.kinematics:
+  title: 运动学
+  parent: mechanics
+
+mechanics.dynamics:
+  title: 动力学
+  parent: mechanics

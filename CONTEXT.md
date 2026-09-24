@@ -20,13 +20,13 @@ _Avoid_: PR approval, Issue label, review status
 A Question with current physics, pedagogy, and copyright Review Attestations. It is eligible for production selection but does not by itself activate a quiz page.
 _Avoid_: Live quiz, accepted submission
 
-**Quiz Blueprint**:
-The page-level contract that defines quiz modes, learning-objective slots, and composition constraints.
-_Avoid_: Question bank, test paper
+**Quiz Set**:
+The reusable quiz contract that defines question selection rules, fixed questions or constraint queries, time limits, and composition constraints.
+_Avoid_: Quiz Blueprint, test paper, page quiz
 
-**Activated Quiz**:
-A learner-facing quiz whose page has been deliberately activated and whose Published Questions satisfy its release gate and Quiz Blueprint.
-_Avoid_: Published question, construction preview
+**Placement**:
+The page-level `assessments:` declaration that embeds or links reusable Quiz Sets into markdown documentation.
+_Avoid_: Activated quiz, quiz blueprint
 
 **Attempt**:
 One browser-local record of answers and results for a selected set of Questions.

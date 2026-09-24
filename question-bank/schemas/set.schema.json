@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://physics-learning-wiki.example/schemas/set.schema.json",
+  "title": "Physics Learning Wiki Quiz Set",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "title", "status", "selection", "feedback_mode"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"$ref": "#/$defs/dottedId"},
+    "title": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "status": {"enum": ["draft", "published", "retired"]},
+    "tags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "feedback_mode": {"enum": ["immediate", "deferred"]},
+    "selection": {"$ref": "#/$defs/selection"}
+  },
+  "$defs": {
+    "dottedId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(\\.[a-z][a-z0-9-]*)+$"
+    },
+    "questionId": {
+      "type": "string",
+      "pattern": "^(?:[a-z][a-z0-9-]{7,63}|q-\\d{6})$"
+    },
+    "anyOrAll": {
+      "type": "object",
+      "oneOf": [
+        {
+          "required": ["any"],
+          "additionalProperties": false,
+          "properties": {
+            "any": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        {
+          "required": ["all"],
+          "additionalProperties": false,
+          "properties": {
+            "all": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      ]
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "topics": {"$ref": "#/$defs/anyOrAll"},
+        "concepts": {"$ref": "#/$defs/anyOrAll"},
+        "objectives": {"$ref": "#/$defs/anyOrAll"},
+        "related_pages": {"$ref": "#/$defs/anyOrAll"},
+        "types": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric"]}
+        },
+        "cognitive_levels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["remember", "understand", "apply", "analyze"]}
+        },
+        "styles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["conceptual", "graphical", "computational", "modeling"]}
+        },
+        "question_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/questionId"}
+        },
+        "difficulty": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "min": {"type": "integer", "minimum": 1, "maximum": 3},
+            "max": {"type": "integer", "minimum": 1, "maximum": 3}
+          },
+          "anyOf": [
+            {"required": ["min"]},
+            {"required": ["max"]}
+          ]
+        }
+      }
+    },
+    "slot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "count"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "count": {"type": "integer", "minimum": 1},
+        "filters": {"$ref": "#/$defs/filters"}
+      }
+    },
+    "constraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field", "values"],
+      "properties": {
+        "field": {"enum": ["difficulty", "type", "style"]},
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "min": {"type": "integer", "minimum": 0},
+        "max": {"type": "integer", "minimum": 0}
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "field": {"const": "difficulty"},
+            "values": {
+              "items": {"type": "integer", "minimum": 1, "maximum": 3}
+            }
+          }
+        },
+        {
+          "properties": {
+            "field": {"const": "type"},
+            "values": {
+              "items": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric"]}
+            }
+          }
+        },
+        {
+          "properties": {
+            "field": {"const": "style"},
+            "values": {
+              "items": {"enum": ["conceptual", "graphical", "computational", "modeling"]}
+            }
+          }
+        }
+      ],
+      "anyOf": [
+        {"required": ["min"]},
+        {"required": ["max"]}
+      ]
+    },
+    "fixedSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "questions", "order"],
+      "properties": {
+        "type": {"const": "fixed"},
+        "questions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/questionId"}
+        },
+        "order": {"enum": ["fixed", "shuffle"]}
+      }
+    },
+    "querySelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "count"],
+      "properties": {
+        "type": {"const": "query"},
+        "count": {"type": "integer", "minimum": 1},
+        "filters": {"$ref": "#/$defs/filters"},
+        "slots": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/slot"}
+        },
+        "constraints": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/constraint"}
+        }
+      }
+    },
+    "selection": {
+      "type": "object",
+      "oneOf": [
+        {"$ref": "#/$defs/fixedSelection"},
+        {"$ref": "#/$defs/querySelection"}
+      ]
+    }
+  }
+}

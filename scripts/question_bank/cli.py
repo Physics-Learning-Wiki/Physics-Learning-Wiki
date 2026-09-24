@@ -16,7 +16,6 @@ def _parser() -> argparse.ArgumentParser:
     subcommands = parser.add_subparsers(dest="command", required=True)
     validate = subcommands.add_parser("validate", help="validate question sources")
     validate.add_argument("--include-drafts", action="store_true", help="retained for an explicit authoring workflow; drafts are always structurally checked")
-    validate.add_argument("--release", action="store_true", help="enforce publication readiness")
     validate.add_argument("--json-output", type=Path)
     build = subcommands.add_parser("build", help="compile browser bundles")
     build.add_argument("--output", type=Path)
@@ -41,7 +40,7 @@ def _parser() -> argparse.ArgumentParser:
     )
     attest_parser.add_argument("--reviewer", required=True)
     attest_parser.add_argument("--reviewed-on")
-    publish_parser = subcommands.add_parser("publish", help="publish a fully attested question")
+    publish_parser = subcommands.add_parser("publish", help="publish a fully attested question or set")
     publish_parser.add_argument("--id", required=True)
     return parser
 
@@ -49,7 +48,7 @@ def _parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     if args.command == "validate":
-        report = validate_repository(release=args.release, include_drafts=args.include_drafts)
+        report = validate_repository(include_drafts=args.include_drafts)
         for issue in report.issues:
             print(issue.render())
         summary = {"errors": len(report.errors), "warnings": len(report.warnings), "ok": report.ok}

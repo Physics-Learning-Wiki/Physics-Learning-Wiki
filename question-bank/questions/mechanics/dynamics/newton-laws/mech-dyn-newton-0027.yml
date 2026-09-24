@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0027
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.object-system-choice
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.system-boundary
+objectives:
+- mech.dyn.newton.object-system-choice
+related_pages:
+- mechanics.dynamics.newton-laws
 type: numeric
 choice_order: fixed
 stem: 光滑水平面上，$1\,\mathrm{kg}$、$2\,\mathrm{kg}$、$3\,\mathrm{kg}$ 三个相连物体受水平外力 $12\,\mathrm N$。把三者视为整体，求加速度。
@@ -44,16 +45,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d
+    content_fingerprint: sha256:088c18f23cc25f1d158835358692c2fe4114fb19e08a83699eac795685f24d0f
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d
+    content_fingerprint: sha256:088c18f23cc25f1d158835358692c2fe4114fb19e08a83699eac795685f24d0f
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:1d2844fd44d166ea25a6f226a6344dd0a02828d1e5e52bca5fab0f4e2194689d
+    content_fingerprint: sha256:088c18f23cc25f1d158835358692c2fe4114fb19e08a83699eac795685f24d0f

@@ -1,0 +1,210 @@
+{
+  "version": 2,
+  "valid": {
+    "single_choice": {
+      "type": "single_choice",
+      "choice_order": "shuffle",
+      "stem": "关于惯性，下列说法正确的是：",
+      "choices": [
+        {"id": "A", "content": "物体静止时没有惯性"},
+        {"id": "B", "content": "质量是惯性大小的唯一量度"},
+        {"id": "C", "content": "速度大的物体惯性大"}
+      ],
+      "answer": {"choice": "B"},
+      "feedback": {
+        "choices": {
+          "A": "错误，静止物体同样具有惯性。",
+          "B": "正确，质量是惯性大小的唯一量度。",
+          "C": "错误，惯性与运动速度无关。"
+        },
+        "correct": "回答正确！",
+        "incorrect": "回答错误，请复习牛顿第一定律。"
+      },
+      "hints": ["回顾牛顿第一定律对惯性的定义。"],
+      "solution": "质量是衡量物体惯性大小的唯一物理量，与物体所处的状态或速度无关。",
+      "topics": ["mechanics.dynamics"],
+      "concepts": ["newton.inertia"],
+      "objectives": ["mechanics.newton.first-law"],
+      "related_pages": ["mechanics.dynamics.newton-laws"],
+      "difficulty": 1,
+      "cognitive_level": "understand",
+      "style": "conceptual",
+      "estimated_seconds": 60,
+      "attribution": "物理探索者",
+      "ai_assisted": false
+    },
+    "multiple_choice": {
+      "type": "multiple_choice",
+      "choice_order": "shuffle",
+      "stem": "下列物理量中属于矢量的有：",
+      "choices": [
+        {"id": "A", "content": "位移"},
+        {"id": "B", "content": "力"},
+        {"id": "C", "content": "加速度"},
+        {"id": "D", "content": "温度"}
+      ],
+      "answer": {"choices": ["A", "B", "C"]},
+      "solution": "位移、力和加速度既有大小又有方向，遵守平行四边形定则，属于矢量；温度是标量。",
+      "topics": ["mechanics.kinematics"],
+      "concepts": ["mechanics.vectors.basic"],
+      "difficulty": 2,
+      "cognitive_level": "apply",
+      "style": "conceptual",
+      "estimated_seconds": 90
+    },
+    "true_false": {
+      "type": "true_false",
+      "choice_order": "fixed",
+      "stem": "两个相互作用的物体受到的作用力与反作用力大小相等、方向相反。",
+      "answer": {"value": true},
+      "solution": "牛顿第三定律指出作用力与反作用力大小相等、方向相反、作用在不同物体上。",
+      "topics": ["mechanics.dynamics"],
+      "concepts": ["newton.action-reaction"],
+      "difficulty": 1,
+      "cognitive_level": "remember",
+      "style": "conceptual",
+      "estimated_seconds": 30
+    },
+    "numeric": {
+      "type": "numeric",
+      "choice_order": "fixed",
+      "stem": "真空中光速约为多少（单位以 m/s 计，取三位有效数字）：",
+      "answer": {
+        "value": 300000000.0,
+        "tolerance": {"type": "relative", "value": 0.01},
+        "unit": {"required": true, "accepted": ["m/s", "m s^-1"], "canonical": "m/s"}
+      },
+      "solution": "真空中光速约为 3.00 * 10^8 m/s。",
+      "topics": ["optics.wave"],
+      "concepts": ["optics.light-speed"],
+      "difficulty": 2,
+      "cognitive_level": "remember",
+      "style": "computational",
+      "estimated_seconds": 45
+    }
+  },
+  "invalid": {
+    "bad_choice_order": {
+      "base": "true_false",
+      "override": {"choice_order": "invalid"}
+    },
+    "answer_extra_property": {
+      "base": "true_false",
+      "override": {"answer": {"value": true, "extra": 123}}
+    },
+    "choice_extra_property": {
+      "base": "single_choice",
+      "override": {
+        "choices": [
+          {"id": "A", "content": "选项 A", "extra": "forbidden"},
+          {"id": "B", "content": "选项 B"}
+        ]
+      }
+    },
+    "invalid_hints": {
+      "base": "single_choice",
+      "override": {"hints": [123]}
+    },
+    "invalid_objectives": {
+      "base": "single_choice",
+      "override": {"objectives": ["INVALID_OBJECTIVE"]}
+    },
+    "invalid_related_pages": {
+      "base": "single_choice",
+      "override": {"related_pages": ["BAD/URL"]}
+    },
+    "numeric_extra_tolerance_property": {
+      "base": "numeric",
+      "override": {
+        "answer": {
+          "value": 9.8,
+          "tolerance": {"type": "absolute", "value": 0.1, "extra": "not-allowed"},
+          "unit": {"required": false, "accepted": []}
+        }
+      }
+    },
+    "numeric_extra_unit_property": {
+      "base": "numeric",
+      "override": {
+        "answer": {
+          "value": 9.8,
+          "tolerance": {"type": "absolute", "value": 0.1},
+          "unit": {"required": false, "accepted": [], "extra": "not-allowed"}
+        }
+      }
+    },
+    "malformed_external_media": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "http://insecure.org/img.png", "alt": "img", "rights_note": "note"}
+        ]
+      }
+    },
+    "top_level_unknown_property": {
+      "base": "true_false",
+      "override": {"unknown_field": "disallowed"}
+    },
+    "true_false_with_choices": {
+      "base": "true_false",
+      "override": {
+        "choices": [
+          {"id": "A", "content": "A"},
+          {"id": "B", "content": "B"}
+        ]
+      }
+    },
+    "duplicate_topics": {
+      "base": "single_choice",
+      "override": {
+        "topics": ["mechanics.dynamics", "mechanics.dynamics"]
+      }
+    },
+    "numeric_required_unit_missing_canonical": {
+      "base": "numeric",
+      "override": {
+        "answer": {
+          "value": 300000000.0,
+          "tolerance": {"type": "relative", "value": 0.01},
+          "unit": {"required": true, "accepted": ["m/s"]}
+        }
+      }
+    },
+    "control_character": {
+      "base": "true_false",
+      "override": {
+        "stem": "正常\u0001控制字符"
+      }
+    },
+    "javascript_scheme_with_whitespace": {
+      "base": "true_false",
+      "override": {
+        "stem": "[x](javascript   :alert(1))"
+      }
+    },
+    "external_media_unescaped_space": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "https://example.com/a b.png", "alt": "img", "rights_note": "note"}
+        ]
+      }
+    },
+    "external_media_invalid_percent_escape": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "https://example.com/%ZZ", "alt": "img", "rights_note": "note"}
+        ]
+      }
+    },
+    "external_media_noncanonical_https_scheme": {
+      "base": "single_choice",
+      "override": {
+        "external_media": [
+          {"url": "HTTPS://example.com/img.png", "alt": "img", "rights_note": "note"}
+        ]
+      }
+    }
+  }
+}

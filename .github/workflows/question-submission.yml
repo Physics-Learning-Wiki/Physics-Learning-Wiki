@@ -50,8 +50,8 @@ jobs:
           script: |
             const fs = require("fs");
             const body = context.payload.issue.body || "";
-            const match = body.match(/```json plw-question-submission-v1\s*\n(\{.*\})\s*\n```/s);
-            if (!match) core.setFailed("Issue does not contain a v1 question payload");
+            const match = body.match(/```json plw-question-submission-v2\s*\n(\{.*\})\s*\n```/s);
+            if (!match) core.setFailed("Issue does not contain a v2 question payload");
             const payload = JSON.parse(match[1]);
             payload.issueUrl = context.payload.issue.html_url;
             fs.writeFileSync(".question-submission.json", JSON.stringify(payload));

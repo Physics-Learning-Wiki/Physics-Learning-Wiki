@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0001
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.first-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.inertia
+objectives:
+- mech.dyn.newton.first-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
 stem: 关于惯性，下列哪些说法正确？
@@ -52,16 +53,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385
+    content_fingerprint: sha256:fff3f0c6d7395bb5098e7cc43073ab4a60f7bd62dd656ed4f86030dfc92db249
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385
+    content_fingerprint: sha256:fff3f0c6d7395bb5098e7cc43073ab4a60f7bd62dd656ed4f86030dfc92db249
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9b5d920c176dacee1765c7fad4ae4583283a58ae0a1938094b3f779f80a42385
+    content_fingerprint: sha256:fff3f0c6d7395bb5098e7cc43073ab4a60f7bd62dd656ed4f86030dfc92db249

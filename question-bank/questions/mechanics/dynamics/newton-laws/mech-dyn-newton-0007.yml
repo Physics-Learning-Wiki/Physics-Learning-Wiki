@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0007
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.coordinate-equations
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.coordinate-system
+objectives:
+- mech.dyn.newton.coordinate-equations
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
 stem: 滑块没有离开固定斜面。取垂直斜面方向为一个坐标轴，该方向应满足哪个条件？
@@ -50,16 +51,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d
+    content_fingerprint: sha256:ddbec9b16ab93537ed51e8d1d8034e976f18c9ed5962dda63f147bd6dac96d10
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d
+    content_fingerprint: sha256:ddbec9b16ab93537ed51e8d1d8034e976f18c9ed5962dda63f147bd6dac96d10
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:f6a97de3bddd3a3ed663df7bc2d57f4fbebaa29169e5352d50a5bf0a617f5b8d
+    content_fingerprint: sha256:ddbec9b16ab93537ed51e8d1d8034e976f18c9ed5962dda63f147bd6dac96d10

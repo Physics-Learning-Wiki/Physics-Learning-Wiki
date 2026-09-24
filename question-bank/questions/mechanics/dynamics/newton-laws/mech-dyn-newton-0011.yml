@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0011
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.first-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.inertia
+objectives:
+- mech.dyn.newton.first-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: true_false
 choice_order: fixed
 stem: 同一物体的质量不变时，无论静止还是运动，其惯性大小相同。
@@ -36,16 +37,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee
+    content_fingerprint: sha256:255ebf52345233dc8414e0cbcdc6ab67d966b19de66e9f51c007ca52b629441c
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee
+    content_fingerprint: sha256:255ebf52345233dc8414e0cbcdc6ab67d966b19de66e9f51c007ca52b629441c
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9c8a13184008a9aad90ea0251c002aa2f10a71ee54c4e22671f76b07623068ee
+    content_fingerprint: sha256:255ebf52345233dc8414e0cbcdc6ab67d966b19de66e9f51c007ca52b629441c

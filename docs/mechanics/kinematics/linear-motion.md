@@ -1,36 +1,31 @@
 ---
+assessments:
+- placement: footer
+  set: mechanics.kinematics.linear-motion.quick
+- placement: footer
+  set: mechanics.kinematics.linear-motion.full
 author: Leafuke
-description: 从位置、位移和路程的符号约定出发，讲解平均与瞬时速度、加速度、x-t/v-t/a-t 图像、匀速与分段直线运动，以及追及相遇问题的建模方法。
-page_id: mechanics.kinematics.linear-motion
+description: 从位置、位移和路程的符号约定出发，讲解平均与瞬时速度、加速度、x-t/v-t/a-t 图像、匀速与分段直线运动，以及追及相遇问题的建模方法．
 learning_objectives:
-  - id: mech.kin.linear.sign-convention
-    title: 区分位置、位移和路程，并在给定正方向后正确处理符号
-    anchor: linear-sign-convention
-  - id: mech.kin.linear.velocity-acceleration
-    title: 计算并解释平均与瞬时速度、平均与瞬时加速度
-    anchor: linear-velocity-acceleration
-  - id: mech.kin.linear.graph-slope-area
-    title: 利用运动图像的斜率与面积分析运动
-    anchor: linear-motion-graphs
-  - id: mech.kin.linear.uniform-motion
-    title: 使用匀速直线运动模型建立位置与时间关系
-    anchor: linear-uniform-motion
-  - id: mech.kin.linear.piecewise-motion
-    title: 建立分段运动方程并使用连接条件
-    anchor: linear-piecewise-motion
-  - id: mech.kin.linear.relative-motion
-    title: 使用相对位置和相对速度处理追及与相遇问题
-    anchor: linear-relative-motion
-quiz:
-  enabled: true
-  state: construction
-  question_prefix: mech-kin-linear
-  blueprint: mechanics.kinematics.linear-motion
-  common_assessments:
-    - 概念辨析
-    - 图像斜率与面积
-    - 分段建模
-    - 追及与相遇
+- anchor: linear-sign-convention
+  id: mech.kin.linear.sign-convention
+  title: 区分位置、位移和路程，并在给定正方向后正确处理符号
+- anchor: linear-velocity-acceleration
+  id: mech.kin.linear.velocity-acceleration
+  title: 计算并解释平均与瞬时速度、平均与瞬时加速度
+- anchor: linear-motion-graphs
+  id: mech.kin.linear.graph-slope-area
+  title: 利用运动图像的斜率与面积分析运动
+- anchor: linear-uniform-motion
+  id: mech.kin.linear.uniform-motion
+  title: 使用匀速直线运动模型建立位置与时间关系
+- anchor: linear-piecewise-motion
+  id: mech.kin.linear.piecewise-motion
+  title: 建立分段运动方程并使用连接条件
+- anchor: linear-relative-motion
+  id: mech.kin.linear.relative-motion
+  title: 使用相对位置和相对速度处理追及与相遇问题
+page_id: mechanics.kinematics.linear-motion
 ---
 
 ## 直线运动（Linear Motion）

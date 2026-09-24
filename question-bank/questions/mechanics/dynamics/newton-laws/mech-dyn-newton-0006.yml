@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0006
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.free-body-diagram
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.free-body-diagram
+objectives:
+- mech.dyn.newton.free-body-diagram
+related_pages:
+- mechanics.dynamics.newton-laws
 type: multiple_choice
 choice_order: shuffle
 stem: 斜面上的滑块沿斜面下滑。以滑块为研究对象，受力图中可能包含哪些力？
@@ -53,16 +54,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea
+    content_fingerprint: sha256:bc7ca1d9c37eb133d2718332bd42fba15b8ca9ac8caba5a0bb0830af7df61f04
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea
+    content_fingerprint: sha256:bc7ca1d9c37eb133d2718332bd42fba15b8ca9ac8caba5a0bb0830af7df61f04
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:96dafa1c410dfc37b8e081b4fe3bdf5a1e8548f931c2c9ffaeabf207b7a9bdea
+    content_fingerprint: sha256:bc7ca1d9c37eb133d2718332bd42fba15b8ca9ac8caba5a0bb0830af7df61f04

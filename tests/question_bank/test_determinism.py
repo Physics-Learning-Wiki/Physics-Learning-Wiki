@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pytest
+
 from scripts.question_bank.compiler import compile_repository
 from scripts.question_bank.utils import tree_bytes
 

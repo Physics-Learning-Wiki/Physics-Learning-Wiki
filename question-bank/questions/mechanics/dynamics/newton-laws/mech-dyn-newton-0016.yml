@@ -1,15 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0016
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.third-law
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.action-reaction
+objectives:
+- mech.dyn.newton.third-law
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
 stem: 人向后蹬地而向前加速。直接使人向前加速的力是？
@@ -50,16 +51,16 @@ license: CC-BY-SA-4.0
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538
+    content_fingerprint: sha256:d9c8e75ad27ff48c06964539492be25270aa78db0ec87499f8284b5d8c269c7e
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538
+    content_fingerprint: sha256:d9c8e75ad27ff48c06964539492be25270aa78db0ec87499f8284b5d8c269c7e
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:9dabb7fd5388d4e62d76d022fbcfec1a5a04e15e7d8c37e760bccb569c80c538
+    content_fingerprint: sha256:d9c8e75ad27ff48c06964539492be25270aa78db0ec87499f8284b5d8c269c7e

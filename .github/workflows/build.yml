@@ -31,27 +31,27 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+          cache: 'yarn'
           check-latest: true
       - name: Install Python dependencies
         run: uv sync
+      - name: Install Node.js dependencies
+        run: corepack yarn --frozen-lockfile
       - name: Validate question bank
         env:
           PLW_QUIZ_PREVIEW: ''
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
-          uv run python -m scripts.question_bank validate --include-drafts
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v4
-        id: cache-node
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node-
-      - name: Install Node.js dependencies
-        if: steps.cache-node.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile --production
-      - name: Test SEO scripts
-        run: uv run pytest tests/seo
+          uv run python -m scripts.question_bank validate
+          uv run python -m scripts.question_bank coverage
+      - name: Run test matrix
+        run: |
+          uv run pytest tests/question_bank tests/integration tests/seo
+          corepack yarn quiz:typecheck
+          corepack yarn quiz:test
+          corepack yarn quiz:build:check
+          corepack yarn submit:test
+          corepack yarn submit:check
       - name: Page Build
         env:
           PLW_QUIZ_PREVIEW: ''

@@ -5,7 +5,12 @@ import pytest
 from scripts.question_bank.loader import load_json, load_yaml
 from scripts.question_bank.media import question_content_fingerprint, validate_assets
 from scripts.question_bank.page_contracts import discover_page_contracts
-from scripts.question_bank.validator import validate_question, validate_repository
+from scripts.question_bank.validator import (
+    validate_question,
+    validate_question_content,
+    validate_question_references,
+    validate_repository,
+)
 
 ROOT = Path(__file__).parents[2]
 
@@ -53,13 +58,10 @@ def test_zero_relative_tolerance_is_rejected() -> None:
     )
 
 
-def test_release_allows_explicit_construction_pages() -> None:
-    normal = validate_repository(ROOT)
-    release = validate_repository(ROOT, release=True)
-    assert normal.ok
-    assert normal.warnings
-    assert release.ok
-    assert release.warnings
+def test_validate_repository_succeeds_with_draft_set_warnings() -> None:
+    report = validate_repository(ROOT)
+    assert report.ok
+    assert len(report.warnings) == 2
 
 
 def test_published_question_requires_current_three_dimensional_review() -> None:
@@ -181,3 +183,55 @@ def test_managed_media_rejects_unsafe_files_and_missing_alt(tmp_path: Path) -> N
     assert any("PNG signature" in message for message in messages)
     assert any("escapes" in message for message in messages)
     assert any("alternative text" in message for message in messages)
+
+
+def test_validate_question_content_is_independent_of_pages() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    assert not validate_question_content(document, schema)
+
+
+def test_validate_question_references_checks_objectives() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    pages, _ = discover_page_contracts(ROOT)
+    assert not validate_question_references(document, pages)
+
+    # Unknown page
+    document.data["related_pages"] = ["nonexistent.page"]
+    issues = validate_question_references(document, pages)
+    assert any("unknown related page id" in issue.message for issue in issues)
+
+    # Unknown objective
+    document.data["related_pages"] = ["mechanics.kinematics.linear-motion"]
+    document.data["objectives"] = ["nonexistent.objective"]
+    issues = validate_question_references(document, pages)
+    assert any("unknown objective id" in issue.message for issue in issues)
+
+
+def test_draft_choice_question_without_feedback_is_valid() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    # Turn into a minimal draft question with no feedback
+    document.data["status"] = "draft"
+    document.data.pop("feedback", None)
+    document.data.pop("review", None)
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert not issues, f"Draft choice question without feedback should be valid, got: {issues}"
+
+
+def test_published_choice_question_without_feedback_is_rejected() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["status"] = "published"
+    document.data.pop("feedback", None)
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert any("feedback" in issue.field for issue in issues)
+

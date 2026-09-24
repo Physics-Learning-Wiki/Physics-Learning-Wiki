@@ -41,12 +41,43 @@ export function makeResult(question: Question, answer: UserAnswer, uncertain: bo
   return {
     questionId: question.id,
     version: question.version,
-    primaryObjective: question.primaryObjective,
+    topicIds: question.topicIds ?? [],
+    conceptIds: question.conceptIds ?? [],
+    objectiveIds: question.objectiveIds ?? [],
     answer,
     correct: gradeQuestion(question, answer),
-    unanswered: answer === null,
+    unanswered: !isAnswerComplete(question, answer),
     uncertain
   };
+}
+
+export function countProgress(
+  questions: readonly Question[],
+  answers: Readonly<Record<string, UserAnswer>>,
+  uncertain: Readonly<Record<string, boolean>>
+): { answered: number; unanswered: number; uncertain: number } {
+  const answered = questions.filter(question => isAnswerComplete(question, answers[question.id] ?? null)).length;
+  return {
+    answered,
+    unanswered: questions.length - answered,
+    uncertain: questions.filter(question => Boolean(uncertain[question.id])).length
+  };
+}
+
+export function summarizeConcepts(
+  results: readonly QuestionResult[]
+): Record<string, { correct: number; total: number; uncertain: number }> {
+  const summary: Record<string, { correct: number; total: number; uncertain: number }> = {};
+  for (const result of results) {
+    const concepts = result.conceptIds && result.conceptIds.length > 0 ? result.conceptIds : ["other"];
+    for (const cid of concepts) {
+      const item = (summary[cid] ??= { correct: 0, total: 0, uncertain: 0 });
+      item.total += 1;
+      if (result.correct) item.correct += 1;
+      if (result.uncertain) item.uncertain += 1;
+    }
+  }
+  return summary;
 }
 
 export function summarizeObjectives(
@@ -54,10 +85,13 @@ export function summarizeObjectives(
 ): Record<string, { correct: number; total: number; uncertain: number }> {
   const summary: Record<string, { correct: number; total: number; uncertain: number }> = {};
   for (const result of results) {
-    const item = (summary[result.primaryObjective] ??= { correct: 0, total: 0, uncertain: 0 });
-    item.total += 1;
-    if (result.correct) item.correct += 1;
-    if (result.uncertain) item.uncertain += 1;
+    const objectives = result.objectiveIds && result.objectiveIds.length > 0 ? result.objectiveIds : ["general"];
+    for (const oid of objectives) {
+      const item = (summary[oid] ??= { correct: 0, total: 0, uncertain: 0 });
+      item.total += 1;
+      if (result.correct) item.correct += 1;
+      if (result.uncertain) item.uncertain += 1;
+    }
   }
   return summary;
 }

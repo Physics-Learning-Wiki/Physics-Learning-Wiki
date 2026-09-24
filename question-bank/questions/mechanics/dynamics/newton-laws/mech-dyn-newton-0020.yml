@@ -1,25 +1,23 @@
-schema_version: 2
+schema_version: 3
 id: mech-dyn-newton-0020
 version: 1
 status: published
 locale: zh-CN
-scope:
-  pages:
-  - mechanics.dynamics.newton-laws
-primary_objective: mech.dyn.newton.free-body-diagram
-secondary_objectives: []
+topics:
+- mechanics.dynamics
 concepts:
 - newton.free-body-diagram
 - newton.friction
+objectives:
+- mech.dyn.newton.free-body-diagram
+related_pages:
+- mechanics.dynamics.newton-laws
 type: single_choice
 choice_order: shuffle
-stem: '![粗糙斜面上的下滑方块](asset:block-incline)
+stem: |-
+  ![粗糙斜面上的下滑方块](asset:block-incline)
 
-
-  方块正沿粗糙斜面向下滑。以方块为研究对象，摩擦力方向是？'
-assets:
-- id: block-incline
-  path: mechanics/dynamics/newton-laws/block-incline.svg
+  方块正沿粗糙斜面向下滑。以方块为研究对象，摩擦力方向是？
 choices:
 - id: A
   content: 沿斜面向上
@@ -54,19 +52,22 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+assets:
+- id: block-incline
+  path: mechanics/dynamics/newton-laws/block-incline.svg
 review:
   physics:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
+    content_fingerprint: sha256:6641dc5991b62046dab12d1ff91896a8275008b7a88648832f5393d5a42e33ea
   pedagogy:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
+    content_fingerprint: sha256:6641dc5991b62046dab12d1ff91896a8275008b7a88648832f5393d5a42e33ea
   copyright:
   - github: Leafuke
-    reviewed_on: '2026-08-24'
+    reviewed_on: '2026-09-19'
     question_version: 1
-    content_fingerprint: sha256:6143142e98509763c82a1a4acc1cfb30ff00ef82ed4b126bd0afcd99c0033833
+    content_fingerprint: sha256:6641dc5991b62046dab12d1ff91896a8275008b7a88648832f5393d5a42e33ea

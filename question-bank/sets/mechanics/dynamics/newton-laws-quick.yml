@@ -1,0 +1,57 @@
+schema_version: 1
+id: mechanics.dynamics.newton-laws.quick
+title: 3 题快速检查
+description: 快速检查牛顿运动定律核心概念、受力图与基本建模。
+status: published
+tags:
+- 快速检查
+- 牛顿运动定律
+feedback_mode: immediate
+selection:
+  type: query
+  count: 3
+  filters:
+    related_pages:
+      any:
+      - mechanics.dynamics.newton-laws
+  slots:
+  - id: laws
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.first-law
+        - mech.dyn.newton.second-law
+        - mech.dyn.newton.third-law
+  - id: diagram
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.free-body-diagram
+  - id: modeling
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.dyn.newton.coordinate-equations
+        - mech.dyn.newton.object-system-choice
+  constraints:
+  - field: difficulty
+    values:
+    - 3
+    max: 0
+  - field: style
+    values:
+    - conceptual
+    min: 1
+  - field: style
+    values:
+    - graphical
+    - computational
+    - modeling
+    min: 1
+  - field: type
+    values:
+    - numeric
+    max: 1

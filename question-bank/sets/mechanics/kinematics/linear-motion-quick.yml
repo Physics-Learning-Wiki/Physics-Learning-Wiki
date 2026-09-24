@@ -1,0 +1,39 @@
+schema_version: 1
+id: mechanics.kinematics.linear-motion.quick
+title: 3 题快速检查
+description: 快速检查直线运动符号约定、图像与基本建模。
+status: draft
+tags:
+- 快速检查
+- 直线运动
+feedback_mode: immediate
+selection:
+  type: query
+  count: 3
+  filters:
+    related_pages:
+      any:
+      - mechanics.kinematics.linear-motion
+  slots:
+  - id: foundations
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.sign-convention
+        - mech.kin.linear.velocity-acceleration
+  - id: graphs
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.graph-slope-area
+  - id: modeling
+    count: 1
+    filters:
+      objectives:
+        any:
+        - mech.kin.linear.uniform-motion
+        - mech.kin.linear.piecewise-motion
+        - mech.kin.linear.relative-motion
+  constraints: []

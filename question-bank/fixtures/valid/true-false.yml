@@ -1,12 +1,16 @@
-schema_version: 2
+schema_version: 3
 id: fixture-boolean-001
 version: 1
 status: draft
 locale: zh-CN
-scope: {pages: [mechanics.dynamics.newton-laws]}
-primary_objective: mech.dyn.newton.first-law
-secondary_objectives: []
-concepts: [newton.inertia]
+topics:
+  - mechanics.dynamics
+concepts:
+  - newton.inertia
+objectives:
+  - mech.dyn.newton.first-law
+related_pages:
+  - mechanics.dynamics.newton-laws
 type: true_false
 choice_order: fixed
 stem: 静止的物体也具有惯性。
