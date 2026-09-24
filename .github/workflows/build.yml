@@ -65,6 +65,8 @@ jobs:
           chmod +x ./scripts/pre-build/pre-build.sh
           ./scripts/pre-build/pre-build.sh
           uv run mkdocs build -v
+      - name: Build Pagefind search index
+        run: corepack yarn search:index
       - name: Post-process HTML
         # https://github.com/TypeStrong/ts-node/issues/1997
         run: node --loader ts-node/esm scripts/post-build/html-postprocess.ts commits-info math external-links
@@ -83,6 +85,8 @@ jobs:
         run: uv run python scripts/check-seo.py --site-dir site --docs-dir docs
       - name: Run browser smoke test
         run: corepack yarn e2e:smoke
+      - name: Run browser search test
+        run: corepack yarn e2e:search
       # - name: Check links
       #   uses: wjdp/htmltest-action@<pinned-ref>
       #   with:

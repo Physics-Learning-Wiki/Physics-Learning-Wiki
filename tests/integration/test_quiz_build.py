@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from bs4 import BeautifulSoup
+
 ROOT = Path(__file__).parents[2]
 
 
@@ -35,6 +37,22 @@ def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
         text=True,
     )
     return destination
+
+
+def build_pagefind_index(site: Path) -> None:
+    subprocess.run(
+        [
+            "node",
+            str(ROOT / "node_modules" / "pagefind" / "lib" / "runner" / "bin.cjs"),
+            "--site",
+            str(site),
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
 
 
 def test_production_build_contains_assessment_cards_and_no_drafts(
@@ -109,6 +127,34 @@ def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
 
 def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None:
     site = build_site(tmp_path)
+    build_pagefind_index(site)
+
+    assert (site / "pagefind" / "pagefind.js").exists()
+    assert not (site / "search" / "search_index.json").exists()
+    assert not (site / "search" / "search_index.js").exists()
+    assert re.search(r'<html[^>]*\blang="zh"', (site / "index.html").read_text(encoding="utf-8"))
+
+    search_ui_pages = []
+    for html_path in site.rglob("*.html"):
+        html = html_path.read_text(encoding="utf-8")
+        if "md-search" not in html:
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        search = soup.select_one(".md-search")
+        assert search is not None
+        assert search.get("data-plw-component") == "search"
+        assert not search.has_attr("data-md-component")
+        assert search.select_one(".md-search__input") is not None
+        assert search.select_one(".md-search-result") is not None
+        assert not soup.select('script[src*="pagefind"]')
+        assert 'data-md-component="search"' not in html
+        if html_path.name == "404.html":
+            assert not soup.select_one("[data-pagefind-body]")
+            assert soup.body is not None
+            assert soup.body.get("data-pagefind-ignore") == "all"
+        search_ui_pages.append(html_path)
+    assert any(path.name == "404.html" for path in search_ui_pages)
+
     env = os.environ.copy()
     env["SITE_DIR"] = str(site)
     subprocess.run(

@@ -46,6 +46,19 @@ blockquote.page-copyright i.md-icon {
   width: 18px;
 }
 
+/* Search-only math text keeps Pagefind excerpts readable before MathJax SSR. */
+.plw-pagefind-math {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 #myBtn {
     display: none;
     position: fixed; 

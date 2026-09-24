@@ -264,8 +264,6 @@ theme:
       toggle:
         icon: material/weather-night
         name: 切换至跟随系统
-  include_search_page: false
-  search_index_only: true
   favicon: 'favicon.ico'
   icon:
     logo: 'material/school'
@@ -277,11 +275,9 @@ theme:
     - navigation.footer
     - navigation.tracking
     - navigation.instant.progress
-    - search.highlight
   font: false
 
 plugins:
-  - search
   - toggle-sidebar:
       theme: material
       toggle_button: all
@@ -290,7 +286,6 @@ hooks:
   - hooks/on_env.py
   - hooks/question_bank.py
   - hooks/runtime_features.py
-  - hooks/clean_search_index.py
 
 # Customization
 extra:

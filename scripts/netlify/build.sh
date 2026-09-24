@@ -9,12 +9,15 @@ fi
 
 # Install dependencies
 uv sync --index-url ${PYPI_MIRROR:-https://pypi.org/simple/}
-yarn --frozen-lockfile --production
+yarn --frozen-lockfile
 
 # Install themes and etc.
 PREBUILD_NETLIFY=1 scripts/pre-build/pre-build.sh
 
 uv run mkdocs build -v
+
+# Pagefind must index the original article markup before MathJax SSR.
+yarn search:index
 
 # Post-build scripts
 export NODE_OPTIONS="--max_old_space_size=3072"

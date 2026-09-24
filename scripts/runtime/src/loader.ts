@@ -1,3 +1,5 @@
+import { mountSearch } from "./search.js";
+
 export type FeatureDisposer = () => void | Promise<void>;
 
 export interface FeatureMountContext {
@@ -259,6 +261,7 @@ const featureRegistry: FeatureRegistry = { math: mathFeatureDefinition };
 function startRuntime() {
   if (typeof window === "undefined" || typeof document === "undefined") return;
   const runtime = createFeatureRuntime({ document, registry: featureRegistry });
+  mountSearch(document, getSiteRoot);
   const lifecycle = (window as Window & { document$?: LifecycleObservable }).document$;
   subscribeDocumentLifecycle(lifecycle, document, currentDocument => {
     void runtime.mountDocument(currentDocument);

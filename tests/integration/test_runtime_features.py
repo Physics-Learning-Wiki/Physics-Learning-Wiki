@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from bs4 import BeautifulSoup
 
-from hooks.runtime_features import transform_page_html
+from hooks.runtime_features import clean_math_content, on_post_build, transform_page_html
 
 
 def page_html(content: str, after_article: str = "") -> str:
@@ -79,6 +79,49 @@ def test_high_noise_site_ui_is_ignored_but_forms_are_not_expanded() -> None:
     assert result.select_one("form#submission-form").get("data-pagefind-ignore") is None
 
 
-def test_static_template_without_article_is_unchanged() -> None:
-    output = "<!doctype html><html><body><div class='md-search'></div></body></html>"
-    assert transform_page_html(output) == output
+def test_search_root_is_renamed_without_changing_its_material_classes() -> None:
+    output = page_html(
+        '<div class="md-search" data-md-component="search"><input class="md-search__input"></div>'
+    )
+    result = BeautifulSoup(transform_page_html(output), "html.parser")
+    search = result.select_one(".md-search")
+
+    assert search is not None
+    assert search.get("data-plw-component") == "search"
+    assert not search.has_attr("data-md-component")
+    assert result.select_one(".md-search__input") is not None
+    assert result.select_one("article[data-pagefind-body]") is not None
+
+
+def test_math_is_ignored_as_raw_tex_and_indexed_as_readable_text() -> None:
+    output = page_html('<span class="arithmatex">\\(\\frac{F}{m}=\\mathbf{a}\\)</span>')
+    result = BeautifulSoup(transform_page_html(output), "html.parser")
+    formula = result.select_one(".arithmatex")
+    index_text = result.select_one(".plw-pagefind-math")
+
+    assert formula is not None
+    assert formula.get("data-pagefind-ignore") == "all"
+    assert index_text is not None
+    assert index_text.get_text() == "F/m=a"
+    assert clean_math_content(r"\boldsymbol{\mathbf{r}}(t)") == "r(t)"
+
+
+def test_static_template_search_root_is_rewritten_and_excluded(tmp_path: Path) -> None:
+    site = tmp_path / "site"
+    site.mkdir()
+    page = site / "404.html"
+    page.write_text(
+        '<!doctype html><html><body><div class="md-search" data-md-component="search">Search</div></body></html>',
+        encoding="utf-8",
+    )
+
+    on_post_build({"site_dir": str(site)})
+    result = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
+    search = result.select_one(".md-search")
+
+    assert search is not None
+    assert search.get("data-plw-component") == "search"
+    assert not search.has_attr("data-md-component")
+    assert result.body is not None
+    assert result.body.get("data-pagefind-ignore") == "all"
+    assert not result.body.has_attr("data-pagefind-body")
