@@ -1,11 +1,18 @@
-import { loadManifest, loadSetBundle, loadTaxonomyCatalog, readRunnerParameters, resolveSiteUrl } from "./data.js";
+import {
+  loadManifest,
+  loadSetBundle,
+  loadSetCatalog,
+  loadTaxonomyCatalog,
+  readRunnerParameters,
+  resolveSiteUrl
+} from "./data.js";
 import { escapeHtml } from "./question-renderer.js";
 import { newSeed } from "./random.js";
 import { selectSetQuestions } from "./selection.js";
 import type { PlaySurfaceOptions } from "./surfaces/play.js";
 import { PlaySurface } from "./surfaces/play.js";
 import { QuizStore, sourceKey } from "./storage.js";
-import type { Manifest, Question, QuizSource, Session, SetBundle, TaxonomyCatalog } from "./types.js";
+import type { Manifest, Question, QuizSource, Session, SetBundle, SetCatalogItem, TaxonomyCatalog } from "./types.js";
 
 declare global {
   interface Window {
@@ -399,6 +406,14 @@ class HomeSurface {
       const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
       const manifestUrl = new URL(manifestPath, window.location.href);
       const manifest = await loadManifest(manifestUrl, this.abort.signal);
+      const setCatalog = await loadSetCatalog(manifestUrl, manifest.catalogs.sets, this.abort.signal).catch(
+        () => [] as SetCatalogItem[]
+      );
+      const setDetails = new Map(setCatalog.map(item => [item.id, item]));
+      const displayTitle = (id: string, fallback: string): string => {
+        const subject = setDetails.get(id)?.tags.find(tag => !["快速检查", "综合练习"].includes(tag));
+        return subject ? `${subject} · ${fallback}` : fallback;
+      };
       const store = new QuizStore(window.localStorage, manifest.preview);
 
       const resetReason = store.consumeResetReason();
@@ -447,7 +462,7 @@ class HomeSurface {
                   .filter(s => s.source.type === "set")
                   .map(s => {
                     const setId = (s.source as { type: "set"; id: string }).id;
-                    const title = manifest.sets[setId]?.title ?? setId;
+                    const title = displayTitle(setId, manifest.sets[setId]?.title ?? setId);
                     const answered = Object.values(s.answers).filter(v => v != null).length;
                     const total = s.questionRefs.length;
                     const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(
@@ -499,11 +514,22 @@ class HomeSurface {
               .map(([setId, s]) => {
                 const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}`;
                 const draftBadge = s.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : "";
+                const item = setDetails.get(setId);
+                const title = displayTitle(setId, s.title);
+                const mode = item?.feedbackMode === "deferred" ? "整卷提交" : "即时反馈";
+                const estimate = item?.estimatedMinutes ? ` · 预计约 ${item.estimatedMinutes} 分钟` : "";
                 return `
                   <div class="plw-quiz-landing__card">
                     <div>
-                      <h3>${escapeHtml(s.title)} ${draftBadge}</h3>
-                      <p class="plw-quiz-landing__card-meta">标识符：<code>${escapeHtml(setId)}</code></p>
+                      <h3>${escapeHtml(title)} ${draftBadge}</h3>
+                      ${
+                        item?.description ? `<p class="plw-quiz-landing__desc">${escapeHtml(item.description)}</p>` : ""
+                      }
+                      ${
+                        item
+                          ? `<p class="plw-quiz-landing__card-meta">${item.questionCount} 题 · ${mode}${estimate}</p>`
+                          : ""
+                      }
                     </div>
                     <div class="plw-quiz-landing__links">
                       <a class="plw-quiz-landing__btn" href="${playUrl}">开始小测</a>

@@ -33,6 +33,13 @@ def test_compiler_creates_manifest_v3_and_catalogs(tmp_path: Path) -> None:
         cat_path = output / cat_rel
         assert cat_path.exists(), f"Catalog {cat_rel} not found"
 
+    set_catalog = json.loads((output / catalogs["sets"]).read_text(encoding="utf-8"))
+    estimates = {item["id"]: item["estimatedMinutes"] for item in set_catalog}
+    assert estimates == {
+        "mechanics.dynamics.newton-laws.quick": 3,
+        "mechanics.dynamics.newton-laws.full": 8,
+    }
+
     # Production only includes published sets
     assert set(manifest["sets"].keys()) == {
         "mechanics.dynamics.newton-laws.quick",

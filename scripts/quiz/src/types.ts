@@ -170,6 +170,7 @@ export interface SetCatalogItem {
   status: SetStatus;
   selectionType: "fixed" | "query";
   questionCount: number;
+  estimatedMinutes: number | null;
   feedbackMode: FeedbackMode;
   topicIds: string[];
   runnable: boolean;
@@ -194,9 +195,7 @@ export interface TaxonomyCatalog {
   concepts: Record<string, TaxonomyConcept>;
 }
 
-export type QuizSource =
-  | { type: "set"; id: string }
-  | { type: "adhoc"; questionIds: string[] };
+export type QuizSource = { type: "set"; id: string } | { type: "adhoc"; questionIds: string[] };
 
 export interface Session {
   sessionId: string;

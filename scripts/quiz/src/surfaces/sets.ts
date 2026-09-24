@@ -13,6 +13,7 @@ export class SetsSurface {
   private selectedTopic = "all";
   private selectedFeedbackMode = "all";
   private selectedTag = "all";
+  private filterMediaCleanup?: () => void;
 
   constructor(private readonly root: HTMLElement) {}
 
@@ -47,6 +48,7 @@ export class SetsSurface {
 
   destroy(): void {
     this.abort.abort();
+    this.filterMediaCleanup?.();
     this.root.innerHTML = "";
   }
 
@@ -59,9 +61,7 @@ export class SetsSurface {
     const allTopics = new Set<string>();
     const allTags = new Set<string>();
 
-    const visibleItems = this.catalog.filter(
-      item => this.manifest.preview || item.status === "published"
-    );
+    const visibleItems = this.catalog.filter(item => this.manifest.preview || item.status === "published");
 
     for (const item of visibleItems) {
       for (const tid of item.topicIds) allTopics.add(tid);
@@ -69,10 +69,11 @@ export class SetsSurface {
     }
 
     // 2. Filter Bar
-    const filterBar = document.createElement("div");
+    const filterBar = document.createElement("details");
     filterBar.className = "plw-quiz-filter-bar";
 
     filterBar.innerHTML = `
+      <summary>筛选测试集合</summary>
       <div class="plw-quiz-filter-row">
         <div class="plw-quiz-search-wrap">
           <input type="search" class="plw-quiz-search-input" placeholder="按测试名称或描述搜索..." value="${escapeHtml(
@@ -86,9 +87,9 @@ export class SetsSurface {
               .sort()
               .map(tid => {
                 const title = this.taxonomy?.topics[tid]?.title ?? tid;
-                return `<option value="${escapeHtml(tid)}" ${
-                  this.selectedTopic === tid ? "selected" : ""
-                }>${escapeHtml(title)}</option>`;
+                return `<option value="${escapeHtml(tid)}" ${this.selectedTopic === tid ? "selected" : ""}>${escapeHtml(
+                  title
+                )}</option>`;
               })
               .join("")}
           </select>
@@ -107,15 +108,24 @@ export class SetsSurface {
               .sort((a, b) => a.localeCompare(b, "zh-Hans-CN"))
               .map(
                 tag =>
-                  `<option value="${escapeHtml(tag)}" ${
-                    this.selectedTag === tag ? "selected" : ""
-                  }>${escapeHtml(tag)}</option>`
+                  `<option value="${escapeHtml(tag)}" ${this.selectedTag === tag ? "selected" : ""}>${escapeHtml(
+                    tag
+                  )}</option>`
               )
               .join("")}
           </select>
         </div>
+        <button type="button" class="plw-quiz-btn--secondary plw-quiz-btn--sm" id="plw-btn-reset-sets-filters">重置筛选</button>
       </div>
     `;
+    const compactMedia = window.matchMedia("(max-width: 700px)");
+    filterBar.open = !compactMedia.matches;
+    this.filterMediaCleanup?.();
+    const onCompactChange = (event: MediaQueryListEvent) => {
+      filterBar.open = !event.matches;
+    };
+    compactMedia.addEventListener("change", onCompactChange);
+    this.filterMediaCleanup = () => compactMedia.removeEventListener("change", onCompactChange);
 
     filterBar.querySelector(".plw-quiz-search-input")?.addEventListener("input", e => {
       this.keyword = (e.target as HTMLInputElement).value.trim().toLowerCase();
@@ -135,6 +145,15 @@ export class SetsSurface {
     filterBar.querySelector("#plw-select-tag")?.addEventListener("change", e => {
       this.selectedTag = (e.target as HTMLSelectElement).value;
       this.renderList(cardsGrid, countNotice);
+    });
+
+    filterBar.querySelector("#plw-btn-reset-sets-filters")?.addEventListener("click", () => {
+      this.keyword = "";
+      this.selectedTopic = this.selectedFeedbackMode = this.selectedTag = "all";
+      filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")!.value = "";
+      filterBar.querySelectorAll<HTMLSelectElement>("select").forEach(select => (select.value = "all"));
+      this.renderList(cardsGrid, countNotice);
+      filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")?.focus();
     });
 
     container.append(filterBar);
@@ -180,6 +199,14 @@ export class SetsSurface {
     });
 
     countNotice.textContent = `共显示 ${filtered.length} 个测试集合`;
+    countNotice.setAttribute("role", "status");
+    const activeCount =
+      Number(Boolean(this.keyword)) +
+      Number(this.selectedTopic !== "all") +
+      Number(this.selectedFeedbackMode !== "all") +
+      Number(this.selectedTag !== "all");
+    const summary = grid.parentElement?.querySelector(".plw-quiz-filter-bar summary");
+    if (summary) summary.textContent = activeCount ? `筛选测试集合（${activeCount} 项已启用）` : "筛选测试集合";
 
     if (filtered.length === 0) {
       grid.innerHTML = `<div class="plw-quiz-empty"><p>没有找到符合当前筛选条件的测试集合。</p></div>`;
@@ -194,11 +221,12 @@ export class SetsSurface {
       const draftBadge = item.status === "draft" ? `<span class="plw-quiz-badge--warning">草稿</span>` : "";
       const modeText = item.feedbackMode === "immediate" ? "即时反馈" : "整卷提交";
 
-      const tagsHtml = item.tags.length > 0
-        ? `<div class="plw-quiz-card-tags">${item.tags
-            .map(t => `<span class="plw-quiz-badge">${escapeHtml(t)}</span>`)
-            .join("")}</div>`
-        : "";
+      const tagsHtml =
+        item.tags.length > 0
+          ? `<div class="plw-quiz-card-tags">${item.tags
+              .map(t => `<span class="plw-quiz-badge">${escapeHtml(t)}</span>`)
+              .join("")}</div>`
+          : "";
 
       card.innerHTML = `
         <div>
@@ -207,6 +235,7 @@ export class SetsSurface {
           <p class="plw-quiz-landing__card-meta">
             <span>题量：${item.questionCount} 题</span> ·
             <span>模式：${modeText}</span>
+            ${item.estimatedMinutes ? ` · <span>预计约 ${item.estimatedMinutes} 分钟</span>` : ""}
           </p>
           ${tagsHtml}
         </div>

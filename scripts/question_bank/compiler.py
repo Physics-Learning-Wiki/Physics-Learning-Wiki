@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import math
 import os
 import shutil
 import tempfile
@@ -247,6 +248,16 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
                 set_topics.update(_expand_topic_ancestors(tid, report.data.taxonomy))
         sorted_topic_ids = sorted(set_topics)
 
+        # Fixed sets have a known total; query sets vary, so use the candidate
+        # pool's average as a rough time estimate only when every item is timed.
+        durations = [q.get("estimatedSeconds") for q in candidate_qs]
+        estimated_minutes = None
+        if durations and all(isinstance(seconds, int) and seconds > 0 for seconds in durations):
+            total_seconds = sum(durations)
+            if sel_type == "query":
+                total_seconds = total_seconds * question_count / len(durations)
+            estimated_minutes = max(1, math.ceil(total_seconds / 60))
+
         # Set Bundle
         bundle = {
             "schemaVersion": 3,
@@ -276,6 +287,7 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             "status": set_data["status"],
             "selectionType": sel_type,
             "questionCount": question_count,
+            "estimatedMinutes": estimated_minutes,
             "feedbackMode": set_data.get("feedback_mode", "immediate"),
             "topicIds": sorted_topic_ids,
             "runnable": runnable,
