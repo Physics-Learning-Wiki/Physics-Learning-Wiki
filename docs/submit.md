@@ -82,21 +82,27 @@
       </label>
       <label>预计秒数 <input id="question-seconds" type="number" min="10" max="1800" value="60"></label>
     </div>
-    <div class="submit-field">
+    <div class="submit-field submit-image-group">
       <label for="question-image-url">参考图片 HTTPS 链接（选填）</label>
       <input id="question-image-url" type="url" placeholder="https://...">
-      <input id="question-image-alt" placeholder="图片替代文本">
-      <input id="question-image-rights" placeholder="图片来源与授权说明">
+      <input id="question-image-alt" placeholder="图片替代文本（例如：示意图）">
+      <input id="question-image-rights" placeholder="图片来源与授权说明（例如：自主绘制 / CC-BY）">
     </div>
-    <label><input id="question-ai-assisted" type="checkbox"> 本题使用了 AI 辅助，并同意如实披露</label>
-    <label><input id="question-license" type="checkbox"> 我确认有权按 CC BY-SA 4.0 提交此题 <span class="submit-required">*</span></label>
+    <label class="submit-checkbox-label"><input id="question-ai-assisted" type="checkbox"> 本题使用了 AI 辅助，并同意如实披露</label>
+    <label class="submit-checkbox-label"><input id="question-license" type="checkbox"> 我确认有权按 CC BY-SA 4.0 提交此题 <span class="submit-required">*</span></label>
   </fieldset>
 
   <div class="submit-field">
-    <label for="submit-chapter">目标章节</label>
-    <select id="submit-chapter" name="chapter">
-      <option value="">-- 可选，帮助编辑组分类 --</option>
-    </select>
+    <label>目标章节（选填）</label>
+    <div class="submit-chapter-cascade">
+      <select id="submit-chapter-major" aria-label="一级分类">
+        <option value="">-- 一级分类 --</option>
+      </select>
+      <select id="submit-chapter-minor" aria-label="二级/具体小节" disabled>
+        <option value="">-- 请先选择一级分类 --</option>
+      </select>
+    </div>
+    <input type="hidden" id="submit-chapter" name="chapter" value="">
   </div>
 
   <div class="submit-field">

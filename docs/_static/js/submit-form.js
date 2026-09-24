@@ -41,29 +41,107 @@ const NAV_TREE = [
   { label: "竞赛相关" },
 ];
 
-function populateChapterSelect() {
-  const select = document.getElementById("submit-chapter");
-  if (!select) return;
+let chapterAbort = null;
 
-  function addOptions(children, prefix) {
-    for (const item of children) {
-      const label = prefix ? `${prefix} > ${item.label}` : item.label;
-      const option = document.createElement("option");
-      option.value = label;
-      option.textContent = label;
-      select.appendChild(option);
-      if (item.children) {
-        addOptions(item.children, label);
+function populateChapterSelect() {
+  const majorSelect = document.getElementById("submit-chapter-major");
+  const minorSelect = document.getElementById("submit-chapter-minor");
+  const hiddenInput = document.getElementById("submit-chapter");
+
+  // Fallback for legacy single select if cascade elements not present
+  if (!majorSelect || !minorSelect || !hiddenInput) {
+    const legacySelect = document.getElementById("submit-chapter");
+    if (!legacySelect || legacySelect.tagName !== "SELECT") return;
+    legacySelect.innerHTML = "";
+    function addOptions(children, prefix) {
+      for (const item of children) {
+        const label = prefix ? `${prefix} > ${item.label}` : item.label;
+        const option = document.createElement("option");
+        option.value = label;
+        option.textContent = label;
+        legacySelect.appendChild(option);
+        if (item.children) {
+          addOptions(item.children, label);
+        }
       }
     }
+    addOptions(NAV_TREE, "");
+    const defaultOpt = document.createElement("option");
+    defaultOpt.value = "";
+    defaultOpt.textContent = "-- 可选，帮助编辑组分类 --";
+    legacySelect.insertBefore(defaultOpt, legacySelect.firstChild);
+    return;
   }
 
-  select.innerHTML = "";
-  addOptions(NAV_TREE, "");
-  const defaultOpt = document.createElement("option");
-  defaultOpt.value = "";
-  defaultOpt.textContent = "-- 可选，帮助编辑组分类 --";
-  select.insertBefore(defaultOpt, select.firstChild);
+  if (chapterAbort) chapterAbort.abort();
+  chapterAbort = new AbortController();
+  const signal = chapterAbort.signal;
+
+  majorSelect.innerHTML = '<option value="">-- 一级分类（选填） --</option>';
+  minorSelect.innerHTML = '<option value="">-- 请先选择一级分类 --</option>';
+  minorSelect.disabled = true;
+  hiddenInput.value = "";
+
+  for (const item of NAV_TREE) {
+    const opt = document.createElement("option");
+    opt.value = item.label;
+    opt.textContent = item.label;
+    majorSelect.appendChild(opt);
+  }
+
+  function updateMinor() {
+    const selectedMajor = majorSelect.value;
+    minorSelect.innerHTML = "";
+    if (!selectedMajor) {
+      minorSelect.disabled = true;
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "-- 请先选择一级分类 --";
+      minorSelect.appendChild(opt);
+      hiddenInput.value = "";
+      return;
+    }
+
+    const majorNode = NAV_TREE.find(item => item.label === selectedMajor);
+    if (!majorNode || !majorNode.children || majorNode.children.length === 0) {
+      minorSelect.disabled = true;
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "-- 该分类下无子小节 --";
+      minorSelect.appendChild(opt);
+      hiddenInput.value = selectedMajor;
+      return;
+    }
+
+    minorSelect.disabled = false;
+    const defaultOpt = document.createElement("option");
+    defaultOpt.value = selectedMajor;
+    defaultOpt.textContent = "-- 全部/模块通论 --";
+    minorSelect.appendChild(defaultOpt);
+
+    for (const sub of majorNode.children) {
+      if (sub.children && sub.children.length > 0) {
+        for (const leaf of sub.children) {
+          const opt = document.createElement("option");
+          opt.value = `${selectedMajor} > ${sub.label} > ${leaf.label}`;
+          opt.textContent = `${sub.label} > ${leaf.label}`;
+          minorSelect.appendChild(opt);
+        }
+      } else {
+        const opt = document.createElement("option");
+        opt.value = `${selectedMajor} > ${sub.label}`;
+        opt.textContent = sub.label;
+        minorSelect.appendChild(opt);
+      }
+    }
+
+    hiddenInput.value = minorSelect.value || selectedMajor;
+  }
+
+  majorSelect.addEventListener("change", updateMinor, { signal });
+  minorSelect.addEventListener("change", () => {
+    hiddenInput.value = minorSelect.value || majorSelect.value || "";
+  }, { signal });
 }
 
 let easyMDE = null;
@@ -368,15 +446,20 @@ function setupAttributionToggle() {
 
   if (!namedRadio || !anonRadio || !attributionInput) return;
 
-  namedRadio.addEventListener("change", () => {
-    attributionInput.disabled = false;
-    attributionInput.placeholder = "你希望在页面上显示的署名";
-  }, { signal });
-  anonRadio.addEventListener("change", () => {
-    attributionInput.disabled = true;
-    attributionInput.value = "";
-    attributionInput.placeholder = "将显示为「匿名同学」";
-  }, { signal });
+  function syncAttributionState() {
+    if (anonRadio.checked) {
+      attributionInput.disabled = true;
+      attributionInput.value = "";
+      attributionInput.placeholder = "将显示为「匿名同学」";
+    } else {
+      attributionInput.disabled = false;
+      attributionInput.placeholder = "你希望在页面上显示的署名";
+    }
+  }
+
+  namedRadio.addEventListener("change", syncAttributionState, { signal });
+  anonRadio.addEventListener("change", syncAttributionState, { signal });
+  syncAttributionState();
 }
 
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
@@ -390,29 +473,46 @@ const TYPE_LABELS = {
 };
 
 let turnstileToken = null;
+let turnstileWidgetId = null;
 
 function initTurnstile() {
+  const container = document.getElementById("turnstile-widget");
+  if (!container) return;
   if (typeof turnstile === "undefined") {
     console.warn("Turnstile not loaded");
     return;
   }
-  turnstile.render("#turnstile-widget", {
-    sitekey: "0x4AAAAAADWCCejih_jntWim",
-    callback: function (token) {
-      turnstileToken = token;
-    },
-    "expired-callback": function () {
-      turnstileToken = null;
-    },
-    "error-callback": function () {
-      turnstileToken = null;
-      const status = document.getElementById("submit-status");
-      if (status) {
-        status.textContent = "人机验证加载失败，请刷新页面重试";
-        status.className = "error";
-      }
-    },
-  });
+
+  // If a widget was previously rendered, clean it up before re-rendering
+  if (turnstileWidgetId !== null) {
+    try {
+      turnstile.remove(turnstileWidgetId);
+    } catch {}
+    turnstileWidgetId = null;
+  }
+  container.innerHTML = "";
+
+  try {
+    turnstileWidgetId = turnstile.render("#turnstile-widget", {
+      sitekey: "0x4AAAAAADWCCejih_jntWim",
+      callback: function (token) {
+        turnstileToken = token;
+      },
+      "expired-callback": function () {
+        turnstileToken = null;
+      },
+      "error-callback": function () {
+        turnstileToken = null;
+        const status = document.getElementById("submit-status");
+        if (status) {
+          status.textContent = "人机验证加载失败，请刷新页面重试";
+          status.className = "error";
+        }
+      },
+    });
+  } catch (err) {
+    console.warn("Turnstile render error", err);
+  }
 }
 
 // Turnstile 加载完成后自动初始化
@@ -509,7 +609,15 @@ async function handleSubmit(event) {
     btn.disabled = false;
     btn.textContent = "提交投稿";
     if (typeof turnstile !== "undefined") {
-      turnstile.reset();
+      if (turnstileWidgetId !== null) {
+        try {
+          turnstile.reset(turnstileWidgetId);
+        } catch {
+          turnstile.reset();
+        }
+      } else {
+        turnstile.reset();
+      }
     }
     turnstileToken = null;
   }
@@ -527,6 +635,11 @@ document$.subscribe(async function () {
   setupAttributionToggle();
   updateTypeHint();
   updateQuestionType();
+
+  // Re-initialize Turnstile if script was already loaded (e.g. instant navigation)
+  if (typeof turnstile !== "undefined") {
+    initTurnstile();
+  }
 
   const typeSelect = document.getElementById("submit-type");
   if (typeSelect) {

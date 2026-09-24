@@ -22,6 +22,11 @@ nav:
   - 简介:
     - 首页: index.md
     - 学习路线总览: intro/roadmap.md
+    - 课程路线:
+      - 课程路线总览: courses/index.md
+      - 理论力学: courses/theoretical-mechanics.md
+      - 电磁学: courses/electromagnetism.md
+      - 数学物理方法: courses/mathematical-methods-for-physics.md
     - 关于本项目: intro/about.md
     - 如何参与: intro/htc.md
     - 内容编写指引: intro/writing.md
@@ -52,15 +57,40 @@ nav:
       - 极限与连续: math/calculus/limit.md
       - 导数与微分: math/calculus/derivative.md
       - 积分: math/calculus/integral.md
-      - 常微分方程: math/calculus/ode.md
-      - 变分法: math/calculus/variational.md
+    - 微分方程:
+      - 常微分方程基础: math/differential-equations/ode-intro.md
+      - 二阶常系数线性微分方程: math/differential-equations/second-order-ode.md
+      - 幂级数解法与Frobenius方法: math/differential-equations/series-solution.md
+      - 经典物理偏微分方程: math/differential-equations/pde-intro.md
+      - 偏微分方程分离变量法: math/differential-equations/separation-of-variables.md
+    - 变分法:
+      - 变分法基础与欧拉-拉格朗日方程: math/variational-methods/calculus-of-variations.md
     - 线性代数:
       - 向量与矩阵: math/linear-algebra/matrix.md
       - 线性空间: math/linear-algebra/space.md
+      - 线性算符与矩阵表示: math/linear-algebra/operators.md
+      - 本征值与对角化: math/linear-algebra/eigenvalues.md
+      - 内积空间与希尔伯特空间: math/linear-algebra/inner-product.md
+      - 厄米算符与谱分解: math/linear-algebra/hermitian-unitary.md
     - 矢量分析:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
+      - 积分定理: math/vector-analysis/integral-theorems.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
-    - 复数与复变函数: math/complex.md
+    - 复数与复变函数:
+      - 模块概览: math/complex.md
+      - 复数与几何表示: math/complex-analysis/complex-numbers.md
+      - 解析函数与柯西-黎曼条件: math/complex-analysis/analytic-functions.md
+      - 复变积分与柯西定理: math/complex-analysis/contour-integrals.md
+      - 级数展开与奇点: math/complex-analysis/series-expansion.md
+      - 留数定理与实积分计算: math/complex-analysis/residue-calculus.md
+    - 积分变换与广义函数:
+      - 狄拉克 Delta 函数: math/transforms/delta-function.md
+      - 傅里叶级数: math/transforms/fourier-series.md
+      - 傅里叶变换: math/transforms/fourier-transform.md
+      - 拉普拉斯变换: math/transforms/laplace-transform.md
+    - 本征函数与格林函数:
+      - Sturm-Liouville 本征值理论: math/eigenfunction-methods/sturm-liouville.md
+      - 格林函数方法: math/eigenfunction-methods/greens-function.md
     - 概率与统计:
       - 概率与统计简介: math/probability.md
       - 概率论的基本概念: math/probability-statistics/basic-concepts.md
@@ -73,7 +103,14 @@ nav:
       - 假设检验: math/probability-statistics/hypothesis-testing.md
       - 方差分析及回归分析: math/probability-statistics/analysis-of-variance-and-regression-analysis.md
       - 附表: math/probability-statistics/appendix-tables.md
-    - 常用特殊函数: math/special-functions.md
+    - 常用特殊函数:
+      - 模块概览: math/special-functions.md
+      - 伽马与贝塔函数: math/special-functions/gamma-beta.md
+      - 勒让德多项式: math/special-functions/legendre.md
+      - 球谐函数: math/special-functions/spherical-harmonics.md
+      - 贝塞尔函数: math/special-functions/bessel.md
+      - 厄米多项式: math/special-functions/hermite.md
+      - 连带拉盖尔多项式: math/special-functions/laguerre.md
   - 经典力学:
     - 力学章节编写说明: mechanics/mechanics-writing.md
     - 力学简介: mechanics/index.md
@@ -177,7 +214,6 @@ nav:
     - 实验简介: experiment/index.md
     - 误差分析与数据处理: experiment/error-analysis.md
     - 常用测量仪器: experiment/instruments.md
-    - 基础物理实验: experiment/basic-experiments.md
   - 知识小测: quiz/index.md
   - 计算物理与工具:
     - 工具简介: tools/index.md
@@ -272,13 +308,15 @@ extra:
   githash: ''
 
 extra_javascript:
+  - '_static/js/mermaid-responsive.js'
   - '_static/js/math-csr.js?math-csr'
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
   - '_static/js/submit-form.js'
   - '_static/js/quiz-app.js?v=2'
+  - 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
 
 extra_css:
-  - '_static/css/extra.css?v=16'
+  - '_static/css/extra.css?v=19'
   - '_static/css/submit-form.css?v=2'
   - '_static/css/quiz.css?v=2'
   # - '_static/css/offset-inject-debug.css'
@@ -318,6 +356,9 @@ markdown_extensions:
         - name: math
           class: arithmatex
           format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde

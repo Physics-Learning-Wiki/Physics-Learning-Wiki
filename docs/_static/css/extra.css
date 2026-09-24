@@ -112,8 +112,8 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   overflow: visible;
 }
 
-/* Content status banners */
-.md-status {
+/* Content status banners (used in comments.html for community / review banners) */
+aside.md-status {
   padding: 0.75rem 1rem;
   margin: 1rem 0;
   border-radius: 6px;
@@ -121,6 +121,10 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+}
+aside.md-status::after {
+  display: none !important;
+  content: none !important;
 }
 .md-status__icon {
   flex-shrink: 0;
@@ -154,3 +158,40 @@ div.md-typeset__scrollwrap:has(table[data-review-enabled]) {
   border-color: #063d6b;
   color: #bfdbfe;
 }
+
+/* Navigation status reset: prevent page frontmatter status metadata from rendering stray icons in nav */
+.md-nav .md-status,
+.md-nav__link .md-status {
+  display: none !important;
+}
+
+/* Mermaid diagram responsive container & scrollbar styling */
+.mermaid {
+  display: block !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  text-align: center;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-default-fg-color--lighter, #cbd5e1) transparent;
+}
+
+.mermaid::-webkit-scrollbar {
+  height: 8px;
+}
+.mermaid::-webkit-scrollbar-track {
+  background: var(--md-default-bg-color--lighter, #f1f5f9);
+  border-radius: 4px;
+}
+.mermaid::-webkit-scrollbar-thumb {
+  background: var(--md-default-fg-color--lighter, #cbd5e1);
+  border-radius: 4px;
+}
+.mermaid::-webkit-scrollbar-thumb:hover {
+  background: var(--md-default-fg-color--light, #94a3b8);
+}
+
+
