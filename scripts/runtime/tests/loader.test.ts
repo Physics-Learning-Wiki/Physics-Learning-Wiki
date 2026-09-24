@@ -187,11 +187,15 @@ test("a stylesheet-only feature does not attempt to import a JavaScript module",
   assert.equal(stylesheets.length, 1, "client-side MathJax pages do not request production CSS");
 });
 
-test("navigating from an ordinary page to math loads the page's versioned stylesheet", async () => {
+test("instant navigation reuses the initial site root for a versioned math stylesheet", async () => {
   let currentArticle = makeArticle("");
+  let currentBaseURI = "https://example.test/Physics-Learning-Wiki/intro/about/";
   const document = {
-    baseURI: "https://example.test/Physics-Learning-Wiki/",
-    getElementById: () => null,
+    get baseURI() {
+      return currentBaseURI;
+    },
+    // Material keeps the initial config element during instant navigation.
+    getElementById: () => ({ textContent: JSON.stringify({ base: "../.." }) }),
     querySelector: () => currentArticle
   } as unknown as Document;
   const stylesheets: string[] = [];
@@ -204,6 +208,7 @@ test("navigating from an ordinary page to math loads the page's versioned styles
   });
 
   await runtime.mountDocument(document);
+  currentBaseURI = "https://example.test/Physics-Learning-Wiki/mechanics/";
   currentArticle = {
     getAttribute(name: string) {
       if (name === "data-plw-features") return "math";
@@ -224,6 +229,7 @@ test("a disposer returned after navigation is run immediately and cannot attach 
   let currentArticle = makeArticle("quiz");
   const document = {
     baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
     querySelector: () => currentArticle
   } as unknown as Document;
   const lateMount = deferred<(() => void) | undefined>();

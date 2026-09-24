@@ -102,17 +102,23 @@ export function ensureStylesheet(href: string, document: Document): Promise<void
   });
 }
 
-function loadFeatureModule(name: string, definition: FeatureDefinition, document: Document): Promise<FeatureModule> {
+function loadFeatureModule(
+  name: string,
+  definition: FeatureDefinition,
+  document: Document,
+  siteRoot: URL
+): Promise<FeatureModule> {
   if (definition.load) return definition.load();
   const root = document.querySelector("article.md-content__inner.md-typeset") ?? document.body;
   const moduleUrl = typeof definition.moduleUrl === "function" ? definition.moduleUrl(root) : definition.moduleUrl;
   if (!moduleUrl) return Promise.reject(new Error(`Feature "${name}" has no module URL or loader`));
-  const absoluteUrl = new URL(moduleUrl, getSiteRoot(document)).href;
+  const absoluteUrl = new URL(moduleUrl, siteRoot).href;
   // The feature entry is a separately-built ESM file copied beside the site.
   return import(absoluteUrl) as Promise<FeatureModule>;
 }
 
 export function createFeatureRuntime(options: RuntimeOptions) {
+  const siteRoot = (options.getSiteRoot ?? getSiteRoot)(options.document);
   let currentPage: PageInstance | undefined;
   let navigationEpoch = 0;
   let pendingDisposal: Promise<void> = Promise.resolve();
@@ -150,7 +156,8 @@ export function createFeatureRuntime(options: RuntimeOptions) {
     if (cached) return cached;
 
     const promise = (
-      options.loadModule ?? ((featureName, feature) => loadFeatureModule(featureName, feature, options.document))
+      options.loadModule ??
+      ((featureName, feature) => loadFeatureModule(featureName, feature, options.document, siteRoot))
     )(name, definition);
     modulePromises.set(name, promise);
     promise.catch(() => {
@@ -162,7 +169,7 @@ export function createFeatureRuntime(options: RuntimeOptions) {
   const ensureFeatureStylesheet = (name: string, definition: FeatureDefinition, root: ParentNode) => {
     const href = typeof definition.stylesheet === "function" ? definition.stylesheet(root) : definition.stylesheet;
     if (!href) return Promise.resolve();
-    const absoluteHref = new URL(href, (options.getSiteRoot ?? getSiteRoot)(options.document)).href;
+    const absoluteHref = new URL(href, siteRoot).href;
     const cached = stylesheetPromises.get(absoluteHref);
     if (cached) return cached;
     const promise = (options.ensureStylesheet ?? ((url, document) => ensureStylesheet(url, document)))(
@@ -256,7 +263,10 @@ export function subscribeDocumentLifecycle(
   };
 }
 
-const featureRegistry: FeatureRegistry = { math: mathFeatureDefinition };
+const featureRegistry: FeatureRegistry = {
+  math: mathFeatureDefinition,
+  mermaid: { moduleUrl: "_static/js/features/mermaid.js" }
+};
 
 function startRuntime() {
   if (typeof window === "undefined" || typeof document === "undefined") return;

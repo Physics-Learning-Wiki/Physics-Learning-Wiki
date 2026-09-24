@@ -106,6 +106,16 @@ def transform_page_html(output: str) -> str:
             article.attrs.pop("data-plw-features", None)
         article["data-pagefind-body"] = ""
 
+        # Material's built-in Mermaid integration otherwise requests a floating
+        # CDN version before the PLW feature loader can load its pinned bundle.
+        for diagram in article.select(".mermaid"):
+            classes = [name for name in diagram.get("class", []) if name != "mermaid"]
+            if classes:
+                diagram["class"] = classes
+            else:
+                diagram.attrs.pop("class", None)
+            diagram["data-plw-mermaid-source"] = ""
+
         for formula in article.select(".arithmatex"):
             formula["data-pagefind-ignore"] = "all"
             searchable_text = _math_text_for_pagefind(formula.get_text())

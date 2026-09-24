@@ -88,6 +88,9 @@ const server = http.createServer(async (request, response) => {
   let status = 200;
   try {
     body = await fs.readFile(filePath);
+    if (pathname === "sitemap.xml") {
+      body = Buffer.from(body.toString("utf8").replace(/https?:\/\/[^/]+/g, requestUrl.origin));
+    }
   } catch {
     status = 404;
     try {

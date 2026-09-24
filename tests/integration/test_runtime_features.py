@@ -40,6 +40,8 @@ def test_feature_selectors_are_detected_once_in_stable_order() -> None:
 
     assert article is not None
     assert article.get("data-plw-features") == "math mermaid quiz submit question-contribute"
+    assert article.select_one(".mermaid") is None
+    assert article.select_one("[data-plw-mermaid-source]") is not None
     assert first == second
 
 
