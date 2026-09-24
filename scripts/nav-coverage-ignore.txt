@@ -8,6 +8,11 @@ edit-landing.md
 # Glossary (internal reference, linked from other pages)
 glossary/glossary.md
 
+# Pages retained for old links or intentionally unpublished
+experiment/basic-experiments.md
+math/calculus/ode.md
+math/calculus/variational.md
+
 # Internal planning & design documents
 superpowers/plans/
 superpowers/specs/
