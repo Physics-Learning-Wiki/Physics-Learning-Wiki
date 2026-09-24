@@ -14,10 +14,10 @@
 
 ## 题库开发与校验
 
-章节小测使用仓库根目录的 `question-bank/` 保存 YAML 源题，并在 MkDocs 构建时生成页面级 JSON。常用命令如下：
+章节小测使用 `question-bank/` 管理独立题目、测试集合、知识分类与页面放置关系。MkDocs 构建时会生成供浏览器加载的 Manifest、Catalog 和 Set Bundle。常用校验与前端检查命令如下：
 
 ```powershell
-uv run python -m scripts.question_bank validate --include-drafts
+uv run python -m scripts.question_bank validate
 uv run python -m scripts.question_bank coverage
 corepack yarn quiz:typecheck
 corepack yarn quiz:test
@@ -25,9 +25,15 @@ corepack yarn quiz:build:check
 uv run mkdocs serve
 ```
 
-需要在本地联调未经人工审核的草稿题时，显式设置 `$env:PLW_QUIZ_PREVIEW = "1"` 后运行 `uv run mkdocs serve`，结束后使用 `Remove-Item Env:PLW_QUIZ_PREVIEW` 清除。生产和 GitHub Actions 禁止启用该变量。正式发布题目前还必须运行 `uv run python -m scripts.question_bank validate --release`。
+本地联调草稿题时，先显式启用预览，再启动站点；结束后清除变量：
 
-详细格式、审核和版权要求见 [`question-bank/README.md`](question-bank/README.md)。
+```powershell
+$env:PLW_QUIZ_PREVIEW = "1"
+uv run mkdocs serve
+Remove-Item Env:PLW_QUIZ_PREVIEW
+```
+
+生产构建和 GitHub Actions 不启用草稿预览。发布题目之前，维护者须按 [审核指南](question-bank/REVIEWING.md) 完成物理正确性、教学适切性与版权合规三维签署，再运行 `uv run python -m scripts.question_bank publish --id <QUESTION_ID>` 和 `uv run python -m scripts.question_bank validate`。题库架构、投稿、审核及命令说明见 [`question-bank/README.md`](question-bank/README.md)。
 
 ## 鸣谢
 
