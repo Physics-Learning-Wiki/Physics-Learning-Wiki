@@ -126,22 +126,26 @@ function isWrongQuestions(v: unknown): boolean {
 export class QuizStore {
   private memory = emptyData();
   private lastResetReason: StorageResetReason = null;
-  readonly persistent: boolean;
+  private storageAvailable: boolean;
   private readonly storageKey: string;
 
   constructor(private readonly storage?: StorageLike, readonly preview = false) {
     this.storageKey = preview ? STORAGE_KEY_PREVIEW : STORAGE_KEY_PROD;
-    let persistent = Boolean(storage);
+    let storageAvailable = Boolean(storage);
     if (storage) {
       try {
         const probe = `${this.storageKey}.probe`;
         storage.setItem(probe, "1");
       } catch {
-        persistent = false;
+        storageAvailable = false;
       }
     }
-    this.persistent = persistent;
+    this.storageAvailable = storageAvailable;
     this.memory = this.read();
+  }
+
+  get persistent(): boolean {
+    return this.storageAvailable;
   }
 
   getResetReason(): StorageResetReason {
@@ -155,12 +159,13 @@ export class QuizStore {
   }
 
   read(): QuizStorageData {
-    if (!this.persistent || !this.storage) return this.memory;
+    if (!this.storageAvailable || !this.storage) return this.memory;
     try {
       const raw = this.storage.getItem(this.storageKey);
       if (!raw) {
         this.lastResetReason = null;
-        return emptyData();
+        this.memory = emptyData();
+        return this.memory;
       }
       let parsed: any;
       try {
@@ -222,20 +227,21 @@ export class QuizStore {
       }
 
       this.lastResetReason = null;
-      return parsed as QuizStorageData;
+      this.memory = parsed as QuizStorageData;
+      return this.memory;
     } catch {
-      this.lastResetReason = "corrupt_data";
-      return emptyData();
+      this.storageAvailable = false;
+      return this.memory;
     }
   }
 
   write(data: QuizStorageData): void {
     this.memory = data;
-    if (!this.persistent || !this.storage) return;
+    if (!this.storageAvailable || !this.storage) return;
     try {
       this.storage.setItem(this.storageKey, JSON.stringify(data));
     } catch {
-      // Degrade gracefully to in-memory when storage is full or blocked
+      this.storageAvailable = false;
     }
   }
 

@@ -37,6 +37,30 @@ test("storage failure degrades to memory", () => {
   assert.equal(store.read().schemaVersion, 2);
 });
 
+test("runtime write failure keeps the latest state in memory", () => {
+  let writes = 0;
+  const store = new QuizStore({
+    getItem: () =>
+      JSON.stringify({
+        schemaVersion: 2,
+        activeSessions: {},
+        attempts: [],
+        wrongQuestions: {},
+        preferences: { restoreSession: true }
+      }),
+    setItem: () => {
+      writes += 1;
+      if (writes === 2) throw new Error("quota exceeded");
+    }
+  });
+
+  assert.equal(store.persistent, true);
+  store.saveSession(mockSession);
+
+  assert.equal(store.persistent, false);
+  assert.deepEqual(store.getActiveSessions(mockSource), [mockSession]);
+});
+
 test("storage keys separate production and preview", () => {
   const recordedKeys = new Set<string>();
   const mockStorage = {
