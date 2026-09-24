@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨线性算符定义、抽象算符代数、在基底下的矩阵表示、对易子运算、基变换相似矩阵以及在刚体惯量张量与量子力学观测算符中的物理应用．
 ---

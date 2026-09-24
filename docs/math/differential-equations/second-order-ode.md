@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 讨论二阶常系数线性常微分方程、特征方程法、朗斯基行列式、简谐振子、阻尼振动的三种状态（过阻尼、临界阻尼、欠阻尼）以及受迫共振现象．
 ---

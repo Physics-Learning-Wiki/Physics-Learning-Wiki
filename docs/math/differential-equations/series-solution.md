@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨变系数线性微分方程的常点与正则奇点判别、普通幂级数法、Frobenius 广义幂级数法与指标方程，以及级数截断导致物理本征值量子化的深层机制．
 ---

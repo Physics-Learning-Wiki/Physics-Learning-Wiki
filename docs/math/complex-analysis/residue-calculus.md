@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 掌握留数的求法公式、留数定理、利用上半平面围道积分与约当引理计算物理实反常积分，以及在因果响应与格林函数极点规约中的应用．
 ---

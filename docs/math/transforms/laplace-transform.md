@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨单边拉普拉斯变换、收敛域、微分初值自动代入法则、传递函数、复频域极点分析以及在 RLC 电路暂态响应与控制系统稳定性中的应用．
 ---

@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨连带拉盖尔微分方程、罗德里格斯公式、带权正交性，以及在氢原子薛定谔方程径向波函数、玻尔能级量子化与电子轨道概率云中的物理应用．
 ---

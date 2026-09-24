@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨球谐函数定义、单位球面正交归一完备性、加法定理、空间旋转对称性以及在量子力学轨道角动量算符与原子轨道波函数中的核心地位．
 ---

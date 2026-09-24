@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨勒让德微分方程、罗德里格斯公式、正交性、生成函数多极展开、连带勒让德多项式以及在静电球对称边值与导体球极化中的物理应用．
 ---

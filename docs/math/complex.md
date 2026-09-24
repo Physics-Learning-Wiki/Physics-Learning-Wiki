@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 复数与复变函数模块已全面系统化升级．本页提供重构后的知识架构导航与直达入口，包含复数代数、解析函数、柯西定理、洛朗级数与留数计算．
 ---

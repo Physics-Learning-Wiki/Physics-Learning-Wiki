@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 详细讨论刚体定轴转动与平面运动中的角动量守恒定律，阐明内力矩相消、外力矩为零的守恒条件，结合花样滑冰旋转、直升机尾桨等典型例题与能量变化分析．
 ---

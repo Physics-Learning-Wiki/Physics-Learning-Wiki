@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 掌握偏微分方程分离变量法定解法、空间-时间解耦、齐次边界导出分立特征值与本征函数、驻波模态叠加以及通向 Sturm-Liouville 理论的桥梁．
 ---

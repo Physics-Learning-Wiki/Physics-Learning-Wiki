@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨狄拉克 Delta 函数的物理起源、广义函数严格极限定义、筛选性与复合函数性质、三维形式以及在静电泊松方程与格林函数中的核心地位．
 ---

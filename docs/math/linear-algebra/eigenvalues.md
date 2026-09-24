@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨本征值方程、特征多项式、代数与几何重数、矩阵对角化条件，以及在刚体主惯性轴、多自由度微振动简正频率与量子可观测量中的物理意义．
 ---

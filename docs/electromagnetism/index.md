@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 电磁学知识模块导学看板与知识骨架，梳理静电场、恒定电流与磁场、电磁感应、交流电路、麦克斯韦方程组与介质响应，并提供大学电磁学课程路线直达通道．
 ---

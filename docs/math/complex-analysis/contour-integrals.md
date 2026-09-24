@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨复平面路径积分、柯西积分定理、柯西积分公式、解析函数的无限次可微性及其在电磁势与场论中的物理图像．
 ---

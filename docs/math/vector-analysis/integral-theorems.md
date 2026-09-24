@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨矢量分析核心积分定理（高斯散度定理、斯托克斯旋度定理、格林第一与第二恒等式）及其在麦克斯韦方程组微分与积分形式转换中的核心地位．
 ---

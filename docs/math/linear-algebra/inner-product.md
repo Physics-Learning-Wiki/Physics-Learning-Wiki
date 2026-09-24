@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨复内积空间公理、柯西-施瓦茨不等式、格拉姆-施密特正交化、狄拉克括号、希尔伯特空间完备性与恒等算符完备分解．
 ---

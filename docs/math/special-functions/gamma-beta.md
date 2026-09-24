@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨伽马函数、贝塔函数、阶乘推广、复解析延拓、余元公式、高斯积分高阶矩计算以及在超球体积与统计力学微态数中的物理应用．
 ---

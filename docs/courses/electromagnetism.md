@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 面向大学本科物理与工程专业电磁学课程的学习路线，以场的语言、场论算符、麦克斯韦方程组与电磁波为主干，串联静电、稳磁、感应、电路与介质响应．
 ---

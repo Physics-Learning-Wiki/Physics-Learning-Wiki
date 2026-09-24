@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨连续傅里叶变换、频域图景、微分转代数性质、卷积定理、高斯波包与海森堡不确定性原理的数学本质及其在光学与量子力学中的应用．
 ---

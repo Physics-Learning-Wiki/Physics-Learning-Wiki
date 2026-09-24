@@ -95,7 +95,7 @@ Physics Learning Wiki 当前优先服务两类读者：
 
 ### 页面三态生命周期
 
-1.  **正式知识页 (`status: stable`)**：
+1.  **正式知识页 (`status: review`)**：
     -   具备完整的物理背景引入、模型与公式推导、典型例题、适用边界与误区提示．
     -   默认允许搜索引擎 `index, follow`，自动进入 sitemap．
     -   必须在 frontmatter 中提供独立的 `description`，准确说明本页学什么、能解决什么问题．

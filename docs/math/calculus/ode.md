@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 常微分方程模块已从微积分独立升级为微分方程知识库．本页提供重构后的架构指引与直达入口．
 ---

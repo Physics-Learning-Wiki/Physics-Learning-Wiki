@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 面向大学物理及理工科本科生的数学物理方法课程学习路线，以复分析、积分变换、偏微分方程定解、Sturm–Liouville 本征理论、特殊函数与格林函数为主干，串联四大力学数学接口．
 ---

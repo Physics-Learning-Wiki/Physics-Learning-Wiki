@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨 Sturm-Liouville 自共轭微分算子理论、拉格朗日恒等式、实特征值定理、带权函数正交完备性以及作为所有特殊函数与量子力学本征态共同数学母体的核心地位．
 ---

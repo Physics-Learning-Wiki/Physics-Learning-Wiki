@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨复数的代数结构、复平面几何表示、欧拉公式以及在交流电路相量法、波动振幅与量子力学波函数中的物理应用．
 ---

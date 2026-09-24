@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 为大学物理及理工科本科生提供高校课程视角的 Wiki 内容指引，解耦课程课表与底层物理知识树，首批上线理论力学与电磁学课程路线．
 ---

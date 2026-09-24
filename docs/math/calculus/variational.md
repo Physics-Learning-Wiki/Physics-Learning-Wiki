@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 变分法模块已从基础微积分独立升级为变分法与极值原理知识库．本页提供重构后的架构指引与直达入口．
 ---

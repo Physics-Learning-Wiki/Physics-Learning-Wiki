@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 常用特殊函数模块已全面模块化解耦升级．本页提供重构后的架构指引与直达入口，涵盖伽马与贝塔函数、勒让德多项式、球谐函数、贝塞尔函数、厄米多项式与拉盖尔多项式．
 ---

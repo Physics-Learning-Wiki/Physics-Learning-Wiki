@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨经典物理中的三类典型二阶偏微分方程（双曲型波动方程、抛物型热传导方程、椭圆型泊松/拉普拉斯方程）、物理建模推导与三大定解边界条件．
 ---

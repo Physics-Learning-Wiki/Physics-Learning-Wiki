@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 讨论复变函数的解析性、柯西-黎曼条件、调和函数及其在二维静电场复势与流体力学保角映射中的物理意义．
 ---

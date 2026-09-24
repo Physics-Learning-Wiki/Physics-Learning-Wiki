@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 掌握格林函数方法、点源脉冲响应思想、逆微分算子、对称互易性、本征函数谱展开法以及在静电镜像法与电动力学推迟势中的核心应用．
 ---

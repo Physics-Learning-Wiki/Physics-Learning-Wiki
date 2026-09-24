@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨贝塞尔微分方程、第一类/第二类贝塞尔函数、虚宗量修正贝塞尔函数、带权正交性、渐近行为以及在圆形鼓膜振动、圆柱波导与光学艾里斑中的物理应用．
 ---

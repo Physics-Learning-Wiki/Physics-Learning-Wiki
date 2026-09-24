@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨伴随算符、厄米算符实本征值与正交性定理、酉变换与概率守恒、谱分解定理以及在量子力学可观测物理量与时间演化中的核心数学地位．
 ---

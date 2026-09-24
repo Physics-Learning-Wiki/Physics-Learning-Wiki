@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨常微分方程的物理起源、一阶方程分类、分离变量法、一阶线性微分方程积分因子与常数变易法，以及在带阻力落体与衰变中的物理应用．
 ---

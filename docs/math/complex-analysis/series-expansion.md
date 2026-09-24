@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 讨论复变泰勒级数、洛朗级数展开、主部与正规部、孤立奇点分类（极点与本性奇点）及其在量子散射与共振态中的物理意义．
 ---

@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 面向大学物理与力学专业理论力学课程的学习路线，以达朗贝尔原理、拉格朗日与哈密顿分析力学为主干，串联牛顿力学复用、刚体进阶、中心力与微振动．
 ---

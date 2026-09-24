@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨厄米微分方程、罗德里格斯公式、高斯加权正交性、生成函数以及在一维量子简谐振子定态波函数与零点能中的核心物理意义．
 ---

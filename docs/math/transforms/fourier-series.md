@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨傅里叶级数、周期函数展开、三角与复指数正交基、帕塞瓦尔能量守恒定理、吉布斯现象以及在波动谐波与偏微分方程分离变量中的应用．
 ---

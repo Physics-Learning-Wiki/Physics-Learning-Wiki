@@ -1,5 +1,5 @@
 ---
-status: stable
+status: review
 author: Physics Learning Wiki Team
 description: 探讨泛函极值、变分概念、欧拉-拉格朗日微分方程推导、约束泛函变分以及在分析力学最小作用量原理与几何光学中的核心应用．
 ---
