@@ -107,7 +107,35 @@ uv run mkdocs serve
 
 ## 编写与贡献指南
 
-1. **新建题目**：推荐通过网站专用投稿通道 `/quiz/contribute/` 提交，或者在本地使用 `q-NNNNNN` 编号在 `question-bank/questions/` 下创建 YAML 文件。
-2. **必填要素**：`type`、`stem`、`choices`（若适用）、`answer`、`solution`、`attribution` 与 `license: CC-BY-SA-4.0`。
-3. **元数据归类**：若不确定所属的 `topics` 或 `concepts`，草稿中可留空，由维护者归纳整理。
-4. **人工审核**：详见 [REVIEWING.md](REVIEWING.md)。每道题目需由审核者签署并验证内容指纹无误后方可 `publish`。
+### 通过网站投稿
+
+推荐使用 `/quiz/contribute/`。表单提交的是 Submission v2 数据，由导入器转换为 Question v3 YAML。表单中的 `attribution` 属于投稿数据，导入时会转换为 `authors`；它不是 Question v3 的顶层字段。
+
+### 手工编写 Question v3 YAML
+
+新题目应放在 `question-bank/questions/`，并使用尚未占用的 `q-NNNNNN` ID。以下是可通过 Question v3 结构校验的最小判断题草稿：
+
+```yaml
+schema_version: 3
+id: q-000001 # 请替换为尚未使用的题目 ID
+version: 1
+status: draft
+locale: zh-CN
+type: true_false
+choice_order: fixed
+stem: 静止的物体也具有惯性。
+answer:
+  value: true
+solution: 一切有质量的物体都有惯性。
+provenance:
+  type: original
+  note: 手工原创题
+authors:
+  - name: 作者姓名
+    kind: human
+license: CC-BY-SA-4.0
+```
+
+所有 Question v3 YAML 都必须提供 `schema_version`、`id`、`version`、`status`、`locale`、`type`、`choice_order`、`stem`、`answer`、`solution`、`provenance`、`authors` 和 `license`。单选题与多选题还必须提供 `choices`；判断题和数值题不提供 `choices`。草稿可以暂时省略分类和难度等元数据；发布题目所需字段与签署流程见 [REVIEWING.md](REVIEWING.md)。
+
+若尚未确定 `topics`、`concepts` 或其他分类信息，可以在草稿中省略这些可选字段，由维护者后续整理。不要把投稿表单 DTO 字段直接当作 YAML 字段；结构以 [`schemas/question.schema.json`](schemas/question.schema.json) 为准。

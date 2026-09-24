@@ -91,7 +91,7 @@ def test_import_issue_with_optional_metadata(tmp_path: Path) -> None:
             },
             "solution": "质量是衡量物体惯性大小的物理量，与物体所处的状态或速度无关。",
             "topics": ["mechanics.dynamics"],
-            "concepts": ["mechanics.newton.inertia"],
+            "concepts": ["newton.inertia"],
             "difficulty": 1,
             "cognitive_level": "understand",
             "style": "conceptual",
@@ -109,7 +109,7 @@ def test_import_issue_with_optional_metadata(tmp_path: Path) -> None:
         assert data["schema_version"] == 3
         assert data["difficulty"] == 1
         assert data["topics"] == ["mechanics.dynamics"]
-        assert data["concepts"] == ["mechanics.newton.inertia"]
+        assert data["concepts"] == ["newton.inertia"]
 
         report = validate_repository(repo_root, include_drafts=True)
         errors_for_file = [e for e in report.errors if e.path == imported_path]
@@ -153,7 +153,7 @@ def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
                 "answer": {"choice": "B"},
                 "solution": "根据牛顿第二定律 F=ma，加速度方向恒与合外力方向相同。",
                 "topics": ["mechanics.dynamics"],
-                "concepts": ["mechanics.newton.second-law"],
+                "concepts": ["newton.force-acceleration"],
             },
         },
         {
@@ -182,7 +182,7 @@ def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
                 "answer": {"value": True},
                 "solution": "牛顿第三定律指出作用力与反作用力大小相等、方向相反、作用在不同物体上。",
                 "topics": ["mechanics.dynamics"],
-                "concepts": ["mechanics.newton.third-law"],
+                "concepts": ["newton.action-reaction"],
             },
         },
         {

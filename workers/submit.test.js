@@ -30,7 +30,7 @@ const fullChoiceQuestion = {
   },
   solution: "质量是衡量物体惯性大小的物理量，与物体所处的状态或速度无关。",
   topics: ["mechanics.dynamics"],
-  concepts: ["mechanics.newton.inertia"],
+  concepts: ["newton.inertia"],
   difficulty: 1,
   cognitive_level: "understand",
   style: "conceptual",

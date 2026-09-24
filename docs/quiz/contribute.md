@@ -72,7 +72,7 @@ hide:
       
       <div class="submit-field">
         <label for="q-submit-concepts">核心概念 ID</label>
-        <input type="text" id="q-submit-concepts" placeholder="例如 mechanics.newton.inertia（多个逗号分隔）">
+        <input type="text" id="q-submit-concepts" placeholder="例如 newton.inertia（多个逗号分隔）">
       </div>
       
       <div class="submit-field">
