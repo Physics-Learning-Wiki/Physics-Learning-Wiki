@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import os
+import posixpath
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -150,9 +152,46 @@ def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None
     assert r"\)" not in stem
     assert r"\(" not in sol
     assert r"\)" not in sol
-    assert "2\\,\\mathrm{kg}" in stem
+    assert "data-latex" not in stem
+    assert "<mjx-assistive-mml" in stem
+    assert "<img" not in stem
 
-    # Verify assets/stylesheets/mathjax.css was generated
-    assert (site / "assets" / "stylesheets" / "mathjax.css").exists()
-    # Verify math-csr.js was removed from production site
+    # Math CSS is adaptive, versioned, and included only on SSR math pages.
+    css_path = site / "assets" / "stylesheets" / "mathjax.css"
+    assert css_path.exists()
+    css = css_path.read_text(encoding="utf-8")
+    assert css_path.stat().st_size <= 768 * 1024
+    math_pages = []
+    all_markup = []
+    for html_path in site.rglob("*.html"):
+        html = html_path.read_text(encoding="utf-8")
+        all_markup.append(html)
+        links = re.findall(r'<link\b[^>]*href="([^"]*mathjax\.css\?hash=[^"]+)"', html)
+        css_attr = re.search(r'data-plw-math-css="([^"]*mathjax\.css\?hash=[^"]+)"', html)
+        has_math = "<mjx-container" in html
+        assert (len(links) == 1) == has_math, html_path.relative_to(site)
+        assert bool(css_attr) == has_math, html_path.relative_to(site)
+        assert "arithmatex" not in html, html_path.relative_to(site)
+        if has_math:
+            page_path = html_path.relative_to(site).as_posix()
+            href_path, href_query = links[0].split("?", 1)
+            resolved_href = posixpath.normpath(posixpath.join(posixpath.dirname(page_path), href_path))
+            assert resolved_href == "assets/stylesheets/mathjax.css"
+            assert links[0].split("?", 1)[1] == css_attr.group(1).split("?", 1)[1]
+            math_pages.append(html)
+    assert math_pages
+
+    # The CSS must cover every CHTML glyph used by pages and question-bank bundles.
+    question_markup = "".join(
+        path.read_text(encoding="utf-8")
+        for path in (site / "_generated" / "question-bank").rglob("*.json")
+    )
+    all_markup.append(question_markup)
+    used_glyphs = set(re.findall(r"\bmjx-c([0-9A-Fa-f]+)\b", "".join(all_markup)))
+    css_glyphs = set(re.findall(r"\.mjx-c([0-9A-Fa-f]+)\b", css))
+    assert used_glyphs
+    assert used_glyphs <= css_glyphs, sorted(used_glyphs - css_glyphs)[:20]
+
+    # Production does not ship either client-side MathJax runtime.
     assert not (site / "_static" / "js" / "math-csr.js").exists()
+    assert not (site / "assets" / "vendor" / "mathjax").exists()

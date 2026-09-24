@@ -16,6 +16,13 @@ export interface FeatureDefinition {
 
 export type FeatureRegistry = Record<string, FeatureDefinition>;
 
+export const mathFeatureDefinition: FeatureDefinition = {
+  stylesheet: root => {
+    const article = root as Element;
+    return article.querySelector("mjx-container") ? article.getAttribute("data-plw-math-css") ?? undefined : undefined;
+  }
+};
+
 interface PageInstance {
   controller: AbortController;
   disposers: FeatureDisposer[];
@@ -174,6 +181,7 @@ export function createFeatureRuntime(options: RuntimeOptions) {
     try {
       await ensureFeatureStylesheet(name, definition, root);
       if (!isCurrent(page, epoch)) return;
+      if (!definition.load && !definition.moduleUrl && !options.loadModule) return;
 
       const module = await ensureModule(name, definition);
       if (!isCurrent(page, epoch)) return;
@@ -246,7 +254,7 @@ export function subscribeDocumentLifecycle(
   };
 }
 
-const featureRegistry: FeatureRegistry = {};
+const featureRegistry: FeatureRegistry = { math: mathFeatureDefinition };
 
 function startRuntime() {
   if (typeof window === "undefined" || typeof document === "undefined") return;

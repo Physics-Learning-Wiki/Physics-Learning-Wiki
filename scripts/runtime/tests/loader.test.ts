@@ -4,6 +4,7 @@ import {
   createFeatureRuntime,
   ensureStylesheet,
   getSiteRoot,
+  mathFeatureDefinition,
   subscribeDocumentLifecycle,
   type FeatureModule
 } from "../src/loader.ts";
@@ -83,6 +84,7 @@ test("feature modules are cached and previous page disposers run before the next
   let currentArticle = makeArticle("quiz quiz");
   const document = {
     baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
     querySelector: () => currentArticle
   } as unknown as Document;
   let imports = 0;
@@ -128,6 +130,94 @@ test("feature modules are cached and previous page disposers run before the next
   assert.deepEqual(order, ["mount", "dispose", "mount"]);
   await runtime.disposeCurrentPage();
   assert.equal(disposals, 2);
+});
+
+test("a stylesheet-only feature does not attempt to import a JavaScript module", async () => {
+  let currentArticle = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "math";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=abc";
+      return null;
+    },
+    querySelector(selector: string) {
+      return selector === "mjx-container" ? {} : null;
+    }
+  } as unknown as Element;
+  const document = {
+    baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
+    querySelector: () => currentArticle
+  } as unknown as Document;
+  const stylesheets: string[] = [];
+  const errors: string[] = [];
+  const runtime = createFeatureRuntime({
+    document,
+    registry: { math: mathFeatureDefinition },
+    ensureStylesheet: async href => {
+      stylesheets.push(href);
+    },
+    onError: message => errors.push(message)
+  });
+
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+  currentArticle = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "math";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=abc";
+      return null;
+    },
+    querySelector(selector: string) {
+      return selector === "mjx-container" ? {} : null;
+    }
+  } as unknown as Element;
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+  assert.deepEqual(stylesheets, ["https://example.test/Physics-Learning-Wiki/assets/stylesheets/mathjax.css?hash=abc"]);
+  assert.deepEqual(errors, []);
+
+  currentArticle = {
+    getAttribute: (name: string) => (name === "data-plw-features" ? "math" : null),
+    querySelector(selector: string) {
+      return selector === ".arithmatex" ? {} : null;
+    }
+  } as unknown as Element;
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+  assert.equal(stylesheets.length, 1, "client-side MathJax pages do not request production CSS");
+});
+
+test("navigating from an ordinary page to math loads the page's versioned stylesheet", async () => {
+  let currentArticle = makeArticle("");
+  const document = {
+    baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
+    querySelector: () => currentArticle
+  } as unknown as Document;
+  const stylesheets: string[] = [];
+  const runtime = createFeatureRuntime({
+    document,
+    registry: { math: mathFeatureDefinition },
+    ensureStylesheet: async href => {
+      stylesheets.push(href);
+    }
+  });
+
+  await runtime.mountDocument(document);
+  currentArticle = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "math";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=def";
+      return null;
+    },
+    querySelector(selector: string) {
+      return selector === "mjx-container" ? {} : null;
+    }
+  } as unknown as Element;
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+
+  assert.deepEqual(stylesheets, ["https://example.test/Physics-Learning-Wiki/assets/stylesheets/mathjax.css?hash=def"]);
 });
 
 test("a disposer returned after navigation is run immediately and cannot attach to the new page", async () => {

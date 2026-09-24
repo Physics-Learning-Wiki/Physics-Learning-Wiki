@@ -2,8 +2,8 @@ import module from "module";
 import fs from "fs";
 import path from "path";
 import url from "url";
-import stream from "stream/promises";
 import crypto from "crypto";
+import klaw from "klaw";
 import { parse, HTMLElement } from "node-html-parser";
 
 import { mathjax } from "@mathjax/src/js/mathjax.js";
@@ -12,6 +12,7 @@ import { CHTML } from "@mathjax/src/js/output/chtml.js";
 import { LiteAdaptor, liteAdaptor } from "@mathjax/src/js/adaptors/liteAdaptor.js";
 import { RegisterHTMLHandler } from "@mathjax/src/js/handlers/html.js";
 import { AssistiveMmlHandler } from "@mathjax/src/js/a11y/assistive-mml.js";
+import { STATE } from "@mathjax/src/js/core/MathItem.js";
 import type { MathDocument } from "@mathjax/src/js/core/MathDocument.js";
 import type { LiteDocument } from "@mathjax/src/js/adaptors/lite/Document.js";
 import type { LiteElement } from "@mathjax/src/js/adaptors/lite/Element.js";
@@ -51,121 +52,233 @@ const MATH_CSR_SCRIPT_SUFFIX = "?math-csr";
 export class MathRenderer {
   private adaptor: LiteAdaptor;
   private document: MathDocument<LiteElement, any, LiteDocument>;
-  private css: string;
+  private outputJax: CHTML<LiteElement, unknown, LiteDocument>;
 
   async initialize() {
     this.adaptor = liteAdaptor();
     AssistiveMmlHandler(RegisterHTMLHandler(this.adaptor));
 
     const inputJax = new TeX({
-      packages: ["ams", "base", "boldsymbol", "colorv2", "html", "noundefined", "physics"]
+      packages: ["ams", "base", "boldsymbol", "colorv2", "html", "noundefined", "physics"],
+      formatError(_jax, error) {
+        throw error;
+      }
     });
-    const outputJax = new CHTML<LiteElement, unknown, LiteDocument>({
+    this.outputJax = new CHTML<LiteElement, unknown, LiteDocument>({
       // in windows, relative return with \, so need to replace
       fontURL: path.relative(path.dirname(MATHJAX_TARGET_CSS_FILE), MATHJAX_TARGET_FONTS_DIR).replaceAll("\\", "/"),
-      adaptiveCSS: false,
+      adaptiveCSS: true,
       displayOverflow: "scroll"
     });
 
     this.document = mathjax.document("", {
       InputJax: inputJax,
-      OutputJax: outputJax
+      OutputJax: this.outputJax,
+      renderActions: {
+        removeLatex: [
+          STATE.CONVERT + 1,
+          () => undefined,
+          math => {
+            math.root?.walkTree(node => {
+              node.attributes.unset("data-latex");
+              node.attributes.unset("data-latex-item");
+            });
+          }
+        ]
+      }
     });
-
-    await outputJax.font.loadDynamicFiles();
-
-    this.css = this.adaptor.cssText(outputJax.styleSheet(this.document));
   }
 
   getCSS() {
-    return this.css;
+    return this.adaptor.cssText(this.outputJax.styleSheet(this.document));
   }
 
-  render(math: string, isDisplay: boolean) {
-    const element = this.document.convert(math, { display: isDisplay }) as LiteElement;
-    // @ts-expect-error the .create() method is wrongly set to protected
-    const emptyImg = this.adaptor.create("img");
-    this.adaptor.setAttribute(
-      emptyImg,
-      "src",
-      "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-    );
-    this.adaptor.setAttribute(emptyImg, "title", math);
-    this.adaptor.append(element, emptyImg);
+  async render(math: string, isDisplay: boolean) {
+    const element = (await this.document.convertPromise(math, { display: isDisplay })) as LiteElement;
     return this.adaptor.outerHTML(element);
   }
+}
+
+interface MathFormula {
+  tex: string;
+  isDisplay: boolean;
+  source: string;
+}
+
+interface QuestionMathField {
+  html: string;
+  source: string;
+  set(value: string): void;
+}
+
+function mathFormulaFromElement(element: HTMLElement, source: string): MathFormula {
+  const content = element.textContent;
+  let tex: string;
+  if (content.startsWith("\\(") && content.endsWith("\\)")) {
+    tex = content.slice(2, -2);
+  } else if (content.startsWith("\\[") && content.endsWith("\\]")) {
+    tex = content.slice(2, -2);
+  } else {
+    // Retain the existing pymdownx.arithmatex delimiter extraction behavior.
+    tex = content.slice(2, -2);
+  }
+  return { tex, isDisplay: element.tagName === "DIV", source };
+}
+
+function parseMathFormulas(html: string, source: string): MathFormula[] {
+  if (!html || !html.includes("arithmatex")) return [];
+  const root = parse(`<div id="math-ssr-root">${html}</div>`);
+  const wrapper = root.querySelector("#math-ssr-root");
+  if (!wrapper) return [];
+  return wrapper
+    .querySelectorAll("div.arithmatex, span.arithmatex")
+    .map((element, index) => mathFormulaFromElement(element, `${source} formula #${index + 1}`));
+}
+
+function formatMathFailure(formula: MathFormula, error: unknown): Error {
+  const detail =
+    error instanceof Error
+      ? error.message
+      : error && typeof error === "object" && "message" in error
+      ? String(error.message)
+      : String(error);
+  return Object.assign(
+    new Error(`MathJax conversion failed at ${formula.source}: ${JSON.stringify(formula.tex)} (${detail})`),
+    { cause: error }
+  );
 }
 
 /**
  * Render LaTeX in an HTML string containing arithmatex spans/divs into MathJax CHTML.
  */
-export function renderMathInHtml(html: string, renderer: MathRenderer): string {
-  if (!html || !html.includes("arithmatex")) {
-    return html;
-  }
+export async function renderMathInHtml(html: string, renderer: MathRenderer, source = "HTML"): Promise<string> {
+  if (!html || !html.includes("arithmatex")) return html;
   const root = parse(`<div id="math-ssr-root">${html}</div>`);
   const wrapper = root.querySelector("#math-ssr-root");
   if (!wrapper) return html;
 
   const mathElements = wrapper.querySelectorAll("div.arithmatex, span.arithmatex");
-  for (const element of mathElements) {
-    let texCode = element.textContent;
-    if (texCode.startsWith("\\(") && texCode.endsWith("\\)")) {
-      texCode = texCode.slice(2, -2);
-    } else if (texCode.startsWith("\\[") && texCode.endsWith("\\]")) {
-      texCode = texCode.slice(2, -2);
-    } else {
-      texCode = texCode.slice(2, -2);
+  for (const [index, element] of mathElements.entries()) {
+    const formula = mathFormulaFromElement(element, `${source} formula #${index + 1}`);
+    try {
+      element.replaceWith(await renderer.render(formula.tex, formula.isDisplay));
+    } catch (error) {
+      throw formatMathFailure(formula, error);
     }
-    const isDisplay = element.tagName === "DIV";
-    element.replaceWith(renderer.render(texCode, isDisplay));
   }
 
   return wrapper.innerHTML;
 }
 
-/**
- * Render all HTML fields of a question object with MathJax CHTML SSR.
- */
-export function renderMathInQuestion(question: any, renderer: MathRenderer): void {
-  if (!question || typeof question !== "object") return;
+function questionMathFields(question: any, source: string): QuestionMathField[] {
+  if (!question || typeof question !== "object") return [];
+  const fields: QuestionMathField[] = [];
+  const add = (html: unknown, location: string, set: (value: string) => void) => {
+    if (typeof html === "string") fields.push({ html, source: location, set });
+  };
 
-  if (typeof question.stemHtml === "string") {
-    question.stemHtml = renderMathInHtml(question.stemHtml, renderer);
-  }
-  if (typeof question.solutionHtml === "string") {
-    question.solutionHtml = renderMathInHtml(question.solutionHtml, renderer);
-  }
+  add(question.stemHtml, `${source}.stemHtml`, value => (question.stemHtml = value));
+  add(question.solutionHtml, `${source}.solutionHtml`, value => (question.solutionHtml = value));
   if (Array.isArray(question.hintsHtml)) {
-    question.hintsHtml = question.hintsHtml.map((h: any) =>
-      typeof h === "string" ? renderMathInHtml(h, renderer) : h
+    question.hintsHtml.forEach((hint: unknown, index: number) =>
+      add(hint, `${source}.hintsHtml[${index}]`, value => (question.hintsHtml[index] = value))
     );
   }
   if (Array.isArray(question.choices)) {
-    for (const choice of question.choices) {
-      if (choice && typeof choice.contentHtml === "string") {
-        choice.contentHtml = renderMathInHtml(choice.contentHtml, renderer);
+    question.choices.forEach((choice: any, index: number) => {
+      if (choice && typeof choice === "object") {
+        add(choice.contentHtml, `${source}.choices[${index}].contentHtml`, value => (choice.contentHtml = value));
       }
-    }
+    });
   }
   if (question.feedback && typeof question.feedback === "object") {
     for (const [key, value] of Object.entries(question.feedback)) {
-      if (typeof value === "string") {
-        question.feedback[key] = renderMathInHtml(value, renderer);
-      } else if (value && typeof value === "object") {
-        for (const [subKey, subVal] of Object.entries(value)) {
-          if (typeof subVal === "string") {
-            (value as Record<string, string>)[subKey] = renderMathInHtml(subVal, renderer);
-          }
+      add(value, `${source}.feedback.${key}`, next => ((question.feedback as Record<string, unknown>)[key] = next));
+      if (value && typeof value === "object") {
+        for (const [subKey, subValue] of Object.entries(value)) {
+          add(subValue, `${source}.feedback.${key}.${subKey}`, next => {
+            (value as Record<string, unknown>)[subKey] = next;
+          });
         }
       }
     }
   }
+  return fields;
 }
 
-export const taskHandler = new (class implements TaskHandler<void> {
-  // Emit fonts and CSS file
-  async globalInitialize(siteDir: string) {
+function collectMathInQuestion(question: any, source: string): MathFormula[] {
+  return questionMathFields(question, source).flatMap(field => parseMathFormulas(field.html, field.source));
+}
+
+/**
+ * Render all HTML fields of a question object with MathJax CHTML SSR.
+ */
+export async function renderMathInQuestion(question: any, renderer: MathRenderer, source = "question"): Promise<void> {
+  for (const field of questionMathFields(question, source)) {
+    field.set(await renderMathInHtml(field.html, renderer, field.source));
+  }
+}
+
+async function walkFiles(root: string): Promise<string[]> {
+  return await new Promise((resolve, reject) => {
+    const files: string[] = [];
+    klaw(root)
+      .on("data", item => {
+        if (item.stats.isFile()) files.push(item.path);
+      })
+      .on("error", reject)
+      .on("end", () => resolve(files.sort((left, right) => (left < right ? -1 : left > right ? 1 : 0))));
+  });
+}
+
+function addFormula(formulas: Map<string, MathFormula>, formula: MathFormula) {
+  const key = JSON.stringify([formula.tex, formula.isDisplay]);
+  if (!formulas.has(key)) formulas.set(key, formula);
+}
+
+async function collectSiteMathFormulas(siteDir: string): Promise<MathFormula[]> {
+  const formulas = new Map<string, MathFormula>();
+  const htmlFiles = (await walkFiles(siteDir)).filter(filePath => filePath.toLowerCase().endsWith(".html"));
+  for (const filePath of htmlFiles) {
+    const html = await fs.promises.readFile(filePath, "utf-8");
+    for (const formula of parseMathFormulas(html, path.relative(siteDir, filePath))) addFormula(formulas, formula);
+  }
+
+  const questionBankRoot = path.join(siteDir, "_generated", "question-bank");
+  const questionBankFiles = await walkFiles(questionBankRoot).catch((error: NodeJS.ErrnoException) => {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  });
+  for (const filePath of questionBankFiles.filter(filePath => filePath.toLowerCase().endsWith(".json"))) {
+    const source = path.relative(siteDir, filePath);
+    let data: any;
+    try {
+      data = JSON.parse(await fs.promises.readFile(filePath, "utf-8"));
+    } catch (error) {
+      throw Object.assign(new Error(`Could not scan MathJax in ${source}: invalid question-bank JSON`), {
+        cause: error
+      });
+    }
+    const questions = Array.isArray(data) ? data : Array.isArray(data?.questions) ? data.questions : [];
+    questions.forEach((question: any, index: number) => {
+      const id = typeof question?.id === "string" ? question.id : `index ${index}`;
+      for (const formula of collectMathInQuestion(question, `${source} question ${id}`)) addFormula(formulas, formula);
+    });
+  }
+
+  return [...formulas.values()].sort((left, right) => {
+    if (left.tex !== right.tex) return left.tex < right.tex ? -1 : 1;
+    return Number(left.isDisplay) - Number(right.isDisplay);
+  });
+}
+
+interface MathGlobalInitialization {
+  cssHash: string;
+}
+
+export const taskHandler = new (class implements TaskHandler<MathGlobalInitialization> {
+  // Scan the whole site first so the adaptive stylesheet contains every glyph used by SSR.
+  async globalInitialize(siteDir: string): Promise<MathGlobalInitialization> {
     log("Copying MathJax fonts");
     const req = module.createRequire(import.meta.url);
 
@@ -182,57 +295,58 @@ export const taskHandler = new (class implements TaskHandler<void> {
       )
     );
 
-    log("Writing MathJax CSS");
+    log("Scanning site and question-bank math");
+    const formulas = await collectSiteMathFormulas(siteDir);
+    log(`Collected ${formulas.length} distinct inline/display formulas`);
+
+    log("Collecting adaptive MathJax CSS");
     const renderer = new MathRenderer();
     await renderer.initialize();
+    for (const formula of formulas) {
+      try {
+        await renderer.render(formula.tex, formula.isDisplay);
+      } catch (error) {
+        throw formatMathFailure(formula, error);
+      }
+    }
     const cssDestFile = path.join(siteDir, MATHJAX_TARGET_CSS_FILE);
     await fs.promises.mkdir(path.dirname(cssDestFile), { recursive: true });
-    await fs.promises.writeFile(cssDestFile, renderer.getCSS(), "utf-8");
+    const css = renderer.getCSS();
+    await fs.promises.writeFile(cssDestFile, css, "utf-8");
+    const cssHash = crypto.createHash("sha256").update(css).digest("hex");
 
     log("Rendering math in question bank bundles");
-    const qbDirs = [
-      path.join(siteDir, "_generated", "question-bank", "sets"),
-      path.join(siteDir, "_generated", "question-bank", "catalog"),
-      path.join(siteDir, "_generated", "question-bank", "pages")
-    ];
-    for (const qbDir of qbDirs) {
-      try {
-        const entries = await fs.promises.readdir(qbDir, { withFileTypes: true });
-        for (const entry of entries) {
-          if (entry.isFile() && entry.name.endsWith(".json")) {
-            const filePath = path.join(qbDir, entry.name);
-            const raw = await fs.promises.readFile(filePath, "utf-8");
-            const data = JSON.parse(raw);
-            if (Array.isArray(data)) {
-              for (const item of data) {
-                renderMathInQuestion(item, renderer);
-              }
-              await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
-            } else if (data && typeof data === "object" && Array.isArray(data.questions)) {
-              for (const question of data.questions) {
-                renderMathInQuestion(question, renderer);
-              }
-              await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
-            }
-          }
-        }
-      } catch (e: any) {
-        if (e?.code !== "ENOENT") {
-          throw e;
-        }
+    const questionBankRoot = path.join(siteDir, "_generated", "question-bank");
+    const questionBankFiles = await walkFiles(questionBankRoot).catch((error: NodeJS.ErrnoException) => {
+      if (error.code === "ENOENT") return [];
+      throw error;
+    });
+    for (const filePath of questionBankFiles.filter(filePath => filePath.toLowerCase().endsWith(".json"))) {
+      const raw = await fs.promises.readFile(filePath, "utf-8");
+      const data = JSON.parse(raw);
+      const questions = Array.isArray(data) ? data : Array.isArray(data?.questions) ? data.questions : undefined;
+      if (!questions) continue;
+      const source = path.relative(siteDir, filePath);
+      for (const [index, question] of questions.entries()) {
+        const id = typeof question?.id === "string" ? question.id : `index ${index}`;
+        await renderMathInQuestion(question, renderer, `${source} question ${id}`);
       }
+      await fs.promises.writeFile(filePath, JSON.stringify(data), "utf-8");
     }
 
     log("Remove client-side rendering assets");
     await fs.promises.rm(path.join(siteDir, "_static/js/math-csr.js"), { force: true });
     await fs.promises.rm(path.join(siteDir, "assets/vendor/mathjax"), { recursive: true, force: true });
+    return { cssHash };
   }
 
   siteDir: string;
   renderer: MathRenderer;
+  cssHash: string;
 
-  async initialize(_: void, siteDir: string) {
+  async initialize(globalInitialization: MathGlobalInitialization, siteDir: string) {
     this.siteDir = siteDir;
+    this.cssHash = globalInitialization.cssHash;
 
     this.renderer = new MathRenderer();
     await this.renderer.initialize();
@@ -240,32 +354,29 @@ export const taskHandler = new (class implements TaskHandler<void> {
 
   async process(document: HTMLElement, filePath: string) {
     const mathElements = document.querySelectorAll("div.arithmatex, span.arithmatex");
-    mathElements.map(element => {
-      // MKdocs outputs "\(xxxxxxx\)", so we need to remove the border
-      let texCode = element.textContent;
-      if (texCode.startsWith("\\(") && texCode.endsWith("\\)")) {
-        texCode = texCode.slice(2, -2);
-      } else if (texCode.startsWith("\\[") && texCode.endsWith("\\]")) {
-        texCode = texCode.slice(2, -2);
-      } else {
-        texCode = texCode.slice(2, -2);
+    const source = path.relative(this.siteDir, filePath);
+    for (const [index, element] of mathElements.entries()) {
+      const formula = mathFormulaFromElement(element, `${source} formula #${index + 1}`);
+      try {
+        element.replaceWith(await this.renderer.render(formula.tex, formula.isDisplay));
+      } catch (error) {
+        throw formatMathFailure(formula, error);
       }
-      const isDisplay = element.tagName === "DIV";
+    }
 
-      const html = this.renderer.render(texCode, isDisplay);
-      element.replaceWith(html);
-    });
+    const mathContainers = document.querySelectorAll("mjx-container");
+    if (mathContainers.length > 0) {
+      const pagePath = path.relative(this.siteDir, filePath);
+      const cssFilePathToHtml = path.relative(path.dirname(pagePath), MATHJAX_TARGET_CSS_FILE).replaceAll("\\", "/");
+      const pageCssHref = `${cssFilePathToHtml}?hash=${this.cssHash}`;
+      const rootCssHref = `${MATHJAX_TARGET_CSS_FILE}?hash=${this.cssHash}`;
+      const article = document.querySelector("article.md-content__inner.md-typeset");
+      article?.setAttribute("data-plw-math-css", rootCssHref);
 
-    // Inject CSS <link> element (not checking if we have maths since we use instant loading)
-    const htmlFilePathToRoot = path.relative(this.siteDir, filePath);
-    const cssFilePathToHtml = path.relative(path.dirname(htmlFilePathToRoot), MATHJAX_TARGET_CSS_FILE);
-    const cssDestFile = path.join(this.siteDir, MATHJAX_TARGET_CSS_FILE);
-    const hash = crypto.createHash("sha256");
-    await stream.pipeline(fs.createReadStream(cssDestFile), hash);
-    const cssChecksum = await hash.digest("hex");
-    document
-      .querySelector("head")
-      .insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="${cssFilePathToHtml}?hash=${cssChecksum}">`);
+      const head = document.querySelector("head");
+      if (!head) throw new Error(`Cannot inject MathJax CSS link: missing <head> in ${source}`);
+      head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="${pageCssHref}">`);
+    }
 
     // Remove client-side rendering script
     document
