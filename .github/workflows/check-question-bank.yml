@@ -97,6 +97,7 @@ jobs:
           yarn forms:typecheck
           yarn forms:test
           yarn forms:build:check
+          yarn media:test
           yarn quiz:build:check
           yarn runtime:typecheck
           yarn runtime:test

@@ -60,6 +60,7 @@ jobs:
           corepack yarn forms:typecheck
           corepack yarn forms:test
           corepack yarn forms:build:check
+          corepack yarn media:test
       - name: Page Build
         env:
           PLW_QUIZ_PREVIEW: ''
