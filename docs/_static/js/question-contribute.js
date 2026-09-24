@@ -1,6 +1,11 @@
 // docs/_static/js/question-contribute.js
 // 专用题目投稿交互脚本 (Submission Protocol v2)
 
+// Both submission scripts are loaded on every page. Keep this form's state and
+// helpers private so they cannot collide with the general submission form.
+(function () {
+"use strict";
+
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
 
 let stemEditor = null;
@@ -510,7 +515,14 @@ async function handleQuestionSubmit(event) {
 }
 
 if (typeof window !== "undefined") {
-  window.onloadTurnstileCallback = initTurnstile;
+  const generalSubmitTurnstileCallback = window.onloadTurnstileCallback;
+  window.onloadTurnstileCallback = function () {
+    if (document.getElementById("plw-question-contribute-form")) {
+      initTurnstile();
+    } else if (typeof generalSubmitTurnstileCallback === "function") {
+      generalSubmitTurnstileCallback();
+    }
+  };
 
   if (window.document$) {
     window.document$.subscribe(async function () {
@@ -537,3 +549,4 @@ if (typeof window !== "undefined") {
     });
   }
 }
+})();
