@@ -1,5 +1,5 @@
 import { loadManifest, loadSetBundle, loadTaxonomyCatalog, resolveSiteUrl } from "../data.js";
-import { isAnswerComplete, makeResult } from "../grading.js";
+import { countProgress, isAnswerComplete, makeResult } from "../grading.js";
 import { typeset } from "../math.js";
 import {
   escapeHtml,
@@ -195,11 +195,7 @@ export class InlineSurface {
       submitBtn.type = "button";
       submitBtn.className = "plw-quiz-btn--primary";
       submitBtn.textContent = "提交自测并查看结果";
-      submitBtn.addEventListener("click", () => {
-        this.submitted = true;
-        this.checkInlineCompletion();
-        this.render();
-      });
+      submitBtn.addEventListener("click", () => this.requestSubmit());
       footer.append(submitBtn);
     }
 
@@ -212,7 +208,7 @@ export class InlineSurface {
       }).length;
 
       resultsBar.innerHTML = `
-        <div class="plw-quiz-inline__score">自测完成：<strong>${score} / ${this.questions.length}</strong> 题正确</div>
+        <div class="plw-quiz-inline__score" tabindex="-1">自测完成：<strong>${score} / ${this.questions.length}</strong> 题正确</div>
       `;
 
       const restartBtn = document.createElement("button");
@@ -236,6 +232,67 @@ export class InlineSurface {
     this.root.append(container);
     hydrateAssets(container, this.questions, this.manifestUrl);
     typeset(container);
+  }
+
+  private requestSubmit(): void {
+    const progress = countProgress(this.questions, this.answers, {});
+    const complete = () => {
+      this.submitted = true;
+      this.checkInlineCompletion();
+      this.render();
+      this.root.querySelector<HTMLElement>(".plw-quiz-inline__score")?.focus();
+    };
+    if (progress.unanswered === 0) {
+      complete();
+      return;
+    }
+
+    const returnFocus = document.activeElement as HTMLElement | null;
+    const backdrop = document.createElement("div");
+    backdrop.className = "plw-quiz-modal-backdrop";
+    backdrop.setAttribute("role", "dialog");
+    backdrop.setAttribute("aria-modal", "true");
+    backdrop.setAttribute("aria-labelledby", "plw-inline-submit-title");
+    backdrop.innerHTML = `
+      <div class="plw-quiz-modal">
+        <h3 id="plw-inline-submit-title">提交前核对</h3>
+        <p>已作答 <strong>${progress.answered}</strong> / ${this.questions.length} 题，仍有 <strong>${progress.unanswered}</strong> 题未作答。未作答题不会得分。</p>
+        <div class="plw-quiz-modal__actions">
+          <button type="button" class="plw-quiz-btn--secondary" data-plw-modal-cancel>返回作答</button>
+          <button type="button" class="plw-quiz-btn--primary" data-plw-modal-confirm>确认提交</button>
+        </div>
+      </div>
+    `;
+    const close = () => {
+      backdrop.remove();
+      if (returnFocus?.isConnected) returnFocus.focus();
+    };
+    backdrop.querySelector("[data-plw-modal-cancel]")?.addEventListener("click", close);
+    backdrop.querySelector("[data-plw-modal-confirm]")?.addEventListener("click", () => {
+      backdrop.remove();
+      complete();
+    });
+    backdrop.addEventListener("click", event => {
+      if (event.target === backdrop) close();
+    });
+    backdrop.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        close();
+      } else if (event.key === "Tab") {
+        const buttons = Array.from(backdrop.querySelectorAll<HTMLButtonElement>("button"));
+        const current = buttons.indexOf(document.activeElement as HTMLButtonElement);
+        if (event.shiftKey && current === 0) {
+          event.preventDefault();
+          buttons[buttons.length - 1].focus();
+        } else if (!event.shiftKey && current === buttons.length - 1) {
+          event.preventDefault();
+          buttons[0].focus();
+        }
+      }
+    });
+    this.root.append(backdrop);
+    backdrop.querySelector<HTMLButtonElement>("[data-plw-modal-cancel]")?.focus();
   }
 
   private isAllAnsweredOrChecked(): boolean {

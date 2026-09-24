@@ -1,5 +1,5 @@
 import { resolveSiteUrl } from "../data.js";
-import { isAnswerComplete, makeResult, summarizeConcepts, summarizeObjectives } from "../grading.js";
+import { countProgress, isAnswerComplete, makeResult, summarizeConcepts, summarizeObjectives } from "../grading.js";
 import { typeset } from "../math.js";
 import {
   escapeHtml,
@@ -13,13 +13,23 @@ import { newSeed } from "../random.js";
 import { selectRetry } from "../selection.js";
 import { createSession, findRestorableSession, inspectSessionStatus } from "../session.js";
 import type { QuizStore } from "../storage.js";
-import type { Attempt, Question, QuestionResult, QuizSource, Session, SetBundle, UserAnswer } from "../types.js";
+import type {
+  Attempt,
+  Question,
+  QuestionResult,
+  QuizSource,
+  Session,
+  SetBundle,
+  TaxonomyCatalog,
+  UserAnswer
+} from "../types.js";
 
 export interface PlaySurfaceOptions {
   root: HTMLElement;
   manifestUrl: URL;
   bundle: SetBundle;
   questions: Question[];
+  taxonomy?: TaxonomyCatalog;
   seed: string;
   source: QuizSource;
   store: QuizStore;
@@ -34,6 +44,7 @@ export class PlaySurface {
   private readonly manifestUrl: URL;
   private readonly bundle: SetBundle;
   private readonly questions: Question[];
+  private readonly taxonomy?: TaxonomyCatalog;
   private readonly seed: string;
   private readonly source: QuizSource;
   private readonly store: QuizStore;
@@ -50,6 +61,7 @@ export class PlaySurface {
     this.manifestUrl = options.manifestUrl;
     this.bundle = options.bundle;
     this.questions = options.questions;
+    this.taxonomy = options.taxonomy;
     this.seed = options.seed;
     this.source = options.source;
     this.store = options.store;
@@ -162,17 +174,16 @@ export class PlaySurface {
   }
 
   private handleKeyDown = (event: KeyboardEvent): void => {
-    if (event.defaultPrevented || event.isComposing) return;
+    if (event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return;
     const target = event.target as HTMLElement | null;
-    const isTextInput =
-      target &&
-      ((target.tagName === "INPUT" && (target as HTMLInputElement).type === "text") || target.tagName === "TEXTAREA");
+    if (!target || !this.root.contains(target)) return;
+    if (this.session?.state === "completed") return;
 
     if (event.key === "Escape") {
       const modal = this.root.querySelector<HTMLElement>(".plw-quiz-modal-backdrop");
       if (modal) {
         event.preventDefault();
-        modal.remove();
+        modal.querySelector<HTMLButtonElement>("[data-plw-modal-cancel]")?.click();
         return;
       }
       event.preventDefault();
@@ -180,33 +191,33 @@ export class PlaySurface {
       return;
     }
 
+    if (this.root.querySelector(".plw-quiz-modal-backdrop")) return;
     if (!this.session || this.questions.length === 0) return;
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
 
+    if (target.closest('button, a, input, select, textarea, summary, [contenteditable="true"]')) return;
     const locked = Boolean(this.session.locked[question.id]);
     const immediate = this.bundle.set.feedback_mode === "immediate";
 
     // 1. ArrowLeft / ArrowRight navigation
-    if (!isTextInput) {
-      if (event.key === "ArrowLeft" || event.key === "PageUp") {
-        if (this.session.currentIndex > 0) {
-          event.preventDefault();
-          this.move(-1);
-          return;
-        }
+    if (event.key === "ArrowLeft" || event.key === "PageUp") {
+      if (this.session.currentIndex > 0) {
+        event.preventDefault();
+        this.move(-1);
+        return;
       }
-      if (event.key === "ArrowRight" || event.key === "PageDown") {
-        if (this.session.currentIndex < this.questions.length - 1) {
-          event.preventDefault();
-          this.move(1);
-          return;
-        }
+    }
+    if (event.key === "ArrowRight" || event.key === "PageDown") {
+      if (this.session.currentIndex < this.questions.length - 1) {
+        event.preventDefault();
+        this.move(1);
+        return;
       }
     }
 
     // 2. Enter key for confirm or next / submit
-    if (event.key === "Enter" && !isTextInput) {
+    if (event.key === "Enter") {
       event.preventDefault();
       if (immediate && !locked) {
         const answer = this.session.answers[question.id] ?? null;
@@ -216,13 +227,13 @@ export class PlaySurface {
       } else if (this.session.currentIndex < this.questions.length - 1) {
         this.move(1);
       } else {
-        this.submit();
+        this.requestSubmit();
       }
       return;
     }
 
     // 3. Option shortcuts (A-D, 1-4)
-    if (!isTextInput && !locked) {
+    if (!locked) {
       let selectedIndex = -1;
       const key = event.key.toUpperCase();
       if (key >= "A" && key <= "Z") {
@@ -459,7 +470,7 @@ export class PlaySurface {
         submitBtn.type = "button";
         submitBtn.className = "plw-quiz-btn--primary";
         submitBtn.textContent = "查看结果";
-        submitBtn.addEventListener("click", () => this.submit());
+        submitBtn.addEventListener("click", () => this.requestSubmit());
         actions.append(submitBtn);
       }
     } else {
@@ -477,7 +488,7 @@ export class PlaySurface {
       submitBtn.className =
         this.session.currentIndex === this.questions.length - 1 ? "plw-quiz-btn--primary" : "plw-quiz-btn--secondary";
       submitBtn.textContent = "完成并交卷";
-      submitBtn.addEventListener("click", () => this.submit());
+      submitBtn.addEventListener("click", () => this.requestSubmit());
       actions.append(submitBtn);
     }
 
@@ -487,6 +498,82 @@ export class PlaySurface {
     hydrateAssets(container, this.questions, this.manifestUrl);
     typeset(container);
     container.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+  }
+
+  private requestSubmit(): void {
+    const progress = countProgress(this.questions, this.session.answers, this.session.uncertain);
+    if (this.bundle.set.feedback_mode === "immediate" && progress.unanswered === 0 && progress.uncertain === 0) {
+      this.submit();
+      return;
+    }
+
+    const returnFocus = document.activeElement as HTMLElement | null;
+    const backdrop = document.createElement("div");
+    backdrop.className = "plw-quiz-modal-backdrop";
+    backdrop.setAttribute("role", "dialog");
+    backdrop.setAttribute("aria-modal", "true");
+    backdrop.setAttribute("aria-labelledby", "plw-submit-modal-title");
+
+    const reviewIndex = this.questions.findIndex(
+      question =>
+        !isAnswerComplete(question, this.session.answers[question.id] ?? null) || this.session.uncertain[question.id]
+    );
+    backdrop.innerHTML = `
+      <div class="plw-quiz-modal">
+        <h3 id="plw-submit-modal-title">交卷前核对</h3>
+        <p>已作答 <strong>${progress.answered}</strong> / ${this.questions.length} 题，未作答 <strong>${
+      progress.unanswered
+    }</strong> 题，标记存疑 <strong>${progress.uncertain}</strong> 题。${
+      progress.unanswered > 0 ? "未作答题将计为未答，不获得分数。" : ""
+    }</p>
+        <div class="plw-quiz-modal__actions">
+          ${
+            reviewIndex >= 0
+              ? '<button type="button" class="plw-quiz-btn--secondary" id="plw-submit-review">前往待处理题</button>'
+              : ""
+          }
+          <button type="button" class="plw-quiz-btn--secondary" data-plw-modal-cancel>继续作答</button>
+          <button type="button" class="plw-quiz-btn--primary" id="plw-submit-confirm">确认交卷</button>
+        </div>
+      </div>
+    `;
+    const close = () => {
+      backdrop.remove();
+      if (returnFocus?.isConnected) returnFocus.focus();
+    };
+    backdrop.querySelector("[data-plw-modal-cancel]")?.addEventListener("click", close);
+    backdrop.querySelector("#plw-submit-review")?.addEventListener("click", () => {
+      backdrop.remove();
+      this.session.currentIndex = reviewIndex;
+      this.persist();
+      this.renderQuestion();
+    });
+    backdrop.querySelector("#plw-submit-confirm")?.addEventListener("click", () => {
+      backdrop.remove();
+      this.submit();
+    });
+    backdrop.addEventListener("click", event => {
+      if (event.target === backdrop) close();
+    });
+    this.root.append(backdrop);
+    this.focusModal(backdrop, backdrop.querySelector<HTMLButtonElement>("#plw-submit-review, [data-plw-modal-cancel]"));
+  }
+
+  private focusModal(backdrop: HTMLElement, initial: HTMLButtonElement | null): void {
+    backdrop.addEventListener("keydown", event => {
+      if (event.key !== "Tab") return;
+      const buttons = Array.from(backdrop.querySelectorAll<HTMLButtonElement>("button:not([disabled])"));
+      if (buttons.length === 0) return;
+      const current = buttons.indexOf(document.activeElement as HTMLButtonElement);
+      if (event.shiftKey && current <= 0) {
+        event.preventDefault();
+        buttons[buttons.length - 1].focus();
+      } else if (!event.shiftKey && current === buttons.length - 1) {
+        event.preventDefault();
+        buttons[0].focus();
+      }
+    });
+    initial?.focus();
   }
 
   private submit(): void {
@@ -522,8 +609,29 @@ export class PlaySurface {
     const percent = Math.round((attempt.score / attempt.total) * 100);
     const conceptSummary = summarizeConcepts(attempt.questionResults);
     const objectiveSummary = summarizeObjectives(attempt.questionResults);
+    const objectiveDetails = new Map(
+      this.questions.flatMap(question => question.objectivesDetail ?? []).map(detail => [detail.id, detail] as const)
+    );
+    const answeredCount = attempt.questionResults.filter(result => !result.unanswered).length;
+    const unansweredCount = attempt.total - answeredCount;
+    const uncertainCount = attempt.questionResults.filter(result => result.uncertain).length;
 
     const incorrectResults = attempt.questionResults.filter(r => !r.correct);
+    const reviewSuggestions =
+      answeredCount > 0
+        ? Object.entries(objectiveSummary)
+            .filter(([, stat]) => stat.correct < stat.total)
+            .sort((a, b) => b[1].total - b[1].correct - (a[1].total - a[1].correct))
+            .slice(0, 3)
+            .map(([id]) => {
+              const detail = objectiveDetails.get(id);
+              if (!detail) return `<li>回顾本次答错题目的解析</li>`;
+              const url = new URL(detail.url, this.manifestUrl);
+              url.hash = detail.anchor;
+              return `<li><a href="${escapeHtml(url.href)}">${escapeHtml(detail.title)}</a></li>`;
+            })
+            .join("")
+        : "";
 
     let conceptsHtml = "";
     if (Object.keys(conceptSummary).length > 0) {
@@ -535,7 +643,9 @@ export class PlaySurface {
               .map(
                 ([cid, stat]) => `
                 <div class="plw-quiz-result__summary-card">
-                  <span class="plw-quiz-result__summary-id">${escapeHtml(cid)}</span>
+                  <span class="plw-quiz-result__summary-id">${escapeHtml(
+                    this.taxonomy?.concepts[cid]?.title ?? (cid === "other" ? "其他概念" : cid)
+                  )}</span>
                   <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total} 正确${
                   stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
                 }</span>
@@ -558,7 +668,9 @@ export class PlaySurface {
               .map(
                 ([oid, stat]) => `
                 <div class="plw-quiz-result__summary-card">
-                  <span class="plw-quiz-result__summary-id">${escapeHtml(oid)}</span>
+                  <span class="plw-quiz-result__summary-id">${escapeHtml(
+                    objectiveDetails.get(oid)?.title ?? (oid === "general" ? "综合学习目标" : oid)
+                  )}</span>
                   <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total} 正确${
                   stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
                 }</span>
@@ -573,25 +685,36 @@ export class PlaySurface {
 
     container.innerHTML = `
       <section class="plw-quiz-result__card">
-        <h2>${escapeHtml(this.bundle.set.title)} — 测试完成</h2>
+        <h2 tabindex="-1">${escapeHtml(this.bundle.set.title)} — 测试完成</h2>
         <div class="plw-quiz-result__score-wrap">
           <div class="plw-quiz-result__score-circle">
             <span class="plw-quiz-result__score-value">${percent}%</span>
             <span class="plw-quiz-result__score-label">${attempt.score} / ${attempt.total} 题正确</span>
           </div>
         </div>
-        ${conceptsHtml}
-        ${objectivesHtml}
+        <p class="plw-quiz-result__progress">已作答 ${answeredCount} / ${
+      attempt.total
+    } 题 · 未作答 ${unansweredCount} 题 · 标记存疑 ${uncertainCount} 题</p>
+        ${
+          reviewSuggestions
+            ? `<div class="plw-quiz-result__next"><h3>建议优先复习</h3><ul>${reviewSuggestions}</ul></div>`
+            : ""
+        }
         <div class="plw-quiz-result__actions plw-quiz-actions">
           <button type="button" class="plw-quiz-btn--primary" id="plw-btn-restart-new">再测一次（换一组题目）</button>
           <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-restart-same">再做一次（同组题目）</button>
           ${
             incorrectResults.length > 0
-              ? `<button type="button" class="plw-quiz-btn--danger" id="plw-btn-retry-wrong">重做本次错题 (${incorrectResults.length} 题)</button>`
+              ? `<button type="button" class="plw-quiz-btn--danger" id="plw-btn-retry-wrong">重做错题与未答题 (${incorrectResults.length} 题)</button>`
               : ""
           }
           <button type="button" class="plw-quiz-btn--secondary" id="plw-btn-exit-landing">返回小测列表</button>
         </div>
+        <details class="plw-quiz-result__details">
+          <summary>查看完整知识点统计</summary>
+          ${conceptsHtml}
+          ${objectivesHtml}
+        </details>
       </section>
 
       <section class="plw-quiz-result__review">
@@ -623,7 +746,9 @@ export class PlaySurface {
       if (!q) return;
 
       const itemCard = document.createElement("div");
-      itemCard.className = `plw-quiz-review-card ${result.correct ? "is-correct" : "is-incorrect"}`;
+      itemCard.className = `plw-quiz-review-card ${
+        result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+      }`;
       itemCard.dataset.questionId = q.id;
 
       const badgeText = result.correct ? "回答正确" : result.unanswered ? "未作答" : "回答错误";
@@ -632,7 +757,9 @@ export class PlaySurface {
       itemCard.innerHTML = `
         <div class="plw-quiz-review-card__header">
           <span class="plw-quiz-review-card__index">第 ${idx + 1} 题 (${q.id})</span>
-          <span class="plw-quiz-badge ${result.correct ? "is-correct" : "is-incorrect"}">${badgeText}</span>
+          <span class="plw-quiz-badge ${
+            result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+          }">${badgeText}</span>
           ${uncertainBadge}
         </div>
       `;
@@ -643,7 +770,8 @@ export class PlaySurface {
         answer: result.answer,
         uncertain: result.uncertain,
         reportUrl: this.reportLink(q),
-        showSolution: true
+        showSolution: true,
+        announce: false
       });
       itemCard.append(feedback);
       reviewList.append(itemCard);
@@ -652,6 +780,8 @@ export class PlaySurface {
     this.root.append(container);
     hydrateAssets(container, this.questions, this.manifestUrl);
     typeset(container);
+    container.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
+    container.scrollIntoView({ block: "start", behavior: "auto" });
   }
 
   private handleRetryWrong(wrongIds: string[]): void {
@@ -709,6 +839,7 @@ export class PlaySurface {
     if (existingModal) existingModal.remove();
 
     const backdrop = document.createElement("div");
+    const returnFocus = document.activeElement as HTMLElement | null;
     backdrop.className = "plw-quiz-modal-backdrop";
     backdrop.setAttribute("role", "dialog");
     backdrop.setAttribute("aria-modal", "true");
@@ -723,7 +854,7 @@ export class PlaySurface {
       <div class="plw-quiz-modal__actions">
         <button type="button" class="plw-quiz-btn--primary" id="plw-exit-save">保存并退出</button>
         <button type="button" class="plw-quiz-btn--danger" id="plw-exit-discard">放弃作答并退出</button>
-        <button type="button" class="plw-quiz-btn--secondary" id="plw-exit-cancel">继续作答</button>
+        <button type="button" class="plw-quiz-btn--secondary" id="plw-exit-cancel" data-plw-modal-cancel>继续作答</button>
       </div>
     `;
 
@@ -741,16 +872,18 @@ export class PlaySurface {
       this.onExit();
     });
 
-    modal.querySelector("#plw-exit-cancel")?.addEventListener("click", () => {
+    const close = () => {
       backdrop.remove();
-    });
+      if (returnFocus?.isConnected) returnFocus.focus();
+    };
+    modal.querySelector("#plw-exit-cancel")?.addEventListener("click", close);
 
     backdrop.addEventListener("click", e => {
-      if (e.target === backdrop) backdrop.remove();
+      if (e.target === backdrop) close();
     });
 
     this.root.append(backdrop);
-    modal.querySelector<HTMLButtonElement>("#plw-exit-save")?.focus();
+    this.focusModal(backdrop, modal.querySelector<HTMLButtonElement>("#plw-exit-save"));
   }
 
   private reportLink(question: Question): string {

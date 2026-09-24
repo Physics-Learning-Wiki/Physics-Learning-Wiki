@@ -1,10 +1,4 @@
-import {
-  loadManifest,
-  loadSetBundle,
-  loadTaxonomyCatalog,
-  readRunnerParameters,
-  resolveSiteUrl
-} from "./data.js";
+import { loadManifest, loadSetBundle, loadTaxonomyCatalog, readRunnerParameters, resolveSiteUrl } from "./data.js";
 import { escapeHtml } from "./question-renderer.js";
 import { newSeed } from "./random.js";
 import { selectSetQuestions } from "./selection.js";
@@ -106,8 +100,8 @@ class QuizApp {
     const source: QuizSource = { type: "set", id: setId };
     const activeSessions = this.store.getActiveSessions(source);
     const activeSession = seedParam
-      ? (activeSessions.find(s => s.seed === seedParam) ?? null)
-      : (activeSessions[0] ?? null);
+      ? activeSessions.find(s => s.seed === seedParam) ?? null
+      : activeSessions[0] ?? null;
 
     const setMeta = this.manifest.sets[setId];
     if (!setMeta) {
@@ -151,15 +145,9 @@ class QuizApp {
     }
 
     if (!bundle.runnable) {
-      const runnableActiveSession = this.store
-        .getActiveSessions(source)
-        .find(s => s.seed === seed) ?? activeSession;
+      const runnableActiveSession = this.store.getActiveSessions(source).find(s => s.seed === seed) ?? activeSession;
       if (runnableActiveSession) {
-        this.renderStaleSetNotice(
-          source,
-          bundle.unavailableReason ?? "题目不足或约束无法满足",
-          runnableActiveSession
-        );
+        this.renderStaleSetNotice(source, bundle.unavailableReason ?? "题目不足或约束无法满足", runnableActiveSession);
         return;
       }
       this.renderError(`测试集合暂不可用：${bundle.unavailableReason ?? "题目不足或约束无法满足"}`);
@@ -167,7 +155,7 @@ class QuizApp {
     }
 
     let taxonomy: TaxonomyCatalog | undefined;
-    if (bundle.set.selection.type === "query" && this.manifest.catalogs.taxonomy) {
+    if (this.manifest.catalogs.taxonomy) {
       try {
         taxonomy = await loadTaxonomyCatalog(this.manifestUrl, this.manifest.catalogs.taxonomy, this.abort.signal);
       } catch {
@@ -187,6 +175,7 @@ class QuizApp {
       manifestUrl: this.manifestUrl,
       bundle,
       questions,
+      taxonomy,
       seed,
       source,
       store: this.store,
@@ -205,6 +194,7 @@ class QuizApp {
           manifestUrl: this.manifestUrl,
           bundle: adhocBundle,
           questions: adhocQuestions,
+          taxonomy,
           seed: newSeed(),
           source: { type: "adhoc", questionIds: adhocQuestions.map(q => q.id) },
           store: this.store,
@@ -247,9 +237,7 @@ class QuizApp {
 
     // 1. Active sessions section (only set sources)
     const allActive = this.store.getAllActiveSessions();
-    const activeEntries = Object.entries(allActive).filter(([_, list]) =>
-      list.some(s => s.source.type === "set")
-    );
+    const activeEntries = Object.entries(allActive).filter(([_, list]) => list.some(s => s.source.type === "set"));
 
     let activeHtml = "";
     if (activeEntries.length > 0) {
@@ -266,12 +254,16 @@ class QuizApp {
                     const title = this.manifest.sets[setId]?.title ?? setId;
                     const answered = Object.values(s.answers).filter(v => v != null).length;
                     const total = s.questionRefs.length;
-                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(s.seed)}`;
+                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(
+                      setId
+                    )}&seed=${encodeURIComponent(s.seed)}`;
                     return `
                       <div class="plw-quiz-landing__card">
                         <div>
                           <h3>${escapeHtml(title)}</h3>
-                          <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(s.updatedAt).toLocaleDateString()}</p>
+                          <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(
+                      s.updatedAt
+                    ).toLocaleDateString()}</p>
                         </div>
                         <div class="plw-quiz-landing__links">
                           <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
@@ -287,7 +279,9 @@ class QuizApp {
     }
 
     // 2. Available sets section
-    const sets = Object.entries(this.manifest.sets).filter(([_, s]) => this.manifest.preview || s.status === "published");
+    const sets = Object.entries(this.manifest.sets).filter(
+      ([_, s]) => this.manifest.preview || s.status === "published"
+    );
 
     const setsHtml = `
       <section class="plw-quiz-landing__sets">
@@ -364,7 +358,9 @@ class QuizApp {
     container.innerHTML = `
       <div class="plw-quiz-error" role="alert" style="max-width: 600px; margin: 2rem auto;">
         <h2>作答进度已失效</h2>
-        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${session.questionRefs.length} 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
+        <p>你之前在此测试中已作答 <strong>${answeredCount}</strong> / ${
+      session.questionRefs.length
+    } 题，但由于<strong>${escapeHtml(reason)}</strong>，先前的本地作答记录已不能继续恢复。</p>
         <div class="plw-quiz-modal__actions" style="margin-top: 1.5rem; justify-content: center; gap: 1rem;">
           <button type="button" class="plw-quiz-btn--danger" id="plw-btn-discard-stale">
             清空此失效进度并返回
@@ -421,9 +417,7 @@ class HomeSurface {
       }
 
       const allActive = store.getAllActiveSessions();
-      const activeEntries = Object.entries(allActive).filter(([_, list]) =>
-        list.some(s => s.source.type === "set")
-      );
+      const activeEntries = Object.entries(allActive).filter(([_, list]) => list.some(s => s.source.type === "set"));
 
       this.root.innerHTML = "";
       const container = document.createElement("div");
@@ -456,7 +450,9 @@ class HomeSurface {
                     const title = manifest.sets[setId]?.title ?? setId;
                     const answered = Object.values(s.answers).filter(v => v != null).length;
                     const total = s.questionRefs.length;
-                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(s.seed)}`;
+                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(
+                      setId
+                    )}&seed=${encodeURIComponent(s.seed)}`;
                     return `
                       <div class="plw-quiz-landing__card">
                         <div>
@@ -480,7 +476,10 @@ class HomeSurface {
       const featuredConfig = this.root.dataset.featuredSets;
       let targetSetEntries: [string, (typeof manifest.sets)[string]][];
       if (featuredConfig) {
-        const configuredIds = featuredConfig.split(",").map(s => s.trim()).filter(Boolean);
+        const configuredIds = featuredConfig
+          .split(",")
+          .map(s => s.trim())
+          .filter(Boolean);
         targetSetEntries = configuredIds
           .map(id => [id, manifest.sets[id]] as [string, (typeof manifest.sets)[string]])
           .filter(([_, s]) => s && (manifest.preview || s.status === "published"));
@@ -638,4 +637,3 @@ if (typeof window !== "undefined") {
   });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 }
-

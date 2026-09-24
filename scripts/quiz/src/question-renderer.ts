@@ -149,22 +149,67 @@ export interface FeedbackOptions {
   uncertain?: boolean;
   reportUrl?: string;
   showSolution?: boolean;
+  announce?: boolean;
+}
+
+function answerLabel(question: Question, answer: UserAnswer): string {
+  if (answer === null) return "未作答";
+  if (question.type === "single_choice" || question.type === "multiple_choice") {
+    const ids = Array.isArray(answer) ? answer : typeof answer === "string" ? [answer] : [];
+    if (ids.length === 0) return "未作答";
+    return `<ul class="plw-quiz-answer-list">${ids
+      .map(id => {
+        const index = question.choices.findIndex(choice => choice.id === id);
+        const choice = question.choices[index];
+        return `<li><strong>${index >= 0 ? `选项 ${String.fromCharCode(65 + index)}` : escapeHtml(id)}</strong>${
+          choice ? choice.contentHtml : ""
+        }</li>`;
+      })
+      .join("")}</ul>`;
+  }
+  if (question.type === "true_false") return answer === true ? "正确" : "错误";
+  if (typeof answer !== "object" || Array.isArray(answer)) return "未作答";
+  return `${escapeHtml(answer.value || "未填写数值")}${
+    answer.unit ? ` ${escapeHtml(answer.unit)}` : question.answer.unit.required ? "（未选择单位）" : ""
+  }`;
 }
 
 export function renderFeedback(options: FeedbackOptions): HTMLElement {
-  const { question, answer, uncertain = false, reportUrl, showSolution = true } = options;
+  const { question, answer, uncertain = false, reportUrl, showSolution = true, announce = true } = options;
   const result = makeResult(question, answer, uncertain);
   const area = document.createElement("div");
-  area.className = result.correct ? "plw-quiz-feedback is-correct" : "plw-quiz-feedback is-incorrect";
-  area.setAttribute("role", "status");
+  area.className = `plw-quiz-feedback ${
+    result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+  }`;
+  if (announce) area.setAttribute("role", "status");
 
   let targeted = "";
-  if (question.feedback?.choicesHtml && typeof answer === "string") {
-    const choiceFb = question.feedback.choicesHtml[answer];
-    if (choiceFb) {
-      targeted = `<p><strong>针对你的选择：</strong>${choiceFb}</p>`;
-    }
+  if (question.feedback?.choicesHtml && (typeof answer === "string" || Array.isArray(answer))) {
+    const selected = Array.isArray(answer) ? answer : [answer];
+    const explanations = selected
+      .map(id =>
+        question.feedback?.choicesHtml?.[id]
+          ? `<li><strong>${escapeHtml(id)}：</strong>${question.feedback.choicesHtml[id]}</li>`
+          : ""
+      )
+      .filter(Boolean);
+    if (explanations.length > 0)
+      targeted = `<div class="plw-quiz-choice-feedback"><strong>所选选项解析：</strong><ul>${explanations.join(
+        ""
+      )}</ul></div>`;
   }
+
+  const correctAnswer: UserAnswer =
+    question.type === "single_choice"
+      ? question.answer.choice
+      : question.type === "multiple_choice"
+      ? question.answer.choices
+      : question.type === "true_false"
+      ? question.answer.value
+      : {
+          value: String(question.answer.value),
+          unit: question.answer.unit.canonical ?? question.answer.unit.accepted[0] ?? ""
+        };
 
   const solutionBlock = showSolution
     ? `<details class="plw-quiz-solution-details">
@@ -183,7 +228,11 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
     : question.feedback?.incorrectHtml ?? defaultFeedback;
 
   area.innerHTML = `
-    <h3>${result.correct ? "回答正确" : "需要复习"}</h3>
+    <h3 tabindex="-1">${result.correct ? "回答正确" : result.unanswered ? "未作答" : "需要复习"}</h3>
+    <div class="plw-quiz-answer-comparison">
+      <div><strong>你的答案：</strong>${answerLabel(question, answer)}</div>
+      <div><strong>正确答案：</strong>${answerLabel(question, correctAnswer)}</div>
+    </div>
     ${targeted}
     <div class="plw-quiz-feedback-text">${feedbackHtml}</div>
     ${solutionBlock}

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  countProgress,
   gradeQuestion,
   isAnswerComplete,
   makeResult,
@@ -63,11 +64,31 @@ test("numeric answers become complete only after a valid value and required unit
   assert.equal(isAnswerComplete(numeric, { value: "10", unit: "" }), false);
   assert.equal(isAnswerComplete(numeric, { value: "1/2", unit: "m" }), false);
   assert.equal(isAnswerComplete(numeric, { value: "10", unit: "m" }), true);
+  assert.equal(makeResult(numeric, { value: "10", unit: "" }, false).unanswered, true);
+  assert.deepEqual(countProgress([numeric], { q: { value: "10", unit: "" } }, { q: true }), {
+    answered: 0,
+    unanswered: 1,
+    uncertain: 1
+  });
 });
 
 test("concept and objective summaries aggregate correctly", () => {
-  const q1 = { ...base, id: "q1", type: "single_choice", answer: { choice: "A" }, conceptIds: ["c1", "c2"], objectiveIds: ["o1"] } as unknown as Question;
-  const q2 = { ...base, id: "q2", type: "single_choice", answer: { choice: "B" }, conceptIds: ["c2"], objectiveIds: ["o2"] } as unknown as Question;
+  const q1 = {
+    ...base,
+    id: "q1",
+    type: "single_choice",
+    answer: { choice: "A" },
+    conceptIds: ["c1", "c2"],
+    objectiveIds: ["o1"]
+  } as unknown as Question;
+  const q2 = {
+    ...base,
+    id: "q2",
+    type: "single_choice",
+    answer: { choice: "B" },
+    conceptIds: ["c2"],
+    objectiveIds: ["o2"]
+  } as unknown as Question;
 
   const r1 = makeResult(q1, "A", false);
   const r2 = makeResult(q2, "wrong", true);

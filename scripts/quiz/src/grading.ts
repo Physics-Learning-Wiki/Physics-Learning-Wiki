@@ -46,8 +46,21 @@ export function makeResult(question: Question, answer: UserAnswer, uncertain: bo
     objectiveIds: question.objectiveIds ?? [],
     answer,
     correct: gradeQuestion(question, answer),
-    unanswered: answer === null,
+    unanswered: !isAnswerComplete(question, answer),
     uncertain
+  };
+}
+
+export function countProgress(
+  questions: readonly Question[],
+  answers: Readonly<Record<string, UserAnswer>>,
+  uncertain: Readonly<Record<string, boolean>>
+): { answered: number; unanswered: number; uncertain: number } {
+  const answered = questions.filter(question => isAnswerComplete(question, answers[question.id] ?? null)).length;
+  return {
+    answered,
+    unanswered: questions.length - answered,
+    uncertain: questions.filter(question => Boolean(uncertain[question.id])).length
   };
 }
 
