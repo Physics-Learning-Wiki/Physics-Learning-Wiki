@@ -1,24 +1,20 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-# Install uv if not available (Netlify should have it via pip install uv)
-if ! command -v uv &> /dev/null; then
-    pip install uv
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "$REPO_ROOT"
+
+if ! command -v uv >/dev/null 2>&1; then
+  pip install uv
 fi
 
-# Install dependencies
-uv sync --index-url ${PYPI_MIRROR:-https://pypi.org/simple/}
-yarn --frozen-lockfile
+uv sync --index-url "${PYPI_MIRROR:-https://pypi.org/simple/}"
 
-# Install themes and etc.
-PREBUILD_NETLIFY=1 scripts/pre-build/pre-build.sh
+# Netlify may export NODE_ENV=production, which makes Yarn Classic omit the
+# devDependencies required by Pagefind, Sharp, esbuild, and Playwright tooling.
+unset NODE_ENV
+corepack yarn install --frozen-lockfile
 
-uv run mkdocs build -v
-
-# Pagefind must index the original article markup before MathJax SSR.
-yarn search:index
-
-# Post-build scripts
-export NODE_OPTIONS="--max_old_space_size=3072"
-node --loader ts-node/esm scripts/post-build/html-postprocess.ts commits-info math external-links
+PREBUILD_NETLIFY=1 bash scripts/build/build-site.sh

@@ -2,7 +2,7 @@
 // Last generated: auto
 const NAV_TREE = [
   {
-    "label": "提交你的物理知识"
+    "label": "submit"
   },
   {
     "label": "index",
@@ -30,6 +30,20 @@ const NAV_TREE = [
       },
       {
         "label": "strategy"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "electromagnetism"
+      },
+      {
+        "label": "mathematical-methods-for-physics"
+      },
+      {
+        "label": "theoretical-mechanics"
       }
     ]
   },
@@ -94,6 +108,9 @@ const NAV_TREE = [
         "label": "admonitions"
       },
       {
+        "label": "contributors"
+      },
+      {
         "label": "faq"
       },
       {
@@ -155,10 +172,73 @@ const NAV_TREE = [
         ]
       },
       {
+        "label": "complex-analysis",
+        "children": [
+          {
+            "label": "analytic-functions"
+          },
+          {
+            "label": "complex-numbers"
+          },
+          {
+            "label": "contour-integrals"
+          },
+          {
+            "label": "residue-calculus"
+          },
+          {
+            "label": "series-expansion"
+          }
+        ]
+      },
+      {
+        "label": "differential-equations",
+        "children": [
+          {
+            "label": "ode-intro"
+          },
+          {
+            "label": "pde-intro"
+          },
+          {
+            "label": "second-order-ode"
+          },
+          {
+            "label": "separation-of-variables"
+          },
+          {
+            "label": "series-solution"
+          }
+        ]
+      },
+      {
+        "label": "eigenfunction-methods",
+        "children": [
+          {
+            "label": "greens-function"
+          },
+          {
+            "label": "sturm-liouville"
+          }
+        ]
+      },
+      {
         "label": "linear-algebra",
         "children": [
           {
+            "label": "eigenvalues"
+          },
+          {
+            "label": "hermitian-unitary"
+          },
+          {
+            "label": "inner-product"
+          },
+          {
             "label": "matrix"
+          },
+          {
+            "label": "operators"
           },
           {
             "label": "space"
@@ -169,34 +249,82 @@ const NAV_TREE = [
         "label": "probability-statistics",
         "children": [
           {
-            "label": "方差分析及回归分析"
+            "label": "analysis-of-variance-and-regression-analysis"
           },
           {
-            "label": "附表"
+            "label": "appendix-tables"
           },
           {
-            "label": "概率论的基本概念"
+            "label": "basic-concepts"
           },
           {
-            "label": "随机变量的数字特征"
+            "label": "characteristic-values-of-random-variables"
           },
           {
-            "label": "假设检验"
+            "label": "hypothesis-testing"
           },
           {
-            "label": "大数定律及中心极限定理"
+            "label": "law-of-large-numbers-and-central-limit-theorem"
           },
           {
-            "label": "多维随机变量及其分布"
+            "label": "multivariate-random-variables-and-distributions"
           },
           {
-            "label": "一维随机变量及其分布"
+            "label": "one-dimensional-random-variables-and-distributions"
           },
           {
-            "label": "参数估计"
+            "label": "parameter-estimation"
           },
           {
-            "label": "样本及抽样分布"
+            "label": "sample-and-sampling-distribution"
+          }
+        ]
+      },
+      {
+        "label": "special-functions",
+        "children": [
+          {
+            "label": "bessel"
+          },
+          {
+            "label": "gamma-beta"
+          },
+          {
+            "label": "hermite"
+          },
+          {
+            "label": "laguerre"
+          },
+          {
+            "label": "legendre"
+          },
+          {
+            "label": "spherical-harmonics"
+          }
+        ]
+      },
+      {
+        "label": "transforms",
+        "children": [
+          {
+            "label": "delta-function"
+          },
+          {
+            "label": "fourier-series"
+          },
+          {
+            "label": "fourier-transform"
+          },
+          {
+            "label": "laplace-transform"
+          }
+        ]
+      },
+      {
+        "label": "variational-methods",
+        "children": [
+          {
+            "label": "calculus-of-variations"
           }
         ]
       },
@@ -205,6 +333,9 @@ const NAV_TREE = [
         "children": [
           {
             "label": "curvilinear-coordinates"
+          },
+          {
+            "label": "integral-theorems"
           },
           {
             "label": "operators"
@@ -240,10 +371,10 @@ const NAV_TREE = [
         "label": "dynamics",
         "children": [
           {
-            "label": "力的概念 (Force Concepts)"
+            "label": "force-concepts"
           },
           {
-            "label": "惯性力 (Inertial Forces)"
+            "label": "inertial-force"
           },
           {
             "label": "momentum-energy"
@@ -260,19 +391,19 @@ const NAV_TREE = [
         "label": "kinematics",
         "children": [
           {
-            "label": "基础概念（Basic Concepts）"
+            "label": "basic-concepts"
           },
           {
-            "label": "直线运动（Linear Motion）"
+            "label": "linear-motion"
           },
           {
-            "label": "抛体运动（Projectile Motion）"
+            "label": "projectile-motion"
           },
           {
             "label": "reference-frames"
           },
           {
-            "label": "匀变速直线运动（Uniformly Accelerated Motion）"
+            "label": "uniformly-accelerated-motion"
           }
         ]
       },
@@ -306,10 +437,13 @@ const NAV_TREE = [
         "label": "rigid-body",
         "children": [
           {
-            "label": "复摆 (Compound Pendulum)"
+            "label": "angular-momentum-conservation"
           },
           {
-            "label": "转动惯量 (Moment of Inertia)"
+            "label": "compound-pendulum"
+          },
+          {
+            "label": "moment-of-inertia"
           },
           {
             "label": "rigid-body"
@@ -382,13 +516,51 @@ const NAV_TREE = [
     ]
   },
   {
+    "label": "index",
+    "children": [
+      {
+        "label": "contribute"
+      },
+      {
+        "label": "play"
+      },
+      {
+        "label": "questions"
+      },
+      {
+        "label": "sets"
+      }
+    ]
+  },
+  {
     "label": "superpowers",
     "children": [
       {
         "label": "plans",
         "children": [
           {
-            "label": "降低贡献门槛 — 实现计划"
+            "label": "提交你的物理知识"
+          },
+          {
+            "label": "TURNSTILE_SECRET_KEY 和 GITHUB_TOKEN 通过 `wrangler secret put` 设置"
+          },
+          {
+            "label": "2026-05-28-edit-pages-ux-optimization"
+          },
+          {
+            "label": "热力学第二定律的表述和卡诺定理"
+          },
+          {
+            "label": "2026-06-11-clausius-entropy-free-energy"
+          },
+          {
+            "label": "2026-06-13-mkdocs-optimization"
+          },
+          {
+            "label": "热学第二章：麦克斯韦速率分布律 + 概率论基础 实现计划"
+          },
+          {
+            "label": "热学第四章补充与完善 实施计划"
           }
         ]
       },
@@ -396,41 +568,68 @@ const NAV_TREE = [
         "label": "specs",
         "children": [
           {
-            "label": "降低贡献门槛与调动贡献积极性 — 设计文档"
+            "label": "2026-05-25-lower-contribution-barrier-design"
+          },
+          {
+            "label": "TURNSTILE_SECRET_KEY 和 GITHUB_TOKEN 通过 `wrangler secret put` 设置，不写入配置文件"
+          },
+          {
+            "label": "2026-05-28-edit-pages-ux-optimization-design"
+          },
+          {
+            "label": "2026-06-04-second-law-and-carnot-theorem-design"
+          },
+          {
+            "label": "2026-06-11-clausius-entropy-free-energy-design"
+          },
+          {
+            "label": "2026-06-13-mkdocs-optimization-design"
+          },
+          {
+            "label": "热学第二章：麦克斯韦速率分布律 + 概率论基础 页面设计"
+          },
+          {
+            "label": "热学第四章补充与完善设计方案"
+          },
+          {
+            "label": "RFC: Physics Learning Wiki 信息架构与双层知识体系"
+          },
+          {
+            "label": "RFC: 《数学物理方法》课程路线与数学工具库 (math/) 重构规范"
           }
         ]
       }
     ]
   },
   {
-    "label": "热学与统计物理简介",
+    "label": "index",
     "children": [
       {
         "label": "thermodynamics-writing"
       },
       {
-        "label": "第一章 热学基本概念和物质聚集态",
+        "label": "index",
         "children": [
           {
-            "label": "化学键"
+            "label": "chemical-bond"
           },
           {
-            "label": "气体"
+            "label": "gas"
           },
           {
-            "label": "热量及其本质"
+            "label": "heat-and-its-nature"
           },
           {
-            "label": "液体"
+            "label": "liquid"
           },
           {
-            "label": "物质聚集态随状态参量的转化与共存"
+            "label": "phase-transitions-and-coexistence"
           },
           {
-            "label": "固体"
+            "label": "solid"
           },
           {
-            "label": "温度"
+            "label": "temperature"
           }
         ]
       },
@@ -444,7 +643,7 @@ const NAV_TREE = [
             "label": "bose-gas"
           },
           {
-            "label": "能均分定理与热容量"
+            "label": "equipartition-theorem-and-heat-capacity"
           },
           {
             "label": "fermi-gas"
@@ -461,19 +660,36 @@ const NAV_TREE = [
         ]
       },
       {
-        "label": "第三章 热力学第一定律",
+        "label": "index",
         "children": [
           {
-            "label": "循环过程和卡诺循环"
+            "label": "cycle-process-and-carnot-cycle"
           },
           {
-            "label": "从能量守恒到热力学第一定律"
+            "label": "energy-conservation-to-first-law"
           },
           {
-            "label": "热力学第一定律对理想气体的应用"
+            "label": "first-law-ideal-gas"
           },
           {
-            "label": "气体的热容、内能和焓"
+            "label": "gas-heat-capacity-internal-energy-enthalpy"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "carnot-theorem-applications"
+          },
+          {
+            "label": "clausius-inequality-and-entropy"
+          },
+          {
+            "label": "second-law-and-carnot-theorem"
+          },
+          {
+            "label": "thermal-equilibrium-and-free-energy"
           }
         ]
       }
@@ -483,9 +699,6 @@ const NAV_TREE = [
     "label": "index",
     "children": [
       {
-        "label": "latex"
-      },
-      {
         "label": "plotting"
       },
       {
@@ -493,6 +706,26 @@ const NAV_TREE = [
       },
       {
         "label": "simulation"
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "figures-tables-bib"
+          },
+          {
+            "label": "installation"
+          },
+          {
+            "label": "math-and-physics"
+          },
+          {
+            "label": "templates"
+          },
+          {
+            "label": "troubleshooting"
+          }
+        ]
       }
     ]
   }

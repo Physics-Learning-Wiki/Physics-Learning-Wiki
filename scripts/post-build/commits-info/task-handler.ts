@@ -9,54 +9,31 @@ import { TaskHandler, log } from "../html-postprocess.js";
 
 const execFileAsync = util.promisify(child_process.execFile);
 
-async function readCommitsLog(sourceFilePath: string): Promise<{ commitDate: Date; authorEmails: string[] }[]> {
-  const { stdout: log } = await execFileAsync(
-    "bash",
-    [
-      "-c",
-      /**
-       * Format:
-       *
-       * >Date
-       * <AuthorEmail
-       * <CoAuthorEmail
-       * <...
-       * >Date
-       * <AuthorEmail
-       * <...
-       */
-      /**
-       * Regex explanation:
-       * - ^((>.+)|(<.+)|  Co-Authored-By: .+?(<.+)>): Matches lines in the `git log` output.
-       *   - (>.+): Matches lines starting with '>' (e.g., commit date lines).
-       *   - (<.+): Matches lines starting with '<' (e.g., author or co-author email lines).
-       *   - (  Co-Authored-By: .+?(<.+)>): Matches 'Co-Authored-By' lines and captures the email in '<>'.
-       * - \\2\\3\\4: Replaces the matched line with the content of the second, third, or fourth capture group.
-       * - The `pi` flags:
-       *   - `p`: Prints the substituted line.
-       *   - `i`: Makes the regex case-insensitive.
-       */
-      `git log --follow '--pretty=format:>%cD%n<%aE%n%w(0,2,2)%b' $FILENAME | sed -nE 's/^((>.+)|(<.+)|  Co-Authored-By: .+?(<.+)>)/\\2\\3\\4/pi'`
-    ],
-    {
-      env: {
-        ...process.env,
-        FILENAME: `docs${sourceFilePath}`
-      }
-    }
-  );
+export function parseCommitsLog(log: string): { commitDate: Date; authorEmails: string[] }[] {
+  return log
+    .split("\x1e")
+    .filter(Boolean)
+    .flatMap(record => {
+      const [dateLine, authorLine, message = ""] = record.split("\x00");
+      if (!dateLine || !authorLine) return [];
 
-  const commits = log.trim().slice(1).split("\n>");
-  return commits.map(commit => {
-    const [dateLine, ...emailLines] = commit
-      .split("\n")
-      .map(line => line.trim())
-      .filter(Boolean);
-    return {
-      commitDate: new Date(dateLine),
-      authorEmails: Array.from(new Set(emailLines.map(emailLine => emailLine.slice(1).toLowerCase())))
-    };
-  });
+      const coAuthors = Array.from(message.matchAll(/^\s*Co-Authored-By:\s*.*<([^<>]+)>\s*$/gim), match => match[1]);
+      const authorEmails = Array.from(
+        new Set([authorLine, ...coAuthors].map(email => email.trim().toLowerCase()).filter(Boolean))
+      );
+      return [{ commitDate: new Date(dateLine.trim()), authorEmails }];
+    });
+}
+
+async function readCommitsLog(sourceFilePath: string): Promise<{ commitDate: Date; authorEmails: string[] }[]> {
+  const relativeSourcePath = sourceFilePath.replace(/^\/+/, "");
+  const repositoryPath = "docs/" + relativeSourcePath;
+  const { stdout } = await execFileAsync(
+    "git",
+    ["log", "--follow", "--pretty=format:%x1e%cD%x00%aE%x00%b", "--", repositoryPath],
+    { maxBuffer: 20 * 1024 * 1024 }
+  );
+  return parseCommitsLog(stdout);
 }
 
 const GITHUB_REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki";
@@ -68,10 +45,12 @@ const AUTHORS_EXCLUDED = ["Physics-Learning-Wiki"];
 export const taskHandler = new (class implements TaskHandler<AuthorUserMap> {
   async globalInitialize() {
     log("Ensuring full Git history");
-    child_process.execSync("(git rev-parse --is-shallow-repository | grep false >/dev/null) || git fetch --unshallow", {
-      stdio: "inherit"
-    });
-
+    const isShallowRepository = child_process
+      .execFileSync("git", ["rev-parse", "--is-shallow-repository"], { encoding: "utf8" })
+      .trim();
+    if (isShallowRepository === "true") {
+      child_process.execFileSync("git", ["fetch", "--unshallow"], { stdio: "inherit" });
+    }
     log(`Fetching authors cache from ${chalk.yellow(AUTHORS_CACHE_URL)}`);
     const authorsCache = (await (await fetch(AUTHORS_CACHE_URL)).json()) as AuthorsCache;
 

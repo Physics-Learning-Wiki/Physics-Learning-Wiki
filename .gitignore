@@ -4,6 +4,7 @@ site/
 test-results/
 playwright-report/
 docs/_generated/question-bank/
+site-performance-report.json
 .vscode/
 .debug/
 .DS_Store

@@ -21,6 +21,7 @@
     "runtime:test": "node --loader ts-node/esm --test scripts/runtime/tests/loader.test.ts scripts/runtime/tests/search.test.ts",
     "features:build": "node scripts/features/build.mjs",
     "features:build:check": "node scripts/features/build.mjs --check",
+    "site:build": "bash scripts/build/build-site.sh",
     "features:typecheck": "tsc -p tsconfig.features.json",
     "e2e:smoke": "playwright test tests/e2e/smoke.spec.ts",
     "e2e:quiz": "playwright test tests/e2e/quiz.spec.ts",

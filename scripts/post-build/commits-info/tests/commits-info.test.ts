@@ -1,7 +1,19 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { parse } from "node-html-parser";
-import { taskHandler } from "../task-handler.js";
+import { parseCommitsLog, taskHandler } from "../task-handler.js";
+
+test("commits-info parses author and co-author emails without a shell pipeline", () => {
+  const commits = parseCommitsLog(
+    "\x1eWed, 02 Oct 2002 08:00:00 +0000\x00Alice@example.com\x00Improve the page\n\n  Co-Authored-By: Bob Example <BOB@example.com>\n" +
+      "\x1eTue, 01 Oct 2002 08:00:00 +0000\x00Carol@example.com\x00Fix a typo\n"
+  );
+
+  assert.equal(commits.length, 2);
+  assert.equal(commits[0].commitDate.toISOString(), "2002-10-02T08:00:00.000Z");
+  assert.deepEqual(commits[0].authorEmails, ["alice@example.com", "bob@example.com"]);
+  assert.deepEqual(commits[1].authorEmails, ["carol@example.com"]);
+});
 
 test("commits-info process skips 404 page without .page_edit_url", async () => {
   const html = parse(`
