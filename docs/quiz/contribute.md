@@ -1,18 +1,16 @@
 ---
 title: 贡献题目
-description: 为 Physics Learning Wiki 贡献新的自测题目与解析，参与开放物理题库建设。
+description: 为 Physics Learning Wiki 贡献新的自测题目与解析，参与开放物理题库建设．
 comments: false
 hide:
   - toc
 ---
 
-# 贡献物理小测题目
+欢迎向 Physics Learning Wiki 贡献自测题目！无论是典型例题、概念辨析、图像分析还是原创练习，入库后都将成为全站自测与针对性练习资源的一部分．
 
-欢迎向 Physics Learning Wiki 贡献自测题目！无论是典型例题、概念辨析、图像分析还是原创练习，入库后都将成为全站自测与针对性练习资源的一部分。
+> 提示：题型、题干、正确答案与完整解析为必填项．如果您不确定题目属于哪个物理主题或核心概念，相关分类选项均可 **留空**，后续将由物理编辑组在审核时整理入库．
 
-> 提示：题型、题干、正确答案与完整解析为必填项。如果您不确定题目属于哪个物理主题或核心概念，相关分类选项均可**留空**，后续将由物理编辑组在审核时整理入库。
-
----
+***
 
 <form id="plw-question-contribute-form" method="post" onsubmit="return false">
   <div class="submit-field">
@@ -47,7 +45,7 @@ hide:
 
   <fieldset id="question-fields" class="submit-question-fields">
     <legend>题目属性与反馈（选填）</legend>
-    <p class="submit-hint">以下属性均可留空，由维护者统一整理并归入知识图谱。</p>
+    <p class="submit-hint">以下属性均可留空，由维护者统一整理并归入知识图谱．</p>
 
     <div class="submit-field q-submit-choice-only">
       <label for="q-submit-choice-feedback">选项逐项反馈（每行「选项标号|为什么该选项正确或错误」）</label>
@@ -56,12 +54,12 @@ hide:
 
     <div class="submit-field">
       <label for="q-submit-correct-feedback">全局答对反馈</label>
-      <input type="text" id="q-submit-correct-feedback" placeholder="例如：回答正确！很好地掌握了这一物理概念。">
+      <input type="text" id="q-submit-correct-feedback" placeholder="例如：回答正确！很好地掌握了这一物理概念．">
     </div>
 
     <div class="submit-field">
       <label for="q-submit-incorrect-feedback">全局答错反馈</label>
-      <input type="text" id="q-submit-incorrect-feedback" placeholder="例如：回答错误，请注意区分动量与动能守恒条件。">
+      <input type="text" id="q-submit-incorrect-feedback" placeholder="例如：回答错误，请注意区分动量与动能守恒条件．">
     </div>
 
     <div class="submit-question-grid">
@@ -71,12 +69,12 @@ hide:
           <option value="">-- 未指定（由维护者归类） --</option>
         </select>
       </div>
-
+      
       <div class="submit-field">
         <label for="q-submit-concepts">核心概念 ID</label>
         <input type="text" id="q-submit-concepts" placeholder="例如 mechanics.newton.inertia（多个逗号分隔）">
       </div>
-
+      
       <div class="submit-field">
         <label for="q-submit-diff">难度</label>
         <select id="q-submit-diff">
@@ -86,7 +84,7 @@ hide:
           <option value="3">难度 3 (★★★)</option>
         </select>
       </div>
-
+      
       <div class="submit-field">
         <label for="q-submit-cognitive">认知层级</label>
         <select id="q-submit-cognitive">
@@ -97,7 +95,7 @@ hide:
           <option value="analyze">分析 (Analyze)</option>
         </select>
       </div>
-
+      
       <div class="submit-field">
         <label for="q-submit-style">考查风格</label>
         <select id="q-submit-style">
@@ -108,7 +106,7 @@ hide:
           <option value="modeling">物理建模 (Modeling)</option>
         </select>
       </div>
-
+      
       <div class="submit-field">
         <label for="q-submit-seconds">预计作答时间（秒）</label>
         <input type="number" id="q-submit-seconds" min="10" max="1800" placeholder="例如 60">
@@ -125,6 +123,7 @@ hide:
     <label class="submit-checkbox-label">
       <input type="checkbox" id="q-submit-ai"> 本题编写或润色过程中使用了 AI 辅助工具，并如实披露
     </label>
+
   </fieldset>
 
   <div class="submit-field">
@@ -148,7 +147,7 @@ hide:
   <div class="submit-field">
     <label class="submit-checkbox-label">
       <input type="checkbox" id="q-submit-license" required>
-      我确认本题为原创内容或符合知识共享协议，并同意按 <strong>CC BY-SA 4.0</strong> 许可协议将内容公开发布到 Physics Learning Wiki 题库。 <span class="submit-required">*</span>
+      我确认本题为原创内容或符合知识共享协议，并同意按 <strong>CC BY-SA 4.0</strong> 许可协议将内容公开发布到 Physics Learning Wiki 题库． <span class="submit-required">*</span>
     </label>
   </div>
 
@@ -164,7 +163,7 @@ hide:
 
 <div id="q-submit-success" style="display: none;" class="submit-success-card">
   <h2>🎉 题目投稿已成功提交！</h2>
-  <p>感谢您对开放物理题库的贡献！编辑组将在 3-5 个工作日内进行同行审阅、分类整理并合并入库。您可以保存下方 Issue 链接关注审阅进展：</p>
+  <p>感谢您对开放物理题库的贡献！编辑组将在 3-5 个工作日内进行同行审阅、分类整理并合并入库．您可以保存下方 Issue 链接关注审阅进展：</p>
   <p><a id="q-submit-issue-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
   <p>如果您拥有 GitHub 账号，欢迎在 Issue 中参与交流讨论！</p>
   <p><a class="md-button md-button--primary" href="../../quiz/">返回知识小测首页</a></p>

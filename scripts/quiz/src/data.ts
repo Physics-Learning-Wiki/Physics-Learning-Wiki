@@ -52,14 +52,26 @@ export async function loadSetBundle(manifestUrl: URL, relative: string, signal: 
   return bundle;
 }
 
-export async function loadSetCatalog(manifestUrl: URL, relative: string, signal: AbortSignal): Promise<SetCatalogItem[]> {
+export async function loadSetCatalog(
+  manifestUrl: URL,
+  relative: string,
+  signal: AbortSignal
+): Promise<SetCatalogItem[]> {
   return await fetchJson<SetCatalogItem[]>(new URL(relative, manifestUrl), signal);
 }
 
-export async function loadTaxonomyCatalog(manifestUrl: URL, relative: string, signal: AbortSignal): Promise<TaxonomyCatalog> {
+export async function loadTaxonomyCatalog(
+  manifestUrl: URL,
+  relative: string,
+  signal: AbortSignal
+): Promise<TaxonomyCatalog> {
   return await fetchJson<TaxonomyCatalog>(new URL(relative, manifestUrl), signal);
 }
 
-export async function loadQuestionCatalog(manifestUrl: URL, relative: string, signal: AbortSignal): Promise<Question[]> {
+export async function loadQuestionCatalog(
+  manifestUrl: URL,
+  relative: string,
+  signal: AbortSignal
+): Promise<Question[]> {
   return await fetchJson<Question[]>(new URL(relative, manifestUrl), signal);
 }

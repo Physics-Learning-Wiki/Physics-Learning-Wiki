@@ -245,13 +245,14 @@ test("saveAttempt is idempotent on sessionId and removes active session", () => 
 test("deep storage guards reject malformed preferences, attempts, and sessions", () => {
   // Corrupt preferences
   const badPrefStorage = {
-    getItem: () => JSON.stringify({
-      schemaVersion: 2,
-      activeSessions: {},
-      attempts: [],
-      wrongQuestions: {},
-      preferences: { restoreSession: "invalid" }
-    }),
+    getItem: () =>
+      JSON.stringify({
+        schemaVersion: 2,
+        activeSessions: {},
+        attempts: [],
+        wrongQuestions: {},
+        preferences: { restoreSession: "invalid" }
+      }),
     setItem: () => {}
   };
   const store1 = new QuizStore(badPrefStorage);
@@ -259,24 +260,25 @@ test("deep storage guards reject malformed preferences, attempts, and sessions",
 
   // Corrupt attempt: questionResults element is not a valid QuestionResult
   const badAttemptStorage = {
-    getItem: () => JSON.stringify({
-      schemaVersion: 2,
-      activeSessions: {},
-      attempts: [
-        {
-          sessionId: "s1",
-          source: mockSource,
-          seed: "sd",
-          bankFingerprint: "fp",
-          completedAt: "2026-01-01T00:00:00Z",
-          score: 1,
-          total: 1,
-          questionResults: [{ questionId: "q1", invalid: true }]
-        }
-      ],
-      wrongQuestions: {},
-      preferences: { restoreSession: true }
-    }),
+    getItem: () =>
+      JSON.stringify({
+        schemaVersion: 2,
+        activeSessions: {},
+        attempts: [
+          {
+            sessionId: "s1",
+            source: mockSource,
+            seed: "sd",
+            bankFingerprint: "fp",
+            completedAt: "2026-01-01T00:00:00Z",
+            score: 1,
+            total: 1,
+            questionResults: [{ questionId: "q1", invalid: true }]
+          }
+        ],
+        wrongQuestions: {},
+        preferences: { restoreSession: true }
+      }),
     setItem: () => {}
   };
   const store2 = new QuizStore(badAttemptStorage);
@@ -284,23 +286,23 @@ test("deep storage guards reject malformed preferences, attempts, and sessions",
 
   // Corrupt session: uncertain map contains non-boolean value
   const badSessionStorage = {
-    getItem: () => JSON.stringify({
-      schemaVersion: 2,
-      activeSessions: {
-        "set:mechanics.newton.quick": [
-          {
-            ...mockSession,
-            uncertain: { q1: "not-a-boolean" }
-          }
-        ]
-      },
-      attempts: [],
-      wrongQuestions: {},
-      preferences: { restoreSession: true }
-    }),
+    getItem: () =>
+      JSON.stringify({
+        schemaVersion: 2,
+        activeSessions: {
+          "set:mechanics.newton.quick": [
+            {
+              ...mockSession,
+              uncertain: { q1: "not-a-boolean" }
+            }
+          ]
+        },
+        attempts: [],
+        wrongQuestions: {},
+        preferences: { restoreSession: true }
+      }),
     setItem: () => {}
   };
   const store3 = new QuizStore(badSessionStorage);
   assert.equal(store3.getResetReason(), "corrupt_data");
 });
-

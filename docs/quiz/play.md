@@ -1,6 +1,6 @@
 ---
 title: 知识小测
-description: 知识小测答题运行器，支持即时自测与完整测验。
+description: 知识小测答题运行器，支持即时自测与完整测验．
 comments: false
 hide:
   - toc

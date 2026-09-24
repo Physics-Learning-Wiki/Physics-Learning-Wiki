@@ -22,10 +22,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const fixturePath = resolve(__dirname, "../../../tests/question_bank/fixtures/selection_v1_golden.json");
 const goldenFixture = JSON.parse(readFileSync(fixturePath, "utf-8"));
 
-const makeQuestion = (
-  id: string,
-  overrides: Partial<Question> = {}
-): Question =>
+const makeQuestion = (id: string, overrides: Partial<Question> = {}): Question =>
   ({
     id,
     version: 1,
@@ -140,7 +137,8 @@ test("shared golden fixture selection v1 (PRNG, shuffle, backtracking, diagnosti
     );
     for (const q of scRes.questions) {
       const expectedChoices = scCase.expected_choice_ids[q.id];
-      const actualChoices = (q.type === "single_choice" || q.type === "multiple_choice") ? q.choices.map(c => c.id) : undefined;
+      const actualChoices =
+        q.type === "single_choice" || q.type === "multiple_choice" ? q.choices.map(c => c.id) : undefined;
       assert.deepEqual(actualChoices, expectedChoices);
     }
   }
@@ -170,9 +168,7 @@ test("combinations generator evaluates lazily and avoids combinatorial blowup", 
   assert.equal(first.value.length, 20);
 
   // 3. Solver on large pool (30 items, need 15) finishes in milliseconds without OOM
-  const pool = Array.from({ length: 30 }, (_, i) =>
-    makeQuestion(`q-${i}`, { difficulty: 2 })
-  );
+  const pool = Array.from({ length: 30 }, (_, i) => makeQuestion(`q-${i}`, { difficulty: 2 }));
   const start = performance.now();
   const res = solveQuerySelectionDetailed(pool, {
     type: "query",
@@ -244,18 +240,9 @@ test("satisfiesConstraints checks min and max bounds", () => {
     makeQuestion("q3", { difficulty: 2, style: "conceptual" })
   ];
 
-  assert.equal(
-    satisfiesConstraints(qs, [{ field: "difficulty", values: [2], min: 2, max: 2 }]),
-    true
-  );
-  assert.equal(
-    satisfiesConstraints(qs, [{ field: "difficulty", values: [2], min: 3 }]),
-    false
-  );
-  assert.equal(
-    satisfiesConstraints(qs, [{ field: "style", values: ["conceptual"], min: 1, max: 2 }]),
-    true
-  );
+  assert.equal(satisfiesConstraints(qs, [{ field: "difficulty", values: [2], min: 2, max: 2 }]), true);
+  assert.equal(satisfiesConstraints(qs, [{ field: "difficulty", values: [2], min: 3 }]), false);
+  assert.equal(satisfiesConstraints(qs, [{ field: "style", values: ["conceptual"], min: 1, max: 2 }]), true);
 });
 
 test("overlapping slots backtracking solves optimally", () => {
@@ -312,11 +299,17 @@ test("fixed set order fixed vs shuffle", () => {
   const qs = [makeQuestion("q1"), makeQuestion("q2"), makeQuestion("q3")];
 
   const fixed = selectFixedSet(qs, { type: "fixed", questions: ["q3", "q1", "q2"], order: "fixed" }, "seed");
-  assert.deepEqual(fixed.map(q => q.id), ["q3", "q1", "q2"]);
+  assert.deepEqual(
+    fixed.map(q => q.id),
+    ["q3", "q1", "q2"]
+  );
 
   const shuffled1 = selectFixedSet(qs, { type: "fixed", questions: ["q1", "q2", "q3"], order: "shuffle" }, "seed-x");
   const shuffled2 = selectFixedSet(qs, { type: "fixed", questions: ["q1", "q2", "q3"], order: "shuffle" }, "seed-x");
-  assert.deepEqual(shuffled1.map(q => q.id), shuffled2.map(q => q.id));
+  assert.deepEqual(
+    shuffled1.map(q => q.id),
+    shuffled2.map(q => q.id)
+  );
 });
 
 test("choice shuffle is deterministic by seed and question id", () => {
@@ -337,7 +330,10 @@ test("choice shuffle is deterministic by seed and question id", () => {
   // Choice order fixed remains unchanged
   const qFixed = { ...q, choiceOrder: "fixed" as const };
   const resFixed = selectFixedSet([qFixed], { type: "fixed", questions: ["q1"], order: "fixed" }, "seed-1", "test-set");
-  assert.deepEqual((resFixed[0] as { choices?: Array<{ id: string }> }).choices?.map(c => c.id), ["A", "B", "C", "D"]);
+  assert.deepEqual(
+    (resFixed[0] as { choices?: Array<{ id: string }> }).choices?.map(c => c.id),
+    ["A", "B", "C", "D"]
+  );
 });
 
 test("selectSetQuestions respects runnable and throws on missing criteria", () => {
@@ -368,5 +364,8 @@ test("selectSetQuestions respects runnable and throws on missing criteria", () =
 test("selectRetry returns available questions in requested order", () => {
   const pool = [makeQuestion("q1"), makeQuestion("q2"), makeQuestion("q3")];
   const retry = selectRetry(pool, ["q3", "q1"], "set-1", "seed");
-  assert.deepEqual(retry.map(q => q.id), ["q3", "q1"]);
+  assert.deepEqual(
+    retry.map(q => q.id),
+    ["q3", "q1"]
+  );
 });

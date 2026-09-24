@@ -75,7 +75,10 @@ test("isSessionRestorable validates source, seed, fingerprint, algorithm version
   const session = createSession(mockSource, "seed-123", "fp-456", 1, false, mockQuestions);
 
   assert.equal(isSessionRestorable(session, mockSource, "seed-123", "fp-456", 1, mockQuestions), true);
-  assert.equal(isSessionRestorable(session, { type: "set", id: "other-set" }, "seed-123", "fp-456", 1, mockQuestions), false);
+  assert.equal(
+    isSessionRestorable(session, { type: "set", id: "other-set" }, "seed-123", "fp-456", 1, mockQuestions),
+    false
+  );
   assert.equal(isSessionRestorable(session, mockSource, "other-seed", "fp-456", 1, mockQuestions), false);
   assert.equal(isSessionRestorable(session, mockSource, "seed-123", "different-fp", 1, mockQuestions), false);
   assert.equal(isSessionRestorable(session, mockSource, "seed-123", "fp-456", 2, mockQuestions), false);
@@ -92,7 +95,14 @@ test("findRestorableSession finds matching candidate", () => {
   const found = findRestorableSession(candidates, mockSource, "seed-2", "fp-1", 1, mockQuestions);
   assert.equal(found, s2);
 
-  const notFound = findRestorableSession(candidates, { type: "set", id: "other-set" }, "seed-2", "fp-1", 1, mockQuestions);
+  const notFound = findRestorableSession(
+    candidates,
+    { type: "set", id: "other-set" },
+    "seed-2",
+    "fp-1",
+    1,
+    mockQuestions
+  );
   assert.equal(notFound, undefined);
 });
 
@@ -133,4 +143,3 @@ test("inspectSessionStatus distinguishes none, restorable, and stale with reason
     assert.ok(staleQVer.reason.includes("版本"));
   }
 });
-

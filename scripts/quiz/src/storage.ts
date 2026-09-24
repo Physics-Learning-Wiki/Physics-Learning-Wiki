@@ -243,9 +243,7 @@ export class QuizStore {
     const data = this.read();
     const key = sourceKey(session.source);
     const sessions = data.activeSessions[key] ?? [];
-    const filtered = sessions.filter(
-      item => item.sessionId !== session.sessionId && item.seed !== session.seed
-    );
+    const filtered = sessions.filter(item => item.sessionId !== session.sessionId && item.seed !== session.seed);
     data.activeSessions[key] = [session, ...filtered].slice(0, 5);
     this.write(data);
   }

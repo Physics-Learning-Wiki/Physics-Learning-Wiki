@@ -71,11 +71,7 @@ function matchesAnyOrAll(itemValues: readonly string[], criterion: FilterCriteri
   return true;
 }
 
-export function matchesFilters(
-  question: Question,
-  filters?: SetFilters,
-  taxonomy?: TaxonomyCatalog
-): boolean {
+export function matchesFilters(question: Question, filters?: SetFilters, taxonomy?: TaxonomyCatalog): boolean {
   if (!filters) return true;
 
   // 1. Topics
@@ -152,19 +148,14 @@ export function matchesFilters(
   return true;
 }
 
-export function satisfiesConstraints(
-  selected: readonly Question[],
-  constraints?: readonly SetConstraint[]
-): boolean {
+export function satisfiesConstraints(selected: readonly Question[], constraints?: readonly SetConstraint[]): boolean {
   if (!constraints || constraints.length === 0) return true;
 
   for (const c of constraints) {
     const values = c.values ?? [];
     let count = 0;
     for (const q of selected) {
-      const val =
-        (q as unknown as Record<string, unknown>)[c.field] ??
-        (c.field === "type" ? q.type : undefined);
+      const val = (q as unknown as Record<string, unknown>)[c.field] ?? (c.field === "type" ? q.type : undefined);
       if (values.includes(val as string | number)) {
         count += 1;
       }
@@ -201,9 +192,7 @@ export function canSatisfyConstraints(
     const values = c.values ?? [];
     let count = 0;
     for (const q of selected) {
-      const val =
-        (q as unknown as Record<string, unknown>)[c.field] ??
-        (c.field === "type" ? q.type : undefined);
+      const val = (q as unknown as Record<string, unknown>)[c.field] ?? (c.field === "type" ? q.type : undefined);
       if (values.includes(val as string | number)) {
         count += 1;
       }
@@ -427,18 +416,12 @@ export function selectFixedSet(
   }
 
   const ordered =
-    selection.order === "shuffle" && seed !== undefined
-      ? shuffle(questions, `${setId}:order:${seed}`)
-      : questions;
+    selection.order === "shuffle" && seed !== undefined ? shuffle(questions, `${setId}:order:${seed}`) : questions;
 
   return ordered.map(q => withShuffledChoices(q, setId, seed));
 }
 
-export function selectSetQuestions(
-  bundle: SetBundle,
-  seed: string,
-  taxonomy?: TaxonomyCatalog
-): Question[] {
+export function selectSetQuestions(bundle: SetBundle, seed: string, taxonomy?: TaxonomyCatalog): Question[] {
   if (!bundle.runnable) {
     throw new SelectionError(bundle.unavailableReason ?? "Set is not runnable");
   }
@@ -447,13 +430,7 @@ export function selectSetQuestions(
     return selectFixedSet(bundle.questions, bundle.set.selection, seed, bundle.set.id);
   }
 
-  const solution = solveQuerySelection(
-    bundle.questions,
-    bundle.set.selection,
-    taxonomy,
-    seed,
-    bundle.set.id
-  );
+  const solution = solveQuerySelection(bundle.questions, bundle.set.selection, taxonomy, seed, bundle.set.id);
   if (!solution) {
     throw new SelectionError("No candidate questions satisfy selection criteria");
   }
