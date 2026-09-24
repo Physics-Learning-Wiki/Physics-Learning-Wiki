@@ -76,6 +76,14 @@ def test_worker_produces_submission_v2() -> None:
     assert "schemaVersion: 1" not in content
 
 
+def test_submission_workflow_consumes_v2_payload() -> None:
+    workflow_file = ROOT / ".github" / "workflows" / "question-submission.yml"
+    assert workflow_file.exists()
+    content = workflow_file.read_text(encoding="utf-8")
+    assert "plw-question-submission-v2" in content
+    assert "plw-question-submission-v1" not in content
+
+
 def test_sets_have_schema_version_1() -> None:
     sets_dir = ROOT / "question-bank" / "sets"
     assert sets_dir.exists()
