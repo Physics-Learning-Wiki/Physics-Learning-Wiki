@@ -168,5 +168,3 @@ hide:
   <p>如果您拥有 GitHub 账号，欢迎在 Issue 中参与交流讨论！</p>
   <p><a class="md-button md-button--primary" href="../../quiz/">返回知识小测首页</a></p>
 </div>
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" defer></script>

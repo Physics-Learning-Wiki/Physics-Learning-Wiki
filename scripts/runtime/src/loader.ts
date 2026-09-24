@@ -269,6 +269,14 @@ const featureRegistry: FeatureRegistry = {
   quiz: {
     stylesheet: "_static/css/quiz.css?v=3",
     moduleUrl: "_static/js/features/quiz.js"
+  },
+  submit: {
+    stylesheet: "_static/css/features/submit.css?v=1",
+    moduleUrl: "_static/js/features/submit.js"
+  },
+  "question-contribute": {
+    stylesheet: "_static/css/features/question-contribute.css?v=1",
+    moduleUrl: "_static/js/features/question-contribute.js"
   }
 };
 

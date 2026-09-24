@@ -10,17 +10,22 @@ on:
       - 'tests/integration/**'
       - 'docs/quiz/**'
       - 'docs/_static/js/features/quiz.js'
+      - 'docs/_static/js/features/submit.js'
+      - 'docs/_static/js/features/question-contribute.js'
       - 'docs/_static/js/submit-form.js'
       - 'docs/_static/css/quiz.css'
       - 'docs/_static/css/submit-form.css'
+      - 'docs/_static/css/features/**'
       - 'docs/submit.md'
       - 'workers/submit.js'
       - 'workers/submit.test.js'
+      - 'workers/submit-ui.test.js'
       - 'docs/mechanics/kinematics/linear-motion.md'
       - 'docs/mechanics/dynamics/newton-laws.md'
       - 'hooks/question_bank.py'
       - 'hooks/runtime_features.py'
       - 'scripts/runtime/**'
+      - 'scripts/forms/**'
       - 'scripts/test/serve-site.mjs'
       - 'docs/_static/js/runtime-loader.js'
       - 'tests/e2e/**'
@@ -32,6 +37,7 @@ on:
       - 'yarn.lock'
       - 'tsconfig.quiz.json'
       - 'tsconfig.runtime.json'
+      - 'tsconfig.forms.json'
       - 'playwright.config.ts'
   push:
     branches: [main]
@@ -88,6 +94,9 @@ jobs:
           yarn post-build:test
           yarn submit:check
           yarn submit:test
+          yarn forms:typecheck
+          yarn forms:test
+          yarn forms:build:check
           yarn quiz:build:check
           yarn runtime:typecheck
           yarn runtime:test

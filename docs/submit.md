@@ -80,5 +80,3 @@
   <p><a id="submit-issue-link" href="#" target="_blank"></a></p>
   <p>如果你愿意注册 GitHub 账号并在 Issue 中参与讨论，修改会更高效．</p>
 </div>
-
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback" defer></script>

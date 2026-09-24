@@ -57,6 +57,9 @@ jobs:
           corepack yarn runtime:build:check
           corepack yarn submit:test
           corepack yarn submit:check
+          corepack yarn forms:typecheck
+          corepack yarn forms:test
+          corepack yarn forms:build:check
       - name: Page Build
         env:
           PLW_QUIZ_PREVIEW: ''
