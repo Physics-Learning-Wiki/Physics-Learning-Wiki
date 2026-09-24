@@ -9,7 +9,7 @@ on:
       - 'tests/question_bank/**'
       - 'tests/integration/**'
       - 'docs/quiz/**'
-      - 'docs/_static/js/quiz-app.js'
+      - 'docs/_static/js/features/quiz.js'
       - 'docs/_static/js/submit-form.js'
       - 'docs/_static/css/quiz.css'
       - 'docs/_static/css/submit-form.css'
@@ -98,6 +98,8 @@ jobs:
           uv run mkdocs build --clean
       - name: Run browser smoke test
         run: yarn e2e:smoke
+      - name: Run browser quiz test
+        run: yarn e2e:quiz
       - uses: actions/upload-artifact@v4
         with:
           name: question-bank-metrics

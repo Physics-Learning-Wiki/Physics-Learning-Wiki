@@ -87,6 +87,8 @@ jobs:
         run: corepack yarn e2e:smoke
       - name: Run browser search test
         run: corepack yarn e2e:search
+      - name: Run browser quiz test
+        run: corepack yarn e2e:quiz
       # - name: Check links
       #   uses: wjdp/htmltest-action@<pinned-ref>
       #   with:

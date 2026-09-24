@@ -1,3 +1,4 @@
+import "./abort-scope.test.js";
 import "./grading.test.js";
 import "./questions.test.js";
 import "./random.test.js";

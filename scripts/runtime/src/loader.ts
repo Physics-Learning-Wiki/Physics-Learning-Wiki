@@ -265,7 +265,11 @@ export function subscribeDocumentLifecycle(
 
 const featureRegistry: FeatureRegistry = {
   math: mathFeatureDefinition,
-  mermaid: { moduleUrl: "_static/js/features/mermaid.js" }
+  mermaid: { moduleUrl: "_static/js/features/mermaid.js" },
+  quiz: {
+    stylesheet: "_static/css/quiz.css?v=3",
+    moduleUrl: "_static/js/features/quiz.js"
+  }
 };
 
 function startRuntime() {

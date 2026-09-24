@@ -64,6 +64,35 @@ def test_production_build_contains_assessment_cards_and_no_drafts(
     assert (site / "quiz" / "questions" / "index.html").exists()
     assert (site / "quiz" / "contribute" / "index.html").exists()
     assert (site / "quiz" / "play" / "index.html").exists()
+    quiz_bundle = site / "_static" / "js" / "features" / "quiz.js"
+    assert quiz_bundle.exists()
+    assert "export" in quiz_bundle.read_text(encoding="utf-8")
+    assert not (site / "_static" / "js" / "quiz-app.js").exists()
+
+    for relative_path in (
+        "quiz/index.html",
+        "quiz/sets/index.html",
+        "quiz/questions/index.html",
+        "quiz/play/index.html",
+    ):
+        quiz_html = (site / relative_path).read_text(encoding="utf-8")
+        quiz_soup = BeautifulSoup(quiz_html, "html.parser")
+        article = quiz_soup.select_one("article.md-content__inner.md-typeset")
+        assert article is not None
+        assert article.get("data-plw-features") == "quiz"
+        quiz_stylesheets = quiz_soup.select('head link[data-plw-feature="quiz"]')
+        assert len(quiz_stylesheets) == 1
+        stylesheet_path = quiz_stylesheets[0]["href"].split("?", 1)[0]
+        page_directory = posixpath.dirname(relative_path.rstrip("/"))
+        assert posixpath.normpath(posixpath.join(page_directory, stylesheet_path)) == "_static/css/quiz.css"
+        assert not quiz_soup.select('script[src*="quiz-app.js"]')
+
+    ordinary_soup = BeautifulSoup(
+        (site / "intro" / "about" / "index.html").read_text(encoding="utf-8"), "html.parser"
+    )
+    assert not ordinary_soup.select('head link[data-plw-feature="quiz"]')
+    assert not ordinary_soup.select('script[src*="/features/quiz.js"]')
+
     manifest = json.loads(
         (site / "_generated" / "question-bank" / "manifest.json").read_text(
             encoding="utf-8"

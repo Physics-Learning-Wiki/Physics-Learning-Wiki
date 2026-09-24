@@ -14,10 +14,12 @@ import {
   renderFeedback,
   renderQuestionStem
 } from "../question-renderer.js";
+import { createAbortScope } from "../abort-scope.js";
 import type { Manifest, Question, TaxonomyCatalog, UserAnswer } from "../types.js";
 
 export class QuestionsSurface {
-  private readonly abort = new AbortController();
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
   private manifestUrl!: URL;
   private manifest!: Manifest;
   private questions: Question[] = [];
@@ -38,7 +40,11 @@ export class QuestionsSurface {
   private answers: Record<string, UserAnswer> = {};
   private locked: Record<string, boolean> = {};
 
-  constructor(private readonly root: HTMLElement) {}
+  constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
+    const scope = createAbortScope(parentSignal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
+  }
 
   async start(): Promise<void> {
     try {
@@ -60,6 +66,7 @@ export class QuestionsSurface {
         }
       }
 
+      if (this.abort.signal.aborted) return;
       const params = readQuestionsParameters();
       this.targetQuestionId = params.questionId;
       this.pendingTargetFocus = Boolean(params.questionId);
@@ -76,6 +83,7 @@ export class QuestionsSurface {
 
   destroy(): void {
     this.abort.abort();
+    this.releaseAbortScope();
     this.filterMediaCleanup?.();
     this.root.innerHTML = "";
   }

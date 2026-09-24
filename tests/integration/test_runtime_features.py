@@ -60,6 +60,19 @@ def test_quiz_root_variants_all_mark_the_quiz_feature() -> None:
         assert article.get("data-plw-features") == "quiz"
 
 
+def test_quiz_feature_adds_relative_stylesheet_once_and_only_on_quiz_pages() -> None:
+    markup = page_html('<div id="plw-quiz-root"></div>')
+    first = transform_page_html(markup, "quiz/play/")
+    result = BeautifulSoup(transform_page_html(first, "quiz/play/"), "html.parser")
+    links = result.select('head link[data-plw-feature="quiz"]')
+
+    assert len(links) == 1
+    assert links[0].get("href") == "../../_static/css/quiz.css?v=3"
+
+    ordinary = BeautifulSoup(transform_page_html(page_html("<p>普通文章</p>"), "intro/about/"), "html.parser")
+    assert ordinary.select('link[data-plw-feature="quiz"]') == []
+
+
 def test_high_noise_site_ui_is_ignored_but_forms_are_not_expanded() -> None:
     markup = page_html(
         '<form id="submission-form"><input name="message"></form>',

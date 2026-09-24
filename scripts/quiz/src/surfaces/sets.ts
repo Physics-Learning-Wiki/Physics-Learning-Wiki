@@ -1,9 +1,11 @@
 import { loadManifest, loadSetCatalog, loadTaxonomyCatalog, resolveSiteUrl } from "../data.js";
+import { createAbortScope } from "../abort-scope.js";
 import { escapeHtml } from "../question-renderer.js";
 import type { Manifest, SetCatalogItem, TaxonomyCatalog } from "../types.js";
 
 export class SetsSurface {
-  private readonly abort = new AbortController();
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
   private manifestUrl!: URL;
   private manifest!: Manifest;
   private catalog: SetCatalogItem[] = [];
@@ -15,7 +17,11 @@ export class SetsSurface {
   private selectedTag = "all";
   private filterMediaCleanup?: () => void;
 
-  constructor(private readonly root: HTMLElement) {}
+  constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
+    const scope = createAbortScope(parentSignal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
+  }
 
   async start(): Promise<void> {
     try {
@@ -37,6 +43,7 @@ export class SetsSurface {
         }
       }
 
+      if (this.abort.signal.aborted) return;
       this.render();
     } catch (err) {
       if (this.abort.signal.aborted) return;
@@ -48,6 +55,7 @@ export class SetsSurface {
 
   destroy(): void {
     this.abort.abort();
+    this.releaseAbortScope();
     this.filterMediaCleanup?.();
     this.root.innerHTML = "";
   }

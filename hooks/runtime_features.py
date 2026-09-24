@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import posixpath
 import re
 from pathlib import Path
 
@@ -52,6 +53,7 @@ MATH_REPLACEMENTS = {
     "\\infty": "inf",
     "\\partial": "d",
 }
+QUIZ_STYLESHEET = "_static/css/quiz.css?v=3"
 
 
 def clean_math_content(inner: str) -> str:
@@ -90,7 +92,17 @@ def _replace_search_root(soup: BeautifulSoup) -> bool:
     return changed
 
 
-def transform_page_html(output: str) -> str:
+def _page_relative_asset(page_url: str, asset_path: str) -> str:
+    if page_url.endswith("/"):
+        page_directory = page_url.strip("/")
+    else:
+        page_directory = posixpath.dirname(page_url)
+    relative_path = posixpath.relpath(asset_path, start=page_directory or ".")
+    query = QUIZ_STYLESHEET.partition("?")[2]
+    return f"{relative_path}?{query}" if query else relative_path
+
+
+def transform_page_html(output: str, page_url: str = "") -> str:
     """Mark the article's features and high-noise site UI without changing forms."""
     soup = BeautifulSoup(output, "html.parser")
     article = soup.select_one(ARTICLE_SELECTOR)
@@ -105,6 +117,18 @@ def transform_page_html(output: str) -> str:
         else:
             article.attrs.pop("data-plw-features", None)
         article["data-pagefind-body"] = ""
+
+        if "quiz" in features and soup.head is not None:
+            stylesheet = _page_relative_asset(page_url, "_static/css/quiz.css")
+            if not soup.head.select_one(f'link[rel="stylesheet"][href="{stylesheet}"]'):
+                soup.head.append(
+                    soup.new_tag(
+                        "link",
+                        rel="stylesheet",
+                        href=stylesheet,
+                        attrs={"data-plw-feature": "quiz"},
+                    )
+                )
 
         # Material's built-in Mermaid integration otherwise requests a floating
         # CDN version before the PLW feature loader can load its pinned bundle.
@@ -134,8 +158,8 @@ def transform_page_html(output: str) -> str:
 
 
 def on_post_page(output, page, config, **kwargs):
-    del page, config, kwargs
-    return transform_page_html(output)
+    del config, kwargs
+    return transform_page_html(output, getattr(page, "url", ""))
 
 
 def on_post_build(config, **kwargs):

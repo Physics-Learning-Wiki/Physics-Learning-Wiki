@@ -1,4 +1,5 @@
 import { resolveSiteUrl } from "../data.js";
+import { createAbortScope } from "../abort-scope.js";
 import { countProgress, isAnswerComplete, makeResult, summarizeConcepts, summarizeObjectives } from "../grading.js";
 import { typeset } from "../math.js";
 import {
@@ -48,7 +49,8 @@ export class PlaySurface {
   private readonly seed: string;
   private readonly source: QuizSource;
   private readonly store: QuizStore;
-  private readonly signal: AbortSignal;
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
   private readonly onExit: () => void;
   private readonly onRestart: (newSeed: string) => void;
   private readonly onAdhoc?: (adhocBundle: SetBundle, questions: Question[]) => void;
@@ -65,12 +67,14 @@ export class PlaySurface {
     this.seed = options.seed;
     this.source = options.source;
     this.store = options.store;
-    this.signal = options.signal;
+    const scope = createAbortScope(options.signal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
     this.onExit = options.onExit;
     this.onRestart = options.onRestart;
     this.onAdhoc = options.onAdhoc;
 
-    document.addEventListener("keydown", this.handleKeyDown, { signal: this.signal });
+    document.addEventListener("keydown", this.handleKeyDown, { signal: this.abort.signal });
   }
 
   start(): void {
@@ -164,6 +168,8 @@ export class PlaySurface {
   }
 
   destroy(): void {
+    this.abort.abort();
+    this.releaseAbortScope();
     this.root.classList.remove("plw-quiz-in-progress");
   }
 

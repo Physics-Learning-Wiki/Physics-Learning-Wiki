@@ -23,6 +23,7 @@
     "features:build:check": "node scripts/features/build.mjs --check",
     "features:typecheck": "tsc -p tsconfig.features.json",
     "e2e:smoke": "playwright test tests/e2e/smoke.spec.ts",
+    "e2e:quiz": "playwright test tests/e2e/quiz.spec.ts",
     "e2e:search": "playwright test tests/e2e/search.spec.ts",
     "e2e:mermaid": "playwright test tests/e2e/mermaid.spec.ts",
     "search:index": "pagefind --site site",

@@ -1,4 +1,5 @@
 import { loadManifest, loadSetBundle, loadTaxonomyCatalog, resolveSiteUrl } from "../data.js";
+import { createAbortScope } from "../abort-scope.js";
 import { countProgress, isAnswerComplete, makeResult } from "../grading.js";
 import { typeset } from "../math.js";
 import {
@@ -16,7 +17,8 @@ import { QuizStore } from "../storage.js";
 import type { Attempt, Manifest, Question, QuestionResult, SetBundle, TaxonomyCatalog, UserAnswer } from "../types.js";
 
 export class InlineSurface {
-  private readonly abort = new AbortController();
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
   private manifestUrl!: URL;
   private manifest!: Manifest;
   private bundle!: SetBundle;
@@ -29,7 +31,11 @@ export class InlineSurface {
   private attemptSaved = false;
   private store!: QuizStore;
 
-  constructor(private readonly root: HTMLElement) {}
+  constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
+    const scope = createAbortScope(parentSignal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
+  }
 
   async start(): Promise<void> {
     const setId = this.root.dataset.setId;
@@ -68,6 +74,7 @@ export class InlineSurface {
         }
       }
 
+      if (this.abort.signal.aborted) return;
       this.questions = selectSetQuestions(this.bundle, this.seed, taxonomy);
       this.render();
     } catch (err) {
@@ -78,6 +85,7 @@ export class InlineSurface {
 
   destroy(): void {
     this.abort.abort();
+    this.releaseAbortScope();
     this.root.innerHTML = "";
   }
 

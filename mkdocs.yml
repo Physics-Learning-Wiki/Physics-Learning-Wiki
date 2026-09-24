@@ -318,13 +318,11 @@ extra_javascript:
   - 'assets/vendor/mathjax/tex-mml-chtml.js?math-csr'
   - '_static/js/submit-form.js'
   - '_static/js/question-contribute.js?v=3'
-  - '_static/js/quiz-app.js?v=3'
   - '_static/js/runtime-loader.js'
 
 extra_css:
   - '_static/css/extra.css?v=19'
   - '_static/css/submit-form.css?v=2'
-  - '_static/css/quiz.css?v=3'
   # - '_static/css/offset-inject-debug.css'
 
 # Extensions

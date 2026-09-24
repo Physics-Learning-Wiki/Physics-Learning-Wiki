@@ -6,30 +6,34 @@ import {
   readRunnerParameters,
   resolveSiteUrl
 } from "./data.js";
+import { createAbortScope } from "./abort-scope.js";
 import { escapeHtml } from "./question-renderer.js";
 import { newSeed } from "./random.js";
 import { selectSetQuestions } from "./selection.js";
 import type { PlaySurfaceOptions } from "./surfaces/play.js";
 import { PlaySurface } from "./surfaces/play.js";
-import { QuizStore, sourceKey } from "./storage.js";
+import { QuizStore } from "./storage.js";
 import type { Manifest, Question, QuizSource, Session, SetBundle, SetCatalogItem, TaxonomyCatalog } from "./types.js";
-
-declare global {
-  interface Window {
-    document$?: { subscribe(callback: () => void): { unsubscribe?: () => void } | void };
-    __plwQuizDestroy?: () => void;
-  }
-}
+import { InlineSurface } from "./surfaces/inline.js";
+import { QuestionsSurface } from "./surfaces/questions.js";
+import { SetsSurface } from "./surfaces/sets.js";
 
 class QuizApp {
-  private readonly abort = new AbortController();
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
+  private routeScope?: ReturnType<typeof createAbortScope>;
+  private routeEpoch = 0;
   private manifestUrl!: URL;
   private manifest!: Manifest;
   private store!: QuizStore;
   private currentPlaySurface?: PlaySurface;
 
-  constructor(private readonly root: HTMLElement) {
+  constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
+    const scope = createAbortScope(parentSignal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
     this.root.addEventListener("click", this.handleClick, { signal: this.abort.signal });
+    window.addEventListener("popstate", this.handlePopState, { signal: this.abort.signal });
   }
 
   async start(): Promise<void> {
@@ -37,6 +41,7 @@ class QuizApp {
       const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
       this.manifestUrl = new URL(manifestPath, window.location.href);
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
+      if (this.abort.signal.aborted) return;
       this.store = new QuizStore(window.localStorage, this.manifest.preview);
 
       await this.route();
@@ -48,6 +53,10 @@ class QuizApp {
 
   destroy(): void {
     this.abort.abort();
+    this.releaseAbortScope();
+    this.routeScope?.controller.abort();
+    this.routeScope?.release();
+    this.routeScope = undefined;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = undefined;
   }
@@ -82,13 +91,26 @@ class QuizApp {
     void this.route();
   };
 
+  private handlePopState = (): void => {
+    void this.route();
+  };
+
   private async route(): Promise<void> {
+    this.routeScope?.controller.abort();
+    this.routeScope?.release();
+    this.routeScope = undefined;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = undefined;
+    if (this.abort.signal.aborted) return;
+
+    const routeScope = createAbortScope(this.abort.signal);
+    this.routeScope = routeScope;
+    const signal = routeScope.controller.signal;
+    const epoch = ++this.routeEpoch;
 
     const params = readRunnerParameters();
     if (params.setId) {
-      await this.startSetRunner(params.setId, params.seed);
+      await this.startSetRunner(params.setId, params.seed, signal, epoch);
       return;
     }
 
@@ -101,7 +123,12 @@ class QuizApp {
     }
   }
 
-  private async startSetRunner(setId: string, seedParam: string | null): Promise<void> {
+  private async startSetRunner(
+    setId: string,
+    seedParam: string | null,
+    signal: AbortSignal,
+    epoch: number
+  ): Promise<void> {
     this.renderStatus("正在加载测试集合题目...");
 
     const source: QuizSource = { type: "set", id: setId };
@@ -145,11 +172,13 @@ class QuizApp {
 
     let bundle: SetBundle;
     try {
-      bundle = await loadSetBundle(this.manifestUrl, setMeta.bundle, this.abort.signal);
+      bundle = await loadSetBundle(this.manifestUrl, setMeta.bundle, signal);
     } catch (err) {
+      if (signal.aborted) return;
       this.renderError(`加载测试数据失败：${err instanceof Error ? err.message : String(err)}`);
       return;
     }
+    if (!this.isCurrentRoute(signal, epoch)) return;
 
     if (!bundle.runnable) {
       const runnableActiveSession = this.store.getActiveSessions(source).find(s => s.seed === seed) ?? activeSession;
@@ -164,11 +193,12 @@ class QuizApp {
     let taxonomy: TaxonomyCatalog | undefined;
     if (this.manifest.catalogs.taxonomy) {
       try {
-        taxonomy = await loadTaxonomyCatalog(this.manifestUrl, this.manifest.catalogs.taxonomy, this.abort.signal);
+        taxonomy = await loadTaxonomyCatalog(this.manifestUrl, this.manifest.catalogs.taxonomy, signal);
       } catch {
         // Taxonomy optional if not strictly needed
       }
     }
+    if (!this.isCurrentRoute(signal, epoch)) return;
 
     let questions: Question[];
     try {
@@ -186,7 +216,7 @@ class QuizApp {
       seed,
       source,
       store: this.store,
-      signal: this.abort.signal,
+      signal,
       onExit: () => this.exitToLanding(),
       onRestart: (newSeedVal: string) => {
         const url = new URL(window.location.href);
@@ -205,10 +235,14 @@ class QuizApp {
           seed: newSeed(),
           source: { type: "adhoc", questionIds: adhocQuestions.map(q => q.id) },
           store: this.store,
-          signal: this.abort.signal,
+          signal,
           onExit: () => this.exitToLanding(),
           onRestart: (newSeedVal: string) => {
-            void this.startSetRunner(setId, newSeedVal);
+            const url = new URL(window.location.href);
+            url.searchParams.set("set", setId);
+            url.searchParams.set("seed", newSeedVal);
+            history.pushState(null, "", url.href);
+            void this.route();
           }
         });
       }
@@ -216,9 +250,14 @@ class QuizApp {
   }
 
   private mountPlaySurface(options: PlaySurfaceOptions): void {
+    if (!this.isCurrentRoute(options.signal, this.routeEpoch)) return;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = new PlaySurface(options);
     this.currentPlaySurface.start();
+  }
+
+  private isCurrentRoute(signal: AbortSignal, epoch: number): boolean {
+    return !signal.aborted && this.routeScope?.controller.signal === signal && this.routeEpoch === epoch;
   }
 
   private renderLanding(): void {
@@ -392,23 +431,26 @@ class QuizApp {
   }
 }
 
-import { InlineSurface } from "./surfaces/inline.js";
-import { QuestionsSurface } from "./surfaces/questions.js";
-import { SetsSurface } from "./surfaces/sets.js";
-
 class HomeSurface {
-  private readonly abort = new AbortController();
+  private readonly abort: AbortController;
+  private readonly releaseAbortScope: () => void;
 
-  constructor(private readonly root: HTMLElement) {}
+  constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
+    const scope = createAbortScope(parentSignal);
+    this.abort = scope.controller;
+    this.releaseAbortScope = scope.release;
+  }
 
   async start(): Promise<void> {
     try {
       const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
       const manifestUrl = new URL(manifestPath, window.location.href);
       const manifest = await loadManifest(manifestUrl, this.abort.signal);
+      if (this.abort.signal.aborted) return;
       const setCatalog = await loadSetCatalog(manifestUrl, manifest.catalogs.sets, this.abort.signal).catch(
         () => [] as SetCatalogItem[]
       );
+      if (this.abort.signal.aborted) return;
       const setDetails = new Map(setCatalog.map(item => [item.id, item]));
       const displayTitle = (id: string, fallback: string): string => {
         const subject = setDetails.get(id)?.tags.find(tag => !["快速检查", "综合练习"].includes(tag));
@@ -552,114 +594,69 @@ class HomeSurface {
 
   destroy(): void {
     this.abort.abort();
+    this.releaseAbortScope();
     this.root.innerHTML = "";
   }
 }
 
-let runnerApp: QuizApp | undefined;
-let setsSurface: SetsSurface | undefined;
-let questionsSurface: QuestionsSurface | undefined;
-let homeSurface: HomeSurface | undefined;
-const inlineSurfaces: InlineSurface[] = [];
-
-function initialize(): void {
-  runnerApp?.destroy();
-  runnerApp = undefined;
-
-  setsSurface?.destroy();
-  setsSurface = undefined;
-
-  questionsSurface?.destroy();
-  questionsSurface = undefined;
-
-  homeSurface?.destroy();
-  homeSurface = undefined;
-
-  for (const s of inlineSurfaces) s.destroy();
-  inlineSurfaces.length = 0;
-
-  window.__plwQuizDestroy = () => {
-    runnerApp?.destroy();
-    runnerApp = undefined;
-    setsSurface?.destroy();
-    setsSurface = undefined;
-    questionsSurface?.destroy();
-    questionsSurface = undefined;
-    homeSurface?.destroy();
-    homeSurface = undefined;
-    for (const s of inlineSurfaces) s.destroy();
-    inlineSurfaces.length = 0;
-  };
-
-  // 1. Runner root
-  const quizRoot = document.querySelector<HTMLElement>("#plw-quiz-root");
-  if (quizRoot) {
-    runnerApp = new QuizApp(quizRoot);
-    void runnerApp.start();
-  }
-
-  // 2. Sets catalog root
-  const setsRoot = document.querySelector<HTMLElement>("#plw-quiz-sets-root");
-  if (setsRoot) {
-    setsSurface = new SetsSurface(setsRoot);
-    void setsSurface.start();
-  }
-
-  // 3. Questions catalog root
-  const questionsRoot = document.querySelector<HTMLElement>("#plw-quiz-questions-root");
-  if (questionsRoot) {
-    questionsSurface = new QuestionsSurface(questionsRoot);
-    void questionsSurface.start();
-  }
-
-  // 4. Home root
-  const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
-  if (homeRoot) {
-    homeSurface = new HomeSurface(homeRoot);
-    void homeSurface.start();
-  }
-
-  // 5. Inline roots
-  const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
-  for (const inlineRoot of Array.from(inlineRoots)) {
-    const s = new InlineSurface(inlineRoot);
-    inlineSurfaces.push(s);
-    void s.start();
-  }
+function findRoot<T extends HTMLElement>(root: ParentNode, selector: string): T | null {
+  if (root instanceof Element && root.matches(selector)) return root as T;
+  return root.querySelector<T>(selector);
 }
 
-if (typeof window !== "undefined") {
-  if (window.document$) {
-    window.document$.subscribe(initialize);
+function findRoots<T extends HTMLElement>(root: ParentNode, selector: string): T[] {
+  const roots = Array.from(root.querySelectorAll<T>(selector));
+  if (root instanceof Element && root.matches(selector)) roots.unshift(root as T);
+  return roots;
+}
+
+export interface QuizMountContext {
+  signal: AbortSignal;
+}
+
+export function mount(root: ParentNode, context: QuizMountContext): () => void {
+  if (context.signal.aborted) return () => undefined;
+
+  const surfaces: Array<{ destroy(): void }> = [];
+  const runnerRoot = findRoot<HTMLElement>(root, "#plw-quiz-root");
+  if (runnerRoot) {
+    const surface = new QuizApp(runnerRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialize, { once: true });
-  } else {
-    initialize();
+  const setsRoot = findRoot<HTMLElement>(root, "#plw-quiz-sets-root");
+  if (setsRoot) {
+    const surface = new SetsSurface(setsRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
   }
 
-  window.addEventListener("popstate", () => {
-    initialize();
-  });
+  const questionsRoot = findRoot<HTMLElement>(root, "#plw-quiz-questions-root");
+  if (questionsRoot) {
+    const surface = new QuestionsSurface(questionsRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
+  }
 
-  const observer = new MutationObserver(() => {
-    const quizRoot = document.querySelector<HTMLElement>("#plw-quiz-root");
-    const setsRoot = document.querySelector<HTMLElement>("#plw-quiz-sets-root");
-    const questionsRoot = document.querySelector<HTMLElement>("#plw-quiz-questions-root");
-    const homeRoot = document.querySelector<HTMLElement>("#plw-quiz-home-root");
-    const inlineRoots = document.querySelectorAll<HTMLElement>(".plw-quiz-inline-root");
+  const homeRoot = findRoot<HTMLElement>(root, "#plw-quiz-home-root");
+  if (homeRoot) {
+    const surface = new HomeSurface(homeRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
+  }
 
-    const hasUninitialized =
-      (quizRoot && quizRoot.children.length === 0) ||
-      (setsRoot && setsRoot.children.length === 0) ||
-      (questionsRoot && questionsRoot.children.length === 0) ||
-      (homeRoot && homeRoot.children.length === 0) ||
-      (inlineRoots.length > 0 && inlineSurfaces.length === 0);
+  for (const inlineRoot of findRoots<HTMLElement>(root, ".plw-quiz-inline-root")) {
+    const surface = new InlineSurface(inlineRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
+  }
 
-    if (hasUninitialized) {
-      initialize();
-    }
-  });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  let mounted = true;
+  return () => {
+    if (!mounted) return;
+    mounted = false;
+    for (const surface of surfaces.reverse()) surface.destroy();
+    surfaces.length = 0;
+  };
 }
