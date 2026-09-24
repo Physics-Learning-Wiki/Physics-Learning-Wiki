@@ -40,6 +40,10 @@ async function setEditorText(page: Page, index: number, value: string): Promise<
   await page.keyboard.insertText(value);
 }
 
+async function expectPagePath(page: Page, path: string): Promise<void> {
+  await expect(page).toHaveURL(url => url.pathname === `${basePath}${path}`);
+}
+
 test("submission editor is lazy, previews math on demand, and submits once across instant navigation", async ({
   page
 }) => {
@@ -74,7 +78,7 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   );
 
   await page.locator('nav a[href$="/submit/"]').first().click();
-  await expect(page).toHaveURL(/\/submit\/$/);
+  await expectPagePath(page, "submit/");
   await expect(page.locator("#submission-form .CodeMirror")).toHaveCount(1);
   await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toHaveCount(1);
   await expect(page.locator('head link[data-plw-feature="submit"]')).toHaveCount(1);
@@ -87,11 +91,11 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   await expect(page.locator(".editor-preview-full")).toBeVisible();
 
   await page.goBack();
-  await expect(page).toHaveURL(/\/intro\/about\/$/);
+  await expectPagePath(page, "intro/about/");
   await expect(page.locator(".CodeMirror")).toHaveCount(0);
   await expect.poll(() => page.evaluate(() => window.__plwTurnstileCounts.remove)).toBe(1);
   await page.goForward();
-  await expect(page).toHaveURL(/\/submit\/$/);
+  await expectPagePath(page, "submit/");
   await expect(page.locator("#submission-form .CodeMirror")).toHaveCount(1);
   await expect.poll(() => page.evaluate(() => window.__plwTurnstileCounts.render)).toBe(2);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/features/submit.js"))).toHaveLength(1);
@@ -140,9 +144,9 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
     requests.some(url => /features\/question-contribute\.js|features\/question-contribute\.css|turnstile/i.test(url))
   ).toBe(false);
   await page.locator('nav a[href$="/quiz/"]').first().click();
-  await expect(page).toHaveURL(/\/quiz\/$/);
+  await expectPagePath(page, "quiz/");
   await page.locator('nav a[href$="/quiz/contribute/"]').first().click();
-  await expect(page).toHaveURL(/\/quiz\/contribute\/$/);
+  await expectPagePath(page, "quiz/contribute/");
   await expect(page.locator("#plw-question-contribute-form .CodeMirror")).toHaveCount(2);
   await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toHaveCount(1);
   await expect(page.locator('head link[data-plw-feature="question-contribute"]')).toHaveCount(1);
@@ -189,16 +193,16 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   );
 
   await page.goBack();
-  await expect(page).toHaveURL(/\/quiz\/$/);
+  await expectPagePath(page, "quiz/");
   await expect(page.locator(".CodeMirror")).toHaveCount(0);
   await expect.poll(() => page.evaluate(() => window.__plwTurnstileCounts.remove)).toBe(1);
   await page.goBack();
-  await expect(page).toHaveURL(/\/intro\/about\/$/);
+  await expectPagePath(page, "intro/about/");
   await expect(page.locator(".CodeMirror")).toHaveCount(0);
   await page.goForward();
-  await expect(page).toHaveURL(/\/quiz\/$/);
+  await expectPagePath(page, "quiz/");
   await page.goForward();
-  await expect(page).toHaveURL(/\/quiz\/contribute\/$/);
+  await expectPagePath(page, "quiz/contribute/");
   await expect(page.locator("#plw-question-contribute-form .CodeMirror")).toHaveCount(2);
   await expect.poll(() => page.evaluate(() => window.__plwTurnstileCounts.render)).toBe(2);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/features/question-contribute.js"))).toHaveLength(1);
