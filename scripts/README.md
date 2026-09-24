@@ -1,25 +1,24 @@
 # scripts
 
-本目录存放了用于测试、构建和整理代码的一些脚本。
+本目录存放项目的构建、后处理、校验与维护脚本。运行时 feature、性能门禁、生产构建与资源规则见仓库根目录 [`CONTRIBUTING.md`](../CONTRIBUTING.md)。
 
--   `pre-build` 运行于构建前的脚本
-    - `install-theme.sh, install-theme-vendor.sh` 安装 mkdocs 主题，与主题中所用的第三方库
-    - `pre-build.sh` 在 CI 上构建生产环境站点时所运行的脚本，包括安装主题与调整配置
--   `post-build` 运行于构建后的脚本
-    - `commits-info` 渲染每个页面中与 Git commits 有关的信息（更新时间，贡献者列表等）
-    - `math` 渲染每个页面中的数学公式（**注：** 在预览构建中，公式在前端渲染）
-    - `redirect` 生成跳转页面
--   `post-deploy` 运行于主站生产环境部署后的脚本
-    - `baidu-push.sh, convert-sitemap.py` 将 sitemap 转换并推送到百度搜索
--   `netlify` 用于 Netlify 上的预览构建的脚本（参见 `/netlify.toml`）
-    - `build.sh` 在 Netlify 上的构建全过程（手动安装依赖）
-    - `install-python.sh` 在 Netlify 上安装指定版本的 Python
+## 生产构建
 
-以下是与构建无关的脚本：
+`build/build-site.sh` 是 GitHub Pages 与 Netlify 共用的完整生产构建入口，通过 `corepack yarn site:build` 调用。它运行前置脚本、构建前端 feature、构建 MkDocs、生成 Pagefind、运行 MathJax SSR、优化响应式图片、压缩 HTML、生成 SEO 文件并执行 blocking 性能审计。
 
-- `test.py` 测试文档中的实例代码正常编译
-- `check-characters.py` 扫描修改的 Markdown 与 TeX 文件中的异常非可见字符与可替换为对应 CJK 字符的部首（和笔画字符）
-- `check-nav-coverage.py` 检查 `docs/` 中的 Markdown 页面是否进入了 `mkdocs.yml` 的导航，并通过 `nav-coverage-ignore.txt` 维护已知例外页面
-- `celebration.py` 自动创建庆祝 star 数量的 issue
--   `utils` 一些工具
-    - `find_jk.py` 寻找源文件中非中文码位的汉字字符
+## 构建阶段脚本
+
+- `pre-build/`：安装或准备 MkDocs 主题、同步构建配置并生成导航资源。
+- `build/`：统一生产构建编排。
+- `post-build/`：页面贡献者/提交信息、MathJax SSR、外链与重定向等后处理。
+- `post-build/media/`：只对生成的 `site/` HTML 与资源生成响应式 WebP 图片，不覆盖 `docs/` 作者原图。
+- `perf/`：检查生成站点的资源引用、功能标记、图片来源、HTML 大小和预算；详见 [`tests/perf/README.md`](../tests/perf/README.md)。
+- `post-deploy/`：生产部署后的 sitemap 转换和搜索推送脚本。
+
+## 其他维护脚本
+
+- `test.py`：检查文档中的实例代码。
+- `check-characters.py`：扫描修改的 Markdown 与 TeX 文件中的不可见字符和易混淆字符。
+- `check-nav-coverage.py`：检查 `docs/` 中的 Markdown 页面是否进入 `mkdocs.yml` 导航，并通过 `nav-coverage-ignore.txt` 维护例外页面。
+- `celebration.py`：根据 star 数量创建项目庆祝 issue。
+- `utils/`：通用辅助脚本，例如 `find_jk.py`。

@@ -4,7 +4,7 @@
 规则：
 1. 每个目录下的 index.md 作为章节首页，其一号标题作为章节名
 2. 其他 .md 文件按文件名排序
-3. _ 开头的目录和特殊文件自动排除
+3. _ 开头的目录、MkDocs 排除的内部目录和特殊文件自动排除
 4. 手动排序：各目录中放置 _order.txt（一行一个文件名），指定顺序
 """
 from __future__ import annotations
@@ -16,6 +16,9 @@ from pathlib import Path
 
 
 EXCLUDE_DIR_PREFIXES = ("_", ".", "community")
+# Keep internal directories aligned with exclude_docs in mkdocs.yml. These
+# names must not leak into the generated navigation data used by browser forms.
+EXCLUDE_DIR_NAMES = {"adr", "superpowers"}
 EXCLUDE_FILES = {
     "edit-landing.md", "CNAME", "robots.txt", "manifest.webmanifest",
     "favicon.ico", "service-worker.js",
@@ -56,7 +59,7 @@ def build_nav(docs_dir: Path, current_dir: Path) -> list:
     files: list[Path] = []
 
     for entry in sorted(current_dir.iterdir()):
-        if entry.name.startswith(EXCLUDE_DIR_PREFIXES):
+        if entry.name.startswith(EXCLUDE_DIR_PREFIXES) or entry.name in EXCLUDE_DIR_NAMES:
             continue
         if entry.is_dir():
             subdirs.append(entry)
