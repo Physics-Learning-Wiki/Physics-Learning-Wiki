@@ -117,6 +117,8 @@ export async function mount(root: ParentNode, context: { signal: AbortSignal }):
   initializeMermaid();
 
   for (const source of sources) {
+    const code = source.querySelector(":scope > code");
+    if (code) source.textContent = code.textContent ?? "";
     source.classList.add("mermaid");
     if (source.hasAttribute("data-processed") && !source.querySelector("svg")) {
       source.removeAttribute("data-processed");

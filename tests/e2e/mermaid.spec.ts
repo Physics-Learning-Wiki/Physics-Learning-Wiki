@@ -41,6 +41,7 @@ test("Mermaid loads locally only on its feature page and survives instant naviga
   await expect(sources.first()).toBeAttached();
   try {
     await expect(diagrams.first()).toBeVisible({ timeout: 15_000 });
+    await expect(diagrams).not.toContainText(/Syntax error in text|mermaid version/i);
   } catch (error) {
     throw new Error(
       `${String(error)}\nBrowser errors: ${runtimeErrors.join(" | ")}\nMermaid requests: ${mermaidRequests.join(" | ")}`
@@ -82,7 +83,13 @@ test("Mermaid loads locally only on its feature page and survives instant naviga
   expect(mermaidErrors).toEqual([]);
 });
 
-for (const route of ["courses/", "math/", "mechanics/"]) {
+for (const route of [
+  "courses/",
+  "courses/theoretical-mechanics/",
+  "courses/electromagnetism/",
+  "math/",
+  "mechanics/"
+]) {
   test(`direct Mermaid rendering works on ${route}`, async ({ page }) => {
     const mermaidRequests: string[] = [];
     page.on("request", request => {
@@ -96,6 +103,7 @@ for (const route of ["courses/", "math/", "mechanics/"]) {
     const diagrams = sources.locator("svg");
     await expect(sources.first()).toBeAttached();
     await expect(diagrams).toHaveCount(await sources.count(), { timeout: 20_000 });
+    await expect(diagrams).not.toContainText(/Syntax error in text|mermaid version/i);
     expect(mermaidRequests.filter(url => url.includes("/features/mermaid.js"))).toHaveLength(1);
     expect(mermaidRequests.some(url => /unpkg\.com\/mermaid|jsdelivr\.net\/npm\/mermaid/i.test(url))).toBe(false);
   });
