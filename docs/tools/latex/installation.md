@@ -10,11 +10,11 @@ author: Physics Learning Wiki Team
 
 在正式安装前，我们先了解目前主流的三种 LaTeX 使用方案：
 
-| 方案 | 推荐度 | 优点 | 适用场景与缺点 |
-| :--- | :--- | :--- | :--- |
-| **TeX Live + VS Code** | :star::star::star::star::star:（强烈推荐） | 宏包最完整、生态极其繁荣；支持 Git 长期版本管理；强大的代码补全、快捷键与双向精准定位 | 首次下载安装体积较大（约 8~10 GB）；适合个人电脑长期主力写作 |
-| **Overleaf 在线写作** | :star::star::star::star:（优质备选） | 零安装门槛，打开浏览器即可排版；实时多人协同极其方便 | 依赖网络稳定性；免费版编译有超时限制；大型多文件项目管理不如本地灵活 |
-| **MiKTeX + 本地编辑器** | :star::star::star:（轻量备选） | 安装体积小，按需自动联网下载宏包 | 国内网络不稳定时可能因自动下载宏包卡死；宏包依赖有时容易产生冲突 |
+| 方案                     | 推荐度                                  | 优点                                            | 适用场景与缺点                             |
+| :--------------------- | :----------------------------------- | :-------------------------------------------- | :---------------------------------- |
+| **TeX Live + VS Code** | :star::star::star::star::star:（强烈推荐） | 宏包最完整、生态极其繁荣；支持 Git 长期版本管理；强大的代码补全、快捷键与双向精准定位 | 首次下载安装体积较大（约 8\~10 GB）；适合个人电脑长期主力写作 |
+| **Overleaf 在线写作**      | :star::star::star::star:（优质备选）       | 零安装门槛，打开浏览器即可排版；实时多人协同极其方便                    | 依赖网络稳定性；免费版编译有超时限制；大型多文件项目管理不如本地灵活  |
+| **MiKTeX + 本地编辑器**     | :star::star::star:（轻量备选）             | 安装体积小，按需自动联网下载宏包                              | 国内网络不稳定时可能因自动下载宏包卡死；宏包依赖有时容易产生冲突    |
 
 ???+ tip "结论"
     对于物理系本科生和科研人员，**「TeX Live + VS Code」是公认的最优解**．一次性完整安装后，无需担心断网或缺少宏包，能陪伴你从大一的物理实验报告一直用到研究生毕业论文．
@@ -25,14 +25,14 @@ TeX Live 是由国际 TeX 用户组（TUG）维护的跨平台完整发行版，
 
 ### 1. 下载完整的官方 ISO 镜像
 
-???+ caution "切勿使用在线网络安装器"
-    官网提供的 `install-tl-windows.exe` 是在线安装器，需要边安装边从境外服务器下载几千个宏包．在国内网络环境下，极易因网络超时而中途失败．**请务必下载完整的离线 ISO 镜像文件**（约 4~5 GB）．
+???+ note "切勿使用在线网络安装器"
+    官网提供的 `install-tl-windows.exe` 是在线安装器，需要边安装边从境外服务器下载几千个宏包．在国内网络环境下，极易因网络超时而中途失败．**请务必下载完整的离线 ISO 镜像文件**（约 4\~5 GB）．
 
 推荐使用国内高校的开源镜像站下载最新版 `texlive.iso`：
 
--   **清华大学开源软件镜像站（TUNA）**：[https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso)
--   **中国科学技术大学开源镜像站（USTC）**：[https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso](https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso)
--   **北京外国语大学开源镜像站（BFSU）**：[https://mirrors.bfsu.edu.cn/CTAN/systems/texlive/Images/texlive.iso](https://mirrors.bfsu.edu.cn/CTAN/systems/texlive/Images/texlive.iso)
+-   **清华大学开源软件镜像站（TUNA）**：<https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/texlive.iso>
+-   **中国科学技术大学开源镜像站（USTC）**：<https://mirrors.ustc.edu.cn/CTAN/systems/texlive/Images/texlive.iso>
+-   **北京外国语大学开源镜像站（BFSU）**：<https://mirrors.bfsu.edu.cn/CTAN/systems/texlive/Images/texlive.iso>
 
 ### 2. 挂载镜像与启动安装
 
@@ -68,7 +68,7 @@ TeX Live 是由国际 TeX 用户组（TUG）维护的跨平台完整发行版，
 2.  **修改安装路径（TEXDIR）**：
     -   默认路径通常为 `C:\texlive\2024`．如果 C 盘空间紧张，可修改为 `D:\texlive\2024` 等．
     -   **严重警告：安装路径中绝对不能包含中文字符或空格！** 千万不要安装在如 `C:\Program Files\` 或带中文用户名的文件夹中，否则底层宏包在调用路径时极易出现无法识别的异常．
-3.  **安装方案（Scheme）**：保持默认的 **`Scheme-full`（完整安装）**．完整安装解压后占用约 8~10 GB 硬盘空间，但它包含了物理专业所需的全部宏包（如 `ctex`, `siunitx`, `revtex`, `bm`, `tikz-feynman` 等），一次安装，终生受益．
+3.  **安装方案（Scheme）**：保持默认的 **`Scheme-full`（完整安装）**．完整安装解压后占用约 8\~10 GB 硬盘空间，但它包含了物理专业所需的全部宏包（如 `ctex`,`siunitx`,`revtex`,`bm`,`tikz-feynman` 等），一次安装，终生受益．
 4.  **纸张格式（Paper size）**：在选项中将默认纸张设置为 **`A4`**（默认可能是美制 Letter 纸张）．
 5.  **环境变量选项**：确保勾选「Add to PATH」（自动将可执行文件目录添加到系统 PATH 环境变量）．
 6.  点击右下角 **「安装」（Install）** 按钮，耐心等待安装完成．
@@ -107,17 +107,17 @@ tlmgr update --self
 
 === "macOS (MacTeX)"
     macOS 用户推荐使用官方打包的 MacTeX（本质是 TeX Live 的 macOS 封装版）：
-
+    
     -   方式 1：前往清华源下载完整的 [MacTeX.pkg](https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/mac/mactex/MacTeX.pkg) 安装包，双击图形化安装即可．
     -   方式 2：使用 Homebrew 命令行安装：
         ```bash
         brew install --cask mactex
         ```
 
-=== "Linux (Ubuntu / Debian / Arch)"
+=== "Linux (Ubuntu/Debian/Arch)"
     Linux 用户可直接使用发行版的包管理器安装完整版：
-
-    -   Ubuntu / Debian：
+    
+    -   Ubuntu/Debian：
         ```bash
         sudo apt update
         sudo apt install texlive-full
@@ -133,10 +133,11 @@ tlmgr update --self
 
 ### 1. 安装 VS Code
 
-前往微软官方网站 [https://code.visualstudio.com/](https://code.visualstudio.com/) 下载适合你操作系统的安装包并完成安装．
+前往微软官方网站 <https://code.visualstudio.com/> 下载适合你操作系统的安装包并完成安装．
 
 在 Windows 安装过程中，建议勾选：
--   「将“通过 Code 打开”操作添加到 Windows 资源管理器文件上下文菜单」
+
+-   「将「通过 Code 打开」操作添加到 Windows 资源管理器文件上下文菜单」
 -   「添加到 PATH（系统重启后生效）」
 
 ### 2. 安装核心插件
@@ -151,18 +152,21 @@ tlmgr update --self
 `LaTeX Workshop` 默认的构建流程是针对英文排版的 `latexmk` 或 `pdflatex`，在直接编译包含中文字体的物理文档时经常报错．我们需要对其构建工具（Tools）和配方（Recipes）进行定制．
 
 #### 打开用户设置文件的方法
+
 按快捷键 `Ctrl + Shift + P` 打开命令面板，输入：
+
 ```text
 Preferences: Open User Settings (JSON)
 ```
-选择 **首选项: 打开用户设置 (JSON)**，在打开的 `settings.json` 文件中，添加以下针对物理与中文写作精心优化的配置项：
+
+选择 **首选项：打开用户设置 (JSON)**，在打开的 `settings.json` 文件中，添加以下针对物理与中文写作精心优化的配置项：
 
 ```json
 {
     // ==========================================
     // LaTeX Workshop 核心物理写作与中文编译配置
     // ==========================================
-
+    
     // 编译工具定义
     "latex-workshop.latex.tools": [
         {
@@ -196,7 +200,7 @@ Preferences: Open User Settings (JSON)
             "env": {}
         }
     ],
-
+    
     // 编译配方组合 (Recipes)
     "latex-workshop.latex.recipes": [
         {
@@ -230,18 +234,18 @@ Preferences: Open User Settings (JSON)
             ]
         }
     ],
-
+    
     // 默认使用第一个配方进行编译
     "latex-workshop.latex.recipe.default": "first",
-
+    
     // 编译触发机制: 强烈建议设置为 onSave (保存时编译) 或 never (手动编译)
     // 默认的 onFileChange 会在打字过程中频繁触发编译, 造成 CPU 飙高和风扇狂转
     "latex-workshop.latex.autoBuild.run": "onSave",
-
+    
     // 编译出错时是否弹出错误提示
     "latex-workshop.message.error.show": true,
     "latex-workshop.message.warning.show": false,
-
+    
     // 自动清理编译产生的中间辅助文件
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.clean.fileTypes": [
@@ -265,16 +269,16 @@ Preferences: Open User Settings (JSON)
         "*.log",
         "*.fdb_latexmk"
     ],
-
+    
     // PDF 预览查看器设置 (默认使用 VS Code 内置选项卡)
     "latex-workshop.view.pdf.viewer": "tab"
 }
 ```
 
 ???+ note "为什么选用上述配置"
-    1.  **XeLaTeX 优先**：原生支持 UTF-8 编码与系统级 TrueType / OpenType 字体，是配合 `ctexart` 书写中文物理报告的最佳引擎．
+    1.  **XeLaTeX 优先**：原生支持 UTF-8 编码与系统级 TrueType/OpenType 字体，是配合 `ctexart` 书写中文物理报告的最佳引擎．
     2.  **保存时编译 (`onSave`)**：有效避免输入长公式或大型推导时因语法暂时未闭合而频繁报错卡顿．
-    3.  **辅助文件清理**：LaTeX 编译会产生 `.aux`, `.log`, `.out` 等七八种中间文件，配置清理列表能让你的物理工程目录保持清爽．
+    3.  **辅助文件清理**：LaTeX 编译会产生 `.aux`,`.log`,`.out` 等七八种中间文件，配置清理列表能让你的物理工程目录保持清爽．
 
 ## 第三步：PDF 预览与双向定位 (SyncTeX)
 
@@ -317,7 +321,7 @@ Preferences: Open User Settings (JSON)
         ```text
         "C:\Users\你的用户名\AppData\Local\Programs\Microsoft VS Code\Code.exe" -r -g "%f:%l"
         ```
-    -   设置完成后，在 SumatraPDF 中**双击任意文字**，即可直接秒级跳转回 VS Code 对应的代码行！
+    -   设置完成后，在 SumatraPDF 中 **双击任意文字**，即可直接秒级跳转回 VS Code 对应的代码行！
 
 ## 第四步：编译第一份测试文档
 
@@ -342,7 +346,7 @@ Preferences: Open User Settings (JSON)
 
   这是一条测试公式（真空中的麦克斯韦方程组之一）：
   \begin{equation}
-    \nabla \times \bm{E} = - \frac{\partial \bm{B}}{\partial t}.
+    \nabla \times \bm{E}= - \frac{\partial \bm{B}}{\partial t}.
   \end{equation}
 
   光速测量值：$c = \qty{2.99792458e8}{\meter\per\second}$．
@@ -361,9 +365,9 @@ Preferences: Open User Settings (JSON)
     -   支持使用快捷键截取教材、讲义或手写草稿中的公式，瞬间识别并复制为标准 LaTeX 源码，堪称推导整理神器．
 2.  **LaTeX Snippets（代码片段库）**：
     -   在扩展商店搜索安装，输入 `fra` 按 Tab 即可补全 `\frac{}{}`，输入 `ali` 即可补全 `align` 环境．
-3.  **LTeX / LTeX+（学术英语语法检查）**：
+3.  **LTeX/LTeX+（学术英语语法检查）**：
     -   专为 LaTeX 设计的离线语法拼写检查工具，能够智能识别 LaTeX 命令并仅检查英文文本，适合撰写英语论文与实验报告．
-4.  **Git / GitHub 扩展**：
+4.  **Git/GitHub 扩展**：
     -   配合 VS Code 内置源代码管理，每次完成一个大推导或实验分析后进行一次 Commit，再也不用担心论文版本混淆或手滑误删．
 
 ## 在线应急方案：Overleaf 极简指引

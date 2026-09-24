@@ -30,13 +30,12 @@ author: Physics Learning Wiki Team
 1.  **寻找致命感叹号 `!`**：
     在输出日志中，凡是导致编译彻底终止的致命错误（Error），开头必然带有醒目的空格与感叹号 `!`．所有未带 `!` 的信息（如 `Overfull \hbox`、`Underfull \vbox`）仅仅是排版松紧度的警告（Warning），**完全不影响 PDF 文件的成功生成**．
 2.  **锁定精准行号 `l.数字`**：
-    在 `!` 报错信息的正下方，通常会显示类似 `l.45` 的标记，这代表错误发生在该 `.tex` 源码的**第 45 行**．
-3.  **观察代码截断位置**：
-    `l.45` 之后打印出来的代码片段中，断行或空格停顿的地方，通常就是编译器「读不下去」的具体命令所在．
+    在 `!` 报错信息的正下方，通常会显示类似 `l.45` 的标记，这代表错误发生在该 `.tex` 源码的 **第 45 行**．
+3.  **观察代码截断位置**：`l.45` 之后打印出来的代码片段中，断行或空格停顿的地方，通常就是编译器「读不下去」的具体命令所在．
 
 ## 物理写作十大高频报错急救方案
 
-### 1. `! Undefined control sequence`（未定义的控制命令）
+### 1.`! Undefined control sequence`（未定义的控制命令）
 
 -   **产生原因**：
     1.  命令名称拼写错误（例如将 `\varepsilon` 误打为 `\varpslon`）；
@@ -44,7 +43,7 @@ author: Physics Learning Wiki Team
 -   **解决方案**：
     检查报错提示行中刚刚读取的那个反斜杠命令，确认拼写是否正确，并在导言区补齐缺失的 `\usepackage{...}`．
 
-### 2. `! Missing $ inserted` 或 `! Display math should end with $$`
+### 2.`! Missing $ inserted` 或 `! Display math should end with $$`
 
 -   **产生原因**：
     1.  在正文普通文本段落中，误用了只能在数学公式环境中使用的特殊字符（最典型的是下划线 `_` 和上标符 `^`，例如在文件名或变量名中直接敲了 `data_1.csv`）；
@@ -55,7 +54,7 @@ author: Physics Learning Wiki Team
     -   检查报错行附近的数学环境是否首尾严格闭合；
     -   删除公式内部不小心敲出来的空行．
 
-### 3. `! LaTeX Error: File 'xxx.sty' not found`（找不到宏包文件）
+### 3.`! LaTeX Error: File 'xxx.sty' not found`（找不到宏包文件）
 
 -   **产生原因**：本地 TeX 发行版中没有安装名为 `xxx` 的宏包（例如缺少 `siunitx.sty` 或 `tcolorbox.sty`）．
 -   **解决方案**：
@@ -68,7 +67,7 @@ author: Physics Learning Wiki Team
 ### 4. 中文字体报错：`! Package fontspec Error: The font "..." cannot be found`
 
 -   **产生原因**：
-    1.  使用了 `pdfLaTeX` 引擎去编译带有 `ctex` 中文宏包的文档（`pdfLaTeX` 原生不支持调用操作系统的 TrueType / OpenType 字体）；
+    1.  使用了 `pdfLaTeX` 引擎去编译带有 `ctex` 中文宏包的文档（`pdfLaTeX` 原生不支持调用操作系统的 TrueType/OpenType 字体）；
     2.  文档中指定了当前操作系统中不存在的专有商业字体．
 -   **解决方案**：
     -   **将编译引擎切换为 `XeLaTeX`**（在 VS Code 左侧 TEX 面板中选择 `Recipe: XeLaTeX` 即可）；
@@ -76,8 +75,7 @@ author: Physics Learning Wiki Team
 
 ### 5. 参考文献与交叉引用显示为问号 `[?]` 或 `(??)`
 
--   **产生原因**：编译轮次不足．LaTeX 处理交叉引用需要先在第一轮编译时将标签写入 `.aux` 缓存，在第二轮编译时读取并填充．对于带有 `.bib` 参考文献的项目，完整的解析链条是：
-    `XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX`（共需执行 4 次命令）．
+-   **产生原因**：编译轮次不足．LaTeX 处理交叉引用需要先在第一轮编译时将标签写入 `.aux` 缓存，在第二轮编译时读取并填充．对于带有 `.bib` 参考文献的项目，完整的解析链条是：`XeLaTeX -> BibTeX -> XeLaTeX -> XeLaTeX`（共需执行 4 次命令）．
 -   **解决方案**：
     在 VS Code 中选择运行复合编译配方：**`XeLaTeX -> BibTeX -> XeLaTeX*2`**，等待整个构建流程走完即可自动恢复正常引用．
 
@@ -87,7 +85,7 @@ author: Physics Learning Wiki Team
 -   **产生原因**：上次编译意外中断时，`.aux`、`.toc` 或 `.out` 辅助文件中写入了半截残缺的代码，后续每次编译加载该损坏文件都会瞬间崩溃．
 -   **解决方案**：
     -   在 VS Code 中点击左侧活动栏 **TEX 面板 $\to$ Clean up auxiliary files**（清理辅助文件）；
-    -   或者在文件夹中手动将除 `.tex`、`.bib` 和图片之外的所有同名中间文件（`.aux`, `.log`, `.out`, `.synctex.gz`, `.fls`）全部删除，然后重新执行编译．
+    -   或者在文件夹中手动将除 `.tex`、`.bib` 和图片之外的所有同名中间文件（`.aux`,`.log`,`.out`,`.synctex.gz`,`.fls`）全部删除，然后重新执行编译．
 
 ### 7. 浮动体图片/表格漂移到文档最末尾
 
@@ -100,7 +98,7 @@ author: Physics Learning Wiki Team
 
 -   **产生原因**：`hyperref` 宏包为了实现全文档可点击超链接，重构了底层大量标签命令．如果载入过早，会被随后载入的宏包覆盖或引起冲突．
 -   **解决方案**：
-    -   **黄金法则**：原则上将 `\usepackage{hyperref}` 放在导言区**最后一行**载入；
+    -   **黄金法则**：原则上将 `\usepackage{hyperref}` 放在导言区 **最后一行** 载入；
     -   极少数例外宏包（如 `cleveref` 智能引用宏包）在官方文档中明确声明必须放在 `hyperref` 之后载入．
 
 ### 9. 编译警告：`Overfull \hbox (xx pt too wide)`
@@ -110,7 +108,7 @@ author: Physics Learning Wiki Team
     -   对于长公式，使用 `align`、`split` 或 `multline` 手动寻找物理意义明确的位置折行；
     -   对于超长网址，使用 `\url{...}` 命令使其支持在斜杠处自动断行．
 
-### 10. `siunitx` 表格报错：`Invalid number '...'`
+### 10.`siunitx` 表格报错：`Invalid number '...'`
 
 -   **产生原因**：在使用 `siunitx` 的 `S` 列对齐小数点的表格中，表头或文字说明被误当成了数字进行解析．
 -   **解决方案**：
@@ -118,15 +116,15 @@ author: Physics Learning Wiki Team
 
 ## 物理排版红黑榜（Anti-patterns vs Best Practices）
 
-| 糟糕写法与反模式（严禁） | 推荐的最佳实践（提倡） | 核心改进原因 |
-| :--- | :--- | :--- |
-| 直接截图手写公式或教材贴图 | 使用标准 LaTeX 公式源码编写 | 矢量渲染、清晰度无限、支持检索复制 |
-| 用一连串连续空格 `\quad\quad` 强行对齐推导 | 使用 `\begin{align} ... \end{align}` 并用 `&` 对齐 | 自动计算间距、排版美观、支持公式单步编号 |
-| 手动敲击公式单位 `$v = 9.8 m/s^2$` | 使用 `siunitx` 命令 `\qty{9.8}{\meter\per\second\squared}` | 保证单位正体、负指数规范排版、数字与单位间距严谨 |
-| 常数底写成斜体 `$e^{ix}$` | 正体书写 `$\mathrm{e}^{\mathrm{i}x}$` | 严格区分物理变量与数学常数算子 |
-| 下标一律使用斜体 `$E_k, v_{max}$` | 区分变量与文字说明 `$E_{\mathrm{k}}, v_{\mathrm{max}}$` | 符合国家标准与 IUPAP 国际物理学会规定 |
-| 使用 `\mathbf{\omega}` 对希腊字母加粗 | 使用 `\usepackage{bm}` 并使用 `\bm{\omega}` | `\mathbf` 对希腊字母无效，`\bm` 全字符完美倾斜加粗 |
-| 绘制普通全边框网格表格 | 使用 `\usepackage{booktabs}` 绘制规范三线表 | 消除繁杂纵向网格干扰，凸显物理数据行次逻辑 |
-| 正文中随手写「见上图」「如前公式所示」 | 使用 `\label{...}` 与 `\ref{...}` / `\eqref{...}` | 章节调整或增删内容时，所有编号自动化更新 |
-| 手写参考文献列表 `[1] 张三...` | 采用 `.bib` 文件数据库配合 BibTeX / Zotero | 自动生成标准化引用样式，文献增减永不乱序 |
-| 把几十页论文全部塞在一个 `main.tex` 中 | 采用 `\input{...}` 分小节分模块管理工程 | 降低文件体积、方便版本追踪、协同开发零冲突 |
+| 糟糕写法与反模式（严禁）                 | 推荐的最佳实践（提倡）                                            | 核心改进原因                            |
+| :--------------------------- | :----------------------------------------------------- | :-------------------------------- |
+| 直接截图手写公式或教材贴图                | 使用标准 LaTeX 公式源码编写                                      | 矢量渲染、清晰度无限、支持检索复制                 |
+| 用一连串连续空格 `\quad\quad` 强行对齐推导 | 使用 `\begin{align} ... \end{align}` 并用 `&` 对齐           | 自动计算间距、排版美观、支持公式单步编号              |
+| 手动敲击公式单位 `$v = 9.8 m/s^2$`   | 使用 `siunitx` 命令 `\qty{9.8}{\meter\per\second\squared}` | 保证单位正体、负指数规范排版、数字与单位间距严谨          |
+| 常数底写成斜体 `$e^{ix}$`           | 正体书写 `$\mathrm{e}^{\mathrm{i}x}$`                      | 严格区分物理变量与数学常数算子                   |
+| 下标一律使用斜体 `$E_k, v_{max}$`    | 区分变量与文字说明 `$E_{\mathrm{k}}, v_{\mathrm{max}}$`         | 符合国家标准与 IUPAP 国际物理学会规定            |
+| 使用 `\mathbf{\omega}` 对希腊字母加粗 | 使用 `\usepackage{bm}` 并使用 `\bm{\omega}`                 | `\mathbf` 对希腊字母无效，`\bm` 全字符完美倾斜加粗 |
+| 绘制普通全边框网格表格                  | 使用 `\usepackage{booktabs}` 绘制规范三线表                     | 消除繁杂纵向网格干扰，凸显物理数据行次逻辑             |
+| 正文中随手写「见上图」「如前公式所示」          | 使用 `\label{...}` 与 `\ref{...}`/`\eqref{...}`           | 章节调整或增删内容时，所有编号自动化更新              |
+| 手写参考文献列表 `[1] 张三...`         | 采用 `.bib` 文件数据库配合 BibTeX/Zotero                        | 自动生成标准化引用样式，文献增减永不乱序              |
+| 把几十页论文全部塞在一个 `main.tex` 中    | 采用 `\input{...}` 分小节分模块管理工程                            | 降低文件体积、方便版本追踪、协同开发零冲突             |

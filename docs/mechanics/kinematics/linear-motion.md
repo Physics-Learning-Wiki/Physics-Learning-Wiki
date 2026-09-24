@@ -5,7 +5,7 @@ assessments:
 - placement: footer
   set: mechanics.kinematics.linear-motion.full
 author: Leafuke
-description: 从位置、位移和路程的符号约定出发，讲解平均与瞬时速度、加速度、x-t/v-t/a-t 图像、匀速与分段直线运动，以及追及相遇问题的建模方法。
+description: 从位置、位移和路程的符号约定出发，讲解平均与瞬时速度、加速度、x-t/v-t/a-t 图像、匀速与分段直线运动，以及追及相遇问题的建模方法．
 learning_objectives:
 - anchor: linear-sign-convention
   id: mech.kin.linear.sign-convention

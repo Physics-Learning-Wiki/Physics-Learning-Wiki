@@ -24,8 +24,7 @@ LaTeX 的数学排版核心主要由 `amsmath` 与 `mathtools` 宏包提供．�
 
 ```tex
 \begin{equation}
-  E^2 = (p c)^2 + (m_0 c^2)^2.
-  \label{eq:relativistic-energy}
+  E^{2}= (p c)^{2}+ (m_{0}c^{2})^{2}. \label{eq:relativistic-energy}
 \end{equation}
 ```
 
@@ -37,10 +36,10 @@ LaTeX 的数学排版核心主要由 `amsmath` 与 `mathtools` 宏包提供．�
 
 ```tex
 \begin{align}
-  \nabla \cdot \bm{D} & = \rho_{\mathrm{f}}, \label{eq:maxwell-1} \\
-  \nabla \cdot \bm{B} & = 0, \label{eq:maxwell-2} \\
-  \nabla \times \bm{E} & = - \frac{\partial \bm{B}}{\partial t}, \label{eq:maxwell-3} \\
-  \nabla \times \bm{H} & = \bm{J}_{\mathrm{f}} + \frac{\partial \bm{D}}{\partial t}. \label{eq:maxwell-4}
+  \nabla \cdot \bm{D}  & = \rho_{\mathrm{f}}, \label{eq:maxwell-1}                                       \\
+  \nabla \cdot \bm{B}  & = 0, \label{eq:maxwell-2}                                                       \\
+  \nabla \times \bm{E} & = - \frac{\partial \bm{B}}{\partial t}, \label{eq:maxwell-3}                    \\
+  \nabla \times \bm{H} & = \bm{J}_{\mathrm{f}}+ \frac{\partial \bm{D}}{\partial t}. \label{eq:maxwell-4}
 \end{align}
 ```
 
@@ -55,9 +54,11 @@ LaTeX 的数学排版核心主要由 `amsmath` 与 `mathtools` 宏包提供．�
 
 ```tex
 \begin{multline}
-  \langle x' | \mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\hat{H}t} | x \rangle
-  = \sqrt{\frac{m}{2\pi \mathrm{i} \hbar t}} \exp\left[ \frac{\mathrm{i}m}{2\hbar t} (x' - x)^2 \right] \\
-  \times \left\{ 1 - \frac{\mathrm{i}t}{2\hbar} \left[ V(x') + V(x) \right] + \mathcal{O}(t^2) \right\}.
+  \langle x' | \mathrm{e}^{-\frac{\mathrm{i}}{\hbar}\hat{H}t}| x \rangle = \sqrt{\frac{m}{2\pi
+  \mathrm{i} \hbar t}}\exp\left[ \frac{\mathrm{i}m}{2\hbar t}(x' - x)^{2}\right]
+  \\
+  \times \left\{ 1 - \frac{\mathrm{i}t}{2\hbar}\left[ V(x') + V(x) \right] + \mathcal{O}
+  (t^{2}) \right\}.
 \end{multline}
 ```
 
@@ -66,9 +67,10 @@ LaTeX 的数学排版核心主要由 `amsmath` 与 `mathtools` 宏包提供．�
 ```tex
 \begin{equation}
   \begin{split}
-    \frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}
-    & = \left( \frac{e^2}{4\pi \varepsilon_0 \cdot 4 E_{\mathrm{k}}} \right)^2 \frac{1}{\sin^4(\theta / 2)} \\
-    & = \left( \frac{z Z e^2}{4 E_{\mathrm{k}}} \right)^2 \csc^4\left( \frac{\theta}{2} \right).
+    \frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}&= \left( \frac{e^{2}}{4\pi \varepsilon_{0}\cdot
+    4 E_{\mathrm{k}}}\right)^{2}\frac{1}{\sin^{4}(\theta / 2)}\\
+    &= \left( \frac{z Z e^{2}}{4 E_{\mathrm{k}}}\right)^{2}\csc^{4}\left( \frac{\theta}{2}
+    \right).
   \end{split}
 \end{equation}
 ```
@@ -80,8 +82,8 @@ LaTeX 的数学排版核心主要由 `amsmath` 与 `mathtools` 宏包提供．�
 ```tex
 V(x) =
 \begin{dcases}
-  0,      & 0 \le x \le a \quad \text{（阱内自由粒子）}, \\
-  V_0,    & x < 0 \text{ 或 } x > a \quad \text{（有限深势垒）}.
+  0,     & 0 \le x \le a \quad \text{（阱内自由粒子）},        \\
+  V_{0}, & x < 0 \text{ 或 }x > a \quad \text{（有限深势垒）}.
 \end{dcases}
 ```
 
@@ -89,9 +91,20 @@ V(x) =
 
 ```tex
 % 常用矩阵环境
-\begin{pmatrix} a & b \\ c & d \end{pmatrix} \qquad % 圆括号 (矩阵常用)
-\begin{bmatrix} a & b \\ c & d \end{bmatrix} \qquad % 方括号
-\begin{vmatrix} a & b \\ c & d \end{vmatrix}        % 行列式 (Determinant)
+\begin{pmatrix}
+  a & b \\
+  c & d
+\end{pmatrix}
+\qquad % 圆括号 (矩阵常用)
+\begin{bmatrix}
+  a & b \\
+  c & d
+\end{bmatrix}
+\qquad % 方括号
+\begin{vmatrix}
+  a & b \\
+  c & d
+\end{vmatrix} % 行列式 (Determinant)
 ```
 
 例如泡利自旋矩阵 $\sigma_y$ 的标准排版：
@@ -99,7 +112,7 @@ V(x) =
 ```tex
 \sigma_y =
 \begin{pmatrix}
-  0 & -\mathrm{i} \\
+  0          & -\mathrm{i} \\
   \mathrm{i} & 0
 \end{pmatrix}.
 ```
@@ -110,26 +123,26 @@ V(x) =
 
 ### 1. 变量斜体，常量与算子正体
 
-| 类别 | 规范法则 | 正确写法示例 | 错误写法（严禁） |
-| :--- | :--- | :--- | :--- |
-| **物理量变量** | 必须使用**斜体** | 质量 $m$、时间 $t$、能量 $E$、速度 $v$ | $\mathrm{m}, \mathrm{t}$ |
-| **微积分微分符号** | 必须使用**正体** | $\mathrm{d}x, \mathrm{d}t, \mathrm{d}^3 r$ | $dx, dt$（$d$ 变成斜体变量） |
-| **偏微分符号** | 使用专用符号 `\partial` | $\frac{\partial \psi}{\partial t}$ | $d \psi / dt$ |
-| **自然常数与底** | 必须使用**正体** | 自然底 $\mathrm{e}^{x}$、虚数单位 $\mathrm{i}$ | $e^x, i$（误写为斜体变量） |
-| **物理常数变量** | 遵循物理约定斜体 | 普朗克常数 $\hbar, h$、光速 $c$、玻尔兹曼常数 $k_{\mathrm{B}}$ | $\mathrm{c}, \mathrm{h}$ |
+| 类别          | 规范法则              | 正确写法示例                                          | 错误写法（严禁）                 |
+| :---------- | :---------------- | :---------------------------------------------- | :----------------------- |
+| **物理量变量**   | 必须使用 **斜体**       | 质量 $m$、时间 $t$、能量 $E$、速度 $v$                     | $\mathrm{m}, \mathrm{t}$ |
+| **微积分微分符号** | 必须使用 **正体**       | $\mathrm{d}x, \mathrm{d}t, \mathrm{d}^3 r$      | $dx, dt$（$d$ 变成斜体变量）     |
+| **偏微分符号**   | 使用专用符号 `\partial` | $\frac{\partial \psi}{\partial t}$              | $d \psi / dt$            |
+| **自然常数与底**  | 必须使用 **正体**       | 自然底 $\mathrm{e}^{x}$、虚数单位 $\mathrm{i}$          | $e^x, i$（误写为斜体变量）        |
+| **物理常数变量**  | 遵循物理约定斜体          | 普朗克常数 $\hbar, h$、光速 $c$、玻尔兹曼常数 $k_{\mathrm{B}}$ | $\mathrm{c}, \mathrm{h}$ |
 
 ???+ example "微积分算子标准写法示例"
     ```tex
     % 正确: 正体 d 且积分号与被积微元间保留薄空格 \,
     \int_0^\infty f(x) \, \mathrm{d}x
-
+    
     % 导数表达
-    \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}^2 s}{\mathrm{d}t^2}
+    \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\mathrm{d}^{2}s}{\mathrm{d}t^{2}}
     ```
 
 ### 2. 下标的正斜体辨析（极高频错误）
 
-物理公式中的下标是否使用正体，取决于该下标的**物理属性**：
+物理公式中的下标是否使用正体，取决于该下标的 **物理属性**：
 
 -   **下标代表变量或指标（Index）时，用斜体**：例如分量 $v_x, v_y, v_i$；多粒子求和 $\sum_k E_k$．
 -   **下标代表特定属性、对象名称或英文缩写时，用正体**：
@@ -141,25 +154,24 @@ V(x) =
 
 ```tex
 % 正确示例
-E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g h
+E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
+h
 ```
 
 ### 3. 矢量与张量符号（`bm` 宏包优于 `\mathbf` 与 `\vec`）
 
 在早期排版中，物理学常使用箭头 `\vec{v}` 或粗体 `\mathbf{v}`．但在现代学术论文中：
+
 -   `\vec{v}` 在包含上下标或长符号时显得十分凌乱；
 -   `\mathbf{...}` 只能处理英文字符，**对希腊字母完全失效**（例如输入 `\mathbf{\omega}` 不会变粗，仍然是细斜体）；
 -   最佳解决方案是载入 `\usepackage{bm}`，使用 **`\bm{...}`** 命令：它能完美将英文、希腊字母、乃至算符加粗并保持优雅的数学倾斜：
 
 ```tex
 % 力学与电磁学矢量
-\bm{F} = m \bm{a}
-\bm{B} = \nabla \times \bm{A}
-\bm{L} = \bm{r} \times \bm{p}
+\bm{F} = m \bm{a} \bm{B} = \nabla \times \bm{A} \bm{L} = \bm{r} \times \bm{p}
 
 % 希腊字母角速度与电极化率矢量
-\bm{v} = \bm{\omega} \times \bm{r}
-\bm{P} = \varepsilon_0 \chi_{\mathrm{e}} \bm{E}
+\bm{v} = \bm{\omega} \times \bm{r} \bm{P} = \varepsilon_0 \chi_{\mathrm{e}} \bm{E}
 ```
 
 ### 4. 量子力学狄拉克符号与算符
@@ -177,7 +189,8 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 [\hat{a}, \hat{a}^\dagger] = 1
 
 % 矩阵元与内积
-\langle \phi \vert \hat{A} \vert \psi \rangle = \int \phi^*(\bm{r}) \hat{A} \psi(\bm{r}) \, \mathrm{d}^3 r
+\langle \phi \vert \hat{A} \vert \psi \rangle = \int \phi^*(\bm{r}) \hat{A} \psi(\bm{r})
+\, \mathrm{d}^3 r
 ```
 
 ## 单位与数值排版神器：`siunitx` 宏包
@@ -188,20 +201,19 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 
 ```tex
 \usepackage{siunitx}
-\sisetup{
-  separate-uncertainty = true, % 误差显示为 +/- 形式
-  inter-unit-product = \cdot   % 单位相乘时使用居中点相连
+\sisetup{ separate-uncertainty = true, % 误差显示为 +/- 形式
+inter-unit-product = \cdot % 单位相乘时使用居中点相连
 }
 ```
 
 ### 1. 核心命令矩阵
 
-| 命令 | 功能用途 | 代码示例 | 渲染效果说明 |
-| :--- | :--- | :--- | :--- |
-| `\num{...}` | 格式化纯数值 | `\num{1.602176634e-19}` | 自动排版为科学计数法 $1.602\,176\,634 \times 10^{-19}$ |
-| `\unit{...}` | 独立物理单位 | `\unit{\kilo\meter\per\second}` | 自动输出标准正体、正确负指数与间距 $\mathrm{km\cdot s^{-1}}$ |
-| `\qty{...}{...}` | 数值 + 单位 | `\qty{9.80}{\meter\per\second\squared}` | 数值与单位之间保留符合国家标准的标准细空格 |
-| `\ang{...}` | 角度与度分秒 | `\ang{45;30;15}` | 输出 $45^\circ 30' 15''$ |
+| 命令               | 功能用途    | 代码示例                                    | 渲染效果说明                                       |
+| :--------------- | :------ | :-------------------------------------- | :------------------------------------------- |
+| `\num{...}`      | 格式化纯数值  | `\num{1.602176634e-19}`                 | 自动排版为科学计数法 $1.602\,176\,634 \times 10^{-19}$ |
+| `\unit{...}`     | 独立物理单位  | `\unit{\kilo\meter\per\second}`         | 自动输出标准正体、正确负指数与间距 $\mathrm{km\cdot s^{-1}}$  |
+| `\qty{...}{...}` | 数值 + 单位 | `\qty{9.80}{\meter\per\second\squared}` | 数值与单位之间保留符合国家标准的标准细空格                        |
+| `\ang{...}`      | 角度与度分秒  | `\ang{45;30;15}`                        | 输出 $45^\circ 30' 15''$                       |
 
 ### 2. 测量不确定度与误差表示
 
@@ -225,30 +237,30 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 
 ```tex
 % 基础力学与热学单位
-\unit{\kilogram}          % kg
-\unit{\newton}            % N
-\unit{\joule}             % J
-\unit{\pascal}            % Pa
-\unit{\kelvin}            % K
-\unit{\watt}              % W
+\unit{\kilogram} % kg
+\unit{\newton} % N
+\unit{\joule} % J
+\unit{\pascal} % Pa
+\unit{\kelvin} % K
+\unit{\watt} % W
 
 % 电磁学单位
-\unit{\coulomb}           % C
-\unit{\volt}              % V
-\unit{\ampere}            % A
-\unit{\ohm}               % Ω (欧姆自动匹配大写欧米伽)
-\unit{\tesla}             % T
-\unit{\henry}             % H
-\unit{\farad}             % F
+\unit{\coulomb} % C
+\unit{\volt} % V
+\unit{\ampere} % A
+\unit{\ohm} % Ω (欧姆自动匹配大写欧米伽)
+\unit{\tesla} % T
+\unit{\henry} % H
+\unit{\farad} % F
 
 % 词头 (Prefix)
-\milli  % m (毫 10^-3)
-\micro  % µ (微 10^-6, 自动使用正体微米符号)
-\nano   % n (纳 10^-9)
-\pico   % p (皮 10^-12)
-\kilo   % k (千 10^3)
-\mega   % M (兆 10^6)
-\giga   % G (吉 10^9)
+\milli % m (毫 10^-3)
+\micro % µ (微 10^-6, 自动使用正体微米符号)
+\nano % n (纳 10^-9)
+\pico % p (皮 10^-12)
+\kilo % k (千 10^3)
+\mega % M (兆 10^6)
+\giga % G (吉 10^9)
 ```
 
 ## 物理宏包选型深度辨析：`physics` 宏包能用吗？
@@ -256,10 +268,10 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 在各大网络论坛或旧教程中，你可能会频繁看到推荐使用 `\usepackage{physics}`．它提供了形如 `\dd{x}`、`\dv{y}{x}`、`\bra{\psi}` 等看似非常方便的缩写．
 
 ???+ warning "CTAN 与 LaTeX 官方对 `physics` 宏包的警示"
-    虽然 `physics` 宏包上手极其爽快，但**现代严谨学术排版通常不推荐直接引入它**，原因如下：
-
+    虽然 `physics` 宏包上手极其爽快，但 **现代严谨学术排版通常不推荐直接引入它**，原因如下：
+    
     1.  **宏包年久失修**：该宏包自 2012 年以后就已停止维护更新．
-    2.  **暴力篡改底层命令**：它在内部暴力重写了许多基础数学内核命令（如 `\div`, `\sin` 等），可能与其他现代数学宏包（如 `mathtools`、`siunitx`）产生诡异的间距 bug 或冲突．
+    2.  **暴力篡改底层命令**：它在内部暴力重写了许多基础数学内核命令（如 `\div`,`\sin` 等），可能与其他现代数学宏包（如 `mathtools`、`siunitx`）产生诡异的间距 bug 或冲突．
     3.  **自动定界符过度伸展**：其默认的括号大小自适应算法经常把普通括号撑得过大，破坏行内排版的美感．
 
 ### 现代稳健替代方案
@@ -267,6 +279,7 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 如果你喜欢简洁的物理导数与狄拉克符号，有两种推荐的稳健现代方案：
 
 #### 方案一：使用现代重写的 `physics2` 宏包
+
 由国内学者维护并收录于 TeX Live 的 `physics2` 宏包，采用模块化设计，无任何侵入性，仅在需要时开启对应模块：
 
 ```tex
@@ -275,6 +288,7 @@ E_{\mathrm{total}} = E_{\mathrm{k}} + E_{\mathrm{p}} = \frac{1}{2} m v_x^2 + m g
 ```
 
 #### 方案二：自行在导言区定义极简宏（最受期刊青睐）
+
 在导言区添加以下 5 行简洁定义，既清晰透明，又绝不会与任何期刊模板冲突：
 
 ```tex

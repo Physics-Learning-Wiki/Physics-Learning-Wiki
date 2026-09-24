@@ -6,7 +6,7 @@
 
 ***
 
-> 提示：如果你希望为题库贡献自测练习题，请前往专用通道：[贡献题目](/quiz/contribute/)。
+> 提示：如果你希望为题库贡献自测练习题，请前往专用通道：[贡献题目](/quiz/contribute/)．
 
 <form id="submission-form" method="post" onsubmit="return false">
   <div class="submit-field">
