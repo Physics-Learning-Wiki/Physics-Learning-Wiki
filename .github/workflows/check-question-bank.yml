@@ -19,6 +19,11 @@ on:
       - 'docs/mechanics/kinematics/linear-motion.md'
       - 'docs/mechanics/dynamics/newton-laws.md'
       - 'hooks/question_bank.py'
+      - 'hooks/runtime_features.py'
+      - 'scripts/runtime/**'
+      - 'scripts/test/serve-site.mjs'
+      - 'docs/_static/js/runtime-loader.js'
+      - 'tests/e2e/**'
       - 'scripts/post-build/**'
       - 'mkdocs.yml'
       - 'pyproject.toml'
@@ -26,6 +31,8 @@ on:
       - 'package.json'
       - 'yarn.lock'
       - 'tsconfig.quiz.json'
+      - 'tsconfig.runtime.json'
+      - 'playwright.config.ts'
   push:
     branches: [main]
     paths: *quiz-paths
@@ -58,6 +65,8 @@ jobs:
         run: uv sync --dev --frozen
       - name: Install JavaScript dependencies
         run: yarn --frozen-lockfile
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
       - name: Validate and test Python tools
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
@@ -80,10 +89,15 @@ jobs:
           yarn submit:check
           yarn submit:test
           yarn quiz:build:check
+          yarn runtime:typecheck
+          yarn runtime:test
+          yarn runtime:build:check
       - name: Build production site
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run mkdocs build --clean
+      - name: Run browser smoke test
+        run: yarn e2e:smoke
       - uses: actions/upload-artifact@v4
         with:
           name: question-bank-metrics

@@ -289,6 +289,7 @@ plugins:
 hooks:
   - hooks/on_env.py
   - hooks/question_bank.py
+  - hooks/runtime_features.py
   - hooks/clean_search_index.py
 
 # Customization
@@ -325,6 +326,7 @@ extra_javascript:
   - '_static/js/question-contribute.js?v=3'
   - '_static/js/quiz-app.js?v=3'
   - 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js'
+  - '_static/js/runtime-loader.js'
 
 extra_css:
   - '_static/css/extra.css?v=19'
