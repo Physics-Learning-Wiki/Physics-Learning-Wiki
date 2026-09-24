@@ -17,4 +17,7 @@ math/calculus/variational.md
 superpowers/plans/
 superpowers/specs/
 
+# Internal quiz runner (linked from the quiz UI, not the main navigation)
+quiz/play.md
+
 adr/
