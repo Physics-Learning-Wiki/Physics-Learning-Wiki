@@ -8,6 +8,7 @@ strict: false
 exclude_docs: |
   superpowers/
   adr/
+  ref-images/
 
 # Repository
 repo_name: 'Physics-Learning-Wiki/Physics-Learning-Wiki'
