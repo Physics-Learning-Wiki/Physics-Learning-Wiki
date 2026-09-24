@@ -11,7 +11,7 @@ description: 常微分方程模块已从微积分独立升级为微分方程知�
 >
 > 如果你是通过书签或站内旧链接访问本页，请直接点击下方入口前往新页面：
 
-👉**[前往常微分方程基础与一阶方程](../differential-equations/ode-intro.md)**
+👉[前往常微分方程基础与一阶方程](../differential-equations/ode-intro.md)
 
 ***
 

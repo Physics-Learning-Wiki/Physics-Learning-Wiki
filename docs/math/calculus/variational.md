@@ -11,7 +11,7 @@ description: 变分法模块已从基础微积分独立升级为变分法与极�
 >
 > 如果你是通过书签或站内旧链接访问本页，请直接点击下方入口前往新页面：
 
-👉**[前往变分法基础与欧拉 - 拉格朗日方程](../variational-methods/calculus-of-variations.md)**
+👉[前往变分法基础与欧拉 - 拉格朗日方程](../variational-methods/calculus-of-variations.md)
 
 ***
 
