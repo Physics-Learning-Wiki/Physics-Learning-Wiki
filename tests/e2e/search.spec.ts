@@ -52,6 +52,26 @@ test("search supports q deep links, keyboard navigation, and reset", async ({ pa
   await expect(page.locator("#__search")).not.toBeChecked();
 });
 
+test("desktop search expands on focus and shows Pagefind results", async ({ page }) => {
+  await page.setViewportSize({ width: 1796, height: 1294 });
+  await page.goto(`${basePath}thermodynamics/chapter-1/heat-and-its-nature/`);
+
+  const input = page.locator(".md-search__input");
+  const toggle = page.locator("#__search");
+  const searchInner = page.locator(".md-search__inner");
+  const collapsedWidth = await searchInner.evaluate(element => element.getBoundingClientRect().width);
+  await expect(toggle).not.toBeChecked();
+  await input.click();
+  await expect(toggle).toBeChecked();
+  await expect
+    .poll(async () => searchInner.evaluate(element => element.getBoundingClientRect().width))
+    .toBeGreaterThan(collapsedWidth + 100);
+
+  await input.fill("热学");
+  await expect(page.locator(".md-search-result__meta")).toHaveText(/找到 \d+ 条结果/);
+  await expect(page.locator(".md-search-result__link").first()).toBeVisible();
+});
+
 test("math page search excerpts omit raw TeX commands", async ({ page }) => {
   await page.goto(`${basePath}intro/about/`);
   const input = page.locator(".md-search__input");

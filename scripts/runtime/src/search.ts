@@ -246,6 +246,11 @@ export function mountSearch(
     searchTimer = window.setTimeout(() => void runSearch(input.value), 120);
   };
 
+  const handleFocus = () => {
+    setOpen(true);
+    void getPagefind().catch(() => undefined);
+  };
+
   const handleReset = () => {
     window.setTimeout(() => void runSearch(""), 0);
   };
@@ -293,7 +298,7 @@ export function mountSearch(
   };
 
   toggle.addEventListener("change", handleToggle, { signal });
-  input.addEventListener("focus", () => void getPagefind().catch(() => undefined), { signal });
+  input.addEventListener("focus", handleFocus, { signal });
   input.addEventListener("input", handleInput, { signal });
   form.addEventListener("reset", handleReset, { signal });
   form.addEventListener("submit", handleSubmit, { signal });
