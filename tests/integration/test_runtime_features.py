@@ -67,7 +67,7 @@ def test_quiz_feature_adds_relative_stylesheet_once_and_only_on_quiz_pages() -> 
     links = result.select('head link[data-plw-feature="quiz"]')
 
     assert len(links) == 1
-    assert links[0].get("href") == "../../_static/css/quiz.css?v=3"
+    assert links[0].get("href") == "../../_static/css/quiz.css?v=4"
 
     ordinary = BeautifulSoup(transform_page_html(page_html("<p>普通文章</p>"), "intro/about/"), "html.parser")
     assert ordinary.select('link[data-plw-feature="quiz"]') == []

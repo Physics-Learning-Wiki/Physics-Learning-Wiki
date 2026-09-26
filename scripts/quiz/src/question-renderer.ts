@@ -48,7 +48,7 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
         <input type="${question.type === "single_choice" ? "radio" : "checkbox"}" name="${escapeHtml(
         inputName
       )}" value="${choice.id}" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
-        <span class="plw-quiz-choice__content">${choice.contentHtml}</span>
+        <div class="plw-quiz-choice__content">${choice.contentHtml}</div>
       `;
 
       label.querySelector("input")?.addEventListener("change", e => {
@@ -86,7 +86,7 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
       label.innerHTML = `
         <span class="plw-quiz-choice__badge">${item.badge}</span>
         <input type="radio" name="${escapeHtml(inputName)}" ${selected ? "checked" : ""} ${locked ? "disabled" : ""}>
-        <span class="plw-quiz-choice__content">${item.label}</span>
+        <div class="plw-quiz-choice__content">${item.label}</div>
       `;
       label.querySelector("input")?.addEventListener("change", () => {
         fieldset.querySelectorAll(".plw-quiz-choice").forEach(c => c.classList.remove("is-selected"));

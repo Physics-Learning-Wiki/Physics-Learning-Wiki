@@ -589,7 +589,7 @@ legend.plw-quiz-choice-group__legend,
 
 .plw-quiz-choice {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.9rem;
   min-height: 48px;
   margin: 0.65rem 0;
@@ -741,6 +741,7 @@ legend.plw-quiz-choice-group__legend,
   font-weight: 700;
   font-size: 0.85rem;
   flex-shrink: 0;
+  margin-top: 0.125rem;
   transition: all 0.15s ease;
   border: 1.5px solid var(--md-default-fg-color--lightest);
 }
@@ -754,10 +755,19 @@ legend.plw-quiz-choice-group__legend,
 }
 
 .plw-quiz-choice__content {
-  flex: 1;
+  flex: 1 1 auto;
+  min-width: 0;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--md-default-fg-color);
+}
+
+.plw-quiz-choice__content > :first-child {
+  margin-top: 0;
+}
+
+.plw-quiz-choice__content > :last-child {
+  margin-bottom: 0;
 }
 
 /* 填空/数值与单位选择器 */
@@ -1959,4 +1969,16 @@ legend.plw-quiz-choice-group__legend,
   .plw-quiz-entry::after {
     content: "在线版本提供本页知识小测。";
   }
+}
+
+/* 数学公式与长内容容器局部约束 */
+.plw-quiz-stem,
+.plw-quiz-choice__content,
+.plw-quiz-feedback-text,
+.plw-quiz-choice-feedback,
+.plw-quiz-hints__body,
+.plw-quiz-solution-text,
+.plw-quiz-answer-comparison {
+  min-width: 0;
+  overflow-x: auto;
 }

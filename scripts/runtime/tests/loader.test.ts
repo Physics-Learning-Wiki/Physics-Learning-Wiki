@@ -419,7 +419,7 @@ test("stylesheet error prevents Quiz module mount and reports error", async () =
     registry: {
       quiz: {
         stylesheets: [
-          "_static/css/quiz.css?v=3",
+          "_static/css/quiz.css?v=4",
           root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
         ],
         moduleUrl: "_static/js/features/quiz.js"
@@ -468,7 +468,7 @@ test("math and quiz request the same versioned MathJax stylesheet only once", as
       math: mathFeatureDefinition,
       quiz: {
         stylesheets: [
-          "_static/css/quiz.css?v=3",
+          "_static/css/quiz.css?v=4",
           root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
         ],
         load: async () => ({ mount: () => {} })
@@ -510,7 +510,7 @@ test("instant navigation between quiz pages does not duplicate stylesheet reques
     registry: {
       quiz: {
         stylesheets: [
-          "_static/css/quiz.css?v=3",
+          "_static/css/quiz.css?v=4",
           root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
         ],
         load: async () => ({ mount: () => {} })

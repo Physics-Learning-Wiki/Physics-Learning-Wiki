@@ -25,6 +25,10 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await expect(page).toHaveURL(/\/Physics-Learning-Wiki\/quiz\/$/);
   await expect(page.locator(".plw-quiz-home-featured")).toBeVisible();
   await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveCount(1);
+  await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveAttribute(
+    "href",
+    expect.stringContaining("quiz.css?v=4")
+  );
   expect(quizRequests.filter(path => path.endsWith("/features/quiz.js"))).toHaveLength(1);
   expect(quizRequests.some(path => path.endsWith("/manifest.json"))).toBe(true);
   expect(quizRequests.some(path => /\/catalog\/sets\.[^/]+\.json$/.test(path))).toBe(true);
@@ -32,6 +36,9 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await page.getByRole("link", { name: "开始小测" }).first().click();
   await expect(page).toHaveURL(/\/quiz\/play\/\?set=[^&]+&seed=[^&]+/);
   await expect(page.locator(".plw-quiz-question")).toBeVisible();
+  const choiceContent = page.locator(".plw-quiz-choice__content").first();
+  await expect(choiceContent).toBeVisible();
+  expect(await choiceContent.evaluate(el => el.tagName)).toBe("DIV");
   const originalQuestionId = await page.locator(".plw-quiz-question").getAttribute("data-question-id");
   const savedSession = await page.evaluate(() => localStorage.getItem("plw.quiz.v2"));
   expect(savedSession).not.toBeNull();
