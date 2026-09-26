@@ -36,8 +36,8 @@ feedback:
 hints:
 - 由高斯定理可知：圆柱面内部（$r < R$）场强为零，圆柱面外部（$r > R$）场强为 $E = \frac{\lambda}{2\pi\varepsilon_0 r}$。
 - 从轴线 $r = 0$ 处 $V(0) = 0$ 出发，逐步向外积分求各区域电势。
-solution: "**严格推导与解析**：\n根据高斯定理，无限长均匀带电圆柱面的场强分布为： $$E(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{\\lambda}{2\\pi\\\
-  varepsilon_0 r} & (r > R) \\end{cases}$$\n1. **圆柱面内部（$r \\le R$）**：\n   已知题目选取轴线 $r = 0$ 处为电势参考零点，即 $V(0) = 0$。\n   在圆柱面内部任意点\
+solution: "**严格推导与解析**：\n根据高斯定理，无限长均匀带电圆柱面的场强分布为：\n$$\nE(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{\\lambda}{2\\pi\\\
+  varepsilon_0 r} & (r > R) \\end{cases}\n$$\n1. **圆柱面内部（$r \\le R$）**：\n   已知题目选取轴线 $r = 0$ 处为电势参考零点，即 $V(0) = 0$。\n   在圆柱面内部任意点\
   \ $r$：\n   $$V_{\\text{内}}(r) - V(0) = -\\int_0^r E_{\\text{内}}\\,\\mathrm{d}r' = -\\int_0^r 0\\,\\mathrm{d}r' = 0$$\n \
   \  因此圆柱面内部各点电势处处相等，构成一个零电势等势体：\n   $$V_{\\text{内}}(r) = V(0) = 0$$\n   圆柱面表面（代入 $r = R$）处电势亦为：\n   $$V(R) = 0$$\n\n2. **圆柱面外部（$r\
   \ \\ge R$）**：\n   对于柱外任意一点 $r$（$r > R$），利用电势差定义，沿径向从 $r$ 积分至表面参考点 $R$：\n   $$V_{\\text{外}}(r) - V(R) = \\int_r^R E_{\\text{外}}\\\
@@ -64,14 +64,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8
+    content_fingerprint: sha256:620d48cd67e09bd04a57b3afcbbf1227e03efd493f1dca7a771d5d832c39e359
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8
+    content_fingerprint: sha256:620d48cd67e09bd04a57b3afcbbf1227e03efd493f1dca7a771d5d832c39e359
   copyright:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8
+    content_fingerprint: sha256:620d48cd67e09bd04a57b3afcbbf1227e03efd493f1dca7a771d5d832c39e359

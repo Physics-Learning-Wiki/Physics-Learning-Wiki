@@ -35,8 +35,8 @@ feedback:
 hints:
 - 利用电势的路径积分定义式：$V_{\text{内}}(r) = \int_r^R E_{\text{内}}\,\mathrm{d}r' + \int_R^\infty E_{\text{外}}\,\mathrm{d}r'$。
 - 代入已知的球壳场强分布 $E_{\text{内}} = 0$ 与 $E_{\text{外}} = \frac{Q}{4\pi\varepsilon_0 r'^2}$ 进行分段积分。
-solution: "**严格推导与概念辨析**：\n根据高斯定理，均匀带电薄球壳在全空间的场强分布为： $$E(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{Q}{4\\pi\\varepsilon_0\
-  \ r^2} & (r > R) \\end{cases}$$\n1. **球壳外部电势（$r \\ge R$）**：\n   选无穷远处为电势参考零点（$V(\\infty) = 0$），将单位正电荷从距离 $r$ 沿径向移至无穷远：\n\
+solution: "**严格推导与概念辨析**：\n根据高斯定理，均匀带电薄球壳在全空间的场强分布为：\n$$\nE(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{Q}{4\\pi\\varepsilon_0\
+  \ r^2} & (r > R) \\end{cases}\n$$\n1. **球壳外部电势（$r \\ge R$）**：\n   选无穷远处为电势参考零点（$V(\\infty) = 0$），将单位正电荷从距离 $r$ 沿径向移至无穷远：\n\
   \   $$V_{\\text{外}}(r) = \\int_r^\\infty E_{\\text{外}}\\,\\mathrm{d}r' = \\int_r^\\infty \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\\
   ,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0 r}$$\n   在球壳表面（代入 $r = R$）处，电势为：\n   $$V(R) = \\frac{Q}{4\\pi\\varepsilon_0\
   \ R}$$\n\n2. **球壳内部电势（$r < R$）**：\n   从球内任意点 $r$ 移至无穷远处，路径跨越球内（$r \\to R$）和球外（$R \\to \\infty$）两个区域：\n   $$V_{\\text{内}}(r)\
@@ -63,14 +63,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf
+    content_fingerprint: sha256:f5c561942583599d5a388b4159713c8b14126fdea56eacc888e7e37277a200fd
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf
+    content_fingerprint: sha256:f5c561942583599d5a388b4159713c8b14126fdea56eacc888e7e37277a200fd
   copyright:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf
+    content_fingerprint: sha256:f5c561942583599d5a388b4159713c8b14126fdea56eacc888e7e37277a200fd

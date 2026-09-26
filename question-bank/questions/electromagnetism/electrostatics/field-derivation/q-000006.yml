@@ -38,10 +38,10 @@ feedback:
 hints:
 - 取高为 $l$ 的同轴圆柱高斯面，计算不同半径 $r$ 下面内包含的总电荷 $q_{\text{in}}$。
 - 特别分析 $\lambda_1 + \lambda_2 = 0$ 时的外场与同轴电缆屏蔽效应。
-solution: "**分段推导与解析**：\n取与带电圆筒共轴、半径为 $r$、长为 $l$ 的圆柱形高斯面。根据轴对称性，上下底面通量恒为零，侧面通量为 $E(2\\pi r l)$。根据高斯定理： $$2\\pi r l E = \\\
-  frac{q_{\\text{in}}}{\\varepsilon_0} \\implies E = \\frac{q_{\\text{in}}}{2\\pi\\varepsilon_0 r l}$$\n1. **内筒内部（$r < R_1$）**：\n\
-  \   高斯面内不包含任何电荷，$q_{\\text{in}} = 0$，故：\n   $$E = 0$$\n   A 选项正确。\n\n2. **两圆筒夹层（$R_1 < r < R_2$）**：\n   高斯面内仅包围内圆筒长为 $l$\
-  \ 的电荷，$q_{\\text{in}} = \\lambda_1 l$：\n   $$2\\pi r l E = \\frac{\\lambda_1 l}{\\varepsilon_0} \\implies E = \\frac{\\\
+solution: "**分段推导与解析**：\n取与带电圆筒共轴、半径为 $r$、长为 $l$ 的圆柱形高斯面。根据轴对称性，上下底面通量恒为零，侧面通量为 $E(2\\pi r l)$。根据高斯定理：\n$$\n2\\pi r l E =\
+  \ \\frac{q_{\\text{in}}}{\\varepsilon_0} \\implies E = \\frac{q_{\\text{in}}}{2\\pi\\varepsilon_0 r l}\n$$\n1. **内筒内部（$r\
+  \ < R_1$）**：\n   高斯面内不包含任何电荷，$q_{\\text{in}} = 0$，故：\n   $$E = 0$$\n   A 选项正确。\n\n2. **两圆筒夹层（$R_1 < r < R_2$）**：\n   高斯面内仅包围内圆筒长为\
+  \ $l$ 的电荷，$q_{\\text{in}} = \\lambda_1 l$：\n   $$2\\pi r l E = \\frac{\\lambda_1 l}{\\varepsilon_0} \\implies E = \\frac{\\\
   lambda_1}{2\\pi\\varepsilon_0 r}$$\n   B 选项正确。\n\n3. **外圆筒外部（$r > R_2$）**：\n   高斯面同时包围内外两圆筒全部电荷，$q_{\\text{in}} = (\\lambda_1\
   \ + \\lambda_2)l$：\n   $$2\\pi r l E = \\frac{(\\lambda_1 + \\lambda_2)l}{\\varepsilon_0} \\implies E = \\frac{\\lambda_1\
   \ + \\lambda_2}{2\\pi\\varepsilon_0 r}$$\n   C 选项正确。\n\n4. **等量异号特例（$\\lambda_1 = -\\lambda_2$）**：\n   当 $\\lambda_1 + \\\
@@ -66,14 +66,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341
+    content_fingerprint: sha256:300af1a1816fa730e04eaf45972ef1394b669e38de64c630f470de211f87f94e
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341
+    content_fingerprint: sha256:300af1a1816fa730e04eaf45972ef1394b669e38de64c630f470de211f87f94e
   copyright:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341
+    content_fingerprint: sha256:300af1a1816fa730e04eaf45972ef1394b669e38de64c630f470de211f87f94e

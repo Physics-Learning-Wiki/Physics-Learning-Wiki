@@ -234,4 +234,41 @@ def test_published_choice_question_without_feedback_is_rejected() -> None:
     schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
     issues = validate_question_content(document, schema)
     assert any("feedback" in issue.field for issue in issues)
+def test_embedded_display_delimiter_is_rejected() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["solution"] = "根据公式 $$E=mc^2$$ 可得"
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert any("embedded-display-delimiter" in issue.message for issue in issues)
 
+
+def test_split_boundary_display_is_rejected() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["solution"] = "$$\\begin{cases}\nx\n\\end{cases}$$"
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert any("split-boundary-display" in issue.message for issue in issues)
+
+
+def test_unclosed_display_is_rejected() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["solution"] = "公式未闭合：\n$$E=mc^2\n结束"
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert any("unclosed-display" in issue.message for issue in issues)
+
+
+def test_compact_standalone_display_is_permitted() -> None:
+    path = ROOT / "question-bank" / "fixtures" / "valid" / "single-choice.yml"
+    document, _ = load_yaml(path)
+    assert document is not None
+    document.data["solution"] = "结论如下：\n   $$E=mc^2$$"
+    schema = load_json(ROOT / "question-bank" / "schemas" / "question.schema.json")
+    issues = validate_question_content(document, schema)
+    assert not any("invalid markdown math syntax" in issue.message for issue in issues)

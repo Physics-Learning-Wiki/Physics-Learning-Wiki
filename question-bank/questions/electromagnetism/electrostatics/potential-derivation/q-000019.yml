@@ -35,17 +35,17 @@ feedback:
 hints:
 - 方法一（叠加原理）：内球电势等于内球壳独立激发的表面电势，加上外球壳在其内部区域激发的电势。
 - 方法二（场强路径积分）：$U_1 = \int_{R_a}^{R_b} E_2\,\mathrm{d}r + \int_{R_b}^\infty E_3\,\mathrm{d}r$。
-solution: "**两种求解方法严格推导**：\n### 解法一：电势叠加原理（最简捷直观） 根据标量势的线性叠加原理，空间任一点的总电势等于内外两带电球壳独立激发电势的标量代数和： $$U = U_a + U_b$$ 根据单层球壳电势规律（球壳外部为点电荷势，球壳内部为等于表面的常数势）：\
-  \ 1. **内球壳 $Q_a$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于其自身表面，故贡献：\n   $$U_a(R_a) = \\frac{Q_a}{4\\pi\\varepsilon_0 R_a}$$\n2. **外球壳\
-  \ $Q_b$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于外球壳内部（$R_a < R_b$）。外球壳在内部全空间激发的电势恒等于其表面电势，故外球壳在内球处贡献：\n   $$U_b(R_a) = \\frac{Q_b}{4\\\
-  pi\\varepsilon_0 R_b}$$\n将两者标量直接相加，即得内球电势： $$U_1 = U_a(R_a) + U_b(R_a) = \\frac{1}{4\\pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a}\
-  \ + \\frac{Q_b}{R_b} \\right)$$\n---\n### 解法二：场强路径积分法 由高斯定理可知各区域场强： - 区域 II（$R_a < r < R_b$）：$E_2 = \\frac{Q_a}{4\\pi\\\
-  varepsilon_0 r^2}$ - 区域 III（$r > R_b$）：$E_3 = \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0 r^2}$ 根据电势定义，将单位正电荷从内球表面移至无穷远处： $$U_1\
-  \ = \\int_{R_a}^{R_b} E_2\\,\\mathrm{d}r + \\int_{R_b}^\\infty E_3\\,\\mathrm{d}r = \\frac{Q_a}{4\\pi\\varepsilon_0}\\left(\
-  \ \\frac{1}{R_a} - \\frac{1}{R_b} \\right) + \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0 R_b}$$ 拆分整理后： $$U_1 = \\frac{Q_a}{4\\\
-  pi\\varepsilon_0 R_a} - \\frac{Q_a}{4\\pi\\varepsilon_0 R_b} + \\frac{Q_a}{4\\pi\\varepsilon_0 R_b} + \\frac{Q_b}{4\\pi\\\
-  varepsilon_0 R_b} = \\frac{1}{4\\pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a} + \\frac{Q_b}{R_b} \\right)$$ 两法所得严格一致。\n故 A\
-  \ 选项正确。"
+solution: "**两种求解方法严格推导**：\n### 解法一：电势叠加原理（最简捷直观）\n\n根据标量势的线性叠加原理，空间任一点的总电势等于内外两带电球壳独立激发电势的标量代数和：\n$$\nU = U_a + U_b\n$$\n\
+  根据单层球壳电势规律（球壳外部为点电荷势，球壳内部为等于表面的常数势）： 1. **内球壳 $Q_a$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于其自身表面，故贡献：\n   $$U_a(R_a) = \\frac{Q_a}{4\\\
+  pi\\varepsilon_0 R_a}$$\n2. **外球壳 $Q_b$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于外球壳内部（$R_a < R_b$）。外球壳在内部全空间激发的电势恒等于其表面电势，故外球壳在内球处贡献：\n\
+  \   $$U_b(R_a) = \\frac{Q_b}{4\\pi\\varepsilon_0 R_b}$$\n将两者标量直接相加，即得内球电势：\n$$\nU_1 = U_a(R_a) + U_b(R_a) = \\frac{1}{4\\\
+  pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a} + \\frac{Q_b}{R_b} \\right)\n$$\n---\n### 解法二：场强路径积分法\n\n由高斯定理可知各区域场强：\n- 区域 II（$R_a\
+  \ < r < R_b$）：$E_2 = \\frac{Q_a}{4\\pi\\varepsilon_0 r^2}$\n- 区域 III（$r > R_b$）：$E_3 = \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0\
+  \ r^2}$\n\n根据电势定义，将单位正电荷从内球表面移至无穷远处：\n$$\nU_1 = \\int_{R_a}^{R_b} E_2\\,\\mathrm{d}r + \\int_{R_b}^\\infty E_3\\,\\mathrm{d}r\
+  \ = \\frac{Q_a}{4\\pi\\varepsilon_0}\\left( \\frac{1}{R_a} - \\frac{1}{R_b} \\right) + \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0\
+  \ R_b}\n$$\n拆分整理后：\n$$\nU_1 = \\frac{Q_a}{4\\pi\\varepsilon_0 R_a} - \\frac{Q_a}{4\\pi\\varepsilon_0 R_b} + \\frac{Q_a}{4\\\
+  pi\\varepsilon_0 R_b} + \\frac{Q_b}{4\\pi\\varepsilon_0 R_b} = \\frac{1}{4\\pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a} +\
+  \ \\frac{Q_b}{R_b} \\right)\n$$\n两法所得严格一致。\n故 A 选项正确。"
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -65,14 +65,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b
+    content_fingerprint: sha256:945aa6730f039d5a95dcaea7792cbaec93de5da5e4f36b48ef0a34d2e7166dfb
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b
+    content_fingerprint: sha256:945aa6730f039d5a95dcaea7792cbaec93de5da5e4f36b48ef0a34d2e7166dfb
   copyright:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b
+    content_fingerprint: sha256:945aa6730f039d5a95dcaea7792cbaec93de5da5e4f36b48ef0a34d2e7166dfb

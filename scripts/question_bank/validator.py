@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 
 from .errors import Issue
 from .loader import load_json, load_taxonomy, load_tree
+from .markdown_math import audit_markdown_field, iter_question_markdown_fields
 from .media import question_content_fingerprint, validate_assets
 from .models import PageRegistry, RepositoryData, SourceDocument, TaxonomyRegistry
 from .page_contracts import build_page_registry, discover_page_contracts, validate_page_contracts
@@ -109,6 +110,24 @@ def validate_question_content(
             issues.append(Issue.error(path, field, "raw dangerous HTML or URL is forbidden"))
         if any(ord(character) < 32 and character not in "\n\r\t" for character in text):
             issues.append(Issue.error(path, field, "control characters are forbidden"))
+    for field_ref in iter_question_markdown_fields(data):
+        diags, _ = audit_markdown_field(
+            field_ref.text,
+            question_id=str(question_id or ""),
+            status=str(data.get("status", "draft")),
+            field_path=field_ref.path,
+            strict_style=False,
+        )
+        for diag in diags:
+            if diag.source_change_required:
+                detail_suffix = f" on line {diag.line}" if diag.line else ""
+                issues.append(
+                    Issue.error(
+                        path,
+                        diag.field,
+                        f"invalid markdown math syntax ({diag.kind}): {diag.detail}{detail_suffix}",
+                    )
+                )
     choices = data.get("choices", [])
     if isinstance(choices, list):
         ids = [choice.get("id") for choice in choices if isinstance(choice, dict)]

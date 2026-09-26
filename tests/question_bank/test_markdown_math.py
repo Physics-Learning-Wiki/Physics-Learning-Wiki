@@ -125,15 +125,9 @@ def test_repository_math_audit_baseline() -> None:
     assert len(display_questions) == 46
     assert all(q.data.get("status") == "published" for q in display_questions)
 
-    # Verify the exact set of questions requiring source change
-    assert summary.source_change_required_count == 5
-    assert summary.source_change_required_questions == [
-        "q-000006",
-        "q-000018",
-        "q-000019",
-        "q-000022",
-        "q-000038",
-    ]
+    # Verify that all source changes required have been migrated (0 remaining)
+    assert summary.source_change_required_count == 0
+    assert summary.source_change_required_questions == []
 
     # Verify no unclosed display delimiters in repository
     assert summary.diagnostics_by_kind.get("unclosed-display", 0) == 0

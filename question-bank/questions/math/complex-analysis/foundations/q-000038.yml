@@ -36,10 +36,10 @@ hints:
 - 求解方程组 $u_x = v_y$ 与 $u_y = -v_x$ 确定可微点所在轨迹。
 solution: "**解析**：\n1. **计算偏导数**：\n   实部与虚部分别为：\n   $$u(x, y) = x^2 + y, \\quad v(x, y) = y^2 - x$$\n   一阶偏导数为：\n   $$u_x\
   \ = 2x, \\quad u_y = 1$$\n   $$v_x = -1, \\quad v_y = 2y$$\n   偏导数在整个二维实平面 $\\mathbb{R}^2$ 上显然处处连续。\n\n2. **检验柯西-黎曼条件**：\n\
-  \   $$\\begin{cases}\n   u_x = v_y \\iff 2x = 2y \\iff y = x \\\\\n   u_y = -v_x \\iff 1 = -(-1) = 1 \\quad (\\text{恒成立})\n\
-  \   \\end{cases}$$\n   因为偏导数连续，且在直线 $y = x$ 上严格满足 C-R 条件，所以函数 $f(z)$ **在直线 $y = x$ 上的每一个点都复可导**。\n\n3. **判定解析性**：\n   函数的解析性要求函数在某点的某个**开邻域**\
-  \ $(|z - z_0| < \\varepsilon)$ 内处处可导。\n   直线 $y = x$ 是一条没有内部的一维线。对于直线上的任意一点 $z_0$，以其为圆心的任意开圆盘邻域必包含坐标 $y \\neq x$ 的点；而在这些点处不满足\
-  \ C-R 方程因而不可导。\n   因此，不存在任何一个使得函数处处可导的开邻域，函数在复平面上**处处不解析**！\n   故 A 正确，B、C、D 错误。"
+  \   $$\n   \\begin{cases}\n   u_x = v_y \\iff 2x = 2y \\iff y = x \\\\\n   u_y = -v_x \\iff 1 = -(-1) = 1 \\quad (\\text{恒成立})\n\
+  \   \\end{cases}\n   $$\n   因为偏导数连续，且在直线 $y = x$ 上严格满足 C-R 条件，所以函数 $f(z)$ **在直线 $y = x$ 上的每一个点都复可导**。\n\n3. **判定解析性**：\n\
+  \   函数的解析性要求函数在某点的某个**开邻域** $(|z - z_0| < \\varepsilon)$ 内处处可导。\n   直线 $y = x$ 是一条没有内部的一维线。对于直线上的任意一点 $z_0$，以其为圆心的任意开圆盘邻域必包含坐标\
+  \ $y \\neq x$ 的点；而在这些点处不满足 C-R 方程因而不可导。\n   因此，不存在任何一个使得函数处处可导的开邻域，函数在复平面上**处处不解析**！\n   故 A 正确，B、C、D 错误。"
 difficulty: 2
 cognitive_level: apply
 style: conceptual
@@ -59,14 +59,14 @@ review:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9673b9061035e84d36a55583799f785bbeeb90cb324e538cd908b5fa02350fdc
+    content_fingerprint: sha256:fd73424a0625c537962878f790a134eadd01c05e2e240bf492e384136e7c3216
   pedagogy:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9673b9061035e84d36a55583799f785bbeeb90cb324e538cd908b5fa02350fdc
+    content_fingerprint: sha256:fd73424a0625c537962878f790a134eadd01c05e2e240bf492e384136e7c3216
   copyright:
   - github: Leafuke
     reviewed_on: '2026-09-26'
     question_version: 1
-    content_fingerprint: sha256:9673b9061035e84d36a55583799f785bbeeb90cb324e538cd908b5fa02350fdc
+    content_fingerprint: sha256:fd73424a0625c537962878f790a134eadd01c05e2e240bf492e384136e7c3216
