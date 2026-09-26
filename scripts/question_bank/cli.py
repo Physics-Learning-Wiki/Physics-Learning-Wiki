@@ -42,6 +42,11 @@ def _parser() -> argparse.ArgumentParser:
     attest_parser.add_argument("--reviewed-on")
     publish_parser = subcommands.add_parser("publish", help="publish a fully attested question or set")
     publish_parser.add_argument("--id", required=True)
+    math_audit = subcommands.add_parser("math-audit", help="audit markdown math syntax")
+    math_audit.add_argument("--format", choices=["text", "json"], default="text")
+    math_audit.add_argument("--output", type=Path)
+    math_audit.add_argument("--include-drafts", action="store_true", default=True)
+    math_audit.add_argument("--strict-style", action="store_true", help="report style diagnostics for compact display math")
     return parser
 
 
@@ -111,5 +116,26 @@ def main(argv: list[str] | None = None) -> int:
             print(f"ERROR: {exc}")
             return 1
         print(path.as_posix())
+        return 0
+    if args.command == "math-audit":
+        from .loader import load_tree
+        from .markdown_math import audit_repository, format_audit_report
+
+        root = Path.cwd()
+        questions, _issues = load_tree(root / "question-bank" / "questions")
+        summary, diagnostics = audit_repository(questions, strict_style=args.strict_style)
+        if args.format == "json":
+            payload = {
+                "summary": summary.to_dict(),
+                "diagnostics": [d.to_dict() for d in diagnostics],
+            }
+            content = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+        else:
+            content = format_audit_report(summary, diagnostics)
+        if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
+            args.output.write_text(content, encoding="utf-8")
+        else:
+            print(content, end="")
         return 0
     return 2
