@@ -13,6 +13,13 @@ import {
 import { newSeed } from "../random.js";
 import { selectRetry } from "../selection.js";
 import { createSession, findRestorableSession, inspectSessionStatus } from "../session.js";
+import {
+  createPointerSummaryManager,
+  isPreservedNavigationControl,
+  resolveOptionIndex,
+  shouldQuizHandleEnter,
+  shouldQuizHandleOptionShortcut
+} from "../keyboard.js";
 import type { QuizStore } from "../storage.js";
 import type {
   Attempt,
@@ -73,6 +80,12 @@ export class PlaySurface {
     this.onExit = options.onExit;
     this.onRestart = options.onRestart;
     this.onAdhoc = options.onAdhoc;
+
+    createPointerSummaryManager({
+      root: this.root,
+      restoreFocus: () => this.restoreQuizFocus(),
+      signal: this.abort.signal
+    });
 
     document.addEventListener("keydown", this.handleKeyDown, { signal: this.abort.signal });
   }
@@ -202,28 +215,34 @@ export class PlaySurface {
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
 
-    if (target.closest('button, a, input, select, textarea, summary, [contenteditable="true"]')) return;
     const locked = Boolean(this.session.locked[question.id]);
     const immediate = this.bundle.set.feedback_mode === "immediate";
 
-    // 1. ArrowLeft / ArrowRight navigation
+    // 1. ArrowLeft / ArrowRight / PageUp / PageDown navigation
     if (event.key === "ArrowLeft" || event.key === "PageUp") {
-      if (this.session.currentIndex > 0) {
-        event.preventDefault();
-        this.move(-1);
-        return;
+      if (!isPreservedNavigationControl(target)) {
+        if (this.session.currentIndex > 0) {
+          event.preventDefault();
+          this.move(-1);
+          return;
+        }
       }
     }
     if (event.key === "ArrowRight" || event.key === "PageDown") {
-      if (this.session.currentIndex < this.questions.length - 1) {
-        event.preventDefault();
-        this.move(1);
-        return;
+      if (!isPreservedNavigationControl(target)) {
+        if (this.session.currentIndex < this.questions.length - 1) {
+          event.preventDefault();
+          this.move(1);
+          return;
+        }
       }
     }
 
     // 2. Enter key for confirm or next / submit
     if (event.key === "Enter") {
+      if (!shouldQuizHandleEnter(target)) {
+        return;
+      }
       event.preventDefault();
       if (immediate && !locked) {
         const answer = this.session.answers[question.id] ?? null;
@@ -239,15 +258,8 @@ export class PlaySurface {
     }
 
     // 3. Option shortcuts (A-D, 1-4)
-    if (!locked) {
-      let selectedIndex = -1;
-      const key = event.key.toUpperCase();
-      if (key >= "A" && key <= "Z") {
-        selectedIndex = key.charCodeAt(0) - 65;
-      } else if (key >= "1" && key <= "9") {
-        selectedIndex = parseInt(key, 10) - 1;
-      }
-
+    if (!locked && shouldQuizHandleOptionShortcut(target)) {
+      const selectedIndex = resolveOptionIndex(event.key);
       if (selectedIndex >= 0) {
         const choiceLabels = this.root.querySelectorAll<HTMLLabelElement>(".plw-quiz-choice");
         if (selectedIndex < choiceLabels.length) {
@@ -260,6 +272,20 @@ export class PlaySurface {
       }
     }
   };
+
+  private restoreQuizFocus(): void {
+    const selectedChoice = this.root.querySelector<HTMLInputElement>(".plw-quiz-choice input:checked");
+    if (selectedChoice && selectedChoice.isConnected) {
+      selectedChoice.focus({ preventScroll: true });
+      return;
+    }
+    const anchor = this.root.querySelector<HTMLElement>(
+      ".plw-quiz-type-info h2, .plw-quiz-question-card, .plw-quiz-runner h2"
+    );
+    if (anchor && anchor.isConnected) {
+      anchor.focus({ preventScroll: true });
+    }
+  }
 
   private move(delta: number): void {
     this.session.currentIndex = Math.max(0, Math.min(this.questions.length - 1, this.session.currentIndex + delta));
@@ -405,6 +431,7 @@ export class PlaySurface {
     // 4. Question Body (Stem & Answer Controls)
     const body = document.createElement("main");
     body.className = "plw-quiz-question-card";
+    body.tabIndex = -1;
 
     // Question stem
     body.append(renderQuestionStem(question));

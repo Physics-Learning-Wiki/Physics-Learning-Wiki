@@ -36,10 +36,23 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await page.getByRole("link", { name: "开始小测" }).first().click();
   await expect(page).toHaveURL(/\/quiz\/play\/\?set=[^&]+&seed=[^&]+/);
   await expect(page.locator(".plw-quiz-question")).toBeVisible();
+  const originalQuestionId = await page.locator(".plw-quiz-question").getAttribute("data-question-id");
+
+  if ((await page.locator(".plw-quiz-choice__content").count()) === 0) {
+    const stepButtons = page.locator(".plw-quiz-step-btn");
+    const count = await stepButtons.count();
+    for (let i = 0; i < count; i++) {
+      await stepButtons.nth(i).click();
+      if ((await page.locator(".plw-quiz-choice__content").count()) > 0) break;
+    }
+  }
   const choiceContent = page.locator(".plw-quiz-choice__content").first();
   await expect(choiceContent).toBeVisible();
   expect(await choiceContent.evaluate(el => el.tagName)).toBe("DIV");
-  const originalQuestionId = await page.locator(".plw-quiz-question").getAttribute("data-question-id");
+
+  // Restore question 1
+  await page.locator(".plw-quiz-step-btn").first().click();
+
   const savedSession = await page.evaluate(() => localStorage.getItem("plw.quiz.v2"));
   expect(savedSession).not.toBeNull();
   expect(Object.values(JSON.parse(savedSession!).activeSessions).flat()).toHaveLength(1);
@@ -136,4 +149,96 @@ test("a direct runner honors its seed and shows stale-session recovery", async (
   await page.reload();
   await expect(page.getByRole("heading", { name: "作答进度已失效" })).toBeVisible();
   await expect(page.getByRole("button", { name: "清空旧进度并重新开始" })).toBeVisible();
+});
+
+test("quiz keyboard navigation honors shortcut matrix and restores focus from pointer summary", async ({
+  page
+}) => {
+  const setId = "mechanics.dynamics.newton-laws.quick";
+  const seed = "test-seed-42";
+  const runnerUrl = `${basePath}quiz/play/?set=${setId}&seed=${seed}`;
+  await page.goto(runnerUrl);
+  await expect(page.locator(".plw-quiz-question")).toBeVisible();
+
+  // 1. Mouse click option -> digit key -> option changes
+  const choices = page.locator(".plw-quiz-choice");
+  await choices.nth(0).click();
+  expect(await choices.nth(0).locator("input").isChecked()).toBe(true);
+  await page.keyboard.press("2");
+  expect(await choices.nth(1).locator("input").isChecked()).toBe(true);
+  await page.keyboard.press("A");
+  expect(await choices.nth(0).locator("input").isChecked()).toBe(true);
+
+  // 2. Summary focused via Tab -> digit key -> switches options
+  const hintDetails = page.locator(".plw-quiz-hints");
+  const hintSummary = hintDetails.locator("summary");
+  await hintSummary.focus();
+  await page.keyboard.press("3");
+  expect(await choices.nth(2).locator("input").isChecked()).toBe(true);
+
+  // 3. Tab focus summary -> Enter -> only toggles details open/closed, does not confirm quiz
+  await hintSummary.focus();
+  expect(await hintDetails.getAttribute("open")).toBeNull();
+  await page.keyboard.press("Enter");
+  expect(await hintDetails.getAttribute("open")).not.toBeNull();
+  expect(await page.locator(".plw-quiz-feedback").count()).toBe(0);
+  await page.keyboard.press("Enter");
+  expect(await hintDetails.getAttribute("open")).toBeNull();
+
+  // 4. Tab focus summary -> Space -> only toggles details open/closed
+  await hintSummary.focus();
+  await page.keyboard.press("Space");
+  expect(await hintDetails.getAttribute("open")).not.toBeNull();
+  expect(await page.locator(".plw-quiz-feedback").count()).toBe(0);
+  await page.keyboard.press("Space");
+  expect(await hintDetails.getAttribute("open")).toBeNull();
+
+  // 5. Pointer click summary -> details opens -> Enter -> triggers Quiz confirm/submit
+  await choices.nth(0).click();
+  await hintSummary.click();
+  expect(await hintDetails.getAttribute("open")).not.toBeNull();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".plw-quiz-feedback")).toBeVisible();
+
+  // 6. Enter to advance to next question
+  await page.keyboard.press("Enter");
+  await expect(page.getByRole("heading", { name: "第 2 题" })).toBeVisible();
+
+  // 7. Text/number input typing digits does NOT trigger option shortcuts
+  const numberInput = page.getByRole("textbox", { name: "数值答案" });
+  await numberInput.focus();
+  await page.keyboard.type("42");
+  expect(await numberInput.inputValue()).toBe("42");
+
+  // 8. Textarea typing 'A' does NOT trigger option shortcut
+  await page.evaluate(() => {
+    const ta = document.createElement("textarea");
+    ta.id = "plw-test-textarea";
+    document.querySelector(".plw-quiz-runner")!.append(ta);
+  });
+  const testTextarea = page.locator("#plw-test-textarea");
+  await testTextarea.focus();
+  await page.keyboard.type("A");
+  expect(await testTextarea.inputValue()).toBe("A");
+  await testTextarea.evaluate(el => el.remove());
+
+  // 9. Button Enter preserves native activation
+  const exitButton = page.locator("#plw-btn-exit");
+  await exitButton.focus();
+  await page.keyboard.press("Enter");
+  await expect(page.locator(".plw-quiz-modal")).toBeVisible();
+  await page.keyboard.press("Escape");
+  await expect(page.locator(".plw-quiz-modal")).toHaveCount(0);
+
+  // 10. isComposing events do NOT trigger shortcuts
+  await page.evaluate(() => {
+    const composingEvent = new KeyboardEvent("keydown", {
+      key: "2",
+      bubbles: true,
+      cancelable: true
+    });
+    Object.defineProperty(composingEvent, "isComposing", { get: () => true });
+    document.dispatchEvent(composingEvent);
+  });
+  expect(await numberInput.inputValue()).toBe("42");
 });

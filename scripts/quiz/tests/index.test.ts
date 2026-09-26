@@ -1,5 +1,6 @@
 import "./abort-scope.test.js";
 import "./grading.test.js";
+import "./keyboard.test.js";
 import "./questions.test.js";
 import "./random.test.js";
 import "./selection.test.js";
