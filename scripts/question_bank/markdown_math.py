@@ -7,13 +7,12 @@ from pathlib import Path
 from typing import Any
 
 from .loader import SourceDocument
-from .markdown_renderer import render_markdown
-
-# Container prefix: matches leading quote '>' or list markers like '- ', '* ', '+ ', '1. ', '1) ', indented with spaces
-CONTAINER_PREFIX_RE = re.compile(r"^\s*(?:(?:>\s*)+|(?:[-*+]|\d+[.)])\s+)?")
-
-# Fenced code open regex: 0-3 spaces, then 3+ backticks or tildes, then info string
-FENCE_OPEN_RE = re.compile(r"^( {0,3})(`{3,}|~{3,})(.*)$")
+from .markdown_renderer import (
+    CONTAINER_PREFIX_RE,
+    FENCE_OPEN_RE,
+    mask_markdown_code,
+    render_markdown,
+)
 
 TAG_RE = re.compile(r"<[^>]+>")
 
@@ -62,78 +61,6 @@ def iter_question_markdown_fields(data: dict[str, Any]) -> list[MarkdownFieldRef
 
     return fields
 
-
-def mask_markdown_code(text: str) -> str:
-    """Mask fenced code blocks and inline code spans with spaces.
-
-    Preserves exact character length, line numbers, and offsets of the original string.
-    """
-    lines = text.splitlines(keepends=True)
-    out_lines: list[str] = []
-    in_fence = False
-    fence_char = ""
-    fence_len = 0
-
-    for line in lines:
-        stripped_line = line.rstrip("\r\n")
-        nl = line[len(stripped_line) :]
-        if in_fence:
-            # Check if this line closes the fence:
-            # 0-3 spaces, at least fence_len of fence_char, only spaces until EOL
-            close_match = re.match(
-                r"^( {0,3})(" + re.escape(fence_char) + r"{" + str(fence_len) + r",})\s*$",
-                stripped_line,
-            )
-            out_lines.append(" " * len(stripped_line) + nl)
-            if close_match:
-                in_fence = False
-        else:
-            open_match = FENCE_OPEN_RE.match(stripped_line)
-            # For backtick fence, CommonMark requires info string not contain backticks
-            if open_match and (open_match.group(2)[0] == "~" or "`" not in open_match.group(3)):
-                in_fence = True
-                fence_char = open_match.group(2)[0]
-                fence_len = len(open_match.group(2))
-                out_lines.append(" " * len(stripped_line) + nl)
-            else:
-                out_lines.append(line)
-
-    masked_text = "".join(out_lines)
-
-    # Next, mask inline code spans (matching backtick runs)
-    chars = list(masked_text)
-    idx = 0
-    length = len(chars)
-    while idx < length:
-        if chars[idx] == "`":
-            start = idx
-            while idx < length and chars[idx] == "`":
-                idx += 1
-            run_len = idx - start
-            # Search forward for matching backtick run of exact length run_len
-            closer_start = -1
-            scan = idx
-            while scan < length:
-                if chars[scan] == "`":
-                    c_start = scan
-                    while scan < length and chars[scan] == "`":
-                        scan += 1
-                    c_len = scan - c_start
-                    if c_len == run_len:
-                        closer_start = c_start
-                        break
-                else:
-                    scan += 1
-            if closer_start != -1:
-                # Mask from start to scan
-                for k in range(start, scan):
-                    if chars[k] not in ("\r", "\n"):
-                        chars[k] = " "
-                idx = scan
-        else:
-            idx += 1
-
-    return "".join(chars)
 
 
 @dataclass
