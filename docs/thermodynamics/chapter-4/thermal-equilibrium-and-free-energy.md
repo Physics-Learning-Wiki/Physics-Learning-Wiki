@@ -363,6 +363,7 @@ $$
 比较两个 $\mathrm{d}U$ 表达式中 $\mathrm{d}V$ 的系数，并利用麦克斯韦关系 $\left(\dfrac{\partial S}{\partial V}\right)_T = \left(\dfrac{\partial p}{\partial T}\right)_V$，得到 **能态方程**：
 
 ???+ warning "能态方程"
+    
     $$
     \left(\dfrac{\partial U}{\partial V}\right)_T = T\left(\dfrac{\partial p}{\partial T}\right)_V - p
     $$
@@ -374,6 +375,7 @@ $$
 类似地，以 $T$ 和 $p$ 为自变量，将焓和熵展开，代入 $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$，利用麦克斯韦关系 $\left(\dfrac{\partial S}{\partial p}\right)_T = -\left(\dfrac{\partial V}{\partial T}\right)_p$，得到 **焓态方程**：
 
 ???+ warning "焓态方程"
+    
     $$
     \left(\dfrac{\partial H}{\partial p}\right)_T = -T\left(\dfrac{\partial V}{\partial T}\right)_p + V
     $$
@@ -512,6 +514,7 @@ $$
 对于一个产生耗散结构的 **开放系统**，其熵变可以分解为两部分：
 
 ???+ warning "开放系统的熵变分解"
+    
     $$
     \mathrm{d}S = \mathrm{d}S_e + \mathrm{d}S_i
     $$

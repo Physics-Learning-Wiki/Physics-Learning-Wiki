@@ -43,6 +43,7 @@ z = x + iy \quad (x, y \in \mathbb{R})
 $$
 
 其中：
+
 - $x = \operatorname{Re}(z)$ 称为复数 $z$ 的 **实部 (Real Part)**；
 - $y = \operatorname{Im}(z)$ 称为复数 $z$ 的 **虚部 (Imaginary Part)**．注意虚部本身是实数．
 
@@ -215,6 +216,7 @@ $$
     $$
     
     两端分别对比实部与虚部（记 $C \equiv \cos\theta, S \equiv \sin\theta$）：
+    
     - **实部**：$\cos 3\theta = C^3 - 3C S^2 = C^3 - 3C(1 - C^2) = 4C^3 - 3C$；
     - **虚部**：$\sin 3\theta = 3C^2 S - S^3 = 3(1 - S^2)S - S^3 = 3S - 4S^3$．
 
@@ -405,6 +407,7 @@ $$
     
     利用复正交积分性质：$\int_0^\pi e^{i 2k\theta}\mathrm{d}\theta = \pi \delta_{k, 0}$（仅在 $k=0$ 时积分为 $\pi$，其余非零整数积分为 $0$）．  
     在求和项中：
+    
     - $e^{i 2m\theta}$ 仅在 $m = 0$ 时产生贡献 $\binom{n}{0}\pi = \pi$；
     - $e^{i 2(m-n)\theta}$ 仅在 $m = n$ 时产生贡献 $\binom{n}{n}\pi = \pi$．
     
@@ -437,6 +440,7 @@ $$
 ## 知识小测与巩固练习 {#practice}
 
 > [!TIP] 课后核心技能自测点
+>
 > 1. 能否在 30 秒内通过极坐标快速计算类似 $((1+i)/\sqrt{2})^{100}$ 的高次复幂？
 > 2. 是否能熟练利用欧拉公式展开 $\cos 4\theta$ 与 $\sin 4\theta$？
 > 3. 能否独立写出 $\ln(-1)$ 与 $i^{-2i}$ 的全部多值解？

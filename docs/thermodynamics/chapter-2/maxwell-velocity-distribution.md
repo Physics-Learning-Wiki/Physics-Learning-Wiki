@@ -200,6 +200,7 @@ $$
 ### 最终结果
 
 ???+ warning "麦克斯韦速度分布函数"
+    
     $$
     f(\boldsymbol{v}) = \left(\dfrac{m}{2\pi kT}\right)^{3/2}\,\exp\!\left(-\dfrac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)
     $$
@@ -219,6 +220,7 @@ $$
 在物理实验中，我们通常更关心分子的 **速率**  $v = |\boldsymbol{v}|$（速度的大小），而不是速度的方向．将速度分布函数对所有方向积分，得到 **速率分布函数**：
 
 ???+ warning "麦克斯韦速率分布函数"
+    
     $$
     F(v) = 4\pi\left(\dfrac{m}{2\pi kT}\right)^{3/2} v^2\,\exp\!\left(-\dfrac{mv^2}{2kT}\right), \quad v \geq 0
     $$

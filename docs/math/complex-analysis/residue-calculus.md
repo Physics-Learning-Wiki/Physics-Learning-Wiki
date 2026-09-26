@@ -169,6 +169,7 @@ $$
     $$
     
     分母零点为 $z_\pm = -a \pm \sqrt{a^2 - 1}$．由于 $a > 1$：
+    
     - $|z_-| = a + \sqrt{a^2 - 1} > 1$（位于圆外）；
     - $|z_+| = a - \sqrt{a^2 - 1} < 1$（唯一位于单位圆内的单极点）．  
     由商式法则计算 $z_+$ 处的留数：
@@ -213,18 +214,22 @@ $$
 
 > **证明要点**：在 $C_R$ 上 $|e^{ikz}| = |e^{ik R(\cos\theta + i\sin\theta)}| = e^{-k R\sin\theta}$．  
 > 
+>
 > $$
 > \left|\int_{C_R} R(z)e^{ikz}\mathrm{d}z\right| \le M_R R \int_0^\pi e^{-k R\sin\theta}\mathrm{d}\theta = 2 M_R R \int_0^{\pi/2} e^{-k R\sin\theta}\mathrm{d}\theta
 > $$
+>
 > 
 > 利用若当不等式 $\sin\theta \ge \frac{2}{\pi}\theta$：
 > 
+>
 > $$
 > \le 2 M_R R \int_0^{\pi/2} e^{-k R\frac{2\theta}{\pi}}\mathrm{d}\theta = 2 M_R R \cdot \dfrac{\pi}{2kR}\left(1 - e^{-kR}\right) = \dfrac{\pi}{k} M_R (1 - e^{-kR}) \xrightarrow{M_R \to 0} 0
 > $$
 
 ???+ example "例题：求解狄拉克滤波实积分 $\int_{-\infty}^\infty \frac{\cos kx}{x^2 + a^2}\mathrm{d}x$ ($k > 0, a > 0$)"
     构造辅助积分 $\oint_C \frac{e^{ikz}}{z^2 + a^2}\mathrm{d}z$．围道由实轴 $[-R, R]$ 和上半平面半圆弧 $C_R$ 构成．  
+    
     - 分母极点为 $z = \pm ia$；仅有 $z = ia$ 位于上半平面闭围道内部；
     - 计算单极点留数（商式法则）：
       
@@ -296,6 +301,7 @@ $$
     
     构造复变辅助函数 $f(z) = \dfrac{1 - e^{2iz}}{z^2}$，由于分子在 $z = 0$ 处有一阶零点，原点为**一阶极点**．  
     在相同的上半平面凹陷围道上积分，由柯西定理 $\oint_\Gamma f(z)\mathrm{d}z = 0$．  
+    
     - 实轴两段实部给出 $4I$；
     - 大圆弧衰减为 0；
     - 小圆弧上展开分子：$\frac{1 - (1 + 2iz - 2z^2 + \dots)}{z^2} = -\frac{2i}{z} + 2 + \dots$．  
@@ -380,6 +386,7 @@ $$
 ## 知识小测与巩固练习 {#practice}
 
 > [!TIP] 课后核心技能自测点
+>
 > 1. 用商式法则计算 $f(z) = \frac{e^z}{z^4 - 1}$ 在 $z = i$ 处的留数；
 > 2. 计算实定积分 $\int_{-\infty}^\infty \frac{x^2}{(x^2+1)(x^2+4)}\mathrm{d}x$；
 > 3. 说明为什么约当引理中圆弧半径仅需一次衰减（$M_R \to 0$），而普通有理分式需要二次衰减（$M_R \sim 1/R^2$）？

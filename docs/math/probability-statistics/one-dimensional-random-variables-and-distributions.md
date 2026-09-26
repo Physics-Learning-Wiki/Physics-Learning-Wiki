@@ -53,6 +53,7 @@ $$
 对于连续随机变量，分布函数 $F(x)$ 通常是连续可导的．我们定义其导数为 **概率密度函数**（Probability Density Function, PDF）：
 
 ???+ warning "概率密度函数"
+    
     $$
     f(x) = \dfrac{\mathrm{d}F(x)}{\mathrm{d}x} = F'(x)
     $$

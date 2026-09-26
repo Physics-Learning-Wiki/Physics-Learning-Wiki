@@ -252,9 +252,11 @@ $$
 
 ??? note "更系统的推导：Hilbert–Einstein 作用量"
         取总作用量  
+        
         $$  
         S=\dfrac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x+S_{\text{matter}}.  
         $$  
+        
         对 $g_{\mu\nu}$ 变分可得 $G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}$．
     
         （完整变分细节较长，竞赛/入门通常只要求理解「为何是 $R$、为何要 $\sqrt{-g}$、为何能得到守恒」．）
@@ -388,10 +390,13 @@ $$
 在几何单位 $G=c=1$ 的 Schwarzschild 时空：
 
 -   **光子球（photon sphere）**：不稳定的圆形光子轨道
+    
     $$
     \boxed{\ r_{\text{ph}}=3M=\dfrac{3}{2}r_s\ }
     $$
+
 -   **最内稳定圆轨道（ISCO，时类）**：稳定圆轨道存在的内边界
+    
     $$
     \boxed{\ r_{\text{ISCO}}=6M=3r_s\ }
     $$
