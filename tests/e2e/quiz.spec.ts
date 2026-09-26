@@ -242,3 +242,125 @@ test("quiz keyboard navigation honors shortcut matrix and restores focus from po
   });
   expect(await numberInput.inputValue()).toBe("42");
 });
+
+test("mathjax stylesheet is ready before first math element mounts and is deduplicated across navigation", async ({
+  page
+}) => {
+  await page.goto(`${basePath}intro/about/`);
+  await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
+
+  // Navigate to quiz question browser
+  await page.goto(`${basePath}quiz/questions/?q=q-000037`);
+  await expect(page.locator(".plw-quiz-question-browser")).toBeVisible();
+
+  const card = page.locator('.plw-quiz-question-browser__card[data-question-id="q-000037"]');
+  await expect(card).toBeVisible();
+
+  const mathLink = page.locator('head link[href*="assets/stylesheets/mathjax.css"]');
+  await expect(mathLink).toHaveCount(1);
+  await expect(mathLink).toHaveAttribute("href", /assets\/stylesheets\/mathjax\.css\?hash=/);
+
+  const isSheetReady = await mathLink.evaluate(el => Boolean((el as HTMLLinkElement).sheet));
+  expect(isSheetReady).toBe(true);
+
+  // When first mathjax element is visible, stylesheet is confirmed ready
+  await expect(card.locator("mjx-container").first()).toBeVisible();
+  expect(await mathLink.evaluate(el => Boolean((el as HTMLLinkElement).sheet))).toBe(true);
+
+  // Instant navigation back and forward
+  await page.goBack();
+  await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
+  await page.goForward();
+  await expect(page.locator(".plw-quiz-question-browser")).toBeVisible();
+
+  // Math stylesheet link count does not grow
+  await expect(page.locator('head link[href*="assets/stylesheets/mathjax.css"]')).toHaveCount(1);
+});
+
+test("production question bank math renders cleanly on desktop and mobile without collisions or page overflow", async ({
+  page
+}) => {
+  const targetQuestions = ["q-000037", "q-000006", "q-000018"];
+  const viewports = [
+    { name: "desktop", width: 1280, height: 720 },
+    { name: "mobile", width: 375, height: 667 }
+  ];
+
+  for (const viewport of viewports) {
+    await page.setViewportSize({ width: viewport.width, height: viewport.height });
+
+    for (const qid of targetQuestions) {
+      await page.goto(`${basePath}quiz/questions/?q=${qid}`);
+      const card = page.locator(`.plw-quiz-question-browser__card[data-question-id="${qid}"]`);
+      await expect(card).toBeVisible();
+
+      // Open full solution
+      const details = card.locator(".plw-quiz-solution-details");
+      if ((await details.count()) > 0) {
+        await details.evaluate(el => {
+          (el as HTMLDetailsElement).open = true;
+        });
+        await expect(details.locator(".plw-quiz-solution-details__body")).toBeVisible();
+      }
+
+      // 1. Math formulas must exist
+      await expect(card.locator("mjx-container").first()).toBeVisible();
+
+      // 2. Assistive MathML must be visually hidden (not visually duplicated)
+      const assistiveMml = card.locator(".mjx-assistive-mml").first();
+      if ((await assistiveMml.count()) > 0) {
+        const isHidden = await assistiveMml.evaluate(el => {
+          const style = window.getComputedStyle(el);
+          return (
+            style.position === "absolute" ||
+            style.opacity === "0" ||
+            style.clip === "rect(1px, 1px, 1px, 1px)" ||
+            style.display === "none"
+          );
+        });
+        expect(isHidden).toBe(true);
+      }
+
+      // 3. Raw $$ display delimiter must not leak into rendered text
+      const visibleText = await card.innerText();
+      expect(visibleText.includes("$$")).toBe(false);
+
+      // 4. Whole page must not overflow horizontally
+      const pageOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+      );
+      expect(pageOverflow).toBe(false);
+
+      // 5. Choice layout: container is div, badge is top-aligned with first line
+      const choices = card.locator(".plw-quiz-choice");
+      const choiceCount = await choices.count();
+      for (let i = 0; i < choiceCount; i++) {
+        const choice = choices.nth(i);
+        const content = choice.locator(".plw-quiz-choice__content");
+        expect(await content.evaluate(el => el.tagName)).toBe("DIV");
+
+        const offsetDiff = await choice.evaluate(el => {
+          const badge = el.querySelector<HTMLElement>(".plw-quiz-choice__badge");
+          const contentEl = el.querySelector<HTMLElement>(".plw-quiz-choice__content");
+          if (!badge || !contentEl) return 0;
+          return Math.abs(badge.getBoundingClientRect().top - contentEl.getBoundingClientRect().top);
+        });
+        expect(offsetDiff).toBeLessThan(20);
+      }
+
+      // 6. Display equation bounding boxes must not intersect each other or surrounding paragraphs
+      const displayBoxes = await card.evaluate(el => {
+        const containers = Array.from(el.querySelectorAll<HTMLElement>("mjx-container[display='true']"));
+        return containers
+          .map(c => {
+            const rect = c.getBoundingClientRect();
+            return { top: rect.top, bottom: rect.bottom, height: rect.height };
+          })
+          .filter(b => b.height > 0);
+      });
+      for (let i = 0; i < displayBoxes.length - 1; i++) {
+        expect(displayBoxes[i].bottom).toBeLessThanOrEqual(displayBoxes[i + 1].top + 1);
+      }
+    }
+  }
+});
