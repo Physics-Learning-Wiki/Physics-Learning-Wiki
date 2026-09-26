@@ -23,7 +23,7 @@
 
 - 生产构建继续使用 MathJax 4 CHTML 服务端渲染，并保留 Assistive MathML。
 - 公式字符通过全站预扫描收集，MathJax 使用 `adaptiveCSS: true`，生成一份共享且带 `hash` 版本参数的 `mathjax.css`。
-- 数学文章保留构建期 CSS link 与 `data-plw-math-css` 版本 URL；运行时仅在数学页面需要时确保该 URL 的样式表存在，并跨 instant navigation 复用。
+- 数学文章保留构建期 CSS link 与 `data-plw-math-css` 版本 URL；运行时仅在数学页面或动态小测（Quiz）需要时确保该 URL 的样式表存在且真正就绪（核验 `link.sheet`），并在小测 DOM 挂载前满足就绪依赖，杜绝 Assistive MathML 视觉双重渲染与排版闪烁，且跨 instant navigation 复用。
 - 输出删除 MathJax 内部 `data-latex*` 和 1×1 GIF fallback。开发预览可使用客户端渲染；生产后处理移除客户端渲染脚本。
 
 ### 搜索

@@ -53,11 +53,74 @@ question-bank/
 
 ---
 
+## Markdown 数学公式规范
+
+为了确保题目在不同端（桌面端、移动端）与不同渲染阶段（构建期 MathJax CHTML SSR、动态加载、投稿预览）的一致性与可维护性，题库对 Markdown 中的 LaTeX 公式制定了严格的书写规范与静态审计机制：
+
+### 1. 规范行间公式（Canonical Display Math）—— 首选标准
+公式定界符 `$$` 必须各自独占一行，公式块前后保留空行：
+
+```markdown
+根据牛顿第二定律：
+
+$$
+\mathbf{F} = \frac{\mathrm{d}\mathbf{p}}{\mathrm{d}t} = m\mathbf{a}
+$$
+
+式中加速度与合外力同向。
+```
+
+### 2. 受支持的紧凑兼容格式（Legacy Compact Compatibility Syntax）
+```markdown
+$$E = mc^2$$
+```
+- 仅当整条逻辑行**只包含这一个公式**时，题库构建器与运行器会确定性将其规范化为标准行间块进行渲染。
+- 此兼容规则确保了历史存量题目无需修改源码即可获得正确的块级排版，**不会改变题目的内容指纹（Content Fingerprint）**。
+- 新增或修改题目时不推荐继续使用紧凑格式，应统一采用规范行间格式。
+
+### 3. 严格禁止并被校验器拒绝的非法公式（Rejected by Validator）
+校验器（`uv run python -m scripts.question_bank validate`）与数学审计器（`uv run python -m scripts.question_bank math-audit`）会直接拒绝以下歧义语法：
+- **行间定界符与正文文字混排在同一行**：
+  ```markdown
+  <!-- 错误示范：严禁在正文行中嵌入 $$ -->
+  根据质能方程 $$E = mc^2$$，质量与能量等价。
+  ```
+  *修复方式*：行内公式必须使用单美元符号 `$E = mc^2$`，或将公式拆为独立块级行。
+- **跨行公式定界符未独占边界行**：
+  ```markdown
+  <!-- 错误示范：$$ 后面直接接公式内容或未在独立行闭合 -->
+  $$E =
+  mc^2$$
+  ```
+- **未配对或空公式定界符**。
+
+---
+
+## 运行时与交互契约
+
+### 1. MathJax CHTML SSR 与样式表前置依赖
+- 生产站点通过构建后处理（Post-build）将题库资源中的 LaTeX 公式预渲染为 MathJax CHTML 静态结构，并移除了运行时的客户端 MathJax 库（`math-csr.js`）。
+- 动态 Quiz 模块必须在共享 MathJax 样式表（`assets/stylesheets/mathjax.css?hash=...`）真正加载就绪（`link.sheet` 可用）后方可挂载渲染 DOM，防止 Assistive MathML 视觉暴露或公式闪烁错位。
+- 样式表链接遵循幂等与去重策略，在 instant navigation 跨页面切换过程中不重复追加。
+
+### 2. 键盘导航与可访问性契约 (A11y)
+- **快捷键矩阵**：在小测答题界面中，数字键（`1`–`9`）与字母键（`A`–`Z`）用于快速切换/选中对应的单选或多选选项；回车键（`Enter`）用于确认作答或进入下一题。
+- **输入框隔离保护**：当焦点处于单行文本框（`<input type="text">`）、数值输入框（`<input type="number">`）、多行文本域（`<textarea>`）或中文输入法合成阶段（`isComposing`）时，小测按键监听器严格静默，不得抢占用户的正常打字与编辑行为。
+- **保护 `<summary>` 原生语义**：对于“提示”（Hints）与“查看参考答案与解析”等 `<details>` 折叠元素，纯键盘用户通过 `Tab` 键聚焦 `<summary>` 后，敲击 `Enter` 或 `Space` 必须严格保持原生折叠/展开行为，绝不触发提交或切题。
+- **指针来源焦点恢复机制（Pointer-origin focus restoration）**：当用户使用鼠标点击展开 `<summary>` 后，系统在识别到指针来源后，会将逻辑焦点安全平滑地转移至当前已选项或小测主控区，使得随后的键盘 `Enter` 能顺畅执行小测提交，实现鼠标与键盘的自然协作。
+
+---
+
 ## 常用维护与构建命令
 
 ```powershell
-# 校验题库全部题目、测试集合与页面引用 (无阻断发布 gate)
+# 运行 Markdown 数学语法分类与合规性静态审计
+uv run python -m scripts.question_bank math-audit
+uv run python -m scripts.question_bank math-audit --format json
+
+# 校验题库全部题目、测试集合与页面引用 (严格发布门禁)
 uv run python -m scripts.question_bank validate
+uv run python -m scripts.question_bank validate --include-drafts
 
 # 运行题库多维度健康度与覆盖度诊断报告
 uv run python -m scripts.question_bank coverage
@@ -69,7 +132,7 @@ uv run python -m scripts.question_bank build
 # 导入用户提交的结构化题目投稿 (自动分配 q-NNNNNN 编号至 inbox/)
 uv run python -m scripts.question_bank import-issue --input submission.json
 
-# 记录人工同行审阅签署 (物理、教学、版权三维)
+# 记录人工同行审阅签署 (物理、教学、版权三维，严禁机器/Agent代签)
 uv run python -m scripts.question_bank attest --id q-000001 --dimension physics --dimension pedagogy --dimension copyright --reviewer <GitHub_Username>
 
 # 将已通过三维签署的草稿题目或测试集合正式发布
@@ -79,15 +142,21 @@ uv run python -m scripts.question_bank publish --id mechanics.dynamics.newton-la
 # 执行 Python 题库单元与集成测试
 uv run pytest tests/question_bank tests/integration
 
-# TypeScript 前端小测应用类型检查、单元测试与构建
+# TypeScript 前端小测与表单类型检查、单元测试与构建
 corepack yarn quiz:typecheck
 corepack yarn quiz:test
-corepack yarn quiz:build
-corepack yarn quiz:build:check
+corepack yarn forms:typecheck
+corepack yarn forms:test
+corepack yarn features:build
+corepack yarn features:build:check
 
 # 题目投稿与 Worker 单元测试与语法检查
 corepack yarn submit:test
 corepack yarn submit:check
+
+# 跨端 Playwright 回归测试
+corepack yarn e2e:quiz
+corepack yarn e2e:forms
 ```
 
 ---

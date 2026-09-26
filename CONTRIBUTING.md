@@ -1,8 +1,8 @@
 # 工程贡献指南
 
-本文面向修改站点运行时、构建流程和性能架构的贡献者。物理内容的写作规范见 [`docs/intro/writing.md`](docs/intro/writing.md)；架构决策记录见 [`docs/adr/ADR-2026-09-performance-architecture.md`](docs/adr/ADR-2026-09-performance-architecture.md)。
+本文面向修改站点运行时、构建流程和性能架构的贡献者。物理内容的写作规范见 [`docs/intro/writing.md`](docs/intro/writing.md)；题库规范见 [`question-bank/README.md`](question-bank/README.md) 与 [`question-bank/REVIEWING.md`](question-bank/REVIEWING.md)；架构决策记录见 [`docs/adr/ADR-2026-09-performance-architecture.md`](docs/adr/ADR-2026-09-performance-architecture.md)。
 
-## 新增页面功能
+## 新增页面功能与运行时
 
 页面级行为应作为独立 feature 实现，避免将 Quiz、Mermaid、投稿编辑器等代码放进全站脚本。
 
@@ -26,6 +26,14 @@ Material instant navigation 会在同一个文档中替换文章内容。离开�
 - 新增第三方浏览器依赖时固定精确版本，优先本地 bundle；如果必须使用 CDN，由对应功能在使用时加载。
 - 不为了 instant navigation 将页面级 feature 升格成全站资源。
 
+### 交互与可访问性（A11y）契约
+
+- **语义控件原生行为保护**：保留原生控件的原生语义与可访问性。严禁在全局快捷键监听中劫持 `<details>`/`<summary>` 的 Enter 或 Space 键，折叠面板的展开/收起行为对纯键盘与屏幕阅读器用户必须完全原生可用。
+- **指针来源焦点恢复（Pointer-origin focus restoration）**：若需要在鼠标点击折叠组件后无缝支持键盘回车操作，必须通过识别指针交互来源（pointer-origin），在展开后将逻辑焦点安全转移至小测主控区或当前选项，不得粗暴调用 `blur()`，不得影响键盘 Tab 导航顺序。
+- **输入法与表单隔离**：文本框、多行输入框、下拉框以及输入法合成期间（`isComposing`），任何全局快捷键必须静默，确保打字输入不受干扰。
+- **响应式与数学公式溢出保护**：小测卡片与选项一律使用 `<div>`（禁止使用 `<span>`）包裹 Markdown HTML；使用 `align-items: flex-start` 确保选项 Badge 与首行公式文本自然对齐；对题干、选项、解析、提示应用 `min-width: 0` 与局部 `overflow-x: auto`，避免宽公式撑破卡片或导致整个页面产生横向滚动条。
+- **编辑器模式切换**：EasyMDE 自定义工具栏的模式切换控制项（`preview`、`side-by-side`、`fullscreen`）必须设置 `noDisable: true`，确保进入预览后用户可再次点击切换回编辑状态；MathJax 预览脚本必须保持单例按需加载，防止重复注入。
+
 ## 搜索与 404
 
 - Pagefind 在生产构建后生成，使用 Pagefind 分块索引；不要恢复 `search/search_index.json` 或静态引用 Pagefind bundle。
@@ -33,10 +41,11 @@ Material instant navigation 会在同一个文档中替换文章内容。离开�
 - `hooks/runtime_features.py` 会把 Material 搜索节点的 `data-md-component="search"` 替换为 `data-plw-component="search"`，由 PLW 搜索运行时接管。
 - 404 搜索栏应保持可见，但 404 页面必须从 Pagefind 索引排除：不得添加 `data-pagefind-body`，并保留 `body[data-pagefind-ignore="all"]`。post-build hook 负责处理没有常规文章 `post_page` 事件的 404 模板；不要绕过这一步。
 
-## MathJax SSR
+## MathJax SSR 与动态小测样式契约
 
 - 生产站点使用 MathJax 4 CHTML SSR，并保留 Assistive MathML。
 - 公式预扫描与 `adaptiveCSS: true` 共同产生单份公共 `mathjax.css`。构建期 stylesheet link 与文章 `data-plw-math-css` 必须指向同一带 `hash` 的 URL。
+- **动态小测（Quiz）样式表就绪保证**：生产构建中题库预先由 Post-build 编译为 MathJax CHTML SSR 结构，客户端 MathJax 运行时在生产阶段被剥离。动态小测模块在挂载前必须调用 `ensureStylesheet` 等待 `mathjax.css` 真正就绪（核查 `link.sheet` 可用），严禁在样式未就绪时提前挂载 DOM，防止 Assistive MathML 视觉暴露或公式瞬间跳动。已存在的 `<link>` 同样必须核查 `sheet` 状态以彻底杜绝竞态。
 - Runtime 在需要数学的文章上复用此版本 URL；instant navigation 后不能新增第二个 Math CSS link。
 - 不恢复 `data-latex`、`data-latex-item` 或 1×1 GIF fallback。
 - 开发预览可通过客户端 MathJax 渲染；生产构建会移除仅用于该预览的 CSR 脚本。
@@ -62,10 +71,12 @@ corepack yarn site:build
 ```bash
 corepack yarn perf:audit --mode blocking
 corepack yarn e2e:smoke
+corepack yarn e2e:quiz
+corepack yarn e2e:forms
 corepack yarn e2e
 ```
 
-完整 CI 前端与内容检查命令列在 [`.github/workflows/build.yml`](.github/workflows/build.yml)，其中包括 `uv run pytest tests/question_bank tests/integration tests/seo`、quiz/runtime/forms 类型检查与单测、生成产物检查以及 `corepack yarn media:test`。
+完整 CI 前端与内容检查命令列在 [`.github/workflows/build.yml`](.github/workflows/build.yml)，其中包括 `uv run python -m scripts.question_bank math-audit`、`uv run pytest tests/question_bank tests/integration tests/seo`、quiz/runtime/forms 类型检查与单测、生成产物检查以及 `corepack yarn media:test`。
 
 生产后处理会为页面贡献者信息读取 GitHub API。若本机未认证请求碰到 API 限额，可通过 GitHub CLI 登录后将 token 仅注入本次构建进程：
 
