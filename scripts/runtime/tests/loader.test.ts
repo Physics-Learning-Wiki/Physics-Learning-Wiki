@@ -4,8 +4,10 @@ import {
   createFeatureRuntime,
   ensureStylesheet,
   getSiteRoot,
+  isStylesheetLinkReady,
   mathFeatureDefinition,
   subscribeDocumentLifecycle,
+  waitForStylesheetLink,
   type FeatureModule
 } from "../src/loader.ts";
 
@@ -324,4 +326,215 @@ test("DOMContentLoaded is used when Material document$ is missing", () => {
   unsubscribe();
   assert.equal(seen, 1);
   assert.equal(removed, true);
+});
+
+test("existing link with ready sheet resolves immediately", async () => {
+  const link = {
+    rel: "stylesheet",
+    href: "https://example.test/style.css",
+    sheet: {},
+    getAttribute: (name: string) => (name === "href" ? "https://example.test/style.css" : null),
+    setAttribute: () => {}
+  } as unknown as HTMLLinkElement;
+  const document = {
+    baseURI: "https://example.test/",
+    querySelectorAll: () => [link]
+  } as unknown as Document;
+
+  let loaded = false;
+  await ensureStylesheet("style.css", document).then(() => {
+    loaded = true;
+  });
+  assert.equal(loaded, true);
+  assert.equal(isStylesheetLinkReady(link), true);
+});
+
+test("existing link without sheet waits for load before resolving", async () => {
+  let loadCallback: (() => void) | undefined;
+  const link = {
+    rel: "stylesheet",
+    href: "https://example.test/style.css",
+    sheet: null,
+    getAttribute: (name: string) => (name === "href" ? "https://example.test/style.css" : null),
+    setAttribute: () => {},
+    addEventListener: (type: string, cb: () => void) => {
+      if (type === "load") loadCallback = cb;
+    },
+    removeEventListener: () => {}
+  } as unknown as HTMLLinkElement;
+  const document = {
+    baseURI: "https://example.test/",
+    querySelectorAll: () => [link]
+  } as unknown as Document;
+
+  let resolved = false;
+  const promise = ensureStylesheet("style.css", document).then(() => {
+    resolved = true;
+  });
+  await flushMicrotasks();
+  assert.equal(resolved, false);
+  assert.ok(loadCallback);
+  loadCallback!();
+  await promise;
+  assert.equal(resolved, true);
+});
+
+test("waitForStylesheetLink resolves immediately if sheet becomes ready during listener registration", async () => {
+  const link: any = {
+    rel: "stylesheet",
+    href: "https://example.test/style.css",
+    sheet: null,
+    getAttribute: () => null,
+    setAttribute: () => {},
+    addEventListener: () => {
+      link.sheet = {};
+    },
+    removeEventListener: () => {}
+  };
+  let resolved = false;
+  await waitForStylesheetLink(link).then(() => {
+    resolved = true;
+  });
+  assert.equal(resolved, true);
+});
+
+test("stylesheet error prevents Quiz module mount and reports error", async () => {
+  let mounted = false;
+  const errors: string[] = [];
+  const article = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "quiz";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=abc";
+      return null;
+    }
+  } as unknown as Element;
+  const document = {
+    baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
+    querySelector: () => article
+  } as unknown as Document;
+
+  const runtime = createFeatureRuntime({
+    document,
+    registry: {
+      quiz: {
+        stylesheets: [
+          "_static/css/quiz.css?v=3",
+          root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
+        ],
+        moduleUrl: "_static/js/features/quiz.js"
+      }
+    },
+    ensureStylesheet: async href => {
+      if (href.includes("mathjax.css")) {
+        throw new Error("Network error loading mathjax.css");
+      }
+    },
+    loadModule: async () => ({
+      mount() {
+        mounted = true;
+      }
+    }),
+    onError: message => errors.push(message)
+  });
+
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+  assert.equal(mounted, false);
+  assert.ok(errors.some(msg => msg.includes('PLW feature "quiz" failed to mount')));
+});
+
+test("math and quiz request the same versioned MathJax stylesheet only once", async () => {
+  const requestedHrefs: string[] = [];
+  const article = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "math quiz";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=shared123";
+      return null;
+    },
+    querySelector(selector: string) {
+      return selector === "mjx-container" ? {} : null;
+    }
+  } as unknown as Element;
+  const document = {
+    baseURI: "https://example.test/Physics-Learning-Wiki/",
+    getElementById: () => null,
+    querySelector: () => article
+  } as unknown as Document;
+
+  const runtime = createFeatureRuntime({
+    document,
+    registry: {
+      math: mathFeatureDefinition,
+      quiz: {
+        stylesheets: [
+          "_static/css/quiz.css?v=3",
+          root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
+        ],
+        load: async () => ({ mount: () => {} })
+      }
+    },
+    ensureStylesheet: async href => {
+      requestedHrefs.push(href);
+    }
+  });
+
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+
+  const mathCssRequests = requestedHrefs.filter(href => href.includes("mathjax.css"));
+  assert.equal(mathCssRequests.length, 1);
+  assert.equal(
+    mathCssRequests[0],
+    "https://example.test/Physics-Learning-Wiki/assets/stylesheets/mathjax.css?hash=shared123"
+  );
+});
+
+test("instant navigation between quiz pages does not duplicate stylesheet requests", async () => {
+  const requestedHrefs: string[] = [];
+  let currentArticle = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "quiz";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=shared123";
+      return null;
+    }
+  } as unknown as Element;
+  const document = {
+    baseURI: "https://example.test/Physics-Learning-Wiki/quiz/sets/",
+    getElementById: () => ({ textContent: JSON.stringify({ base: "../.." }) }),
+    querySelector: () => currentArticle
+  } as unknown as Document;
+
+  const runtime = createFeatureRuntime({
+    document,
+    registry: {
+      quiz: {
+        stylesheets: [
+          "_static/css/quiz.css?v=3",
+          root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
+        ],
+        load: async () => ({ mount: () => {} })
+      }
+    },
+    ensureStylesheet: async href => {
+      requestedHrefs.push(href);
+    }
+  });
+
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+  const firstCount = requestedHrefs.length;
+
+  // Navigate to another quiz page with the same stylesheets
+  currentArticle = {
+    getAttribute(name: string) {
+      if (name === "data-plw-features") return "quiz";
+      if (name === "data-plw-math-css") return "assets/stylesheets/mathjax.css?hash=shared123";
+      return null;
+    }
+  } as unknown as Element;
+  await runtime.mountDocument(document);
+  await flushMicrotasks();
+
+  assert.equal(requestedHrefs.length, firstCount, "Stylesheet should not be re-requested on instant navigation");
 });

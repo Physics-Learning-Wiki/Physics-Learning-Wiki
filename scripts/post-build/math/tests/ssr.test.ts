@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { MathRenderer, renderMathInHtml, renderMathInQuestion } from "../task-handler.js";
+import { parse } from "node-html-parser";
+import { MathRenderer, renderMathInHtml, renderMathInQuestion, taskHandler } from "../task-handler.js";
 
 async function createRenderer() {
   const renderer = new MathRenderer();
@@ -110,4 +111,54 @@ test("renderMathInQuestion processes stem, solution, hints, choices, and feedbac
   assert.ok(!question.feedback.choicesHtml.A.includes("arithmatex"));
   assert.ok(question.feedback.choicesHtml.A.includes("<mjx-container"));
   assert.equal(question.feedback.choicesHtml.B, "<p>纯文本反馈</p>");
+});
+
+test("post-build taskHandler.process sets data-plw-math-css on Quiz pages without static math and does not inject link", async () => {
+  const handler = Object.assign(Object.create(taskHandler), {
+    siteDir: "/site",
+    cssHash: "test-hash-123",
+    renderer: await createRenderer()
+  });
+
+  const quizDoc = parse(`
+    <html>
+      <head><title>Quiz</title></head>
+      <body>
+        <article class="md-content__inner md-typeset" data-plw-features="quiz">
+          <div id="plw-quiz-root"></div>
+        </article>
+      </body>
+    </html>
+  `);
+  await handler.process(quizDoc, "/site/quiz/index.html");
+
+  const article = quizDoc.querySelector("article");
+  assert.equal(article?.getAttribute("data-plw-math-css"), "assets/stylesheets/mathjax.css?hash=test-hash-123");
+  const headLinks = quizDoc.querySelectorAll("head link[rel='stylesheet']");
+  assert.equal(headLinks.length, 0, "Should not inject head link for quiz-only page");
+});
+
+test("post-build taskHandler.process ignores pages without math and without quiz", async () => {
+  const handler = Object.assign(Object.create(taskHandler), {
+    siteDir: "/site",
+    cssHash: "test-hash-123",
+    renderer: await createRenderer()
+  });
+
+  const doc = parse(`
+    <html>
+      <head><title>About</title></head>
+      <body>
+        <article class="md-content__inner md-typeset">
+          <p>Plain text</p>
+        </article>
+      </body>
+    </html>
+  `);
+  await handler.process(doc, "/site/intro/about/index.html");
+
+  const article = doc.querySelector("article");
+  assert.equal(article?.getAttribute("data-plw-math-css"), undefined);
+  const headLinks = doc.querySelectorAll("head link[rel='stylesheet']");
+  assert.equal(headLinks.length, 0);
 });

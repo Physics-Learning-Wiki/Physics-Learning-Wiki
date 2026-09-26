@@ -365,17 +365,30 @@ export const taskHandler = new (class implements TaskHandler<MathGlobalInitializ
     }
 
     const mathContainers = document.querySelectorAll("mjx-container");
-    if (mathContainers.length > 0) {
+    const hasStaticMath = mathContainers.length > 0;
+    const article = document.querySelector("article.md-content__inner.md-typeset");
+    const features = (article?.getAttribute("data-plw-features") ?? "").split(/\s+/).filter(Boolean);
+    const hasDynamicQuiz =
+      features.includes("quiz") ||
+      Boolean(
+        article?.querySelector(
+          "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-home-root, .plw-quiz-inline-root"
+        )
+      );
+    const needsMathContract = hasStaticMath || hasDynamicQuiz;
+
+    if (needsMathContract) {
       const pagePath = path.relative(this.siteDir, filePath);
-      const cssFilePathToHtml = path.relative(path.dirname(pagePath), MATHJAX_TARGET_CSS_FILE).replaceAll("\\", "/");
-      const pageCssHref = `${cssFilePathToHtml}?hash=${this.cssHash}`;
       const rootCssHref = `${MATHJAX_TARGET_CSS_FILE}?hash=${this.cssHash}`;
-      const article = document.querySelector("article.md-content__inner.md-typeset");
       article?.setAttribute("data-plw-math-css", rootCssHref);
 
-      const head = document.querySelector("head");
-      if (!head) throw new Error(`Cannot inject MathJax CSS link: missing <head> in ${source}`);
-      head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="${pageCssHref}">`);
+      if (hasStaticMath) {
+        const cssFilePathToHtml = path.relative(path.dirname(pagePath), MATHJAX_TARGET_CSS_FILE).replaceAll("\\", "/");
+        const pageCssHref = `${cssFilePathToHtml}?hash=${this.cssHash}`;
+        const head = document.querySelector("head");
+        if (!head) throw new Error(`Cannot inject MathJax CSS link: missing <head> in ${source}`);
+        head.insertAdjacentHTML("beforeend", `<link rel="stylesheet" href="${pageCssHref}">`);
+      }
     }
 
     // Remove client-side rendering script

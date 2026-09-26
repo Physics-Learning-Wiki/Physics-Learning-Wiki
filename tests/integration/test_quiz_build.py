@@ -244,8 +244,10 @@ def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None
         links = re.findall(r'<link\b[^>]*href="([^"]*mathjax\.css\?hash=[^"]+)"', html)
         css_attr = re.search(r'data-plw-math-css="([^"]*mathjax\.css\?hash=[^"]+)"', html)
         has_math = "<mjx-container" in html
+        has_quiz = bool(re.search(r'data-plw-features="[^"]*\bquiz\b[^"]*"', html))
+        needs_math_contract = has_math or has_quiz
         assert (len(links) == 1) == has_math, html_path.relative_to(site)
-        assert bool(css_attr) == has_math, html_path.relative_to(site)
+        assert bool(css_attr) == needs_math_contract, html_path.relative_to(site)
         assert "arithmatex" not in html, html_path.relative_to(site)
         if has_math:
             page_path = html_path.relative_to(site).as_posix()

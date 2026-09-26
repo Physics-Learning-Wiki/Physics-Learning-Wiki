@@ -10,8 +10,11 @@ export interface FeatureModule {
   mount(root: ParentNode, context: FeatureMountContext): void | FeatureDisposer | Promise<void | FeatureDisposer>;
 }
 
+export type StylesheetDefinition = string | ((root: ParentNode) => string | undefined);
+
 export interface FeatureDefinition {
-  stylesheet?: string | ((root: ParentNode) => string | undefined);
+  stylesheet?: StylesheetDefinition;
+  stylesheets?: StylesheetDefinition[];
   moduleUrl?: string | ((root: ParentNode) => string | undefined);
   load?: () => Promise<FeatureModule>;
 }
@@ -76,7 +79,90 @@ export function readCurrentFeatures(document: Document): { root: ParentNode; fea
   return { root, features };
 }
 
-export function ensureStylesheet(href: string, document: Document): Promise<void> {
+export function isStylesheetLinkReady(link: HTMLLinkElement): boolean {
+  try {
+    return Boolean(link.sheet);
+  } catch {
+    return false;
+  }
+}
+
+export interface WaitForStylesheetOptions {
+  timeoutMs?: number;
+}
+
+export const DEFAULT_STYLESHEET_TIMEOUT_MS = 10000;
+const pendingLinkPromises = new WeakMap<HTMLLinkElement | object, Promise<void>>();
+
+export function waitForStylesheetLink(
+  link: HTMLLinkElement,
+  options: WaitForStylesheetOptions = {}
+): Promise<void> {
+  const timeoutMs = options.timeoutMs ?? DEFAULT_STYLESHEET_TIMEOUT_MS;
+  const state = link.getAttribute?.("data-plw-stylesheet-state");
+  if (state === "loaded" || isStylesheetLinkReady(link)) {
+    link.setAttribute?.("data-plw-stylesheet-state", "loaded");
+    return Promise.resolve();
+  }
+  if (state === "failed") {
+    const href = link.href || link.getAttribute?.("href") || "";
+    return Promise.reject(new Error(`Stylesheet failed to load: ${href}`));
+  }
+
+  const pending = pendingLinkPromises.get(link);
+  if (pending) return pending;
+
+  const promise = new Promise<void>((resolve, reject) => {
+    let timer: NodeJS.Timeout | number | undefined;
+
+    const cleanup = () => {
+      if (timer !== undefined) clearTimeout(timer);
+      link.removeEventListener("load", onLoad);
+      link.removeEventListener("error", onError);
+      pendingLinkPromises.delete(link);
+    };
+
+    const onLoad = () => {
+      cleanup();
+      link.setAttribute?.("data-plw-stylesheet-state", "loaded");
+      resolve();
+    };
+
+    const onError = () => {
+      cleanup();
+      link.setAttribute?.("data-plw-stylesheet-state", "failed");
+      const href = link.href || link.getAttribute?.("href") || "";
+      reject(new Error(`Stylesheet failed to load: ${href}`));
+    };
+
+    link.addEventListener("load", onLoad, { once: true });
+    link.addEventListener("error", onError, { once: true });
+
+    // Check again immediately after registering listeners to close the race window
+    if (isStylesheetLinkReady(link)) {
+      onLoad();
+      return;
+    }
+
+    if (timeoutMs > 0 && Number.isFinite(timeoutMs)) {
+      timer = setTimeout(() => {
+        cleanup();
+        link.setAttribute?.("data-plw-stylesheet-state", "failed");
+        const href = link.href || link.getAttribute?.("href") || "";
+        reject(new Error(`Stylesheet timed out: ${href}`));
+      }, timeoutMs);
+    }
+  });
+
+  pendingLinkPromises.set(link, promise);
+  return promise;
+}
+
+export function ensureStylesheet(
+  href: string,
+  document: Document,
+  options?: WaitForStylesheetOptions
+): Promise<void> {
   const absoluteHref = new URL(href, document.baseURI).href;
   const existing = [...document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"][href]')].find(link => {
     try {
@@ -85,21 +171,17 @@ export function ensureStylesheet(href: string, document: Document): Promise<void
       return false;
     }
   });
-  if (existing) return Promise.resolve();
+  if (existing) {
+    return waitForStylesheetLink(existing, options);
+  }
 
-  return new Promise(resolve => {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = absoluteHref;
-    const finish = () => {
-      link.removeEventListener("load", finish);
-      link.removeEventListener("error", finish);
-      resolve();
-    };
-    link.addEventListener("load", finish, { once: true });
-    link.addEventListener("error", finish, { once: true });
-    document.head.append(link);
-  });
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = absoluteHref;
+  link.setAttribute?.("data-plw-stylesheet-state", "loading");
+  const waitPromise = waitForStylesheetLink(link, options);
+  document.head.append(link);
+  return waitPromise;
 }
 
 function loadFeatureModule(
@@ -166,9 +248,22 @@ export function createFeatureRuntime(options: RuntimeOptions) {
     return promise;
   };
 
-  const ensureFeatureStylesheet = (name: string, definition: FeatureDefinition, root: ParentNode) => {
-    const href = typeof definition.stylesheet === "function" ? definition.stylesheet(root) : definition.stylesheet;
-    if (!href) return Promise.resolve();
+  const getFeatureStylesheets = (definition: FeatureDefinition, root: ParentNode): string[] => {
+    const defs: StylesheetDefinition[] = [];
+    if (Array.isArray(definition.stylesheets)) {
+      defs.push(...definition.stylesheets);
+    } else if (definition.stylesheet !== undefined) {
+      defs.push(definition.stylesheet);
+    }
+    const resolved: string[] = [];
+    for (const def of defs) {
+      const href = typeof def === "function" ? def(root) : def;
+      if (href) resolved.push(href);
+    }
+    return resolved;
+  };
+
+  const ensureFeatureStylesheet = (href: string) => {
     const absoluteHref = new URL(href, siteRoot).href;
     const cached = stylesheetPromises.get(absoluteHref);
     if (cached) return cached;
@@ -177,6 +272,9 @@ export function createFeatureRuntime(options: RuntimeOptions) {
       options.document
     );
     stylesheetPromises.set(absoluteHref, promise);
+    promise.catch(() => {
+      if (stylesheetPromises.get(absoluteHref) === promise) stylesheetPromises.delete(absoluteHref);
+    });
     return promise;
   };
 
@@ -188,7 +286,8 @@ export function createFeatureRuntime(options: RuntimeOptions) {
     }
 
     try {
-      await ensureFeatureStylesheet(name, definition, root);
+      const stylesheets = getFeatureStylesheets(definition, root);
+      await Promise.all(stylesheets.map(href => ensureFeatureStylesheet(href)));
       if (!isCurrent(page, epoch)) return;
       if (!definition.load && !definition.moduleUrl && !options.loadModule) return;
 
@@ -267,7 +366,10 @@ const featureRegistry: FeatureRegistry = {
   math: mathFeatureDefinition,
   mermaid: { moduleUrl: "_static/js/features/mermaid.js" },
   quiz: {
-    stylesheet: "_static/css/quiz.css?v=3",
+    stylesheets: [
+      "_static/css/quiz.css?v=3",
+      root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
+    ],
     moduleUrl: "_static/js/features/quiz.js"
   },
   submit: {
