@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000024
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.potential-gradient
+- electrostatics.gauss-law
+type: multiple_choice
+choice_order: shuffle
+stem: 在静电学分析中，求解空间电场强度 $\boldsymbol{E}$ 有三种核心范式：① 库仑定律矢量微元叠加积分法；② 高斯定理通量分析法；③ 先求标量电势 $U$ 再利用微分关系 $\boldsymbol{E} = -\nabla
+  U$ 求负梯度。下列关于这三种方法的关系及电势梯度法的分析，哪些是正确的？
+choices:
+- id: A
+  content: 对于均匀带电球壳外部（$r > R$），已知其标量电势为 $U(r) = \dfrac{Q}{4\pi\varepsilon_0 r}$，利用球坐标径向负梯度 $E_r = -\dfrac{\partial U}{\partial
+    r}$，可直接求出球外场强 $E_r = \dfrac{Q}{4\pi\varepsilon_0 r^2}$
+- id: B
+  content: 对于均匀带电球壳内部（$r < R$），电势恒为常数 $U(r) = \dfrac{Q}{4\pi\varepsilon_0 R}$，由 $E_r = -\dfrac{\partial U}{\partial r} = 0$，直接严格得出球壳内部各点场强处处为零
+- id: C
+  content: 对于细圆环、薄圆盘等复杂连续带电体，由于标量电势微元积分无需进行繁复的三维空间矢量投影分解，先积分求出标量势 $U$ 再微分求负梯度往往是求场强最为简捷优雅的方法
+- id: D
+  content: 微分关系式 $\boldsymbol{E} = -\nabla U$ 是静电场保守性（$\nabla \times \boldsymbol{E} = 0$）的普遍数学推论，在任何形态的静电场中均普适成立，绝不仅限于对称体系
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。$-\frac{\partial}{\partial r}(\frac{1}{r}) = \frac{1}{r^2}$，负负得正，完全印证电势梯度微商法与高斯通量法的自洽统一。
+    B: 正确。球壳内电势为常数，常数对空间坐标的偏导数严格为零，从而直接解释了球壳内部静电屏蔽的物理图景。
+    C: 正确。标量积分只有算术相加而无角度三角函数投影，随后对空间解析式求偏导属于常规初等微分，极大减轻计算复杂度。
+    D: 正确。根据斯托克斯定理与旋度为零的无旋场性质，任何静电场必可表示为某标量函数的负梯度，具有绝对普适性。
+  correct: 回答正确！全面洞悉了静电学中矢量场库仑积分、高斯定理与电势负梯度三大求解范式的深层统一。
+  incorrect: 回答错误。请回顾麦克斯韦静电方程中环路定理无旋性导出的梯度微分关系，以及标量积分与矢量积分的计算复杂度对比。
+hints:
+- 在球对称系统中，梯度算符仅有径向分量：$\nabla U = \frac{\partial U}{\partial r}\hat{\boldsymbol{r}}$。
+- 思考为什么标量叠加积分没有矢量分解步骤。
+solution: "**解析与方法学总结**：\n1. **球壳电场微商验证（球面对称性）**：\n   在球坐标系下，对于仅依赖于径向距离 $r$ 的球对称标量势 $U(r)$，其梯度仅有径向分量：\n   $$\\boldsymbol{E}\
+  \ = -\\nabla U = -\\frac{\\partial U}{\\partial r}\\hat{\\boldsymbol{r}}$$\n   - **球壳外（$r > R$）**：\n     $$E_r = -\\frac{\\\
+  partial}{\\partial r}\\left(\\frac{Q}{4\\pi\\varepsilon_0 r}\\right) = -\\left(-\\frac{Q}{4\\pi\\varepsilon_0 r^2}\\right)\
+  \ = \\frac{Q}{4\\pi\\varepsilon_0 r^2}$$\n     精确还原高斯定理与库仑定律结果，A 正确。\n   - **球壳内（$r < R$）**：\n     $$E_r = -\\frac{\\partial}{\\\
+  partial r}\\left(\\frac{Q}{4\\pi\\varepsilon_0 R}\\right) = 0$$\n     常数求导为零，直接证明球内场强处处为零，B 正确。\n\n2. **先求电势再求梯度的优越性**：\n\
+  \   - 若直接利用库仑定律计算连续带电体（如细圆环、薄圆盘、偶极子等）的场强，被积微元 $\\mathrm{d}\\boldsymbol{E}$ 是空间三维矢量，必须建立局部投影角分解为 $E_x, E_y, E_z$ 三个分量逐一积分；\n\
+  \   - 而电势是单值标量，微元 $\\mathrm{d}U = \\frac{\\mathrm{d}q}{4\\pi\\varepsilon_0 r}$ 只有算术大小，积分过程中无需任何方向投影，极易获解；求得解析式 $U(x, y,\
+  \ z)$ 后，只需分别求一次偏导即可得到场强的三个分量。故 C 正确。\n\n3. **普适物理本质**：\n   由静电场环路定理 $\\oint \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l}\
+  \ = 0$，由斯托克斯定理等价于静电场无旋：\n   $$\\nabla \\times \\boldsymbol{E} = 0$$\n   根据矢量微积分基本定理，任何无旋矢量场必定是某个连续标量场的梯度场，规定符号后即为 $\\boldsymbol{E}\
+  \ = -\\nabla U$。该方程是静电场的本质基本物理方程，在任何非对称或复杂边界体系中均普遍成立，故 D 正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3247e7bfddea7d055c6cb608ec0302706bc445e4567638c295b7625c59c74bfd
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3247e7bfddea7d055c6cb608ec0302706bc445e4567638c295b7625c59c74bfd
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3247e7bfddea7d055c6cb608ec0302706bc445e4567638c295b7625c59c74bfd

@@ -1,0 +1,80 @@
+schema_version: 3
+id: q-000003
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.spherical-symmetry
+- electrostatics.cavity-field
+type: multiple_choice
+choice_order: shuffle
+stem: 在球心为 $O$、半径为 $R$、电荷体密度为 $\rho$ 的均匀带电实心球体内，偏心挖去一个球心为 $O'$、半径为 $b$ 的球形空腔（两球心位移矢量为 $\boldsymbol{c} = \vec{OO'}$，且空腔完全包含在大球体内）。关于该偏心空腔内部的电场分布，下列哪些说法是正确的？
+choices:
+- id: A
+  content: 空腔内部各点的电场为严格的匀强电场
+- id: B
+  content: 空腔内各点的电场强度矢量为 $\boldsymbol{E} = \dfrac{\rho}{3\varepsilon_0}\boldsymbol{c}$，方向沿两球心连线方向
+- id: C
+  content: 空腔内电场强度的大小与空腔本身的半径 $b$ 以及空腔内测点的位置坐标均无关
+- id: D
+  content: 由于挖孔破坏了整体对称性，空腔内部电场不可能为匀强电场，场强必定随位置变化
+answer:
+  choices:
+  - A
+  - B
+  - C
+feedback:
+  choices:
+    A: 正确。利用割补法证明，腔内任意点由两球激发的线性位矢相减恰好消去位置坐标，留下常矢量，因而为严格匀强场。
+    B: 正确。大球场为 $\frac{\rho}{3\varepsilon_0}\boldsymbol{r}_1$，负电小球场为 $-\frac{\rho}{3\varepsilon_0}\boldsymbol{r}_2$，二者叠加合场为
+      $\frac{\rho}{3\varepsilon_0}(\boldsymbol{r}_1 - \boldsymbol{r}_2) = \frac{\rho}{3\varepsilon_0}\boldsymbol{c}$。
+    C: 正确。合场强公式 $\boldsymbol{E} = \frac{\rho}{3\varepsilon_0}\boldsymbol{c}$ 中完全不包含空腔半径 $b$ 和局部坐标 $\boldsymbol{r}$，仅取决于体密度
+      $\rho$ 和球心间距矢量 $\boldsymbol{c}$。
+    D: 错误。虽然挖洞破坏了对空腔中心的对称性从而无法直接套用高斯定理，但利用叠加原理（割补法）可以证明腔内电场严格匀强。
+  correct: 回答正确！完全掌握了静电场经典“割补叠加法”以及带电球体偏心球形空腔内匀强电场的深刻本质。
+  incorrect: 回答错误。请复习将带空腔带电体等效为“完整正电大球”与“负电小球”线性叠加的割补分析法。
+hints:
+- 将挖空的带电体等效视为一个完整的实心大球（密度 $+\rho$）与一个实心小球（密度 $-\rho$）在空间中几何重叠。
+- 在空腔内任取一点 $P$，写出两球单独在此点激发的电场矢量，并利用空间几何矢量三角形 $\boldsymbol{r}_1 - \boldsymbol{r}_2 = \vec{OO'}$。
+solution: "**严格证明与推导**：\n1. **割补法与线性叠加**：\n   挖去偏心空腔的带电球体在空间中的电荷分布，完全等价于以下两个理想实心球体的线性重叠：\n   - 一个以 $O$ 为球心、半径为 $R$、体电荷密度为\
+  \ $+\\rho$ 的均匀带电大实心球；\n   - 另一个以 $O'$ 为球心、半径为 $b$、体电荷密度为 $-\\rho$ 的均匀带电小实心球。\n\n2. **腔内任意点的场强矢量叠加**：\n   在空腔内部任选一点 $P$。记自大球心\
+  \ $O$ 指向 $P$ 的位置矢量为 $\\boldsymbol{r}_1 = \\vec{OP}$；自小球心 $O'$ 指向 $P$ 的位置矢量为 $\\boldsymbol{r}_2 = \\vec{O'P}$。\n   根据均匀带电球体内部场强公式：\n\
+  \   - 正电大球在 $P$ 点激发的电场：\n     $$\\boldsymbol{E}_+ = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{r}_1$$\n   - 负电小球在 $P$ 点激发的电场：\n\
+  \     $$\\boldsymbol{E}_- = -\\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{r}_2$$\n   根据场强叠加原理，空腔内 $P$ 点处的总合场强为：\n   $$\\boldsymbol{E}\
+  \ = \\boldsymbol{E}_+ + \\boldsymbol{E}_- = \\frac{\\rho}{3\\varepsilon_0}(\\boldsymbol{r}_1 - \\boldsymbol{r}_2)$$\n\n\
+  3. **位置坐标消去与匀强性**：\n   由空间矢量封闭三角形关系：\n   $$\\boldsymbol{r}_1 - \\boldsymbol{r}_2 = \\vec{OP} - \\vec{O'P} = \\vec{OO'} =\
+  \ \\boldsymbol{c}$$\n   因此：\n   $$\\boldsymbol{E} = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{c} = \\text{常矢量}$$\n\n**物理结论**：\
+  \ 偏心空腔内部各点的电场大小处处相等，方向均平行于两球心位移矢量 $\\vec{OO'}$，是严格的匀强电场；且其场强数值与空腔半径 $b$ 及腔内坐标完全无关。故 A、B、C 正确，D 错误。"
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7229a5bc38ab0cf727f1ed0bc1c79abd97486c4a4794e2b6be10eb39da2412d6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7229a5bc38ab0cf727f1ed0bc1c79abd97486c4a4794e2b6be10eb39da2412d6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7229a5bc38ab0cf727f1ed0bc1c79abd97486c4a4794e2b6be10eb39da2412d6

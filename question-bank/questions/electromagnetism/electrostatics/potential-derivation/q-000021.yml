@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000021
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.cylindrical-symmetry
+- electrostatics.potential-reference
+type: single_choice
+choice_order: shuffle
+stem: 真空中有一根“无限长”均匀带电细直线，电荷线密度为 $\lambda$（$\lambda > 0$）。若选取距该直线垂直距离为 $r_B$ 处的点 $B$ 作为电势参考零点（$V(r_B) = 0$）。则距直线垂直距离为 $r$ 处的点
+  $P$ 的电势 $V(r)$ 为：
+choices:
+- id: A
+  content: $V(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{r_B}{r}$
+- id: B
+  content: $V(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{r}{r_B}$
+- id: C
+  content: $V(r) = \dfrac{\lambda}{4\pi\varepsilon_0}\left(\dfrac{1}{r} - \dfrac{1}{r_B}\right)$
+- id: D
+  content: $V(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\dfrac{r_B - r}{r r_B}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。根据电势定义积分 $V(r) = \int_r^{r_B} E\,\mathrm{d}r' = \int_r^{r_B} \frac{\lambda}{2\pi\varepsilon_0 r'}\mathrm{d}r' =
+      \frac{\lambda}{2\pi\varepsilon_0}\ln\frac{r_B}{r}$。当 $r < r_B$ 时电势为正，符合越靠近正电线电势越高的规律。
+    B: 错误。对数真数颠倒。若为 $\ln(r/r_B)$，当 $r < r_B$（更靠近正电荷）时电势将为负，与正电荷抬升周围电势的物理事实相反。
+    C: 错误。把无限长直线的场强（$1/r'$）误当作点电荷场强（$1/r'^2$）积分。$1/r'$ 的定积分必定给出对数函数 $\ln$。
+    D: 错误。分式形式来源于对 $1/r'^2$ 积分的通分结果，不是带电直线的对数分布。
+  correct: 回答正确！准确理解了无限长带电直线的对数电势积分公式与参考点相对符号判据。
+  incorrect: 回答错误。请由电势定义式 $V(r) = \int_r^{r_B} E(r')\,\mathrm{d}r'$ 代入场强 $E = \frac{\lambda}{2\pi\varepsilon_0 r'}$ 进行定积分计算。
+hints:
+- 根据电势定义，点 $P$ 与参考零点 $B$ 之间的电势差为 $V(r) - V(r_B) = \int_r^{r_B} \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{r}'$。
+- 带入无限长直线的场强公式 $E(r') = \frac{\lambda}{2\pi\varepsilon_0 r'}$ 并注意被积函数 $\frac{1}{r'}$ 的原函数为对数 $\ln$。
+solution: "**严格推导与解析**：\n1. **零势点选取与积分路径**：\n   已知无限长均匀带电直线的场强沿柱径向向外发散，大小为：\n   $$E(r') = \\frac{\\lambda}{2\\pi\\varepsilon_0\
+  \ r'}$$\n   因为线电荷延伸至无限远，若取无穷远处为零势点积分发散，故选取有限距离 $r_B$ 处为零电势参考点（$V(r_B) = 0$）。\n\n2. **定积分求解电势**：\n   根据电势差的路径积分定义，将单位正电荷从场点\
+  \ $r$ 沿径向移至参考零点 $r_B$：\n   $$V(r) - V(r_B) = \\int_r^{r_B} \\boldsymbol{E}(r') \\cdot \\mathrm{d}\\boldsymbol{r}'$$\n  \
+  \ 在径向路径上，$\\boldsymbol{E} \\parallel \\mathrm{d}\\boldsymbol{r}'$，代入场强公式：\n   $$V(r) - 0 = \\int_r^{r_B} \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0 r'}\\,\\mathrm{d}r' = \\frac{\\lambda}{2\\pi\\varepsilon_0} [\\ln r']_r^{r_B} = \\frac{\\lambda}{2\\pi\\\
+  varepsilon_0} (\\ln r_B - \\ln r) = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\frac{r_B}{r}$$\n\n3. **物理图像合理性检验**：\n   -\
+  \ 当 $r < r_B$ 时，场点比参考点更靠近正电直线，$\\frac{r_B}{r} > 1 \\implies \\ln\\frac{r_B}{r} > 0$，电势为正；\n   - 当 $r > r_B$ 时，场点比参考点远离正电直线，$\\\
+  frac{r_B}{r} < 1 \\implies \\ln\\frac{r_B}{r} < 0$，电势为负；\n   完全符合“顺着电场线方向电势单调降低”的普遍物理规律。\n\n故 A 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d360f873c86ad8268b6c91439bb47b07853ab4ccbe13fd51ce055e0538755aad
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d360f873c86ad8268b6c91439bb47b07853ab4ccbe13fd51ce055e0538755aad
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d360f873c86ad8268b6c91439bb47b07853ab4ccbe13fd51ce055e0538755aad

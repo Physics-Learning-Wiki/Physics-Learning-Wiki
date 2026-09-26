@@ -1,6 +1,6 @@
 schema_version: 1
 id: mechanics.kinematics.linear-motion.full
-title: 8 题完整小测
+title: 直线运动运动学综合小测
 description: 全面测试直线运动概念辨析、图像分析、分段建模与相对运动。
 status: draft
 tags:

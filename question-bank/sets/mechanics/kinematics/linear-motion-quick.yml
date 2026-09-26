@@ -1,6 +1,6 @@
 schema_version: 1
 id: mechanics.kinematics.linear-motion.quick
-title: 3 题快速检查
+title: 直线运动快速自测
 description: 快速检查直线运动符号约定、图像与基本建模。
 status: draft
 tags:

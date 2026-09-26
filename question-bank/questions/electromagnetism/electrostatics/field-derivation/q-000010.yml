@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000010
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.planar-symmetry
+type: multiple_choice
+choice_order: shuffle
+stem: 在半导体 PN 结空间电荷区模型中，以冶金结交界面为坐标原点 $x = 0$。N 区位于 $-x_n \le x \le 0$，分布着均匀正空间电荷（体密度 $\rho_n > 0$）；P 区位于 $0 \le x \le x_p$，分布着均匀负空间电荷（体密度
+  $\rho_p < 0$）。若系统满足整体电中性平衡条件 $\rho_n x_n + \rho_p x_p = 0$。关于空间电荷区内外的电场强度分布，下列哪些结论是正确的？
+choices:
+- id: A
+  content: 空间电荷区外部区域（$x < -x_n$ 以及 $x > x_p$）的电场强度处处严格为零，内建电场被完全禁锢在耗尽层内部
+- id: B
+  content: 冶金结交界面（$x = 0$）处的电场强度达到绝对值最大峰值，大小为 $E_{\max} = \dfrac{\rho_n x_n}{\varepsilon_0} = -\dfrac{\rho_p x_p}{\varepsilon_0}$
+- id: C
+  content: 空间电荷区内部各点的电场强度曲线呈现不对称的三角形分布（自 $-x_n$ 线性上升至 $x=0$ 处达峰值，再在线性回落至 $x_p$ 处的零）
+- id: D
+  content: 空间电荷区内部各点的电场强度方向均沿 $+x$ 轴正方向，由 N 区指向 P 区
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。整体电中性条件使包围整个空间电荷区的高斯面净电量为零，由平面对称性外区合场强严格抵消为零。
+    B: 正确。在交界面 $x=0$ 处，高斯面积累了 N 区的全部正空间电荷，达到电场峰值 $\frac{\rho_n x_n}{\varepsilon_0}$。
+    C: 正确。在两边区域内电场分别为 $x$ 的一次线性函数，在交界处拼接成连续的三角形分布曲线。
+    D: 正确。N 区带正电荷为“源”，P 区带负电荷为“汇”，电场线恒由正电区垂直指向负电区（沿 $+x$ 方向）。
+  correct: 回答正确！全面掌握了半导体物理中 PN 结空间电荷区内建电场模型的高斯定理推导。
+  incorrect: 回答错误。请回顾电中性平衡条件对外部场强的屏蔽约束，以及一维高斯面在耗尽层内的积分线型。
+hints:
+- 先在大尺度上取包围整个空间电荷区的高斯柱面，结合 $\rho_n x_n + \rho_p x_p = 0$ 证明耗尽层外场为零。
+- 再选取一端落在无场外区、另一端深入耗尽层内部 $x$ 处的高斯面，逐段求解线性电场方程。
+solution: "**严格推导与解析**：\n1. **外部场强严格归零**：\n   构造一个完全包含整个空间电荷区（$-x_n \\le x \\le x_p$）的对称柱体高斯面。\n   高斯体内包围的净电荷量为：\n   $$Q_{\\\
+  text{in}} = (\\rho_n x_n + \\rho_p x_p) S$$\n   根据平衡态电中性条件 $\\rho_n x_n + \\rho_p x_p = 0$，净电荷量严格为零：\n   $$2 E_{\\text{外}}\
+  \ S = \\frac{Q_{\\text{in}}}{\\varepsilon_0} = 0 \\implies E_{\\text{外}} = 0$$\n   因此空间电荷区两侧外部无电场，电场被全部禁锢在耗尽层内。故 A 正确。\n\
+  \n2. **内部场强分布推导**：\n   由于外部电场为零，可取高斯柱面的左底面位于外部无场区（$x' < -x_n$），右底面深入空间电荷区内部 $x$ 处：\n   - **在 N 区内部（$-x_n \\le x \\le 0$）**：\n\
+  \     高斯面包围电量为 $q_{\\text{in}} = \\rho_n (x - (-x_n)) S = \\rho_n (x + x_n) S$：\n     $$E(x) S = \\frac{1}{\\varepsilon_0}\
+  \ \\rho_n (x + x_n) S \\implies \\boldsymbol{E}(x) = \\frac{\\rho_n (x + x_n)}{\\varepsilon_0}\\hat{\\boldsymbol{x}}$$\n\
+  \     自 $x = -x_n$ 处的 $0$ 沿 $+x$ 方向呈严格线性增加。\n   - **在 P 区内部（$0 \\le x \\le x_p$）**：\n     类似地，取高斯面右端落在右侧无场区（$x' > x_p$），左端深入内部\
+  \ $x$ 处，包围负电量：\n     $$E(x) = -\\frac{\\rho_p (x_p - x)}{\\varepsilon_0}$$\n     自界面峰值线性下降至 $x = x_p$ 处的 $0$。\n   故 C 正确。\n\
+  \n3. **交界面峰值与电场方向**：\n   在冶金交界面 $x = 0$ 处代入，两段表达式连续衔接并达到最大峰值：\n   $$E_{\\max} = \\frac{\\rho_n x_n}{\\varepsilon_0} = -\\\
+  frac{\\rho_p x_p}{\\varepsilon_0}$$\n   由于 $\\rho_n > 0$ 且 $\\rho_p < 0$，在全耗尽层内 $E(x) > 0$，场强恒指向 $+x$ 方向（由正电 N 区指向负电 P 区）。故\
+  \ B、D 正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 120
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a07f0978bccddb7d094a7fd9ec31dc8dcc33d80e581174694dae6f49be233fac
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a07f0978bccddb7d094a7fd9ec31dc8dcc33d80e581174694dae6f49be233fac
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a07f0978bccddb7d094a7fd9ec31dc8dcc33d80e581174694dae6f49be233fac

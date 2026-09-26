@@ -1,0 +1,78 @@
+schema_version: 3
+id: q-000019
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.spherical-symmetry
+- electrostatics.potential-superposition
+type: single_choice
+choice_order: shuffle
+stem: 两个薄金属同心球面，半径分别为 $R_a$ 与 $R_b$（$R_a < R_b$），各自均匀分布着总电荷量 $Q_a$ 与 $Q_b$。选无穷远处为电势参考零点。关于内球面（$r = R_a$ 处）所具有的电势 $U_1$，下列表达式正确的是：
+choices:
+- id: A
+  content: $U_1 = \dfrac{1}{4\pi\varepsilon_0}\left(\dfrac{Q_a}{R_a} + \dfrac{Q_b}{R_b}\right)$
+- id: B
+  content: $U_1 = \dfrac{Q_a + Q_b}{4\pi\varepsilon_0 R_a}$
+- id: C
+  content: $U_1 = \dfrac{Q_a}{4\pi\varepsilon_0 R_a}$，与外球面所带电荷 $Q_b$ 完全无关
+- id: D
+  content: $U_1 = \dfrac{1}{4\pi\varepsilon_0}\left(\dfrac{Q_a}{R_a} - \dfrac{Q_b}{R_b}\right)$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。利用电势叠加法：内球自身在其表面激发电势 $\frac{Q_a}{4\pi\varepsilon_0 R_a}$，而内球处于外球壳内部，外球壳在内部全区域贡献恒定电势 $\frac{Q_b}{4\pi\varepsilon_0
+      R_b}$，两者直接代数相加。
+    B: 错误。把外球壳电荷 $Q_b$ 产生的电势分母误写为 $R_a$。外球壳在其内部产生的电势只取决于外球自身半径 $R_b$。
+    C: 错误。虽然外球壳在内部激发的“场强”为零，但它在内部激发的“电势”非零且恒等于 $\frac{Q_b}{4\pi\varepsilon_0 R_b}$，内球电势受到外球壳抬升或降低。
+    D: 错误。两带电体系激发的电势按标量直接相加，两项之间为正号，负号无物理依据。
+  correct: 回答正确！熟练掌握了球对称同心电荷系统电势叠加法与分段场强路径积分法。
+  incorrect: 回答错误。请注意内球处于外球壳内部，外球壳在其内部各点均产生大小为 $\frac{Q_b}{4\pi\varepsilon_0 R_b}$ 的恒定电势。
+hints:
+- 方法一（叠加原理）：内球电势等于内球壳独立激发的表面电势，加上外球壳在其内部区域激发的电势。
+- 方法二（场强路径积分）：$U_1 = \int_{R_a}^{R_b} E_2\,\mathrm{d}r + \int_{R_b}^\infty E_3\,\mathrm{d}r$。
+solution: "**两种求解方法严格推导**：\n### 解法一：电势叠加原理（最简捷直观） 根据标量势的线性叠加原理，空间任一点的总电势等于内外两带电球壳独立激发电势的标量代数和： $$U = U_a + U_b$$ 根据单层球壳电势规律（球壳外部为点电荷势，球壳内部为等于表面的常数势）：\
+  \ 1. **内球壳 $Q_a$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于其自身表面，故贡献：\n   $$U_a(R_a) = \\frac{Q_a}{4\\pi\\varepsilon_0 R_a}$$\n2. **外球壳\
+  \ $Q_b$ 产生的电势**：\n   内球面位置 $r = R_a$ 处于外球壳内部（$R_a < R_b$）。外球壳在内部全空间激发的电势恒等于其表面电势，故外球壳在内球处贡献：\n   $$U_b(R_a) = \\frac{Q_b}{4\\\
+  pi\\varepsilon_0 R_b}$$\n将两者标量直接相加，即得内球电势： $$U_1 = U_a(R_a) + U_b(R_a) = \\frac{1}{4\\pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a}\
+  \ + \\frac{Q_b}{R_b} \\right)$$\n---\n### 解法二：场强路径积分法 由高斯定理可知各区域场强： - 区域 II（$R_a < r < R_b$）：$E_2 = \\frac{Q_a}{4\\pi\\\
+  varepsilon_0 r^2}$ - 区域 III（$r > R_b$）：$E_3 = \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0 r^2}$ 根据电势定义，将单位正电荷从内球表面移至无穷远处： $$U_1\
+  \ = \\int_{R_a}^{R_b} E_2\\,\\mathrm{d}r + \\int_{R_b}^\\infty E_3\\,\\mathrm{d}r = \\frac{Q_a}{4\\pi\\varepsilon_0}\\left(\
+  \ \\frac{1}{R_a} - \\frac{1}{R_b} \\right) + \\frac{Q_a + Q_b}{4\\pi\\varepsilon_0 R_b}$$ 拆分整理后： $$U_1 = \\frac{Q_a}{4\\\
+  pi\\varepsilon_0 R_a} - \\frac{Q_a}{4\\pi\\varepsilon_0 R_b} + \\frac{Q_a}{4\\pi\\varepsilon_0 R_b} + \\frac{Q_b}{4\\pi\\\
+  varepsilon_0 R_b} = \\frac{1}{4\\pi\\varepsilon_0}\\left( \\frac{Q_a}{R_a} + \\frac{Q_b}{R_b} \\right)$$ 两法所得严格一致。\n故 A\
+  \ 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:6e983e6d5541d052fd9071d0a0da557da7ff7cb7a53f83374cdaa1789be8fe9b

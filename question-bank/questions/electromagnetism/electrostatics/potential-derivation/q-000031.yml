@@ -1,0 +1,109 @@
+schema_version: 3
+id: q-000031
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.potential-gradient
+type: free_response
+choice_order: fixed
+stem: "**轴线标量电势积分及电势梯度微商验证（圆环与薄圆盘）**\n\n通过标量积分求解电势，再利用负梯度 $\\boldsymbol{E} = -\\nabla V$ 求解电场，通常比直接进行矢量微元积分更加简便。请完成以下三项推导与分析：\n\
+  \n1. **均匀带电细圆环轴线电势与负梯度验证**：\n   - 半径为 $R$ 的细圆环置于 $xy$ 平面，环心在坐标原点，均匀带总电荷 $q$（$q > 0$），取无穷远处为电势参考点；\n   - 分析环上任意电荷微元 $\\mathrm{d}q$\
+  \ 到轴线上 $P(0,0,z)$ 的几何距离，推导轴线电势 $V(z)$；\n   - 通过一维负导数关系 $E_z = -\\frac{\\mathrm{d}V}{\\mathrm{d}z}$ 求解轴线电场强度，并与库仑矢量积分结果进行对照验证。\n\
+  \n2. **均匀带电薄圆盘轴线电势推导**：\n   - 半径为 $R$ 的薄圆盘置于 $xy$ 平面，中心在原点，面电荷密度为 $\\sigma$（$\\sigma > 0$）；\n   - 将圆盘分割为同心细圆环微元，利用上述细圆环电势公式进行标量积分；\n\
+  \   - 推导出轴线上全域（包括 $z > 0$ 与 $z < 0$）的电势解析表达式 $V(z)$（注意包含 $|z|$ 绝对值项）。\n\n3. **圆盘轴线电场求导与界面导数跃变分析**：\n   - 分别对 $z > 0$ 与 $z\
+  \ < 0$ 区域求负导数 $E_z = -\\frac{\\partial V}{\\partial z}$，得到轴线电场分布；\n   - 考察 $z \\to 0^+$ 与 $z \\to 0^-$ 时的电场极限，计算穿越盘面时的法向场强差\
+  \ $\\Delta E_z = E_z(0^+) - E_z(0^-)$；\n   - 结合电势与电场的关系，从物理上阐明为什么电势函数 $V(z)$ 在 $z=0$ 处连续（呈尖点拐折），而其一阶导数（电场）却发生不连续跃变。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括圆环与圆盘的电势积分、负导数微分求场强、以及界面处一阶导数跃变的物理分析）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（标量积分表达式错误，未能得出正确的电势或未能正确求导验证场强）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了圆环与圆盘的积分和求导，但绝对值讨论或界面导数跃变分析不完整）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（标量积分严密，绝对值项处理准确，负梯度验证一致，界面一阶导数跃变机理解释透彻）
+    points: 1
+reference_answer: "1. 细圆环：\n   - 环上每一点到 $P(0,0,z)$ 的距离均为 $r = \\sqrt{R^2 + z^2}$。\n   - 标量积分：$V(z) = \\int \\frac{\\mathrm{d}q}{4\\\
+  pi\\varepsilon_0 \\sqrt{R^2+z^2}} = \\frac{q}{4\\pi\\varepsilon_0 \\sqrt{R^2+z^2}}$。\n   - 负梯度：$E_z = -\\frac{\\mathrm{d}V}{\\\
+  mathrm{d}z} = -\\frac{q}{4\\pi\\varepsilon_0}\\left(-\\frac{1}{2}\\right)(R^2+z^2)^{-3/2}(2z) = \\frac{q z}{4\\pi\\varepsilon_0\
+  \ (R^2+z^2)^{3/2}}$，与矢量积分完全一致。\n\n2. 薄圆盘：\n   - 环元电量 $\\mathrm{d}q = \\sigma \\cdot 2\\pi r' \\mathrm{d}r'$，环元电势 $\\mathrm{d}V\
+  \ = \\frac{\\sigma \\cdot 2\\pi r'\\mathrm{d}r'}{4\\pi\\varepsilon_0 \\sqrt{r'^2+z^2}} = \\frac{\\sigma}{4\\varepsilon_0}\\\
+  frac{\\mathrm{d}(r'^2+z^2)}{\\sqrt{r'^2+z^2}}$。\n   - 全域积分：$V(z) = \\frac{\\sigma}{4\\varepsilon_0} [2\\sqrt{r'^2+z^2}]_0^R\
+  \ = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2+z^2} - \\sqrt{z^2}\\right) = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\\
+  sqrt{R^2+z^2} - |z|\\right)$。\n\n3. 导数与跃变：\n   - 当 $z > 0$ 时，$|z| = z$，$E_z = -\\frac{\\partial V}{\\partial z} = -\\frac{\\\
+  sigma}{2\\varepsilon_0}\\left(\\frac{z}{\\sqrt{R^2+z^2}} - 1\\right) = \\frac{\\sigma}{2\\varepsilon_0}\\left(1 - \\frac{z}{\\\
+  sqrt{R^2+z^2}}\\right)$。\n   - 当 $z < 0$ 时，$|z| = -z$，$E_z = -\\frac{\\sigma}{2\\varepsilon_0}\\left(\\frac{z}{\\sqrt{R^2+z^2}}\
+  \ + 1\\right) = -\\frac{\\sigma}{2\\varepsilon_0}\\left(1 + \\frac{z}{\\sqrt{R^2+z^2}}\\right)$。\n   - 界面跃变：$E_z(0^+) =\
+  \ +\\frac{\\sigma}{2\\varepsilon_0}$，$E_z(0^-) = -\\frac{\\sigma}{2\\varepsilon_0}$，跃变量 $\\Delta E_z = \\frac{\\sigma}{\\\
+  varepsilon_0}$，严格符合界面法向跃变定理。\n   - 物理本质：薄层电荷无厚度，法向电场在有限面电荷两侧反向突变，导致电势函数在 $z=0$ 处连续但不可导（形成对称尖峰）。\n"
+solution: "### 1. 均匀带电细圆环轴线电势与负梯度验证\n- **标量微元积分**：\n  由于圆环上所有点均位于以原点为中心、半径为 $R$ 的圆周上，从环上任一电荷微元 $\\mathrm{d}q$ 到轴线上点 $P(0,0,z)$\
+  \ 的几何距离恒为固定值：\n  $$r = \\sqrt{R^2 + z^2}$$\n  标量电势无需考虑矢量方向分解，直接对标量进行叠加积分：\n  $$V(z) = \\int \\frac{\\mathrm{d}q}{4\\pi\\\
+  varepsilon_0 r} = \\frac{1}{4\\pi\\varepsilon_0 \\sqrt{R^2 + z^2}} \\int \\mathrm{d}q = \\frac{q}{4\\pi\\varepsilon_0 \\\
+  sqrt{R^2 + z^2}}$$\n- **微分求解电场强度**：\n  利用静电场强度与电势梯度的微分关系 $\\boldsymbol{E} = -\\nabla V$。由轴对称性，轴线上 $\\frac{\\partial V}{\\\
+  partial x} = \\frac{\\partial V}{\\partial y} = 0$，场强仅有轴向分量：\n  $$E_z = -\\frac{\\mathrm{d}V}{\\mathrm{d}z} = -\\frac{\\\
+  mathrm{d}}{\\mathrm{d}z}\\left[\\frac{q}{4\\pi\\varepsilon_0} (R^2 + z^2)^{-1/2}\\right]$$\n  $$E_z = -\\frac{q}{4\\pi\\\
+  varepsilon_0} \\cdot \\left(-\\frac{1}{2}\\right)(R^2 + z^2)^{-3/2} \\cdot (2z) = \\frac{q z}{4\\pi\\varepsilon_0 (R^2 +\
+  \ z^2)^{3/2}}$$\n  这与直接通过库仑定律微元矢量积分得到的结果完全一致，但标量先积分后求导的过程显著规避了繁琐的三角函数分解。\n\n### 2. 均匀带电薄圆盘轴线电势推导\n- **同心薄环微元分割**：\n  将半径为\
+  \ $R$ 的圆盘划分为半径为 $r'$、宽度为 $\\mathrm{d}r'$ 的细圆环微元。\n  该微元带电量为 $\\mathrm{d}q = \\sigma \\cdot 2\\pi r' \\mathrm{d}r'$。\n  利用上述圆环轴线电势公式，该环元在轴线上\
+  \ $P(0,0,z)$ 处产生的电势微元为：\n  $$\\mathrm{d}V = \\frac{\\mathrm{d}q}{4\\pi\\varepsilon_0 \\sqrt{r'^2 + z^2}} = \\frac{\\sigma\
+  \ \\cdot 2\\pi r' \\mathrm{d}r'}{4\\pi\\varepsilon_0 \\sqrt{r'^2 + z^2}} = \\frac{\\sigma}{4\\varepsilon_0} \\frac{\\mathrm{d}(r'^2\
+  \ + z^2)}{\\sqrt{r'^2 + z^2}}$$\n- **全域积分计算**：\n  对 $r'$ 从 $0$ 到 $R$ 积分：\n  $$V(z) = \\frac{\\sigma}{4\\varepsilon_0} \\\
+  int_0^R (r'^2 + z^2)^{-1/2} \\mathrm{d}(r'^2 + z^2) = \\frac{\\sigma}{4\\varepsilon_0} \\left[ 2\\sqrt{r'^2 + z^2} \\right]_0^R$$\n\
+  \  注意下限代入时必须严格写为 $\\sqrt{0 + z^2} = |z|$：\n  $$V(z) = \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{R^2 + z^2} - |z|\\right)$$\n\
+  \  在全空间 $z \\in (-\\infty, +\\infty)$，该电势函数关于 $z=0$ 偶对称，$V(-z) = V(z)$。\n\n### 3. 圆盘轴线电场求导与界面导数跃变分析\n- **分区域求负导数**：\n  -\
+  \ 当 $z > 0$ 时，$|z| = z$：\n    $$E_z(z) = -\\frac{\\partial V}{\\partial z} = -\\frac{\\sigma}{2\\varepsilon_0}\\left(\\\
+  frac{z}{\\sqrt{R^2 + z^2}} - 1\\right) = \\frac{\\sigma}{2\\varepsilon_0}\\left(1 - \\frac{z}{\\sqrt{R^2 + z^2}}\\right)$$\n\
+  \  - 当 $z < 0$ 时，$|z| = -z$：\n    $$E_z(z) = -\\frac{\\partial V}{\\partial z} = -\\frac{\\sigma}{2\\varepsilon_0}\\left(\\\
+  frac{z}{\\sqrt{R^2 + z^2}} - (-1)\\right) = -\\frac{\\sigma}{2\\varepsilon_0}\\left(1 + \\frac{z}{\\sqrt{R^2 + z^2}}\\right)$$\n\
+  - **穿越盘面时的单侧极限与跃变量**：\n  令 $z$ 分别从正向和负向趋于 0：\n  $$\\lim_{z \\to 0^+} E_z = +\\frac{\\sigma}{2\\varepsilon_0}, \\quad \\\
+  lim_{z \\to 0^-} E_z = -\\frac{\\sigma}{2\\varepsilon_0}$$\n  在界面 $z = 0$ 处，电场的法向跃变差值为：\n  $$\\Delta E_z = E_z(0^+) - E_z(0^-)\
+  \ = \\frac{\\sigma}{2\\varepsilon_0} - \\left(-\\frac{\\sigma}{2\\varepsilon_0}\\right) = \\frac{\\sigma}{\\varepsilon_0}$$\n\
+  - **物理机制阐释**：\n  电势函数 $V(z)$ 在 $z=0$ 处的值为 $V(0) = \\frac{\\sigma R}{2\\varepsilon_0}$，左右极限相等，故电势是严格连续的。\n  但在 $z=0$ 处，$V(z)$\
+  \ 的左导数与右导数不相等（$\\left.\\frac{\\mathrm{d}V}{\\mathrm{d}z}\\right|_{0^+} = -\\frac{\\sigma}{2\\varepsilon_0}$，$\\left.\\frac{\\\
+  mathrm{d}V}{\\mathrm{d}z}\\right|_{0^-} = +\\frac{\\sigma}{2\\varepsilon_0}$），曲线呈现尖锐的尖顶拐折。\n  这在物理上精确对应了面电荷层产生的电场法向跃变：电荷局域在零厚度的二维面上，使得穿过界面的电场瞬间反向，一阶导数的不连续性正是表面面电荷存在的直接微分表征。\n"
+feedback:
+  correct: 标量积分严密，绝对值项处理准确，负梯度验证一致，界面一阶导数跃变机理解释透彻。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7b0c9d91c565303b7bdf3a887176d7776c739f9e191e3e968b46a618682d0ef6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7b0c9d91c565303b7bdf3a887176d7776c739f9e191e3e968b46a618682d0ef6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:7b0c9d91c565303b7bdf3a887176d7776c739f9e191e3e968b46a618682d0ef6

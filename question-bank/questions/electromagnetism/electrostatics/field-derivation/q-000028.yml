@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000028
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.spherical-symmetry
+type: free_response
+choice_order: fixed
+stem: "**带电细圆环与薄圆盘轴线电场微元矢量积分与渐近分析**\n\n在无法直接应用高斯定理求解全局电场时，直接使用库仑定律微元积分是基本物理方法。请完成以下三步推导：\n\n1. **均匀带电细圆环轴线电场推导与极值点**：\n  \
+  \ - 半径为 $R$ 的细圆环置于 $xy$ 平面，环心位于原点，均匀带有总电量 $q$（$q > 0$）。\n   - 分析轴线上（$z$ 轴）任一点 $P(0,0,z)$ 的电场对称性，说明为何垂直于 $z$ 轴的分量积分抵消；\n\
+  \   - 积分推导点 $P$ 处的电场强度矢量 $\\boldsymbol{E}(z)$；\n   - 对 $E_z(z)$ 求导，确定轴线上电场强度模长达到极大值的位置 $z_{\\text{max}}$，并写出极大值 $E_{\\text{max}}$。\n\
+  \n2. **均匀带电薄圆盘轴线电场推导**：\n   - 半径为 $R$ 的均匀带电薄圆盘置于 $xy$ 平面，中心在原点，面电荷密度为 $\\sigma$（$\\sigma > 0$）；\n   - 将圆盘分割为半径 $r'$、宽度 $\\\
+  mathrm{d}r'$ 的细同心圆环，利用上述细圆环的场强结果进行积分；\n   - 推导出轴线上 $z > 0$ 区域各点的电场强度矢量 $\\boldsymbol{E}(z)$。\n\n3. **渐近极限与物理模型退化**：\n  \
+  \ - **近场极限（$z \\ll R$ 或 $R \\to \\infty$）**：分析圆盘轴线场强的渐近行为，说明其退化为哪种经典理想模型；\n   - **远场极限（$z \\gg R$）**：利用泰勒展开 $\\frac{z}{\\\
+  sqrt{R^2 + z^2}} = \\left(1 + \\frac{R^2}{z^2}\\right)^{-1/2}$ 展开至一阶修正项，证明其一级近似退化为总电量为 $Q = \\sigma \\pi R^2$ 的点电荷库仑电场。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括微元分解、圆环轴线积分与求导极值、圆盘积分与近/远场渐近级数展开）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（微元积分表达式错误，未能得出正确的圆环或圆盘轴线电场）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了圆环与圆盘积分，但在求导极值或远场渐近级数展开有遗漏）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（微元投影清晰，圆环极值求解正确，圆盘分环积分严密，近远场物理极限分析完备）
+    points: 1
+reference_answer: "1. 细圆环：\n   - 对称性：环上对称分布的电荷元 $\\mathrm{d}q$ 在轴线上产生的垂直分量 $\\mathrm{d}\\boldsymbol{E}_\\perp$ 两两反向抵消，净场强沿\
+  \ $\\hat{\\boldsymbol{z}}$ 方向。\n   - 积分：$\\mathrm{d}E_z = \\frac{\\mathrm{d}q}{4\\pi\\varepsilon_0 (R^2+z^2)} \\cos\\theta\
+  \ = \\frac{z\\,\\mathrm{d}q}{4\\pi\\varepsilon_0 (R^2+z^2)^{3/2}}$。对全环积分得 $\\boldsymbol{E}(z) = \\frac{q z}{4\\pi\\varepsilon_0\
+  \ (R^2+z^2)^{3/2}}\\hat{\\boldsymbol{z}}$。\n   - 极值：令 $\\frac{\\mathrm{d}E_z}{\\mathrm{d}z} = 0 \\implies (R^2+z^2)^{3/2}\
+  \ - z \\cdot \\frac{3}{2}(R^2+z^2)^{1/2}(2z) = 0 \\implies R^2 - 2z^2 = 0 \\implies z_{\\text{max}} = \\pm \\frac{R}{\\\
+  sqrt{2}}$。\n   - 极大值：$E_{\\text{max}} = \\frac{q}{6\\sqrt{3}\\pi\\varepsilon_0 R^2}$。\n\n2. 薄圆盘：\n   - 取半径 $r'$、宽 $\\mathrm{d}r'$\
+  \ 的环元，带电量 $\\mathrm{d}q = \\sigma \\cdot 2\\pi r' \\mathrm{d}r'$。\n   - 积分：$E_z = \\int_0^R \\frac{z \\cdot (\\sigma 2\\\
+  pi r'\\mathrm{d}r')}{4\\pi\\varepsilon_0 (r'^2+z^2)^{3/2}} = \\frac{\\sigma z}{4\\varepsilon_0} \\int_0^R \\frac{\\mathrm{d}(r'^2+z^2)}{(r'^2+z^2)^{3/2}}\
+  \ = \\frac{\\sigma}{2\\varepsilon_0}\\left(1 - \\frac{z}{\\sqrt{R^2+z^2}}\\right)$（$z>0$）。\n\n3. 极限分析：\n   - 近场极限（$z \\\
+  to 0$ 或 $R \\to \\infty$）：$\\frac{z}{\\sqrt{R^2+z^2}} \\to 0$，场强退化为 $E_z = \\frac{\\sigma}{2\\varepsilon_0}$，与无限大均匀带电薄板的恒定电场一致。\n\
+  \   - 远场极限（$z \\gg R$）：$\\left(1 + \\frac{R^2}{z^2}\\right)^{-1/2} \\approx 1 - \\frac{1}{2}\\frac{R^2}{z^2}$，代入得 $E_z \\\
+  approx \\frac{\\sigma}{2\\varepsilon_0}\\left[1 - \\left(1 - \\frac{R^2}{2z^2}\\right)\\right] = \\frac{\\sigma \\pi R^2}{4\\\
+  pi\\varepsilon_0 z^2} = \\frac{Q}{4\\pi\\varepsilon_0 z^2}$，严格退化为点电荷的库仑场。\n"
+solution: "### 1. 均匀带电细圆环轴线电场推导与极大值\n- **对称性分析与投影**：\n  在圆环上任取一微元线段 $\\mathrm{d}l$，其带电量为 $\\mathrm{d}q = \\frac{q}{2\\pi R}\\\
+  mathrm{d}l$。\n  微元到轴线上点 $P(0,0,z)$ 的距离为 $r = \\sqrt{R^2 + z^2}$。\n  根据库仑定律，$\\mathrm{d}q$ 在点 $P$ 产生的电场大小为：\n  $$\\mathrm{d}E\
+  \ = \\frac{\\mathrm{d}q}{4\\pi\\varepsilon_0 (R^2 + z^2)}$$\n  由圆环绕 $z$ 轴的旋转对称性，对环上任一电荷元，在关于原点中心对称的位置必存在另一个等量电荷元，两者产生的径向与切向分量大小相等、方向相反，积分后严格抵消。因此净场强仅有轴向\
+  \ $z$ 分量：\n  $$\\mathrm{d}E_z = \\mathrm{d}E \\cos\\theta = \\frac{\\mathrm{d}q}{4\\pi\\varepsilon_0 (R^2 + z^2)} \\frac{z}{\\\
+  sqrt{R^2 + z^2}} = \\frac{z\\,\\mathrm{d}q}{4\\pi\\varepsilon_0 (R^2 + z^2)^{3/2}}$$\n- **积分求场强**：\n  由于对环上所有点，$R$ 与 $z$\
+  \ 均为常数，直接提取公因式积分：\n  $$E_z(z) = \\int \\mathrm{d}E_z = \\frac{z}{4\\pi\\varepsilon_0 (R^2 + z^2)^{3/2}} \\int \\mathrm{d}q\
+  \ = \\frac{q z}{4\\pi\\varepsilon_0 (R^2 + z^2)^{3/2}}$$\n  矢量形式为 $\\boldsymbol{E}(z) = \\frac{q z}{4\\pi\\varepsilon_0\
+  \ (R^2 + z^2)^{3/2}}\\hat{\\boldsymbol{z}}$。\n- **求极值点**：\n  对 $E_z(z)$ 关于 $z$ 求导：\n  $$\\frac{\\mathrm{d}E_z}{\\mathrm{d}z}\
+  \ = \\frac{q}{4\\pi\\varepsilon_0} \\cdot \\frac{(R^2 + z^2)^{3/2} - z \\cdot \\frac{3}{2}(R^2 + z^2)^{1/2}(2z)}{(R^2 +\
+  \ z^2)^3} = \\frac{q(R^2 - 2z^2)}{4\\pi\\varepsilon_0 (R^2 + z^2)^{5/2}}$$\n  令导数等于零 $\\frac{\\mathrm{d}E_z}{\\mathrm{d}z}\
+  \ = 0$，解得：\n  $$R^2 - 2z^2 = 0 \\implies z_{\\text{max}} = \\pm \\frac{R}{\\sqrt{2}}$$\n  代入得场强极大值为：\n  $$E_{\\text{max}}\
+  \ = \\frac{q \\frac{R}{\\sqrt{2}}}{4\\pi\\varepsilon_0 \\left(R^2 + \\frac{R^2}{2}\\right)^{3/2}} = \\frac{q}{6\\sqrt{3}\\\
+  pi\\varepsilon_0 R^2}$$\n\n### 2. 均匀带电薄圆盘轴线电场的积分推导\n- **微元分割**：\n  将半径为 $R$ 的薄圆盘划分为一系列同心细圆环。取半径为 $r'$、宽度为 $\\mathrm{d}r'$\
+  \ 的细环，其面积微元为 $\\mathrm{d}A = 2\\pi r'\\mathrm{d}r'$，该细环所带电量为 $\\mathrm{d}q = \\sigma \\cdot 2\\pi r' \\mathrm{d}r'$。\n-\
+  \ **套用细圆环结果**：\n  该细环在轴线上 $P(0,0,z)$ 处产生的轴向电场元为：\n  $$\\mathrm{d}E_z = \\frac{z \\cdot \\mathrm{d}q}{4\\pi\\varepsilon_0\
+  \ (r'^2 + z^2)^{3/2}} = \\frac{z \\sigma \\cdot 2\\pi r'\\mathrm{d}r'}{4\\pi\\varepsilon_0 (r'^2 + z^2)^{3/2}} = \\frac{\\\
+  sigma z}{4\\varepsilon_0} \\frac{2r'\\mathrm{d}r'}{(r'^2 + z^2)^{3/2}}$$\n- **积分计算（取 $z > 0$）**：\n  $$E_z = \\frac{\\sigma\
+  \ z}{4\\varepsilon_0} \\int_0^R (r'^2 + z^2)^{-3/2} \\mathrm{d}(r'^2 + z^2) = \\frac{\\sigma z}{4\\varepsilon_0} \\left[\
+  \ -2(r'^2 + z^2)^{-1/2} \\right]_0^R$$\n  $$E_z = \\frac{\\sigma z}{2\\varepsilon_0} \\left( \\frac{1}{z} - \\frac{1}{\\\
+  sqrt{R^2 + z^2}} \\right) = \\frac{\\sigma}{2\\varepsilon_0}\\left(1 - \\frac{z}{\\sqrt{R^2 + z^2}}\\right)$$\n  故矢量表达式为\
+  \ $\\boldsymbol{E}(z) = \\frac{\\sigma}{2\\varepsilon_0}\\left(1 - \\frac{z}{\\sqrt{R^2 + z^2}}\\right)\\hat{\\boldsymbol{z}}$。\n\
+  \n### 3. 渐近极限与物理模型退化\n- **近场极限（$z \\to 0^+$ 或 $R \\to \\infty$）**：\n  当观测点极度靠近圆盘表面（$z \\ll R$）或圆盘半径无限大（$R \\to \\infty$）时：\n\
+  \  $$\\frac{z}{\\sqrt{R^2 + z^2}} \\to 0 \\implies E_z \\to \\frac{\\sigma}{2\\varepsilon_0}$$\n  这与通过高斯定理计算得到的无限大均匀带电薄板的恒定电场完全一致。\n\
+  - **远场极限（$z \\gg R$）**：\n  当观测点距离远大于圆盘尺寸时，令 $\\xi = \\frac{R^2}{z^2} \\ll 1$，对被积函数进行泰勒级数展开：\n  $$\\frac{z}{\\sqrt{R^2 +\
+  \ z^2}} = \\left(1 + \\frac{R^2}{z^2}\\right)^{-1/2} = 1 - \\frac{1}{2}\\frac{R^2}{z^2} + \\mathcal{O}\\left(\\frac{R^4}{z^4}\\\
+  right)$$\n  代入电场表达式：\n  $$E_z = \\frac{\\sigma}{2\\varepsilon_0}\\left[1 - \\left(1 - \\frac{1}{2}\\frac{R^2}{z^2} + \\\
+  cdots\\right)\\right] \\approx \\frac{\\sigma}{2\\varepsilon_0} \\cdot \\frac{R^2}{2z^2} = \\frac{\\sigma \\pi R^2}{4\\\
+  pi\\varepsilon_0 z^2}$$\n  注意到圆盘总电量为 $Q = \\sigma \\pi R^2$，故：\n  $$E_z \\approx \\frac{Q}{4\\pi\\varepsilon_0 z^2}$$\n\
+  \  这严格证明了从远距离观察任何有限大小的电荷体系，其主要电场项均退化为集中于几何中心的点电荷库仑电场。\n"
+feedback:
+  correct: 微元投影清晰，圆环极值求解正确，圆盘分环积分严密，近远场物理极限分析完备。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5c7e08c842522250f0483517b2d24fb4df51be24e5d7bcc916fbb0472edb7243
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5c7e08c842522250f0483517b2d24fb4df51be24e5d7bcc916fbb0472edb7243
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5c7e08c842522250f0483517b2d24fb4df51be24e5d7bcc916fbb0472edb7243

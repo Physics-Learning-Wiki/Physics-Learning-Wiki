@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000009
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.planar-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 空间有一厚度为 $d$ 的无限大均匀带电平板，其电荷体密度为 $\rho$（$\rho > 0$）。取平板中心对称面为坐标原点 $x = 0$，$x$ 轴垂直于板面。下列关于板内（$|x| \le d/2$）和板外（$|x| \ge
+  d/2$）电场强度随坐标 $x$ 的分布函数，正确的是：
+choices:
+- id: A
+  content: 板内 $E(x) = \dfrac{\rho x}{\varepsilon_0}$；板外 $E(x) = \dfrac{\rho d}{2\varepsilon_0}\operatorname{sgn}(x)$
+- id: B
+  content: 板内 $E(x) = \dfrac{\rho x}{2\varepsilon_0}$；板外 $E(x) = \dfrac{\rho d}{\varepsilon_0}\operatorname{sgn}(x)$
+- id: C
+  content: 板内各点电场强度处处为零；板外 $E(x) = \dfrac{\rho d}{2\varepsilon_0}\operatorname{sgn}(x)$
+- id: D
+  content: 板内与板外电场强度均随 $|x|$ 呈平方反比衰减
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。在板内取关于中心面对称的柱体高斯面（两底面位于 $\pm x$），通量 $2ES = \frac{\rho S(2x)}{\varepsilon_0} \implies E = \frac{\rho x}{\varepsilon_0}$；在板外高斯面包围整块板厚度
+      $d$ 的电量，得恒定外场 $\frac{\rho d}{2\varepsilon_0}$。
+    B: 错误。板内高斯面两侧对称分布，高为 $2x$，高斯定理等式两端因子 2 相互消去，系数为 $\frac{\rho}{\varepsilon_0}$ 而非 $\frac{\rho}{2\varepsilon_0}$。
+    C: 错误。板内存在均匀体电荷分布，高斯面内有净电荷，板内场强随离开中心平面的距离线性递增，只有在中心面上才为零。
+    D: 错误。无限大平面对称体系激发的电场在板外是空间匀强场（常数），绝非平方反比衰减。
+  correct: 回答正确！准确掌握了均匀带电厚平板体内线性电场与体外匀强电场的高斯柱面推导。
+  incorrect: 回答错误。请在平板内部构造关于 $x=0$ 对称的高斯柱面，分析截取电量与高斯面两底面通量的关系。
+hints:
+- 选取一个关于中心平面 $x = 0$ 对称放置的圆柱形高斯面，两端面坐标分别为 $-x$ 与 $+x$。
+- 分别计算当端面在板内（$|x| \le d/2$）与板外（$|x| \ge d/2$）时，高斯体内截取的电荷总量。
+solution: "**严格推导与解析**：\n取中心平分面为 $x = 0$。由对称性，电场必定垂直于板面，方向沿 $x$ 轴正负方向背离中心面展开，且关于 $x = 0$ 满足反对称性 $E(-x) = -E(x)$。 选取横截面积为 $S$、轴线平行于\
+  \ $x$ 轴、关于中心面 $x = 0$ 左右对称的柱形高斯面（两底面分别位于 $-x$ 与 $+x$）。\n1. **板内电场（$|x| \\le d/2$）**：\n   - 侧面与电场平行，侧面电通量为零；\n   - 两底面外法向分别沿\
+  \ $+x$ 与 $-x$，与局部场强同向：\n     $$\\oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E(x) S + E(-x)(-S) = 2 E(x)\
+  \ S$$\n   - 高斯体内截取的体电荷量为 $q_{\\text{in}} = \\rho S (2x)$。\n   由高斯定理：\n   $$2 E(x) S = \\frac{\\rho S (2x)}{\\varepsilon_0}\
+  \ \\implies E(x) = \\frac{\\rho x}{\\varepsilon_0}$$\n   即板内场强随距离中心平面的坐标 $x$ 呈**严格的线性增长**，中心面上 $E(0) = 0$。\n\n2. **板外电场（$|x|\
+  \ \\ge d/2$）**：\n   构造跨越整块平板厚度的高斯柱面（底面位于板外 $\\pm x$ 处）。\n   此时高斯体内包围的电荷即为对应截面厚度 $d$ 的全部电荷 $q_{\\text{in}} = \\rho S d$：\n\
+  \   $$2 E(x) S = \\frac{\\rho S d}{\\varepsilon_0} \\implies E = \\frac{\\rho d}{2\\varepsilon_0}$$\n   令等效面电荷密度 $\\sigma\
+  \ = \\rho d$，板外场强为恒定常数 $E = \\frac{\\sigma}{2\\varepsilon_0}$，与无限大面电荷平板完全等价。\n\n引入符号函数 $\\operatorname{sgn}(x)$ 表示方向，故 A\
+  \ 正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:c6734db4209a273cec60c932d023a292e0f14221c2f5649ef8ea0a02cd749d65
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:c6734db4209a273cec60c932d023a292e0f14221c2f5649ef8ea0a02cd749d65
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:c6734db4209a273cec60c932d023a292e0f14221c2f5649ef8ea0a02cd749d65

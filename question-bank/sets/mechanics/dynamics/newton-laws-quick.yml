@@ -1,6 +1,6 @@
 schema_version: 1
 id: mechanics.dynamics.newton-laws.quick
-title: 3 题快速检查
+title: 牛顿运动定律快速自测
 description: 快速检查牛顿运动定律核心概念、受力图与基本建模。
 status: published
 tags:

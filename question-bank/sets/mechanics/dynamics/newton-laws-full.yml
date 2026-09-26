@@ -1,6 +1,6 @@
 schema_version: 1
 id: mechanics.dynamics.newton-laws.full
-title: 8 题完整小测
+title: 牛顿运动定律综合小测
 description: 覆盖牛顿运动定律核心概念、受力分析和动力学建模。
 status: published
 tags:

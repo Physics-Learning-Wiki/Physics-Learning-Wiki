@@ -1,0 +1,77 @@
+schema_version: 3
+id: q-000002
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.spherical-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 半径为 $R$ 的实心绝缘球体内均匀分布着体密度为 $\rho$ 的正电荷，总电荷量为 $Q$。以球心为坐标原点，位置矢量为 $\boldsymbol{r}$（大小为 $r$）。关于全空间的电场强度分布，下列表达式正确的是：
+choices:
+- id: A
+  content: 球内（$r \le R$）$\boldsymbol{E} = \dfrac{\rho \boldsymbol{r}}{3\varepsilon_0}$；球外（$r > R$）$\boldsymbol{E} = \dfrac{Q}{4\pi\varepsilon_0
+    r^2}\hat{\boldsymbol{r}}$
+- id: B
+  content: 球内（$r \le R$）$\boldsymbol{E} = \dfrac{\rho \boldsymbol{r}}{\varepsilon_0}$；球外（$r > R$）$\boldsymbol{E} = \dfrac{Q}{4\pi\varepsilon_0
+    r^2}\hat{\boldsymbol{r}}$
+- id: C
+  content: 球内（$r \le R$）$\boldsymbol{E} = 0$；球外（$r > R$）$\boldsymbol{E} = \dfrac{Q}{4\pi\varepsilon_0 r^2}\hat{\boldsymbol{r}}$
+- id: D
+  content: 球内（$r \le R$）$\boldsymbol{E} = \dfrac{\rho r^2}{3\varepsilon_0 R}\hat{\boldsymbol{r}}$；球外（$r > R$）$\boldsymbol{E}
+    = \dfrac{\rho R}{3\varepsilon_0}\hat{\boldsymbol{r}}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。球内作半径为 $r$ 的同心高斯面，包围电量与 $r^3$ 成正比，除以高斯面积 $4\pi r^2$ 后场强与 $r$ 线性成正比；球外等效于球心点电荷。
+    B: 错误。分母遗漏了来自球体积因子 $\frac{4}{3}\pi$ 的系数 $3$。分母为 $\varepsilon_0$ 的形式对应的是“无限大均匀带电平板”内部场强。
+    C: 错误。球内场强为零是“均匀带电薄球壳”的结论，实心球体内存在体电荷分布，内场不为零。
+    D: 错误。球内场强与 $r$ 成线性正比而非二次方关系；球外场强按平方反比衰减而非恒定。
+  correct: 回答正确！准确理解了均匀带电球体体内电场的线性增长特性及球面对称高斯定理的推导步骤。
+  incorrect: 回答错误。请注意带电球体内部高斯面所截取的体积电量随 $r^3$ 增长，与面积 $4\pi r^2$ 相除后为线性项。
+hints:
+- 在球内取半径为 $r < R$ 的同心球面高斯面，计算面内包围的体电荷量 $q_{\text{in}} = \rho \cdot \frac{4}{3}\pi r^3$。
+- 在球表面 $r = R$ 处验证内、外场强表达式是否连续过渡。
+solution: "**推导与解析**：\n根据电荷分布的球对称性，全空间的电场矢量均沿径向发散，且在同心球面上大小处处相等。\n1. **球体内部（$r \\le R$）**：\n   取半径为 $r$ 的同心球面高斯面 $S_1$。面内包围的电量仅为半径\
+  \ $r$ 范围内的电荷：\n   $$q_{\\text{in}} = \\int_{V_r} \\rho\\,\\mathrm{d}V = \\rho \\left( \\frac{4}{3}\\pi r^3 \\right) = Q\
+  \ \\frac{r^3}{R^3}$$\n   由高斯定理：\n   $$\\oint_{S_1} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E (4\\pi r^2) = \\\
+  frac{q_{\\text{in}}}{\\varepsilon_0} = \\frac{\\rho}{\\varepsilon_0}\\left(\\frac{4}{3}\\pi r^3\\right)$$\n   解得：\n   $$\\\
+  boldsymbol{E} = \\frac{\\rho r}{3\\varepsilon_0}\\hat{\\boldsymbol{r}} = \\frac{\\rho \\boldsymbol{r}}{3\\varepsilon_0}\
+  \ = \\frac{Q r}{4\\pi\\varepsilon_0 R^3}\\hat{\\boldsymbol{r}}$$\n   场强大小与距球心的距离 $r$ 呈严格的线性正比关系，球心处场强为零。\n\n2. **球体外部（$r\
+  \ > R$）**：\n   取半径为 $r > R$ 的同心球面高斯面 $S_2$。此时高斯面包围球体内全部电荷 $Q = \\rho \\cdot \\frac{4}{3}\\pi R^3$：\n   $$E (4\\pi r^2) =\
+  \ \\frac{Q}{\\varepsilon_0} \\implies \\boldsymbol{E} = \\frac{Q}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$$\n   在表面\
+  \ $r = R$ 处，内外场强均连续过渡至最大值 $E_{\\max} = \\frac{\\rho R}{3\\varepsilon_0} = \\frac{Q}{4\\pi\\varepsilon_0 R^2}$。\n\n因此 A 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:37bcfde8725ac75e56fd03b95061ba6b3266bdbbb9f8b2efdb06805b8db7834b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:37bcfde8725ac75e56fd03b95061ba6b3266bdbbb9f8b2efdb06805b8db7834b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:37bcfde8725ac75e56fd03b95061ba6b3266bdbbb9f8b2efdb06805b8db7834b

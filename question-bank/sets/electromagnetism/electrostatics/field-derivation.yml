@@ -1,0 +1,27 @@
+schema_version: 1
+id: electromagnetism.electrostatics.field-derivation
+title: 常见场景的电场推导自测
+description: 基于高斯定理与空间对称性，系统自测均匀带电球壳、实心球、偏心空腔、无限长直线、共轴圆筒、无限大平面、厚平板及PN结空间电荷区的电场推导与物理机制。
+status: published
+tags:
+- 电磁学
+- 高斯定理
+- 电场推导
+- 对称性分析
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000001
+  - q-000002
+  - q-000003
+  - q-000004
+  - q-000005
+  - q-000006
+  - q-000007
+  - q-000008
+  - q-000009
+  - q-000010
+  - q-000011
+  - q-000012
+  order: fixed

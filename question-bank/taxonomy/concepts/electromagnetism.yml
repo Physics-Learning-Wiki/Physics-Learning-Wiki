@@ -1,0 +1,106 @@
+electrostatics.electric-flux:
+  title: 电通量
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - electric-flux
+    - flux
+
+electrostatics.gauss-law:
+  title: 高斯定理
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - gauss-law
+    - gausses-law
+
+electrostatics.spherical-symmetry:
+  title: 球对称静电场
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - spherical-symmetry
+    - charged-sphere
+    - spherical-shell
+
+electrostatics.cylindrical-symmetry:
+  title: 轴对称静电场
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - cylindrical-symmetry
+    - charged-cylinder
+    - line-charge
+
+electrostatics.planar-symmetry:
+  title: 平面对称静电场
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - planar-symmetry
+    - charged-plane
+    - charged-slab
+
+electrostatics.cavity-field:
+  title: 空腔电场与割补法
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - cavity-field
+    - superposition-cavity
+
+electrostatics.conservative-field:
+  title: 保守场与环路定理
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - conservative-field
+    - loop-theorem
+    - circulation
+
+electrostatics.electric-potential:
+  title: 电势与电势差
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - electric-potential
+    - potential-difference
+
+electrostatics.potential-reference:
+  title: 电势参考点与规范
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - potential-reference
+    - zero-potential
+
+electrostatics.potential-superposition:
+  title: 电势叠加原理
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - potential-superposition
+
+electrostatics.equipotential:
+  title: 等势面与等势体
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - equipotential
+    - equipotential-surface
+
+electrostatics.potential-gradient:
+  title: 电势梯度与场强关系
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - potential-gradient
+    - gradient
+
+electrostatics.earnshaw-theorem:
+  title: 恩绍定理
+  topics:
+    - electromagnetism.electrostatics
+  aliases:
+    - earnshaws-theorem
+    - earnshaw-theorem

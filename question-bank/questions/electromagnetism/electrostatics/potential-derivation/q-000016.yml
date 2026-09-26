@@ -1,0 +1,73 @@
+schema_version: 3
+id: q-000016
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.potential-superposition
+type: single_choice
+choice_order: shuffle
+stem: 正电荷 $q$ 均匀分布在半径为 $R$ 的细绝缘圆环上。取圆环中心为坐标原点，通过环心且垂直于环面的对称轴为 $x$ 轴。选无穷远处为电势参考零点。关于轴线上距环心为 $x$ 处的电势 $V(x)$ 分布，下列说法正确的是：
+choices:
+- id: A
+  content: 轴线电势为 $V(x) = \dfrac{q}{4\pi\varepsilon_0 \sqrt{x^2 + R^2}}$，并在环心处取得全局极大值 $V(0) = \dfrac{q}{4\pi\varepsilon_0 R}$
+- id: B
+  content: 轴线电势为 $V(x) = \dfrac{q x}{4\pi\varepsilon_0 (x^2 + R^2)^{3/2}}$，在环心处电势为零
+- id: C
+  content: 轴线电势为 $V(x) = \dfrac{q}{4\pi\varepsilon_0 (x + R)}$，电势随离开环心的距离呈反比例线性衰减
+- id: D
+  content: 轴线电势在环心处发散为无穷大，在远处退化为偶极子电势（按 $1/x^2$ 衰减）
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。圆环上所有微元到轴线上点 $x$ 的几何距离均为常数 $\sqrt{x^2+R^2}$，标量积分直接求和，在 $x=0$ 处分母最小，电势达峰值。
+    B: 错误。含分子因子 $x$ 的表达式是圆环轴线上的“电场强度 $E_x$”，而非标量电势。电势在环心达到最大正值，并不为零。
+    C: 错误。分母中距离应为三维斜边勾股距离 $\sqrt{x^2+R^2}$，不能简化为线性和 $x+R$。
+    D: 错误。电荷平滑分布在环上，环心到环上各点距离为常数 $R$，电势有限且连续；在远处（$x \gg R$）退化为单极点电荷势（按 $1/x$ 衰减）。
+  correct: 回答正确！准确掌握了连续带电体轴线标量电势积分的解题优势及渐近极值特征。
+  incorrect: 回答错误。请注意标量电势积分无需进行矢量方向分解，圆环上每一段微元到轴线测点的空间直线距离均完全相同。
+hints:
+- 在圆环上取电荷微元 $\mathrm{d}q = \lambda\,\mathrm{d}l$，写出该微元到轴线上点 $x$ 的直线距离 $r$。
+- 利用电势叠加原理直接对标量微元积分 $\int \frac{\mathrm{d}q}{4\pi\varepsilon_0 r}$。
+solution: "**微元标量积分推导与解析**：\n1. **建立几何微元**：\n   在半径为 $R$ 的圆环上任取微元弧长 $\\mathrm{d}l$，其所带电量为 $\\mathrm{d}q = \\frac{q}{2\\pi\
+  \ R}\\mathrm{d}l$。\n   轴线上距环心为 $x$ 的点记为 $P$。由三维空间对称性，圆环上**任意一个电荷微元**到轴线上场点 $P$ 的空间几何直线距离均恒等于直角三角形斜边：\n   $$r = \\sqrt{x^2\
+  \ + R^2} = \\text{常数}$$\n\n2. **标量积分计算**：\n   因为电势是标量，计算时**完全无需考虑空间矢量的方向分解与投影**（这相比直接用库仑定律积分求场强简明得多）：\n   $$\\mathrm{d}V\
+  \ = \\frac{1}{4\\pi\\varepsilon_0}\\frac{\\mathrm{d}q}{r} = \\frac{1}{4\\pi\\varepsilon_0 \\sqrt{x^2 + R^2}}\\mathrm{d}q$$\n\
+  \   对整条闭合圆环积分：\n   $$V(x) = \\oint \\mathrm{d}V = \\frac{1}{4\\pi\\varepsilon_0 \\sqrt{x^2 + R^2}}\\oint \\mathrm{d}q =\
+  \ \\frac{q}{4\\pi\\varepsilon_0 \\sqrt{x^2 + R^2}}$$\n\n3. **特征点与极值分析**：\n   - **环心处（$x = 0$）**：\n     代入 $x = 0$，分母取最小值，电势达到全局极大值：\n\
+  \     $$V(0) = \\frac{q}{4\\pi\\varepsilon_0 R}$$\n   - **远轴线处（$|x| \\gg R$）**：\n     $$\\sqrt{x^2 + R^2} \\approx |x| \\\
+  implies V(x) \\approx \\frac{q}{4\\pi\\varepsilon_0 |x|}$$\n     平滑退化为集中于环心的点电荷电势。\n\n因此 A 选项正确。"
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d2c7743e8b22b029357cecff07a07805fb37dd1a6686f92aad1bccd251302eb0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d2c7743e8b22b029357cecff07a07805fb37dd1a6686f92aad1bccd251302eb0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:d2c7743e8b22b029357cecff07a07805fb37dd1a6686f92aad1bccd251302eb0

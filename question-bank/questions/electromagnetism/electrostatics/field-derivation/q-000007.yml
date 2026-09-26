@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000007
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.planar-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 真空中有一无限大均匀带电平面，面电荷密度为 $\sigma$（$\sigma > 0$）。下列关于该平面在两侧激发的静电场强度以及跨越带电界面的跃变规律，描述正确的是：
+choices:
+- id: A
+  content: 带电平面两侧各点的场强大小均为 $E = \dfrac{\sigma}{2\varepsilon_0}$，大小与距平面的距离无关；穿过该平面时法向场强产生 $\Delta E_n = \dfrac{\sigma}{\varepsilon_0}$
+    的跃变
+- id: B
+  content: 带电平面两侧各点的场强大小均为 $E = \dfrac{\sigma}{\varepsilon_0}$；穿过该平面时法向场强保持严格连续
+- id: C
+  content: 场强大小随离开平面的距离成反比衰减，即 $E = \dfrac{\sigma}{2\varepsilon_0 r}$
+- id: D
+  content: 利用高斯定理推导时，高斯柱面的横截面形状必须严格为圆形，若选取长方体或任意多边形棱柱则高斯定理不适用
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。构造垂直贯穿平面的对称柱体高斯面，两底面通量和为 $2ES$，包围电量 $\sigma S$，导出 $E = \frac{\sigma}{2\varepsilon_0}$；在带电面两侧场强反向，法向跃变为 $\frac{\sigma}{2\varepsilon_0}
+      - (-\frac{\sigma}{2\varepsilon_0}) = \frac{\sigma}{\varepsilon_0}$。
+    B: 错误。单个无限大带电面的场强为 $\frac{\sigma}{2\varepsilon_0}$；$\frac{\sigma}{\varepsilon_0}$ 是平行板电容器“两块等量异号极板之间”叠加后的合场强。且穿过带电面时场强方向翻转，并不连续。
+    C: 错误。无限长“直线”的场强随距离成反比（$1/r$），而无限大“平面”激发的电场在全空间为匀强电场，与距离无关。
+    D: 错误。高斯面的侧面只要平行于电场线即可使侧面通量为零，底面面积 $S$ 在等式两端自然对消，因此高斯面截面可以为任意多边形或任意几何形状。
+  correct: 回答正确！准确理解了无限大均匀带电平面的匀强场性质及静电界面法向跃变基本边界条件。
+  incorrect: 回答错误。请注意无限大带电平面两侧通量贡献来自两底面（$2ES$），且跨越面电荷时电场矢量方向相反。
+hints:
+- 取轴线垂直于平面、跨越两侧对称放置的柱体高斯面，两端底面积均为 $S$。
+- 计算穿过带电面（从 $x < 0$ 走到 $x > 0$）时，法向场强分量 $E_n$ 的代数差值。
+solution: "**推导与解析**：\n1. **平面对称性与高斯柱面选取**：\n   由无限大平面的二维平移对称性与旋转反射对称性，空间各点的电场矢量必定处处垂直于带电面，在平面两侧对称地背离（$\\sigma > 0$）或指向（$\\\
+  sigma < 0$）平面。\n   选取一个轴线垂直于带电面、两侧对称延伸的柱体高斯面（两底面平行于带电面，面积均为 $S$）。\n\n2. **高斯定理计算场强大小**：\n   - 侧圆柱面（或棱柱侧面）处处与电场线平行，侧面电通量严格为零；\n\
+  \   - 两端底面上电场垂直穿出，与外法向同向且强度相等：\n     $$\\oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E S + E S = 2 E S$$\n\
+  \   - 高斯体内截取的平面电荷总量为 $q_{\\text{in}} = \\sigma S$。\n   代入高斯定理：\n   $$2 E S = \\frac{\\sigma S}{\\varepsilon_0} \\implies\
+  \ E = \\frac{\\sigma}{2\\varepsilon_0}$$\n   底面积 $S$ 对消，且结果与柱体的高（距平面的距离）完全无关，说明无限大平面在两侧全空间激发出理想的匀强电场。\n\n3. **静电界面的法向跃变条件**：\n\
+  \   以垂直于平面向右为正方向（$x$ 轴），则：\n   $$E(x) = \\begin{cases} +\\dfrac{\\sigma}{2\\varepsilon_0} & (x > 0) \\\\[6pt] -\\dfrac{\\\
+  sigma}{2\\varepsilon_0} & (x < 0) \\end{cases}$$\n   穿过带电平面（从 $0^-$ 到 $0^+$）时，法向分量的跃变量为：\n   $$\\Delta E_n = E(0^+) - E(0^-)\
+  \ = \\frac{\\sigma}{2\\varepsilon_0} - \\left(-\\frac{\\sigma}{2\\varepsilon_0}\\right) = \\frac{\\sigma}{\\varepsilon_0}$$\n\
+  \   这是静电学最基本的界面边界定理。故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0cc66253a2d3b4e57f4246d4c86816990a2815e63dba2221152577b62d4f863a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0cc66253a2d3b4e57f4246d4c86816990a2815e63dba2221152577b62d4f863a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0cc66253a2d3b4e57f4246d4c86816990a2815e63dba2221152577b62d4f863a

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000013
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conservative-field
+- electrostatics.electric-potential
+type: true_false
+choice_order: fixed
+stem: 在任何静电场中，电场线都绝不可能形成闭合曲线。这是因为静电场是有心力平方反比场导出的保守场，若存在闭合电场线，沿该闭合线移动电荷一周静电力将做非零净功，从而违背静电场环路定理 $\oint_L \boldsymbol{E} \cdot
+  \mathrm{d}\boldsymbol{l} = 0$。
+answer:
+  value: true
+feedback:
+  correct: 回答正确！反证法证明：若存在闭合电场线，沿场线方向积分必有 $\boldsymbol{E} \cdot \mathrm{d}\boldsymbol{l} > 0$，导致环量大于零，与静电场无旋保守性质发生根本矛盾。
+  incorrect: 回答错误。静电场线必起于正电荷（或无穷远）、终于负电荷（或无穷远），绝不闭合；闭合的力线是感生电场（涡旋电场）或磁场的特征。
+hints:
+- 回忆静电场的环路定理：$\oint_L \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{l} = 0$。
+- 设想如果存在一条闭合电场线，沿这条电场线方向对电场矢量进行一周闭合路径积分，结果会等于零吗？
+solution: "**严格反证证明与物理实质**：\n此命题为真。\n1. **反证法严格证明**：\n   假设在某个静电场中存在一条闭合的电场线 $L$。\n   - 根据电场线的定义，闭合曲线 $L$ 上各点处的切线方向即为该点的电场矢量\
+  \ $\\boldsymbol{E}$ 的方向。\n   - 若我们取闭合线积分的走向与该电场线的方向一致，则在该回路上每一点处的位移微元矢量 $\\mathrm{d}\\boldsymbol{l}$ 都与局部电场矢量 $\\boldsymbol{E}$\
+  \ 处处同向且平行（夹角为 0）。\n   - 此时两矢量的点积必恒为正值：\n     $$\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = E\\,\\mathrm{d}l > 0$$\n\
+  \   - 对整条闭合回路 $L$ 积分，总环量必定严格大于零：\n     $$\\oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\oint_L E\\,\\mathrm{d}l\
+  \ > 0$$\n\n2. **与环路定理及能量守恒的冲突**：\n   由于库仑力是有心力，静电场力对试验电荷所作的功只取决于始末位置而与移动的具体路径无关，因此任意闭合回路的静电场环量恒等于零（**静电场的环路定理**）：\n   $$\\\
+  oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$$\n   假设得到的非零积分结果与环路定理产生了致命的逻辑矛盾。如果该闭合线成立，试验电荷沿此线循环运动一周电场力将不断输出正功，违背热力学第一定律（能量守恒定律）。\n\
+  \n**结论**： 静电场是无旋场（$\\nabla \\times \\boldsymbol{E} = 0$），静电场的电场线发自正电荷或无穷远，终止于负电荷或无穷远，在任何情况下均**绝不能形成闭合曲线**（涡旋电场线仅存在于随时间变化的感生电磁场中）。因此本命题正确。"
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ad3f1ce0a4183744689ae0e36629acbf2888b6916866547f7143d6bee8f5ce9e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ad3f1ce0a4183744689ae0e36629acbf2888b6916866547f7143d6bee8f5ce9e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ad3f1ce0a4183744689ae0e36629acbf2888b6916866547f7143d6bee8f5ce9e

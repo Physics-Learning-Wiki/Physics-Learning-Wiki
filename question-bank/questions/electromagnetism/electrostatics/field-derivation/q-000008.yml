@@ -1,0 +1,77 @@
+schema_version: 3
+id: q-000008
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.planar-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 两块平行的无限大均匀带电平面相距为 $d$，所带面电荷密度分别为 $\sigma_1 = +\sigma$ 和 $\sigma_2 = -\sigma$（$\sigma > 0$）。两板将全空间划分为三个区域：板 1 左侧为区域 I，两板之间为区域
+  II，板 2 右侧为区域 III。关于这三个区域的合电场强度分布，下列说法正确的是：
+choices:
+- id: A
+  content: 区域 I 和区域 III 的电场强度处处严格为零；区域 II 内部为匀强电场，大小为 $E = \dfrac{\sigma}{\varepsilon_0}$，方向垂直指向负极板
+- id: B
+  content: 区域 I 和区域 III 的电场强度大小为 $E = \dfrac{\sigma}{2\varepsilon_0}$；区域 II 内部两板电场相互抵消，场强为零
+- id: C
+  content: 区域 II 内部的电场强度大小为 $E = \dfrac{\sigma}{2\varepsilon_0}$；区域 I 和区域 III 的场强大小为 $E = \dfrac{\sigma}{\varepsilon_0}$
+- id: D
+  content: 三个区域内的电场强度大小处处相等，均为 $E = \dfrac{\sigma}{\varepsilon_0}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。在外部两区，正负两板激发的匀强电场大小相等、方向相反完全抵消为零；在两板中间，两板电场方向同向叠加，强度为 $\frac{\sigma}{2\varepsilon_0} + \frac{\sigma}{2\varepsilon_0}
+      = \frac{\sigma}{\varepsilon_0}$。
+    B: 错误。等量同号带电板（$+\sigma, +\sigma$）才会发生“中间区域抵消为零、外侧各为 $\frac{\sigma}{\varepsilon_0}$”的现象。
+    C: 错误。中间区域的场强是两板场强矢量同向相加，数值为单板场强的两倍（$\sigma/\varepsilon_0$），而非减半。
+    D: 错误。外区正负极板电场矢量方向相反，必定完全抵消为零，不可能与板间场强相等。
+  correct: 回答正确！清晰掌握了平行板电容器标准模型的场强矢量叠加与静电屏蔽特性。
+  incorrect: 回答错误。请分别画出正极板与负极板在左、中、右三个区域独立激发的电场方向，利用矢量叠加原理求和。
+hints:
+- 正电板在两侧均激发出背离该板的场（大小为 $\frac{\sigma}{2\varepsilon_0}$）。
+- 负电板在两侧均激发出指向该板的场（大小为 $\frac{\sigma}{2\varepsilon_0}$）。
+solution: "**叠加原理推导与解析**：\n根据无限大带电平面的场强公式，单块电荷面密度为 $\\sigma$ 的平板在空间激发电场大小恒为 $E_0 = \\frac{\\sigma}{2\\varepsilon_0}$。 建立垂直于极板的水平坐标轴，规定水平向右为正方向：\n\
+  1. **正极板（板 1，位于左侧）产生的场强**：\n   - 左侧（区域 I）：方向向左，$E_{1} = -\\frac{\\sigma}{2\\varepsilon_0}$\n   - 中间（区域 II）：方向向右，$E_{1} =\
+  \ +\\frac{\\sigma}{2\\varepsilon_0}$\n   - 右侧（区域 III）：方向向右，$E_{1} = +\\frac{\\sigma}{2\\varepsilon_0}$\n\n2. **负极板（板 2，位于右侧）产生的场强**：\n\
+  \   - 左侧（区域 I）：方向向右，$E_{2} = +\\frac{\\sigma}{2\\varepsilon_0}$\n   - 中间（区域 II）：方向向右，$E_{2} = +\\frac{\\sigma}{2\\varepsilon_0}$\n\
+  \   - 右侧（区域 III）：方向向左，$E_{2} = -\\frac{\\sigma}{2\\varepsilon_0}$\n\n3. **矢量合成总场强**：\n   - **区域 I（外左侧）**：\n     $$E_{\\\
+  text{I}} = E_1 + E_2 = -\\frac{\\sigma}{2\\varepsilon_0} + \\frac{\\sigma}{2\\varepsilon_0} = 0$$\n   - **区域 II（两板之间）**：\n\
+  \     $$E_{\\text{II}} = E_1 + E_2 = +\\frac{\\sigma}{2\\varepsilon_0} + \\frac{\\sigma}{2\\varepsilon_0} = +\\frac{\\sigma}{\\\
+  varepsilon_0}$$\n   - **区域 III（外右侧）**：\n     $$E_{\\text{III}} = E_1 + E_2 = +\\frac{\\sigma}{2\\varepsilon_0} - \\frac{\\\
+  sigma}{2\\varepsilon_0} = 0$$\n\n**结论**： 极板外部电场严格抵消为零，电场全部被约束在两平行极板之间，强度为匀强场 $E = \\frac{\\sigma}{\\varepsilon_0}$，方向从正极板垂直指向负极板。故\
+  \ A 正确。"
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:38a4ee4c82b03caa61566add80498259c99d5291a700c42fd87ce4e70fe36149
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:38a4ee4c82b03caa61566add80498259c99d5291a700c42fd87ce4e70fe36149
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:38a4ee4c82b03caa61566add80498259c99d5291a700c42fd87ce4e70fe36149

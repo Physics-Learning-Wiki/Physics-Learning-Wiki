@@ -1,0 +1,98 @@
+schema_version: 3
+id: q-000026
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.cylindrical-symmetry
+type: free_response
+choice_order: fixed
+stem: "**柱对称体系与同轴复合柱电场推导**\n\n柱对称是静电学高斯定理应用的经典模型之一。请完成以下两项推导与分析：\n\n1. **无限长均匀带电直细线**：\n   - 线电荷密度为 $\\lambda$（$\\lambda >\
+  \ 0$）。分析其空间对称性，并说明为何端面无电通量；\n   - 选取适当的闭合高斯面，推导距导线垂直距离为 $r$ 处的电场强度矢量 $\\boldsymbol{E}(r)$。\n\n2. **同轴复合柱电场与静电屏蔽**：\n   -\
+  \ 内层为无限长实心绝缘圆柱体，半径为 $R_1$，均匀充满体电荷密度 $\\rho$（$\\rho > 0$）；\n   - 外层为同轴的极薄圆柱导电套筒，半径为 $R_2$（$R_2 > R_1$），套筒单位长度所带电荷量为 $\\lambda_2$。\n\
+  \   - 分别推导区域 I（$r < R_1$）、区域 II（$R_1 \\le r < R_2$）和区域 III（$r > R_2$）内的电场强度矢量 $\\boldsymbol{E}(r)$；\n   - 若要求区域 III 内处处无电场（即实现外层对外的静电屏蔽），求外壳单位长度带电量\
+  \ $\\lambda_2$ 必须满足的条件，并从高斯定理的角度解释该结论的物理本质。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括对称性与端面通量分析、高斯面选取、三分段电场计算及屏蔽条件）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（高斯圆柱面通量计算有误，未能得出正确的分段电场表达式）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了直细线场强推导，但复合套筒的三段电场或屏蔽条件不完整）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（柱面对称性分析透彻，三段电场推导严谨准确，屏蔽条件解释物理本质到位）
+    points: 1
+reference_answer: "1. 无限长均匀带电直细线：\n   - 电场方向垂直于导线径向向外，大小仅与径向距离 $r$ 有关。\n   - 选取半径为 $r$、高为 $h$ 的同轴圆柱高斯面。两底面法向平行于导线，$\\boldsymbol{E}\
+  \ \\cdot \\mathrm{d}\\boldsymbol{S} = 0$，通量为零；侧面法向与场强同向，通量为 $E(r) \\cdot 2\\pi r h$。\n   - 高斯定理：$E \\cdot 2\\pi r h = \\\
+  frac{\\lambda h}{\\varepsilon_0} \\implies \\boldsymbol{E}(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\hat{\\boldsymbol{r}}$。\n\
+  \n2. 同轴复合柱系统：\n   - 区域 I（$r < R_1$）：$E \\cdot 2\\pi r h = \\frac{\\rho \\pi r^2 h}{\\varepsilon_0} \\implies \\boldsymbol{E}_{\\\
+  text{I}}(r) = \\frac{\\rho r}{2\\varepsilon_0}\\hat{\\boldsymbol{r}}$。\n   - 区域 II（$R_1 \\le r < R_2$）：$E \\cdot 2\\pi r\
+  \ h = \\frac{\\rho \\pi R_1^2 h}{\\varepsilon_0} \\implies \\boldsymbol{E}_{\\text{II}}(r) = \\frac{\\rho R_1^2}{2\\varepsilon_0\
+  \ r}\\hat{\\boldsymbol{r}} = \\frac{\\lambda_1}{2\\pi\\varepsilon_0 r}\\hat{\\boldsymbol{r}}$（其中 $\\lambda_1 = \\pi R_1^2\
+  \ \\rho$ 为内柱单位长度电荷）。\n   - 区域 III（$r > R_2$）：$E \\cdot 2\\pi r h = \\frac{(\\lambda_1 + \\lambda_2)h}{\\varepsilon_0} \\\
+  implies \\boldsymbol{E}_{\\text{III}}(r) = \\frac{\\lambda_1 + \\lambda_2}{2\\pi\\varepsilon_0 r}\\hat{\\boldsymbol{r}}$。\n\
+  \   - 屏蔽条件：若 $\\boldsymbol{E}_{\\text{III}} = 0$，则必须满足 $\\lambda_2 = -\\lambda_1 = -\\pi R_1^2 \\rho$。即外壳必须带等量异号电荷，使得高斯面包围的单位长度总净电量严格为零。\n"
+solution: "### 1. 无限长均匀带电直线的电场推导\n- **对称性分析**：\n  由于带电导线无限长且均匀，系统具有轴对称性、平移对称性以及关于包含导线轴线任一平面的镜像对称性。因此：\n  - 电场强度 $\\boldsymbol{E}$\
+  \ 不含切向（绕轴）与轴向分量，必严格沿垂直于导线的径向辐射；\n  - 场强大小 $E(r)$ 仅与垂直距离 $r$ 有关。\n- **选取同轴高斯圆柱面**：\n  取半径为 $r$、轴向高度为 $h$ 的同轴闭合圆柱面：\n  - 上下两底面：面元法向\
+  \ $\\hat{\\boldsymbol{n}}$ 沿轴向（$\\pm \\hat{\\boldsymbol{z}}$），而 $\\boldsymbol{E} \\perp \\hat{\\boldsymbol{z}}$，故 $\\boldsymbol{E}\
+  \ \\cdot \\mathrm{d}\\boldsymbol{S} = 0$，底面通量贡献为零；\n  - 侧柱面：面元法向与径向场强严格同向平行，面积为 $2\\pi r h$。\n  总电通量为：\n  $$\\Phi_E = \\\
+  oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E(r) \\cdot 2\\pi r h$$\n- **应用高斯定理**：\n  高斯柱面所截取的导线电荷为 $Q_{\\\
+  text{in}} = \\lambda h$。由高斯定理：\n  $$E(r) \\cdot 2\\pi r h = \\frac{\\lambda h}{\\varepsilon_0} \\implies \\boldsymbol{E}(r)\
+  \ = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\hat{\\boldsymbol{r}}$$\n\n### 2. 同轴复合柱系统电场推导与屏蔽分析\n设内柱实心体单位长度电荷为 $\\lambda_1\
+  \ = \\rho \\pi R_1^2$。\n- **区域 I（$r < R_1$：实心圆柱内部）**：\n  取半径为 $r$、长为 $h$ 的同轴柱面，面内所含电量为 $Q_{\\text{in}} = \\rho \\cdot (\\\
+  pi r^2 h)$。\n  由高斯定理：\n  $$E(r) \\cdot 2\\pi r h = \\frac{\\rho \\pi r^2 h}{\\varepsilon_0} \\implies \\boldsymbol{E}_{\\\
+  text{I}}(r) = \\frac{\\rho r}{2\\varepsilon_0}\\hat{\\boldsymbol{r}}$$\n  内部场强随径向距离呈线性增长。在边界 $r = R_1$ 处，$E(R_1) = \\frac{\\\
+  rho R_1}{2\\varepsilon_0}$。\n- **区域 II（$R_1 \\le r < R_2$：两圆柱之间间隙）**：\n  高斯面包围内柱全长 $h$ 的电量 $Q_{\\text{in}} = \\rho \\pi\
+  \ R_1^2 h = \\lambda_1 h$。\n  $$E(r) \\cdot 2\\pi r h = \\frac{\\rho \\pi R_1^2 h}{\\varepsilon_0} \\implies \\boldsymbol{E}_{\\\
+  text{II}}(r) = \\frac{\\rho R_1^2}{2\\varepsilon_0 r}\\hat{\\boldsymbol{r}} = \\frac{\\lambda_1}{2\\pi\\varepsilon_0 r}\\\
+  hat{\\boldsymbol{r}}$$\n  注意在 $r = R_1$ 处，$E_{\\text{I}}(R_1) = E_{\\text{II}}(R_1) = \\frac{\\rho R_1}{2\\varepsilon_0}$，电场连续。\n\
+  - **区域 III（$r > R_2$：外套筒外侧）**：\n  此时高斯面包围内柱和外层薄金属壳的总电荷 $Q_{\\text{in}} = (\\lambda_1 + \\lambda_2)h$。\n  $$E(r) \\cdot 2\\\
+  pi r h = \\frac{(\\lambda_1 + \\lambda_2)h}{\\varepsilon_0} \\implies \\boldsymbol{E}_{\\text{III}}(r) = \\frac{\\lambda_1\
+  \ + \\lambda_2}{2\\pi\\varepsilon_0 r}\\hat{\\boldsymbol{r}}$$\n- **静电屏蔽条件分析**：\n  若要使外壳外部电场处处消失（$\\boldsymbol{E}_{\\text{III}}\
+  \ = 0$），由高斯定理要求任一包含整个系统的柱面内通量恒为零，即面内净带电量为零：\n  $$\\lambda_1 + \\lambda_2 = 0 \\implies \\lambda_2 = -\\lambda_1 = -\\pi\
+  \ R_1^2 \\rho$$\n  此时，套筒内表面感应出等量异号电荷束缚了内柱发出的全部电力线，对外表现为完全中性，实现了对外屏蔽。\n"
+feedback:
+  correct: 柱面对称性分析透彻，三段电场推导严谨准确，屏蔽条件解释物理本质到位。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:26196fdba4ddec83fbf7e0e22233560d42c02caa78556342da4e64be82e301f3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:26196fdba4ddec83fbf7e0e22233560d42c02caa78556342da4e64be82e301f3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:26196fdba4ddec83fbf7e0e22233560d42c02caa78556342da4e64be82e301f3

@@ -1,0 +1,21 @@
+schema_version: 1
+id: electromagnetism.electrostatics.field-derivation.free-response
+title: 常见场景的电场推导自测（大题自评）
+description: 覆盖球对称、柱对称、平面对称、轴线微元积分以及偏心割补空腔等经典静电场推导大题，支持自主作答与详细参考答案对照自评。
+status: published
+tags:
+- 电磁学
+- 静电学
+- 高斯定理
+- 电场推导
+- 大题自评
+feedback_mode: immediate
+selection:
+  type: fixed
+  order: fixed
+  questions:
+  - q-000025
+  - q-000026
+  - q-000027
+  - q-000028
+  - q-000029

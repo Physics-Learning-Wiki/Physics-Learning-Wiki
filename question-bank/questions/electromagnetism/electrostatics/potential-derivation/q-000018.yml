@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000018
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.spherical-symmetry
+- electrostatics.equipotential
+type: single_choice
+choice_order: shuffle
+stem: 真空中有一半径为 $R$、总带电量为 $Q$ 的均匀带电薄球壳。选无穷远处为电势参考零点。关于该球壳在空间各点所激发的电势分布，下列说法正确的是：
+choices:
+- id: A
+  content: 球壳外部（$r \ge R$）电势为 $V(r) = \dfrac{Q}{4\pi\varepsilon_0 r}$；球壳内部（$r < R$）电势处处恒定，等于表面电势 $V(r) = \dfrac{Q}{4\pi\varepsilon_0
+    R}$，整个球壳内部空间是一个等势体
+- id: B
+  content: 球壳外部（$r \ge R$）电势为 $V(r) = \dfrac{Q}{4\pi\varepsilon_0 r}$；由于球壳内部场强为零，故球壳内部（$r < R$）各点的电势也处处为零
+- id: C
+  content: 球壳内部（$r < R$）电势随距球心的距离 $r$ 呈线性递增，在球表面达到峰值后向外按 $1/r$ 衰减
+- id: D
+  content: 跨越球壳表面时，电势函数发生不连续跳变，跳变量大小为 $\Delta V = \dfrac{\sigma}{\varepsilon_0}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。根据电势定义，球内场强 $E=0$ 意味着从球壳表面移至球内任意点电场力不做功，两点电势差为零，故球壳内处处等电势并等于表面值。
+    B: 错误。典型概念混淆！“场强为零”意味着“电势空间导数（变化率）为零”，即电势为常数，绝不代表“电势数值本身为零”。
+    C: 错误。内部电势是常数（斜率为 0 的水平线），而不是线性递增。
+    D: 错误。跨越面电荷时，跳变的是“法向电场强度 $\Delta E_n$”，而“标量电势函数 $V(r)$”在全空间是严格处处连续的，不存在阶跃。
+  correct: 回答正确！精准辨析了“场强为零”与“电势为常数”之间的微分关系，牢固掌握了带电球壳内等势体的物理本质。
+  incorrect: 回答错误。请注意由 $\boldsymbol{E} = -\nabla V = 0$ 导出的是电势为常数（等于表面值），而不能误判为电势为零。
+hints:
+- 利用电势的路径积分定义式：$V_{\text{内}}(r) = \int_r^R E_{\text{内}}\,\mathrm{d}r' + \int_R^\infty E_{\text{外}}\,\mathrm{d}r'$。
+- 代入已知的球壳场强分布 $E_{\text{内}} = 0$ 与 $E_{\text{外}} = \frac{Q}{4\pi\varepsilon_0 r'^2}$ 进行分段积分。
+solution: "**严格推导与概念辨析**：\n根据高斯定理，均匀带电薄球壳在全空间的场强分布为： $$E(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{Q}{4\\pi\\varepsilon_0\
+  \ r^2} & (r > R) \\end{cases}$$\n1. **球壳外部电势（$r \\ge R$）**：\n   选无穷远处为电势参考零点（$V(\\infty) = 0$），将单位正电荷从距离 $r$ 沿径向移至无穷远：\n\
+  \   $$V_{\\text{外}}(r) = \\int_r^\\infty E_{\\text{外}}\\,\\mathrm{d}r' = \\int_r^\\infty \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\\
+  ,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0 r}$$\n   在球壳表面（代入 $r = R$）处，电势为：\n   $$V(R) = \\frac{Q}{4\\pi\\varepsilon_0\
+  \ R}$$\n\n2. **球壳内部电势（$r < R$）**：\n   从球内任意点 $r$ 移至无穷远处，路径跨越球内（$r \\to R$）和球外（$R \\to \\infty$）两个区域：\n   $$V_{\\text{内}}(r)\
+  \ = \\int_r^R E_{\\text{内}}\\,\\mathrm{d}r' + \\int_R^\\infty E_{\\text{外}}\\,\\mathrm{d}r'$$\n   因为球内场强严格为零（$E_{\\text{内}}\
+  \ = 0$），第一段积分严格为零：\n   $$V_{\\text{内}}(r) = 0 + V(R) = \\frac{Q}{4\\pi\\varepsilon_0 R} = \\text{常数}$$\n\n**重要物理结论**： -\
+  \ “场强为零”对应“电势导数为零”，即电势在空间保持恒定，**绝不等于电势为零**； - 整个均匀带电球壳内部空间各点的电势处处相等，球壳内部区域是一个三维**等势体**，球壳自身是一个二维**等势面**； - 全空间的电势曲线 $V(r)$\
+  \ 处处严格连续（在 $r = R$ 处平滑过渡，无阶跃）。\n故 A 正确，B、C、D 错误。"
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:933ad5aa4f2f29e84e59664dd0edd20d280b1c5a79bc7a4702f7312a161197cf

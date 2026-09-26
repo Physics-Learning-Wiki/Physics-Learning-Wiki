@@ -1,0 +1,78 @@
+schema_version: 3
+id: q-000014
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.potential-reference
+type: multiple_choice
+choice_order: shuffle
+stem: 在静电场理论中，关于电势参考零点（Zero Potential Reference Point）的选取规范与物理原则，下列哪些说法是正确的？
+choices:
+- id: A
+  content: 空间中某一点电势的绝对数值并不具有独立的绝对物理意义，真正具有客观物理可测性的是空间两点间的电势差
+- id: B
+  content: 当源电荷分布于空间有限区域内时，通常规范地选取无穷远处作为电势零点（$U(\infty) = 0$）
+- id: C
+  content: 对于“无限长”带电导线或“无限大”带电平面等理想无限模型，若仍选取无穷远为零势点，反常路径积分 $\int_P^\infty \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{l}$ 将会数学发散
+- id: D
+  content: 对于无限延伸的电荷分布体系，必须选取有限距离处的某点（如对称轴、表面或特定距离 $r_0$）作为电势零点
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。电势零点是人为选取的标度基准，改变零点各点电势值平移常数，但两点间电压差和电场强度（负梯度）恒定不变。
+    B: 正确。有限电荷分布在远处的场强衰减快于 $1/r$（通常按 $1/r^2$ 衰减），向无穷远积分收敛，选无穷远为零点最对称自然。
+    C: 正确。无限长线场强按 $1/r$ 衰减，积分 $\int_r^\infty \frac{\mathrm{d}r'}{r'} = \ln\infty$ 对数发散；无限大平板场强为常数，积分同样发散。
+    D: 正确。为了避免全空间电势值发散为无穷大，必须在有限远空间内指定一个确定点为相对参考零点。
+  correct: 回答正确！系统理解了电势零点的相对性本质以及有限模型与无限延伸物理模型在数学积分收敛性上的关键差异。
+  incorrect: 回答错误。请注意对比无限长线场强（$1/r$）与点电荷场强（$1/r^2$）向无穷远线积分时的数学敛散性。
+hints:
+- 计算无限长带电直线场强 $E = \frac{\lambda}{2\pi\varepsilon_0 r}$ 从距离 $r$ 到无穷远处的反常积分 $\int_r^\infty \frac{\mathrm{d}r'}{r'}$ 是否收敛。
+- 思考电压表测量的物理量是单点绝对电势还是两探针间的相对势差。
+solution: "**解析与理论推导**：\n1. **电势的相对性与规范自由度**：\n   电势的物理定义为电场力移动单位正电荷做功的标量度量：\n   $$U(P) - U(Q) = \\int_P^Q \\boldsymbol{E}\
+  \ \\cdot \\mathrm{d}\\boldsymbol{l}$$\n   客观上只有两点间的电势差 $\\Delta U$ 是可通过电压表测量的物理观测量；电场强度 $\\boldsymbol{E} = -\\nabla U$ 仅取决于电势的空间梯度，给电势加上任意常数\
+  \ $C$ 均不改变任何物理规律。故 A 正确。\n\n2. **空间有限分布电荷系**：\n   若带电体处于空间有限范围内（如点电荷系、带电球体、细圆环等），在远离带电体处场强按 $1/r^2$ 或更高阶衰减。线积分：\n   $$\\\
+  int_r^\\infty \\frac{\\mathrm{d}r'}{r'^2} = \\frac{1}{r} < \\infty$$\n   该积分在无穷远处严格收敛，因此约定选取无穷远处为电势参考零点（$U(\\infty) = 0$）最为便利直观。故\
+  \ B 正确。\n\n3. **无限延伸电荷模型的积分发散性**：\n   若带电体在宏观尺度上延伸至无限远：\n   - **“无限长”带电导线**：场强为 $E = \\frac{\\lambda}{2\\pi\\varepsilon_0\
+  \ r}$。若取无穷远为零点：\n     $$U(r) = \\int_r^\\infty \\frac{\\lambda}{2\\pi\\varepsilon_0 r'}\\,\\mathrm{d}r' = \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0} [\\ln r']_r^\\infty \\to \\infty$$\n   - **“无限大”带电平板**：场强为常数 $E = \\frac{\\sigma}{2\\varepsilon_0}$，向无穷远积分同样随上限线性发散。\n\
+  \   发散的根本原因在于“无限延伸”模型人为假设了空间中分布着无限多的总电量。若选无穷远为零势点，则有限空间内各点的绝对电势均退化为无穷大，失去标量描述意义。故 C 正确。\n\n4. **有限零点选取法则**：\n   针对无限延伸带电体，必须在空间有限距离内选定某个参考基准点（例如取圆柱面表面、对称轴或令\
+  \ $r = r_0$ 处 $U(r_0) = 0$），将各点电势表达为相对于该有限基准点的对数或线性势差。故 D 正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5427fa9121e1db0547a18fc28b0a9af9fcd3dc7c7398c3d912ccf83b9ebf9384
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5427fa9121e1db0547a18fc28b0a9af9fcd3dc7c7398c3d912ccf83b9ebf9384
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:5427fa9121e1db0547a18fc28b0a9af9fcd3dc7c7398c3d912ccf83b9ebf9384

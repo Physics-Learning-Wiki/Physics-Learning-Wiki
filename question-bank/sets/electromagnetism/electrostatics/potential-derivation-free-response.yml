@@ -1,0 +1,21 @@
+schema_version: 1
+id: electromagnetism.electrostatics.potential-derivation.free-response
+title: 常见场景的电势推导自测（大题自评）
+description: 覆盖静电场保守性与零点规范、轴线电势与微分求场强、实心球与带电球壳感应电势、无限长柱对称对数电势以及电偶极子多极展开电势等经典推导大题，支持自主作答与详细参考答案对照自评。
+status: published
+tags:
+- 电磁学
+- 静电学
+- 电势推导
+- 电势梯度
+- 大题自评
+feedback_mode: immediate
+selection:
+  type: fixed
+  order: fixed
+  questions:
+  - q-000030
+  - q-000031
+  - q-000032
+  - q-000033
+  - q-000034

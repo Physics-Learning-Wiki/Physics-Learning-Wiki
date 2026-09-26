@@ -1,0 +1,74 @@
+schema_version: 3
+id: q-000001
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.spherical-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 真空中有一半径为 $R$、总带电量为 $Q$ 的均匀带电薄球壳。关于该球壳在空间中激发的静电场以及历史上的卡文迪许示零实验，下列说法正确的是：
+choices:
+- id: A
+  content: 球壳内部（$r < R$）各点场强处处为零，球壳外部（$r > R$）场强等效于位于球心的点电荷 $Q$ 的场
+- id: B
+  content: 球壳内部（$r < R$）场强随距球心距离 $r$ 线性递增，在球壳表面达到最大值
+- id: C
+  content: 若库仑力偏离平方反比律（$F \propto r^{-(2+\delta)}$ 且 $\delta \ne 0$），均匀带电球壳内部场强依然严格为零
+- id: D
+  content: 跨越球壳表面时，电场强度的大小保持严格连续，不发生任何跃变
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。根据球对称高斯定理，内部同心球形高斯面包围电荷为 0 因而内场严格为零；外部高斯面包围总电荷 $Q$，场强严格等效于中心点电荷。
+    B: 错误。球壳内部各点场强严格为零，线性递增是均匀带电“实心球体”内部场强的特征。
+    C: 错误。带电球壳内部场强为零正是平方反比律（$\delta = 0$）的直接推论；若 $\delta \ne 0$，球壳内场强不再为零，卡文迪许正是利用该示零原理实验检验反平方律。
+    D: 错误。球壳内场强为 0，球外表面处场强为 $\frac{Q}{4\pi\varepsilon_0 R^2} = \frac{\sigma}{\varepsilon_0}$，法向场强发生大小为 $\Delta E_n = \frac{\sigma}{\varepsilon_0}$
+      的阶跃跳变。
+  correct: 回答正确！精准掌握了均匀带电薄球壳的场强分布特征及卡文迪许示零实验的物理本质。
+  incorrect: 回答错误。请回顾均匀带电薄球壳的高斯定理推导以及库仑定律平方反比律与内场为零的深刻内在联系。
+hints:
+- 取同心球形高斯面，分别考察 $r < R$ 与 $r > R$ 面内包围的电荷量。
+- 卡文迪许示零实验通过检测同心内球是否带电，来高精度测定平方反比律的指数偏差 $\delta$。
+solution: "**解析**：\n1. **高斯定理推导**：\n   由球对称性，电场必定沿径向辐射且在同心球面上大小相等。\n   - 在球壳内（$r < R$），作半径为 $r$ 的球面高斯面 $S_1$：面内包围净电量 $Q_{\\\
+  text{in}} = 0$，由 $\\oint_{S_1} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = 4\\pi r^2 E = 0$，得 $\\boldsymbol{E}_{\\\
+  text{内}} = 0$。\n   - 在球壳外（$r > R$），作半径为 $r$ 的球面高斯面 $S_2$：面内包围全部电荷 $Q$，由 $\\oint_{S_2} \\boldsymbol{E} \\cdot \\mathrm{d}\\\
+  boldsymbol{S} = 4\\pi r^2 E = \\frac{Q}{\\varepsilon_0}$，得 $\\boldsymbol{E}_{\\text{外}} = \\frac{Q}{4\\pi\\varepsilon_0\
+  \ r^2}\\hat{\\boldsymbol{r}}$。\n   故 A 正确，B 错误。\n\n2. **界面跃变分析**：\n   在球面 $r = R$ 处，电场强度从内部的 $0$ 突变至外部的 $\\frac{Q}{4\\pi\\\
+  varepsilon_0 R^2} = \\frac{\\sigma}{\\varepsilon_0}$，跃变值为 $\\Delta E = \\frac{\\sigma}{\\varepsilon_0}$，并不连续，故 D 错误。\n\n\
+  3. **卡文迪许示零实验物理本质**：\n   若电场偏离平方反比律，即 $F \\propto r^{-(2+\\delta)}$，则微元积分表明球壳内部场强不再为零，球壳将对内球感应充电。卡文迪许与后继物理学家通过检验球壳内残余电量实现对反平方律的高精度验证，故\
+  \ C 错误。"
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8358d77f61f5bd6d5413bee089e06722effdafd4393a471d52cb2a177a2c9aaa
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8358d77f61f5bd6d5413bee089e06722effdafd4393a471d52cb2a177a2c9aaa
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8358d77f61f5bd6d5413bee089e06722effdafd4393a471d52cb2a177a2c9aaa

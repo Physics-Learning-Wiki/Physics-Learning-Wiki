@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000011
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.electric-flux
+type: single_choice
+choice_order: shuffle
+stem: 水平面上放置一个边长为 $a$ 的正方形平面。在正方形几何中心的正上方高度为 $\dfrac{a}{2}$ 处固定放置一个点电荷 $q$。穿过该正方形平面的电场总通量大小为：
+choices:
+- id: A
+  content: $\Phi = \dfrac{q}{6\varepsilon_0}$
+- id: B
+  content: $\Phi = \dfrac{q}{4\varepsilon_0}$
+- id: C
+  content: $\Phi = \dfrac{q}{8\varepsilon_0}$
+- id: D
+  content: $\Phi = \dfrac{q}{2\varepsilon_0}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。将该正方形作为边长为 $a$ 的正方体的一个面，点电荷恰好处于正方体的体中心，利用 6 个全同面的立体空间对称性直接得出总通量的 $1/6$。
+    B: 错误。若是二维平面截角或四面体对称可能出现 $1/4$，但本题补全几何体为 6 个面的正方体。
+    C: 错误。若是点电荷位于立方体的某个“顶点”处，穿过相对面的通量可能涉及 $1/24$ 或 $1/8$，但此处位于体中心正上方 $a/2$ 处。
+    D: 错误。无限大平面的立体角为 $2\pi$（对应通量 $\frac{q}{2\varepsilon_0}$），有限正方形张开的立体角小于 $2\pi$。
+  correct: 回答正确！巧妙运用了高斯定理构建对称闭合面的经典物理几何技巧。
+  incorrect: 回答错误。直接二重积分极为繁琐，建议尝试将原正方形补全为一个以点电荷为几何中心的封闭对称立方体。
+hints:
+- 若直接建立微元二重积分求解十分复杂，请考虑几何补全法。
+- 设想以该正方形作为底面，向上补成边长为 $a$ 的正方体，观察点电荷在该正方体中的相对空间位置。
+solution: "**对称构造法推导**：\n1. **构建对称闭合立方体**：\n   将原边长为 $a$ 的正方形作为底面，以其为基准向上补全为一个边长为 $a$ 的正方体。\n   - 正方体的体中心位于底面中心正上方高度为 $z =\
+  \ \\frac{a}{2}$ 处；\n   - 题目中点电荷 $q$ 恰好位于该正方体的**体几何中心**！\n\n2. **对称性分配电通量**：\n   由正方体对几何中心的全同空间对称性：\n   - 点电荷 $q$ 激发向全空间均匀辐射的库仑电场；\n\
+  \   - 穿过正方体 6 个表面的电场线分布与通量必定完全对称相等：\n     $$\\Phi_1 = \\Phi_2 = \\dots = \\Phi_6 = \\Phi$$\n   - 根据高斯定理，通过整个封闭立方体表面的总电通量为：\n\
+  \     $$\\oint_{\\text{立方体}} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = \\sum_{k=1}^6 \\Phi_k = 6 \\Phi = \\frac{q}{\\\
+  varepsilon_0}$$\n\n3. **求得底面电通量**：\n   因此，穿过原单一正方形底面的电场总通量为总通量的六分之一：\n   $$\\Phi = \\frac{1}{6} \\frac{q}{\\varepsilon_0}\
+  \ = \\frac{q}{6\\varepsilon_0}$$\n\n故 A 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0a1c999e725d355b6b7c7b1aef4ad5770a0df313f585fb6d3d806b91680032b7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0a1c999e725d355b6b7c7b1aef4ad5770a0df313f585fb6d3d806b91680032b7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:0a1c999e725d355b6b7c7b1aef4ad5770a0df313f585fb6d3d806b91680032b7

@@ -1,0 +1,110 @@
+schema_version: 3
+id: q-000027
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.planar-symmetry
+type: free_response
+choice_order: fixed
+stem: "**平面对称体系与界面电场法向跃变定理推导**\n\n平面对称在静电学分析中具有代表性。请完成以下三项理论推导：\n\n1. **无限大均匀带电薄板**：\n   - 面电荷密度为 $\\sigma$（$\\sigma > 0$）。分析其镜像对称性，选取恰当的柱形高斯盒；\n\
+  \   - 推导板两侧区域的电场强度矢量 $\\boldsymbol{E}$，并指出电场方向与距离的关系。\n\n2. **厚度为 $2d$ 的无限大均匀带电厚平板**：\n   - 平板中心位于 $z = 0$ 面，电荷均匀分布在 $-d\
+  \ \\le z \\le d$ 空间内，体电荷密度为 $\\rho$（$\\rho > 0$）；\n   - 利用关于 $z = 0$ 面的反演对称性（由镜像对称可得 $E_z(0) = 0$），选取适当高斯面；\n   - 分别推导平板内部（$|z|\
+  \ \\le d$）与平板外部（$|z| > d$）的电场矢量 $\\boldsymbol{E}(z)$；\n   - 分析 $E_z$ 随坐标 $z$ 的变化规律，并验证其在边界 $z = \\pm d$ 处是否连续。\n\n3. **曲面带电界面法向跃变定理严格证明**：\n\
+  \   - 设任意分界面上存在自由面电荷密度 $\\sigma$，法向单位矢量 $\\hat{\\boldsymbol{n}}$ 指向介质 2；\n   - 构建一个底面积为 $\\Delta A$、高度为 $\\Delta h$ 的微元高斯圆柱盒跨越界面，取极限\
+  \ $\\Delta h \\to 0$；\n   - 严格推导两侧电场法向分量的跃变关系 $\\hat{\\boldsymbol{n}} \\cdot (\\boldsymbol{E}_2 - \\boldsymbol{E}_1) = \\\
+  frac{\\sigma}{\\varepsilon_0}$，并结合静电场环路定理简要说明切向分量为何满足 $E_{2t} = E_{1t}$。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括对称性分析、薄板与厚平板场强积分推导、以及高斯扁盒跃变定理证明）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（高斯扁盒选取不当或积分错误，未能得出正确的平板场强或跃变公式）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了薄板或厚板推导，但跃变定理极限证明或切向连续性说明不严密）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（平面对称性分析完整，厚平板分段推导严密且验证连续性，跃变定理推导逻辑清晰）
+    points: 1
+reference_answer: "1. 无限大均匀带电薄板：\n   - 取垂直于板、底面积为 $\\Delta A$ 的圆柱形高斯盒，两底面平行于板且距板等距。\n   - 侧面法向垂直于场强（通量为零），两底面通量和为 $2 E \\\
+  Delta A$。\n   - 高斯定理：$2 E \\Delta A = \\frac{\\sigma \\Delta A}{\\varepsilon_0} \\implies \\boldsymbol{E} = \\pm \\frac{\\\
+  sigma}{2\\varepsilon_0}\\hat{\\boldsymbol{n}}$（在薄板两侧为方向相反、大小与距离无关的匀强电场）。\n\n2. 厚平板（厚度 $2d$，体密度 $\\rho$）：\n   - 对称性保证 $E_z(0)\
+  \ = 0$ 且 $E_z(-z) = -E_z(z)$。\n   - 板内（$|z| \\le d$）：取一个底面在 $z=0$、另一个底面在 $z$ 的柱面，底面通量为 $E_z(z)\\Delta A$；包围电量 $\\rho z \\\
+  Delta A$。得 $\\boldsymbol{E}_{\\text{内}}(z) = \\frac{\\rho z}{\\varepsilon_0}\\hat{\\boldsymbol{z}}$（随 $z$ 线性增长）。\n   - 板外（$z\
+  \ > d$）：底面在 $z=0$ 与 $z>d$ 处，包围电量 $\\rho d \\Delta A$。得 $\\boldsymbol{E}_{\\text{外}}(z) = \\frac{\\rho d}{\\varepsilon_0}\\\
+  hat{\\boldsymbol{z}}$（在板外为匀强电场）。\n   - 连续性：边界 $z = d$ 处，两式均给出 $E_z = \\frac{\\rho d}{\\varepsilon_0}$，体电荷分布下电场在边界处处连续。\n\
+  \n3. 界面跃变定理证明：\n   - 取高度 $\\Delta h$、底面积 $\\Delta A$ 的扁圆柱盒跨越界面。当 $\\Delta h \\to 0$ 时，侧柱面面积 $2\\pi r \\Delta h \\to 0$，侧面电通量趋于\
+  \ 0。\n   - 闭合通量退化为两端面通量：$(\\boldsymbol{E}_2 \\cdot \\hat{\\boldsymbol{n}} - \\boldsymbol{E}_1 \\cdot \\hat{\\boldsymbol{n}})\\\
+  Delta A = \\frac{\\sigma \\Delta A}{\\varepsilon_0} \\implies E_{2n} - E_{1n} = \\frac{\\sigma}{\\varepsilon_0}$。\n   -\
+  \ 由静电场环路定理 $\\oint \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$，取垂直界面的微元矩形回路（宽度 $\\Delta h \\to 0$），侧边贡献趋于零，给出\
+  \ $(E_{2t} - E_{1t})\\Delta l = 0$，故切向分量严格连续。\n"
+solution: "### 1. 无限大均匀带电薄板的电场推导\n- **对称性分析**：\n  由于带电平面在各个水平方向无限延伸，电荷分布具有在面内的连续平移对称性、绕法线的旋转对称性以及关于板面的镜像对称性。\n  因此，电场强度矢量必处处垂直于带电面，背离带电板（$\\\
+  sigma > 0$），且场强大小仅由到板的垂直距离决定：$\\boldsymbol{E} = E(z)\\hat{\\boldsymbol{z}}$。根据镜像反转，在对称位置 $E_z(-z) = -E_z(z)$。\n- **高斯面构造与通量计算**：\n\
+  \  构造一个轴线垂直于薄板、横截面积为 $\\Delta A$ 的圆柱形高斯盒，两底面分别位于对称的两侧（$z$ 与 $-z$）。\n  - 圆柱侧面的外法线垂直于 $\\hat{\\boldsymbol{z}}$，故 $\\boldsymbol{E}\
+  \ \\cdot \\mathrm{d}\\boldsymbol{S} = 0$，侧面电通量为零；\n  - 两端面的外法线分别与局部场强同向，两端面的电通量之和为：\n    $$\\Phi_E = E(z)\\Delta A + E(-z)\\\
+  Delta A = 2 E(z)\\Delta A$$\n- **高斯定理求解**：\n  高斯盒内截取的薄板电量为 $Q_{\\text{in}} = \\sigma \\Delta A$。\n  $$2 E(z)\\Delta A =\
+  \ \\frac{\\sigma \\Delta A}{\\varepsilon_0} \\implies E(z) = \\frac{\\sigma}{2\\varepsilon_0}$$\n  用矢量表示即为：\n  $$\\boldsymbol{E}\
+  \ = \\begin{cases} +\\frac{\\sigma}{2\\varepsilon_0}\\hat{\\boldsymbol{z}}, & z > 0 \\\\ -\\frac{\\sigma}{2\\varepsilon_0}\\\
+  hat{\\boldsymbol{z}}, & z < 0 \\end{cases}$$\n  电场大小与离开板的距离完全无关，在板两侧分别形成均匀的恒定电场。\n\n### 2. 厚度为 $2d$ 的无限大均匀带电平板\n- **对称性特征**：\n\
+  \  中心对称面 $z = 0$ 处由于正负两侧电荷的完全对称抵消，场强必为零：$E_z(0) = 0$。根据关于 $z=0$ 的反对称性，$E_z(-z) = -E_z(z)$。\n- **平板内部（$0 \\le z \\le d$）**：\n\
+  \  选取底面积为 $\\Delta A$ 的高斯柱盒，一底面置于中心对称面 $z = 0$（此处 $E=0$，通量为 0），另一底面位于坐标 $z$ 处。\n  通过该高斯盒的通量仅来自位于 $z$ 处的底面：\n  $$\\Phi_E\
+  \ = E_z(z)\\Delta A$$\n  高斯盒内包围的体电荷量为 $Q_{\\text{in}} = \\rho \\cdot (z \\Delta A)$。由高斯定理：\n  $$E_z(z)\\Delta A = \\frac{\\\
+  rho z \\Delta A}{\\varepsilon_0} \\implies E_z(z) = \\frac{\\rho z}{\\varepsilon_0}$$\n  在内部 $-d \\le z \\le d$ 范围内，场强随\
+  \ $z$ 呈线性分布：$\\boldsymbol{E}(z) = \\frac{\\rho z}{\\varepsilon_0}\\hat{\\boldsymbol{z}}$。\n- **平板外部（$z > d$）**：\n  同样取一底面在\
+  \ $z=0$、另一底面在板外 $z > d$ 处的高斯圆柱。\n  高斯盒内包围的体电荷不再随 $z$ 增加，其总电量为半板电量 $Q_{\\text{in}} = \\rho \\cdot (d \\Delta A)$。由高斯定理：\n\
+  \  $$E_z(z)\\Delta A = \\frac{\\rho d \\Delta A}{\\varepsilon_0} \\implies E_z(z) = \\frac{\\rho d}{\\varepsilon_0}$$\n\
+  \  用相当于整个平板单位面积电量 $\\sigma_{\\text{总}} = 2\\rho d$ 表示，即 $E_z = \\frac{\\sigma_{\\text{总}}}{2\\varepsilon_0}$。\n- **连续性分析**：\n\
+  \  当 $z \\to d^-$ 时，$E_z = \\frac{\\rho d}{\\varepsilon_0}$；当 $z \\to d^+$ 时，$E_z = \\frac{\\rho d}{\\varepsilon_0}$。两者严格相等，电场在平板边界处处连续，没有突变。\n\
+  \n### 3. 曲面带电界面法向跃变定理的严格推导\n- **法向分量跃变（高斯定理）**：\n  在具有自由面电荷密度 $\\sigma$ 的界面上，选取底面积为 $\\Delta A$、厚度为 $\\Delta h$ 的小圆柱形高斯扁盒，使其两底面分别紧邻界面两侧（介质\
+  \ 1 与介质 2）。\n  设界面外法向单位矢量 $\\hat{\\boldsymbol{n}}$ 由介质 1 指向介质 2。\n  高斯定理表明：\n  $$\\oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\\
+  boldsymbol{S} = (\\boldsymbol{E}_2 \\cdot \\hat{\\boldsymbol{n}})\\Delta A - (\\boldsymbol{E}_1 \\cdot \\hat{\\boldsymbol{n}})\\\
+  Delta A + \\Phi_{\\text{侧面}} = \\frac{\\sigma \\Delta A}{\\varepsilon_0}$$\n  让高斯盒厚度取极限 $\\Delta h \\to 0$。由于场强有界，侧表面积正比于\
+  \ $\\Delta h$，侧面通量 $\\Phi_{\\text{侧面}} \\to 0$。两边除以 $\\Delta A$，得到：\n  $$\\hat{\\boldsymbol{n}} \\cdot (\\boldsymbol{E}_2\
+  \ - \\boldsymbol{E}_1) = E_{2n} - E_{1n} = \\frac{\\sigma}{\\varepsilon_0}$$\n  这证明了存在自由面电荷时，电场法向分量发生大小为 $\\sigma/\\varepsilon_0$\
+  \ 的跃变。\n- **切向分量连续性（环路定理）**：\n  跨越界面取一个长为 $\\Delta l$（平行于界面切向 $\\hat{\\boldsymbol{t}}$）、宽为 $\\Delta h$（垂直于界面）的微元闭合矩形回路 $C$。\n\
+  \  根据静电场环路定理 $\\oint_C \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$：\n  $$(\\boldsymbol{E}_2 \\cdot \\hat{\\boldsymbol{t}})\\\
+  Delta l - (\\boldsymbol{E}_1 \\cdot \\hat{\\boldsymbol{t}})\\Delta l + \\mathcal{O}(\\Delta h) = 0$$\n  令回路宽度 $\\Delta h\
+  \ \\to 0$，垂直侧边的线积分贡献消失，两边除以 $\\Delta l$ 得：\n  $$E_{2t} = E_{1t}$$\n  即静电场的切向分量在任何带电界面两侧恒严格连续。\n"
+feedback:
+  correct: 平面对称性分析完整，厚平板分段推导严密且验证连续性，跃变定理推导逻辑清晰。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8ce22dd2b3bdf7ac170fdc161eb249d02798b2c9eef80ac95cfa9ac7ebd0906f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8ce22dd2b3bdf7ac170fdc161eb249d02798b2c9eef80ac95cfa9ac7ebd0906f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8ce22dd2b3bdf7ac170fdc161eb249d02798b2c9eef80ac95cfa9ac7ebd0906f

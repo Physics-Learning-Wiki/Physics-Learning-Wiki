@@ -1,0 +1,86 @@
+schema_version: 3
+id: q-000023
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.cylindrical-symmetry
+- electrostatics.potential-gradient
+type: multiple_choice
+choice_order: shuffle
+stem: 半径为 $R$ 的无限长实心绝缘圆柱体内均匀分布着电荷，体电荷密度为 $\rho$（$\rho > 0$）。选取轴线（$r = 0$ 处）为电势参考零点（$U(0) = 0$）。关于离对称轴距离为 $r$ 处各区域的电势分布及其与场强的关系，下列哪些说法是正确的？
+choices:
+- id: A
+  content: 圆柱体内（$r \le R$）的电势呈二次抛物线分布，表达式为 $U_{\text{内}}(r) = -\dfrac{\rho r^2}{4\varepsilon_0}$
+- id: B
+  content: 圆柱体表面（$r = R$ 处）的电势大小为 $U(R) = -\dfrac{\rho R^2}{4\varepsilon_0}$
+- id: C
+  content: 圆柱体外（$r \ge R$）的电势分布表达式为 $U_{\text{外}}(r) = -\dfrac{\rho R^2}{4\varepsilon_0} - \dfrac{\rho R^2}{2\varepsilon_0}\ln\dfrac{r}{R}$
+- id: D
+  content: 对柱内电势函数求负径向导数 $E_r = -\dfrac{\mathrm{d}U_{\text{内}}}{\mathrm{d}r} = \dfrac{\rho r}{2\varepsilon_0}$，与高斯定理直接导出的柱内场强完全一致
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。由高斯定理柱内场强为 $E_{\text{内}} = \frac{\rho r'}{2\varepsilon_0}$，对路径积分 $U(r) = \int_r^0 E_{\text{内}}\,\mathrm{d}r' = -\frac{\rho
+      r^2}{4\varepsilon_0}$。
+    B: 正确。将表面 $r = R$ 代入柱内电势公式，直接得到表面电势 $-\frac{\rho R^2}{4\varepsilon_0}$。
+    C: 正确。柱外以表面电势为基准向外积分：$U_{\text{外}}(r) = U(R) + \int_r^R E_{\text{外}}\,\mathrm{d}r' = -\frac{\rho R^2}{4\varepsilon_0}
+      - \frac{\rho R^2}{2\varepsilon_0}\ln\frac{r}{R}$。
+    D: 正确。标量势梯度的负微商 $-\frac{\mathrm{d}}{\mathrm{d}r}(-\frac{\rho r^2}{4\varepsilon_0}) = \frac{\rho r}{2\varepsilon_0}$，与高斯通量法定律推导完美闭环。
+  correct: 回答正确！全面掌握了均匀带电圆柱体柱内二次电势、柱外对数电势积分及微分求场强的一致性。
+  incorrect: 回答错误。请由柱内高斯定理场强 $E = \frac{\rho r}{2\varepsilon_0}$ 出发，结合 $U(0)=0$ 逐步定积分推导。
+hints:
+- 柱内取同轴柱形高斯面，求得柱内线性场强 $E_{\text{内}}(r') = \frac{\rho r'}{2\varepsilon_0}$。
+- 由 $U_{\text{内}}(r) = -\int_0^r E_{\text{内}}\,\mathrm{d}r'$ 计算柱内电势。
+solution: "**严格推导与解析**：\n根据轴对称高斯定理，设圆柱体内外场强分布为： - **柱内（$r \\le R$）**：\n  $$2\\pi r l E = \\frac{\\rho \\pi r^2 l}{\\varepsilon_0}\
+  \ \\implies E_{\\text{内}}(r) = \\frac{\\rho r}{2\\varepsilon_0}$$\n- **柱外（$r \\ge R$）**：\n  $$2\\pi r l E = \\frac{\\rho\
+  \ \\pi R^2 l}{\\varepsilon_0} \\implies E_{\\text{外}}(r) = \\frac{\\rho R^2}{2\\varepsilon_0 r}$$\n\n1. **柱内电势推导（$r \\le\
+  \ R$）**：\n   已知轴线上 $r = 0$ 处电势为零（$U(0) = 0$）。由电势差定义，沿径向从场点 $r$ 积分至轴线 $0$：\n   $$U_{\\text{内}}(r) - U(0) = \\int_r^0 E_{\\\
+  text{内}}(r')\\,\\mathrm{d}r' = \\int_r^0 \\frac{\\rho r'}{2\\varepsilon_0}\\,\\mathrm{d}r' = \\left[ \\frac{\\rho r'^2}{4\\\
+  varepsilon_0} \\right]_r^0 = -\\frac{\\rho r^2}{4\\varepsilon_0}$$\n   因此 A 选项正确。\n\n2. **柱体表面电势**：\n   在柱体边界 $r = R$ 处代入：\n\
+  \   $$U(R) = -\\frac{\\rho R^2}{4\\varepsilon_0}$$\n   B 选项正确。\n\n3. **柱外电势推导（$r \\ge R$）**：\n   以圆柱表面点 $R$ 为已知基准点，利用电势定义向外积分至柱外点\
+  \ $r$：\n   $$U_{\\text{外}}(r) - U(R) = \\int_r^R E_{\\text{外}}(r')\\,\\mathrm{d}r' = \\int_r^R \\frac{\\rho R^2}{2\\varepsilon_0\
+  \ r'}\\,\\mathrm{d}r' = \\frac{\\rho R^2}{2\\varepsilon_0} [\\ln r']_r^R = \\frac{\\rho R^2}{2\\varepsilon_0} (\\ln R -\
+  \ \\ln r) = -\\frac{\\rho R^2}{2\\varepsilon_0}\\ln\\frac{r}{R}$$\n   代入 $U(R)$：\n   $$U_{\\text{外}}(r) = U(R) - \\frac{\\\
+  rho R^2}{2\\varepsilon_0}\\ln\\frac{r}{R} = -\\frac{\\rho R^2}{4\\varepsilon_0} - \\frac{\\rho R^2}{2\\varepsilon_0}\\ln\\\
+  frac{r}{R}$$\n   C 选项正确。\n\n4. **负微商验证场强**：\n   对柱内电势函数求负导数：\n   $$E_r = -\\frac{\\mathrm{d}U_{\\text{内}}}{\\mathrm{d}r}\
+  \ = -\\frac{\\mathrm{d}}{\\mathrm{d}r}\\left(-\\frac{\\rho r^2}{4\\varepsilon_0}\\right) = \\frac{\\rho r}{2\\varepsilon_0}$$\n\
+  \   精确还原高斯定理所得的场强公式，D 选项正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f9769a7c1c279abf0974534622fc50bfe46c7ac2021217ec0bb0ff49febf2b48
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f9769a7c1c279abf0974534622fc50bfe46c7ac2021217ec0bb0ff49febf2b48
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f9769a7c1c279abf0974534622fc50bfe46c7ac2021217ec0bb0ff49febf2b48

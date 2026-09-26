@@ -1,0 +1,105 @@
+schema_version: 3
+id: q-000029
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.cavity-field
+type: free_response
+choice_order: fixed
+stem: "**偏心球形与柱形空腔内匀强电场的割补叠加法严格推导**\n\n割补法（负电荷填充等效法）是解决非完整对称带电结构场强分布的核心方法。请完成以下两项推导：\n\n1. **偏心球形空腔内的匀强电场证明**：\n   - 一个半径为\
+  \ $R$ 的均匀带电实心球体，体电荷密度为 $\\rho$。首先写出球内任一点（相对球心 $O_1$ 的矢径为 $\\boldsymbol{r}_1$）的电场矢量表达式 $\\boldsymbol{E}_1(\\boldsymbol{r}_1)$；\n\
+  \   - 在球内挖去一个半径为 $R'$ 的偏心球形空腔（满足 $|\\boldsymbol{a}| + R' < R$），空腔球心 $O_2$ 相对于原球心 $O_1$ 的位置矢量为 $\\boldsymbol{a}$（即 $\\overrightarrow{O_1\
+  \ O_2} = \\boldsymbol{a}$）；\n   - 利用电荷割补原理（将挖去空腔等效为完整大球与一个充满体电荷密度 $-\\rho$ 的小球重叠），严格写出空腔内任一点 $P$ 的场强矢量叠加式；\n   - 证明空腔内部各点的电场强度是严格均匀的，并写出腔内电场矢量\
+  \ $\\boldsymbol{E}_{\\text{腔}}$ 的大小与方向。\n\n2. **无限长偏心柱形空腔内的匀强电场推广**：\n   - 类似地，设一个无限长均匀带电圆柱体（体电荷密度 $\\rho$），内部挖去一个轴线相互平行的无限长偏心圆柱形空腔，腔轴相对原柱轴的横截面位移矢量为\
+  \ $\\boldsymbol{a}$；\n   - 给出无腔无限长圆柱内部场强的二维径向矢量表达式；\n   - 证明柱腔内部的电场同样是严格均匀的，并给出柱腔内场强矢量 $\\boldsymbol{E}_{\\text{柱腔}}$。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括实心球与柱体内场强矢量表示、割补叠加模型、矢径几何三角形变换及匀强场证明）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（割补叠加矢量关系错误，未能证明腔内电场为匀强场）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了球腔推导，但柱腔推广不完整或矢量代数关系有误）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（球腔与柱腔均正确建立矢量三角形叠加，严格证明与位置坐标无关，推导完整规范）
+    points: 1
+reference_answer: "1. 偏心球腔内匀强电场：\n   - 完整实心球（密度 $+\\rho$）在内部产生的场强：$\\boldsymbol{E}_1 = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{r}_1$（$\\\
+  boldsymbol{r}_1 = \\overrightarrow{O_1 P}$）。\n   - 填充虚拟小球（密度 $-\\rho$，球心 $O_2$）在内部产生的场强：$\\boldsymbol{E}_2 = -\\frac{\\\
+  rho}{3\\varepsilon_0}\\boldsymbol{r}_2$（$\\boldsymbol{r}_2 = \\overrightarrow{O_2 P}$）。\n   - 腔内任意点 $P$ 的总场强为叠加：$\\boldsymbol{E}_{\\\
+  text{腔}} = \\boldsymbol{E}_1 + \\boldsymbol{E}_2 = \\frac{\\rho}{3\\varepsilon_0}(\\boldsymbol{r}_1 - \\boldsymbol{r}_2)$。\n\
+  \   - 由矢量三角形关系 $\\boldsymbol{r}_1 - \\boldsymbol{r}_2 = \\overrightarrow{O_1 P} - \\overrightarrow{O_2 P} = \\overrightarrow{O_1\
+  \ O_2} = \\boldsymbol{a}$，得：\n     $$\\boldsymbol{E}_{\\text{腔}} = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{a}$$\n   -\
+  \ 结论：场强矢量与点 $P$ 的具体位置无关，大小为 $\\frac{\\rho |\\boldsymbol{a}|}{3\\varepsilon_0}$，方向恒沿从原球心指向腔心的连线方向 $\\boldsymbol{a}$，因而是严格的匀强电场。\n\
+  \n2. 偏心柱腔推广：\n   - 无腔无限长圆柱内部场强矢量：$\\boldsymbol{E}_1 = \\frac{\\rho}{2\\varepsilon_0}\\boldsymbol{r}_1$。\n   - 虚拟圆柱（密度 $-\\\
+  rho$）在内部产生的场强：$\\boldsymbol{E}_2 = -\\frac{\\rho}{2\\varepsilon_0}\\boldsymbol{r}_2$。\n   - 腔内总场强：$\\boldsymbol{E}_{\\text{柱腔}}\
+  \ = \\boldsymbol{E}_1 + \\boldsymbol{E}_2 = \\frac{\\rho}{2\\varepsilon_0}(\\boldsymbol{r}_1 - \\boldsymbol{r}_2) = \\frac{\\\
+  rho}{2\\varepsilon_0}\\boldsymbol{a}$。\n   - 柱腔内同样为大小和方向均恒定的匀强电场。\n"
+solution: "### 1. 偏心球形空腔内匀强电场的割补推导\n- **无腔实心球内部场强的矢量表示**：\n  根据球对称高斯定理，在半径为 $R$、体电荷密度为 $\\rho$ 的实心均匀带电球体内部，取半径为 $r_1$ 的同心球面高斯面：\n\
+  \  $$E(r_1) \\cdot 4\\pi r_1^2 = \\frac{\\rho \\cdot \\frac{4}{3}\\pi r_1^3}{\\varepsilon_0} \\implies E(r_1) = \\frac{\\\
+  rho r_1}{3\\varepsilon_0}$$\n  因为电场方向严格沿球心 $O_1$ 指向场点的径向方向，引入相对球心 $O_1$ 的位置矢量 $\\boldsymbol{r}_1 = \\overrightarrow{O_1\
+  \ P}$，场强可写为紧凑的线性矢量形式：\n  $$\\boldsymbol{E}_1(\\boldsymbol{r}_1) = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{r}_1$$\n- **割补法物理建模**：\n\
+  \  带空腔的带电体在物理上完全等效于两个完整实心球的叠加：\n  - 实心大球：球心在 $O_1$，半径为 $R$，体电荷密度为 $+\\rho$；\n  - 实心小球：球心在 $O_2$，半径为 $R'$，体电荷密度为 $-\\rho$。\n\
+  \  二者叠加后，空腔区域（大球与小球的交叠部分）的净电荷密度为 $\\rho + (-\\rho) = 0$，与真实无电荷空腔完全一致；而空腔外大球区域的电荷密度仍保持为 $+\\rho$。\n- **空腔内任意点的场强矢量叠加**：\n\
+  \  设点 $P$ 为空腔内的任意一点。\n  点 $P$ 既在大球内部，又在小球内部。因此：\n  - 大球在点 $P$ 产生的电场为：$\\boldsymbol{E}_1 = \\frac{\\rho}{3\\varepsilon_0}\\\
+  boldsymbol{r}_1$（$\\boldsymbol{r}_1 = \\overrightarrow{O_1 P}$）；\n  - 负电荷小球在点 $P$ 产生的电场为：$\\boldsymbol{E}_2 = \\frac{-\\\
+  rho}{3\\varepsilon_0}\\boldsymbol{r}_2 = -\\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{r}_2$（$\\boldsymbol{r}_2 = \\overrightarrow{O_2\
+  \ P}$）。\n  根据静电场叠加原理，腔内总场强为：\n  $$\\boldsymbol{E}_{\\text{腔}} = \\boldsymbol{E}_1 + \\boldsymbol{E}_2 = \\frac{\\rho}{3\\\
+  varepsilon_0}(\\boldsymbol{r}_1 - \\boldsymbol{r}_2)$$\n- **矢量几何三角形与结论**：\n  观察由原球心 $O_1$、腔心 $O_2$ 和场点 $P$ 构成的空间矢量三角形：\n\
+  \  $$\\overrightarrow{O_1 O_2} + \\overrightarrow{O_2 P} = \\overrightarrow{O_1 P} \\implies \\boldsymbol{a} + \\boldsymbol{r}_2\
+  \ = \\boldsymbol{r}_1 \\implies \\boldsymbol{r}_1 - \\boldsymbol{r}_2 = \\boldsymbol{a}$$\n  将其代入场强叠加式，立即得到：\n  $$\\boldsymbol{E}_{\\\
+  text{腔}} = \\frac{\\rho}{3\\varepsilon_0}\\boldsymbol{a}$$\n  该矢量表达式中不再含有场点 $P$ 的位置坐标 $\\boldsymbol{r}_1$ 或 $\\boldsymbol{r}_2$。这表明：**在偏心球形空腔内的任意一点，电场强度的大小恒为\
+  \ $\\frac{\\rho a}{3\\varepsilon_0}$，方向恒与位移矢量 $\\boldsymbol{a}$（从原球心指向腔心）平行一致，因此空腔内部的电场是严格的匀强电场**。\n\n### 2. 无限长偏心柱形空腔内的匀强电场推广\n\
+  - **无腔无限长圆柱内部场强矢量**：\n  取半径为 $r_1$、长为 $h$ 的同轴高斯柱面，面内电量为 $\\rho \\pi r_1^2 h$。\n  $$E(r_1) \\cdot 2\\pi r_1 h = \\frac{\\\
+  rho \\pi r_1^2 h}{\\varepsilon_0} \\implies E(r_1) = \\frac{\\rho r_1}{2\\varepsilon_0}$$\n  在柱横截面二维坐标系内，场强方向沿轴心向外的径向，写为二维位移矢量形式为：\n\
+  \  $$\\boldsymbol{E}_1(\\boldsymbol{r}_1) = \\frac{\\rho}{2\\varepsilon_0}\\boldsymbol{r}_1$$\n- **割补叠加推导**：\n  将挖去轴线平移矢量为\
+  \ $\\boldsymbol{a}$ 的无限长柱腔，等效为体电荷密度为 $+\\rho$ 的完整柱体与体电荷密度为 $-\\rho$、轴线在位移 $\\boldsymbol{a}$ 处的虚拟柱体的叠加。\n  对柱腔内横截面上任意场点 $P$：\n\
+  \  $$\\boldsymbol{E}_{\\text{柱腔}} = \\boldsymbol{E}_1 + \\boldsymbol{E}_2 = \\frac{\\rho}{2\\varepsilon_0}\\boldsymbol{r}_1\
+  \ + \\frac{-\\rho}{2\\varepsilon_0}\\boldsymbol{r}_2 = \\frac{\\rho}{2\\varepsilon_0}(\\boldsymbol{r}_1 - \\boldsymbol{r}_2)$$\n\
+  \  由于横截面上的几何矢量关系同样满足 $\\boldsymbol{r}_1 - \\boldsymbol{r}_2 = \\boldsymbol{a}$，故：\n  $$\\boldsymbol{E}_{\\text{柱腔}} = \\\
+  frac{\\rho}{2\\varepsilon_0}\\boldsymbol{a}$$\n  证明了偏心圆柱形空腔内的横截面电场同样是严格均匀的匀强电场，方向沿轴线位移矢量 $\\boldsymbol{a}$，大小为 $\\frac{\\\
+  rho a}{2\\varepsilon_0}$。\n"
+feedback:
+  correct: 球腔与柱腔均正确建立矢量三角形叠加，严格证明与位置坐标无关，推导完整规范。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:95372a924ce4f2b192bdbb8e302ef1b99098575d92455b57fb2ae60a10fe03dd
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:95372a924ce4f2b192bdbb8e302ef1b99098575d92455b57fb2ae60a10fe03dd
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:95372a924ce4f2b192bdbb8e302ef1b99098575d92455b57fb2ae60a10fe03dd

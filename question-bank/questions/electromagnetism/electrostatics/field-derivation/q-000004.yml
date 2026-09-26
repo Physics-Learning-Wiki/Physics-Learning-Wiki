@@ -1,0 +1,72 @@
+schema_version: 3
+id: q-000004
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.electric-flux
+type: single_choice
+choice_order: shuffle
+stem: 关于静电场高斯定理的物理意义及其在求解电场强度中的适用条件，下列说法中准确无误的是：
+choices:
+- id: A
+  content: 高斯定理在真空静电场中总是普遍成立的；但只有在电荷分布具有高度空间对称性时，才能利用它将标量场强 $E$ 从通量积分中提出并直接解出
+- id: B
+  content: 高斯定理只对具有球对称、轴对称或平面对称的带电体系成立；在非对称体系中，闭合曲面电通量与内部总电量不再满足高斯定理
+- id: C
+  content: 只要选取的闭合高斯面足够精细，任何任意不规则形态的带电体都可以直接利用高斯定理初等代数求解空间各点的电场强度
+- id: D
+  content: 高斯定理本身是一个矢量方程，能够单独唯一确定电场矢量 $\boldsymbol{E}$ 的大小与三个空间分量方向
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。高斯定理作为麦克斯韦方程组第一方程普遍成立；但利用它求场强的前提是存在对称高斯面，使得面上各点场强大小恒定且与法向夹角固定，从而将未知量提出积分号。
+    B: 错误。高斯定理无论电荷分布是否具有对称性均严格成立，对称性不是定理成立的条件，而是能否用代数法求解场强的条件。
+    C: 错误。缺乏高度空间对称性时，高斯面上各点场强大小不均匀或方向不与法向共线，积分无法化为初等乘积，无法单凭高斯定理标量方程解出场强。
+    D: 错误。高斯定理给出的是一个标量积分方程（电通量与净电量），单独的高斯定理不能确定矢量场的全部自由度，静电场还须结合环路定理（无旋性）。
+  correct: 回答正确！清晰辨析了基本物理定律的普适真理性与具体解析求解适用条件之间的界线。
+  incorrect: 回答错误。请注意区分“物理定律成立”与“能够利用该定律求出未知物理量”的本质区别。
+hints:
+- 思考高斯定理 $\oint_S \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{S} = \frac{q_{\text{in}}}{\varepsilon_0}$ 是标量方程还是矢量方程。
+- 回忆为什么偏心挖孔后的球体无法“直接套用高斯定理”求场强，而必须借助于叠加原理。
+solution: "**解析**：\n1. **高斯定理的普遍性**：\n   静电场高斯定理 $\\oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = \\frac{Q_{\\\
+  text{in}}}{\\varepsilon_0}$ 是麦克斯韦方程组的基本组成部分，无论源电荷处于何种几何分布形态、无论系统是否具有空间对称性，它都严格、普遍成立。故 B 错误。\n\n2. **利用高斯定理求场强的充要前提——对称性**：\n\
+  \   高斯定理本质上只是一个包含未知矢量场 $\\boldsymbol{E}$ 的标量积分方程。要从中解出场强大小 $E$：\n   - 必须存在能够预先通过对称性判定的闭合曲面（高斯面）；\n   - 在高斯面的有效部分上，场强大小 $E$\
+  \ 必须处处相等；\n   - 且场强矢量 $\\boldsymbol{E}$ 必须与面元法线 $\\hat{\\boldsymbol{n}}$ 处处平行（夹角为 $0$ 或 $\\pi$）或处处垂直（通量为 $0$）。\n   只有满足上述高度对称条件，通量积分才能化简为\
+  \ $E \\cdot S_{\\text{有效}} = \\frac{Q_{\\text{in}}}{\\varepsilon_0}$，从而将微积分方程退化为初等代数方程。缺乏对称性时无法提出 $E$，必须结合库仑定律微元积分或求解泊松方程。故\
+  \ A 正确，C 错误。\n\n3. **矢量场的完整性（亥姆霍兹定理）**：\n   高斯定理仅规定了电场的通量（散度，源场特性），静电场还必须同时满足环路定理 $\\oint \\boldsymbol{E} \\cdot \\mathrm{d}\\\
+  boldsymbol{l} = 0$（旋度为零，无旋场特性）。单靠一个标量高斯积分方程不可能完整决定矢量场 $\\boldsymbol{E}$ 的全部空间分量，故 D 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:88e0b7132db395a3ce06be215ebe0c189202bce00b6588fe2b10cdde8453a3c3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:88e0b7132db395a3ce06be215ebe0c189202bce00b6588fe2b10cdde8453a3c3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:88e0b7132db395a3ce06be215ebe0c189202bce00b6588fe2b10cdde8453a3c3

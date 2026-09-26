@@ -1,0 +1,110 @@
+schema_version: 3
+id: q-000033
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.cylindrical-symmetry
+- electrostatics.electric-potential
+- electrostatics.potential-reference
+type: free_response
+choice_order: fixed
+stem: "**柱对称系统对数电势路径积分与同轴圆柱电容器推导**\n\n柱对称系统电场按 $1/r$ 衰减，其电势展现出典型的对数特性。请完成以下三项推导：\n\n1. **无限长均匀带电直细线对数电势推导**：\n   - 线电荷密度为\
+  \ $\\lambda$（$\\lambda > 0$），已知场强分布为 $E(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}$；\n   - 规定距导线垂直距离为 $r_0$ 处的一点为电势参考点（即\
+  \ $V(r_0) = 0$）；\n   - 通过沿径向的路径积分，推导出距导线距离为 $r$ 处的电势分布表达式 $V(r)$。\n\n2. **均匀带电实心圆柱体电势分布（选柱面为参考点）**：\n   - 半径为 $R$ 的无限长实心绝缘圆柱体，均匀充满体电荷密度\
+  \ $\\rho$（$\\rho > 0$）；\n   - 选取圆柱表面 $r = R$ 为电势参考点（即 $V(R) = 0$）；\n   - 利用高斯定理给出的柱内场强 $E_{\\text{内}}(r) = \\frac{\\rho\
+  \ r}{2\\varepsilon_0}$ 与柱外场强 $E_{\\text{外}}(r) = \\frac{\\rho R^2}{2\\varepsilon_0 r}$，分别推导柱外（$r > R$）和柱内（$r \\le R$）的电势分布解析式\
+  \ $V(r)$；\n   - 验证在边界 $r = R$ 处电势的连续性与一阶导数的平滑性。\n\n3. **同轴圆柱形电容器电势差与单位长度电容推导**：\n   - 由半径为 $R_a$ 的内圆柱面与半径为 $R_b$ 的外同轴圆柱面（$R_a\
+  \ < R_b$）组成一个长电容器；\n   - 两极板单位长度所带电荷分别为 $+\\lambda$ 与 $-\\lambda$；\n   - 积分推导内外两极板之间的电势差 $U = V_a - V_b$；\n   - 据此推导该同轴圆柱形电容器单位长度的电容\
+  \ $C_L = \\frac{C}{L}$。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括对数电势路径积分、选柱面零点时的分段电势、以及同轴电容器电势差与电容表达式）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（对数积分方向或正负号错误，未能得出正确的对数电势或电容公式）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了带电细线推导，但实心圆柱的分段电势或电容器电容推导有瑕疵）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（对数积分严密，柱面参考点分段推导与边界验证准确，同轴电容物理图像清晰）
+    points: 1
+reference_answer: "1. 无限长细线对数电势：\n   - 路径积分：$V(r) = \\int_r^{r_0} E(r')\\,\\mathrm{d}r' = \\int_r^{r_0} \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0 r'}\\,\\mathrm{d}r' = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\left[\\ln r'\\right]_r^{r_0} = \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0}\\ln\\left(\\frac{r_0}{r}\\right)$。\n\n2. 实心圆柱体电势（以 $V(R)=0$ 为参考点）：\n   - 柱外（$r > R$）：$V_{\\text{外}}(r)\
+  \ = \\int_r^R E_{\\text{外}}(r')\\,\\mathrm{d}r' = \\int_r^R \\frac{\\rho R^2}{2\\varepsilon_0 r'}\\,\\mathrm{d}r' = -\\\
+  frac{\\rho R^2}{2\\varepsilon_0}\\ln\\left(\\frac{r}{R}\\right)$。\n   - 柱内（$r \\le R$）：$V_{\\text{内}}(r) = \\int_r^R E_{\\\
+  text{内}}(r')\\,\\mathrm{d}r' + V(R) = \\int_r^R \\frac{\\rho r'}{2\\varepsilon_0}\\,\\mathrm{d}r' + 0 = \\frac{\\rho}{4\\\
+  varepsilon_0}(R^2 - r^2)$。\n   - 边界验证：在 $r = R$ 处，$V_{\\text{内}}(R) = V_{\\text{外}}(R) = 0$；导数 $\\left.\\frac{\\mathrm{d}V_{\\\
+  text{内}}}{\\mathrm{d}r}\\right|_R = -\\frac{\\rho R}{2\\varepsilon_0} = \\left.\\frac{\\mathrm{d}V_{\\text{外}}}{\\mathrm{d}r}\\\
+  right|_R$，连续平滑。\n\n3. 同轴圆柱电容器：\n   - 两极板间电场由内柱提供：$E(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}$（$R_a < r < R_b$）。\n  \
+  \ - 电势差：$U = V_a - V_b = \\int_{R_a}^{R_b} E(r)\\,\\mathrm{d}r = \\frac{\\lambda}{2\\pi\\varepsilon_0} \\int_{R_a}^{R_b}\
+  \ \\frac{\\mathrm{d}r}{r} = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\left(\\frac{R_b}{R_a}\\right)$。\n   - 单位长度电容：$C_L\
+  \ = \\frac{Q/L}{U} = \\frac{\\lambda}{U} = \\frac{2\\pi\\varepsilon_0}{\\ln(R_b / R_a)}$。\n"
+solution: "### 1. 无限长均匀带电直细线对数电势推导\n- **参考点选取与路径积分**：\n  已知线电荷密度为 $\\lambda$ 的长直导线电场沿垂直于导线的径向向外，大小为：\n  $$E(r) = \\frac{\\\
+  lambda}{2\\pi\\varepsilon_0 r}$$\n  选取垂直距离为 $r_0$ 处的点 $P_0$ 作为零电势点（$V(r_0) = 0$）。\n  从任意点 $r$ 沿径向直线移动到参考点 $r_0$：\n  $$V(r)\
+  \ = \\int_r^{r_0} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\int_r^{r_0} E(r')\\,\\mathrm{d}r' = \\int_r^{r_0}\
+  \ \\frac{\\lambda}{2\\pi\\varepsilon_0 r'}\\,\\mathrm{d}r'$$\n  计算积分：\n  $$V(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0}\
+  \ [\\ln r']_r^{r_0} = \\frac{\\lambda}{2\\pi\\varepsilon_0}(\\ln r_0 - \\ln r) = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\\
+  ln\\left(\\frac{r_0}{r}\\right)$$\n  当 $r < r_0$ 时，$V(r) > 0$；当 $r > r_0$ 时，$V(r) < 0$。\n\n### 2. 均匀带电实心圆柱体电势分布推导（选柱面 $r=R$\
+  \ 为参考点）\n- **柱外电势（$r > R$）**：\n  由于选定柱面 $V(R) = 0$，从柱外场点 $r$ 积分至参考柱面 $R$：\n  $$V_{\\text{外}}(r) = \\int_r^R E_{\\text{外}}(r')\\\
+  ,\\mathrm{d}r' = \\int_r^R \\frac{\\rho R^2}{2\\varepsilon_0 r'}\\,\\mathrm{d}r' = \\frac{\\rho R^2}{2\\varepsilon_0}[\\\
+  ln r']_r^R = \\frac{\\rho R^2}{2\\varepsilon_0}(\\ln R - \\ln r) = -\\frac{\\rho R^2}{2\\varepsilon_0}\\ln\\left(\\frac{r}{R}\\\
+  right)$$\n- **柱内电势（$r \\le R$）**：\n  从柱内场点 $r$ 积分至柱面 $R$：\n  $$V_{\\text{内}}(r) = \\int_r^R E_{\\text{内}}(r')\\,\\mathrm{d}r'\
+  \ + V(R) = \\int_r^R \\frac{\\rho r'}{2\\varepsilon_0}\\,\\mathrm{d}r' + 0 = \\frac{\\rho}{2\\varepsilon_0} \\left[ \\frac{r'^2}{2}\
+  \ \\right]_r^R = \\frac{\\rho}{4\\varepsilon_0}(R^2 - r^2)$$\n  柱内电势在轴心处最高：$V(0) = \\frac{\\rho R^2}{4\\varepsilon_0}$，向外按倒抛物线下降至柱面的零电势。\n\
+  - **边界连续性与平滑性验证**：\n  - 连续性：当 $r \\to R$ 时，$V_{\\text{内}}(R) = 0 = V_{\\text{外}}(R)$，函数值连续；\n  - 一阶导数连续性：\n    $$\\left.\\\
+  frac{\\mathrm{d}V_{\\text{内}}}{\\mathrm{d}r}\\right|_{r=R} = -\\frac{2\\rho R}{4\\varepsilon_0} = -\\frac{\\rho R}{2\\varepsilon_0}$$\n\
+  \    $$\\left.\\frac{\\mathrm{d}V_{\\text{外}}}{\\mathrm{d}r}\\right|_{r=R} = -\\frac{\\rho R^2}{2\\varepsilon_0} \\cdot\
+  \ \\frac{1}{R} = -\\frac{\\rho R}{2\\varepsilon_0}$$\n    内外一阶导数严格相等，电场强度在界面处连续过渡。\n\n### 3. 同轴圆柱形电容器电势差与单位长度电容推导\n- **极板间场强分布**：\n\
+  \  设内柱面带电量为 $+\\lambda$，外柱面带电量为 $-\\lambda$。由高斯定理，在两极板之间的间隙（$R_a < r < R_b$），高斯圆柱面仅包围内柱面的电荷 $+\\lambda$：\n  $$E(r) \\cdot\
+  \ 2\\pi r h = \\frac{\\lambda h}{\\varepsilon_0} \\implies E(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}$$\n- **电势差路径积分**：\n\
+  \  计算内极板相对外极板的电势差 $U = V_a - V_b$：\n  $$U = \\int_{R_a}^{R_b} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{r} = \\int_{R_a}^{R_b}\
+  \ \\frac{\\lambda}{2\\pi\\varepsilon_0 r}\\,\\mathrm{d}r = \\frac{\\lambda}{2\\pi\\varepsilon_0} \\left[ \\ln r \\right]_{R_a}^{R_b}\
+  \ = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\left(\\frac{R_b}{R_a}\\right)$$\n- **单位长度电容求解**：\n  取长为 $L$ 的电容器截段，极板带电量大小为\
+  \ $Q = \\lambda L$。\n  总电容为 $C = \\frac{Q}{U} = \\frac{\\lambda L}{U}$。\n  则单位长度的电容量 $C_L$ 为：\n  $$C_L = \\frac{C}{L} =\
+  \ \\frac{\\lambda}{U} = \\frac{\\lambda}{\\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\left(\\frac{R_b}{R_a}\\right)} = \\\
+  frac{2\\pi\\varepsilon_0}{\\ln\\left(\\frac{R_b}{R_a}\\right)}$$\n  该公式清晰表明，同轴电缆或电容器的电容仅取决于内外半径的几何比值 $\\frac{R_b}{R_a}$\
+  \ 与真空介电常数 $\\varepsilon_0$。\n"
+feedback:
+  correct: 对数积分严密，柱面参考点分段推导与边界验证准确，同轴电容物理图像清晰。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:885c5f90f93d3a70c65ecd44910c84f5a55954fc731ba730ca2eab72a7c1c3df
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:885c5f90f93d3a70c65ecd44910c84f5a55954fc731ba730ca2eab72a7c1c3df
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:885c5f90f93d3a70c65ecd44910c84f5a55954fc731ba730ca2eab72a7c1c3df

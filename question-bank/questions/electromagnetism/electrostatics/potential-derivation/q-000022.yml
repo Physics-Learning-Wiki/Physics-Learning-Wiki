@@ -1,0 +1,77 @@
+schema_version: 3
+id: q-000022
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.cylindrical-symmetry
+- electrostatics.equipotential
+type: single_choice
+choice_order: shuffle
+stem: 半径为 $R$ 的无限长金属薄圆柱面上均匀带电，单位轴向长度电荷量为 $\lambda$（$\lambda > 0$）。若选对称轴线（$r = 0$ 处）为电势参考零点（$V(0) = 0$）。关于空间各区域离轴线距离为 $r$ 处的电势分布，下列表达式正确的是：
+choices:
+- id: A
+  content: 圆柱面内部（$r \le R$）$V_{\text{内}}(r) = 0$；圆柱面外部（$r \ge R$）$V_{\text{外}}(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{R}{r}$
+- id: B
+  content: 圆柱面内部（$r \le R$）$V_{\text{内}}(r) = \dfrac{\lambda r}{2\pi\varepsilon_0 R}$；圆柱面外部（$r \ge R$）$V_{\text{外}}(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\ln\dfrac{r}{R}$
+- id: C
+  content: 圆柱面内部（$r \le R$）$V_{\text{内}}(r) = 0$；圆柱面外部（$r \ge R$）$V_{\text{外}}(r) = \dfrac{\lambda}{2\pi\varepsilon_0}\left(\dfrac{1}{R}
+    - \dfrac{1}{r}\right)$
+- id: D
+  content: 全空间各区域电势均处处相等且恒等于零
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。柱内场强为零因而处处等电势（等于轴线零点电势即为 0）；柱表面电势 $V(R)=0$，柱外场强为 $\frac{\lambda}{2\pi\varepsilon_0 r'}$，由定义积分 $V_{\text{外}}(r) =
+      V(R) + \int_r^R E_{\text{外}}\,\mathrm{d}r' = \frac{\lambda}{2\pi\varepsilon_0}\ln\frac{R}{r}$。
+    B: 错误。柱内场强严格为零，不可能存在线性变化的电势梯度；且外部对数真数颠倒。
+    C: 错误。柱外场强按 $1/r'$ 衰减，积分给出的是对数函数 $\ln(R/r)$，而非反比例分式差。
+    D: 错误。柱外存在非零发散电场，沿场线移动试验电荷电场力做功，外部电势必定随距离连续改变，不可能全空间恒为零。
+  correct: 回答正确！准确理解了无限长带电圆柱面内部等势体特征与选定轴线为零点时的外部对数电势分布。
+  incorrect: 回答错误。请注意柱内场强为零推知内部等势且等于轴线电势 $0$，再由柱表面连续向外进行场强路径积分。
+hints:
+- 由高斯定理可知：圆柱面内部（$r < R$）场强为零，圆柱面外部（$r > R$）场强为 $E = \frac{\lambda}{2\pi\varepsilon_0 r}$。
+- 从轴线 $r = 0$ 处 $V(0) = 0$ 出发，逐步向外积分求各区域电势。
+solution: "**严格推导与解析**：\n根据高斯定理，无限长均匀带电圆柱面的场强分布为： $$E(r) = \\begin{cases} 0 & (r < R) \\\\[6pt] \\dfrac{\\lambda}{2\\pi\\\
+  varepsilon_0 r} & (r > R) \\end{cases}$$\n1. **圆柱面内部（$r \\le R$）**：\n   已知题目选取轴线 $r = 0$ 处为电势参考零点，即 $V(0) = 0$。\n   在圆柱面内部任意点\
+  \ $r$：\n   $$V_{\\text{内}}(r) - V(0) = -\\int_0^r E_{\\text{内}}\\,\\mathrm{d}r' = -\\int_0^r 0\\,\\mathrm{d}r' = 0$$\n \
+  \  因此圆柱面内部各点电势处处相等，构成一个零电势等势体：\n   $$V_{\\text{内}}(r) = V(0) = 0$$\n   圆柱面表面（代入 $r = R$）处电势亦为：\n   $$V(R) = 0$$\n\n2. **圆柱面外部（$r\
+  \ \\ge R$）**：\n   对于柱外任意一点 $r$（$r > R$），利用电势差定义，沿径向从 $r$ 积分至表面参考点 $R$：\n   $$V_{\\text{外}}(r) - V(R) = \\int_r^R E_{\\text{外}}\\\
+  ,\\mathrm{d}r'$$\n   因为 $V(R) = 0$，代入柱外场强：\n   $$V_{\\text{外}}(r) = 0 + \\int_r^R \\frac{\\lambda}{2\\pi\\varepsilon_0 r'}\\\
+  ,\\mathrm{d}r' = \\frac{\\lambda}{2\\pi\\varepsilon_0} [\\ln r']_r^R = \\frac{\\lambda}{2\\pi\\varepsilon_0} (\\ln R - \\\
+  ln r) = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\frac{R}{r}$$\n   （注：因为 $r > R$，$\\frac{R}{r} < 1$，对数值为负，当 $\\lambda >\
+  \ 0$ 时外部电势为负值，准确反映了沿着向外发散的电场线电势单调降低）。\n\n因此 A 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:f2202607abe92986da5c3dc32a34abf53e2fa6175a025075370f3fb78396cec8

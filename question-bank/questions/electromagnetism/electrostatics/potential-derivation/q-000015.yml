@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000015
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.equipotential
+- electrostatics.potential-gradient
+type: multiple_choice
+choice_order: shuffle
+stem: 在静电场中，电场线与等势面（Equipotential Surface）在几何拓扑与微分分析中紧密对应。下列关于等势面几何性质及其与电场强度的微分关系，哪些说法是正确的？
+choices:
+- id: A
+  content: 静电场中的电场线在空间各点恒处处与该点所在的等势面保持正交（垂直）
+- id: B
+  content: 电场强度矢量 $\boldsymbol{E}$ 恒指向空间电势降落最快的方向，其微分数学关系满足 $\boldsymbol{E} = -\nabla U$
+- id: C
+  content: 当规定相邻两等势面之间的电势差恒定相等（$\Delta U = \text{常数}$）时，等势面越密集的地方场强越大，等势面越稀疏的地方场强越小
+- id: D
+  content: 沿同一等势面移动任意电荷时，电场力所做的功恒严格等于零
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。在等势面上移动电荷 $\mathrm{d}U = -\boldsymbol{E} \cdot \mathrm{d}\boldsymbol{l} = 0$，对面上任意切线位移均成立，因此场强矢量处处与等势面法线共线（正交于等势面）。
+    B: 正确。梯度 $\nabla U$ 指向标量势上升最快的方向，根据电势差与功的关系，负梯度 $-\nabla U$ 即为电势降落最快的矢量方向。
+    C: 正确。由 $\Delta U \approx E \Delta l$ 可得 $E \approx \frac{|\Delta U|}{\Delta l}$，势差固定时间距 $\Delta l$ 越小（面越密）则场强 $E$ 越大。
+    D: 正确。由静电功与始末势能差的关系 $W = q(U_A - U_B)$，由于在同一等势面上 $U_A = U_B$，故静电功恒等于零。
+  correct: 回答正确！全面掌握了等势面的正交性、疏密判据及电势梯度的核心物理微分机制。
+  incorrect: 回答错误。请从静电力做功公式 $\mathrm{d}W = -q\,\mathrm{d}U$ 和全微分梯度定义分析电场矢量与等值面的正交几何关系。
+hints:
+- 考虑在等势面上移动微元位移 $\mathrm{d}\boldsymbol{l}$ 时，电势全微分 $\mathrm{d}U = (\nabla U) \cdot \mathrm{d}\boldsymbol{l}$ 的取值。
+- 回忆等差等势面垂直间距 $\Delta l$ 与局部平均场强 $E$ 的反比关系。
+solution: "**严格推导与几何解析**：\n1. **正交性严格证明**：\n   设试验电荷在同一等势面上沿切向微元位移 $\\mathrm{d}\\boldsymbol{l}$ 移动。因为等势面上各点电势恒定，始末电势差为零：\n\
+  \   $$\\mathrm{d}U = -\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$$\n   此式对等势面上任意方向的切向位移微元 $\\mathrm{d}\\boldsymbol{l}$\
+  \ 均严格成立，由此必有电场矢量垂直于等势面切平面：\n   $$\\boldsymbol{E} \\perp \\text{等势面}$$\n   即电场线处处正交于等势面，A 正确。\n\n2. **做功为零**：\n   由静电力做功定理：\n\
+  \   $$W_{AB} = q [U(A) - U(B)]$$\n   若 $A$ 与 $B$ 两点位于同一等势面上，则 $U(A) = U(B)$，静电力所做的功严格为零。D 正确。\n\n3. **梯度的数学本质与方向性**：\n \
+  \  标量场 $U$ 的梯度 $\\nabla U$ 是一个矢量，其方向指向空间标量值增长最快的方向，模长等于该最大变化率。\n   由于电势沿电场线方向单调递降，故电场矢量 $\\boldsymbol{E}$ 恒指向电势降落最快（空间方向导数最负）的方向，微分关系式表达为：\n\
+  \   $$\\boldsymbol{E} = -\\nabla U = -\\operatorname{grad} U$$\n   在直角坐标系下分量为 $E_x = -\\frac{\\partial U}{\\partial x},\
+  \ E_y = -\\frac{\\partial U}{\\partial y}, E_z = -\\frac{\\partial U}{\\partial z}$。B 正确。\n\n4. **等势面的疏密反映场强大小**：\n   若约定相邻两等势面的电势差为常数\
+  \ $\\Delta U$。若两面之间的垂直法向间距为 $\\Delta l$，则沿法向的方向导数绝对值为平均场强：\n   $$E \\approx \\frac{|\\Delta U|}{\\Delta l}$$\n   - 间距 $\\\
+  Delta l$ 小（等势面密集） $\\implies$ 场强 $E$ 大；\n   - 间距 $\\Delta l$ 大（等势面稀疏） $\\implies$ 场强 $E$ 小。\n   故 C 正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:801d6224a412fd5252b2aecc9dfcd7dac8ca1d84ccf7b5b1c161f60bdb3ae668
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:801d6224a412fd5252b2aecc9dfcd7dac8ca1d84ccf7b5b1c161f60bdb3ae668
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:801d6224a412fd5252b2aecc9dfcd7dac8ca1d84ccf7b5b1c161f60bdb3ae668

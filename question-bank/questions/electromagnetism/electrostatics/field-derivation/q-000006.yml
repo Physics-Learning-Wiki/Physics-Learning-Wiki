@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000006
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.cylindrical-symmetry
+type: multiple_choice
+choice_order: shuffle
+stem: 空间有两无限长同轴薄金属薄圆柱面，半径分别为 $R_1$ 与 $R_2$（$R_1 < R_2$），沿轴线方向单位长度所带电荷分别为 $\lambda_1$ 与 $\lambda_2$。以对称轴为基准，$r$ 为距轴线的垂直径向距离。关于该体系在空间各区域的电场分布，下列哪些结论是正确的？
+choices:
+- id: A
+  content: 内圆筒内部区域（$r < R_1$）的电场强度处处为零
+- id: B
+  content: 两圆筒之间的环形夹层区域（$R_1 < r < R_2$）内，电场强度仅由内筒电量决定，大小为 $E = \dfrac{\lambda_1}{2\pi\varepsilon_0 r}$
+- id: C
+  content: 外圆筒外部区域（$r > R_2$）内，电场强度由内外两筒电量代数和决定，大小为 $E = \dfrac{\lambda_1 + \lambda_2}{2\pi\varepsilon_0 r}$
+- id: D
+  content: 当两圆筒带等量异号电荷（$\lambda_1 = -\lambda_2$）时，外圆筒外部（$r > R_2$）电场严格为零，静电场被完全约束在两圆筒夹层之间
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。在 $r < R_1$ 区域作同轴柱形高斯面，面内包围净电荷为 0，根据轴对称高斯定理内场处处为 0。
+    B: 正确。在 $R_1 < r < R_2$ 取高斯面，仅包围内筒电荷 $\lambda_1 l$，外筒电荷位于面外对通量无贡献，故场强为 $\frac{\lambda_1}{2\pi\varepsilon_0 r}$。
+    C: 正确。在 $r > R_2$ 取高斯面，面内同时包围内外两圆筒，总包围电量为 $(\lambda_1 + \lambda_2)l$，高斯定理给出 $E = \frac{\lambda_1 + \lambda_2}{2\pi\varepsilon_0
+      r}$。
+    D: 正确。当 $\lambda_1 = -\lambda_2$ 时，外区包围净电量归零导致外场为零；内区场强亦为零，电场完全禁锢在夹层内，这是同轴电缆静电屏蔽的理论基石。
+  correct: 回答正确！全面掌握了共轴圆筒分段电场推导与同轴电缆等量异号静电约束原理。
+  incorrect: 回答错误。请按同轴柱形高斯面分别对 $r < R_1$、$R_1 < r < R_2$ 及 $r > R_2$ 三个区域分析高斯面包围的净电量。
+hints:
+- 取高为 $l$ 的同轴圆柱高斯面，计算不同半径 $r$ 下面内包含的总电荷 $q_{\text{in}}$。
+- 特别分析 $\lambda_1 + \lambda_2 = 0$ 时的外场与同轴电缆屏蔽效应。
+solution: "**分段推导与解析**：\n取与带电圆筒共轴、半径为 $r$、长为 $l$ 的圆柱形高斯面。根据轴对称性，上下底面通量恒为零，侧面通量为 $E(2\\pi r l)$。根据高斯定理： $$2\\pi r l E = \\\
+  frac{q_{\\text{in}}}{\\varepsilon_0} \\implies E = \\frac{q_{\\text{in}}}{2\\pi\\varepsilon_0 r l}$$\n1. **内筒内部（$r < R_1$）**：\n\
+  \   高斯面内不包含任何电荷，$q_{\\text{in}} = 0$，故：\n   $$E = 0$$\n   A 选项正确。\n\n2. **两圆筒夹层（$R_1 < r < R_2$）**：\n   高斯面内仅包围内圆筒长为 $l$\
+  \ 的电荷，$q_{\\text{in}} = \\lambda_1 l$：\n   $$2\\pi r l E = \\frac{\\lambda_1 l}{\\varepsilon_0} \\implies E = \\frac{\\\
+  lambda_1}{2\\pi\\varepsilon_0 r}$$\n   B 选项正确。\n\n3. **外圆筒外部（$r > R_2$）**：\n   高斯面同时包围内外两圆筒全部电荷，$q_{\\text{in}} = (\\lambda_1\
+  \ + \\lambda_2)l$：\n   $$2\\pi r l E = \\frac{(\\lambda_1 + \\lambda_2)l}{\\varepsilon_0} \\implies E = \\frac{\\lambda_1\
+  \ + \\lambda_2}{2\\pi\\varepsilon_0 r}$$\n   C 选项正确。\n\n4. **等量异号特例（$\\lambda_1 = -\\lambda_2$）**：\n   当 $\\lambda_1 + \\\
+  lambda_2 = 0$ 时，代入外区场强公式，得到 $E_{\\text{外}} = 0$。同时结合 $E_{\\text{内}} = 0$，体系的所有电场线均发自内筒表面并终止于外筒内表面，电场被严格局限在 $[R_1, R_2]$\
+  \ 夹层内。这是圆柱形电容器和同轴传输线抗干扰与防泄漏的物理原理，D 选项正确。\n\n综上，A、B、C、D 全部正确。"
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:9a4168a86cc22fe9fbd2b7a89e637fab750c9572ff333a7c9b2c578cabde6341

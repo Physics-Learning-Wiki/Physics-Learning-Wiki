@@ -1,0 +1,114 @@
+schema_version: 3
+id: q-000030
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conservative-field
+- electrostatics.electric-potential
+- electrostatics.potential-reference
+type: free_response
+choice_order: fixed
+stem: "**静电场保守性、环路定理与电势参考点规范严格推导**\n\n电势概念的建立依赖于静电场的保守力场性质。请完成以下三项理论推导与讨论：\n\n1. **静电场环路定理与全微分推导**：\n   - 从单个点电荷 $q$ 的库仑电场\
+  \ $\\boldsymbol{E}(\\boldsymbol{r}) = \\frac{q}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$ 出发，计算沿空间任意路径移动检验电荷的线元点积\
+  \ $\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l}$；\n   - 证明 $\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = -\\\
+  mathrm{d}V$，即线元点积可写为全微分形式；\n   - 由此证明沿任意闭合路径 $L$ 的线积分恒为零：$\\oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$（静电场的环路定理）；\n\
+  \   - 利用场强叠加原理将上述结论推广至任意分布的静电荷系，并阐明为什么这保证了空间两点间电势差 $U_{AB} = \\int_A^B \\boldsymbol{E}\\cdot\\mathrm{d}\\boldsymbol{l}$\
+  \ 的路径无关性与单值性。\n\n2. **无穷远电势参考点 $V(\\infty) = 0$ 的收敛性条件**：\n   - 假设所有源电荷均局域在以原点为中心、有限半径为 $R$ 的区域内，系统总电量为 $Q$；\n   - 证明在远距离\
+  \ $r \\gg R$ 处，电势积分 $\\int_r^\\infty E(r')\\,\\mathrm{d}r'$ 必然收敛，从而说明有限局域电荷系总可以合理规范 $V(\\infty) = 0$。\n\n3. **非局域带电体系参考点反常与规范选取**：\n\
+  \   - 对于无限长均匀带电直线（线密度 $\\lambda$）或无限大均匀带电平面（面密度 $\\sigma$），若强行将积分上限设定至无穷远 $\\int_r^\\infty E\\,\\mathrm{d}r$，分析积分发散的数学原因与物理根源；\n\
+  \   - 说明在这类非局域模型中应如何规范选取电势参考点，并写出无限长带电直线相对有限参考距离 $r_0$ 的电势表达式。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括库仑场全微分证明、叠加推广、无穷远收敛性条件以及无限延展体系参考点规范）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（未能通过全微分或路径无关性严格证明环路定理，或参考点发散原因说明错误）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了全微分证明与环路定理推导，但无穷远收敛积分或有限参考点选取分析不充分）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（点积全微分推导严谨，叠加原理推广自然，局域收敛与非局域发散的物理机制阐述透彻规范）
+    points: 1
+reference_answer: "1. 环路定理与全微分：\n   - 线元点积：$\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\frac{q}{4\\pi\\varepsilon_0\
+  \ r^2}\\hat{\\boldsymbol{r}}\\cdot\\mathrm{d}\\boldsymbol{l} = \\frac{q}{4\\pi\\varepsilon_0 r^2}\\mathrm{d}r$（因 $\\hat{\\\
+  boldsymbol{r}}\\cdot\\mathrm{d}\\boldsymbol{l} = \\mathrm{d}r$ 为位移在径向的投影）。\n   - 全微分：$\\frac{q}{4\\pi\\varepsilon_0 r^2}\\\
+  mathrm{d}r = -\\mathrm{d}\\left(\\frac{q}{4\\pi\\varepsilon_0 r}\\right)$。因此沿任意路径积分仅取决于端点径向距离：\n     $$\\int_A^B \\boldsymbol{E}\
+  \ \\cdot \\mathrm{d}\\boldsymbol{l} = \\frac{q}{4\\pi\\varepsilon_0 r_A} - \\frac{q}{4\\pi\\varepsilon_0 r_B}$$\n   - 闭合环路：闭合时始末点重合（$r_A\
+  \ = r_B$），故 $\\oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = 0$。\n   - 叠加推广：由 $\\boldsymbol{E} = \\sum \\boldsymbol{E}_i$，$\\\
+  oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\sum \\oint_L \\boldsymbol{E}_i \\cdot \\mathrm{d}\\boldsymbol{l}\
+  \ = 0$ 恒成立。路径无关性使得任意参考点 $P_0$ 确定的电势 $V(P) = \\int_P^{P_0}\\boldsymbol{E}\\cdot\\mathrm{d}\\boldsymbol{l}$ 为空间单值标量场。\n\n\
+  2. 无穷远零点收敛条件：\n   - 有限局域电荷系在远距离处（$r \\gg R$），由多极展开最低阶近似，场强按点电荷平方反比律衰减：$E \\sim \\frac{Q}{4\\pi\\varepsilon_0 r^2}$。\n  \
+  \ - 广义积分：$\\int_r^\\infty \\frac{1}{r'^2}\\mathrm{d}r' = \\left[-\\frac{1}{r'}\\right]_r^\\infty = \\frac{1}{r}$ 严格收敛。故有限体系总能合法取\
+  \ $V(\\infty) = 0$。\n\n3. 无限延展体系参考点：\n   - 无限长直线场强 $E = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}$（衰减为 $1/r$），积分 $\\int_r^\\\
+  infty \\frac{1}{r'}\\mathrm{d}r' = [\\ln r']_r^\\infty = \\infty$ 对数发散；无限大平板场强为恒量，积分更发散。\n   - 发散根源在于假设了无穷远处仍有电荷分布（物理上的无限大是近似），导致从有限距离到无穷远的功为无限大。\n\
+  \   - 规范选取：必须在有限垂直距离 $r_0$ 处选参考点，电势表示为 $V(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\left(\\frac{r_0}{r}\\right)$。\n"
+solution: "### 1. 静电场环路定理与保守性全微分证明\n- **库仑电场的线元投影**：\n  在以点电荷 $q$ 为原点的极坐标/球坐标系中，电场为 $\\boldsymbol{E} = \\frac{q}{4\\pi\\varepsilon_0\
+  \ r^2}\\hat{\\boldsymbol{r}}$。\n  空间任意位移微元为 $\\mathrm{d}\\boldsymbol{l} = \\mathrm{d}r \\hat{\\boldsymbol{r}} + r\\,\\mathrm{d}\\\
+  theta\\hat{\\boldsymbol{\\theta}} + r\\sin\\theta\\,\\mathrm{d}\\varphi\\hat{\\boldsymbol{\\varphi}}$。\n  计算标量点积：\n  $$\\\
+  boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\left(\\frac{q}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}\\right)\
+  \ \\cdot \\left(\\mathrm{d}r \\hat{\\boldsymbol{r}} + \\cdots\\right) = \\frac{q}{4\\pi\\varepsilon_0 r^2}\\mathrm{d}r$$\n\
+  \  注意到：\n  $$\\frac{\\mathrm{d}r}{r^2} = -\\mathrm{d}\\left(\\frac{1}{r}\\right) \\implies \\boldsymbol{E} \\cdot \\mathrm{d}\\\
+  boldsymbol{l} = -\\mathrm{d}\\left(\\frac{q}{4\\pi\\varepsilon_0 r}\\right)$$\n- **有限路径积分与闭合环路积分**：\n  连接空间任意两点 $A$ 与 $B$\
+  \ 的路径积分完全由起点与终点的径向坐标确定：\n  $$\\int_A^B \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = -\\int_{r_A}^{r_B} \\mathrm{d}\\\
+  left(\\frac{q}{4\\pi\\varepsilon_0 r}\\right) = \\frac{q}{4\\pi\\varepsilon_0 r_A} - \\frac{q}{4\\pi\\varepsilon_0 r_B}$$\n\
+  \  该积分与连接 $A$ 与 $B$ 的空间曲线形状完全无关。\n  对于任意闭合环路 $L$，积分的起点与终点重合（$r_A = r_B$）：\n  $$\\oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\\
+  boldsymbol{l} = 0$$\n  此即静电场的**环路定理**。微分形式即为 $\\nabla \\times \\boldsymbol{E} = 0$。\n- **线性叠加推广与单值电势**：\n  对于任意离散或连续分布的静电荷系统，由线性叠加原理\
+  \ $\\boldsymbol{E} = \\sum_i \\boldsymbol{E}_i$：\n  $$\\oint_L \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\sum_i\
+  \ \\oint_L \\boldsymbol{E}_i \\cdot \\mathrm{d}\\boldsymbol{l} = 0$$\n  环路积分为零是力场保守性的充要条件。选定任意参考点 $P_0$ 并令其电势为零后，空间任意点 $P$\
+  \ 的电势：\n  $$V(P) = \\int_P^{P_0} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l}$$\n  其数值与从 $P$ 到 $P_0$ 所选取的积分路径无关，从而在全空间确立了一个单值连续的标量电势场。\n\
+  \n### 2. 无穷远电势参考点 $V(\\infty) = 0$ 的收敛性条件\n- **远场行为**：\n  设所有带电体均包含在半径为 $R$ 的有限球形区域内，总电量为 $Q$。\n  当观察点位于 $r \\gg R$ 时，由多极展开定理，单极矩项为主导项，偶极矩及更高阶多极矩衰减更快：\n\
+  \  $$E(r) = \\frac{Q}{4\\pi\\varepsilon_0 r^2} + \\mathcal{O}\\left(\\frac{1}{r^3}\\right)$$\n- **反常积分的绝对收敛**：\n  计算以无穷远处为参考点的电势积分：\n\
+  \  $$V(r) = \\int_r^\\infty E(r')\\,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0} \\int_r^\\infty \\frac{1}{r'^2}\\,\\\
+  mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0} \\left[ -\\frac{1}{r'} \\right]_r^\\infty = \\frac{Q}{4\\pi\\varepsilon_0 r}$$\n\
+  \  因为被积函数以 $1/r'^2$ 的速度衰减，当上限趋于无穷大时，积分具有有限极限（极限值为 0）。因此，只要电荷在空间有限区域内局域分布，选取无穷远处为电势零点（$V(\\infty) = 0$）在数学上是绝对收敛的，在物理上也是最为自然的规范选取。\n\
+  \n### 3. 非局域带电体系参考点反常与规范选取\n- **发散原因**：\n  对于无限长均匀带电细线，其场强为 $E(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}$（按 $1/r$ 缓慢衰减）。\n\
+  \  若强行计算到无穷远处的线积分：\n  $$\\int_r^\\infty \\frac{\\lambda}{2\\pi\\varepsilon_0 r'}\\,\\mathrm{d}r' = \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0} [\\ln r']_r^\\infty = \\infty$$\n  对于无限大均匀带电平面，场强甚至为常数 $E = \\frac{\\sigma}{2\\varepsilon_0}$，积分发散更严重。\n\
+  \  数学根源在于被积函数衰减速率不满足广义积分收敛条件（要求衰减快于 $1/r$）。物理根源在于，无限长直线或无限大平面模型假设了在无穷远处仍存在分布电荷（电荷总量为无穷大），因而将检验电荷移动到无穷远所需克服的静电力做功发散。\n- **规范参考点选取**：\n\
+  \  对于此类非局域带电体系，不能取无穷远为参考点，而必须选取空间有限距离处的一点 $P_0$（距轴线为 $r_0$）作为电势零点（$V(r_0) = 0$）。\n  此时任意点 $r$ 的电势定义为：\n  $$V(r) = \\int_r^{r_0}\
+  \ \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{l} = \\int_r^{r_0} \\frac{\\lambda}{2\\pi\\varepsilon_0 r'}\\,\\mathrm{d}r'\
+  \ = \\frac{\\lambda}{2\\pi\\varepsilon_0}\\ln\\left(\\frac{r_0}{r}\\right)$$\n  由于两点间的电势差 $V(r_1) - V(r_2) = \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0}\\ln\\left(\\frac{r_2}{r_1}\\right)$ 与参考常数 $r_0$ 无关，物理可观测的电场强度和电势差依然保持严格的规范不变性。\n"
+feedback:
+  correct: 点积全微分推导严谨，叠加原理推广自然，局域收敛与非局域发散的物理机制阐述透彻规范。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:443f55389d20651b18a6842bc7eaeb566f5040ecb0f27941d469d1e296449319
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:443f55389d20651b18a6842bc7eaeb566f5040ecb0f27941d469d1e296449319
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:443f55389d20651b18a6842bc7eaeb566f5040ecb0f27941d469d1e296449319

@@ -8,3 +8,10 @@ mechanics.kinematics:
 mechanics.dynamics:
   title: 动力学
   parent: mechanics
+
+electromagnetism:
+  title: 电磁学
+
+electromagnetism.electrostatics:
+  title: 静电学
+  parent: electromagnetism

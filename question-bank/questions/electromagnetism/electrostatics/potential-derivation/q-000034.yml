@@ -1,0 +1,133 @@
+schema_version: 3
+id: q-000034
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.potential-superposition
+- electrostatics.potential-gradient
+- electrostatics.equipotential
+type: free_response
+choice_order: fixed
+stem: "**电偶极子远场电势多极展开、负梯度场强与等势面推导**\n\n电偶极子是静电学多极展开的一级基元模型。请完成以下三项理论推导：\n\n1. **远场多极展开电势严格推导**：\n   - 设一对等量异号点电荷 $+q$ 和 $-q$\
+  \ 放置在 $z$ 轴上，坐标分别为 $(0, 0, +d/2)$ 与 $(0, 0, -d/2)$，电偶极矩矢量定义为 $\\boldsymbol{p} = q\\boldsymbol{d} = qd\\hat{\\boldsymbol{z}}$；\n\
+  \   - 场点 $P$ 的球坐标为 $(r, \\theta, \\varphi)$。写出场点到两电荷的精确几何距离 $r_+$ 与 $r_-$；\n   - 在远场条件（$r \\gg d$）下，利用一阶泰勒展开 $\\frac{1}{r_\\\
+  pm} \\approx \\frac{1}{r}\\left(1 \\pm \\frac{d}{2r}\\cos\\theta\\right)$，推导证明远场电势为：\n     $$V(r, \\theta) = \\frac{p \\\
+  cos\\theta}{4\\pi\\varepsilon_0 r^2} = \\frac{\\boldsymbol{p} \\cdot \\hat{\\boldsymbol{r}}}{4\\pi\\varepsilon_0 r^2}$$\n\
+  \n2. **球坐标系负梯度求电场强度**：\n   - 利用球坐标系梯度算符公式 $\\nabla V = \\frac{\\partial V}{\\partial r}\\hat{\\boldsymbol{r}} + \\frac{1}{r}\\\
+  frac{\\partial V}{\\partial \\theta}\\hat{\\boldsymbol{\\theta}} + \\frac{1}{r\\sin\\theta}\\frac{\\partial V}{\\partial\
+  \ \\varphi}\\hat{\\boldsymbol{\\varphi}}$，通过 $\\boldsymbol{E} = -\\nabla V$ 分别求出径向分量 $E_r$ 与极角分量 $E_\\theta$；\n   - 写出远场电场强度总大小\
+  \ $E(r, \\theta)$ 的解析式；\n   - 分别讨论在偶极子轴线上（$\\theta = 0$ 或 $\\pi$）与正交赤道面上（$\\theta = \\pi/2$）的电场强度大小与方向特征。\n\n3. **等势面与电力线正交性几何解析**：\n\
+  \   - 写出远场等势面 $V(r, \\theta) = C$（常数）在平面极坐标系下的函数方程 $r(\\theta)$；\n   - 说明赤道面 $\\theta = \\frac{\\pi}{2}$ 是怎样的等势面；\n   -\
+  \ 利用微分方程 $\\frac{\\mathrm{d}r}{r\\,\\mathrm{d}\\theta} = \\frac{E_r}{E_\\theta}$ 积分推导电力线方程 $r(\\theta) = C_0 \\sin^2\\theta$，并证明电力线与等势线在空间处处正交。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括多极一阶展开电势、球坐标负梯度求分量与总场强、等势面与电力线方程及正交证明）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（泰勒展开近似错误，未能得出正确的偶极子电势或球坐标电场分量）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了远场电势与负梯度场强推导，但等势面方程或电力线正交证明有遗漏）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（远场展开严密，球坐标负梯度推导规范，轴线/赤道面特例与电力线正交几何分析透彻）
+    points: 1
+reference_answer: "1. 远场电势推导：\n   - 几何距离：$r_\\pm = \\sqrt{r^2 \\mp rd\\cos\\theta + d^2/4} \\approx r\\left(1 \\mp \\frac{d}{r}\\\
+  cos\\theta\\right)^{1/2}$。\n   - 一阶展开：$\\frac{1}{r_\\pm} \\approx \\frac{1}{r}\\left(1 \\mp \\frac{d}{r}\\cos\\theta\\right)^{-1/2}\
+  \ \\approx \\frac{1}{r}\\left(1 \\pm \\frac{d}{2r}\\cos\\theta\\right)$。\n   - 叠加电势：$V = \\frac{q}{4\\pi\\varepsilon_0}\\\
+  left(\\frac{1}{r_+} - \\frac{1}{r_-}\\right) = \\frac{q}{4\\pi\\varepsilon_0 r}\\left(\\frac{d}{r}\\cos\\theta\\right) =\
+  \ \\frac{p \\cos\\theta}{4\\pi\\varepsilon_0 r^2} = \\frac{\\boldsymbol{p}\\cdot\\hat{\\boldsymbol{r}}}{4\\pi\\varepsilon_0\
+  \ r^2}$。\n\n2. 球坐标负梯度电场：\n   - $E_r = -\\frac{\\partial V}{\\partial r} = -\\frac{p\\cos\\theta}{4\\pi\\varepsilon_0}\\\
+  left(-\\frac{2}{r^3}\\right) = \\frac{2p\\cos\\theta}{4\\pi\\varepsilon_0 r^3}$。\n   - $E_\\theta = -\\frac{1}{r}\\frac{\\\
+  partial V}{\\partial \\theta} = -\\frac{1}{r}\\frac{p(-\\sin\\theta)}{4\\pi\\varepsilon_0 r^2} = \\frac{p\\sin\\theta}{4\\\
+  pi\\varepsilon_0 r^3}$。\n   - $E_\\varphi = 0$。\n   - 总模长：$E = \\sqrt{E_r^2 + E_\\theta^2} = \\frac{p}{4\\pi\\varepsilon_0\
+  \ r^3}\\sqrt{4\\cos^2\\theta + \\sin^2\\theta} = \\frac{p}{4\\pi\\varepsilon_0 r^3}\\sqrt{1 + 3\\cos^2\\theta}$。\n   - 特征点：轴线上（$\\\
+  theta = 0$）$E = \\frac{2p}{4\\pi\\varepsilon_0 r^3}$，沿 $\\hat{\\boldsymbol{z}}$ 方向；赤道面上（$\\theta = \\pi/2$）$E = \\frac{p}{4\\\
+  pi\\varepsilon_0 r^3}$，反平行于 $\\hat{\\boldsymbol{z}}$。\n\n3. 等势面与电力线正交性：\n   - 等势面：$V = C \\implies r^2 = \\frac{p}{4\\pi\\\
+  varepsilon_0 C}\\cos\\theta$。\n   - 赤道面：$\\theta = \\pi/2$ 时 $V = 0$，表示整个 $xy$ 平面是一个电势为零的平面对称等势面。\n   - 电力线：切线满足 $\\frac{\\\
+  mathrm{d}r}{r\\,\\mathrm{d}\\theta} = \\frac{E_r}{E_\\theta} = \\frac{2\\cos\\theta}{\\sin\\theta} = 2\\cot\\theta$。积分得\
+  \ $\\ln r = 2\\ln(\\sin\\theta) + \\text{const} \\implies r = C_0 \\sin^2\\theta$。\n   - 正交性：等势线斜率 $k_1 = \\left.\\frac{\\\
+  mathrm{d}r}{\\mathrm{d}\\theta}\\right|_V = -\\frac{r\\sin\\theta}{2\\cos\\theta}$；电力线斜率 $k_2 = \\left.\\frac{\\mathrm{d}r}{\\\
+  mathrm{d}\\theta}\\right|_E = 2r\\cot\\theta = \\frac{2r\\cos\\theta}{\\sin\\theta}$。两切向量点乘为零，二者处处严格正交。\n"
+solution: "### 1. 远场多极展开电势的严格推导\n- **精确几何距离**：\n  在球坐标系下，原点选在电偶极子中心，$z$ 轴沿 $\\boldsymbol{p}$ 方向。\n  正电荷 $+q$ 位于 $(0,0,+d/2)$，负电荷\
+  \ $-q$ 位于 $(0,0,-d/2)$。\n  由余弦定理，场点 $P(r, \\theta)$ 到两电荷的距离分别为：\n  $$r_+ = \\sqrt{r^2 + \\left(\\frac{d}{2}\\right)^2 -\
+  \ 2 r \\frac{d}{2} \\cos\\theta} = r \\left[ 1 - \\frac{d}{r}\\cos\\theta + \\frac{d^2}{4r^2} \\right]^{1/2}$$\n  $$r_-\
+  \ = \\sqrt{r^2 + \\left(\\frac{d}{2}\\right)^2 - 2 r \\frac{d}{2} \\cos(\\pi - \\theta)} = r \\left[ 1 + \\frac{d}{r}\\\
+  cos\\theta + \\frac{d^2}{4r^2} \\right]^{1/2}$$\n- **远场一阶泰勒展开（$d/r \\ll 1$）**：\n  忽略 $\\mathcal{O}(d^2/r^2)$ 高阶微量，利用二项式展开\
+  \ $(1 + x)^{-1/2} = 1 - \\frac{1}{2}x + \\cdots$：\n  $$\\frac{1}{r_+} \\approx \\frac{1}{r} \\left( 1 - \\frac{d}{r}\\cos\\\
+  theta \\right)^{-1/2} \\approx \\frac{1}{r}\\left( 1 + \\frac{d}{2r}\\cos\\theta \\right)$$\n  $$\\frac{1}{r_-} \\approx\
+  \ \\frac{1}{r} \\left( 1 + \\frac{d}{r}\\cos\\theta \\right)^{-1/2} \\approx \\frac{1}{r}\\left( 1 - \\frac{d}{2r}\\cos\\\
+  theta \\right)$$\n- **标量叠加求电势**：\n  根据电势叠加原理：\n  $$V(r, \\theta) = \\frac{q}{4\\pi\\varepsilon_0}\\left( \\frac{1}{r_+}\
+  \ - \\frac{1}{r_-} \\right) = \\frac{q}{4\\pi\\varepsilon_0 r}\\left[ \\left(1 + \\frac{d}{2r}\\cos\\theta\\right) - \\\
+  left(1 - \\frac{d}{2r}\\cos\\theta\\right) \\right]$$\n  $$V(r, \\theta) = \\frac{q d \\cos\\theta}{4\\pi\\varepsilon_0\
+  \ r^2} = \\frac{p \\cos\\theta}{4\\pi\\varepsilon_0 r^2}$$\n  利用电偶极矩矢量 $\\boldsymbol{p} = p\\hat{\\boldsymbol{z}}$ 与径向单位矢量\
+  \ $\\hat{\\boldsymbol{r}}$ 的点积 $\\boldsymbol{p} \\cdot \\hat{\\boldsymbol{r}} = p \\cos\\theta$，可紧凑表示为无坐标依赖的形式：\n  $$V(\\\
+  boldsymbol{r}) = \\frac{\\boldsymbol{p} \\cdot \\hat{\\boldsymbol{r}}}{4\\pi\\varepsilon_0 r^2}$$\n\n### 2. 球坐标系负梯度求电场强度\n\
+  - **球坐标梯度分量分解**：\n  球坐标系下负梯度算符为 $\\boldsymbol{E} = -\\nabla V = -\\left(\\frac{\\partial V}{\\partial r}\\hat{\\boldsymbol{r}}\
+  \ + \\frac{1}{r}\\frac{\\partial V}{\\partial \\theta}\\hat{\\boldsymbol{\\theta}} + \\frac{1}{r\\sin\\theta}\\frac{\\partial\
+  \ V}{\\partial \\varphi}\\hat{\\boldsymbol{\\varphi}}\\right)$。\n  分别求偏导：\n  - 径向分量：\n    $$E_r = -\\frac{\\partial V}{\\\
+  partial r} = -\\frac{\\partial}{\\partial r}\\left(\\frac{p\\cos\\theta}{4\\pi\\varepsilon_0 r^2}\\right) = \\frac{2p\\\
+  cos\\theta}{4\\pi\\varepsilon_0 r^3}$$\n  - 极角分量：\n    $$E_\\theta = -\\frac{1}{r}\\frac{\\partial V}{\\partial \\theta}\
+  \ = -\\frac{1}{r}\\left(-\\frac{p\\sin\\theta}{4\\pi\\varepsilon_0 r^2}\\right) = \\frac{p\\sin\\theta}{4\\pi\\varepsilon_0\
+  \ r^3}$$\n  - 方位角分量：\n    由于电势与方位角 $\\varphi$ 无关（轴对称），$E_\\varphi = 0$。\n- **电场强度总大小**：\n  $$E(r, \\theta) = \\sqrt{E_r^2\
+  \ + E_\\theta^2} = \\frac{p}{4\\pi\\varepsilon_0 r^3}\\sqrt{(2\\cos\\theta)^2 + \\sin^2\\theta} = \\frac{p}{4\\pi\\varepsilon_0\
+  \ r^3}\\sqrt{1 + 3\\cos^2\\theta}$$\n  这表明偶极子远场电场强度按距离的三次方 $1/r^3$ 快速衰减。\n- **特殊方向特征分析**：\n  - **轴线上（$\\theta = 0$ 或 $\\\
+  pi$）**：\n    $\\cos\\theta = \\pm 1, \\sin\\theta = 0 \\implies E_\\theta = 0$。\n    场强大小为 $E_{\\text{轴}} = \\frac{2p}{4\\\
+  pi\\varepsilon_0 r^3}$，方向与 $\\boldsymbol{p}$ 平行同向。\n  - **赤道面（$\\theta = \\pi/2$）**：\n    $\\cos\\theta = 0, \\sin\\theta\
+  \ = 1 \\implies E_r = 0$。\n    场强大小为 $E_{\\text{赤}} = \\frac{p}{4\\pi\\varepsilon_0 r^3}$，方向沿 $\\hat{\\boldsymbol{\\theta}}$（即反平行于\
+  \ $\\boldsymbol{p}$ 方向）。\n    在相同距离下，轴线场强恰好是赤道面场强的 2 倍。\n\n### 3. 等势面与电力线正交性几何解析\n- **等势面方程**：\n  令电势为常数 $V = C$：\n  $$\\\
+  frac{p\\cos\\theta}{4\\pi\\varepsilon_0 r^2} = C \\implies r^2 = \\frac{p}{4\\pi\\varepsilon_0 C}\\cos\\theta = C_V \\cos\\\
+  theta$$\n  在 $z > 0$（$\\cos\\theta > 0$）区域表现为位于上半空间并与原点相切的花生状曲面；在 $z < 0$ 区域具有对称的负电势曲面。\n- **赤道面性质**：\n  在 $\\theta = \\\
+  frac{\\pi}{2}$ 处，$\\cos\\theta = 0 \\implies V = 0$。整平面对称面 $z=0$ 为一个电势恒为零的无穷大平面等势面。\n- **电力线微分方程求解**：\n  电力线的切线方向与电场矢量方向一致，在极坐标系中有：\n\
+  \  $$\\frac{\\mathrm{d}r}{r\\,\\mathrm{d}\\theta} = \\frac{E_r}{E_\\theta} = \\frac{\\frac{2p\\cos\\theta}{4\\pi\\varepsilon_0\
+  \ r^3}}{\\frac{p\\sin\\theta}{4\\pi\\varepsilon_0 r^3}} = \\frac{2\\cos\\theta}{\\sin\\theta} = 2\\cot\\theta$$\n  分离变量积分：\n\
+  \  $$\\int \\frac{\\mathrm{d}r}{r} = 2 \\int \\frac{\\cos\\theta}{\\sin\\theta}\\mathrm{d}\\theta \\implies \\ln r = 2\\\
+  ln(\\sin\\theta) + \\ln C_0 = \\ln(C_0 \\sin^2\\theta)$$\n  求得电力线方程为：\n  $$r(\\theta) = C_0 \\sin^2\\theta$$\n- **正交性严格验证**：\n\
+  \  - 等势线 $r = \\sqrt{C_V \\cos\\theta}$，其径向变化率（对 $\\theta$ 求导）为：\n    $$\\frac{\\mathrm{d}r}{\\mathrm{d}\\theta} = \\frac{1}{2\\\
+  sqrt{C_V \\cos\\theta}} (-C_V \\sin\\theta) = -\\frac{r \\sin\\theta}{2\\cos\\theta} = -\\frac{r}{2}\\tan\\theta$$\n  -\
+  \ 电力线 $r = C_0 \\sin^2\\theta$，其径向变化率为：\n    $$\\frac{\\mathrm{d}r}{\\mathrm{d}\\theta} = 2 C_0 \\sin\\theta \\cos\\theta\
+  \ = 2 \\left(\\frac{r}{\\sin^2\\theta}\\right)\\sin\\theta\\cos\\theta = 2r \\cot\\theta$$\n  由于极坐标系下两曲线正交的条件为 $\\left(\\\
+  frac{1}{r}\\frac{\\mathrm{d}r}{\\mathrm{d}\\theta}\\right)_1 \\cdot \\left(\\frac{1}{r}\\frac{\\mathrm{d}r}{\\mathrm{d}\\\
+  theta}\\right)_2 = -1$：\n  $$\\left(-\\frac{1}{2}\\tan\\theta\\right) \\cdot (2\\cot\\theta) = -1$$\n  乘积恒等于 $-1$。这严格从解析几何上证明了电偶极子的电力线族与等势面族在空间各点严格正交。\n"
+feedback:
+  correct: 远场展开严密，球坐标负梯度推导规范，轴线/赤道面特例与电力线正交几何分析透彻。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b1598c5e778a13d1fffa756451414ac3952694d71b615bea4a7b2a3da8a2bd7a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b1598c5e778a13d1fffa756451414ac3952694d71b615bea4a7b2a3da8a2bd7a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b1598c5e778a13d1fffa756451414ac3952694d71b615bea4a7b2a3da8a2bd7a

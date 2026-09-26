@@ -1,0 +1,97 @@
+schema_version: 3
+id: q-000025
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.spherical-symmetry
+type: free_response
+choice_order: fixed
+stem: "**球对称体系静电场综合推导**\n\n请写出以下两种典型球对称带电体系的电场推导过程：\n\n1. **均匀带电球体**：半径为 $R$ 的实心球体，均匀带电总量为 $Q$（体电荷密度 $\\rho = \\frac{3Q}{4\\\
+  pi R^3}$）。\n   - 分析对称性，选取恰当的高斯面；\n   - 分别推导球内（$r \\le R$）和球外（$r > R$）的电场强度矢量 $\\boldsymbol{E}(r)$；\n   - 讨论在交界面 $r = R$\
+  \ 处电场的连续性。\n\n2. **径向非均匀带电球体**：半径为 $R$ 的绝缘球体，体电荷密度随径向距离线性增加，即 $\\rho(r) = A r$（$0 \\le r \\le R$，$A$ 为正常数），球外无电荷。\n   -\
+  \ 计算球体所带的总电荷量 $Q_{\\text{总}}$（用 $A$ 和 $R$ 表示）；\n   - 利用高斯定理分别推导球内（$r \\le R$）与球外（$r > R$）的电场强度矢量 $\\boldsymbol{E}(r)$；\n\
+  \   - 检验交界面 $r = R$ 处电场是否满足界面条件。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括对称性分析、高斯面选取、积分推导与界面连续性讨论）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（高斯定理应用错误，未能得出正确的球内或球外场强表达式）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了均匀球推导或非均匀积分，但分段表达式或界面连续性讨论有遗漏）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（均匀球与非均匀球推导完整严密，总电量积分正确，界面讨论清晰）
+    points: 1
+reference_answer: "1. 均匀带电球体：\n   - 球内（$r \\le R$）：$\\boldsymbol{E}(r) = \\frac{\\rho r}{3\\varepsilon_0}\\hat{\\boldsymbol{r}}\
+  \ = \\frac{Q r}{4\\pi\\varepsilon_0 R^3}\\hat{\\boldsymbol{r}}$（与 $r$ 成正比线性增长）。\n   - 球外（$r > R$）：$\\boldsymbol{E}(r) =\
+  \ \\frac{Q}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$（与点电荷场强完全一致，按 $1/r^2$ 衰减）。\n   - 界面讨论：在 $r = R$ 处，$E_{\\text{内}}(R)\
+  \ = E_{\\text{外}}(R) = \\frac{Q}{4\\pi\\varepsilon_0 R^2}$，由于体电荷分布无宏观面电荷堆积（$\\sigma = 0$），电场强度在交界面处连续。\n\n2. 非均匀带电球体 $\\\
+  rho(r) = Ar$：\n   - 总电荷量：$Q_{\\text{总}} = \\int_0^R \\rho(r') 4\\pi r'^2 \\mathrm{d}r' = 4\\pi A \\int_0^R r'^3 \\mathrm{d}r'\
+  \ = \\pi A R^4$。\n   - 球内（$r \\le R$）：高斯面内包围电量 $Q_{\\text{in}}(r) = \\pi A r^4$，由高斯定理 $4\\pi r^2 E = \\frac{\\pi A r^4}{\\\
+  varepsilon_0}$ 得 $\\boldsymbol{E}_{\\text{内}}(r) = \\frac{A r^2}{4\\varepsilon_0}\\hat{\\boldsymbol{r}}$。\n   - 球外（$r >\
+  \ R$）：面内包围全电量 $Q_{\\text{总}}$，得 $\\boldsymbol{E}_{\\text{外}}(r) = \\frac{A R^4}{4\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}\
+  \ = \\frac{Q_{\\text{总}}}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$。\n   - 界面检验：在 $r = R$ 处两式均给出 $E(R) = \\frac{A\
+  \ R^2}{4\\varepsilon_0}$，电场处处连续。\n"
+solution: "### 1. 均匀带电球体的电场推导\n- **对称性分析**：电荷分布具有完整的球对称性。因此，电场线只能沿径向向外（若 $Q>0$）辐射，电场强度矢量形式必为 $\\boldsymbol{E}(\\boldsymbol{r})\
+  \ = E(r)\\hat{\\boldsymbol{r}}$，且在同心球面上大小处处相等。\n- **选取高斯面**：以球心为中心，作半径为 $r$ 的同心球面高斯面 $S$。通过高斯面的电通量为：\n  $$\\Phi_E = \\oint_S\
+  \ \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E(r) \\cdot 4\\pi r^2$$\n- **球内场强（$r \\le R$）**：\n  高斯面内包含的净电量为：\n\
+  \  $$Q_{\\text{in}} = \\rho \\cdot \\frac{4}{3}\\pi r^3 = Q \\frac{r^3}{R^3}$$\n  由高斯定理 $E(r) \\cdot 4\\pi r^2 = \\frac{Q_{\\\
+  text{in}}}{\\varepsilon_0} = \\frac{\\rho \\cdot \\frac{4}{3}\\pi r^3}{\\varepsilon_0}$，得：\n  $$\\boldsymbol{E}(r) = \\\
+  frac{\\rho r}{3\\varepsilon_0}\\hat{\\boldsymbol{r}} = \\frac{Q r}{4\\pi\\varepsilon_0 R^3}\\hat{\\boldsymbol{r}}$$\n- **球外场强（$r\
+  \ > R$）**：\n  高斯面包含球体内全部电量 $Q_{\\text{in}} = Q$。由高斯定理：\n  $$E(r) \\cdot 4\\pi r^2 = \\frac{Q}{\\varepsilon_0} \\implies\
+  \ \\boldsymbol{E}(r) = \\frac{Q}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$$\n- **界面连续性**：\n  在 $r = R$ 处，代入两式均得 $E(R)\
+  \ = \\frac{Q}{4\\pi\\varepsilon_0 R^2}$。界面处无自由面电荷（$\\sigma = 0$），由电场跃变定理 $\\Delta E_n = \\sigma / \\varepsilon_0 = 0$，电场在界面处严格连续。\n\
+  \n### 2. 径向非均匀带电球体 $\\rho(r) = A r$ 的电场推导\n- **总电量计算**：\n  采用薄球壳体积元 $\\mathrm{d}V = 4\\pi r'^2 \\mathrm{d}r'$：\n  $$Q_{\\\
+  text{总}} = \\int_0^R \\rho(r') \\cdot 4\\pi r'^2 \\mathrm{d}r' = 4\\pi A \\int_0^R r'^3 \\mathrm{d}r' = 4\\pi A \\left[\\\
+  frac{r'^4}{4}\\right]_0^R = \\pi A R^4$$\n- **球内场强（$r \\le R$）**：\n  作半径为 $r$ 的球面高斯面，面内所含电量为：\n  $$Q_{\\text{in}}(r) = \\\
+  int_0^r Ar' \\cdot 4\\pi r'^2 \\mathrm{d}r' = \\pi A r^4$$\n  由高斯定理：\n  $$E(r) \\cdot 4\\pi r^2 = \\frac{\\pi A r^4}{\\\
+  varepsilon_0} \\implies \\boldsymbol{E}(r) = \\frac{A r^2}{4\\varepsilon_0}\\hat{\\boldsymbol{r}}$$\n  此时球内场强随径向距离呈二次方规律\
+  \ $E \\propto r^2$ 增长。\n- **球外场强（$r > R$）**：\n  高斯面涵盖全部电量 $Q_{\\text{总}} = \\pi A R^4$：\n  $$E(r) \\cdot 4\\pi r^2 = \\\
+  frac{\\pi A R^4}{\\varepsilon_0} \\implies \\boldsymbol{E}(r) = \\frac{A R^4}{4\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}\
+  \ = \\frac{Q_{\\text{总}}}{4\\pi\\varepsilon_0 r^2}\\hat{\\boldsymbol{r}}$$\n- **界面连续性验证**：\n  在 $r \\to R^-$ 时，$E = \\frac{A\
+  \ R^2}{4\\varepsilon_0}$；在 $r \\to R^+$ 时，$E = \\frac{A R^4}{4\\varepsilon_0 R^2} = \\frac{A R^2}{4\\varepsilon_0}$。内外场强在球表面平滑相接，连续性得到严格满足。\n"
+feedback:
+  correct: 推导逻辑严密，对称性分析、积分公式及内外边界连续性讨论清晰完整。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:21f7a6f8159c09b1e195f8b078e5ec3a72bc99eedf47e6867e4b208e81707b2e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:21f7a6f8159c09b1e195f8b078e5ec3a72bc99eedf47e6867e4b208e81707b2e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:21f7a6f8159c09b1e195f8b078e5ec3a72bc99eedf47e6867e4b208e81707b2e

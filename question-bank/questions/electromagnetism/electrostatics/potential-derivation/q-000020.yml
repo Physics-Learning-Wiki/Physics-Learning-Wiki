@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000020
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.spherical-symmetry
+- electrostatics.potential-superposition
+type: single_choice
+choice_order: shuffle
+stem: 总电荷量为 $Q$ 的正电荷均匀分布在半径为 $R$ 的实心球体内（体电荷密度 $\rho = \dfrac{Q}{\frac{4}{3}\pi R^3}$）。选无穷远处为电势参考零点。关于球体内部离球心距离为 $r$（$r \le
+  R$）处的电势分布 $V(r)$ 及其与表面电势 $V(R)$ 的定量关系，下列结论正确的是：
+choices:
+- id: A
+  content: 球内电势呈二次抛物线分布 $V(r) = \dfrac{Q(3R^2 - r^2)}{8\pi\varepsilon_0 R^3}$，球心处电势达到全局最高值，且恰好等于表面电势的 $1.5$ 倍（$V(0) = 1.5\,V(R)$）
+- id: B
+  content: 球内电势呈线性递减分布 $V(r) = \dfrac{Q(2R - r)}{8\pi\varepsilon_0 R^2}$，球心处电势等于表面电势的 $2$ 倍
+- id: C
+  content: 球内电势处处恒定为 $V(r) = \dfrac{Q}{4\pi\varepsilon_0 R}$，球内空间各点电势与表面电势严格相同
+- id: D
+  content: 球内电势为二次抛物线 $V(r) = \dfrac{Q r^2}{4\pi\varepsilon_0 R^3}$，在球心处电势降落为零
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。对内部线性电场 $\frac{Q r'}{4\pi\varepsilon_0 R^3}$ 进行路径积分 $\int_r^R E_{\text{内}}\,\mathrm{d}r'$ 积出 $r'^2$ 项，加上表面电势即得 $\frac{Q(3R^2-r^2)}{8\pi\varepsilon_0
+      R^3}$；代入 $r=0$ 得 $\frac{3Q}{8\pi\varepsilon_0 R} = 1.5 V(R)$。
+    B: 错误。场强是 $r$ 的一次线性函数，其定积分必然得到 $r^2$ 的二次抛物线函数，不可能保持线性。
+    C: 错误。球内电势恒定是“均匀带电薄球壳”的结论；实心球体内存在非零电场，沿径向向外电场做正功，电势必定单调下降。
+    D: 错误。由 $\boldsymbol{E} = -\nabla V$，若 $V \propto r^2$ 则求导后电场方向指向球心，与正电荷产生发散电场矛盾；且球心电势处于全场最高点而非零。
+  correct: 回答正确！准确掌握了均匀带电实心球体内部二次电势函数的路径积分推导及球心电势的 $1.5$ 倍特征。
+  incorrect: 回答错误。请注意由内部线性场强积分 $U(r) = \int_r^R E_{\text{内}}\,\mathrm{d}r' + V(R)$ 展开并通分化简。
+hints:
+- 利用电势的路径积分定义式：$U(r) = \int_r^R E_{\text{内}}\,\mathrm{d}r' + V(R)$。
+- 代入球内场强 $E_{\text{内}}(r') = \frac{Q r'}{4\pi\varepsilon_0 R^3}$ 和球表面电势 $V(R) = \frac{Q}{4\pi\varepsilon_0 R}$ 计算积分。
+solution: "**严格推导与解析**：\n1. **场强分布回顾**：\n   由球面对称高斯定理，均匀带电球体激发的场强分布为：\n   - 球外（$r' \\ge R$）：$E_{\\text{外}}(r') = \\frac{Q}{4\\\
+  pi\\varepsilon_0 r'^2}$\n   - 球内（$r' \\le R$）：$E_{\\text{内}}(r') = \\frac{Q r'}{4\\pi\\varepsilon_0 R^3} = \\frac{\\rho\
+  \ r'}{3\\varepsilon_0}$\n\n2. **分段路径积分计算球内电势**：\n   选无穷远处为电势参考零点（$V(\\infty) = 0$）。将试验电荷从球内距球心为 $r$ 处移至无穷远：\n   $$V(r) =\
+  \ \\int_r^R E_{\\text{内}}(r')\\,\\mathrm{d}r' + \\int_R^\\infty E_{\\text{外}}(r')\\,\\mathrm{d}r'$$\n   其中第二项为球壳表面电势：\n\
+  \   $$V(R) = \\int_R^\\infty \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0 R}$$\n\
+  \   第一项为球体内路径积分：\n   $$\\int_r^R \\frac{Q r'}{4\\pi\\varepsilon_0 R^3}\\,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0 R^3}\
+  \ \\left[ \\frac{r'^2}{2} \\right]_r^R = \\frac{Q(R^2 - r^2)}{8\\pi\\varepsilon_0 R^3}$$\n   两项合并通分：\n   $$V(r) = \\frac{Q(R^2\
+  \ - r^2)}{8\\pi\\varepsilon_0 R^3} + \\frac{2 Q R^2}{8\\pi\\varepsilon_0 R^3} = \\frac{Q(3R^2 - r^2)}{8\\pi\\varepsilon_0\
+  \ R^3}$$\n   用体电荷密度 $\\rho = \\frac{Q}{\\frac{4}{3}\\pi R^3}$ 表达即为 $V(r) = \\frac{\\rho(3R^2 - r^2)}{6\\varepsilon_0}$。\n\
+  \n3. **球心电势极值与倍数**：\n   在球心（$r = 0$）处代入：\n   $$V(0) = \\frac{3Q}{8\\pi\\varepsilon_0 R} = \\frac{3}{2} \\left( \\frac{Q}{4\\\
+  pi\\varepsilon_0 R} \\right) = 1.5\\,V(R)$$\n   电势在球心处平滑达到全空间最高峰值，沿径向呈开口朝下的抛物线平滑衰减，在 $r = R$ 处与外区反比例函数平滑拼接。\n\n故 A 选项正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:75da5ea805792dbfacbc3a7c6dfda3d84795177ea6946cb052beacb53a013cc4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:75da5ea805792dbfacbc3a7c6dfda3d84795177ea6946cb052beacb53a013cc4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:75da5ea805792dbfacbc3a7c6dfda3d84795177ea6946cb052beacb53a013cc4

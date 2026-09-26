@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000005
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.cylindrical-symmetry
+type: single_choice
+choice_order: shuffle
+stem: 真空中有一根无限长均匀带电细直线，电荷线密度为 $\lambda$（$\lambda > 0$）。若选取以该直线为对称轴、底面半径为 $r$、高为 $h$ 的圆柱形闭合曲面作为高斯面，下列关于高斯面通量分析及距直线距离为 $r$ 处的电场强度，推导正确的是：
+choices:
+- id: A
+  content: 圆柱上下两底面的电通量均为零，侧面电通量为 $E(2\pi r h)$，由此求得距直线 $r$ 处场强为 $E = \dfrac{\lambda}{2\pi\varepsilon_0 r}$
+- id: B
+  content: 圆柱上下两底面与侧面的电通量均不为零，全曲面总通量为 $E(2\pi r h + 2\pi r^2)$，求得场强为 $E = \dfrac{\lambda}{2\pi\varepsilon_0 (r+h)}$
+- id: C
+  content: 圆柱侧面由于与电场线平行而通量为零，仅上下两底面提供净通量，由此求得场强为 $E = \dfrac{\lambda}{4\pi\varepsilon_0 r^2}$
+- id: D
+  content: 距直线距离为 $r$ 处的场强大小与距离平方成反比，即 $E = \dfrac{\lambda h}{4\pi\varepsilon_0 r^2}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确。由轴对称性知电场呈圆柱径向辐射，与两端盖面法向垂直因而端面通量为零，侧柱面与场强共线且大小恒定，由此严格导出 $E = \frac{\lambda}{2\pi\varepsilon_0 r}$。
+    B: 错误。上下两底面的外法向沿轴线方向（$\pm \hat{\boldsymbol{z}}$），而电场沿柱径向（$\hat{\boldsymbol{e}}_r$），两底面上 $\boldsymbol{E} \cdot \mathrm{d}\boldsymbol{S}
+      = 0$，底面通量严格为零。
+    C: 错误。颠倒了通量贡献。侧面上电场垂直于柱面射出，通量最大；底面上电场与底面平行相切，通量为零。
+    D: 错误。无限长带电直线的电场随距离以 $1/r$ 的一次方关系衰减，而非点电荷式的 $1/r^2$ 平方反比衰减。
+  correct: 回答正确！准确理解了无限长带电直线的高斯柱面选取原则与通量正交对消机制。
+  incorrect: 回答错误。请注意带电直线的径向电场与圆柱高斯面两底面相互垂直，端面通量贡献严格为零。
+hints:
+- 由对称性分析电场矢量的方向：绕轴旋转与沿轴平移对称性决定场强必定沿径向 $\hat{\boldsymbol{e}}_r$ 垂直于直线发射。
+- 判断上底、下底和侧柱面外法向分别与场强方向的夹角。
+solution: "**严格推导与解析**：\n1. **空间对称性分析**：\n   - 绕带电直线的轴对称性（旋转对称性）；\n   - 沿带电直线方向的平移对称性；\n   - 包含直线的任意平面及垂直于直线的平面的镜像反射对称性。\n\
+  \   由此可知，电场矢量 $\\boldsymbol{E}$ 不具有轴向分量和切向分量，必定沿柱坐标径向垂直向外发射，即 $\\boldsymbol{E} = E(r)\\hat{\\boldsymbol{e}}_r$。\n\n2. **高斯圆柱面通量分解**：\n\
+  \   构造与直线共轴、半径为 $r$、高为 $h$ 的圆柱形高斯面 $S$。高斯面由上底面 $S_{\\text{上}}$、下底面 $S_{\\text{下}}$ 和侧柱面 $S_{\\text{侧}}$ 构成：\n   $$\\oint_S\
+  \ \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = \\int_{S_{\\text{上}}} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S}\
+  \ + \\int_{S_{\\text{下}}} \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} + \\int_{S_{\\text{侧}}} \\boldsymbol{E} \\cdot\
+  \ \\mathrm{d}\\boldsymbol{S}$$\n   - 在上、下两底面上，面元外法向分别沿 $+\\hat{\\boldsymbol{z}}$ 与 $-\\hat{\\boldsymbol{z}}$，而电场 $\\boldsymbol{E}\
+  \ \\parallel \\hat{\\boldsymbol{e}}_r$，夹角为 $\\frac{\\pi}{2}$：\n     $$\\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S}\
+  \ = 0 \\implies \\int_{S_{\\text{上}}} = \\int_{S_{\\text{下}}} = 0$$\n   - 在侧柱面上，外法向处处沿径向 $\\hat{\\boldsymbol{e}}_r$，$\\\
+  boldsymbol{E}$ 与 $\\mathrm{d}\\boldsymbol{S}$ 处处同向平行（$\\cos\\theta = 1$），且到轴线距离均为 $r$，大小相等：\n     $$\\int_{S_{\\text{侧}}}\
+  \ \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} = E(r) \\int_{S_{\\text{侧}}} \\mathrm{d}S = E(r)(2\\pi r h)$$\n\n3.\
+  \ **联立高斯定理**：\n   高斯圆柱体内截取的线电荷总量为 $q_{\\text{in}} = \\lambda h$。由高斯定理：\n   $$E(r)(2\\pi r h) = \\frac{\\lambda h}{\\varepsilon_0}$$\n\
+  \   高度 $h$ 两端自然消去，解得：\n   $$E(r) = \\frac{\\lambda}{2\\pi\\varepsilon_0 r}, \\quad \\boldsymbol{E} = \\frac{\\lambda}{2\\\
+  pi\\varepsilon_0 r}\\hat{\\boldsymbol{e}}_r$$\n\n故 A 选项正确。"
+difficulty: 1
+cognitive_level: understand
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:17ad89901aba78257e547306fbc12f8236f30380f2ad8745b65f555880cf937e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:17ad89901aba78257e547306fbc12f8236f30380f2ad8745b65f555880cf937e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:17ad89901aba78257e547306fbc12f8236f30380f2ad8745b65f555880cf937e

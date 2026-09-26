@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000012
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.gauss-law
+- electrostatics.earnshaw-theorem
+type: true_false
+choice_order: fixed
+stem: 根据静电学高斯定理与拉普拉斯方程，在真空无源区域（不存在其它带电体处），仅依靠静电力的作用，任何带电粒子都绝不可能在空间某点处于三维完全稳定的力学平衡状态。
+answer:
+  value: true
+feedback:
+  correct: 回答正确！这就是著名的恩绍定理（Earnshaw's Theorem）。静电平衡点在数学上只能是马鞍面上的鞍点，无法在所有三维方向上同时具有指向中心的恢复力。
+  incorrect: 回答错误。根据高斯定理，全向恢复力要求穿过微小高斯面的总电通量为负值，这与无源区域净电荷为零的高斯定理发生致命矛盾。
+hints:
+- 设想一个正电荷若要处于三维稳定平衡，当它离开平衡位置时，周围电场线必须朝哪个方向？
+- 围绕该平衡位置作一个微小的闭合高斯面，计算通过该高斯面的净电通量符号。
+solution: "**证明与解析**：\n此命题为真，即经典力学与电磁学中著名的**恩绍定理（Earnshaw's Theorem）**。\n1. **稳定平衡的物理条件（反证法）**：\n   假设一个带正电荷 $q > 0$ 的粒子在真空无源区域的某点\
+  \ $P$ 处于三维稳定平衡。\n   根据稳定平衡的定义，当粒子沿任意空间方向产生微小位移偏离 $P$ 点时，体系必须对它施加指向 $P$ 点的恢复力。\n   由于力 $\\boldsymbol{F} = q \\boldsymbol{E}$，这意味着在\
+  \ $P$ 点周围极其靠近它的所有各点上，电场矢量 $\\boldsymbol{E}$ 都必须**朝内会聚并严格指向中心点 $P$**。\n\n2. **高斯定理的矛盾**：\n   围绕 $P$ 点作一个充分小的闭合球面高斯面 $S$：\n\
+  \   - 由于球面上各点的电场矢量 $\\boldsymbol{E}$ 全部朝内指向球心，而外法线矢量 $\\hat{\\boldsymbol{n}}$ 朝外，两者夹角恒为钝角（$\\cos\\theta < 0$）；\n   - 因此穿入高斯面的电通量大于穿出的电通量，曲面总电通量必定严格小于零：\n\
+  \     $$\\Phi = \\oint_S \\boldsymbol{E} \\cdot \\mathrm{d}\\boldsymbol{S} < 0$$\n   - 根据高斯定理：\n     $$\\Phi = \\frac{Q_{\\\
+  text{in}}}{\\varepsilon_0} < 0 \\implies Q_{\\text{in}} < 0$$\n   这要求高斯面内部必须存在净负电荷！然而题目预设该区域为“真空无源区域”，高斯面内部实际净电量为零（$Q_{\\\
+  text{in}} = 0 \\implies \\Phi = 0$），发生不可调和的逻辑矛盾！\n\n3. **势场鞍点本质**：\n   在无源区域，静电势满足拉普拉斯方程 $\\nabla^2 V = 0$（调和函数）。调和函数的极值原理表明其势能函数不可能在内部存在真正的三维极小值，静电驻点只能是**鞍点（Saddle\
+  \ Point）**。\n   带电粒子若在一个或两个方向稳定（受恢复力），则在其余正交方向必然不稳定（受发散力逃逸）。这也是现代离子阱必须引入交变高频射频电场（保罗阱）或稳恒磁场（彭宁阱）才能约束带电粒子的根本原因。\n\n因此本命题正确。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:29c6f7a4f923f2d530243b10f852d47db37036a9d9085e499e8665bff85519d9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:29c6f7a4f923f2d530243b10f852d47db37036a9d9085e499e8665bff85519d9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:29c6f7a4f923f2d530243b10f852d47db37036a9d9085e499e8665bff85519d9

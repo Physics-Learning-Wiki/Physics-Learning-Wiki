@@ -1,0 +1,107 @@
+schema_version: 3
+id: q-000032
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.spherical-symmetry
+- electrostatics.electric-potential
+- electrostatics.potential-reference
+type: free_response
+choice_order: fixed
+stem: "**均匀实心球二次抛物线电势与同心双球壳接地感应电势推导**\n\n球对称系统的电势路径积分与接地导体边界条件是电磁学考查的重中之重。请完成以下两项推导：\n\n1. **均匀实心绝缘球体的电势分布推导**：\n   - 半径为\
+  \ $R$ 的绝缘实心球体，均匀带有总电量 $Q$（$Q > 0$），取无穷远处为电势参考点 $V(\\infty) = 0$；\n   - 已知高斯定理给出的场强分布为 $E_{\\text{外}}(r) = \\frac{Q}{4\\\
+  pi\\varepsilon_0 r^2}$（$r \\ge R$）和 $E_{\\text{内}}(r) = \\frac{Q r}{4\\pi\\varepsilon_0 R^3}$（$r < R$）；\n   - 通过分段路径积分，分别推导球外（$r\
+  \ \\ge R$）和球内（$r < R$）的电势解析式 $V(r)$；\n   - 证明球心处的电势与球面电势满足倍数关系 $V(0) = \\frac{3}{2}V(R)$；\n   - 分析 $V-r$ 曲线在球表面 $r = R$\
+  \ 处的几何特征（连续性与一阶导数的平滑性）。\n\n2. **同心双金属球壳接地感应电势推导**：\n   - 现有两个极薄的同心金属球面壳，内壳半径为 $R_1$，外壳半径为 $R_2$（$R_2 > R_1$）；\n   - 内球壳带净电荷\
+  \ $Q$（$Q > 0$），外球壳用细导线可靠接地（保持电势为零 $V(R_2) = 0$），且与无穷远处同电势；\n   - 利用高斯定理与静电屏蔽性质，求外球壳内表面和外表面各自所带的感应电荷量；\n   - 分别写出区域 I（$r\
+  \ < R_1$）、区域 II（$R_1 \\le r \\le R_2$）和区域 III（$r \\ge R_2$）内的电势分布函数 $V(r)$。\n"
+response:
+  format: plain_text
+  required: true
+  min_chars: 20
+  max_chars: 4000
+  rows: 10
+  placeholder: 请写下你的推导过程（包括分段路径积分推导、实心球抛物线电势、球心倍数关系证明、以及接地外壳电荷感应与三分段电势）……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握（路径积分计算错误，未能得出正确的球内二次抛物线电势或接地感应电荷）
+    points: 0
+  - id: partial
+    label: 部分掌握（完成了实心球电势推导，但接地双球壳感应电荷或分段电势有遗漏）
+    points: 0.5
+  - id: complete
+    label: 基本掌握（分段路径积分严谨，球心 3/2 倍关系与导数平滑性论证完整，双球壳接地感应分析准确）
+    points: 1
+reference_answer: "1. 均匀实心球电势：\n   - 球外（$r \\ge R$）：$V_{\\text{外}}(r) = \\int_r^\\infty E_{\\text{外}}\\,\\mathrm{d}r' = \\\
+  frac{Q}{4\\pi\\varepsilon_0 r}$。在球面处 $V(R) = \\frac{Q}{4\\pi\\varepsilon_0 R}$。\n   - 球内（$r < R$）：$V_{\\text{内}}(r) = \\\
+  int_r^R E_{\\text{内}}\\,\\mathrm{d}r' + V(R) = \\int_r^R \\frac{Q r'}{4\\pi\\varepsilon_0 R^3}\\mathrm{d}r' + \\frac{Q}{4\\\
+  pi\\varepsilon_0 R} = \\frac{Q(R^2 - r^2)}{8\\pi\\varepsilon_0 R^3} + \\frac{Q}{4\\pi\\varepsilon_0 R} = \\frac{Q}{8\\pi\\\
+  varepsilon_0 R}\\left(3 - \\frac{r^2}{R^2}\\right)$。\n   - 球心电势：代入 $r = 0$，得 $V(0) = \\frac{3Q}{8\\pi\\varepsilon_0 R} =\
+  \ \\frac{3}{2}V(R)$。\n   - 曲线特征：在 $r = R$ 处电势函数连续；且由于场强 $E = -\\mathrm{d}V/\\mathrm{d}r$ 连续，曲线在 $r=R$ 处具有连续一阶导数，平滑相切过渡。\n\
+  \n2. 同心双球壳接地系统：\n   - 感应电荷：\n     - 高斯面选在紧贴外球壳外侧，因接地且外部无场源，$E_{\\text{外}} = 0$，面内净电量为零，故外球壳总净电量为 $-Q$。\n     - 高斯面选在外球壳内侧壁与外侧壁之间，内表面必须感应出\
+  \ $Q_{\\text{外内}} = -Q$；外表面电荷 $Q_{\\text{外外}} = 0$（电荷完全来自大地感应入内表面）。\n   - 分段电势：\n     - 区域 III（$r \\ge R_2$）：$E = 0 \\implies\
+  \ V(r) = 0$。\n     - 区域 II（$R_1 \\le r \\le R_2$）：$V(r) = \\int_r^{R_2} \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\mathrm{d}r'\
+  \ + 0 = \\frac{Q}{4\\pi\\varepsilon_0}\\left(\\frac{1}{r} - \\frac{1}{R_2}\\right)$。\n     - 区域 I（$r < R_1$）：内球壳为等势体，各处电势等于内球壳表面电势：$V(r)\
+  \ = V(R_1) = \\frac{Q}{4\\pi\\varepsilon_0}\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)$。\n"
+solution: "### 1. 均匀实心绝缘球体的电势推导\n- **球外电势（$r \\ge R$）**：\n  从观察点 $r$ 沿径向路径积分至无穷远参考点：\n  $$V_{\\text{外}}(r) = \\int_r^\\infty\
+  \ E_{\\text{外}}(r')\\,\\mathrm{d}r' = \\int_r^\\infty \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\,\\mathrm{d}r' = \\left[ -\\\
+  frac{Q}{4\\pi\\varepsilon_0 r'} \\right]_r^\\infty = \\frac{Q}{4\\pi\\varepsilon_0 r}$$\n  在球体表面 $r = R$ 处：\n  $$V(R) =\
+  \ \\frac{Q}{4\\pi\\varepsilon_0 R}$$\n- **球内电势（$r < R$）**：\n  计算球内电势需要将积分路径分为两段（从场点 $r$ 到球面 $R$，再从球面 $R$ 到无穷远）：\n  $$V_{\\\
+  text{内}}(r) = \\int_r^R E_{\\text{内}}(r')\\,\\mathrm{d}r' + \\int_R^\\infty E_{\\text{外}}(r')\\,\\mathrm{d}r' = \\int_r^R\
+  \ \\frac{Q r'}{4\\pi\\varepsilon_0 R^3}\\,\\mathrm{d}r' + V(R)$$\n  计算第一段积分：\n  $$\\int_r^R \\frac{Q r'}{4\\pi\\varepsilon_0\
+  \ R^3}\\,\\mathrm{d}r' = \\frac{Q}{4\\pi\\varepsilon_0 R^3} \\left[ \\frac{r'^2}{2} \\right]_r^R = \\frac{Q(R^2 - r^2)}{8\\\
+  pi\\varepsilon_0 R^3}$$\n  相加得：\n  $$V_{\\text{内}}(r) = \\frac{Q(R^2 - r^2)}{8\\pi\\varepsilon_0 R^3} + \\frac{2Q R^2}{8\\\
+  pi\\varepsilon_0 R^3} = \\frac{Q}{8\\pi\\varepsilon_0 R}\\left(3 - \\frac{r^2}{R^2}\\right)$$\n  电势在球内呈现开口向下的二次抛物线分布。\n\
+  - **球心电势倍数关系**：\n  在球心处令 $r = 0$：\n  $$V(0) = \\frac{3Q}{8\\pi\\varepsilon_0 R} = \\frac{3}{2}\\left(\\frac{Q}{4\\pi\\varepsilon_0\
+  \ R}\\right) = \\frac{3}{2}V(R)$$\n  即球心电势为球面电势的 $1.5$ 倍。\n- **边界连续性与平滑性分析**：\n  - 连续性：当 $r \\to R^-$ 时，$V_{\\text{内}}(R)\
+  \ = \\frac{Q}{8\\pi\\varepsilon_0 R}(3 - 1) = \\frac{Q}{4\\pi\\varepsilon_0 R} = V_{\\text{外}}(R)$，函数值连续；\n  - 一阶导数平滑性：\n\
+  \    $$\\left.\\frac{\\mathrm{d}V_{\\text{内}}}{\\mathrm{d}r}\\right|_{r=R} = -\\frac{2Q R}{8\\pi\\varepsilon_0 R^3} = -\\\
+  frac{Q}{4\\pi\\varepsilon_0 R^2}$$\n    $$\\left.\\frac{\\mathrm{d}V_{\\text{外}}}{\\mathrm{d}r}\\right|_{r=R} = -\\frac{Q}{4\\\
+  pi\\varepsilon_0 R^2}$$\n    左右一阶导数严格相等（均对应电场 $E = -E_r = \\frac{Q}{4\\pi\\varepsilon_0 R^2}$）。这表明因实心球体内无面电荷层突变，电场连续，故电势曲线在交界处平滑可微。\n\
+  \n### 2. 同心双金属球壳接地感应电势推导\n- **感应电荷分析**：\n  - 外球壳接地意味着外壳的电势被强制钳制为地电势，即 $V(R_2) = 0$。\n  - 在外球壳外部（$r > R_2$），由于外球壳与无穷远处同处于零电势，空间无电势差，且外部无其他自由电荷，根据静电场的唯一性定理，区域\
+  \ III 处的电场恒为零：$\\boldsymbol{E}_{\\text{III}} = 0$。\n  - 取包含整个外壳的高斯面，通量为零，由高斯定理可知内部总净电荷必为零：\n    $$Q_{\\text{内}} + Q_{\\\
+  text{外壳总}} = 0 \\implies Q_{\\text{外壳总}} = -Q$$\n  - 又因为外壳为导体，壳体内电场为零。取位于外壳导电层内的高斯面，包围电量必须为零，因此外壳**内表面**感应出电荷量：\n    $$Q_{\\\
+  text{外内}} = -Q$$\n  - 相应地，外壳**外表面**的电荷量为：\n    $$Q_{\\text{外外}} = Q_{\\text{外壳总}} - Q_{\\text{外内}} = (-Q) - (-Q) = 0$$\n\
+  - **分区域电势推导**：\n  - **区域 III（$r \\ge R_2$）**：\n    由于外表面无净电荷且外壳接地，全区域电场为零：\n    $$V(r) = 0$$\n  - **区域 II（$R_1 \\le r \\\
+  le R_2$）**：\n    高斯面包围内球壳电荷 $+Q$，场强为 $E(r) = \\frac{Q}{4\\pi\\varepsilon_0 r^2}$。\n    以 $R_2$ 为电势参考点（$V(R_2) = 0$），路径积分得：\n\
+  \    $$V(r) = \\int_r^{R_2} \\frac{Q}{4\\pi\\varepsilon_0 r'^2}\\,\\mathrm{d}r' + V(R_2) = \\frac{Q}{4\\pi\\varepsilon_0}\\\
+  left(\\frac{1}{r} - \\frac{1}{R_2}\\right)$$\n  - **区域 I（$r < R_1$）**：\n    由于内球壳内无电荷，内球壳内部各处场强为零（$E=0$），腔内形成等势区，电势恒等于内球壳表面（$r\
+  \ = R_1$）的电势：\n    $$V(r) = V(R_1) = \\frac{Q}{4\\pi\\varepsilon_0}\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)$$\n"
+feedback:
+  correct: 分段路径积分严谨，球心 3/2 倍关系与导数平滑性论证完整，双球壳接地感应分析准确。
+  incorrect: 推导步骤存在遗漏或边界条件处理不够严格，请仔细对照参考解答中的分步要点进行自查。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 540
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ce08a28986774d89317833e481de65f5906f51c1442c9e4451a35d1eef6293b2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ce08a28986774d89317833e481de65f5906f51c1442c9e4451a35d1eef6293b2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ce08a28986774d89317833e481de65f5906f51c1442c9e4451a35d1eef6293b2

@@ -1,0 +1,91 @@
+schema_version: 3
+id: q-000017
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-potential
+- electrostatics.potential-superposition
+- electrostatics.potential-gradient
+type: multiple_choice
+choice_order: shuffle
+stem: 真空中有一半径为 $R$ 的均匀带电薄绝缘圆盘，其电荷面密度为 $\sigma$（$\sigma > 0$），总电荷量为 $Q = \sigma \pi R^2$。取圆盘中心为原点，垂直于盘面的对称轴为 $x$ 轴。选无穷远处为电势参考零点。关于轴线上距盘心为
+  $x$（$x > 0$）处的电势与场强分析，下列哪些结论是正确的？
+choices:
+- id: A
+  content: 轴线上各点的电势分布为 $V(x) = \dfrac{\sigma}{2\varepsilon_0}\left(\sqrt{x^2 + R^2} - x\right)$
+- id: B
+  content: 圆盘中心点（$x = 0$）处的电势有限且达到最大值，大小为 $V(0) = \dfrac{\sigma R}{2\varepsilon_0}$
+- id: C
+  content: 当处于极远距离（$x \gg R$）时，对根号进行一阶泰勒展开，电势渐近退化为点电荷电势 $V(x) \approx \dfrac{Q}{4\pi\varepsilon_0 x}$
+- id: D
+  content: 对轴线电势函数求负偏导 $E_x = -\dfrac{\mathrm{d}V}{\mathrm{d}x}$，可以直接求出轴线场强 $E_x = \dfrac{\sigma}{2\varepsilon_0}\left(1 -
+    \dfrac{x}{\sqrt{x^2 + R^2}}\right)$
+answer:
+  choices:
+  - A
+  - B
+  - C
+  - D
+feedback:
+  choices:
+    A: 正确。将圆盘划分为半径为 $r$、宽为 $\mathrm{d}r$ 的同心薄圆环微元积分：$\int_0^R \frac{\sigma \cdot 2\pi r\,\mathrm{d}r}{4\pi\varepsilon_0 \sqrt{x^2+r^2}}
+      = \frac{\sigma}{2\varepsilon_0}(\sqrt{x^2+R^2}-x)$。
+    B: 正确。代入 $x=0$，直接可得盘心电势为 $\frac{\sigma R}{2\varepsilon_0}$，为轴线上最高电势。
+    C: 正确。$\sqrt{x^2+R^2} = x(1 + \frac{R^2}{x^2})^{1/2} \approx x + \frac{R^2}{2x}$，代入得到 $\frac{\sigma R^2}{4\varepsilon_0
+      x} = \frac{Q}{4\pi\varepsilon_0 x}$。
+    D: 正确。利用电势梯度微商法 $-\frac{\mathrm{d}}{\mathrm{d}x}[\sqrt{x^2+R^2}-x] = 1 - \frac{x}{\sqrt{x^2+R^2}}$，精确导出库仑直接积分所得的场强公式。
+  correct: 回答正确！系统掌握了带电圆盘轴线电势同心环微元叠加推导、远场泰勒渐近分析及负微商求场强的完整知识链条。
+  incorrect: 回答错误。请将圆盘切分为细圆环微元并利用细圆环轴线电势结论积分，同时复习泰勒级数在远场极限制约下的物理展开。
+hints:
+- 将圆盘分割为半径 $r$ 到 $r + \mathrm{d}r$ 的薄同心细圆环，每个细圆环带电量为 $\mathrm{d}q = \sigma \cdot 2\pi r\,\mathrm{d}r$。
+- 利用已知的细圆环轴线电势公式对 $r$ 从 $0$ 到 $R$ 进行定积分。
+solution: "**严格推导与渐近解析**：\n1. **同心环微元标量积分**：\n   将半径为 $R$ 的均匀带电薄圆盘在极坐标下分割为一系列同心细圆环。取半径为 $r$、径向宽度为 $\\mathrm{d}r$ 的细环微元，其面积为\
+  \ $\\mathrm{d}S = 2\\pi r\\,\\mathrm{d}r$，所带电量为：\n   $$\\mathrm{d}q = \\sigma\\,\\mathrm{d}S = \\sigma \\cdot 2\\pi r\\\
+  ,\\mathrm{d}r$$\n   利用已求得的细圆环轴线电势公式，该薄细环在轴线上点 $x$（$x > 0$）产生的电势微元为：\n   $$\\mathrm{d}V(x) = \\frac{\\mathrm{d}q}{4\\pi\\\
+  varepsilon_0 \\sqrt{x^2 + r^2}} = \\frac{\\sigma \\cdot 2\\pi r\\,\\mathrm{d}r}{4\\pi\\varepsilon_0 \\sqrt{x^2 + r^2}} =\
+  \ \\frac{\\sigma}{2\\varepsilon_0}\\frac{r\\,\\mathrm{d}r}{\\sqrt{x^2 + r^2}}$$\n   对整个圆盘积分（半径 $r$ 从 $0$ 积分到 $R$）：\n   $$V(x)\
+  \ = \\int_0^R \\frac{\\sigma}{2\\varepsilon_0}\\frac{r\\,\\mathrm{d}r}{\\sqrt{x^2 + r^2}} = \\frac{\\sigma}{2\\varepsilon_0}\\\
+  left[ \\sqrt{x^2 + r^2} \\right]_0^R = \\frac{\\sigma}{2\\varepsilon_0}\\left( \\sqrt{x^2 + R^2} - x \\right)$$\n   故 A\
+  \ 正确。\n\n2. **盘心极限（$x = 0$）**：\n   代入 $x = 0$，得：\n   $$V(0) = \\frac{\\sigma R}{2\\varepsilon_0}$$\n   故 B 正确。\n\n3. **远轴线极限制约（$x\
+  \ \\gg R$）**：\n   利用二项式泰勒级数展开：\n   $$\\sqrt{x^2 + R^2} = x\\left(1 + \\frac{R^2}{x^2}\\right)^{1/2} = x\\left( 1 + \\frac{1}{2}\\\
+  frac{R^2}{x^2} + O\\left(\\frac{R^4}{x^4}\\right) \\right) \\approx x + \\frac{R^2}{2x}$$\n   代入电势公式中：\n   $$V(x) \\approx\
+  \ \\frac{\\sigma}{2\\varepsilon_0}\\left( x + \\frac{R^2}{2x} - x \\right) = \\frac{\\sigma R^2}{4\\varepsilon_0 x} = \\\
+  frac{\\sigma (\\pi R^2)}{4\\pi\\varepsilon_0 x} = \\frac{Q}{4\\pi\\varepsilon_0 x}$$\n   高阶微元精确对消，在远距离处圆盘完全退化为一个集中于原点的总电量为\
+  \ $Q$ 的经典点电荷电势，故 C 正确。\n\n4. **求导验证场强（电势梯度微商法）**：\n   利用静电场微分关系 $E_x = -\\frac{\\mathrm{d}V}{\\mathrm{d}x}$：\n   $$E_x =\
+  \ -\\frac{\\mathrm{d}}{\\mathrm{d}x}\\left[ \\frac{\\sigma}{2\\varepsilon_0}\\left(\\sqrt{x^2 + R^2} - x\\right) \\right]\
+  \ = -\\frac{\\sigma}{2\\varepsilon_0}\\left( \\frac{x}{\\sqrt{x^2 + R^2}} - 1 \\right) = \\frac{\\sigma}{2\\varepsilon_0}\\\
+  left( 1 - \\frac{x}{\\sqrt{x^2 + R^2}} \\right)$$\n   此结果与通过库仑矢量积分求得的圆盘轴线场强完全吻合，印证了标量势分析法与矢量场分析法的完全等价性。故 D 正确。\n\n综上，A、B、C、D\
+  \ 全部正确。"
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 原创题目
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:1bec4b71037c5a96f019e8118fbd34099abaa43f331399a8b59fb598d8bfc5b4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:1bec4b71037c5a96f019e8118fbd34099abaa43f331399a8b59fb598d8bfc5b4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:1bec4b71037c5a96f019e8118fbd34099abaa43f331399a8b59fb598d8bfc5b4
