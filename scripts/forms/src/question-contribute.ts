@@ -18,9 +18,16 @@ function updateQuestionTypeUi(form: HTMLFormElement): void {
   form.querySelectorAll<HTMLElement>(".q-submit-choice-only").forEach(element => {
     element.hidden = !isChoice;
   });
+  form.querySelectorAll<HTMLElement>(".q-submit-free-only").forEach(element => {
+    element.hidden = typeSelect.value !== "free_response";
+  });
 
   const answerInput = form.querySelector<HTMLInputElement>("#q-submit-answer");
   if (!answerInput) return;
+  answerInput.required = typeSelect.value !== "free_response";
+  answerInput.hidden = typeSelect.value === "free_response";
+  const answerLabel = form.querySelector<HTMLElement>("#q-submit-answer-label");
+  if (answerLabel) answerLabel.hidden = typeSelect.value === "free_response";
   if (typeSelect.value === "single_choice") {
     answerInput.placeholder = "填入正确选项大写字母，如 A";
   } else if (typeSelect.value === "multiple_choice") {
@@ -175,6 +182,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       const answerText = answerInput?.value.trim() ?? "";
       let answer: Record<string, unknown> | undefined;
       let choices: Array<{ id: string; content: string }> | undefined;
+      let questionPayloadGrading: { mode: "self_assessed"; rubric: Array<{ id: string; label: string; points: number }> } | undefined;
       try {
         if (type === "single_choice" || type === "multiple_choice") {
           const rawChoices = form.querySelector<HTMLTextAreaElement>("#q-submit-choices")?.value.trim() ?? "";
@@ -211,6 +219,18 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
             tolerance: { type: "absolute", value: 0.01 },
             unit: { required: false, accepted: [] }
           };
+        } else if (type === "free_response") {
+          const rawRubric = form.querySelector<HTMLTextAreaElement>("#q-submit-rubric")?.value.trim() ?? "";
+          const rubric = rawRubric.split(/\r?\n/).filter(Boolean).map(line => {
+            const [id, label, rawPoints] = line.split("|").map(value => value.trim());
+            const points = Number(rawPoints);
+            if (!id || !label || !Number.isFinite(points) || points < 0 || points > 1) {
+              throw new Error("自评评分标准格式应为「ID|名称|0 到 1 的分数」");
+            }
+            return { id, label, points };
+          });
+          if (rubric.length < 2 || rubric.length > 5) throw new Error("自评评分标准需要 2 到 5 个等级");
+          questionPayloadGrading = { mode: "self_assessed", rubric };
         }
       } catch (error) {
         setError(status, error instanceof Error ? error.message : "答案或选项格式错误");
@@ -271,6 +291,9 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         stem,
         choices,
         answer,
+        response: type === "free_response" ? { format: "plain_text", required: true, rows: 8, max_chars: 20000 } : undefined,
+        grading: type === "free_response" ? questionPayloadGrading : undefined,
+        reference_answer: type === "free_response" ? solution : undefined,
         feedback,
         solution,
         topics: selectedTopic ? [selectedTopic] : undefined,

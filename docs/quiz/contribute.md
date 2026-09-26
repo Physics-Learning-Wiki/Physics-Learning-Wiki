@@ -8,7 +8,7 @@ hide:
 
 欢迎向 Physics Learning Wiki 贡献自测题目！无论是典型例题、概念辨析、图像分析还是原创练习，入库后都将成为全站自测与针对性练习资源的一部分．
 
-> 提示：题型、题干、正确答案与完整解析为必填项．如果您不确定题目属于哪个物理主题或核心概念，相关分类选项均可 **留空**，后续将由物理编辑组在审核时整理入库．
+> 提示：题型、题干与完整解析为必填项．自由作答题不要求唯一正确答案，而是要求提供参考答案和自评评分标准．
 
 ***
 
@@ -20,6 +20,7 @@ hide:
       <option value="multiple_choice">多选题 (Multiple Choice)</option>
       <option value="true_false">判断题 (True / False)</option>
       <option value="numeric">数值计算题 (Numeric)</option>
+      <option value="free_response">自由作答题 (Free Response)</option>
     </select>
   </div>
 
@@ -34,8 +35,13 @@ hide:
   </div>
 
   <div class="submit-field">
-    <label for="q-submit-answer">正确答案 <span class="submit-required">*</span></label>
+    <label for="q-submit-answer" id="q-submit-answer-label">正确答案 <span class="submit-required">*</span></label>
     <input type="text" id="q-submit-answer" required placeholder="单选填 A；多选填 A, C；判断填 true/false；数值填 9.8">
+  </div>
+
+  <div class="submit-field q-submit-free-only" hidden>
+    <label for="q-submit-rubric">自评评分标准（每行「等级 ID|等级名称|分数」，分数范围 0 到 1） <span class="submit-required">*</span></label>
+    <textarea id="q-submit-rubric" rows="3" placeholder="incomplete|尚未掌握|0&#10;partial|部分掌握|0.5&#10;complete|基本掌握|1"></textarea>
   </div>
 
   <div class="submit-field">

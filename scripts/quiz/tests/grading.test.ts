@@ -131,3 +131,29 @@ test("minimal draft question without feedback or metadata grades safely", () => 
   const res = makeResult(draftQuestion, "A", false);
   assert.equal(res.correct, true);
 });
+
+test("self-assessed free responses require text and a rubric level", () => {
+  const question = {
+    ...base,
+    id: "q-free",
+    type: "free_response",
+    response: { format: "plain_text", required: true, minChars: 5, maxChars: 100 },
+    grading: {
+      mode: "self_assessed",
+      rubric: [
+        { id: "partial", label: "部分掌握", points: 0.5 },
+        { id: "complete", label: "基本掌握", points: 1 }
+      ]
+    },
+    referenceAnswerHtml: "<p>参考答案</p>"
+  } as unknown as Question;
+
+  assert.equal(isAnswerComplete(question, { text: "太短", levelId: "complete" }), false);
+  assert.equal(isAnswerComplete(question, { text: "完整答案内容", levelId: null }), false);
+  assert.equal(isAnswerComplete(question, { text: "完整答案内容", levelId: "partial" }), true);
+  const result = makeResult(question, { text: "完整答案内容", levelId: "partial" }, false);
+  assert.equal(result.evaluation?.mode, "self_assessed");
+  assert.equal(result.evaluation?.score, 0.5);
+  assert.equal(result.correct, false);
+  assert.equal(result.unanswered, false);
+});

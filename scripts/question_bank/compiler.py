@@ -54,9 +54,11 @@ def compile_question(
         "objectiveIds": list(source.get("objectives", [])),
         "relatedPages": list(source.get("related_pages", [])),
         "stemHtml": render_markdown(source.get("stem", "")),
-        "answer": source.get("answer", {}),
         "assets": asset_urls,
     }
+
+    if source.get("type") != "free_response":
+        question["answer"] = source.get("answer", {})
 
     if "choices" in source:
         question["choices"] = [
@@ -78,6 +80,13 @@ def compile_question(
 
     if "solution" in source and isinstance(source["solution"], str):
         question["solutionHtml"] = render_markdown(source["solution"])
+
+    if source.get("type") == "free_response":
+        question["response"] = dict(source.get("response", {}))
+        question["grading"] = dict(source.get("grading", {}))
+        reference_answer = source.get("reference_answer")
+        if isinstance(reference_answer, str):
+            question["referenceAnswerHtml"] = render_markdown(reference_answer)
 
     for field, target in [
         ("difficulty", "difficulty"),

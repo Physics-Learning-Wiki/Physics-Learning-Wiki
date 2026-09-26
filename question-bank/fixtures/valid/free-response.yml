@@ -1,0 +1,36 @@
+schema_version: 3
+id: fixture-free-0001
+version: 1
+status: draft
+locale: zh-CN
+type: free_response
+choice_order: fixed
+stem: 请用自己的话说明牛顿第二定律，并写出适用条件。
+response:
+  format: plain_text
+  required: true
+  min_chars: 10
+  max_chars: 2000
+  rows: 6
+  placeholder: 请写下你的解释和公式……
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: 合外力等于物体质量与加速度的乘积，要求参考系为惯性系或可近似为惯性系。
+solution: 重点检查合外力、质量、加速度三者的关系，以及惯性系条件。
+provenance:
+  type: original
+  note: 测试自由作答题结构
+authors:
+  - name: Physics Learning Wiki
+    kind: human
+license: CC-BY-SA-4.0

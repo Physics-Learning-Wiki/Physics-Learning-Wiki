@@ -48,6 +48,9 @@ ALLOWED_SUBMISSION_QUESTION_KEYS = {
     "stem",
     "solution",
     "answer",
+    "response",
+    "grading",
+    "reference_answer",
     "choices",
     "feedback",
     "hints",
@@ -90,7 +93,6 @@ def import_issue(root: Path, input_path: Path) -> Path:
             "shuffle" if source.get("type") in {"single_choice", "multiple_choice"} else "fixed",
         ),
         "stem": source.get("stem"),
-        "answer": source.get("answer"),
         "solution": source.get("solution"),
         "provenance": {
             "type": "original",
@@ -100,6 +102,12 @@ def import_issue(root: Path, input_path: Path) -> Path:
         "authors": authors,
         "license": "CC-BY-SA-4.0",
     }
+    if source.get("type") != "free_response":
+        question["answer"] = source.get("answer")
+    else:
+        question["response"] = source.get("response")
+        question["grading"] = source.get("grading")
+        question["reference_answer"] = source.get("reference_answer")
     for field in ("topics", "concepts", "objectives", "related_pages", "choices", "feedback", "hints"):
         if source.get(field):
             question[field] = source[field]

@@ -139,6 +139,25 @@ def validate_question_content(
         accepted = unit.get("accepted", [])
         if unit.get("required") and (not unit.get("canonical") or unit.get("canonical") not in accepted):
             issues.append(Issue.error(path, "answer.unit", "required canonical unit must appear in accepted units"))
+    if data.get("type") == "free_response":
+        response = data.get("response", {})
+        grading = data.get("grading", {})
+        if isinstance(response, dict):
+            min_chars = response.get("min_chars")
+            max_chars = response.get("max_chars")
+            if min_chars is not None and max_chars is not None and min_chars > max_chars:
+                issues.append(Issue.error(path, "response", "min_chars must not exceed max_chars"))
+        if isinstance(grading, dict):
+            rubric = grading.get("rubric", [])
+            if isinstance(rubric, list):
+                ids = [item.get("id") for item in rubric if isinstance(item, dict)]
+                if len(ids) != len(set(ids)):
+                    issues.append(Issue.error(path, "grading.rubric", "rubric level ids must be unique"))
+                points = [item.get("points") for item in rubric if isinstance(item, dict)]
+                if any(not isinstance(value, (int, float)) or value < 0 or value > 1 for value in points):
+                    issues.append(Issue.error(path, "grading.rubric.points", "rubric points must be between 0 and 1"))
+                if points and max(points) <= 0:
+                    issues.append(Issue.error(path, "grading.rubric", "rubric must contain a positive maximum score"))
     if root is not None:
         issues.extend(validate_assets(data, path, root))
         if data.get("status") == "published" and isinstance(data.get("review"), dict):
@@ -273,7 +292,7 @@ def validate_set(
                         issues.append(Issue.error(path, f"selection.constraints[{c_idx}].values", f"invalid difficulty value {v!r}"))
             elif field == "type":
                 for v in values:
-                    if v not in {"single_choice", "multiple_choice", "true_false", "numeric"}:
+                    if v not in {"single_choice", "multiple_choice", "true_false", "numeric", "free_response"}:
                         issues.append(Issue.error(path, f"selection.constraints[{c_idx}].values", f"invalid type value {v!r}"))
             elif field == "style":
                 for v in values:

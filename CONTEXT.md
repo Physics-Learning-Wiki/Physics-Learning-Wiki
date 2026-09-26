@@ -31,3 +31,19 @@ _Avoid_: Activated quiz, quiz blueprint
 **Attempt**:
 One browser-local record of answers and results for a selected set of Questions.
 _Avoid_: Account, profile, exam result
+
+**Free-response Question**:
+A Question whose response is written text rather than selected from fixed choices or entered as a numeric value. It can be used for explanations, derivations, and extended-answer prompts.
+_Avoid_: Essay question, manual question
+
+**Self-assessment**:
+An evaluation mode in which the learner compares a response with the reference answer and rubric, then records a learning level. It is not an objective correctness judgment.
+_Avoid_: Automatic grading, self-correction
+
+**Rubric**:
+The published criteria and levels that guide a learner's Self-assessment for a Free-response Question.
+_Avoid_: Answer key, model answer
+
+**Reference answer**:
+A worked answer or explanation shown to support a learner's Self-assessment. It describes expected reasoning without claiming that only one exact text is correct.
+_Avoid_: Correct answer

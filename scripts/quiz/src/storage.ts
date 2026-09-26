@@ -94,7 +94,14 @@ function isQuestionResult(v: unknown): v is QuestionResult {
     r.objectiveIds.every((id: any) => typeof id === "string") &&
     typeof r.correct === "boolean" &&
     typeof r.unanswered === "boolean" &&
-    typeof r.uncertain === "boolean"
+    typeof r.uncertain === "boolean" &&
+    (r.evaluation === undefined || (
+      r.evaluation &&
+      (r.evaluation.mode === "automatic" || r.evaluation.mode === "self_assessed") &&
+      typeof r.evaluation.status === "string" &&
+      typeof r.evaluation.score === "number" &&
+      typeof r.evaluation.maxScore === "number"
+    ))
   );
 }
 
@@ -271,7 +278,7 @@ export class QuizStore {
     if (!alreadySaved) {
       data.attempts = [attempt, ...data.attempts].slice(0, 50);
       for (const result of attempt.questionResults) {
-        if (!result.correct) {
+        if (!result.correct && result.evaluation?.mode !== "self_assessed") {
           data.wrongQuestions[result.questionId] = attempt.completedAt;
         }
       }

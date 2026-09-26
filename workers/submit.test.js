@@ -41,6 +41,26 @@ test("accepts minimal valid draft question payload", () => {
   assert.equal(validateQuestion(minimalDraftQuestion), null);
 });
 
+test("accepts a free-response self-assessment payload", () => {
+  assert.equal(
+    validateQuestion({
+      type: "free_response",
+      stem: "解释牛顿第二定律。",
+      response: { format: "plain_text", required: true, max_chars: 2000 },
+      grading: {
+        mode: "self_assessed",
+        rubric: [
+          { id: "partial", label: "部分掌握", points: 0.5 },
+          { id: "complete", label: "基本掌握", points: 1 },
+        ],
+      },
+      reference_answer: "合外力等于质量乘以加速度。",
+      solution: "同时检查适用条件。",
+    }),
+    null
+  );
+});
+
 test("accepts question with valid optional metadata", () => {
   assert.equal(validateQuestion(fullChoiceQuestion), null);
 });

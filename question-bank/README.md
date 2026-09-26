@@ -136,6 +136,8 @@ authors:
 license: CC-BY-SA-4.0
 ```
 
-所有 Question v3 YAML 都必须提供 `schema_version`、`id`、`version`、`status`、`locale`、`type`、`choice_order`、`stem`、`answer`、`solution`、`provenance`、`authors` 和 `license`。单选题与多选题还必须提供 `choices`；判断题和数值题不提供 `choices`。草稿可以暂时省略分类和难度等元数据；发布题目所需字段与签署流程见 [REVIEWING.md](REVIEWING.md)。
+所有 Question v3 YAML 都必须提供 `schema_version`、`id`、`version`、`status`、`locale`、`type`、`choice_order`、`stem`、`solution`、`provenance`、`authors` 和 `license`。单选题与多选题还必须提供 `choices` 与 `answer`；判断题和数值题提供自动判分所需的 `answer`；自由作答题提供 `response`、`grading` 和 `reference_answer`，由学习者完成自评判分。草稿可以暂时省略分类和难度等元数据；发布题目所需字段与签署流程见 [REVIEWING.md](REVIEWING.md)。
+
+自由作答题的 `response.format` 当前为 `plain_text`，`grading.mode` 当前为 `self_assessed`。评分标准通常包含“尚未掌握”“部分掌握”“基本掌握”三档，分数范围为 0 到 1。系统记录答案文本和自评积分，但不会把自评结果当作客观正确率，也不会自动加入错题本。
 
 若尚未确定 `topics`、`concepts` 或其他分类信息，可以在草稿中省略这些可选字段，由维护者后续整理。不要把投稿表单 DTO 字段直接当作 YAML 字段；结构以 [`schemas/question.schema.json`](schemas/question.schema.json) 为准。

@@ -13,7 +13,6 @@
     "type",
     "choice_order",
     "stem",
-    "answer",
     "solution",
     "provenance",
     "authors",
@@ -45,11 +44,14 @@
       "uniqueItems": true,
       "items": {"$ref": "#/$defs/dottedId"}
     },
-    "type": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric"]},
+    "type": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric", "free_response"]},
     "choice_order": {"enum": ["shuffle", "fixed"]},
     "stem": {"$ref": "#/$defs/nonEmpty"},
     "choices": {"type": "array", "minItems": 2, "maxItems": 8, "items": {"$ref": "#/$defs/choice"}},
     "answer": {"type": "object"},
+    "response": {"$ref": "#/$defs/freeResponse"},
+    "grading": {"$ref": "#/$defs/selfAssessment"},
+    "reference_answer": {"$ref": "#/$defs/nonEmpty"},
     "feedback": {"type": "object"},
     "hints": {"type": "array", "items": {"$ref": "#/$defs/nonEmpty"}},
     "solution": {"$ref": "#/$defs/nonEmpty"},
@@ -69,7 +71,7 @@
     {
       "if": {"properties": {"type": {"const": "single_choice"}}, "required": ["type"]},
       "then": {
-        "required": ["choices"],
+        "required": ["choices", "answer"],
         "properties": {
           "choices": {"minItems": 2, "maxItems": 6},
           "answer": {"$ref": "#/$defs/singleAnswer"}
@@ -79,7 +81,7 @@
     {
       "if": {"properties": {"type": {"const": "multiple_choice"}}, "required": ["type"]},
       "then": {
-        "required": ["choices"],
+        "required": ["choices", "answer"],
         "properties": {
           "choices": {"minItems": 3, "maxItems": 8},
           "answer": {"$ref": "#/$defs/multipleAnswer"}
@@ -90,6 +92,7 @@
       "if": {"properties": {"type": {"const": "true_false"}}, "required": ["type"]},
       "then": {
         "not": {"required": ["choices"]},
+        "required": ["answer"],
         "properties": {"answer": {"$ref": "#/$defs/booleanAnswer"}}
       }
     },
@@ -97,7 +100,19 @@
       "if": {"properties": {"type": {"const": "numeric"}}, "required": ["type"]},
       "then": {
         "not": {"required": ["choices"]},
+        "required": ["answer"],
         "properties": {"answer": {"$ref": "#/$defs/numericAnswer"}}
+      }
+    },
+    {
+      "if": {"properties": {"type": {"const": "free_response"}}, "required": ["type"]},
+      "then": {
+        "not": {"required": ["choices"]},
+        "required": ["response", "grading", "reference_answer"],
+        "properties": {
+          "response": {"$ref": "#/$defs/freeResponse"},
+          "grading": {"$ref": "#/$defs/selfAssessment"}
+        }
       }
     },
     {
@@ -140,7 +155,7 @@
       "if": {
         "properties": {
           "status": {"const": "published"},
-          "type": {"enum": ["true_false", "numeric"]}
+          "type": {"enum": ["true_false", "numeric", "free_response"]}
         },
         "required": ["status", "type"]
       },
@@ -221,6 +236,38 @@
             }
           }
         }
+      }
+    },
+    "freeResponse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "required"],
+      "properties": {
+        "format": {"const": "plain_text"},
+        "required": {"type": "boolean"},
+        "min_chars": {"type": "integer", "minimum": 0, "maximum": 20000},
+        "max_chars": {"type": "integer", "minimum": 1, "maximum": 20000},
+        "rows": {"type": "integer", "minimum": 2, "maximum": 40},
+        "placeholder": {"$ref": "#/$defs/nonEmpty"}
+      }
+    },
+    "selfAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "rubric"],
+      "properties": {
+        "mode": {"const": "self_assessed"},
+        "rubric": {"type": "array", "minItems": 2, "maxItems": 5, "items": {"$ref": "#/$defs/rubricLevel"}}
+      }
+    },
+    "rubricLevel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "points"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9_-]{0,31}$"},
+        "label": {"$ref": "#/$defs/nonEmpty"},
+        "points": {"type": "number", "minimum": 0, "maximum": 1}
       }
     },
     "basicFeedback": {

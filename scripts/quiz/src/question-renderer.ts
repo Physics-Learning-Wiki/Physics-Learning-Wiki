@@ -1,5 +1,5 @@
 import { isAnswerComplete, makeResult } from "./grading.js";
-import type { Question, UserAnswer } from "./types.js";
+import type { Question, SelfAssessedAnswer, UserAnswer } from "./types.js";
 
 export function escapeHtml(value: string): string {
   const element = document.createElement("span");
@@ -95,8 +95,47 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
       });
       fieldset.append(label);
     });
+  } else if (question.type === "free_response") {
+    const current: SelfAssessedAnswer = isSelfAssessedAnswer(answer) ? answer : { text: "", levelId: null };
+    const textarea = document.createElement("textarea");
+    textarea.className = "plw-quiz-free-response-input";
+    textarea.rows = question.response.rows ?? 8;
+    textarea.maxLength = question.response.maxChars ?? 20000;
+    textarea.placeholder = question.response.placeholder ?? "请写下你的答案……";
+    textarea.value = current.text;
+    textarea.disabled = locked;
+    textarea.setAttribute("aria-label", "文字答案");
+    const updateText = () => onAnswerChange({ text: textarea.value, levelId: current.levelId });
+    textarea.addEventListener("input", updateText);
+    const wrap = document.createElement("div");
+    wrap.className = "plw-quiz-free-response-wrap";
+    wrap.append(textarea);
+
+    const reference = document.createElement("details");
+    reference.className = "plw-quiz-self-assessment__reference";
+    reference.innerHTML = `<summary>查看参考答案</summary><div>${question.referenceAnswerHtml ?? question.solutionHtml}</div>`;
+    wrap.append(reference);
+
+    const rubric = document.createElement("div");
+    rubric.className = "plw-quiz-self-assessment";
+    rubric.innerHTML = "<strong>完成作答后，请根据参考答案选择自评：</strong>";
+    question.grading.rubric.forEach(level => {
+      const label = document.createElement("label");
+      label.className = "plw-quiz-self-assessment__option";
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `${inputName}-level`;
+      input.value = level.id;
+      input.checked = current.levelId === level.id;
+      input.disabled = locked;
+      input.addEventListener("change", () => onAnswerChange({ text: textarea.value, levelId: level.id }));
+      label.append(input, document.createTextNode(` ${level.label}`));
+      rubric.append(label);
+    });
+    wrap.append(rubric);
+    fieldset.append(wrap);
   } else {
-    const current = typeof answer === "object" && answer && !Array.isArray(answer) ? answer : { value: "", unit: "" };
+    const current = isNumericAnswer(answer) ? answer : { value: "", unit: "" };
     const wrap = document.createElement("div");
     wrap.className = "plw-quiz-numeric-wrap";
 
@@ -129,6 +168,27 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
   }
 
   return fieldset;
+}
+
+function isSelfAssessedAnswer(answer: UserAnswer): answer is SelfAssessedAnswer {
+  return Boolean(
+    answer &&
+      typeof answer === "object" &&
+      !Array.isArray(answer) &&
+      "text" in answer &&
+      typeof answer.text === "string" &&
+      "levelId" in answer
+  );
+}
+
+function isNumericAnswer(answer: UserAnswer): answer is { value: string; unit?: string } {
+  return Boolean(
+    answer &&
+      typeof answer === "object" &&
+      !Array.isArray(answer) &&
+      "value" in answer &&
+      typeof answer.value === "string"
+  );
 }
 
 export function renderHints(question: Question): HTMLElement | null {
@@ -168,7 +228,14 @@ function answerLabel(question: Question, answer: UserAnswer): string {
       .join("")}</ul>`;
   }
   if (question.type === "true_false") return answer === true ? "正确" : "错误";
-  if (typeof answer !== "object" || Array.isArray(answer)) return "未作答";
+  if (question.type === "free_response") {
+    if (!isSelfAssessedAnswer(answer)) return "未作答";
+    const level = question.grading.rubric.find(item => item.id === answer.levelId);
+    return `<div class="plw-quiz-free-response-answer">${escapeHtml(answer.text || "未填写文字答案")}<br><strong>自评：</strong>${escapeHtml(
+      level?.label ?? "未完成自评"
+    )}</div>`;
+  }
+  if (!isNumericAnswer(answer)) return "未作答";
   return `${escapeHtml(answer.value || "未填写数值")}${
     answer.unit ? ` ${escapeHtml(answer.unit)}` : question.answer.unit.required ? "（未选择单位）" : ""
   }`;
@@ -177,9 +244,10 @@ function answerLabel(question: Question, answer: UserAnswer): string {
 export function renderFeedback(options: FeedbackOptions): HTMLElement {
   const { question, answer, uncertain = false, reportUrl, showSolution = true, announce = true } = options;
   const result = makeResult(question, answer, uncertain);
+  const selfAssessed = question.type === "free_response";
   const area = document.createElement("div");
   area.className = `plw-quiz-feedback ${
-    result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+    selfAssessed ? (result.unanswered ? "is-unanswered" : "is-self-assessed") : result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
   }`;
   if (announce) area.setAttribute("role", "status");
 
@@ -206,6 +274,8 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
       ? question.answer.choices
       : question.type === "true_false"
       ? question.answer.value
+      : question.type === "free_response"
+      ? { text: "", levelId: null }
       : {
           value: String(question.answer.value),
           unit: question.answer.unit.canonical ?? question.answer.unit.accepted[0] ?? ""
@@ -222,16 +292,21 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
       </details>`
     : "";
 
-  const defaultFeedback = result.correct ? "回答正确！" : "回答有误，请复习相关考点解析。";
+  const defaultFeedback = selfAssessed
+    ? "已记录你的自评，请结合参考答案和评分标准继续复习。"
+    : result.correct
+    ? "回答正确！"
+    : "回答有误，请复习相关考点解析。";
   const feedbackHtml = result.correct
     ? question.feedback?.correctHtml ?? defaultFeedback
     : question.feedback?.incorrectHtml ?? defaultFeedback;
 
+  const isSelfAssessed = question.type === "free_response";
   area.innerHTML = `
-    <h3 tabindex="-1">${result.correct ? "回答正确" : result.unanswered ? "未作答" : "需要复习"}</h3>
+    <h3 tabindex="-1">${selfAssessed ? (result.unanswered ? "待完成自评" : "已记录自评") : result.correct ? "回答正确" : result.unanswered ? "未作答" : "需要复习"}</h3>
     <div class="plw-quiz-answer-comparison">
       <div><strong>你的答案：</strong>${answerLabel(question, answer)}</div>
-      <div><strong>正确答案：</strong>${answerLabel(question, correctAnswer)}</div>
+      ${isSelfAssessed ? `<div><strong>参考答案：</strong>${question.referenceAnswerHtml ?? question.solutionHtml}</div>` : `<div><strong>正确答案：</strong>${answerLabel(question, correctAnswer)}</div>`}
     </div>
     ${targeted}
     <div class="plw-quiz-feedback-text">${feedbackHtml}</div>

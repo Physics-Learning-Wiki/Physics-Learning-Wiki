@@ -48,7 +48,7 @@ function buildIssueBody(data) {
   return lines.join("\n");
 }
 
-const QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "numeric"]);
+const QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "numeric", "free_response"]);
 const COGNITIVE_LEVELS = new Set(["remember", "understand", "apply", "analyze"]);
 const STYLES = new Set(["conceptual", "graphical", "computational", "modeling"]);
 
@@ -98,6 +98,9 @@ const ALLOWED_QUESTION_KEYS = new Set([
   "stem",
   "solution",
   "answer",
+  "response",
+  "grading",
+  "reference_answer",
   "choices",
   "feedback",
   "hints",
@@ -129,7 +132,7 @@ function validateQuestion(question) {
   if (!nonEmptyString(question.stem) || !nonEmptyString(question.solution)) return "题干或解析为空";
   if (unsafeMarkdown(JSON.stringify(question))) return "题目包含不安全的 Markdown 或 HTML";
   if (hasControlCharacters(question)) return "题目包含非法控制字符";
-  if (!question.answer || typeof question.answer !== "object" || Array.isArray(question.answer)) return "答案无效";
+  if (question.type !== "free_response" && (!question.answer || typeof question.answer !== "object" || Array.isArray(question.answer))) return "答案无效";
 
   // Optional choice_order
   if (question.choice_order !== undefined) {
@@ -241,6 +244,24 @@ function validateQuestion(question) {
         return "规范单位必须包含在可接受单位列表中";
       }
     }
+  } else if (question.type === "free_response") {
+    if (question.choices !== undefined || question.answer !== undefined) return "自由作答题不能包含 choices 或 answer";
+    if (!nonEmptyString(question.reference_answer)) return "自由作答题必须提供参考答案";
+    const response = question.response;
+    if (!response || typeof response !== "object" || Array.isArray(response)) return "自由作答题响应定义无效";
+    const responseKeys = Object.keys(response);
+    if (!responseKeys.every(key => ["format", "required", "min_chars", "max_chars", "rows", "placeholder"].includes(key))) return "响应定义包含未知属性";
+    if (response.format !== "plain_text" || typeof response.required !== "boolean") return "自由作答题响应定义无效";
+    if (response.min_chars !== undefined && (!Number.isInteger(response.min_chars) || response.min_chars < 0)) return "最少字数无效";
+    if (response.max_chars !== undefined && (!Number.isInteger(response.max_chars) || response.max_chars < 1 || response.max_chars > 20000)) return "最多字数无效";
+    if (response.min_chars !== undefined && response.max_chars !== undefined && response.min_chars > response.max_chars) return "最少字数不能超过最多字数";
+    if (response.placeholder !== undefined && !nonEmptyString(response.placeholder, 500)) return "占位提示无效";
+    const grading = question.grading;
+    if (!grading || typeof grading !== "object" || Array.isArray(grading) || grading.mode !== "self_assessed" || !Array.isArray(grading.rubric)) return "自评评分标准无效";
+    if (grading.rubric.length < 2 || grading.rubric.length > 5) return "自评评分标准需要 2 到 5 个等级";
+    const rubricIds = grading.rubric.map(level => level?.id);
+    if (!grading.rubric.every(level => level && typeof level === "object" && nonEmptyString(level.id, 32) && nonEmptyString(level.label, 200) && typeof level.points === "number" && Number.isFinite(level.points) && level.points >= 0 && level.points <= 1)) return "自评等级格式无效";
+    if (new Set(rubricIds).size !== rubricIds.length || Math.max(...grading.rubric.map(level => level.points)) <= 0) return "自评等级 ID 不能重复且必须包含正分等级";
   }
 
   // Optional feedback validation

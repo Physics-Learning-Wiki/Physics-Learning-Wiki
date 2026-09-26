@@ -17,7 +17,7 @@ ROOT = Path(__file__).parents[2]
 
 @pytest.mark.parametrize(
     "name",
-    ["single-choice.yml", "multiple-choice.yml", "true-false.yml", "numeric.yml"],
+    ["single-choice.yml", "multiple-choice.yml", "true-false.yml", "numeric.yml", "free-response.yml"],
 )
 def test_valid_question_fixtures(name: str) -> None:
     document, load_issues = load_yaml(

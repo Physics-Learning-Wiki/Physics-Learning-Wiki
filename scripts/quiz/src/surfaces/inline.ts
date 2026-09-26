@@ -210,13 +210,13 @@ export class InlineSurface {
     if (this.isAllAnsweredOrChecked()) {
       const resultsBar = document.createElement("div");
       resultsBar.className = "plw-quiz-inline__summary";
-      const score = this.questions.filter(q => {
-        const res = makeResult(q, this.answers[q.id] ?? null, false);
-        return res.correct;
-      }).length;
+      const results = this.questions.map(q => makeResult(q, this.answers[q.id] ?? null, false));
+      const pointsEarned = results.reduce((sum, result) => sum + (result.evaluation?.score ?? (result.correct ? 1 : 0)), 0);
+      const pointsAvailable = results.reduce((sum, result) => sum + (result.evaluation?.maxScore ?? 1), 0);
+      const selfAssessedCount = results.filter(result => result.evaluation?.mode === "self_assessed").length;
 
       resultsBar.innerHTML = `
-        <div class="plw-quiz-inline__score" tabindex="-1">自测完成：<strong>${score} / ${this.questions.length}</strong> 题正确</div>
+        <div class="plw-quiz-inline__score" tabindex="-1">自测完成：<strong>${pointsEarned} / ${pointsAvailable}</strong> 分${selfAssessedCount > 0 ? `（含 ${selfAssessedCount} 道自评题）` : ""}</div>
       `;
 
       const restartBtn = document.createElement("button");
@@ -318,6 +318,9 @@ export class InlineSurface {
       return makeResult(q, ans, false);
     });
     const score = questionResults.filter(r => r.correct).length;
+    const pointsEarned = questionResults.reduce((sum, result) => sum + (result.evaluation?.score ?? (result.correct ? 1 : 0)), 0);
+    const pointsAvailable = questionResults.reduce((sum, result) => sum + (result.evaluation?.maxScore ?? 1), 0);
+    const selfAssessedCount = questionResults.filter(result => result.evaluation?.mode === "self_assessed").length;
     const pageId = this.root.dataset.pageId;
 
     const attempt: Attempt = {
@@ -328,6 +331,9 @@ export class InlineSurface {
       completedAt: new Date().toISOString(),
       score,
       total: this.questions.length,
+      pointsEarned,
+      pointsAvailable,
+      selfAssessedCount,
       questionResults,
       context: { surface: "inline", pageId }
     };

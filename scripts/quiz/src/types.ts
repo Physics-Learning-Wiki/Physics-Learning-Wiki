@@ -1,4 +1,4 @@
-export type QuestionType = "single_choice" | "multiple_choice" | "true_false" | "numeric";
+export type QuestionType = "single_choice" | "multiple_choice" | "true_false" | "numeric" | "free_response";
 export type FeedbackMode = "immediate" | "deferred";
 export type SetStatus = "draft" | "published" | "retired";
 
@@ -76,8 +76,32 @@ export interface NumericQuestion extends QuestionBase {
   };
 }
 
-export type Question = SingleChoiceQuestion | MultipleChoiceQuestion | BooleanQuestion | NumericQuestion;
-export type UserAnswer = string | string[] | boolean | { value: string; unit?: string } | null;
+export interface SelfAssessmentLevel {
+  id: string;
+  label: string;
+  points: number;
+}
+
+export interface FreeResponseQuestion extends QuestionBase {
+  type: "free_response";
+  response: {
+    format: "plain_text";
+    required: boolean;
+    minChars?: number;
+    maxChars?: number;
+    rows?: number;
+    placeholder?: string;
+  };
+  grading: {
+    mode: "self_assessed";
+    rubric: SelfAssessmentLevel[];
+  };
+  referenceAnswerHtml?: string;
+}
+
+export type Question = SingleChoiceQuestion | MultipleChoiceQuestion | BooleanQuestion | NumericQuestion | FreeResponseQuestion;
+export type SelfAssessedAnswer = { text: string; levelId: string | null };
+export type UserAnswer = string | string[] | boolean | { value: string; unit?: string } | SelfAssessedAnswer | null;
 
 export type FilterCriterion = { any: string[] } | { all: string[] };
 
@@ -228,6 +252,13 @@ export interface QuestionResult {
   correct: boolean;
   unanswered: boolean;
   uncertain: boolean;
+  evaluation?: {
+    mode: "automatic" | "self_assessed";
+    status: "correct" | "incorrect" | "unanswered" | "assessed";
+    score: number;
+    maxScore: number;
+    levelId?: string;
+  };
 }
 
 export interface Attempt {
@@ -238,6 +269,9 @@ export interface Attempt {
   completedAt: string;
   score: number;
   total: number;
+  pointsEarned?: number;
+  pointsAvailable?: number;
+  selfAssessedCount?: number;
   questionResults: QuestionResult[];
   context?: {
     surface: "runner" | "inline";

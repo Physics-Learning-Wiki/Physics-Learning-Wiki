@@ -148,6 +148,7 @@ export class QuestionsSurface {
             <option value="multiple_choice" ${this.selectedType === "multiple_choice" ? "selected" : ""}>多选题</option>
             <option value="true_false" ${this.selectedType === "true_false" ? "selected" : ""}>判断题</option>
             <option value="numeric" ${this.selectedType === "numeric" ? "selected" : ""}>数值计算题</option>
+            <option value="free_response" ${this.selectedType === "free_response" ? "selected" : ""}>自由作答题</option>
           </select>
         </div>
         <div class="plw-quiz-select-wrap">
@@ -449,7 +450,8 @@ export class QuestionsSurface {
           single_choice: "单选题",
           multiple_choice: "多选题",
           true_false: "判断题",
-          numeric: "数值计算题"
+          numeric: "数值计算题",
+          free_response: "自由作答题"
         };
         const cognitiveMap: Record<string, string> = {
           remember: "识记",
