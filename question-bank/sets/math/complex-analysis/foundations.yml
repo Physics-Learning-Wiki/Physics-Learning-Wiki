@@ -1,0 +1,20 @@
+schema_version: 1
+id: math.complex-analysis.foundations
+title: 复变函数基础：复数代数、几何表示与解析性速测
+description: 检验复数代数运算、欧拉公式、多值方根、柯西-黎曼条件、单点可导与区域解析经典反例及共轭调和函数实轴代换技巧。
+status: published
+tags:
+- 数学物理方法
+- 复变函数
+- 柯西-黎曼方程
+- 解析函数
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000035
+  - q-000036
+  - q-000037
+  - q-000038
+  - q-000039
+  order: fixed

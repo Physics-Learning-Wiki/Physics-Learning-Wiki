@@ -1,0 +1,73 @@
+schema_version: 3
+id: q-000041
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.contour-integral
+- complex.analyticity
+type: single_choice
+choice_order: shuffle
+stem: 计算复共轭函数 $f(z) = z^*$ 沿逆时针单位圆周 $|z| = 1$ 的回路积分 $\oint_{|z|=1} z^*\,\mathrm{d}z$，其结果以及该结果所揭示的数学物理意义是：
+choices:
+- id: A
+  content: 积分为 $2\pi i$，直接证明了 $f(z) = z^*$ 在单位圆内不是解析函数
+- id: B
+  content: 积分为 $0$，由柯西积分定理验证了 $z^*$ 在复平面上处处解析
+- id: C
+  content: 积分为 $\pi$，反映了共轭对称性在半周期上的积分抵消
+- id: D
+  content: 积分为 $-2\pi i$，说明积分围道绕向与共轭反向相抵触
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！在单位圆周 $|z| = 1$ 上 $z = e^{i\theta} \implies z^* = e^{-i\theta}, \mathrm{d}z = i e^{i\theta}\mathrm{d}\theta$。代入得
+      $\oint_{|z|=1} z^*\mathrm{d}z = \int_0^{2\pi} e^{-i\theta}(i e^{i\theta})\mathrm{d}\theta = 2\pi i$。若函数在单位圆盘内解析，由柯西积分定理闭回路积分必为
+      0；此积分不为 0 直接证实了 $z^*$ 在复平面上处处不解析。
+    B: 错误。实变函数思维误区，复共轭函数沿单位闭圆周积分非零，并不满足柯西积分定理前提（它不解析）。
+    C: 错误。积分数值计算错误，被积参数方程化简后被积函数为常数 $i$，在 $[0, 2\pi]$ 上积分为 $2\pi i$。
+    D: 错误。方向为标准逆时针正向，所得积分为正 $2\pi i$。
+  correct: 回答正确！准确理解了柯西积分定理成立以全纯解析性为前提，以及闭回路积分作为非解析性重要检测工具的原理。
+  incorrect: 回答错误。请引入极坐标参数方程 $z = e^{i\theta}$ 计算线积分，并对照柯西积分定理（Cauchy-Goursat 定理）的充分条件进行分析。
+hints:
+- 令 $z = e^{i\theta}, \theta \in [0, 2\pi]$，求出 $z^*$ 与 $\mathrm{d}z$ 的表达式代入积分。
+- 回忆柯西积分定理：若函数在单连通闭区域解析，闭回路积分必须等于 0。
+solution: "**解析**：\n1. **参数化积分路径**：\n   积分路径为逆时针正向单位圆周 $|z| = 1$。引入极坐标参数方程：\n   $$z = e^{i\\theta}, \\quad \\theta \\in [0,\
+  \ 2\\pi]$$\n   由此可知：\n   $$z^* = e^{-i\\theta}, \\quad \\mathrm{d}z = i e^{i\\theta}\\mathrm{d}\\theta$$\n\n2. **计算回路积分**：\n\
+  \   代入积分表达式：\n   $$\\oint_{|z|=1} z^*\\,\\mathrm{d}z = \\int_0^{2\\pi} e^{-i\\theta} \\left(i e^{i\\theta}\\right)\\mathrm{d}\\\
+  theta = \\int_0^{2\\pi} i\\,\\mathrm{d}\\theta = 2\\pi i$$\n\n3. **分析数学物理结论**：\n   根据柯西积分定理（Cauchy-Goursat 定理），若函数 $f(z)$\
+  \ 在单连通区域（单位圆盘 $|z| \\le 1$）内处处全纯解析，则其沿该区域内任意简单闭回路的积分必恒为 $0$。\n   然而，此处的回路积分结果为 $2\\pi i \\neq 0$。这直接证明了 $f(z) = z^*$ 在单位圆内**不是解析函数**（事实上由\
+  \ $\\frac{\\partial z^*}{\\partial z^*} = 1 \\neq 0$，它在全平面处处不可微、处处不解析）。\n   故 A 正确，B、C、D 错误。"
+difficulty: 1
+cognitive_level: understand
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 基于数理方法课件作业0918题1.3设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3a1118d6ad69976dbe627b681dfef105ad3f0df99f0fb074a986e146ce8754c1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3a1118d6ad69976dbe627b681dfef105ad3f0df99f0fb074a986e146ce8754c1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:3a1118d6ad69976dbe627b681dfef105ad3f0df99f0fb074a986e146ce8754c1

@@ -1,0 +1,75 @@
+schema_version: 3
+id: q-000040
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.cauchy-integral-formula
+- complex.contour-integral
+type: single_choice
+choice_order: shuffle
+stem: 若函数 $f(z)$ 在以原点为中心的单位圆盘 $|z| < 1$ 内全纯解析，且满足二阶线性常微分方程 $(1 - z^2)f''(z) - 2z f'(z) + 42 f(z) = 0$，同时已知初始一阶导数值 $f'(0) =
+  3$。利用高阶柯西积分公式，沿逆时针正向圆周围道积分 $\oint_{|z|=0.1} \dfrac{f(z)}{z^4}\,\mathrm{d}z$ 的值为：
+choices:
+- id: A
+  content: $-40\pi i$
+- id: B
+  content: $40\pi i$
+- id: C
+  content: $-120\pi i$
+- id: D
+  content: $0$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！由高阶柯西积分公式 $\oint_{|z|=0.1} \frac{f(z)}{z^4}\mathrm{d}z = \frac{2\pi i}{3!} f'''(0) = \frac{\pi i}{3} f'''(0)$。对微分方程两边关于
+      $z$ 求导得 $(1-z^2)f''' - 4z f'' + 40 f' = 0$。代入 $z = 0$ 得 $f'''(0) = -40 f'(0) = -120$。因此积分为 $\frac{\pi i}{3}(-120) =
+      -40\pi i$。
+    B: 错误。符号错误，微分方程代入 $z = 0$ 导出 $f'''(0) + 40f'(0) = 0 \implies f'''(0) = -40f'(0) = -120$，带有负号。
+    C: 错误。漏掉了高阶柯西公式中分母阶乘因子 $3! = 6$。
+    D: 错误。奇点 $z = 0$ 位于积分圆周 $|z| = 0.1$ 内部且 $f'''(0) \neq 0$，积分值不为零。
+  correct: 回答正确！极佳地综合运用了解析函数高阶柯西积分公式与微分方程求导确定高阶导数值的技巧。
+  incorrect: 回答错误。请由高阶柯西公式将回路积分表示为 $f'''(0)$ 的函数，并对原微分方程求导一次代入 $z = 0$ 求解导数值。
+hints:
+- 根据高阶柯西积分公式，$\oint \frac{f(z)}{(z - z_0)^{n+1}}\mathrm{d}z = \frac{2\pi i}{n!} f^{(n)}(z_0)$，此处 $z_0 = 0, n = 3$。
+- 对微分方程两端关于 $z$ 求一阶导数，合并同类项后令 $z = 0$。
+solution: "**解析**：\n1. **高阶柯西积分公式转化**：\n   由于 $f(z)$ 在 $|z| < 1$ 内解析，圆周 $|z| = 0.1$ 位于其解析区域内部，且分母奇点为 $z_0 = 0$。由高阶柯西公式：\n\
+  \   $$\\oint_{|z|=0.1} \\dfrac{f(z)}{z^4}\\mathrm{d}z = \\dfrac{2\\pi i}{3!} f'''(0) = \\dfrac{\\pi i}{3} f'''(0)$$\n  \
+  \ 因此问题归结为求解 $f'''(0)$。\n\n2. **对微分方程求导**：\n   已知方程：\n   $$(1 - z^2)f''(z) - 2z f'(z) + 42 f(z) = 0$$\n   两边对复变量 $z$ 求导：\n\
+  \   $$\\left[-2z f''(z) + (1 - z^2)f'''(z)\\right] - \\left[2f'(z) + 2z f''(z)\\right] + 42 f'(z) = 0$$\n   合并整理同类项：\n \
+  \  $$(1 - z^2)f'''(z) - 4z f''(z) + 40 f'(z) = 0$$\n\n3. **代入初值求导数值**：\n   令 $z = 0$ 代入上式：\n   $$(1 - 0)f'''(0) - 0 + 40\
+  \ f'(0) = 0 \\implies f'''(0) = -40 f'(0)$$\n   已知 $f'(0) = 3$，故：\n   $$f'''(0) = -40 \\times 3 = -120$$\n\n4. **代回计算回路积分**：\n\
+  \   $$\\oint_{|z|=0.1} \\dfrac{f(z)}{z^4}\\mathrm{d}z = \\dfrac{\\pi i}{3}(-120) = -40\\pi i$$\n   故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件作业0918题1.5综合题设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:72cfc25138d7910e8cee4c506344b5e565e397085e658b5cbe18858816858642
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:72cfc25138d7910e8cee4c506344b5e565e397085e658b5cbe18858816858642
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:72cfc25138d7910e8cee4c506344b5e565e397085e658b5cbe18858816858642

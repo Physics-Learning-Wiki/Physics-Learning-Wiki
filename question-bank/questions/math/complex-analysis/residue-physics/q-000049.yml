@@ -1,0 +1,77 @@
+schema_version: 3
+id: q-000049
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.causality-dispersion
+- complex.residue-theorem
+type: single_choice
+choice_order: shuffle
+stem: 在理论物理与光学中，介电响应函数满足克拉默斯-克勒尼希（Kramers-Kronig）色散关系。该关系式在复分析与物理图景上的核心机制是：
+choices:
+- id: A
+  content: 响应满足因果律（响应不先于激励发生）保证了响应函数在上半复平面全纯解析，柯西定理从而将实部（折射色散）与虚部（介质吸收）绑定为希尔伯特变换
+- id: B
+  content: 介电常数的实部与虚部是两个互不相干的独立实函数，色散关系纯粹是一种唯象的数值经验拟合公式
+- id: C
+  content: 因果律要求所有物理响应函数在实数轴上处处为零，从而使围道积分简化
+- id: D
+  content: 量子场论中的费曼 $i\epsilon$ 处方将实轴上的极点移动到实轴之外，其目的是人为破坏因果律以消除紫外发散
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！物理因果律（$t < t'$ 时时域响应 $G(t-t') = 0$）经过傅里叶变换后，直接保证了频域响应函数 $\chi(\omega)$ 在上半复平面 $\operatorname{Im}\omega > 0$ 内全纯无奇点。利用闭合半圆围道与柯西积分公式，实部（色散）与虚部（吸收耗散）互为希尔伯特变换，揭示了“凡有折射必有吸收”的深刻物理铁律。
+    B: 错误。实部（折射率）与虚部（消光系数/吸收率）由复分析解析性严格锁死，绝非独立经验拟合。
+    C: 错误。因果律是指在时间延迟 $\tau < 0$ 时时域函数为零，频域函数在实轴上具有丰富的物理谱，绝非处处为零。
+    D: 错误。费曼 $i\epsilon$ 处方的核心目的恰恰是**严格保证因果律**（使正能量粒子向前传播，负能量反粒子向后传播），而非破坏因果律。
+  correct: 回答正确！深刻领悟了复变全纯解析性与物理因果律（Causality）、色散吸收内在关联的理论物理精髓。
+  incorrect: 回答错误。请回顾时域因果响应 $G(t < 0) = 0$ 在频域复平面上半平面的全纯解析性推导，以及柯西积分公式导出实虚部耦合的过程。
+hints:
+- 时域中的因果性（响应不能先于扰动）等价于频域函数在复频率上半平面的解析性。
+- 利用柯西主值积分和柯西定理，解析函数的实部与虚部被必然绑定。
+solution: "**解析**：\n1. **因果律在频域的数学体现**：\n   设线性介质的响应为 $P(t) = \\int_{-\\infty}^{+\\infty} \\chi(t - t') E(t')\\mathrm{d}t'$。\n\
+  \   物理因果律要求：在激励施加之前系统不可能产生任何响应，即当 $\\tau = t - t' < 0$ 时，响应函数严格为零：\n   $$\\chi(\\tau) = 0 \\quad (\\tau < 0)$$\n   对其作傅里叶变换：\n\
+  \   $$\\chi(\\omega) = \\int_0^\\infty \\chi(\\tau) e^{i\\omega\\tau}\\mathrm{d}\\tau$$\n   若将频率延拓至复上半平面 $\\omega = \\omega_1\
+  \ + i\\omega_2$（$\\omega_2 > 0$）：\n   $$|e^{i\\omega\\tau}| = |e^{i\\omega_1\\tau} e^{-\\omega_2\\tau}| = e^{-\\omega_2\\\
+  tau}$$\n   因为积分下限为 $0$，$\\tau \\ge 0$，而 $\\omega_2 > 0$，所以衰减因子 $e^{-\\omega_2\\tau} \\le 1$ 极度压制了积分，确保该积分在上半复平面收敛且处处复可微！\n\
+  \   **结论：物理因果律等价于频域响应函数在上半复平面全纯解析！**\n\n2. **Kramers-Kronig 关系的推导**：\n   由柯西积分公式，沿实轴和上半平面大圆对 $\\frac{\\chi(\\omega')}{\\\
+  omega' - \\omega}$ 积分，并令大圆趋于无穷、实轴避开奇点，得到：\n   $$\\chi(\\omega) = \\dfrac{1}{i\\pi} \\mathcal{P}\\int_{-\\infty}^{+\\infty}\
+  \ \\dfrac{\\chi(\\omega')}{\\omega' - \\omega}\\mathrm{d}\\omega'$$\n   分离实部 $\\chi_1$ 与虚部 $\\chi_2$：\n   $$\\chi_1(\\omega)\
+  \ = \\dfrac{1}{\\pi}\\mathcal{P}\\int_{-\\infty}^{+\\infty} \\dfrac{\\chi_2(\\omega')}{\\omega' - \\omega}\\mathrm{d}\\\
+  omega', \\quad \\chi_2(\\omega) = -\\dfrac{1}{\\pi}\\mathcal{P}\\int_{-\\infty}^{+\\infty} \\dfrac{\\chi_1(\\omega')}{\\\
+  omega' - \\omega}\\mathrm{d}\\omega'$$\n   这直接证明了：介质的折射色散 $\\chi_1$ 完全由其在全频段的吸收损耗 $\\chi_2$ 决定，两者互为希尔伯特变换。\n   故 A 正确，B、C、D\
+  \ 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件留数定理与物理因果色散关系设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8d67807564caa52015c22b490bebaa15417f6f7a7e6a36b871b2c907dab2ba92
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8d67807564caa52015c22b490bebaa15417f6f7a7e6a36b871b2c907dab2ba92
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:8d67807564caa52015c22b490bebaa15417f6f7a7e6a36b871b2c907dab2ba92

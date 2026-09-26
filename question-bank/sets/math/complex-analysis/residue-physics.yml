@@ -1,0 +1,21 @@
+schema_version: 1
+id: math.complex-analysis.residue-physics
+title: 数理实战：留数定理、实积分围道计算与物理应用综合测验
+description: 考查极点商式求留数法则、三角周期积分单位圆代换、凹陷围道法（Dirichlet 积分）、若当引理傅里叶振荡积分及因果律色散关系。
+status: published
+tags:
+- 数学物理方法
+- 留数定理
+- 围道积分
+- 实反常积分
+- 因果律
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000045
+  - q-000046
+  - q-000047
+  - q-000048
+  - q-000049
+  order: fixed

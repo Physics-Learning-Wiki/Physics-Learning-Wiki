@@ -15,3 +15,26 @@ electromagnetism:
 electromagnetism.electrostatics:
   title: 静电学
   parent: electromagnetism
+
+math:
+  title: 数学工具与数理方法
+
+math.complex-analysis:
+  title: 复变函数与复分析
+  parent: math
+
+math.transforms:
+  title: 积分变换与广义函数
+  parent: math
+
+math.differential-equations:
+  title: 物理微分方程与定解问题
+  parent: math
+
+math.special-functions:
+  title: 常用特殊函数
+  parent: math
+
+math.eigenfunction-greens:
+  title: 本征值理论与格林函数
+  parent: math

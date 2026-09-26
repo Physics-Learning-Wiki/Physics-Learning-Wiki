@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000048
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.contour-evaluation
+- complex.residue-theorem
+type: single_choice
+choice_order: shuffle
+stem: 在求解傅里叶型振荡反常积分 $\int_{-\infty}^{+\infty} R(x) e^{ikx}\,\mathrm{d}x$（$k > 0$）时，约当引理（Jordan's Lemma）保证了上半平面大圆弧 $C_R$ 上的积分在
+  $R \to \infty$ 时趋于零。关于约当引理的适用条件与围道选取，下列说法正确的是：
+choices:
+- id: A
+  content: 当 $k > 0$ 时必须闭合在上半平面，且只需有理函数 $R(z)$ 在大圆弧上一致衰减即可（$\max |R(z)| \to 0$），无需达到多项式二次衰减
+- id: B
+  content: 无论 $k$ 取正数还是负数，都必须且只能在上半平面补上大圆弧闭合
+- id: C
+  content: 若 $k < 0$，必须补上半平面大圆弧才能保证指数因子衰减
+- id: D
+  content: 约当引理要求 $R(z)$ 的衰减速度至少与大圆弧周长相当，即满足 $\lim_{R \to \infty} R \cdot |R(z)| = 0$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！在 $C_R$ 上 $z = x + iy$，因 $k > 0, y \ge 0$，指数因子 $|e^{ikz}| = e^{-ky} \le 1$ 提供了强大的指数衰减，由若当不等式证明知仅需 $\max |R(z)| \to
+      0$（仅需一次以上衰减即可保证积分趋于 0），无需像无指数项的普通实积分那样要求分母比分子高 2 次。
+    B: 错误。若 $k < 0$，在上半平面（$y > 0$）中指数项 $|e^{ikz}| = e^{|k|y}$ 将指数爆炸发散！当 $k < 0$ 时必须闭合在下半平面（$y < 0$）才能使 $|e^{ikz}| = e^{-|k||y|}$
+      衰减。
+    C: 错误。当 $k < 0$ 时在上半平面指数是发散的，必须选择下半平面顺时针闭合围道。
+    D: 错误。普通有理函数线积分需要 $|R(z)| \sim 1/R^2$ 抵消弧长因子 $R$，但因约当引理利用了因子 $\sin\theta$，积分后自带 $1/kR$ 因子，故只需 $|R(z)| \to 0$。
+  correct: 回答正确！准确理解了约当引理在频域反演中利用虚轴坐标正负号压制发散因子的围道选择哲学。
+  incorrect: 回答错误。请分析因子 $|e^{ik(x+iy)}| = e^{-ky}$ 在上半平面（$y > 0$）与下半平面（$y < 0$）对正负不同参数 $k$ 的收敛表现。
+hints:
+- 分析模长 $|e^{ikz}| = |e^{ik(x+iy)}| = e^{-ky}$。
+- 为了保证在 $R \to \infty$ 时圆弧积分衰减，指数实部必须为负数。
+solution: "**解析**：\n1. **分析振荡因子的模长衰减**：\n   设复变量 $z = x + iy$。振荡核的模长为：\n   $$|e^{ikz}| = |e^{ik(x+iy)}| = |e^{ikx} e^{-ky}|\
+  \ = e^{-ky}$$\n   - **当 $k > 0$ 时**：在上半平面有 $y > 0$，因此指数 $-ky < 0$。此时 $|e^{ikz}| = e^{-ky}$ 呈现极强的指数衰减！\n   - **当 $k < 0$\
+  \ 时**：在上半平面有 $-ky > 0$，指数呈现恶性爆炸发散；相反，在下半平面 $y < 0$，指数 $-ky = -|k|(-|y|) = -|k||y| < 0$ 才能保证衰减。\n   因此，围道必须根据参数 $k$ 的正负号严格选择：$k\
+  \ > 0$ 闭合在上半平面，$k < 0$ 闭合在下半平面！故 B、C 错误。\n\n2. **约当引理对 $R(z)$ 的衰减要求**：\n   对于普通有理函数积分 $\\int_{C_R} R(z)\\mathrm{d}z$，由于圆弧长度为\
+  \ $\\pi R$，必须要求 $|R(z)| \\le \\frac{M}{R^2}$（分母次数比分子高至少 2 次）才能压制弧长增长。\n   但在约当引理中，借助若当不等式：\n   $$\\int_0^{\\pi/2} e^{-kR\\\
+  sin\\theta}\\mathrm{d}\\theta \\le \\int_0^{\\pi/2} e^{-kR\\frac{2\\theta}{\\pi}}\\mathrm{d}\\theta = \\dfrac{\\pi}{2kR}(1\
+  \ - e^{-kR})$$\n   指数积分本身自带了一个分母因子 $1/R$，正好抵消了弧长因子 $\\mathrm{d}z = i R e^{i\\theta}\\mathrm{d}\\theta$ 的 $R$！\n   因此，**仅需\
+  \ $\\max_{z \\in C_R} |R(z)| \\to 0$（哪怕只是按 $1/R$ 甚至更慢的一致衰减）**，整个圆弧积分就必然严格趋于 0！故 A 正确，D 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 基于数理方法课件约当引理与实积分范式设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:33aee124b405a9dc93ba0299fb92a6eab59b4496e33b02d455858b06cea23d13
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:33aee124b405a9dc93ba0299fb92a6eab59b4496e33b02d455858b06cea23d13
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:33aee124b405a9dc93ba0299fb92a6eab59b4496e33b02d455858b06cea23d13

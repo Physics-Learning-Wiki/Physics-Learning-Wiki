@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000046
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.contour-evaluation
+- complex.residue-theorem
+type: single_choice
+choice_order: shuffle
+stem: 计算三角周期实定积分 $I = \int_0^{2\pi} \dfrac{\mathrm{d}\theta}{5 + 4\cos\theta}$。利用欧拉代换 $z = e^{i\theta}$ 将其化为单位圆周 $|z| = 1$
+  的闭围道复积分，其在单位圆内的孤立极点位置及最终定积分值分别为：
+choices:
+- id: A
+  content: 极点为 $z = -1/2$，积分为 $\dfrac{2\pi}{3}$
+- id: B
+  content: 极点为 $z = -2$，积分为 $\dfrac{2\pi}{3}$
+- id: C
+  content: 极点为 $z = \pm 1/2$，积分为 $\dfrac{\pi}{3}$
+- id: D
+  content: 极点为 $z = -1/2$，积分为 $\pi$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！代入 $\cos\theta = \frac{z+z^{-1}}{2}, \mathrm{d}\theta = \frac{\mathrm{d}z}{iz}$，被积式化为 $\oint_{|z|=1} \frac{1}{5
+      + 2(z + 1/z)}\frac{\mathrm{d}z}{iz} = \oint_{|z|=1} \frac{\mathrm{d}z}{i(2z^2 + 5z + 2)} = \oint \frac{\mathrm{d}z}{i(2z+1)(z+2)}$。分母两根为
+      $z_1 = -1/2$（$|-1/2| < 1$ 位于圆内）和 $z_2 = -2$（$|-2| > 1$ 位于圆外）。在 $z_1 = -1/2$ 处留数为 $\frac{1}{i(4z_1+5)} = \frac{1}{3i}$。由留数定理：$I
+      = 2\pi i \cdot \frac{1}{3i} = \frac{2\pi}{3}$。
+    B: 错误。$z = -2$ 的模长为 2，严格位于单位圆周 $|z| = 1$ 的外部，其留数不计入围道积分。
+    C: 错误。分母因式分解为 $(2z+1)(z+2)$，根为 $-1/2$ 和 $-2$，不存在 $+1/2$ 极点。
+    D: 错误。积分数值计算错误，漏乘系数 2。
+  correct: 回答正确！准确掌握了三角函数有理式积分的单位圆代换法与内部奇点筛选计算。
+  incorrect: 回答错误。请令 $z = e^{i\theta}$ 将积分化为关于 $z$ 的有理分式回路积分，因式分解分母确定落入单位圆内部的唯一极点。
+hints:
+- 令 $z = e^{i\theta}, \cos\theta = \frac{z^2+1}{2z}, \mathrm{d}\theta = \frac{\mathrm{d}z}{iz}$。
+- 因式分解分母二次多项式 $2z^2 + 5z + 2 = (2z+1)(z+2)$，注意只有模长小于 1 的根才在单位圆内。
+solution: "**解析**：\n1. **单位圆代换**：\n   令 $z = e^{i\\theta}$（$\\theta \\in [0, 2\\pi]$ 正向绕单位圆周 $C: |z| = 1$ 一周）。\n   $$\\cos\\\
+  theta = \\dfrac{z + z^{-1}}{2} = \\dfrac{z^2 + 1}{2z}, \\quad \\mathrm{d}z = i e^{i\\theta}\\mathrm{d}\\theta = iz\\,\\\
+  mathrm{d}\\theta \\implies \\mathrm{d}\\theta = \\dfrac{\\mathrm{d}z}{iz}$$\n\n2. **化为复变有理分式回路积分**：\n   $$I = \\oint_{|z|=1}\
+  \ \\dfrac{1}{5 + 4\\left(\\frac{z^2+1}{2z}\\right)} \\dfrac{\\mathrm{d}z}{iz} = \\oint_{|z|=1} \\dfrac{1}{5 + \\frac{2z^2+2}{z}}\
+  \ \\dfrac{\\mathrm{d}z}{iz} = \\oint_{|z|=1} \\dfrac{\\mathrm{d}z}{i(2z^2 + 5z + 2)}$$\n\n3. **求解极点并判别是否在围道内**：\n   解分母方程：\n\
+  \   $$2z^2 + 5z + 2 = (2z + 1)(z + 2) = 0 \\implies z_1 = -\\dfrac{1}{2}, \\quad z_2 = -2$$\n   - $|z_2| = 2 > 1$，位于积分闭围道外部；\n\
+  \   - $|z_1| = \\frac{1}{2} < 1$，是**唯一位于单位圆内部的一阶极点**。\n\n4. **计算留数与积分**：\n   利用商式法则，分母导数为 $Q'(z) = i(4z + 5)$：\n   $$\\\
+  operatorname{Res}[f, z_1] = \\left.\\dfrac{1}{i(4z + 5)}\\right|_{z = -1/2} = \\dfrac{1}{i[4(-1/2) + 5]} = \\dfrac{1}{3i}$$\n\
+  \   由留数定理：\n   $$I = 2\\pi i \\cdot \\operatorname{Res}[f, z_1] = 2\\pi i \\cdot \\dfrac{1}{3i} = \\dfrac{2\\pi}{3}$$\n\
+  \   故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件实积分计算范式设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ba0b91ef0c71bb7a47ca6c44841f1a1152ca825fcbd2f89ce0651562ff3bb0a5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ba0b91ef0c71bb7a47ca6c44841f1a1152ca825fcbd2f89ce0651562ff3bb0a5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:ba0b91ef0c71bb7a47ca6c44841f1a1152ca825fcbd2f89ce0651562ff3bb0a5

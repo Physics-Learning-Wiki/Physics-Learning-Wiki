@@ -1,0 +1,20 @@
+schema_version: 1
+id: math.complex-analysis.integrals-series
+title: 复变进阶：高阶柯西公式、洛朗展开与奇点分类测验
+description: 自测闭路变形原理、高阶导数推广公式求回路积分、菲涅尔扇形围道若当不等式、同心多圆环域洛朗展开与孤立奇点三分类。
+status: published
+tags:
+- 数学物理方法
+- 柯西积分公式
+- 洛朗级数
+- 奇点分类
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000040
+  - q-000041
+  - q-000042
+  - q-000043
+  - q-000044
+  order: fixed

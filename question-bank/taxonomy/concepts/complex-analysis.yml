@@ -1,0 +1,130 @@
+complex.algebra:
+  title: 复数代数运算与阿根图几何
+  topics:
+    - math.complex-analysis
+  aliases:
+    - complex-algebra
+    - argand-plane
+    - complex-numbers
+
+complex.euler-formula:
+  title: 欧拉公式与棣莫弗定理
+  topics:
+    - math.complex-analysis
+  aliases:
+    - euler-formula
+    - de-moivre
+    - polar-form
+
+complex.multivalued:
+  title: 复数方根与多值函数
+  topics:
+    - math.complex-analysis
+  aliases:
+    - multivalued-functions
+    - complex-logarithm
+    - complex-roots
+
+complex.trig-sum:
+  title: 复指数三角求和法
+  topics:
+    - math.complex-analysis
+  aliases:
+    - trig-series-sum
+    - geometric-sum
+
+complex.cauchy-riemann:
+  title: 柯西-黎曼条件
+  topics:
+    - math.complex-analysis
+  aliases:
+    - cr-conditions
+    - cauchy-riemann
+    - polar-cr
+
+complex.analyticity:
+  title: 复可微性与解析性判定
+  topics:
+    - math.complex-analysis
+  aliases:
+    - complex-differentiability
+    - holomorphic-functions
+    - analyticity
+
+complex.harmonic-conjugate:
+  title: 共轭调和函数与实轴代换
+  topics:
+    - math.complex-analysis
+  aliases:
+    - harmonic-conjugate
+    - real-axis-substitution
+
+complex.contour-integral:
+  title: 围道积分与闭路变形原理
+  topics:
+    - math.complex-analysis
+  aliases:
+    - contour-integral
+    - contour-deformation
+    - cauchy-theorem
+
+complex.cauchy-integral-formula:
+  title: 柯西积分公式与高阶导数公式
+  topics:
+    - math.complex-analysis
+  aliases:
+    - cauchy-integral-formula
+    - higher-derivative-formula
+
+complex.taylor-series:
+  title: 复变泰勒级数展开
+  topics:
+    - math.complex-analysis
+  aliases:
+    - taylor-series
+    - convergence-radius
+
+complex.laurent-series:
+  title: 洛朗级数展开与同心环域展开
+  topics:
+    - math.complex-analysis
+  aliases:
+    - laurent-series
+    - annular-domain
+
+complex.singularities:
+  title: 孤立奇点分类与无穷远点
+  topics:
+    - math.complex-analysis
+  aliases:
+    - singularity-classification
+    - poles
+    - essential-singularity
+    - riemann-sphere
+
+complex.residue-theorem:
+  title: 留数定理与商式求留数法则
+  topics:
+    - math.complex-analysis
+  aliases:
+    - residue-theorem
+    - quotient-rule
+
+complex.contour-evaluation:
+  title: 实反常积分围道计算范式
+  topics:
+    - math.complex-analysis
+  aliases:
+    - contour-evaluation
+    - jordan-lemma
+    - indented-contour
+    - dirichlet-integral
+
+complex.causality-dispersion:
+  title: 物理因果律、色散关系与极点规约
+  topics:
+    - math.complex-analysis
+  aliases:
+    - causality
+    - kramers-kronig
+    - feynman-prescription

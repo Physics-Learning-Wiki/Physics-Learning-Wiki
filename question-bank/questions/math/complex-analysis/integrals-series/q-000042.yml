@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000042
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.contour-evaluation
+- complex.contour-integral
+type: single_choice
+choice_order: shuffle
+stem: 在利用柯西积分定理严格求解光学菲涅尔积分 $\int_0^\infty \cos x^2\,\mathrm{d}x$ 与 $\int_0^\infty \sin x^2\,\mathrm{d}x$ 时，构造了包含底边实轴 $[0,
+  R]$ 的第一象限闭合扇形围道 $\Gamma$。关于该扇形围道的倾角选取以及大圆弧积分估计，下列说法正确的是：
+choices:
+- id: A
+  content: 扇形射线倾角必须严格选取为 $\pi/4$，在此斜线上被积函数 $e^{iz^2}$ 奇迹般地化为极速衰减的高斯核 $e^{-r^2}$
+- id: B
+  content: 扇形射线倾角可以任选第一象限内的任意角度（如 $\pi/6$ 或 $\pi/3$），大圆弧积分均恒为 0 且斜线均可直接积出
+- id: C
+  content: 在大圆弧段 $C_R$（半径为 $R$）上证明积分趋于零时，必须要求被积函数模长衰减速度达到 $1/R^2$ 以上
+- id: D
+  content: 若当（Jordan）不等式指出在 $[0, \pi/2]$ 上 $\sin\alpha \le \frac{2}{\pi}\alpha$，据此放大了圆弧指数因子的上限
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！在射线 $z = r e^{i\theta}$ 上，$z^2 = r^2 e^{i 2\theta}$，被积因子为 $e^{iz^2} = e^{i r^2(\cos 2\theta + i\sin 2\theta)} =
+      e^{-r^2\sin 2\theta} e^{i r^2\cos 2\theta}$。唯有取 $2\theta = \pi/2 \iff \theta = \pi/4$ 时，振荡项消失（$\cos = 0$）且衰减项最大（$\sin
+      = 1$），化为标准实高斯积分 $e^{-r^2}$！
+    B: 错误。若选其它角度，沿射线的积分依然包含虚指数振荡项，无法利用已知实高斯积分 $\int_0^\infty e^{-r^2}\mathrm{d}r = \frac{\sqrt{\pi}}{2}$ 直接解析求解。
+    C: 错误。在扇形圆弧上，被积函数包含指数衰减项 $e^{-R^2\sin 2\theta}$，衰减速度是超越指数级的，借助若当不等式积分后为 $\sim \frac{\pi}{4R}$，不要求代数多项式二次衰减。
+    D: 错误。若当不等式为 $\sin\alpha \ge \frac{2}{\pi}\alpha$（在区间内正弦曲线严格位于弦的上方），负指数放缩时变为 $e^{-R^2\sin\alpha} \le e^{-R^2 \frac{2\alpha}{\pi}}$。
+  correct: 回答正确！精准领悟了复平面旋转将震荡相因子转变为高斯衰减阻尼因子的几何物理巧思。
+  incorrect: 回答错误。请回顾课件 2.3 节关于扇形围道各段参数化代换过程，特别是斜向射线 $z = r e^{i\pi/4}$ 对被积函数指数平方的作用。
+hints:
+- 考察 $z = r e^{i\theta}$ 时 $e^{iz^2}$ 的指数实部：$\operatorname{Re}(i z^2) = -r^2\sin 2\theta$。
+- 只有使得 $\sin 2\theta = 1$ 且 $\cos 2\theta = 0$ 的角度，才能转化为纯实数高斯积分。
+solution: "**解析**：\n1. **射线角度选取的唯一下手点**：\n   菲涅尔积分对应复积分 $I = \\int_0^\\infty e^{ix^2}\\mathrm{d}x$。考虑在斜射线 $z = r e^{i\\theta}$\
+  \ 上的取值：\n   $$z^2 = r^2 e^{i 2\\theta} = r^2(\\cos 2\\theta + i\\sin 2\\theta)$$\n   $$e^{iz^2} = \\exp\\left(i r^2\\cos\
+  \ 2\\theta - r^2\\sin 2\\theta\\right)$$\n   为了能够利用标准高斯积分 $\\int_0^\\infty e^{-r^2}\\mathrm{d}r = \\frac{\\sqrt{\\pi}}{2}$\
+  \ 求解，必须让振荡实虚部完全解耦，且指数实部为负实数：\n   $$\\begin{cases} \\cos 2\\theta = 0 \\\\ \\sin 2\\theta = 1 \\end{cases} \\implies 2\\\
+  theta = \\frac{\\pi}{2} \\implies \\theta = \\frac{\\pi}{4}$$\n   因此扇形倾角必须严格选取为 $\\pi/4$！此时 $e^{iz^2} = e^{-r^2}$ 成为纯高斯衰减核。\n\
+  \n2. **圆弧段若当不等式估计**：\n   在圆弧 $C_R: z = R e^{i\\theta}$（$\\theta \\in [0, \\pi/4]$）上，$|e^{iz^2}| = e^{-R^2\\sin 2\\theta}$。\n\
+  \   令 $\\alpha = 2\\theta \\in [0, \\pi/2]$。若当（Jordan）不等式指出：正弦曲线在 $[0, \\pi/2]$ 上严格位于割线下方：\n   $$\\sin\\alpha \\ge \\frac{2}{\\\
+  pi}\\alpha \\implies -R^2\\sin\\alpha \\le -R^2\\frac{2\\alpha}{\\pi}$$\n   代入积分估计：\n   $$\\left|\\int_{C_R} e^{iz^2}\\\
+  mathrm{d}z\\right| \\le \\int_0^{\\pi/4} e^{-R^2\\sin 2\\theta} R\\mathrm{d}\\theta = \\frac{R}{2}\\int_0^{\\pi/2} e^{-R^2\\\
+  sin\\alpha}\\mathrm{d}\\alpha \\le \\frac{R}{2}\\int_0^{\\pi/2} e^{-R^2\\frac{2\\alpha}{\\pi}}\\mathrm{d}\\alpha = \\frac{\\\
+  pi}{4R}(1 - e^{-R^2}) \\to 0$$\n   证明极为干净利落。故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件2.3节菲涅尔积分围道计算设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a8303b79d8b35fe0e4ff0945bc8b21f81e892b328098d4b4d6e7c524870c9e8f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a8303b79d8b35fe0e4ff0945bc8b21f81e892b328098d4b4d6e7c524870c9e8f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a8303b79d8b35fe0e4ff0945bc8b21f81e892b328098d4b4d6e7c524870c9e8f

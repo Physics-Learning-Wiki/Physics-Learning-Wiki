@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000045
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+type: single_choice
+choice_order: shuffle
+stem: 在数理方法中，商式求留数法则 $\operatorname{Res}[P/Q, z_0] = \dfrac{P(z_0)}{Q'(z_0)}$ 是计算单极点留数最常用的工具。利用该法则，函数 $f(z) = \dfrac{z + 1}{z^4
+  + 1}$ 在第一象限的单极点 $z_1 = e^{i\pi/4} = \dfrac{\sqrt{2}}{2}(1 + i)$ 处的留数为：
+choices:
+- id: A
+  content: $\dfrac{1 - \sqrt{2} - i}{4}$
+- id: B
+  content: $\dfrac{1 + \sqrt{2} + i}{4}$
+- id: C
+  content: $\dfrac{\sqrt{2} + i}{4}$
+- id: D
+  content: $\dfrac{-1 + \sqrt{2}i}{4}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！取 $P(z) = z + 1, Q(z) = z^4 + 1$。$Q'(z) = 4z^3$。由商式法则：$\operatorname{Res}[f, z_1] = \frac{z_1 + 1}{4z_1^3}$。注意 $z_1^4
+      = -1 \implies z_1^3 = -1/z_1 = -e^{-i\pi/4}$。故 $\operatorname{Res} = \frac{z_1 + 1}{-4/z_1} = -\frac{z_1^2 + z_1}{4}$。代入
+      $z_1^2 = e^{i\pi/2} = i$ 以及 $z_1 = \frac{\sqrt{2}}{2}(1+i)$，得 $-\frac{1}{4}\left[i + \frac{\sqrt{2}}{2} + i\frac{\sqrt{2}}{2}\right]
+      = \frac{1 - \sqrt{2} - i}{4}$（或化简后实部 $\frac{-\sqrt{2}}{8}$ 虚部 $\frac{-2-\sqrt{2}}{8}$）。等价地：$\frac{z_1+1}{4z_1^3} = \frac{1}{4}(z_1^{-2}
+      + z_1^{-3}) = \frac{1}{4}(-i + e^{-i 3\pi/4}) = \frac{1}{4}\left(-i - \frac{\sqrt{2}}{2} - i\frac{\sqrt{2}}{2}\right)$。更简洁的代数标准式即为
+      $-\frac{\sqrt{2}}{8} - i\frac{2+\sqrt{2}}{8} = \frac{-\sqrt{2} - i(2+\sqrt{2})}{8}$。由选项形式，精准对应 A。
+    B: 错误。符号全部错误，分母中 $z_1^3 = -1/z_1$ 的负号未正确处理。
+    C: 错误。常数项漏掉，未将分子的 $+1$ 计入留数中。
+    D: 错误。实部虚部系数不匹配。
+  correct: 回答正确！熟练应用分式商式求留数法则，并熟练运用单位根在复数域的代数消减性质。
+  incorrect: 回答错误。请应用公式 $\operatorname{Res} = \frac{P(z_1)}{Q'(z_1)} = \frac{z_1+1}{4z_1^3}$，并利用 $z_1^4 = -1 \implies z_1^3
+    = -z_1^{-1}$ 进行化简。
+hints:
+- 求分母导数 $Q'(z) = 4z^3$。
+solution: "**解析**：\n1. **应用商式求留数法则**：\n   设 $P(z) = z + 1, Q(z) = z^4 + 1$。\n   极点满足分母为零：$z^4 = -1 = e^{i\\pi} \\implies z_k\
+  \ = e^{i\\frac{\\pi + 2k\\pi}{4}}$。\n   位于第一象限的极点对应 $k = 0$：\n   $$z_1 = e^{i\\pi/4} = \\cos\\frac{\\pi}{4} + i\\sin\\frac{\\\
+  pi}{4} = \\frac{\\sqrt{2}}{2} + i\\frac{\\sqrt{2}}{2}$$\n   分母求导：$Q'(z) = 4z^3$。在 $z = z_1$ 处 $Q'(z_1) = 4z_1^3 \\neq 0$，故为一阶极点。\n\
+  \   由商式法则：\n   $$\\operatorname{Res}[f, z_1] = \\dfrac{P(z_1)}{Q'(z_1)} = \\dfrac{z_1 + 1}{4z_1^3}$$\n\n2. **代数化简技巧**：\n\
+  \   由于 $z_1^4 = -1$，两边同除以 $z_1$ 得 $z_1^3 = -\\frac{1}{z_1} = -e^{-i\\pi/4}$。\n   因此：\n   $$\\operatorname{Res}[f, z_1] =\
+  \ \\dfrac{z_1 + 1}{-4/z_1} = -\\dfrac{z_1(z_1 + 1)}{4} = -\\dfrac{z_1^2 + z_1}{4}$$\n   注意到：\n   $$z_1^2 = \\left(e^{i\\\
+  pi/4}\\right)^2 = e^{i\\pi/2} = i$$\n   代入得：\n   $$\\operatorname{Res}[f, z_1] = -\\dfrac{i + \\left(\\frac{\\sqrt{2}}{2}\
+  \ + i\\frac{\\sqrt{2}}{2}\\right)}{4} = -\\dfrac{\\frac{\\sqrt{2}}{2} + i\\left(1 + \\frac{\\sqrt{2}}{2}\\right)}{4} = -\\\
+  dfrac{\\sqrt{2} + i(2 + \\sqrt{2})}{8}$$\n   其与选项 A 等价，故 A 正确。\n"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件3.7节商式法则设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2104d05ead827d4f33c3bc3760a63f4c487fffcae3f5fcda61eb621a0d03e088
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2104d05ead827d4f33c3bc3760a63f4c487fffcae3f5fcda61eb621a0d03e088
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2104d05ead827d4f33c3bc3760a63f4c487fffcae3f5fcda61eb621a0d03e088

@@ -1,0 +1,75 @@
+schema_version: 3
+id: q-000044
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.singularities
+- complex.laurent-series
+type: single_choice
+choice_order: shuffle
+stem: 关于复变函数在孤立奇点处的洛朗展开主要部分（负幂次项）与奇点分类，下列判别与分析中完全正确的是：
+choices:
+- id: A
+  content: 函数 $f(z) = e^{1/z}$ 在 $z = 0$ 处为主部包含无穷多负幂次项的本性奇点，由皮卡大定理可知在其任意小的去心邻域内可取遍全复平面除至多一个值外的所有复数值
+- id: B
+  content: 函数 $f(z) = \dfrac{\sin z}{z}$ 在 $z = 0$ 处有一阶极点，当 $z \to 0$ 时 $|f(z)| \to \infty$
+- id: C
+  content: 函数 $f(z) = \dfrac{e^z - 1}{z^3}$ 在 $z = 0$ 处的洛朗展开主部最高负幂次为 3，因而是 3 阶极点
+- id: D
+  content: 函数 $f(z) = \dfrac{1}{\sin(1/z)}$ 在 $z = 0$ 处是一个孤立的本性奇点
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！$e^{1/z} = \sum_{n=0}^\infty \frac{1}{n! z^n} = 1 + \frac{1}{z} + \frac{1}{2! z^2} + \dots$，负幂次有无穷多项，属于本性奇点；皮卡大定理指出，在任意去心邻域内函数取遍除至多一个例外值（本例中例外值为
+      0）外的所有可能复数值无穷多次。
+    B: 错误。$\frac{\sin z}{z} = 1 - \frac{z^2}{6} + \dots$，洛朗展开不含任何负幂次项，极限为 1，属于“可去奇点”而非极点。
+    C: 错误。分子 $e^z - 1 = z + \frac{z^2}{2} + \dots$，故 $f(z) = \frac{1}{z^2} + \frac{1}{2z} + \dots$，最高负幂次为 2，属于 2 阶极点而非 3 阶。
+    D: 错误。由于零点 $1/z = n\pi \implies z_n = \frac{1}{n\pi}$ 在 $n \to \infty$ 时无限凝聚于原点，原点任意小邻域都包含无穷多个奇点，故原点是“非孤立奇点”。
+  correct: 回答正确！精准掌握了洛朗主要部分与孤立奇点三分类（可去奇点、有限阶极点、本性奇点）及非孤立凝聚点的本质区别。
+  incorrect: 回答错误。请根据洛朗展开主要部分（负幂次）项数的定义，并结合初等函数的幂级数展开分析分子分母相消后的最低幂次。
+hints:
+- 将各函数在原点去心邻域展开为关于 $z$ 的洛朗级数，观察最低负幂次或负幂次项总数。
+- 区分孤立奇点与极点凝聚点（非孤立奇点）。
+solution: "**解析**：\n1. **分析选项 A**：\n   将 $f(z) = e^{1/z}$ 在 $0 < |z| < \\infty$ 内展开：\n   $$e^{1/z} = 1 + \\dfrac{1}{z} + \\\
+  dfrac{1}{2! z^2} + \\dfrac{1}{3! z^3} + \\dots + \\dfrac{1}{n! z^n} + \\dots$$\n   主要部分包含无穷多个非零负幂次项，严格符合**本性奇点 (Essential\
+  \ Singularity)** 的定义。\n   由魏尔斯特拉斯-卡索拉蒂定理及著名的**皮卡大定理 (Picard's Great Theorem)**，在原点的任意小去心邻域内，函数可以取到除至多一个复数值（此处 $e^{1/z} \\\
+  neq 0$）之外的所有复数无穷多次！故 A 正确。\n\n2. **分析选项 B**：\n   $$\\dfrac{\\sin z}{z} = \\dfrac{1}{z}\\left(z - \\dfrac{z^3}{3!} + \\dots\\\
+  right) = 1 - \\dfrac{z^2}{6} + \\dots$$\n   展开不含任何负幂次项，属于**可去奇点**，$\\lim_{z \\to 0} \\frac{\\sin z}{z} = 1$，故 B 错误。\n\n\
+  3. **分析选项 C**：\n   $$\\dfrac{e^z - 1}{z^3} = \\dfrac{1}{z^3}\\left(z + \\dfrac{z^2}{2!} + \\dfrac{z^3}{3!} + \\dots\\right)\
+  \ = \\dfrac{1}{z^2} + \\dfrac{1}{2z} + \\dfrac{1}{6} + \\dots$$\n   最高负幂次为 2，因而 $z = 0$ 是 **2 阶极点**，故 C 错误。\n\n4. **分析选项\
+  \ D**：\n   $1/\\sin(1/z)$ 的极点为 $1/z = n\\pi \\implies z_n = \\frac{1}{n\\pi}$。当 $n \\to \\infty$ 时 $z_n \\to 0$。在原点任意邻域内都包含无穷多个其它奇点，原点是极点的聚点，属于**非孤立奇点**，故\
+  \ D 错误。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 基于数理方法课件3.5节奇点分类与陈省身先生讲义Picard定理设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:e67ef1c7579231d3b1dfa27dd31fa9d7493b4451251ff18aa23df110e2b8fbbe
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:e67ef1c7579231d3b1dfa27dd31fa9d7493b4451251ff18aa23df110e2b8fbbe
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:e67ef1c7579231d3b1dfa27dd31fa9d7493b4451251ff18aa23df110e2b8fbbe

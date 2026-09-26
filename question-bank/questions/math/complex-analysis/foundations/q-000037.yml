@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000037
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.cauchy-riemann
+- complex.analyticity
+type: single_choice
+choice_order: shuffle
+stem: 关于复变函数的复可微性、解析性与柯西-黎曼（Cauchy-Riemann）方程的关系，下列命题中严格正确的是：
+choices:
+- id: A
+  content: 函数 $f(z) = |z|^2$ 在原点 $z = 0$ 处复可导，但在原点不解析
+- id: B
+  content: 只要函数 $f(z) = u + iv$ 在某一点处偏导数满足 C-R 方程，则 $f(z)$ 在该点必然复可导
+- id: C
+  content: 函数 $f(z) = \frac{\bar{z}^2}{z}$（$z \neq 0$ 且 $f(0) = 0$）在 $z = 0$ 处不满足 C-R 方程，因而在原点不可导
+- id: D
+  content: 若函数在单点可微，则存在该点的一个开邻域，使得函数在该邻域内处处可导
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！$f(z) = x^2 + y^2$，在原点偏导数连续且满足 C-R 条件（均为 0），因而复可导；但在原点的任意去心邻域内均不满足 C-R 条件，因而在该邻域内不处处可导，故在原点不解析。
+    B: 错误。单点满足 C-R 方程只是可导的必要条件，必须加上偏导数连续（或 $u, v$ 全可微）才是可导的充分条件。经典反例为 $f(z) = \bar{z}^2/z$ 在原点满足 C-R 条件但不可导。
+    C: 错误。$f(z) = \bar{z}^2/z$ 在原点严格满足 C-R 方程（$u_x = v_y = 1, u_y = -v_x = 0$），其不可导是因为差商极限沿不同斜率射线取值不同。
+    D: 错误。单点可导完全不等同于区域可导（解析），$|z|^2$ 即为单点可微但邻域内处处不可微的典型反例。
+  correct: 回答正确！深刻理解了单点可导、全可微与区域解析之间的严格逻辑层次与经典反例。
+  incorrect: 回答错误。请回顾 9.20 讲义中关于 $f(z) = \bar{z}^2/z$ 与 $f(z) = |z|^2$ 的可微性与解析性对比分析。
+hints:
+- 仔细区分“在单点可导（可微）”与“在单点解析（要求存在开邻域处处可导）”。
+- 检查 $f(z) = |z|^2$ 在 $(0, 0)$ 点与去心邻域内的 C-R 方程成立情况。
+solution: "**解析**：\n1. **分析函数 $f(z) = |z|^2 = x^2 + y^2$**：\n   实部 $u = x^2 + y^2$，虚部 $v = 0$。偏导数为 $u_x = 2x, u_y = 2y, v_x\
+  \ = 0, v_y = 0$。\n   - 在原点 $(0, 0)$ 处，$u_x = v_y = 0, u_y = -v_x = 0$，且偏导数在全平面连续。由充分条件可知，$f(z)$ 在 $z = 0$ 处**严格可导**，且 $f'(0)\
+  \ = 0$。\n   - 但在原点的任意去心邻域内，一旦 $(x, y) \\neq (0, 0)$，由于 $u_x = 2x \\neq 0$ 或 $u_y = 2y \\neq 0$，C-R 方程不再成立，邻域内处处不可导。根据解析性定义（必须在某个开邻域内处处可导），$f(z)$\
+  \ 在原点**不解析**。故 A 正确，D 错误。\n\n2. **分析反例 $f(z) = \\frac{\\bar{z}^2}{z}$**：\n   由偏导数定义可知 $u_x(0,0)=v_y(0,0)=1, u_y(0,0)=-v_x(0,0)=0$，在原点严格满足\
+  \ C-R 方程；但在原点考察差商 $\\frac{f(z)-f(0)}{z} = \\frac{\\bar{z}^2}{z^2} = \\frac{(m-i)^2}{(m+i)^2}$，极限随射线斜率 $m$ 变化而不可微。这直接推翻了\
+  \ B 和 C。\n   综上，正确选项为 A。"
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 基于9.20专题课件解析性深入剖析设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a731d6af84ab75dd43edc3f2b22f790083be0822bd2b8295762f62a8ee527aa4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a731d6af84ab75dd43edc3f2b22f790083be0822bd2b8295762f62a8ee527aa4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:a731d6af84ab75dd43edc3f2b22f790083be0822bd2b8295762f62a8ee527aa4

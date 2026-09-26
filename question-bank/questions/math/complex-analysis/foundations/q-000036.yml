@@ -1,0 +1,78 @@
+schema_version: 3
+id: q-000036
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.euler-formula
+- complex.algebra
+type: single_choice
+choice_order: shuffle
+stem: 利用欧拉公式与五倍角展开求单位根，方程 $x^4 + x^3 + x^2 + x + 1 = 0$ 的四个根在复平面阿根图上构成正五边形的顶点，由此推导出的精确三角函数值 $\cos\frac{2\pi}{5}$ 等于：
+choices:
+- id: A
+  content: $\dfrac{\sqrt{5} - 1}{4}$
+- id: B
+  content: $\dfrac{\sqrt{5} + 1}{4}$
+- id: C
+  content: $\dfrac{\sqrt{5} - 1}{2}$
+- id: D
+  content: $\dfrac{\sqrt{10 - 2\sqrt{5}}}{4}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！利用割圆方程两边乘 $(x-1)$ 得 $x^5 - 1 = 0$，根为 $e^{i 2k\pi/5}$（$k=1,2,3,4$）；结合五倍角公式 $\sin 5\theta = \sin\theta(16\sin^4\theta
+      - 20\sin^2\theta + 5) = 0$ 解得 $\sin^2\frac{2\pi}{5} = \frac{5+\sqrt{5}}{8}$，进而由 $\cos^2 = 1 - \sin^2$ 并在第一象限开方得出 $\cos\frac{2\pi}{5}
+      = \frac{\sqrt{5}-1}{4}$。
+    B: 错误。$\frac{\sqrt{5}+1}{4}$ 是 $\cos\frac{\pi}{5}$ 的值，注意第一象限内 $72^\circ > 36^\circ$ 且余弦单调递减，$\cos\frac{2\pi}{5} < \cos\frac{\pi}{5}$。
+    C: 错误。分母为 4 而非 2，$\frac{\sqrt{5}-1}{2} \approx 0.618$ 是黄金分割比数值。
+    D: 错误。这是 $\sin\frac{2\pi}{5}$ 的值，而非 $\cos\frac{2\pi}{5}$。
+  correct: 回答正确！准确掌握了解割圆方程求单位根以及棣莫弗公式推导三角特征值的方法。
+  incorrect: 回答错误。请回顾割圆方程与 5 次单位根的几何分布，以及利用五倍角展开求解 $\cos\frac{2\pi}{5}$ 的二次方程过程。
+hints:
+- 将 $x^4 + x^3 + x^2 + x + 1 = 0$ 乘以 $(x - 1)$ 化为 $x^5 - 1 = 0$。
+- 利用 de Moivre 公式展开 $\sin 5\theta = 16\sin^5\theta - 20\sin^3\theta + 5\sin\theta$，令 $\theta = 2\pi/5$。
+solution: "**解析**：\n1. **割圆多项式因式分解**：\n   多项式 $P(x) = x^4 + x^3 + x^2 + x + 1$ 两边乘以 $(x - 1)$：\n   $$(x - 1)(x^4 + x^3 + x^2\
+  \ + x + 1) = x^5 - 1 = 0$$\n   方程的 5 个根为 5 次单位根 $\\omega_k = e^{i\\frac{2k\\pi}{5}}$（$k = 0, 1, 2, 3, 4$）。去除 $x = 1$ 后，割圆方程的\
+  \ 4 个根为 $e^{i\\frac{2\\pi}{5}}, e^{i\\frac{4\\pi}{5}}, e^{i\\frac{6\\pi}{5}}, e^{i\\frac{8\\pi}{5}}$，其在单位圆周上构成正五边形的顶点。\n\
+  \n2. **五倍角展开推导**：\n   由棣莫弗公式展开 $\\sin 5\\theta$：\n   $$\\sin 5\\theta = 16\\sin^5\\theta - 20\\sin^3\\theta + 5\\sin\\theta$$\n\
+  \   令 $\\theta = \\frac{2\\pi}{5}$，此时 $5\\theta = 2\\pi \\implies \\sin 5\\theta = 0$。由于 $\\sin\\frac{2\\pi}{5} \\neq 0$，两边同除以\
+  \ $\\sin\\theta$：\n   $$16\\left(\\sin^2\\frac{2\\pi}{5}\\right)^2 - 20\\left(\\sin^2\\frac{2\\pi}{5}\\right) + 5 = 0$$\n\
+  \   解此一元二次方程：\n   $$\\sin^2\\frac{2\\pi}{5} = \\frac{20 \\pm \\sqrt{400 - 320}}{32} = \\frac{5 \\pm \\sqrt{5}}{8}$$\n  \
+  \ 因为 $\\frac{2\\pi}{5} = 72^\\circ > 45^\\circ$，$\\sin^2 72^\\circ > \\frac{1}{2} = \\frac{4}{8}$，故取正号：$\\sin^2\\frac{2\\\
+  pi}{5} = \\frac{5+\\sqrt{5}}{8}$。\n\n3. **计算余弦值**：\n   $$\\cos^2\\frac{2\\pi}{5} = 1 - \\sin^2\\frac{2\\pi}{5} = \\frac{3\
+  \ - \\sqrt{5}}{8} = \\frac{6 - 2\\sqrt{5}}{16} = \\left(\\frac{\\sqrt{5}-1}{4}\\right)^2$$\n   在第一象限 $\\cos\\frac{2\\pi}{5}\
+  \ > 0$，开方即得：\n   $$\\cos\\frac{2\\pi}{5} = \\frac{\\sqrt{5}-1}{4}$$\n   故 A 正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件第一章思考题与作业0908设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:bceb52a95d7b00f6db0fb4c3ae4db3feedf77ceb42f44d7cf97594f0548b6424
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:bceb52a95d7b00f6db0fb4c3ae4db3feedf77ceb42f44d7cf97594f0548b6424
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:bceb52a95d7b00f6db0fb4c3ae4db3feedf77ceb42f44d7cf97594f0548b6424

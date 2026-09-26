@@ -1,0 +1,75 @@
+schema_version: 3
+id: q-000043
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.laurent-series
+- complex.taylor-series
+type: single_choice
+choice_order: shuffle
+stem: 考察函数 $f(z) = \dfrac{1}{(z-1)(z-2)}$。以原点 $z_0 = 0$ 为中心展开，在中间圆环域 $1 < |z| < 2$ 内，该函数的洛朗级数展开式为：
+choices:
+- id: A
+  content: $-\sum_{n=-\infty}^{-1} z^n - \sum_{n=0}^\infty \dfrac{z^n}{2^{n+1}}$
+- id: B
+  content: $\sum_{n=0}^\infty \left(1 - \dfrac{1}{2^{n+1}}\right) z^n$
+- id: C
+  content: $\sum_{n=1}^\infty \dfrac{2^{n-1} - 1}{z^n}$
+- id: D
+  content: $\sum_{n=0}^\infty \dfrac{z^n}{2^{n+1}} + \sum_{n=-\infty}^{-1} z^n$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！部分分式拆分为 $f(z) = \frac{1}{z-2} - \frac{1}{z-1}$。在 $1 < |z| < 2$ 内：对第一项由于 $|z| < 2 \implies |z/2| < 1$，展开为 $-\frac{1}{2}\sum
+      (z/2)^n = -\sum_{n=0}^\infty \frac{z^n}{2^{n+1}}$；对第二项由于 $|z| > 1 \implies |1/z| < 1$，展开为 $-\frac{1}{z}\sum (1/z)^n
+      = -\sum_{n=-\infty}^{-1} z^n$。综合两项即得 A。
+    B: 错误。这是在包含原点的内圆盘 $|z| < 1$ 内部的纯正幂次泰勒展开式。
+    C: 错误。这是在包含无穷远点的外部区域 $|z| > 2$ 上的纯负幂次洛朗级数。
+    D: 错误。符号全部相反，注意提负号时公比的符号处理。
+  correct: 回答正确！准确掌握了部分分式在不同同心圆环区域基于模长构造小于 1 的几何级数展开技巧。
+  incorrect: 回答错误。请先将函数分解为部分分式，再根据条件 $|z| > 1$（需提出 $z$ 按 $1/z$ 展开）与 $|z| < 2$（需提出 2 按 $z/2$ 展开）分别求解。
+hints:
+- 分解为 $\frac{1}{z-2} - \frac{1}{z-1}$。
+- 在 $1 < |z| < 2$ 中，对含有奇点 1 的项按 $|1/z| < 1$ 展开，对含有奇点 2 的项按 $|z/2| < 1$ 展开。
+solution: "**解析**：\n1. **部分分式分解**：\n   $$f(z) = \\dfrac{1}{(z-1)(z-2)} = \\dfrac{1}{z-2} - \\dfrac{1}{z-1}$$\n\n2. **分析环域\
+  \ $1 < |z| < 2$ 的几何收敛条件**：\n   - **对于第一项 $\\frac{1}{z-2}$**：在此环域内 $|z| < 2$，因此 $\\left|\\frac{z}{2}\\right| < 1$。必须提出常数项\
+  \ $-2$ 构造几何级数：\n     $$\\dfrac{1}{z-2} = -\\dfrac{1}{2}\\dfrac{1}{1 - \\frac{z}{2}} = -\\dfrac{1}{2}\\sum_{n=0}^\\infty\
+  \ \\left(\\dfrac{z}{2}\\right)^n = -\\sum_{n=0}^\\infty \\dfrac{z^n}{2^{n+1}}$$\n   - **对于第二项 $-\\frac{1}{z-1}$**：在此环域内\
+  \ $|z| > 1$，因此 $\\left|\\frac{1}{z}\\right| < 1$。必须提出自变量 $z$ 构造几何级数：\n     $$-\\dfrac{1}{z-1} = -\\dfrac{1}{z}\\dfrac{1}{1\
+  \ - \\frac{1}{z}} = -\\dfrac{1}{z}\\sum_{n=0}^\\infty \\left(\\dfrac{1}{z}\\right)^n = -\\sum_{n=0}^\\infty \\dfrac{1}{z^{n+1}}\
+  \ = -\\sum_{n=-\\infty}^{-1} z^n$$\n\n3. **合并两项洛朗级数**：\n   $$f(z) = -\\sum_{n=-\\infty}^{-1} z^n - \\sum_{n=0}^\\infty \\\
+  dfrac{z^n}{2^{n+1}}$$\n   包含无穷多个负幂次项与无穷多个正幂次项，构成标准的双边洛朗展开式。\n   故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件3.3节例题3.13设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:db8003c64d92bc070514325a7ba00589971d79141b86757ee62ce690fe39b20b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:db8003c64d92bc070514325a7ba00589971d79141b86757ee62ce690fe39b20b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:db8003c64d92bc070514325a7ba00589971d79141b86757ee62ce690fe39b20b

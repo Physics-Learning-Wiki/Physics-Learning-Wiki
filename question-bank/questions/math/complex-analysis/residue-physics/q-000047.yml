@@ -1,0 +1,80 @@
+schema_version: 3
+id: q-000047
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.contour-evaluation
+- complex.residue-theorem
+type: single_choice
+choice_order: shuffle
+stem: 在物理学中，利用复分析凹陷围道法（Indented Contour）计算狄利克雷反常积分 $\int_0^\infty \dfrac{\sin x}{x}\,\mathrm{d}x$ 时，构造了辅助函数 $F(z) = \dfrac{e^{iz}}{z}$。围道包含沿实轴的大闭合半圆，并在原点处以半径为
+  $\varepsilon$ 的小半圆弧 $C_\varepsilon$ 从 $-\varepsilon$ 绕至 $\varepsilon$。当 $\varepsilon \to 0$ 时，该小半圆弧段的积分极限贡献为：
+choices:
+- id: A
+  content: 顺时针绕向贡献 $-i\pi$，其与实轴积分组合导出最终值 $\pi/2$
+- id: B
+  content: 顺时针绕向贡献 $-2\pi i$，直接抵消了全部实积分
+- id: C
+  content: 小圆弧半径 $\varepsilon \to 0$，由代数极限可知其积分贡献恒等于 0
+- id: D
+  content: 逆时针绕向贡献 $+i\pi$，原点处的留数为 0
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！在 $z = 0$ 处展开 $F(z) = \frac{e^{iz}}{z} = \frac{1}{z} + i + \mathcal{O}(z)$。小半圆 $C_\varepsilon$ 位于上半平面顺时针从 $\theta
+      = \pi$ 变到 $0$。由分数留数引理（$\alpha = \pi$ 顺时针）：$\lim_{\varepsilon \to 0} \int_{C_\varepsilon} \frac{1}{z}\mathrm{d}z = \int_\pi^0
+      \frac{1}{\varepsilon e^{i\theta}} i\varepsilon e^{i\theta}\mathrm{d}\theta = -i\pi$。围道内全纯无奇点总积分为 0，故 $2i\int_0^\infty
+      \frac{\sin x}{x}\mathrm{d}x - i\pi = 0 \implies \int_0^\infty \frac{\sin x}{x}\mathrm{d}x = \frac{\pi}{2}$。
+    B: 错误。$-2\pi i$ 是整圆周绕向的积分贡献，此处只是半圆弧（圆心角为 $\pi$），贡献为半圆周留数 $-i\pi$。
+    C: 错误。虽然弧长 $\pi\varepsilon \to 0$，但被积函数包含一阶极点 $1/z \sim 1/\varepsilon$，两者乘积趋于有限常数 $-i\pi$，并不为零。
+    D: 错误。为了不包围位于实轴原点的极点 $z = 0$，位于上半平面的小凹陷半圆弧必须为**顺时针绕向**（从 $-\varepsilon$ 沿上半圆顺时针绕到 $\varepsilon$），积分结果带有负号 $-i\pi$。
+  correct: 回答正确！精准掌握了分数留数引理以及凹陷围道避开实轴奇点的微元积分计算。
+  incorrect: 回答错误。请写出辅助函数在原点的洛朗级数前两项，参数化小半圆弧 $z = \varepsilon e^{i\theta}$（注意绕向与角度上下限），计算 $\varepsilon \to 0$ 时的线积分。
+hints:
+- 将 $e^{iz}/z$ 在 $z = 0$ 附近展开为 $1/z + i + \dots$。
+- 小半圆弧在极坐标下为 $z = \varepsilon e^{i\theta}$，顺时针方向即 $\theta$ 从 $\pi$ 降至 $0$。
+solution: "**解析**：\n1. **辅助函数在原点展开**：\n   辅助复函数为 $F(z) = \\dfrac{e^{iz}}{z}$。在原点去心邻域内洛朗展开：\n   $$\\dfrac{e^{iz}}{z} = \\dfrac{1\
+  \ + iz - \\frac{z^2}{2} + \\dots}{z} = \\dfrac{1}{z} + i - \\dfrac{z}{2} + \\dots$$\n   原点为一阶单极点，留数为 $\\operatorname{Res}[F,\
+  \ 0] = 1$。\n\n2. **小半圆弧积分与分数留数引理**：\n   小半圆弧 $C_\\varepsilon$ 位于上半平面，从 $z = -\\varepsilon$ 沿上半圆绕到 $z = \\varepsilon$。为了使整个闭合区域不包含原点奇点，其绕行方向必须为**顺时针**！\n\
+  \   参数化：$z = \\varepsilon e^{i\\theta}$，辐角 $\\theta$ 从 $\\pi$ 连续变到 $0$：\n   $$\\int_{C_\\varepsilon} \\dfrac{e^{iz}}{z}\\\
+  ,\\mathrm{d}z = \\int_\\pi^0 \\dfrac{1 + \\mathcal{O}(\\varepsilon)}{\\varepsilon e^{i\\theta}} i\\varepsilon e^{i\\theta}\\\
+  ,\\mathrm{d}\\theta = i\\int_\\pi^0 1\\,\\mathrm{d}\\theta = -i\\pi$$\n\n3. **与柯西定理联立**：\n   由柯西积分定理，整个上半平面闭合凹陷围道积分为 0：\n\
+  \   $$\\oint_\\Gamma F(z)\\,\\mathrm{d}z = \\int_{-\\infty}^{0^-} \\dfrac{e^{ix}}{x}\\,\\mathrm{d}x + \\int_{C_\\varepsilon}\
+  \ F(z)\\,\\mathrm{d}z + \\int_{0^+}^{+\\infty} \\dfrac{e^{ix}}{x}\\,\\mathrm{d}x + \\int_{C_R} F(z)\\,\\mathrm{d}z = 0$$\n\
+  \   其中大圆弧 $\\int_{C_R} \\to 0$（由 Jordan 引理）；实轴两段合并为 $2i\\int_0^\\infty \\frac{\\sin x}{x}\\,\\mathrm{d}x$。\n   代入得：\n  \
+  \ $$2i\\int_0^\\infty \\dfrac{\\sin x}{x}\\,\\mathrm{d}x - i\\pi = 0 \\implies \\int_0^\\infty \\dfrac{\\sin x}{x}\\,\\\
+  mathrm{d}x = \\dfrac{\\pi}{2}$$\n   故 A 正确，B、C、D 错误。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件2.5节例题2.18与Dirichlet积分设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b4bb75e7058c4bf2fc90f2a6011095c20b454e141dc3818873b1c4ea7fdfdb22
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b4bb75e7058c4bf2fc90f2a6011095c20b454e141dc3818873b1c4ea7fdfdb22
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:b4bb75e7058c4bf2fc90f2a6011095c20b454e141dc3818873b1c4ea7fdfdb22

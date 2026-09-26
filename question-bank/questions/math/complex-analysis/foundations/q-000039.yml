@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000039
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.harmonic-conjugate
+- complex.analyticity
+type: single_choice
+choice_order: shuffle
+stem: 已知某一区域内的解析函数 $f(z) = u(x, y) + i v(x, y)$ 的虚部为 $v(x, y) = \dfrac{y}{x^2 + y^2}$，且 $f(1) = -1$。利用柯西-黎曼条件或实轴代换技巧，该解析函数
+  $f(z)$ 的完整解析表达式为：
+choices:
+- id: A
+  content: $f(z) = -\dfrac{1}{z}$
+- id: B
+  content: $f(z) = \dfrac{1}{z}$
+- id: C
+  content: $f(z) = -\dfrac{i}{z}$
+- id: D
+  content: $f(z) = -\dfrac{1}{z^2}$
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！由全微分法 $\mathrm{d}u = v_y\mathrm{d}x - v_x\mathrm{d}y = \mathrm{d}\left(-\frac{x}{x^2+y^2}\right)$ 得 $u = -\frac{x}{x^2+y^2}
+      + C$，则 $f(z) = \frac{-x+iy}{x^2+y^2} + C = -\frac{z^*}{|z|^2} + C = -\frac{1}{z} + C$。代入初值 $f(1) = -1 + C = -1 \implies
+      C = 0$，故 $f(z) = -1/z$。
+    B: 错误。符号相反，若 $f(z) = 1/z$，其实部为 $\frac{x}{x^2+y^2}$，虚部为 $-\frac{y}{x^2+y^2}$，与题目所给虚部差一个负号。
+    C: 错误。实虚部颠倒，$-i/z = \frac{y - ix}{x^2+y^2}$，其实部为 $\frac{y}{x^2+y^2}$。
+    D: 错误。分母次数应为 1 次，而非 2 次。
+  correct: 回答正确！熟练掌握了由共轭调和函数反求全纯解析函数的方法与初值常数确定。
+  incorrect: 回答错误。请利用柯西-黎曼方程列出实部 $u$ 的全微分，积分求出实部后合成 $f(z) = u + iv$ 并化简为自变量 $z$ 的代数式。
+hints:
+- 利用 C-R 条件 $u_x = v_y, u_y = -v_x$ 计算 $u$ 的偏导数。
+- 构造全微分 $\mathrm{d}u = u_x\mathrm{d}x + u_y\mathrm{d}y$ 并积分。
+solution: "**解析**：\n1. **利用柯西-黎曼方程求实部偏导**：\n   已知虚部 $v(x, y) = \\dfrac{y}{x^2 + y^2}$。对其求偏导：\n   $$v_y = \\dfrac{(x^2+y^2)\
+  \ - y(2y)}{(x^2+y^2)^2} = \\dfrac{x^2 - y^2}{(x^2+y^2)^2}$$\n   $$v_x = -\\dfrac{2xy}{(x^2+y^2)^2}$$\n   由 C-R 条件：\n   $$u_x\
+  \ = v_y = \\dfrac{x^2 - y^2}{(x^2+y^2)^2}$$\n   $$u_y = -v_x = \\dfrac{2xy}{(x^2+y^2)^2}$$\n\n2. **全微分求实部**：\n   $$\\mathrm{d}u\
+  \ = u_x\\mathrm{d}x + u_y\\mathrm{d}y = \\dfrac{x^2 - y^2}{(x^2+y^2)^2}\\mathrm{d}x + \\dfrac{2xy}{(x^2+y^2)^2}\\mathrm{d}y\
+  \ = \\mathrm{d}\\left(-\\dfrac{x}{x^2+y^2}\\right)$$\n   积分得：\n   $$u(x, y) = -\\dfrac{x}{x^2+y^2} + C \\quad (C \\in \\\
+  mathbb{R})$$\n\n3. **合成解析函数**：\n   $$f(z) = u(x, y) + i v(x, y) = \\dfrac{-x + iy}{x^2+y^2} + C = -\\dfrac{x - iy}{|z|^2}\
+  \ + C = -\\dfrac{z^*}{z z^*} + C = -\\dfrac{1}{z} + C$$\n\n4. **代入初值确定常数**：\n   已知 $f(1) = -\\dfrac{1}{1} + C = -1 \\implies\
+  \ C = 0$。\n   因此完整表达式为：\n   $$f(z) = -\\dfrac{1}{z}$$\n   故 A 正确。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 基于数理方法课件2.4与作业0915题1.1设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:4056656874aa009de229b8841dc5ae2f1a95ac7a290c075a067fd6231b97e180
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:4056656874aa009de229b8841dc5ae2f1a95ac7a290c075a067fd6231b97e180
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:4056656874aa009de229b8841dc5ae2f1a95ac7a290c075a067fd6231b97e180

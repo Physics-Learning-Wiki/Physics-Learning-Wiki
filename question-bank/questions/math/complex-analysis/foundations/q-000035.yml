@@ -1,0 +1,74 @@
+schema_version: 3
+id: q-000035
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.multivalued
+- complex.euler-formula
+type: single_choice
+choice_order: shuffle
+stem: 复变多值函数在理论物理中具有重要应用。关于复数幂 $i^i$ 的所有可能取值及其性质，下列说法严格正确的是：
+choices:
+- id: A
+  content: $i^i$ 的所有可能取值全为纯实数，其主值为实数 $e^{-\pi/2}$
+- id: B
+  content: $i^i$ 只有一个唯一的取值，等于虚数单位 $i$
+- id: C
+  content: $i^i$ 的所有取值均为模长等于 1 的纯虚数
+- id: D
+  content: $i^i$ 共有无限多个取值，其实部全为零，虚部按等差数列分布
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 正确！根据复变幂函数定义 $a^b = \exp(b\operatorname{Ln} a)$，$\operatorname{Ln} i = i\left(\frac{\pi}{2} + 2k\pi\right)$，故 $i^i
+      = \exp\left[i \cdot i\left(\frac{\pi}{2} + 2k\pi\right)\right] = e^{-\frac{\pi}{2} - 2k\pi}$（$k \in \mathbb{Z}$），所有可能值均为正实数，主值（$k=0$）为
+      $e^{-\pi/2} \approx 0.20788$。
+    B: 错误。复数幂底数为复数时由复对数定义，具有由对数多值性产生的无穷多个离散分支，并非单值。
+    C: 错误。指数上是 $i \times i = -1$，乘积化为实指数，并不具有纯虚数或单位模长的特征。
+    D: 错误。所有取值的虚部均为零，是纯实数而非纯虚数。
+  correct: 回答正确！精准掌握了一般复数幂定义及其多值性来源于复对数主值与辐角周期的分析。
+  incorrect: 回答错误。请回顾一般复数幂的严格定义 $a^b = \exp(b\operatorname{Ln} a)$ 以及复对数 $\operatorname{Ln} z = \ln|z| + i\arg z$ 的计算。
+hints:
+- 利用公式 $a^b = e^{b\operatorname{Ln} a}$，先求复对数多值函数 $\operatorname{Ln} i$。
+- 注意 $\operatorname{Ln} i = \ln|i| + i(\operatorname{Arg}(i) + 2k\pi) = i(\pi/2 + 2k\pi)$。
+solution: "**解析**：\n1. **复数幂的定义**：\n   对于任意复数 $a \\neq 0$ 与 $b$，复数幂定义为：\n   $$a^b = \\exp(b\\operatorname{Ln} a)$$\n2. **计算复对数**：\n\
+  \   对于虚数单位 $a = i$，其模长 $|i| = 1$，主辐角 $\\operatorname{Arg}(i) = \\frac{\\pi}{2}$。因此其全对数多值为：\n   $$\\operatorname{Ln} i =\
+  \ \\ln|i| + i\\left(\\operatorname{Arg}(i) + 2k\\pi\\right) = 0 + i\\left(\\frac{\\pi}{2} + 2k\\pi\\right), \\quad k \\\
+  in \\mathbb{Z}$$\n3. **计算指数乘幂**：\n   代入指数公式：\n   $$i^i = \\exp(i\\operatorname{Ln} i) = \\exp\\left[i \\cdot i\\left(\\\
+  frac{\\pi}{2} + 2k\\pi\\right)\\right] = \\exp\\left[-\\left(\\frac{\\pi}{2} + 2k\\pi\\right)\\right] = e^{-\\frac{\\pi}{2}\
+  \ - 2k\\pi} \\quad (k \\in \\mathbb{Z})$$\n   由于指数全为实数，因此 $i^i$ 的**所有可能取值全为正实数**！其中主值（对应 $k = 0$）为实数 $e^{-\\pi/2} \\approx\
+  \ 0.20788$。\n   故 A 正确，B、C、D 错误。"
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 基于数理方法课件与作业1.3设计
+  ai_assisted: true
+authors:
+- name: Physics Learning Wiki Team
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2f298830633669735783c0de8111de48f631c9fe3cd2cd978ca36285ea268268
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2f298830633669735783c0de8111de48f631c9fe3cd2cd978ca36285ea268268
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-09-26'
+    question_version: 1
+    content_fingerprint: sha256:2f298830633669735783c0de8111de48f631c9fe3cd2cd978ca36285ea268268
