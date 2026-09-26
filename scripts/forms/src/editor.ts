@@ -66,9 +66,12 @@ function toolbarButton(
   name: string,
   title: string,
   icon: string,
-  action: (editor: EasyMDE) => void
+  action: (editor: EasyMDE) => void,
+  noDisable?: boolean
 ): EasyMDE.ToolbarIcon {
-  return { name, title, icon, action, className: "plw-editor-toolbar__icon" };
+  const item: EasyMDE.ToolbarIcon = { name, title, icon, action, className: "plw-editor-toolbar__icon" };
+  if (noDisable) item.noDisable = true;
+  return item;
 }
 
 function insertMath(editor: EasyMDE, block: boolean): void {
@@ -101,9 +104,9 @@ export function createEditorToolbar(includeImages: boolean): NonNullable<EasyMDE
     toolbarButton("inline-math", "插入行内公式", "𝑥", editor => insertMath(editor, false)),
     toolbarButton("block-math", "插入块级公式", "∑", editor => insertMath(editor, true)),
     "|",
-    toolbarButton("preview", "预览", "◉", editor => EasyMDE.togglePreview(editor)),
-    toolbarButton("side-by-side", "并排预览", "◫", editor => EasyMDE.toggleSideBySide(editor)),
-    toolbarButton("fullscreen", "全屏", "⛶", editor => EasyMDE.toggleFullScreen(editor))
+    toolbarButton("preview", "预览", "◉", editor => EasyMDE.togglePreview(editor), true),
+    toolbarButton("side-by-side", "并排预览", "◫", editor => EasyMDE.toggleSideBySide(editor), true),
+    toolbarButton("fullscreen", "全屏", "⛶", editor => EasyMDE.toggleFullScreen(editor), true)
   );
   return toolbar;
 }

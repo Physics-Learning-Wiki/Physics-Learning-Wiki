@@ -12,6 +12,32 @@ function createPreviewMathJax(): Promise<PreviewMathJax> {
   const target = getPreviewMathJaxWindow();
   if (target.MathJax?.typesetPromise) return Promise.resolve(target.MathJax);
 
+  const existingScript = document.head.querySelector<HTMLScriptElement>('script[data-plw-preview-mathjax="true"]');
+  if (existingScript) {
+    return new Promise((resolve, reject) => {
+      const onLoad = () => {
+        const api = getPreviewMathJaxWindow().MathJax;
+        if (!api) {
+          reject(new Error("MathJax loaded without an API"));
+          return;
+        }
+        Promise.resolve(api.startup?.promise)
+          .then(() => {
+            const readyApi = getPreviewMathJaxWindow().MathJax;
+            if (!readyApi?.typesetPromise) throw new Error("MathJax preview is not ready");
+            resolve(readyApi);
+          })
+          .catch(reject);
+      };
+      const onError = () => {
+        previewMathJaxPromise = undefined;
+        reject(new Error("MathJax preview could not be loaded"));
+      };
+      existingScript.addEventListener("load", onLoad, { once: true });
+      existingScript.addEventListener("error", onError, { once: true });
+    });
+  }
+
   return new Promise((resolve, reject) => {
     target.MathJax = {
       tex: {

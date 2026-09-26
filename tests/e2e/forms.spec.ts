@@ -86,9 +86,30 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   expect(requests.filter(url => new URL(url).pathname.endsWith("/css/features/submit.css"))).toHaveLength(1);
   expect(requests.some(url => /mathjax/i.test(url))).toBe(false);
 
-  await page.locator('.editor-toolbar button[title="预览"]').click();
+  const previewButton = page.locator('.editor-toolbar button[title="预览"]');
+  await previewButton.click();
   await expect.poll(() => requests.filter(url => url === mathJaxUrl).length).toBe(1);
   await expect(page.locator(".editor-preview-full")).toBeVisible();
+  await expect(previewButton).toBeEnabled();
+
+  // Exit preview by clicking the still-enabled preview button
+  await previewButton.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(0);
+  await expect(page.locator("#submission-form .CodeMirror")).toBeVisible();
+
+  // Edit content, then enter preview again
+  await setEditorText(page, 0, "再次编辑正文 $E=mc^2$");
+  await previewButton.click();
+  await expect(page.locator(".editor-preview-full")).toBeVisible();
+  await expect(previewButton).toBeEnabled();
+
+  // MathJax script requested only once and head tag is unique
+  expect(requests.filter(url => url === mathJaxUrl).length).toBe(1);
+  expect(await page.locator('head script[data-plw-preview-mathjax="true"]').count()).toBe(1);
+
+  // Return to editing mode
+  await previewButton.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(0);
 
   await page.goBack();
   await expectPagePath(page, "intro/about/");
@@ -157,10 +178,48 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
     1
   );
 
+  await page.route("https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js", route =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: `window.MathJax = {
+        startup: { promise: Promise.resolve() },
+        typesetPromise: () => Promise.resolve(),
+        typesetClear: () => {}
+      };`
+    })
+  );
+
   await setEditorText(page, 0, "题干：质量为 $m$ 的小车受到恒力。");
   await page.locator("#q-submit-choices").fill("A|加速度增加");
   await page.locator("#q-submit-answer").fill("A");
   await setEditorText(page, 1, "由牛顿第二定律 $F=ma$，加速度增加。");
+
+  // Verify preview toggle and independence for editor 0 (stem) and editor 1 (solution)
+  const stemPreviewBtn = page.locator('.editor-toolbar button[title="预览"]').nth(0);
+  const solutionPreviewBtn = page.locator('.editor-toolbar button[title="预览"]').nth(1);
+
+  await stemPreviewBtn.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(1);
+  // Editor 1 should NOT be in preview mode
+  await expect(page.locator(".CodeMirror").nth(1)).toBeVisible();
+  await expect(stemPreviewBtn).toBeEnabled();
+
+  // Exit preview on stem
+  await stemPreviewBtn.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(0);
+  await expect(page.locator(".CodeMirror").nth(0)).toBeVisible();
+
+  // Verify preview toggle on editor 1 (solution)
+  await solutionPreviewBtn.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(1);
+  // Editor 0 should NOT be in preview mode
+  await expect(page.locator(".CodeMirror").nth(0)).toBeVisible();
+  await expect(solutionPreviewBtn).toBeEnabled();
+
+  // Exit preview on solution
+  await solutionPreviewBtn.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(0);
+  await expect(page.locator(".CodeMirror").nth(1)).toBeVisible();
   expect(
     await page.locator("#plw-question-contribute-form").evaluate(form => (form as HTMLFormElement).checkValidity())
   ).toBe(false);
