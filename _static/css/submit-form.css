@@ -1,0 +1,326 @@
+/* docs/_static/css/submit-form.css */
+
+/* Native select popup & form color-scheme adaptation */
+:root,
+[data-md-color-scheme="default"] {
+  color-scheme: light;
+}
+
+[data-md-color-scheme="slate"] {
+  color-scheme: dark;
+}
+
+/* Form field layout */
+.submit-field {
+  margin-bottom: 1.5rem;
+}
+.editor-toolbar button.plw-editor-toolbar__icon {
+  color: var(--md-default-fg-color, #333);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.submit-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+.submit-required {
+  color: #e53e3e;
+}
+
+/* Unified form controls (excluding checkboxes and radios) */
+.submit-field select,
+.submit-field input:not([type="checkbox"]):not([type="radio"]) {
+  width: 100%;
+  max-width: 560px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lighter, #cbd5e0);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+  background-color: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #000);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.submit-field select:focus,
+.submit-field input:not([type="checkbox"]):not([type="radio"]):focus,
+.submit-field textarea:focus {
+  outline: none;
+  border-color: var(--md-accent-fg-color, #526cfe);
+  box-shadow: 0 0 0 2px rgba(82, 108, 254, 0.15);
+}
+
+.submit-field input:disabled {
+  opacity: 0.6;
+  background-color: var(--md-default-bg-color--lighter, #f1f5f9);
+  cursor: not-allowed;
+}
+
+/* Two-level chapter cascade dropdown */
+.submit-chapter-cascade {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 560px;
+  width: 100%;
+}
+.submit-chapter-cascade select {
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 600px) {
+  .submit-chapter-cascade {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Textarea fallback (when EasyMDE fails to load) */
+.submit-field textarea {
+  width: 100%;
+  max-width: 560px;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lighter, #cbd5e0);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  min-height: 200px;
+  resize: vertical;
+  box-sizing: border-box;
+  background-color: var(--md-default-bg-color, #fff);
+  color: var(--md-default-fg-color, #000);
+}
+
+.submit-hint {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #718096;
+}
+
+/* Radio buttons (署名方式) */
+.submit-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.submit-radio-group label {
+  font-weight: 400 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  margin-bottom: 0 !important;
+}
+.submit-radio-group input[type="radio"] {
+  width: 1.1rem !important;
+  height: 1.1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+  accent-color: var(--md-accent-fg-color, #526cfe);
+  cursor: pointer;
+}
+
+/* Checkboxes (公开同意 & 协议许可) */
+.submit-public-consent,
+.submit-checkbox-label {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-weight: 400 !important;
+  font-size: 0.85rem !important;
+  color: var(--md-default-fg-color--light, #718096);
+  cursor: pointer;
+  user-select: none;
+  max-width: 560px;
+  line-height: 1.45;
+}
+.submit-public-consent input[type="checkbox"],
+.submit-checkbox-label input[type="checkbox"] {
+  width: 1.05rem !important;
+  height: 1.05rem !important;
+  margin: 0.15rem 0 0 0 !important;
+  padding: 0 !important;
+  flex-shrink: 0;
+  accent-color: var(--md-accent-fg-color, #526cfe);
+  cursor: pointer;
+}
+
+/* Image input group spacing */
+.submit-image-group input {
+  margin-bottom: 0.5rem;
+}
+.submit-image-group input:last-child {
+  margin-bottom: 0;
+}
+
+/* Actions & Buttons */
+.submit-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+#submit-btn {
+  padding: 0.65em 1.8em;
+  background: var(--md-accent-fg-color, #526cfe);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s, filter 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+#submit-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+#submit-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+#submit-btn:disabled {
+  background: var(--md-default-fg-color--lighter, #a0aec0);
+  cursor: not-allowed;
+  box-shadow: none;
+  filter: none;
+}
+#submit-status {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+#submit-status.error {
+  color: #e53e3e;
+  background: #fff5f5;
+  border: 1px solid #feb2b2;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+}
+#submit-success {
+  display: none;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f0fff4;
+  border: 1px solid #c6f6d5;
+  border-radius: 8px;
+}
+
+/* EasyMDE overrides */
+.EasyMDEContainer {
+  max-width: 100%;
+}
+.EasyMDEContainer .CodeMirror {
+  height: 400px;
+  font-size: 0.95rem;
+  border-radius: 0 0 6px 6px;
+  box-sizing: border-box;
+}
+.editor-toolbar {
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #cbd5e0;
+  border-bottom: none;
+  background: #f7fafc;
+}
+.editor-toolbar button {
+  color: #4a5568 !important;
+}
+.editor-toolbar button:hover,
+.editor-toolbar button.active {
+  background: #e2e8f0;
+  border-color: #cbd5e0;
+}
+
+/* Question bank fields */
+#question-fields {
+  border: 1px solid var(--md-default-fg-color--lighter, #cbd5e0);
+  border-radius: 0.5rem;
+  margin: 1.25rem 0;
+  padding: 1.25rem;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+#question-fields legend {
+  font-weight: 600;
+  padding: 0 0.5rem;
+  color: var(--md-default-fg-color);
+  font-size: 1rem;
+}
+
+.submit-question-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+
+.submit-question-grid label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+/* Dark mode (Slate) overrides */
+[data-md-color-scheme="slate"] .submit-field select,
+[data-md-color-scheme="slate"] .submit-field input:not([type="checkbox"]):not([type="radio"]),
+[data-md-color-scheme="slate"] .submit-field textarea {
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border-color: #4a5568;
+}
+
+[data-md-color-scheme="slate"] .submit-field input:disabled {
+  background: #2d3748;
+  border-color: #374151;
+}
+
+[data-md-color-scheme="slate"] .submit-hint {
+  color: #a0aec0;
+}
+
+[data-md-color-scheme="slate"] #submit-status.error {
+  background: #3b1e1e;
+  border-color: #742a2a;
+  color: #feb2b2;
+}
+
+[data-md-color-scheme="slate"] #submit-success {
+  background: #1a3a2a;
+  border-color: #2f5e3f;
+  color: #c6f6d5;
+}
+
+/* Dark mode EasyMDE overrides */
+[data-md-color-scheme="slate"] .editor-toolbar {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .editor-toolbar button {
+  color: #e2e8f0 !important;
+}
+[data-md-color-scheme="slate"] .editor-toolbar button:hover,
+[data-md-color-scheme="slate"] .editor-toolbar button.active {
+  background: #4a5568;
+}
+[data-md-color-scheme="slate"] .EasyMDEContainer .CodeMirror {
+  background: #1a202c;
+  color: #e2e8f0;
+  border-color: #4a5568;
+}
+[data-md-color-scheme="slate"] .EasyMDEContainer .CodeMirror-cursor {
+  border-left-color: #e2e8f0;
+}
+[data-md-color-scheme="slate"] .editor-statusbar {
+  color: #a0aec0;
+}
+[data-md-color-scheme="slate"] .editor-preview,
+[data-md-color-scheme="slate"] .editor-preview-side {
+  background: #1a202c;
+  color: #e2e8f0;
+}

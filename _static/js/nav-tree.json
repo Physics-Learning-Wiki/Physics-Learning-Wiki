@@ -1,0 +1,663 @@
+// 由 scripts/generate-nav.py 自动生成，勿手动编辑。
+// Last generated: auto
+const NAV_TREE = [
+  {
+    "label": "submit"
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "apho"
+      },
+      {
+        "label": "common-mistakes"
+      },
+      {
+        "label": "cpho"
+      },
+      {
+        "label": "cupt"
+      },
+      {
+        "label": "ipho"
+      },
+      {
+        "label": "resources"
+      },
+      {
+        "label": "roadmap"
+      },
+      {
+        "label": "strategy"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "electromagnetism"
+      },
+      {
+        "label": "数学物理方法课程路线"
+      },
+      {
+        "label": "theoretical-mechanics"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "ac-circuit"
+      },
+      {
+        "label": "dc-circuit"
+      },
+      {
+        "label": "electromagnetism-writing"
+      },
+      {
+        "label": "electrostatics"
+      },
+      {
+        "label": "induction"
+      },
+      {
+        "label": "magnetostatics"
+      },
+      {
+        "label": "matter"
+      },
+      {
+        "label": "maxwell"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "basic-experiments"
+      },
+      {
+        "label": "error-analysis"
+      },
+      {
+        "label": "instruments"
+      }
+    ]
+  },
+  {
+    "label": "glossary",
+    "children": [
+      {
+        "label": "glossary"
+      }
+    ]
+  },
+  {
+    "label": "intro",
+    "children": [
+      {
+        "label": "about"
+      },
+      {
+        "label": "admonitions"
+      },
+      {
+        "label": "contributors"
+      },
+      {
+        "label": "faq"
+      },
+      {
+        "label": "format"
+      },
+      {
+        "label": "htc"
+      },
+      {
+        "label": "mirrors"
+      },
+      {
+        "label": "roadmap"
+      },
+      {
+        "label": "symbol"
+      },
+      {
+        "label": "thanks"
+      },
+      {
+        "label": "what-pl-wiki-is-not"
+      },
+      {
+        "label": "writing"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "复数与复变函数"
+      },
+      {
+        "label": "probability"
+      },
+      {
+        "label": "special-functions"
+      },
+      {
+        "label": "calculus",
+        "children": [
+          {
+            "label": "derivative"
+          },
+          {
+            "label": "integral"
+          },
+          {
+            "label": "limit"
+          },
+          {
+            "label": "ode"
+          },
+          {
+            "label": "variational"
+          }
+        ]
+      },
+      {
+        "label": "complex-analysis",
+        "children": [
+          {
+            "label": "解析函数与柯西-黎曼条件"
+          },
+          {
+            "label": "复数与几何表示"
+          },
+          {
+            "label": "复变积分与柯西定理"
+          },
+          {
+            "label": "留数定理与实积分计算"
+          },
+          {
+            "label": "级数展开与奇点"
+          }
+        ]
+      },
+      {
+        "label": "differential-equations",
+        "children": [
+          {
+            "label": "ode-intro"
+          },
+          {
+            "label": "pde-intro"
+          },
+          {
+            "label": "second-order-ode"
+          },
+          {
+            "label": "separation-of-variables"
+          },
+          {
+            "label": "series-solution"
+          }
+        ]
+      },
+      {
+        "label": "eigenfunction-methods",
+        "children": [
+          {
+            "label": "greens-function"
+          },
+          {
+            "label": "sturm-liouville"
+          }
+        ]
+      },
+      {
+        "label": "linear-algebra",
+        "children": [
+          {
+            "label": "eigenvalues"
+          },
+          {
+            "label": "hermitian-unitary"
+          },
+          {
+            "label": "inner-product"
+          },
+          {
+            "label": "matrix"
+          },
+          {
+            "label": "operators"
+          },
+          {
+            "label": "space"
+          }
+        ]
+      },
+      {
+        "label": "probability-statistics",
+        "children": [
+          {
+            "label": "analysis-of-variance-and-regression-analysis"
+          },
+          {
+            "label": "appendix-tables"
+          },
+          {
+            "label": "basic-concepts"
+          },
+          {
+            "label": "characteristic-values-of-random-variables"
+          },
+          {
+            "label": "hypothesis-testing"
+          },
+          {
+            "label": "law-of-large-numbers-and-central-limit-theorem"
+          },
+          {
+            "label": "multivariate-random-variables-and-distributions"
+          },
+          {
+            "label": "one-dimensional-random-variables-and-distributions"
+          },
+          {
+            "label": "parameter-estimation"
+          },
+          {
+            "label": "sample-and-sampling-distribution"
+          }
+        ]
+      },
+      {
+        "label": "special-functions",
+        "children": [
+          {
+            "label": "bessel"
+          },
+          {
+            "label": "gamma-beta"
+          },
+          {
+            "label": "hermite"
+          },
+          {
+            "label": "laguerre"
+          },
+          {
+            "label": "legendre"
+          },
+          {
+            "label": "spherical-harmonics"
+          }
+        ]
+      },
+      {
+        "label": "transforms",
+        "children": [
+          {
+            "label": "delta-function"
+          },
+          {
+            "label": "fourier-series"
+          },
+          {
+            "label": "fourier-transform"
+          },
+          {
+            "label": "laplace-transform"
+          }
+        ]
+      },
+      {
+        "label": "variational-methods",
+        "children": [
+          {
+            "label": "calculus-of-variations"
+          }
+        ]
+      },
+      {
+        "label": "vector-analysis",
+        "children": [
+          {
+            "label": "curvilinear-coordinates"
+          },
+          {
+            "label": "integral-theorems"
+          },
+          {
+            "label": "operators"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "fluid"
+      },
+      {
+        "label": "gravitation"
+      },
+      {
+        "label": "mechanics-writing"
+      },
+      {
+        "label": "analytical",
+        "children": [
+          {
+            "label": "hamiltonian"
+          },
+          {
+            "label": "lagrangian"
+          }
+        ]
+      },
+      {
+        "label": "dynamics",
+        "children": [
+          {
+            "label": "force-concepts"
+          },
+          {
+            "label": "inertial-force"
+          },
+          {
+            "label": "momentum-energy"
+          },
+          {
+            "label": "newton-laws"
+          },
+          {
+            "label": "system-of-particles"
+          }
+        ]
+      },
+      {
+        "label": "kinematics",
+        "children": [
+          {
+            "label": "basic-concepts"
+          },
+          {
+            "label": "linear-motion"
+          },
+          {
+            "label": "projectile-motion"
+          },
+          {
+            "label": "reference-frames"
+          },
+          {
+            "label": "uniformly-accelerated-motion"
+          }
+        ]
+      },
+      {
+        "label": "oscillation-wave",
+        "children": [
+          {
+            "label": "doppler-effect"
+          },
+          {
+            "label": "harmonic-wave"
+          },
+          {
+            "label": "linear-oscillation"
+          },
+          {
+            "label": "nonlinear"
+          },
+          {
+            "label": "oscillation-wave"
+          },
+          {
+            "label": "superposition"
+          },
+          {
+            "label": "wave-in-continuous-medium"
+          }
+        ]
+      },
+      {
+        "label": "rigid-body",
+        "children": [
+          {
+            "label": "angular-momentum-conservation"
+          },
+          {
+            "label": "compound-pendulum"
+          },
+          {
+            "label": "moment-of-inertia"
+          },
+          {
+            "label": "rigid-body"
+          },
+          {
+            "label": "torque-angular-momentum"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "atomic"
+      },
+      {
+        "label": "general-relativity"
+      },
+      {
+        "label": "modern-writing"
+      },
+      {
+        "label": "nuclear-particle"
+      },
+      {
+        "label": "solid-state"
+      },
+      {
+        "label": "special-relativity"
+      },
+      {
+        "label": "quantum",
+        "children": [
+          {
+            "label": "operators"
+          },
+          {
+            "label": "schrodinger"
+          },
+          {
+            "label": "wave-particle"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "diffraction"
+      },
+      {
+        "label": "geometric"
+      },
+      {
+        "label": "interference"
+      },
+      {
+        "label": "modern"
+      },
+      {
+        "label": "optics-writing"
+      },
+      {
+        "label": "polarization"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "contribute"
+      },
+      {
+        "label": "play"
+      },
+      {
+        "label": "questions"
+      },
+      {
+        "label": "sets"
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "thermodynamics-writing"
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "chemical-bond"
+          },
+          {
+            "label": "gas"
+          },
+          {
+            "label": "heat-and-its-nature"
+          },
+          {
+            "label": "liquid"
+          },
+          {
+            "label": "phase-transitions-and-coexistence"
+          },
+          {
+            "label": "solid"
+          },
+          {
+            "label": "temperature"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "boltzmann-density-distribution"
+          },
+          {
+            "label": "bose-gas"
+          },
+          {
+            "label": "equipartition-theorem-and-heat-capacity"
+          },
+          {
+            "label": "fermi-gas"
+          },
+          {
+            "label": "macrostate-probability-and-entropy"
+          },
+          {
+            "label": "maxwell-velocity-distribution"
+          },
+          {
+            "label": "quantum-gas-energy-level-distribution"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "cycle-process-and-carnot-cycle"
+          },
+          {
+            "label": "energy-conservation-to-first-law"
+          },
+          {
+            "label": "first-law-ideal-gas"
+          },
+          {
+            "label": "gas-heat-capacity-internal-energy-enthalpy"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "carnot-theorem-applications"
+          },
+          {
+            "label": "clausius-inequality-and-entropy"
+          },
+          {
+            "label": "second-law-and-carnot-theorem"
+          },
+          {
+            "label": "thermal-equilibrium-and-free-energy"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "index",
+    "children": [
+      {
+        "label": "plotting"
+      },
+      {
+        "label": "python-scicomp"
+      },
+      {
+        "label": "simulation"
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "figures-tables-bib"
+          },
+          {
+            "label": "installation"
+          },
+          {
+            "label": "math-and-physics"
+          },
+          {
+            "label": "templates"
+          },
+          {
+            "label": "troubleshooting"
+          }
+        ]
+      }
+    ]
+  }
+];
