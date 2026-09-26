@@ -113,7 +113,9 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
 
     const reference = document.createElement("details");
     reference.className = "plw-quiz-self-assessment__reference";
-    reference.innerHTML = `<summary>查看参考答案</summary><div>${question.referenceAnswerHtml ?? question.solutionHtml}</div>`;
+    reference.innerHTML = `<summary>查看参考答案</summary><div>${
+      question.referenceAnswerHtml ?? question.solutionHtml
+    }</div>`;
     wrap.append(reference);
 
     const rubric = document.createElement("div");
@@ -231,9 +233,9 @@ function answerLabel(question: Question, answer: UserAnswer): string {
   if (question.type === "free_response") {
     if (!isSelfAssessedAnswer(answer)) return "未作答";
     const level = question.grading.rubric.find(item => item.id === answer.levelId);
-    return `<div class="plw-quiz-free-response-answer">${escapeHtml(answer.text || "未填写文字答案")}<br><strong>自评：</strong>${escapeHtml(
-      level?.label ?? "未完成自评"
-    )}</div>`;
+    return `<div class="plw-quiz-free-response-answer">${escapeHtml(
+      answer.text || "未填写文字答案"
+    )}<br><strong>自评：</strong>${escapeHtml(level?.label ?? "未完成自评")}</div>`;
   }
   if (!isNumericAnswer(answer)) return "未作答";
   return `${escapeHtml(answer.value || "未填写数值")}${
@@ -247,7 +249,15 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
   const selfAssessed = question.type === "free_response";
   const area = document.createElement("div");
   area.className = `plw-quiz-feedback ${
-    selfAssessed ? (result.unanswered ? "is-unanswered" : "is-self-assessed") : result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+    selfAssessed
+      ? result.unanswered
+        ? "is-unanswered"
+        : "is-self-assessed"
+      : result.correct
+      ? "is-correct"
+      : result.unanswered
+      ? "is-unanswered"
+      : "is-incorrect"
   }`;
   if (announce) area.setAttribute("role", "status");
 
@@ -303,10 +313,24 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
 
   const isSelfAssessed = question.type === "free_response";
   area.innerHTML = `
-    <h3 tabindex="-1">${selfAssessed ? (result.unanswered ? "待完成自评" : "已记录自评") : result.correct ? "回答正确" : result.unanswered ? "未作答" : "需要复习"}</h3>
+    <h3 tabindex="-1">${
+      selfAssessed
+        ? result.unanswered
+          ? "待完成自评"
+          : "已记录自评"
+        : result.correct
+        ? "回答正确"
+        : result.unanswered
+        ? "未作答"
+        : "需要复习"
+    }</h3>
     <div class="plw-quiz-answer-comparison">
       <div><strong>你的答案：</strong>${answerLabel(question, answer)}</div>
-      ${isSelfAssessed ? `<div><strong>参考答案：</strong>${question.referenceAnswerHtml ?? question.solutionHtml}</div>` : `<div><strong>正确答案：</strong>${answerLabel(question, correctAnswer)}</div>`}
+      ${
+        isSelfAssessed
+          ? `<div><strong>参考答案：</strong>${question.referenceAnswerHtml ?? question.solutionHtml}</div>`
+          : `<div><strong>正确答案：</strong>${answerLabel(question, correctAnswer)}</div>`
+      }
     </div>
     ${targeted}
     <div class="plw-quiz-feedback-text">${feedbackHtml}</div>

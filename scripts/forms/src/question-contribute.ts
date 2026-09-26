@@ -182,7 +182,9 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       const answerText = answerInput?.value.trim() ?? "";
       let answer: Record<string, unknown> | undefined;
       let choices: Array<{ id: string; content: string }> | undefined;
-      let questionPayloadGrading: { mode: "self_assessed"; rubric: Array<{ id: string; label: string; points: number }> } | undefined;
+      let questionPayloadGrading:
+        | { mode: "self_assessed"; rubric: Array<{ id: string; label: string; points: number }> }
+        | undefined;
       try {
         if (type === "single_choice" || type === "multiple_choice") {
           const rawChoices = form.querySelector<HTMLTextAreaElement>("#q-submit-choices")?.value.trim() ?? "";
@@ -221,14 +223,17 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
           };
         } else if (type === "free_response") {
           const rawRubric = form.querySelector<HTMLTextAreaElement>("#q-submit-rubric")?.value.trim() ?? "";
-          const rubric = rawRubric.split(/\r?\n/).filter(Boolean).map(line => {
-            const [id, label, rawPoints] = line.split("|").map(value => value.trim());
-            const points = Number(rawPoints);
-            if (!id || !label || !Number.isFinite(points) || points < 0 || points > 1) {
-              throw new Error("自评评分标准格式应为「ID|名称|0 到 1 的分数」");
-            }
-            return { id, label, points };
-          });
+          const rubric = rawRubric
+            .split(/\r?\n/)
+            .filter(Boolean)
+            .map(line => {
+              const [id, label, rawPoints] = line.split("|").map(value => value.trim());
+              const points = Number(rawPoints);
+              if (!id || !label || !Number.isFinite(points) || points < 0 || points > 1) {
+                throw new Error("自评评分标准格式应为「ID|名称|0 到 1 的分数」");
+              }
+              return { id, label, points };
+            });
           if (rubric.length < 2 || rubric.length > 5) throw new Error("自评评分标准需要 2 到 5 个等级");
           questionPayloadGrading = { mode: "self_assessed", rubric };
         }
@@ -291,7 +296,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         stem,
         choices,
         answer,
-        response: type === "free_response" ? { format: "plain_text", required: true, rows: 8, max_chars: 20000 } : undefined,
+        response:
+          type === "free_response" ? { format: "plain_text", required: true, rows: 8, max_chars: 20000 } : undefined,
         grading: type === "free_response" ? questionPayloadGrading : undefined,
         reference_answer: type === "free_response" ? solution : undefined,
         feedback,

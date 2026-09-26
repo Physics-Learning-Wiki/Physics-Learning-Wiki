@@ -591,7 +591,10 @@ export class PlaySurface {
     });
 
     const score = questionResults.filter(r => r.correct).length;
-    const pointsEarned = questionResults.reduce((sum, result) => sum + (result.evaluation?.score ?? (result.correct ? 1 : 0)), 0);
+    const pointsEarned = questionResults.reduce(
+      (sum, result) => sum + (result.evaluation?.score ?? (result.correct ? 1 : 0)),
+      0
+    );
     const pointsAvailable = questionResults.reduce((sum, result) => sum + (result.evaluation?.maxScore ?? 1), 0);
     const selfAssessedCount = questionResults.filter(result => result.evaluation?.mode === "self_assessed").length;
     const attempt: Attempt = {
@@ -661,9 +664,10 @@ export class PlaySurface {
                   <span class="plw-quiz-result__summary-id">${escapeHtml(
                     this.taxonomy?.concepts[cid]?.title ?? (cid === "other" ? "其他概念" : cid)
                   )}</span>
-                  <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total - stat.selfAssessed} 自动正确${
-                  stat.selfAssessed > 0 ? ` · ${stat.selfAssessed} 题自评` : ""
-                }${stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
+                  <span class="plw-quiz-result__summary-stat">${stat.correct} / ${
+                  stat.total - stat.selfAssessed
+                } 自动正确${stat.selfAssessed > 0 ? ` · ${stat.selfAssessed} 题自评` : ""}${
+                  stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
                 }</span>
                 </div>
               `
@@ -687,9 +691,10 @@ export class PlaySurface {
                   <span class="plw-quiz-result__summary-id">${escapeHtml(
                     objectiveDetails.get(oid)?.title ?? (oid === "general" ? "综合学习目标" : oid)
                   )}</span>
-                  <span class="plw-quiz-result__summary-stat">${stat.correct} / ${stat.total - stat.selfAssessed} 自动正确${
-                  stat.selfAssessed > 0 ? ` · ${stat.selfAssessed} 题自评` : ""
-                }${stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
+                  <span class="plw-quiz-result__summary-stat">${stat.correct} / ${
+                  stat.total - stat.selfAssessed
+                } 自动正确${stat.selfAssessed > 0 ? ` · ${stat.selfAssessed} 题自评` : ""}${
+                  stat.uncertain > 0 ? ` (${stat.uncertain} 题存疑)` : ""
                 }</span>
                 </div>
               `
@@ -707,8 +712,8 @@ export class PlaySurface {
           <div class="plw-quiz-result__score-circle">
             <span class="plw-quiz-result__score-value">${percent}%</span>
             <span class="plw-quiz-result__score-label">${pointsEarned} / ${pointsAvailable} 分${
-              (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
-            }</span>
+      (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
+    }</span>
           </div>
         </div>
         <p class="plw-quiz-result__progress">已作答 ${answeredCount} / ${
@@ -767,18 +772,42 @@ export class PlaySurface {
       const itemCard = document.createElement("div");
       const selfAssessed = result.evaluation?.mode === "self_assessed";
       itemCard.className = `plw-quiz-review-card ${
-        selfAssessed ? (result.unanswered ? "is-unanswered" : "is-self-assessed") : result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+        selfAssessed
+          ? result.unanswered
+            ? "is-unanswered"
+            : "is-self-assessed"
+          : result.correct
+          ? "is-correct"
+          : result.unanswered
+          ? "is-unanswered"
+          : "is-incorrect"
       }`;
       itemCard.dataset.questionId = q.id;
 
-      const badgeText = selfAssessed ? (result.unanswered ? "待完成自评" : `已自评 ${result.evaluation?.score ?? 0} / ${result.evaluation?.maxScore ?? 1} 分`) : result.correct ? "回答正确" : result.unanswered ? "未作答" : "回答错误";
+      const badgeText = selfAssessed
+        ? result.unanswered
+          ? "待完成自评"
+          : `已自评 ${result.evaluation?.score ?? 0} / ${result.evaluation?.maxScore ?? 1} 分`
+        : result.correct
+        ? "回答正确"
+        : result.unanswered
+        ? "未作答"
+        : "回答错误";
       const uncertainBadge = result.uncertain ? `<span class="plw-quiz-badge--warning">作答时标记存疑</span>` : "";
 
       itemCard.innerHTML = `
         <div class="plw-quiz-review-card__header">
           <span class="plw-quiz-review-card__index">第 ${idx + 1} 题 (${q.id})</span>
           <span class="plw-quiz-badge ${
-            selfAssessed ? (result.unanswered ? "is-unanswered" : "is-self-assessed") : result.correct ? "is-correct" : result.unanswered ? "is-unanswered" : "is-incorrect"
+            selfAssessed
+              ? result.unanswered
+                ? "is-unanswered"
+                : "is-self-assessed"
+              : result.correct
+              ? "is-correct"
+              : result.unanswered
+              ? "is-unanswered"
+              : "is-incorrect"
           }">${badgeText}</span>
           ${uncertainBadge}
         </div>

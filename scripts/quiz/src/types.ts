@@ -99,7 +99,12 @@ export interface FreeResponseQuestion extends QuestionBase {
   referenceAnswerHtml?: string;
 }
 
-export type Question = SingleChoiceQuestion | MultipleChoiceQuestion | BooleanQuestion | NumericQuestion | FreeResponseQuestion;
+export type Question =
+  | SingleChoiceQuestion
+  | MultipleChoiceQuestion
+  | BooleanQuestion
+  | NumericQuestion
+  | FreeResponseQuestion;
 export type SelfAssessedAnswer = { text: string; levelId: string | null };
 export type UserAnswer = string | string[] | boolean | { value: string; unit?: string } | SelfAssessedAnswer | null;
 

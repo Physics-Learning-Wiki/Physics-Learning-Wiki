@@ -95,13 +95,12 @@ function isQuestionResult(v: unknown): v is QuestionResult {
     typeof r.correct === "boolean" &&
     typeof r.unanswered === "boolean" &&
     typeof r.uncertain === "boolean" &&
-    (r.evaluation === undefined || (
-      r.evaluation &&
-      (r.evaluation.mode === "automatic" || r.evaluation.mode === "self_assessed") &&
-      typeof r.evaluation.status === "string" &&
-      typeof r.evaluation.score === "number" &&
-      typeof r.evaluation.maxScore === "number"
-    ))
+    (r.evaluation === undefined ||
+      (r.evaluation &&
+        (r.evaluation.mode === "automatic" || r.evaluation.mode === "self_assessed") &&
+        typeof r.evaluation.status === "string" &&
+        typeof r.evaluation.score === "number" &&
+        typeof r.evaluation.maxScore === "number"))
   );
 }
 
