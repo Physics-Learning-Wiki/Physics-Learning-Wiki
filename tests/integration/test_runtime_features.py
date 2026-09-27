@@ -50,6 +50,7 @@ def test_quiz_root_variants_all_mark_the_quiz_feature() -> None:
         '<div id="plw-quiz-root"></div>',
         '<div id="plw-quiz-sets-root"></div>',
         '<div id="plw-quiz-questions-root"></div>',
+        '<div id="plw-quiz-library-root"></div>',
         '<div id="plw-quiz-home-root"></div>',
         '<div class="plw-quiz-inline-root"></div>',
     )

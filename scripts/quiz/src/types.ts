@@ -33,6 +33,10 @@ export interface QuestionBase {
   objectiveIds: string[];
   relatedPages: string[];
   stemHtml: string;
+  source?: {
+    stemMarkdown: string;
+    choices: Array<{ id: string; contentMarkdown: string }>;
+  };
   feedback?: {
     correctHtml?: string;
     incorrectHtml?: string;
@@ -225,9 +229,23 @@ export interface TaxonomyCatalog {
 }
 
 export type QuizSource = { type: "set"; id: string } | { type: "adhoc"; questionIds: string[] };
+export type PracticeOrigin =
+  | { type: "mistakes" }
+  | { type: "saved" }
+  | { type: "collection"; collectionId: string; collectionName: string }
+  | { type: "retry"; parentSessionId: string };
+
+export interface QuizContext {
+  surface: "runner" | "inline" | "browser";
+  pageId?: string;
+  origin?: PracticeOrigin;
+}
 
 export interface Session {
   sessionId: string;
+  profileEpoch: string;
+  sessionRevision: number;
+  committedResults: Record<string, { answeredAt: string; result: QuestionResult }>;
   preview: boolean;
   selectionAlgorithmVersion: number;
   state: "active" | "completed" | "discarded";
@@ -241,10 +259,7 @@ export interface Session {
   currentIndex: number;
   startedAt: string;
   updatedAt: string;
-  context?: {
-    surface: "runner" | "inline";
-    pageId?: string;
-  };
+  context?: QuizContext;
 }
 
 export interface QuestionResult {
@@ -278,16 +293,64 @@ export interface Attempt {
   pointsAvailable?: number;
   selfAssessedCount?: number;
   questionResults: QuestionResult[];
-  context?: {
-    surface: "runner" | "inline";
-    pageId?: string;
-  };
+  context?: QuizContext;
 }
 
 export interface QuizStorageData {
-  schemaVersion: 2;
+  schemaVersion: 3;
+  profileEpoch: string;
+  revision: number;
   activeSessions: Record<string, Session[]>;
   attempts: Attempt[];
-  wrongQuestions: Record<string, string>;
+  learning: {
+    historyCoverage: "since_profile_creation" | "partial_legacy";
+    trackedSince: string;
+    questions: Record<string, QuestionLearningRecord>;
+  };
+  library: {
+    savedQuestions: Record<string, SavedQuestionRecord>;
+    collections: Record<string, QuestionCollection>;
+  };
   preferences: { restoreSession: boolean };
+}
+
+export type LearningOutcome = "correct" | "incorrect" | "self_assessed";
+export type WrongBookStatus = "learning" | "mastered";
+
+export interface WrongBookState {
+  status: WrongBookStatus;
+  addedAt: string;
+  updatedAt: string;
+  lastWrongAt?: string;
+  masteredAt?: string;
+  masteredQuestionVersion?: number;
+  manuallyAdded: boolean;
+  legacyImported?: boolean;
+  correctAfterLastWrong: number;
+}
+
+export interface QuestionLearningRecord {
+  lastQuestionVersion?: number;
+  answeredCount: number;
+  correctCount: number;
+  incorrectCount: number;
+  selfAssessedCount: number;
+  firstAnsweredAt?: string;
+  lastAnsweredAt?: string;
+  lastOutcome?: LearningOutcome;
+  wrongBook?: WrongBookState;
+}
+
+export interface SavedQuestionRecord {
+  savedAt: string;
+  updatedAt: string;
+  savedQuestionVersion: number;
+  collectionIds: string[];
+}
+
+export interface QuestionCollection {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 }

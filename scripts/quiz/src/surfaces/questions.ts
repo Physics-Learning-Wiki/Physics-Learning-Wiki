@@ -5,7 +5,7 @@ import {
   readQuestionsParameters,
   resolveSiteUrl
 } from "../data.js";
-import { isAnswerComplete } from "../grading.js";
+import { isAnswerComplete, makeResult } from "../grading.js";
 import { typeset } from "../math.js";
 import {
   escapeHtml,
@@ -15,7 +15,10 @@ import {
   renderQuestionStem
 } from "../question-renderer.js";
 import { createAbortScope } from "../abort-scope.js";
-import type { Manifest, Question, TaxonomyCatalog, UserAnswer } from "../types.js";
+import { createSession } from "../session.js";
+import { QuizStore } from "../storage.js";
+import { createQuestionTools } from "../question-tools.js";
+import type { Attempt, Manifest, Question, TaxonomyCatalog, UserAnswer } from "../types.js";
 
 export class QuestionsSurface {
   private readonly abort: AbortController;
@@ -24,6 +27,7 @@ export class QuestionsSurface {
   private manifest!: Manifest;
   private questions: Question[] = [];
   private taxonomy?: TaxonomyCatalog;
+  private store!: QuizStore;
 
   private keyword = "";
   private selectedTopic = "all";
@@ -39,6 +43,7 @@ export class QuestionsSurface {
   private targetQuestionId: string | null = null;
   private answers: Record<string, UserAnswer> = {};
   private locked: Record<string, boolean> = {};
+  private cardAbort = new AbortController();
 
   constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
     const scope = createAbortScope(parentSignal);
@@ -51,6 +56,8 @@ export class QuestionsSurface {
       const manifestPath = this.root.dataset.manifestUrl ?? resolveSiteUrl("_generated/question-bank/manifest.json");
       this.manifestUrl = new URL(manifestPath, window.location.href);
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
+      this.store = new QuizStore(window.localStorage, this.manifest.preview);
+      await this.store.ready();
 
       this.questions = await loadQuestionCatalog(this.manifestUrl, this.manifest.catalogs.questions, this.abort.signal);
 
@@ -82,6 +89,8 @@ export class QuestionsSurface {
   }
 
   destroy(): void {
+    this.cardAbort.abort();
+    this.store?.destroy();
     this.abort.abort();
     this.releaseAbortScope();
     this.filterMediaCleanup?.();
@@ -284,6 +293,8 @@ export class QuestionsSurface {
   }
 
   private updateList(listContainer: HTMLElement, countNotice: HTMLElement): void {
+    this.cardAbort.abort();
+    this.cardAbort = new AbortController();
     listContainer.innerHTML = "";
 
     const filtered = this.questions.filter(q => {
@@ -521,6 +532,12 @@ export class QuestionsSurface {
         qHeader.querySelector(".plw-quiz-question-browser__id-row")?.append(copyStatus);
 
         card.append(qHeader);
+        card.append(
+          createQuestionTools(q, this.store, this.cardAbort.signal, {
+            manifestUrl: this.manifestUrl,
+            getAnswer: () => this.answers[q.id] ?? null
+          })
+        );
 
         // 2. Body: Stem
         card.append(renderQuestionStem(q));
@@ -555,7 +572,47 @@ export class QuestionsSurface {
           trialBtn.className = "plw-quiz-btn--primary plw-quiz-btn--sm";
           trialBtn.textContent = "试答并检验";
           trialBtn.disabled = !isAnswerComplete(q, answer);
-          trialBtn.addEventListener("click", () => {
+          trialBtn.addEventListener("click", async () => {
+            trialBtn!.disabled = true;
+            const snapshot = this.store.read();
+            const session = createSession(
+              { type: "adhoc", questionIds: [q.id] },
+              crypto.randomUUID(),
+              this.manifest.bankFingerprint,
+              this.manifest.selectionAlgorithmVersion,
+              this.manifest.preview,
+              [q],
+              { surface: "browser" },
+              snapshot.profileEpoch
+            );
+            session.answers[q.id] = this.answers[q.id] ?? null;
+            const created = await this.store.createSession(session, snapshot.revision);
+            if (!created.ok) {
+              trialBtn!.disabled = false;
+              this.showTrialError(card, created.reason);
+              return;
+            }
+            const result = makeResult(q, this.answers[q.id] ?? null, false);
+            const attempt: Attempt = {
+              sessionId: created.value.sessionId,
+              source: created.value.source,
+              seed: created.value.seed,
+              bankFingerprint: created.value.bankFingerprint,
+              completedAt: new Date().toISOString(),
+              score: result.correct ? 1 : 0,
+              total: 1,
+              pointsEarned: result.evaluation?.score ?? (result.correct ? 1 : 0),
+              pointsAvailable: result.evaluation?.maxScore ?? 1,
+              selfAssessedCount: result.evaluation?.mode === "self_assessed" ? 1 : 0,
+              questionResults: [result],
+              context: created.value.context
+            };
+            const completed = await this.store.completeSession(created.value, attempt);
+            if (!completed.ok) {
+              trialBtn!.disabled = false;
+              this.showTrialError(card, completed.reason);
+              return;
+            }
             this.locked[q.id] = true;
             const replacement = renderCard();
             card.replaceWith(replacement);
@@ -638,6 +695,17 @@ export class QuestionsSurface {
     this.focusTargetQuestion();
   }
 
+  private showTrialError(card: HTMLElement, reason: string): void {
+    let status = card.querySelector<HTMLElement>(".plw-quiz-trial-error");
+    if (!status) {
+      status = document.createElement("p");
+      status.className = "plw-quiz-trial-error plw-quiz-error";
+      status.setAttribute("role", "alert");
+      card.append(status);
+    }
+    status.textContent = `试答记录未保存：${reason}，请重试。`;
+  }
+
   private focusTargetQuestion(): void {
     if (!this.targetQuestionId || !this.pendingTargetFocus) return;
     const target = document.getElementById(`q-${this.targetQuestionId}`);
@@ -645,7 +713,7 @@ export class QuestionsSurface {
     this.pendingTargetFocus = false;
     requestAnimationFrame(() => {
       if (!target.isConnected) return;
-      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      target.scrollIntoView({ block: "center" });
       target.focus({ preventScroll: true });
     });
   }

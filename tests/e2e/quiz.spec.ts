@@ -18,7 +18,7 @@ async function mathQuestionIds(page: Page): Promise<string[]> {
   return questions
     .filter(question =>
       [question.stemHtml, question.solutionHtml, ...(question.choices ?? []).map(choice => choice.contentHtml)].some(
-        markup => markup.includes("<mjx-container")
+        markup => markup.includes('class="arithmatex"') || markup.includes("<mjx-container")
       )
     )
     .map(question => question.id)
@@ -76,7 +76,8 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   // Restore question 1
   await page.locator(".plw-quiz-step-btn").first().click();
 
-  const savedSession = await page.evaluate(() => localStorage.getItem("plw.quiz.v2"));
+  await expect.poll(() => page.evaluate(() => localStorage.getItem("plw.quiz.v3"))).not.toBeNull();
+  const savedSession = await page.evaluate(() => localStorage.getItem("plw.quiz.v3"));
   expect(savedSession).not.toBeNull();
   expect(Object.values(JSON.parse(savedSession!).activeSessions).flat()).toHaveLength(1);
 
@@ -86,7 +87,7 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await page.goBack();
   await expect(page).toHaveURL(/\/intro\/about\/$/);
   await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
-  expect(await page.evaluate(() => localStorage.getItem("plw.quiz.v2"))).toBe(savedSession);
+  expect(await page.evaluate(() => localStorage.getItem("plw.quiz.v3"))).toBe(savedSession);
   const questionBankRequestsAtExit = quizRequests.filter(path => path.includes("/_generated/question-bank/")).length;
   await page.waitForTimeout(300);
   expect(quizRequests.filter(path => path.includes("/_generated/question-bank/")).length).toBe(
@@ -102,7 +103,7 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await expect(page).toHaveURL(/\/quiz\/play\/\?set=[^&]+&seed=[^&]+/);
   await expect(page.locator(".plw-quiz-question")).toBeVisible();
   await expect(page.locator(".plw-quiz-question")).toHaveAttribute("data-question-id", originalQuestionId!);
-  expect(await page.evaluate(() => localStorage.getItem("plw.quiz.v2"))).toBe(savedSession);
+  expect(await page.evaluate(() => localStorage.getItem("plw.quiz.v3"))).toBe(savedSession);
   expect(quizRequests.filter(path => path.endsWith("/features/quiz.js"))).toHaveLength(1);
 });
 
@@ -162,10 +163,10 @@ test("a direct runner honors its seed and shows stale-session recovery", async (
 
   await page.evaluate(
     ({ setId: activeSetId }) => {
-      const storage = JSON.parse(localStorage.getItem("plw.quiz.v2")!);
+      const storage = JSON.parse(localStorage.getItem("plw.quiz.v3")!);
       const activeSession = storage.activeSessions[`set:${activeSetId}`][0];
       activeSession.bankFingerprint = "sha256:stale-fixture";
-      localStorage.setItem("plw.quiz.v2", JSON.stringify(storage));
+      localStorage.setItem("plw.quiz.v3", JSON.stringify(storage));
     },
     { setId }
   );

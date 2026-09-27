@@ -27,6 +27,12 @@ hide:
     <span class="plw-quiz-home-card__cta">浏览全量题库 →</span>
   </a>
 
+  <a class="plw-quiz-home-card" href="library/">
+    <h3>⭐ 我的题库</h3>
+    <p>查看错题、收藏与收藏夹，进行针对性重练，并管理本地学习数据．</p>
+    <span class="plw-quiz-home-card__cta">打开我的题库 →</span>
+  </a>
+
   <a class="plw-quiz-home-card" href="contribute/">
     <h3>✍️ 贡献题目</h3>
     <p>参与题库共建，编写并提交新的自测题目、误区解析与提示．</p>

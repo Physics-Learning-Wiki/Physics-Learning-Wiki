@@ -311,7 +311,10 @@ export function mountSearch(
     { signal }
   );
 
-  const initialQuery = new URL(document.defaultView?.location.href ?? document.baseURI).searchParams.get("q");
+  const isQuizSurfaceWithQuery = Boolean(document.querySelector("#plw-quiz-questions-root, #plw-quiz-library-root"));
+  const initialQuery = isQuizSurfaceWithQuery
+    ? null
+    : new URL(document.defaultView?.location.href ?? document.baseURI).searchParams.get("q");
   if (initialQuery) {
     input.value = initialQuery;
     setOpen(true);

@@ -14,11 +14,15 @@ export function createSession(
   selectionAlgorithmVersion: number,
   preview: boolean,
   questions: readonly Question[],
-  context?: Session["context"]
+  context?: Session["context"],
+  profileEpoch = ""
 ): Session {
   const now = new Date().toISOString();
   return {
     sessionId: generateSessionId(),
+    profileEpoch,
+    sessionRevision: 0,
+    committedResults: {},
     preview,
     selectionAlgorithmVersion,
     state: "active",

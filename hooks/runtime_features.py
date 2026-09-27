@@ -18,6 +18,7 @@ FEATURE_SELECTORS = (
             "#plw-quiz-root",
             "#plw-quiz-sets-root",
             "#plw-quiz-questions-root",
+            "#plw-quiz-library-root",
             "#plw-quiz-home-root",
             ".plw-quiz-inline-root",
         ),

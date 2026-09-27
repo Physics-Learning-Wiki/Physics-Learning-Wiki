@@ -93,6 +93,13 @@ def test_set_bundles_structure_and_assets(tmp_path: Path) -> None:
     assert "objectiveIds" in first_q
     assert "relatedPages" in first_q
     assert "stemHtml" in first_q
+    assert first_q["source"]["stemMarkdown"]
+    assert "answer" not in first_q["source"]
+    assert "solution" not in first_q["source"]
+    if "choices" in first_q:
+        assert [choice["id"] for choice in first_q["source"]["choices"]] == [
+            choice["id"] for choice in first_q["choices"]
+        ]
     assert "primaryObjective" not in first_q
     assert "secondaryObjectives" not in first_q
 

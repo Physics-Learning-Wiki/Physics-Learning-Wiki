@@ -1,5 +1,6 @@
 import {
   loadManifest,
+  loadQuestionCatalog,
   loadSetBundle,
   loadSetCatalog,
   loadTaxonomyCatalog,
@@ -13,10 +14,13 @@ import { selectSetQuestions } from "./selection.js";
 import type { PlaySurfaceOptions } from "./surfaces/play.js";
 import { PlaySurface } from "./surfaces/play.js";
 import { QuizStore } from "./storage.js";
+import { clearPracticeLaunch, readPracticeLaunch } from "./practice-launcher.js";
+import { createSession } from "./session.js";
 import type { Manifest, Question, QuizSource, Session, SetBundle, SetCatalogItem, TaxonomyCatalog } from "./types.js";
 import { InlineSurface } from "./surfaces/inline.js";
 import { QuestionsSurface } from "./surfaces/questions.js";
 import { SetsSurface } from "./surfaces/sets.js";
+import { LibrarySurface } from "./surfaces/library.js";
 
 class QuizApp {
   private readonly abort: AbortController;
@@ -43,6 +47,7 @@ class QuizApp {
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
       if (this.abort.signal.aborted) return;
       this.store = new QuizStore(window.localStorage, this.manifest.preview);
+      await this.store.ready();
 
       await this.route();
     } catch (error) {
@@ -52,6 +57,7 @@ class QuizApp {
   }
 
   destroy(): void {
+    this.store?.destroy();
     this.abort.abort();
     this.releaseAbortScope();
     this.routeScope?.controller.abort();
@@ -109,6 +115,21 @@ class QuizApp {
     const epoch = ++this.routeEpoch;
 
     const params = readRunnerParameters();
+    const query = new URL(window.location.href).searchParams;
+    const launchId = query.get("launch");
+    const sessionId = query.get("session");
+    if ([Boolean(params.setId), Boolean(launchId), Boolean(sessionId)].filter(Boolean).length > 1) {
+      this.renderError("练习路由参数冲突，请从入口重新打开。");
+      return;
+    }
+    if (launchId) {
+      await this.startLaunch(launchId, signal, epoch);
+      return;
+    }
+    if (sessionId) {
+      await this.startLocalSession(sessionId, signal, epoch);
+      return;
+    }
     if (params.setId) {
       await this.startSetRunner(params.setId, params.seed, signal, epoch);
       return;
@@ -121,6 +142,141 @@ class QuizApp {
     } else {
       this.renderLanding();
     }
+  }
+
+  private async startLaunch(id: string, signal: AbortSignal, routeEpoch: number): Promise<void> {
+    const payload = readPracticeLaunch(id, this.manifest.preview);
+    if (!payload) {
+      this.renderError("练习启动信息不存在、无效或已过期，请回到我的题库重新开始。");
+      return;
+    }
+    if (
+      payload.bankFingerprint !== this.manifest.bankFingerprint ||
+      payload.selectionAlgorithmVersion !== this.manifest.selectionAlgorithmVersion
+    ) {
+      this.renderError("题库已更新，请回到我的题库重新开始练习。");
+      return;
+    }
+    this.renderStatus("正在创建本地练习...");
+    let catalog: Question[];
+    try {
+      catalog = await loadQuestionCatalog(this.manifestUrl, this.manifest.catalogs.questions, signal);
+    } catch {
+      if (!signal.aborted) this.renderError("加载题库失败，请刷新重试。启动信息已保留。");
+      return;
+    }
+    if (!this.isCurrentRoute(signal, routeEpoch)) return;
+    const byId = new Map(catalog.map(q => [q.id, q]));
+    const questions = payload.questionRefs.map(ref => byId.get(ref.id));
+    if (
+      questions.some(
+        (q, index) =>
+          !q ||
+          q.version !== payload.questionRefs[index].version ||
+          (q.status !== "published" && !this.manifest.preview)
+      )
+    ) {
+      this.renderError("所选题目已更新或不可用，请回到我的题库重新开始。");
+      return;
+    }
+    const selected = questions as Question[];
+    const session = createSession(
+      { type: "adhoc", questionIds: selected.map(q => q.id) },
+      payload.seed,
+      payload.bankFingerprint,
+      payload.selectionAlgorithmVersion,
+      payload.preview,
+      selected,
+      { surface: "runner", origin: payload.origin },
+      payload.profileEpoch
+    );
+    session.sessionId = payload.sessionId;
+    const created = await this.store.createSession(session, payload.creationBaseRevision);
+    if (!created.ok) {
+      this.renderError(`无法保存练习：${created.reason}。启动信息已保留，可刷新重试。`);
+      return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.delete("launch");
+    url.searchParams.set("session", payload.sessionId);
+    try {
+      history.replaceState(null, "", url.href);
+    } catch {
+      this.renderError("练习已保存，但路由更新失败。请刷新重试。");
+      return;
+    }
+    if (!clearPracticeLaunch(id, this.manifest.preview)) {
+      this.renderError("练习已保存，但启动信息未能清理。请刷新重试。");
+      return;
+    }
+    await this.startLocalSession(payload.sessionId, signal, routeEpoch, catalog);
+  }
+
+  private async startLocalSession(
+    id: string,
+    signal: AbortSignal,
+    routeEpoch: number,
+    loadedCatalog?: Question[]
+  ): Promise<void> {
+    const session = this.store.getActiveSessionById(id);
+    if (!session || session.profileEpoch !== this.store.read().profileEpoch) {
+      this.renderError("未找到可继续的练习进度。它可能已经完成、清理或恢复为另一份档案。");
+      return;
+    }
+    if (session.source.type !== "adhoc") {
+      this.renderError("练习来源无效。");
+      return;
+    }
+    this.renderStatus("正在恢复练习...");
+    let catalog: Question[];
+    try {
+      catalog =
+        loadedCatalog ?? (await loadQuestionCatalog(this.manifestUrl, this.manifest.catalogs.questions, signal));
+    } catch {
+      if (!signal.aborted) this.renderError("加载题库失败，已保存的进度仍在本地。请刷新重试。");
+      return;
+    }
+    if (!this.isCurrentRoute(signal, routeEpoch)) return;
+    const byId = new Map(catalog.map(q => [q.id, q]));
+    const questions = session.questionRefs.map(ref => byId.get(ref.id));
+    if (
+      session.bankFingerprint !== this.manifest.bankFingerprint ||
+      session.selectionAlgorithmVersion !== this.manifest.selectionAlgorithmVersion ||
+      questions.some((q, index) => !q || q.version !== session.questionRefs[index].version)
+    ) {
+      this.renderError("题库已变化，此练习进度暂不能恢复；本地进度仍保留，可从学习数据导出。");
+      return;
+    }
+    const selected = questions as Question[];
+    const bundle: SetBundle = {
+      schemaVersion: 3,
+      bankFingerprint: this.manifest.bankFingerprint,
+      selectionAlgorithmVersion: this.manifest.selectionAlgorithmVersion,
+      preview: this.manifest.preview,
+      set: {
+        schema_version: 1,
+        id: `local.${id}`,
+        title: session.context?.origin?.type === "mistakes" ? "错题重练" : "我的题库练习",
+        status: "published",
+        feedback_mode: "immediate",
+        selection: { type: "fixed", questions: selected.map(q => q.id), order: "fixed" }
+      },
+      runnable: true,
+      unavailableReason: null,
+      questions: selected
+    };
+    this.mountPlaySurface({
+      root: this.root,
+      manifestUrl: this.manifestUrl,
+      bundle,
+      questions: selected,
+      seed: session.seed,
+      source: session.source,
+      store: this.store,
+      signal,
+      onExit: () => this.exitToLanding(),
+      onRestart: () => this.exitToLanding()
+    });
   }
 
   private async startSetRunner(
@@ -253,7 +409,7 @@ class QuizApp {
     if (!this.isCurrentRoute(options.signal, this.routeEpoch)) return;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = new PlaySurface(options);
-    this.currentPlaySurface.start();
+    void this.currentPlaySurface.start();
   }
 
   private isCurrentRoute(signal: AbortSignal, epoch: number): boolean {
@@ -271,8 +427,8 @@ class QuizApp {
     if (resetReason) {
       const msg =
         resetReason === "version_mismatch"
-          ? "已升级答题引擎版本，先前的旧版本地作答进度已自动安全重置。"
-          : "检测到损坏的本地小测作答记录，已自动安全重置。";
+          ? "检测到由其他版本生成的学习数据，当前版本无法安全读取。原始数据未被修改。"
+          : "本地学习数据损坏，已进入只读状态。原始数据未被修改。";
       noticeHtml = `
         <div class="plw-quiz-notice plw-quiz-notice--dismissible" role="status">
           <span>⚠️ ${escapeHtml(msg)}</span>
@@ -281,9 +437,9 @@ class QuizApp {
       `;
     }
 
-    // 1. Active sessions section (only set sources)
+    // 1. Active sessions section
     const allActive = this.store.getAllActiveSessions();
-    const activeEntries = Object.entries(allActive).filter(([_, list]) => list.some(s => s.source.type === "set"));
+    const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
 
     let activeHtml = "";
     if (activeEntries.length > 0) {
@@ -293,30 +449,31 @@ class QuizApp {
           <div class="plw-quiz-landing__grid">
             ${activeEntries
               .flatMap(([srcKey, sessions]) =>
-                sessions
-                  .filter(s => s.source.type === "set")
-                  .map(s => {
-                    const setId = (s.source as { type: "set"; id: string }).id;
-                    const title = this.manifest.sets[setId]?.title ?? setId;
-                    const answered = Object.values(s.answers).filter(v => v != null).length;
-                    const total = s.questionRefs.length;
-                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(
-                      setId
-                    )}&seed=${encodeURIComponent(s.seed)}`;
-                    return `
+                sessions.map(s => {
+                  const setId = s.source.type === "set" ? s.source.id : "";
+                  const title = s.source.type === "set" ? this.manifest.sets[setId]?.title ?? setId : "我的题库练习";
+                  const answered = Object.values(s.answers).filter(v => v != null).length;
+                  const total = s.questionRefs.length;
+                  const playUrl =
+                    s.source.type === "set"
+                      ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(
+                          s.seed
+                        )}`
+                      : `${resolveSiteUrl("quiz/play/")}?session=${encodeURIComponent(s.sessionId)}`;
+                  return `
                       <div class="plw-quiz-landing__card">
                         <div>
                           <h3>${escapeHtml(title)}</h3>
                           <p class="plw-quiz-landing__card-meta">进度：${answered} / ${total} 题已作答 · 上次更新：${new Date(
-                      s.updatedAt
-                    ).toLocaleDateString()}</p>
+                    s.updatedAt
+                  ).toLocaleDateString()}</p>
                         </div>
                         <div class="plw-quiz-landing__links">
                           <a class="plw-quiz-landing__btn" href="${playUrl}">继续作答</a>
                         </div>
                       </div>
                     `;
-                  })
+                })
               )
               .join("")}
           </div>
@@ -418,9 +575,10 @@ class QuizApp {
       </div>
     `;
 
-    container.querySelector("#plw-btn-discard-stale")?.addEventListener("click", () => {
-      this.store.discardSession(source, session.seed);
-      this.exitToLanding();
+    container.querySelector("#plw-btn-discard-stale")?.addEventListener("click", async () => {
+      const result = await this.store.discardSession(session);
+      if (result.ok) this.exitToLanding();
+      else this.renderError(`清理进度失败：${result.reason}`);
     });
 
     container.querySelector("#plw-btn-back-stale")?.addEventListener("click", () => {
@@ -433,6 +591,7 @@ class QuizApp {
 
 class HomeSurface {
   private readonly abort: AbortController;
+  private store?: QuizStore;
   private readonly releaseAbortScope: () => void;
 
   constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
@@ -457,14 +616,16 @@ class HomeSurface {
         return subject ? `${subject} · ${fallback}` : fallback;
       };
       const store = new QuizStore(window.localStorage, manifest.preview);
+      this.store = store;
+      await store.ready();
 
       const resetReason = store.consumeResetReason();
       let noticeHtml = "";
       if (resetReason) {
         const msg =
           resetReason === "version_mismatch"
-            ? "已升级答题引擎版本，先前的旧版本地作答进度已自动安全重置。"
-            : "检测到损坏的本地小测作答记录，已自动安全重置。";
+            ? "检测到由其他版本生成的学习数据，当前版本无法安全读取。原始数据未被修改。"
+            : "本地学习数据损坏，已进入只读状态。原始数据未被修改。";
         noticeHtml = `
           <div class="plw-quiz-notice plw-quiz-notice--dismissible" role="status">
             <span>⚠️ ${escapeHtml(msg)}</span>
@@ -474,7 +635,7 @@ class HomeSurface {
       }
 
       const allActive = store.getAllActiveSessions();
-      const activeEntries = Object.entries(allActive).filter(([_, list]) => list.some(s => s.source.type === "set"));
+      const activeEntries = Object.entries(allActive).filter(([_, list]) => list.length > 0);
 
       this.root.innerHTML = "";
       const container = document.createElement("div");
@@ -500,17 +661,21 @@ class HomeSurface {
           <div class="plw-quiz-landing__grid">
             ${activeEntries
               .flatMap(([_, sessions]) =>
-                sessions
-                  .filter(s => s.source.type === "set")
-                  .map(s => {
-                    const setId = (s.source as { type: "set"; id: string }).id;
-                    const title = displayTitle(setId, manifest.sets[setId]?.title ?? setId);
-                    const answered = Object.values(s.answers).filter(v => v != null).length;
-                    const total = s.questionRefs.length;
-                    const playUrl = `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(
-                      setId
-                    )}&seed=${encodeURIComponent(s.seed)}`;
-                    return `
+                sessions.map(s => {
+                  const setId = s.source.type === "set" ? s.source.id : "";
+                  const title =
+                    s.source.type === "set"
+                      ? displayTitle(setId, manifest.sets[setId]?.title ?? setId)
+                      : "我的题库练习";
+                  const answered = Object.values(s.answers).filter(v => v != null).length;
+                  const total = s.questionRefs.length;
+                  const playUrl =
+                    s.source.type === "set"
+                      ? `${resolveSiteUrl("quiz/play/")}?set=${encodeURIComponent(setId)}&seed=${encodeURIComponent(
+                          s.seed
+                        )}`
+                      : `${resolveSiteUrl("quiz/play/")}?session=${encodeURIComponent(s.sessionId)}`;
+                  return `
                       <div class="plw-quiz-landing__card">
                         <div>
                           <h3>${escapeHtml(title)}</h3>
@@ -521,7 +686,7 @@ class HomeSurface {
                         </div>
                       </div>
                     `;
-                  })
+                })
               )
               .join("")}
           </div>
@@ -593,6 +758,7 @@ class HomeSurface {
   }
 
   destroy(): void {
+    this.store?.destroy();
     this.abort.abort();
     this.releaseAbortScope();
     this.root.innerHTML = "";
@@ -635,6 +801,13 @@ export function mount(root: ParentNode, context: QuizMountContext): () => void {
   const questionsRoot = findRoot<HTMLElement>(root, "#plw-quiz-questions-root");
   if (questionsRoot) {
     const surface = new QuestionsSurface(questionsRoot, context.signal);
+    surfaces.push(surface);
+    void surface.start();
+  }
+
+  const libraryRoot = findRoot<HTMLElement>(root, "#plw-quiz-library-root");
+  if (libraryRoot) {
+    const surface = new LibrarySurface(libraryRoot, context.signal);
     surfaces.push(surface);
     void surface.start();
   }

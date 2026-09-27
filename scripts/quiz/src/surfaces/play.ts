@@ -11,6 +11,8 @@ import {
   renderQuestionStem
 } from "../question-renderer.js";
 import { newSeed } from "../random.js";
+import { launchLocalPractice } from "../practice-launcher.js";
+import { createQuestionTools } from "../question-tools.js";
 import { selectRetry } from "../selection.js";
 import { createSession, findRestorableSession, inspectSessionStatus } from "../session.js";
 import {
@@ -63,6 +65,9 @@ export class PlaySurface {
   private readonly onAdhoc?: (adhocBundle: SetBundle, questions: Question[]) => void;
 
   private session!: Session;
+  private saveQueue: Promise<void> = Promise.resolve();
+  private saveError = false;
+  private renderAbort = new AbortController();
   private confirmButtonElement?: HTMLButtonElement;
 
   constructor(options: PlaySurfaceOptions) {
@@ -90,12 +95,7 @@ export class PlaySurface {
     document.addEventListener("keydown", this.handleKeyDown, { signal: this.abort.signal });
   }
 
-  start(): void {
-    if (this.source.type !== "set") {
-      this.startFresh();
-      return;
-    }
-
+  async start(): Promise<void> {
     const status = inspectSessionStatus(
       this.store.getActiveSessions(this.source),
       this.source,
@@ -112,11 +112,12 @@ export class PlaySurface {
     } else if (status.status === "stale") {
       this.renderStaleNotice(status.reason, status.session);
     } else {
-      this.startFresh();
+      await this.startFresh();
     }
   }
 
-  private startFresh(): void {
+  private async startFresh(): Promise<void> {
+    const baseRevision = this.store.read().revision;
     this.session = createSession(
       this.source,
       this.seed,
@@ -124,11 +125,15 @@ export class PlaySurface {
       this.bundle.selectionAlgorithmVersion,
       this.bundle.preview,
       this.questions,
-      { surface: "runner" }
+      { surface: "runner" },
+      this.store.read().profileEpoch
     );
-    if (this.source.type === "set") {
-      this.store.saveSession(this.session);
+    const result = await this.store.createSession(this.session, baseRevision);
+    if (!result.ok) {
+      this.renderSaveError(result.reason);
+      return;
     }
+    this.session = result.value;
     this.root.classList.add("plw-quiz-in-progress");
     this.renderQuestion();
   }
@@ -167,13 +172,16 @@ export class PlaySurface {
       </div>
     `;
 
-    container.querySelector("#plw-btn-restart-force")?.addEventListener("click", () => {
-      this.store.discardSession(this.source, this.seed);
-      this.startFresh();
+    container.querySelector("#plw-btn-restart-force")?.addEventListener("click", async () => {
+      const removed = await this.store.discardSession(staleSession);
+      if (!removed.ok) {
+        this.renderSaveError(removed.reason);
+        return;
+      }
+      await this.startFresh();
     });
 
     container.querySelector("#plw-btn-exit-stale")?.addEventListener("click", () => {
-      this.store.discardSession(this.source, this.seed);
       this.onExit();
     });
 
@@ -181,15 +189,38 @@ export class PlaySurface {
   }
 
   destroy(): void {
+    this.renderAbort.abort();
     this.abort.abort();
     this.releaseAbortScope();
     this.root.classList.remove("plw-quiz-in-progress");
   }
 
-  private persist(): void {
-    if (!this.session || this.source.type !== "set") return;
-    this.session.updatedAt = new Date().toISOString();
-    this.store.saveSession(this.session);
+  private persist(): Promise<void> {
+    if (!this.session) return Promise.resolve();
+    this.saveQueue = this.saveQueue.then(async () => {
+      const result = await this.store.updateSession(this.session);
+      if (!result.ok) {
+        this.renderSaveError(result.reason);
+        return;
+      }
+      this.session.sessionRevision = result.value.sessionRevision;
+      this.session.updatedAt = result.value.updatedAt;
+      this.saveError = false;
+      this.root.querySelector(".plw-quiz-save-error")?.remove();
+    });
+    return this.saveQueue;
+  }
+
+  private renderSaveError(reason: string): void {
+    this.saveError = true;
+    let notice = this.root.querySelector<HTMLElement>(".plw-quiz-save-error");
+    if (!notice) {
+      notice = document.createElement("p");
+      notice.className = "plw-quiz-save-error plw-quiz-error";
+      notice.setAttribute("role", "alert");
+      this.root.prepend(notice);
+    }
+    notice.textContent = `当前进度未保存（${reason}），请重试，刷新可能丢失。`;
   }
 
   private handleKeyDown = (event: KeyboardEvent): void => {
@@ -310,9 +341,21 @@ export class PlaySurface {
     this.renderQuestion();
   }
 
-  private confirmImmediate(question: Question): void {
-    this.session.locked[question.id] = true;
-    this.persist();
+  private async confirmImmediate(question: Question): Promise<void> {
+    await this.saveQueue;
+    if (this.saveError) {
+      this.renderSaveError("请先保存作答");
+      return;
+    }
+    const next = structuredClone(this.session);
+    next.locked[question.id] = true;
+    const result = makeResult(question, next.answers[question.id] ?? null, Boolean(next.uncertain[question.id]));
+    const committed = await this.store.commitQuestion(next, result);
+    if (!committed.ok) {
+      this.renderSaveError(committed.reason);
+      return;
+    }
+    this.session = committed.value;
     this.renderQuestion();
   }
 
@@ -327,6 +370,8 @@ export class PlaySurface {
   }
 
   private renderQuestion(): void {
+    this.renderAbort.abort();
+    this.renderAbort = new AbortController();
     const question = this.questions[this.session.currentIndex];
     if (!question) return;
 
@@ -435,6 +480,12 @@ export class PlaySurface {
 
     // Question stem
     body.append(renderQuestionStem(question));
+    body.append(
+      createQuestionTools(question, this.store, this.renderAbort.signal, {
+        manifestUrl: this.manifestUrl,
+        getAnswer: () => this.session.answers[question.id] ?? null
+      })
+    );
 
     // Answer controls
     const answer = this.session.answers[question.id] ?? null;
@@ -610,7 +661,12 @@ export class PlaySurface {
     initial?.focus();
   }
 
-  private submit(): void {
+  private async submit(): Promise<void> {
+    await this.saveQueue;
+    if (this.saveError) {
+      this.renderSaveError("请先保存作答");
+      return;
+    }
     const questionResults: QuestionResult[] = this.questions.map(q => {
       const answer = this.session.answers[q.id] ?? null;
       const uncertain = Boolean(this.session.uncertain[q.id]);
@@ -639,12 +695,18 @@ export class PlaySurface {
       context: this.session.context
     };
 
+    const saved = await this.store.completeSession(this.session, attempt);
+    if (!saved.ok) {
+      this.renderSaveError(saved.reason);
+      return;
+    }
     this.session.state = "completed";
-    this.store.saveAttempt(attempt);
-    this.renderResult(attempt);
+    this.renderResult(saved.value);
   }
 
   private renderResult(attempt: Attempt): void {
+    this.renderAbort.abort();
+    this.renderAbort = new AbortController();
     this.root.innerHTML = "";
     const container = document.createElement("div");
     container.className = "plw-quiz-result";
@@ -841,6 +903,12 @@ export class PlaySurface {
       `;
 
       itemCard.append(renderQuestionStem(q));
+      itemCard.append(
+        createQuestionTools(q, this.store, this.renderAbort.signal, {
+          manifestUrl: this.manifestUrl,
+          getAnswer: () => result.answer
+        })
+      );
       const feedback = renderFeedback({
         question: q,
         answer: result.answer,
@@ -867,36 +935,19 @@ export class PlaySurface {
       return;
     }
 
-    const adhocBundle: SetBundle = {
-      schemaVersion: 3,
-      bankFingerprint: this.bundle.bankFingerprint,
-      selectionAlgorithmVersion: 1,
-      preview: this.bundle.preview,
-      set: {
-        schema_version: 1,
-        id: `adhoc-${Date.now()}`,
-        title: `错题重做 (${wrongQuestions.length} 题)`,
-        description: `重做 ${this.bundle.set.title} 中回答错误的题目`,
-        status: "published",
-        feedback_mode: "immediate",
-        selection: {
-          type: "fixed",
-          questions: wrongQuestions.map(q => q.id),
-          order: "fixed"
-        }
-      },
-      runnable: true,
-      unavailableReason: null,
-      questions: wrongQuestions
-    };
-
-    if (this.onAdhoc) {
-      this.onAdhoc(adhocBundle, wrongQuestions);
-    }
+    const result = launchLocalPractice({
+      questions: wrongQuestions,
+      count: Math.min(50, wrongQuestions.length),
+      title: `错题重做 (${wrongQuestions.length} 题)`,
+      origin: { type: "retry", parentSessionId: this.session.sessionId },
+      manifest: this.bundle,
+      store: this.store
+    });
+    if (!result.ok) this.renderSaveError(result.reason);
   }
 
   private handleExit(): void {
-    if (!this.session || this.source.type !== "set") {
+    if (!this.session) {
       this.onExit();
       return;
     }
@@ -936,14 +987,20 @@ export class PlaySurface {
 
     backdrop.append(modal);
 
-    modal.querySelector("#plw-exit-save")?.addEventListener("click", () => {
-      this.persist();
+    modal.querySelector("#plw-exit-save")?.addEventListener("click", async () => {
+      await this.persist();
+      if (this.saveError) return;
       backdrop.remove();
       this.onExit();
     });
 
-    modal.querySelector("#plw-exit-discard")?.addEventListener("click", () => {
-      this.store.discardSession(this.session.source, this.session.seed);
+    modal.querySelector("#plw-exit-discard")?.addEventListener("click", async () => {
+      await this.saveQueue;
+      const removed = await this.store.discardSession(this.session);
+      if (!removed.ok) {
+        this.renderSaveError(removed.reason);
+        return;
+      }
       backdrop.remove();
       this.onExit();
     });

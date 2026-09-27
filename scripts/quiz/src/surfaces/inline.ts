@@ -12,9 +12,19 @@ import {
 } from "../question-renderer.js";
 import { newSeed } from "../random.js";
 import { selectSetQuestions } from "../selection.js";
-import { generateSessionId } from "../session.js";
+import { createSession, generateSessionId } from "../session.js";
 import { QuizStore } from "../storage.js";
-import type { Attempt, Manifest, Question, QuestionResult, SetBundle, TaxonomyCatalog, UserAnswer } from "../types.js";
+import { createQuestionTools } from "../question-tools.js";
+import type {
+  Attempt,
+  Manifest,
+  Question,
+  QuestionResult,
+  Session,
+  SetBundle,
+  TaxonomyCatalog,
+  UserAnswer
+} from "../types.js";
 
 export class InlineSurface {
   private readonly abort: AbortController;
@@ -30,6 +40,8 @@ export class InlineSurface {
   private submitted = false;
   private attemptSaved = false;
   private store!: QuizStore;
+  private session!: Session;
+  private renderAbort = new AbortController();
 
   constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
     const scope = createAbortScope(parentSignal);
@@ -46,6 +58,7 @@ export class InlineSurface {
       this.manifestUrl = new URL(manifestPath, window.location.href);
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
       this.store = new QuizStore(window.localStorage, this.manifest.preview);
+      await this.store.ready();
 
       const setMeta = this.manifest.sets[setId];
       if (!setMeta) {
@@ -76,6 +89,7 @@ export class InlineSurface {
 
       if (this.abort.signal.aborted) return;
       this.questions = selectSetQuestions(this.bundle, this.seed, taxonomy);
+      if (!(await this.registerSession())) return;
       this.render();
     } catch (err) {
       if (this.abort.signal.aborted) return;
@@ -83,13 +97,39 @@ export class InlineSurface {
     }
   }
 
+  private async registerSession(): Promise<boolean> {
+    const snapshot = this.store.read();
+    const session = createSession(
+      { type: "set", id: this.bundle.set.id },
+      this.seed,
+      this.bundle.bankFingerprint,
+      this.bundle.selectionAlgorithmVersion,
+      this.bundle.preview,
+      this.questions,
+      { surface: "inline", pageId: this.root.dataset.pageId },
+      snapshot.profileEpoch
+    );
+    session.sessionId = this.sessionId;
+    const saved = await this.store.createSession(session, snapshot.revision);
+    if (!saved.ok) {
+      this.renderNotice(`无法保存自测：${saved.reason}`, "error");
+      return false;
+    }
+    this.session = saved.value;
+    return true;
+  }
+
   destroy(): void {
+    this.renderAbort.abort();
+    this.store?.destroy();
     this.abort.abort();
     this.releaseAbortScope();
     this.root.innerHTML = "";
   }
 
   private render(): void {
+    this.renderAbort.abort();
+    this.renderAbort = new AbortController();
     this.root.innerHTML = "";
     const container = document.createElement("section");
     container.className = "plw-quiz-inline";
@@ -143,6 +183,12 @@ export class InlineSurface {
       card.append(qHeader);
 
       card.append(renderQuestionStem(question));
+      card.append(
+        createQuestionTools(question, this.store, this.renderAbort.signal, {
+          manifestUrl: this.manifestUrl,
+          getAnswer: () => this.answers[question.id] ?? null
+        })
+      );
 
       const answer = this.answers[question.id] ?? null;
       const isLocked = Boolean(this.locked[question.id]) || this.submitted;
@@ -172,9 +218,20 @@ export class InlineSurface {
         checkBtn.className = "plw-quiz-btn--primary plw-quiz-btn--sm plw-quiz-inline__check-btn";
         checkBtn.textContent = "检查答案";
         checkBtn.disabled = !isAnswerComplete(question, answer);
-        checkBtn.addEventListener("click", () => {
+        checkBtn.addEventListener("click", async () => {
+          checkBtn!.disabled = true;
+          const next = structuredClone(this.session);
+          next.answers = { ...this.answers };
+          next.locked[question.id] = true;
+          const result = makeResult(question, this.answers[question.id] ?? null, false);
+          const saved = await this.store.commitQuestion(next, result);
+          if (!saved.ok) {
+            this.renderNotice(`检查结果未保存：${saved.reason}`, "error");
+            return;
+          }
+          this.session = saved.value;
           this.locked[question.id] = true;
-          this.checkInlineCompletion();
+          await this.checkInlineCompletion();
           this.render();
         });
         card.append(checkBtn);
@@ -228,14 +285,14 @@ export class InlineSurface {
       restartBtn.type = "button";
       restartBtn.className = "plw-quiz-btn--secondary plw-quiz-btn--sm";
       restartBtn.textContent = "重新自测";
-      restartBtn.addEventListener("click", () => {
+      restartBtn.addEventListener("click", async () => {
         this.seed = newSeed();
         this.sessionId = generateSessionId();
         this.answers = {};
         this.locked = {};
         this.submitted = false;
         this.attemptSaved = false;
-        this.render();
+        if (await this.registerSession()) this.render();
       });
       resultsBar.append(restartBtn);
       footer.append(resultsBar);
@@ -249,9 +306,10 @@ export class InlineSurface {
 
   private requestSubmit(): void {
     const progress = countProgress(this.questions, this.answers, {});
-    const complete = () => {
+    const complete = async () => {
+      const success = await this.checkInlineCompletion(true);
+      if (!success) return;
       this.submitted = true;
-      this.checkInlineCompletion();
       this.render();
       this.root.querySelector<HTMLElement>(".plw-quiz-inline__score")?.focus();
     };
@@ -313,9 +371,9 @@ export class InlineSurface {
     return this.questions.every(q => Boolean(this.locked[q.id]));
   }
 
-  private checkInlineCompletion(): void {
-    if (!this.isAllAnsweredOrChecked() || this.attemptSaved) return;
-    this.attemptSaved = true;
+  private async checkInlineCompletion(force = false): Promise<boolean> {
+    if (!force && !this.isAllAnsweredOrChecked()) return true;
+    if (this.attemptSaved) return true;
 
     // Record attempt idempotently
     const questionResults: QuestionResult[] = this.questions.map(q => {
@@ -345,7 +403,14 @@ export class InlineSurface {
       questionResults,
       context: { surface: "inline", pageId }
     };
-    this.store.saveAttempt(attempt);
+    const next = { ...this.session, answers: { ...this.answers }, locked: { ...this.locked } };
+    const saved = await this.store.completeSession(next, attempt);
+    if (!saved.ok) {
+      this.renderNotice(`自测结果未保存：${saved.reason}`, "error");
+      return false;
+    }
+    this.attemptSaved = true;
+    return true;
   }
 
   private renderNotice(message: string, severity: "warning" | "error"): void {

@@ -219,6 +219,7 @@ nav:
     - 首页: quiz/index.md
     - 测试集合: quiz/sets.md
     - 题库浏览: quiz/questions.md
+    - 我的题库: quiz/library.md
     - 贡献题目: quiz/contribute.md
   - 计算物理与工具:
     - 工具简介: tools/index.md

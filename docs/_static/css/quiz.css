@@ -1982,3 +1982,40 @@ legend.plw-quiz-choice-group__legend,
   min-width: 0;
   overflow-x: auto;
 }
+.plw-quiz-library__tabs,
+.plw-quiz-library__filters,
+.plw-quiz-library__search,
+.plw-quiz-question-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1rem 0;
+}
+.plw-quiz-library__tabs a,
+.plw-quiz-library__filters a {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.3rem;
+}
+.plw-quiz-library__tabs a[aria-current="page"],
+.plw-quiz-library__filters a[aria-current="page"] {
+  background: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+.plw-quiz-library__card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.4rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  overflow-wrap: anywhere;
+}
+.plw-quiz-library__notice,
+.plw-quiz-save-error {
+  padding: 0.75rem;
+  border-left: 3px solid var(--md-accent-fg-color);
+}
+.plw-quiz-collection-choice { display: block; margin: 0.5rem 0; }
+.plw-quiz-collection-choice input { margin-right: 0.5rem; }
+.plw-quiz-library input,
+.plw-quiz-library select { max-width: 100%; }

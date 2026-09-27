@@ -54,6 +54,13 @@ def compile_question(
         "objectiveIds": list(source.get("objectives", [])),
         "relatedPages": list(source.get("related_pages", [])),
         "stemHtml": render_markdown(source.get("stem", "")),
+        "source": {
+            "stemMarkdown": source.get("stem", ""),
+            "choices": [
+                {"id": choice["id"], "contentMarkdown": choice.get("content", "")}
+                for choice in source.get("choices", [])
+            ],
+        },
         "assets": asset_urls,
     }
 
