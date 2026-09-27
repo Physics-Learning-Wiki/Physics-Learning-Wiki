@@ -179,6 +179,7 @@ function questionMathFields(question: any, source: string): QuestionMathField[] 
 
   add(question.stemHtml, `${source}.stemHtml`, value => (question.stemHtml = value));
   add(question.solutionHtml, `${source}.solutionHtml`, value => (question.solutionHtml = value));
+  add(question.referenceAnswerHtml, `${source}.referenceAnswerHtml`, value => (question.referenceAnswerHtml = value));
   if (Array.isArray(question.hintsHtml)) {
     question.hintsHtml.forEach((hint: unknown, index: number) =>
       add(hint, `${source}.hintsHtml[${index}]`, value => (question.hintsHtml[index] = value))

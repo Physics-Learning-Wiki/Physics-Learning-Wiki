@@ -77,8 +77,21 @@ function toolbarButton(
 function insertMath(editor: EasyMDE, block: boolean): void {
   const codeMirror = editor.codemirror;
   const selection = codeMirror.getSelection();
-  const delimiters = block ? ["$$", "$$"] : ["$", "$"];
-  codeMirror.replaceSelection(`${delimiters[0]}${selection}${delimiters[1]}`);
+  if (block) {
+    const start = codeMirror.indexFromPos(codeMirror.getCursor("from"));
+    const end = codeMirror.indexFromPos(codeMirror.getCursor("to"));
+    const markdown = codeMirror.getValue();
+    const before = markdown.slice(0, start);
+    const after = markdown.slice(end);
+    const prefix = before.endsWith("\n\n") || !before ? "" : before.endsWith("\n") ? "\n" : "\n\n";
+    const suffix = after.startsWith("\n\n") || !after ? "" : after.startsWith("\n") ? "\n" : "\n\n";
+    const body = selection.replace(/^\n+|\n+$/g, "");
+    codeMirror.replaceSelection(`${prefix}$$\n${body}\n$$${suffix}`);
+    if (!selection) codeMirror.setCursor(codeMirror.posFromIndex(start + prefix.length + 3));
+    return;
+  }
+
+  codeMirror.replaceSelection(`$${selection}$`);
   if (!selection) {
     const position = codeMirror.getCursor();
     codeMirror.setCursor({ line: position.line, ch: position.ch - 1 });
