@@ -63,6 +63,8 @@ function isAnswer(v: unknown): boolean {
   );
 }
 const epochId = () => globalThis.crypto?.randomUUID?.() ?? `epoch-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+const UNCHANGED = Symbol("unchanged");
+type Unchanged<T> = { [UNCHANGED]: T };
 const validEpoch = (value: unknown): value is string =>
   str(value) && (/^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(value) || /^epoch-\d+-[a-z0-9]+$/.test(value));
 export function sourceKey(source: QuizSource): string {
@@ -119,21 +121,37 @@ function isResult(v: unknown): v is QuestionResult {
   );
 }
 function isAttempt(v: unknown): v is Attempt {
+  if (
+    !obj(v) ||
+    !str(v.sessionId) ||
+    !isSource(v.source) ||
+    !str(v.seed) ||
+    !str(v.bankFingerprint) ||
+    !date(v.completedAt) ||
+    !num(v.score) ||
+    !num(v.total) ||
+    !Array.isArray(v.questionResults) ||
+    v.questionResults.length > 500 ||
+    v.total !== v.questionResults.length ||
+    !v.questionResults.every(isResult)
+  )
+    return false;
+  const results = v.questionResults as QuestionResult[];
+  if (new Set(results.map(result => result.questionId)).size !== results.length) return false;
+  if (v.source.type === "adhoc") {
+    const ids = v.source.questionIds;
+    if (ids.length !== results.length || new Set(ids).size !== ids.length) return false;
+    if (ids.some((id: string) => !results.some(result => result.questionId === id))) return false;
+  }
+  const score = results.filter(result => result.correct).length;
+  const pointsEarned = results.reduce((sum, result) => sum + (result.evaluation?.score ?? (result.correct ? 1 : 0)), 0);
+  const pointsAvailable = results.reduce((sum, result) => sum + (result.evaluation?.maxScore ?? 1), 0);
+  const selfAssessedCount = results.filter(result => result.evaluation?.mode === "self_assessed").length;
   return (
-    obj(v) &&
-    str(v.sessionId) &&
-    isSource(v.source) &&
-    str(v.seed) &&
-    str(v.bankFingerprint) &&
-    date(v.completedAt) &&
-    Number.isFinite(v.score) &&
-    v.score >= 0 &&
-    num(v.total) &&
-    Array.isArray(v.questionResults) &&
-    v.questionResults.length <= 500 &&
-    v.total === v.questionResults.length &&
-    v.score <= v.total &&
-    v.questionResults.every(isResult)
+    v.score === score &&
+    (v.pointsEarned === undefined || v.pointsEarned === pointsEarned) &&
+    (v.pointsAvailable === undefined || v.pointsAvailable === pointsAvailable) &&
+    (v.selfAssessedCount === undefined || v.selfAssessedCount === selfAssessedCount)
   );
 }
 function isSession(v: unknown, legacy = false): v is Session {
@@ -536,7 +554,7 @@ export class QuizStore {
   }
   private async transact<T>(
     epoch: string,
-    change: (draft: QuizStorageData) => T | StoreError,
+    change: (draft: QuizStorageData) => T | StoreError | Unchanged<T>,
     baseRevision?: number
   ): Promise<StorageWriteResult<T>> {
     await this.ready();
@@ -568,6 +586,8 @@ export class QuizStore {
         ].includes(value)
       )
         return { ok: false, reason: value as StoreError };
+      if (typeof value === "object" && value !== null && UNCHANGED in value)
+        return { ok: true, value: (value as Unchanged<T>)[UNCHANGED], revision: draft.revision };
       draft.revision++;
       if (!validateProfile(draft, this.preview)) return { ok: false, reason: "invalid_data" };
       const raw = JSON.stringify(draft);
@@ -592,7 +612,21 @@ export class QuizStore {
       const existing = Object.values(draft.activeSessions)
         .flat()
         .find(s => s.sessionId === session.sessionId);
-      if (existing) return JSON.stringify(existing.source) === JSON.stringify(session.source) ? existing : "conflict";
+      if (existing) {
+        if (
+          existing.profileEpoch !== draft.profileEpoch ||
+          existing.profileEpoch !== session.profileEpoch ||
+          existing.preview !== session.preview ||
+          existing.seed !== session.seed ||
+          existing.bankFingerprint !== session.bankFingerprint ||
+          existing.selectionAlgorithmVersion !== session.selectionAlgorithmVersion ||
+          JSON.stringify(existing.source) !== JSON.stringify(session.source) ||
+          JSON.stringify(existing.questionRefs) !== JSON.stringify(session.questionRefs) ||
+          JSON.stringify(existing.context) !== JSON.stringify(session.context)
+        )
+          return "conflict";
+        return { [UNCHANGED]: existing };
+      }
       if (draft.revision !== creationBaseRevision) return "conflict";
       const key = sourceKey(session.source);
       const list = draft.activeSessions[key] ?? [];

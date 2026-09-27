@@ -52,3 +52,54 @@ test("restore requires the preview revision and rejects invalid or cross environ
     reason: "conflict"
   });
 });
+
+test("backup rejects attempts whose totals or adhoc source contradict their results", async () => {
+  const store = new QuizStore(memory(), false, lock);
+  await store.setSaved("q1", 1, true, "");
+  const data = store.read();
+  data.attempts = [
+    {
+      sessionId: "attempt-1",
+      source: { type: "adhoc", questionIds: ["q1"] },
+      seed: "seed",
+      bankFingerprint: "fingerprint",
+      completedAt: "2026-01-01T01:00:00Z",
+      score: 0,
+      total: 1,
+      pointsEarned: 0,
+      pointsAvailable: 1,
+      selfAssessedCount: 0,
+      questionResults: [
+        {
+          questionId: "q1",
+          version: 1,
+          topicIds: [],
+          conceptIds: [],
+          objectiveIds: [],
+          answer: "B",
+          correct: false,
+          unanswered: false,
+          uncertain: false,
+          evaluation: { mode: "automatic", status: "incorrect", score: 0, maxScore: 1 }
+        }
+      ]
+    }
+  ];
+  const valid = createBackup(data, false);
+  assert.equal(parseBackup(serializeBackup(valid), false).ok, true);
+  for (const mutate of [
+    (backup: typeof valid) => {
+      backup.data.attempts[0].score = 1;
+    },
+    (backup: typeof valid) => {
+      backup.data.attempts[0].pointsEarned = 1;
+    },
+    (backup: typeof valid) => {
+      backup.data.attempts[0].source = { type: "adhoc", questionIds: ["q2"] };
+    }
+  ]) {
+    const damaged = structuredClone(valid);
+    mutate(damaged);
+    assert.equal(parseBackup(serializeBackup(damaged), false).ok, false);
+  }
+});

@@ -188,3 +188,25 @@ test("two stores serialize independent favorites and reject stale epochs", async
   ]);
   assert.deepEqual(await a.setSaved("q4", 1, true, "old-epoch"), { ok: false, reason: "stale_profile" });
 });
+
+test("session retry reuses only identical references without writing again", async () => {
+  const store = new QuizStore(new MemoryStorage(), false, new Lock());
+  const created = await store.createSession(session(), 0);
+  assert.equal(created.ok, true);
+  if (!created.ok) return;
+  const revision = store.read().revision;
+  const retry = await store.createSession({ ...session(), profileEpoch: created.value.profileEpoch }, 0);
+  assert.equal(retry.ok, true);
+  assert.equal(store.read().revision, revision);
+  const changedRefs = {
+    ...session(),
+    profileEpoch: created.value.profileEpoch,
+    questionRefs: [{ id: "q2", version: 1 }]
+  };
+  assert.deepEqual(await store.createSession(changedRefs, 0), { ok: false, reason: "conflict" });
+  assert.deepEqual(
+    await store.createSession({ ...session(), profileEpoch: created.value.profileEpoch, seed: "another-seed" }, 0),
+    { ok: false, reason: "conflict" }
+  );
+  assert.equal(store.read().revision, revision);
+});

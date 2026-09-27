@@ -96,7 +96,7 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
       fieldset.append(label);
     });
   } else if (question.type === "free_response") {
-    const current: SelfAssessedAnswer = isSelfAssessedAnswer(answer) ? answer : { text: "", levelId: null };
+    const current: SelfAssessedAnswer = isSelfAssessedAnswer(answer) ? { ...answer } : { text: "", levelId: null };
     const textarea = document.createElement("textarea");
     textarea.className = "plw-quiz-free-response-input";
     textarea.rows = question.response.rows ?? 8;
@@ -130,7 +130,10 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
       input.value = level.id;
       input.checked = current.levelId === level.id;
       input.disabled = locked;
-      input.addEventListener("change", () => onAnswerChange({ text: textarea.value, levelId: level.id }));
+      input.addEventListener("change", () => {
+        current.levelId = level.id;
+        onAnswerChange({ text: textarea.value, levelId: current.levelId });
+      });
       label.append(input, document.createTextNode(` ${level.label}`));
       rubric.append(label);
     });

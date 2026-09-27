@@ -67,6 +67,11 @@ export class PlaySurface {
   private session!: Session;
   private saveQueue: Promise<void> = Promise.resolve();
   private saveError = false;
+  private saveErrorReason?: string;
+  private pendingTextSave?: ReturnType<typeof setTimeout>;
+  private changeVersion = 0;
+  private queuedVersion = 0;
+  private savedVersion = 0;
   private renderAbort = new AbortController();
   private confirmButtonElement?: HTMLButtonElement;
 
@@ -93,6 +98,7 @@ export class PlaySurface {
     });
 
     document.addEventListener("keydown", this.handleKeyDown, { signal: this.abort.signal });
+    window.addEventListener("beforeunload", this.handleBeforeUnload, { signal: this.abort.signal });
   }
 
   async start(): Promise<void> {
@@ -129,6 +135,7 @@ export class PlaySurface {
       this.store.read().profileEpoch
     );
     const result = await this.store.createSession(this.session, baseRevision);
+    if (this.abort.signal.aborted) return;
     if (!result.ok) {
       this.renderSaveError(result.reason);
       return;
@@ -189,14 +196,25 @@ export class PlaySurface {
   }
 
   destroy(): void {
+    if (this.pendingTextSave && this.session?.state === "active") void this.persist();
     this.renderAbort.abort();
     this.abort.abort();
     this.releaseAbortScope();
     this.root.classList.remove("plw-quiz-in-progress");
   }
 
+  async flushBeforeNavigation(): Promise<boolean> {
+    if (!this.session || this.session.state !== "active") return true;
+    await this.persist();
+    return !this.saveError;
+  }
+
   private persist(): Promise<void> {
     if (!this.session) return Promise.resolve();
+    this.clearPendingTextSave();
+    if (this.changeVersion <= this.queuedVersion && !this.saveError) return this.saveQueue;
+    const version = this.changeVersion;
+    this.queuedVersion = version;
     this.saveQueue = this.saveQueue.then(async () => {
       const result = await this.store.updateSession(this.session);
       if (!result.ok) {
@@ -205,14 +223,60 @@ export class PlaySurface {
       }
       this.session.sessionRevision = result.value.sessionRevision;
       this.session.updatedAt = result.value.updatedAt;
+      this.savedVersion = Math.max(this.savedVersion, version);
       this.saveError = false;
-      this.root.querySelector(".plw-quiz-save-error")?.remove();
+      this.saveErrorReason = undefined;
+      if (!this.abort.signal.aborted) this.root.querySelector(".plw-quiz-save-error")?.remove();
+      this.renderSaveStatus();
     });
     return this.saveQueue;
   }
 
+  private markDraftChanged(): void {
+    this.changeVersion++;
+    this.renderSaveStatus();
+  }
+
+  private scheduleTextSave(): void {
+    this.clearPendingTextSave();
+    this.pendingTextSave = setTimeout(() => {
+      this.pendingTextSave = undefined;
+      void this.persist();
+    }, 500);
+    this.renderSaveStatus();
+  }
+
+  private clearPendingTextSave(): void {
+    if (this.pendingTextSave) clearTimeout(this.pendingTextSave);
+    this.pendingTextSave = undefined;
+  }
+
+  private renderSaveStatus(): void {
+    if (this.abort.signal.aborted) return;
+    let status = this.root.querySelector<HTMLElement>(".plw-quiz-save-status");
+    if (this.savedVersion >= this.changeVersion) {
+      status?.remove();
+      return;
+    }
+    if (!status) {
+      status = document.createElement("p");
+      status.className = "plw-quiz-save-status";
+      status.setAttribute("role", "status");
+      this.root.prepend(status);
+    }
+    status.textContent = this.pendingTextSave ? "作答待保存…" : "正在保存作答…";
+  }
+
+  private handleBeforeUnload = (event: BeforeUnloadEvent): void => {
+    if (this.changeVersion <= this.savedVersion) return;
+    event.preventDefault();
+    event.returnValue = "";
+  };
+
   private renderSaveError(reason: string): void {
     this.saveError = true;
+    this.saveErrorReason = reason;
+    if (this.abort.signal.aborted) return;
     let notice = this.root.querySelector<HTMLElement>(".plw-quiz-save-error");
     if (!notice) {
       notice = document.createElement("p");
@@ -320,14 +384,17 @@ export class PlaySurface {
 
   private move(delta: number): void {
     this.session.currentIndex = Math.max(0, Math.min(this.questions.length - 1, this.session.currentIndex + delta));
-    this.persist();
+    this.markDraftChanged();
+    void this.persist();
     this.renderQuestion();
   }
 
   private setAnswer(questionId: string, answer: UserAnswer, render = true): void {
     if (this.session.locked[questionId]) return;
     this.session.answers[questionId] = answer;
-    this.persist();
+    this.markDraftChanged();
+    if (this.questions[this.session.currentIndex]?.type === "free_response") this.scheduleTextSave();
+    else void this.persist();
     if (render) {
       this.renderQuestion();
     } else {
@@ -337,12 +404,13 @@ export class PlaySurface {
 
   private toggleUncertain(questionId: string): void {
     this.session.uncertain[questionId] = !this.session.uncertain[questionId];
-    this.persist();
+    this.markDraftChanged();
+    void this.persist();
     this.renderQuestion();
   }
 
   private async confirmImmediate(question: Question): Promise<void> {
-    await this.saveQueue;
+    await this.persist();
     if (this.saveError) {
       this.renderSaveError("请先保存作答");
       return;
@@ -427,7 +495,8 @@ export class PlaySurface {
       stepBtn.setAttribute("aria-label", `第 ${idx + 1} 题`);
       stepBtn.addEventListener("click", () => {
         this.session.currentIndex = idx;
-        this.persist();
+        this.markDraftChanged();
+        void this.persist();
         this.renderQuestion();
       });
       stepper.append(stepBtn);
@@ -466,7 +535,8 @@ export class PlaySurface {
     uncertainty.querySelector("input")?.addEventListener("change", event => {
       const checked = (event.target as HTMLInputElement).checked;
       this.session.uncertain[question.id] = checked;
-      this.persist();
+      this.markDraftChanged();
+      void this.persist();
       const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
       currentBtn?.classList.toggle("is-uncertain", checked);
     });
@@ -501,6 +571,7 @@ export class PlaySurface {
         currentBtn?.classList.toggle("is-answered", nextAnswer != null);
       }
     });
+    control.querySelector("textarea")?.addEventListener("blur", () => void this.persist());
     body.append(control);
 
     // Hints
@@ -580,6 +651,8 @@ export class PlaySurface {
     container.append(actions);
 
     this.root.append(container);
+    this.renderSaveStatus();
+    if (this.saveErrorReason) this.renderSaveError(this.saveErrorReason);
     hydrateAssets(container, this.questions, this.manifestUrl);
     typeset(container);
     container.querySelector<HTMLElement>("h2")?.focus({ preventScroll: true });
@@ -630,7 +703,8 @@ export class PlaySurface {
     backdrop.querySelector("#plw-submit-review")?.addEventListener("click", () => {
       backdrop.remove();
       this.session.currentIndex = reviewIndex;
-      this.persist();
+      this.markDraftChanged();
+      void this.persist();
       this.renderQuestion();
     });
     backdrop.querySelector("#plw-submit-confirm")?.addEventListener("click", () => {
@@ -662,7 +736,7 @@ export class PlaySurface {
   }
 
   private async submit(): Promise<void> {
-    await this.saveQueue;
+    await this.persist();
     if (this.saveError) {
       this.renderSaveError("请先保存作答");
       return;
@@ -995,6 +1069,7 @@ export class PlaySurface {
     });
 
     modal.querySelector("#plw-exit-discard")?.addEventListener("click", async () => {
+      this.clearPendingTextSave();
       await this.saveQueue;
       const removed = await this.store.discardSession(this.session);
       if (!removed.ok) {

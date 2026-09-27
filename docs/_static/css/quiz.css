@@ -1870,6 +1870,12 @@ legend.plw-quiz-choice-group__legend,
   gap: 0.5rem;
 }
 
+.plw-quiz-save-status {
+  margin: 0.75rem 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85rem;
+}
+
 .plw-quiz-free-response-wrap {
   display: grid;
   gap: 0.8rem;
@@ -2539,4 +2545,3 @@ legend.plw-quiz-choice-group__legend,
 .plw-quiz-library select {
   max-width: 100%;
 }
-

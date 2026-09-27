@@ -27,10 +27,12 @@ class QuizApp {
   private readonly releaseAbortScope: () => void;
   private routeScope?: ReturnType<typeof createAbortScope>;
   private routeEpoch = 0;
+  private routeRequestId = 0;
   private manifestUrl!: URL;
   private manifest!: Manifest;
   private store!: QuizStore;
   private currentPlaySurface?: PlaySurface;
+  private currentPlayUrl?: string;
 
   constructor(private readonly root: HTMLElement, parentSignal: AbortSignal) {
     const scope = createAbortScope(parentSignal);
@@ -102,11 +104,21 @@ class QuizApp {
   };
 
   private async route(): Promise<void> {
+    const requestId = ++this.routeRequestId;
+    if (this.currentPlaySurface) {
+      const saved = await this.currentPlaySurface.flushBeforeNavigation();
+      if (requestId !== this.routeRequestId) return;
+      if (!saved) {
+        if (this.currentPlayUrl) history.replaceState(null, "", this.currentPlayUrl);
+        return;
+      }
+    }
     this.routeScope?.controller.abort();
     this.routeScope?.release();
     this.routeScope = undefined;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = undefined;
+    this.currentPlayUrl = undefined;
     if (this.abort.signal.aborted) return;
 
     const routeScope = createAbortScope(this.abort.signal);
@@ -192,11 +204,13 @@ class QuizApp {
     );
     session.sessionId = payload.sessionId;
     const created = await this.store.createSession(session, payload.creationBaseRevision);
+    if (!this.isCurrentRoute(signal, routeEpoch)) return;
     if (!created.ok) {
       this.renderError(`无法保存练习：${created.reason}。启动信息已保留，可刷新重试。`);
       return;
     }
-    const url = new URL(window.location.href);
+    const launchUrl = new URL(window.location.href);
+    const url = new URL(launchUrl.href);
     url.searchParams.delete("launch");
     url.searchParams.set("session", payload.sessionId);
     try {
@@ -206,6 +220,11 @@ class QuizApp {
       return;
     }
     if (!clearPracticeLaunch(id, this.manifest.preview)) {
+      try {
+        history.replaceState(null, "", launchUrl.href);
+      } catch {
+        // The session route remains guarded by the outstanding launch payload.
+      }
       this.renderError("练习已保存，但启动信息未能清理。请刷新重试。");
       return;
     }
@@ -218,6 +237,10 @@ class QuizApp {
     routeEpoch: number,
     loadedCatalog?: Question[]
   ): Promise<void> {
+    if (readPracticeLaunch(id, this.manifest.preview)) {
+      this.renderError("练习启动信息尚未清理，请使用原启动链接刷新重试。");
+      return;
+    }
     const session = this.store.getActiveSessionById(id);
     if (!session || session.profileEpoch !== this.store.read().profileEpoch) {
       this.renderError("未找到可继续的练习进度。它可能已经完成、清理或恢复为另一份档案。");
@@ -409,6 +432,7 @@ class QuizApp {
     if (!this.isCurrentRoute(options.signal, this.routeEpoch)) return;
     this.currentPlaySurface?.destroy();
     this.currentPlaySurface = new PlaySurface(options);
+    this.currentPlayUrl = window.location.href;
     void this.currentPlaySurface.start();
   }
 
