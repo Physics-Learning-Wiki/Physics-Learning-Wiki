@@ -22,11 +22,13 @@ export function createQuestionTools(
   organize.className = "plw-quiz-btn--secondary plw-quiz-btn--sm";
   organize.textContent = "整理收藏夹";
   const status = document.createElement("span");
+  status.className = "plw-quiz-tools-status";
   status.setAttribute("role", "status");
   const update = () => {
     const saved = !!store.read().library.savedQuestions[question.id];
     save.textContent = saved ? "★ 已收藏" : "☆ 收藏";
     save.setAttribute("aria-pressed", String(saved));
+    save.classList.toggle("is-active", saved);
   };
   update();
   const unsubscribe = store.subscribe(update);
@@ -49,7 +51,7 @@ export function createQuestionTools(
     update();
   });
   organize.addEventListener("click", () => showCollectionPicker(question, store, status, signal));
-  bar.append(save, organize, status);
+  bar.append(save, organize);
   if (options.manifestUrl && question.source) {
     const copyQuestion = document.createElement("button");
     copyQuestion.type = "button";
@@ -62,6 +64,7 @@ export function createQuestionTools(
     let includeAnswer: HTMLInputElement | undefined;
     if (options.getAnswer) {
       const label = document.createElement("label");
+      label.className = "plw-quiz-tools-checkbox";
       includeAnswer = document.createElement("input");
       includeAnswer.type = "checkbox";
       label.append(includeAnswer, document.createTextNode("附加当前作答"));
@@ -78,9 +81,11 @@ export function createQuestionTools(
     deepseek.href = "https://chat.deepseek.com/";
     deepseek.target = "_blank";
     deepseek.rel = "noopener noreferrer";
+    deepseek.className = "plw-quiz-btn--secondary plw-quiz-btn--sm plw-quiz-btn--external";
     deepseek.textContent = "打开 DeepSeek ↗";
     bar.append(copyQuestion, copyPrompt, deepseek);
   }
+  bar.append(status);
   return bar;
 }
 
