@@ -349,6 +349,32 @@ test("existing link with ready sheet resolves immediately", async () => {
   assert.equal(isStylesheetLinkReady(link), true);
 });
 
+test("waiting for a stylesheet does not change its DOM attributes", async () => {
+  const attributes = new Map([
+    ["rel", "stylesheet"],
+    ["href", "https://example.test/style.css"]
+  ]);
+  let loadCallback: (() => void) | undefined;
+  const link = {
+    href: attributes.get("href"),
+    sheet: null,
+    getAttribute: (name: string) => attributes.get(name) ?? null,
+    setAttribute: (name: string, value: string) => attributes.set(name, value),
+    addEventListener(type: string, callback: () => void) {
+      if (type === "load") loadCallback = callback;
+    },
+    removeEventListener: () => {}
+  } as unknown as HTMLLinkElement;
+  const before = [...attributes];
+
+  const pending = waitForStylesheetLink(link);
+  assert.ok(loadCallback);
+  loadCallback();
+  await pending;
+  await waitForStylesheetLink(link);
+  assert.deepEqual([...attributes], before);
+});
+
 test("existing link without sheet waits for load before resolving", async () => {
   let loadCallback: (() => void) | undefined;
   const link = {

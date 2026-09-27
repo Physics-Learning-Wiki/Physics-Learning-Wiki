@@ -92,20 +92,19 @@ export interface WaitForStylesheetOptions {
 }
 
 export const DEFAULT_STYLESHEET_TIMEOUT_MS = 10000;
-const pendingLinkPromises = new WeakMap<HTMLLinkElement | object, Promise<void>>();
+type StylesheetState = "loaded" | "failed";
+const stylesheetStates = new WeakMap<HTMLLinkElement, StylesheetState>();
+const pendingLinkPromises = new WeakMap<HTMLLinkElement, Promise<void>>();
 
-export function waitForStylesheetLink(
-  link: HTMLLinkElement,
-  options: WaitForStylesheetOptions = {}
-): Promise<void> {
+export function waitForStylesheetLink(link: HTMLLinkElement, options: WaitForStylesheetOptions = {}): Promise<void> {
   const timeoutMs = options.timeoutMs ?? DEFAULT_STYLESHEET_TIMEOUT_MS;
-  const state = link.getAttribute?.("data-plw-stylesheet-state");
+  const state = stylesheetStates.get(link);
   if (state === "loaded" || isStylesheetLinkReady(link)) {
-    link.setAttribute?.("data-plw-stylesheet-state", "loaded");
+    stylesheetStates.set(link, "loaded");
     return Promise.resolve();
   }
   if (state === "failed") {
-    const href = link.href || link.getAttribute?.("href") || "";
+    const href = link.href || link.getAttribute("href") || "";
     return Promise.reject(new Error(`Stylesheet failed to load: ${href}`));
   }
 
@@ -124,14 +123,14 @@ export function waitForStylesheetLink(
 
     const onLoad = () => {
       cleanup();
-      link.setAttribute?.("data-plw-stylesheet-state", "loaded");
+      stylesheetStates.set(link, "loaded");
       resolve();
     };
 
     const onError = () => {
       cleanup();
-      link.setAttribute?.("data-plw-stylesheet-state", "failed");
-      const href = link.href || link.getAttribute?.("href") || "";
+      stylesheetStates.set(link, "failed");
+      const href = link.href || link.getAttribute("href") || "";
       reject(new Error(`Stylesheet failed to load: ${href}`));
     };
 
@@ -147,8 +146,8 @@ export function waitForStylesheetLink(
     if (timeoutMs > 0 && Number.isFinite(timeoutMs)) {
       timer = setTimeout(() => {
         cleanup();
-        link.setAttribute?.("data-plw-stylesheet-state", "failed");
-        const href = link.href || link.getAttribute?.("href") || "";
+        stylesheetStates.set(link, "failed");
+        const href = link.href || link.getAttribute("href") || "";
         reject(new Error(`Stylesheet timed out: ${href}`));
       }, timeoutMs);
     }
@@ -158,11 +157,7 @@ export function waitForStylesheetLink(
   return promise;
 }
 
-export function ensureStylesheet(
-  href: string,
-  document: Document,
-  options?: WaitForStylesheetOptions
-): Promise<void> {
+export function ensureStylesheet(href: string, document: Document, options?: WaitForStylesheetOptions): Promise<void> {
   const absoluteHref = new URL(href, document.baseURI).href;
   const existing = [...document.querySelectorAll<HTMLLinkElement>('link[rel="stylesheet"][href]')].find(link => {
     try {
@@ -178,7 +173,6 @@ export function ensureStylesheet(
   const link = document.createElement("link");
   link.rel = "stylesheet";
   link.href = absoluteHref;
-  link.setAttribute?.("data-plw-stylesheet-state", "loading");
   const waitPromise = waitForStylesheetLink(link, options);
   document.head.append(link);
   return waitPromise;
@@ -366,10 +360,7 @@ const featureRegistry: FeatureRegistry = {
   math: mathFeatureDefinition,
   mermaid: { moduleUrl: "_static/js/features/mermaid.js" },
   quiz: {
-    stylesheets: [
-      "_static/css/quiz.css?v=4",
-      root => (root as Element).getAttribute("data-plw-math-css") ?? undefined
-    ],
+    stylesheets: ["_static/css/quiz.css?v=4", root => (root as Element).getAttribute("data-plw-math-css") ?? undefined],
     moduleUrl: "_static/js/features/quiz.js"
   },
   submit: {

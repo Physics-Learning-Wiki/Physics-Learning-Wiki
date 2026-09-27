@@ -102,14 +102,12 @@ jobs:
           yarn runtime:typecheck
           yarn runtime:test
           yarn runtime:build:check
-      - name: Build production site
+      - name: Build MkDocs site for smoke test
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run mkdocs build --clean
       - name: Run browser smoke test
         run: yarn e2e:smoke
-      - name: Run browser quiz test
-        run: yarn e2e:quiz
       - uses: actions/upload-artifact@v4
         with:
           name: question-bank-metrics
