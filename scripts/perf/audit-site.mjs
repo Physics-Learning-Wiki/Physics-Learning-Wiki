@@ -39,7 +39,7 @@ const FEATURE_RESOURCE_PATTERNS = {
 const FEATURE_SELECTORS = {
   math: "mjx-container, .arithmatex",
   mermaid: "[data-plw-mermaid-source], .mermaid",
-  quiz: "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-home-root, .plw-quiz-inline-root",
+  quiz: "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-library-root, #plw-quiz-home-root, .plw-quiz-inline-root",
   submit: "#submission-form",
   "question-contribute": "#plw-question-contribute-form"
 };
