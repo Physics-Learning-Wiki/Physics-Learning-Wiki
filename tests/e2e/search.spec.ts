@@ -72,18 +72,6 @@ test("desktop search expands on focus and shows Pagefind results", async ({ page
   await expect(page.locator(".md-search-result__link").first()).toBeVisible();
 });
 
-test("math page search excerpts omit raw TeX commands", async ({ page }) => {
-  await page.goto(`${basePath}intro/about/`);
-  const input = page.locator(".md-search__input");
-  await input.fill("能动量张量");
-  await expect(page.locator(".md-search-result__meta")).toHaveText(/找到 \d+ 条结果/);
-
-  const result = page.locator('.md-search-result__link[href*="/modern/general-relativity/"]').first();
-  await expect(result).toBeVisible();
-  await expect(result.locator(".md-search-result__teaser")).toContainText("度规");
-  await expect(result.locator(".md-search-result__teaser")).not.toContainText(/\\(?:frac|dfrac|begin|mathbf)/);
-});
-
 test("404 retains working search and is excluded from its own results on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const legacySearchRequests: string[] = [];

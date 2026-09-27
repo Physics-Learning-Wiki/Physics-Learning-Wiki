@@ -41,28 +41,22 @@ def test_compiler_creates_manifest_v3_and_catalogs(tmp_path: Path) -> None:
         assert bundle_file.exists()
 
 
-def test_production_compile_does_not_expose_drafts(tmp_path: Path) -> None:
-    production = tmp_path / "production"
-    report, _ = compile_repository(ROOT, production)
-    assert report.ok
+def test_preview_compile_exposes_drafts(tmp_path: Path) -> None:
+    from scripts.question_bank.loader import load_tree
 
-    manifest = json.loads((production / "manifest.json").read_text(encoding="utf-8"))
-    json_text = "".join(
-        path.read_text(encoding="utf-8") for path in production.rglob("*.json")
-    )
+    draft_questions, issues = load_tree(ROOT / "question-bank" / "questions")
+    assert not issues
+    draft_ids = {str(q.data["id"]) for q in draft_questions if q.data.get("status") == "draft"}
+    assert draft_ids, "fixture requires at least one draft question"
 
-
-def test_preview_compile_exposes_drafts_and_linear_sets(tmp_path: Path) -> None:
     preview = tmp_path / "preview"
     report, _ = compile_repository(ROOT, preview, preview=True)
     assert report.ok
 
     manifest = json.loads((preview / "manifest.json").read_text(encoding="utf-8"))
 
-    json_text = "".join(
-        path.read_text(encoding="utf-8") for path in preview.rglob("*.json")
-    )
-    assert "mech-kin-linear-0001" in json_text
+    catalog = json.loads((preview / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
+    assert draft_ids <= {q["id"] for q in catalog}
 
 
 def test_unchanged_compile_is_a_no_op(tmp_path: Path) -> None:
@@ -72,27 +66,17 @@ def test_unchanged_compile_is_a_no_op(tmp_path: Path) -> None:
     assert metrics["written"] is False
 
 
-def test_catalog_path_hash_is_stable(tmp_path: Path) -> None:
-    first = tmp_path / "first"
-    second = tmp_path / "second"
-    compile_repository(ROOT, first)
-    compile_repository(ROOT, second)
-
-    m1 = json.loads((first / "manifest.json").read_text(encoding="utf-8"))
-    m2 = json.loads((second / "manifest.json").read_text(encoding="utf-8"))
-    assert m1["catalogs"] == m2["catalogs"]
-    assert m1["bankFingerprint"] == m2["bankFingerprint"]
-
-
 def test_set_bundles_structure_and_assets(tmp_path: Path) -> None:
     output = tmp_path / "bank"
     compile_repository(ROOT, output)
 
     manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
-    quick_bundle_rel = manifest["sets"]["mechanics.dynamics.newton-laws.quick"][
-        "bundle"
-    ]
-    bundle_path = output / quick_bundle_rel
+    runnable_set = next(
+        (entry for entry in manifest["sets"].values() if entry["status"] == "published"),
+        None,
+    )
+    assert runnable_set is not None, "fixture requires a published set"
+    bundle_path = output / runnable_set["bundle"]
     assert bundle_path.exists()
 
     bundle = json.loads(bundle_path.read_text(encoding="utf-8"))

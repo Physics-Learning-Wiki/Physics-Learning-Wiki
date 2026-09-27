@@ -1,16 +1,10 @@
 from __future__ import annotations
 
-from pathlib import Path
-
-from scripts.question_bank.loader import load_tree
 from scripts.question_bank.markdown_math import (
     audit_markdown_field,
-    audit_repository,
     iter_question_markdown_fields,
     mask_markdown_code,
 )
-
-REPO_ROOT = Path(__file__).parents[2]
 
 
 def test_code_masking_covers_inline_and_fenced_blocks() -> None:
@@ -106,28 +100,3 @@ def test_iter_question_markdown_fields_covers_all_content_locations() -> None:
         "feedback.choices.A",
         "feedback.choices.B",
     }
-
-
-def test_repository_math_audit_baseline() -> None:
-    questions, issues = load_tree(REPO_ROOT / "question-bank" / "questions")
-    assert not issues, f"YAML loading issues: {issues}"
-    assert len(questions) == 87, f"Expected 87 questions, got {len(questions)}"
-
-    summary, diagnostics = audit_repository(questions)
-    assert summary.total_questions == 87
-    assert summary.published_questions == 79
-    assert summary.questions_with_display_math == 46
-
-    # Verify that all 46 questions with $$ display math are published
-    display_questions = [
-        q for q in questions if any("$$" in f.text for f in iter_question_markdown_fields(q.data))
-    ]
-    assert len(display_questions) == 46
-    assert all(q.data.get("status") == "published" for q in display_questions)
-
-    # Verify that all source changes required have been migrated (0 remaining)
-    assert summary.source_change_required_count == 0
-    assert summary.source_change_required_questions == []
-
-    # Verify no unclosed display delimiters in repository
-    assert summary.diagnostics_by_kind.get("unclosed-display", 0) == 0

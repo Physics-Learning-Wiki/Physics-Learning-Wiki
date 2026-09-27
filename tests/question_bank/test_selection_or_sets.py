@@ -37,22 +37,6 @@ def test_taxonomy_loading_and_hierarchy() -> None:
     assert "mechanics" in descendants
 
 
-def test_mulberry32_prng_deterministic_vector() -> None:
-    # Golden vectors matching TS implementation
-    rnd = create_random("test-seed")
-    values = [rnd(), rnd(), rnd()]
-    assert abs(values[0] - 0.3584189757) < 1e-6
-    assert abs(values[1] - 0.5269410228) < 1e-6
-    assert abs(values[2] - 0.1207547213) < 1e-6
-
-    # Shuffle determinism
-    items = ["q1", "q2", "q3", "q4", "q5"]
-    s1 = shuffle(items, "seed-abc")
-    s2 = shuffle(items, "seed-abc")
-    assert s1 == s2
-    assert s1 != items
-
-
 def test_shared_golden_fixture_selection_v1() -> None:
     from scripts.question_bank.selection import solve_query_selection_detailed
 

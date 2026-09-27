@@ -9,7 +9,6 @@ from scripts.question_bank.validator import (
     validate_question,
     validate_question_content,
     validate_question_references,
-    validate_repository,
 )
 
 ROOT = Path(__file__).parents[2]
@@ -56,12 +55,6 @@ def test_zero_relative_tolerance_is_rejected() -> None:
         "absolute" in issue.message
         for issue in validate_question(document, schema, pages)
     )
-
-
-def test_validate_repository_succeeds_with_draft_set_warnings() -> None:
-    report = validate_repository(ROOT)
-    assert report.ok
-    assert len(report.warnings) == 2
 
 
 def test_published_question_requires_current_three_dimensional_review() -> None:

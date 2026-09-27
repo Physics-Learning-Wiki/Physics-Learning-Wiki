@@ -62,20 +62,6 @@ const mockTaxonomy: TaxonomyCatalog = {
   }
 };
 
-test("mulberry32 PRNG and shuffle match golden vectors", () => {
-  const rnd = createRandom("test-seed");
-  const values = [rnd(), rnd(), rnd()];
-  assert.ok(Math.abs(values[0] - 0.3584189757) < 1e-6);
-  assert.ok(Math.abs(values[1] - 0.5269410228) < 1e-6);
-  assert.ok(Math.abs(values[2] - 0.1207547213) < 1e-6);
-
-  const items = ["q1", "q2", "q3", "q4", "q5"];
-  const s1 = shuffle(items, "seed-abc");
-  const s2 = shuffle(items, "seed-abc");
-  assert.deepEqual(s1, s2);
-  assert.deepEqual(s1, ["q2", "q3", "q5", "q1", "q4"]);
-});
-
 test("shared golden fixture selection v1 (PRNG, shuffle, backtracking, diagnostics)", () => {
   // 1. PRNG vectors
   for (const item of goldenFixture.prng_vectors) {

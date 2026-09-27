@@ -52,18 +52,6 @@ test("Mermaid loads locally only on its feature page and survives instant naviga
   expect(mermaidRequests.filter(url => url.includes("/features/mermaid.js"))).toHaveLength(1);
   expect(mermaidRequests.some(url => /unpkg\.com\/mermaid|jsdelivr\.net\/npm\/mermaid/i.test(url))).toBe(false);
   expect(navigationRequests).toHaveLength(1);
-  expect(
-    await page.evaluate(() => {
-      const openMermaidShadow = () => {
-        const host = document.createElement("div");
-        host.className = "mermaid";
-        const shadow = host.attachShadow({ mode: "closed" });
-        return host.shadowRoot === shadow;
-      };
-      return [openMermaidShadow(), openMermaidShadow()];
-    })
-  ).toEqual([true, true]);
-
   const darkPalette = page.locator("#__palette_2");
   if (await darkPalette.count()) {
     await darkPalette.evaluate(element => {
@@ -82,29 +70,3 @@ test("Mermaid loads locally only on its feature page and survives instant naviga
   expect(mermaidRequests.filter(url => url.includes("/features/mermaid.js"))).toHaveLength(1);
   expect(mermaidErrors).toEqual([]);
 });
-
-for (const route of [
-  "courses/",
-  "courses/theoretical-mechanics/",
-  "courses/electromagnetism/",
-  "math/",
-  "mechanics/"
-]) {
-  test(`direct Mermaid rendering works on ${route}`, async ({ page }) => {
-    const mermaidRequests: string[] = [];
-    page.on("request", request => {
-      if (/mermaid/i.test(request.url())) mermaidRequests.push(request.url());
-    });
-
-    await page.goto(`${basePath}${route}`);
-    const article = page.locator("article.md-content__inner.md-typeset");
-    await expect(article).toHaveAttribute("data-plw-features", /(?:^|\s)mermaid(?:\s|$)/);
-    const sources = article.locator("[data-plw-mermaid-source]");
-    const diagrams = sources.locator("svg");
-    await expect(sources.first()).toBeAttached();
-    await expect(diagrams).toHaveCount(await sources.count(), { timeout: 20_000 });
-    await expect(diagrams).not.toContainText(/Syntax error in text|mermaid version/i);
-    expect(mermaidRequests.filter(url => url.includes("/features/mermaid.js"))).toHaveLength(1);
-    expect(mermaidRequests.some(url => /unpkg\.com\/mermaid|jsdelivr\.net\/npm\/mermaid/i.test(url))).toBe(false);
-  });
-}

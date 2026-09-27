@@ -9,8 +9,15 @@ import sys
 from pathlib import Path
 
 from bs4 import BeautifulSoup
+from scripts.question_bank.loader import load_tree
 
 ROOT = Path(__file__).parents[2]
+
+
+def source_ids(kind: str, status: str) -> set[str]:
+    documents, issues = load_tree(ROOT / "question-bank" / kind)
+    assert not issues
+    return {str(doc.data["id"]) for doc in documents if doc.data.get("status") == status}
 
 
 def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
@@ -55,7 +62,7 @@ def build_pagefind_index(site: Path) -> None:
     )
 
 
-def test_production_build_contains_assessment_cards_and_no_drafts(
+def test_production_build_contains_quiz_pages_and_no_drafts(
     tmp_path: Path,
 ) -> None:
     site = build_site(tmp_path)
@@ -101,32 +108,19 @@ def test_production_build_contains_assessment_cards_and_no_drafts(
     assert manifest["schemaVersion"] == 3
     assert manifest["preview"] is False
 
-    # Published sets exist in manifest and bundle output
-    assert "mechanics.dynamics.newton-laws.quick" in manifest["sets"]
-    newton_bundle_path = site / "_generated" / "question-bank" / manifest["sets"]["mechanics.dynamics.newton-laws.quick"]["bundle"]
-    assert newton_bundle_path.exists()
-
-    # Draft sets must not exist in production manifest or bundle output
-    assert "mechanics.kinematics.linear-motion.quick" not in manifest["sets"]
-    assert not list((site / "_generated" / "question-bank" / "sets").glob("mechanics.kinematics.linear-motion.*.json"))
-
-    # Newton footer has new Set links and no legacy 24/24 text
-    newton = (
-        site / "mechanics" / "dynamics" / "newton-laws" / "index.html"
-    ).read_text(encoding="utf-8")
-    assert "mechanics.dynamics.newton-laws.quick" in newton
-    assert "mechanics.dynamics.newton-laws.full" in newton
-    assert "24/24" not in newton
-
-    # Linear motion has draft sets, which must NOT leak into production build
-    linear = (
-        site / "mechanics" / "kinematics" / "linear-motion" / "index.html"
-    ).read_text(encoding="utf-8")
-    assert "草稿预览入口" not in linear
-    assert "mechanics.kinematics.linear-motion" not in linear
+    bank = site / "_generated" / "question-bank"
+    published_sets = source_ids("sets", "published")
+    draft_sets = source_ids("sets", "draft")
+    assert set(manifest["sets"]) == published_sets
+    assert draft_sets.isdisjoint(manifest["sets"])
+    for entry in manifest["sets"].values():
+        assert (bank / entry["bundle"]).exists()
+    questions = json.loads((bank / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
+    assert {question["id"] for question in questions} == source_ids("questions", "published")
+    assert source_ids("questions", "draft").isdisjoint({question["id"] for question in questions})
 
 
-def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
+def test_preview_build_exposes_drafts(tmp_path: Path) -> None:
     site = build_site(tmp_path, preview=True)
     manifest = json.loads(
         (site / "_generated" / "question-bank" / "manifest.json").read_text(
@@ -136,21 +130,16 @@ def test_preview_build_exposes_drafts_with_warning(tmp_path: Path) -> None:
     assert manifest["schemaVersion"] == 3
     assert manifest["preview"] is True
 
-    # Draft set bundle exists in preview
-    assert "mechanics.kinematics.linear-motion.quick" in manifest["sets"]
-    draft_bundle_path = site / "_generated" / "question-bank" / manifest["sets"]["mechanics.kinematics.linear-motion.quick"]["bundle"]
-    assert draft_bundle_path.exists()
-
-    linear = (
-        site / "mechanics" / "kinematics" / "linear-motion" / "index.html"
-    ).read_text(encoding="utf-8")
-    assert "草稿预览入口" in linear
-    assert 'class="md-button" data-no-instant' in linear
-    json_text = "".join(
-        path.read_text(encoding="utf-8")
-        for path in (site / "_generated" / "question-bank").rglob("*.json")
-    )
-    assert "mech-kin-linear-0001" in json_text
+    bank = site / "_generated" / "question-bank"
+    draft_sets = source_ids("sets", "draft")
+    assert draft_sets, "fixture requires at least one draft set"
+    assert draft_sets <= set(manifest["sets"])
+    for set_id in draft_sets:
+        assert (bank / manifest["sets"][set_id]["bundle"]).exists()
+    questions = json.loads((bank / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
+    draft_questions = source_ids("questions", "draft")
+    assert draft_questions, "fixture requires at least one draft question"
+    assert draft_questions <= {question["id"] for question in questions}
 
 
 
@@ -204,18 +193,19 @@ def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None
     qb_sets = list((site / "_generated" / "question-bank" / "sets").glob("*.json"))
     assert len(qb_sets) > 0
 
-    newton_bundle = None
-    for p in qb_sets:
-        if "newton-laws" in p.name:
-            newton_bundle = json.loads(p.read_text(encoding="utf-8"))
-            break
-    assert newton_bundle is not None
-
-    q2 = next(
-        q for q in newton_bundle["questions"] if q["id"] == "mech-dyn-newton-0002"
+    math_question = next(
+        (
+            question
+            for bundle_path in qb_sets
+            for question in json.loads(bundle_path.read_text(encoding="utf-8"))["questions"]
+            if "<mjx-container" in question["stemHtml"]
+            and "<mjx-container" in question["solutionHtml"]
+        ),
+        None,
     )
-    stem = q2["stemHtml"]
-    sol = q2["solutionHtml"]
+    assert math_question is not None, "fixture requires a published question with stem and solution math"
+    stem = math_question["stemHtml"]
+    sol = math_question["solutionHtml"]
 
     assert "arithmatex" not in stem
     assert "arithmatex" not in sol

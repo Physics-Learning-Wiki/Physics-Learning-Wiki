@@ -1,6 +1,30 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 const basePath = "/Physics-Learning-Wiki/";
+
+async function mathQuestionIds(page: Page, stemOnly = false): Promise<string[]> {
+  const bankUrl = new URL(`${basePath}_generated/question-bank/`, page.url());
+  const manifestResponse = await page.request.get(new URL("manifest.json", bankUrl).href);
+  expect(manifestResponse.ok()).toBe(true);
+  const manifest = (await manifestResponse.json()) as { catalogs: { questions: string } };
+  const catalogResponse = await page.request.get(new URL(manifest.catalogs.questions, bankUrl).href);
+  expect(catalogResponse.ok()).toBe(true);
+  const questions = (await catalogResponse.json()) as Array<{
+    id: string;
+    stemHtml: string;
+    solutionHtml: string;
+    choices?: Array<{ contentHtml: string }>;
+  }>;
+  return questions
+    .filter(question =>
+      (stemOnly
+        ? [question.stemHtml]
+        : [question.stemHtml, question.solutionHtml, ...(question.choices ?? []).map(choice => choice.contentHtml)]
+      ).some(markup => markup.includes("<mjx-container"))
+    )
+    .sort((a, b) => b.stemHtml.length + b.solutionHtml.length - a.stemHtml.length - a.solutionHtml.length)
+    .map(question => question.id);
+}
 
 test("quiz assets are lazy, quiz sessions survive navigation, and runners resume", async ({ page }) => {
   const quizRequests: string[] = [];
@@ -151,9 +175,7 @@ test("a direct runner honors its seed and shows stale-session recovery", async (
   await expect(page.getByRole("button", { name: "清空旧进度并重新开始" })).toBeVisible();
 });
 
-test("quiz keyboard navigation honors shortcut matrix and restores focus from pointer summary", async ({
-  page
-}) => {
+test("quiz keyboard navigation honors shortcut matrix and restores focus from pointer summary", async ({ page }) => {
   const setId = "mechanics.dynamics.newton-laws.quick";
   const seed = "test-seed-42";
   const runnerUrl = `${basePath}quiz/play/?set=${setId}&seed=${seed}`;
@@ -249,11 +271,12 @@ test("mathjax stylesheet is ready before first math element mounts and is dedupl
   await page.goto(`${basePath}intro/about/`);
   await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
 
-  // Navigate to quiz question browser
-  await page.goto(`${basePath}quiz/questions/?q=q-000037`);
+  const [questionId] = await mathQuestionIds(page, true);
+  expect(questionId).toBeDefined();
+  await page.goto(`${basePath}quiz/questions/?q=${encodeURIComponent(questionId)}`);
   await expect(page.locator(".plw-quiz-question-browser")).toBeVisible();
 
-  const card = page.locator('.plw-quiz-question-browser__card[data-question-id="q-000037"]');
+  const card = page.locator(`.plw-quiz-question-browser__card[data-question-id="${questionId}"]`);
   await expect(card).toBeVisible();
 
   const mathLink = page.locator('head link[href*="assets/stylesheets/mathjax.css"]');
@@ -280,7 +303,9 @@ test("mathjax stylesheet is ready before first math element mounts and is dedupl
 test("production question bank math renders cleanly on desktop and mobile without collisions or page overflow", async ({
   page
 }) => {
-  const targetQuestions = ["q-000037", "q-000006", "q-000018"];
+  await page.goto(`${basePath}quiz/questions/`);
+  const targetQuestions = (await mathQuestionIds(page)).slice(0, 3);
+  expect(targetQuestions.length).toBeGreaterThan(0);
   const viewports = [
     { name: "desktop", width: 1280, height: 720 },
     { name: "mobile", width: 375, height: 667 }
