@@ -1,7 +1,7 @@
 ---
 status: review
 author: Physics Learning Wiki Team
-description: 面向大学物理及理工科本科生的数学物理方法课程学习路线，以复分析、积分变换、偏微分方程定解、Sturm–Liouville 本征理论、特殊函数与格林函数为主干，串联四大力学数学接口．
+description: 面向大学物理及理工科本科生的数学物理方法课程学习路线，以复分析、积分变换、偏微分方程定解、Sturm–Liouville 特征理论、特殊函数与格林函数为主干，串联四大力学数学接口．
 page_id: courses.mathematical-methods-for-physics
 ---
 
@@ -14,7 +14,7 @@ page_id: courses.mathematical-methods-for-physics
 > “The shortest path between two truths in the real domain passes through the complex domain.” —— Jacques Hadamard  
 > （联系两个实数领域中真理的最短路径往往穿过复数领域．）
 
-理论物理学家与数学家早已指出，引入虚数与复分析绝非脱离现实的人为游戏，而是洞察物理对称性与规律演化的最简捷利器．诺贝尔物理学奖得主杨振宁先生在《虚数与量子力学》中深入剖析过虚数在微观物理中的本质地位；物理诺奖得主费曼将欧拉公式誉为“数学上最值得注意的公式，我们的无价之宝”；A. Zee（徐一鸿）在《Fly by Night Physics》中更感慨道：*“当我们踏入复分析的世界，展现在眼前的是一个奇妙无双的洞见王国．那些初学时令人惊叹的定理，其优雅与宏大气度始终令人折服．”*
+理论物理学家与数学家早已指出，引入虚数与复分析绝非脱离现实的人为游戏，而是洞察物理对称性与规律演化的最简捷利器．诺贝尔物理学奖得主杨振宁先生在《虚数与量子力学》中深入剖析过虚数在微观物理中的本质地位；物理诺奖得主费曼（Feynman）将欧拉公式誉为“数学上最值得注意的公式，我们的无价之宝”；A. Zee（徐一鸿）在《Fly by Night Physics》中更感慨道：*“当我们踏入复分析的世界，展现在眼前的是一个奇妙无双的洞见王国．那些初学时令人惊叹的定理，其优雅与宏大气度始终令人折服．”*
 
 本路线旨在打破“纯数学技巧死记硬背”的误区：**本路线不重复搬运枯燥公理，而是按照高校标准教学节奏，有机串联 Wiki 底层语义化的数学物理知识库，清晰标明每一个数学工具在后续现代物理中的核心出口与实战方法，并配备系统的精选例题与自测题库．**
 
@@ -39,9 +39,9 @@ page_id: courses.mathematical-methods-for-physics
 | 维度 | 大一高等数学与线性代数 | 大学《数学物理方法》与理论物理 |
 | :--- | :--- | :--- |
 | **方程类型** | 单变量初等方程、常系数一阶/二阶常微分方程 | 偏微分方程（波动方程、热传导方程、泊松/拉普拉斯方程）与定解边值问题 |
-| **求解范式** | 套用微积分不定积分技巧与代数初等解 | **分离变量法** 将偏微分方程降阶为常微分方程本征值问题，通过 **正交函数基叠加** 满足定解边界条件 |
+| **求解范式** | 套用微积分不定积分技巧与代数初等解 | **分离变量法** 将偏微分方程降阶为常微分方程特征值问题，通过 **正交函数基叠加** 满足定解边界条件 |
 | **函数视角** | 初等函数（多项式、三角、指数、对数） | **函数空间与正交完备系**（Fourier 基、Legendre 多项式、Bessel 函数、球谐函数 $Y_l^m$、Hermite/Laguerre 多项式） |
-| **代数与分析统一** | 矩阵对角化与微分方程相互割裂 | **线性算符谱理论**：微分算符自共轭（Hermitian）推广了有限维实对称矩阵，特征向量升级为连续/离散本征函数系 |
+| **代数与分析统一** | 矩阵对角化与微分方程相互割裂 | **线性算子谱理论**：微分算子自共轭（Hermitian）推广了有限维实对称矩阵，特征向量升级为连续/离散特征函数系 |
 | **非齐次解法** | 常数变易法、待定系数法 | **格林函数法**：物理点源 $\delta(\boldsymbol{r}-\boldsymbol{r}')$ 响应与空间卷积统一求解任意非齐次边值问题 |
 
 ---
@@ -71,8 +71,8 @@ flowchart TD
         C3["正交曲线坐标系下的分离变量降阶"]
     end
     
-    subgraph Part4 ["第四阶段：本征理论与特殊函数族"]
-        D1["Sturm–Liouville 自共轭本征值问题"]
+    subgraph Part4 ["第四阶段：特征理论与特殊函数族"]
+        D1["Sturm–Liouville 自共轭特征值问题"]
         D2["球对称：Legendre 多项式与球谐函数 $Y_l^m$"]
         D3["柱对称：Bessel 方程与第一/二类 Bessel 函数"]
         D4["谐振子势：Hermite 多项式"]
@@ -108,7 +108,7 @@ flowchart TD
 | :--- | :--- | :--- | :--- | :--- |
 | **1. 复变函数基础** | 复数几何表示、多值方根、复数乘幂、欧拉公式、三角级数求和、割圆方程 | [复数与几何表示](../math/complex-analysis/complex-numbers.md) | **[成熟]** | 交流电路复阻抗相量、平面单色波复振幅、量子波函数概率幅与规范对称性 |
 | **2. 解析性与调和场** | 复可微性判定、柯西-黎曼方程（直角与极坐标）、单点可导与解析反例、共轭调和函数与实轴代换技巧 | [解析函数与柯西-黎曼条件](../math/complex-analysis/analytic-functions.md) | **[成熟]** | 二维静电场复势与电力线正交性、无旋不可压缩流体流函数、保角映射 |
-| **3. 复积分与柯西定理** | 柯西积分定理、闭路变形、柯西积分公式与高阶导数公式、解析函数全息性、扇形围道与菲涅尔积分 | [复变积分与柯西定理](../math/complex-analysis/contour-integrals.md) | **[成熟]** | 恩绍定理（静电不可悬浮）的复分析源头、光波动菲涅尔衍射、Wick 转动高斯路径积分 |
+| **3. 复积分与柯西定理** | 柯西积分定理、闭路变形、柯西积分公式与高阶导数公式、解析函数全息性、扇形围道与菲涅尔（Fresnel）积分 | [复变积分与柯西定理](../math/complex-analysis/contour-integrals.md) | **[成熟]** | 恩绍定理（静电不可悬浮）的复分析源头、光波动菲涅尔衍射、Wick 转动高斯路径积分 |
 | **4. 级数展开与奇点** | 幂级数收敛、泰勒定理证明、逐项微积分、圆环域洛朗展开、Fibonacci 展开、孤立奇点严格分类、无穷远点 | [级数展开与奇点](../math/complex-analysis/series-expansion.md) | **[成熟]** | 贝塞尔函数母函数生成关系、量子力学散射 $S$ 矩阵极点分析与共振束缚态 |
 | **5. 留数定理与实积分** | 留数诞生哲学、极点商式法则、五大积分围道范式（实轴、半圆、扇形、凹陷围道、矩形）、因果色散 | [留数定理与实积分计算](../math/complex-analysis/residue-calculus.md) | **[成熟]** | 振动阻尼系统频域响应、介电常数 Kramers–Kronig 色散关系、量子场论费曼 $i\epsilon$ 处方 |
 | **6. 积分变换与广义函数** | 狄拉克 $\delta$ 函数、分立/连续傅里叶变换、卷积定理、拉普拉斯变换解初值问题 | [狄拉克 Delta 函数](../math/transforms/delta-function.md)<br>[傅里叶级数](../math/transforms/fourier-series.md)<br>[傅里叶变换](../math/transforms/fourier-transform.md)<br>[拉普拉斯变换](../math/transforms/laplace-transform.md) | **[成熟]** | 频域谱分析、光学傅里叶衍射、量子力学坐标与动量表象变换、电路冲激响应 |
@@ -117,7 +117,7 @@ flowchart TD
 | **9. Sturm–Liouville 理论** | 自共轭微分算子、本征值实数性、本征函数带权正交完备性、广义傅里叶展开 | [Sturm–Liouville 理论](../math/eigenfunction-methods/sturm-liouville.md) | **[成熟]** | 量子力学定态薛定谔方程本征态、厄米算符可观测量定理的泛函母体 |
 | **10. 柱对称与 Bessel 函数** | 柱坐标拉普拉斯算子、Bessel 方程级数解、第一/二类 Bessel 函数、虚宗量与半整数阶 Bessel 函数 | [贝塞尔函数](../math/special-functions/bessel.md) | **[成熟]** | 圆形鼓膜振动驻波模式、圆柱形电磁波导（TE/TM 模）、圆孔夫琅禾费衍射 |
 | **11. 球对称与 Legendre/球谐函数** | 球坐标角向方程、Legendre 多项式、连带 Legendre 函数、正交归一球谐函数 $Y_l^m(\theta,\phi)$ | [勒让德多项式](../math/special-functions/legendre.md)<br>[球谐函数](../math/special-functions/spherical-harmonics.md) | **[成熟]** | 静电场多极矩展开、球形导体边值问题、中心势场定态薛定谔方程角动量本征态 |
-| **12. 量子正交多项式** | 谐振子与 Hermite 多项式、氢原子库仑束缚态与 Laguerre 多项式、生成元与递推关系 | [厄米多项式](../math/special-functions/hermite.md)<br>[拉盖尔多项式](../math/special-functions/laguerre.md) | **[成熟]** | 一维量子谐振子能级与波函数节点、氢原子电子轨道能级与径向几率密度 |
+| **12. 量子正交多项式** | 谐振子与 Hermite 多项式、氢原子库仑束缚态与 Laguerre 多项式、生成元与递推关系 | [厄米多项式](../math/special-functions/hermite.md)<br>[拉盖尔多项式](../math/special-functions/laguerre.md) | **[成熟]** | 一维量子谐振子能级与波函数节点、氢原子电子轨道能级与径向概率密度 |
 | **13. 格林函数方法** | 点源脉冲响应、基本解、第一/二类齐次边界格林函数、镜像法理论本质、推迟势积分 | [格林函数方法](../math/eigenfunction-methods/greens-function.md) | **[成熟]** | 静电学点电荷镜像法严密论证、时变电磁辐射推迟势、量子散射玻恩近似 |
 
 ---

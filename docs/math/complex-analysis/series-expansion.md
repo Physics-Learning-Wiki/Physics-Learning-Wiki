@@ -4,7 +4,7 @@ assessments:
     set: math.complex-analysis.integrals-series
 status: review
 author: Physics Learning Wiki Team
-description: 探讨复数项级数绝对收敛、泰勒定理严密证明、初等函数逐项微积分、圆环域洛朗定理、同心三圆环域（Fibonacci 生成函数）展开实战、贝塞尔函数母函数、孤立奇点严格三分类及无穷远点黎曼球面图像．
+description: 探讨复数项级数绝对收敛、泰勒定理严密证明、初等函数逐项微积分、圆环域洛朗定理、同心三圆环域（Fibonacci 生成函数）展开实战、贝塞尔函数生成函数、孤立奇点严格三分类及无穷远点黎曼球面图像．
 page_id: math.complex-analysis.series-expansion
 ---
 
@@ -212,7 +212,7 @@ flowchart LR
 
 ### 5.2 进阶范式：斐波那契（Fibonacci）生成函数在三个同心区域的展开
 
-斐波那契数列定义为 $F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$，其母函数定义为 $F(z) = \sum_{n=0}^\infty F_n z^n$．  
+斐波那契数列定义为 $F_0 = 0, F_1 = 1, F_n = F_{n-1} + F_{n-2}$，其生成函数定义为 $F(z) = \sum_{n=0}^\infty F_n z^n$．  
 由递推关系易求出其解析闭合解为：
 
 $$
@@ -245,7 +245,7 @@ $$
 
 ---
 
-## 6. 数理特殊函数母函数与洛朗级数
+## 6. 数理特殊函数生成函数与洛朗级数
 
 在电动力学与量子力学中，柱对称坐标下的波动方程解为 **第一类柱贝塞尔函数 $J_n(x)$**．贝塞尔函数族拥有极其优美的洛朗生成函数：
 
@@ -253,7 +253,7 @@ $$
 g(x, t) = \exp\left[\dfrac{x}{2}\left(t - \dfrac{1}{t}\right)\right] = \sum_{n=-\infty}^{+\infty} J_n(x) t^n
 $$
 
-在此母函数中：
+在此生成函数中：
 
 - 复变量 $t$ 在去心复平面 $0 < |t| < \infty$ 上解析；
 - 它的全部正幂次与负幂次洛朗展开系数，**天然就是各阶整数阶贝塞尔函数 $J_n(x)$**！  

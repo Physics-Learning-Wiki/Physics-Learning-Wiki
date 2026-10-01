@@ -1,7 +1,7 @@
 ???+ note "注意"
     该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
-梯度、散度和旋度是矢量分析中三个重要的微分算子，它们在物理学中，尤其是在电磁学和流体力学中，有着广泛的应用．这三个算子都与一个特殊的矢量微分算符——Nabla 算子（$\nabla$）有关．
+梯度、散度和旋度是矢量分析中三个重要的微分算子，它们在物理学中，尤其是在电磁学和流体力学中，有着广泛的应用．这三个算子都与一个特殊的矢量微分算子——Nabla 算子（$\nabla$）有关．
 
 ## Nabla 算子 ($\nabla$)
 
@@ -11,7 +11,7 @@ $$
 \nabla = \hat{i} \dfrac{\partial}{\partial x} + \hat{j} \dfrac{\partial}{\partial y} + \hat{k} \dfrac{\partial}{\partial z}
 $$
 
-它本身不是一个向量，而是一个矢量微分算符，可以作用于标量场或矢量场．
+它本身不是一个矢量，而是一个矢量微分算子，可以作用于标量场或矢量场．
 
 ## 梯度 (Gradient)
 

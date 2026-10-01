@@ -8,12 +8,12 @@ description: 探讨线性算符定义、抽象算符代数、在基底下的矩�
 
 ## 物理问题引入：物理操作如何用数学语言精确表达？
 
-在初等物理中，速度、电场等物理量被看作静态的向量 $\boldsymbol{v}$．
+在初等物理中，速度、电场等物理量被描述为矢量 $\boldsymbol{v}$．
 然而，在理论力学与量子力学中，物理学家更关心的是 **操作与演化**：
 
 -   **刚体旋转**：刚体的角动量 $\boldsymbol{L}$ 与角速度 $\boldsymbol{\omega}$ 并不总是平行的，它们通过一个将角速度变换为角动量的矩阵相互联系：$\boldsymbol{L} = \mathbf{I}\boldsymbol{\omega}$（惯量张量）；
 -   **偏振光学**：一个偏振片、波片会对穿过的偏振光矢量进行衰减与相位旋转（琼斯矩阵运算）；
--   **量子力学测量**：对微观粒子的测量本质上是对态矢量的一个线性作用，动量测量对应空间导数算符 $\hat{p} = -i\hbar\frac{\mathrm{d}}{\mathrm{d}x}$．
+-   **量子力学测量**：对微观粒子的测量本质上是对态向量的一个线性作用，动量测量对应空间导数算符 $\hat{p} = -i\hbar\frac{\mathrm{d}}{\mathrm{d}x}$．
 
 将一个态变换为另一个态的数学映射，就是 **线性算符 (Linear Operator)**．
 
@@ -95,7 +95,7 @@ $$
 [\sigma_x, \sigma_y] = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} - \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \begin{pmatrix} i & 0 \\ 0 & -i \end{pmatrix} - \begin{pmatrix} -i & 0 \\ 0 & i \end{pmatrix} = 2i \sigma_z
 $$
 
-循环对易关系 $[\sigma_a, \sigma_b] = 2i \epsilon_{abc} \sigma_c$ 完美展现了三维空间量子旋转算符 Lie 代数的全部物理结构．
+循环对易关系 $[\sigma_a, \sigma_b] = 2i \epsilon_{abc} \sigma_c$ 完美展现了三维空间量子旋转算符 李代数（Lie algebra）的全部物理结构．
 
 ***
 

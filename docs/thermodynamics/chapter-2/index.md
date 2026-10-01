@@ -22,7 +22,7 @@ author: Physics Learning Wiki
 
 1.  [麦克斯韦速率分布律](./maxwell-velocity-distribution.md)—从概率基础到分子速率分布
 2.  [玻尔兹曼密度分布](./boltzmann-density-distribution.md)—外场中的粒子密度分布
-3.  [能均分定理与热容量](./equipartition-theorem-and-heat-capacity.md)—经典统计的热容理论
+3.  [能均分定理与热容](./equipartition-theorem-and-heat-capacity.md)—经典统计的热容理论
 4.  [量子气体中粒子按能级的分布](./quantum-gas-energy-level-distribution.md)—从经典统计到量子统计的过渡
 5.  [费米气体](./fermi-gas.md)—电子气与简并压
 6.  [玻色气体](./bose-gas.md)—玻色 - 爱因斯坦凝聚

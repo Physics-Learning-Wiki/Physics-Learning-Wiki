@@ -4,7 +4,7 @@ author: 匿名同学
 
 ## 广义相对论基础（General Relativity Basics）
 
-本章目标：从「等效原理」出发，建立广义相对论的最小数学工具箱（张量、度规、协变导数、曲率），给出爱因斯坦场方程的常见推导动机与弱场极限，并以 Schwarzschild 时空为主线串起经典检验（引力红移、光线偏折、近日点进动、Shapiro 延迟）与典型考题．
+本章目标：从「等效原理」出发，建立广义相对论的最小数学工具箱（张量、度规、协变导数、曲率），给出爱因斯坦场方程的常见推导动机与弱场极限，并以 史瓦西（Schwarzschild） 时空为主线串起经典检验（引力红移、光线偏折、近日点进动、夏皮罗（Shapiro） 延迟）与典型考题．
 
 为方便计算，本文会在不同小节切换单位：
 
@@ -84,7 +84,7 @@ $$
 
 ### 2.1 间隔与度规（metric）
 
-狭义相对论中 Minkowski 间隔：
+狭义相对论中 闵可夫斯基（Minkowski） 间隔：
 
 $$
 ds^2=\eta_{\mu\nu}dx^\mu dx^\nu=-c^2dt^2+dx^2+dy^2+dz^2.
@@ -128,9 +128,9 @@ $$
 \nabla_\mu v^\nu = \partial_\mu v^\nu + \Gamma^{\nu}_{\ \mu\lambda}v^\lambda.
 $$
 
-其中 $\Gamma^{\nu}_{\ \mu\lambda}$ 为 Christoffel 符号（Levi-Civita 连接）．
+其中 $\Gamma^{\nu}_{\ \mu\lambda}$ 为 克里斯托费尔（Christoffel） 符号（列维-奇维塔（Levi-Civita） 连接）．
 
-### 2.5 Christoffel 符号的公式
+### 2.5 克里斯托费尔 符号的公式
 
 在无挠、度规相容（$\nabla_\alpha g_{\mu\nu}=0$）的假设下：
 
@@ -138,7 +138,7 @@ $$
 \boxed{\ \Gamma^{\rho}_{\ \mu\nu}=\frac12 g^{\rho\sigma}\left(\partial_\mu g_{\nu\sigma}+\partial_\nu g_{\mu\sigma}-\partial_\sigma g_{\mu\nu}\right)\ }
 $$
 
-??? note "小提醒：Christoffel 不是张量"
+??? note "小提醒：克里斯托费尔 不是张量"
         它依赖坐标系选择（可以在某点选取局部惯性系使其为 0），但它组合成的曲率张量是坐标不变量．
 
 ***
@@ -192,24 +192,24 @@ $$
 =R^{\rho}_{\ \sigma\mu\nu}v^\sigma.
 $$
 
-这里 $R^{\rho}_{\ \sigma\mu\nu}$ 是 Riemann 曲率张量．
+这里 $R^{\rho}_{\ \sigma\mu\nu}$ 是 黎曼（Riemann） 曲率张量．
 
-### 4.2 Riemann、Ricci 与标量曲率
+### 4.2 黎曼、里奇（Ricci） 与标量曲率
 
-从 Christoffel 可写出：
+从 克里斯托费尔 可写出：
 
 $$
 R^{\rho}_{\ \sigma\mu\nu}=\partial_\mu\Gamma^{\rho}_{\ \nu\sigma}-\partial_\nu\Gamma^{\rho}_{\ \mu\sigma}
 +\Gamma^{\rho}_{\ \mu\lambda}\Gamma^{\lambda}_{\ \nu\sigma}-\Gamma^{\rho}_{\ \nu\lambda}\Gamma^{\lambda}_{\ \mu\sigma}.
 $$
 
-收缩得到 Ricci 张量与标量曲率：
+收缩得到 里奇 张量与标量曲率：
 
 $$
 R_{\mu\nu}=R^{\rho}_{\ \mu\rho\nu},\qquad R=g^{\mu\nu}R_{\mu\nu}.
 $$
 
-### 4.3 爱因斯坦张量与 Bianchi 恒等式
+### 4.3 爱因斯坦张量与 比安基（Bianchi） 恒等式
 
 定义
 
@@ -250,7 +250,7 @@ $$
 
 在这些条件下，最自然且最简单的选择就是 $G_{\mu\nu}$．
 
-??? note "更系统的推导：Hilbert–Einstein 作用量"
+??? note "更系统的推导：希尔伯特-爱因斯坦（Hilbert-Einstein）（Hilbert–Einstein） 作用量"
         取总作用量  
         
         $$  
@@ -281,7 +281,7 @@ $$
 g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu},\qquad |h_{\mu\nu}|\ll 1.
 $$
 
-在线性近似与合适规范（如 Lorenz 规范）下，场方程会变成「波动方程」形式，真空中存在引力波解．
+在线性近似与合适规范（如 洛伦兹（Lorenz） 规范）下，场方程会变成「波动方程」形式，真空中存在引力波解．
 
 ### 6.1 线性化方程的标准形（了解即可）
 
@@ -291,7 +291,7 @@ $$
 \bar h_{\mu\nu}\equiv h_{\mu\nu}-\frac12\eta_{\mu\nu}h,\qquad h\equiv\eta^{\alpha\beta}h_{\alpha\beta}.
 $$
 
-在 Lorenz 规范
+在 洛伦兹 规范
 
 $$
 \partial_\mu \bar h^{\mu\nu}=0
@@ -325,11 +325,11 @@ $$
 
 ***
 
-## 7. Schwarzschild 时空：最重要的精确解
+## 7. 史瓦西 时空：最重要的精确解
 
 ### 7.1 度规（真空、球对称、静态）
 
-对质量 $M$ 的球对称真空外部，Einstein 方程给出 Schwarzschild 解：
+对质量 $M$ 的球对称真空外部，Einstein 方程给出 史瓦西 解：
 
 $$
 \boxed{
@@ -338,13 +338,13 @@ ds^2=-\left(1-\dfrac{2GM}{rc^2}\right)c^2dt^2
 }
 $$
 
-定义 Schwarzschild 半径
+定义 史瓦西 半径
 
 $$
 r_s=\dfrac{2GM}{c^2}.
 $$
 
-当 $r=r_s$ 时，$g_{tt}$ 变号、$g_{rr}$ 发散（在该坐标系下）．这对应事件视界；更好的坐标（Eddington–Finkelstein、Kruskal）能消除坐标奇点．
+当 $r=r_s$ 时，$g_{tt}$ 变号、$g_{rr}$ 发散（在该坐标系下）．这对应事件视界；更好的坐标（爱丁顿-芬克尔斯泰因（Eddington-Finkelstein）（Eddington–Finkelstein）、克鲁斯卡尔（Kruskal））能消除坐标奇点．
 
 ### 7.2 静止观测者的引力时间膨胀
 
@@ -356,11 +356,11 @@ $$
 
 因此远处观察者看到近处的钟变慢．
 
-![Schwarzschild 引力时间膨胀因子](images/schwarzschild_time_dilation_factor.png)
+![史瓦西 引力时间膨胀因子](images/schwarzschild_time_dilation_factor.png)
 
 ### 7.3 能量与角动量守恒（测地线的第一积分）
 
-Schwarzschild 度规对 $t$、$\phi$ 不显含，导致守恒量：
+史瓦西 度规对 $t$、$\phi$ 不显含，导致守恒量：
 
 $$
 E\equiv\left(1-\dfrac{r_s}{r}\right)c^2\dfrac{dt}{d\tau},\qquad
@@ -383,11 +383,11 @@ $$
 V_{\mathrm{eff}}(r)=\left(1-\dfrac{2M}{r}\right)\left(1+\dfrac{L^2}{r^2}\right).
 $$
 
-![Schwarzschild 有效势示意](images/schwarzschild_effective_potential.png)
+![史瓦西 有效势示意](images/schwarzschild_effective_potential.png)
 
 ### 7.5 光子球与 ISCO（竞赛很常考的两个半径）
 
-在几何单位 $G=c=1$ 的 Schwarzschild 时空：
+在几何单位 $G=c=1$ 的 史瓦西 时空：
 
 -   **光子球（photon sphere）**：不稳定的圆形光子轨道
     
@@ -407,7 +407,7 @@ $$
 
 ## 8. 经典检验与常用结果（入门必会）
 
-### 8.1 引力红移（精确形式：Schwarzschild）
+### 8.1 引力红移（精确形式：史瓦西）
 
 两静止观测者分别在 $r_1$（发射）与 $r_2$（接收，通常更远）处：
 
@@ -441,7 +441,7 @@ $$
 \boxed{\ \Delta\phi\approx\dfrac{6\pi GM}{a(1-e^2)c^2}\ }
 $$
 
-### 8.4 Shapiro 时间延迟（选学）
+### 8.4 夏皮罗 时间延迟（选学）
 
 雷达信号掠过质量 $M$ 的天体会产生额外往返时间延迟．对「从 $r_1$ 发出、掠过最近距离 $b$、到 $r_2$ 接收」的几何，弱场近似常见写法为
 
@@ -451,7 +451,7 @@ $$
 
 （不同教材对几何定义略有差异，但共同点是：它随 $GM/c^3$ 线性增长，并含对数项．）
 
-### 8.5 宇宙学一瞥：FRW 度规与 Friedmann 方程（选读）
+### 8.5 宇宙学一瞥：弗里德曼-罗伯逊-沃克（Friedmann–Robertson–Walker，FRW）度规与 弗里德曼（Friedmann） 方程（选读）
 
 在「大尺度均匀各向同性」的宇宙假设下，度规可写为 FRW 形式：
 
@@ -461,7 +461,7 @@ $$
 
 其中 $a(t)$ 为尺度因子，$k=0,\pm1$ 表示空间曲率符号．
 
-代入 Einstein 方程并取物质为理想流体，可得 Friedmann 方程（最常用版本）：
+代入 Einstein 方程并取物质为理想流体，可得 弗里德曼 方程（最常用版本）：
 
 $$
 \boxed{\ \left(\dfrac{\dot a}{a}\right)^2=\dfrac{8\pi G}{3}\rho-\dfrac{kc^2}{a^2}+\dfrac{\Lambda c^2}{3}\ }
@@ -529,9 +529,9 @@ $$
 
 ***
 
-### 例题 2：Schwarzschild 时空中的静止钟差（精确公式）
+### 例题 2：史瓦西 时空中的静止钟差（精确公式）
 
-在 Schwarzschild 外部时空中，两只静止钟分别位于 $r_1$ 与 $r_2$（$r_2>r_1>r_s$）．若远处坐标时间过了 $\Delta t$，两钟的固有时分别为多少？两者比值？
+在 史瓦西 外部时空中，两只静止钟分别位于 $r_1$ 与 $r_2$（$r_2>r_1>r_s$）．若远处坐标时间过了 $\Delta t$，两钟的固有时分别为多少？两者比值？
 
 **解：**
 
@@ -601,7 +601,7 @@ $$
 
 **推导要点：**
 
-1.  对 Schwarzschild 测地线，可得到轨道方程的近似形式（令 $u=1/r$）
+1.  对 史瓦西 测地线，可得到轨道方程的近似形式（令 $u=1/r$）
 
 $$
 \dfrac{d^2u}{d\phi^2}+u=\dfrac{GM}{L^2}+3\dfrac{GM}{c^2}u^2.
@@ -623,9 +623,9 @@ $$
 
 ***
 
-### 例题 5：求 Schwarzschild 的光子球半径与 ISCO 半径
+### 例题 5：求 史瓦西 的光子球半径与 ISCO 半径
 
-在几何单位 $G=c=1$ 下，证明 Schwarzschild 时空中光子的圆轨道半径为 $r=3M$，时类最内稳定圆轨道半径为 $r=6M$．
+在几何单位 $G=c=1$ 下，证明 史瓦西 时空中光子的圆轨道半径为 $r=3M$，时类最内稳定圆轨道半径为 $r=6M$．
 
 **解（思路 + 关键步骤）：**
 
@@ -660,7 +660,7 @@ r=3M.
 $$
 
 4.  \*\* 时类（有质量）\*\* 圆轨道的稳定性由二阶导数决定：稳定要求 $\dfrac{d^2V_{\text{eff}}}{dr^2}>0$．
-    对 Schwarzschild，稳定圆轨道存在于 $r>6M$；临界点为
+    对 史瓦西，稳定圆轨道存在于 $r>6M$；临界点为
 
 $$
 r_{\text{ISCO}}=6M.
@@ -678,7 +678,7 @@ $$
 **解（定性 + 关键结论）：**
 
 1.  对下落者，$\tau$ 是沿世界线积分得到的真实物理时间．
-2.  在 Schwarzschild 坐标下，$t$ 在靠近 $r_s$ 时会出现对数发散（这是坐标效应）．
+2.  在 史瓦西 坐标下，$t$ 在靠近 $r_s$ 时会出现对数发散（这是坐标效应）．
 3.  结论：
 
 -   **固有时有限**：自由落体者在有限 $\tau$ 内穿过视界．

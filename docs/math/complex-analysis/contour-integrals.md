@@ -302,7 +302,7 @@ $$
 
 ---
 
-## 5. 围道设计实战：菲涅尔积分与威克旋转
+## 5. 围道设计实战：菲涅尔（Fresnel）积分与威克旋转
 
 ### 5.1 菲涅尔积分 (Fresnel Integrals) 扇形围道严格求解
 
@@ -336,14 +336,14 @@ $$
   \int_{C_3} e^{iz^2}\mathrm{d}z = \int_R^0 e^{-r^2} e^{i\pi/4}\mathrm{d}r = -e^{i\pi/4}\int_0^R e^{-r^2}\mathrm{d}r \xrightarrow{R \to \infty} -e^{i\pi/4}\dfrac{\sqrt{\pi}}{2}
   $$
 
-- **在圆弧 $C_2$ 上利用若当（Jordan）不等式估计**：
+- **在圆弧 $C_2$ 上利用约当（Jordan）不等式估计**：
   在 $C_2$ 上 $z^2 = R^2(\cos 2\theta + i\sin 2\theta)$：
   
   $$
   |e^{iz^2}| = |e^{-R^2\sin 2\theta}| = e^{-R^2\sin 2\theta}
   $$
   
-  由若当不等式：在 $\alpha \in [0, \pi/2]$ 上 $\sin\alpha \ge \frac{2}{\pi}\alpha$（正弦弧位于弦上方）．令 $\alpha = 2\theta$：
+  由约当不等式：在 $\alpha \in [0, \pi/2]$ 上 $\sin\alpha \ge \frac{2}{\pi}\alpha$（正弦弧位于弦上方）．令 $\alpha = 2\theta$：
   
   $$
   \left|\int_{C_2} e^{iz^2}\mathrm{d}z\right| \le \int_0^{\pi/4} e^{-R^2\sin 2\theta} R\,\mathrm{d}\theta = \dfrac{R}{2}\int_0^{\pi/2} e^{-R^2\sin\alpha}\mathrm{d}\alpha \le \dfrac{R}{2}\int_0^{\pi/2} e^{-R^2\frac{2\alpha}{\pi}}\mathrm{d}\alpha = \dfrac{\pi}{4R}(1 - e^{-R^2}) \xrightarrow{R \to \infty} 0
@@ -366,7 +366,7 @@ $$
 
 上述扇形围道中 $z = r e^{i\pi/4}$ 的变量代换，在量子力学与量子统计场论中有着极其宏大的推广——**威克旋转 (Wick Rotation)**．
 
-在闵可夫斯基时空中，振荡的量子跃迁幅包含动力学相位 $e^{i S/\hbar} \sim e^{-i H t / \hbar}$；  
+在闵可夫斯基时空中，振荡的跃迁概率幅包含动力学相位 $e^{i S/\hbar} \sim e^{-i H t / \hbar}$；  
 物理学家作解析延拓，将实时间轴转动到虚时间轴：
 
 $$

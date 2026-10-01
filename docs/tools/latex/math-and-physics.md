@@ -129,7 +129,7 @@ V(x) =
 | **微积分微分符号** | 必须使用 **正体**       | $\mathrm{d}x, \mathrm{d}t, \mathrm{d}^3 r$      | $dx, dt$（$d$ 变成斜体变量）     |
 | **偏微分符号**   | 使用专用符号 `\partial` | $\frac{\partial \psi}{\partial t}$              | $d \psi / dt$            |
 | **自然常数与底**  | 必须使用 **正体**       | 自然底 $\mathrm{e}^{x}$、虚数单位 $\mathrm{i}$          | $e^x, i$（误写为斜体变量）        |
-| **物理常数变量**  | 遵循物理约定斜体          | 普朗克常数 $\hbar, h$、光速 $c$、玻尔兹曼常数 $k_{\mathrm{B}}$ | $\mathrm{c}, \mathrm{h}$ |
+| **物理常数变量**  | 遵循物理约定斜体          | 普朗克常量 $\hbar, h$、光速 $c$、玻尔兹曼常量 $k_{\mathrm{B}}$ | $\mathrm{c}, \mathrm{h}$ |
 
 ???+ example "微积分算子标准写法示例"
     ```tex

@@ -205,7 +205,7 @@ $$
     f(\boldsymbol{v}) = \left(\dfrac{m}{2\pi kT}\right)^{3/2}\,\exp\!\left(-\dfrac{m(v_x^2+v_y^2+v_z^2)}{2kT}\right)
     $$
     
-    其中 $m$ 为分子质量，$k$ 为玻尔兹曼常数，$T$ 为热力学温度．
+    其中 $m$ 为分子质量，$k$ 为玻尔兹曼常量，$T$ 为热力学温度．
 
 各分量的分布是一维高斯分布：
 
@@ -449,4 +449,4 @@ $$
 -   前置知识：[概率论的基本概念](../../math/probability-statistics/basic-concepts.md)、[一维随机变量及其分布](../../math/probability-statistics/one-dimensional-random-variables-and-distributions.md)、[随机变量的数字特征](../../math/probability-statistics/characteristic-values-of-random-variables.md)
 -   本章导读：[第二章 热平衡态的统计分布律](./index.md)
 -   下一节：[玻尔兹曼密度分布](./boltzmann-density-distribution.md)—将麦克斯韦分布推广到存在外场（如重力场）的情形
--   相关内容：[能均分定理与热容量](./equipartition-theorem-and-heat-capacity.md)—用特征速率的结果理解能量均分
+-   相关内容：[能均分定理与热容](./equipartition-theorem-and-heat-capacity.md)—用特征速率的结果理解能量均分

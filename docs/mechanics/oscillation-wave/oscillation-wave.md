@@ -6,7 +6,7 @@ author: ChatGPT
 
 线性振动研究「在平衡位置附近的小振幅运动」．其核心特征是：
 
--   恢复力（或回复力矩）对位移近似成正比：$F\approx-kx$．
+-   回复力（或回复力矩）对位移近似成正比：$F\approx-kx$．
 -   阻尼力对速度近似成正比：$F_d\approx-b\dot x$．
 -   外驱动力若存在，可写为已知函数 $F(t)$（常见为简谐驱动）．
 
@@ -165,7 +165,7 @@ $$
 
 振幅按 $e^{-\gamma t}$ 衰减，振动角频率从 $\omega_0$ 降为 $\omega_d$．
 
-**对数减量**（衡量衰减）：若相邻两个峰值间隔约为 $T_d=2\pi/\omega_d$，则
+**对数减缩**（衡量衰减）：若相邻两个峰值间隔约为 $T_d=2\pi/\omega_d$，则
 
 $$
 \delta=\ln\dfrac{x(t)}{x(t+T_d)}\approx \gamma T_d=\dfrac{2\pi\gamma}{\omega_d}.

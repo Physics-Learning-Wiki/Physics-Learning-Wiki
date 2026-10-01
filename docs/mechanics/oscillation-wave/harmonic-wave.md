@@ -51,7 +51,7 @@ $$
 \lambda=\dfrac{2\pi}{k},\quad T=\dfrac{2\pi}{\omega},\quad f=\dfrac{1}{T}.
 $$
 
-我们可以用 **相位传输法** 来理解这个简谐波的方程．对于一个从原点开始上下振动的波源，其振动表达式为 $y(0,t)=A\cos(\omega t+\varphi)$．当波源在时间 $t$ 处于某一相位时，距离波源 $x$ 处的点需要等到时间 $t+\frac{x}{v}$ 才能感受到这个相位的变化（其中 $v$ 是波速）．因此，距离 $x$ 处的点的振动可以表示为：
+我们可以用 **相位传播法** 来理解这个简谐波的方程．对于一个从原点开始上下振动的波源，其振动表达式为 $y(0,t)=A\cos(\omega t+\varphi)$．当波源在时间 $t$ 处于某一相位时，距离波源 $x$ 处的点需要等到时间 $t+\frac{x}{v}$ 才能感受到这个相位的变化（其中 $v$ 是波速）．因此，距离 $x$ 处的点的振动可以表示为：
 
 $$
 y(x,t) = A\cos\left(\omega \left(t - \dfrac{x}{v}\right) + \varphi\right)
@@ -134,7 +134,7 @@ $$
 
 若相位差来自程差 $\Delta x$：$\Delta\varphi=k\Delta x=\frac{2\pi}{\lambda}\Delta x$．
 
--   增强干涉：$\Delta\varphi=2m\pi \Leftrightarrow \Delta x=m\lambda$
+-   相长干涉：$\Delta\varphi=2m\pi \Leftrightarrow \Delta x=m\lambda$
 -   相消干涉：$\Delta\varphi=(2m+1)\pi \Leftrightarrow \Delta x=(m+\tfrac12)\lambda$
 
 ## 4. 驻波（Standing Waves）

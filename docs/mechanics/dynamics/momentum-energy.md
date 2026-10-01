@@ -45,7 +45,7 @@ $$
 
 ### 1.2 质点系动量定理
 
-对于由多个质点组成的系统：
+对于由多个质点系成的系统：
 
 $$
 \dfrac{d\boldsymbol{P}}{dt} = \sum \boldsymbol{F}_{\text{ext}}

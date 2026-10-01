@@ -47,7 +47,7 @@ $$
 \dfrac{\mathrm{d}^2\theta}{\mathrm{d}t^2} + \dfrac{Mgh}{I}\theta = 0
 $$
 
-这是一个简谐运动方程，其角频率为：
+这是一个简谐振动方程，其角频率为：
 
 $$
 \omega = \sqrt{\dfrac{Mgh}{I}}

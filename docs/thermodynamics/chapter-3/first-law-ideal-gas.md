@@ -27,10 +27,10 @@ $$
 根据热力学第一定律，系统吸收的热量全部用于增加系统的内能：
 
 $$
-Q_V = \Delta U = \nu C_V^{mol} (T_2 - T_1) = \nu C_V^{mol} \Delta T
+Q_V = \Delta U = \nu C_{V,m} (T_2 - T_1) = \nu C_{V,m} \Delta T
 $$
 
-其中 $C_V^{mol}$ 为理想气体的摩尔定体热容．
+其中 $C_{V,m}$ 为理想气体的摩尔定容热容．
 
 ### 等压过程
 
@@ -42,18 +42,18 @@ $$
 A = \int_{V_1}^{V_2} p \,\text{d}V = p(V_2 - V_1) = p \Delta V
 $$
 
-根据理想气体状态方程 $pV = \nu RT$，做功也可表示为 $A = \nu R (T_2 - T_1) = \nu R \Delta T$．
+根据理想气体物态方程 $pV = \nu RT$，做功也可表示为 $A = \nu R (T_2 - T_1) = \nu R \Delta T$．
 
 系统在等压过程中吸收的热量为：
 
 $$
-Q_p = \nu C_p^{mol} \Delta T
+Q_p = \nu C_{p,m} \Delta T
 $$
 
-其中 $C_p^{mol}$ 为理想气体的摩尔定压热容．根据热力学第一定律 $Q_p = \Delta U + A$，可以推导出迈耶公式（Mayer's relation）：
+其中 $C_{p,m}$ 为理想气体的摩尔定压热容．根据热力学第一定律 $Q_p = \Delta U + A$，可以推导出迈耶公式（Mayer's relation）：
 
 $$
-\nu C_p^{mol} \Delta T = \nu C_V^{mol} \Delta T + \nu R \Delta T \implies C_p^{mol} = C_V^{mol} + R
+\nu C_{p,m} \Delta T = \nu C_{V,m} \Delta T + \nu R \Delta T \implies C_{p,m} = C_{V,m} + R
 $$
 
 ### 等温过程
@@ -89,10 +89,10 @@ $$
 根据热力学第一定律，绝热过程中外界对系统做功等于系统内能的增加（或系统对外做功等于内能的减少）：
 
 $$
-\text{d}U + \text{d}A = 0 \implies \nu C_V^{mol} \,\text{d}T + p \,\text{d}V = 0
+\text{d}U + \text{d}A = 0 \implies \nu C_{V,m} \,\text{d}T + p \,\text{d}V = 0
 $$
 
-结合理想气体状态方程微分形式 $p \,\text{d}V + V \,\text{d}p = \nu R \,\text{d}T$，可推导理想气体绝热过程方程．引入绝热指数（比热容比，adiabatic index）$\gamma = \frac{C_p^{mol}}{C_V^{mol}}$，得到 **绝热泊松公式（Poisson's relations）**：
+结合理想气体物态方程微分形式 $p \,\text{d}V + V \,\text{d}p = \nu R \,\text{d}T$，可推导理想气体绝热过程方程．引入绝热指数（比热容比，adiabatic index）$\gamma = \frac{C_{p,m}}{C_{V,m}}$，得到 **绝热泊松公式（Poisson's relations）**：
 
 $$
 pV^\gamma = \text{const}
@@ -109,7 +109,7 @@ $$
 在绝热过程中，气体对外做功为：
 
 $$
-A = -\Delta U = -\nu C_V^{mol} (T_2 - T_1) = \dfrac{\nu R}{\gamma - 1}(T_1 - T_2) = \dfrac{p_1 V_1 - p_2 V_2}{\gamma - 1}
+A = -\Delta U = -\nu C_{V,m} (T_2 - T_1) = \dfrac{\nu R}{\gamma - 1}(T_1 - T_2) = \dfrac{p_1 V_1 - p_2 V_2}{\gamma - 1}
 $$
 
 ### 实际应用
@@ -120,7 +120,7 @@ $$
 
 在对流层中，当我们假设一个干燥空气微团快速上升时，由于空气导热性极差且上升迅速，该过程可视为 **绝热膨胀** 过程．
 
-随着高度 $z$ 增加，周围大气压强 $p$ 下降，遵守流体静力学方程 $\text{d}p = -\rho g \,\text{d}z$．利用理想气体状态方程 $\rho = \frac{pM}{RT}$ 和绝热方程 $T \propto p^{\frac{\gamma-1}{\gamma}}$ 微分形式 $\frac{\text{d}T}{T} = \frac{\gamma-1}{\gamma}\frac{\text{d}p}{p}$，我们可以得到干绝热递减率（Dry adiabatic lapse rate）：
+随着高度 $z$ 增加，周围大气压强 $p$ 下降，遵守流体静力学方程 $\text{d}p = -\rho g \,\text{d}z$．利用理想气体物态方程 $\rho = \frac{pM}{RT}$ 和绝热方程 $T \propto p^{\frac{\gamma-1}{\gamma}}$ 微分形式 $\frac{\text{d}T}{T} = \frac{\gamma-1}{\gamma}\frac{\text{d}p}{p}$，我们可以得到干绝热递减率（Dry adiabatic lapse rate）：
 
 $$
 \Gamma_d = -\dfrac{\text{d}T}{\text{d}z} = \dfrac{\gamma - 1}{\gamma} \dfrac{Mg}{R} = \dfrac{g}{c_p}
@@ -143,10 +143,10 @@ $$
 根据热力学第一定律的微分形式 $\text{d}Q = \text{d}U + \text{d}A$：
 
 $$
-\nu C_m \,\text{d}T = \nu C_V^{mol} \,\text{d}T + p \,\text{d}V
+\nu C_m \,\text{d}T = \nu C_{V,m} \,\text{d}T + p \,\text{d}V
 $$
 
-结合理想气体状态方程，经过推导可得 **多方过程方程式**：
+结合理想气体物态方程，经过推导可得 **多方过程方程式**：
 
 $$
 pV^n = \text{const}
@@ -155,17 +155,17 @@ $$
 其中 $n$ 称为 **多方指数（Polytropic index）**，其与摩尔热容的关系为：
 
 $$
-n = \dfrac{C_m - C_p^{mol}}{C_m - C_V^{mol}}
+n = \dfrac{C_m - C_{p,m}}{C_m - C_{V,m}}
 $$
 
 多方过程涵盖了多种典型过程，不同 $n$ 值对应的经典热力学过程总结如下：
 
 | 过程名称 |  摩尔热容 $C_m$  |   多方指数 $n$   |            多方方程            | 过程特征       |
 | :--- | :----------: | :----------: | :------------------------: | :--------- |
-| 等压过程 |  $C_p^{mol}$ |      $0$     |     $p = \text{const}$     | 压强不变       |
+| 等压过程 |  $C_{p,m}$ |      $0$     |     $p = \text{const}$     | 压强不变       |
 | 等温过程 | $\pm \infty$ |      $1$     |     $pV = \text{const}$    | 温度不变，内能不变  |
 | 绝热过程 |      $0$     |   $\gamma$   | $pV^\gamma = \text{const}$ | 无热交换       |
-| 等体过程 |  $C_V^{mol}$ | $\pm \infty$ |     $V = \text{const}$     | 体积不变，对外不作功 |
+| 等体过程 |  $C_{V,m}$ | $\pm \infty$ |     $V = \text{const}$     | 体积不变，对外不做功 |
 
 多方过程对外做功公式为（其中 $n \neq 1$）：
 
@@ -174,7 +174,7 @@ A = \int_{V_1}^{V_2} p \,\text{d}V = \dfrac{p_1 V_1 - p_2 V_2}{n - 1} = \dfrac{\
 $$
 
 ??? note "例题：多方过程的功与热"
-    **题目**：1 摩尔理想气体（单原子分子，$\gamma = 1.67$，$C_V^{mol} = \frac{3}{2}R$）从初始状态 $(p_0, V_0, T_0)$ 经历多方过程膨胀至 $2V_0$，已知其多方指数 $n = 1.25$．求此过程中气体对外做的功 $A$，内能变化 $\Delta U$ 以及吸收的热量 $Q$．
+    **题目**：1 摩尔理想气体（单原子分子，$\gamma = 1.67$，$C_{V,m} = \frac{3}{2}R$）从初始状态 $(p_0, V_0, T_0)$ 经历多方过程膨胀至 $2V_0$，已知其多方指数 $n = 1.25$．求此过程中气体对外做的功 $A$，内能变化 $\Delta U$ 以及吸收的热量 $Q$．
     
     **解答**：  
     由于方程为 $pV^n = \text{const}$，故状态参量的关系为 $T V^{n-1} = \text{const}$．  
@@ -193,7 +193,7 @@ $$
     2.  内能变化：
     
     $$
-    \Delta U = \nu C_V^{mol} (T_2 - T_0) = 1 \cdot \dfrac{3}{2}R \cdot (0.841 T_0 - T_0) = 1.5 R (-0.159 T_0) = -0.2385 R T_0  
+    \Delta U = \nu C_{V,m} (T_2 - T_0) = 1 \cdot \dfrac{3}{2}R \cdot (0.841 T_0 - T_0) = 1.5 R (-0.159 T_0) = -0.2385 R T_0  
     $$
     
     3.  吸收热量（根据第一定律）：
@@ -220,7 +220,7 @@ $$
 
 多方行适用于 $n\ne1$；$n=1$ 应使用等温行．$\gamma=C_p/C_V$．膨胀时等压和等温功为正，绝热膨胀温度降低，故绝热功也为正．
 
-### 范德瓦尔斯气体准静态过程公式
+### 范德瓦尔斯（van der Waals）气体准静态过程公式
 
 设 $C_V$ 为常量，仅考虑体积功．令 $V'=V-\nu b$、$p'=p+\nu^2a/V^2$，则 $p'V'=\nu RT$，并记
 

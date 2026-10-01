@@ -42,7 +42,7 @@ description: 介绍如何用宏观量描述大量粒子组成的系统，串联�
 
 1.  [麦克斯韦速度分布率](./chapter-2/maxwell-velocity-distribution.md)
 2.  [玻尔兹曼密度分布](./chapter-2/boltzmann-density-distribution.md)
-3.  [能均分定理与热容量](./chapter-2/equipartition-theorem-and-heat-capacity.md)
+3.  [能均分定理与热容](./chapter-2/equipartition-theorem-and-heat-capacity.md)
 4.  [量子气体中粒子按能级的分布](./chapter-2/quantum-gas-energy-level-distribution.md)
 5.  [费米气体](./chapter-2/fermi-gas.md)
 6.  [玻色气体](./chapter-2/bose-gas.md)
