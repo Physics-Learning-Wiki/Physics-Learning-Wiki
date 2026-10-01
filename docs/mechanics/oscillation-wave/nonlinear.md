@@ -81,7 +81,7 @@ $$
  x^3\approx \dfrac{3A^3}{4}\cos(\Omega t-\delta).
 $$
 
-代回方程，把同频项系数匹配（将 $\cos(\Omega t-\delta)$ 和 $\sin(\Omega t-\delta)$ 分离），可得幅相关系：
+代回方程，把同频项系数匹配（将 $\cos(\Omega t-\delta)$ 和 $\sin(\Omega t-\delta)$ 分离），可得幅频关系：
 
 $$
 \left[\left(\omega_0^2+\dfrac{3\varepsilon}{4}A^2-\Omega^2\right)^2+(2\gamma\Omega)^2\right]A^2=\left(\dfrac{F_0}{m}\right)^2.
@@ -197,7 +197,7 @@ $$
     \frac12-\dfrac{A^2}{8}=0\Rightarrow \boxed{A\approx 2}.  
     $$
     
-    这说明：在弱非线性下，Van der Pol 振子的稳定振幅是一个与初始条件无关的常数量级（约为 2）．
+    这说明：在弱非线性下，Van der Pol 振子的稳定振幅是一个与初始条件无关的常数（在本文无量纲化下约为 2）．
 
 ## 5. 什么时候必须用非线性？（经验判断）
 

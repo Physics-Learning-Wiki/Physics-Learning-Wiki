@@ -44,16 +44,16 @@ $$
 \nabla^2 u = \dfrac{1}{v^2}\dfrac{\partial^2 u}{\partial t^2}
 $$
 
-**物理特性**：以确定速度 $v$ 向外传播，波形在无耗散介质中保持不变，服从严格的超距因果光锥约束．
+**物理特性**：以确定速度 $v$ 向外传播，波形在无耗散介质中保持不变，服从有限波速的因果约束．
 
 ### 1.2 热传导与扩散方程 (Heat Equation，抛物型）
 
 考虑各向同性介质中的热流动：
 
-1.  **傅里叶实验定律**：热流密度与温度负梯度成正比：$\boldsymbol{q} = -\kappa \nabla T$；
+1.  **傅里叶定律**：热流密度与温度负梯度成正比：$\boldsymbol{q} = -\kappa \nabla T$；
 2.  **能量守恒连续性**：微元净吸收热量等于内能增加率：$-\nabla\cdot\boldsymbol{q} = c\rho \dfrac{\partial T}{\partial t}$．
 
-将两式联立，令热扩散系数 $a^2 = \dfrac{\kappa}{c\rho}$：
+将两式联立，令热扩散率 $a^2 = \dfrac{\kappa}{c\rho}$：
 
 $$
 \nabla^2 T = \dfrac{1}{a^2}\dfrac{\partial T}{\partial t}
@@ -99,11 +99,11 @@ $$
 
 在空间区域边界 $\partial\Omega$ 上施加的物理约束：
 
-| 边界类型                      | 数学表述                                                                       | 典型物理场景                                   |                                                             |
-| :------------------------ | :------------------------------------------------------------------------- | :--------------------------------------- | ----------------------------------------------------------- |
-| **第一类边界（狄利克雷 Dirichlet)** | \$\left.u\right                                                            | \_{\partial\Omega} = f(\boldsymbol{r})\$ | 琴弦两端固定不动（$u=0$）；金属导体表面接地电势为零（$\phi=0$）                      |
-| **第二类边界（诺伊曼 Neumann)**    | \$\left.\dfrac{\partial u}{\partial n}\right                               | \_{\partial\Omega} = g(\boldsymbol{r})\$ | 绝热容器边界热流为零（$\frac{\partial T}{\partial n}=0$）；长笛管口自由端压力梯度为零 |
-| **第三类边界（罗宾 Robin/混合）**    | \$\left.\left(\alpha u + \beta \dfrac{\partial u}{\partial n}\right)\right | \_{\partial\Omega} = h(\boldsymbol{r})\$ | 牛顿冷却对流换热边界；弹性阻尼端部支撑                                         |
+| 边界类型 | 数学表述 | 典型物理场景 |
+| --- | --- | --- |
+| 第一类边界（狄利克雷 Dirichlet） | $\left.u\right\rvert_{\partial\Omega}=f(\boldsymbol r)$ | 固定弦端位移为零；接地导体电势为零 |
+| 第二类边界（诺伊曼 Neumann） | $\left.\dfrac{\partial u}{\partial n}\right\rvert_{\partial\Omega}=g(\boldsymbol r)$ | 绝热边界的法向温度梯度为零 |
+| 第三类边界（罗宾 Robin） | $\left.(\alpha u+\beta\dfrac{\partial u}{\partial n})\right\rvert_{\partial\Omega}=h(\boldsymbol r)$ | 牛顿冷却对流换热边界 |
 
 ***
 

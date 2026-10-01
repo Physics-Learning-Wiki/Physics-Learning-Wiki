@@ -240,13 +240,13 @@ $$
 因此
 
 $$
-  ilde X=\dfrac{F_0/m}{\omega_0^2-\Omega^2+2i\gamma\Omega}.
+\tilde X=\dfrac{F_0/m}{\omega_0^2-\Omega^2+2i\gamma\Omega}.
 $$
 
 稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 由
 
 $$
-  ilde X=Ae^{-i\delta}
+\tilde X=Ae^{-i\delta}
 $$
 
 给出：
@@ -256,19 +256,19 @@ A(\Omega)=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}},
 $$
 
 $$
-  an\delta=\dfrac{2\gamma\Omega}{\omega_0^2-\Omega^2}.
+\tan\delta=\dfrac{2\gamma\Omega}{\omega_0^2-\Omega^2}.
 $$
 
 于是稳态响应可写为
 
 $$
 x_p(t)=A\cos(\Omega t-\delta).
+$$
 
 ??? note "图例"
     ![受迫振动的振幅与相位响应](../images/driven_response.png)
     
-    上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化．  
-$$
+    上图展示了不同阻尼强度下，稳态振幅 $A(\Omega)$ 与相位滞后 $\delta(\Omega)$ 随驱动频率的变化．
 
 ### 4.2 共振与共振频率
 
@@ -386,7 +386,7 @@ $$
 长度为 $\ell$ 的单摆，在小角度 $|\theta|\ll 1$ 时，回复力矩
 
 $$
-  au\approx -mg\ell\,\theta.
+\tau\approx -mg\ell\,\theta.
 $$
 
 转动方程（转动惯量 $I=m\ell^2$）：

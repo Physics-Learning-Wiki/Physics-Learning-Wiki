@@ -425,7 +425,7 @@ $$
 
 ### 8.2 光线偏折（弱场近似）
 
-对冲量参数（impact parameter）$b$，弱场一阶：
+对碰撞参数（impact parameter）$b$，弱场一阶：
 
 $$
 \boxed{\ \alpha\approx\dfrac{4GM}{bc^2}\ }
