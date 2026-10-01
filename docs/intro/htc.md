@@ -1,3 +1,9 @@
+---
+
+status: review
+description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的方式和协作流程．"
+---
+
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面．正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
 
 这篇文章将主要叙述参与 Physics Learning Wiki 编写的两种方式：通过 GitHub 协作，或者通过投稿邮箱提交成稿、笔记、提纲与讲义．请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容．
@@ -12,12 +18,12 @@
     如果你不熟悉 GitHub，现在可以直接在网站上提交内容．  
     访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进．
 
-???+ warning "Warning"
+???+ warning "注意"
     在开始编写一段内容之前，请查阅 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)，确认没有别人在做相同的工作之后，开个 [新 issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/new) 记录待编写的内容．
 
 如果你准备通过邮箱投稿完整章节或较大改写，也欢迎直接在邮件里说明选题、范围和当前进度，编辑组会协助你与现有计划对齐．
 
-???+ tip "Tip"
+???+ tip "提示"
     在 Issues 中也有很多待修复/解决的问题，尤其是我们的迭代计划（Iteration Plan）．从这里获取任务是一个很好的开始！
 
 为了保证条目内容的专业性和准确性，我们建议您在编辑前先考虑以下几点：
@@ -74,7 +80,7 @@
 
 如果你选择通过 GitHub 直接编辑，则 **需要** 一个 GitHub 账号（可以前往 [GitHub 的账号注册页面](https://github.com/signup) 页面注册），但 **不需要** 高超的 GitHub 技巧，即使你是一名新手，只要按照下面所述的步骤操作，也能够 **非常出色** 地完成编辑．
 
-???+ tip "Tip"
+???+ tip "提示"
     在你的更改被合并到 Physics Learning Wiki 的主仓库之前，你对 Physics Learning Wiki 的内容所作出的修改均不会出现在主站上，所以无需担心你的修改会破坏主站上的内容．
     
     如果还是不放心，可以查看 [GitHub 的官方教程](https://skills.github.com/)．
@@ -111,7 +117,7 @@
 
 ### 使用 Git 在本地进行编辑
 
-???+ warning "Warning"
+???+ warning "注意"
     对于一般用户，我们更推荐使用上方所述的 GitHub 的 Web 编辑器进行编辑．
 
 虽然大多数情况下您可以直接在 GitHub 上进行编辑，但对于一些较为特殊的情况（如需要使用 GPG 签名），我们更推荐使用 Git 在本地进行编辑．

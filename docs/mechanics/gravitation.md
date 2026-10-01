@@ -1,4 +1,5 @@
 ---
+status: planned
 meta:
   - name: robots
     content: noindex, follow

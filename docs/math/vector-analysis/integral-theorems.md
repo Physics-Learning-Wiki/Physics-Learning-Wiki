@@ -13,11 +13,13 @@ description: 探讨矢量分析核心积分定理（高斯散度定理、斯托�
 -   **微分形式（局域性）**：空间任意一点电荷密度与电场散度直接相关 $\nabla\cdot\boldsymbol{E} = \dfrac{\rho}{\varepsilon_0}$；时变磁场激发局部涡旋电场 $\nabla\times\boldsymbol{E} = -\dfrac{\partial\boldsymbol{B}}{\partial t}$；
 -   **积分形式（宏观测量）**：穿过闭合曲面的总电通量等于包围的总电荷量 $\oiint \boldsymbol{E}\cdot\mathrm{d}\boldsymbol{S} = \dfrac{Q_{\text{enc}}}{\varepsilon_0}$；沿闭合导线环路的感应电动势等于穿过回路磁通量的变化率 $\oint \boldsymbol{E}\cdot\mathrm{d}\boldsymbol{r} = -\dfrac{\mathrm{d}\Phi_B}{\mathrm{d}t}$．
 
-**这两种表述为什么能完全等价？** 连接微观局域偏微分与宏观可测量积分的坚固桥梁，就是矢量微积分的 **两大皇冠积分定理与格林恒等式**．
+**这两种表述为什么能完全等价？**连接微观局域偏微分与宏观可测量积分的坚固桥梁，就是矢量微积分的**两大皇冠积分定理与格林恒等式**．
 
 ***
 
-## 1. 高斯散度定理 (Gauss's Divergence Theorem)
+<a id="1-高斯散度定理-gausss-divergence-theorem"></a>
+
+## 1. 高斯散度定理（Gauss's Divergence Theorem）
 
 ### 定理陈述
 
@@ -45,7 +47,9 @@ $$
 
 ***
 
-## 2. 斯托克斯旋度定理 (Stokes' Curl Theorem)
+<a id="2-斯托克斯旋度定理-stokes-curl-theorem"></a>
+
+## 2. 斯托克斯旋度定理（Stokes' Curl Theorem）
 
 ### 定理陈述
 
@@ -73,7 +77,9 @@ $$
 
 ***
 
-## 3. 格林恒等式 (Green's Identities)
+<a id="3-格林恒等式-greens-identities"></a>
+
+## 3. 格林恒等式（Green's Identities）
 
 将高斯散度定理应用于标量场与梯度场的乘积 $\boldsymbol{F} = \psi \nabla\phi$，利用矢量微商积法则：
 
@@ -81,13 +87,13 @@ $$
 \nabla\cdot(\psi \nabla\phi) = \nabla\psi \cdot \nabla\phi + \psi \nabla^2\phi
 $$
 
-代入散度定理，即得到 **格林第一恒等式 (Green's First Identity)**：
+代入散度定理，即得到 **格林第一恒等式（Green's First Identity）**：
 
 $$
 \oiint_S \psi \dfrac{\partial\phi}{\partial n} \mathrm{d}S = \iiint_V \left( \nabla\psi \cdot \nabla\phi + \psi \nabla^2\phi \right) \mathrm{d}V
 $$
 
-交换 $\psi$ 与 $\phi$ 的角色相减，立刻得到著名的 **格林第二恒等式 (Green's Second Identity)**：
+交换 $\psi$ 与 $\phi$ 的角色相减，立刻得到著名的 **格林第二恒等式（Green's Second Identity）**：
 
 $$
 \oiint_S \left( \psi \dfrac{\partial\phi}{\partial n} - \phi \dfrac{\partial\psi}{\partial n} \right) \mathrm{d}S = \iiint_V \left( \psi \nabla^2\phi - \phi \nabla^2\psi \right) \mathrm{d}V

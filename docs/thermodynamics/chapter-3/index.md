@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki, Leafuke, 匿名同学
+status: review
+description: "介绍第三章 热力学第一定律，内容包括学习目标、本章建议阅读顺序、使用这一章的方式．"
 ---
 
 ## 第三章 热力学第一定律

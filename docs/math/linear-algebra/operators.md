@@ -15,7 +15,7 @@ description: 探讨线性算符定义、抽象算符代数、在基底下的矩�
 -   **偏振光学**：一个偏振片、波片会对穿过的偏振光矢量进行衰减与相位旋转（琼斯矩阵运算）；
 -   **量子力学测量**：对微观粒子的测量本质上是对态向量的一个线性作用，动量测量对应空间导数算符 $\hat{p} = -i\hbar\frac{\mathrm{d}}{\mathrm{d}x}$．
 
-将一个态变换为另一个态的数学映射，就是 **线性算符 (Linear Operator)**．
+将一个态变换为另一个态的数学映射，就是 **线性算符（Linear Operator）**．
 
 ***
 
@@ -34,7 +34,7 @@ $$
 
 -   **加法与数乘**：$(\alpha\hat{A} + \beta\hat{B})|\boldsymbol{v}\rangle = \alpha\hat{A}|\boldsymbol{v}\rangle + \beta\hat{B}|\boldsymbol{v}\rangle$；
 -   **算符乘法（复合运算）**：$(\hat{A}\hat{B})|\boldsymbol{v}\rangle = \hat{A}(\hat{B}|\boldsymbol{v}\rangle)$，一般 **不满足交换律**（$\hat{A}\hat{B} \neq \hat{B}\hat{A}$）；
--   **对易子 (Commutator)**：衡量两个算符不可交换程度的核心代数工具：
+-   **对易子（Commutator）**：衡量两个算符不可交换程度的核心代数工具：
 
 $$
 [\hat{A}, \hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}
@@ -46,7 +46,7 @@ $$
 
 ## 2. 算符在基底下的矩阵表示
 
-算符是抽象的对象，但在选定具体坐标基底后，算符即可完全等价地表示为一个二维 **矩阵 (Matrix)**．
+算符是抽象的对象，但在选定具体坐标基底后，算符即可完全等价地表示为一个二维 **矩阵（Matrix）**．
 
 设有限维空间 $V$ 的一组基为 $\{|\boldsymbol{e}_1\rangle, |\boldsymbol{e}_2\rangle, \dots, |\boldsymbol{e}_n\rangle\}$．
 线性算符 $\hat{T}$ 作用在每一个基向量上，结果必定仍可由该基底线性展开：
@@ -80,7 +80,9 @@ $$
 
 ***
 
-## 4. 物理实战范例：泡利自旋矩阵 (Pauli Matrices)
+<a id="4-物理实战范例泡利自旋矩阵-pauli-matrices"></a>
+
+## 4. 物理实战范例：泡利自旋矩阵（Pauli Matrices）
 
 在量子力学自旋 $1/2$ 体系中，电子的内禀角动量算符 $\hat{\boldsymbol{S}} = \frac{\hbar}{2}\boldsymbol{\sigma}$．
 在以自旋向上 $|+\rangle = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ 与自旋向下 $|-\rangle = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ 为基底时，泡利自旋算符的矩阵表示为：

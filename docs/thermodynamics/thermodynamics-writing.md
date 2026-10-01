@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki
+status: review
+description: "介绍热学章节编写说明，内容包括本模块的写作目标、目标读者与默认前提、推荐叙事顺序．"
 ---
 
 ## 热学章节编写说明

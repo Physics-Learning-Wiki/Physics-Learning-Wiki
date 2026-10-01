@@ -5,9 +5,6 @@
 # Edit landing page (used by edit_uri in mkdocs.yml)
 edit-landing.md
 
-# Glossary (internal reference, linked from other pages)
-glossary/glossary.md
-
 # Pages retained for old links or intentionally unpublished
 experiment/basic-experiments.md
 math/calculus/ode.md

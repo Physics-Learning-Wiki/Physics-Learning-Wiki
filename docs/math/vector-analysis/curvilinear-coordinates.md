@@ -1,3 +1,9 @@
+---
+
+status: review
+description: "介绍正交曲线坐标系，内容包括标度因子（Scale Factors）、梯度、散度、旋度和拉普拉斯算子、柱坐标系（Cylindrical Coordinates）．"
+---
+
 ???+ note "注意"
     该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
@@ -21,7 +27,9 @@ $$
 z = z(q_1, q_2, q_3)
 $$
 
-### 标度因子 (Scale Factors)
+<a id="标度因子-scale-factors"></a>
+
+### 标度因子（Scale Factors）
 
 在曲线坐标系中，基向量的大小通常不是 1，并且会随着位置的变化而变化．我们定义 **标度因子**  $h_i$ 来描述这种变化．
 
@@ -56,19 +64,19 @@ $$
 
 在正交曲线坐标系 $(q_1, q_2, q_3)$ 中，矢量算子可以推广为：
 
--   **梯度 (Gradient)**：
+-   **梯度（Gradient）**：
 
 $$
 \nabla f = \dfrac{1}{h_1}\dfrac{\partial f}{\partial q_1}\hat{e}_1 + \dfrac{1}{h_2}\dfrac{\partial f}{\partial q_2}\hat{e}_2 + \dfrac{1}{h_3}\dfrac{\partial f}{\partial q_3}\hat{e}_3
 $$
 
--   **散度 (Divergence)**：对于矢量场 $\vec{F} = F_1\hat{e}_1 + F_2\hat{e}_2 + F_3\hat{e}_3$
+-   **散度（Divergence）**：对于矢量场 $\vec{F} = F_1\hat{e}_1 + F_2\hat{e}_2 + F_3\hat{e}_3$
 
 $$
 \nabla \cdot \vec{F} = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}(h_2 h_3 F_1) + \dfrac{\partial}{\partial q_2}(h_1 h_3 F_2) + \dfrac{\partial}{\partial q_3}(h_1 h_2 F_3) \right]
 $$
 
--   **旋度 (Curl)**：
+-   **旋度（Curl）**：
 
 $$
 \nabla \times \vec{F} = \dfrac{1}{h_1 h_2 h_3}
@@ -79,13 +87,15 @@ h_1 F_1 & h_2 F_2 & h_3 F_3
 \end{vmatrix}
 $$
 
--   **拉普拉斯算子 (Laplacian)**：
+-   **拉普拉斯算子（Laplacian）**：
 
 $$
 \nabla^2 f = \dfrac{1}{h_1 h_2 h_3} \left[ \dfrac{\partial}{\partial q_1}\left(\dfrac{h_2 h_3}{h_1}\dfrac{\partial f}{\partial q_1}\right) + \dfrac{\partial}{\partial q_2}\left(\dfrac{h_1 h_3}{h_2}\dfrac{\partial f}{\partial q_2}\right) + \dfrac{\partial}{\partial q_3}\left(\dfrac{h_1 h_2}{h_3}\dfrac{\partial f}{\partial q_3}\right) \right]
 $$
 
-## 柱坐标系 (Cylindrical Coordinates)
+<a id="柱坐标系-cylindrical-coordinates"></a>
+
+## 柱坐标系（Cylindrical Coordinates）
 
 柱坐标系 $(r, \theta, z)$ 用于描述具有轴对称性的系统．
 
@@ -145,7 +155,9 @@ $$
 
 所以电场为 $\vec{E} = \frac{\lambda}{2\pi\epsilon_0 r}\hat{r}$．
 
-## 球坐标系 (Spherical Coordinates)
+<a id="球坐标系-spherical-coordinates"></a>
+
+## 球坐标系（Spherical Coordinates）
 
 球坐标系 $(\rho, \theta, \phi)$ 用于描述具有球对称性的系统．
 

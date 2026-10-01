@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki Team
+status: review
+description: "介绍物理实战模板与期刊排版，内容包括模板一：大学物理实验报告/课程大作业标准模板、模板二：物理学术笔记与系统推导笔记本模板、模板三：国际主流物理期刊（REVTeX 4-2）官方模板解析．"
 ---
 
 ## 物理实战模板与期刊排版

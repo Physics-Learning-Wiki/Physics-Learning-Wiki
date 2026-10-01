@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki Team
+status: review
+description: "介绍本地写作环境搭建：TeX Live 与 VS Code 详解，内容包括常见环境方案选型与对比、第一步：TeX Live 发行版安装（Windows 详尽指南）、下载完整的官方 ISO 镜像．"
 ---
 
 ## 本地写作环境搭建：TeX Live 与 VS Code 详解
@@ -102,7 +104,7 @@ tlmgr option repository https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texliv
 tlmgr update --self
 ```
 
-=== "Windows 系统"
+=== 「Windows 系统」
     请遵循上述完整图文流程进行 ISO 挂载与安装．
 
 === "macOS (MacTeX)"
@@ -159,7 +161,7 @@ tlmgr update --self
 Preferences: Open User Settings (JSON)
 ```
 
-选择 **首选项：打开用户设置 (JSON)**，在打开的 `settings.json` 文件中，添加以下针对物理与中文写作精心优化的配置项：
+选择 **首选项：打开用户设置（JSON）**，在打开的 `settings.json` 文件中，添加以下针对物理与中文写作精心优化的配置项：
 
 ```json
 {
@@ -280,7 +282,9 @@ Preferences: Open User Settings (JSON)
     2.  **保存时编译 (`onSave`)**：有效避免输入长公式或大型推导时因语法暂时未闭合而频繁报错卡顿．
     3.  **辅助文件清理**：LaTeX 编译会产生 `.aux`,`.log`,`.out` 等七八种中间文件，配置清理列表能让你的物理工程目录保持清爽．
 
-## 第三步：PDF 预览与双向定位 (SyncTeX)
+<a id="第三步pdf-预览与双向定位-synctex"></a>
+
+## 第三步：PDF 预览与双向定位（SyncTeX）
 
 双向定位是 LaTeX 写作效率远超 Word 的核心利器：你可以在源码中一键定位到 PDF 对应的排版位置，也可以在阅读 PDF 时双击直达对应的源码行．
 

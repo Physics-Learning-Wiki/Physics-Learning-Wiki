@@ -4,11 +4,13 @@ description: 为 Physics Learning Wiki 贡献新的自测题目与解析，参�
 comments: false
 hide:
   - toc
+status: review
 ---
 
 欢迎向 Physics Learning Wiki 贡献自测题目！无论是典型例题、概念辨析、图像分析还是原创练习，入库后都将成为全站自测与针对性练习资源的一部分．
 
-> 提示：题型、题干与完整解析为必填项．自由作答题不要求唯一正确答案，而是要求提供参考答案和自评评分标准．
+??? note "补充说明"
+    提示：题型、题干与完整解析为必填项．自由作答题不要求唯一正确答案，而是要求提供参考答案和自评评分标准．
 
 ***
 
@@ -16,11 +18,11 @@ hide:
   <div class="submit-field">
     <label for="q-submit-type">题型 <span class="submit-required">*</span></label>
     <select id="q-submit-type" required>
-      <option value="single_choice">单选题 (Single Choice)</option>
-      <option value="multiple_choice">多选题 (Multiple Choice)</option>
-      <option value="true_false">判断题 (True / False)</option>
-      <option value="numeric">数值计算题 (Numeric)</option>
-      <option value="free_response">自由作答题 (Free Response)</option>
+      <option value="single_choice">单选题（Single Choice）</option>
+      <option value="multiple_choice">多选题（Multiple Choice）</option>
+      <option value="true_false">判断题（True / False）</option>
+      <option value="numeric">数值计算题（Numeric）</option>
+      <option value="free_response">自由作答题（Free Response）</option>
     </select>
   </div>
 

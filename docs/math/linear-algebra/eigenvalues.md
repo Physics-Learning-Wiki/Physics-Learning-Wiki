@@ -15,7 +15,7 @@ $$
 \mathbf{I} = \begin{pmatrix} I_{xx} & -I_{xy} & -I_{xz} \\ -I_{yx} & I_{yy} & -I_{yz} \\ -I_{zx} & -I_{zy} & I_{zz} \end{pmatrix}
 $$
 
-当你绕某个轴自转时，角动量 $\boldsymbol{L} = \mathbf{I}\boldsymbol{\omega}$ 居然不与角速度平行，产生强烈的轴承偏心力矩．**是否存在一组最特殊的「天选坐标轴」，使得矩阵所有非对角项全部为零？** 在理论力学中，这叫 **惯量主轴**；在振动理论中，这叫 **简正坐标**；在量子力学中，这叫 **力学量本征态**！
+当你绕某个轴自转时，角动量 $\boldsymbol{L} = \mathbf{I}\boldsymbol{\omega}$ 居然不与角速度平行，产生强烈的轴承偏心力矩．**是否存在一组最特殊的「天选坐标轴」，使得矩阵所有非对角项全部为零？**在理论力学中，这叫**惯量主轴**；在振动理论中，这叫 **简正坐标**；在量子力学中，这叫 **力学量本征态**！
 寻找这些最优方向的数学工具，就是 **本征值与对角化理论**．
 
 ***
@@ -45,7 +45,7 @@ $$
 A |\boldsymbol{v}\rangle = \lambda |\boldsymbol{v}\rangle \implies (A - \lambda I)|\boldsymbol{v}\rangle = \boldsymbol{0}
 $$
 
-为了使齐次线性方程组存在非零解 $|\boldsymbol{v}\rangle \neq \boldsymbol{0}$，系数行列式必须为零，由此得到著名的 **特征方程 (Characteristic Equation)**：
+为了使齐次线性方程组存在非零解 $|\boldsymbol{v}\rangle \neq \boldsymbol{0}$，系数行列式必须为零，由此得到著名的 **特征方程（Characteristic Equation）**：
 
 $$
 \det(A - \lambda I) = 0
@@ -64,7 +64,7 @@ $$
 P = \Big( |\boldsymbol{v}_1\rangle \quad |\boldsymbol{v}_2\rangle \quad \dots \quad |\boldsymbol{v}_n\rangle \Big)
 $$
 
-则 $A$ 可通过相似变换严格转化为 **对角矩阵 (Diagonal Matrix)**：
+则 $A$ 可通过相似变换严格转化为 **对角矩阵（Diagonal Matrix）**：
 
 $$
 P^{-1} A P = \Lambda = \begin{pmatrix} \lambda_1 & 0 & \dots & 0 \\ 0 & \lambda_2 & \dots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \dots & \lambda_n \end{pmatrix}

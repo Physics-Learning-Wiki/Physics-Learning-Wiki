@@ -1,9 +1,17 @@
+---
+
+status: review
+description: "介绍导数（Derivative），内容包括例题 1：求  的导数、常见导数规则、微分（Differential）．"
+---
+
 ???+ note "注意"
     该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 导数是微积分的「心脏」，它为我们提供了一个强大的工具来描述变化的快慢，即 **瞬时变化率**．
 
-## 导数 (Derivative)
+<a id="导数-derivative"></a>
+
+## 导数（Derivative）
 
 想象一下你在山路上开车，你的位置 $s$ 是时间 $t$ 的函数 $s(t)$．在一段时间 $\Delta t$ 内，你移动了 $\Delta s = s(t+\Delta t) - s(t)$．你的 **平均速度** 是 $\frac{\Delta s}{\Delta t}$．
 
@@ -68,7 +76,9 @@ $$
 -   **除法法则**:$(\frac{f}{g})' = \frac{f'g - fg'}{g^2}$
 -   **链式法则**（用于复合函数）：如果 $y=f(u)$ 且 $u=g(x)$，那么 $\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}$
 
-## 微分 (Differential)
+<a id="微分-differential"></a>
+
+## 微分（Differential）
 
 微分提供了一种看待导数的不同视角，它关注于变化的「线性近似」．
 

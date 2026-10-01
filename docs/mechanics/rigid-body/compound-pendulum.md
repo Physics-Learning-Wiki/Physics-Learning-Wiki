@@ -1,4 +1,12 @@
-## 复摆 (Compound Pendulum)
+---
+
+status: review
+description: "介绍复摆（Compound Pendulum），内容包括复摆的定义、复摆的运动方程、复摆的周期公式．"
+---
+
+<a id="复摆-compound-pendulum"></a>
+
+## 复摆（Compound Pendulum）
 
 复摆是刚体绕固定水平轴摆动的一种运动形式．与单摆不同，复摆不仅考虑质点的质量，还需要考虑刚体的质量分布和转动惯量．复摆是刚体力学中的重要内容，广泛应用于重力加速度的测量和机械系统的分析．
 

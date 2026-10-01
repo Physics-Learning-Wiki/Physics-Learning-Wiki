@@ -1,5 +1,7 @@
 ---
 author: Leafuke
+status: review
+description: "介绍匀变速直线运动（Uniformly Accelerated Motion），内容包括适用条件与符号约定、从定义推导三大基本公式、速度 - 时间关系．"
 ---
 
 ## 匀变速直线运动（Uniformly Accelerated Motion）
@@ -29,6 +31,8 @@ $$
 
 ## 1. 从定义推导三大基本公式
 
+<a id="11-速度---时间关系"></a>
+
 ### 1.1 速度 - 时间关系
 
 由加速度定义 $a=\frac{dv}{dt}$ 且 $a$ 为常数：
@@ -38,6 +42,8 @@ $$
 \quad\Rightarrow\quad
 v(t)=v_0+at.
 $$
+
+<a id="12-位移---时间关系"></a>
 
 ### 1.2 位移 - 时间关系
 
@@ -54,6 +60,8 @@ $$
 $$
 \Delta x=v_0 t+\frac12 a t^2.
 $$
+
+<a id="13-速度---位移关系不含时间"></a>
 
 ### 1.3 速度 - 位移关系（不含时间）
 

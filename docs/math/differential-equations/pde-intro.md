@@ -9,13 +9,13 @@ description: 探讨经典物理中的三类典型二阶偏微分方程（双曲�
 ## 物理问题引入：当物理量在三维空间中弥散时
 
 常微分方程研究的是孤立质点随时间演化的轨迹 $x(t)$．
-然而，真实物理世界充满了 **连续场 (Continuous Fields)**：
+然而，真实物理世界充满了 **连续场（Continuous Fields）**：
 
 -   传播在空间中的光与声波 $u(x, y, z, t)$；
 -   传导在金属块各处的温度场 $T(x, y, z, t)$；
 -   充满全宇宙的静电势与引力势 $\phi(x, y, z)$．
 
-这些物理量同时依赖于时间 $t$ 与空间坐标 $(x, y, z)$．描述连续介质动力学与场论的数学工具，就是包含了多元偏导数的 **偏微分方程 (Partial Differential Equations, PDE)**．
+这些物理量同时依赖于时间 $t$ 与空间坐标 $(x, y, z)$．描述连续介质动力学与场论的数学工具，就是包含了多元偏导数的 **偏微分方程（Partial Differential Equations, PDE）**．
 
 ***
 
@@ -81,13 +81,15 @@ $$
 
 ## 2. 定解问题的完整构成
 
-偏微分方程的通解通常包含任意未知函数，无法单独确定物理系统的具体行为．一个良定的 **定解问题 (Well-posed Problem)** 必须包含三要素：
+偏微分方程的通解通常包含任意未知函数，无法单独确定物理系统的具体行为．一个良定的 **定解问题（Well-posed Problem）** 必须包含三要素：
 
 $$
 \boxed{\text{定解问题} = \text{偏微分方程} + \text{空间边界条件} + \text{初始条件}}
 $$
 
-### 2.1 初始条件 (Initial Conditions, IC)
+<a id="21-初始条件-initial-conditions-ic"></a>
+
+### 2.1 初始条件（Initial Conditions, IC）
 
 给出时间起算时刻（$t=0$）全空间的物理状态：
 
@@ -95,15 +97,17 @@ $$
 -   热传导方程（时间一阶）：只需初始温度分布 $T(x,0) = f(x)$；
 -   泊松方程（静态平衡）：无需初始条件．
 
-### 2.2 三类典型边界条件 (Boundary Conditions, BC)
+<a id="22-三类典型边界条件-boundary-conditions-bc"></a>
+
+### 2.2 三类典型边界条件（Boundary Conditions, BC）
 
 在空间区域边界 $\partial\Omega$ 上施加的物理约束：
 
-| 边界类型 | 数学表述 | 典型物理场景 |
-| --- | --- | --- |
-| 第一类边界（狄利克雷 Dirichlet） | $\left.u\right\rvert_{\partial\Omega}=f(\boldsymbol r)$ | 固定弦端位移为零；接地导体电势为零 |
-| 第二类边界（诺伊曼 Neumann） | $\left.\dfrac{\partial u}{\partial n}\right\rvert_{\partial\Omega}=g(\boldsymbol r)$ | 绝热边界的法向温度梯度为零 |
-| 第三类边界（罗宾 Robin） | $\left.(\alpha u+\beta\dfrac{\partial u}{\partial n})\right\rvert_{\partial\Omega}=h(\boldsymbol r)$ | 牛顿冷却对流换热边界 |
+| 边界类型                  | 数学表述                                                                                                 | 典型物理场景            |
+| --------------------- | ---------------------------------------------------------------------------------------------------- | ----------------- |
+| 第一类边界（狄利克雷 Dirichlet） | $\left.u\right\rvert_{\partial\Omega}=f(\boldsymbol r)$                                              | 固定弦端位移为零；接地导体电势为零 |
+| 第二类边界（诺伊曼 Neumann）    | $\left.\dfrac{\partial u}{\partial n}\right\rvert_{\partial\Omega}=g(\boldsymbol r)$                 | 绝热边界的法向温度梯度为零     |
+| 第三类边界（罗宾 Robin）       | $\left.(\alpha u+\beta\dfrac{\partial u}{\partial n})\right\rvert_{\partial\Omega}=h(\boldsymbol r)$ | 牛顿冷却对流换热边界        |
 
 ***
 

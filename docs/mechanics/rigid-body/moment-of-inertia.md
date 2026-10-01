@@ -1,4 +1,12 @@
-## 转动惯量 (Moment of Inertia)
+---
+
+status: review
+description: "介绍转动惯量（Moment of Inertia），内容包括转动惯量的定义、常见刚体的转动惯量推导、均匀细棒绕中心轴转动．"
+---
+
+<a id="转动惯量-moment-of-inertia"></a>
+
+## 转动惯量（Moment of Inertia）
 
 转动惯量是描述刚体绕某一转轴转动时惯性大小的物理量．它是刚体力学中的一个重要概念，与直线运动中的质量有着密切的对应关系．转动惯量不仅取决于刚体的质量，还与质量分布及转轴的位置密切相关．
 
@@ -138,7 +146,9 @@ $$
 
 ***
 
-## 4. 平行轴定理 (Parallel Axis Theorem)
+<a id="4-平行轴定理-parallel-axis-theorem"></a>
+
+## 4. 平行轴定理（Parallel Axis Theorem）
 
 平行轴定理用于计算刚体绕平行于其质心轴的任意轴的转动惯量．它的数学表达式为：
 
@@ -162,7 +172,9 @@ $$
 
 ***
 
-## 5. 垂直轴定理 (Perpendicular Axis Theorem)
+<a id="5-正交轴定理-perpendicular-axis-theorem"></a>
+
+## 5. 垂直轴定理（Perpendicular Axis Theorem）
 
 垂直轴定理适用于平面刚体，描述了刚体绕两条互相垂直且位于刚体平面内的轴与绕垂直于平面的轴的转动惯量之间的关系．其数学表达式为：
 

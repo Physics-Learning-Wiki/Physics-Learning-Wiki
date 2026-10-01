@@ -1,6 +1,7 @@
 ---
 author: Physics Learning Wiki
 description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业软件计算、绘图到量纲与极限检查的可复现工作流，帮助处理笔记、实验数据、数值实验和模型展示．
+status: review
 ---
 
 ## 计算物理与工具简介
@@ -40,7 +41,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 
 -   需要写公式、整理推导时，优先用 [LaTeX 物理写作](./latex/index.md)．
 -   需要数值计算、数据处理和基础符号运算时，优先用 [Python 科学计算](./python-scicomp.md)．
--   需要快速做较重的符号计算、矩阵计算或课程指定软件练习时，考虑 [模拟软件 (Mathematica/Matlab)](./simulation.md)．
+-   需要快速做较重的符号计算、矩阵计算或课程指定软件练习时，考虑 [模拟软件（Mathematica/Matlab）](./simulation.md)．
 -   需要清楚展示结果时，进入 [绘图工具](./plotting.md)．
 
 4.  做结果检查：量纲是否正确，极限情形是否合理，图像趋势是否和物理直觉一致．
@@ -53,7 +54,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 
 1.  [LaTeX 物理写作](./latex/index.md)：先学会把公式、符号、图表和参考文献写规范．
 2.  [Python 科学计算](./python-scicomp.md)：用最常见、最通用的科学计算工具做数值实验、数据处理和基础符号计算．
-3.  [模拟软件 (Mathematica/Matlab)](./simulation.md)：在课程要求、符号运算较重、矩阵计算较多或需要现成交互界面的场景下使用专业软件．
+3.  [模拟软件（Mathematica/Matlab）](./simulation.md)：在课程要求、符号运算较重、矩阵计算较多或需要现成交互界面的场景下使用专业软件．
 4.  [绘图工具](./plotting.md)：把数据、模型和结论表达成清晰、可检查、可分享的图像．
 
 ## 常见任务与推荐工具
@@ -80,7 +81,7 @@ description: 围绕物理问题建立从建模、LaTeX 写作、Python 或专业
 
 ### 想做较复杂的符号计算或课程仿真
 
-先读 [模拟软件 (Mathematica/Matlab)](./simulation.md)，理解这些专业软件和 Python 的分工；同时保留 [LaTeX 物理写作](./latex/index.md) 作为最终写作出口，因为真正可复用、可交流的结论仍然需要清晰记录．
+先读 [模拟软件（Mathematica/Matlab）](./simulation.md)，理解这些专业软件和 Python 的分工；同时保留 [LaTeX 物理写作](./latex/index.md) 作为最终写作出口，因为真正可复用、可交流的结论仍然需要清晰记录．
 
 ## 选工具时最重要的四个标准
 

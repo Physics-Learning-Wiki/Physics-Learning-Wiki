@@ -13,7 +13,7 @@ description: 探讨单边拉普拉斯变换、收敛域、微分初值自动代�
 1.  **真实物理实验通常有明确的「启动时刻」**：在 $t < 0$ 时系统处于静止，在 $t = 0$ 时闭合开关或受到外力撞击，系统带有初始位移 $x(0) = x_0$ 和初始速度 $\dot{x}(0) = v_0$；
 2.  **傅里叶变换收敛门槛高**：如果信号包含阶跃函数、常数甚至线性发散趋势（如直流电、失稳发散振动），普通傅里叶积分 $\int_{-\infty}^\infty f(t)e^{-i\omega t}\mathrm{d}t$ 往往直接发散无法计算．
 
-皮埃尔 - 西蒙·拉普拉斯 (Pierre-Simon Laplace) 引入了带指数衰减抑制因子的复积分：通过令复频率 $s = \sigma + i\omega$，将 **微分方程的初始条件在变换过程中直接自动代入**，成为求解常微分方程初值问题的最强代数利器．
+皮埃尔 - 西蒙·拉普拉斯（Pierre-Simon Laplace） 引入了带指数衰减抑制因子的复积分：通过令复频率 $s = \sigma + i\omega$，将 **微分方程的初始条件在变换过程中直接自动代入**，成为求解常微分方程初值问题的最强代数利器．
 
 ***
 
@@ -25,7 +25,9 @@ $$
 F(s) = \mathcal{L}[f(t)] = \int_0^{\infty} f(t) e^{-s t} \mathrm{d}t \quad (s = \sigma + i\omega \in \mathbb{C})
 $$
 
-### 收敛域 (Region of Convergence, ROC)
+<a id="收敛域-region-of-convergence-roc"></a>
+
+### 收敛域（Region of Convergence, ROC）
 
 只要实部 $\text{Re}(s) = \sigma$ 足够大，衰减因子 $e^{-\sigma t}$ 就能压制绝大多数增长函数（如 $t^n, e^{at}$）的发散，使积分在复半平面 $\text{Re}(s) > \sigma_0$ 内严格收敛．
 
@@ -101,7 +103,7 @@ $$
 
 ## 5. 传递函数与复平面极点稳定性
 
-定义系统的输入信号为 $X(s)$，响应输出为 $Y(s)$，两者的比值称为 **传递函数 (Transfer Function)**：
+定义系统的输入信号为 $X(s)$，响应输出为 $Y(s)$，两者的比值称为 **传递函数（Transfer Function）**：
 
 $$
 H(s) = \dfrac{Y(s)}{X(s)}

@@ -1,15 +1,21 @@
 ---
 author: Leafuke
+status: review
+description: "介绍参考系与坐标系（Reference Frames and Coordinate Systems），内容包括参考系（Reference Frames）、坐标系（Coordinate Systems）、参考系与坐标系的转换．"
 ---
 
 ??? warning "注意"
     本页内容正在编写中，部分内容可能不完整或存在错误，敬请谅解．欢迎补充和指正！
 
-## 参考系与坐标系 (Reference Frames and Coordinate Systems)
+<a id="参考系与坐标系-reference-frames-and-coordinate-systems"></a>
+
+## 参考系与坐标系（Reference Frames and Coordinate Systems）
 
 在物理学中，参考系和坐标系是描述物体运动的基本工具．理解它们对于分析运动学问题至关重要．在实际的分析过程中，选择合适的参考系和坐标系可以简化计算并提供更清晰的物理意义．
 
-### 参考系 (Reference Frames)
+<a id="参考系-reference-frames"></a>
+
+### 参考系（Reference Frames）
 
 参考系是观察和测量物体运动的视角．某物体的运动总是相对于某个参考系而言的．例如研究一辆行驶中汽车的运动时，可以选择地面作为参考系，站在地面上的人看来，此时汽车是 **运动的**．如果选择汽车内的座椅为参考系，坐着车中的人观察到汽车是 **静止的**．为什么会出现这种差异呢？这是参考系的选择不同导致的．常见的参考系类型包括：
 
@@ -19,11 +25,15 @@ author: Leafuke
 -   **非惯性参考系**：在这种参考系中，观察到的物体运动会受到额外的惯性力影响，例如旋转参考系中的离心力．关于非惯性参考系的详细讲解见 [惯性力](../dynamics/inertial-force.md)．
     -   举例：加速中的汽车参考系、旋转的地球参考系等．
 
-### 坐标系 (Coordinate Systems)
+<a id="坐标系-coordinate-systems"></a>
+
+### 坐标系（Coordinate Systems）
 
 坐标系是用于描述物体位置的数学工具．常见的坐标系包括直角坐标系、极坐标系和球坐标系．
 
-#### 直角坐标系 (Cartesian Coordinates)
+<a id="直角坐标系-cartesian-coordinates"></a>
+
+#### 直角坐标系（Cartesian Coordinates）
 
 使用 x、y、z 轴来描述物体的位置，适用于大多数平面和空间运动问题．
 
@@ -72,7 +82,7 @@ author: Leafuke
         h = \dfrac{v_{0y}^2}{2g} = \dfrac{(v_0 \sin\theta)^2}{2g}  
         $$
     
-             代入数据：
+                代入数据：
     
         $$
         h \approx 95.92\,\mathrm{m}  
@@ -86,19 +96,21 @@ author: Leafuke
         x = v_{0x} \cdot t = v_0 \cos\theta \cdot \dfrac{2v_0 \sin\theta}{g}  
         $$
     
-             利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
+                利用 $\sin(2\theta) = 2\sin\theta\cos\theta$：
     
         $$
         x = \dfrac{v_0^2 \sin(2\theta)}{g}  
         $$
     
-             代入数据：
+                代入数据：
     
         $$
         x \approx 220.94\,\mathrm{m}  
         $$
 
-#### 平面极坐标系 (Polar Coordinates)
+<a id="平面极坐标系-polar-coordinates"></a>
+
+#### 平面极坐标系（Polar Coordinates）
 
 使用距离和角度来描述位置，适用于圆周运动和旋转运动问题．
 
@@ -220,7 +232,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$:**科里奥利加速度**(Cori
         \omega = \dfrac{2\pi}{T}  
         $$
     
-             代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
+                代入 $T = 90\,\mathrm{min} = 5400\,\mathrm{s}$：
     
         $$
         \omega \approx 0.00116\,\mathrm{rad/s}  
@@ -234,7 +246,7 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$:**科里奥利加速度**(Cori
         v = \omega r  
         $$
     
-             代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
+                代入 $r = 7000\,\mathrm{km} = 7.0 \times 10^6\,\mathrm{m}$：
     
         $$
         v \approx 8136\,\mathrm{m/s}  
@@ -248,13 +260,15 @@ $2\dot{r}\dot{\theta}\hat{\boldsymbol{e}}_\theta$:**科里奥利加速度**(Cori
         a_c = \dfrac{v^2}{r}  
         $$
     
-             代入数据：
+                代入数据：
     
         $$
         a_c \approx 9.46\,\mathrm{m/s^2}  
         $$
 
-#### 自然坐标系 (Intrinsic Coordinates)
+<a id="自然坐标系-intrinsic-coordinates"></a>
+
+#### 自然坐标系（Intrinsic Coordinates）
 
 以质点运动轨迹上的点为原点，沿切向 $\hat{\boldsymbol{\tau}}$ 和法向 $\hat{\boldsymbol{n}}$ 分解．其中 $\rho$ 为曲率半径，$\Theta$ 为轨迹切线与某参考方向的夹角．
 
@@ -353,7 +367,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         a_c = \dfrac{v^2}{r}  
         $$
     
-             代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
+                代入 $v = 20\,\mathrm{m/s}$，$r = 50\,\mathrm{m}$：
     
         $$
         a_c = 8\,\mathrm{m/s^2}  
@@ -367,7 +381,7 @@ $\rho = \pm\frac{ds}{d\Theta}$
         \mu \geq \dfrac{v^2}{rg \cos\theta} - \tan\theta  
         $$
     
-             代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
+                代入 $g = 9.8\,\mathrm{m/s^2}$，$\theta = 15^\circ$：
     
         $$
         \mu \geq 0.36  
@@ -464,18 +478,16 @@ $\rho = \pm\frac{ds}{d\Theta}$
         \theta = \arctan\left(\dfrac{v_w}{v_b}\right) = \arctan\left(\dfrac{3}{4}\right) \approx 36.87^\circ  
         $$
     
-             即偏离垂直方向 $36.87^\circ$．
+                即偏离垂直方向 $36.87^\circ$．
     
     2.  **到达时间：**
         -   到达时间由垂直方向运动决定：
-        
         $$
         t = \dfrac{d}{v_b} = \dfrac{100}{4} = 25\,\mathrm{s}  
         $$
     
     3.  **水平偏移：**
         -   水平偏移由水流速度和时间决定：
-        
         $$
         x = v_w \cdot t = 3 \cdot 25 = 75\,\mathrm{m}  
         $$

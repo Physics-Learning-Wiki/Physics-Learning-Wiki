@@ -1,9 +1,17 @@
+---
+
+status: review
+description: "介绍不定积分（Indefinite Integral），内容包括定积分（Definite Integral）、微积分基本定理（牛顿 - 莱布尼茨公式）、例题 1：计算抛物线下的面积．"
+---
+
 ???+ note "注意"
     该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
 如果说导数是把事物「分解」成瞬时变化，那么积分就是把这些无限小的部分「组装」起来，得到一个总和．积分是导数的逆运算，它能帮助我们计算曲线下的面积、累积的总量、变力所做的功等．
 
-## 不定积分 (Indefinite Integral)
+<a id="不定积分-indefinite-integral"></a>
+
+## 不定积分（Indefinite Integral）
 
 不定积分要回答的问题是：「什么函数的导数是 $f(x)$？」
 
@@ -19,7 +27,9 @@ $$
 
 其中 $C$ 是任意常数，称为 **积分常数**．这个 $+C$ 至关重要，在解决物理问题时，它通常由初始条件或边界条件确定．
 
-## 定积分 (Definite Integral)
+<a id="定积分-definite-integral"></a>
+
+## 定积分（Definite Integral）
 
 定积分要回答的问题是：「从 $x=a$ 到 $x=b$，函数 $f(x)$ 曲线下的面积是多少？」
 
@@ -36,6 +46,8 @@ $$
 从几何上看，如果 $f(x) \ge 0$，定积分 $\int_a^b f(x) \,dx$ 表示由曲线 $y=f(x)$、x 轴以及直线 $x=a$ 和 $x=b$ 围成的曲边梯形的面积．
 
 ***
+
+<a id="微积分基本定理牛顿---莱布尼茨公式"></a>
 
 ### 微积分基本定理（牛顿 - 莱布尼茨公式）
 

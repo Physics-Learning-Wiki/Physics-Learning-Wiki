@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki
+status: review
+description: "介绍卡诺定理的应用，内容包括学习目标、热机效率的上限、理想气体温标与热力学温标．"
 ---
 
 ## 卡诺定理的应用
@@ -102,15 +104,15 @@ $$
 根据卡诺效率公式：
 
 $$
-\eta = \dfrac{\mathrm{d}T}{T} = \dfrac{A'}{Q_1}
+\eta = \dfrac{\mathrm{d}T}{T} = \dfrac{A}{Q_1}
 $$
 
-其中 $A'$ 是循环做的净功，$Q_1 = \Lambda^{\text{mol}}$ 是吸收的热量．
+其中 $A$ 是循环做的净功，$Q_1 = \Lambda^{\text{mol}}$ 是吸收的热量．
 
-净功 $A'$ 近似等于 p-V 图上循环围成的面积：
+净功 $A$ 近似等于 p-V 图上循环围成的面积：
 
 $$
-A' \approx \mathrm{d}p \cdot (V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})
+A \approx \mathrm{d}p \cdot (V_{\beta}^{\text{mol}} - V_{\alpha}^{\text{mol}})
 $$
 
 其中 $\mathrm{d}p$ 是压强沿相变曲线的变化．代入卡诺效率：
@@ -135,7 +137,9 @@ $$
 ???+ tip "克拉珀龙方程的物理意义"
     克拉珀龙方程告诉我们：相变曲线的斜率取决于三个因素——潜热越大、温度越低、体积变化越大，斜率就越陡．这个方程适用于 **任何** 两相平衡（固 - 液、液 - 气、固 - 气），是热力学中最优美的方程之一．
 
-### Clausius-Clapeyron 近似
+<a id="clausius-clapeyron-近似"></a>
+
+### 克劳修斯-克拉珀龙近似（Clausius–Clapeyron）
 
 对于 **液 - 气** 或 **固 - 气** 相变，气态的摩尔体积远大于凝聚态（液态或固态）：
 
@@ -161,7 +165,7 @@ $$
 \dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{\Lambda^{\text{mol}}}{T \cdot V_{\text{气}}^{\text{mol}}} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}
 $$
 
-这就是 **Clausius-Clapeyron 方程**（近似形式）：
+这就是 **克劳修斯-克拉珀龙 方程**（近似形式）：
 
 $$
 \boxed{\dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}}
@@ -202,7 +206,7 @@ $$
 **溜冰**：冰刀与冰面的接触面积很小（约 $1\,\text{mm} \times 300\,\text{mm}$），一个 70 kg 的人站在冰刀上产生的压强可达约 $2\,\text{MPa}$．根据克拉珀龙方程估算，这个压强可使冰的熔点降低约 $1\,°\text{C}$．刀刃下方的冰局部融化形成一层薄薄的水膜，大大减小了摩擦力，使得溜冰成为可能．
 
 ???+ note "关于溜冰的补充"
-    近年来的研究表明，溜冰的摩擦机制比单纯的 "压融化" 更复杂——冰表面本身就存在一层准液态层．但压融化仍然是重要的辅助机制，特别是在低温下．
+    近年来的研究表明，溜冰的摩擦机制比单纯的「压融化」更复杂——冰表面本身就存在一层准液态层．但压融化仍然是重要的辅助机制，特别是在低温下．
 
 **钢丝穿冰实验**：将一根细钢丝挂在冰块上，两端悬挂重物．钢丝下方的冰在高压下融化，水从钢丝上方流出后重新冻结（因为上方的水不再受高压）．最终钢丝穿过了整个冰块，而冰块并没有断成两半——这个实验生动地展示了冰在加压下熔化的特性．
 
@@ -211,7 +215,7 @@ $$
     
     **解答**：
     
-    利用 Clausius-Clapeyron 方程：
+    利用 克劳修斯-克拉珀龙 方程：
     
     $$
     \dfrac{\mathrm{d}p}{\mathrm{d}T} = \dfrac{p\Lambda^{\text{mol}}}{RT^2}  

@@ -19,7 +19,7 @@ $$
 设分离变量解 $\Phi(r, \theta) = R(r) \Theta(\theta)$，分离常数记为 $l(l+1)$：
 
 -   径向欧拉方程解出：$R(r) = A_l r^l + \dfrac{B_l}{r^{l+1}}$；
--   做变量代换令 $x = \cos\theta \in [-1, 1]$，角度方程化为著名的 **勒让德方程 (Legendre Equation)**：
+-   做变量代换令 $x = \cos\theta \in [-1, 1]$，角度方程化为著名的 **勒让德方程（Legendre Equation）**：
 
 $$
 (1 - x^2)\dfrac{\mathrm{d}^2 y}{\mathrm{d}x^2} - 2x\dfrac{\mathrm{d}y}{\mathrm{d}x} + l(l+1)y = 0
@@ -30,9 +30,11 @@ $$
 ## 1. 物理边界截断与勒让德多项式
 
 在南北极点（$\theta = 0 \implies x = 1$，$\theta = \pi \implies x = -1$），方程的系数出现正则奇点．
-前文幂级数分析表明：**只有当参数 $l$ 取非负整数 $l = 0, 1, 2, \dots$ 时，无穷级数才会截断为有限项多项式，使电势在球面上处处有限不发散！** 这组截断多项式即为 **勒让德多项式 $P_l(x)$**．
+前文幂级数分析表明：**只有当参数 $l$ 取非负整数 $l = 0, 1, 2, \dots$ 时，无穷级数才会截断为有限项多项式，使电势在球面上处处有限不发散！**这组截断多项式即为**勒让德多项式 $P_l(x)$**．
 
-### 1.1 罗德里格斯公式 (Rodrigues' Formula)
+<a id="11-罗德里格斯公式-rodrigues-formula"></a>
+
+### 1.1 罗德里格斯公式（Rodrigues' Formula）
 
 勒让德多项式可由微分公式唯美给出：
 
@@ -67,7 +69,9 @@ $$
 
 ***
 
-## 3. 生成函数与静电多极展开
+<a id="3-母函数与静电多极展开"></a>
+
+## 3. 生成函数（母函数）与静电多极展开
 
 考察位于 $z$ 轴上 $z'=d$ 处的点电荷在观测点 $\boldsymbol{r}$ 激发的库仑势：
 设两点夹角为 $\theta$，$x = \cos\theta$，两点距离倒数为：
@@ -76,7 +80,7 @@ $$
 \dfrac{1}{|\boldsymbol{r} - \boldsymbol{r}'|} = \dfrac{1}{\sqrt{r^2 - 2rd\cos\theta + d^2}} = \dfrac{1}{r} \dfrac{1}{\sqrt{1 - 2x(d/r) + (d/r)^2}}
 $$
 
-令微小几何比值 $t = d/r < 1$，根号展开给出了勒让德多项式的 **生成函数 (Generating Function)**：
+令微小几何比值 $t = d/r < 1$，根号展开给出了勒让德多项式的 **生成函数（Generating Function）**：
 
 $$
 \dfrac{1}{\sqrt{1 - 2xt + t^2}} = \sum_{l=0}^\infty P_l(x) t^l
@@ -99,7 +103,7 @@ $$
 
 ## 4. 连带勒让德多项式 $P_l^m(x)$
 
-若体系不再具备轴对称性，即 $\Phi$ 依赖于方位角 $\phi$，分离变量后方位角方程给出 $e^{\pm im\phi}$（$m \in \mathbb{Z}$），此时角向方程推广为 **连带勒让德方程 (Associated Legendre Equation)**：
+若体系不再具备轴对称性，即 $\Phi$ 依赖于方位角 $\phi$，分离变量后方位角方程给出 $e^{\pm im\phi}$（$m \in \mathbb{Z}$），此时角向方程推广为 **连带勒让德方程（Associated Legendre Equation）**：
 
 $$
 (1 - x^2)\dfrac{\mathrm{d}^2 y}{\mathrm{d}x^2} - 2x\dfrac{\mathrm{d}y}{\mathrm{d}x} + \left[ l(l+1) - \dfrac{m^2}{1 - x^2} \right] y = 0

@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki Team
+status: review
+description: "介绍图表、文献与长文档管理，内容包括物理插图系统与浮动体机制、插入图片的基本语法、理解浮动体机制（Float）与位置控制．"
 ---
 
 ## 图表、文献与长文档管理
@@ -133,7 +135,7 @@ author: Physics Learning Wiki Team
   \caption{普朗克常数光电效应法测量数据表}
   \label{tab:photoelectric}
   \begin{tabular}{c S[table-format=3.1] S[table-format=1.3] S[table-format=1.2e2]}
-    \toprule {滤光片波长}       & {截止电压 $U_{\mathrm{a}}$} & {入射光频率 $\nu$}          & {估算常数 $h$}                 \\
+    \toprule {滤光片波长}       & {截止电压 $U_{\mathrm{a}}$} & {入射光频率 $\nu$}          & {估算普朗克常量 $h$}                 \\
     {/ \unit{\nano\meter}} & {/ \unit{\volt}}        & {/ \unit{\peta\hertz}} & {/ (\unit{\joule\second})} \\
     \midrule 365.0         & -1.82                   & 8.214                  & 6.58e-34                   \\
     404.7                  & -1.45                   & 7.408                  & 6.64e-34                   \\

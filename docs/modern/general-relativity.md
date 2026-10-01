@@ -1,10 +1,12 @@
 ---
 author: 匿名同学
+status: review
+description: "从等效原理、度规与曲率引入广义相对论，并讨论史瓦西时空及经典检验．"
 ---
 
 ## 广义相对论基础（General Relativity Basics）
 
-本章目标：从「等效原理」出发，建立广义相对论的最小数学工具箱（张量、度规、协变导数、曲率），给出爱因斯坦场方程的常见推导动机与弱场极限，并以 史瓦西（Schwarzschild） 时空为主线串起经典检验（引力红移、光线偏折、近日点进动、夏皮罗（Shapiro） 延迟）与典型考题．
+本章目标：从「等效原理」出发，建立广义相对论的最小数学工具箱（张量、度规、协变导数、曲率），给出爱因斯坦场方程的常见推导动机与弱场极限，并以 史瓦西（Schwarzschild）时空为主线串起经典检验（引力红移、光线偏折、近日点进动、夏皮罗（Shapiro）延迟）与典型考题．
 
 为方便计算，本文会在不同小节切换单位：
 
@@ -34,7 +36,8 @@ $$
 
 广义相对论的核心观点是：
 
-> 引力不是一种「额外的力」，而是 **时空几何（度规）**的体现；自由落体沿着时空中的**测地线** 运动．
+??? note "补充说明"
+    引力不是一种「额外的力」，而是 **时空几何（度规）**的体现；自由落体沿着时空中的**测地线** 运动．
 
 ***
 
@@ -84,7 +87,7 @@ $$
 
 ### 2.1 间隔与度规（metric）
 
-狭义相对论中 闵可夫斯基（Minkowski） 间隔：
+狭义相对论中 闵可夫斯基（Minkowski）间隔：
 
 $$
 ds^2=\eta_{\mu\nu}dx^\mu dx^\nu=-c^2dt^2+dx^2+dy^2+dz^2.
@@ -97,6 +100,8 @@ $$
 $$
 
 物理意义：度规决定「距离/时间」的测量方式，因此也决定自由粒子的运动．
+
+<a id="22-固有时与-4---速度"></a>
 
 ### 2.2 固有时与 4 - 速度
 
@@ -128,7 +133,9 @@ $$
 \nabla_\mu v^\nu = \partial_\mu v^\nu + \Gamma^{\nu}_{\ \mu\lambda}v^\lambda.
 $$
 
-其中 $\Gamma^{\nu}_{\ \mu\lambda}$ 为 克里斯托费尔（Christoffel） 符号（列维-奇维塔（Levi-Civita） 连接）．
+其中 $\Gamma^{\nu}_{\ \mu\lambda}$ 为 克里斯托费尔（Christoffel）符号（列维 - 奇维塔（Levi-Civita）连接）．
+
+<a id="25-christoffel-符号的公式"></a>
 
 ### 2.5 克里斯托费尔 符号的公式
 
@@ -192,9 +199,11 @@ $$
 =R^{\rho}_{\ \sigma\mu\nu}v^\sigma.
 $$
 
-这里 $R^{\rho}_{\ \sigma\mu\nu}$ 是 黎曼（Riemann） 曲率张量．
+这里 $R^{\rho}_{\ \sigma\mu\nu}$ 是 黎曼（Riemann）曲率张量．
 
-### 4.2 黎曼、里奇（Ricci） 与标量曲率
+<a id="42-riemannricci-与标量曲率"></a>
+
+### 4.2 黎曼、里奇（Ricci）与标量曲率
 
 从 克里斯托费尔 可写出：
 
@@ -209,7 +218,9 @@ $$
 R_{\mu\nu}=R^{\rho}_{\ \mu\rho\nu},\qquad R=g^{\mu\nu}R_{\mu\nu}.
 $$
 
-### 4.3 爱因斯坦张量与 比安基（Bianchi） 恒等式
+<a id="43-爱因斯坦张量与-bianchi-恒等式"></a>
+
+### 4.3 爱因斯坦张量与 比安基（Bianchi）恒等式
 
 定义
 
@@ -250,13 +261,13 @@ $$
 
 在这些条件下，最自然且最简单的选择就是 $G_{\mu\nu}$．
 
-??? note "更系统的推导：希尔伯特-爱因斯坦（Hilbert-Einstein）（Hilbert–Einstein） 作用量"
+??? note "更系统的推导：希尔伯特 - 爱因斯坦（Hilbert-Einstein）（Hilbert–Einstein）作用量"
         取总作用量  
-        
+    
         $$  
         S=\dfrac{c^3}{16\pi G}\int R\sqrt{-g}\,d^4x+S_{\text{matter}}.  
         $$  
-        
+    
         对 $g_{\mu\nu}$ 变分可得 $G_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}$．
     
         （完整变分细节较长，竞赛/入门通常只要求理解「为何是 $R$、为何要 $\sqrt{-g}$、为何能得到守恒」．）
@@ -281,7 +292,7 @@ $$
 g_{\mu\nu}=\eta_{\mu\nu}+h_{\mu\nu},\qquad |h_{\mu\nu}|\ll 1.
 $$
 
-在线性近似与合适规范（如 洛伦兹（Lorenz） 规范）下，场方程会变成「波动方程」形式，真空中存在引力波解．
+在线性近似与合适规范（如 洛伦兹（Lorenz）规范）下，场方程会变成「波动方程」形式，真空中存在引力波解．
 
 ### 6.1 线性化方程的标准形（了解即可）
 
@@ -325,6 +336,8 @@ $$
 
 ***
 
+<a id="7-schwarzschild-时空最重要的精确解"></a>
+
 ## 7. 史瓦西 时空：最重要的精确解
 
 ### 7.1 度规（真空、球对称、静态）
@@ -344,7 +357,7 @@ $$
 r_s=\dfrac{2GM}{c^2}.
 $$
 
-当 $r=r_s$ 时，$g_{tt}$ 变号、$g_{rr}$ 发散（在该坐标系下）．这对应事件视界；更好的坐标（爱丁顿-芬克尔斯泰因（Eddington-Finkelstein）（Eddington–Finkelstein）、克鲁斯卡尔（Kruskal））能消除坐标奇点．
+当 $r=r_s$ 时，$g_{tt}$ 变号、$g_{rr}$ 发散（在该坐标系下）．这对应事件视界；更好的坐标（爱丁顿 - 芬克尔斯泰因（Eddington-Finkelstein）（Eddington–Finkelstein）、克鲁斯卡尔（Kruskal））能消除坐标奇点．
 
 ### 7.2 静止观测者的引力时间膨胀
 
@@ -390,13 +403,13 @@ $$
 在几何单位 $G=c=1$ 的 史瓦西 时空：
 
 -   **光子球（photon sphere）**：不稳定的圆形光子轨道
-    
+
     $$
     \boxed{\ r_{\text{ph}}=3M=\dfrac{3}{2}r_s\ }
     $$
 
 -   **最内稳定圆轨道（ISCO，时类）**：稳定圆轨道存在的内边界
-    
+
     $$
     \boxed{\ r_{\text{ISCO}}=6M=3r_s\ }
     $$
@@ -406,6 +419,8 @@ $$
 ***
 
 ## 8. 经典检验与常用结果（入门必会）
+
+<a id="81-引力红移精确形式schwarzschild"></a>
 
 ### 8.1 引力红移（精确形式：史瓦西）
 
@@ -441,6 +456,8 @@ $$
 \boxed{\ \Delta\phi\approx\dfrac{6\pi GM}{a(1-e^2)c^2}\ }
 $$
 
+<a id="84-shapiro-时间延迟选学"></a>
+
 ### 8.4 夏皮罗 时间延迟（选学）
 
 雷达信号掠过质量 $M$ 的天体会产生额外往返时间延迟．对「从 $r_1$ 发出、掠过最近距离 $b$、到 $r_2$ 接收」的几何，弱场近似常见写法为
@@ -451,7 +468,9 @@ $$
 
 （不同教材对几何定义略有差异，但共同点是：它随 $GM/c^3$ 线性增长，并含对数项．）
 
-### 8.5 宇宙学一瞥：弗里德曼-罗伯逊-沃克（Friedmann–Robertson–Walker，FRW）度规与 弗里德曼（Friedmann） 方程（选读）
+<a id="85-宇宙学一瞥frw-度规与-friedmann-方程选读"></a>
+
+### 8.5 宇宙学一瞥：弗里德曼 - 罗伯逊 - 沃克（Friedmann–Robertson–Walker，FRW）度规与 弗里德曼（Friedmann）方程（选读）
 
 在「大尺度均匀各向同性」的宇宙假设下，度规可写为 FRW 形式：
 
@@ -525,9 +544,11 @@ $$
 \left|\dfrac{\Delta\nu}{\nu}\right|\approx\dfrac{9.8\times 1000}{(3.0\times 10^8)^2}\sim 1.1\times 10^{-13}.
 $$
 
-\*\* 结论：\*\* 千米量级高度差带来 $10^{-13}$ 量级的频移（原子钟可测）．
+**结论：** 千米量级高度差带来 $10^{-13}$ 量级的频移（原子钟可测）．
 
 ***
+
+<a id="例题-2schwarzschild-时空中的静止钟差精确公式"></a>
 
 ### 例题 2：史瓦西 时空中的静止钟差（精确公式）
 
@@ -623,6 +644,8 @@ $$
 
 ***
 
+<a id="例题-5求-schwarzschild-的光子球半径与-isco-半径"></a>
+
 ### 例题 5：求 史瓦西 的光子球半径与 ISCO 半径
 
 在几何单位 $G=c=1$ 下，证明 史瓦西 时空中光子的圆轨道半径为 $r=3M$，时类最内稳定圆轨道半径为 $r=6M$．
@@ -647,7 +670,7 @@ $$
 \dfrac{dV_{\text{eff}}}{dr}=0.
 $$
 
-3.  \*\* 光子（零质量）\*\* 的有效势（形式上）为
+3.  **光子（零质量）** 的有效势（形式上）为
 
 $$
 V_{\text{eff}}^{(\text{null})}(r)=\left(1-\dfrac{2M}{r}\right)\dfrac{L^2}{r^2}.
@@ -659,7 +682,7 @@ $$
 r=3M.
 $$
 
-4.  \*\* 时类（有质量）\*\* 圆轨道的稳定性由二阶导数决定：稳定要求 $\dfrac{d^2V_{\text{eff}}}{dr^2}>0$．
+4.  **时类（有质量）** 圆轨道的稳定性由二阶导数决定：稳定要求 $\dfrac{d^2V_{\text{eff}}}{dr^2}>0$．
     对 史瓦西，稳定圆轨道存在于 $r>6M$；临界点为
 
 $$
@@ -770,22 +793,19 @@ $$
 -   `light_deflection_weak_field.png`
 
 ??? note "示例代码（生成弱场光偏折图）"
+    ```pythonimport numpy as np
+    import matplotlib.pyplot as plt
     
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-M = 1.0
-b = np.linspace(4.0, 80.0, 800)
-alpha = 4 * M / b
-plt.plot(b, alpha)
-plt.xlabel(r"$b/M$")
-plt.ylabel(r"$\alpha\;\mathrm{(rad)}$")
-plt.title(r"弱场近似：$\alpha \approx 4M/b$")
-plt.grid(True, alpha=0.25)
-plt.show()
-```
+    M = 1.0
+    b = np.linspace(4.0, 80.0, 800)
+    alpha = 4 * M / b
+    plt.plot(b, alpha)
+    plt.xlabel(r"$b/M$")
+    plt.ylabel(r"$\alpha\;\mathrm{(rad)}$")
+    plt.title(r"弱场近似：$\alpha \approx 4M/b$")
+    plt.grid(True, alpha=0.25)
+    plt.show()
+    ```
 
 ***
 

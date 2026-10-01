@@ -1,5 +1,7 @@
 ---
 author: 匿名同学
+status: review
+description: "介绍连续介质中的波（Waves in Continuous Media），内容包括连续介质近似与基本思想、弦上的横波：波动方程与波速、建模假设．"
 ---
 
 ## 连续介质中的波（Waves in Continuous Media）
@@ -113,7 +115,9 @@ $$
 \rho_0\dfrac{\partial u}{\partial t}=-\dfrac{\partial p'}{\partial x}.
 $$
 
-### 2.4 状态方程（闭合关系）
+<a id="24-状态方程闭合关系"></a>
+
+### 2.4 物态方程（闭合关系）
 
 小扰动可近似为绝热过程：
 
@@ -164,6 +168,8 @@ $$
 $$
  c_s=\sqrt{\gamma\dfrac{RT}{M}}.
 $$
+
+<a id="3-通解dalembert-形式1d"></a>
 
 ## 3. 通解：达朗贝尔（d’Alembert）形式（1D）
 
@@ -231,7 +237,7 @@ $$
     传播到连接处发生反射与透射．设反射与透射振幅为 $A_r,A_t$．  
     求振幅反射系数 $r=A_r/A_i$ 与透射系数 $t=A_t/A_i$．
     
-    \*\* 解：\*\* 两侧波速
+    **解：** 两侧波速
     
     $$
     v_j=\sqrt{\dfrac{T}{\mu_j}},\quad k_j=\dfrac{\omega}{v_j}\ (j=1,2).  
@@ -314,5 +320,5 @@ $$
 
 -   记住两条「标准推导链」：
     1.  弦：受力分析 $\to$ 波动方程 $\to$ 波速 $\sqrt{T/\mu}$
-    2.  声波：连续性 + 欧拉 + 状态方程 $\to$ 声波方程 $\to$ 声速
+    2.  声波：连续性 + 欧拉 + 物态方程 $\to$ 声波方程 $\to$ 声速
 -   熟练掌握边界条件（固定端/自由端）与驻波条件（$k_n=n\pi/L$）．

@@ -1,16 +1,24 @@
 ---
 author: Physics-Learning-Wiki
+status: review
+description: "介绍动量与能量（Momentum and Energy），内容包括动量（Momentum）、动量定理（Impulse-Momentum Theorem）、质点系动量定理．"
 ---
 
-## 动量与能量 (Momentum and Energy)
+<a id="动量与能量-momentum-and-energy"></a>
+
+## 动量与能量（Momentum and Energy）
 
 牛顿运动定律关注力的瞬时作用，而动量和能量的观点则关注力在时间或空间上的累积效果．它们提供了解决物理问题的另一套强大工具，特别是对于碰撞、变力做功等问题．
 
-## 1. 动量 (Momentum)
+<a id="1-动量-momentum"></a>
 
-### 1.1 动量定理 (Impulse-Momentum Theorem)
+## 1. 动量（Momentum）
 
-力在 **时间** 上的累积称为 **冲量 (Impulse)**．
+<a id="11-动量定理-impulse-momentum-theorem"></a>
+
+### 1.1 动量定理（Impulse-Momentum Theorem）
+
+力在 **时间** 上的累积称为 **冲量（Impulse）**．
 
 $$
 \boldsymbol{I} = \int_{t_1}^{t_2} \boldsymbol{F} dt
@@ -22,7 +30,8 @@ $$
 \boldsymbol{I}_{\text{total}} = \Delta \boldsymbol{p} = \boldsymbol{p}_2 - \boldsymbol{p}_1
 $$
 
-> **物体所受合外力的冲量等于其动量的增量．**
+??? note "补充说明"
+    **物体所受合外力的冲量等于其动量的增量．**
 
 ??? note "例题"
     一颗质量为 $0.5\,\mathrm{kg}$ 的足球以 $10\,\mathrm{m/s}$ 的速度水平飞来，被守门员用手以 $0.2\,\mathrm{s}$ 的时间将其完全停下．求守门员手对足球施加的平均力．
@@ -76,9 +85,12 @@ $$
     
     小船的反向速度为 $1.25\,\mathrm{m/s}$．
 
-### 1.3 动量守恒定律 (Conservation of Momentum)
+<a id="13-动量守恒定律-conservation-of-momentum"></a>
 
-> **若系统所受合外力为零（$\sum \boldsymbol{F}_{\text{ext}} = 0$），则系统的总动量保持不变．**
+### 1.3 动量守恒定律（Conservation of Momentum）
+
+??? note "补充说明"
+    **若系统所受合外力为零（$\sum \boldsymbol{F}_{\text{ext}} = 0$），则系统的总动量保持不变．**
 
 $$
 \boldsymbol{P} = \text{const}
@@ -116,9 +128,13 @@ $$
     
     碰撞后，小车 B 的速度为 $-\frac{2}{3}\,\mathrm{m/s}$．
 
-## 2. 功与能 (Work and Energy)
+<a id="2-功与能-work-and-energy"></a>
 
-### 2.1 功 (Work)
+## 2. 功与能（Work and Energy）
+
+<a id="21-功-work"></a>
+
+### 2.1 功（Work）
 
 力在 **空间** 上的累积称为 **功**．
 
@@ -140,9 +156,11 @@ $$
     
     拉力对小车所做的功为 $50\,\mathrm{J}$．
 
-### 2.2 动能定理 (Work-Energy Theorem)
+<a id="22-动能定理-work-energy-theorem"></a>
 
-合外力对物体所做的功等于物体 **动能 (Kinetic Energy)** 的变化．
+### 2.2 动能定理（Work-Energy Theorem）
+
+合外力对物体所做的功等于物体 **动能（Kinetic Energy）** 的变化．
 
 $$
 W_{\text{total}} = \Delta E_k = \dfrac{1}{2}mv_2^2 - \dfrac{1}{2}mv_1^2
@@ -161,16 +179,19 @@ $$
     
     汽车的动能变化量为 $200,000\,\mathrm{J}$．
 
-### 2.3 保守力与势能 (Conservative Forces and Potential Energy)
+<a id="23-保守力与势能-conservative-forces-and-potential-energy"></a>
+
+### 2.3 保守力与势能（Conservative Forces and Potential Energy）
 
 如果一个力做功只与始末位置有关，而与路径无关，则称该力为 **保守力**．
-对于保守力，可以定义 **势能 (Potential Energy,$E_p$)**：
+对于保守力，可以定义 **势能（Potential Energy,$E_p$）**：
 
 $$
 W_{\text{cons}} = -\Delta E_p = E_{p1} - E_{p2}
 $$
 
-> **保守力做正功，势能减少；保守力做负功，势能增加．**
+??? note "补充说明"
+    **保守力做正功，势能减少；保守力做负功，势能增加．**
 
 常见势能公式：
 
@@ -189,7 +210,9 @@ $$
     
     重力势能的变化量为 $200\,\mathrm{J}$．
 
-### 2.4 机械能守恒定律 (Conservation of Mechanical Energy)
+<a id="24-机械能守恒定律-conservation-of-mechanical-energy"></a>
+
+### 2.4 机械能守恒定律（Conservation of Mechanical Energy）
 
 对于一个系统，如果只有保守力做功（或者非保守力不做功），则系统的 **机械能**（动能 + 势能）保持不变．
 
@@ -243,11 +266,15 @@ $$
     
     摩擦力对物体做的功为 $-200\,\mathrm{J}$．
 
-## 3. 碰撞 (Collisions)
+<a id="3-碰撞-collisions"></a>
+
+## 3. 碰撞（Collisions）
 
 碰撞是一个相互作用时间极短、相互作用力极大的过程．通常忽略外力（如重力），认为系统动量守恒．
 
-### 3.1 弹性碰撞 (Elastic Collision)
+<a id="31-弹性碰撞-elastic-collision"></a>
+
+### 3.1 弹性碰撞（Elastic Collision）
 
 -   动量守恒．
 -   **机械能（动能）守恒**．
@@ -265,11 +292,13 @@ $$
 
 特别地，若 $m_1 = m_2$，则两物体 **交换速度**．
 
-### 3.2 非弹性碰撞 (Inelastic Collision)
+<a id="32-非弹性碰撞-inelastic-collision"></a>
+
+### 3.2 非弹性碰撞（Inelastic Collision）
 
 -   动量守恒．
 -   动能不守恒（部分动能转化为内能、热能、声能等）．
--   **恢复系数 (Coefficient of Restitution,$e$)**:
+-   **恢复系数（Coefficient of Restitution,$e$）**:
 
 $$
 e = \dfrac{|v_{2f} - v_{1f}|}{|v_{2i} - v_{1i}|} = \dfrac{\text{分离速度}}{\text{接近速度}}
@@ -281,11 +310,15 @@ $0 < e < 1$: 非弹性碰撞．
 
 $e=0$:**完全非弹性碰撞**（碰后粘在一起，动能损失最大）．
 
-## 4. 质心系 (Center of Mass Frame)
+<a id="4-质心系-center-of-mass-frame"></a>
+
+## 4. 质心系（Center of Mass Frame）
 
 在处理多体问题（特别是二体碰撞）时，引入 **质心参考系**(C 系）会极大简化计算．**C 系定义**：以系统质心为原点的平动参考系．**零动量系**：在 C 系中，系统总动量恒为零 ($\sum \boldsymbol{p}'_i = 0$)．
 
-### 柯尼希定理 (Koenig's Theorem)
+<a id="柯尼希定理-koenigs-theorem"></a>
+
+### 柯尼希定理（Koenig's Theorem）
 
 质点系的总动能等于 **质心平动动能** 加上 **各质点相对于质心的动能**．
 

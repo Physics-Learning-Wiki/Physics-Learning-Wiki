@@ -15,11 +15,13 @@ description: 探讨连续傅里叶变换、频域图景、微分转代数性质�
 -   一个在真空中自由传播的局域量子波包．
 
 对于这类定义在 $(-\infty, \infty)$ 且非周期的信号，分立的基频与整数倍泛音不再适用．
-如果我们令周期 $L \to \infty$，相邻分立频率之间的间隔 $\Delta k = \frac{\pi}{L} \to 0$，无穷密集的离散谱线就会自然汇聚成 **连续的能量频谱**——这就是 **傅里叶变换 (Fourier Transform)**．
+如果我们令周期 $L \to \infty$，相邻分立频率之间的间隔 $\Delta k = \frac{\pi}{L} \to 0$，无穷密集的离散谱线就会自然汇聚成 **连续的能量频谱**——这就是 **傅里叶变换（Fourier Transform）**．
 
 ***
 
 ## 1. 傅里叶变换的数学定义
+
+<a id="11-空间---波数对标形式物理对称约定"></a>
 
 ### 1.1 空间 - 波数对标形式（物理对称约定）
 
@@ -32,6 +34,8 @@ $$
 $$
 f(x) = \dfrac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} \hat{f}(k) e^{i k x} \mathrm{d}k
 $$
+
+<a id="12-时间---角频率对标形式"></a>
 
 ### 1.2 时间 - 角频率对标形式
 
@@ -49,18 +53,20 @@ $$
 
 傅里叶变换之所以成为理论物理求解微分方程的首选工具，是因为它具有把 **微积分运算转化为纯代数乘除** 的魔力：
 
-| 性质 | 空间域 $f(x)$ | 频域 $\hat f(k)$ | 物理意义 |
-| --- | --- | --- | --- |
-| 空间导数代数化 | $\dfrac{\mathrm d^n f}{\mathrm dx^n}$ | $(ik)^n\hat f(k)$ | 微分算子转化为代数乘子 |
-| 平移相移定理 | $f(x-x_0)$ | $e^{-ikx_0}\hat f(k)$ | 空间平移产生线性相位 |
-| 尺度伸缩 | $f(ax)$，$a\ne0$ | $\dfrac{1}{\lvert a\rvert}\hat f(k/a)$ | 空间压缩对应频谱展宽 |
-| 普朗歇尔定理 | $\int_{-\infty}^{\infty}\lvert f(x)\rvert^2\,\mathrm dx$ | $\int_{-\infty}^{\infty}\lvert\hat f(k)\rvert^2\,\mathrm dk$ | 本页对称归一化下两积分相等 |
+| 性质      | 空间域 $f(x)$                                               | 频域 $\hat f(k)$                                               | 物理意义          |
+| ------- | -------------------------------------------------------- | ------------------------------------------------------------ | ------------- |
+| 空间导数代数化 | $\dfrac{\mathrm d^n f}{\mathrm dx^n}$                    | $(ik)^n\hat f(k)$                                            | 微分算子转化为代数乘子   |
+| 平移相移定理  | $f(x-x_0)$                                               | $e^{-ikx_0}\hat f(k)$                                        | 空间平移产生线性相位    |
+| 尺度伸缩    | $f(ax)$，$a\ne0$                                          | $\dfrac{1}{\lvert a\rvert}\hat f(k/a)$                       | 空间压缩对应频谱展宽    |
+| 普朗歇尔定理  | $\int_{-\infty}^{\infty}\lvert f(x)\rvert^2\,\mathrm dx$ | $\int_{-\infty}^{\infty}\lvert\hat f(k)\rvert^2\,\mathrm dk$ | 本页对称归一化下两积分相等 |
 
 ***
 
-## 3. 卷积定理 (Convolution Theorem)
+<a id="3-卷积定理-convolution-theorem"></a>
 
-两个函数 $f(x)$ 与 $g(x)$ 的 **卷积 (Convolution)** 定义为：
+## 3. 卷积定理（Convolution Theorem）
+
+两个函数 $f(x)$ 与 $g(x)$ 的 **卷积（Convolution）** 定义为：
 
 $$
 (f * g)(x) = \int_{-\infty}^{\infty} f(\tau) g(x - \tau) \mathrm{d}\tau
@@ -81,6 +87,8 @@ $$
 经过傅里叶变换后，复杂的积分卷积瞬间变成极简的乘积：$Y(\omega) = X(\omega) H(\omega)$！只需代数相除 $H(\omega) = Y(\omega)/X(\omega)$，即可瞬间测定系统的 **传递函数**．
 
 ***
+
+<a id="4-高斯波包与海森堡不确定性原理"></a>
 
 ## 4. 高斯波包与海森堡（Heisenberg）不确定性原理
 

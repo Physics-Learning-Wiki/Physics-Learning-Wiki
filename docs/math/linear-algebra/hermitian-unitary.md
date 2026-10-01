@@ -13,13 +13,15 @@ description: 探讨伴随算符、厄米算符实本征值与正交性定理、�
 1.  **可观测量的实数性**：无论我们在实验室测量能量、动量、位置还是自旋，实验仪器读出的读数 **必须且永远是实数**，绝不能跳出一个虚数 $3 + 4i$；
 2.  **全概率守恒性**：粒子在全空间各处被发现的概率总和必定恒等于 100%．随着时间演化，总概率不能膨胀，也不能随波蒸发．
 
-这两个物理要求，精准对应了线性代数中两类最尊贵的算符——**厄米算符 (Hermitian Operator)** 与 **酉算符 (Unitary Operator)**．
+这两个物理要求，精准对应了线性代数中两类最尊贵的算符——**厄米算符（Hermitian Operator）**与**酉算符（Unitary Operator）**．
 
 ***
 
 ## 1. 伴随算符与厄米算符定义
 
-### 1.1 伴随算符 (Adjoint Operator)
+<a id="11-伴随算符-adjoint-operator"></a>
+
+### 1.1 伴随算符（Adjoint Operator）
 
 设 $\hat{A}$ 是复希尔伯特空间 $\mathcal{H}$ 上的线性算符．若存在算符 $\hat{A}^\dagger$，使得对任意向量 $|\boldsymbol{u}\rangle, |\boldsymbol{v}\rangle$ 均满足：
 
@@ -42,7 +44,7 @@ $$
 \hat{A}^\dagger = \hat{A} \quad \iff \quad A = A^\dagger
 $$
 
-则称 $\hat{A}$ 为 **厄米算符 (Hermitian Operator)**．
+则称 $\hat{A}$ 为 **厄米算符（Hermitian Operator）**．
 
 ***
 
@@ -94,7 +96,7 @@ $$
 
 ### 3.1 酉算符定义
 
-线性算符 $\hat{U}$ 称为 **酉算符 (Unitary Operator)**，若其伴随算符严格等于其逆算符：
+线性算符 $\hat{U}$ 称为 **酉算符（Unitary Operator）**，若其伴随算符严格等于其逆算符：
 
 $$
 \hat{U}^\dagger \hat{U} = \hat{U} \hat{U}^\dagger = \hat{I}
@@ -122,7 +124,9 @@ $$
 
 ***
 
-## 4. 谱分解定理 (Spectral Theorem)
+<a id="4-谱分解定理-spectral-theorem"></a>
+
+## 4. 谱分解定理（Spectral Theorem）
 
 设厄米算符 $\hat{A}$ 拥有一组标准正交归一的本征基 $\{|n\rangle\}$，本征值为 $\lambda_n$．
 利用恒等算符分解 $\hat{I} = \sum_n |n\rangle\langle n|$：
@@ -131,7 +135,7 @@ $$
 \hat{A} = \hat{A} \hat{I} = \hat{A} \sum_n |n\rangle\langle n| = \sum_n (\hat{A}|n\rangle)\langle n| = \sum_n \lambda_n |n\rangle\langle n|
 $$
 
-这就是宏伟的 **算符谱分解 (Spectral Decomposition)**！
+这就是宏伟的 **算符谱分解（Spectral Decomposition）**！
 
 ### 量子期望值计算
 

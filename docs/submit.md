@@ -1,3 +1,9 @@
+---
+
+status: review
+description: "向本站提交物理学习内容、笔记与修订建议．"
+---
+
 <!-- docs/submit.md -->
 
 ## 提交你的物理知识
@@ -6,7 +12,8 @@
 
 ***
 
-> 提示：如果你希望为题库贡献自测练习题，请前往专用通道：[贡献题目](/quiz/contribute/)．
+??? note "补充说明"
+    提示：如果你希望为题库贡献自测练习题，请前往专用通道：[贡献题目](/quiz/contribute/)．
 
 <form id="submission-form" method="post" onsubmit="return false">
   <div class="submit-field">

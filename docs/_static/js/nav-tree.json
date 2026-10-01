@@ -40,7 +40,7 @@ const NAV_TREE = [
         "label": "electromagnetism"
       },
       {
-        "label": "mathematical-methods-for-physics"
+        "label": "数学物理方法课程路线"
       },
       {
         "label": "theoretical-mechanics"
@@ -143,7 +143,7 @@ const NAV_TREE = [
     "label": "index",
     "children": [
       {
-        "label": "complex"
+        "label": "复数与复变函数"
       },
       {
         "label": "probability"
@@ -175,19 +175,19 @@ const NAV_TREE = [
         "label": "complex-analysis",
         "children": [
           {
-            "label": "analytic-functions"
+            "label": "解析函数与柯西 - 黎曼条件"
           },
           {
-            "label": "complex-numbers"
+            "label": "复数与几何表示"
           },
           {
-            "label": "contour-integrals"
+            "label": "复变积分与柯西定理"
           },
           {
-            "label": "residue-calculus"
+            "label": "留数定理与实积分计算"
           },
           {
-            "label": "series-expansion"
+            "label": "级数展开与奇点"
           }
         ]
       },
@@ -520,6 +520,9 @@ const NAV_TREE = [
     "children": [
       {
         "label": "contribute"
+      },
+      {
+        "label": "我的题库"
       },
       {
         "label": "play"

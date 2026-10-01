@@ -1,5 +1,7 @@
 ---
 author: Leafuke
+status: review
+description: "介绍振动的合成与分解（Superposition of Oscillations），内容包括线性叠加原理、同方向简谐振动的合成（相同频率）、相量法（矢量合成）．"
 ---
 
 ## 振动的合成与分解（Superposition of Oscillations）
@@ -171,7 +173,7 @@ $$
     
     在屏幕上观察到闭合椭圆．若测得椭圆与 $y$ 轴交点为 $y=\pm y_0$（即 $x=0$ 时的 $|y|$），求 $\delta$ 与 $y_0/A$ 的关系．
     
-    \*\* 解：\*\* 令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$．  
+    **解：** 令 $x=0\Rightarrow \cos(\omega t)=0\Rightarrow \omega t=\pi/2$ 或 $3\pi/2$．  
     代入 $y$：
     
     $$

@@ -1,5 +1,7 @@
 ---
 author: ChatGPT
+status: review
+description: "介绍线性振动（Linear Oscillations），内容包括建模：单自由度线性振子、无阻尼自由振动：简谐振动的推导、解的形式．"
 ---
 
 ## 线性振动（Linear Oscillations）
@@ -120,7 +122,7 @@ $$
 ??? note "例题：由能量求速度"
     质点做简谐振动，振幅 $A$，位移为 $x$ 时速度大小是多少？
     
-    \*\* 解：\*\* 能量守恒
+    **解：** 能量守恒
     
     $$
     \frac12 m v^2+\frac12 kx^2=\frac12 kA^2  

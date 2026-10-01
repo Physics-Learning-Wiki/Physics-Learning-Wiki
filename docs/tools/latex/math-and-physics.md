@@ -1,5 +1,7 @@
 ---
 author: Physics Learning Wiki Team
+status: review
+description: "介绍物理公式与专业宏包进阶，内容包括基础公式环境与物理推导对齐、行内公式与行间独立公式、多步推导对齐：`align` 环境．"
 ---
 
 ## 物理公式与专业宏包进阶

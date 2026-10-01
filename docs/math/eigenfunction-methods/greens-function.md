@@ -21,7 +21,7 @@ $$
 \phi(\boldsymbol{r}) = \dfrac{1}{4\pi\varepsilon_0}\iiint \dfrac{\rho(\boldsymbol{r}')}{|\boldsymbol{r} - \boldsymbol{r}'|} \mathrm{d}^3\boldsymbol{r}'
 $$
 
-**为什么一个二阶偏微分方程能够被彻底逆转为一个求和积分？** 乔治·格林 (George Green) 在 1828 年创立的 **格林函数法 (Green's Function Method)** 揭示了这种转化背后的普适数学思想：**先求单个点源的激发场，再通过连续积分线性叠加出全空间任意场源的响应！**
+\*\* 为什么一个二阶偏微分方程能够被彻底逆转为一个求和积分？**乔治·格林（George Green） 在 1828 年创立的** 格林函数法（Green's Function Method）\*\* 揭示了这种转化背后的普适数学思想：**先求单个点源的激发场，再通过连续积分线性叠加出全空间任意场源的响应！**
 
 ***
 
@@ -37,7 +37,7 @@ $$
 
 ### 1.1 点源响应方程
 
-定义 **格林函数 $G(\boldsymbol{r}, \boldsymbol{r}')$** 为位于 $\boldsymbol{r}'$ 处的 **理想单位点源** 在观测点 $\boldsymbol{r}$ 所激发出的场响应：
+定义 **格林函数 $G(\boldsymbol{r}, \boldsymbol{r}')$ **为位于 $\boldsymbol{r}'$ 处的**理想单位点源** 在观测点 $\boldsymbol{r}$ 所激发出的场响应：
 
 $$
 \mathcal{L}_{\boldsymbol{r}} G(\boldsymbol{r}, \boldsymbol{r}') = \delta(\boldsymbol{r} - \boldsymbol{r}')
@@ -65,7 +65,9 @@ $$
 
 ***
 
-## 2. 格林函数的对称互易性 (Reciprocity)
+<a id="2-格林函数的对称互易性-reciprocity"></a>
+
+## 2. 格林函数的对称互易性（Reciprocity）
 
 由 Sturm–Liouville 自共轭性及格林第二恒等式，对于满足齐次自伴边界条件的体系，格林函数在观测点 $\boldsymbol{r}$ 与源点 $\boldsymbol{r}'$ 的对换下严格对称：
 
@@ -127,13 +129,13 @@ $$
 ### 4.2 电动力学时变波动方程与推迟势
 
 对于真空中四维达朗贝尔波动方程 $\square A = -\mu_0 J$，由于光速 $c$ 有限，响应必须服从因果律（响应时间 $t$ 晚于激发时间 $t'$）．
-利用傅里叶变换与围道积分，解出波动方程的 **推迟格林函数 (Retarded Green's Function)**：
+利用傅里叶变换与围道积分，解出波动方程的 **推迟格林函数（Retarded Green's Function）**：
 
 $$
 G(\boldsymbol{r}, t; \boldsymbol{r}', t') = \dfrac{1}{4\pi |\boldsymbol{r} - \boldsymbol{r}'|} \delta\left( t - t' - \dfrac{|\boldsymbol{r} - \boldsymbol{r}'|}{c} \right)
 $$
 
-将此格林函数与电流密度 $J(\boldsymbol{r}', t')$ 卷积，立刻导出发射电磁辐射的著名 **推迟势 (Retarded Potentials)**：
+将此格林函数与电流密度 $J(\boldsymbol{r}', t')$ 卷积，立刻导出发射电磁辐射的著名 **推迟势（Retarded Potentials）**：
 
 $$
 \boldsymbol{A}(\boldsymbol{r}, t) = \dfrac{\mu_0}{4\pi} \iiint \dfrac{\boldsymbol{J}\left(\boldsymbol{r}', t - \dfrac{|\boldsymbol{r}-\boldsymbol{r}'|}{c}\right)}{|\boldsymbol{r} - \boldsymbol{r}'|} \mathrm{d}^3\boldsymbol{r}'
@@ -144,4 +146,4 @@ $$
 ## 5. 学习衔接
 
 -   **下一大阶段**：掌握柱坐标与球坐标下的特殊函数解法，进入 [特殊函数族导学](../special-functions/gamma-beta.md)；
--   **量子力学接口**：格林函数在量子力学微扰展开中对应 **传播子 (Propagator) 与预解算子**．
+-   **量子力学接口**：格林函数在量子力学微扰展开中对应 **传播子（Propagator） 与预解算子**．

@@ -6,12 +6,13 @@ description: 变分法模块已从基础微积分独立升级为变分法与极�
 
 ## 变分法（已迁移）
 
-> \[!NOTE] 模块架构升级说明
-> 根据 **Issue #14** 与理论力学体系规划，变分法已从基础微积分目录中解耦，独立升级为 **[变分法与极值原理](../variational-methods/calculus-of-variations.md)** 专门知识库．
->
-> 如果你是通过书签或站内旧链接访问本页，请直接点击下方入口前往新页面：
+??? note "补充说明"
+    模块架构升级说明
+    根据 **Issue #14** 与理论力学体系规划，变分法已从基础微积分目录中解耦，独立升级为 **[变分法与极值原理](../variational-methods/calculus-of-variations.md)** 专门知识库．
+    
+    如果你是通过书签或站内旧链接访问本页，请直接点击下方入口前往新页面：
 
-👉[前往变分法基础与欧拉 - 拉格朗日方程](../variational-methods/calculus-of-variations.md)
+[前往变分法基础与欧拉 - 拉格朗日方程](../variational-methods/calculus-of-variations.md)
 
 ***
 

@@ -97,7 +97,7 @@ $$
 T_n(t) = A_n \cos(\omega_n t) + B_n \sin(\omega_n t)
 $$
 
-将空间本征函数与时间解相乘，得到满足方程和齐次边界的特定特解——**物理驻波简正模态 (Normal Modes)**：
+将空间本征函数与时间解相乘，得到满足方程和齐次边界的特定特解——**物理驻波简正模态（Normal Modes）**：
 
 $$
 u_n(x, t) = X_n(x) T_n(t) = \left[ A_n \cos(\omega_n t) + B_n \sin(\omega_n t) \right] \sin\left(\dfrac{n\pi x}{L}\right)

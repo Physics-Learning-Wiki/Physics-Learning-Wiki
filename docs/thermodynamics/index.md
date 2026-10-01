@@ -1,6 +1,7 @@
 ---
 author: Physics Learning Wiki
-description: 介绍如何用宏观量描述大量粒子组成的系统，串联温度、热量、内能、功、熵、状态量、相变与热力学定律，并按章节导读进入统计分布和热学模型。
+description: 介绍如何用宏观量描述大量粒子组成的系统，串联温度、热量、内能、功、熵、状态量、相变与热力学定律，并按章节导读进入统计分布和热学模型．
+status: review
 ---
 
 ## 热学与统计物理简介
@@ -40,7 +41,7 @@ description: 介绍如何用宏观量描述大量粒子组成的系统，串联�
 
 第二章已进一步拆成下面七个主题页：
 
-1.  [麦克斯韦速度分布率](./chapter-2/maxwell-velocity-distribution.md)
+1.  [麦克斯韦速度分布律](./chapter-2/maxwell-velocity-distribution.md)
 2.  [玻尔兹曼密度分布](./chapter-2/boltzmann-density-distribution.md)
 3.  [能均分定理与热容](./chapter-2/equipartition-theorem-and-heat-capacity.md)
 4.  [量子气体中粒子按能级的分布](./chapter-2/quantum-gas-energy-level-distribution.md)

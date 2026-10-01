@@ -43,7 +43,9 @@ $$
 
 都是齐次方程的通解．
 
-### 1.2 朗斯基行列式 (Wronskian)
+<a id="12-朗斯基行列式-wronskian"></a>
+
+### 1.2 朗斯基行列式（Wronskian）
 
 两解 $y_1, y_2$ 线性无关的充要条件是它们的朗斯基行列式不为零：
 
@@ -69,7 +71,11 @@ $$
 
 根的性质完全由判别式 $\Delta = \gamma^2 - \omega_0^2$ 决定，精准对应阻尼振动的三种物理形态：
 
-### 2.1 欠阻尼 (Underdamping,$\gamma < \omega_0$)
+<a id="21-欠阻尼-underdampinggamma--omega_0gamma-"></a>
+
+<a id="21-欠阻尼-underdampinggamma--omega_0"></a>
+
+### 2.1 欠阻尼（Underdamping,$\gamma < \omega_0$）
 
 特征根为一对共轭虚根：$r_{1,2} = -\gamma \pm i \omega_d$，其中准振动角频率 $\omega_d = \sqrt{\omega_0^2 - \gamma^2}$．
 利用欧拉公式，通解为 **按指数包络衰减的简谐振荡**：
@@ -78,7 +84,11 @@ $$
 x(t) = A e^{-\gamma t} \cos(\omega_d t + \phi)
 $$
 
-### 2.2 过阻尼 (Overdamping,$\gamma > \omega_0$)
+<a id="22-过阻尼-overdampinggamma--omega_0gamma--omega_0"></a>
+
+<a id="22-过阻尼-overdampinggamma--omega_0"></a>
+
+### 2.2 过阻尼（Overdamping,$\gamma > \omega_0$）
 
 特征根为两个互不相等的负实根：$r_{1,2} = -\gamma \pm \beta$($\beta = \sqrt{\gamma^2 - \omega_0^2} < \gamma$)．
 通解为双指数衰减：
@@ -89,7 +99,11 @@ $$
 
 阻尼过大，质点无法往复振荡，直接缓慢单调滑回平衡位置．
 
-### 2.3 临界阻尼 (Critical Damping,$\gamma = \omega_0$)
+<a id="23-临界阻尼-critical-dampinggamma--omega_0gamma--omega_0"></a>
+
+<a id="23-临界阻尼-critical-dampinggamma--omega_0"></a>
+
+### 2.3 临界阻尼（Critical Damping,$\gamma = \omega_0$）
 
 特征根为二重实根：$r_1 = r_2 = -\gamma$．
 利用常数变易法可得通解包含线性时间乘子：
@@ -124,7 +138,9 @@ $$
 A(\omega) = \dfrac{F_0/m}{\sqrt{(\omega_0^2 - \omega^2)^2 + 4\gamma^2\omega^2}}
 $$
 
-### 位移共振 (Amplitude Resonance)
+<a id="位移共振-amplitude-resonance"></a>
+
+### 位移共振（Amplitude Resonance）
 
 令根号内函数取极小值，求导可得发生位移振幅最大的 **共振角频率**：
 

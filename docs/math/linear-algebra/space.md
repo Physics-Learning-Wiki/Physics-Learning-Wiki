@@ -1,3 +1,9 @@
+---
+
+status: review
+description: "介绍定义，内容包括线性相关与线性无关、基与维数、基（Basis）．"
+---
+
 ???+ note "注意"
     该页面有待完善．如果遇到错误或不完整的地方，欢迎提交 [Issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)
 
@@ -64,7 +70,9 @@ $$
 
 ## 基与维数
 
-### 基 (Basis)
+<a id="基-basis"></a>
+
+### 基（Basis）
 
 线性空间 $V$ 的一个 **基** 是一组线性无关的向量 $\{\vec{e}_1, \vec{e}_2, \dots, \vec{e}_n\}$，满足 $V$ 中的任何向量 $\vec{v}$ 都可以唯一地表示为这组基向量的线性组合：
 
@@ -76,7 +84,9 @@ $$
 
 -   **标准基**：在 $\mathbb{R}^n$ 空间中，最常用的一组基是标准基，由单位向量构成．例如，在 $\mathbb{R}^3$ 中，标准基是 $\hat{i}=(1,0,0), \hat{j}=(0,1,0), \hat{k}=(0,0,1)$．
 
-### 维数 (Dimension)
+<a id="维数-dimension"></a>
+
+### 维数（Dimension）
 
 一个线性空间 $V$ 的 **维数** 是其任何一组基所包含的向量个数，记作 $\dim(V)$．
 
