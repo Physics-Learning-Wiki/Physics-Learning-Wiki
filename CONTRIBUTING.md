@@ -60,6 +60,8 @@ Material instant navigation 会在同一个文档中替换文章内容。离开�
 
 ## 构建与验证
 
+物理内容改动可手动运行 `uv run python scripts/check-terminology.py`，或指定修改的文件／目录．规则、局部豁免和退出码见 [`scripts/README.md`](scripts/README.md#手动术语检查)；此检查器只读，不增加 CI 门禁．语境提示需结合 [`写作指引`](docs/intro/writing.md) 人工判断．公式、表格与标题改动还需检查生产页面及旧锚点．
+
 GitHub Pages 与 Netlify 共用生产编排。安装依赖后，在 Bash 环境运行：
 
 ```bash
