@@ -331,3 +331,9 @@
   background: #1a202c;
   color: #e2e8f0;
 }
+
+.submit-draft { margin: 1rem 0; padding: .75rem; border: 1px solid var(--md-default-fg-color--lighter); border-radius: 6px; }
+.submit-draft p { margin-top: 0; font-size: .8rem; }
+.submit-draft button, .submit-verification-actions button { border: 1px solid var(--md-default-fg-color--lighter); border-radius: 6px; padding: .4rem .7rem; min-height: 44px; margin-right: .5rem; cursor: pointer; }
+.submit-draft button[hidden], .submit-verification-actions button[hidden] { display: none; }
+.submit-verification-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .8rem; }

@@ -165,7 +165,7 @@ status: review
 
   <div class="submit-actions">
     <button type="submit" id="q-submit-btn">提交题目投稿</button>
-    <span id="q-submit-status"></span>
+    <span id="q-submit-status" role="alert" aria-live="assertive" aria-atomic="true"></span>
   </div>
 </form>
 

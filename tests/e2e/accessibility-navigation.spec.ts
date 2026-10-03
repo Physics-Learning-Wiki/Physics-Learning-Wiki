@@ -57,4 +57,15 @@ test("dark article links meet contrast and Copilot does not occupy the header", 
   });
   expect(contrast).toBeGreaterThanOrEqual(4.5);
   await expect(page.locator('header a[href="https://github.com/copilot"]')).toHaveCount(0);
+  await page.goto(base);
+  await expect
+    .poll(() =>
+      page.getByRole("link", { name: "按课程学习", exact: true }).evaluate(link => getComputedStyle(link).color)
+    )
+    .toBe("rgb(154, 170, 255)");
+  await expect
+    .poll(() =>
+      page.getByRole("link", { name: "开始系统学习", exact: true }).evaluate(link => getComputedStyle(link).color)
+    )
+    .toBe("rgb(30, 33, 41)");
 });

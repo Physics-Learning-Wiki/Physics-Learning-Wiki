@@ -1,8 +1,8 @@
 import { createEditor, createEditorToolbar, type EditorHandle } from "./editor.js";
 import { queryInRoot } from "./dom.js";
-import { mountTurnstile } from "./turnstile.js";
+import { createVerification, type VerificationHandle } from "./verification.js";
 import { parsePairs } from "./parse-pairs.js";
-import type { FeatureDisposer, FeatureMountContext, MountedTurnstile } from "./types.js";
+import type { FeatureDisposer, FeatureMountContext } from "./types.js";
 
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
 
@@ -109,7 +109,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
 
   let stemEditor: EditorHandle | undefined;
   let solutionEditor: EditorHandle | undefined;
-  let widget: MountedTurnstile | undefined;
+  let widget: VerificationHandle | undefined;
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
@@ -370,16 +370,17 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   );
 
   const taxonomyPromise = loadTaxonomyTopics(form, signal);
-  const turnstilePromise = turnstileContainer
-    ? mountTurnstile(turnstileContainer, signal, message => setError(status, message))
-        .then(mounted => {
-          if (signal.aborted) mounted?.dispose();
-          else widget = mounted;
-        })
-        .catch(() => {
-          if (!signal.aborted) setError(status, "人机验证加载失败，请检查网络后重试");
-        })
-    : Promise.resolve();
+  if (turnstileContainer)
+    widget = createVerification(
+      turnstileContainer,
+      signal,
+      message => setError(status, message),
+      () => {
+        status.textContent = "";
+        status.className = "";
+      }
+    );
+  const turnstilePromise = widget?.ready ?? Promise.resolve();
   await Promise.all([taxonomyPromise, turnstilePromise]);
   if (signal.aborted) {
     dispose();

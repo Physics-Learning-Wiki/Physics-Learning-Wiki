@@ -77,7 +77,7 @@ description: "向本站提交物理学习内容、笔记与修订建议．"
 
   <div class="submit-actions">
     <button type="submit" id="submit-btn">提交投稿</button>
-    <span id="submit-status"></span>
+    <span id="submit-status" role="alert" aria-live="assertive" aria-atomic="true"></span>
   </div>
 </form>
 

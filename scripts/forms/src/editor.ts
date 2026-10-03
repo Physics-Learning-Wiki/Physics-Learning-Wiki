@@ -46,12 +46,29 @@ export function createEditor(
     previewRender,
     autoDownloadFontAwesome: false
   });
+  const input = instance.codemirror.getInputField();
+  const labels = Array.from(textarea.labels ?? []);
+  input.id = `${textarea.id}-editor`;
+  if (labels.length) {
+    for (const [index, label] of labels.entries()) {
+      if (!label.id) label.id = `${textarea.id}-label-${index}`;
+      label.htmlFor = input.id;
+    }
+    input.setAttribute("aria-labelledby", labels.map(label => label.id).join(" "));
+    input.setAttribute(
+      "aria-required",
+      String(textarea.required || labels.some(label => label.textContent?.includes("*")))
+    );
+  } else input.setAttribute("aria-label", textarea.getAttribute("aria-label") || textarea.name || "Markdown 正文");
+  const description = textarea.getAttribute("aria-describedby");
+  if (description) input.setAttribute("aria-describedby", description);
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
     disposed = true;
     signal.removeEventListener("abort", dispose);
     if (previewTimer) clearTimeout(previewTimer);
+    for (const label of labels) label.htmlFor = textarea.id;
     try {
       instance.toTextArea();
     } catch {

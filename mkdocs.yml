@@ -324,7 +324,7 @@ extra_javascript:
   - '_static/js/runtime-loader.js'
 
 extra_css:
-  - '_static/css/extra.css?v=19'
+  - '_static/css/extra.css?v=20'
   # - '_static/css/offset-inject-debug.css'
 
 # Extensions

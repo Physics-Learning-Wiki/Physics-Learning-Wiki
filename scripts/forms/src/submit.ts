@@ -1,8 +1,9 @@
 import { createEditor, createEditorToolbar, type EditorHandle } from "./editor.js";
 import { queryInRoot } from "./dom.js";
 import { NAV_TREE, type NavigationItem } from "./nav-tree.js";
-import { mountTurnstile } from "./turnstile.js";
-import type { FeatureDisposer, FeatureMountContext, MountedTurnstile } from "./types.js";
+import { createVerification, type VerificationHandle } from "./verification.js";
+import { mountSubmissionDraft, type DraftHandle } from "./submission-draft.js";
+import type { FeatureDisposer, FeatureMountContext } from "./types.js";
 
 const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
 const TYPE_HINTS: Record<string, string> = {
@@ -163,12 +164,14 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     return () => undefined;
 
   let editor: EditorHandle | undefined;
-  let widget: MountedTurnstile | undefined;
+  let widget: VerificationHandle | undefined;
+  let draft: DraftHandle | undefined;
   let disposed = false;
   const dispose = () => {
     if (disposed) return;
     disposed = true;
     signal.removeEventListener("abort", dispose);
+    draft?.dispose();
     widget?.dispose();
     editor?.dispose();
   };
@@ -206,6 +209,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     editor?.instance.value(prefill);
     updateTypeHint();
   }
+  if (editor) draft = mountSubmissionDraft(form, editor, signal);
 
   form.addEventListener(
     "submit",
@@ -236,6 +240,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
 
       submitButton.disabled = true;
       submitButton.textContent = "提交中...";
+      const submittedDraft = draft?.snapshot();
       try {
         const response = await fetch(SUBMIT_ENDPOINT, {
           method: "POST",
@@ -266,6 +271,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
 
         const data = (await response.json()) as { issueUrl: string };
         if (signal.aborted) return;
+        if (submittedDraft) draft?.clearSubmitted(submittedDraft);
         form.style.display = "none";
         if (success) success.style.display = "block";
         if (issueLink) {
@@ -287,11 +293,16 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   );
 
   if (turnstileContainer) {
-    try {
-      widget = await mountTurnstile(turnstileContainer, signal, message => setError(status, message));
-    } catch (error) {
-      if (!signal.aborted) setError(status, "人机验证加载失败，请检查网络后重试");
-    }
+    widget = createVerification(
+      turnstileContainer,
+      signal,
+      message => setError(status, message),
+      () => {
+        status.textContent = "";
+        status.className = "";
+      }
+    );
+    await widget.ready;
   }
   if (signal.aborted) {
     dispose();

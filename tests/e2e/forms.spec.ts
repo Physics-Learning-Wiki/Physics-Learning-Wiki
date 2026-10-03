@@ -3,6 +3,132 @@ import { expect, test, type Page } from "@playwright/test";
 const basePath = "/Physics-Learning-Wiki/";
 const mathJaxUrl = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js";
 const turnstileUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+const draftKey = "plw:submission-draft:v1:/Physics-Learning-Wiki/";
+
+test("draft writes flush on instant navigation and storage failures do not disable submission", async ({ page }) => {
+  await mockTurnstile(page);
+  await page.goto(`${basePath}submit/`);
+  await expect(page.locator(".CodeMirror")).toBeVisible();
+  await setEditorText(page, 0, "离开前保存");
+  await page.locator("header a.md-logo").click();
+  await expect(page).toHaveURL(url => url.pathname === basePath);
+  expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("离开前保存");
+  await page.evaluate(key => localStorage.removeItem(key), draftKey);
+  await page.goto(`${basePath}submit/`);
+  await expect(page.locator(".CodeMirror")).toBeVisible();
+  await page.evaluate(() => {
+    const set = Storage.prototype.setItem;
+    Storage.prototype.setItem = function (key, value) {
+      if (key.startsWith("plw:submission-draft:")) throw new DOMException("quota", "QuotaExceededError");
+      set.call(this, key, value);
+    };
+  });
+  await setEditorText(page, 0, "无法持久保存也可编辑");
+  await expect(page.locator(".submit-draft")).toContainText("无法在此浏览器保存草稿");
+  await expect(page.locator("#submit-btn")).toBeEnabled();
+});
+
+test("failed submission keeps a draft and successful in-flight edits preserve the newer draft", async ({ page }) => {
+  await mockTurnstile(page);
+  let fail = true;
+  await page.route("https://submit.folderrewind.top/**", async route => {
+    if (fail) {
+      await route.fulfill({
+        status: 500,
+        contentType: "application/json",
+        headers: { "access-control-allow-origin": "*" },
+        body: JSON.stringify({ error: "临时失败" })
+      });
+      return;
+    }
+    await new Promise(resolve => setTimeout(resolve, 600));
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify({ issueUrl: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123" })
+    });
+  });
+  await page.goto(`${basePath}submit/`);
+  await page.locator("#submit-type").selectOption("notes");
+  await page.locator("#submit-title").fill("发送中的草稿");
+  await setEditorText(page, 0, "提交的正文");
+  await page.locator("#submit-btn").click();
+  await expect(page.locator("#submit-status")).toContainText("临时失败");
+  await expect.poll(() => page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("提交的正文");
+  fail = false;
+  await page.locator("#submit-btn").click();
+  await expect(page.locator("#submit-btn")).toBeDisabled();
+  await setEditorText(page, 0, "发送期间的新正文");
+  await expect(page.locator("#submit-success")).toBeVisible();
+  expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("发送期间的新正文");
+});
+
+test("submission drafts recover explicitly, omit contact data and clear after success", async ({ page }) => {
+  await mockTurnstile(page);
+  await page.route("https://submit.folderrewind.top/**", route =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify({ issueUrl: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123" })
+    })
+  );
+  await page.goto(`${basePath}submit/`);
+  await expect(page.getByRole("textbox", { name: "正文 *", exact: true })).toBeAttached();
+  await page.locator("#submit-type").selectOption("notes");
+  await page.locator("#submit-title").fill("本机草稿");
+  await page.locator("#submit-contact").fill("private-contact");
+  await page.locator("#submit-attribution").fill("private-name");
+  await page.locator("#submit-chapter-major").selectOption("经典力学");
+  await page.locator("#submit-chapter-minor").selectOption({ label: "质点动力学" });
+  await setEditorText(page, 0, "草稿正文 $F=ma$");
+  await expect.poll(() => page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("草稿正文");
+  const stored = await page.evaluate(key => localStorage.getItem(key)!, draftKey);
+  expect(stored).not.toMatch(/private-contact|private-name|turnstileToken|attribution|contact/);
+  await page.reload();
+  await expect(page.getByRole("button", { name: "恢复草稿", exact: true })).toBeVisible();
+  await expect(page.locator("#submit-title")).toHaveValue("");
+  await page.getByRole("button", { name: "恢复草稿", exact: true }).click();
+  await expect(page.locator("#submit-title")).toHaveValue("本机草稿");
+  await expect(page.locator("#submit-chapter")).toHaveValue("经典力学 > 质点动力学");
+  await expect(page.locator("#submit-contact")).toHaveValue("");
+  await expect(page.locator(".CodeMirror")).toContainText("草稿正文");
+  await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toBeVisible();
+  await page.locator("#submit-btn").click();
+  await expect(page.locator("#submit-success")).toBeVisible();
+  expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toBeNull();
+});
+
+test("corrupted drafts can be cleared without replacing errata prefill", async ({ page }) => {
+  await mockTurnstile(page);
+  await page.goto(`${basePath}submit/`);
+  await expect(page.locator(".CodeMirror")).toBeVisible();
+  await page.evaluate(key => localStorage.setItem(key, "{broken"), draftKey);
+  await page.goto(`${basePath}submit/?type=errata&title=预填标题&question_id=example`);
+  await expect(page.locator(".submit-draft")).toContainText("草稿损坏");
+  await expect(page.locator("#submit-title")).toHaveValue("预填标题");
+  await expect(page.locator(".CodeMirror")).toContainText("example");
+  await page.getByRole("button", { name: "清除草稿", exact: true }).click();
+  expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toBeNull();
+  await expect(page.locator("#submit-title")).toHaveValue("预填标题");
+});
+
+test("verification resource failure retries without losing the editor or double mounting", async ({ page }) => {
+  await page.route(turnstileUrl, route => route.abort());
+  await page.goto(`${basePath}submit/`);
+  await expect(page.getByRole("button", { name: "重新验证", exact: true })).toBeVisible();
+  await page.locator("#submit-title").fill("网络恢复");
+  await setEditorText(page, 0, "重试后保留正文");
+  await page.unroute(turnstileUrl);
+  await mockTurnstile(page);
+  await page.getByRole("button", { name: "重新验证", exact: true }).click();
+  await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toHaveCount(1);
+  await expect(page.locator("#submission-form .CodeMirror")).toHaveCount(1);
+  await expect(page.locator("#submit-title")).toHaveValue("网络恢复");
+  await expect(page.locator(".CodeMirror")).toContainText("重试后保留正文");
+  await expect(page.locator("#submit-status")).toBeEmpty();
+});
 
 async function mockTurnstile(page: Page): Promise<void> {
   await page.route(turnstileUrl, route =>
@@ -27,7 +153,11 @@ async function mockTurnstile(page: Page): Promise<void> {
             window.__plwTurnstileWidgets.get(id)?.container.replaceChildren();
             window.__plwTurnstileWidgets.delete(id);
           },
-          reset() { window.__plwTurnstileCounts.reset += 1; }
+          reset(id) {
+            window.__plwTurnstileCounts.reset += 1;
+            const widget=window.__plwTurnstileWidgets.get(id);
+            if(widget)setTimeout(()=>widget.options.callback("test-turnstile-token"),0);
+          }
         };
       `
     })
@@ -77,6 +207,7 @@ test("submission editor is lazy, previews math on demand, and submits once acros
     false
   );
 
+  await page.getByRole("button", { name: "参与贡献", exact: true }).click();
   await page.locator('nav a[href$="/submit/"]').first().click();
   await expectPagePath(page, "submit/");
   await expect(page.locator("#submission-form .CodeMirror")).toHaveCount(1);

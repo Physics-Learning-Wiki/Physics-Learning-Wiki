@@ -54,10 +54,10 @@ MATH_REPLACEMENTS = {
     "\\infty": "inf",
     "\\partial": "d",
 }
-QUIZ_STYLESHEET = "_static/css/quiz.css?v=4"
+QUIZ_STYLESHEET = "_static/css/quiz.css?v=5"
 FORM_STYLESHEETS = {
-    "submit": "_static/css/features/submit.css?v=1",
-    "question-contribute": "_static/css/features/question-contribute.css?v=1",
+    "submit": "_static/css/features/submit.css?v=2",
+    "question-contribute": "_static/css/features/question-contribute.css?v=2",
 }
 
 

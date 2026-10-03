@@ -22,6 +22,7 @@ function createTurnstilePromise(): Promise<TurnstileApi> {
     script.dataset.plwTurnstile = "true";
 
     const cleanup = () => {
+      window.clearTimeout(timeout);
       script.removeEventListener("load", onLoad);
       script.removeEventListener("error", onError);
     };
@@ -29,6 +30,7 @@ function createTurnstilePromise(): Promise<TurnstileApi> {
       cleanup();
       const api = getTurnstileWindow().turnstile;
       if (!api) {
+        script.remove();
         turnstilePromise = undefined;
         reject(new Error("Cloudflare Turnstile loaded without an API"));
         return;
@@ -41,6 +43,7 @@ function createTurnstilePromise(): Promise<TurnstileApi> {
       turnstilePromise = undefined;
       reject(new Error("Cloudflare Turnstile could not be loaded"));
     };
+    const timeout = window.setTimeout(onError, 10000);
 
     script.addEventListener("load", onLoad, { once: true });
     script.addEventListener("error", onError, { once: true });
@@ -77,6 +80,7 @@ export async function mountTurnstile(
       },
       "expired-callback": () => {
         token = null;
+        if (!disposed && !signal.aborted) onError("人机验证已过期，请重新验证");
       },
       "error-callback": () => {
         token = null;

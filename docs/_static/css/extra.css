@@ -14,6 +14,10 @@
 }
 .plw-start-grid > p { margin: 0; }
 .plw-start-grid .md-button { width: 100%; text-align: center; }
+.md-typeset .md-button { color: var(--md-typeset-a-color); border-color: var(--md-typeset-a-color); }
+.md-typeset .md-button--primary, .md-typeset .md-button:hover, .md-typeset .md-button:focus {
+  background-color: var(--md-typeset-a-color); color: var(--md-default-bg-color); border-color: var(--md-typeset-a-color);
+}
 .plw-course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .plw-course-card { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; }
 .plw-course-card h2 { margin-top: 0; }
