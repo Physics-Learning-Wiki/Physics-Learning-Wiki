@@ -1,28 +1,19 @@
 ---
 title: 物理学习百科
-description: Physics Learning Wiki 是面向物理爱好者与大学本科生的物理学习百科，提供经典力学、热学与统计物理、电磁学、光学、近代物理、数学工具、实验物理与计算工具等系统化学习内容．
+description: Physics Learning Wiki 是面向物理爱好者与大学本科生的物理学习百科，汇集经典力学、热学与统计物理、电磁学、光学、近代物理等学科内容，以及数学工具、实验物理与计算工具资料，内容持续建设中．
 status: review
 ---
 
-从当前阶段出发，找到适合自己的物理学习路线．
+这里汇集面向物理爱好者与大学本科生的物理知识、学习笔记和参考资料，内容仍在持续建设中．
 
-<div class="plw-start-grid" markdown>
-
-[开始系统学习](intro/roadmap.md){ .md-button .md-button--primary }
-
-[按课程学习](courses/index.md){ .md-button }
-
-<button type="button" class="md-button" data-plw-open-search>查找知识</button>
-
-</div>
-
-初次系统学习大学物理，可从 [经典力学](mechanics/index.md) 开始；遇到数学障碍时，查阅 [数学工具](math/index.md)．正在跟课的本科生可以按课程路线预习和复习．
+按学科浏览下方内容，或使用页眉搜索查找具体概念、公式与章节．
 
 <span id="建议先从这里开始" class="plw-title-anchor"></span>
 
-## 本站的组织方式
+<span id="本站的组织方式" class="plw-title-anchor"></span>
+<span id="主线学习模块" class="plw-title-anchor"></span>
 
-### 主线学习模块
+## 学科内容
 
 <div class="grid cards" markdown>
 
@@ -64,7 +55,9 @@ status: review
 
 </div>
 
-### 并行支撑模块
+<span id="并行支撑模块" class="plw-title-anchor"></span>
+
+## 工具与参考
 
 <div class="grid cards" markdown>
 
@@ -88,18 +81,19 @@ status: review
 
 </div>
 
-### 专题支线
+<span id="专题支线" class="plw-title-anchor"></span>
 
--   [竞赛相关](contest/index.md)：面向竞赛与专题训练，但不再作为全站主入口．
+## 练习与专题
+
+-   [竞赛相关](contest/index.md)：赛事介绍、学习资源与专题训练．
 -   [知识小测](quiz/index.md)：通过分级自测题目巩固物理概念与公式运用．
 -   题库、参考资料与专题页会逐步补齐，用于第二遍学习和强化训练．
 
 ## 如何使用本站
 
-1.  先看导学页，再进入正文页，不要直接在目录里跳着读．
-2.  每读一页都先回答三个问题：它在解决什么问题、它依赖什么先修、它学完以后能干什么．
-3.  如果某一页暂时读不动，不要硬啃，先回到主线前面的页面或支撑模块补足背景．
-4.  竞赛、开放题和进阶证明建议放在完成主线第一遍之后再集中处理．
+-   **跟随课程学习**：以课表和教材为主，按章节查阅对应学科内容．大一的经典力学侧重运动学、牛顿定律与守恒律；大二的理论力学在此基础上进一步学习分析力学等内容．
+-   **查阅与补充基础**：遇到不熟悉的概念，可配合数学工具和术语表阅读，不必按全站目录顺序学习．
+-   **路线参考**：[学习路线](intro/roadmap.md) 与 [课程路线](courses/index.md) 尚未完善，暂作阅读线索，不能视为完整课程安排．
 
 ## 欢迎投稿与协作
 

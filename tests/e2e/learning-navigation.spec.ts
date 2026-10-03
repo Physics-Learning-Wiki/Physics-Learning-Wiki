@@ -22,19 +22,20 @@ test("subject tabs lead to study introductions and submission links keep the sit
   await expect(link).toHaveAttribute("href", /quiz\/contribute\/$/);
 });
 
-test("mobile entry points and course cards are readable without horizontal overflow", async ({ page }) => {
+test("mobile subject links and course references are readable without horizontal overflow", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(base);
-  for (const name of ["开始系统学习", "按课程学习", "查找知识"]) {
-    const control = page.locator("main article").getByText(name, { exact: true });
-    await expect(control).toBeInViewport();
-  }
-  await page.getByRole("button", { name: "查找知识", exact: true }).click();
+  const math = page.locator("main article").getByRole("link", { name: "数学工具", exact: true });
+  await expect(math).toBeInViewport();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.getByRole("button", { name: "打开搜索", exact: true }).click();
   await expect(page.getByRole("textbox", { name: "搜索", exact: true })).toBeFocused();
   await page.keyboard.press("Escape");
   await page.goto(`${base}courses/`);
   await expect(page.locator(".plw-course-card")).toHaveCount(3);
-  await expect(page.getByRole("link", { name: "进入理论力学路线", exact: true })).toBeInViewport();
+  const theory = page.getByRole("link", { name: "查看理论力学阅读参考", exact: true });
+  await theory.scrollIntoViewIfNeeded();
+  await expect(theory).toBeInViewport();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   await expect(page.locator("#课程路线总览")).toBeAttached();
   await page.goto(`${base}mechanics/kinematics/reference-frames/`);

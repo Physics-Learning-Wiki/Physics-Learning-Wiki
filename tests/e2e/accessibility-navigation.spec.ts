@@ -20,9 +20,6 @@ test("mobile menu and search work from the keyboard and return focus", async ({ 
   await page.keyboard.press("Escape");
   await expect(search).toHaveAttribute("aria-expanded", "false");
   await expect(search).toBeFocused();
-  await page.getByRole("button", { name: "查找知识", exact: true }).click();
-  await page.keyboard.press("Escape");
-  await expect(page.getByRole("button", { name: "查找知识", exact: true })).toBeFocused();
 });
 
 test("dark article links meet contrast and Copilot does not occupy the header", async ({ page }) => {
@@ -38,7 +35,7 @@ test("dark article links meet contrast and Copilot does not occupy the header", 
         .evaluate(link => getComputedStyle(link).color)
     )
     .toBe("rgb(154, 170, 255)");
-  const contrast = await page.getByRole("link", { name: "进入理论力学路线", exact: true }).evaluate(link => {
+  const contrast = await page.getByRole("link", { name: "查看理论力学阅读参考", exact: true }).evaluate(link => {
     const rgb = (value: string) =>
       value
         .match(/[\d.]+/g)!
@@ -49,9 +46,7 @@ test("dark article links meet contrast and Copilot does not occupy the header", 
         .map(c => c / 255)
         .map(c => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4))
         .reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
-    // Use a regular article link, rather than the filled primary action.
-    const sample = document.querySelector<HTMLAnchorElement>(".page-copyright a")!;
-    const foreground = luminance(rgb(getComputedStyle(sample).color));
+    const foreground = luminance(rgb(getComputedStyle(link).color));
     const background = luminance(rgb(getComputedStyle(document.body).backgroundColor));
     return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
   });
@@ -60,12 +55,10 @@ test("dark article links meet contrast and Copilot does not occupy the header", 
   await page.goto(base);
   await expect
     .poll(() =>
-      page.getByRole("link", { name: "按课程学习", exact: true }).evaluate(link => getComputedStyle(link).color)
+      page
+        .locator("main article")
+        .getByRole("link", { name: "数学工具", exact: true })
+        .evaluate(link => getComputedStyle(link).color)
     )
     .toBe("rgb(154, 170, 255)");
-  await expect
-    .poll(() =>
-      page.getByRole("link", { name: "开始系统学习", exact: true }).evaluate(link => getComputedStyle(link).color)
-    )
-    .toBe("rgb(30, 33, 41)");
 });

@@ -2,10 +2,12 @@
 title: 课程路线总览
 status: review
 author: Physics Learning Wiki Team
-description: 按高校课程选择理论力学、电磁学和数学物理方法的阅读路线，查看适用阶段、先修知识和对应的物理学习内容．
+description: 建设中的课程阅读参考，区分大一经典力学与大二理论力学，并整理电磁学、数学物理方法的先修与知识页链接．
 ---
 
-选择正在学习的课程，按推荐顺序阅读知识页，并随时补齐先修内容．
+课程路线尚未完善：目前仅整理了部分课程的阅读线索，章节覆盖与先修关系仍需补充．请以学校教学大纲和教材为主，以下内容用于辅助查阅．
+
+大一学习经典力学时，可直接查阅 [经典力学学科内容](../mechanics/index.md)，从运动学、牛顿定律和守恒律开始；大二的理论力学是在这些基础上的进一步学习，不是初学力学的起点．本站暂未整理独立的大一经典力学课程路线．
 
 <span id="课程路线总览" class="plw-title-anchor"></span>
 <span id="当前已上线的课程路线" class="plw-title-anchor"></span>
@@ -22,7 +24,7 @@ description: 按高校课程选择理论力学、电磁学和数学物理方法�
 
 从质点系与刚体运动出发，学习达朗贝尔原理、拉格朗日方程和哈密顿力学．
 
-[进入理论力学路线](theoretical-mechanics.md){ .md-button .md-button--primary }
+[查看理论力学阅读参考](theoretical-mechanics.md)
 
 </section>
 
@@ -36,7 +38,7 @@ description: 按高校课程选择理论力学、电磁学和数学物理方法�
 
 从电场、电势和磁场出发，理解麦克斯韦方程组与电磁波．
 
-[进入电磁学路线](electromagnetism.md){ .md-button .md-button--primary }
+[查看电磁学阅读参考](electromagnetism.md)
 
 </section>
 
@@ -50,7 +52,7 @@ description: 按高校课程选择理论力学、电磁学和数学物理方法�
 
 学习物理偏微分方程、本征函数、特殊函数和格林函数，连接数学方法与物理问题．
 
-[进入数学物理方法路线](mathematical-methods-for-physics.md){ .md-button .md-button--primary }
+[查看数学物理方法阅读参考](mathematical-methods-for-physics.md)
 
 </section>
 
@@ -58,9 +60,9 @@ description: 按高校课程选择理论力学、电磁学和数学物理方法�
 
 ## 怎样配合课程使用 Wiki
 
-1. **课前预习**：在课程路线中找到本周知识点，检查并补齐先修内容．
-2. **课后复习**：进入对应正文，重点理解物理图像、例题和常见误区．
-3. **备考梳理**：沿课程路线回顾知识之间的联系，再使用 [知识小测](../quiz/index.md) 检验理解．
+1. **确定学习内容**：按学校课表和教材确定本周主题，在学科目录中查找对应知识页．
+2. **补充阅读**：路线中已有的链接可帮助查阅先修与相关章节；缺失内容仍需参考教材和课堂讲义．
+3. **复习检查**：对照课程教学大纲检查覆盖情况，已有主题可配合 [知识小测](../quiz/index.md) 自测．
 
 ??? note "课程如何连接知识"
     <span id="课程路线的设计原则" class="plw-title-anchor"></span>

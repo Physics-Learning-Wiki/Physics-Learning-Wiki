@@ -5,15 +5,7 @@
     Consolas, "Courier New", monospace;
 }
 
-/* Logo title */
-.plw-start-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.6rem;
-  margin: 1rem 0;
-}
-.plw-start-grid > p { margin: 0; }
-.plw-start-grid .md-button { width: 100%; text-align: center; }
+/* Article actions and course references */
 .md-typeset .md-button { color: var(--md-typeset-a-color); border-color: var(--md-typeset-a-color); }
 .md-typeset .md-button--primary, .md-typeset .md-button:hover, .md-typeset .md-button:focus {
   background-color: var(--md-typeset-a-color); color: var(--md-default-bg-color); border-color: var(--md-typeset-a-color);
@@ -28,8 +20,7 @@
 .md-search-result__more { padding: .3rem 1rem; }
 .md-search-result__more > summary { cursor: pointer; }
 @media (max-width: 599px) {
-  .plw-start-grid, .plw-course-grid { grid-template-columns: 1fr; }
-  .plw-start-grid .md-button { padding: .5em 1em; }
+  .plw-course-grid { grid-template-columns: 1fr; }
 }
 
 /* Logo title */
