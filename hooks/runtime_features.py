@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 
 ARTICLE_SELECTOR = "article.md-content__inner.md-typeset"
 FEATURE_SELECTORS = (
+    ("concept-reference", ("a[data-plw-concept]",)),
     ("math", (".arithmatex",)),
     ("mermaid", (".mermaid",)),
     (

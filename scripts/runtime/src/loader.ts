@@ -48,7 +48,7 @@ interface RuntimeOptions {
 }
 
 const FEATURE_ORDER = new Map(
-  ["math", "mermaid", "quiz", "submit", "question-contribute"].map((name, index) => [name, index])
+  ["math", "mermaid", "quiz", "submit", "question-contribute", "concept-reference"].map((name, index) => [name, index])
 );
 
 export function getSiteRoot(document: Document): URL {
@@ -358,6 +358,10 @@ export function subscribeDocumentLifecycle(
 }
 
 const featureRegistry: FeatureRegistry = {
+  "concept-reference": {
+    stylesheet: "_static/css/features/concept-reference.css",
+    moduleUrl: "_static/js/features/concept-reference.js"
+  },
   math: mathFeatureDefinition,
   mermaid: { moduleUrl: "_static/js/features/mermaid.js" },
   quiz: {

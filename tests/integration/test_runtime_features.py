@@ -35,6 +35,14 @@ def test_ordinary_article_gets_pagefind_body_without_feature_markers() -> None:
     assert not article.has_attr("data-plw-features")
 
 
+def test_only_inline_concept_links_mark_the_feature() -> None:
+    ordinary = page_html('<nav class="plw-prerequisites"><a href="tool/">导数</a></nav>')
+    assert "concept-reference" not in transform_page_html(ordinary)
+    linked = page_html('<a href="tool/" data-plw-concept="derivative">导数</a>')
+    soup = BeautifulSoup(transform_page_html(linked), "html.parser")
+    assert soup.select_one("article")["data-plw-features"] == "concept-reference"
+
+
 def test_feature_selectors_are_detected_once_in_stable_order() -> None:
     markup = page_html(
         """

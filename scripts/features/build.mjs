@@ -73,5 +73,28 @@ async function buildMermaid() {
 runFeatureBuild("runtime", "scripts/runtime/build.mjs");
 runFeatureBuild("quiz", "scripts/quiz/build.mjs");
 await buildMermaid();
+const conceptOutput = path.join(ROOT, "docs/_static/js/features/concept-reference.js");
+const conceptBuild = await build({
+  absWorkingDir: ROOT,
+  entryPoints: ["scripts/features/src/concept-reference.ts"],
+  bundle: true,
+  format: "esm",
+  platform: "browser",
+  target: ["es2021"],
+  minify: true,
+  legalComments: "none",
+  write: false,
+  charset: "utf8"
+});
+const conceptBytes = conceptBuild.outputFiles[0].contents;
+if (check) {
+  const current = await fs.readFile(conceptOutput);
+  if (!current.equals(conceptBytes)) {
+    throw new Error("Generated concept-reference bundle is stale; run features:build");
+  }
+} else {
+  await fs.mkdir(path.dirname(conceptOutput), { recursive: true });
+  await fs.writeFile(conceptOutput, conceptBytes);
+}
 runFeatureBuild("forms", "scripts/forms/build.mjs");
 process.stdout.write(`All feature assets are ${check ? "current" : "built"}.\n`);
