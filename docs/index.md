@@ -4,18 +4,21 @@ description: Physics Learning Wiki 是面向物理爱好者与大学本科生的
 status: review
 ---
 
-**Physics-Learning-Wiki** 致力于为物理爱好者与大学本科生提供一条可持续扩展的系统化物理学习主线．我们当前优先解决的问题不是「条目够不够多」，而是「你能不能顺着学下去」．
+从当前阶段出发，找到适合自己的物理学习路线．
 
-## 建议先从这里开始
+<div class="plw-start-grid" markdown>
 
-1.  阅读 [学习路线总览](intro/roadmap.md)，先确定自己的阶段和主线顺序．
-2.  进入对应学科的导学页，例如 [经典力学](mechanics/index.md)、[热学与统计物理](thermodynamics/index.md) 或 [电磁学](electromagnetism/index.md)．
-3.  遇到公式、符号或方法障碍时，回到 [数学工具](math/index.md)、[实验物理](experiment/index.md) 与 [计算物理与工具](tools/index.md) 补足支撑知识．
-4.  如果你想参与贡献，可以阅读 [如何参与](intro/htc.md)；如果你不会使用 GitHub，也可以直接发送稿件到 <submit@folderrewind.top>．
+[开始系统学习](intro/roadmap.md){ .md-button .md-button--primary }
 
-???+ note "贡献你的物理知识"
-    不需要 GitHub 账号！直接访问 [投稿页面](submit.md) 分享你的笔记、勘误或建议．  
-    每一份贡献都会被署名记录在 [贡献者墙](intro/contributors.md) 上．
+[按课程学习](courses/index.md){ .md-button }
+
+<button type="button" class="md-button" data-plw-open-search>查找知识</button>
+
+</div>
+
+初次系统学习大学物理，可从 [经典力学](mechanics/index.md) 开始；遇到数学障碍时，查阅 [数学工具](math/index.md)．正在跟课的本科生可以按课程路线预习和复习．
+
+<span id="建议先从这里开始" class="plw-title-anchor"></span>
 
 ## 本站的组织方式
 
@@ -99,6 +102,8 @@ status: review
 4.  竞赛、开放题和进阶证明建议放在完成主线第一遍之后再集中处理．
 
 ## 欢迎投稿与协作
+
+无需 GitHub 账号，也可以通过 [投稿页面](submit.md) 提交笔记、勘误和建议．
 
 我们欢迎三类贡献：
 

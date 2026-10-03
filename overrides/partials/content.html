@@ -1,0 +1,10 @@
+{% include "partials/tags.html" %}
+{% include "partials/actions.html" %}
+{% if title_override %}
+  {{ title_override }}
+{% elif "<h1" not in page.content %}
+  <h1>{{ page.meta.title | default(page.title, true) | default(config.site_name, true) }}</h1>
+{% endif %}
+{{ page.content }}
+{% include "partials/source-file.html" %}
+{% include "partials/comments.html" %}

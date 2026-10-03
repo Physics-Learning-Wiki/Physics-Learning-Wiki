@@ -20,39 +20,34 @@ copyright: 'Copyright &copy; 2025 - 2026 Physics Learning Wiki Team'
 
 # Contents
 nav:
-  - 简介:
+  - 开始学习:
     - 首页: index.md
     - 学习路线总览: intro/roadmap.md
-    - 课程路线:
-      - 课程路线总览: courses/index.md
-      - 理论力学: courses/theoretical-mechanics.md
-      - 电磁学: courses/electromagnetism.md
-      - 数学物理方法: courses/mathematical-methods-for-physics.md
-    - 关于本项目: intro/about.md
-    - 如何参与: intro/htc.md
-    - 内容编写指引: intro/writing.md
-    - 信息框与补充内容规范: intro/admonitions.md
-    - Physics Learning Wiki 不是什么: intro/what-pl-wiki-is-not.md
-    - 格式手册: intro/format.md
     - 数学符号表: intro/symbol.md
     - 术语表: glossary/glossary.md
     - F.A.Q.: intro/faq.md
-    - 镜像站列表: intro/mirrors.md
-    - 致谢: intro/thanks.md
-    - 投稿: submit.md
-    - 贡献者: intro/contributors.md
-  - 竞赛相关:
-    - 竞赛简介: contest/index.md
-    - 赛事:
-      - CPhO (全国中学生物理竞赛): contest/cpho.md
-      - IPhO (国际物理奥林匹克): contest/ipho.md
-      - APhO (亚洲物理奥林匹克): contest/apho.md
-      - CUPT (中国大学生物理学术竞赛): contest/cupt.md
-    - 学习路线: contest/roadmap.md
-    - 学习资源: contest/resources.md
-    - 技巧:
-      - 考试策略: contest/strategy.md
-      - 常见错误: contest/common-mistakes.md
+    - 关于本站:
+      - 关于本项目: intro/about.md
+      - Physics Learning Wiki 不是什么: intro/what-pl-wiki-is-not.md
+      - 镜像站列表: intro/mirrors.md
+      - 致谢: intro/thanks.md
+      - 贡献者: intro/contributors.md
+    - 参与贡献:
+      - 如何参与: intro/htc.md
+      - 投稿: submit.md
+      - 内容编写指引: intro/writing.md
+      - 信息框与补充内容规范: intro/admonitions.md
+      - 格式手册: intro/format.md
+      - 力学章节编写说明: mechanics/mechanics-writing.md
+      - 热学章节编写说明: thermodynamics/thermodynamics-writing.md
+      - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
+      - 光学章节编写说明: optics/optics-writing.md
+      - 近代物理章节编写说明: modern/modern-writing.md
+  - 课程路线:
+    - 课程路线总览: courses/index.md
+    - 理论力学: courses/theoretical-mechanics.md
+    - 电磁学: courses/electromagnetism.md
+    - 数学物理方法: courses/mathematical-methods-for-physics.md
   - 数学工具:
     - 数学工具简介: math/index.md
     - 微积分:
@@ -114,7 +109,6 @@ nav:
       - 厄米多项式: math/special-functions/hermite.md
       - 连带拉盖尔多项式: math/special-functions/laguerre.md
   - 经典力学:
-    - 力学章节编写说明: mechanics/mechanics-writing.md
     - 力学简介: mechanics/index.md
     - 质点运动学:       
       - 基础概念: mechanics/kinematics/basic-concepts.md
@@ -148,7 +142,6 @@ nav:
       - 拉格朗日力学: mechanics/analytical/lagrangian.md
       - 哈密顿力学: mechanics/analytical/hamiltonian.md
   - 热学与统计物理:
-    - 热学章节编写说明: thermodynamics/thermodynamics-writing.md
     - 热学简介: thermodynamics/index.md
     - 热学基本概念和物质聚集态:
       - 章节导读: thermodynamics/chapter-1/index.md
@@ -182,7 +175,6 @@ nav:
       - 4. 热平衡与自由能: thermodynamics/chapter-4/thermal-equilibrium-and-free-energy.md
 
   - 电磁学:
-    - 电磁学章节编写说明: electromagnetism/electromagnetism-writing.md
     - 电磁学简介: electromagnetism/index.md
     - 静电场: electromagnetism/electrostatics.md
     - 恒定电流与电路: electromagnetism/dc-circuit.md
@@ -192,7 +184,6 @@ nav:
     - 麦克斯韦方程组与电磁波: electromagnetism/maxwell.md
     - 物质中的电磁场: electromagnetism/matter.md
   - 光学:
-    - 光学章节编写说明: optics/optics-writing.md
     - 光学简介: optics/index.md
     - 几何光学: optics/geometric.md
     - 波动光学:
@@ -201,7 +192,6 @@ nav:
       - 偏振: optics/polarization.md
     - 现代光学基础: optics/modern.md
   - 近代物理:
-    - 近代物理章节编写说明: modern/modern-writing.md
     - 近代物理简介: modern/index.md
     - 狭义相对论: modern/special-relativity.md
     - 广义相对论基础: modern/general-relativity.md
@@ -216,12 +206,6 @@ nav:
     - 实验简介: experiment/index.md
     - 误差分析与数据处理: experiment/error-analysis.md
     - 常用测量仪器: experiment/instruments.md
-  - 知识小测:
-    - 首页: quiz/index.md
-    - 测试集合: quiz/sets.md
-    - 题库浏览: quiz/questions.md
-    - 我的题库: quiz/library.md
-    - 贡献题目: quiz/contribute.md
   - 计算物理与工具:
     - 工具简介: tools/index.md
     - LaTeX 物理写作:
@@ -234,6 +218,24 @@ nav:
     - Python 科学计算: tools/python-scicomp.md
     - 模拟软件 (Mathematica/Matlab): tools/simulation.md
     - 绘图工具: tools/plotting.md
+  - 知识小测:
+    - 首页: quiz/index.md
+    - 测试集合: quiz/sets.md
+    - 题库浏览: quiz/questions.md
+    - 我的题库: quiz/library.md
+    - 贡献题目: quiz/contribute.md
+  - 竞赛相关:
+    - 竞赛简介: contest/index.md
+    - 赛事:
+      - CPhO (全国中学生物理竞赛): contest/cpho.md
+      - IPhO (国际物理奥林匹克): contest/ipho.md
+      - APhO (亚洲物理奥林匹克): contest/apho.md
+      - CUPT (中国大学生物理学术竞赛): contest/cupt.md
+    - 学习路线: contest/roadmap.md
+    - 学习资源: contest/resources.md
+    - 技巧:
+      - 考试策略: contest/strategy.md
+      - 常见错误: contest/common-mistakes.md
 # Theme
 theme:
   name: null

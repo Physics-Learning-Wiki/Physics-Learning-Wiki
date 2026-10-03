@@ -6,6 +6,24 @@
 }
 
 /* Logo title */
+.plw-start-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.plw-start-grid > p { margin: 0; }
+.plw-start-grid .md-button { width: 100%; text-align: center; }
+.plw-course-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.plw-course-card { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; }
+.plw-course-card h2 { margin-top: 0; }
+.plw-title-anchor { display: block; scroll-margin-top: 4rem; }
+@media (max-width: 599px) {
+  .plw-start-grid, .plw-course-grid { grid-template-columns: 1fr; }
+  .plw-start-grid .md-button { padding: .5em 1em; }
+}
+
+/* Logo title */
 .md-header__topic:first-child {
   font-weight: initial !important;
 }

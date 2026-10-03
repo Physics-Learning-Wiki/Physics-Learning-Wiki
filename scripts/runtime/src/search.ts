@@ -303,6 +303,13 @@ export function mountSearch(
   form.addEventListener("reset", handleReset, { signal });
   form.addEventListener("submit", handleSubmit, { signal });
   document.addEventListener("keydown", handleKeydown, { signal });
+  document.addEventListener(
+    "click",
+    event => {
+      if ((event.target as Element | null)?.closest("[data-plw-open-search]")) setOpen(true);
+    },
+    { signal }
+  );
   resultList.addEventListener(
     "click",
     event => {
