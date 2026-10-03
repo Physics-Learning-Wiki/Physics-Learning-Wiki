@@ -27,12 +27,15 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## D
 
--   **导数（derivative）**：函数增量与自变量增量之比的极限，存在时描述局部变化率．见 [正文](../math/calculus/derivative.md)．
+<!-- plw:glossary-entry derivative -->
+
 -   **等体过程（isochoric process）**：体积不变的过程，亦称等容过程；体积功为零，但不能据此排除其他形式的功．见 [正文](../thermodynamics/chapter-3/first-law-ideal-gas.md)．
 -   **电场（electric field，$\boldsymbol E$）**：描述电作用的场，其强度由静止试探电荷受到的电力与电荷量之比定义．见 [正文](../electromagnetism/index.md)．
 -   **电动势（electromotive force，$\mathcal E$）**：非静电作用沿电源内部或闭合回路推动单位电荷所作的功，不等同于一般情况下的端电压．见 [正文](../electromagnetism/index.md)．
 -   **定容热容（heat capacity at constant volume，$C_V$）**：体积固定、其他约束明确时，系统内能对温度的偏导数．见 [正文](../thermodynamics/chapter-3/gas-heat-capacity-internal-energy-enthalpy.md)．
--   **动量（momentum，$\boldsymbol p$）**：牛顿力学中为 $m\boldsymbol v$；相对论表达式不同．见 [正文](../mechanics/dynamics/momentum-energy.md)．
+
+<!-- plw:glossary-entry momentum -->
+
 -   **动能（kinetic energy，$E_k$）**：与运动有关的能量；非相对论质点为 $mv^2/2$．见 [正文](../mechanics/dynamics/momentum-energy.md)．
 
 ## F
@@ -47,7 +50,8 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 -   **刚体（rigid body）**：各质点间距离保持不变的理想化模型．见 [正文](../mechanics/rigid-body/rigid-body.md)．
 -   **功（work）**：能量传递的过程量；力学中为 $\int\boldsymbol F\cdot\mathrm d\boldsymbol r$，热学用 $A>0$ 表示系统对外做功．见 [正文](../thermodynamics/chapter-3/energy-conservation-to-first-law.md)．
 -   **固有频率（natural frequency）**：系统在无阻尼自由振动模型下的频率，与驱动频率区别．见 [正文](../mechanics/oscillation-wave/linear-oscillation.md)．
--   **惯性系（inertial frame）**：自由质点保持静止或匀速直线运动的参考系，亦称惯性参考系．见 [正文](../mechanics/kinematics/reference-frames.md)．
+
+<!-- plw:glossary-entry inertial-frame -->
 
 ## H
 
@@ -107,6 +111,8 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 ## W
 
 <!-- terminology-ignore: T103 -- 首次解释正文主词的通行别名 -->
+
+<!-- plw:glossary-entry differential-equation -->
 
 -   **物态方程（equation of state）**：联系平衡态参量的方程，亦称状态方程；例如理想气体 $pV=\nu RT$．见 [正文](../thermodynamics/chapter-1/gas.md)．
 -   **物质的量（amount of substance，$\nu$）**：以指定基本单元数目计量物质的 SI 基本量，单位摩尔；$N=\nu N_A$．见 [正文](../thermodynamics/chapter-1/gas.md)．

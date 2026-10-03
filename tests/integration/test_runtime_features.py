@@ -39,8 +39,9 @@ def test_only_inline_concept_links_mark_the_feature() -> None:
     ordinary = page_html('<nav class="plw-prerequisites"><a href="tool/">导数</a></nav>')
     assert "concept-reference" not in transform_page_html(ordinary)
     linked = page_html('<a href="tool/" data-plw-concept="derivative">导数</a>')
-    soup = BeautifulSoup(transform_page_html(linked), "html.parser")
+    soup = BeautifulSoup(transform_page_html(linked, "mechanics/newton/"), "html.parser")
     assert soup.select_one("article")["data-plw-features"] == "concept-reference"
+    assert soup.select_one('link[data-plw-feature="concept-reference"]')["href"] == "../../_static/css/features/concept-reference.css"
 
 
 def test_feature_selectors_are_detected_once_in_stable_order() -> None:

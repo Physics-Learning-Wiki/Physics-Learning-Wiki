@@ -27,6 +27,7 @@ const REPRESENTATIVE_PAGES = [
   "quiz/contribute/index.html"
 ];
 const FEATURE_RESOURCE_PATTERNS = {
+  conceptReference: /(?:^|\/)features\/concept-reference\.(?:js|css)/i,
   math: /mathjax\.css/i,
   mermaid: /(?:mermaid(?:-responsive)?\.js|mermaid(?:\.min)?\.js|mermaid@)/i,
   quizJs: /(?:quiz-app|features\/quiz)\.js/i,
@@ -37,6 +38,7 @@ const FEATURE_RESOURCE_PATTERNS = {
   pagefind: /(?:^|\/)pagefind(?:\/|\.|-)/i
 };
 const FEATURE_SELECTORS = {
+  "concept-reference": "a[data-plw-concept]",
   math: "mjx-container, .arithmatex",
   mermaid: "[data-plw-mermaid-source], .mermaid",
   quiz: "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-library-root, #plw-quiz-home-root, .plw-quiz-inline-root",

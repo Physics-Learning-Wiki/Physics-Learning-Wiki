@@ -13,12 +13,13 @@ export function mount(root: ParentNode, { signal }: FeatureMountContext): void |
   const document = root.ownerDocument;
   const window = document?.defaultView;
   if (!document || !window || signal.aborted || typeof HTMLElement.prototype.showPopover !== "function") return;
-  const source = root.querySelector('script[data-plw-concepts][type="application/json"]');
-  if (!source?.textContent) return;
+  const source = root.querySelector<HTMLTemplateElement>("template[data-plw-concepts]");
+  const json = source?.content.textContent;
+  if (!json) return;
 
   let concepts: Record<string, Concept>;
   try {
-    concepts = JSON.parse(source.textContent);
+    concepts = JSON.parse(json);
     if (!concepts || typeof concepts !== "object" || Array.isArray(concepts)) return;
     for (const value of Object.values(concepts)) {
       if (!value || [value.name, value.english, value.summary, value.href].some(item => typeof item !== "string"))

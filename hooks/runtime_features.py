@@ -56,9 +56,10 @@ MATH_REPLACEMENTS = {
     "\\partial": "d",
 }
 QUIZ_STYLESHEET = "_static/css/quiz.css?v=5"
-FORM_STYLESHEETS = {
+FEATURE_STYLESHEETS = {
     "submit": "_static/css/features/submit.css?v=2",
     "question-contribute": "_static/css/features/question-contribute.css?v=2",
+    "concept-reference": "_static/css/features/concept-reference.css",
 }
 
 
@@ -141,10 +142,13 @@ def transform_page_html(output: str, page_url: str = "", search_metadata=None) -
                     )
                 )
         if soup.head is not None:
-            for feature in ("submit", "question-contribute"):
+            for feature, asset in FEATURE_STYLESHEETS.items():
                 if feature not in features:
                     continue
-                stylesheet = _page_relative_asset(page_url, FORM_STYLESHEETS[feature])
+                # Material replaces head links on instant navigation. Keep
+                # page-specific CSS in the page head so cached feature modules
+                # also have their styles when returning through history.
+                stylesheet = _page_relative_asset(page_url, asset)
                 if soup.head.select_one(f'link[rel="stylesheet"][href="{stylesheet}"]'):
                     continue
                 soup.head.append(

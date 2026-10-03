@@ -61,6 +61,7 @@ jobs:
           corepack yarn forms:test
           corepack yarn forms:build:check
           corepack yarn features:build:check
+          corepack yarn features:typecheck
           corepack yarn media:test
       - name: Build production site
         env:

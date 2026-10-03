@@ -16,7 +16,7 @@ function article(data = values) {
     <a href="${destination}" data-plw-concept="derivative">再次引用导数</a>
     <a href="${destination}" data-plw-concept="momentum">动量</a>
     <button id="outside">外部按钮</button>
-    <script type="application/json" data-plw-concepts>${JSON.stringify(data).replace(/</g, "\\u003c")}</script>
+    <template data-plw-concepts>${JSON.stringify(data).replace(/</g, "\\u003c")}</template>
   </article>`;
 }
 

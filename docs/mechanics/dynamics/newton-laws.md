@@ -5,6 +5,8 @@ assessments:
 - placement: footer
   set: mechanics.dynamics.newton-laws.full
 author: Physics-Learning-Wiki
+prerequisites:
+- derivative
 description: 系统讲解牛顿三大运动定律及其物理意义，重点训练惯性系判断、合外力与加速度分析、受力图、坐标分量方程以及单体法和整体法．
 learning_objectives:
 - anchor: newton-first-law
@@ -50,7 +52,7 @@ status: review
 
 1.  **惯性（Inertia）**：揭示了物体具有保持原有运动状态不变的性质，称为惯性．质量是物体惯性大小的量度．
 2.  **力的定义**：力不是维持运动的原因，而是 **改变** 运动状态（即产生加速度）的原因．
-3.  **惯性系（Inertial Frame）**：定义了一类特殊的参考系——惯性系．在惯性系中，不受外力的物体加速度为零．
+3.  **[惯性系](concept:inertial-frame)（Inertial Frame）**：定义了一类特殊的参考系——惯性系．在惯性系中，不受外力的物体加速度为零．
     -   地球参考系通常可近似看作惯性系．
     -   太阳参考系比地球参考系更接近惯性系．
 
@@ -63,7 +65,7 @@ status: review
 ### 表述
 
 ??? note "补充说明"
-    **物体动量的变化率与作用在物体上的力成正比，且方向相同．**
+    **物体 [动量](concept:momentum) 的变化率与作用在物体上的力成正比，且方向相同．**
 
 ### 数学表达
 
@@ -72,6 +74,8 @@ $$
 $$
 
 其中 $\boldsymbol{p} = m\boldsymbol{v}$ 是动量．
+
+这里的瞬时变化率用动量对时间的 [导数](concept:derivative) 表示．
 
 当物体质量 $m$ 为常数时，公式简化为我们最熟悉的形式：
 

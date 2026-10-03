@@ -1,10 +1,13 @@
 ---
 author: Leafuke, 匿名同学
+prerequisites:
+- derivative
+- differential-equation
 status: review
 description: "介绍简谐振动，内容包括运动方程推导、解的形式、周期与频率．"
 ---
 
-线性振动是物理学中一种重要的运动形式，广泛存在于各种物理系统中．它通常指系统在平衡位置附近的小幅度振动，其运动方程可以用线性微分方程描述．
+线性振动是物理学中一种重要的运动形式，广泛存在于各种物理系统中．它通常指系统在平衡位置附近的小幅度振动，其运动方程可以用线性 [微分方程](concept:differential-equation) 描述．
 
 <a id="简单谐振动"></a>
 

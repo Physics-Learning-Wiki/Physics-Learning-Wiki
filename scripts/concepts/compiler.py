@@ -168,9 +168,10 @@ class ConceptCompiler:
                 key: {"name": value.name, "english": value.english, "summary": value.summary, "href": self.url(key)}
                 for key, value in self.used.items()
             }
-            data = soup.new_tag("script", attrs={
-                "type": "application/json", "data-plw-concepts": "", "data-pagefind-ignore": "all"
-            })
+            # This Material fork re-executes body scripts during instant
+            # navigation without preserving inline script attributes. An
+            # inert template preserves JSON and is never executed or indexed.
+            data = soup.new_tag("template", attrs={"data-plw-concepts": "", "data-pagefind-ignore": "all"})
             data.string = json.dumps(payload, ensure_ascii=False).replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
             soup.append(data)
         return str(soup)

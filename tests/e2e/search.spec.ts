@@ -2,6 +2,24 @@ import { expect, test } from "@playwright/test";
 
 const basePath = "/Physics-Learning-Wiki/";
 
+test("concept explanation data stays out of the article search content", async ({ page }) => {
+  await page.goto(`${basePath}mechanics/dynamics/newton-laws/`);
+  const result = await page.evaluate(async () => {
+    const moduleUrl = "/Physics-Learning-Wiki/pagefind/pagefind.js";
+    const pagefind = await import(moduleUrl);
+    const results = await pagefind.search("牛顿");
+    const pages = await Promise.all(results.results.map((result: { data: () => Promise<any> }) => result.data()));
+    const article = pages.find((item: { url: string }) => item.url.includes("mechanics/dynamics/newton-laws/"));
+    const concepts = JSON.parse(
+      document.querySelector<HTMLTemplateElement>("template[data-plw-concepts]")!.content.textContent!
+    );
+    return { content: article?.content, summary: concepts.momentum.summary };
+  });
+  expect(result.content).toBeTruthy();
+  expect(result.content).not.toContain(result.summary);
+  expect(result.content).not.toContain("inertial-frame");
+});
+
 test("all results and matching sections remain reachable with readable metadata", async ({ page }) => {
   await page.route("**/pagefind/pagefind.js", route =>
     route.fulfill({

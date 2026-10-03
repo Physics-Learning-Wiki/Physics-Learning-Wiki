@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 const basePath = "/Physics-Learning-Wiki/";
 
 const forbiddenOrdinaryPageRequests = [
+  /(?:^|\/)features\/concept-reference\.(?:js|css)/i,
   /mathjax\.css/i,
   /(?:^|\/)features\/mermaid\.js/i,
   /(?:^|\/)features\/quiz\.js/i,

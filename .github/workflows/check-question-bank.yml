@@ -5,6 +5,15 @@ on:
     paths: &quiz-paths
       - 'question-bank/**'
       - 'scripts/question_bank/**'
+      - 'data/concepts.yml'
+      - 'scripts/concepts/**'
+      - 'hooks/concept_reference.py'
+      - 'scripts/features/**'
+      - 'docs/_static/js/features/concept-reference.js'
+      - 'docs/glossary/glossary.md'
+      - 'docs/intro/writing.md'
+      - 'docs/mechanics/oscillation-wave/linear-oscillation.md'
+      - 'tsconfig.features.json'
       - 'scripts/quiz/**'
       - 'tests/question_bank/**'
       - 'tests/integration/**'
@@ -102,12 +111,16 @@ jobs:
           yarn runtime:typecheck
           yarn runtime:test
           yarn runtime:build:check
+          yarn features:typecheck
+          yarn features:build:check
       - name: Build MkDocs site for smoke test
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run mkdocs build --clean
       - name: Run browser smoke test
-        run: yarn e2e:smoke
+        run: |
+          yarn e2e:smoke
+          yarn playwright test tests/e2e/concept-popover.spec.ts tests/e2e/concept-reference.spec.ts
       - uses: actions/upload-artifact@v4
         with:
           name: question-bank-metrics

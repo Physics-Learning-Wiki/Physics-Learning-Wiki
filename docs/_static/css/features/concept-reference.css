@@ -5,7 +5,7 @@
 }
 
 .md-typeset a[data-plw-concept-ready]::after {
-  content: "ⓘ";
+  content: "\2060ⓘ";
   margin-inline-start: .15em;
   font-size: .7em;
   vertical-align: super;

@@ -70,7 +70,7 @@ prerequisites: [momentum, derivative]
     assert [a.text for a in nav.select("a")] == ["动量", "导数"]
     assert not nav.select("[data-plw-concept]")
     assert nav.find_previous_sibling().name == "h1"
-    data = soup.select_one("script[data-plw-concepts]")
+    data = soup.select_one("template[data-plw-concepts]")
     assert data["data-pagefind-ignore"] == "all"
     payload = json.loads(data.string)
     assert list(payload) == ["derivative", "momentum"]
