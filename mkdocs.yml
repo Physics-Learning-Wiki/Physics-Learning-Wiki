@@ -290,6 +290,7 @@ plugins:
 hooks:
   - hooks/on_env.py
   - hooks/question_bank.py
+  - hooks/concept_reference.py
   - hooks/runtime_features.py
 
 # Customization

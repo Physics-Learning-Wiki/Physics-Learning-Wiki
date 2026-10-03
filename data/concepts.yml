@@ -1,0 +1,25 @@
+version: 1
+
+concepts:
+  derivative:
+    name: 导数
+    english: Derivative
+    summary: 函数增量与自变量增量之比的极限，存在时描述局部变化率。
+    target: math/calculus/derivative.md
+  differential-equation:
+    name: 微分方程
+    english: Differential equation
+    summary: 将未知函数及其导数联系起来的方程。
+    target: math/differential-equations/ode-intro.md
+  momentum:
+    name: 动量
+    english: Momentum
+    summary: 牛顿力学中，质点动量是质量与速度的乘积，是矢量；相对论表达式不同。
+    target: mechanics/dynamics/momentum-energy.md
+  inertial-frame:
+    name: 惯性参考系
+    aliases:
+      - 惯性系
+    english: Inertial frame
+    summary: 自由质点保持静止或匀速直线运动的参考系。
+    target: mechanics/kinematics/reference-frames.md
