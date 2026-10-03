@@ -7,12 +7,23 @@ test("Turnstile uses one loader promise and removes its widget when the feature 
   const previousWindow = globalThis.window;
   const previousDocument = globalThis.document;
   const listeners = new Map();
+  const timers = new Map();
+  let nextTimerId = 0;
   let appendCount = 0;
   let removedWidget;
   let renderedOptions;
   let resetWidget;
   let script;
-  const fakeWindow = {};
+  const fakeWindow = {
+    setTimeout(callback, delay) {
+      const id = ++nextTimerId;
+      timers.set(id, { callback, delay });
+      return id;
+    },
+    clearTimeout(id) {
+      timers.delete(id);
+    }
+  };
   const fakeDocument = {
     querySelector() {
       return null;
@@ -62,12 +73,16 @@ test("Turnstile uses one loader promise and removes its widget when the feature 
     const first = loadTurnstile();
     const second = loadTurnstile();
     assert.equal(appendCount, 1);
+    assert.equal(timers.size, 1);
+    assert.equal([...timers.values()][0].delay, 10000);
     assert.match(script.src, /turnstile\/v0\/api\.js\?render=explicit$/);
 
     fakeWindow.turnstile = api;
     listeners.get("load")();
     assert.equal(await first, api);
     assert.equal(await second, api);
+    assert.equal(timers.size, 0);
+    assert.equal(listeners.size, 0);
 
     const container = {
       id: "turnstile-widget",
@@ -92,6 +107,7 @@ test("Turnstile uses one loader promise and removes its widget when the feature 
     mounted.dispose();
     assert.equal(removedWidget, "widget-1");
   } finally {
+    timers.clear();
     resetTurnstileForTests();
     if (previousWindow === undefined) delete globalThis.window;
     else Object.defineProperty(globalThis, "window", { value: previousWindow, configurable: true, writable: true });
