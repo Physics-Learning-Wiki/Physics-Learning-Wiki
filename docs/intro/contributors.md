@@ -1,27 +1,19 @@
----
-
-status: review
-description: "本站贡献者名单及贡献记录．"
----
-
 ## 贡献者墙
 
-> 最后更新：2026-09-01
+> 最后更新：2026-10-01
 
-感谢每一位为 Physics Learning Wiki 做出贡献的朋友！当前这个页面只会记录 Git 提交者，仍需继续完善．
-
-<a id="贡献者墙"></a>
+感谢每一位为 Physics Learning Wiki 做出贡献的朋友！当前这个页面只会记录 Git 提交者，仍需继续完善.
 
 ## GitHub 贡献者
 
 | 贡献者                     | 提交次数 |
 | ----------------------- | ---- |
-| Leafuke                 | 242  |
-| Find\_Light             | 8    |
-| copilot-swe-agent\[bot] | 2    |
-| Find-Light1130          | 1    |
-| atexcuseme              | 1    |
+| Leafuke | 371 |
+| Find_Light | 8 |
+| copilot-swe-agent[bot] | 2 |
+| Find-Light1130 | 1 |
+| atexcuseme | 1 |
 
-***
+---
 
-*此页面由 GitHub Actions 每月自动更新．*
+*此页面由 GitHub Actions 每月自动更新。*
