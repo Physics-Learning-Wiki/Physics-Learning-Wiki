@@ -145,7 +145,7 @@ test("404 retains working search and is excluded from its own results on mobile"
   });
   const missingPageResponse = await page.goto(`${basePath}page-that-does-not-exist/`);
   expect(missingPageResponse?.status()).toBe(404);
-  const searchButton = page.locator('label[for="__search"]').first();
+  const searchButton = page.getByRole("button", { name: "打开搜索", exact: true });
   await searchButton.click();
 
   const input = page.locator(".md-search__input");

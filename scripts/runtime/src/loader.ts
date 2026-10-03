@@ -1,3 +1,4 @@
+import { mountNavigation } from "./navigation.js";
 import { mountSearch } from "./search.js";
 
 export type FeatureDisposer = () => void | Promise<void>;
@@ -376,6 +377,7 @@ const featureRegistry: FeatureRegistry = {
 function startRuntime() {
   if (typeof window === "undefined" || typeof document === "undefined") return;
   const runtime = createFeatureRuntime({ document, registry: featureRegistry });
+  mountNavigation(document);
   mountSearch(document, getSiteRoot);
   const lifecycle = (window as Window & { document$?: LifecycleObservable }).document$;
   let firstDocument = true;

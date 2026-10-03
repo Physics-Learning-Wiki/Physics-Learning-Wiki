@@ -218,3 +218,7 @@ GitHub API 在文件目录变更后不能跟踪统计，所以我们在文件头
 [^ref1]: [维基百科：新手入门/编辑](https://zh.wikipedia.org/wiki/Wikipedia:%E6%96%B0%E6%89%8B%E5%85%A5%E9%96%80/%E7%B7%A8%E8%BC%AF)
 
 [^ref2]: [Web-based editor - GitHub Codespaces - GitHub Docs](https://docs.github.com/en/codespaces/developing-in-codespaces/web-based-editor)
+
+## AI 辅助整理
+
+可使用 [GitHub Copilot](https://github.com/copilot) 协助整理草稿和代码示例．这是外部工具，使用前仍需自行核对物理结论与引用．

@@ -132,7 +132,7 @@ mjx-container > img {
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #2e303e;
   --md-accent-fg-color: #00bda4;
-  --md-typeset-a-color: #526cfe;
+  --md-typeset-a-color: #9aaaff;
 }
 
 [data-md-color-scheme="slate"] .md-typeset img {
@@ -231,3 +231,14 @@ aside.md-status::after {
 }
 
 
+
+/* Named controls keep Material's checkbox-driven responsive layout. */
+button.md-header__button, button.md-search__icon { background: none; border: 0; cursor: pointer; }
+.plw-nav-close { display: none; }
+@media (max-width: 1219px) {
+  .plw-nav-close { display: block; position: absolute; top: .4rem; right: .4rem; z-index: 6; padding: .4rem; width: 2.2rem; height: 2.2rem; cursor: pointer; }
+}
+[data-md-color-scheme="slate"] .md-typeset a:hover { color: #c0caff; }
+.md-typeset a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid var(--md-typeset-a-color); outline-offset: 3px;
+}
