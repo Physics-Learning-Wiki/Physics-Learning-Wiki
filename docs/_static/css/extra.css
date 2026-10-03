@@ -18,6 +18,11 @@
 .plw-course-card { border: 1px solid var(--md-default-fg-color--lightest); border-radius: .3rem; padding: 1rem; }
 .plw-course-card h2 { margin-top: 0; }
 .plw-title-anchor { display: block; scroll-margin-top: 4rem; }
+.md-search-result__article .plw-search-context { color: var(--md-default-fg-color--light); font-size: .65rem; }
+.plw-search-more { margin: .5rem 1rem 1rem; }
+.plw-search-more[hidden] { display: none; }
+.md-search-result__more { padding: .3rem 1rem; }
+.md-search-result__more > summary { cursor: pointer; }
 @media (max-width: 599px) {
   .plw-start-grid, .plw-course-grid { grid-template-columns: 1fr; }
   .plw-start-grid .md-button { padding: .5em 1em; }

@@ -378,7 +378,10 @@ function startRuntime() {
   const runtime = createFeatureRuntime({ document, registry: featureRegistry });
   mountSearch(document, getSiteRoot);
   const lifecycle = (window as Window & { document$?: LifecycleObservable }).document$;
+  let firstDocument = true;
   subscribeDocumentLifecycle(lifecycle, document, currentDocument => {
+    if (!firstDocument) currentDocument.dispatchEvent(new Event("plw:page-change"));
+    firstDocument = false;
     void runtime.mountDocument(currentDocument);
   });
 }

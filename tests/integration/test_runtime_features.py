@@ -13,6 +13,19 @@ def page_html(content: str, after_article: str = "") -> str:
     )
 
 
+def test_search_metadata_is_literal_and_math_remains_indexed():
+    output = transform_page_html(
+        page_html('<p>牛顿运动</p><span class="arithmatex">\\(F=ma\\)</span>'),
+        "mechanics/newton/",
+        {"breadcrumb": "力学 › 牛顿", "kind": "知识正文", "description": '<script>文本</script>'},
+    )
+    soup = BeautifulSoup(output, "html.parser")
+    assert soup.select_one('[data-pagefind-meta="description[content]"]')["content"] == '<script>文本</script>'
+    assert soup.select_one('[data-pagefind-meta="breadcrumb[content]"]')["content"] == "力学 › 牛顿"
+    assert soup.select_one(".plw-pagefind-math").get_text() == "F=ma"
+    assert soup.select_one("script") is None
+
+
 def test_ordinary_article_gets_pagefind_body_without_feature_markers() -> None:
     result = BeautifulSoup(transform_page_html(page_html("<p>普通文章</p>")), "html.parser")
     article = result.select_one("article.md-content__inner.md-typeset")

@@ -107,7 +107,7 @@ def _page_relative_asset(page_url: str, asset_url: str) -> str:
     return f"{relative_path}?{query}" if query else relative_path
 
 
-def transform_page_html(output: str, page_url: str = "") -> str:
+def transform_page_html(output: str, page_url: str = "", search_metadata=None) -> str:
     """Mark the article's features and high-noise site UI without changing forms."""
     soup = BeautifulSoup(output, "html.parser")
     article = soup.select_one(ARTICLE_SELECTOR)
@@ -122,6 +122,11 @@ def transform_page_html(output: str, page_url: str = "") -> str:
         else:
             article.attrs.pop("data-plw-features", None)
         article["data-pagefind-body"] = ""
+        if search_metadata:
+            for name, value in search_metadata.items():
+                if value:
+                    meta = soup.new_tag("meta", attrs={"data-pagefind-meta": f"{name}[content]", "content": value})
+                    article.insert(0, meta)
 
         if "quiz" in features and soup.head is not None:
             stylesheet = _page_relative_asset(page_url, QUIZ_STYLESHEET)
@@ -179,7 +184,31 @@ def transform_page_html(output: str, page_url: str = "") -> str:
 
 def on_post_page(output, page, config, **kwargs):
     del config, kwargs
-    return transform_page_html(output, getattr(page, "url", ""))
+    titles = []
+    node = page
+    while node is not None:
+        title = getattr(node, "title", None)
+        if title:
+            titles.append(title)
+        node = getattr(node, "parent", None)
+    path = page.file.src_uri
+    if path.startswith("courses/"):
+        kind = "课程路线"
+    elif path.startswith("intro/") or path.endswith("-writing.md") or path == "submit.md":
+        kind = "贡献指南" if any(word in path for word in ("writing", "format", "admonitions", "htc", "submit")) else "站点指南"
+    elif path.startswith("quiz/"):
+        kind = "知识小测"
+    else:
+        kind = "知识正文"
+    description = page.meta.get("description") or ""
+    if not description:
+        content = BeautifulSoup(page.content, "html.parser")
+        for noise in content.select(".arithmatex, pre, code, .plw-pagefind-math, form, .admonition, details"):
+            noise.decompose()
+        paragraph = next((p for p in content.select("p") if p.get_text(strip=True)), None)
+        description = paragraph.get_text(" ", strip=True)[:180] if paragraph else ""
+    metadata = {"breadcrumb": " › ".join(reversed(titles)), "kind": kind, "description": str(description)}
+    return transform_page_html(output, getattr(page, "url", ""), metadata)
 
 
 def on_post_build(config, **kwargs):

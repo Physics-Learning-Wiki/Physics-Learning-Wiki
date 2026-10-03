@@ -96,10 +96,18 @@ function createResultLink(
   heading.textContent = title || "未命名页面";
   article.append(heading);
 
+  const context = [data.meta?.kind, data.meta?.breadcrumb].filter(Boolean).join(" · ");
+  if (context) {
+    const label = document.createElement("p");
+    label.className = "plw-search-context";
+    label.textContent = context;
+    article.append(label);
+  }
   if (excerpt) {
     const teaser = document.createElement("p");
     teaser.className = "md-search-result__teaser";
-    appendSafeExcerpt(document, teaser, excerpt);
+    if (data.meta?.description) teaser.textContent = excerpt;
+    else appendSafeExcerpt(document, teaser, excerpt);
     article.append(teaser);
   }
 
@@ -109,7 +117,14 @@ function createResultLink(
 
 function createResultItem(document: Document, data: PagefindResultData, siteRoot: URL): HTMLLIElement | undefined {
   const title = data.meta?.title ?? "";
-  const mainLink = createResultLink(document, data, siteRoot, title, data.excerpt ?? "", "h1");
+  const mainLink = createResultLink(
+    document,
+    data,
+    siteRoot,
+    title,
+    data.meta?.description ?? data.excerpt ?? "",
+    "h1"
+  );
   if (!mainLink) return undefined;
 
   const item = document.createElement("li");
@@ -123,15 +138,8 @@ function createResultItem(document: Document, data: PagefindResultData, siteRoot
     const summary = document.createElement("summary");
     summary.textContent = `匹配章节（${subResults.length}）`;
     details.append(summary);
-    for (const subResult of subResults.slice(0, 5)) {
-      const subLink = createResultLink(
-        document,
-        { url: subResult.url },
-        siteRoot,
-        subResult.title ?? title,
-        subResult.excerpt ?? "",
-        "h2"
-      );
+    for (const subResult of subResults) {
+      const subLink = createResultLink(document, { url: subResult.url }, siteRoot, subResult.title ?? title, "", "h2");
       if (subLink) {
         const subItem = document.createElement("div");
         subItem.className = "md-search-result__item";
@@ -189,38 +197,84 @@ export function mountSearch(
     document.defaultView?.history.replaceState(null, "", url.href);
   };
 
+  const more = document.createElement("button");
+  more.type = "button";
+  more.className = "md-button plw-search-more";
+  more.textContent = "加载更多";
+  more.hidden = true;
+  resultList.after(more);
+  let matches: PagefindResult[] = [];
+  let displayed = 0;
+  let currentQuery = "";
+  let retry: (() => Promise<void>) | undefined;
+
+  const isCurrent = (sequence: number) => !signal.aborted && sequence === searchSequence;
+  const invalidate = () => {
+    ++searchSequence;
+    if (searchTimer !== undefined) window.clearTimeout(searchTimer);
+    searchTimer = undefined;
+    more.disabled = false;
+  };
+  const appendBatch = async (sequence: number) => {
+    more.disabled = true;
+    try {
+      const batch = await Promise.all(matches.slice(displayed, displayed + 10).map(result => result.data()));
+      if (!isCurrent(sequence)) return;
+      const fragment = document.createDocumentFragment();
+      for (const data of batch) {
+        const item = createResultItem(document, data, siteRoot);
+        if (item) fragment.append(item);
+      }
+      resultList.append(fragment);
+      displayed += batch.length;
+      resultMeta.textContent = matches.length ? `已显示 ${displayed} 条，共 ${matches.length} 条` : "没有找到结果";
+      more.hidden = displayed >= matches.length;
+      more.disabled = false;
+      more.textContent = "加载更多";
+      retry = undefined;
+    } catch (error) {
+      if (!isCurrent(sequence)) return;
+      resultMeta.textContent = `加载失败，已显示 ${displayed} 条，请重试`;
+      more.hidden = false;
+      more.disabled = false;
+      more.textContent = "重试";
+      retry = () => appendBatch(sequence);
+      console.error("PLW Pagefind result loading failed", error);
+    }
+  };
   const runSearch = async (query: string) => {
-    const normalizedQuery = query.trim();
-    const sequence = ++searchSequence;
-    if (!normalizedQuery) {
-      resultList.replaceChildren();
+    invalidate();
+    const sequence = searchSequence;
+    currentQuery = query.trim();
+    matches = [];
+    displayed = 0;
+    retry = undefined;
+    resultList.replaceChildren();
+    more.hidden = true;
+    updateQueryUrl(currentQuery);
+    if (!currentQuery) {
       resultMeta.textContent = "输入关键词开始搜索";
-      updateQueryUrl("");
       return;
     }
-
-    updateQueryUrl(normalizedQuery);
     resultMeta.textContent = "正在搜索…";
     try {
       const pagefind = await getPagefind();
-      const search = await pagefind.search(normalizedQuery);
-      if (sequence !== searchSequence) return;
-      const data = await Promise.all(search.results.slice(0, 10).map(result => result.data()));
-      if (sequence !== searchSequence) return;
-
-      const fragment = document.createDocumentFragment();
-      for (const result of data) {
-        const item = createResultItem(document, result, siteRoot);
-        if (item) fragment.append(item);
-      }
-      resultList.replaceChildren(fragment);
-      resultMeta.textContent = data.length === 0 ? "没有找到结果" : `找到 ${search.results.length} 条结果`;
+      if (!isCurrent(sequence)) return;
+      const search = await pagefind.search(currentQuery);
+      if (!isCurrent(sequence)) return;
+      matches = search.results;
+      await appendBatch(sequence);
     } catch (error) {
-      if (sequence !== searchSequence) return;
-      resultMeta.textContent = "搜索索引暂时不可用";
+      if (!isCurrent(sequence)) return;
+      resultMeta.textContent = "搜索索引暂时不可用，请重试";
+      more.hidden = false;
+      more.disabled = false;
+      more.textContent = "重试";
+      retry = () => runSearch(input.value);
       console.error("PLW Pagefind search failed", error);
     }
   };
+  more.addEventListener("click", () => void (retry ? retry() : appendBatch(searchSequence)), { signal });
 
   const focusInput = (select = false) => {
     input.focus();
@@ -238,17 +292,22 @@ export function mountSearch(
 
   const handleToggle = () => {
     if (toggle.checked) focusInput();
-    else input.blur();
+    else {
+      invalidate();
+      input.blur();
+    }
   };
 
   const handleInput = () => {
-    if (searchTimer !== undefined) window.clearTimeout(searchTimer);
+    invalidate();
+    more.hidden = true;
     searchTimer = window.setTimeout(() => void runSearch(input.value), 120);
   };
 
   const handleFocus = () => {
     setOpen(true);
     void getPagefind().catch(() => undefined);
+    if (input.value.trim() && !matches.length) void runSearch(input.value);
   };
 
   const handleReset = () => {
@@ -275,7 +334,9 @@ export function mountSearch(
     }
 
     if (!toggle.checked || !["ArrowDown", "ArrowUp", "Enter"].includes(event.key)) return;
-    const links = [...resultList.querySelectorAll<HTMLAnchorElement>(".md-search-result__link[href]")];
+    const links = [...resultList.querySelectorAll<HTMLAnchorElement>(".md-search-result__link[href]")].filter(
+      link => !link.closest("details") || link.closest("details")!.open
+    );
     if (event.key === "Enter" && document.activeElement === input && links[0]) {
       event.preventDefault();
       links[0].click();
@@ -318,6 +379,19 @@ export function mountSearch(
     { signal }
   );
 
+  document.addEventListener(
+    "plw:page-change",
+    () => {
+      invalidate();
+      matches = [];
+      displayed = 0;
+      resultList.replaceChildren();
+      more.hidden = true;
+      setOpen(false);
+    },
+    { signal }
+  );
+
   const isQuizSurfaceWithQuery = Boolean(document.querySelector("#plw-quiz-questions-root, #plw-quiz-library-root"));
   const initialQuery = isQuizSurfaceWithQuery
     ? null
@@ -329,7 +403,9 @@ export function mountSearch(
   }
 
   return () => {
+    invalidate();
     controller.abort();
+    more.remove();
     if (searchTimer !== undefined) window.clearTimeout(searchTimer);
   };
 }
