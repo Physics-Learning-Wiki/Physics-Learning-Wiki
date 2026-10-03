@@ -122,6 +122,7 @@ test("set and question catalogs remain interactive with query navigation", async
   await page.locator("#plw-filter-keyword").fill(questionId);
   const card = page.locator(`.plw-quiz-question-browser__card[data-question-id="${questionId}"]`);
   await expect(card).toBeVisible();
+  await card.locator(".plw-quiz-tools-more > summary").click();
   await card.locator(".plw-quiz-question-browser__permalink").click();
   await expect(page).toHaveURL(new RegExp(`[?&]q=${questionId}$`));
   await expect(card).toHaveClass(/is-targeted/);

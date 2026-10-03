@@ -51,7 +51,15 @@ export function createQuestionTools(
     update();
   });
   organize.addEventListener("click", () => showCollectionPicker(question, store, status, signal));
-  bar.append(save, organize);
+  const details = document.createElement("details");
+  details.className = "plw-quiz-tools-more";
+  const summary = document.createElement("summary");
+  summary.textContent = "更多操作";
+  const actions = document.createElement("div");
+  actions.className = "plw-quiz-tools-actions";
+  actions.append(organize);
+  details.append(summary, actions);
+  bar.append(save, details);
   if (options.manifestUrl && question.source) {
     const copyQuestion = document.createElement("button");
     copyQuestion.type = "button";
@@ -68,7 +76,7 @@ export function createQuestionTools(
       includeAnswer = document.createElement("input");
       includeAnswer.type = "checkbox";
       label.append(includeAnswer, document.createTextNode("附加当前作答"));
-      bar.append(label);
+      actions.append(label);
     }
     copyQuestion.addEventListener("click", () => {
       void copyText(formatQuestionMarkdown(question, options.manifestUrl!), status, signal);
@@ -83,7 +91,7 @@ export function createQuestionTools(
     deepseek.rel = "noopener noreferrer";
     deepseek.className = "plw-quiz-btn--secondary plw-quiz-btn--sm plw-quiz-btn--external";
     deepseek.textContent = "打开 DeepSeek ↗";
-    bar.append(copyQuestion, copyPrompt, deepseek);
+    actions.append(copyQuestion, copyPrompt, deepseek);
   }
   bar.append(status);
   return bar;

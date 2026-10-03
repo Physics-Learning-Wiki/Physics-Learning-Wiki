@@ -531,13 +531,18 @@ export class QuestionsSurface {
         copyStatus.setAttribute("role", "status");
         qHeader.querySelector(".plw-quiz-question-browser__id-row")?.append(copyStatus);
 
+        const tools = createQuestionTools(q, this.store, this.cardAbort.signal, {
+          manifestUrl: this.manifestUrl,
+          getAnswer: () => this.answers[q.id] ?? null
+        });
+        const metadata = document.createElement("div");
+        metadata.className = "plw-quiz-question-metadata";
+        if (permalink) metadata.append(permalink);
+        metadata.append(copyStatus);
+        tools.querySelector(".plw-quiz-tools-actions")?.prepend(metadata);
+        const save = tools.querySelector("button");
+        if (save) qHeader.append(save);
         card.append(qHeader);
-        card.append(
-          createQuestionTools(q, this.store, this.cardAbort.signal, {
-            manifestUrl: this.manifestUrl,
-            getAnswer: () => this.answers[q.id] ?? null
-          })
-        );
 
         // 2. Body: Stem
         card.append(renderQuestionStem(q));
@@ -661,6 +666,7 @@ export class QuestionsSurface {
         </div>
       `;
         card.append(details);
+        card.append(tools);
 
         // 7. Errata link
         const reportLink = document.createElement("a");

@@ -2,6 +2,19 @@ import { expect, test } from "@playwright/test";
 
 const basePath = "/Physics-Learning-Wiki/";
 
+test("mobile question stems precede secondary tools and remain visible in the first viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${basePath}quiz/questions/`);
+  const card = page.locator(".plw-quiz-question-browser__card").first();
+  await expect(card.locator(".plw-quiz-stem")).toBeInViewport();
+  await expect(card.getByRole("button", { name: "复制题目", exact: true })).toBeHidden();
+  const more = card.locator(".plw-quiz-tools-more > summary");
+  await more.focus();
+  await more.press("Enter");
+  await expect(card.getByRole("button", { name: "复制题目", exact: true })).toBeVisible();
+  await expect(card.getByRole("button", { name: "☆ 收藏", exact: true })).toBeVisible();
+});
+
 test("saving a question, organizing it, and restoring a backup", async ({ page }) => {
   await page.goto(`${basePath}quiz/questions/`);
   const first = page.locator(".plw-quiz-question-browser__card").first();
@@ -13,6 +26,7 @@ test("saving a question, organizing it, and restoring a backup", async ({ page }
   await page.goto(`${basePath}quiz/library/?view=saved`);
   const card = page.locator(".plw-quiz-library__card").filter({ has: page.getByRole("heading", { name: id! }) });
   await expect(card).toBeVisible();
+  await card.locator(".plw-quiz-tools-more > summary").click();
   await card.getByRole("button", { name: "整理收藏夹" }).click();
   const picker = page.getByRole("dialog", { name: `整理 ${id}` });
   await expect(picker).toBeVisible();
@@ -223,6 +237,7 @@ test("copy tools use learner markdown and a fixed DeepSeek destination", async (
   await page.goto(`${basePath}quiz/questions/`);
   const card = page.locator(".plw-quiz-question-browser__card").first();
   await expect(card).toBeVisible();
+  await card.locator(".plw-quiz-tools-more > summary").click();
   await card.getByRole("button", { name: "复制题目" }).click();
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   expect(copied).toContain("题目 ID：");
