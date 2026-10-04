@@ -5,18 +5,29 @@ export function mountNavigation(document: Document): () => void {
   let searchTrigger: HTMLElement | undefined;
   const toggle = (id: string) => document.getElementById(id) as HTMLInputElement | null;
   const mobile = document.defaultView!.matchMedia("(max-width: 1219px)");
-  const visible = (element: HTMLElement) => {
+  const visible = (element: HTMLElement, root: Element) => {
     const rect = element.getBoundingClientRect();
+    const bounds = root.getBoundingClientRect();
+    // Material translates collapsed mobile submenus without hiding their links.
+    // Focusing one can scroll the overflow-hidden drawer horizontally.
+    for (let parent: Element | null = element; parent; parent = parent.parentElement) {
+      const style = getComputedStyle(parent);
+      if (style.visibility === "hidden" || style.visibility === "collapse" || style.opacity === "0") return false;
+      if (parent === root) break;
+    }
     return (
       rect.width > 0 &&
       rect.height > 0 &&
       rect.left >= 0 &&
       rect.right <= document.defaultView!.innerWidth &&
-      getComputedStyle(element).visibility !== "hidden"
+      rect.left >= bounds.left &&
+      rect.right <= bounds.right
     );
   };
   const focusables = (root: Element) =>
-    [...root.querySelectorAll<HTMLElement>('a[href], button, input, select, summary, [tabindex="0"]')].filter(visible);
+    [...root.querySelectorAll<HTMLElement>('a[href], button, input, select, summary, [tabindex="0"]')].filter(element =>
+      visible(element, root)
+    );
   const sync = () => {
     for (const button of document.querySelectorAll<HTMLElement>("[data-plw-toggle][aria-expanded]")) {
       button.setAttribute("aria-expanded", String(toggle(button.dataset.plwToggle!)?.checked ?? false));
@@ -48,8 +59,9 @@ export function mountNavigation(document: Document): () => void {
       set(id, !toggle(id)?.checked);
       sync();
       if (id === "__drawer" && toggle(id)?.checked) {
-        const sidebar = document.querySelector(".md-sidebar--primary");
-        if (sidebar) requestAnimationFrame(() => focusables(sidebar)[0]?.focus());
+        // The drawer is still sliding in; viewport geometry cannot identify its
+        // visible controls yet. Focus a stable target without scrolling its pane.
+        document.querySelector<HTMLElement>(".plw-nav-close")?.focus({ preventScroll: true });
       }
     },
     { signal }
