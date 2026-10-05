@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="title">
+  <title id="title">电梯中站在体重秤上的人</title>
+  <rect x="35" y="25" width="290" height="245" fill="none" stroke="#607d8b" stroke-width="6"/>
+  <circle cx="180" cy="90" r="28" fill="#ffe0b2" stroke="#6d4c41" stroke-width="4"/>
+  <path d="M180 118v78m0-55l-45 35m45-35l45 35m-45 20l-35 50m35-50l35 50" stroke="#6d4c41" stroke-width="7" fill="none"/>
+  <rect x="120" y="246" width="120" height="16" fill="#90caf9" stroke="#1565c0" stroke-width="3"/>
+</svg>
