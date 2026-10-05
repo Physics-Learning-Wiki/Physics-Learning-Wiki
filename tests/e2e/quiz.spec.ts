@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { expectAssistiveMathClipped } from "./math-assertions";
 
 const basePath = "/Physics-Learning-Wiki/";
 
@@ -48,10 +49,7 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   await expect(page).toHaveURL(/\/Physics-Learning-Wiki\/quiz\/$/);
   await expect(page.locator(".plw-quiz-home-featured")).toBeVisible();
   await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveCount(1);
-  await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveAttribute(
-    "href",
-    expect.stringContaining("quiz.css?v=4")
-  );
+  await expect(page.locator('head link[data-plw-feature="quiz"]')).toHaveAttribute("href", /quiz\.css\?v=\d+$/);
   expect(quizRequests.filter(path => path.endsWith("/features/quiz.js"))).toHaveLength(1);
   expect(quizRequests.some(path => path.endsWith("/manifest.json"))).toBe(true);
   expect(quizRequests.some(path => /\/catalog\/sets\.[^/]+\.json$/.test(path))).toBe(true);
@@ -312,8 +310,9 @@ test("production question bank math renders cleanly on desktop and mobile withou
   page
 }) => {
   await page.goto(`${basePath}quiz/questions/`);
-  const targetQuestions = (await mathQuestionIds(page)).slice(0, 1);
-  expect(targetQuestions.length).toBeGreaterThan(0);
+  const ids = await mathQuestionIds(page);
+  expect(ids.length).toBeGreaterThan(0);
+  const targetQuestions = [...new Set([ids[0], "q-000001"])];
   const viewports = [
     { name: "desktop", width: 1280, height: 720 },
     { name: "mobile", width: 375, height: 667 }
@@ -340,19 +339,7 @@ test("production question bank math renders cleanly on desktop and mobile withou
       await expect(card.locator("mjx-container").first()).toBeVisible();
 
       // 2. Assistive MathML must be visually hidden (not visually duplicated)
-      const assistiveMml = card.locator(".mjx-assistive-mml").first();
-      if ((await assistiveMml.count()) > 0) {
-        const isHidden = await assistiveMml.evaluate(el => {
-          const style = window.getComputedStyle(el);
-          return (
-            style.position === "absolute" ||
-            style.opacity === "0" ||
-            style.clip === "rect(1px, 1px, 1px, 1px)" ||
-            style.display === "none"
-          );
-        });
-        expect(isHidden).toBe(true);
-      }
+      await expectAssistiveMathClipped(card);
 
       // 3. Raw $$ display delimiter must not leak into rendered text
       const visibleText = await card.innerText();

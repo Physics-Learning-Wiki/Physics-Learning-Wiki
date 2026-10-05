@@ -200,7 +200,6 @@ export function createFeatureRuntime(options: RuntimeOptions) {
   let navigationEpoch = 0;
   let pendingDisposal: Promise<void> = Promise.resolve();
   const modulePromises = new Map<string, Promise<FeatureModule>>();
-  const stylesheetPromises = new Map<string, Promise<void>>();
   const reportError = options.onError ?? ((message: string, error?: unknown) => console.error(message, error));
 
   const disposePage = async () => {
@@ -260,17 +259,12 @@ export function createFeatureRuntime(options: RuntimeOptions) {
 
   const ensureFeatureStylesheet = (href: string) => {
     const absoluteHref = new URL(href, siteRoot).href;
-    const cached = stylesheetPromises.get(absoluteHref);
-    if (cached) return cached;
-    const promise = (options.ensureStylesheet ?? ((url, document) => ensureStylesheet(url, document)))(
+    // Instant navigation can remove or replace head links. Recheck the live
+    // document; ensureStylesheet shares pending work for the current link only.
+    return (options.ensureStylesheet ?? ((url, document) => ensureStylesheet(url, document)))(
       absoluteHref,
       options.document
     );
-    stylesheetPromises.set(absoluteHref, promise);
-    promise.catch(() => {
-      if (stylesheetPromises.get(absoluteHref) === promise) stylesheetPromises.delete(absoluteHref);
-    });
-    return promise;
   };
 
   const mountFeature = async (name: string, root: ParentNode, page: PageInstance, epoch: number) => {
