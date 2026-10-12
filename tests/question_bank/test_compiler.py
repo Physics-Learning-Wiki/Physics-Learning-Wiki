@@ -41,22 +41,20 @@ def test_compiler_creates_manifest_v3_and_catalogs(tmp_path: Path) -> None:
         assert bundle_file.exists()
 
 
-def test_preview_compile_exposes_drafts(tmp_path: Path) -> None:
-    from scripts.question_bank.loader import load_tree
-
-    draft_questions, issues = load_tree(ROOT / "question-bank" / "questions")
-    assert not issues
-    draft_ids = {str(q.data["id"]) for q in draft_questions if q.data.get("status") == "draft"}
-    assert draft_ids, "fixture requires at least one draft question"
-
-    preview = tmp_path / "preview"
-    report, _ = compile_repository(ROOT, preview, preview=True)
-    assert report.ok
-
-    manifest = json.loads((preview / "manifest.json").read_text(encoding="utf-8"))
-
-    catalog = json.loads((preview / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
-    assert draft_ids <= {q["id"] for q in catalog}
+def test_compile_filters_drafts_by_mode(mixed_question_bank: Path, tmp_path: Path) -> None:
+    for preview in (False, True):
+        output = tmp_path / ("preview" if preview else "production")
+        report, _ = compile_repository(mixed_question_bank, output, preview=preview)
+        assert report.ok
+        manifest = json.loads((output / "manifest.json").read_text(encoding="utf-8"))
+        assert manifest["preview"] is preview
+        questions = json.loads((output / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
+        expected_ids = {"q-000001", "q-000002", "q-000003"} if preview else {"q-000003"}
+        assert {q["id"] for q in questions} == expected_ids
+        assert set(manifest["sets"]) == ({"test.selected", "test.other"} if preview else {"test.other"})
+        for entry in manifest["sets"].values():
+            bundle = json.loads((output / entry["bundle"]).read_text(encoding="utf-8"))
+            assert {q["id"] for q in bundle["questions"]} <= expected_ids
 
 
 def test_unchanged_compile_is_a_no_op(tmp_path: Path) -> None:

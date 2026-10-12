@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import shutil
 from pathlib import Path
 
 import pytest
@@ -11,43 +10,10 @@ from scripts.question_bank.batch_review import DIMENSIONS, apply_plan, create_pl
 from scripts.question_bank.media import question_content_fingerprint
 from scripts.question_bank.validator import validate_repository
 
-REPO = Path(__file__).parents[2]
-
 
 @pytest.fixture
-def repository(tmp_path: Path) -> Path:
-    """Synthetic repository only: no attestation is written to real questions."""
-    root = tmp_path / "repo"
-    schemas = root / "question-bank/schemas"
-    schemas.mkdir(parents=True)
-    for filename in ("question.schema.json", "set.schema.json"):
-        shutil.copyfile(REPO / "question-bank/schemas" / filename, schemas / filename)
-    taxonomy = root / "question-bank/taxonomy"
-    (taxonomy / "concepts").mkdir(parents=True)
-    (taxonomy / "topics.yml").write_text("test.topic:\n  title: Test\n", encoding="utf-8")
-    (taxonomy / "concepts/test.yml").write_text("test.concept:\n  title: Test\n  topics: [test.topic]\n", encoding="utf-8")
-    original = yaml.safe_load((REPO / "question-bank/fixtures/valid/true-false.yml").read_text(encoding="utf-8"))
-    for number in range(1, 4):
-        question = {**original, "id": f"q-{number:06d}", "status": "draft",
-                    "topics": ["test.topic"], "concepts": ["test.concept"],
-                    "stem": f"Synthetic question {number}: " + original["stem"],
-                    "difficulty": 1, "cognitive_level": "understand", "style": "conceptual",
-                    "estimated_seconds": 30}
-        question.pop("review", None)
-        question.pop("related_pages", None)
-        question.pop("objectives", None)
-        folder = "selected" if number <= 2 else "other"
-        path = root / f"question-bank/questions/{folder}/q-{number:06d}.yml"
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(yaml.safe_dump(question, allow_unicode=True), encoding="utf-8")
-    for name, ids in [("selected", ["q-000001", "q-000002"]), ("other", ["q-000003"])]:
-        path = root / f"question-bank/sets/{name}.yml"
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(yaml.safe_dump(dict(schema_version=1, id=f"test.{name}", title=name,
-                                           status="draft", feedback_mode="immediate",
-                                           selection=dict(type="fixed", questions=ids, order="fixed"))), encoding="utf-8")
-    assert validate_repository(root).ok
-    return root
+def repository(question_bank_repository: Path) -> Path:
+    return question_bank_repository
 
 
 def plan(root: Path, **selector):
@@ -111,6 +77,7 @@ def test_publish_questions_and_only_related_sets(repository: Path):
     assert len(changed) == 3
     report = validate_repository(repository)
     assert report.ok
+    assert next(q for q in report.data.questions if q.data["id"] == "q-000002").data["type"] == "free_response"
     statuses = {q.data["id"]: q.data["status"] for q in report.data.questions}
     assert statuses == {"q-000001": "published", "q-000002": "published", "q-000003": "draft"}
     assert {s.data["id"]: s.data["status"] for s in report.data.sets} == {"test.selected": "published", "test.other": "draft"}
@@ -184,25 +151,3 @@ def test_missing_feedback_fails_preflight_before_signing(repository: Path, monke
     with pytest.raises(ValueError, match=r"Publication content preflight failed[\s\S]*feedback"):
         apply_plan(repository, frozen, confirm_human_review=True, publish=True, publish_sets=True)
     assert contents(repository) == before
-
-
-def test_actual_draft_content_can_publish_in_isolated_copy(tmp_path: Path):
-    # Regression for q-000050–q-000089: synthetic true/false fixtures already
-    # contained feedback and did not exercise actual free-response drafts.
-    # Fictional test signatures are written ONLY to the isolated copy.
-    root = tmp_path / "isolated-content-repository"
-    shutil.copytree(REPO / "question-bank", root / "question-bank")
-    for source in (REPO / "docs").rglob("*.md"):
-        target = root / "docs" / source.relative_to(REPO / "docs")
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source, target)
-    frozen = plan(root, all_drafts=True)
-    apply_plan(root, frozen, confirm_human_review=True, publish=True, publish_sets=True)
-    report = validate_repository(root)
-    assert report.ok, "\n".join(issue.render() for issue in report.errors)
-    question_status = {doc.data["id"]: doc.data["status"] for doc in report.data.questions}
-    assert all(question_status[f"q-{number:06d}"] == "published" for number in range(50, 90))
-    assert all(question_status[entry["id"]] == "published" for entry in frozen["questions"])
-    set_status = {doc.data["id"]: doc.data["status"] for doc in report.data.sets}
-    assert len([entry for entry in frozen["related_sets"] if entry["id"].startswith("math.complex-analysis.residue-")]) == 7
-    assert all(set_status[entry["id"]] == "published" for entry in frozen["related_sets"])

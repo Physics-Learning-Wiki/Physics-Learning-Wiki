@@ -8,6 +8,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import yaml
+
 from bs4 import BeautifulSoup
 from scripts.question_bank.loader import load_tree
 
@@ -20,7 +22,7 @@ def source_ids(kind: str, status: str) -> set[str]:
     return {str(doc.data["id"]) for doc in documents if doc.data.get("status") == status}
 
 
-def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
+def build_site(tmp_path: Path, *, preview: bool = False, project_root: Path = ROOT) -> Path:
     destination = tmp_path / ("preview-site" if preview else "production-site")
     environment = os.environ.copy()
     environment.pop("PLW_QUIZ_PREVIEW", None)
@@ -37,7 +39,7 @@ def build_site(tmp_path: Path, *, preview: bool = False) -> Path:
             "--site-dir",
             str(destination),
         ],
-        cwd=ROOT,
+        cwd=project_root,
         env=environment,
         check=True,
         capture_output=True,
@@ -120,27 +122,34 @@ def test_production_build_contains_quiz_pages_and_no_drafts(
     assert source_ids("questions", "draft").isdisjoint({question["id"] for question in questions})
 
 
-def test_preview_build_exposes_drafts(tmp_path: Path) -> None:
-    site = build_site(tmp_path, preview=True)
-    manifest = json.loads(
-        (site / "_generated" / "question-bank" / "manifest.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert manifest["schemaVersion"] == 3
-    assert manifest["preview"] is True
-
-    bank = site / "_generated" / "question-bank"
-    draft_sets = source_ids("sets", "draft")
-    assert draft_sets, "fixture requires at least one draft set"
-    assert draft_sets <= set(manifest["sets"])
-    for set_id in draft_sets:
-        assert (bank / manifest["sets"][set_id]["bundle"]).exists()
-    questions = json.loads((bank / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
-    draft_questions = source_ids("questions", "draft")
-    assert draft_questions, "fixture requires at least one draft question"
-    assert draft_questions <= {question["id"] for question in questions}
-
+def test_build_filters_drafts_by_mode(mixed_question_bank: Path, tmp_path: Path) -> None:
+    # The hook derives the bank root from mkdocs.yml, so build a temporary
+    # project rather than writing generated preview files into the workspace.
+    root = mixed_question_bank
+    docs = root / "docs"
+    docs.mkdir()
+    (docs / "index.md").write_text("# Synthetic question bank\n", encoding="utf-8")
+    (root / "mkdocs.yml").write_text(yaml.safe_dump({
+        "site_name": "Question bank integration fixture",
+        "hooks": [(ROOT / "hooks/question_bank.py").as_posix()],
+    }), encoding="utf-8")
+    for preview in (False, True):
+        site = build_site(tmp_path, preview=preview, project_root=root)
+        bank = site / "_generated" / "question-bank"
+        manifest = json.loads((bank / "manifest.json").read_text(encoding="utf-8"))
+        assert manifest["schemaVersion"] == 3
+        assert manifest["preview"] is preview
+        expected_ids = {"q-000001", "q-000002", "q-000003"} if preview else {"q-000003"}
+        questions = json.loads((bank / manifest["catalogs"]["questions"]).read_text(encoding="utf-8"))
+        assert {q["id"] for q in questions} == expected_ids
+        expected_sets = {"test.selected", "test.other"} if preview else {"test.other"}
+        assert set(manifest["sets"]) == expected_sets
+        sets = json.loads((bank / manifest["catalogs"]["sets"]).read_text(encoding="utf-8"))
+        assert {s["id"] for s in sets} == expected_sets
+        for set_id, entry in manifest["sets"].items():
+            bundle = json.loads((bank / entry["bundle"]).read_text(encoding="utf-8"))
+            expected_questions = {"q-000001", "q-000002"} if set_id == "test.selected" else {"q-000003"}
+            assert {q["id"] for q in bundle["questions"]} == expected_questions
 
 
 def test_production_build_renders_question_bank_math_ssr(tmp_path: Path) -> None:
