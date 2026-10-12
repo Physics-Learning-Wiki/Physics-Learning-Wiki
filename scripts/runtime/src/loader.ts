@@ -359,7 +359,7 @@ const featureRegistry: FeatureRegistry = {
   math: mathFeatureDefinition,
   mermaid: { moduleUrl: "_static/js/features/mermaid.js" },
   quiz: {
-    stylesheets: ["_static/css/quiz.css?v=5", root => (root as Element).getAttribute("data-plw-math-css") ?? undefined],
+    stylesheets: ["_static/css/quiz.css?v=6", root => (root as Element).getAttribute("data-plw-math-css") ?? undefined],
     moduleUrl: "_static/js/features/quiz.js"
   },
   submit: {

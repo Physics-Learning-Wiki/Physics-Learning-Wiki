@@ -104,12 +104,12 @@ async function copyText(value: string, status: HTMLElement, signal: AbortSignal)
   } catch {
     status.textContent = "自动复制失败，请从文本框手动复制。";
     const dialog = document.createElement("dialog");
+    dialog.className = "plw-quiz-copy-dialog";
     const title = document.createElement("p");
     title.textContent = "手动复制文本";
     const area = document.createElement("textarea");
     area.value = value;
     area.rows = 12;
-    area.style.width = "min(90vw, 40rem)";
     const close = document.createElement("button");
     close.type = "button";
     close.textContent = "关闭";
