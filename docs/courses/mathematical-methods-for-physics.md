@@ -125,6 +125,10 @@ flowchart TD
 
 ## 学习建议与常见思维误区
 
+### 留数计算的训练顺序
+
+学完洛朗展开和奇点分类后，先读[求留数：方法选择与计算](../math/complex-analysis/residue-methods.md)。按照「判类型 → 定阶数 → 选公式 → 找 $a_{-1}$」完成[六套专项习题](../math/complex-analysis/residue-exercises/index.md)，再做[44 题综合题集](../math/complex-analysis/residue-exercises/comprehensive.md)。综合题覆盖讲义 3.5–3.7 节的围道积分、傅里叶参数积分、余切核求和与微分方程系数提取；计算积分时还需检查围道方向、路径上的奇点和边界项。
+
 ### 1. 为什么说 Sturm–Liouville 理论是数理方法的「总纲」？
 
 初学者极易把傅里叶级数、勒让德多项式、贝塞尔函数当成五花八门、毫不相干的特殊技巧记忆负担．

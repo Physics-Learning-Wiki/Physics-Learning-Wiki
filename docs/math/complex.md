@@ -110,6 +110,8 @@ flowchart TD
 
 ## 学习路线与自测实践衔接
 
+- **留数计算训练**：[方法选择与计算](complex-analysis/residue-methods.md) → [六套专项习题](complex-analysis/residue-exercises/index.md) → [44 题综合题集](complex-analysis/residue-exercises/comprehensive.md)。专项每套 5 题，均含提示与解析。
+
 -   **理论进阶**：建议初学者遵循上方卡片 1 至 5 的自然编排顺序循序渐进；
 -   **全景脉络**：查阅 **[数学物理方法课程路线](../courses/mathematical-methods-for-physics.md)**，纵览本模块与后续积分变换、偏微分方程及特殊函数的接口；
 -   **自测刷题**：复分析模块为后续四大力学计算提供了必备的「重火力计算工具」，学完各专题后请前往各节末尾的自测卡片进行针对性习题检测．

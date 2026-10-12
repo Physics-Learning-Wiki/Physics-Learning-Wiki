@@ -10,6 +10,8 @@ page_id: math.complex-analysis.series-expansion
 
 # 级数展开与奇点
 
+本节的奇点分类与洛朗系数直接用于求留数。学完后可进入[求留数：方法选择与计算](residue-methods.md)，再用[洛朗展开专项](residue-exercises/laurent.md)和[泰勒系数专项](residue-exercises/taylor.md)练习提取 $a_{-1}$。
+
 ## 物理问题引入：当函数遭遇奇点时会发生什么？
 
 在理论物理建模中，「奇点（Singularity）」绝不是数学家凭空捏造的抽象病态，而是常常标志着极其关键的物理临界状态或极端相互作用：

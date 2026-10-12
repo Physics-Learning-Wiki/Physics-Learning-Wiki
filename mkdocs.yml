@@ -80,6 +80,16 @@ nav:
       - 复变积分与柯西定理: math/complex-analysis/contour-integrals.md
       - 级数展开与奇点: math/complex-analysis/series-expansion.md
       - 留数定理与实积分计算: math/complex-analysis/residue-calculus.md
+      - 求留数：方法选择与计算: math/complex-analysis/residue-methods.md
+      - 留数习题集:
+        - 题集导读: math/complex-analysis/residue-exercises/index.md
+        - 洛朗展开法: math/complex-analysis/residue-exercises/laurent.md
+        - 单极点极限法: math/complex-analysis/residue-exercises/simple-pole.md
+        - 商式法: math/complex-analysis/residue-exercises/quotient.md
+        - 高阶极点公式: math/complex-analysis/residue-exercises/higher-pole.md
+        - 泰勒系数法: math/complex-analysis/residue-exercises/taylor.md
+        - 无穷远点与留数总和: math/complex-analysis/residue-exercises/infinity.md
+        - 综合题集（44 题）: math/complex-analysis/residue-exercises/comprehensive.md
     - 积分变换与广义函数:
       - 狄拉克 Delta 函数: math/transforms/delta-function.md
       - 傅里叶级数: math/transforms/fourier-series.md
@@ -139,8 +149,14 @@ nav:
       - 多普勒效应: mechanics/oscillation-wave/doppler-effect.md
     - 万有引力与天体物理: mechanics/gravitation.md
     - 分析力学:
-      - 拉格朗日力学: mechanics/analytical/lagrangian.md
-      - 哈密顿力学: mechanics/analytical/hamiltonian.md
+      - 分析力学导读: mechanics/analytical/index.md
+      - 约束、自由度与广义坐标: mechanics/analytical/constraints-generalized-coordinates.md
+      - 虚位移、理想约束与虚功: mechanics/analytical/virtual-work.md
+      - 达朗贝尔原理与广义力: mechanics/analytical/dalembert-principle.md
+      - 拉格朗日方程: mechanics/analytical/lagrangian.md
+      - 拉格朗日建模实例: mechanics/analytical/lagrangian-modeling.md
+      - 非保守广义力与耗散: mechanics/analytical/nonconservative-forces.md
+      - 哈密顿力学（建设中）: mechanics/analytical/hamiltonian.md
   - 热学与统计物理:
     - 热学简介: thermodynamics/index.md
     - 热学基本概念和物质聚集态:

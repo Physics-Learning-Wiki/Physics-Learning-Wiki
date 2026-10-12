@@ -50,7 +50,7 @@ Wiki 的力学模块严格按照物理知识体系组织，下表展示了当前
 | **振动与波**  | [总览](./oscillation-wave/oscillation-wave.md)·[线性振动](./oscillation-wave/linear-oscillation.md)·[振动的合成](./oscillation-wave/superposition.md)·[非线性振动](./oscillation-wave/nonlinear.md)·[简谐波](./oscillation-wave/harmonic-wave.md)·[介质中的波](./oscillation-wave/wave-in-continuous-medium.md)·[多普勒效应](./oscillation-wave/doppler-effect.md) | **`status: review`**  | 阻尼与受迫振动共振、相位与旋转矢量法、机械波波动方程与能量传输        |
 | **引力与天体** | [万有引力与天体物理](./gravitation.md)                                                                                                                                                                                                                                                                                                         | **`status: planned`** | 开普勒定律推导、二体问题简化为有效单体势、引力势能              |
 | **流体力学**  | [流体力学基础](./fluid.md)                                                                                                                                                                                                                                                                                                                  | **`status: planned`** | 连续性方程、理想流体伯努利方程、黏性流体与雷诺数               |
-| **分析力学**  | [拉格朗日力学](./analytical/lagrangian.md)·[哈密顿力学](./analytical/hamiltonian.md)                                                                                                                                                                                                                                                             | **`status: planned`** | 广义坐标、虚位移与达朗贝尔原理、拉格朗日方程与哈密顿正则体系（当前建设重心） |
+| **分析力学** | [导读](./analytical/index.md) · [约束与广义坐标](./analytical/constraints-generalized-coordinates.md) · [虚功](./analytical/virtual-work.md) · [达朗贝尔原理](./analytical/dalembert-principle.md) · [拉格朗日方程](./analytical/lagrangian.md) · [建模实例](./analytical/lagrangian-modeling.md) · [耗散](./analytical/nonconservative-forces.md) · [哈密顿力学](./analytical/hamiltonian.md) | 导论正文已提供；哈密顿体系为 `planned` | 先完成约束、虚位移、拉格朗日建模与耗散，再进入待建设的作用量与哈密顿体系 |
 
 ***
 
@@ -72,6 +72,6 @@ flowchart LR
 ```
 
 1.  **普物基础阶段**：按 运动学 $\to$ 动力学 $\to$ 刚体力学 $\to$ 振动与波 顺次学习，建立扎实的受力分析、微分方程求解与守恒律思维；
-2.  **理论深化阶段**：结合 [数学工具中的常微分方程](../math/differential-equations/ode-intro.md) 与 [变分法](../math/variational-methods/calculus-of-variations.md)，进入 [理论力学课程路线](../courses/theoretical-mechanics.md) 学习分析力学的高阶方法．
+2.  **理论深化阶段**：从[分析力学导读](./analytical/index.md)开始，结合[常微分方程](../math/differential-equations/ode-intro.md)学习约束、达朗贝尔原理与拉格朗日建模．首批不要求提前学变分法；进入后续作用量阶段时再读[变分法](../math/variational-methods/calculus-of-variations.md)．跟课可用[理论力学课程路线](../courses/theoretical-mechanics.md)．
 
 如需了解本模块编写标准，请参阅 [力学章节编写说明](./mechanics-writing.md)．

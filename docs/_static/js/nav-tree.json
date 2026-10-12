@@ -187,7 +187,36 @@ const NAV_TREE = [
             "label": "留数定理与实积分计算"
           },
           {
+            "label": "求留数：方法选择与计算"
+          },
+          {
             "label": "级数展开与奇点"
+          },
+          {
+            "label": "留数习题集",
+            "children": [
+              {
+                "label": "留数综合题集（44 题）"
+              },
+              {
+                "label": "求留数专项：高阶极点公式"
+              },
+              {
+                "label": "求留数专项：无穷远点与留数总和"
+              },
+              {
+                "label": "求留数专项：洛朗展开法"
+              },
+              {
+                "label": "求留数专项：商式法 $P/Q^{\\prime}$"
+              },
+              {
+                "label": "求留数专项：单极点极限法"
+              },
+              {
+                "label": "求留数专项：泰勒系数法"
+              }
+            ]
           }
         ]
       },
@@ -357,13 +386,28 @@ const NAV_TREE = [
         "label": "mechanics-writing"
       },
       {
-        "label": "analytical",
+        "label": "index",
         "children": [
+          {
+            "label": "constraints-generalized-coordinates"
+          },
+          {
+            "label": "dalembert-principle"
+          },
           {
             "label": "hamiltonian"
           },
           {
+            "label": "lagrangian-modeling"
+          },
+          {
             "label": "lagrangian"
+          },
+          {
+            "label": "nonconservative-forces"
+          },
+          {
+            "label": "virtual-work"
           }
         ]
       },

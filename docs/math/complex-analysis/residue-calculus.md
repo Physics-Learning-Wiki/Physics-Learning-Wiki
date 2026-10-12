@@ -10,6 +10,8 @@ page_id: math.complex-analysis.residue-calculus
 
 # 留数定理与实积分计算
 
+本节侧重留数定理与积分应用。第一次学习时，先读[求留数：方法选择与计算](residue-methods.md)，掌握孤立奇点分类、实际极点阶数与六种计算方法，再进入[专项习题和 44 题综合题集](residue-exercises/index.md)。
+
 ## 物理问题引入：如何用复数「绕道」解决算不出来的实积分？
 
 在理论物理中，从经典电动力学辐射场计算、阻尼系统受迫共振响应，到量子散射截面与量子场论单圈传播子积分，物理学家无时无刻不在面对形如下式的实数反常定积分：
@@ -120,11 +122,11 @@ $$
     由商式法则计算两奇点的留数（$P(z) = z, Q(z) = 1 - z - z^2, Q'(z) = -1 - 2z$）：
     
     $$
-    \operatorname{Res}[F, z_1] = \left.\dfrac{z}{-1 - 2z}\right|_{z_1} = \dfrac{\frac{\sqrt{5}-1}{2}}{-1 - (\sqrt{5}-1)} = -\dfrac{\sqrt{5}-1}{2\sqrt{5}} = \dfrac{5 - \sqrt{5}}{10}
+    \operatorname{Res}[F, z_1] = \left.\dfrac{z}{-1 - 2z}\right|_{z_1} = \dfrac{\dfrac{\sqrt{5}-1}{2}}{-1 - (\sqrt{5}-1)} = -\dfrac{\sqrt{5}-1}{2\sqrt{5}} = \dfrac{\sqrt{5} - 5}{10}
     $$
     
     $$
-    \operatorname{Res}[F, z_2] = \left.\dfrac{z}{-1 - 2z}\right|_{z_2} = \dfrac{-\frac{\sqrt{5}+1}{2}}{-1 + (\sqrt{5}+1)} = -\dfrac{\sqrt{5}+1}{2\sqrt{5}} = -\dfrac{5 + \sqrt{5}}{10}
+    \operatorname{Res}[F, z_2] = \left.\dfrac{z}{-1 - 2z}\right|_{z_2} = \dfrac{-\dfrac{\sqrt{5}+1}{2}}{-1 + (\sqrt{5}+1)} = -\dfrac{\sqrt{5}+1}{2\sqrt{5}} = -\dfrac{5 + \sqrt{5}}{10}
     $$
     
     1.  **当 $R = 0.5$ 时**：圆周内无任何奇点，由柯西定理：$I_{0.5} = 0$；
@@ -132,14 +134,16 @@ $$
     2.  **当 $R = 1.0$ 时**：圆周内仅包含奇点 $z_1$：
     
         $$
-        I_{1.0} = 2\pi i \operatorname{Res}[F, z_1] = 2\pi i \left(\dfrac{5 - \sqrt{5}}{10}\right) = \pi i \dfrac{5 - \sqrt{5}}{5}
+        I_{1.0} = 2\pi i \operatorname{Res}[F, z_1] = 2\pi i \left(\dfrac{\sqrt{5} - 5}{10}\right) = \pi i \dfrac{\sqrt{5} - 5}{5}
         $$
     
     3.  **当 $R = 2.0$ 时**：圆周同时包含 $z_1$ 与 $z_2$：
     
         $$
-        I_{2.0} = 2\pi i (\operatorname{Res}[F, z_1] + \operatorname{Res}[F, z_2]) = 2\pi i \left(\dfrac{5 - \sqrt{5}}{10} - \dfrac{5 + \sqrt{5}}{10}\right) = 2\pi i \left(-\dfrac{1}{\sqrt{5}}\right) = -\dfrac{2\pi i}{\sqrt{5}}
+        I_{2.0} = 2\pi i (\operatorname{Res}[F, z_1] + \operatorname{Res}[F, z_2]) = 2\pi i \left(\dfrac{\sqrt{5} - 5}{10} - \dfrac{5 + \sqrt{5}}{10}\right) = -2\pi i
         $$
+
+    可用无穷远展开 $F(z)=-1/z+O(z^{-2})$ 核对有限留数之和为 $-1$。讲义中的半径 $0.6,0.7,1.6,1.7$ 分别包围零个、一个、一个、两个极点，对应计算见[综合题集](residue-exercises/comprehensive.md#q-000081)。圆周经过极点时，普通留数定理不适用。
 
 ***
 
@@ -173,7 +177,7 @@ $$
     代入参数化变换：
     
     $$
-    I = \oint_{|z|=1} \dfrac{1}{a + \frac{z + z^{-1}}{2}} \dfrac{\mathrm{d}z}{iz} = \oint_{|z|=1} \dfrac{2}{i(z^2 + 2az + 1)}\mathrm{d}z
+    I = \oint_{|z|=1} \dfrac{1}{a + \dfrac{z + z^{-1}}{2}} \dfrac{\mathrm{d}z}{iz} = \oint_{|z|=1} \dfrac{2}{i(z^2 + 2az + 1)}\mathrm{d}z
     $$
     
     分母零点为 $z_\pm = -a \pm \sqrt{a^2 - 1}$．由于 $a > 1$：
@@ -232,7 +236,7 @@ $$
     利用约当不等式 $\sin\theta \ge \frac{2}{\pi}\theta$：
     
     $$
-    \le 2 M_R R \int_0^{\pi/2} e^{-k R\frac{2\theta}{\pi}}\mathrm{d}\theta = 2 M_R R \cdot \dfrac{\pi}{2kR}\left(1 - e^{-kR}\right) = \dfrac{\pi}{k} M_R (1 - e^{-kR}) \xrightarrow{M_R \to 0} 0
+    \le 2 M_R R \int_0^{\pi/2} e^{-k R\dfrac{2\theta}{\pi}}\mathrm{d}\theta = 2 M_R R \cdot \dfrac{\pi}{2kR}\left(1 - e^{-kR}\right) = \dfrac{\pi}{k} M_R (1 - e^{-kR}) \xrightarrow{M_R \to 0} 0
     $$
 
 ???+ example "例题：求解狄拉克滤波实积分 $\int_{-\infty}^\infty \frac{\cos kx}{x^2 + a^2}\mathrm{d}x$($k > 0, a > 0$)"
@@ -304,7 +308,7 @@ $$
     2i \int_0^\infty \dfrac{\sin x}{x}\mathrm{d}x - i\pi = 0 \implies \int_0^\infty \dfrac{\sin x}{x}\mathrm{d}x = \dfrac{\pi}{2}
     $$
 
-???+ example "例题 2：二阶极点凹陷围道求 $\int_0^\infty \frac{\sin^2 x}{x^2}\mathrm{d}x$"
+???+ example "例题 2：先判实际阶数，再用凹陷围道求 $\int_0^\infty \frac{\sin^2 x}{x^2}\mathrm{d}x$"
     由偶函数对称性与二倍角降幂：
     
     $$
@@ -352,6 +356,82 @@ $$
 
 ***
 
+### 讲义 3.7 的计算链：留数、边界项、实积分
+
+下面三个例子将求留数步骤与讲义的应用连接起来。相应训练见[综合题集](residue-exercises/comprehensive.md)。
+
+#### 二阶极点：有理积分与余弦积分
+
+对 $f(z)=z^2/(z^2+1)^2$，上半平面只有二阶极点 $i$，且
+
+$$
+\operatorname{Res}(f,i)=\left.\dfrac{\mathrm d}{\mathrm dz}
+\dfrac{z^2}{(z+i)^2}\right|_{z=i}=-\dfrac i4.
+$$
+
+大圆上 $|f(z)|\le R^2/(R^2-1)^2$，弧长为 $\pi R$，故圆弧积分为 $O(R^{-1})$。因此
+
+$$
+\int_{-\infty}^{\infty}\dfrac{x^2}{(x^2+1)^2}\,\mathrm dx
+=2\pi i\left(-\dfrac i4\right)=\dfrac\pi2.
+$$
+
+对余弦积分，改用 $g(z)=e^{iz}/(z^2+1)^2$。必须对指数与剩余分母一起求导：
+
+$$
+\operatorname{Res}(g,i)
+=\left[\dfrac{ie^{iz}}{(z+i)^2}-\dfrac{2e^{iz}}{(z+i)^3}\right]_{z=i}
+=-\dfrac{i}{2e}.
+$$
+
+大圆弧由约当引理消失；留数定理得到复实轴积分 $\pi/e$，取实部即有
+
+$$
+\int_{-\infty}^{\infty}\dfrac{\cos x}{(x^2+1)^2}\,\mathrm dx=\dfrac\pi e.
+$$
+
+#### 凹陷围道：辅助函数有极点，原正弦积分可以收敛
+
+设 $a,m>0$，考虑 $I=\int_0^\infty\sin(mx)/[x(x^2+a^2)]\,\mathrm dx$。原实被积函数在零点趋于 $m/a^2$，但辅助函数 $h(z)=e^{imz}/[z(z^2+a^2)]$ 在原点有单极点，留数为 $1/a^2$。
+
+在上半平面用从 $-\varepsilon$ 到 $\varepsilon$ 的顺时针小半圆绕开原点，小弧贡献为 $-i\pi/a^2$。围道内只含 $ia$，其留数为 $-e^{-ma}/(2a^2)$。实轴两段合为 $2iI$，大圆弧由约当引理消失，所以
+
+$$
+2iI-\dfrac{i\pi}{a^2}=-\dfrac{\pi i}{a^2}e^{-ma},
+\qquad I=\dfrac{\pi}{2a^2}(1-e^{-ma}).
+$$
+
+当 $m\to0^+$ 时结果趋零；当 $m$ 很大时趋于 $\pi/(2a^2)$。这些极限也可用来核对小圆弧的符号。
+
+#### 傅里叶积分与 Yukawa 核
+
+对实数 $a\ne0$、$p\in\mathbb R$，应分别处理 $p$ 的正、负、零三种情形。$p>0$ 向上闭合，$p<0$ 向下闭合并计入顺时针负号，$p=0$ 用普通有理函数的弧长估计；三者合并为
+
+$$
+\int_{-\infty}^{\infty}\dfrac{e^{ipx}}{x^2+a^2}\,\mathrm dx
+=\dfrac\pi{|a|}e^{-|ap|}.
+$$
+
+??? note "三维动量积分的径向核（进阶）"
+    讲义采用没有 $(2\pi)^{-3}$ 前因子的傅里叶约定。设 $r=|\mathbf r|>0,\mu>0$，将极轴沿 $\mathbf r$ 取向，先完成角积分，再按球形截断取径向反常积分：
+
+    $$
+    I(r)=\int_{\mathbb R^3}\dfrac{e^{i\mathbf k\cdot\mathbf r}}{k^2+\mu^2}\,\mathrm d^3k
+    =\dfrac{4\pi}{r}\int_0^\infty\dfrac{k\sin(kr)}{k^2+\mu^2}\,\mathrm dk
+    =\dfrac{2\pi}{ir}\int_{-\infty}^{\infty}\dfrac{k e^{ikr}}{k^2+\mu^2}\,\mathrm dk.
+    $$
+
+    最后一步的全实轴积分按对称截断理解。上半平面唯一极点为 $i\mu$，留数为 $e^{-\mu r}/2$；有理因子 $k/(k^2+\mu^2)=O(1/k)$ 满足约当引理条件。因此
+
+    $$
+    I(r)=\dfrac{2\pi}{ir}\left(2\pi i\dfrac{e^{-\mu r}}2\right)
+    =\dfrac{2\pi^2}{r}e^{-\mu r}.
+    $$
+
+    原三维积分并非绝对收敛，不能任意交换积分顺序；这里采用上述球形截断解释，也可采用相容的正则化或分布解释。若傅里叶逆变换含 $(2\pi)^{-3}$，则径向核为 $e^{-\mu r}/(4\pi r)$。这个指数衰减给出了 Yukawa 势的短程径向形式。
+
+***
+
 <a id="4-理论物理中的深度连接因果律与极点规约"></a>
 
 ## 4. 理论物理中的深度连接：因果律与极点处方
@@ -368,19 +448,19 @@ $$
 \lim_{\epsilon \to 0^+} \dfrac{1}{x \pm i\epsilon} = \mathcal{P}\dfrac{1}{x} \mp i\pi \delta(x)
 $$
 
-其中 $\mathcal{P}$ 代表柯西主值（Cauchy Principal Value），$\delta(x)$ 是狄拉克点源函数．第一项对应色散反应，第二项虚部严格对应因果吸收！
+其中 $\mathcal{P}$ 代表柯西主值（Cauchy Principal Value），$\delta(x)$ 是狄拉克 Delta 函数。等式在分布意义下成立，不能当作 $x=0$ 处的普通函数等式。用于具体响应函数时，主值项与 Delta 项的物理意义还取决于傅里叶约定和响应模型。
 
 <a id="42-克拉默斯-克勒尼希-kramerskronig-色散关系"></a>
 
 ### 4.2 克拉默斯 - 克勒尼希（Kramers–Kronig） 色散关系
 
-在光学与凝聚态物理中，物质的复介电常数 $\varepsilon(\omega) = \varepsilon_1(\omega) + i\varepsilon_2(\omega)$．因果响应要求响应函数在上半复平面全纯解析．利用柯西积分公式沿实轴和上半平面大圆积分，实部与虚部被必然绑定在一起：
+在光学与凝聚态物理中，物质的复介电常数 $\varepsilon(\omega) = \varepsilon_1(\omega) + i\varepsilon_2(\omega)$。采用 $\chi(\omega)=\int_0^\infty\chi(t)e^{i\omega t}\,\mathrm dt$ 的约定，对稳定且满足相应收敛条件的因果响应，响应函数在上半复平面解析。若高频极限为 $1$，且减去该极限后的大圆弧贡献消失，再结合实时间响应的对称性，可由柯西积分公式得到：
 
 $$
 \varepsilon_1(\omega) - 1 = \dfrac{2}{\pi}\mathcal{P}\int_0^\infty \dfrac{\omega' \varepsilon_2(\omega')}{\omega'^2 - \omega^2}\mathrm{d}\omega'
 $$
 
-这证明了：**任何有折射色散的物理介质，必然存在吸收；吸收谱的反常积分完全决定了折射率！**
+这说明实部与虚部由全频段的积分关系联系起来。某一频段内可以有很小的吸收而仍有色散，不能把该关系解释为每个频率上必须同时出现非零吸收。
 
 <a id="43-量子场论费曼-iepsiloniepsilon-处方"></a>
 
@@ -394,11 +474,13 @@ $$
 \Delta_F(p) = \dfrac{1}{p^2 - m^2 + i\epsilon}
 $$
 
-将实轴上的极点轻微推入第二、第四象限，使得在留数定理围道积分时严格选择推迟势或超前势，奠定了微观量子电动力学协变化微扰计算的数学基石．
+在度规约定 $p^2=(p^0)^2-\mathbf p^2$ 下，令 $E_{\mathbf p}=\sqrt{\mathbf p^2+m^2}>0$，两能量极点位于 $p^0\approx E_{\mathbf p}-i\epsilon/(2E_{\mathbf p})$ 和 $p^0\approx-E_{\mathbf p}+i\epsilon/(2E_{\mathbf p})$。这一处方定义时间排序的费曼传播子；推迟与超前格林函数采用各自的极点处方，不能与费曼传播子混同。
 
 ***
 
 ## 5. 学习衔接
+
+-   **计算训练**：[求留数的方法选择](residue-methods.md) → [六套专项习题](residue-exercises/index.md) → [44 题综合题集](residue-exercises/comprehensive.md)。
 
 -   **上一节**：洛朗级数展开与奇点分类，参见 [级数展开与奇点](./series-expansion.md)；
 -   **下一步**：复分析基础篇已全面通关！建议读者进入数学物理方法的第二大中轴支柱——**[积分变换与广义函数](../transforms/fourier-transform.md)**，学习复积分在傅里叶反演与拉普拉斯逆变换中的威力．
@@ -413,3 +495,7 @@ $$
     1.  用商式法则计算 $f(z) = \frac{e^z}{z^4 - 1}$ 在 $z = i$ 处的留数；
     2.  计算实定积分 $\int_{-\infty}^\infty \frac{x^2}{(x^2+1)(x^2+4)}\mathrm{d}x$；
     3.  说明为什么约当引理中圆弧半径仅需一次衰减（$M_R \to 0$），而普通有理分式需要二次衰减（$M_R \sim 1/R^2$）？
+
+## 参考资料
+
+本节奇点、留数定义与计算例题对照用户提供的《3.5 奇点分类、3.6 留数定理发现之旅与 3.7 留数定理》，即仓库 `References/数学物理方法课件/mmplecture 3.5-3.7.md`。求留数的局部方法和扩充复平面的符号约定见[方法选择与计算](residue-methods.md)，讲义思考题的训练与解析见[综合题集](residue-exercises/comprehensive.md)。

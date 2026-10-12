@@ -23,3 +23,46 @@ concepts:
     english: Inertial frame
     summary: 自由质点保持静止或匀速直线运动的参考系。
     target: mechanics/kinematics/reference-frames.md
+  constraint:
+    name: 约束
+    english: Constraint
+    summary: 力学模型对位置或速度施加的运动学限制，需区分约束关系与实现它的约束力。
+    target: mechanics/analytical/constraints-generalized-coordinates.md#约束限制了什么
+  configuration-space:
+    name: 位形空间
+    english: Configuration space
+    summary: 系统所有容许几何位置与姿态构成的空间，不包含速度；其局部维数给出位形自由度。
+    target: mechanics/analytical/constraints-generalized-coordinates.md#位形空间与广义坐标
+  generalized-coordinate:
+    name: 广义坐标
+    english: Generalized coordinate
+    summary: 在某个区域内标记系统位形的参数；独立坐标可使完整约束自动满足，但非完整速度限制仍须处理。
+    target: mechanics/analytical/constraints-generalized-coordinates.md#位形空间与广义坐标
+  virtual-displacement:
+    name: 虚位移
+    english: Virtual displacement
+    summary: 固定时刻满足该时刻约束的假想无穷小位形变化，不必沿真实运动方向。
+    target: mechanics/analytical/virtual-work.md#冻结时间后哪些位置变化仍被允许
+  ideal-constraint:
+    name: 理想约束
+    english: Ideal constraint
+    summary: 对所有容许虚位移，总约束力虚功为零的约束；不表示约束力的实际功率永远为零。
+    target: mechanics/analytical/virtual-work.md#理想约束为什么能消去反力
+  generalized-force:
+    name: 广义力
+    english: Generalized force
+    summary: 主动力虚功中与某个广义坐标变化配对的系数，其单位取决于该坐标的单位。
+    target: mechanics/analytical/dalembert-principle.md#广义力每个坐标变化对应的虚功系数
+  lagrangian:
+    name: 拉格朗日量
+    english: Lagrangian
+    aliases:
+      - 拉格朗日函数
+      - 拉氏量
+    summary: 在本入门模型中由动能减去位置势能构成的函数；完整理想约束下可用它在独立坐标中建立运动方程。
+    target: mechanics/analytical/lagrangian.md#把位置势能并入拉格朗日量
+  rayleigh-dissipation:
+    name: 瑞利耗散函数
+    english: Rayleigh dissipation function
+    summary: 本入门模型中表示线性黏滞阻力的速度二次函数，其速度偏导给出反号的阻力广义力；静止介质中两倍函数值为损失功率。
+    target: mechanics/analytical/nonconservative-forces.md#瑞利耗散函数从哪里来

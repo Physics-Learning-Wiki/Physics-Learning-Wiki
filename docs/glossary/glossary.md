@@ -46,6 +46,10 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## G
 
+<!-- plw:glossary-entry generalized-coordinate -->
+
+<!-- plw:glossary-entry generalized-force -->
+
 -   **概率（probability）**：满足非负性、归一性和可列可加性的事件度量．见 [正文](../math/probability-statistics/basic-concepts.md)．
 -   **刚体（rigid body）**：各质点间距离保持不变的理想化模型．见 [正文](../mechanics/rigid-body/rigid-body.md)．
 -   **功（work）**：能量传递的过程量；力学中为 $\int\boldsymbol F\cdot\mathrm d\boldsymbol r$，热学用 $A>0$ 表示系统对外做功．见 [正文](../thermodynamics/chapter-3/energy-conservation-to-first-law.md)．
@@ -69,6 +73,10 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## L
 
+<!-- plw:glossary-entry lagrangian -->
+
+<!-- plw:glossary-entry ideal-constraint -->
+
 -   **量纲（dimension）**：物理量相对于所选基本量的幂次关系，不同于计量单位．见 [正文](../intro/format.md)．
 
 ## M
@@ -90,6 +98,8 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## R
 
+<!-- plw:glossary-entry rayleigh-dissipation -->
+
 -   **热容（heat capacity，$C$）**：给定过程中传入热量对温度变化的比率 $C=\delta Q/\mathrm dT$，需说明约束和功的形式；不是系统拥有的热量．见 [正文](../thermodynamics/chapter-1/heat-and-its-nature.md)．
 -   **热力学第二定律（second law of thermodynamics）**：约束宏观过程方向的定律；孤立系统熵不减是其表达形式之一．见 [正文](../thermodynamics/chapter-4/second-law-and-carnot-theorem.md)．
 
@@ -110,6 +120,8 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## W
 
+<!-- plw:glossary-entry configuration-space -->
+
 <!-- terminology-ignore: T103 -- 首次解释正文主词的通行别名 -->
 
 <!-- plw:glossary-entry differential-equation -->
@@ -119,10 +131,14 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## X
 
+<!-- plw:glossary-entry virtual-displacement -->
+
 -   **向量（vector）**：向量空间的元素，具有加法与数乘结构，不要求一定是三维有向线段．见 [正文](../math/linear-algebra/space.md)．
 -   **向心力（centripetal force）**：曲线运动中合力的法向分量，指向轨迹的局部曲率中心；不是独立的一类相互作用力．见 [正文](../mechanics/dynamics/force-concepts.md)．
 
 ## Y
+
+<!-- plw:glossary-entry constraint -->
 
 -   **压强（pressure，$p$）**：各向同性法向应力的大小；均匀受力时等于单位面积上的法向力．见 [正文](../thermodynamics/chapter-1/gas.md)．
 -   **衍射（diffraction）**：波在孔径或障碍物限制下传播时出现的空间分布变化，需要用波动叠加描述．见 [正文](../optics/index.md)．
