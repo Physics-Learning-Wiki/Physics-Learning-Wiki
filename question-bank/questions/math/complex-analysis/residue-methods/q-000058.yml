@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000058
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.simple-pole
+type: free_response
+choice_order: fixed
+stem: 求 $f(z)=(z-1)/(z^2-1)$ 在 $z=1,-1$ 的留数，并分别判定奇点类型。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: $z=1$ 可去，留数 $0$；$z=-1$ 为一阶极点，留数 $1$。
+solution: 在原定义域上约分得 $f(z)=1/(z+1)$。在 $z=1$ 可补定义 $f(1)=1/2$，留数为零；在 $z=-1$，$\lim_{z\to-1}(z+1)f(z)=1$，因此是一阶极点，留数为 $1$。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：$z^2-1=(z-1)(z+1)$。 然后对照参考答案与解析补全关键步骤。
+hints:
+- $z^2-1=(z-1)(z+1)$。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的求留数训练题；公式与学习范围参考用户提供的讲义 3.5–3.7 节。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:04b5fc6b1071864d650a98fa27346d83ad0260ad4752de8317b24a929e3e8f26
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:04b5fc6b1071864d650a98fa27346d83ad0260ad4752de8317b24a929e3e8f26
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:04b5fc6b1071864d650a98fa27346d83ad0260ad4752de8317b24a929e3e8f26

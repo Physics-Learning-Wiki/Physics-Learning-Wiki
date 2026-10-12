@@ -1,0 +1,19 @@
+schema_version: 1
+id: math.complex-analysis.residue-infinity
+title: 求留数专项：无穷远点与留数总和
+description: 读出无穷远展开的 $1/z$ 系数，区分有限留数之和与无穷远点留数。
+status: published
+tags:
+- 数学物理方法
+- 求留数
+- 无穷远点与留数总和
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000075
+  - q-000076
+  - q-000077
+  - q-000078
+  - q-000079
+  order: fixed

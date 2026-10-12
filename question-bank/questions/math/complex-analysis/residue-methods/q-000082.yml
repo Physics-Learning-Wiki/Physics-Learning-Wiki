@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000082
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.comprehensive
+type: free_response
+choice_order: fixed
+stem: 计算逆时针单位圆积分 $\oint_{|z|=1}e^{1/z}\,\mathrm dz$。若改成顺时针，结果如何变化？
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: 逆时针为 $2\pi i$，顺时针为 $-2\pi i$。
+solution: 原点虽然是本性奇点，仍是孤立奇点。洛朗展开的 $1/z$ 系数是 $1$，单位圆只包围原点，所以逆时针积分为 $2\pi i$。反向参数化使积分整体变号。留数定理不要求所有奇点都是极点。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：定理需要孤立奇点，不限于极点。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 定理需要孤立奇点，不限于极点。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 依据用户提供的讲义 3.5–3.7 节及本站已有练习重新组织题面与推导。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:ac7315c7f2a4a9ac9f895253a5230cb8d8918e62d4dd206d08bb2c756a24f1d4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:ac7315c7f2a4a9ac9f895253a5230cb8d8918e62d4dd206d08bb2c756a24f1d4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:ac7315c7f2a4a9ac9f895253a5230cb8d8918e62d4dd206d08bb2c756a24f1d4

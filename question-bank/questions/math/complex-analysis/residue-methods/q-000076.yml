@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000076
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.infinity
+type: free_response
+choice_order: fixed
+stem: 不逐个计算极点，求 $f(z)=1/(z^4+1)$ 的全部有限留数之和及无穷远点留数。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: 两者均为 $0$。
+solution: $f(z)=z^{-4}(1+z^{-4})^{-1}=z^{-4}-z^{-8}+\cdots$，没有 $1/z$ 项，所以无穷远点留数为零，有限留数之和也为零。这里有限极点依然存在，留数和为零不能推出每个留数为零。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：用 $1/z$ 作小量展开。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 用 $1/z$ 作小量展开。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的求留数训练题；公式与学习范围参考用户提供的讲义 3.5–3.7 节。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:4c420502382ebe00d858450cdf753be09ed7faacc968e9184a60ddd5d2d7f3a8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:4c420502382ebe00d858450cdf753be09ed7faacc968e9184a60ddd5d2d7f3a8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:4c420502382ebe00d858450cdf753be09ed7faacc968e9184a60ddd5d2d7f3a8

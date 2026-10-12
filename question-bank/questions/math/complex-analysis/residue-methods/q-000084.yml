@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000084
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.comprehensive
+type: free_response
+choice_order: fixed
+stem: 用留数定理计算 $\int_{-\infty}^{\infty}\cos x/(x^2+1)^2\,\mathrm dx$。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: $\pi/e$。
+solution: 考虑 $g(z)=e^{iz}/(z^2+1)^2$，上半平面指数衰减，有理因子在大圆上一致趋零，可用约当引理。$i$ 处留数为 $[ie^{iz}/(z+i)^2-2e^{iz}/(z+i)^3]_{z=i}=-i/(2e)$。复实轴积分为
+  $2\pi i[-i/(2e)]=\pi/e$；取实部即得原积分，虚部也可由奇偶性验证为零。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：消去二阶因子时保留 $e^{iz}$，对整体求导。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 消去二阶因子时保留 $e^{iz}$，对整体求导。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 依据用户提供的讲义 3.5–3.7 节及本站已有练习重新组织题面与推导。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:3a2420b7f2e99718d785e6083e265edc9780f4c26f29ec610d95fbbd91e4e42d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:3a2420b7f2e99718d785e6083e265edc9780f4c26f29ec610d95fbbd91e4e42d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:3a2420b7f2e99718d785e6083e265edc9780f4c26f29ec610d95fbbd91e4e42d

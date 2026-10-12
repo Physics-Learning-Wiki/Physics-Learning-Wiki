@@ -1,0 +1,19 @@
+schema_version: 1
+id: math.complex-analysis.residue-quotient
+title: 求留数专项：商式法 P/Q′
+description: 验证分母为一阶零点，使用 $P(z_0)/Q^{\prime}(z_0)$。
+status: published
+tags:
+- 数学物理方法
+- 求留数
+- 商式法 P/Q′
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000060
+  - q-000061
+  - q-000062
+  - q-000063
+  - q-000064
+  order: fixed

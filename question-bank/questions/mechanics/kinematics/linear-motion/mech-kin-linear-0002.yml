@@ -1,7 +1,7 @@
 schema_version: 3
 id: mech-kin-linear-0002
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:89501107ba8f783f27d810ecb7e05e8258d1c2d4b0fd50dcd760eae97ed9dd4c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:89501107ba8f783f27d810ecb7e05e8258d1c2d4b0fd50dcd760eae97ed9dd4c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:89501107ba8f783f27d810ecb7e05e8258d1c2d4b0fd50dcd760eae97ed9dd4c

@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000054
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.laurent-series
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.laurent
+type: free_response
+choice_order: fixed
+stem: 判断 $f(z)=\cos(1/z)/z$ 在原点的奇点类型并求留数。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: 本性奇点；留数为 $1$。
+solution: $\cos(1/z)/z=\sum_{n\ge0}(-1)^n z^{-(2n+1)}/(2n)!$。主部无穷，原点为本性奇点。$n=0$ 的系数为 $1$，就是留数。不要把 $\cos(1/z)$ 本身的零留数直接用于乘积。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：除以 $z$ 后，每一项的指数减一。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 除以 $z$ 后，每一项的指数减一。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的求留数训练题；公式与学习范围参考用户提供的讲义 3.5–3.7 节。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:a6d32fef4da8ee6c92caf924093479226e6c764b631e1aea4a3263b9890f4dde
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:a6d32fef4da8ee6c92caf924093479226e6c764b631e1aea4a3263b9890f4dde
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:a6d32fef4da8ee6c92caf924093479226e6c764b631e1aea4a3263b9890f4dde

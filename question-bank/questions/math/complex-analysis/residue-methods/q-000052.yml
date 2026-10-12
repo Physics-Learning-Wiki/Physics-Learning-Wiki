@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000052
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.laurent-series
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.laurent
+type: free_response
+choice_order: fixed
+stem: 求 $\sin(1/z)$ 在原点的留数。能否使用有限阶极点的求导公式？
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: 留数为 $1$；不能使用有限阶极点公式。
+solution: $\sin(1/z)=\sum_{n=0}^{\infty}(-1)^n z^{-(2n+1)}/(2n+1)!$。$n=0$ 给出 $1/z$，故留数为 $1$。主部有无穷多项，不存在有限的极点阶数 $m$，所以高阶极点公式不适用。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：将正弦的幂级数中的自变量换成 $1/z$。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 将正弦的幂级数中的自变量换成 $1/z$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的求留数训练题；公式与学习范围参考用户提供的讲义 3.5–3.7 节。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:5eb7616cb0685d7b324672de51c8f24bebbb1765e1155f6989cd2f3b1d970511
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:5eb7616cb0685d7b324672de51c8f24bebbb1765e1155f6989cd2f3b1d970511
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:5eb7616cb0685d7b324672de51c8f24bebbb1765e1155f6989cd2f3b1d970511

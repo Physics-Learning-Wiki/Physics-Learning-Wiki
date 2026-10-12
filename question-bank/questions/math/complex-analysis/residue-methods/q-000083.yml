@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000083
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.comprehensive
+type: free_response
+choice_order: fixed
+stem: 用留数定理计算 $\int_{-\infty}^{\infty}x^2/(x^2+1)^2\,\mathrm dx$，写出大圆弧估计。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: $\pi/2$。
+solution: 取 $f(z)=z^2/(z^2+1)^2$，在上半平面闭合。大圆上 $|f(z)|\le R^2/(R^2-1)^2$，弧长为 $\pi R$，故弧积分模至多 $\pi R^3/(R^2-1)^2\to0$。内部只有 $i$，其二阶极点留数为
+  $-i/4$，因此实积分为 $2\pi i(-i/4)=\pi/2$。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：先求 $i$ 处留数，再用弧长乘以上界。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 先求 $i$ 处留数，再用弧长乘以上界。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 依据用户提供的讲义 3.5–3.7 节及本站已有练习重新组织题面与推导。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:abb7aa5a3a25e26fbbf7b5c56c1a737e02f7d066f5a4a4ff159c6f4a401f7935
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:abb7aa5a3a25e26fbbf7b5c56c1a737e02f7d066f5a4a4ff159c6f4a401f7935
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:abb7aa5a3a25e26fbbf7b5c56c1a737e02f7d066f5a4a4ff159c6f4a401f7935

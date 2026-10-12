@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "repository": "D:\\Programs\\Physics-Learning-Wiki",
+  "reviewer": "Leafuke",
+  "reviewed_on": "2026-10-12",
+  "dimensions": [
+    "physics",
+    "pedagogy",
+    "copyright"
+  ],
+  "questions": [
+    {
+      "id": "mech-kin-linear-0001",
+      "version": 1,
+      "content_fingerprint": "sha256:ecec9aa5fe20275df8160353b3c577e1b33a8dd01029c7b017cfe849f3672a44",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0001.yml"
+    },
+    {
+      "id": "mech-kin-linear-0002",
+      "version": 1,
+      "content_fingerprint": "sha256:89501107ba8f783f27d810ecb7e05e8258d1c2d4b0fd50dcd760eae97ed9dd4c",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0002.yml"
+    },
+    {
+      "id": "mech-kin-linear-0003",
+      "version": 1,
+      "content_fingerprint": "sha256:b40a2da093fad4c49a617d6c0cae1938801fd4d1136569ed2e17735c49d34ba6",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0003.yml"
+    },
+    {
+      "id": "mech-kin-linear-0004",
+      "version": 1,
+      "content_fingerprint": "sha256:648f86fb171d58abc8639edc2641870d923648ec519d5f7c4f2470d8bdff566c",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0004.yml"
+    },
+    {
+      "id": "mech-kin-linear-0005",
+      "version": 1,
+      "content_fingerprint": "sha256:736c6fa6178b38906d0e20aea378c23e481f5b034559dd740d0de5b9a935596d",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0005.yml"
+    },
+    {
+      "id": "mech-kin-linear-0006",
+      "version": 1,
+      "content_fingerprint": "sha256:95d1c0ef47a24bfade3fea90c069063cd66d21cd569f194cf33695ca8e3a8103",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0006.yml"
+    },
+    {
+      "id": "mech-kin-linear-0007",
+      "version": 1,
+      "content_fingerprint": "sha256:b0d0e2bf5a7e1685201e1521250ab62b46f75cfdac98afbc008362a1401b2541",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0007.yml"
+    },
+    {
+      "id": "mech-kin-linear-0008",
+      "version": 1,
+      "content_fingerprint": "sha256:3696ef3c93b57f9c3178d369b86a8f986908310d5588587da419fa2cea42962a",
+      "path": "question-bank/questions/mechanics/kinematics/linear-motion/mech-kin-linear-0008.yml"
+    },
+    {
+      "id": "q-000050",
+      "version": 1,
+      "content_fingerprint": "sha256:faa635a86b0af47b3e94d4ac7e4506b926fc7fcee7d1f3b189548b6fee3c09e6",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000050.yml"
+    },
+    {
+      "id": "q-000051",
+      "version": 1,
+      "content_fingerprint": "sha256:bd356ac8dcd40f3e3cdbf52804886072c86f8ada122d3d8dd78ed861c3167958",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000051.yml"
+    },
+    {
+      "id": "q-000052",
+      "version": 1,
+      "content_fingerprint": "sha256:5eb7616cb0685d7b324672de51c8f24bebbb1765e1155f6989cd2f3b1d970511",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000052.yml"
+    },
+    {
+      "id": "q-000053",
+      "version": 1,
+      "content_fingerprint": "sha256:8410b0b86f9e3efa9989da04046c3e4c87e9fda0bac4ff3c2d77330afef013b7",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000053.yml"
+    },
+    {
+      "id": "q-000054",
+      "version": 1,
+      "content_fingerprint": "sha256:a6d32fef4da8ee6c92caf924093479226e6c764b631e1aea4a3263b9890f4dde",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000054.yml"
+    },
+    {
+      "id": "q-000055",
+      "version": 1,
+      "content_fingerprint": "sha256:141c11922308c2779116521dbbe781f7eb66a6025f2e27f0faef84a93ac033fb",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000055.yml"
+    },
+    {
+      "id": "q-000056",
+      "version": 1,
+      "content_fingerprint": "sha256:22a15118d69010378abb6f9c063ac94ec4714f03112d3195ebe669dfdcf19bab",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000056.yml"
+    },
+    {
+      "id": "q-000057",
+      "version": 1,
+      "content_fingerprint": "sha256:8467477a158daf0f68e8580640dd90797a7040648eb2fecd64e45227d76a1374",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000057.yml"
+    },
+    {
+      "id": "q-000058",
+      "version": 1,
+      "content_fingerprint": "sha256:04b5fc6b1071864d650a98fa27346d83ad0260ad4752de8317b24a929e3e8f26",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000058.yml"
+    },
+    {
+      "id": "q-000059",
+      "version": 1,
+      "content_fingerprint": "sha256:f6a2301dfe28c3025b88b83c5448af5b5803b0dc6c8db98f0254cb01b4cb0b6e",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000059.yml"
+    },
+    {
+      "id": "q-000060",
+      "version": 1,
+      "content_fingerprint": "sha256:ca14db780d07e30ef97526b3ce98a09deab3f967e9dc81d5f9a2fa13ec6c23df",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000060.yml"
+    },
+    {
+      "id": "q-000061",
+      "version": 1,
+      "content_fingerprint": "sha256:5223d26f89338ea2b0456ae68dfa1d9a3a933a37151f1dea06d1b847edac778c",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000061.yml"
+    },
+    {
+      "id": "q-000062",
+      "version": 1,
+      "content_fingerprint": "sha256:c4a7484e72931d35d260f28a15ca45a80c87938b961a6d83c4c955187ac434f5",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000062.yml"
+    },
+    {
+      "id": "q-000063",
+      "version": 1,
+      "content_fingerprint": "sha256:23bb658517e2826c52cd510809e0ae4983fa85c0b4a730573a3e902cab3551c1",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000063.yml"
+    },
+    {
+      "id": "q-000064",
+      "version": 1,
+      "content_fingerprint": "sha256:7939a08555bd83204b645eff6284f7b4195c5e6a7d921511c94e2f8254acfb08",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000064.yml"
+    },
+    {
+      "id": "q-000065",
+      "version": 1,
+      "content_fingerprint": "sha256:d39ea3ae5ffcb2a4039288c3834f6e4a3f9279a856c6ce99dade6f0a370d1a9b",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000065.yml"
+    },
+    {
+      "id": "q-000066",
+      "version": 1,
+      "content_fingerprint": "sha256:881cb56f402af0251d06205e7fbf6f9418c7f2eb3e9fb8870afe92d715270e64",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000066.yml"
+    },
+    {
+      "id": "q-000067",
+      "version": 1,
+      "content_fingerprint": "sha256:98791c358c6cfad0712dfb01b23dcdac0a889d1bb642b945c9ccc06dd0ab45fd",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000067.yml"
+    },
+    {
+      "id": "q-000068",
+      "version": 1,
+      "content_fingerprint": "sha256:439f8ef8844ef95fcf8e4f2f76b0c7e6fd57cda7f0cc79e8cb8e6247325e329d",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000068.yml"
+    },
+    {
+      "id": "q-000069",
+      "version": 1,
+      "content_fingerprint": "sha256:8b4725cf4315000ffaa27a0114b7ade88281c95a1d0a39aef2ce697c3f2c5b08",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000069.yml"
+    },
+    {
+      "id": "q-000070",
+      "version": 1,
+      "content_fingerprint": "sha256:ec30165948962fd81118b9567d746455817e21c72dbd351b12c70f68df5d3d65",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000070.yml"
+    },
+    {
+      "id": "q-000071",
+      "version": 1,
+      "content_fingerprint": "sha256:6ec491a9ab6044ca6f64e0bf859472e072ca7d2930c4c825574e5fcc96e97763",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000071.yml"
+    },
+    {
+      "id": "q-000072",
+      "version": 1,
+      "content_fingerprint": "sha256:7348c6edb3b0286cc59eb630f22920dd61a94f299d92ae1819d4b19f39a871a6",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000072.yml"
+    },
+    {
+      "id": "q-000073",
+      "version": 1,
+      "content_fingerprint": "sha256:63d0a98b778c772eea8988d78cb02ede98cbf49ffc4f9eef4d5959e8ab10d8f1",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000073.yml"
+    },
+    {
+      "id": "q-000074",
+      "version": 1,
+      "content_fingerprint": "sha256:97eff05a5126ba5d62aae2d5eebd9474f27baea2a34483b77e7dcbe352880820",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000074.yml"
+    },
+    {
+      "id": "q-000075",
+      "version": 1,
+      "content_fingerprint": "sha256:0b6c51364ab3824931350a4b39d082ca782ab3837d725f92b2fce12d2592c220",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000075.yml"
+    },
+    {
+      "id": "q-000076",
+      "version": 1,
+      "content_fingerprint": "sha256:4c420502382ebe00d858450cdf753be09ed7faacc968e9184a60ddd5d2d7f3a8",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000076.yml"
+    },
+    {
+      "id": "q-000077",
+      "version": 1,
+      "content_fingerprint": "sha256:e17d22a24788956021bfa7ed0bc6447bcd84713bfb959a1a2f91a40a4ff8de95",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000077.yml"
+    },
+    {
+      "id": "q-000078",
+      "version": 1,
+      "content_fingerprint": "sha256:960f52a3ec72d3519c26afcf1b847cd16e105a37b84cb97b8bcf0afb24d12e07",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000078.yml"
+    },
+    {
+      "id": "q-000079",
+      "version": 1,
+      "content_fingerprint": "sha256:a87d9fe20ec4da59f139f1a5c57eb82468becfe52e69c9ae6158b2681fac0f27",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000079.yml"
+    },
+    {
+      "id": "q-000080",
+      "version": 1,
+      "content_fingerprint": "sha256:1036b07a31f25cac59a3cd7f2279b2e8b4e1d99b2b7396851d7fc30da8cf76bc",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000080.yml"
+    },
+    {
+      "id": "q-000081",
+      "version": 1,
+      "content_fingerprint": "sha256:3ef2375f7b5bf860d510eed3d37018f9fc91e582017a32ab079587e74a1d09fd",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000081.yml"
+    },
+    {
+      "id": "q-000082",
+      "version": 1,
+      "content_fingerprint": "sha256:ac7315c7f2a4a9ac9f895253a5230cb8d8918e62d4dd206d08bb2c756a24f1d4",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000082.yml"
+    },
+    {
+      "id": "q-000083",
+      "version": 1,
+      "content_fingerprint": "sha256:abb7aa5a3a25e26fbbf7b5c56c1a737e02f7d066f5a4a4ff159c6f4a401f7935",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000083.yml"
+    },
+    {
+      "id": "q-000084",
+      "version": 1,
+      "content_fingerprint": "sha256:3a2420b7f2e99718d785e6083e265edc9780f4c26f29ec610d95fbbd91e4e42d",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000084.yml"
+    },
+    {
+      "id": "q-000085",
+      "version": 1,
+      "content_fingerprint": "sha256:c864ac2829f8c6e041bc6c39e734d8caadfcaa837382bbf874742734dd290897",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000085.yml"
+    },
+    {
+      "id": "q-000086",
+      "version": 1,
+      "content_fingerprint": "sha256:4acf5a89e60b3f35eafe2b94d8c87ab343354468a2502e238f407d07868e126e",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000086.yml"
+    },
+    {
+      "id": "q-000087",
+      "version": 1,
+      "content_fingerprint": "sha256:f65a168bec3f2d938b57728050d9456a444ee3fa226c4a30a359058bf8940d69",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000087.yml"
+    },
+    {
+      "id": "q-000088",
+      "version": 1,
+      "content_fingerprint": "sha256:019b39fdb97b24121c60a015b8cbfd7234bc4e7968233f2675c0160e00a23aa4",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000088.yml"
+    },
+    {
+      "id": "q-000089",
+      "version": 1,
+      "content_fingerprint": "sha256:4974fc12fab228de00db5beb59f857d9010564100de412e8db9185cb5aab8aed",
+      "path": "question-bank/questions/math/complex-analysis/residue-methods/q-000089.yml"
+    }
+  ],
+  "related_sets": [
+    {
+      "id": "math.complex-analysis.residue-comprehensive",
+      "fingerprint": "sha256:3aa1207f85ea0af713ec28ab641d54f2ea8199cb608a5283b0cc98dd112412ac"
+    },
+    {
+      "id": "math.complex-analysis.residue-higher-pole",
+      "fingerprint": "sha256:151577be908dc4806c4ab18c2cd5b3ee7e05140f0fb6a1aaf553633d7ed27e51"
+    },
+    {
+      "id": "math.complex-analysis.residue-infinity",
+      "fingerprint": "sha256:5aa80dd3b767cf1dd4f6b0255435b17c1e51a19ff1340e14e7c48c1a732fbcee"
+    },
+    {
+      "id": "math.complex-analysis.residue-laurent",
+      "fingerprint": "sha256:d8b1cd399181681fefbc63bd1717b1ce2a53bade5a38ee5bbcfa9c85a1df513e"
+    },
+    {
+      "id": "math.complex-analysis.residue-quotient",
+      "fingerprint": "sha256:6903cbfa282f85ba44de9753dca2e3f9bf1c30907c9c7428ea31eda5140f6118"
+    },
+    {
+      "id": "math.complex-analysis.residue-simple-pole",
+      "fingerprint": "sha256:903e2d6fe42d6ef011966a4fa78e13b4a114e3a726e543d70d1ba1169b8b02fb"
+    },
+    {
+      "id": "math.complex-analysis.residue-taylor",
+      "fingerprint": "sha256:477e36ef7f720f69d66ea9f1856d49f9484e34c96f6d60d1b713713ceb7919c7"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+schema_version: 3
+id: q-000088
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.comprehensive
+type: free_response
+choice_order: fixed
+stem: 设整函数 $f$ 满足 $z^2f^{\prime\prime}-2zf^{\prime}+(2-z^2)f=0$ 且 $f^{\prime}(0)=1$。求逆时针积分 $\oint_{|z|=1}f(z)/z^4\,\mathrm
+  dz$。是否需要先求出整个函数？
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: $\pi i$；不需要求出整个函数。
+solution: 令 $f(z)=\sum_{n\ge0}a_nz^n$，并约定负指标系数为零。比较系数得 $(n-1)(n-2)a_n-a_{n-2}=0$。已知 $a_1=1$，在 $n=3$ 处得到 $2a_3-a_1=0$，即 $a_3=1/2$。$f/z^4$
+  的留数正是 $a_3$，所以积分为 $2\pi i a_3=\pi i$。其他系数（如自由的 $a_2$）无需确定。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：只需要 $f$ 的三次泰勒系数。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 只需要 $f$ 的三次泰勒系数。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 360
+provenance:
+  type: original
+  note: 依据用户提供的讲义 3.5–3.7 节及本站已有练习重新组织题面与推导。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:019b39fdb97b24121c60a015b8cbfd7234bc4e7968233f2675c0160e00a23aa4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:019b39fdb97b24121c60a015b8cbfd7234bc4e7968233f2675c0160e00a23aa4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:019b39fdb97b24121c60a015b8cbfd7234bc4e7968233f2675c0160e00a23aa4

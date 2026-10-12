@@ -45,6 +45,47 @@ uv run python -m scripts.question_bank attest --id <QUESTION_ID> --dimension phy
 uv run python -m scripts.question_bank publish --id <QUESTION_ID>
 ```
 
+### 批量记录已完成的人工审核
+
+可以使用专门的 [Python 批量工具](../scripts/question_bank/batch_review.py)，把审核者已经完成的审核统一写入题库。工具分为生成清单和执行签署两步；`plan` 不修改题目，`apply` 必须由实际审核者在核对清单后亲自执行。请在仓库根目录运行，并将 `YOUR-GITHUB-NAME` 替换为你的 GitHub 用户名。
+
+本次留数题目（`q-000050`–`q-000089`）的操作示例：
+
+```powershell
+# 1. 冻结本次 40 道题的版本、内容指纹及 7 个关联题集
+uv run python -m scripts.question_bank.batch_review plan --id-range q-000050:q-000089 --reviewer YOUR-GITHUB-NAME --output reports/residue-review-plan.json
+
+# 2. 核对清单，完成所列三个维度的人工审核后，亲自执行签署
+uv run python -m scripts.question_bank.batch_review apply --plan reports/residue-review-plan.json --confirm-human-review
+```
+
+第二步默认只写审核标记，题目仍为草稿。若还要将题目和清单中的关联题集一并正式发布，在第二步添加 `--publish --publish-sets`：
+
+```powershell
+uv run python -m scripts.question_bank.batch_review apply --plan reports/residue-review-plan.json --confirm-human-review --publish --publish-sets
+
+# 发布后检查并重建站点
+uv run python -m scripts.question_bank validate
+uv run mkdocs build --clean
+```
+
+先只写标记、后再发布时，也可对同一清单再运行带发布参数的命令；题目仍是草稿且内容未变时不会重复追加同一审核者的签署。题目已发布后，该清单不可再次用于签署。
+
+按不同范围生成清单时，将示例中的 `--id-range` 及范围替换成以下一种选择方式：
+
+| 选择方式 | 参数 | 范围 |
+| --- | --- | --- |
+| 全部待审核草稿 | `--all-drafts` | 包括其他主题中的全部草稿 |
+| 指定题目目录 | `--directory question-bank/questions/math/complex-analysis/residue-methods` | 该目录及子目录中的草稿 |
+| 指定固定题集 | `--set math.complex-analysis.residue-comprehensive` | 该集合引用的草稿；已发布题目不重复签署 |
+| 若干题号 | `--ids q-000050 q-000051` | 指定题号中的草稿 |
+
+`--set` 可重复指定，题目会去重；查询式题集需使用目录或明确题号选取。工具始终跳过已发布和已退役题目，所以旧错误题 `q-000045` 不会被重新启用。关联题集只列出本次题目发布后可由所选题目与现有已发布题目组成的草稿固定题集，不会顺带发布其他题集。
+
+默认签署维度为 `physics`、`pedagogy`、`copyright`；若只完成了某一维度，生成清单时使用例如 `--dimension physics`，多个维度可重复指定。默认审核日期取北京时间当天，也可以用 `--reviewed-on 2026-10-12` 明确填写实际审核日期。不同审核者可各自生成清单、记录自己完成的维度；正式发布仍要求当前版本具备完整三维签署。
+
+清单输出必须是题库目录外的新文件。题面、解析、反馈、元数据、版本或受管图片变化会使清单失效，工具会在写入前停止；需要重新生成清单并核对变更。使用 `--publish` 时，脚本先按已发布题目的要求检查内容字段和分类引用，缺少 `feedback` 等字段会在写审核标记之前报错；三维审核签署仍由签署后的完整校验确认。若后续发布校验失败或操作过程中出现可捕获异常，整批选中资源会恢复到运行前的原始文件内容。审核标记不等于部署，网站更新仍需执行现有构建或部署流程。
+
 ---
 
 ## 内容指纹（Fingerprint）与安全守则
@@ -54,7 +95,7 @@ uv run python -m scripts.question_bank publish --id <QUESTION_ID>
 > [!IMPORTANT]
 > **内容指纹约束与严禁行为**：
 > 1. **修改源内容自动失效签署**：任何对已发布题目（published）的题干（stem）、选项（choices）、答案（answer）、解析（solution）、提示（hints）、反馈（feedback）或受管资源的修改，都会导致其内容指纹改变，旧签署立即失效，题目阻断 CI 发布。
-> 2. **严禁自动化代签**：严禁任何自动化脚本、CI Pipeline 或 AI Agent 自行生成签署或自动调用 `attest` 命令。所有签署必须由具有物理专业背景的人类维护者独立核实后手动执行。
+> 2. **严禁自动化代审、代签**：CI Pipeline 或 AI Agent 不得自行判断审核通过、生成真实审核签署或调用 `attest` / 批量工具的 `apply`。所有审核决定必须由具有物理专业背景的人类维护者独立核实；维护者亲自执行 CLI 或批量工具时，可以机械地记录其已经完成的审核。批量工具的 `--confirm-human-review` 是审核者的声明，不是程序对内容正确性的判断，也不得被用来设置无人值守审批流程。
 > 3. **严禁直接修改指纹**：严禁在 YAML 中手动伪造或修改 `review.content_fingerprint` 字段。
 > 4. **严禁恶意降级逃避门禁**：严禁为规避 CI 校验错误而将正式发布的题目降级为 `draft`。
 

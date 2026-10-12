@@ -163,6 +163,8 @@ corepack yarn e2e:forms
 
 ## 草稿与本地预览
 
+批量记录已完成的人工审核，可使用 `uv run python -m scripts.question_bank.batch_review plan` 生成锁定版本与指纹的清单，再由审核者亲自运行 `apply --confirm-human-review`。支持全部草稿、目录、题号范围及固定题集，可选同时发布题目与关联题集；详细命令与条件见 [批量审核指南](REVIEWING.md#批量记录已完成的人工审核)。
+
 在开发测试未发布的题目或小测集合时，可开启预览环境变量：
 
 ```powershell

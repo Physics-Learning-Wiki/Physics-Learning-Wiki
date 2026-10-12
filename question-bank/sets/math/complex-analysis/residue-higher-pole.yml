@@ -1,0 +1,19 @@
+schema_version: 1
+id: math.complex-analysis.residue-higher-pole
+title: 求留数专项：高阶极点公式
+description: 消去实际极点，求 $m-1$ 阶导数，并除以 $(m-1)!$。
+status: published
+tags:
+- 数学物理方法
+- 求留数
+- 高阶极点公式
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000065
+  - q-000066
+  - q-000067
+  - q-000068
+  - q-000069
+  order: fixed

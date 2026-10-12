@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000053
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.laurent-series
+- complex.singularities
+related_pages:
+- math.complex-analysis.residue-methods
+- math.complex-analysis.residue-exercises.laurent
+type: free_response
+choice_order: fixed
+stem: 在 $0<|z|<1$ 内展开 $f(z)=e^{1/z}/(1-z)$，求原点的留数。说明为什么只取 $e^{1/z}$ 的 $1/z$ 项会出错。
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 6000
+  rows: 6
+  placeholder: 写出奇点判断、所选方法和关键计算；可使用 LaTeX。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：方法或关键结论有误
+    points: 0
+  - id: partial
+    label: 部分掌握：思路正确但计算或条件不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：结论、步骤与适用条件完整
+    points: 1
+reference_answer: $\operatorname{Res}(f,0)=e-1$。
+solution: 在该圆环内，$e^{1/z}=\sum_{n\ge0}z^{-n}/n!$，$(1-z)^{-1}=\sum_{k\ge0}z^k$。两个级数在紧子集上一致绝对收敛，可以相乘。$k-n=-1$ 即 $n=k+1$，因此留数为
+  $\sum_{k\ge0}1/(k+1)!=e-1$。各个 $k$ 都有贡献，不能仅保留 $n=1$。
+feedback:
+  correct: 请确认奇点判断、方法的适用条件与计算步骤均和参考解析一致，再按自评标准记录掌握程度。
+  incorrect: 建议先检查以下提示：匹配指数 $k-n=-1$。 然后对照参考答案与解析补全关键步骤。
+hints:
+- 匹配指数 $k-n=-1$。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 360
+provenance:
+  type: original
+  note: 独立编写的求留数训练题；公式与学习范围参考用户提供的讲义 3.5–3.7 节。
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8410b0b86f9e3efa9989da04046c3e4c87e9fda0bac4ff3c2d77330afef013b7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8410b0b86f9e3efa9989da04046c3e4c87e9fda0bac4ff3c2d77330afef013b7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8410b0b86f9e3efa9989da04046c3e4c87e9fda0bac4ff3c2d77330afef013b7

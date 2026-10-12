@@ -1,7 +1,9 @@
 schema_version: 3
 id: q-000045
 version: 1
-status: published
+# 原选项 A 与解析末尾的精确值不相等，且所有选项均不匹配；暂停选用，保留原内容及审核记录。
+# 正确推导与替代草稿见 q-000080，详见 reports/residue-content-review.md。
+status: retired
 locale: zh-CN
 topics:
 - math.complex-analysis
