@@ -179,3 +179,32 @@ newton.vector-components:
     - mechanics.dynamics
   aliases:
     - vector-components
+
+analytical.degrees-of-freedom:
+  title: 位形自由度
+  topics:
+    - mechanics.analytical
+  aliases:
+    - degrees-of-freedom
+    - configuration-degrees-of-freedom
+
+analytical.holonomic-constraint:
+  title: 完整约束
+  topics:
+    - mechanics.analytical
+  aliases:
+    - holonomic-constraint
+
+analytical.generalized-coordinate:
+  title: 广义坐标
+  topics:
+    - mechanics.analytical
+  aliases:
+    - generalized-coordinate
+
+analytical.nonholonomic-constraint:
+  title: 非完整约束
+  topics:
+    - mechanics.analytical
+  aliases:
+    - nonholonomic-constraint

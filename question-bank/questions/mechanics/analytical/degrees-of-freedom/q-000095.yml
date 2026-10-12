@@ -1,0 +1,55 @@
+schema_version: 3
+id: q-000095
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+type: numeric
+choice_order: fixed
+stem: 平面内三个质点以三根不可伸长轻杆两两相连，构成非退化三角形，且系统未被外部固定在某个位置或方向。系统有多少个位形自由度？
+answer:
+  value: 3
+  tolerance:
+    type: absolute
+    value: 0
+  unit:
+    required: false
+    accepted: []
+feedback:
+  correct: 正确，六个平面坐标受三个独立固定距离约束。
+  incorrect: 三个平面质点共有六个位置分量；非退化三角形的三条边长约束独立。
+hints:
+- 先数三个质点的平面坐标，再检查三条固定距离条件的独立性。
+solution: 三个平面质点共有 $2\times3=6$ 个位置坐标。非退化三角形的三条固定边长约束独立，因此位形自由度为 $6-3=3$，对应整体的两个平移和一个转动。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 55
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:b6f42c315b8e1d6fd44e8a750fc4b33ef110a87c8fcb260501fe36d8c6598b89
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:b6f42c315b8e1d6fd44e8a750fc4b33ef110a87c8fcb260501fe36d8c6598b89
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:b6f42c315b8e1d6fd44e8a750fc4b33ef110a87c8fcb260501fe36d8c6598b89

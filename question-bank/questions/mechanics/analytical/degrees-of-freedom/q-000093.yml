@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000093
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+- analytical.generalized-coordinate
+type: single_choice
+choice_order: shuffle
+stem: 平面双摆由两个质点和两根长度固定的轻杆组成，第一根杆连接固定支点与第一质点，第二根杆连接两个质点。最自然的独立角坐标有几个？
+choices:
+- id: A
+  content: 1 个
+- id: B
+  content: 2 个
+- id: C
+  content: 3 个
+- id: D
+  content: 4 个
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 只有一根杆的平面单摆才只需一个独立角度。
+    B: 正确，两根杆的方向角可独立标记双摆位形。
+    C: 杆长约束已由两个角坐标自动满足，不需另加坐标。
+    D: 不应把两个质点的直角坐标分量全部当作独立坐标。
+  correct: 正确，平面双摆有两个位形自由度。
+  incorrect: 直接用两根杆各自的方向角表示位形，检查杆长是否已自动满足。
+hints:
+- 每根固定长度的杆在平面内还剩下哪一个独立变化？
+solution: 两个质点原有四个平面位置分量，两条独立杆长约束留下 $4-2=2$ 个位形自由度。用两根杆相对固定竖直方向的角度作为广义坐标，能自动满足两条长度约束。
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 50
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:7280e318f60ca55e8b13efeacc477751790d39861c50de5ffdbd0c38de962ff3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:7280e318f60ca55e8b13efeacc477751790d39861c50de5ffdbd0c38de962ff3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:7280e318f60ca55e8b13efeacc477751790d39861c50de5ffdbd0c38de962ff3

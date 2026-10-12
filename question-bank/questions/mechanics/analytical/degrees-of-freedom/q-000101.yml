@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000101
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+type: true_false
+choice_order: fixed
+stem: 若质点与水平面接触但允许离开，就可以把 $z=0$ 当作运动全过程都成立的完整约束，并始终从自由度计数中减去 1。
+answer:
+  value: false
+feedback:
+  correct: 正确。单侧接触只在接触持续时取等号；离开表面后该等式不成立。
+  incorrect: 单侧接触允许脱离，不能在所有运动阶段都按固定等式约束计数。
+hints:
+- 质点离开表面后，$z=0$ 是否仍成立？
+solution: 单侧接触要求质点不能穿入表面，但允许脱离；可用不等式 $z\geq0$ 表示几何可行区域。只有在持续接触的阶段才可增加 $z=0$ 这一活动等式，离开表面后不能继续把它当成完整约束扣除自由度。
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 55
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:c6f27fc5a895e8796d8a5dd6afef475f63f014a35a56234d1112d8945f627829
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:c6f27fc5a895e8796d8a5dd6afef475f63f014a35a56234d1112d8945f627829
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:c6f27fc5a895e8796d8a5dd6afef475f63f014a35a56234d1112d8945f627829

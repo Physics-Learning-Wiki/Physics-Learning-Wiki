@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000092
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+type: multiple_choice
+choice_order: shuffle
+stem: 半径为 $R>0$ 的球面上有一个质点。关于它的位形自由度，下列哪些说法正确？
+choices:
+- id: A
+  content: 它有 2 个位形自由度，因为一个独立的位置约束把三维坐标数从 3 降为 2。
+- id: B
+  content: 它有 3 个位形自由度，因为质点仍处在三维空间。
+- id: C
+  content: 在坐标有效的区域内，可用两个独立角坐标描述球面上的位置。
+- id: D
+  content: 它有 1 个位形自由度，因为球面方程只含一个等式。
+answer:
+  choices:
+  - A
+  - C
+feedback:
+  choices:
+    A: 正确。球面方程在 $R>0$ 时给出一个独立的位置限制。
+    B: 质点受球面限制，不能任意改变三个位置分量。
+    C: 正确。球面局部需要两个独立参数；极点等处需注意坐标奇异性。
+    D: 约束方程的个数不是剩余自由度；应从坐标数中减去独立约束秩。
+  correct: 正确，球面是三维空间中的二维位形集合。
+  incorrect: 从三个位置坐标中减去球面约束的秩，并记住坐标只需在局部有效。
+hints:
+- 检查约束 $x^2+y^2+z^2=R^2$ 的梯度是否处处为零。
+solution: 球面质点的坐标满足 $x^2+y^2+z^2=R^2$。当 $R>0$ 时该约束梯度不为零，因此它独立，位形空间局部维数为 $3-1=2$。球面角坐标在极点等处有坐标奇异性，但不改变球面的维数。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 50
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:d6e4f056d1fd63460b10ac5c9b8f7ae06b59680bc6975b37f2fe81cc9588f746
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:d6e4f056d1fd63460b10ac5c9b8f7ae06b59680bc6975b37f2fe81cc9588f746
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:d6e4f056d1fd63460b10ac5c9b8f7ae06b59680bc6975b37f2fe81cc9588f746

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000098
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.generalized-coordinate
+type: true_false
+choice_order: fixed
+stem: 单摆只有一个位形自由度，因此只需给出摆角的初值，不需要给出角速度初值，就能唯一确定任意时刻的运动。
+answer:
+  value: false
+feedback:
+  correct: 正确。自由度计数描述位形维数；二阶运动方程还需要初速度。
+  incorrect: 一个独立角度描述位形，但不能单独确定摆的运动方向和快慢。
+hints:
+- 单摆的运动方程对角度含几阶时间导数？
+solution: 单摆有一个位形自由度，但其运动方程是二阶微分方程。一般需要指定初始摆角和初始角速度，才能确定运动。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 30
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0e64bce1ed5e74cc7ca71c3dfe0f6936687b65c955a5f839f2c0bd4a811864c9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0e64bce1ed5e74cc7ca71c3dfe0f6936687b65c955a5f839f2c0bd4a811864c9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0e64bce1ed5e74cc7ca71c3dfe0f6936687b65c955a5f839f2c0bd4a811864c9

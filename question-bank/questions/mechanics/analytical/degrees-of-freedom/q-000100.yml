@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000100
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.nonholonomic-constraint
+type: single_choice
+choice_order: shuffle
+stem: 下列关于速度约束的说法，哪一项正确？
+choices:
+- id: A
+  content: 约束式只要含有广义速度，就一定是非完整约束。
+- id: B
+  content: $\dot x-v_0=0$（$v_0$ 为常数）可积分为 $x-v_0t=C$，所以它不因含速度而自动成为非完整约束。
+- id: C
+  content: 约束显含时间，就一定是非完整约束。
+- id: D
+  content: 含有三角函数的速度约束一定不能积分。
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 含速度不是判别完整性的充分条件；还需检查是否可化为位置与时间的关系。
+    B: 正确，积分后得到位置和时间关系，属于完整约束。
+    C: 显含时间的完整约束称为非定常约束，不等同于非完整约束。
+    D: 函数形式本身不能判定可积性，应检查约束能否化为位置关系。
+  correct: 正确，速度形式的约束有时可积分为完整约束。
+  incorrect: 判别时检查约束能否化为只含位置和时间的等式。
+hints:
+- 对 $\dot x=v_0$ 两边关于时间积分，会得到什么？
+solution: 对 $\dot x=v_0$ 积分得 $x-v_0t=C$，这是一条只含位置与时间的完整约束。因此不能仅凭约束中出现广义速度，就判定它非完整。
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 55
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8683ec1d005e2437149e426029bc522b0bbb3927628a0aa8465f3df34c3a1654
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8683ec1d005e2437149e426029bc522b0bbb3927628a0aa8465f3df34c3a1654
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:8683ec1d005e2437149e426029bc522b0bbb3927628a0aa8465f3df34c3a1654

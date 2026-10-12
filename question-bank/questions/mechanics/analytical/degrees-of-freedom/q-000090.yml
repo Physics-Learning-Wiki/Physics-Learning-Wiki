@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000090
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+type: single_choice
+choice_order: shuffle
+stem: 一个质点可在平面内任意运动，且没有其他几何约束。它的位形自由度是多少？
+choices:
+- id: A
+  content: '0'
+- id: B
+  content: '1'
+- id: C
+  content: '2'
+- id: D
+  content: '3'
+answer:
+  choice: C
+feedback:
+  choices:
+    A: 质点的位置仍可改变，并非没有自由度。
+    B: 平面位置需要两个独立坐标。
+    C: 正确，平面内的位置可由两个独立坐标确定。
+    D: 三个位置坐标对应三维空间中的自由质点。
+  correct: 正确，平面质点有两个独立的位置坐标。
+  incorrect: 先数描述平面位置所需的坐标，再减去独立约束数。
+hints:
+- 平面位置通常用哪两个坐标描述？
+solution: 平面内自由质点的位置由 $x,y$ 两个独立坐标给出，且没有约束需要扣除，因此位形自由度为 $2$。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 30
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c61dc3590bd18145960e41ea5b454ae66a5ea59cc1f8b97770c509e933b833f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c61dc3590bd18145960e41ea5b454ae66a5ea59cc1f8b97770c509e933b833f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c61dc3590bd18145960e41ea5b454ae66a5ea59cc1f8b97770c509e933b833f

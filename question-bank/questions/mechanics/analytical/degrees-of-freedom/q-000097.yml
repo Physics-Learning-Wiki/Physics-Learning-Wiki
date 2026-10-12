@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000097
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.generalized-coordinate
+type: multiple_choice
+choice_order: shuffle
+stem: 关于广义坐标与位形自由度，下列哪些说法正确？
+choices:
+- id: A
+  content: 广义坐标必须是笛卡尔坐标。
+- id: B
+  content: 广义坐标可以是长度、角度或其他适合标记位形的参数。
+- id: C
+  content: 在坐标有效的局部区域内，独立广义坐标的数目等于位形空间维数。
+- id: D
+  content: 若系统有 $n$ 个位形自由度，就只需 $n$ 个初始数值即可确定任意二阶运动。
+answer:
+  choices:
+  - B
+  - C
+feedback:
+  choices:
+    A: 广义坐标不局限于笛卡尔坐标，也可选角度等参数。
+    B: 正确，广义坐标按能否独立标记容许位形来选择。
+    C: 正确，非奇异局部坐标需要与位形空间维数相同的独立参数。
+    D: 位形自由度不等于完整动力学初态所需数据数；通常还需各坐标的初速度。
+  correct: 正确，广义坐标是适合描述容许位形的独立参数。
+  incorrect: 把位形参数与笛卡尔坐标、速度和完整初态区分开。
+hints:
+- 单摆用角度表示位形时，角度是不是笛卡尔坐标？
+solution: 广义坐标只要求在所用区域内独立地标记容许位形，可以是长度、角度等。若位形空间局部维数为 $n$，就需要 $n$ 个独立广义坐标；确定二阶动力学通常还要给出对应的 $n$ 个初速度。
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 45
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0d03b5dafd711d2fd45d3ac947427378518a153e4dd35da848c7ba610daa4d62
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0d03b5dafd711d2fd45d3ac947427378518a153e4dd35da848c7ba610daa4d62
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:0d03b5dafd711d2fd45d3ac947427378518a153e4dd35da848c7ba610daa4d62

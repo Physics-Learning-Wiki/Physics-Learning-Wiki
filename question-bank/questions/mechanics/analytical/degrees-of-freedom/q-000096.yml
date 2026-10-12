@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000096
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+- analytical.generalized-coordinate
+type: single_choice
+choice_order: shuffle
+stem: 平面单摆的悬点沿已知轨迹 $X(t)$ 水平移动，轻杆长度仍固定为 $l$。在任意固定时刻，摆球的位形自由度是多少？
+choices:
+- id: A
+  content: 0 个，因为悬点运动已知
+- id: B
+  content: 1 个
+- id: C
+  content: 2 个
+- id: D
+  content: 随 $X(t)$ 的具体形式变化
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 已知悬点位置不等于摆球位置也已确定。
+    B: 正确，摆球仍可由一个摆角标记。
+    C: 固定杆长给出一个独立位置约束。
+    D: 时间依赖改变约束的位置，不改变此模型的约束秩。
+  correct: 正确，移动悬点对应非定常完整约束，仍有一个位形自由度。
+  incorrect: 已知的 $X(t)$ 是外部给定函数；在每个时刻仍需一个角度确定摆球位置。
+hints:
+- 写出约束 $(x-X(t))^2+y^2=l^2$，数一数独立位置约束。
+solution: 摆球在平面内有两个位置坐标，满足一个独立的固定杆长约束，所以位形自由度为 $2-1=1$。约束显含时间，属于非定常完整约束；这不会额外减少自由度。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 45
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:f3a1438df1b675e4fcc48dcac969ec762cc9ec91cb5bfca7e159c11210c43a45
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:f3a1438df1b675e4fcc48dcac969ec762cc9ec91cb5bfca7e159c11210c43a45
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:f3a1438df1b675e4fcc48dcac969ec762cc9ec91cb5bfca7e159c11210c43a45

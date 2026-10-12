@@ -1,0 +1,55 @@
+schema_version: 3
+id: q-000094
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+type: numeric
+choice_order: fixed
+stem: 平面质点的位置为 $(x,y)$，并满足 $x^2+y^2=L^2$ 与 $2x^2+2y^2=2L^2$，其中 $L>0$。按独立约束的秩计数，它有多少个位形自由度？
+answer:
+  value: 1
+  tolerance:
+    type: absolute
+    value: 0
+  unit:
+    required: false
+    accepted: []
+feedback:
+  correct: 正确，两条方程互为倍数，只提供一个独立限制。
+  incorrect: 先判断两条约束是否独立，再从两个位置坐标中减去约束秩。
+hints:
+- 第二个等式是否提供了第一式之外的新信息？
+solution: 第二个等式是第一个等式的两倍，两个约束的梯度线性相关，约束秩为 $1$。因此位形自由度为 $2-1=1$。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 55
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:13cf781ff6b36b3f2f06f7e54de7a14b8e07170c03345f78b6db0644b7a0b4f3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:13cf781ff6b36b3f2f06f7e54de7a14b8e07170c03345f78b6db0644b7a0b4f3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:13cf781ff6b36b3f2f06f7e54de7a14b8e07170c03345f78b6db0644b7a0b4f3

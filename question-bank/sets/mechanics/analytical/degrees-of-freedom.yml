@@ -1,0 +1,26 @@
+schema_version: 1
+id: mechanics.analytical.degrees-of-freedom
+title: 自由度判断
+description: 从独立完整约束与广义坐标，到非完整速度约束，练习区分位形自由度和容许速度数。
+status: published
+tags:
+- 分析力学
+- 自由度
+- 约束
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000090
+  - q-000091
+  - q-000092
+  - q-000093
+  - q-000094
+  - q-000095
+  - q-000096
+  - q-000097
+  - q-000098
+  - q-000099
+  - q-000100
+  - q-000101
+  order: fixed

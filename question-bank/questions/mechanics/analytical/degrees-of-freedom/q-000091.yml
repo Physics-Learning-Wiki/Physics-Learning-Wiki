@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000091
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+- analytical.generalized-coordinate
+type: true_false
+choice_order: fixed
+stem: 对固定悬点的平面单摆，取摆角 $\theta$ 为广义坐标，并写成 $x=l\sin\theta$、$y=-l\cos\theta$，就能对任意 $\theta$ 自动满足固定杆长约束。
+answer:
+  value: true
+feedback:
+  correct: 正确。角度参数化把位置限制直接纳入坐标表达。
+  incorrect: 将位置表达代入 $x^2+y^2=l^2$，检查是否对任意摆角成立。
+hints:
+- 使用恒等式 $\sin^2\theta+\cos^2\theta=1$。
+solution: 代入位置表达得 $x^2+y^2=l^2(\sin^2\theta+\cos^2\theta)=l^2$，所以固定杆长约束对任意摆角恒成立。摆角是该单摆的一个独立广义坐标。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 35
+provenance:
+  type: original
+  note: Physics Learning Wiki 原创草稿，AI 辅助编写
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c5eee283423e6c0c0237682f84ff703ab8000b8f66ab234ce1c190266e062b7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c5eee283423e6c0c0237682f84ff703ab8000b8f66ab234ce1c190266e062b7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-12'
+    question_version: 1
+    content_fingerprint: sha256:1c5eee283423e6c0c0237682f84ff703ab8000b8f66ab234ce1c190266e062b7
