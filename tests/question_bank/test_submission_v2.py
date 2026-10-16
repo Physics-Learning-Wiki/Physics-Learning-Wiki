@@ -367,4 +367,43 @@ def test_import_issue_strictly_enforces_license_consent(tmp_path: Path) -> None:
         import_issue(repo_root, f5)
 
 
+def test_import_issue_rejects_html_in_attribution_or_ai_name(tmp_path: Path) -> None:
+    repo_root = Path.cwd()
+    base_question = {
+        "type": "true_false",
+        "stem": "重力加速度在地球表面不同纬度存在微小差异。",
+        "answer": {"value": True},
+        "solution": "由于地球自转与非完美球形结构。",
+    }
+
+    # 1. HTML in attribution
+    p1 = {
+        "schemaVersion": 2,
+        "licenseConsent": True,
+        "licenseVersion": "CC-BY-SA-4.0",
+        "question": {**base_question, "attribution": "<script>alert('xss')</script>"},
+    }
+    f1 = tmp_path / "sub_html_attr.json"
+    f1.write_text(json.dumps(p1), encoding="utf-8")
+    with pytest.raises(ValueError, match="attribution must not contain HTML tags"):
+        import_issue(repo_root, f1)
+
+    # 2. HTML in ai_name
+    p2 = {
+        "schemaVersion": 2,
+        "licenseConsent": True,
+        "licenseVersion": "CC-BY-SA-4.0",
+        "question": {
+            **base_question,
+            "ai_assisted": True,
+            "ai_name": '<img src=x onerror="alert(1)">Claude',
+        },
+    }
+    f2 = tmp_path / "sub_html_ai.json"
+    f2.write_text(json.dumps(p2), encoding="utf-8")
+    with pytest.raises(ValueError, match="ai_name must not contain HTML tags"):
+        import_issue(repo_root, f2)
+
+
+
 

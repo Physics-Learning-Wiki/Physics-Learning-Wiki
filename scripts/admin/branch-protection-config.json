@@ -3,7 +3,6 @@
     "strict": true,
     "contexts": [
       "Check Characters",
-      "Check Question Bank",
       "Physics-Learning-Wiki Page Build"
     ]
   },

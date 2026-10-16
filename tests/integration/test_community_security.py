@@ -270,3 +270,118 @@ def test_end_to_end_community_security_with_markdown_rendering(tmp_path: Path) -
 
         # 验证 Snippets 被中和
         assert "--8<--" not in rendered_html
+
+
+def test_real_mkdocs_build_community_security() -> None:
+    """真实执行 MkDocs 站点构建，全链路验证社区投稿的 HTML 安全隔离与渲染输出。"""
+    import shutil
+    import subprocess
+    from bs4 import BeautifulSoup
+
+    repo_root = Path(__file__).resolve().parents[2]
+    community_dir = repo_root / "docs" / "community"
+    community_dir.mkdir(parents=True, exist_ok=True)
+
+    malicious_issue = {
+        "number": 777,
+        "title": '[投稿] <script>alert("title-xss")</script>浅谈"量子纠缠"与[贝尔不等式]',
+        "created_at": "2026-10-16T12:00:00Z",
+        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/777",
+        "body": (
+            "## 投稿信息\n\n"
+            "- **投稿类型**: <svg onload=alert('type')>笔记\n"
+            '- **署名**: <img src="x" onerror="window.__author_xss = true">小明\n'
+            '- **目标章节**: <iframe src="https://evil.com">量子力学</iframe>\n\n'
+            "---\n\n"
+            "爱因斯坦提出了 EPR 佯谬，认为量子力学是不完备的，光子能量 $E=h\\nu$．\n\n"
+            '<img src="https://example.com/pic.png" onerror="window.__body_xss = true" alt="实验图">\n'
+            '<a href="javascript:window.__link_xss = true">恶意链接</a>\n'
+            '[Markdown伪协议链接](javascript:window.__md_xss = true)\n'
+            '<iframe src="https://evil.com"></iframe>\n'
+            '<svg onload="window.__svg_xss = true"></svg>\n'
+            '--8<-- "pyproject.toml"\n'
+        ),
+    }
+
+    try:
+        generate_page(malicious_issue, community_dir)
+        generate_index([malicious_issue], community_dir)
+
+        # 真实运行 MkDocs 构建
+        res = subprocess.run(
+            [sys.executable, "-m", "mkdocs", "build", "--clean"],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+        )
+        assert res.returncode == 0, f"mkdocs build failed:\nStdout:\n{res.stdout}\nStderr:\n{res.stderr}"
+
+        # 检查生成的实际 HTML 文件
+        page_html_file = repo_root / "site" / "community" / "777" / "index.html"
+        index_html_file = repo_root / "site" / "community" / "index.html"
+        assert page_html_file.exists(), "Page HTML not generated"
+        assert index_html_file.exists(), "Index HTML not generated"
+
+        for file_path in [page_html_file, index_html_file]:
+            html_content = file_path.read_text(encoding="utf-8")
+            soup = BeautifulSoup(html_content, "html.parser")
+
+            # 1. 检查正文区域 article.md-content__inner
+            article = soup.find("article", class_="md-content__inner")
+            assert article is not None, f"Article container not found in {file_path}"
+
+            # 正文区域严禁任何危险的插件对象
+            for tag_name in ["object", "embed"]:
+                found_tags = article.find_all(tag_name)
+                assert len(found_tags) == 0, f"Found <{tag_name}> in article of {file_path}: {found_tags}"
+
+            # 严禁任何指向恶意域名的 iframe
+            for iframe in article.find_all("iframe"):
+                src = iframe.get("src", "").lower()
+                assert "evil.com" not in src, f"Found malicious iframe in {file_path}: {src}"
+
+            # 严禁任何包含事件处理器的 svg（主题自身图标不含事件处理器）
+            for svg in article.find_all("svg"):
+                for attr in svg.attrs:
+                    assert not attr.lower().startswith("on"), f"Found event handler on <svg> in {file_path}: {attr}"
+
+            # 严禁任何注入的 script 标签（整页内仅允许主题官方 Giscus/Search 脚本，绝对禁止任何恶意脚本）
+            for script_tag in soup.find_all("script"):
+                script_text = script_tag.text
+                assert "title-xss" not in script_text, f"Found injected title-xss in script: {script_tag}"
+                assert "alert" not in script_text, f"Found alert in script: {script_tag}"
+                assert "evil.com" not in str(script_tag), f"Found evil.com in script: {script_tag}"
+
+            # 检查投稿正文与元数据渲染区域的所有元素：绝对禁止任何 on* 事件监听器
+            for tag in article.find_all(True):
+                for attr in tag.attrs:
+                    assert not attr.lower().startswith("on"), (
+                        f"Found event handler attribute {attr} on <{tag.name}> in user content of {file_path}"
+                    )
+                # 检查链接与图片伪协议
+                if tag.name == "a" and tag.has_attr("href"):
+                    href = tag["href"].strip().lower()
+                    assert not href.startswith("javascript:"), f"Found javascript: link in {file_path}: {href}"
+                    assert not href.startswith("data:"), f"Found data: link in {file_path}: {href}"
+                if tag.name == "img" and tag.has_attr("src"):
+                    src = tag["src"].strip().lower()
+                    assert not src.startswith("javascript:"), f"Found javascript: img src in {file_path}: {src}"
+
+            # 2. 验证敏感文件内容没有通过 --8<-- 泄露
+            assert "--8<--" not in html_content
+            assert "dependencies = [" not in html_content
+
+            # 3. 验证页面标题与正文没有未转义的 HTML 标签或 literal backslashes
+            title_tag = soup.find("title")
+            assert title_tag is not None
+            assert "<script" not in title_tag.text
+            assert r"\[" not in title_tag.text
+
+            # 4. 验证 H1 标签正常渲染且无 script
+            h1_tag = article.find("h1")
+            if h1_tag:
+                assert "<script" not in h1_tag.text
+                assert r"\[" not in h1_tag.text
+    finally:
+        shutil.rmtree(community_dir, ignore_errors=True)
+        shutil.rmtree(repo_root / "site" / "community", ignore_errors=True)

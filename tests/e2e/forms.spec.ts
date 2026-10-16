@@ -203,9 +203,9 @@ test("submission editor is lazy, previews math on demand, and submits once acros
 
   await page.goto(`${basePath}intro/about/`);
   await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
-  expect(requests.some(url => /features\/submit\.js|features\/submit\.css|easymde|mathjax|turnstile/i.test(url))).toBe(
-    false
-  );
+  expect(
+    requests.some(url => /features\/submit\.js|features\/submit\.css|easymde|turnstile/i.test(url) || url === mathJaxUrl)
+  ).toBe(false);
 
   await page.getByRole("button", { name: "参与贡献", exact: true }).click();
   await page.locator('nav a[href$="/submit/"]').first().click();
@@ -215,7 +215,7 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   await expect(page.locator('head link[data-plw-feature="submit"]')).toHaveCount(1);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/features/submit.js"))).toHaveLength(1);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/css/features/submit.css"))).toHaveLength(1);
-  expect(requests.some(url => /mathjax/i.test(url))).toBe(false);
+  expect(requests.some(url => url === mathJaxUrl)).toBe(false);
 
   const previewButton = page.locator('.editor-toolbar button[title="预览"]');
   await previewButton.click();

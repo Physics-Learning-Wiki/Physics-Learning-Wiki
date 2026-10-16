@@ -37,8 +37,8 @@ ALLOWED_COMMUNITY_ATTRS = {
 ALLOWED_PROTOCOLS = ["http", "https", "mailto"]
 
 
-def sanitize_metadata_field(val: str, max_len: int = 120) -> str:
-    """清理并安全转义元数据字段，彻底消除 HTML 标签与 Markdown 注入。"""
+def sanitize_plain_metadata(val: str, max_len: int = 120) -> str:
+    """清理元数据字段，剥除 HTML 标签、控制字符与危险协议，用于 YAML Front Matter。"""
     if not val:
         return ""
     # 去除控制字符与换行
@@ -47,11 +47,23 @@ def sanitize_metadata_field(val: str, max_len: int = 120) -> str:
     cleaned = re.sub(r"<[^>]*>", "", cleaned)
     # 中和危险伪协议 (javascript:, data:, vbscript:)
     cleaned = re.sub(r"(?i)(?:javascript|data|vbscript)\s*:", "#blocked:", cleaned)
-    # 转义 HTML 实体符号
-    cleaned = html.escape(cleaned, quote=True)
-    # 转义 Markdown 链接括号，避免破坏列表或构造恶意 Markdown 链接
-    cleaned = cleaned.replace("[", r"\[").replace("]", r"\]")
     return cleaned[:max_len].strip()
+
+
+def sanitize_markdown_text(val: str, max_len: int = 120) -> str:
+    """清理并安全转义用于 Markdown 正文显示的文本，剥除 HTML 标签并转义 HTML 实体。"""
+    cleaned = sanitize_plain_metadata(val, max_len)
+    return html.escape(cleaned, quote=True)
+
+
+def escape_markdown_link_title(title: str) -> str:
+    """转义 Markdown 链接括号，避免破坏 [title](url) 结构。"""
+    return title.replace("[", r"\[").replace("]", r"\]")
+
+
+def sanitize_metadata_field(val: str, max_len: int = 120) -> str:
+    """兼容旧接口：清理元数据字段。"""
+    return sanitize_plain_metadata(val, max_len)
 
 
 def sanitize_community_markdown(content: str) -> str:
@@ -104,9 +116,10 @@ def fetch_issues() -> list[dict]:
     params = "?labels=投稿-已收录&state=open&per_page=100"
     headers = {
         "Accept": "application/vnd.github+json",
-        "Authorization": f"Bearer {GITHUB_TOKEN}",
         "User-Agent": "Physics-Learning-Wiki-Bot",
     }
+    if GITHUB_TOKEN:
+        headers["Authorization"] = f"Bearer {GITHUB_TOKEN}"
     req = Request(url + params, headers=headers)
     with urlopen(req) as resp:
         return json.loads(resp.read().decode())
@@ -120,15 +133,15 @@ def parse_issue_body(body: str) -> dict:
 
     type_match = re.search(r"投稿类型\*\*:\s*(.+?)(?:\n|$)", body)
     if type_match:
-        info["type"] = sanitize_metadata_field(type_match.group(1), 60) or "未知"
+        info["type"] = sanitize_plain_metadata(type_match.group(1), 60) or "未知"
 
     chapter_match = re.search(r"目标章节\*\*:\s*(.+?)(?:\n|$)", body)
     if chapter_match:
-        info["chapter"] = sanitize_metadata_field(chapter_match.group(1), 120)
+        info["chapter"] = sanitize_plain_metadata(chapter_match.group(1), 120)
 
     attr_match = re.search(r"署名\*\*:\s*(.+?)(?:\n|$)", body)
     if attr_match:
-        info["attribution"] = sanitize_metadata_field(attr_match.group(1), 60) or "匿名"
+        info["attribution"] = sanitize_plain_metadata(attr_match.group(1), 60) or "匿名"
 
     return info
 
@@ -137,10 +150,11 @@ def generate_page(issue: dict, output_dir: Path) -> str:
     """为单个投稿安全生成 Markdown 页面。"""
     number = issue["number"]
     raw_title = issue.get("title", "").replace("[投稿]", "").strip()
-    title = sanitize_metadata_field(raw_title, 120) or f"社区稿件 #{number}"
+    title = sanitize_plain_metadata(raw_title, 120) or f"社区稿件 #{number}"
     body = issue.get("body") or ""
     info = parse_issue_body(body)
     created = re.sub(r"[^\d\-]", "", issue.get("created_at", "")[:10])
+    author = sanitize_plain_metadata(info["attribution"], 60) or "匿名"
 
     raw_issue_url = issue.get("html_url", "")
     source_issue = (
@@ -156,7 +170,7 @@ def generate_page(issue: dict, output_dir: Path) -> str:
 
     frontmatter_dict = {
         "status": "community",
-        "author": info["attribution"] or "匿名",
+        "author": author,
         "source_issue": source_issue,
         "submission_date": created,
         "title": title,
@@ -189,14 +203,15 @@ def generate_index(issues: list[dict], output_dir: Path) -> None:
         for issue in issues:
             number = issue["number"]
             raw_title = issue.get("title", "").replace("[投稿]", "").strip()
-            title = sanitize_metadata_field(raw_title, 120) or f"社区稿件 #{number}"
+            title = sanitize_plain_metadata(raw_title, 120) or f"社区稿件 #{number}"
+            safe_link_title = escape_markdown_link_title(title)
             info = parse_issue_body(issue.get("body") or "")
             created = re.sub(r"[^\d\-]", "", issue.get("created_at", "")[:10])
-            safe_attr = info["attribution"] or "匿名"
-            safe_type = info["type"] or "未知"
-            safe_chapter = info["chapter"]
+            safe_attr = sanitize_markdown_text(info["attribution"], 60) or "匿名"
+            safe_type = sanitize_markdown_text(info["type"], 60) or "未知"
+            safe_chapter = sanitize_markdown_text(info["chapter"], 120)
 
-            lines.append(f"## [{title}]({number}.md)")
+            lines.append(f"## [{safe_link_title}]({number}.md)")
             lines.append("")
             meta_line = (
                 f"投稿者：{safe_attr} | "
@@ -222,7 +237,8 @@ def main() -> int:
         issues = fetch_issues()
     except Exception as e:
         print(f"[WARNING] Failed to fetch issues: {e}")
-        print("Skipping community page generation.")
+        print("Ensuring fallback community index exists...")
+        generate_index([], output_dir)
         return 0
 
     print(f"Found {len(issues)} published community submissions")

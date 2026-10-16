@@ -51,10 +51,12 @@ jobs:
           open_pr="$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // ""' 2>/dev/null || echo "")"
           closed_pr="$(gh pr list --head "$BRANCH" --base main --state closed --json number --jq '.[0].number // ""' 2>/dev/null || echo "")"
 
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
+
           # Reset remote branch if previous PR was closed or merged
           if [ -z "$open_pr" ] && [ -n "$closed_pr" ]; then
             echo "Previous PR was closed/merged. Resetting remote branch $BRANCH..."
-            git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" --delete "$BRANCH" || true
+            git push origin --delete "$BRANCH" || true
           fi
 
           git switch -B "$BRANCH"
@@ -65,7 +67,7 @@ jobs:
             git pull --rebase origin "$BRANCH" || git rebase --abort || true
           fi
 
-          git push --force-with-lease "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$BRANCH"
+          git push --force-with-lease origin "$BRANCH"
 
           if [ -z "$open_pr" ]; then
             gh pr create --base main --head "$BRANCH" \

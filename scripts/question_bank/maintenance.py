@@ -81,6 +81,10 @@ def import_issue(root: Path, input_path: Path) -> Path:
         raise ValueError("submission payload must have explicit CC-BY-SA-4.0 license consent")
     if payload.get("licenseVersion") != "CC-BY-SA-4.0":
         raise ValueError("submission payload requires licenseVersion to be CC-BY-SA-4.0")
+    if source.get("attribution") and re.search(r"[<>]", str(source["attribution"])):
+        raise ValueError("submission question attribution must not contain HTML tags")
+    if source.get("ai_name") and re.search(r"[<>]", str(source["ai_name"])):
+        raise ValueError("submission question ai_name must not contain HTML tags")
     question_id, output = next_question_id(root)
     authors = [{"name": str(source.get("attribution") or "匿名投稿者"), "kind": "human"}]
     if source.get("ai_assisted"):

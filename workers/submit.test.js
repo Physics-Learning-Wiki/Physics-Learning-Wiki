@@ -628,6 +628,29 @@ test("P0-1: worker entry rejects HTML or dangerous tags in metadata fields", asy
     const data = await res.json();
     assert.match(data.error, /HTML 标签|不安全字符/);
   }
+
+  // Question submission with HTML in question.attribution or question.ai_name
+  for (const qExtra of [
+    { attribution: '<img src=x onerror=alert("xss")>' },
+    { attribution: '<script>alert(1)</script>' },
+    { ai_assisted: true, ai_name: '<svg onload=alert(1)>' },
+    { ai_assisted: true, ai_name: '<iframe src="evil.com"></iframe>' },
+  ]) {
+    const res = await submitWorker.fetch(
+      createRequest({
+        title: "题目投稿",
+        content: minimalDraftQuestion.stem,
+        type: "question",
+        question: { ...minimalDraftQuestion, ...qExtra },
+        licenseConsent: true,
+        turnstileToken: "tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(res.status, 400);
+    const data = await res.json();
+    assert.match(data.error, /HTML 标签|不安全/);
+  }
 });
 
 test("P1-1: worker strictly enforces Turnstile action and hostname fail-closed", async () => {

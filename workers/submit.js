@@ -136,6 +136,7 @@ const ALLOWED_QUESTION_KEYS = new Set([
   "external_media",
   "attribution",
   "ai_assisted",
+  "ai_name",
 ]);
 
 const CHOICE_ID_RE = /^[A-Z][A-Z0-9]{0,7}$/;
@@ -375,10 +376,17 @@ function validateQuestion(question) {
   }
 
   if (question.attribution !== undefined) {
-    if (!nonEmptyString(question.attribution, 200)) return "作者署名无效";
+    if (!nonEmptyString(question.attribution, 200) || hasHtmlOrUnsafe(question.attribution)) {
+      return "作者署名无效或包含 HTML 标签";
+    }
   }
   if (question.ai_assisted !== undefined) {
     if (typeof question.ai_assisted !== "boolean") return "ai_assisted 必须为布尔值";
+  }
+  if (question.ai_name !== undefined) {
+    if (!nonEmptyString(question.ai_name, 100) || hasHtmlOrUnsafe(question.ai_name)) {
+      return "AI 工具名称无效或包含 HTML 标签";
+    }
   }
 
   return null;
