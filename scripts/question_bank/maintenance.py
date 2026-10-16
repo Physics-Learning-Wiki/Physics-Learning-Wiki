@@ -77,8 +77,10 @@ def import_issue(root: Path, input_path: Path) -> Path:
     unknown_keys = set(source.keys()) - ALLOWED_SUBMISSION_QUESTION_KEYS
     if unknown_keys:
         raise ValueError(f"submission question contains unknown properties: {', '.join(sorted(unknown_keys))}")
-    if payload.get("licenseConsent") is False:
-        raise ValueError("submission payload does not have CC-BY-SA-4.0 license consent")
+    if payload.get("licenseConsent") is not True:
+        raise ValueError("submission payload must have explicit CC-BY-SA-4.0 license consent")
+    if payload.get("licenseVersion") != "CC-BY-SA-4.0":
+        raise ValueError("submission payload requires licenseVersion to be CC-BY-SA-4.0")
     question_id, output = next_question_id(root)
     authors = [{"name": str(source.get("attribution") or "匿名投稿者"), "kind": "human"}]
     if source.get("ai_assisted"):

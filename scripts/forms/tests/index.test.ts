@@ -38,7 +38,7 @@ test("draft recovery rejects malformed or incompatible data and keeps only allow
 
 import { sanitizePreviewHtml } from "../src/sanitizer.js";
 
-test("S-04: sanitizePreviewHtml strips dangerous tags, javascript schemes and event handlers", () => {
+test("S-04: sanitizePreviewHtml in non-DOM environment safely strips tags and falls back to plain text", () => {
   const xssPayloads = [
     '<script>alert("xss")</script>',
     '<img src="x" onerror="alert(1)">',
@@ -64,9 +64,9 @@ test("S-04: sanitizePreviewHtml strips dangerous tags, javascript schemes and ev
     assert.doesNotMatch(clean, /<form/i);
   }
 
-  const safeHtml = '<p>质能方程为 <strong>$E=mc^2$</strong></p><mjx-container jax="CHTML"><mjx-math><mjx-mi>E</mjx-mi></mjx-math></mjx-container>';
+  // Without a DOM environment, fail-closed design strips HTML tags and produces plain text
+  const safeHtml = '<p>质能方程为 <strong>$E=mc^2$</strong></p>';
   const cleanSafe = sanitizePreviewHtml(safeHtml);
-  assert.match(cleanSafe, /<p>质能方程为 <strong>\$E=mc\^2\$<\/strong><\/p>/);
-  assert.match(cleanSafe, /<mjx-container jax="CHTML">/);
+  assert.equal(cleanSafe, "质能方程为 $E=mc^2$");
 });
 

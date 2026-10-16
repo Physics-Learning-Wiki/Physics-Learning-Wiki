@@ -73,7 +73,17 @@ function nonEmptyString(value, max = 20000) {
 
 function unsafeMarkdown(value) {
   if (typeof value !== "string") return true;
-  return /<(?:script|iframe|object|embed|form|input|button|link|style)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata)\s*:|--8<--/i.test(value);
+  return (
+    /<(?:script|iframe|object|embed|form|input|button|link|style|svg|details)\b/i.test(value) ||
+    /\bon[a-z]+\s*=/i.test(value) ||
+    /(?:\bjavascript|\bdata|\bvbscript)\s*:/i.test(value) ||
+    /--8<--/i.test(value)
+  );
+}
+
+function hasHtmlOrUnsafe(value) {
+  if (typeof value !== "string") return true;
+  return /[<>]/.test(value) || unsafeMarkdown(value);
 }
 
 function validHttpsUrl(value) {
@@ -374,7 +384,7 @@ function validateQuestion(question) {
   return null;
 }
 
-export { buildIssueBody, validateQuestion, unsafeMarkdown };
+export { buildIssueBody, validateQuestion, unsafeMarkdown, hasHtmlOrUnsafe };
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -423,18 +433,62 @@ export default {
       return jsonResponse({ error: "Method not allowed" }, 405);
     }
 
-    // S-08: 128 KiB Content-Length check
+    const MAX_REQUEST_BYTES = 131072; // 128 KiB
+
+    // S-08 & P1-2: 128 KiB Content-Length check
     const contentLengthHeader = request.headers.get("content-length");
     if (contentLengthHeader) {
       const contentLength = parseInt(contentLengthHeader, 10);
-      if (Number.isFinite(contentLength) && contentLength > 131072) {
+      if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
         return jsonResponse({ error: "请求数据超出体积限制 (128KB)" }, 413);
+      }
+    }
+
+    // P1-2: Enforce bounded streaming read when Content-Length is missing or spoofed
+    let rawText = "";
+    if (request.body && typeof request.body.getReader === "function") {
+      const reader = request.body.getReader();
+      const decoder = new TextDecoder();
+      let totalBytes = 0;
+      const chunks = [];
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          totalBytes += value.byteLength;
+          if (totalBytes > MAX_REQUEST_BYTES) {
+            try {
+              await reader.cancel();
+            } catch {}
+            return jsonResponse({ error: "请求数据超出体积限制 (128KB)" }, 413);
+          }
+          chunks.push(value);
+        }
+      } catch {
+        return jsonResponse({ error: "读取请求体失败" }, 400);
+      }
+
+      const combined = new Uint8Array(totalBytes);
+      let offset = 0;
+      for (const chunk of chunks) {
+        combined.set(chunk, offset);
+        offset += chunk.byteLength;
+      }
+      rawText = decoder.decode(combined);
+    } else {
+      try {
+        rawText = await request.text();
+        if (new TextEncoder().encode(rawText).length > MAX_REQUEST_BYTES) {
+          return jsonResponse({ error: "请求数据超出体积限制 (128KB)" }, 413);
+        }
+      } catch {
+        return jsonResponse({ error: "读取请求体失败" }, 400);
       }
     }
 
     let rawBody;
     try {
-      rawBody = await request.json();
+      rawBody = JSON.parse(rawText);
     } catch (parseError) {
       return jsonResponse({ error: "请求格式无效，必须为合法的 JSON 对象" }, 400);
     }
@@ -478,8 +532,8 @@ export default {
       return jsonResponse({ error: "标题、正文和投稿类型不能为空" }, 400);
     }
 
-    if (hasControlCharacters(trimmedTitle)) {
-      return jsonResponse({ error: "标题包含不合法的控制字符" }, 400);
+    if (hasControlCharacters(trimmedTitle) || hasHtmlOrUnsafe(trimmedTitle)) {
+      return jsonResponse({ error: "标题包含不合法的控制字符或 HTML 标签" }, 400);
     }
 
     if (/[\r\n]/.test(trimmedTitle)) {
@@ -511,8 +565,8 @@ export default {
       if (trimmedAttribution.length > 60) {
         return jsonResponse({ error: "署名长度不能超过 60 字符" }, 400);
       }
-      if (hasControlCharacters(trimmedAttribution) || /[\r\n]/.test(trimmedAttribution)) {
-        return jsonResponse({ error: "署名不能包含控制字符或换行符" }, 400);
+      if (hasControlCharacters(trimmedAttribution) || /[\r\n]/.test(trimmedAttribution) || hasHtmlOrUnsafe(trimmedAttribution)) {
+        return jsonResponse({ error: "署名不能包含控制字符、换行符或 HTML 标签" }, 400);
       }
       if (trimmedAttribution) {
         sanitizedAttribution = trimmedAttribution;
@@ -528,8 +582,8 @@ export default {
       if (trimmedChapter.length > 120) {
         return jsonResponse({ error: "目标章节长度不能超过 120 字符" }, 400);
       }
-      if (hasControlCharacters(trimmedChapter) || /[\r\n]/.test(trimmedChapter)) {
-        return jsonResponse({ error: "目标章节不能包含控制字符或换行符" }, 400);
+      if (hasControlCharacters(trimmedChapter) || /[\r\n]/.test(trimmedChapter) || hasHtmlOrUnsafe(trimmedChapter)) {
+        return jsonResponse({ error: "目标章节不能包含控制字符、换行符或 HTML 标签" }, 400);
       }
       sanitizedChapter = trimmedChapter;
     }
@@ -543,8 +597,8 @@ export default {
       if (trimmedTypeLabel.length > 60) {
         return jsonResponse({ error: "类型标签长度不能超过 60 字符" }, 400);
       }
-      if (hasControlCharacters(trimmedTypeLabel) || /[\r\n]/.test(trimmedTypeLabel)) {
-        return jsonResponse({ error: "类型标签不能包含控制字符或换行符" }, 400);
+      if (hasControlCharacters(trimmedTypeLabel) || /[\r\n]/.test(trimmedTypeLabel) || hasHtmlOrUnsafe(trimmedTypeLabel)) {
+        return jsonResponse({ error: "类型标签不能包含控制字符、换行符或 HTML 标签" }, 400);
       }
       sanitizedTypeLabel = trimmedTypeLabel;
     }
@@ -558,8 +612,8 @@ export default {
       if (trimmedContact.length > 200) {
         return jsonResponse({ error: "联系方式长度不能超过 200 字符" }, 400);
       }
-      if (hasControlCharacters(trimmedContact) || /[\r\n]/.test(trimmedContact)) {
-        return jsonResponse({ error: "联系方式不能包含控制字符或换行符" }, 400);
+      if (hasControlCharacters(trimmedContact) || /[\r\n]/.test(trimmedContact) || hasHtmlOrUnsafe(trimmedContact)) {
+        return jsonResponse({ error: "联系方式不能包含控制字符、换行符或 HTML 标签" }, 400);
       }
       if (trimmedContact) {
         if (typeof contactPublicConsent !== "boolean") {
@@ -639,22 +693,24 @@ export default {
       return jsonResponse({ error: "人机验证失败，请重试" }, 400);
     }
 
-    // Validate hostname if present
-    const allowedHostnames = new Set([
-      "physics-learning-wiki.github.io",
-      "localhost",
-      "127.0.0.1",
-      ...(env.ALLOWED_HOSTNAMES ? env.ALLOWED_HOSTNAMES.split(",").map(h => h.trim()) : [])
-    ]);
-    if (turnstileData.hostname && !allowedHostnames.has(turnstileData.hostname)) {
-      console.error("Turnstile hostname disallowed:", turnstileData.hostname);
+    // P1-1: Validate hostname strictly (fail-closed)
+    const isProduction = env.ENVIRONMENT === "production" || env.NODE_ENV === "production";
+    const allowedHostnames = new Set(
+      env.ALLOWED_HOSTNAMES
+        ? env.ALLOWED_HOSTNAMES.split(",").map(h => h.trim()).filter(Boolean)
+        : isProduction
+          ? ["physics-learning-wiki.github.io"]
+          : ["physics-learning-wiki.github.io", "localhost", "127.0.0.1"]
+    );
+    if (!turnstileData.hostname || !allowedHostnames.has(turnstileData.hostname)) {
+      console.error("Turnstile hostname disallowed or missing:", turnstileData.hostname);
       return jsonResponse({ error: "人机验证来源主机名无效" }, 400);
     }
 
-    // Validate action if present
+    // P1-1: Validate action strictly (fail-closed, must strictly match expectedAction)
     const expectedAction = trimmedType === "question" ? "submit-question" : "submit-general";
-    if (turnstileData.action && turnstileData.action !== expectedAction && turnstileData.action !== "submit-general" && turnstileData.action !== "submit-question") {
-      console.error("Turnstile action mismatch:", turnstileData.action, "expected:", expectedAction);
+    if (!turnstileData.action || turnstileData.action !== expectedAction) {
+      console.error("Turnstile action mismatch or missing:", turnstileData.action, "expected:", expectedAction);
       return jsonResponse({ error: "人机验证业务行为不匹配" }, 400);
     }
 

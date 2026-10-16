@@ -54,7 +54,21 @@ npx wrangler secret put ALLOWED_HOSTNAMES
 
 ---
 
-## 4. 本地测试
+## 4. Cloudflare WAF 与速率限制（Rate Limiting）生产建议
+
+在 Cloudflare Dashboard 中为该 Worker 路由配置以下防护：
+1. **WAF 速率限制（Rate Limiting Rule）**：
+   - 规则：针对路径 `/submit`（或自定义域名），单 IP 在 60 秒内请求超过 15 次触发 Block（封禁 1 小时）或 Managed Challenge．
+2. **Bot Fight Mode / Turnstile 联动**：
+   - 在生产环境开启 Cloudflare 托管人机质询，过滤已知爬虫与恶意扫描器．
+3. **环境隔离**：
+   - 生产环境中 `ENVIRONMENT` 设为 `production`，此时 Worker 默认仅允许 `physics-learning-wiki.github.io` 主机名，彻底拒绝 `localhost` / `127.0.0.1` 来源．
+4. **分支保护与发布门禁**：
+   - 自动生成的 Issue PR 必须在通过主分支保护检查后方可合并，详见 [`.github/BRANCH_PROTECTION.md`](../.github/BRANCH_PROTECTION.md)．
+
+---
+
+## 5. 本地测试
 
 ```bash
 # 运行 Worker 单元与安全对抗测试集

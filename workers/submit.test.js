@@ -345,11 +345,15 @@ function createMockEnv(overrides = {}) {
 function createRequest(body, options = {}) {
   const headers = { "Content-Type": "application/json", ...options.headers };
   const rawBody = typeof body === "string" ? body : JSON.stringify(body);
-  return new Request("https://worker.test/submit", {
+  const req = new Request("https://worker.test/submit", {
     method: options.method || "POST",
     headers,
     body: options.method === "OPTIONS" || options.method === "GET" ? undefined : rawBody,
   });
+  if (options.omitContentLength) {
+    req.headers.delete("content-length");
+  }
+  return req;
 }
 
 test("S-01 & S-08: worker entry rejects non-POST and oversized requests", async () => {
@@ -361,6 +365,15 @@ test("S-01 & S-08: worker entry rejects non-POST and oversized requests", async 
     createMockEnv()
   );
   assert.equal(largeRes.status, 413);
+
+  // P1-2: Oversized request without Content-Length header is blocked via bounded stream reading
+  const oversizedNoHeaderRes = await submitWorker.fetch(
+    createRequest({ title: "大请求", content: "x".repeat(140000), type: "notes" }, { omitContentLength: true }),
+    createMockEnv()
+  );
+  assert.equal(oversizedNoHeaderRes.status, 413);
+  const dataOver = await oversizedNoHeaderRes.json();
+  assert.match(dataOver.error, /体积限制/);
 
   const malformedJsonRes = await submitWorker.fetch(
     createRequest("{ not a valid json }"),
@@ -585,6 +598,112 @@ test("S-07 & S-06: worker handles Turnstile failures, hostnames, and GitHub erro
     const data4 = await successRes.json();
     assert.equal(data4.success, true);
     assert.equal(data4.issueNumber, 123);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test("P0-1: worker entry rejects HTML or dangerous tags in metadata fields", async () => {
+  const attackPayloads = [
+    { attribution: '<img src=x onerror=alert("xss")>' },
+    { attribution: '<script>alert(1)</script>' },
+    { chapter: '<iframe src="https://evil.com"></iframe>' },
+    { typeLabel: '<svg onload=alert(1)>' },
+    { contact: '<a href="javascript:alert(1)">点我</a>', contactPublicConsent: true },
+    { title: "包含<script>标签的标题" },
+  ];
+
+  for (const extra of attackPayloads) {
+    const res = await submitWorker.fetch(
+      createRequest({
+        title: "正常标题",
+        content: "正文内容",
+        type: "notes",
+        turnstileToken: "tok",
+        ...extra,
+      }),
+      createMockEnv()
+    );
+    assert.equal(res.status, 400);
+    const data = await res.json();
+    assert.match(data.error, /HTML 标签|不安全字符/);
+  }
+});
+
+test("P1-1: worker strictly enforces Turnstile action and hostname fail-closed", async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    // 1. Missing hostname in Turnstile response -> 400
+    globalThis.fetch = async () =>
+      new Response(
+        JSON.stringify({ success: true, action: "submit-general" }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    const missingHostRes = await submitWorker.fetch(
+      createRequest({ title: "标题", content: "正文内容", type: "notes", turnstileToken: "tok" }),
+      createMockEnv()
+    );
+    assert.equal(missingHostRes.status, 400);
+    assert.match((await missingHostRes.json()).error, /主机名无效/);
+
+    // 2. Missing action in Turnstile response -> 400
+    globalThis.fetch = async () =>
+      new Response(
+        JSON.stringify({ success: true, hostname: "physics-learning-wiki.github.io" }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    const missingActionRes = await submitWorker.fetch(
+      createRequest({ title: "标题", content: "正文内容", type: "notes", turnstileToken: "tok" }),
+      createMockEnv()
+    );
+    assert.equal(missingActionRes.status, 400);
+    assert.match((await missingActionRes.json()).error, /业务行为不匹配/);
+
+    // 3. Action mismatch: question submission with submit-general action -> 400
+    globalThis.fetch = async () =>
+      new Response(
+        JSON.stringify({ success: true, hostname: "physics-learning-wiki.github.io", action: "submit-general" }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    const actionMismatchRes1 = await submitWorker.fetch(
+      createRequest({
+        title: "题目",
+        content: minimalDraftQuestion.stem,
+        type: "question",
+        question: minimalDraftQuestion,
+        licenseConsent: true,
+        turnstileToken: "tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(actionMismatchRes1.status, 400);
+    assert.match((await actionMismatchRes1.json()).error, /业务行为不匹配/);
+
+    // 4. Action mismatch: notes submission with submit-question action -> 400
+    globalThis.fetch = async () =>
+      new Response(
+        JSON.stringify({ success: true, hostname: "physics-learning-wiki.github.io", action: "submit-question" }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    const actionMismatchRes2 = await submitWorker.fetch(
+      createRequest({ title: "笔记", content: "正文内容", type: "notes", turnstileToken: "tok" }),
+      createMockEnv()
+    );
+    assert.equal(actionMismatchRes2.status, 400);
+    assert.match((await actionMismatchRes2.json()).error, /业务行为不匹配/);
+
+    // 5. Production environment rejects localhost
+    globalThis.fetch = async () =>
+      new Response(
+        JSON.stringify({ success: true, hostname: "localhost", action: "submit-general" }),
+        { status: 200, headers: { "Content-Type": "application/json" } }
+      );
+    const prodLocalhostRes = await submitWorker.fetch(
+      createRequest({ title: "笔记", content: "正文内容", type: "notes", turnstileToken: "tok" }),
+      createMockEnv({ ENVIRONMENT: "production" })
+    );
+    assert.equal(prodLocalhostRes.status, 400);
+    assert.match((await prodLocalhostRes.json()).error, /主机名无效/);
   } finally {
     globalThis.fetch = originalFetch;
   }

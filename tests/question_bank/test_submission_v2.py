@@ -39,6 +39,8 @@ def test_import_issue_minimal_payload(tmp_path: Path) -> None:
     payload = {
         "schemaVersion": 2,
         "issueUrl": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/999",
+        "licenseConsent": True,
+        "licenseVersion": "CC-BY-SA-4.0",
         "question": {
             "type": "true_false",
             "stem": "匀速圆周运动物体的加速度方向始终指向圆心。",
@@ -73,6 +75,8 @@ def test_import_issue_with_optional_metadata(tmp_path: Path) -> None:
 
     payload = {
         "schemaVersion": 2,
+        "licenseConsent": True,
+        "licenseVersion": "CC-BY-SA-4.0",
         "question": {
             "type": "single_choice",
             "stem": "关于惯性，下列说法正确的是：",
@@ -224,6 +228,8 @@ def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
     imported_paths = []
     try:
         for i, payload in enumerate(payloads):
+            payload["licenseConsent"] = True
+            payload["licenseVersion"] = "CC-BY-SA-4.0"
             input_file = tmp_path / f"submission_{i}.json"
             input_file.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
             imported_path = import_issue(repo_root, input_file)
@@ -249,6 +255,8 @@ def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
             payload = {
                 "schemaVersion": 2,
                 "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-{name}",
+                "licenseConsent": True,
+                "licenseVersion": "CC-BY-SA-4.0",
                 "question": question,
             }
             input_file = tmp_path / f"submission_contract_{name}.json"
@@ -276,6 +284,8 @@ def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None
         payload = {
             "schemaVersion": 2,
             "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-invalid-{name}",
+            "licenseConsent": True,
+            "licenseVersion": "CC-BY-SA-4.0",
             "question": test_obj,
         }
         input_file = tmp_path / f"sub_invalid_{name}.json"
@@ -287,6 +297,74 @@ def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None
         finally:
             if imported_path and imported_path.exists():
                 imported_path.unlink()
+
+
+def test_import_issue_strictly_enforces_license_consent(tmp_path: Path) -> None:
+    repo_root = Path.cwd()
+    valid_question = {
+        "type": "true_false",
+        "stem": "合外力为零时物体保持静止或匀速直线运动。",
+        "answer": {"value": True},
+        "solution": "牛顿第一定律。",
+        "attribution": "物理探索者",
+    }
+
+    # 1. Missing licenseConsent
+    missing_consent_payload = {
+        "schemaVersion": 2,
+        "question": valid_question,
+    }
+    f1 = tmp_path / "sub_missing_consent.json"
+    f1.write_text(json.dumps(missing_consent_payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="CC-BY-SA-4.0 license consent"):
+        import_issue(repo_root, f1)
+
+    # 2. licenseConsent is False
+    false_consent_payload = {
+        "schemaVersion": 2,
+        "licenseConsent": False,
+        "licenseVersion": "CC-BY-SA-4.0",
+        "question": valid_question,
+    }
+    f2 = tmp_path / "sub_false_consent.json"
+    f2.write_text(json.dumps(false_consent_payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="CC-BY-SA-4.0 license consent"):
+        import_issue(repo_root, f2)
+
+    # 3. licenseConsent is a string "true" instead of boolean True
+    string_consent_payload = {
+        "schemaVersion": 2,
+        "licenseConsent": "true",
+        "licenseVersion": "CC-BY-SA-4.0",
+        "question": valid_question,
+    }
+    f3 = tmp_path / "sub_str_consent.json"
+    f3.write_text(json.dumps(string_consent_payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="CC-BY-SA-4.0 license consent"):
+        import_issue(repo_root, f3)
+
+    # 4. Missing licenseVersion
+    missing_version_payload = {
+        "schemaVersion": 2,
+        "licenseConsent": True,
+        "question": valid_question,
+    }
+    f4 = tmp_path / "sub_missing_version.json"
+    f4.write_text(json.dumps(missing_version_payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="requires licenseVersion to be CC-BY-SA-4.0"):
+        import_issue(repo_root, f4)
+
+    # 5. Wrong licenseVersion (e.g., MIT)
+    wrong_version_payload = {
+        "schemaVersion": 2,
+        "licenseConsent": True,
+        "licenseVersion": "MIT",
+        "question": valid_question,
+    }
+    f5 = tmp_path / "sub_wrong_version.json"
+    f5.write_text(json.dumps(wrong_version_payload), encoding="utf-8")
+    with pytest.raises(ValueError, match="requires licenseVersion to be CC-BY-SA-4.0"):
+        import_issue(repo_root, f5)
 
 
 

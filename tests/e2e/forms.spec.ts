@@ -399,8 +399,69 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   expect(requests.filter(url => url === turnstileUrl)).toHaveLength(1);
 });
 
+test("DOMPurify live preview sanitizes XSS while preserving markdown, LaTeX, and safe links", async ({ page }) => {
+  await mockTurnstile(page);
+  await page.route("https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js", route =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: `window.MathJax = {
+        startup: { promise: Promise.resolve() },
+        typesetPromise: () => Promise.resolve(),
+        typesetClear: () => {}
+      };`
+    })
+  );
+
+  await page.goto(`${basePath}submit/`);
+  await expect(page.locator("#submission-form .CodeMirror")).toHaveCount(1);
+
+  // Set attack payloads alongside valid Markdown, LaTeX and link
+  const maliciousMarkdown = [
+    "这是 **粗体内容** 和 [正常安全链接](https://physics.example.com)．",
+    "",
+    "数学公式：$E = mc^2$",
+    "",
+    '<img src="x" onerror="window.__xss_flag = true">',
+    '<script>window.__xss_flag = true;</script>',
+    '<iframe src="https://evil.com"></iframe>',
+    '<a href="javascript:window.__xss_flag = true">点击触发XSS</a>',
+    '<div onclick="window.__xss_flag = true">点击执行</div>'
+  ].join("\n");
+
+  await setEditorText(page, 0, maliciousMarkdown);
+
+  const previewButton = page.locator('.editor-toolbar button[title="预览"]');
+  await previewButton.click();
+  await expect(page.locator(".editor-preview-full")).toBeVisible();
+
+  // 1. Assert XSS payloads were sanitized and never executed in browser window
+  const executed = await page.evaluate(() => (window as unknown as { __xss_flag?: boolean }).__xss_flag);
+  expect(executed).toBeUndefined();
+
+  // 2. Dangerous tags stripped by DOMPurify
+  await expect(page.locator(".editor-preview-full script")).toHaveCount(0);
+  await expect(page.locator(".editor-preview-full iframe")).toHaveCount(0);
+
+  // 3. Event handlers and javascript: schemes stripped
+  const previewHtml = await page.locator(".editor-preview-full").innerHTML();
+  expect(previewHtml).not.toMatch(/onerror/i);
+  expect(previewHtml).not.toMatch(/onclick/i);
+  expect(previewHtml).not.toMatch(/javascript:/i);
+
+  // 4. Safe Markdown elements, safe links, and LaTeX are preserved
+  await expect(page.locator(".editor-preview-full strong")).toHaveText("粗体内容");
+  await expect(page.locator('.editor-preview-full a[href="https://physics.example.com"]')).toBeVisible();
+  expect(previewHtml).toContain("E = mc^2");
+
+  // 5. Exit preview and ensure editing remains functional
+  await previewButton.click();
+  await expect(page.locator(".editor-preview-active")).toHaveCount(0);
+  await expect(page.locator("#submission-form .CodeMirror")).toBeVisible();
+});
+
 declare global {
   interface Window {
     __plwTurnstileCounts: { render: number; remove: number; reset: number };
   }
 }
+

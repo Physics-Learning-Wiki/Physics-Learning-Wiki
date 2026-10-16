@@ -29,9 +29,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run python scripts/generate-community.py
+      - name: Pre-validate generated pages
+        run: |
+          uv run python scripts/check-terminology.py docs/community
+          uv run mkdocs build --clean
       - name: Open Review PR if changed
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.COMMUNITY_BOT_TOKEN || secrets.GITHUB_TOKEN }}
           BRANCH: bot/community-submissions
         run: |
           git config user.name "github-actions[bot]"
@@ -42,15 +46,41 @@ jobs:
             exit 0
           fi
 
-          git switch -c "$BRANCH"
-          git commit -m "content(community): 同步最新已收录社区投稿"
-          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$BRANCH"
+          # Fetch remote state to inspect existing PRs and branches
+          git fetch origin "$BRANCH" || true
+          open_pr="$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // ""' 2>/dev/null || echo "")"
+          closed_pr="$(gh pr list --head "$BRANCH" --base main --state closed --json number --jq '.[0].number // ""' 2>/dev/null || echo "")"
 
-          existing_pr="$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // ""')"
-          if [ -z "$existing_pr" ]; then
+          # Reset remote branch if previous PR was closed or merged
+          if [ -z "$open_pr" ] && [ -n "$closed_pr" ]; then
+            echo "Previous PR was closed/merged. Resetting remote branch $BRANCH..."
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" --delete "$BRANCH" || true
+          fi
+
+          git switch -B "$BRANCH"
+          git commit -m "content(community): 同步最新已收录社区投稿"
+
+          # Preserve maintainer commits on open PR branch if rebase succeeds
+          if [ -n "$open_pr" ] && git rev-parse --verify "origin/$BRANCH" >/dev/null 2>&1; then
+            git pull --rebase origin "$BRANCH" || git rebase --abort || true
+          fi
+
+          git push --force-with-lease "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$BRANCH"
+
+          if [ -z "$open_pr" ]; then
             gh pr create --base main --head "$BRANCH" \
               --title "content(community): 同步最新已收录社区投稿" \
-              --body "自动生成的社区投稿页面更新，请维护者审阅后合并。合并后将自动触发生产构建与发布。"
+              --body "$(cat <<'EOF'
+          ### 社区稿件自动同步
+
+          本 PR 由 GitHub Actions 自动化工作流生成，同步了带有 `投稿-已收录` 标签的最新社区投稿内容。
+
+          #### 维护者审阅指引
+          - [ ] 检查 `docs/community/` 下生成的 Markdown 内容及作者署名
+          - [ ] 若使用默认 `GITHUB_TOKEN`，请在 Actions 面板批准运行 CI 门禁检查（`Check Characters`, `Check Question Bank`, `Build`）
+          - [ ] 确认检查全部通过后合并入 `main` 分支；合并后将自动触发生产构建与 Pages 发布。
+          EOF
+          )"
           else
-            echo "Existing PR #$existing_pr updated with new commit."
+            echo "Existing PR #$open_pr updated with new commit."
           fi

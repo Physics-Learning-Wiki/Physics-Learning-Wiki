@@ -31,14 +31,15 @@ export function sanitizePreviewHtml(rawHtml: string): string {
   if (purifier && typeof purifier.sanitize === "function") {
     return String(purifier.sanitize(rawHtml, PREVIEW_PURIFY_CONFIG));
   }
-  // Defensive fallback when DOM environment is absent
+  // P1-4: Safe fail-closed fallback when DOMPurify / browser DOM environment is unavailable.
+  // Never attempt partial regex HTML bypasses. Disable HTML tags entirely
+  // by stripping all tags and dangerous pseudo-protocols, returning safe plain text.
   return rawHtml
     .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
-    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, "")
-    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, "")
-    .replace(/<embed\b[^>]*>/gi, "")
-    .replace(/<link\b[^>]*>/gi, "")
-    .replace(/<form\b[^<]*(?:(?!<\/form>)<[^<]*)*<\/form>/gi, "")
-    .replace(/\bon\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
-    .replace(/href\s*=\s*["']\s*javascript:[^"']*["']/gi, 'href="#"');
+    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/javascript:/gi, "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
 }

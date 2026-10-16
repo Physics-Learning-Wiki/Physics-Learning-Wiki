@@ -124,3 +124,149 @@ def test_generate_index_creates_safe_index(tmp_path: Path) -> None:
     assert r"\[中括号\]" in content
     # 验证正文中文标点全角点
     assert "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考．" in content
+
+
+def test_metadata_sanitization_neutralizes_html_and_markdown_injection(tmp_path: Path) -> None:
+    malicious_issue = {
+        "number": 999,
+        "title": '[投稿] <script>alert("title-xss")</script><img src=x onerror=alert(1)>恶意标题',
+        "created_at": "2026-10-16T12:00:00Z",
+        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/999",
+        "body": (
+            "## 投稿信息\n\n"
+            "- **投稿类型**: <svg onload=alert('type-xss')>笔记\n"
+            '- **署名**: <img src=x onerror="alert(\'author-xss\')">[攻击者](javascript:alert(1))\n'
+            '- **目标章节**: <iframe src="https://evil.com">力学</iframe>\n\n'
+            "---\n\n"
+            "正文内容"
+        ),
+    }
+
+    # 1. 验证生成的单页 frontmatter 与正文
+    page_file = Path(generate_page(malicious_issue, tmp_path))
+    content = page_file.read_text(encoding="utf-8")
+    fm = yaml.safe_load(content.split("---\n")[1])
+
+    # 元数据中的 HTML 标签已被完全剥除，且无 XSS 属性
+    assert "<script" not in fm["author"]
+    assert "onerror" not in fm["author"]
+    assert "javascript:" not in fm["author"]
+    assert "<iframe" not in content
+    assert "<svg" not in content
+
+    # 2. 验证生成的社区索引页 index.md
+    generate_index([malicious_issue], tmp_path)
+    index_file = tmp_path / "index.md"
+    index_content = index_file.read_text(encoding="utf-8")
+
+    assert "<script" not in index_content
+    assert "<img" not in index_content
+    assert "onerror" not in index_content
+    assert "<iframe" not in index_content
+    assert "<svg" not in index_content
+    assert "onload" not in index_content
+    assert "javascript:" not in index_content
+
+
+def test_sanitize_community_markdown_comprehensive_xss_neutralization() -> None:
+    malicious = (
+        '这是包含各种攻击向量的 Markdown:\n\n'
+        '<img src="https://example.com/pic.png" onerror="alert(1)" alt="图片">\n'
+        '<a href="javascript:alert(\'click-xss\')">恶意链接</a>\n'
+        '[Markdown伪协议链接](javascript:alert(1))\n'
+        '[数据协议链接](data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==)\n'
+        '<svg onload="alert(1)"></svg>\n'
+        '<details ontoggle="alert(1)"><summary>折叠</summary>内容</details>\n'
+        '<body onload="alert(1)">\n'
+        '--8<-- "secrets.yml"\n'
+        '# 页面大标题\n'
+    )
+    safe = sanitize_community_markdown(malicious)
+
+    # 验证关键危险特征均被消除
+    assert "onerror" not in safe
+    assert "onload" not in safe
+    assert "ontoggle" not in safe
+    assert "javascript:" not in safe
+    assert "data:text/html" not in safe
+    assert "--8<--" not in safe
+    assert not re.search(r"(?m)^#\s+", safe)
+    # 不在白名单的标签被转义
+    assert "<svg" not in safe
+    assert "&lt;svg" in safe
+    assert "<body" not in safe
+    assert "&lt;body" in safe
+
+
+def test_end_to_end_community_security_with_markdown_rendering(tmp_path: Path) -> None:
+    import markdown
+    from bs4 import BeautifulSoup
+
+    malicious_issue = {
+        "number": 888,
+        "title": '[投稿] <img src=x onerror=alert(1)>光电效应的波粒二象性探讨',
+        "created_at": "2026-10-16T12:00:00Z",
+        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/888",
+        "body": (
+            "## 投稿信息\n\n"
+            "- **投稿类型**: <script>alert(1)</script>完整页面\n"
+            '- **署名**: <img src="x" onerror="window.__author_xss = true">波尔\n'
+            '- **目标章节**: 量子力学初步\n\n'
+            "---\n\n"
+            "爱因斯坦在 1905 年提出了光量子假说，光子能量为 $E = h\\nu$．\n\n"
+            '<img src="https://example.com/photoelectric.png" onerror="window.__body_xss = true" alt="实验图">\n'
+            '<a href="javascript:window.__link_xss = true">详情点击</a>\n'
+            '[Markdown攻击链接](javascript:window.__md_xss = true)\n'
+            '<iframe src="https://evil.com"></iframe>\n'
+            '<svg onload="window.__svg_xss = true"></svg>\n'
+            '--8<-- "data/concepts.yml"\n'
+        ),
+    }
+
+    # 1. 生成单页与索引页
+    page_path = Path(generate_page(malicious_issue, tmp_path))
+    generate_index([malicious_issue], tmp_path)
+    index_path = tmp_path / "index.md"
+
+    # 2. 模拟 Markdown 渲染为 HTML
+    page_md = page_path.read_text(encoding="utf-8")
+    # 剥除 frontmatter 后渲染 body
+    body_md = page_md.split("---\n")[2]
+    page_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
+
+    index_md = index_path.read_text(encoding="utf-8")
+    index_html = markdown.markdown(index_md, extensions=["tables", "fenced_code"])
+
+    # 3. 使用 BeautifulSoup 解析并深度审查渲染后的 DOM
+    for name, rendered_html in [("page", page_html), ("index", index_html)]:
+        soup = BeautifulSoup(rendered_html, "html.parser")
+
+        # 绝对禁止任何 script 标签
+        scripts = soup.find_all("script")
+        assert len(scripts) == 0, f"Found <script> in {name}: {scripts}"
+
+        # 绝对禁止任何 iframe 标签
+        iframes = soup.find_all("iframe")
+        assert len(iframes) == 0, f"Found <iframe> in {name}: {iframes}"
+
+        # 绝对禁止任何 svg 标签
+        svgs = soup.find_all("svg")
+        assert len(svgs) == 0, f"Found <svg> in {name}: {svgs}"
+
+        # 检查所有元素的属性：绝对禁止任何 on* 事件监听器
+        for tag in soup.find_all(True):
+            for attr_name in tag.attrs:
+                assert not attr_name.lower().startswith("on"), (
+                    f"Found event handler {attr_name} in {name}: {tag}"
+                )
+            # 检查链接和图片地址：禁止 javascript: 和 data: 伪协议
+            if tag.name == "a" and tag.has_attr("href"):
+                href = tag["href"].strip().lower()
+                assert not href.startswith("javascript:"), f"Found javascript: in {name}: {href}"
+                assert not href.startswith("data:"), f"Found data: in {name}: {href}"
+            if tag.name == "img" and tag.has_attr("src"):
+                src = tag["src"].strip().lower()
+                assert not src.startswith("javascript:"), f"Found javascript: in {name}: {src}"
+
+        # 验证 Snippets 被中和
+        assert "--8<--" not in rendered_html
