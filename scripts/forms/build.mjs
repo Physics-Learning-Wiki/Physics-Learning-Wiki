@@ -55,7 +55,6 @@ for (const feature of features) {
     }
     await Promise.all([rm(temporaryJavascript, { force: true }), rm(temporaryStylesheet, { force: true })]);
   } else {
-    await writeFile(feature.javascript, javascript);
     process.stdout.write(`built ${feature.javascript} (${javascript.byteLength} bytes)\n`);
     process.stdout.write(`built ${feature.stylesheet} (${stylesheet.byteLength} bytes)\n`);
   }

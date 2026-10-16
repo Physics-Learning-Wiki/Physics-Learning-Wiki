@@ -1,7 +1,7 @@
 name: Build
 
 permissions:
-  contents: write
+  contents: read
 
 on:
   push:
@@ -16,11 +16,14 @@ jobs:
   build:
     name: Physics-Learning-Wiki Page Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: true
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
@@ -66,74 +69,54 @@ jobs:
       - name: Build production site
         env:
           PLW_QUIZ_PREVIEW: ''
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_OPTIONS: --max_old_space_size=3072
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           ./scripts/build/build-site.sh
       - name: Run browser behavior gate
         run: corepack yarn e2e
-      # - name: Check links
-      #   uses: wjdp/htmltest-action@<pinned-ref>
-      #   with:
-      #     skip_external: true
-      - name: Fetch old site
+      - name: Static budget audit
+        run: corepack yarn perf:audit --mode blocking
+      - name: Upload site artifact
         if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-artifact
+          path: ./site
+          retention-days: 1
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository_owner == 'Physics-Learning-Wiki' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Download site artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-artifact
+          path: ./site
+      - name: Fetch old site
         uses: actions/checkout@v4
         with:
           ref: gh-pages
           path: old-site
-      # - name: Check _redirects
-      #   run: uv run python scripts/post-build/redirect/check-redirects.py
+          persist-credentials: false
       - name: Deploy to gh-pages
-        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           force_orphan: true
       - name: Push to Baidu
-        if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository_owner == 'Physics-Learning-Wiki' }}
         env:
           SITE: physics-learning-wiki.github.io/Physics-Learning-Wiki/
           BAIDU_TOKEN: ${{ secrets.BaiduToken }}
         run: |
           chmod +x ./scripts/post-deploy/baidu-push.sh
           ./scripts/post-deploy/baidu-push.sh
-
-  # update_feedback_sys_meta:
-  #   name: Update Physics-Learning-Wiki Feedback System Meta
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   if: ${{ github.ref == 'refs/heads/main' }}
-  #   steps:
-  #     - name: Checkout latest
-  #       uses: actions/checkout@v4
-  #       with:
-  #         fetch-depth: 0
-  #     - name: Get changed files
-  #       uses: tj-actions/changed-files@v46
-  #       with:
-  #         files: docs/**/*.md
-  #         include_all_old_new_renamed_files: true
-  #         write_output_files: true
-  #     - name: Checkout before
-  #       uses: actions/checkout@v4
-  #       with:
-  #         ref: ${{ github.event.before }}
-  #         path: before
-  #     - name: Setup Python
-  #       uses: actions/setup-python@v5
-  #       with:
-  #           python-version: '3.10'
-  #     - name: Install uv
-  #       uses: astral-sh/setup-uv@v6
-  #       with:
-  #         version: "latest"
-  #     - name: Install Python dependencies
-  #       run: uv sync
-  #     - name: Update meta
-  #       run: |
-  #         uv run python scripts/update-feedback-sys-meta.py --modified .github/outputs/modified_files.txt --renamed .github/outputs/renamed_files.txt  --all_old_new_renamed .github/outputs/all_old_new_renamed_files.txt --before_dir before
-  #       env:
-  #         ADMINISTRATOR_SECRET: ${{ secrets.FEEDBACK_SYS_ADMINISTRATOR_SECRET }}

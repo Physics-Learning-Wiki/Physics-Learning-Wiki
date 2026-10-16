@@ -52,7 +52,17 @@ jobs:
             const body = context.payload.issue.body || "";
             const match = body.match(/```json plw-question-submission-v2\s*\n(\{.*\})\s*\n```/s);
             if (!match) core.setFailed("Issue does not contain a v2 question payload");
-            const payload = JSON.parse(match[1]);
+            let payload;
+            try {
+              payload = JSON.parse(match[1]);
+            } catch (err) {
+              core.setFailed("Failed to parse question JSON payload");
+              return;
+            }
+            if (!payload || typeof payload !== "object" || Array.isArray(payload) || payload.schemaVersion !== 2 || !payload.question) {
+              core.setFailed("Invalid question submission v2 payload format");
+              return;
+            }
             payload.issueUrl = context.payload.issue.html_url;
             fs.writeFileSync(".question-submission.json", JSON.stringify(payload));
       - name: Import YAML draft

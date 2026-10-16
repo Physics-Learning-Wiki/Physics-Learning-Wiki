@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import test from "node:test";
 
-import { buildIssueBody, validateQuestion } from "./submit.js";
+import submitWorker, { buildIssueBody, validateQuestion, unsafeMarkdown } from "./submit.js";
 
 const minimalDraftQuestion = {
   type: "true_false",
@@ -278,8 +279,6 @@ test("validates dotted taxonomy ID format for topics and concepts", () => {
   assert.match(validateQuestion(badConcept), /概念分类格式无效/);
 });
 
-import fs from "node:fs";
-
 const contractFixture = JSON.parse(
   fs.readFileSync(new URL("../tests/question_bank/fixtures/submission_v2_contract.json", import.meta.url), "utf-8")
 );
@@ -300,4 +299,293 @@ test("rejects all invalid question payloads from submission_v2_contract fixture"
   }
 });
 
+// ==========================================
+// Security & Resilience Regression Tests (S-01 to S-12)
+// ==========================================
 
+test("S-01 & S-08: unsafeMarkdown rejects non-strings and snippets syntax", () => {
+  assert.equal(unsafeMarkdown(null), true);
+  assert.equal(unsafeMarkdown(undefined), true);
+  assert.equal(unsafeMarkdown(["<script>"]), true);
+  assert.equal(unsafeMarkdown({ key: "val" }), true);
+  assert.equal(unsafeMarkdown('--8<-- "data/concepts.yml"'), true);
+  assert.equal(unsafeMarkdown("<style>body{color:red}</style>"), true);
+  assert.equal(unsafeMarkdown('<link rel="stylesheet" href="evil.css">'), true);
+  assert.equal(unsafeMarkdown("标准物理正文与公式 $F=ma$ 应该安全通过"), false);
+});
+
+test("S-08: validateQuestion enforces budget bounds on hints, topics, concepts", () => {
+  const excessiveHints = {
+    ...minimalDraftQuestion,
+    hints: ["提示1", "提示2", "提示3", "提示4", "提示5", "提示6"],
+  };
+  assert.match(validateQuestion(excessiveHints), /最多 5 条/);
+
+  const excessiveTopics = {
+    ...fullChoiceQuestion,
+    topics: ["t.1", "t.2", "t.3", "t.4", "t.5", "t.6"],
+  };
+  assert.match(validateQuestion(excessiveTopics), /最多 5 项/);
+
+  const excessiveConcepts = {
+    ...fullChoiceQuestion,
+    concepts: ["c.1", "c.2", "c.3", "c.4", "c.5", "c.6", "c.7", "c.8", "c.9", "c.10", "c.11"],
+  };
+  assert.match(validateQuestion(excessiveConcepts), /最多 10 项/);
+});
+
+function createMockEnv(overrides = {}) {
+  return {
+    TURNSTILE_SECRET_KEY: "mock-secret-key",
+    GITHUB_TOKEN: "mock-gh-token",
+    ...overrides,
+  };
+}
+
+function createRequest(body, options = {}) {
+  const headers = { "Content-Type": "application/json", ...options.headers };
+  const rawBody = typeof body === "string" ? body : JSON.stringify(body);
+  return new Request("https://worker.test/submit", {
+    method: options.method || "POST",
+    headers,
+    body: options.method === "OPTIONS" || options.method === "GET" ? undefined : rawBody,
+  });
+}
+
+test("S-01 & S-08: worker entry rejects non-POST and oversized requests", async () => {
+  const getRes = await submitWorker.fetch(createRequest({}, { method: "GET" }), createMockEnv());
+  assert.equal(getRes.status, 405);
+
+  const largeRes = await submitWorker.fetch(
+    createRequest({}, { headers: { "Content-Length": "200000" } }),
+    createMockEnv()
+  );
+  assert.equal(largeRes.status, 413);
+
+  const malformedJsonRes = await submitWorker.fetch(
+    createRequest("{ not a valid json }"),
+    createMockEnv()
+  );
+  assert.equal(malformedJsonRes.status, 400);
+
+  const arrayBodyRes = await submitWorker.fetch(
+    createRequest(["item1", "item2"]),
+    createMockEnv()
+  );
+  assert.equal(arrayBodyRes.status, 400);
+});
+
+test("S-01: worker entry rejects unknown top-level keys", async () => {
+  const res = await submitWorker.fetch(
+    createRequest({
+      title: "正常标题",
+      content: "正常内容",
+      type: "notes",
+      turnstileToken: "tok",
+      maliciousExtraProperty: "injected",
+    }),
+    createMockEnv()
+  );
+  assert.equal(res.status, 400);
+  const data = await res.json();
+  assert.match(data.error, /不支持的未知顶层字段/);
+});
+
+test("S-01: worker entry blocks type-spoofing attacks (array content or object title)", async () => {
+  // Attack: array content bypassing unsafeMarkdown check
+  const arrayContentRes = await submitWorker.fetch(
+    createRequest({
+      title: "标题",
+      content: ["<script>alert('xss')</script>"],
+      type: "notes",
+      turnstileToken: "tok",
+    }),
+    createMockEnv()
+  );
+  assert.equal(arrayContentRes.status, 400);
+  const data1 = await arrayContentRes.json();
+  assert.match(data1.error, /缺少必填字符串字段/);
+
+  // Attack: object title bypassing length comparison
+  const objTitleRes = await submitWorker.fetch(
+    createRequest({
+      title: { value: "注入标题" },
+      content: "正文内容",
+      type: "notes",
+      turnstileToken: "tok",
+    }),
+    createMockEnv()
+  );
+  assert.equal(objTitleRes.status, 400);
+
+  // Attack: multiline title to inject Issue headers
+  const multilineTitleRes = await submitWorker.fetch(
+    createRequest({
+      title: "第一行标题\n## 虚假注入标题",
+      content: "正文内容",
+      type: "notes",
+      turnstileToken: "tok",
+    }),
+    createMockEnv()
+  );
+  assert.equal(multilineTitleRes.status, 400);
+  const data3 = await multilineTitleRes.json();
+  assert.match(data3.error, /换行符/);
+});
+
+test("S-09: worker entry enforces licenseConsent for question submissions", async () => {
+  const missingConsentRes = await submitWorker.fetch(
+    createRequest({
+      title: "物理题目",
+      content: minimalDraftQuestion.stem,
+      type: "question",
+      question: minimalDraftQuestion,
+      turnstileToken: "tok",
+    }),
+    createMockEnv()
+  );
+  assert.equal(missingConsentRes.status, 400);
+  const data = await missingConsentRes.json();
+  assert.match(data.error, /CC BY-SA 4.0/);
+});
+
+test("S-07 & S-06: worker handles Turnstile failures, hostnames, and GitHub errors securely", async () => {
+  const originalFetch = globalThis.fetch;
+  try {
+    // 1. Mock Turnstile failure
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("challenges.cloudflare.com")) {
+        return new Response(JSON.stringify({ success: false, "error-codes": ["invalid-input-response"] }), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+      return originalFetch(url);
+    };
+
+    const failTurnstileRes = await submitWorker.fetch(
+      createRequest({
+        title: "普通标题",
+        content: "正文内容",
+        type: "notes",
+        turnstileToken: "bad-token",
+      }),
+      createMockEnv()
+    );
+    assert.equal(failTurnstileRes.status, 400);
+    const data1 = await failTurnstileRes.json();
+    assert.match(data1.error, /人机验证失败/);
+
+    // 2. Mock Turnstile hostname mismatch
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("challenges.cloudflare.com")) {
+        return new Response(
+          JSON.stringify({ success: true, hostname: "evil-phishing.com", action: "submit-general" }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        );
+      }
+      return originalFetch(url);
+    };
+
+    const badHostRes = await submitWorker.fetch(
+      createRequest({
+        title: "普通标题",
+        content: "正文内容",
+        type: "notes",
+        turnstileToken: "valid-tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(badHostRes.status, 400);
+    const data2 = await badHostRes.json();
+    assert.match(data2.error, /主机名无效/);
+
+    // 3. Mock Turnstile timeout / network error
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("challenges.cloudflare.com")) {
+        throw new Error("Network timeout connecting to Turnstile");
+      }
+      return originalFetch(url);
+    };
+
+    const timeoutRes = await submitWorker.fetch(
+      createRequest({
+        title: "普通标题",
+        content: "正文内容",
+        type: "notes",
+        turnstileToken: "valid-tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(timeoutRes.status, 502);
+
+    // 4. Mock GitHub API failure without leaking token
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("challenges.cloudflare.com")) {
+        return new Response(
+          JSON.stringify({ success: true, hostname: "physics-learning-wiki.github.io", action: "submit-general" }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        );
+      }
+      if (String(url).includes("api.github.com")) {
+        return new Response("Bad credentials - token mock-gh-token is invalid", {
+          status: 401,
+          headers: { "Content-Type": "text/plain" },
+        });
+      }
+      return originalFetch(url);
+    };
+
+    const ghErrorRes = await submitWorker.fetch(
+      createRequest({
+        title: "普通标题",
+        content: "正文内容",
+        type: "notes",
+        turnstileToken: "valid-tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(ghErrorRes.status, 502);
+    const data3 = await ghErrorRes.json();
+    assert.equal(data3.error, "创建 Issue 失败，请稍后重试");
+    // Ensure raw token text is never reflected in response
+    assert.doesNotMatch(JSON.stringify(data3), /mock-gh-token/);
+
+    // 5. Successful submission
+    globalThis.fetch = async (url) => {
+      if (String(url).includes("challenges.cloudflare.com")) {
+        return new Response(
+          JSON.stringify({ success: true, hostname: "physics-learning-wiki.github.io", action: "submit-general" }),
+          { status: 200, headers: { "Content-Type": "application/json" } }
+        );
+      }
+      if (String(url).includes("api.github.com")) {
+        return new Response(
+          JSON.stringify({
+            html_url: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123",
+            number: 123,
+          }),
+          { status: 201, headers: { "Content-Type": "application/json" } }
+        );
+      }
+      return originalFetch(url);
+    };
+
+    const successRes = await submitWorker.fetch(
+      createRequest({
+        title: "合法的勘误投稿",
+        content: "发现第 3 节有一处符号笔误．",
+        type: "errata",
+        attribution: "爱因斯坦",
+        turnstileToken: "valid-tok",
+      }),
+      createMockEnv()
+    );
+    assert.equal(successRes.status, 200);
+    const data4 = await successRes.json();
+    assert.equal(data4.success, true);
+    assert.equal(data4.issueNumber, 123);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});

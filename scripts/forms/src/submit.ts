@@ -300,7 +300,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       () => {
         status.textContent = "";
         status.className = "";
-      }
+      },
+      "submit-general"
     );
     await widget.ready;
   }

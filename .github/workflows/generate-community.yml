@@ -6,29 +6,51 @@ on:
     - cron: "0 */6 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   generate:
     name: Generate community pages
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "latest"
+      - run: uv sync --frozen
       - name: Generate community pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/generate-community.py
-      - name: Commit and push if changed
+        run: uv run python scripts/generate-community.py
+      - name: Open Review PR if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: bot/community-submissions
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/community/
           if git diff --staged --quiet; then
             echo "No changes to community pages"
+            exit 0
+          fi
+
+          git switch -c "$BRANCH"
+          git commit -m "content(community): 同步最新已收录社区投稿"
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" "$BRANCH"
+
+          existing_pr="$(gh pr list --head "$BRANCH" --base main --state open --json number --jq '.[0].number // ""')"
+          if [ -z "$existing_pr" ]; then
+            gh pr create --base main --head "$BRANCH" \
+              --title "content(community): 同步最新已收录社区投稿" \
+              --body "自动生成的社区投稿页面更新，请维护者审阅后合并。合并后将自动触发生产构建与发布。"
           else
-            git commit -m "chore: update community pages [skip ci]"
-            git push
+            echo "Existing PR #$existing_pr updated with new commit."
           fi

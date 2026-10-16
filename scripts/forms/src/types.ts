@@ -13,6 +13,8 @@ export interface PreviewMathJax {
 
 export interface TurnstileRenderOptions {
   sitekey: string;
+  action?: string;
+  cData?: string;
   callback: (token: string) => void;
   "expired-callback": () => void;
   "error-callback": () => void;

@@ -136,6 +136,24 @@ def test_import_issue_rejects_v1_payload(tmp_path: Path) -> None:
         import_issue(Path.cwd(), input_file)
 
 
+def test_import_issue_rejects_missing_license_consent(tmp_path: Path) -> None:
+    payload_no_license = {
+        "schemaVersion": 2,
+        "licenseConsent": False,
+        "question": {
+            "type": "true_false",
+            "stem": "测试题干",
+            "answer": {"value": True},
+            "solution": "测试解析",
+        },
+    }
+    input_file = tmp_path / "submission_no_license.json"
+    input_file.write_text(json.dumps(payload_no_license), encoding="utf-8")
+
+    with pytest.raises(ValueError, match="CC-BY-SA-4.0"):
+        import_issue(Path.cwd(), input_file)
+
+
 def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
     repo_root = Path.cwd()
     payloads = [

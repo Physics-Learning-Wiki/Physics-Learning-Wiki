@@ -333,6 +333,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
             attribution,
             contact: contactInput?.value.trim() ?? "",
             contactPublicConsent: Boolean(contactPublic?.checked),
+            licenseConsent: Boolean(licenseCheck?.checked),
+            licenseVersion: "CC-BY-SA-4.0",
             question: questionPayload,
             turnstileToken: widget.token
           })
@@ -378,7 +380,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       () => {
         status.textContent = "";
         status.className = "";
-      }
+      },
+      "submit-question"
     );
   const turnstilePromise = widget?.ready ?? Promise.resolve();
   await Promise.all([taxonomyPromise, turnstilePromise]);

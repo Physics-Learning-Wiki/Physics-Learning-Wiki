@@ -64,7 +64,8 @@ export function loadTurnstile(signal?: AbortSignal): Promise<TurnstileApi> {
 export async function mountTurnstile(
   container: HTMLElement,
   signal: AbortSignal,
-  onError: (message: string) => void
+  onError: (message: string) => void,
+  action?: string
 ): Promise<MountedTurnstile | undefined> {
   const api = await loadTurnstile(signal);
   if (signal.aborted || !container.isConnected) return undefined;
@@ -75,6 +76,7 @@ export async function mountTurnstile(
   try {
     widgetId = api.render(container, {
       sitekey: TURNSTILE_SITE_KEY,
+      ...(action ? { action } : {}),
       callback: value => {
         if (!disposed && !signal.aborted) token = value;
       },

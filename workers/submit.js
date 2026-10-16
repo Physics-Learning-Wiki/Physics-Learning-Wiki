@@ -26,9 +26,19 @@ function buildIssueBody(data) {
   if (data.contact) {
     lines.push(`- **公开联系方式**: ${data.contact}`);
   }
+  if (data.type === "question" && data.licenseConsent) {
+    lines.push(`- **许可协议**: CC BY-SA 4.0 (已由作者明确确认授权)`);
+  }
   lines.push(``, `---`, ``, data.content);
   if (data.type === "question" && data.question) {
     const question = data.question;
+    const payloadObj = {
+      schemaVersion: 2,
+      question,
+      licenseConsent: data.licenseConsent !== undefined ? data.licenseConsent : true,
+      licenseVersion: data.licenseVersion || "CC-BY-SA-4.0",
+      licenseConfirmedAt: data.licenseConfirmedAt || new Date().toISOString()
+    };
     lines.push(
       "",
       "## 题目结构",
@@ -41,7 +51,7 @@ function buildIssueBody(data) {
       "## 机器可读载荷",
       "",
       "```json plw-question-submission-v2",
-      JSON.stringify({ schemaVersion: 2, question }),
+      JSON.stringify(payloadObj),
       "```"
     );
   }
@@ -62,7 +72,8 @@ function nonEmptyString(value, max = 20000) {
 }
 
 function unsafeMarkdown(value) {
-  return typeof value === "string" && /<(?:script|iframe|object|embed|form|input|button)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata)\s*:/i.test(value);
+  if (typeof value !== "string") return true;
+  return /<(?:script|iframe|object|embed|form|input|button|link|style)\b|\bon[a-z]+\s*=|(?:\bjavascript|\bdata)\s*:|--8<--/i.test(value);
 }
 
 function validHttpsUrl(value) {
@@ -281,10 +292,10 @@ function validateQuestion(question) {
       return "答错反馈无效";
   }
 
-  // Optional hints validation
+  // Optional hints validation (budget capped at 5)
   if (question.hints !== undefined) {
-    if (!Array.isArray(question.hints) || !question.hints.every(h => nonEmptyString(h))) {
-      return "提示内容必须为非空字符串数组";
+    if (!Array.isArray(question.hints) || question.hints.length > 5 || !question.hints.every(h => nonEmptyString(h, 1000))) {
+      return "提示内容必须为非空字符串数组（最多 5 条）";
     }
   }
 
@@ -308,34 +319,34 @@ function validateQuestion(question) {
       return "预计作答时间无效";
   }
   if (question.topics !== undefined) {
-    if (!Array.isArray(question.topics) || !question.topics.every(t => typeof t === "string" && DOTTED_ID_RE.test(t)))
-      return "主题分类格式无效（需为点分小写命名空间，如 mechanics.dynamics）";
+    if (!Array.isArray(question.topics) || question.topics.length > 5 || !question.topics.every(t => typeof t === "string" && DOTTED_ID_RE.test(t)))
+      return "主题分类格式无效或超过上限（最多 5 项，需为点分小写命名空间，如 mechanics.dynamics）";
     if (new Set(question.topics).size !== question.topics.length)
       return "主题分类不能包含重复项";
   }
   if (question.concepts !== undefined) {
-    if (!Array.isArray(question.concepts) || !question.concepts.every(c => typeof c === "string" && DOTTED_ID_RE.test(c)))
-      return "概念分类格式无效（需为点分小写命名空间，如 newton.inertia）";
+    if (!Array.isArray(question.concepts) || question.concepts.length > 10 || !question.concepts.every(c => typeof c === "string" && DOTTED_ID_RE.test(c)))
+      return "概念分类格式无效或超过上限（最多 10 项，需为点分小写命名空间，如 newton.inertia）";
     if (new Set(question.concepts).size !== question.concepts.length)
       return "概念分类不能包含重复项";
   }
   if (question.objectives !== undefined) {
-    if (!Array.isArray(question.objectives) || !question.objectives.every(o => typeof o === "string" && DOTTED_ID_RE.test(o)))
-      return "教学目标格式无效（需为点分命名空间）";
+    if (!Array.isArray(question.objectives) || question.objectives.length > 5 || !question.objectives.every(o => typeof o === "string" && DOTTED_ID_RE.test(o)))
+      return "教学目标格式无效或超过上限（最多 5 项）";
     if (new Set(question.objectives).size !== question.objectives.length)
       return "教学目标不能包含重复项";
   }
   if (question.related_pages !== undefined) {
-    if (!Array.isArray(question.related_pages) || !question.related_pages.every(p => typeof p === "string" && DOTTED_ID_RE.test(p)))
-      return "关联页面格式无效（需为点分命名空间）";
+    if (!Array.isArray(question.related_pages) || question.related_pages.length > 5 || !question.related_pages.every(p => typeof p === "string" && DOTTED_ID_RE.test(p)))
+      return "关联页面格式无效或超过上限（最多 5 项）";
     if (new Set(question.related_pages).size !== question.related_pages.length)
       return "关联页面不能包含重复项";
   }
 
   // Optional external media validation
   if (question.external_media !== undefined) {
-    if (!Array.isArray(question.external_media) || question.external_media.length === 0) {
-      return "外部媒体必须为非空数组";
+    if (!Array.isArray(question.external_media) || question.external_media.length === 0 || question.external_media.length > 5) {
+      return "外部媒体必须为 1 至 5 项的非空数组";
     }
     for (const media of question.external_media) {
       if (!media || typeof media !== "object" || Array.isArray(media)) return "外部媒体格式无效";
@@ -363,7 +374,7 @@ function validateQuestion(question) {
   return null;
 }
 
-export { buildIssueBody, validateQuestion };
+export { buildIssueBody, validateQuestion, unsafeMarkdown };
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -378,6 +389,29 @@ function jsonResponse(body, status = 200) {
   });
 }
 
+const ALLOWED_TOP_LEVEL_KEYS = new Set([
+  "title",
+  "content",
+  "type",
+  "typeLabel",
+  "chapter",
+  "attribution",
+  "contact",
+  "contactPublicConsent",
+  "question",
+  "turnstileToken",
+  "licenseConsent",
+  "licenseVersion",
+]);
+
+const ALLOWED_SUBMISSION_TYPES = new Set([
+  "full-page",
+  "notes",
+  "errata",
+  "question",
+  "suggestion",
+]);
+
 export default {
   async fetch(request, env) {
     // CORS preflight
@@ -389,71 +423,265 @@ export default {
       return jsonResponse({ error: "Method not allowed" }, 405);
     }
 
+    // S-08: 128 KiB Content-Length check
+    const contentLengthHeader = request.headers.get("content-length");
+    if (contentLengthHeader) {
+      const contentLength = parseInt(contentLengthHeader, 10);
+      if (Number.isFinite(contentLength) && contentLength > 131072) {
+        return jsonResponse({ error: "请求数据超出体积限制 (128KB)" }, 413);
+      }
+    }
+
+    let rawBody;
     try {
-      const {
-        title,
-        content,
-        type,
-        typeLabel,
-        chapter,
-        attribution,
-        contact,
-        contactPublicConsent,
-        question,
-        turnstileToken,
-      } = await request.json();
+      rawBody = await request.json();
+    } catch (parseError) {
+      return jsonResponse({ error: "请求格式无效，必须为合法的 JSON 对象" }, 400);
+    }
 
-      if (!title || !content || !type) {
-        return jsonResponse(
-          { error: "缺少必填字段：标题、正文、投稿类型" },
-          400
-        );
-      }
+    if (typeof rawBody !== "object" || rawBody === null || Array.isArray(rawBody)) {
+      return jsonResponse({ error: "请求载荷必须为 JSON 对象" }, 400);
+    }
 
-      if (!["full-page", "notes", "errata", "question", "suggestion"].includes(type)) {
-        return jsonResponse({ error: "无效的投稿类型" }, 400);
+    // S-01: Top-level key whitelist
+    for (const key of Object.keys(rawBody)) {
+      if (!ALLOWED_TOP_LEVEL_KEYS.has(key)) {
+        return jsonResponse({ error: `不支持的未知顶层字段: ${key}` }, 400);
       }
-      if (title.length > 120 || content.length > 50000 || (contact && contact.length > 500)) {
-        return jsonResponse({ error: "投稿字段超过长度限制" }, 400);
-      }
-      if (unsafeMarkdown(content)) {
-        return jsonResponse({ error: "投稿包含不安全的 Markdown 或 HTML" }, 400);
-      }
-      if (contact && !contactPublicConsent) {
-        return jsonResponse({ error: "联系方式将公开显示，必须明确同意公开" }, 400);
-      }
-      if (type === "question") {
-        const questionError = validateQuestion(question);
-        if (questionError) return jsonResponse({ error: questionError }, 400);
-      }
+    }
 
-      if (!turnstileToken) {
-        return jsonResponse({ error: "缺少人机验证令牌" }, 400);
-      }
+    // Strict string type and length validations
+    const {
+      title,
+      content,
+      type,
+      typeLabel,
+      chapter,
+      attribution,
+      contact,
+      contactPublicConsent,
+      question,
+      turnstileToken,
+      licenseConsent,
+      licenseVersion,
+    } = rawBody;
 
-      // Validate Turnstile
+    if (typeof title !== "string" || typeof content !== "string" || typeof type !== "string") {
+      return jsonResponse({ error: "缺少必填字符串字段：标题、正文、投稿类型" }, 400);
+    }
+
+    const trimmedTitle = title.trim();
+    const trimmedContent = content.trim();
+    const trimmedType = type.trim();
+
+    if (!trimmedTitle || !trimmedContent || !trimmedType) {
+      return jsonResponse({ error: "标题、正文和投稿类型不能为空" }, 400);
+    }
+
+    if (hasControlCharacters(trimmedTitle)) {
+      return jsonResponse({ error: "标题包含不合法的控制字符" }, 400);
+    }
+
+    if (/[\r\n]/.test(trimmedTitle)) {
+      return jsonResponse({ error: "标题不能包含换行符" }, 400);
+    }
+
+    if (trimmedTitle.length > 120) {
+      return jsonResponse({ error: "标题长度不能超过 120 字符" }, 400);
+    }
+
+    if (trimmedContent.length > 50000) {
+      return jsonResponse({ error: "正文长度不能超过 50000 字符" }, 400);
+    }
+
+    if (!ALLOWED_SUBMISSION_TYPES.has(trimmedType)) {
+      return jsonResponse({ error: "无效的投稿类型" }, 400);
+    }
+
+    if (unsafeMarkdown(trimmedContent)) {
+      return jsonResponse({ error: "投稿包含不安全的 Markdown 或 HTML" }, 400);
+    }
+
+    let sanitizedAttribution = "匿名";
+    if (attribution !== undefined && attribution !== null) {
+      if (typeof attribution !== "string") {
+        return jsonResponse({ error: "署名必须为字符串类型" }, 400);
+      }
+      const trimmedAttribution = attribution.trim();
+      if (trimmedAttribution.length > 60) {
+        return jsonResponse({ error: "署名长度不能超过 60 字符" }, 400);
+      }
+      if (hasControlCharacters(trimmedAttribution) || /[\r\n]/.test(trimmedAttribution)) {
+        return jsonResponse({ error: "署名不能包含控制字符或换行符" }, 400);
+      }
+      if (trimmedAttribution) {
+        sanitizedAttribution = trimmedAttribution;
+      }
+    }
+
+    let sanitizedChapter = "";
+    if (chapter !== undefined && chapter !== null) {
+      if (typeof chapter !== "string") {
+        return jsonResponse({ error: "目标章节必须为字符串类型" }, 400);
+      }
+      const trimmedChapter = chapter.trim();
+      if (trimmedChapter.length > 120) {
+        return jsonResponse({ error: "目标章节长度不能超过 120 字符" }, 400);
+      }
+      if (hasControlCharacters(trimmedChapter) || /[\r\n]/.test(trimmedChapter)) {
+        return jsonResponse({ error: "目标章节不能包含控制字符或换行符" }, 400);
+      }
+      sanitizedChapter = trimmedChapter;
+    }
+
+    let sanitizedTypeLabel = "";
+    if (typeLabel !== undefined && typeLabel !== null) {
+      if (typeof typeLabel !== "string") {
+        return jsonResponse({ error: "类型标签必须为字符串类型" }, 400);
+      }
+      const trimmedTypeLabel = typeLabel.trim();
+      if (trimmedTypeLabel.length > 60) {
+        return jsonResponse({ error: "类型标签长度不能超过 60 字符" }, 400);
+      }
+      if (hasControlCharacters(trimmedTypeLabel) || /[\r\n]/.test(trimmedTypeLabel)) {
+        return jsonResponse({ error: "类型标签不能包含控制字符或换行符" }, 400);
+      }
+      sanitizedTypeLabel = trimmedTypeLabel;
+    }
+
+    let sanitizedContact = "";
+    if (contact !== undefined && contact !== null) {
+      if (typeof contact !== "string") {
+        return jsonResponse({ error: "联系方式必须为字符串类型" }, 400);
+      }
+      const trimmedContact = contact.trim();
+      if (trimmedContact.length > 200) {
+        return jsonResponse({ error: "联系方式长度不能超过 200 字符" }, 400);
+      }
+      if (hasControlCharacters(trimmedContact) || /[\r\n]/.test(trimmedContact)) {
+        return jsonResponse({ error: "联系方式不能包含控制字符或换行符" }, 400);
+      }
+      if (trimmedContact) {
+        if (typeof contactPublicConsent !== "boolean") {
+          return jsonResponse({ error: "提供联系方式时，必须以布尔值明确声明是否同意公开" }, 400);
+        }
+        if (!contactPublicConsent) {
+          return jsonResponse({ error: "联系方式将公开显示在 Issue 中，必须明确同意公开" }, 400);
+        }
+        sanitizedContact = trimmedContact;
+      }
+    }
+
+    if (licenseConsent !== undefined && typeof licenseConsent !== "boolean") {
+      return jsonResponse({ error: "licenseConsent 必须为布尔值" }, 400);
+    }
+
+    if (licenseVersion !== undefined && (typeof licenseVersion !== "string" || licenseVersion.length > 32)) {
+      return jsonResponse({ error: "licenseVersion 必须为有效字符串" }, 400);
+    }
+
+    if (trimmedType === "question") {
+      if (!question || typeof question !== "object" || Array.isArray(question)) {
+        return jsonResponse({ error: "题目投稿必须包含有效的 question 对象" }, 400);
+      }
+      if (!licenseConsent) {
+        return jsonResponse({ error: "题目投稿必须明确同意按 CC BY-SA 4.0 协议发布" }, 400);
+      }
+      const questionError = validateQuestion(question);
+      if (questionError) return jsonResponse({ error: questionError }, 400);
+    }
+
+    if (typeof turnstileToken !== "string" || !turnstileToken.trim()) {
+      return jsonResponse({ error: "缺少人机验证令牌" }, 400);
+    }
+    if (turnstileToken.length > 2048) {
+      return jsonResponse({ error: "人机验证令牌长度无效" }, 400);
+    }
+
+    // S-07: Turnstile verification with timeout and domain/action checks
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000);
+    let turnstileResult;
+    try {
       const formBody = new URLSearchParams({
         secret: env.TURNSTILE_SECRET_KEY,
-        response: turnstileToken,
+        response: turnstileToken.trim(),
       });
-      const turnstileResult = await fetch(
+      turnstileResult = await fetch(
         "https://challenges.cloudflare.com/turnstile/v0/siteverify",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: formBody,
+          signal: controller.signal,
         }
       );
-      const turnstileData = await turnstileResult.json();
-      if (!turnstileData.success) {
-        console.error("Turnstile verification failed:", JSON.stringify(turnstileData));
-        return jsonResponse({ error: "人机验证失败，请重试" }, 400);
-      }
+    } catch (turnstileFetchError) {
+      clearTimeout(timeoutId);
+      console.error("Turnstile request failed:", turnstileFetchError?.message || "timeout");
+      return jsonResponse({ error: "人机验证服务暂时不可用，请稍后重试" }, 502);
+    }
+    clearTimeout(timeoutId);
 
-      const label = SUBMISSION_LABELS[type] || "投稿-待审核";
+    if (!turnstileResult.ok) {
+      return jsonResponse({ error: "人机验证服务返回异常，请稍后重试" }, 502);
+    }
 
-      // Create GitHub Issue via REST API
-      const issueResult = await fetch(
+    let turnstileData;
+    try {
+      turnstileData = await turnstileResult.json();
+    } catch {
+      return jsonResponse({ error: "人机验证响应解析失败" }, 502);
+    }
+
+    if (!turnstileData || !turnstileData.success) {
+      console.error("Turnstile verification failed:", JSON.stringify(turnstileData));
+      return jsonResponse({ error: "人机验证失败，请重试" }, 400);
+    }
+
+    // Validate hostname if present
+    const allowedHostnames = new Set([
+      "physics-learning-wiki.github.io",
+      "localhost",
+      "127.0.0.1",
+      ...(env.ALLOWED_HOSTNAMES ? env.ALLOWED_HOSTNAMES.split(",").map(h => h.trim()) : [])
+    ]);
+    if (turnstileData.hostname && !allowedHostnames.has(turnstileData.hostname)) {
+      console.error("Turnstile hostname disallowed:", turnstileData.hostname);
+      return jsonResponse({ error: "人机验证来源主机名无效" }, 400);
+    }
+
+    // Validate action if present
+    const expectedAction = trimmedType === "question" ? "submit-question" : "submit-general";
+    if (turnstileData.action && turnstileData.action !== expectedAction && turnstileData.action !== "submit-general" && turnstileData.action !== "submit-question") {
+      console.error("Turnstile action mismatch:", turnstileData.action, "expected:", expectedAction);
+      return jsonResponse({ error: "人机验证业务行为不匹配" }, 400);
+    }
+
+    const issueBody = buildIssueBody({
+      title: trimmedTitle,
+      content: trimmedContent,
+      type: trimmedType,
+      typeLabel: sanitizedTypeLabel,
+      chapter: sanitizedChapter,
+      attribution: sanitizedAttribution,
+      contact: sanitizedContact,
+      question,
+      licenseConsent: Boolean(licenseConsent),
+      licenseVersion: licenseVersion ? licenseVersion.trim() : "CC-BY-SA-4.0",
+      licenseConfirmedAt: new Date().toISOString(),
+    });
+
+    if (new TextEncoder().encode(issueBody).length > 60000) {
+      return jsonResponse({ error: "生成的投稿内容超过体积限制 (60KB)" }, 400);
+    }
+
+    const label = SUBMISSION_LABELS[trimmedType] || "投稿-待审核";
+
+    // Create GitHub Issue via REST API
+    let issueResult;
+    try {
+      issueResult = await fetch(
         `https://api.github.com/repos/${OWNER}/${REPO}/issues`,
         {
           method: "POST",
@@ -463,38 +691,29 @@ export default {
             "User-Agent": "Physics-Learning-Wiki-Submit-Worker",
           },
           body: JSON.stringify({
-            title: `[投稿] ${title}`,
-            body: buildIssueBody({
-              title,
-              content,
-              type,
-              typeLabel,
-              chapter,
-              attribution,
-              contact,
-              question,
-            }),
+            title: `[投稿] ${trimmedTitle}`,
+            body: issueBody,
             labels: ["投稿-待审核", label],
           }),
         }
       );
-
-      if (!issueResult.ok) {
-        const errorText = await issueResult.text();
-        console.error("GitHub API error:", issueResult.status, errorText);
-        return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
-      }
-
-      const issue = await issueResult.json();
-
-      return jsonResponse({
-        success: true,
-        issueUrl: issue.html_url,
-        issueNumber: issue.number,
-      });
-    } catch (error) {
-      console.error("Submission error:", error);
-      return jsonResponse({ error: "提交失败，请稍后重试" }, 500);
+    } catch (githubFetchError) {
+      console.error("GitHub API network error:", githubFetchError?.message || "unknown");
+      return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
     }
+
+    if (!issueResult.ok) {
+      const errorText = await issueResult.text().catch(() => "");
+      console.error("GitHub API error status:", issueResult.status, errorText.slice(0, 200));
+      return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
+    }
+
+    const issue = await issueResult.json();
+
+    return jsonResponse({
+      success: true,
+      issueUrl: issue.html_url,
+      issueNumber: issue.number,
+    });
   },
 };

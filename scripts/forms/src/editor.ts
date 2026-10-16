@@ -1,5 +1,8 @@
 import EasyMDE from "easymde";
 import { loadPreviewMathJax } from "./math-preview.js";
+import { sanitizePreviewHtml } from "./sanitizer.js";
+
+export { sanitizePreviewHtml };
 
 export interface EditorHandle {
   instance: EasyMDE;
@@ -23,7 +26,7 @@ export function createEditor(
     markdown,
     previewElement
   ) {
-    const html = this.parent.markdown(markdown);
+    const html = sanitizePreviewHtml(this.parent.markdown(markdown));
     previewElement.innerHTML = html;
     if (previewTimer) clearTimeout(previewTimer);
     previewTimer = setTimeout(() => {

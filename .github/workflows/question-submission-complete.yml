@@ -12,7 +12,8 @@ jobs:
   complete:
     if: >-
       github.event.pull_request.merged == true &&
-      startsWith(github.event.pull_request.head.ref, 'question-submission/issue-')
+      startsWith(github.event.pull_request.head.ref, 'question-submission/issue-') &&
+      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v7
@@ -44,7 +45,7 @@ jobs:
             const labels = issue.data.labels
               .map(label => typeof label === "string" ? label : label.name)
               .filter(label => label && label !== "题库-已生成PR" && label !== "投稿-待审核");
-            if (!labels.includes("投稿-已收录")) labels.push("投稿-已收录");
+            if (!labels.includes("题库-已收录")) labels.push("题库-已收录");
             await github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,

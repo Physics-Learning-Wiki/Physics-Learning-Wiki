@@ -35,3 +35,38 @@ test("draft recovery rejects malformed or incompatible data and keeps only allow
   assert.equal(sameDraft(value, { ...value, updatedAt: 200 }), true);
   assert.equal(sameDraft(value, { ...value, content: "新正文" }), false);
 });
+
+import { sanitizePreviewHtml } from "../src/sanitizer.js";
+
+test("S-04: sanitizePreviewHtml strips dangerous tags, javascript schemes and event handlers", () => {
+  const xssPayloads = [
+    '<script>alert("xss")</script>',
+    '<img src="x" onerror="alert(1)">',
+    '<iframe src="https://evil.com"></iframe>',
+    '<a href="javascript:alert(1)">恶意链接</a>',
+    '<div onclick="evil()">点击</div>',
+    '<link rel="stylesheet" href="evil.css">',
+    '<object data="evil.swf"></object>',
+    '<embed src="evil.swf">',
+    '<form action="https://evil.com"><input type="text"></form>'
+  ];
+
+  for (const payload of xssPayloads) {
+    const clean = sanitizePreviewHtml(payload);
+    assert.doesNotMatch(clean, /<script/i);
+    assert.doesNotMatch(clean, /onerror/i);
+    assert.doesNotMatch(clean, /<iframe/i);
+    assert.doesNotMatch(clean, /javascript:/i);
+    assert.doesNotMatch(clean, /onclick/i);
+    assert.doesNotMatch(clean, /<link/i);
+    assert.doesNotMatch(clean, /<object/i);
+    assert.doesNotMatch(clean, /<embed/i);
+    assert.doesNotMatch(clean, /<form/i);
+  }
+
+  const safeHtml = '<p>质能方程为 <strong>$E=mc^2$</strong></p><mjx-container jax="CHTML"><mjx-math><mjx-mi>E</mjx-mi></mjx-math></mjx-container>';
+  const cleanSafe = sanitizePreviewHtml(safeHtml);
+  assert.match(cleanSafe, /<p>质能方程为 <strong>\$E=mc\^2\$<\/strong><\/p>/);
+  assert.match(cleanSafe, /<mjx-container jax="CHTML">/);
+});
+

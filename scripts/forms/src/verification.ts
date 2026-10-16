@@ -9,7 +9,8 @@ export function createVerification(
   container: HTMLElement,
   signal: AbortSignal,
   onError: (message: string) => void,
-  onReady?: () => void
+  onReady?: () => void,
+  action?: string
 ): VerificationHandle {
   const document = container.ownerDocument;
   const controls = document.createElement("div");
@@ -43,7 +44,7 @@ export function createVerification(
       notice.textContent = message;
       onError(message);
     };
-    pending = mountTurnstile(container, signal, failed)
+    pending = mountTurnstile(container, signal, failed, action)
       .then(mounted => {
         if (disposed || signal.aborted || current !== generation) {
           mounted?.dispose();
