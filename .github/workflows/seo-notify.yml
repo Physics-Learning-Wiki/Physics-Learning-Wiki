@@ -1,0 +1,64 @@
+name: Search engine notification
+
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: seo-notify-baidu
+  cancel-in-progress: false
+
+jobs:
+  seo-notify:
+    name: Notify Baidu of published site
+    # Never use a PR run (including same-repository PRs) to access this secret.
+    if: >-
+      github.repository == 'Physics-Learning-Wiki/Physics-Learning-Wiki' &&
+      (
+        (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+        (
+          github.event_name == 'workflow_run' &&
+          github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.head_branch == 'main' &&
+          github.event.workflow_run.head_repository.full_name == github.repository &&
+          contains(fromJSON('["push", "workflow_dispatch"]'), github.event.workflow_run.event)
+        )
+      )
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      # Read the currently published snapshot, also when retrying an older run.
+      # No expiring build artifact or project dependency environment is needed.
+      - name: Fetch published sitemap
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: published-site
+          persist-credentials: false
+          sparse-checkout: sitemap.xml
+          sparse-checkout-cone-mode: false
+      - name: Push to Baidu
+        id: notify
+        env:
+          SITE: physics-learning-wiki.github.io/Physics-Learning-Wiki/
+          BAIDU_TOKEN: ${{ secrets.BaiduToken }}
+        run: |
+          printf 'Published gh-pages commit: `%s`\n\n' "$(git -C published-site rev-parse HEAD)" >> "$GITHUB_STEP_SUMMARY"
+          bash scripts/post-deploy/baidu-push.sh published-site/sitemap.xml
+      - name: Summarize notification failure
+        if: ${{ failure() }}
+        run: |
+          echo '### Search notification failed' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Inspect the failed step, then re-run this workflow or dispatch seo-notify.yml on main. The Pages deployment has its own result and does not need to be repeated.' >> "$GITHUB_STEP_SUMMARY"

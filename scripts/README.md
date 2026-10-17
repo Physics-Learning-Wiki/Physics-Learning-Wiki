@@ -13,7 +13,7 @@
 - `post-build/`：页面贡献者/提交信息、MathJax SSR、外链与重定向等后处理。
 - `post-build/media/`：只对生成的 `site/` HTML 与资源生成响应式 WebP 图片，不覆盖 `docs/` 作者原图。
 - `perf/`：检查生成站点的资源引用、功能标记、图片来源、HTML 大小和预算；详见 [`tests/perf/README.md`](../tests/perf/README.md)。
-- `post-deploy/`：生产部署后的 sitemap 转换和搜索推送脚本。
+- `post-deploy/`：生产部署后的 Sitemap 转换和搜索推送脚本，仅依赖 Python 标准库．百度通知由独立的 [Search engine notification 工作流](../.github/workflows/seo-notify.yml) 执行，令牌配置、失败重试与验收见 [安全运维待办](../.github/SECURITY_FOLLOW_UP.md#百度通知配置与独立重试)．
 
 ## 其他维护脚本
 

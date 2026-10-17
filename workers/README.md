@@ -58,13 +58,15 @@ npx wrangler secret put ALLOWED_HOSTNAMES
 
 在 Cloudflare Dashboard 中为该 Worker 路由配置以下防护：
 1. **WAF 速率限制（Rate Limiting Rule）**：
-   - 规则：针对路径 `/submit`（或自定义域名），单 IP 在 60 秒内请求超过 15 次触发 Block（封禁 1 小时）或 Managed Challenge．
+   - 当前表单入口为 `https://submit.folderrewind.top/`：规则必须覆盖该主机名的全部 POST，包含根路径 `/`；Worker 不按路径限制 POST，仅匹配 `/submit` 会漏掉真实入口，仅匹配 `/` 又能被其他路径绕过．单 IP 在 60 秒内请求超过 15 次触发 Block（封禁 1 小时）或 Managed Challenge；实际窗口与处置时长必须由当前套餐支持，并验证跨域表单可正常使用．
 2. **Bot Fight Mode / Turnstile 联动**：
    - 在生产环境开启 Cloudflare 托管人机质询，过滤已知爬虫与恶意扫描器．
 3. **环境隔离**：
-   - 生产环境中 `ENVIRONMENT` 设为 `production`，此时 Worker 默认仅允许 `physics-learning-wiki.github.io` 主机名，彻底拒绝 `localhost` / `127.0.0.1` 来源．
+   - 生产环境中 `ENVIRONMENT` 设为 `production`，此时 Worker 默认仅接受 `physics-learning-wiki.github.io` 的 Turnstile 验证结果．显式 `ALLOWED_HOSTNAMES` 会覆盖默认值，生产白名单不得包含 `localhost` / `127.0.0.1`．这不是 HTTP Origin 校验，不能仅用伪造 Origin 请求作为验收证据．
 4. **分支保护与发布门禁**：
    - 自动生成的 Issue PR 必须在通过主分支保护检查后方可合并，详见 [`.github/BRANCH_PROTECTION.md`](../.github/BRANCH_PROTECTION.md)．
+
+逐步配置与生产验收方法见 [安全运维待办](../.github/SECURITY_FOLLOW_UP.md#worker-与-cloudflare)，包括凭证轮换、真实入口匹配、未受保护入口排查和受控限流验证．
 
 ---
 

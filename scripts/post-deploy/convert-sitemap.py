@@ -1,13 +1,20 @@
-# Sitemap Parser - Convert XML into TXT (Baidu Pusher)
-# python3 convert-sitemap.py <input.xml> <output.txt>
+#!/usr/bin/env python3
+"""Convert a sitemap to a UTF-8 URL list without project dependencies."""
+import argparse
+from pathlib import Path
 
-import sys
-from bs4 import BeautifulSoup as bs
+from sitemap_urls import read_urls
 
-f = open(sys.argv[1])
-file = f.read()
-soup = bs(file, "html.parser")
-links = soup.find_all('loc')
-with open(sys.argv[2], 'w') as f1:
-    for link in links:
-        f1.write(link.text + '\n')
+
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("source", type=Path)
+    parser.add_argument("target", type=Path)
+    args = parser.parse_args(argv)
+    urls = read_urls(args.source)
+    args.target.write_bytes("".join(url + "\n" for url in urls).encode("utf-8"))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

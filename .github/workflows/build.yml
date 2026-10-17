@@ -124,10 +124,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           force_orphan: true
-      - name: Push to Baidu
-        env:
-          SITE: physics-learning-wiki.github.io/Physics-Learning-Wiki/
-          BAIDU_TOKEN: ${{ secrets.BaiduToken }}
-        run: |
-          chmod +x ./scripts/post-deploy/baidu-push.sh
-          ./scripts/post-deploy/baidu-push.sh
