@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" role="img" aria-labelledby="title">
+  <title id="title">粗糙斜面上的方块</title>
+  <path d="M40 220H440L440 60Z" fill="#eceff1" stroke="#607d8b" stroke-width="5"/>
+  <g transform="translate(290 112) rotate(-22)">
+    <rect x="-45" y="-35" width="90" height="70" rx="4" fill="#ffcc80" stroke="#ef6c00" stroke-width="4"/>
+  </g>
+  <path d="M300 120l-70 30" stroke="#d32f2f" stroke-width="5"/>
+  <path d="M230 150l16-14m-16 14l20 2" stroke="#d32f2f" stroke-width="5" fill="none"/>
+</svg>

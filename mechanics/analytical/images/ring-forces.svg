@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 600 350" width="600" height="350" role="img" aria-labelledby="title desc">
+  <title id="title">圆环质点的力与虚位移</title><desc id="desc">质点位于圆环右下侧。角度从竖直向下量起，增加角度的切向指向右上，重力向下，约束反力径向，与虚位移垂直。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+  <rect width="600" height="350" rx="12" fill="#f8fafc"/>
+  <circle cx="220" cy="159" r="110" stroke="#64748b" stroke-width="3" fill="none"/>
+  <g font-family="sans-serif" fill="#172554" font-size="17">
+    <g stroke="#334155" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M220 159H365"/><path d="M220 159V28"/></g>
+    <text x="371" y="165">x</text><text x="202" y="28">y</text><text x="196" y="153">O</text>
+    <path d="M220 159V284" stroke="#94a3b8" stroke-dasharray="5 4"/><path d="M220 159L298 237" stroke="#2563eb" stroke-width="2"/><text x="268" y="193">R</text>
+    <path d="M220 207A48 48 0 0 0 254 193" stroke="#b45309" fill="none"/><text x="250" y="222">θ</text><circle cx="298" cy="237" r="8" fill="#2563eb"/>
+    <path d="M298 237V304" stroke="#b45309" stroke-width="3" marker-end="url(#arrow)"/><text x="310" y="305">mg</text>
+    <path d="M298 237L257 196" stroke="#64748b" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M298 237L351 184" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/><text x="362" y="195">δr = R eθ δθ</text>
+    <text x="392" y="238">反力沿径向</text><text x="392" y="264">正切向沿 θ 增加方向</text><text x="34" y="330">支持力方向可依运动改变；图中仅示意一个径向方向</text>
+  </g>
+</svg>
