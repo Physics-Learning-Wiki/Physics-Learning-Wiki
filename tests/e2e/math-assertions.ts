@@ -3,7 +3,7 @@ import { expect, type Locator } from "@playwright/test";
 export async function expectAssistiveMathClipped(root: Locator): Promise<void> {
   const containers = root.locator("mjx-container");
   const assistive = root.locator("mjx-assistive-mml");
-  expect(await containers.count()).toBeGreaterThan(0);
+  await expect(containers.filter({ visible: true }).first()).toBeVisible();
   await expect(assistive).toHaveCount(await containers.count());
   await expect
     .poll(() =>

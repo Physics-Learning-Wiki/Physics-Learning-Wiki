@@ -1,387 +1,347 @@
 from __future__ import annotations
 
-import importlib.util
+import json
+import os
 from pathlib import Path
-import re
+import shutil
+import subprocess
 import sys
+from urllib.parse import parse_qs, urlsplit
+
+from bs4 import BeautifulSoup
+import pytest
 import yaml
 
-SCRIPT = Path(__file__).resolve().parents[2] / "scripts/generate-community.py"
-spec = importlib.util.spec_from_file_location("generate_community", SCRIPT)
-assert spec and spec.loader
-module = importlib.util.module_from_spec(spec)
-sys.modules[spec.name] = module
-spec.loader.exec_module(module)
+from scripts.community import generator
+from scripts.community.generator import (
+    API_URL, LABEL, SnapshotConflict, build_snapshot, fetch_issues,
+    generate_snapshot, index_source, page_source,
+)
+from scripts.community.render import normalize_markdown, render_community_markdown
 
-generate_index = module.generate_index
-generate_page = module.generate_page
-sanitize_community_markdown = module.sanitize_community_markdown
+ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_sanitize_community_markdown_neutralizes_snippets() -> None:
-    malicious = '这是正常说明。\n--8<-- "data/concepts.yml"\n--8<-- "mkdocs.yml"\n正文结束。'
-    safe = sanitize_community_markdown(malicious)
-    assert "--8<--" not in safe
-    assert "<!-- snippet disabled -->" in safe
+def issue(number=42, body='Community text', **values):
+    return {
+        'number': number, 'title': '[投稿] Physics',
+        'created_at': '2026-10-17T12:00:00Z',
+        'state': 'open', 'labels': [{'name': LABEL}],
+        'html_url': f'https://github.com/{generator.REPO}/issues/{number}',
+        'body': body, **values,
+    }
 
 
-def test_sanitize_community_markdown_escapes_dangerous_html() -> None:
-    malicious = (
-        '说明：<script>alert("xss")</script><iframe src="evil.com"></iframe>'
-        '<object data="evil.swf"></object><link rel="stylesheet" href="bad.css">'
+def assert_safe(root):
+    assert not root.select('script, iframe, object, embed, svg, form, input, button, style, link')
+    for element in root.find_all(True):
+        assert not any(name.lower().startswith('on') for name in element.attrs)
+        for name in ('href', 'src'):
+            if element.has_attr(name):
+                value = ''.join(element[name].split()).lower()
+                assert not value.startswith(('javascript:', 'data:', 'vbscript:', 'file:'))
+
+
+def test_complete_fragment_preserves_native_html_and_markdown_features():
+    source = '''## Nested content
+
+<a href="https://example.com">read <strong><em>reference</em></strong></a>
+
+<details open><summary>Expand <strong>proof</strong></summary><div><p>Nested <em>body</em></p></div></details>
+
+| A | B |
+| --- | --- |
+| 1 | 2 |
+
+!!! note "Note"
+    Formula $E = mc^2$．
+\x20\x20\x20\x20
+??? warning "Details"
+    Body
+\x20\x20\x20\x20
+```python
+# keep this heading
+print("<script>example</script>")
+```
+
+$$
+\\frac{1}{2}mv^2
+$$
+'''
+    rendered = render_community_markdown(source)
+    soup = BeautifulSoup(rendered.html, 'html.parser')
+    assert soup.select_one('a[href="https://example.com"] strong em').text == 'reference'
+    assert soup.select_one('details[open] summary strong').text == 'proof'
+    assert soup.select_one('details div p em').text == 'body'
+    assert soup.select_one('table td').text == '1'
+    assert soup.select_one('.admonition.note .arithmatex')
+    assert soup.select_one('details.warning summary').text == 'Details'
+    assert '# keep this heading' in soup.select_one('code').text
+    assert len(soup.select('.arithmatex')) == 2
+    assert rendered.toc[0]['id'] == 'community-nested-content'
+    assert_safe(soup)
+
+
+def test_only_prose_headings_are_normalized():
+    source = '# Prose\n\n```text\n# literal\n```\n\n`# inline`\n\n$$\nx < y\n$$'
+    normalized = normalize_markdown(source)
+    assert normalized.startswith('## Prose')
+    assert '```text\n# literal\n```' in normalized
+    assert '`# inline`' in normalized
+    assert '$$\nx < y\n$$' in normalized
+    literal = '    # indented code\n\n$$\n# TeX parameter\n$$\n'
+    assert normalize_markdown(literal) == literal.rstrip('\n')
+
+
+def test_metadata_is_yaml_data_and_index_text():
+    submission = issue(
+        body='## 投稿信息\n- **署名**: [author](https://evil.test) *name*\n---\n# Body\n\n$x < y$',
+        title='[投稿] <img src=x onerror=alert(1)> [title](https://evil.test)\nstatus: published',
+        html_url='javascript:alert(1)',
     )
-    safe = sanitize_community_markdown(malicious)
-    assert "<script" not in safe
-    assert "&lt;script" in safe
-    assert "<iframe" not in safe
-    assert "&lt;iframe" in safe
-    assert "<object" not in safe
-    assert "<link" not in safe
+    source = page_source(submission)
+    metadata = yaml.safe_load(source.split('---\n', 2)[1])
+    assert set(metadata) == {'status', 'author', 'source_issue', 'submission_date', 'title'}
+    assert metadata['status'] == 'community'
+    assert metadata['source_issue'].endswith('/issues/42')
+    assert '<img' not in metadata['title']
+    assert '## Body' in source and '$x < y$' in source
+    rendered = render_community_markdown(index_source([submission]).split('---\n', 2)[2])
+    soup = BeautifulSoup(rendered.html, 'html.parser')
+    assert len(soup.select('a')) == 1
+    assert soup.a['href'] == '42.md'
+    assert '[title](https://evil.test)' in soup.a.text
+    assert '[author](https://evil.test) *name*' in soup.get_text()
+    assert_safe(soup)
 
 
-def test_sanitize_community_markdown_demotes_h1_headings() -> None:
-    content_with_h1 = "# 物理新见解\n\n正文内容。\n# 另一部分"
-    safe = sanitize_community_markdown(content_with_h1)
-    # 遵循 LINT-1 规范，不能包含一级标题
-    lines = [line.strip() for line in safe.splitlines()]
-    for line in lines:
-        assert not re.match(r"^#\s+", line), f"Found H1 heading: {line}"
-    assert "## 物理新见解" in safe
-    assert "## 另一部分" in safe
+class Response:
+    def __init__(self, data, link=''):
+        self.data = data
+        self.headers = {'Link': link}
+
+    def read(self):
+        return json.dumps(self.data).encode()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        pass
 
 
-def test_generate_page_prevents_yaml_frontmatter_injection(tmp_path: Path) -> None:
-    # 模拟攻击载荷：通过回车与 YAML 语法注入自定义 status 与 admin 字段
-    attack_issue = {
-        "number": 42,
-        "title": "[投稿] 恶意标题\nstatus: published\ninjected_admin: true",
-        "created_at": "2026-10-16T12:00:00Z",
-        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/42",
-        "body": (
-            "## 投稿信息\n\n"
-            "- **投稿类型**: 笔记\n"
-            "- **署名**: 伪造署名\nevil_key: evil_val\n"
-            "- **目标章节**: 力学\n\n"
-            "---\n\n"
-            "# 攻击正文\n--8<-- \"pyproject.toml\""
-        ),
+def test_pagination_reads_every_page_and_excludes_prs():
+    requests = []
+
+    def opener(request, **kwargs):
+        requests.append(request.full_url)
+        page = int(parse_qs(urlsplit(request.full_url).query)['page'][0])
+        if page == 1:
+            return Response([issue(i) for i in range(1, 101)], f'<{API_URL}?page=2>; rel="next"')
+        return Response([issue(101), {**issue(102), 'pull_request': {}}])
+
+    snapshot = fetch_issues(token='', opener=opener)
+    assert len(requests) == 2
+    assert [entry['number'] for entry in snapshot] == list(range(101, 0, -1))
+
+
+@pytest.mark.parametrize('failure', ['network', 'invalid-response', 'duplicate', 'foreign-next', 'malformed-next', 'missing-state', 'missing-labels'])
+def test_incomplete_fetch_does_not_change_existing_files(tmp_path, monkeypatch, failure):
+    output, manifest = tmp_path / 'docs/community', tmp_path / 'data/community-generated.json'
+    generate_snapshot(output, manifest, issues=[issue(1)])
+    before = {path: path.read_bytes() for path in [*output.iterdir(), manifest]}
+    calls = 0
+
+    def opener(request, **kwargs):
+        nonlocal calls
+        calls += 1
+        if failure == 'foreign-next':
+            return Response([issue(1)], '<https://evil.test/steal>; rel="next"')
+        if failure == 'malformed-next':
+            return Response([issue(1)], f'<{API_URL}?page=2>; broken-next')
+        if calls == 1:
+            return Response([issue(1)], f'<{API_URL}?page=2>; rel="next"')
+        if failure == 'network':
+            raise OSError('network failure')
+        if failure.startswith('missing-'):
+            malformed = issue(2)
+            del malformed[failure.removeprefix('missing-')]
+            return Response([malformed])
+        return Response({'message': 'API error'} if failure == 'invalid-response' else [issue(1)])
+
+    monkeypatch.setattr(generator, 'urlopen', opener)
+    assert generator.main(['--output-dir', str(output), '--manifest', str(manifest)]) == 1
+    assert all(path.read_bytes() == content for path, content in before.items())
+
+
+def test_withdrawal_empty_snapshot_and_idempotency_preserve_handwritten_files(tmp_path):
+    output, manifest = tmp_path / 'docs/community', tmp_path / 'data/community-generated.json'
+    assert generate_snapshot(output, manifest, issues=[issue(1), issue(2), issue(3)])
+    manual = output / 'guide.md'
+    manual.write_text('Handwritten guide', encoding='utf-8')
+    before = manifest.read_bytes()
+    assert not generate_snapshot(output, manifest, issues=[issue(1), issue(2), issue(3)])
+    assert manifest.read_bytes() == before
+    assert generate_snapshot(output, manifest, issues=[issue(1), issue(2, labels=[]), issue(3, state='closed')])
+    assert (output / '1.md').exists()
+    assert not (output / '2.md').exists() and not (output / '3.md').exists()
+    assert generate_snapshot(output, manifest, issues=[])
+    assert sorted(path.name for path in output.iterdir()) == ['guide.md', 'index.md']
+    assert manual.read_text(encoding='utf-8') == 'Handwritten guide'
+    assert '暂无社区投稿' in (output / 'index.md').read_text(encoding='utf-8')
+
+
+@pytest.mark.parametrize('withdraw', [False, True])
+def test_manual_edits_abort_the_whole_snapshot_before_any_write(tmp_path, withdraw):
+    output, manifest = tmp_path / 'docs/community', tmp_path / 'data/community-generated.json'
+    generate_snapshot(output, manifest, issues=[issue(1)])
+    (output / '1.md').write_text('Maintainer text', encoding='utf-8')
+    before = {path: path.read_bytes() for path in [*output.iterdir(), manifest]}
+    with pytest.raises(SnapshotConflict, match='Maintainer changes'):
+        generate_snapshot(output, manifest, issues=[] if withdraw else [issue(1, body='New text'), issue(2)])
+    assert not (output / '2.md').exists()
+    assert all(path.read_bytes() == content for path, content in before.items())
+
+
+def test_unmanaged_collision_and_manifest_traversal_are_rejected(tmp_path):
+    output, manifest = tmp_path / 'docs/community', tmp_path / 'manifest.json'
+    output.mkdir(parents=True)
+    (output / '42.md').write_text('Manual file', encoding='utf-8')
+    with pytest.raises(SnapshotConflict, match='Unmanaged'):
+        generate_snapshot(output, manifest, issues=[issue()])
+    manifest.write_text(json.dumps({'version': 1, 'files': {'../42.md': {'issue': 42, 'sha256': '0' * 64}}}))
+    with pytest.raises(ValueError, match='Invalid managed'):
+        generate_snapshot(output, manifest, issues=[])
+    assert (output / '42.md').read_text(encoding='utf-8') == 'Manual file'
+
+
+def test_rendering_failure_does_not_publish_partial_snapshot(tmp_path, monkeypatch):
+    output, manifest = tmp_path / 'docs/community', tmp_path / 'manifest.json'
+    generate_snapshot(output, manifest, issues=[issue(1)])
+    before = manifest.read_bytes()
+    monkeypatch.setattr(generator, 'render_community_markdown', lambda *a, **k: (_ for _ in ()).throw(RuntimeError('sanitizer failed')))
+    with pytest.raises(RuntimeError, match='sanitizer failed'):
+        generate_snapshot(output, manifest, issues=[issue(2)])
+    assert manifest.read_bytes() == before
+    assert (output / '1.md').exists() and not (output / '2.md').exists()
+
+
+@pytest.fixture(scope='module')
+def built_community(tmp_path_factory):
+    root = tmp_path_factory.mktemp('community-build')
+    docs, site = root / 'docs', root / 'site'
+    docs.mkdir()
+    secret = root / 'secret.md'
+    secret.write_text('PRIVATE_INCLUDE_SENTINEL', encoding='utf-8')
+    source = f'''## Safe heading
+
+[Section](#safe-heading)
+
+<a href="../reference.md">Read <strong><em>reference</em></strong></a>
+
+<details open><summary>Proof</summary><div><p>Nested body</p></div></details>
+
+| A | B |
+| --- | --- |
+| 1 | 2 |
+
+!!! note "Formula"
+    $E = mc^2$．
+\x20\x20\x20\x20
+??? warning "Details"
+    Safe body
+\x20\x20\x20\x20
+```python
+# code heading
+print("<script>example</script>")
+```
+
+--8<-- "{secret.as_posix()}"
+
+[attribute](https://example.com){{onclick="alert(1)" style="position:fixed"}}
+
+<div markdown="1" class="mermaid" id="plw-quiz-root" data-manifest-url="https://evil.test">
+[inner](javascript:alert(1)){{onmouseover="alert(1)"}}
+</div>
+
+<script>window.__community_attack = true</script>
+<img src="javascript:alert(1)" onerror="alert(1)">
+<svg onload="alert(1)"></svg>
+<a href="jav&#x61;script:alert(1)">bad</a>
+
+$\\href{{javascript:alert(1)}}{{x}}$
+
+$\\style{{position:fixed;inset:0}}{{y}}$
+
+$\\class{{mermaid}}{{z}} + \\cssId{{plw-quiz-root}}{{w}}$
+
+$\\data{{plw-feature=quiz}}{{v}}$
+'''
+    submission = issue(body='## 投稿信息\n- **署名**: [author](https://evil.test) " onmouseover="alert(1)\n---\n' + source,
+                       title='[投稿] <script>title-attack</script> [plain](https://evil.test)')
+    generate_snapshot(docs / 'community', root / 'data/community-generated.json', issues=[submission])
+    (docs / 'reference.md').write_text('---\ntitle: Reference\n---\n\n## Reference\n', encoding='utf-8')
+    (docs / 'index.md').write_text(f'## Trusted\n\n--8<-- "{secret.as_posix()}"\n\n[trusted](https://example.com){{style="color:red"}}', encoding='utf-8')
+    shutil.copytree(ROOT / 'overrides', root / 'overrides')
+    config = {
+        'site_name': 'Community security fixture', 'site_url': 'https://example.com/',
+        'theme': {'name': None, 'custom_dir': (ROOT / 'mkdocs-material/material/templates').as_posix(), 'language': 'zh', 'icon': {'logo': 'material/school'}, 'font': False, 'features': []},
+        'hooks': [(ROOT / path).as_posix() for path in ['hooks/community_content.py', 'hooks/on_env.py', 'hooks/runtime_features.py']],
+        'markdown_extensions': ['attr_list', 'md_in_html', {'pymdownx.snippets': {'check_paths': True}}, {'pymdownx.arithmatex': {'generic': True}}],
     }
-
-    out_file = Path(generate_page(attack_issue, tmp_path))
-    assert out_file.exists()
-
-    content = out_file.read_text(encoding="utf-8")
-    assert content.startswith("---\n")
-
-    # 提取 frontmatter
-    parts = content.split("---\n")
-    assert len(parts) >= 3
-    fm_raw = parts[1]
-    fm_data = yaml.safe_load(fm_raw)
-
-    # 验证 frontmatter 未被注入未授权属性
-    assert set(fm_data.keys()) == {"status", "author", "source_issue", "submission_date", "title"}
-    assert fm_data["status"] == "community"
-    assert "injected_admin" not in fm_data
-    assert "evil_key" not in fm_data
-
-    # 验证正文中 Snippets 与 H1 被中和
-    body_part = parts[2]
-    assert "--8<--" not in body_part
-    for line in body_part.splitlines():
-        assert not re.match(r"^#\s+", line.strip())
+    (root / 'mkdocs.yml').write_text(yaml.safe_dump(config, allow_unicode=True), encoding='utf-8')
+    result = subprocess.run([sys.executable, '-m', 'mkdocs', 'build', '--clean'], cwd=root, capture_output=True, text=True, encoding='utf-8')
+    assert result.returncode == 0, result.stdout + result.stderr
+    yield root, site
 
 
-def test_generate_page_validates_issue_url(tmp_path: Path) -> None:
-    invalid_url_issue = {
-        "number": 99,
-        "title": "[投稿] 正常标题",
-        "created_at": "2026-10-16T12:00:00Z",
-        "html_url": "javascript:alert(1)",
-        "body": "## 投稿信息\n\n---\n\n正文",
-    }
-    out_file = Path(generate_page(invalid_url_issue, tmp_path))
-    content = out_file.read_text(encoding="utf-8")
-    fm_data = yaml.safe_load(content.split("---\n")[1])
-    assert fm_data["source_issue"] == "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/99"
+def test_real_mkdocs_output_is_isolated_and_preserves_legitimate_structure(built_community):
+    root, site = built_community
+    page = BeautifulSoup((site / 'community/42/index.html').read_text(encoding='utf-8'), 'html.parser')
+    content = page.select_one('.plw-community-content')
+    assert content is not None
+    assert not page.select('[onmouseover]')
+    assert '" onmouseover="alert(1)' in page.select_one('meta[name="author"]')['content']
+    assert_safe(content)
+    assert content.select_one('a[href="../../reference/"] strong em').text == 'reference'
+    assert content.select_one('details[open] div p').text == 'Nested body'
+    assert content.select_one('table td').text == '1'
+    assert content.select_one('details.warning summary').text == 'Details'
+    assert content.select_one('.admonition.note .arithmatex')
+    assert not content.select('.mermaid, #plw-quiz-root, [data-manifest-url], [style], [markdown]')
+    assert 'PRIVATE_INCLUDE_SENTINEL' not in page.text
+    assert 'PRIVATE_INCLUDE_SENTINEL' in (site / 'index.html').read_text(encoding='utf-8')
+    assert page.select_one('h2#community-safe-heading')
+    assert page.select_one('nav a[href="#community-safe-heading"]')
+    assert content.select_one('a[href="#community-safe-heading"]').text == 'Section'
+    index = BeautifulSoup((site / 'community/index.html').read_text(encoding='utf-8'), 'html.parser')
+    index_content = index.select_one('.plw-community-content')
+    assert index_content.select_one('h2 a')['href'] == '42/'
+    assert '[plain](https://evil.test)' in index_content.select_one('h2 a').text
+    assert '[author](https://evil.test)' in index_content.text
+    assert len(index_content.select('a')) == 1
+    assert_safe(index_content)
 
 
-def test_generate_index_creates_safe_index(tmp_path: Path) -> None:
-    issues = [
-        {
-            "number": 1,
-            "title": "[投稿] 带[中括号]的标题",
-            "created_at": "2026-10-16T12:00:00Z",
-            "body": "## 投稿信息\n- **投稿类型**: 完整页面\n- **署名**: 张三\n---\n正文",
-        }
-    ]
-    generate_index(issues, tmp_path)
-    index_file = tmp_path / "index.md"
-    assert index_file.exists()
-
-    content = index_file.read_text(encoding="utf-8")
-    # 验证中括号转义，防止破坏 Markdown 链接
-    assert r"\[中括号\]" in content
-    # 验证正文中文标点全角点
-    assert "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考．" in content
-
-
-def test_metadata_sanitization_neutralizes_html_and_markdown_injection(tmp_path: Path) -> None:
-    malicious_issue = {
-        "number": 999,
-        "title": '[投稿] <script>alert("title-xss")</script><img src=x onerror=alert(1)>恶意标题',
-        "created_at": "2026-10-16T12:00:00Z",
-        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/999",
-        "body": (
-            "## 投稿信息\n\n"
-            "- **投稿类型**: <svg onload=alert('type-xss')>笔记\n"
-            '- **署名**: <img src=x onerror="alert(\'author-xss\')">[攻击者](javascript:alert(1))\n'
-            '- **目标章节**: <iframe src="https://evil.com">力学</iframe>\n\n'
-            "---\n\n"
-            "正文内容"
-        ),
-    }
-
-    # 1. 验证生成的单页 frontmatter 与正文
-    page_file = Path(generate_page(malicious_issue, tmp_path))
-    content = page_file.read_text(encoding="utf-8")
-    fm = yaml.safe_load(content.split("---\n")[1])
-
-    # 元数据中的 HTML 标签已被完全剥除，且无 XSS 属性
-    assert "<script" not in fm["author"]
-    assert "onerror" not in fm["author"]
-    assert "javascript:" not in fm["author"]
-    assert "<iframe" not in content
-    assert "<svg" not in content
-
-    # 2. 验证生成的社区索引页 index.md
-    generate_index([malicious_issue], tmp_path)
-    index_file = tmp_path / "index.md"
-    index_content = index_file.read_text(encoding="utf-8")
-
-    assert "<script" not in index_content
-    assert "<img" not in index_content
-    assert "onerror" not in index_content
-    assert "<iframe" not in index_content
-    assert "<svg" not in index_content
-    assert "onload" not in index_content
-    assert "javascript:" not in index_content
-
-
-def test_sanitize_community_markdown_comprehensive_xss_neutralization() -> None:
-    malicious = (
-        '这是包含各种攻击向量的 Markdown:\n\n'
-        '<img src="https://example.com/pic.png" onerror="alert(1)" alt="图片">\n'
-        '<a href="javascript:alert(\'click-xss\')">恶意链接</a>\n'
-        '[Markdown伪协议链接](javascript:alert(1))\n'
-        '[数据协议链接](data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==)\n'
-        '<svg onload="alert(1)"></svg>\n'
-        '<details ontoggle="alert(1)"><summary>折叠</summary>内容</details>\n'
-        '<body onload="alert(1)">\n'
-        '--8<-- "secrets.yml"\n'
-        '# 页面大标题\n'
-    )
-    safe = sanitize_community_markdown(malicious)
-
-    # 验证关键危险特征均被消除
-    assert "onerror" not in safe
-    assert "onload" not in safe
-    assert "ontoggle" not in safe
-    assert "javascript:" not in safe
-    assert "data:text/html" not in safe
-    assert "--8<--" not in safe
-    assert not re.search(r"(?m)^#\s+", safe)
-    # 不在白名单的标签被转义
-    assert "<svg" not in safe
-    assert "&lt;svg" in safe
-    assert "<body" not in safe
-    assert "&lt;body" in safe
-
-
-def test_end_to_end_community_security_with_markdown_rendering(tmp_path: Path) -> None:
-    import markdown
-    from bs4 import BeautifulSoup
-
-    malicious_issue = {
-        "number": 888,
-        "title": '[投稿] <img src=x onerror=alert(1)>光电效应的波粒二象性探讨',
-        "created_at": "2026-10-16T12:00:00Z",
-        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/888",
-        "body": (
-            "## 投稿信息\n\n"
-            "- **投稿类型**: <script>alert(1)</script>完整页面\n"
-            '- **署名**: <img src="x" onerror="window.__author_xss = true">波尔\n'
-            '- **目标章节**: 量子力学初步\n\n'
-            "---\n\n"
-            "爱因斯坦在 1905 年提出了光量子假说，光子能量为 $E = h\\nu$．\n\n"
-            '<img src="https://example.com/photoelectric.png" onerror="window.__body_xss = true" alt="实验图">\n'
-            '<a href="javascript:window.__link_xss = true">详情点击</a>\n'
-            '[Markdown攻击链接](javascript:window.__md_xss = true)\n'
-            '<iframe src="https://evil.com"></iframe>\n'
-            '<svg onload="window.__svg_xss = true"></svg>\n'
-            '--8<-- "data/concepts.yml"\n'
-        ),
-    }
-
-    # 1. 生成单页与索引页
-    page_path = Path(generate_page(malicious_issue, tmp_path))
-    generate_index([malicious_issue], tmp_path)
-    index_path = tmp_path / "index.md"
-
-    # 2. 模拟 Markdown 渲染为 HTML
-    page_md = page_path.read_text(encoding="utf-8")
-    # 剥除 frontmatter 后渲染 body
-    body_md = page_md.split("---\n")[2]
-    page_html = markdown.markdown(body_md, extensions=["tables", "fenced_code"])
-
-    index_md = index_path.read_text(encoding="utf-8")
-    index_html = markdown.markdown(index_md, extensions=["tables", "fenced_code"])
-
-    # 3. 使用 BeautifulSoup 解析并深度审查渲染后的 DOM
-    for name, rendered_html in [("page", page_html), ("index", index_html)]:
-        soup = BeautifulSoup(rendered_html, "html.parser")
-
-        # 绝对禁止任何 script 标签
-        scripts = soup.find_all("script")
-        assert len(scripts) == 0, f"Found <script> in {name}: {scripts}"
-
-        # 绝对禁止任何 iframe 标签
-        iframes = soup.find_all("iframe")
-        assert len(iframes) == 0, f"Found <iframe> in {name}: {iframes}"
-
-        # 绝对禁止任何 svg 标签
-        svgs = soup.find_all("svg")
-        assert len(svgs) == 0, f"Found <svg> in {name}: {svgs}"
-
-        # 检查所有元素的属性：绝对禁止任何 on* 事件监听器
-        for tag in soup.find_all(True):
-            for attr_name in tag.attrs:
-                assert not attr_name.lower().startswith("on"), (
-                    f"Found event handler {attr_name} in {name}: {tag}"
-                )
-            # 检查链接和图片地址：禁止 javascript: 和 data: 伪协议
-            if tag.name == "a" and tag.has_attr("href"):
-                href = tag["href"].strip().lower()
-                assert not href.startswith("javascript:"), f"Found javascript: in {name}: {href}"
-                assert not href.startswith("data:"), f"Found data: in {name}: {href}"
-            if tag.name == "img" and tag.has_attr("src"):
-                src = tag["src"].strip().lower()
-                assert not src.startswith("javascript:"), f"Found javascript: in {name}: {src}"
-
-        # 验证 Snippets 被中和
-        assert "--8<--" not in rendered_html
-
-
-def test_real_mkdocs_build_community_security() -> None:
-    """真实执行 MkDocs 站点构建，全链路验证社区投稿的 HTML 安全隔离与渲染输出。"""
-    import shutil
-    import subprocess
-    from bs4 import BeautifulSoup
-
-    repo_root = Path(__file__).resolve().parents[2]
-    community_dir = repo_root / "docs" / "community"
-    community_dir.mkdir(parents=True, exist_ok=True)
-
-    malicious_issue = {
-        "number": 777,
-        "title": '[投稿] <script>alert("title-xss")</script>浅谈"量子纠缠"与[贝尔不等式]',
-        "created_at": "2026-10-16T12:00:00Z",
-        "html_url": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/777",
-        "body": (
-            "## 投稿信息\n\n"
-            "- **投稿类型**: <svg onload=alert('type')>笔记\n"
-            '- **署名**: <img src="x" onerror="window.__author_xss = true">小明\n'
-            '- **目标章节**: <iframe src="https://evil.com">量子力学</iframe>\n\n'
-            "---\n\n"
-            "爱因斯坦提出了 EPR 佯谬，认为量子力学是不完备的，光子能量 $E=h\\nu$．\n\n"
-            '<img src="https://example.com/pic.png" onerror="window.__body_xss = true" alt="实验图">\n'
-            '<a href="javascript:window.__link_xss = true">恶意链接</a>\n'
-            '[Markdown伪协议链接](javascript:window.__md_xss = true)\n'
-            '<iframe src="https://evil.com"></iframe>\n'
-            '<svg onload="window.__svg_xss = true"></svg>\n'
-            '--8<-- "pyproject.toml"\n'
-        ),
-    }
-
-    try:
-        generate_page(malicious_issue, community_dir)
-        generate_index([malicious_issue], community_dir)
-
-        # 真实运行 MkDocs 构建
-        res = subprocess.run(
-            [sys.executable, "-m", "mkdocs", "build", "--clean"],
-            cwd=repo_root,
-            capture_output=True,
-            text=True,
-        )
-        assert res.returncode == 0, f"mkdocs build failed:\nStdout:\n{res.stdout}\nStderr:\n{res.stderr}"
-
-        # 检查生成的实际 HTML 文件
-        page_html_file = repo_root / "site" / "community" / "777" / "index.html"
-        index_html_file = repo_root / "site" / "community" / "index.html"
-        assert page_html_file.exists(), "Page HTML not generated"
-        assert index_html_file.exists(), "Index HTML not generated"
-
-        for file_path in [page_html_file, index_html_file]:
-            html_content = file_path.read_text(encoding="utf-8")
-            soup = BeautifulSoup(html_content, "html.parser")
-
-            # 1. 检查正文区域 article.md-content__inner
-            article = soup.find("article", class_="md-content__inner")
-            assert article is not None, f"Article container not found in {file_path}"
-
-            # 正文区域严禁任何危险的插件对象
-            for tag_name in ["object", "embed"]:
-                found_tags = article.find_all(tag_name)
-                assert len(found_tags) == 0, f"Found <{tag_name}> in article of {file_path}: {found_tags}"
-
-            # 严禁任何指向恶意域名的 iframe
-            for iframe in article.find_all("iframe"):
-                src = iframe.get("src", "").lower()
-                assert "evil.com" not in src, f"Found malicious iframe in {file_path}: {src}"
-
-            # 严禁任何包含事件处理器的 svg（主题自身图标不含事件处理器）
-            for svg in article.find_all("svg"):
-                for attr in svg.attrs:
-                    assert not attr.lower().startswith("on"), f"Found event handler on <svg> in {file_path}: {attr}"
-
-            # 严禁任何注入的 script 标签（整页内仅允许主题官方 Giscus/Search 脚本，绝对禁止任何恶意脚本）
-            for script_tag in soup.find_all("script"):
-                script_text = script_tag.text
-                assert "title-xss" not in script_text, f"Found injected title-xss in script: {script_tag}"
-                assert "alert" not in script_text, f"Found alert in script: {script_tag}"
-                assert "evil.com" not in str(script_tag), f"Found evil.com in script: {script_tag}"
-
-            # 检查投稿正文与元数据渲染区域的所有元素：绝对禁止任何 on* 事件监听器
-            for tag in article.find_all(True):
-                for attr in tag.attrs:
-                    assert not attr.lower().startswith("on"), (
-                        f"Found event handler attribute {attr} on <{tag.name}> in user content of {file_path}"
-                    )
-                # 检查链接与图片伪协议
-                if tag.name == "a" and tag.has_attr("href"):
-                    href = tag["href"].strip().lower()
-                    assert not href.startswith("javascript:"), f"Found javascript: link in {file_path}: {href}"
-                    assert not href.startswith("data:"), f"Found data: link in {file_path}: {href}"
-                if tag.name == "img" and tag.has_attr("src"):
-                    src = tag["src"].strip().lower()
-                    assert not src.startswith("javascript:"), f"Found javascript: img src in {file_path}: {src}"
-
-            # 2. 验证敏感文件内容没有通过 --8<-- 泄露
-            assert "--8<--" not in html_content
-            assert "dependencies = [" not in html_content
-
-            # 3. 验证页面标题与正文没有未转义的 HTML 标签或 literal backslashes
-            title_tag = soup.find("title")
-            assert title_tag is not None
-            assert "<script" not in title_tag.text
-            assert r"\[" not in title_tag.text
-
-            # 4. 验证 H1 标签正常渲染且无 script
-            h1_tag = article.find("h1")
-            if h1_tag:
-                assert "<script" not in h1_tag.text
-                assert r"\[" not in h1_tag.text
-    finally:
-        shutil.rmtree(community_dir, ignore_errors=True)
-        shutil.rmtree(repo_root / "site" / "community", ignore_errors=True)
+def test_real_formula_postprocessing_cannot_reintroduce_unsafe_html(built_community):
+    root, site = built_community
+    environment = {**os.environ, 'SITE_DIR': str(site)}
+    corepack = shutil.which('corepack.cmd') or shutil.which('corepack')
+    result = subprocess.run([
+        corepack, 'yarn', 'node', '--loader', 'ts-node/esm',
+        'scripts/post-build/html-postprocess.ts', 'math', 'external-links',
+    ], cwd=ROOT, env=environment, capture_output=True, text=True, encoding='utf-8')
+    assert result.returncode == 0, result.stdout + result.stderr
+    page = BeautifulSoup((site / 'community/42/index.html').read_text(encoding='utf-8'), 'html.parser')
+    content = page.select_one('.plw-community-content')
+    assert_safe(content)
+    assert len(content.select('mjx-container')) >= 5
+    assert len(content.select('mjx-assistive-mml')) == len(content.select('mjx-container'))
+    assert not content.select('.arithmatex, .mermaid, #plw-quiz-root, [data-plw-feature]')
+    for node in content.select('[style]'):
+        assert 'position:fixed' not in node['style'].replace(' ', '')
+        assert 'inset:' not in node['style']
+    assert len(page.select('head link[href*="mathjax.css"]')) == 1
+    assert page.select_one('article')['data-plw-math-css'].startswith('assets/stylesheets/mathjax.css?hash=')
+    css = (site / 'assets/stylesheets/mathjax.css').read_text(encoding='utf-8')
+    assert '.mjx-c1D438' in css  # E is used only by the community formula fixture.

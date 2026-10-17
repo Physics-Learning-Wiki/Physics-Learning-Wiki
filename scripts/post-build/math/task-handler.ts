@@ -6,12 +6,12 @@ import crypto from "crypto";
 import klaw from "klaw";
 import { parse, HTMLElement } from "node-html-parser";
 
-import { mathjax } from "@mathjax/src/js/mathjax.js";
 import { TeX } from "@mathjax/src/js/input/tex.js";
 import { CHTML } from "@mathjax/src/js/output/chtml.js";
 import { LiteAdaptor, liteAdaptor } from "@mathjax/src/js/adaptors/liteAdaptor.js";
 import { RegisterHTMLHandler } from "@mathjax/src/js/handlers/html.js";
 import { AssistiveMmlHandler } from "@mathjax/src/js/a11y/assistive-mml.js";
+import { SafeHandler } from "@mathjax/src/js/ui/safe/SafeHandler.js";
 import { STATE } from "@mathjax/src/js/core/MathItem.js";
 import type { MathDocument } from "@mathjax/src/js/core/MathDocument.js";
 import type { LiteDocument } from "@mathjax/src/js/adaptors/lite/Document.js";
@@ -49,21 +49,31 @@ const FONT_PKG = "@mathjax/mathjax-newcm-font";
 // to remove it when using server-side rendering
 const MATH_CSR_SCRIPT_SUFFIX = "?math-csr";
 
+export type MathProfile = "default" | "community";
+
+export function mathProfileForPath(source: string): MathProfile {
+  return source.replaceAll("\\", "/").startsWith("community/") ? "community" : "default";
+}
+
 export class MathRenderer {
   private adaptor: LiteAdaptor;
   private document: MathDocument<LiteElement, any, LiteDocument>;
+  private communityDocument: MathDocument<LiteElement, any, LiteDocument>;
   private outputJax: CHTML<LiteElement, unknown, LiteDocument>;
 
   async initialize() {
     this.adaptor = liteAdaptor();
-    AssistiveMmlHandler(RegisterHTMLHandler(this.adaptor));
+    const handler = AssistiveMmlHandler<LiteElement, any, LiteDocument>(
+      RegisterHTMLHandler<LiteElement, any, LiteDocument>(this.adaptor)
+    );
 
-    const inputJax = new TeX({
-      packages: ["ams", "base", "boldsymbol", "colorv2", "html", "noundefined", "physics"],
-      formatError(_jax, error) {
-        throw error;
-      }
-    });
+    const createInputJax = () =>
+      new TeX({
+        packages: ["ams", "base", "boldsymbol", "colorv2", "html", "noundefined", "physics"],
+        formatError(_jax, error) {
+          throw error;
+        }
+      });
     this.outputJax = new CHTML<LiteElement, unknown, LiteDocument>({
       // in windows, relative return with \, so need to replace
       fontURL: path.relative(path.dirname(MATHJAX_TARGET_CSS_FILE), MATHJAX_TARGET_FONTS_DIR).replaceAll("\\", "/"),
@@ -71,8 +81,7 @@ export class MathRenderer {
       displayOverflow: "scroll"
     });
 
-    this.document = mathjax.document("", {
-      InputJax: inputJax,
+    const options = {
       OutputJax: this.outputJax,
       renderActions: {
         removeLatex: [
@@ -86,6 +95,35 @@ export class MathRenderer {
           }
         ]
       }
+    };
+    // Create the trusted document before installing Safe. Use this handler
+    // directly so another renderer's global registration cannot change policy.
+    this.document = handler.create("", { ...options, InputJax: createInputJax() });
+    SafeHandler(handler);
+    this.communityDocument = handler.create("", {
+      ...options,
+      InputJax: createInputJax(),
+      renderActions: {
+        ...options.renderActions,
+        removeCommunityData: [
+          STATE.CONVERT + 2,
+          () => undefined,
+          math => {
+            // Safe's TeX tree filter matches attribute names exactly. Its
+            // dataPattern only handles MathML input, so \data needs this
+            // community-only pass before CHTML and assistive MathML are made.
+            math.root?.walkTree(node => {
+              for (const name of Object.keys(node.attributes.getAllAttributes())) {
+                if (name.toLowerCase().startsWith("data-")) node.attributes.unset(name);
+              }
+            });
+          }
+        ]
+      },
+      safeOptions: {
+        allow: { URLs: "none", styles: "none", classes: "none", cssIDs: "none" },
+        dataPattern: /$a/
+      }
     });
   }
 
@@ -93,8 +131,9 @@ export class MathRenderer {
     return this.adaptor.cssText(this.outputJax.styleSheet(this.document));
   }
 
-  async render(math: string, isDisplay: boolean) {
-    const element = (await this.document.convertPromise(math, { display: isDisplay })) as LiteElement;
+  async render(math: string, isDisplay: boolean, profile: MathProfile = "default") {
+    const document = profile === "community" ? this.communityDocument : this.document;
+    const element = (await document.convertPromise(math, { display: isDisplay })) as LiteElement;
     return this.adaptor.outerHTML(element);
   }
 }
@@ -103,6 +142,7 @@ interface MathFormula {
   tex: string;
   isDisplay: boolean;
   source: string;
+  profile: MathProfile;
 }
 
 interface QuestionMathField {
@@ -122,7 +162,7 @@ function mathFormulaFromElement(element: HTMLElement, source: string): MathFormu
     // Retain the existing pymdownx.arithmatex delimiter extraction behavior.
     tex = content.slice(2, -2);
   }
-  return { tex, isDisplay: element.tagName === "DIV", source };
+  return { tex, isDisplay: element.tagName === "DIV", source, profile: mathProfileForPath(source) };
 }
 
 function parseMathFormulas(html: string, source: string): MathFormula[] {
@@ -161,7 +201,7 @@ export async function renderMathInHtml(html: string, renderer: MathRenderer, sou
   for (const [index, element] of mathElements.entries()) {
     const formula = mathFormulaFromElement(element, `${source} formula #${index + 1}`);
     try {
-      element.replaceWith(await renderer.render(formula.tex, formula.isDisplay));
+      element.replaceWith(await renderer.render(formula.tex, formula.isDisplay, formula.profile));
     } catch (error) {
       throw formatMathFailure(formula, error);
     }
@@ -233,7 +273,7 @@ async function walkFiles(root: string): Promise<string[]> {
 }
 
 function addFormula(formulas: Map<string, MathFormula>, formula: MathFormula) {
-  const key = JSON.stringify([formula.tex, formula.isDisplay]);
+  const key = JSON.stringify([formula.profile, formula.tex, formula.isDisplay]);
   if (!formulas.has(key)) formulas.set(key, formula);
 }
 
@@ -269,7 +309,7 @@ async function collectSiteMathFormulas(siteDir: string): Promise<MathFormula[]> 
 
   return [...formulas.values()].sort((left, right) => {
     if (left.tex !== right.tex) return left.tex < right.tex ? -1 : 1;
-    return Number(left.isDisplay) - Number(right.isDisplay);
+    return Number(left.isDisplay) - Number(right.isDisplay) || left.profile.localeCompare(right.profile);
   });
 }
 
@@ -305,7 +345,7 @@ export const taskHandler = new (class implements TaskHandler<MathGlobalInitializ
     await renderer.initialize();
     for (const formula of formulas) {
       try {
-        await renderer.render(formula.tex, formula.isDisplay);
+        await renderer.render(formula.tex, formula.isDisplay, formula.profile);
       } catch (error) {
         throw formatMathFailure(formula, error);
       }
@@ -359,7 +399,7 @@ export const taskHandler = new (class implements TaskHandler<MathGlobalInitializ
     for (const [index, element] of mathElements.entries()) {
       const formula = mathFormulaFromElement(element, `${source} formula #${index + 1}`);
       try {
-        element.replaceWith(await this.renderer.render(formula.tex, formula.isDisplay));
+        element.replaceWith(await this.renderer.render(formula.tex, formula.isDisplay, formula.profile));
       } catch (error) {
         throw formatMathFailure(formula, error);
       }

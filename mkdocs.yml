@@ -304,6 +304,7 @@ plugins:
       toggle_button: all
 
 hooks:
+  - hooks/community_content.py
   - hooks/on_env.py
   - hooks/question_bank.py
   - hooks/concept_reference.py

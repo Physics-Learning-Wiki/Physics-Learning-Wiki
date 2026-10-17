@@ -66,6 +66,7 @@ jobs:
           corepack yarn features:build:check
           corepack yarn features:typecheck
           corepack yarn media:test
+          corepack yarn post-build:test
       - name: Build production site
         env:
           PLW_QUIZ_PREVIEW: ''
@@ -74,7 +75,17 @@ jobs:
           test -z "$PLW_QUIZ_PREVIEW"
           ./scripts/build/build-site.sh
       - name: Run browser behavior gate
+        id: browser-gate
         run: corepack yarn e2e
+      - name: Upload browser failure diagnostics
+        if: ${{ failure() && steps.browser-gate.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-failure-diagnostics
+          path: |
+            test-results/
+            playwright-report/
+          retention-days: 7
       - name: Static budget audit
         run: corepack yarn perf:audit --mode blocking
       - name: Upload site artifact

@@ -32,13 +32,13 @@
 ## 3. 自动化机器人 PR 审阅与闭环策略
 
 仓库运行以下两类自动化 PR 任务：
-- `bot/community-submissions`：由 `.github/workflows/generate-community.yml` 生成的社区投稿同步 PR．
+- `bot/community-submissions-<run-id>`：由 `.github/workflows/generate-community.yml` 生成的社区投稿同步 PR；已有开放 PR 时继续使用其分支，关闭或合并后创建后继分支并保留旧分支．
 - `bot/question-import`：由题库导入工作流生成的题目入库草稿 PR．
 
 ### 审阅与 CI 触发流程：
-1. **CI 触发与批准**：由于 GitHub 安全机制，由默认 `GITHUB_TOKEN` 创建的 PR 不会自动触发 `pull_request` CI 工作流．维护者在收到通知后，应在 GitHub Actions 面板点击 **Approve and run workflows** 或执行手动派发．若仓库配置了独立 `COMMUNITY_BOT_TOKEN`（GitHub App Token），则 CI 将自动执行．
+1. **CI 触发与批准**：使用默认 `GITHUB_TOKEN` 创建或更新 PR 后，检查可能需要维护者批准；按照该 PR 的 Actions 提示操作，并核实两个必需检查均对应最新提交．若没有生成检查运行，使用独立且权限受限的 `COMMUNITY_BOT_TOKEN`（例如由既有机制生成的 GitHub App 安装令牌）触发 PR 检查．其他提交上的手动 Build 不能代替本 PR 的必需检查．参见 [GitHub 官方触发规则](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#triggering-a-workflow-from-a-workflow)．
 2. **内容对抗核验**：维护者核实 `docs/community/` 下生成的 Markdown 不含可疑外部引用或未授权内容．
-3. **合并前确认**：确认三项必需状态检查（Required Status Checks）全部通过后，维护者方可执行 Squash & Merge．
+3. **合并前确认**：确认两项必需状态检查（Required Status Checks）全部通过后，维护者方可执行 Squash & Merge．
 
 ---
 
@@ -54,6 +54,12 @@ gh auth login
 
 # 运行配置脚本
 bash scripts/admin/configure-branch-protection.sh
+
+# 只读核验；配置缺失或任何必需字段不符均返回非零，不执行 PUT
+bash scripts/admin/configure-branch-protection.sh --check
+
+# Windows 等没有 Bash 的环境使用同一实现
+uv run python scripts/admin/branch_protection.py --check
 ```
 
 ### 方法二：使用 GitHub REST API 手动配置
@@ -78,8 +84,10 @@ gh api \
    - 勾选 **Require branches to be up to date before merging**
    - 在 Status checks 搜索并勾选：
      - `Check Characters`
-     - `Check Question Bank`
      - `Physics-Learning-Wiki Page Build`
 4. 勾选 **Do not allow bypassing the above settings** (Enforce admins)
 5. 确认未勾选 **Allow force pushes** 与 **Allow deletions**
-6. 点击 **Save changes** 完成．
+6. 勾选 **Require conversation resolution before merging**
+7. 点击 **Save changes** 完成．
+
+配置脚本在应用后回读服务端配置，并逐项核对必需检查、严格更新要求、审批数、最新推送审批、过期审批失效、管理员约束、会话解决和禁止强推/删除．仓库内配置文件不代表服务端规则已启用；实际应用与线上核验见 [安全运维待办](SECURITY_FOLLOW_UP.md)．

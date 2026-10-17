@@ -1,0 +1,3 @@
+# Snapshot digests must remain stable when generated files are checked out.
+docs/community/*.md text eol=lf
+data/community-generated.json text eol=lf

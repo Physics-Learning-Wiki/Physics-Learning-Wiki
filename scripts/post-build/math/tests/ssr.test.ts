@@ -1,7 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { parse } from "node-html-parser";
-import { MathRenderer, renderMathInHtml, renderMathInQuestion, taskHandler } from "../task-handler.js";
+import {
+  MathRenderer,
+  mathProfileForPath,
+  renderMathInHtml,
+  renderMathInQuestion,
+  taskHandler
+} from "../task-handler.js";
 
 async function createRenderer() {
   const renderer = new MathRenderer();
@@ -40,6 +46,39 @@ test("MathJax SSR supports display math and common TeX/physics constructs", asyn
   assert.ok(!outputHtml.includes("<img"));
 });
 
+test("community math strips TeX HTML attributes without changing trusted rendering", async () => {
+  const renderer = await createRenderer();
+  const tex = String.raw`\href{https://example.com}{x} + \style{position:fixed}{y} + \class{mermaid}{z} + \cssId{plw-quiz-root}{w} + \data{plw-feature=quiz}{v}`;
+  const html = `<span class="arithmatex">\\(${tex}\\)</span>`;
+  for (const source of ["notes/index.html", "community/42/index.html", "notes/index.html"]) {
+    const output = parse(await renderMathInHtml(html, renderer, source));
+    assert.equal(output.querySelectorAll("mjx-container").length, 1);
+    assert.equal(output.querySelectorAll("mjx-assistive-mml").length, 1);
+    const unsafe = output.querySelectorAll("[href], .mermaid, #plw-quiz-root, [data-plw-feature]");
+    if (source.startsWith("community/")) {
+      assert.equal(unsafe.length, 0);
+      assert.ok(!output.toString().includes("position:fixed"));
+    } else {
+      assert.ok(output.querySelector('[href="https://example.com"]'));
+      assert.ok(output.querySelector(".mermaid"));
+      assert.ok(output.querySelector("#plw-quiz-root"));
+      assert.ok(output.querySelector('[data-plw-feature="quiz"]'));
+      assert.ok(output.toString().includes("position:fixed"));
+    }
+  }
+  assert.equal(mathProfileForPath("community\\42\\index.html"), "community");
+  assert.equal(mathProfileForPath("notes/community/index.html"), "default");
+});
+
+test("adaptive CSS covers both math policies including community-only glyphs", async () => {
+  const renderer = await createRenderer();
+  await renderer.render("x", false);
+  await renderer.render("\\mathfrak{D}", false, "community");
+  const css = renderer.getCSS();
+  assert.match(css, /mjx-c\.mjx-c1D465\b/);
+  assert.match(css, /mjx-c\.mjx-c1D507\b/);
+});
+
 test("adaptive CSS includes glyphs first encountered in the last scanned formula", async () => {
   const renderer = await createRenderer();
   await renderer.render("x + \\alpha", false);
@@ -64,6 +103,7 @@ test("MathJax conversion errors identify the source and formula location", async
   await assert.rejects(
     renderMathInHtml('<span class="arithmatex">\\(\\frac{1}{\\)</span>', renderer, "notes/topic.html"),
     error => {
+      assert.ok(error instanceof Error);
       assert.ok(error.message.includes("notes/topic.html formula #1"));
       assert.ok(error.message.includes("\\frac{1}{"));
       return true;
