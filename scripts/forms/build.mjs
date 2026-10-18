@@ -17,6 +17,12 @@ const features = [
     entry: resolve(root, "scripts/forms/src/question-contribute.ts"),
     javascript: resolve(root, "docs/_static/js/features/question-contribute.js"),
     stylesheet: resolve(root, "docs/_static/css/features/question-contribute.css")
+  },
+  {
+    name: "submission-status",
+    entry: resolve(root, "scripts/forms/src/submission-status.ts"),
+    javascript: resolve(root, "docs/_static/js/features/submission-status.js"),
+    stylesheet: resolve(root, "docs/_static/css/features/submission-status.css")
   }
 ];
 
@@ -42,7 +48,7 @@ for (const feature of features) {
     legalComments: "none"
   });
   const javascript = result.outputFiles?.[0]?.contents ?? (await readFile(temporaryJavascript));
-  const stylesheet = Buffer.from(`${easyMdeCss}\n${formCss}`);
+  const stylesheet = Buffer.from(feature.name === "submission-status" ? formCss : easyMdeCss + "\n" + formCss);
   await writeFile(temporaryStylesheet, stylesheet);
 
   if (check) {

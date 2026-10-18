@@ -26,6 +26,20 @@ export function isAnswerComplete(question: Question, answer: UserAnswer): boolea
   return !question.answer.unit.required || Boolean(answer.unit && question.answer.unit.accepted.includes(answer.unit));
 }
 
+export function gradeNumericAnswer(
+  expectedAnswer: Extract<Question, { type: "numeric" }>["answer"],
+  answer: { value: string; unit?: string }
+): boolean {
+  const value = parseNumeric(answer.value);
+  if (value === null) return false;
+  const expected = expectedAnswer.value;
+  const tolerance = expectedAnswer.tolerance;
+  const allowed =
+    tolerance.type === "absolute" ? tolerance.value : tolerance.value * Math.max(Math.abs(expected), Number.EPSILON);
+  if (Math.abs(value - expected) > allowed) return false;
+  return !expectedAnswer.unit.required || Boolean(answer.unit && expectedAnswer.unit.accepted.includes(answer.unit));
+}
+
 export function gradeQuestion(question: Question, answer: UserAnswer): boolean {
   if (answer === null) return false;
   if (question.type === "free_response") {
@@ -41,14 +55,7 @@ export function gradeQuestion(question: Question, answer: UserAnswer): boolean {
   }
   if (question.type === "true_false") return typeof answer === "boolean" && answer === question.answer.value;
   if (!isNumericAnswer(answer)) return false;
-  const value = parseNumeric(answer.value);
-  if (value === null) return false;
-  const expected = question.answer.value;
-  const tolerance = question.answer.tolerance;
-  const allowed =
-    tolerance.type === "absolute" ? tolerance.value : tolerance.value * Math.max(Math.abs(expected), Number.EPSILON);
-  if (Math.abs(value - expected) > allowed) return false;
-  return !question.answer.unit.required || Boolean(answer.unit && question.answer.unit.accepted.includes(answer.unit));
+  return gradeNumericAnswer(question.answer, answer);
 }
 
 export function makeResult(question: Question, answer: UserAnswer, uncertain: boolean): QuestionResult {

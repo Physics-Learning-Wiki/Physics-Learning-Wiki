@@ -5,19 +5,13 @@ import { createVerification, type VerificationHandle } from "./verification.js";
 import { mountSubmissionDraft, type DraftHandle } from "./submission-draft.js";
 import type { FeatureDisposer, FeatureMountContext } from "./types.js";
 
-const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
+import { createSubmissionClient, mountSourceDeclaration, sourceDeclaration } from "./submission-client.js";
+import { loadRevisionContext } from "./revision-context.js";
 const TYPE_HINTS: Record<string, string> = {
   "full-page": "请包含：问题引入 → 核心概念 → 公式推导 → 例题 → 易错点",
   notes: "半成品也没关系！把你的课堂笔记、复习提纲、思维导图粘贴进来即可",
   errata: "请指出：具体章节或题目 ID → 哪段文字/公式 → 错误描述 → 正确版本",
   suggestion: "对网站结构、内容方向、功能改进的任何想法都欢迎"
-};
-const TYPE_LABELS: Record<string, string> = {
-  "full-page": "完整页面",
-  notes: "笔记/提纲",
-  errata: "勘误纠错",
-  question: "题目投稿",
-  suggestion: "建议/想法"
 };
 
 function appendOptions(items: NavigationItem[], select: HTMLSelectElement, prefix = ""): void {
@@ -152,8 +146,6 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   const titleInput = form.querySelector<HTMLInputElement>("#submit-title");
   const chapterSelect = form.querySelector<HTMLInputElement>("#submit-chapter");
   const attributionInput = form.querySelector<HTMLInputElement>("#submit-attribution");
-  const contactInput = form.querySelector<HTMLInputElement>("#submit-contact");
-  const contactPublic = form.querySelector<HTMLInputElement>("#submit-contact-public");
   const anonymousRadio = form.querySelector<HTMLInputElement>('input[name="attribution-type"][value="anonymous"]');
   const hint = form.querySelector<HTMLElement>("#submit-hint");
   const editorTextarea = form.querySelector<HTMLTextAreaElement>("#submit-content");
@@ -163,6 +155,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   if (!status || !submitButton || !typeSelect || !titleInput || !chapterSelect || !editorTextarea)
     return () => undefined;
 
+  const client = createSubmissionClient(form, signal);
+  mountSourceDeclaration(form, signal);
   let editor: EditorHandle | undefined;
   let widget: VerificationHandle | undefined;
   let draft: DraftHandle | undefined;
@@ -210,11 +204,13 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     updateTypeHint();
   }
   if (editor) draft = mountSubmissionDraft(form, editor, signal);
+  if (editor) await loadRevisionContext(form, client, { "submit-content": editor }, signal);
 
   form.addEventListener(
     "submit",
     async event => {
       event.preventDefault();
+      if (submitButton.disabled) return;
       status.textContent = "";
       status.className = "";
       if (!editor) {
@@ -229,10 +225,6 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         setError(status, "请填写标题、正文和投稿类型");
         return;
       }
-      if (contactInput?.value.trim() && !contactPublic?.checked) {
-        setError(status, "联系方式会公开显示；请勾选公开同意，或清空联系方式");
-        return;
-      }
       if (!widget?.token) {
         setError(status, "请完成人机验证");
         return;
@@ -242,39 +234,30 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       submitButton.textContent = "提交中...";
       const submittedDraft = draft?.snapshot();
       try {
-        const response = await fetch(SUBMIT_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          signal,
-          body: JSON.stringify({
+        const data = await client.submit({
+          type,
+          payload: {
             title,
             content,
-            type,
-            typeLabel: TYPE_LABELS[type] || type,
             chapter: chapterSelect.value,
-            attribution: anonymousRadio?.checked ? "匿名" : attributionInput?.value.trim() || "匿名",
-            contact: contactInput?.value.trim() || "",
-            contactPublicConsent: Boolean(contactPublic?.checked),
-            turnstileToken: widget.token
-          })
+            attribution: anonymousRadio?.checked ? "匿名" : attributionInput?.value.trim() || "匿名"
+          },
+          licenseConsent: Boolean(form.querySelector<HTMLInputElement>("#submit-license")?.checked),
+          sourceDeclaration: sourceDeclaration(form),
+          turnstileToken: widget.token
         });
-        if (!response.ok) {
-          let errorMessage = "提交失败";
-          try {
-            const data = (await response.json()) as { error?: string };
-            errorMessage = data.error || errorMessage;
-          } catch {
-            // Keep the generic error message for non-JSON responses.
-          }
-          throw new Error(errorMessage);
+        if (data.operationState === "processing") {
+          status.textContent = "正在确认提交结果，请保存管理回执后查询；原草稿继续保留．";
+          submitButton.disabled = false;
+          submitButton.textContent = "查询后重试原提交";
+          widget.reset();
+          return;
         }
-
-        const data = (await response.json()) as { issueUrl: string };
         if (signal.aborted) return;
         if (submittedDraft) draft?.clearSubmitted(submittedDraft);
         form.style.display = "none";
         if (success) success.style.display = "block";
-        if (issueLink) {
+        if (issueLink && data.issueUrl) {
           issueLink.href = data.issueUrl;
           issueLink.textContent = data.issueUrl;
         }

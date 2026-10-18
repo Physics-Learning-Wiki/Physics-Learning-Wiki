@@ -37,6 +37,45 @@ test("draft recovery rejects malformed or incompatible data and keeps only allow
 });
 
 import { sanitizePreviewHtml } from "../src/sanitizer.js";
+import { parseQuestionDraft } from "../src/question-draft.js";
+import { gradeNumericAnswer } from "../../quiz/src/grading.js";
+
+test("question drafts whitelist fields and exclude identities, consent and receipt tokens", () => {
+  const raw = JSON.stringify({
+    schemaVersion: 1,
+    kind: "question",
+    updatedAt: 1,
+    fields: {
+      "q-submit-stem": "原始题干",
+      "q-submit-answer": "3e8",
+      "q-submit-license": true,
+      "q-submit-contact": "secret",
+      "q-submit-attribution": "private-name",
+      token: "credential"
+    }
+  });
+  const draft = parseQuestionDraft(raw);
+  assert.deepEqual(draft?.fields, { "q-submit-stem": "原始题干", "q-submit-answer": "3e8" });
+  assert.equal(parseQuestionDraft(raw.replace('"schemaVersion":1', '"schemaVersion":99')), undefined);
+});
+
+test("numeric examples share production grading and preserve unit scale and case", () => {
+  const answer = {
+    value: 3e8,
+    tolerance: { type: "relative" as const, value: 0.01 },
+    unit: { required: true, accepted: ["m/s", "m·s⁻¹"], canonical: "m/s" }
+  };
+  assert.equal(gradeNumericAnswer(answer, { value: "3.01e8", unit: "m/s" }), true);
+  assert.equal(gradeNumericAnswer(answer, { value: "3e8", unit: "M/s" }), false);
+  assert.equal(gradeNumericAnswer(answer, { value: "3e10", unit: "cm/s" }), false);
+  assert.equal(
+    gradeNumericAnswer(
+      { ...answer, value: 0, tolerance: { type: "absolute", value: 1e-12 } },
+      { value: "5e-13", unit: "m/s" }
+    ),
+    true
+  );
+});
 
 test("S-04: sanitizePreviewHtml in non-DOM environment safely strips tags and falls back to plain text", () => {
   const xssPayloads = [
@@ -65,8 +104,7 @@ test("S-04: sanitizePreviewHtml in non-DOM environment safely strips tags and fa
   }
 
   // Without a DOM environment, fail-closed design strips HTML tags and produces plain text
-  const safeHtml = '<p>质能方程为 <strong>$E=mc^2$</strong></p>';
+  const safeHtml = "<p>质能方程为 <strong>$E=mc^2$</strong></p>";
   const cleanSafe = sanitizePreviewHtml(safeHtml);
   assert.equal(cleanSafe, "质能方程为 $E=mc^2$");
 });
-

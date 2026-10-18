@@ -1,5 +1,6 @@
 import { parseDraft, sameDraft, type SubmissionDraft } from "./draft.js";
 import type { EditorHandle } from "./editor.js";
+import { downloadJson } from "./downloads.js";
 
 export interface DraftHandle {
   snapshot(): SubmissionDraft;
@@ -32,7 +33,14 @@ export function mountSubmissionDraft(form: HTMLFormElement, editor: EditorHandle
   const discard = document.createElement("button");
   discard.type = "button";
   discard.textContent = "清除草稿";
-  panel.append(notice, restore, discard);
+  const exported = document.createElement("button");
+  exported.type = "button";
+  exported.textContent = "导出草稿";
+  const imported = document.createElement("input");
+  imported.type = "file";
+  imported.accept = "application/json,.json";
+  imported.setAttribute("aria-label", "导入草稿");
+  panel.append(notice, restore, discard, exported, imported);
   form.prepend(panel);
   let pending: SubmissionDraft | undefined;
   let dirty = false;
@@ -117,6 +125,8 @@ export function mountSubmissionDraft(form: HTMLFormElement, editor: EditorHandle
       type.dispatchEvent(new Event("change", { bubbles: true }));
       title.value = draft.title;
       editor.instance.value(draft.content);
+      const license = form.querySelector<HTMLInputElement>("#submit-license");
+      if (license) license.checked = false;
       major.value = draft.majorChapter;
       major.dispatchEvent(new Event("change", { bubbles: true }));
       if (Array.from(minor.options).some(option => option.value === draft.minorChapter))
@@ -146,6 +156,28 @@ export function mountSubmissionDraft(form: HTMLFormElement, editor: EditorHandle
     { signal }
   );
   window.addEventListener("pagehide", flush, { signal });
+  exported.addEventListener("click", () => downloadJson(document, "plw-submission-draft.json", snapshot()), { signal });
+  imported.addEventListener(
+    "change",
+    () => {
+      void (async () => {
+        const file = imported.files?.[0];
+        if (!file || file.size > 131072) {
+          notice.textContent = "草稿文件超过 128 KiB 或未选择文件．";
+          return;
+        }
+        const value = parseDraft(await file.text());
+        if (!value) {
+          notice.textContent = "草稿格式或版本不兼容．";
+          return;
+        }
+        pending = value;
+        restore.hidden = false;
+        notice.textContent = "草稿已读入，点击恢复确认后替换当前输入．";
+      })();
+    },
+    { signal }
+  );
   const dispose = () => {
     if (disposed) return;
     flush();

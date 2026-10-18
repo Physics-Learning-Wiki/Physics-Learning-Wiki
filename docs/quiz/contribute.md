@@ -17,7 +17,7 @@ status: review
 <form id="plw-question-contribute-form" method="post" onsubmit="return false">
   <div class="submit-field">
     <label for="q-submit-type">题型 <span class="submit-required">*</span></label>
-    <select id="q-submit-type" required>
+    <select id="q-submit-type" data-submission-field="/payload/question/type" required>
       <option value="single_choice">单选题（Single Choice）</option>
       <option value="multiple_choice">多选题（Multiple Choice）</option>
       <option value="true_false">判断题（True / False）</option>
@@ -28,27 +28,45 @@ status: review
 
   <div class="submit-field">
     <label for="q-submit-stem">题干 <span class="submit-required">*</span></label>
-    <textarea id="q-submit-stem" rows="6" placeholder="输入题目题干，支持 Markdown 格式与 LaTeX 公式（如 $F=ma$）..."></textarea>
+    <textarea id="q-submit-stem" data-submission-field="/payload/question/stem" rows="6" placeholder="输入题目题干，支持 Markdown 格式与 LaTeX 公式（如 $F=ma$）..."></textarea>
   </div>
 
   <div class="submit-field q-submit-choice-only">
     <label for="q-submit-choices">选项列表（每行一个选项，格式为「选项标号|选项内容」） <span class="submit-required">*</span></label>
-    <textarea id="q-submit-choices" rows="4" placeholder="A|第一项内容&#10;B|第二项内容&#10;C|第三项内容&#10;D|第四项内容"></textarea>
+    <textarea id="q-submit-choices" data-submission-field="/payload/question/choices" rows="4" placeholder="A|第一项内容&#10;B|第二项内容&#10;C|第三项内容&#10;D|第四项内容"></textarea>
   </div>
 
   <div class="submit-field">
     <label for="q-submit-answer" id="q-submit-answer-label">正确答案 <span class="submit-required">*</span></label>
-    <input type="text" id="q-submit-answer" required placeholder="单选填 A；多选填 A, C；判断填 true/false；数值填 9.8">
+    <input type="text" id="q-submit-answer" data-submission-field="/payload/question/answer" required placeholder="单选填 A；多选填 A, C；判断填 true/false；数值填 9.8">
   </div>
+
+  <fieldset class="submit-field q-submit-numeric-only" hidden>
+    <legend>数值评分规则</legend>
+    <label for="q-submit-tolerance-type">容差类型</label>
+    <select id="q-submit-tolerance-type"><option value="absolute">绝对容差</option><option value="relative">相对容差（百分比）</option></select>
+    <label for="q-submit-tolerance">容差数值 <span class="submit-required">*</span></label>
+    <input type="text" id="q-submit-tolerance" data-submission-field="/payload/question/answer/tolerance" placeholder="相对容差填 1 表示 1%；支持科学计数法">
+    <label><input type="checkbox" id="q-submit-unit-required"> 答案必须填写单位</label>
+    <label for="q-submit-unit-canonical">规范单位</label>
+    <input type="text" id="q-submit-unit-canonical" maxlength="50" data-submission-field="/payload/question/answer/unit">
+    <label for="q-submit-unit-accepted">可接受的同尺度单位写法（逗号分隔）</label>
+    <input type="text" id="q-submit-unit-accepted" placeholder="例如 m/s, m·s⁻¹">
+    <p>单位区分大小写，所有写法需与规范单位同尺度；系统不会自动换算 cm 与 m．</p>
+    <label for="q-submit-numeric-example">试算：输入一个学生答案</label>
+    <input type="text" id="q-submit-numeric-example" placeholder="数值，支持科学计数法">
+    <input type="text" id="q-submit-numeric-example-unit" aria-label="试算答案单位">
+    <p id="q-submit-numeric-result" role="status"></p>
+  </fieldset>
 
   <div class="submit-field q-submit-free-only" hidden>
     <label for="q-submit-rubric">自评评分标准（每行「等级 ID|等级名称|分数」，分数范围 0 到 1） <span class="submit-required">*</span></label>
-    <textarea id="q-submit-rubric" rows="3" placeholder="incomplete|尚未掌握|0&#10;partial|部分掌握|0.5&#10;complete|基本掌握|1"></textarea>
+    <textarea id="q-submit-rubric" data-submission-field="/payload/question/grading" rows="3" placeholder="incomplete|尚未掌握|0&#10;partial|部分掌握|0.5&#10;complete|基本掌握|1"></textarea>
   </div>
 
   <div class="submit-field">
     <label for="q-submit-solution">参考答案与考点解析 <span class="submit-required">*</span></label>
-    <textarea id="q-submit-solution" rows="6" placeholder="请给出详细的推导过程、物理原理分析或易错点提示..."></textarea>
+    <textarea id="q-submit-solution" data-submission-field="/payload/question/solution" rows="6" placeholder="请给出详细的推导过程、物理原理分析或易错点提示..."></textarea>
   </div>
 
   <fieldset id="question-fields" class="submit-question-fields">
@@ -56,8 +74,8 @@ status: review
     <p class="submit-hint">以下属性均可留空，由维护者统一整理并归入知识图谱．</p>
 
     <div class="submit-field q-submit-choice-only">
-      <label for="q-submit-choice-feedback">选项逐项反馈（每行「选项标号|为什么该选项正确或错误」）</label>
-      <textarea id="q-submit-choice-feedback" rows="3" placeholder="A|因为……所以正确&#10;B|忽略了……所以错误"></textarea>
+      <label for="q-submit-choice-feedback">选项逐项反馈（每行「选项标号|为什么该选项正确或错误」，填写时须覆盖全部选项）</label>
+      <textarea id="q-submit-choice-feedback" data-submission-field="/payload/question/feedback/choices" rows="3" placeholder="A|因为……所以正确&#10;B|忽略了……所以错误"></textarea>
     </div>
 
     <div class="submit-field">
@@ -122,8 +140,9 @@ status: review
     </div>
 
     <div class="submit-field submit-image-group">
-      <label for="q-submit-img-url">插图 HTTPS 链接（选填）</label>
-      <input type="url" id="q-submit-img-url" placeholder="https://...">
+      <p>链接仅供编辑组审核，不会自动插入正式题目．提供图片时必须填写替代文本、来源及授权依据．</p>
+      <label for="q-submit-img-url">插图审核材料 HTTPS 链接（选填）</label>
+      <input type="url" id="q-submit-img-url" data-submission-field="/payload/question/external_media" placeholder="https://...">
       <input type="text" id="q-submit-img-alt" placeholder="图片替代文本（例如：小车在斜面上下滑示意图）">
       <input type="text" id="q-submit-img-rights" placeholder="图片来源与版权授权（例如：自主绘制 / CC-BY-SA）">
     </div>
@@ -143,21 +162,28 @@ status: review
     <input type="text" id="q-submit-attribution" placeholder="你希望在题目署名中显示的名称" maxlength="60">
   </div>
 
-  <div class="submit-field">
-    <label for="q-submit-contact">公开联系方式（选填）</label>
-    <input type="text" id="q-submit-contact" placeholder="例如 GitHub 用户名或邮箱，方便编辑组向您请教讨论">
-    <label class="submit-public-consent">
-      <input type="checkbox" id="q-submit-contact-public">
-      我理解并同意将上述联系方式公开发布到 GitHub Issue
-    </label>
-  </div>
 
-  <div class="submit-field">
-    <label class="submit-checkbox-label">
-      <input type="checkbox" id="q-submit-license" required>
-      我确认本题为原创内容或符合知识共享协议，并同意按 <strong>CC BY-SA 4.0</strong> 许可协议将内容公开发布到 Physics Learning Wiki 题库． <span class="submit-required">*</span>
-    </label>
-  </div>
+
+
+
+  <fieldset class="submit-field" data-submission-field="/sourceDeclaration">
+    <legend>来源与许可</legend>
+    <label for="submission-source-kind">内容来源 <span class="submit-required">*</span></label>
+    <select id="submission-source-kind" required data-submission-field="/sourceDeclaration/kind">
+      <option value="">-- 请选择 --</option>
+      <option value="original">本人原创或整理</option>
+      <option value="adapted">根据已有作品改编</option>
+    </select>
+    <label for="submission-source-note">来源说明 <span class="submit-required">*</span></label>
+    <textarea id="submission-source-note" required maxlength="2000" data-submission-field="/sourceDeclaration/note" placeholder="说明原创过程、整理依据或参考资料"></textarea>
+    <div data-adapted-source hidden>
+      <label for="submission-source-url">原作品网址</label>
+      <input type="url" id="submission-source-url" data-submission-field="/sourceDeclaration/source">
+      <label for="submission-source-permission">改编授权依据</label>
+      <input type="text" id="submission-source-permission" maxlength="2000" data-submission-field="/sourceDeclaration/permission">
+    </div>
+    <label><input type="checkbox" id="q-submit-license" required data-submission-field="/licenseConsent"> 我有权分享上述内容，并明确同意按 CC BY-SA 4.0 许可公开发布．</label>
+  </fieldset>
 
   <div class="submit-field">
     <div id="turnstile-widget"></div>
@@ -171,8 +197,8 @@ status: review
 
 <div id="q-submit-success" style="display: none;" class="submit-success-card">
   <h2>🎉 题目投稿已成功提交！</h2>
-  <p>感谢您对开放物理题库的贡献！编辑组将在 3-5 个工作日内进行同行审阅、分类整理并合并入库．您可以保存下方 Issue 链接关注审阅进展：</p>
+  <p>感谢您对开放物理题库的贡献！编辑组会尽力处理，处理时间取决于审核队列与稿件情况．请保存管理回执主动查询进度：</p>
   <p><a id="q-submit-issue-link" href="#" target="_blank" rel="noopener noreferrer"></a></p>
-  <p>如果您拥有 GitHub 账号，欢迎在 Issue 中参与交流讨论！</p>
+  <p>草稿入库后仍需物理、教学与版权审核；实际部署后才会显示正式发布．人工补救请联系 submit@folderrewind.top．</p>
   <p><a class="md-button md-button--primary" href="../../quiz/">返回知识小测首页</a></p>
 </div>

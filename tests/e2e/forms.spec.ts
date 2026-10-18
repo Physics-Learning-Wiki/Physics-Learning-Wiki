@@ -53,10 +53,12 @@ test("failed submission keeps a draft and successful in-flight edits preserve th
   await page.locator("#submit-type").selectOption("notes");
   await page.locator("#submit-title").fill("发送中的草稿");
   await setEditorText(page, 0, "提交的正文");
+  await agreeLicense(page);
   await page.locator("#submit-btn").click();
   await expect(page.locator("#submit-status")).toContainText("临时失败");
   await expect.poll(() => page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("提交的正文");
   fail = false;
+  await agreeLicense(page);
   await page.locator("#submit-btn").click();
   await expect(page.locator("#submit-btn")).toBeDisabled();
   await setEditorText(page, 0, "发送期间的新正文");
@@ -78,7 +80,7 @@ test("submission drafts recover explicitly, omit contact data and clear after su
   await expect(page.getByRole("textbox", { name: "正文 *", exact: true })).toBeAttached();
   await page.locator("#submit-type").selectOption("notes");
   await page.locator("#submit-title").fill("本机草稿");
-  await page.locator("#submit-contact").fill("private-contact");
+  await expect(page.locator("#submit-contact")).toHaveCount(0);
   await page.locator("#submit-attribution").fill("private-name");
   await page.locator("#submit-chapter-major").selectOption("经典力学");
   await page.locator("#submit-chapter-minor").selectOption({ label: "质点动力学" });
@@ -92,9 +94,10 @@ test("submission drafts recover explicitly, omit contact data and clear after su
   await page.getByRole("button", { name: "恢复草稿", exact: true }).click();
   await expect(page.locator("#submit-title")).toHaveValue("本机草稿");
   await expect(page.locator("#submit-chapter")).toHaveValue("经典力学 > 质点动力学");
-  await expect(page.locator("#submit-contact")).toHaveValue("");
+  await expect(page.locator("#submit-contact")).toHaveCount(0);
   await expect(page.locator(".CodeMirror")).toContainText("草稿正文");
   await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toBeVisible();
+  await agreeLicense(page);
   await page.locator("#submit-btn").click();
   await expect(page.locator("#submit-success")).toBeVisible();
   expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toBeNull();
@@ -204,7 +207,9 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   await page.goto(`${basePath}intro/about/`);
   await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
   expect(
-    requests.some(url => /features\/submit\.js|features\/submit\.css|easymde|turnstile/i.test(url) || url === mathJaxUrl)
+    requests.some(
+      url => /features\/submit\.js|features\/submit\.css|easymde|turnstile/i.test(url) || url === mathJaxUrl
+    )
   ).toBe(false);
 
   await page.getByRole("button", { name: "参与贡献", exact: true }).click();
@@ -257,9 +262,11 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   await page.locator("#submit-title").fill("性能投稿测试");
   await page.locator("#submit-chapter-major").selectOption("经典力学");
   await page.locator("#submit-chapter-minor").selectOption({ label: "质点动力学" });
+  await agreeLicense(page);
   await page.locator("#submit-btn").click();
   await expect(page.locator("#submit-status")).toContainText("请填写标题、正文和投稿类型");
   await setEditorText(page, 0, "性能投稿正文 $E=mc^2$");
+  await agreeLicense(page);
   await page.locator("#submit-btn").click();
   await expect(page.locator("#submit-success")).toBeVisible();
   await expect(page.locator("#submit-issue-link")).toHaveAttribute(
@@ -268,10 +275,8 @@ test("submission editor is lazy, previews math on demand, and submits once acros
   );
   expect(submissions).toHaveLength(1);
   expect(submissions[0]).toMatchObject({
-    title: "性能投稿测试",
-    content: "性能投稿正文 $E=mc^2$",
+    payload: { title: "性能投稿测试", content: "性能投稿正文 $E=mc^2$", chapter: "经典力学 > 质点动力学" },
     type: "notes",
-    chapter: "经典力学 > 质点动力学",
     turnstileToken: "test-turnstile-token"
   });
 });
@@ -354,9 +359,9 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   expect(
     await page.locator("#plw-question-contribute-form").evaluate(form => (form as HTMLFormElement).checkValidity())
   ).toBe(false);
-  await page.locator("#q-submit-license").check();
+  await agreeLicense(page);
   await page.locator("#q-submit-btn").click();
-  await expect(page.locator("#q-submit-status")).toContainText("选择题至少需要提供两个选项");
+  await expect(page.locator("#q-submit-status")).toContainText("单选题需要 2 到 6 个选项");
   await page.locator("#q-submit-choices").fill("A|加速度增加\nB|速度不变");
   await page.locator("#q-submit-topic").selectOption({ index: 1 });
   await page.locator("#q-submit-btn").click();
@@ -365,16 +370,18 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   expect(submissions[0]).toMatchObject({
     type: "question",
     turnstileToken: "test-turnstile-token",
-    question: {
-      type: "single_choice",
-      stem: "题干：质量为 $m$ 的小车受到恒力。",
-      choices: [
-        { id: "A", content: "加速度增加" },
-        { id: "B", content: "速度不变" }
-      ],
-      answer: { choice: "A" },
-      solution: "由牛顿第二定律 $F=ma$，加速度增加。",
-      topics: [expect.any(String)]
+    payload: {
+      question: {
+        type: "single_choice",
+        stem: "题干：质量为 $m$ 的小车受到恒力。",
+        choices: [
+          { id: "A", content: "加速度增加" },
+          { id: "B", content: "速度不变" }
+        ],
+        answer: { choice: "A" },
+        solution: "由牛顿第二定律 $F=ma$，加速度增加。",
+        topics: [expect.any(String)]
+      }
     }
   });
   await expect(page.locator("#q-submit-issue-link")).toHaveAttribute(
@@ -422,7 +429,7 @@ test("DOMPurify live preview sanitizes XSS while preserving markdown, LaTeX, and
     "数学公式：$E = mc^2$",
     "",
     '<img src="x" onerror="window.__xss_flag = true">',
-    '<script>window.__xss_flag = true;</script>',
+    "<script>window.__xss_flag = true;</script>",
     '<iframe src="https://evil.com"></iframe>',
     '<a href="javascript:window.__xss_flag = true">点击触发XSS</a>',
     '<div onclick="window.__xss_flag = true">点击执行</div>'
@@ -465,3 +472,8 @@ declare global {
   }
 }
 
+async function agreeLicense(page: Page): Promise<void> {
+  await page.locator("#submission-source-kind").selectOption("original");
+  await page.locator("#submission-source-note").fill("由本人整理撰写的测试稿件");
+  await page.locator("#submit-license, #q-submit-license").check();
+}

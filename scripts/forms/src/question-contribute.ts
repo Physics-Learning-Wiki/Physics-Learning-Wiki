@@ -4,7 +4,10 @@ import { createVerification, type VerificationHandle } from "./verification.js";
 import { parsePairs } from "./parse-pairs.js";
 import type { FeatureDisposer, FeatureMountContext } from "./types.js";
 
-const SUBMIT_ENDPOINT = "https://submit.folderrewind.top";
+import { createSubmissionClient, mountSourceDeclaration, sourceDeclaration } from "./submission-client.js";
+import { mountQuestionDraft } from "./question-draft.js";
+import { numericAnswer, mountNumericPreview } from "./numeric-fields.js";
+import { loadRevisionContext } from "./revision-context.js";
 
 function setError(status: HTMLElement, message: string): void {
   status.textContent = message;
@@ -22,6 +25,12 @@ function updateQuestionTypeUi(form: HTMLFormElement): void {
     element.hidden = typeSelect.value !== "free_response";
   });
 
+  const numeric = typeSelect.value === "numeric";
+  form.querySelectorAll<HTMLElement>(".q-submit-numeric-only").forEach(node => {
+    node.hidden = !numeric;
+  });
+  const tolerance = form.querySelector<HTMLInputElement>("#q-submit-tolerance");
+  if (tolerance) tolerance.required = numeric;
   const answerInput = form.querySelector<HTMLInputElement>("#q-submit-answer");
   if (!answerInput) return;
   answerInput.required = typeSelect.value !== "free_response";
@@ -83,6 +92,7 @@ async function loadTaxonomyTopics(form: HTMLFormElement, signal: AbortSignal): P
 
     topicSelect.innerHTML = '<option value="">-- 未指定（由维护者归类） --</option>';
     for (const [topicId, topic] of Object.entries(taxonomy.topics ?? {})) {
+      if (!/^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)+$/.test(topicId)) continue;
       const option = document.createElement("option");
       option.value = topicId;
       option.textContent = `${topic.title ?? topicId} (${topicId})`;
@@ -107,6 +117,9 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   const issueLink = queryInRoot<HTMLAnchorElement>(root, "#q-submit-issue-link");
   if (!status || !submitButton || !stemTextarea || !solutionTextarea || !typeSelect) return () => undefined;
 
+  const client = createSubmissionClient(form, signal);
+  mountSourceDeclaration(form, signal);
+  let draft: ReturnType<typeof mountQuestionDraft> | undefined;
   let stemEditor: EditorHandle | undefined;
   let solutionEditor: EditorHandle | undefined;
   let widget: VerificationHandle | undefined;
@@ -115,6 +128,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     if (disposed) return;
     disposed = true;
     signal.removeEventListener("abort", dispose);
+    draft?.dispose();
     widget?.dispose();
     solutionEditor?.dispose();
     stemEditor?.dispose();
@@ -147,10 +161,14 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     signal
   );
 
+  if (stemEditor && solutionEditor)
+    draft = mountQuestionDraft(form, { "q-submit-stem": stemEditor, "q-submit-solution": solutionEditor }, signal);
+  mountNumericPreview(form, signal);
   form.addEventListener(
     "submit",
     async event => {
       event.preventDefault();
+      if (submitButton.disabled) return;
       status.textContent = "";
       status.className = "";
 
@@ -165,12 +183,6 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       const licenseCheck = form.querySelector<HTMLInputElement>("#q-submit-license");
       if (!licenseCheck?.checked) {
         setError(status, "请确认您有权按 CC BY-SA 4.0 协议分享本题目");
-        return;
-      }
-      const contactInput = form.querySelector<HTMLInputElement>("#q-submit-contact");
-      const contactPublic = form.querySelector<HTMLInputElement>("#q-submit-contact-public");
-      if (contactInput?.value.trim() && !contactPublic?.checked) {
-        setError(status, "若填写公开联系方式，请勾选同意公开展示");
         return;
       }
       if (!widget?.token) {
@@ -190,7 +202,11 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
           const rawChoices = form.querySelector<HTMLTextAreaElement>("#q-submit-choices")?.value.trim() ?? "";
           const choiceMap = parsePairs(rawChoices, "选项");
           const choiceIds = Object.keys(choiceMap);
-          if (choiceIds.length < 2) throw new Error("选择题至少需要提供两个选项");
+          if (
+            choiceIds.length < (type === "multiple_choice" ? 3 : 2) ||
+            choiceIds.length > (type === "multiple_choice" ? 8 : 6)
+          )
+            throw new Error(type === "multiple_choice" ? "多选题需要 3 到 8 个选项" : "单选题需要 2 到 6 个选项");
           choices = choiceIds.map(id => ({ id, content: choiceMap[id] }));
           if (type === "single_choice") {
             const choiceAnswer = answerText.toUpperCase();
@@ -203,7 +219,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
               .split(/[,，\s]+/)
               .map(value => value.trim().toUpperCase())
               .filter(Boolean);
-            if (!correctChoices.length) throw new Error("多选题必须指定至少一个正确答案");
+            if (correctChoices.length < 2 || new Set(correctChoices).size !== correctChoices.length)
+              throw new Error("多选题必须指定至少两个不重复的正确答案");
             for (const choice of correctChoices) {
               if (!choiceIds.includes(choice)) throw new Error(`正确答案「${choice}」不是有效选项`);
             }
@@ -214,13 +231,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
           if (lower !== "true" && lower !== "false") throw new Error("判断题答案必须填写 true 或 false");
           answer = { value: lower === "true" };
         } else if (type === "numeric") {
-          const numericValue = Number(answerText);
-          if (!Number.isFinite(numericValue)) throw new Error("数值计算题答案必须是有限数字");
-          answer = {
-            value: numericValue,
-            tolerance: { type: "absolute", value: 0.01 },
-            unit: { required: false, accepted: [] }
-          };
+          answer = numericAnswer(form);
         } else if (type === "free_response") {
           const rawRubric = form.querySelector<HTMLTextAreaElement>("#q-submit-rubric")?.value.trim() ?? "";
           const rubric = rawRubric
@@ -285,9 +296,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         ? [
             {
               url: imageUrl,
-              alt: form.querySelector<HTMLInputElement>("#q-submit-img-alt")?.value.trim() || "题目插图",
-              rights_note:
-                form.querySelector<HTMLInputElement>("#q-submit-img-rights")?.value.trim() || "自主绘制 / 原创"
+              alt: form.querySelector<HTMLInputElement>("#q-submit-img-alt")?.value.trim() || "",
+              rights_note: form.querySelector<HTMLInputElement>("#q-submit-img-rights")?.value.trim() || ""
             }
           ]
         : undefined;
@@ -318,42 +328,29 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
           .replace(/[#*`$\n]/g, " ")
           .trim()
           .slice(0, 40) || "物理小测题目";
+      const submittedDraft = draft?.snapshot();
       submitButton.disabled = true;
       submitButton.textContent = "正在提交题目...";
       try {
-        const response = await fetch(SUBMIT_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          signal,
-          body: JSON.stringify({
-            title: `[题目] ${titlePreview}`,
-            content: stem,
-            type: "question",
-            typeLabel: "题目投稿",
-            attribution,
-            contact: contactInput?.value.trim() ?? "",
-            contactPublicConsent: Boolean(contactPublic?.checked),
-            licenseConsent: Boolean(licenseCheck?.checked),
-            licenseVersion: "CC-BY-SA-4.0",
-            question: questionPayload,
-            turnstileToken: widget.token
-          })
+        const data = await client.submit({
+          type: "question",
+          payload: { title: "[题目] " + titlePreview, content: stem, attribution, question: questionPayload },
+          licenseConsent: Boolean(licenseCheck?.checked),
+          sourceDeclaration: sourceDeclaration(form),
+          turnstileToken: widget.token
         });
-        if (!response.ok) {
-          let message = "提交失败";
-          try {
-            const data = (await response.json()) as { error?: string };
-            message = data.error || message;
-          } catch {
-            // Use the generic error for non-JSON responses.
-          }
-          throw new Error(message);
+        if (data.operationState === "processing") {
+          status.textContent = "正在确认提交结果，请保存管理回执后查询；题目草稿继续保留．";
+          submitButton.disabled = false;
+          submitButton.textContent = "查询后重试原提交";
+          widget.reset();
+          return;
         }
-        const data = (await response.json()) as { issueUrl: string };
         if (signal.aborted) return;
+        if (submittedDraft) draft?.clearSubmitted(submittedDraft);
         form.style.display = "none";
         if (success) success.style.display = "block";
-        if (issueLink) {
+        if (issueLink && data.issueUrl) {
           issueLink.href = data.issueUrl;
           issueLink.textContent = data.issueUrl;
         }
@@ -385,6 +382,13 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     );
   const turnstilePromise = widget?.ready ?? Promise.resolve();
   await Promise.all([taxonomyPromise, turnstilePromise]);
+  if (stemEditor && solutionEditor)
+    await loadRevisionContext(
+      form,
+      client,
+      { "q-submit-stem": stemEditor, "q-submit-solution": solutionEditor },
+      signal
+    );
   if (signal.aborted) {
     dispose();
     return () => undefined;

@@ -179,6 +179,20 @@ def validate_question_content(
                     issues.append(Issue.error(path, "grading.rubric", "rubric must contain a positive maximum score"))
     if root is not None:
         issues.extend(validate_assets(data, path, root))
+        if data.get("status") == "published":
+            reviews = data.get("submission", {}).get("media_review", [])
+            asset_ids = {asset.get("id") for asset in data.get("assets", [])}
+            for index, item in enumerate(reviews):
+                if item.get("decision") == "pending":
+                    issues.append(Issue.error(path, f"submission.media_review[{index}]", "media requires an explicit imported or omitted decision"))
+                elif item.get("decision") == "imported" and item.get("asset_id") not in asset_ids:
+                    issues.append(Issue.error(path, f"submission.media_review[{index}].asset_id", "imported media requires a declared managed asset"))
+                elif item.get("decision") == "omitted" and not item.get("note", "").strip():
+                    issues.append(Issue.error(path, f"submission.media_review[{index}].note", "omitted media requires an explanation"))
+            from .media import iter_question_strings
+            for field, text in iter_question_strings(data):
+                if re.search(r"!\[[^\]]*\]\(\s*https?://", text, re.I):
+                    issues.append(Issue.error(path, field, "published question images must use managed asset references"))
         if data.get("status") == "published" and isinstance(data.get("review"), dict):
             current_fingerprint = question_content_fingerprint(data, root)
             current_version = data.get("version")

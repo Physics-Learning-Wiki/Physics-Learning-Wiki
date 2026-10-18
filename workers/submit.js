@@ -336,62 +336,7 @@ export default {
       return jsonResponse({ error: "人机验证业务行为不匹配" }, 400);
     }
 
-    const issueBody = buildIssueBody({
-      title: trimmedTitle,
-      content: trimmedContent,
-      type: trimmedType,
-      typeLabel: sanitizedTypeLabel,
-      chapter: sanitizedChapter,
-      attribution: sanitizedAttribution,
-      contact: sanitizedContact,
-      question,
-      licenseConsent: Boolean(licenseConsent),
-      licenseVersion: licenseVersion ? licenseVersion.trim() : "CC-BY-SA-4.0",
-      licenseConfirmedAt: new Date().toISOString(),
-    });
-
-    if (new TextEncoder().encode(issueBody).length > 60000) {
-      return jsonResponse({ error: "生成的投稿内容超过体积限制 (60KB)" }, 400);
-    }
-
-    const label = SUBMISSION_LABELS[trimmedType] || "投稿-待审核";
-
-    // Create GitHub Issue via REST API
-    let issueResult;
-    try {
-      issueResult = await fetch(
-        `https://api.github.com/repos/${OWNER}/${REPO}/issues`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${env.GITHUB_TOKEN}`,
-            Accept: "application/vnd.github.v3+json",
-            "User-Agent": "Physics-Learning-Wiki-Submit-Worker",
-          },
-          body: JSON.stringify({
-            title: `[投稿] ${trimmedTitle}`,
-            body: issueBody,
-            labels: ["投稿-待审核", label],
-          }),
-        }
-      );
-    } catch (githubFetchError) {
-      console.error("GitHub API network error:", githubFetchError?.message || "unknown");
-      return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
-    }
-
-    if (!issueResult.ok) {
-      const errorText = await issueResult.text().catch(() => "");
-      console.error("GitHub API error status:", issueResult.status);
-      return jsonResponse({ error: "创建 Issue 失败，请稍后重试" }, 502);
-    }
-
-    const issue = await issueResult.json();
-
-    return jsonResponse({
-      success: true,
-      issueUrl: issue.html_url,
-      issueNumber: issue.number,
-    });
+    return jsonResponse({ code: "CLIENT_UPGRADE_REQUIRED", message: "投稿接口已升级，请刷新投稿页面后重新确认来源与许可．",
+      error: "投稿接口已升级，请刷新投稿页面后重新确认来源与许可．", fieldErrors: {} }, 409);
   },
 };

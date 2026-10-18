@@ -26,6 +26,7 @@ FEATURE_SELECTORS = (
     ),
     ("submit", ("#submission-form",)),
     ("question-contribute", ("#plw-question-contribute-form",)),
+    ("submission-status", ("#plw-submission-status",)),
 )
 IGNORE_SELECTORS = (
     ".giscus",
@@ -59,6 +60,7 @@ QUIZ_STYLESHEET = "_static/css/quiz.css?v=5"
 FEATURE_STYLESHEETS = {
     "submit": "_static/css/features/submit.css?v=2",
     "question-contribute": "_static/css/features/question-contribute.css?v=2",
+    "submission-status": "_static/css/features/submission-status.css?v=1",
     "concept-reference": "_static/css/features/concept-reference.css",
 }
 

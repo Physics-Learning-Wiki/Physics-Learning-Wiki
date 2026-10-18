@@ -21,14 +21,24 @@ export function fieldErrors(data, withdrawal = false) {
   }
   for (const name of ["title", "chapter", "attribution"]) {
     const value = data.payload[name];
-    if (value && (hasControlCharacters(value) || hasHtmlOrUnsafe(value) || /[\r\n]/.test(value))) {
+    const plainValue = typeof value === "string" && name === "chapter" ? value.replaceAll(" > ", " / ") : value;
+    if (value && (hasControlCharacters(value) || hasHtmlOrUnsafe(plainValue) || /[\r\n]/.test(value))) {
       result["/payload/" + name] = "此字段不能包含 HTML、换行或控制字符";
     }
   }
   if (unsafeMarkdown(data.payload.content)) result["/payload/content"] = "正文包含不安全内容";
   if (data.type === "question") {
     const error = validateQuestion(data.payload.question);
-    if (error) result["/payload/question"] = error;
+    if (error) {
+      let field = "";
+      if (/逐项反馈/.test(error)) field = "/feedback/choices";
+      else if (/答案|容差|单位/.test(error)) field = "/answer";
+      else if (/选项/.test(error)) field = "/choices";
+      else if (/题干/.test(error)) field = "/stem";
+      else if (/图片|媒体/.test(error)) field = "/external_media";
+      else if (/自评|等级|评分/.test(error)) field = "/grading";
+      result["/payload/question" + field] = error;
+    }
   }
   const declaration = data.sourceDeclaration;
   if (Object.values(declaration).some(value => typeof value === "string" &&

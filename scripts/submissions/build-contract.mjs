@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = new URL("../../", import.meta.url);
 const schema = JSON.parse(await readFile(new URL("contracts/submission.schema.json", root), "utf8"));
-const ajv = new Ajv2020({ allErrors: true, strict: false, validateFormats: false, code: { source: true, esm: true } });
+const ajv = new Ajv2020({ allErrors: true, strict: false, inlineRefs: false, validateFormats: false, code: { source: true, esm: true } });
 ajv.addSchema(schema);
 const standaloneSource = standalone(ajv, {
     validateEnvelope: schema.$id,

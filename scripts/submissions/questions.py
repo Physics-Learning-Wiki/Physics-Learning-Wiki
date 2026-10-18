@@ -159,6 +159,7 @@ def complete(api: GitHub, pr: dict):
     if data.get("id") != record["question"] or data.get("submission", {}).get("issue_url") != expected:
         raise ValueError("Merged question does not match the submission")
     api.stage(record["issue"], "draft_ready", record["revision"], question=data["id"],
+              mediaReview=data.get("submission", {}).get("media_review", []),
               pr=pr["html_url"], note="题目草稿已入库；正式发布仍需专业审核和部署确认．")
 
 

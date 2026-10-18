@@ -48,7 +48,9 @@ interface RuntimeOptions {
 }
 
 const FEATURE_ORDER = new Map(
-  ["math", "mermaid", "quiz", "submit", "question-contribute", "concept-reference"].map((name, index) => [name, index])
+  ["math", "mermaid", "quiz", "submit", "question-contribute", "submission-status", "concept-reference"].map(
+    (name, index) => [name, index]
+  )
 );
 
 export function getSiteRoot(document: Document): URL {
@@ -369,6 +371,10 @@ const featureRegistry: FeatureRegistry = {
   "question-contribute": {
     stylesheet: "_static/css/features/question-contribute.css?v=2",
     moduleUrl: "_static/js/features/question-contribute.js"
+  },
+  "submission-status": {
+    stylesheet: "_static/css/features/submission-status.css?v=1",
+    moduleUrl: "_static/js/features/submission-status.js"
   }
 };
 

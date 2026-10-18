@@ -558,9 +558,9 @@ test("S-07 & S-06: worker handles Turnstile failures, hostnames, and GitHub erro
       }),
       createMockEnv()
     );
-    assert.equal(ghErrorRes.status, 502);
+    assert.equal(ghErrorRes.status, 409);
     const data3 = await ghErrorRes.json();
-    assert.equal(data3.error, "创建 Issue 失败，请稍后重试");
+    assert.equal(data3.code, "CLIENT_UPGRADE_REQUIRED");
     // Ensure raw token text is never reflected in response
     assert.doesNotMatch(JSON.stringify(data3), /mock-gh-token/);
 
@@ -594,10 +594,9 @@ test("S-07 & S-06: worker handles Turnstile failures, hostnames, and GitHub erro
       }),
       createMockEnv()
     );
-    assert.equal(successRes.status, 200);
+    assert.equal(successRes.status, 409);
     const data4 = await successRes.json();
-    assert.equal(data4.success, true);
-    assert.equal(data4.issueNumber, 123);
+    assert.equal(data4.code, "CLIENT_UPGRADE_REQUIRED");
   } finally {
     globalThis.fetch = originalFetch;
   }
