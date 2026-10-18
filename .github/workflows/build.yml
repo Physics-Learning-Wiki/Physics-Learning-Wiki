@@ -40,6 +40,8 @@ jobs:
         run: uv sync
       - name: Install Node.js dependencies
         run: corepack yarn --frozen-lockfile
+      - name: Check Sharp native runtime
+        run: corepack yarn media:check
       - name: Guard published submission amendments
         if: github.event_name == 'pull_request'
         env:

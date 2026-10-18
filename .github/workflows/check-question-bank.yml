@@ -48,6 +48,7 @@ on:
       - 'tsconfig.runtime.json'
       - 'tsconfig.forms.json'
       - 'playwright.config.ts'
+      - '.github/workflows/check-question-bank.yml'
   push:
     branches: [main]
     paths: *quiz-paths
@@ -79,7 +80,9 @@ jobs:
       - name: Install Python dependencies
         run: uv sync --dev --frozen
       - name: Install JavaScript dependencies
-        run: yarn --frozen-lockfile
+        run: corepack yarn --frozen-lockfile
+      - name: Check Sharp native runtime
+        run: corepack yarn media:check
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Validate and test Python tools

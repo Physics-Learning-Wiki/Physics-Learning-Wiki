@@ -31,6 +31,7 @@
     "e2e:forms": "playwright test tests/e2e/forms.spec.ts",
     "search:index": "pagefind --site site",
     "media:optimize": "node scripts/post-build/media/optimize-images.mjs",
+    "media:check": "node scripts/post-build/media/check-sharp.mjs",
     "media:test": "node --test scripts/post-build/media/tests/optimize-images.test.mjs",
     "quiz:format:check": "prettier --check \"scripts/quiz/**/*.ts\"",
     "submit:test": "node --loader ts-node/esm --test workers/submit.test.js workers/submit-ui.test.js workers/submissions.test.js",
@@ -114,6 +115,9 @@
     "sharp": "0.35.4",
     "typescript": "^5.9.2",
     "wrangler": "3.114.15"
+  },
+  "optionalDependencies": {
+    "@img/sharp-libvips-linux-x64": "1.3.3"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
