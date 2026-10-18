@@ -10,6 +10,7 @@ import subprocess
 import time
 from urllib.parse import quote, urljoin, urlsplit
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
 import frontmatter
 import yaml
@@ -87,7 +88,7 @@ def build_release(root: Path, site: Path, site_url=SITE_URL, sha=None):
             resource.write_text(rendered.replace("</head>", marker + "</head>", 1), encoding="utf-8", newline="\n")
         add(match[1], entry)
     for issue, decision in owned.get("withdrawn", {}).items():
-        add(issue, {**decision, "stage": "withdrawn"})
+        add(issue, {**decision, "stage": "withdrawn", "removedUrl": urljoin(site_url, f"community/{issue}/")})
     result = {"schemaVersion": 1, "sourceSha": sha or source_sha(root), "siteUrl": site_url, "entries": entries}
     destination = site / RELEASE_PATH
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -100,37 +101,63 @@ def fetch_bytes(url, opener=urlopen):
         return response.read()
 
 
+def checked_site_url(url, site_url):
+    base, target = urlsplit(site_url), urlsplit(url)
+    if target.scheme != base.scheme or target.netloc != base.netloc or not target.path.startswith(base.path):
+        raise ValueError("Published resource escapes the configured site")
+    return url
+
+
+def served_questions(site_url, opener):
+    manifest = json.loads(fetch_bytes(urljoin(site_url, "_generated/question-bank/manifest.json"), opener))
+    if manifest.get("preview"):
+        raise ValueError("Preview question banks cannot confirm publication")
+    url = urljoin(site_url + "_generated/question-bank/", manifest["catalogs"]["questions"])
+    return json.loads(fetch_bytes(checked_site_url(url, site_url), opener))
+
+
+def verify_removed(entry, *, site_url=SITE_URL, opener=urlopen, catalog=None):
+    if entry.get("type") == "question":
+        catalog = served_questions(site_url, opener) if catalog is None else catalog
+        if any(question["id"] == entry["question"] for question in catalog):
+            raise ValueError("Withdrawn question is still in the actually served catalog")
+        return
+    url = entry.get("removedUrl") or entry.get("url")
+    if not url:
+        raise ValueError("Withdrawal requires the previous public resource URL")
+    try:
+        fetch_bytes(checked_site_url(url, site_url), opener)
+    except HTTPError as error:
+        if error.code in {404, 410}:
+            return
+        raise
+    raise ValueError("Withdrawn page is still accessible; waiting for actual removal")
+
+
 def verify_release(expected_sha, *, site_url=SITE_URL, opener=urlopen):
     release = json.loads(fetch_bytes(urljoin(site_url, RELEASE_PATH) + "?verify=" + expected_sha, opener))
     if release.get("schemaVersion") != 1 or release.get("sourceSha") != expected_sha or release.get("siteUrl") != site_url:
         raise ValueError("The publicly served release does not match this deployment")
     catalog = None
     for entry in release.get("entries", {}).values():
+        if entry["type"] == "question" and entry["stage"] in {"published", "withdrawn"} and catalog is None:
+            catalog = served_questions(site_url, opener)
+        if entry["stage"] == "withdrawn":
+            verify_removed(entry, site_url=site_url, opener=opener, catalog=catalog)
+            continue
         if entry["stage"] != "published":
             continue
-        url = entry["url"]
-        base = urlsplit(site_url)
-        target = urlsplit(url)
-        if target.scheme != base.scheme or target.netloc != base.netloc or not target.path.startswith(base.path):
-            raise ValueError("Published resource escapes the configured site")
+        url = checked_site_url(entry["url"], site_url)
         resource = fetch_bytes(url, opener)
         if entry["type"] != "question" and (not entry.get("verification") or entry["verification"].encode() not in resource):
             raise ValueError("Published page does not contain the expected submission revision")
         if entry["type"] == "question":
-            if catalog is None:
-                manifest = json.loads(fetch_bytes(urljoin(site_url, "_generated/question-bank/manifest.json"), opener))
-                if manifest.get("preview"):
-                    raise ValueError("Preview question banks cannot confirm publication")
-                catalog_url = urljoin(site_url + "_generated/question-bank/", manifest["catalogs"]["questions"])
-                if urlsplit(catalog_url).netloc != base.netloc or not urlsplit(catalog_url).path.startswith(base.path):
-                    raise ValueError("Question catalog escapes the configured site")
-                catalog = json.loads(fetch_bytes(catalog_url, opener))
             if not any(q["id"] == entry["question"] and q.get("contentFingerprint") == entry["fingerprint"] for q in catalog):
                 raise ValueError("Question is absent or differs from the actually served catalog")
     return release
 
 
-def reconcile_release(api, release):
+def reconcile_release(api, release, *, opener=urlopen):
     entries = release["entries"]
     for entry in entries.values():
         issue = api.api(f"issues/{entry['issue']}")
@@ -162,6 +189,10 @@ def reconcile_release(api, release):
                     for record in blocks(comment.get("body") or "", "plw-submission-status-v1")]
         if not any(record.get("stage") == "published" for record in statuses) and "投稿状态:published" not in labels:
             continue
+        previous = next((record for record in reversed(statuses) if record.get("stage") == "published" and record.get("url")), None)
+        if previous is None:
+            continue  # A historical label cannot prove a publication or identify a safe removal target.
+        verify_removed(previous, site_url=release["siteUrl"], opener=opener)
         try:
             revision = latest_revision(issue, comments)["revision"]
         except ValueError:

@@ -2,10 +2,11 @@ import io
 import json
 from pathlib import Path
 from urllib.parse import urlsplit
+from urllib.error import HTTPError
 import pytest
 import yaml
 
-from scripts.submissions.release import RELEASE_PATH, SITE_URL, build_release, verify_release
+from scripts.submissions.release import RELEASE_PATH, SITE_URL, build_release, verify_release, verify_removed
 
 SHA = "a" * 40
 
@@ -66,3 +67,32 @@ def test_article_confirmation_requires_the_actual_page_version(tmp_path):
     rendered = b"<html>Stale page</html>"
     with pytest.raises(ValueError, match="expected submission revision"):
         verify_release(SHA, opener=opener)
+
+
+def test_withdrawal_requires_actual_page_removal_not_only_a_new_manifest():
+    entry = {"type": "notes", "stage": "withdrawn", "removedUrl": SITE_URL + "community/2/"}
+    with pytest.raises(ValueError, match="still accessible"):
+        verify_removed(entry, opener=lambda *a, **kw: io.BytesIO(b"stale published page"))
+    def missing(request, **kwargs):
+        raise HTTPError(request.full_url, 404, "Not found", {}, None)
+    verify_removed(entry, opener=missing)
+    def unavailable(request, **kwargs):
+        raise HTTPError(request.full_url, 503, "Unavailable", {}, None)
+    with pytest.raises(HTTPError):
+        verify_removed(entry, opener=unavailable)
+
+
+def test_retired_question_must_be_absent_from_the_live_catalog(tmp_path):
+    question(tmp_path, "retired")
+    release = build_release(tmp_path, tmp_path / "site", sha=SHA)
+    catalog = [{"id": "q-issue-1"}]
+    def opener(request, **kwargs):
+        if RELEASE_PATH in request.full_url:
+            return io.BytesIO(json.dumps(release).encode())
+        if request.full_url.endswith("manifest.json"):
+            return io.BytesIO(json.dumps({"catalogs": {"questions": "catalog/questions.json"}, "preview": False}).encode())
+        return io.BytesIO(json.dumps(catalog).encode())
+    with pytest.raises(ValueError, match="still in"):
+        verify_release(SHA, opener=opener)
+    catalog.clear()
+    assert verify_release(SHA, opener=opener) == release
