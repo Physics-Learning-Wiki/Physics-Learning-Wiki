@@ -97,6 +97,24 @@ def editorial_event(api, event):
     return True
 
 
+def status_event(api, event):
+    label = event.get("label", {}).get("name", "")
+    if not label.startswith(PREFIX) or label[len(PREFIX):] not in {"needs_info", "accepted", "reviewing", "rejected", "resolved"}:
+        return
+    issue = event["issue"]
+    if "pull_request" in issue:
+        return
+    permission = api.api("collaborators/" + event["sender"]["login"] + "/permission")
+    if permission.get("permission") not in {"write", "maintain", "admin"}:
+        raise ValueError("Only repository editors may decide a submission status")
+    latest = api.api(f"issues/{issue['number']}")
+    comments = api.pages(f"issues/{issue['number']}/comments?per_page=100")
+    revision = latest_revision(latest, comments)["revision"]
+    stage = label[len(PREFIX):]
+    api.stage(issue["number"], stage, revision, waitingFor="author" if stage == "needs_info" else "maintainer",
+              note="维护者已对本版本记录处理决定：" + stage + "．")
+
+
 def parse_time(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
@@ -124,7 +142,7 @@ def attention_entry(issue, comments, timeline, now):
               if record.get("revision") == revision]
     status = states[-1] if states else {"stage": "received"}
     canonical = [name[len(PREFIX):] for name in labels if name.startswith(PREFIX)]
-    if len(canonical) == 1 and canonical[0] in {"needs_info", "accepted", "reviewing", "rejected", "resolved"}:
+    if not blocks(issue.get("body") or "", "plw-submission-v1") and len(canonical) == 1 and canonical[0] in {"needs_info", "accepted", "reviewing", "rejected", "resolved"}:
         status = {**status, "stage": canonical[0]}
     requests = [comment for comment in comments
                 if comment.get("user", {}).get("id") == issue.get("user", {}).get("id")
@@ -206,7 +224,7 @@ def update_attention(api, now=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["triage", "community-event", "community-failure", "attention"])
+    parser.add_argument("command", choices=["triage", "status-event", "community-event", "community-failure", "attention"])
     args = parser.parse_args()
     api = GitHub()
     if args.command == "attention":
@@ -215,6 +233,8 @@ def main():
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text(encoding="utf-8"))
     if args.command == "triage":
         triage(api, event["issue"]["number"])
+    elif args.command == "status-event":
+        status_event(api, event)
     elif args.command == "community-failure":
         if event.get("issue"):
             issue = api.api(f"issues/{event['issue']['number']}")

@@ -1,7 +1,7 @@
 name: Triage Submission
 on:
   issues:
-    types: [opened]
+    types: [opened, labeled]
   issue_comment:
     types: [created]
 permissions:
@@ -13,7 +13,8 @@ concurrency:
 jobs:
   triage:
     if: >-
-      !github.event.issue.pull_request && contains(github.event.issue.labels.*.name, '投稿-待审核') &&
+      !github.event.issue.pull_request &&
+      (contains(github.event.issue.labels.*.name, '投稿-待审核') || contains(github.event.issue.body, 'plw-submission-v1')) &&
       (github.event_name == 'issues' || contains(github.event.comment.body, 'plw-submission-v1'))
     runs-on: ubuntu-latest
     env:
@@ -25,4 +26,9 @@ jobs:
           persist-credentials: false
       - uses: astral-sh/setup-uv@v6
       - run: uv sync --frozen
-      - run: uv run python -m scripts.submissions.operations triage
+      - name: Record a versioned editorial decision
+        if: github.event.action == 'labeled'
+        run: uv run python -m scripts.submissions.operations status-event
+      - name: Classify new content
+        if: github.event.action != 'labeled'
+        run: uv run python -m scripts.submissions.operations triage

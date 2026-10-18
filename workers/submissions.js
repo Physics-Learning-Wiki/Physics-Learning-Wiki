@@ -102,12 +102,7 @@ async function obtainStatus(db, receipt, env, includeRecord) {
       }
     }
   }
-  const labels = issue.labels.map(item => typeof item === "string" ? item : item.name);
-  // Publication labels alone are never proof that a version was deployed.
-  const manual = labels.filter(item => item?.startsWith("投稿状态:")).map(item => item.slice(5));
-  if (manual.length === 1 && ["needs_info", "accepted", "reviewing", "rejected", "resolved"].includes(manual[0])) {
-    stage = manual[0];
-  }
+  // Labels have no revision binding. Editorial decisions must become trusted versioned records.
   const data = { submissionId: receipt.id, issueNumber: receipt.issue_number, issueUrl: issueUrl(receipt.issue_number),
     type: receipt.kind, revision: current.revision, stage, withdrawalRequested,
     updatedAt: issue.updated_at, ...stateDetails };

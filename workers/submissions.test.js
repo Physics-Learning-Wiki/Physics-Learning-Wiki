@@ -141,6 +141,9 @@ test("status requires verified deployment records and retains only the actually 
   assert.equal(data.revision, 2);
   assert.equal(data.stage, "received");
   assert.equal(data.published.revision, 1);
+  h.issues[0].labels = [{ name: "投稿状态:resolved" }];
+  data = await (await h.call(undefined, { path, method: "GET" })).json();
+  assert.equal(data.stage, "received", "A stale label must not resolve a new revision");
   event({ stage: "reviewing", revision: 2, sourceSha: "b".repeat(40), available: false });
   data = await (await h.call(undefined, { path, method: "GET" })).json();
   assert.equal(data.published, undefined);

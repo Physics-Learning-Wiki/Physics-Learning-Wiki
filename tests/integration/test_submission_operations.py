@@ -8,7 +8,7 @@ import pytest
 
 from scripts.community.contributors import issue_contributors, page_source
 from scripts.community.generator import LABEL, WITHDRAWN, apply_snapshot, build_snapshot, generate_snapshot
-from scripts.submissions.operations import QUEUE_MARKER, attention_entry, classify, editorial_event, triage, update_attention
+from scripts.submissions.operations import QUEUE_MARKER, attention_entry, classify, editorial_event, status_event, triage, update_attention
 from scripts.submissions.records import block
 
 NOW = datetime(2026, 10, 18, tzinfo=timezone.utc)
@@ -119,6 +119,18 @@ def test_community_editorial_decision_checks_authority_and_does_not_publish():
     event.pop("label")
     event["comment"] = {"user": {"id": 123}, "body": block("plw-submission-v1", record(revision=2))}
     assert not editorial_event(api, event)
+
+
+def test_editorial_labels_become_versioned_records_but_never_confirm_publication():
+    api = FakeAPI()
+    event = {"issue": issue(), "label": {"name": "投稿状态:resolved"}, "sender": {"login": "editor"}}
+    status_event(api, event)
+    assert api.stages[0][0] == (1, "resolved", 1)
+    event["label"]["name"] = "投稿状态:published"
+    status_event(api, event)
+    assert len(api.stages) == 1
+    stale = issue(labels=[{"name": "投稿状态:resolved"}])
+    assert attention_entry(stale, [], [], NOW), "A label alone has no revision authority"
 
 
 def test_community_paginates_over_101_entries_and_preserves_published_closed_issues(tmp_path):
