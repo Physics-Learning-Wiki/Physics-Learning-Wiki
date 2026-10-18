@@ -47,8 +47,10 @@ class GitHub:
                   if record.get("revision") == revision]
         if stage == "received" and any(record.get("stage") != "received" for record in states):
             return  # Opening/triage events must not undo an acceptance or import.
-        if stage == "draft_ready" and not details.get("sourceSha") and any(record.get("stage") == "published" for record in states):
-            update_labels = False
+        deployed = next((record for record in reversed(states) if record.get("sourceSha")), {})
+        if (stage in {"accepted", "importing", "draft_ready", "reviewing"} and not details.get("sourceSha")
+                and deployed.get("stage") in {"published", "withdrawn"}):
+            return  # Late import/retry events cannot undo confirmed deployment evidence.
         labels = [label["name"] for label in issue["labels"] if not label["name"].startswith(PREFIX)]
         target = PREFIX + stage
         try:

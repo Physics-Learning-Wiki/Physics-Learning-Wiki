@@ -10,6 +10,7 @@ from scripts.community.contributors import issue_contributors, page_source
 from scripts.community.generator import LABEL, WITHDRAWN, apply_snapshot, build_snapshot, generate_snapshot
 from scripts.submissions.operations import QUEUE_MARKER, attention_entry, classify, editorial_event, status_event, triage, update_attention
 from scripts.submissions.records import block
+from scripts.submissions.github import GitHub
 
 NOW = datetime(2026, 10, 18, tzinfo=timezone.utc)
 
@@ -131,6 +132,34 @@ def test_editorial_labels_become_versioned_records_but_never_confirm_publication
     assert len(api.stages) == 1
     stale = issue(labels=[{"name": "投稿状态:resolved"}])
     assert attention_entry(stale, [], [], NOW), "A label alone has no revision authority"
+
+
+@pytest.mark.parametrize("incoming", ["accepted", "importing", "draft_ready", "reviewing"])
+def test_late_import_events_do_not_downgrade_a_verified_live_version(incoming):
+    api = GitHub()
+    writes = []
+    def request(path, method="GET", body=None):
+        if method != "GET":
+            writes.append((path, body))
+        return issue()
+    api.api = request
+    api.pages = lambda path: [status("published", sourceSha="a" * 40)]
+    api.stage(1, incoming, 1)
+    assert not writes
+
+
+def test_confirmed_rollback_allows_a_followup_editorial_recovery():
+    api = GitHub()
+    writes = []
+    def request(path, method="GET", body=None):
+        if method != "GET":
+            writes.append((path, body))
+        return issue()
+    api.api = request
+    api.pages = lambda path: [status("published", sourceSha="a" * 40),
+                              status("reviewing", sourceSha="b" * 40, available=False)]
+    api.stage(1, "importing", 1)
+    assert any("/comments" in path for path, body in writes)
 
 
 def test_community_paginates_over_101_entries_and_preserves_published_closed_issues(tmp_path):
