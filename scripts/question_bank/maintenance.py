@@ -12,6 +12,8 @@ from .loader import load_tree, load_yaml
 from .media import question_content_fingerprint
 from .validator import validate_repository
 
+ISSUE_URL_RE = re.compile(r"https://github\.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/([1-9]\d*)\Z")
+
 
 def _write_yaml(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -69,8 +71,8 @@ ALLOWED_SUBMISSION_QUESTION_KEYS = {
 }
 
 
-def import_issue(root: Path, input_path: Path) -> Path:
-    payload = json.loads(input_path.read_text(encoding="utf-8"))
+def submission_document(root: Path, payload: dict[str, Any]) -> tuple[Path, dict[str, Any]]:
+    """Convert public submission data without writing or replacing an existing file."""
     if payload.get("schemaVersion") != 2 or not isinstance(payload.get("question"), dict):
         raise ValueError("unsupported question submission payload")
     source = payload["question"]
@@ -85,7 +87,21 @@ def import_issue(root: Path, input_path: Path) -> Path:
         raise ValueError("submission question attribution must not contain HTML tags")
     if source.get("ai_name") and re.search(r"[<>]", str(source["ai_name"])):
         raise ValueError("submission question ai_name must not contain HTML tags")
-    question_id, output = next_question_id(root)
+    issue_url = payload.get("issueUrl")
+    if issue_url:
+        match = ISSUE_URL_RE.fullmatch(str(issue_url))
+        if not match:
+            raise ValueError("submission requires a canonical repository Issue URL")
+        question_id = f"q-issue-{match[1]}"
+        output = root / "question-bank" / "questions" / "inbox" / f"{question_id}.yml"
+        # Already imported IDs and paths are permanent, including legacy q-NNNNNN.
+        for document in load_tree(root / "question-bank" / "questions")[0]:
+            if document.data.get("submission", {}).get("issue_url") == issue_url:
+                question_id, output = document.data["id"], document.path
+                break
+    else:
+        # Kept only for historical, offline v2 imports. Web automation always supplies issueUrl.
+        question_id, output = next_question_id(root)
     authors = [{"name": str(source.get("attribution") or "匿名投稿者"), "kind": "human"}]
     if source.get("ai_assisted"):
         authors.append({"name": str(source.get("ai_name") or "未指定 AI 工具"), "kind": "ai"})
@@ -128,9 +144,26 @@ def import_issue(root: Path, input_path: Path) -> Path:
         submission_meta["issue_url"] = payload.get("issueUrl")
     if source.get("external_media"):
         submission_meta["external_media"] = source["external_media"]
+    if payload.get("submissionId"):
+        submission_meta["submission_id"] = payload["submissionId"]
+        submission_meta["revision"] = payload.get("revision", 1)
+    if source.get("external_media"):
+        submission_meta["media_review"] = [
+            {"url": media["url"], "decision": "pending"} for media in source["external_media"]
+        ]
     if submission_meta:
         question["submission"] = submission_meta
+    return output, question
 
+
+def import_issue(root: Path, input_path: Path) -> Path:
+    payload = json.loads(input_path.read_text(encoding="utf-8"))
+    output, question = submission_document(root, payload)
+    if output.exists():
+        existing, errors = load_yaml(output)
+        if existing is not None and not errors and existing.data == question:
+            return output
+        raise ValueError("existing imported question differs; use the reviewed revision workflow")
     _write_yaml(output, question)
     report = validate_repository(root, include_drafts=True)
     errors = [issue for issue in report.errors if Path(issue.path) == Path(output)]

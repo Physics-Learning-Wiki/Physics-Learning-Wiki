@@ -251,10 +251,10 @@ def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
 
     imported_paths = []
     try:
-        for name, question in data["valid"].items():
+        for number, (name, question) in enumerate(data["valid"].items(), 2001):
             payload = {
                 "schemaVersion": 2,
-                "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-{name}",
+                "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/{number}",
                 "licenseConsent": True,
                 "licenseVersion": "CC-BY-SA-4.0",
                 "question": question,
@@ -283,7 +283,7 @@ def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None
         test_obj = {**base_obj, **inv["override"]}
         payload = {
             "schemaVersion": 2,
-            "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/test-invalid-{name}",
+            "issueUrl": f"https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/2999",
             "licenseConsent": True,
             "licenseVersion": "CC-BY-SA-4.0",
             "question": test_obj,

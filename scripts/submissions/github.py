@@ -1,0 +1,57 @@
+from __future__ import annotations
+
+import json
+import subprocess
+from datetime import datetime, timezone
+from urllib.parse import quote
+
+from .records import PREFIX, REPO, STAGES, block
+
+
+class GitHub:
+    def __init__(self, repo=REPO):
+        if repo != REPO:
+            raise ValueError("Automation is restricted to the configured repository")
+        self.repo = repo
+
+    def api(self, path, *, method="GET", body=None):
+        args = ["gh", "api", "--method", method, f"repos/{self.repo}/" + quote(path, safe="/?=&%")]
+        if body is not None:
+            args += ["--input", "-"]
+        result = subprocess.run(args, input=json.dumps(body) if body is not None else None,
+                                capture_output=True, text=True, encoding="utf-8")
+        if result.returncode:
+            raise RuntimeError(f"GitHub {method} {path.split('?')[0]} failed ({result.returncode})")
+        return json.loads(result.stdout) if result.stdout.strip() else None
+
+    def pages(self, path):
+        args = ["gh", "api", "--paginate", "--slurp", f"repos/{self.repo}/" + quote(path, safe="/?=&%")]
+        result = subprocess.run(args, check=True, capture_output=True, text=True, encoding="utf-8")
+        pages = json.loads(result.stdout)
+        if not isinstance(pages, list) or any(not isinstance(page, list) for page in pages):
+            raise ValueError("Invalid paginated response")
+        return [item for page in pages for item in page]
+
+    def stage(self, number, stage, revision, *, note="", **details):
+        if stage not in STAGES:
+            raise ValueError("Unknown submission stage")
+        issue = self.api(f"issues/{number}")
+        labels = [label["name"] for label in issue["labels"] if not label["name"].startswith(PREFIX)]
+        target = PREFIX + stage
+        try:
+            self.api("labels", method="POST", body={"name": target, "color": "597da3"})
+        except RuntimeError:
+            # Independently confirm existence; permission and network failures remain fatal.
+            from urllib.parse import quote
+            self.api("labels/" + quote(target, safe=""))
+        if target not in labels:
+            labels.append(target)
+        record = {"stage": stage, "revision": revision, **details}
+        comments = self.pages(f"issues/{number}/comments?per_page=100")
+        marker = block("plw-submission-status-v1", record)
+        if not any(marker in (comment.get("body") or "") and comment.get("performed_via_github_app")
+                   for comment in comments):
+            self.api(f"issues/{number}/comments", method="POST",
+                     body={"body": note + "\n\n" + marker})
+        if {label["name"] for label in issue["labels"]} != set(labels):
+            self.api(f"issues/{number}", method="PATCH", body={"labels": labels})
