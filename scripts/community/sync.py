@@ -15,6 +15,7 @@ import uuid
 from urllib.parse import urlencode
 
 from .generator import MANIFEST_PATH, REPO, generate_snapshot
+from .contributors import PAGE as CONTRIBUTORS_PAGE, STATE as CONTRIBUTORS_STATE, generate_contributors
 
 BRANCH_PREFIX = "bot/community-submissions"
 
@@ -46,12 +47,12 @@ class GitHub:
     def create_pr(self, branch: str) -> str:
         body = """### 社区稿件自动同步
 
-同步开放且带有 `投稿-已收录` 标签的投稿；撤稿会移除受管页面．
+同步明确收录的稿件、已接受的修订和批准的撤稿；关闭 Issue 不代表撤稿．贡献者统计以实际发布清单为准．
 
 - 请审阅正文、署名和撤稿差异．
 - 确认 `Check Characters`、`Physics-Learning-Wiki Page Build` 两项必需检查均已运行并通过．
 - 若默认 `GITHUB_TOKEN` 产生的检查等待审批，请按 Actions 提示批准，并核对检查对应本 PR 的最新提交．
-- 若未生成检查运行，请使用独立 GitHub App Token 重新触发 PR 检查；不要以其他提交上的手动 Build 代替本 PR 检查．
+- 更新后回到 Draft；请批准检查运行，并核对最新提交上的必需检查后再人工合并．
 """
         with tempfile.TemporaryDirectory(prefix="plw-community-pr-") as directory:
             body_file = Path(directory) / "body.md"
@@ -59,9 +60,15 @@ class GitHub:
             result = subprocess.run([
                 "gh", "pr", "create", "--repo", self.repo, "--base", "main",
                 "--head", branch, "--title", "content(community): 同步最新已收录社区投稿",
-                "--body-file", str(body_file),
+                "--body-file", str(body_file), "--draft",
             ], check=True, capture_output=True, text=True, encoding="utf-8")
         return result.stdout.strip()
+
+    def make_draft(self, number):
+        result = subprocess.run(["gh", "pr", "view", str(number), "--repo", self.repo, "--json", "isDraft"],
+                                check=True, capture_output=True, text=True, encoding="utf-8")
+        if not json.loads(result.stdout)["isDraft"]:
+            subprocess.run(["gh", "pr", "ready", str(number), "--repo", self.repo, "--undo"], check=True)
 
 
 def community_prs(items: list[dict], repo: str) -> list[dict]:
@@ -97,14 +104,19 @@ def validate_generated(root: Path) -> None:
 
 class CommunitySync:
     def __init__(self, root: Path, *, repo: str = REPO, run_key: str | None = None,
-                 github=None, generate=None, validate=None):
+                 github=None, generate=None, validate=None, contributors=False):
         self.root = root.resolve()
         self.repo = repo
         self.run_key = run_key or uuid.uuid4().hex
         if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9.-]{0,100}", self.run_key):
             raise SyncError("Invalid run identifier")
         self.github = github or GitHub(repo)
-        self.generate = generate or (lambda root: generate_snapshot(root / "docs/community", root / MANIFEST_PATH))
+        self.contributors = contributors
+        def generate_all(root):
+            generate_snapshot(root / "docs/community", root / MANIFEST_PATH)
+            if contributors:
+                generate_contributors(root)
+        self.generate = generate or generate_all
         self.validate = validate or validate_generated
         self.environment = os.environ.copy()
         for key, value in {
@@ -162,7 +174,10 @@ class CommunitySync:
     def check_generated_paths(self) -> None:
         paths = self.git("diff", "--name-only", "-z", "HEAD").stdout.split("\0")
         paths += self.git("ls-files", "--others", "--exclude-standard", "-z").stdout.split("\0")
-        if any(path and path != MANIFEST_PATH.as_posix() and not path.startswith("docs/community/") for path in paths):
+        allowed = {MANIFEST_PATH.as_posix()}
+        if self.contributors:
+            allowed |= {CONTRIBUTORS_PAGE.as_posix(), CONTRIBUTORS_STATE.as_posix()}
+        if any(path and path not in allowed and not path.startswith("docs/community/") for path in paths):
             raise SyncError("Generation or validation changed files outside the community snapshot")
 
     def run(self) -> str:
@@ -200,7 +215,10 @@ class CommunitySync:
         self.generate(self.root)
         self.validate(self.root)
         self.check_generated_paths()
-        self.git("add", "--all", "--", "docs/community", MANIFEST_PATH.as_posix())
+        managed = ["docs/community", MANIFEST_PATH.as_posix()]
+        if self.contributors:
+            managed += [CONTRIBUTORS_PAGE.as_posix(), CONTRIBUTORS_STATE.as_posix()]
+        self.git("add", "--all", "--", *managed)
         staged = self.git("diff", "--cached", "--quiet", check=False)
         if staged.returncode == 1:
             self.git("commit", "-m", "content(community): 同步最新已收录社区投稿")
@@ -225,6 +243,8 @@ class CommunitySync:
         if self.remote_head(branch) != remote_head:
             raise SyncError("Remote branch changed while generating; remote left untouched")
         if head != remote_head:
+            if pr:
+                self.github.make_draft(pr["number"])
             self.git("push", "origin", f"HEAD:refs/heads/{branch}")
         if pr:
             return f"Community PR #{pr['number']} is up to date ({branch})"
@@ -240,9 +260,10 @@ def main(argv=None) -> int:
     parser.add_argument("--repo", default=REPO)
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--run-key", default=os.environ.get("GITHUB_RUN_ID"))
+    parser.add_argument("--contributors", action="store_true")
     args = parser.parse_args(argv)
     try:
-        message = CommunitySync(args.root, repo=args.repo, run_key=args.run_key).run()
+        message = CommunitySync(args.root, repo=args.repo, run_key=args.run_key, contributors=args.contributors).run()
     except Exception as error:
         message = f"Community sync failed: {error}"
         code = 1

@@ -1,0 +1,24 @@
+name: Submission Attention Queue
+on:
+  schedule:
+    - cron: "20 1 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+concurrency:
+  group: submission-attention-queue
+  cancel-in-progress: false
+jobs:
+  attention:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --frozen
+      - run: uv run python -m scripts.submissions.operations attention

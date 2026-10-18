@@ -6,7 +6,7 @@ description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的�
 
 在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面．正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
 
-这篇文章将主要叙述参与 Physics Learning Wiki 编写的两种方式：通过 GitHub 协作，或者通过投稿邮箱提交成稿、笔记、提纲与讲义．请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容．
+本文介绍 GitHub 协作、网页投稿和编辑组邮箱三种参与方式．请您在撰稿或修正 Wiki 页面以前阅读以下内容．
 
 ## 贡献指南
 
@@ -16,7 +16,11 @@ description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的�
 
 ???+ info "无需 GitHub 账号的投稿方式"
     如果你不熟悉 GitHub，现在可以直接在网站上提交内容．  
-    访问 [投稿页面](../submit/) 填写表单，编辑组会通过 GitHub Issue 审核和跟进．
+    访问 [投稿页面](../submit.md) 或 [题目投稿页](../quiz/contribute.md) 填写表单，编辑组会通过 GitHub Issue 审核和跟进．
+    
+    请下载并妥善保存管理回执，通过 [投稿进度与管理](../submission/status.md) 查询、修订和申请撤稿．网站不收集联系方式，管理凭证不会随普通草稿保存．
+    
+    编辑组尽力处理稿件，不承诺固定处理期限．关闭 Issue 表示处理结束；草稿入库和正式上线分别确认．
 
 ???+ warning "注意"
     在开始编写一段内容之前，请查阅 [Issues](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues)，确认没有别人在做相同的工作之后，开个 [新 issue](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/new) 记录待编写的内容．
@@ -42,13 +46,13 @@ description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的�
 
 如果你对下方的文字头疼，那么不妨看看这个视频．
 
-如果你只想先知道最重要的事情，可以记住下面四点：
+如果你只想先知道最重要的事情，可以记住下面几点：
 
 1.  熟悉 GitHub 的贡献者，推荐直接走 Pull Request 流程．
 2.  不熟悉 GitHub 也完全可以参与，可以把成稿、提纲、讲义或课堂整理发送到 <submit@folderrewind.top>．
 3.  半成品也欢迎投稿，但请尽量附上来源、目标章节和希望的署名方式．
 4.  无论走哪条路径，都请先阅读 [内容编写指引](./writing.md) 与 [格式手册](./format.md)．
-5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit/) 填写表单即可提交内容、笔记或勘误．
+5.  不需要 GitHub 账号？直接在 [Web 投稿页](../submit.md) 填写表单即可提交内容、笔记或勘误．经人工审核收录的稿件可在 [社区角](../community/index.md) 阅读．
 
 ### 通过邮箱投稿
 
@@ -67,7 +71,7 @@ description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的�
 2.  这份材料目前是成稿、提纲、笔记还是讲义．
 3.  主要参考资料来自哪里．
 4.  你希望使用什么署名方式（GitHub ID、姓名、网名或匿名）．
-5.  如果你愿意继续参与修改，也可以附上联系方式或说明后续可否继续沟通．
+5.  说明来源和许可；插图须提供替代文本及来源授权，维护者审核后再转为仓库资源．
 
 编辑组通常会按下面的方式处理邮件投稿：
 

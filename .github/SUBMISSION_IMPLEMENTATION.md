@@ -10,7 +10,7 @@
 - [x] B：共享投稿契约、D1 迁移、凭证摘要、幂等操作、失败恢复、统一错误与许可记录．
 - [x] C：两类表单草稿与导出、数值容差和同尺度单位别名、媒体审核记录．
 - [x] D：进度与管理页面、作者修订、受管 PR 三方合并、部署清单与实际发布确认．
-- [ ] E：社区导航和分页、明确撤稿、贡献统计审核 PR、分类初审、七日关注队列．
+- [x] E：社区导航和分页、明确撤稿、贡献统计审核 PR、分类初审、七日关注队列．
 
 ## 发布约束
 
@@ -28,4 +28,13 @@ B: 31 Worker/contract tests passed, including real Miniflare D1 SQLite concurren
 
 C: 8 browser form regressions passed after aligning chapter separators and selectable taxonomy IDs. Forms typecheck/unit/build checks, runtime tests and Quiz grading tests pass. Draft and receipt storage are separate; authorization must be confirmed again on restore.
 
-D：新增部署清单、正文版本标记及线上 SHA / 题库指纹核验；33 项 Worker 测试通过，覆盖上游成功但 D1 写回失败、匿名凭证、版本冲突和实际线上版本状态．本地裸 Git 远端验证三个并行投稿 PR、五次重试、PR 创建失败恢复和人工编辑合并．
+D：新增部署清单、正文版本标记及线上 SHA / 题库指纹核验；34 项 Worker 测试通过，覆盖上游成功但 D1 写回失败、匿名凭证、版本冲突和实际线上版本状态．本地裸 Git 远端验证三个并行投稿 PR、五次重试、PR 创建失败恢复和人工编辑合并．
+
+E：社区列表每页 20 条，已关闭的已发布 Issue 继续保留，撤稿以批准记录和实际部署为准．分类初审、贡献统计审核 PR 和每日同一关注队列已实现；103 条记录、手写文件保护、三方合并、类型初审和不重复提醒均有测试．
+
+## 环境与剩余上线条件
+
+- 2026-10-18 已应用并回读 main 保护：两个必需检查、严格更新、至少一次审批、最新推送审批、旧审批失效、管理员约束、会话解决及禁止强推与删除均通过．
+- Cloudflare 账户额度、生产 D1 创建和迁移、Worker 密钥范围、真实 Turnstile 及生产端到端链路尚未验证；未购买或自动升级服务．新版写入开关保持关闭．
+- 真实人工审批、最新 SHA 检查、公开页面上线与下线验收须在部署后按 SUBMISSION_OPERATIONS.md 进行，不以本地测试替代．
+- Windows 本机完整构建须使 Git Bash 可执行，并为 Node 24 设置 NODE_USE_ENV_PROXY=1 使用已有代理；不改动仓库预算或跳过构建步骤．

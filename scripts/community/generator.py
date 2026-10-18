@@ -1,4 +1,4 @@
-"""Fetch complete Issue snapshots and update only unchanged, owned files."""
+"""Fetch complete Issue snapshots and merge revisions into explicitly owned files."""
 from __future__ import annotations
 
 import argparse
@@ -10,6 +10,8 @@ from pathlib import Path
 import re
 import sys
 import tempfile
+import subprocess
+import frontmatter
 from urllib.parse import urlencode, urlsplit
 from urllib.request import Request, urlopen
 
@@ -21,7 +23,8 @@ REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki"
 LABEL = "投稿-已收录"
 API_URL = f"https://api.github.com/repos/{REPO}/issues"
 MANIFEST_PATH = Path("data/community-generated.json")
-OWNED_NAME = re.compile(r"(?:index|[1-9]\d*)\.md\Z")
+OWNED_NAME = re.compile(r"(?:index|page-[1-9]\d*|[1-9]\d*)\.md\Z")
+WITHDRAWN = "投稿-撤稿批准"
 
 
 class SnapshotConflict(RuntimeError):
@@ -61,20 +64,24 @@ def validate_issues(issues: object) -> list[dict]:
         labels = issue.get("labels")
         if not isinstance(labels, list) or any(not isinstance(label, dict) or not isinstance(label.get("name"), str) for label in labels):
             raise ValueError(f"Invalid Issue {number}: labels")
-        if issue["state"] != "open" or LABEL not in {label["name"] for label in labels}:
+        names = {label["name"] for label in labels}
+        if ("投稿-题目" in names or WITHDRAWN in names or "投稿状态:withdrawn" in names
+                or not ({LABEL, "投稿状态:published"} & names)):
             continue
+        if issue["state"] == "closed" and "投稿状态:published" not in names and "plw-submission-v1" not in (issue["body"] or ""):
+            continue  # Historical closed content requires explicit migration review.
         result.append(issue)
     return sorted(result, key=lambda item: item["number"], reverse=True)
 
 
-def fetch_issues(*, token: str | None = None, opener=None) -> list[dict]:
+def fetch_issues(*, token: str | None = None, opener=None, include_withdrawn=False) -> list[dict]:
     opener = opener or urlopen
     token = os.environ.get("GITHUB_TOKEN", "") if token is None else token
     headers = {"Accept": "application/vnd.github+json", "User-Agent": "Physics-Learning-Wiki-Bot"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
     url = API_URL + "?" + urlencode({
-        "labels": LABEL, "state": "open", "per_page": 100,
+        "state": "all", "per_page": 100,
         "sort": "created", "direction": "asc", "page": 1,
     })
     issues: list[dict] = []
@@ -97,7 +104,38 @@ def fetch_issues(*, token: str | None = None, opener=None) -> list[dict]:
                 raise ValueError("Invalid or ambiguous GitHub pagination header")
             relations[match[2]] = match[1]
         url = relations.get("next", "")
-    return validate_issues(issues)
+    active = validate_issues(issues)
+    if include_withdrawn:
+        active += [issue for issue in issues if "pull_request" not in issue
+                   and WITHDRAWN in {label["name"] for label in issue["labels"]}
+                   and "投稿-题目" not in {label["name"] for label in issue["labels"]}]
+    from scripts.submissions.records import blocks, revision_history
+    for issue in active:
+        if not blocks(issue.get("body") or "", "plw-submission-v1"):
+            continue
+        comments = []
+        for page in range(1, 101):
+            endpoint = API_URL + f"/{issue['number']}/comments?per_page=100&page={page}"
+            with opener(Request(endpoint, headers=headers), timeout=30) as response:
+                batch = json.loads(response.read().decode("utf-8"))
+            if not isinstance(batch, list):
+                raise ValueError("Invalid submission comment response")
+            comments.extend(batch)
+            if len(batch) < 100:
+                break
+        else:
+            raise ValueError("Submission comment pagination exceeded the safe limit")
+        history = revision_history(issue, comments)
+        issue["_history"] = history
+        issue["_submission"] = history[-1]
+        states = [record for comment in comments
+                  if (comment.get("performed_via_github_app") or {}).get("slug") == "github-actions"
+                  for record in blocks(comment.get("body") or "", "plw-submission-status-v1")]
+        issue["_approved_revision"] = max([record["revision"] for record in states
+                                            if record.get("stage") in {"accepted", "published"}] or [1])
+        issue["_published_revision"] = max([record["revision"] for record in states
+                                             if record.get("stage") == "published"] or [0])
+    return active
 
 
 def parse_issue_body(body: str) -> dict[str, str]:
@@ -111,30 +149,49 @@ def parse_issue_body(body: str) -> dict[str, str]:
 
 def page_source(issue: dict) -> str:
     number = issue["number"]
-    title = sanitize_plain_metadata(issue["title"].replace("[投稿]", "")) or f"社区稿件 #{number}"
+    title = sanitize_plain_metadata((issue.get("_submission", {}).get("payload", {}).get("title") or issue["title"]).replace("[投稿]", "")) or f"社区稿件 #{number}"
     body = issue.get("body") or ""
     info = parse_issue_body(body)
     separator = re.search(r"^---\s*$", body, re.MULTILINE)
     content = body[separator.end():] if separator else body
+    record = issue.get("_submission")
+    if record:
+        content = record["payload"]["content"]
+        info = {"attribution": record["payload"].get("attribution", "匿名"),
+                "type": record["type"], "chapter": record["payload"].get("chapter", "")}
     metadata = {
         "status": "community", "author": info["attribution"],
         "source_issue": f"https://github.com/{REPO}/issues/{number}",
         "submission_date": re.sub(r"[^\d-]", "", issue["created_at"][:10]),
         "title": title,
     }
+    if record:
+        metadata.update(submission_id=record["submissionId"], submission_revision=record["revision"],
+                        submission_type=record["type"])
     return "---\n" + yaml.safe_dump(metadata, allow_unicode=True, sort_keys=False) + "---\n\n" + normalize_markdown(content) + "\n"
 
 
-def index_source(issues: list[dict]) -> str:
+def index_source(issues: list[dict], page=1, total_pages=1) -> str:
     lines = [
         "---", "title: 社区角", "status: community", "---", "",
-        "这里展示来自社区投稿的内容，未经团队深度审核，仅供交流参考．", "",
+        "这里展示经人工审核收录的社区稿件，供学习与交流参考．", "",
     ]
     if not issues:
         lines.append('<p>暂无社区投稿．快来<a href="../submit.md">提交你的第一篇投稿</a>吧！</p>')
+    if total_pages > 1:
+        links = []
+        if page > 1:
+            links.append(f'<a href="{"index" if page == 2 else "page-" + str(page - 1)}.md">上一页</a>')
+        if page < total_pages:
+            links.append(f'<a href="page-{page + 1}.md">下一页</a>')
+        lines += [f'<p>第 {page} / {total_pages} 页 · ' + " · ".join(links) + "</p>", ""]
     for issue in issues:
-        title = sanitize_plain_metadata(issue["title"].replace("[投稿]", "")) or f"社区稿件 #{issue['number']}"
+        record = issue.get("_submission", {})
+        title = sanitize_plain_metadata((record.get("payload", {}).get("title") or issue["title"]).replace("[投稿]", "")) or f"社区稿件 #{issue['number']}"
         info = parse_issue_body(issue.get("body") or "")
+        if record:
+            info = {"attribution": record["payload"].get("attribution", "匿名"), "type": record["type"],
+                    "chapter": record["payload"].get("chapter", "")}
         created = re.sub(r"[^\d-]", "", issue["created_at"][:10])
         # Raw HTML containers keep metadata as text, even if it contains Markdown.
         lines += [f'<h2><a href="{issue["number"]}.md">{html.escape(title)}</a></h2>', ""]
@@ -148,7 +205,9 @@ def index_source(issues: list[dict]) -> str:
 def build_snapshot(issues: list[dict]) -> dict[str, str]:
     issues = validate_issues(issues)
     pages = {f'{issue["number"]}.md': page_source(issue) for issue in issues}
-    pages["index.md"] = index_source(issues)
+    total = max(1, (len(issues) + 19) // 20)
+    for index in range(total):
+        pages["index.md" if index == 0 else f"page-{index + 1}.md"] = index_source(issues[index * 20:(index + 1) * 20], index + 1, total)
     for source in pages.values():
         render_community_markdown(source.split("---\n", 2)[2])
     return pages
@@ -169,7 +228,7 @@ def read_manifest(path: Path) -> dict[str, dict]:
     for name, entry in data["files"].items():
         if not OWNED_NAME.fullmatch(name) or not isinstance(entry, dict) or not re.fullmatch(r"[a-f0-9]{64}", str(entry.get("sha256", ""))):
             raise ValueError("Invalid managed community file")
-        expected_issue = None if name == "index.md" else int(name[:-3])
+        expected_issue = None if name == "index.md" or name.startswith("page-") else int(name[:-3])
         if entry.get("issue") != expected_issue:
             raise ValueError("Community manifest Issue/path mismatch")
     return data["files"]
@@ -186,11 +245,29 @@ def _atomic_write(path: Path, data: bytes) -> None:
         temporary.unlink(missing_ok=True)
 
 
-def apply_snapshot(pages: dict[str, str], output_dir: Path, manifest_path: Path) -> bool:
+def merge_markdown(base, current, incoming):
+    base, current, incoming = (value.replace("\r\n", "\n").replace("\r", "\n") for value in (base, current, incoming))
+    if current == base or current == incoming:
+        return incoming
+    if incoming == base:
+        return current
+    with tempfile.TemporaryDirectory(prefix="plw-community-merge-") as directory:
+        paths = [Path(directory) / name for name in ("current.md", "base.md", "incoming.md")]
+        for path, text in zip(paths, (current, base, incoming)):
+            path.write_text(text, encoding="utf-8", newline="\n")
+        result = subprocess.run(["git", "merge-file", "-p", *(str(path) for path in paths)],
+                                capture_output=True, text=True, encoding="utf-8")
+        if result.returncode:
+            raise SnapshotConflict("Maintainer changes conflict with the author revision")
+        return result.stdout
+
+
+def apply_snapshot(pages: dict[str, str], output_dir: Path, manifest_path: Path, *, withdrawn=None) -> bool:
     previous = read_manifest(manifest_path)
     if output_dir.is_symlink():
         raise SnapshotConflict("Community directory must not be a symlink")
     desired = {name: source.encode("utf-8") for name, source in pages.items()}
+    generated = desired.copy()
     if any(not OWNED_NAME.fullmatch(name) for name in desired):
         raise ValueError("Invalid snapshot path")
     updates: dict[str, bytes] = {}
@@ -207,15 +284,22 @@ def apply_snapshot(pages: dict[str, str], output_dir: Path, manifest_path: Path)
         if current is not None and expected is None:
             raise SnapshotConflict(f"Unmanaged community file needs review: {name}")
         if expected is not None and (current is None or _digest(current) != expected["sha256"]):
-            raise SnapshotConflict(f"Maintainer changes conflict with generated content: {name}")
+            if current is None or next_content is None or not isinstance(expected.get("generated"), str):
+                raise SnapshotConflict(f"Maintainer changes conflict with generated content: {name}")
+        if expected is not None and current is not None and next_content is not None and isinstance(expected.get("generated"), str):
+            next_content = merge_markdown(expected["generated"], current.decode("utf-8"), next_content.decode("utf-8")).encode("utf-8")
+            desired[name] = next_content
+            if next_content == current:
+                continue
         if next_content is None:
             removals.append(path)
         else:
             updates[name] = next_content
     manifest = {"version": 1, "files": {
-        name: {"issue": None if name == "index.md" else int(name[:-3]), "sha256": _digest(data)}
+        name: {"issue": None if name == "index.md" or name.startswith("page-") else int(name[:-3]),
+               "sha256": _digest(data), "generated": generated[name].decode("utf-8")}
         for name, data in sorted(desired.items())
-    }}
+    }, "withdrawn": withdrawn or {}}
     manifest_bytes = (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     manifest_changed = not manifest_path.exists() or manifest_path.read_bytes() != manifest_bytes
     # Preflight all conflicts above; stage the complete snapshot before applying it.
@@ -234,8 +318,28 @@ def apply_snapshot(pages: dict[str, str], output_dir: Path, manifest_path: Path)
 
 
 def generate_snapshot(output_dir: Path, manifest_path: Path, *, issues=None) -> bool:
-    pages = build_snapshot(fetch_issues() if issues is None else issues)
-    return apply_snapshot(pages, output_dir, manifest_path)
+    issues = fetch_issues(include_withdrawn=True) if issues is None else issues
+    for issue in issues:
+        if not issue.get("_history"):
+            continue
+        # An in-flight draft may follow author revisions. Published content needs a new explicit acceptance.
+        current = output_dir / f"{issue['number']}.md"
+        current_revision = frontmatter.loads(current.read_text(encoding="utf-8")).get("submission_revision", 0) if current.exists() else 0
+        root = output_dir.resolve().parents[1]
+        main = subprocess.run(["git", "show", f"origin/main:docs/community/{issue['number']}.md"],
+                              cwd=root, capture_output=True, text=True, encoding="utf-8")
+        main_revision = frontmatter.loads(main.stdout).get("submission_revision", 0) if main.returncode == 0 else 0
+        published = max(main_revision, issue.get("_published_revision", 0))
+        allowed = issue["_submission"]["revision"] if current_revision > published or not published else issue["_approved_revision"]
+        issue["_submission"] = next(record for record in reversed(issue["_history"]) if record["revision"] <= allowed)
+    withdrawn = {}
+    for issue in issues:
+        if WITHDRAWN in {label["name"] for label in issue["labels"]}:
+            record = issue.get("_submission", {})
+            withdrawn[str(issue["number"])] = {"revision": record.get("revision", 1), "type": record.get("type", "notes"),
+                                             **({"submissionId": record["submissionId"]} if record.get("submissionId") else {})}
+    pages = build_snapshot(issues)
+    return apply_snapshot(pages, output_dir, manifest_path, withdrawn=withdrawn)
 
 
 def main(argv=None) -> int:

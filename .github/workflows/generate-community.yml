@@ -1,22 +1,31 @@
 name: Generate Community Pages
-
 on:
   schedule:
     - cron: "0 */6 * * *"
   workflow_dispatch:
-
+  issues:
+    types: [labeled]
+  issue_comment:
+    types: [created]
 concurrency:
   group: community-submissions-sync
   cancel-in-progress: false
-
 permissions:
   contents: write
+  issues: write
   pull-requests: write
-
 jobs:
   generate:
-    name: Generate community pages
+    if: >-
+      github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'issues' && !github.event.issue.pull_request &&
+       (github.event.label.name == '投稿-已收录' || github.event.label.name == '投稿-接受修订' || github.event.label.name == '投稿-撤稿批准')) ||
+      (github.event_name == 'issue_comment' && !github.event.issue.pull_request &&
+       !contains(github.event.issue.labels.*.name, '投稿-题目') && contains(github.event.comment.body, 'plw-submission-v1'))
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,16 +37,22 @@ jobs:
         with:
           python-version: "3.11"
       - uses: astral-sh/setup-uv@v6
-        with:
-          version: "latest"
       - uses: actions/setup-node@v4
         with:
           node-version: "20.x"
           cache: "yarn"
       - run: uv sync --frozen
       - run: corepack yarn --frozen-lockfile
+      - name: Verify editorial decision or author revision
+        id: event
+        if: github.event_name == 'issues' || github.event_name == 'issue_comment'
+        run: uv run python -m scripts.submissions.operations community-event
       - name: Generate, validate and synchronize review PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.COMMUNITY_BOT_TOKEN || secrets.GITHUB_TOKEN }}
+        if: steps.event.outputs.sync != 'false'
         run: uv run python -m scripts.community.sync
+      - name: Link submissions to their review PR
+        if: steps.event.outputs.sync != 'false'
+        run: uv run python -m scripts.submissions.community_state
+      - name: Report paused synchronization
+        if: failure() && (github.event_name == 'issues' || github.event_name == 'issue_comment')
+        run: uv run python -m scripts.submissions.operations community-failure

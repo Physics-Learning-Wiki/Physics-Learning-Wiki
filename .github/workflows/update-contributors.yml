@@ -1,36 +1,39 @@
-# .github/workflows/update-contributors.yml
 name: Update Contributors Wall
-
 on:
   schedule:
     - cron: "0 0 1 * *"
   workflow_dispatch:
-
+concurrency:
+  group: community-submissions-sync
+  cancel-in-progress: false
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
 jobs:
-  update:
-    name: Update contributor wall
+  generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GITHUB_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
+          submodules: true
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Generate contributors page
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python scripts/generate-contributors.py
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/intro/contributors.md
-          if git diff --staged --quiet; then
-            echo "No changes to contributors page"
-          else
-            git commit -m "chore: update contributors wall [skip ci]"
-            git push
-          fi
+      - uses: astral-sh/setup-uv@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "yarn"
+      - run: uv sync --frozen
+      - run: corepack yarn --frozen-lockfile
+      - name: Generate contributor statistics and community review PR
+        run: uv run python -m scripts.community.sync --contributors
+      - name: Link submissions to their review PR
+        run: uv run python -m scripts.submissions.community_state

@@ -55,6 +55,9 @@ class FakeGitHub:
         self.created.append(branch)
         return f"https://github.com/{REPO}/pull/{number}"
 
+    def make_draft(self, number):
+        next(pr for pr in self.prs if pr["number"] == number)["draft"] = True
+
 
 class LocalRepository:
     def __init__(self, root):
