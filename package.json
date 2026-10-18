@@ -33,7 +33,7 @@
     "media:optimize": "node scripts/post-build/media/optimize-images.mjs",
     "media:test": "node --test scripts/post-build/media/tests/optimize-images.test.mjs",
     "quiz:format:check": "prettier --check \"scripts/quiz/**/*.ts\"",
-    "submit:test": "node --loader ts-node/esm --test workers/submit.test.js workers/submit-ui.test.js",
+    "submit:test": "node --loader ts-node/esm --test workers/submit.test.js workers/submit-ui.test.js workers/submissions.test.js",
     "submit:check": "node --check docs/_static/js/features/submit.js && node --check docs/_static/js/features/question-contribute.js && node --check workers/submit.js",
     "forms:typecheck": "tsc -p tsconfig.forms.json",
     "forms:test": "node --loader ts-node/esm --test scripts/forms/tests/index.test.ts",
@@ -42,7 +42,11 @@
     "perf:audit": "node scripts/perf/audit-site.mjs",
     "docs:format:remark": "remark docs/ -o",
     "docs:format:check": "node --loader ts-node/esm scripts/checker/checker.ts -i",
-    "post-build:test": "node --loader ts-node/esm --test scripts/post-build/math/tests/ssr.test.ts scripts/post-build/commits-info/tests/commits-info.test.ts"
+    "post-build:test": "node --loader ts-node/esm --test scripts/post-build/math/tests/ssr.test.ts scripts/post-build/commits-info/tests/commits-info.test.ts",
+    "submission:contract": "node scripts/submissions/build-contract.mjs",
+    "submission:contract:check": "node scripts/submissions/build-contract.mjs --check",
+    "worker:dev": "wrangler dev",
+    "worker:deploy": "wrangler deploy"
   },
   "repository": {
     "type": "git",
@@ -100,13 +104,16 @@
     "@playwright/test": "1.63.0",
     "@types/klaw": "^3.0.3",
     "@types/yargs": "^17.0.10",
+    "ajv": "8.17.1",
     "easymde": "2.21.0",
     "esbuild": "^0.25.0",
     "mermaid": "11.17.2",
+    "miniflare": "3.20250718.3",
     "pagefind": "1.5.2",
     "prettier": "^2.7.1",
     "sharp": "0.35.4",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "wrangler": "3.114.15"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

@@ -25,7 +25,10 @@ def blocks(body: str, kind: str) -> list[dict]:
     pattern = re.compile(r"^" + FENCE + "json " + re.escape(kind) + r"\s*\n([^\n]+)\n" + FENCE + r"\s*$", re.M)
     result = []
     for match in pattern.finditer(body or ""):
-        value = json.loads(match[1])
+        try:
+            value = json.loads(match[1])
+        except ValueError:
+            continue  # Human prose may contain examples; the server record is last.
         if not isinstance(value, dict):
             raise ValueError("Machine record must be an object")
         result.append(value)
@@ -35,16 +38,14 @@ def blocks(body: str, kind: str) -> list[dict]:
 def latest_revision(issue: dict, comments: list[dict]) -> dict:
     records = blocks(issue.get("body") or "", "plw-submission-v1")
     if records:
-        if len(records) != 1:
-            raise ValueError("Ambiguous initial submission record")
-        initial = records[0]
+        initial = records[-1]
         if initial.get("revision") != 1:
             raise ValueError("Initial revision must be 1")
         current = initial
         for comment in sorted(comments, key=lambda c: c["id"]):
             if comment.get("user", {}).get("id") != issue.get("user", {}).get("id"):
                 continue
-            for candidate in blocks(comment.get("body") or "", "plw-submission-v1"):
+            for candidate in blocks(comment.get("body") or "", "plw-submission-v1")[-1:]:
                 if (candidate.get("submissionId") != initial.get("submissionId")
                         or candidate.get("type") != initial.get("type")):
                     raise ValueError("Revision source mismatch")

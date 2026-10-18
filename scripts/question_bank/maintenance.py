@@ -87,6 +87,8 @@ def submission_document(root: Path, payload: dict[str, Any]) -> tuple[Path, dict
         raise ValueError("submission question attribution must not contain HTML tags")
     if source.get("ai_name") and re.search(r"[<>]", str(source["ai_name"])):
         raise ValueError("submission question ai_name must not contain HTML tags")
+    from scripts.submissions.contract import validate_question
+    validate_question(source)
     issue_url = payload.get("issueUrl")
     if issue_url:
         match = ISSUE_URL_RE.fullmatch(str(issue_url))
@@ -132,6 +134,14 @@ def submission_document(root: Path, payload: dict[str, Any]) -> tuple[Path, dict
         question["response"] = source.get("response")
         question["grading"] = source.get("grading")
         question["reference_answer"] = source.get("reference_answer")
+    if declaration := payload.get("sourceDeclaration"):
+        if declaration.get("kind") not in {"original", "adapted"} or not declaration.get("note"):
+            raise ValueError("invalid source declaration")
+        question["provenance"] = {
+            "type": declaration["kind"], "note": declaration["note"],
+            "ai_assisted": bool(source.get("ai_assisted")),
+            **{name: declaration[name] for name in ("source", "permission") if declaration.get(name)},
+        }
     for field in ("topics", "concepts", "objectives", "related_pages", "choices", "feedback", "hints"):
         if source.get(field):
             question[field] = source[field]

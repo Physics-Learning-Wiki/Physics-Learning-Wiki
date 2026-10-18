@@ -21,3 +21,5 @@ GitHub 是稿件与审核记录的权威来源；D1 只保存凭证摘要、关�
 实施前已验证：Worker 25 项测试，以及导入与社区相关 44 项测试通过．
 
 A: 14 targeted tests passed; read-only remote migration inventory found no legacy open question PRs or closed community submissions. Production branch protection remains a separate administrator prerequisite.
+
+B: 31 Worker/contract tests passed, including real Miniflare D1 SQLite concurrency, response-loss recovery, revision authentication and withdrawal requests. Generated contract check passes. D1 provisioning and both production write flags remain explicitly disabled until operator validation.

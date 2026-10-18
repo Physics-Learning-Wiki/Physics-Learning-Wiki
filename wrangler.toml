@@ -8,3 +8,14 @@ compatibility_date = "2024-01-01"
 [vars]
 ALLOWED_HOSTNAMES = "physics-learning-wiki.github.io"
 ENVIRONMENT = "production"
+SUBMISSIONS_ENABLED = "false"
+AUTHOR_MUTATIONS_ENABLED = "false"
+
+# Enable only after checking the current account's included D1 quota, applying
+# workers/migrations and validating a preview deployment. Never buy/upgrade a plan
+# as part of deploying this Worker.
+# [[d1_databases]]
+# binding = "SUBMISSIONS_DB"
+# database_name = "plw-submissions"
+# database_id = "<actual UUID returned by Cloudflare>"
+# migrations_dir = "workers/migrations"

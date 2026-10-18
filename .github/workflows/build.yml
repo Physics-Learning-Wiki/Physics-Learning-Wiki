@@ -59,6 +59,7 @@ jobs:
           corepack yarn runtime:test
           corepack yarn runtime:build:check
           corepack yarn submit:test
+          corepack yarn submission:contract:check
           corepack yarn submit:check
           corepack yarn forms:typecheck
           corepack yarn forms:test
