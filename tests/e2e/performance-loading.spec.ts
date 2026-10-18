@@ -10,6 +10,7 @@ const forbiddenOrdinaryPageRequests = [
   /(?:^|\/)css\/quiz\.css/i,
   /(?:^|\/)features\/submit\.(?:js|css)/i,
   /(?:^|\/)features\/question-contribute\.(?:js|css)/i,
+  /(?:^|\/)features\/submission-status\.(?:js|css)/i,
   /easymde/i,
   /(?:^|\/)pagefind(?:\/|\.|-)/i,
   /(?:^|\/)\_generated\/question-bank\//i

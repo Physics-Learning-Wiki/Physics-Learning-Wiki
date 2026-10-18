@@ -40,6 +40,11 @@ jobs:
         run: uv sync
       - name: Install Node.js dependencies
         run: corepack yarn --frozen-lockfile
+      - name: Guard published submission amendments
+        if: github.event_name == 'pull_request'
+        env:
+          SUBMISSION_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: uv run python -m scripts.submissions.amendments --base "$SUBMISSION_BASE_SHA"
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
       - name: Validate question bank

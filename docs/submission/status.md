@@ -23,7 +23,7 @@ status: review
       <label for="submission-withdraw-reason">撤稿申请说明</label>
       <textarea id="submission-withdraw-reason" required maxlength="2000"></textarea>
       <div id="turnstile-widget"></div>
-      <button type="submit">提交撤稿申请</button>
+      <button id="submission-withdraw-submit" type="submit">提交撤稿申请</button>
     </form>
     <p>撤稿申请由维护者审核，实际下线后才会标记「已撤回」．关闭 GitHub Issue 表示处理结束，不会自动撤稿．</p>
   </section>

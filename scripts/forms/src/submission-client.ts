@@ -117,6 +117,11 @@ export function showFieldErrors(form: HTMLFormElement, errors: Record<string, st
     notice.textContent = message;
     target.after(notice);
   }
+  const invalid = form.querySelector<HTMLElement>('[aria-invalid="true"]');
+  if (invalid) {
+    invalid.scrollIntoView({ block: "center" });
+    invalid.focus();
+  }
 }
 export function receiptCard(document: Document, receipt: Receipt, parent: HTMLElement): HTMLElement {
   parent.querySelector("[data-submission-receipt]")?.remove();
@@ -158,6 +163,7 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
   const key = "plw:pending-submission:v1:" + siteRoot(document).pathname + ":" + form.id;
   let attempt: Attempt | undefined;
   let revisionReceipt: Receipt | undefined;
+  let revisionRecord: SubmissionEnvelope | undefined;
   try {
     const stored = JSON.parse(document.defaultView!.sessionStorage.getItem(key) || "null");
     const receipt = parseReceipt(stored?.receipt);
@@ -177,8 +183,9 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
     }
   };
   return {
-    setRevision(receipt: Receipt) {
+    setRevision(receipt: Receipt, record?: SubmissionEnvelope) {
       revisionReceipt = receipt;
+      revisionRecord = record;
       attempt = undefined;
       try {
         document.defaultView!.sessionStorage.removeItem(key);
@@ -186,9 +193,32 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
         /* Optional. */
       }
     },
+    questionExtras(type: string): Record<string, unknown> {
+      const original = revisionRecord?.payload.question;
+      if (!original) return {};
+      const extras: Record<string, unknown> = {};
+      for (const key of ["hints", "objectives", "related_pages", "choice_order"])
+        if (key in original && (key !== "choice_order" || original.type === type)) extras[key] = original[key];
+      if (original.ai_name && form.querySelector<HTMLInputElement>("#q-submit-ai")?.checked)
+        extras.ai_name = original.ai_name;
+      const topic = form.querySelector<HTMLSelectElement>("#q-submit-topic")?.value;
+      if (Array.isArray(original.topics) && original.topics.length > 1)
+        extras.topics = [...new Set([...(topic ? [topic] : []), ...original.topics.slice(1)])];
+      if (original.type === type && type === "free_response") {
+        extras.response = original.response;
+        extras.reference_answer = original.reference_answer;
+      }
+      return extras;
+    },
+    additionalMedia(): unknown[] {
+      const media = revisionRecord?.payload.question?.external_media;
+      return Array.isArray(media) ? media.slice(1) : [];
+    },
     async submit(
       input: Omit<SubmissionEnvelope, "schemaVersion" | "submissionId" | "licenseVersion">
     ): Promise<SubmissionResult> {
+      if (new URL(document.baseURI).searchParams.has("submission") && !revisionReceipt)
+        throw new Error("尚未载入要修订的稿件，请先导入管理回执并重新查询最新版本．");
       const { turnstileToken, ...snapshotData } = input;
       const snapshot = JSON.stringify(snapshotData);
       if (attempt?.pending && attempt.snapshot !== snapshot) {
@@ -237,12 +267,14 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
       const data = (await result.json()) as SubmissionResult & {
         message?: string;
         error?: string;
+        code?: string;
+        requestId?: string;
         fieldErrors?: Record<string, string>;
       };
       if (!result.ok) {
         showFieldErrors(form, data.fieldErrors || {});
         // A definite rejection permits editing. Unknown writes always return 202.
-        if (result.status < 500) attempt.pending = false;
+        if (result.status < 500 || (data.code && data.requestId)) attempt.pending = false;
         save();
         throw new Error(data.message || data.error || "投稿服务暂时不可用，请保留草稿与回执．");
       }

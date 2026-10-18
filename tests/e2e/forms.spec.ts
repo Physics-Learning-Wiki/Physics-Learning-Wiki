@@ -477,3 +477,162 @@ async function agreeLicense(page: Page): Promise<void> {
   await page.locator("#submission-source-note").fill("由本人整理撰写的测试稿件");
   await page.locator("#submit-license, #q-submit-license").check();
 }
+
+test("question numeric drafts restore explicitly and never restore identity, consent or credentials", async ({
+  page
+}) => {
+  await mockTurnstile(page);
+  await page.goto(`${basePath}quiz/contribute/`);
+  await page.locator("#q-submit-type").selectOption("numeric");
+  await setEditorText(page, 0, "测量一个极小物理量的数值．");
+  await setEditorText(page, 1, "根据给定条件计算．");
+  await page.locator("#q-submit-answer").fill("1e-30");
+  await page.locator("#q-submit-tolerance-type").selectOption("relative");
+  await page.locator("#q-submit-tolerance").fill("1");
+  await page.locator("#q-submit-unit-required").check();
+  await page.locator("#q-submit-unit-canonical").fill("m");
+  await page.locator("#q-submit-unit-accepted").fill("m, metre");
+  await page.locator("#q-submit-attribution").fill("private-author");
+  await agreeLicense(page);
+  await page.locator("#q-submit-numeric-example").fill("1e-20");
+  await page.locator("#q-submit-numeric-example-unit").fill("m");
+  await expect(page.locator("#q-submit-numeric-result")).toContainText("判为错误");
+  const key = "plw:question-draft:v1:/Physics-Learning-Wiki/";
+  await expect.poll(() => page.evaluate(key => localStorage.getItem(key), key)).toContain("1e-30");
+  expect(await page.evaluate(key => localStorage.getItem(key), key)).not.toMatch(
+    /private-author|licenseConsent|turnstileToken|Bearer/
+  );
+  await page.reload();
+  await page.getByRole("button", { name: "恢复题目草稿", exact: true }).click();
+  await expect(page.locator("#q-submit-type")).toHaveValue("numeric");
+  await expect(page.locator("#q-submit-answer")).toHaveValue("1e-30");
+  await expect(page.locator("#q-submit-tolerance")).toHaveValue("1");
+  await expect(page.locator("#q-submit-attribution")).toHaveValue("");
+  await expect(page.locator("#q-submit-license")).not.toBeChecked();
+  const exported = page.waitForEvent("download");
+  await page.getByRole("button", { name: "导出题目草稿", exact: true }).click();
+  expect((await exported).suggestedFilename()).toBe("plw-question-draft.json");
+});
+
+test("receipt management authenticates through headers and withdrawal remains pending", async ({ page }) => {
+  await mockTurnstile(page);
+  const id = "123e4567-e89b-42d3-a456-426614174000",
+    token = "a".repeat(64);
+  const receipt = {
+    schemaVersion: 1,
+    submissionId: id,
+    token,
+    operationKey: "123e4567-e89b-42d3-a456-426614174001",
+    revision: 1,
+    type: "notes"
+  };
+  const requests: Array<{ method: string; authorization?: string; url: string }> = [];
+  let withdrawalRequested = false;
+  await page.route("https://submit.folderrewind.top/**", async route => {
+    const request = route.request();
+    requests.push({ method: request.method(), authorization: request.headers().authorization, url: request.url() });
+    if (request.method() === "POST") withdrawalRequested = true;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify({
+        submissionId: id,
+        type: "notes",
+        revision: 2,
+        stage: "received",
+        operationState: "completed",
+        withdrawalRequested,
+        published: { revision: 1, url: "https://physics-learning-wiki.github.io/Physics-Learning-Wiki/community/123/" }
+      })
+    });
+  });
+  await page.goto(`${basePath}submission/status/?id=${id}`);
+  await expect(page.locator("#submission-query-message")).toContainText("已收到");
+  await expect(page.locator("#submission-author-actions")).toBeHidden();
+  await page.locator("#submission-receipt-file").setInputFiles({
+    name: "receipt.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(receipt))
+  });
+  await expect(page.locator("#submission-author-actions")).toBeVisible();
+  await expect(page.getByRole("link", { name: "访问当前线上版本（第 1 版）" })).toBeVisible();
+  await expect(page.locator("#submission-edit-link")).toHaveAttribute("href", new RegExp("submission=" + id));
+  await page.locator("#submission-withdraw-reason").fill("需要修正后重新整理．");
+  await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toBeVisible();
+  await page.getByRole("button", { name: "提交撤稿申请", exact: true }).click();
+  await expect(page.locator("#submission-query-message")).toContainText("撤稿申请已收到");
+  expect(requests.find(r => r.method === "POST")?.authorization).toBe("Bearer " + token);
+  expect(requests.every(r => !r.url.includes(token))).toBe(true);
+  await expect(page.getByRole("button", { name: "提交撤稿申请", exact: true })).toBeDisabled();
+});
+
+test("author revision retains structured question metadata and requires renewed consent", async ({ page }) => {
+  await mockTurnstile(page);
+  const id = "123e4567-e89b-42d3-a456-426614174000",
+    token = "a".repeat(64);
+  await page.addInitScript(
+    ({ id, token }) =>
+      sessionStorage.setItem(
+        "plw:submission-receipt:v1:/Physics-Learning-Wiki/:" + id,
+        JSON.stringify({
+          schemaVersion: 1,
+          submissionId: id,
+          token,
+          operationKey: "123e4567-e89b-42d3-a456-426614174001",
+          revision: 1,
+          type: "question"
+        })
+      ),
+    { id, token }
+  );
+  let submitted: Record<string, unknown> | undefined;
+  const question = {
+    type: "true_false",
+    stem: "原稿判断题题干．",
+    solution: "原稿解析．",
+    answer: { value: true },
+    hints: ["保留的提示"],
+    external_media: [
+      { url: "https://example.com/a.png", alt: "图一", rights_note: "作者授权" },
+      { url: "https://example.com/b.png", alt: "图二", rights_note: "作者授权" }
+    ]
+  };
+  await page.route("https://submit.folderrewind.top/**", async route => {
+    if (route.request().method() === "POST") submitted = route.request().postDataJSON() as Record<string, unknown>;
+    await route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify(
+        submitted
+          ? { revision: 3, issueUrl: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123" }
+          : {
+              revision: 2,
+              record: {
+                schemaVersion: 1,
+                submissionId: id,
+                type: "question",
+                payload: { title: "判断题", content: question.stem, question, attribution: "作者" },
+                sourceDeclaration: { kind: "original", note: "本人整理" }
+              }
+            }
+      )
+    });
+  });
+  await page.goto(`${basePath}quiz/contribute/?submission=${id}`);
+  await expect(page.locator("#q-submit-status")).toContainText("正在修订第 2 版");
+  await expect(page.locator("#q-submit-license")).not.toBeChecked();
+  await expect(page.locator("#q-submit-attribution")).toHaveValue("作者");
+  await setEditorText(page, 1, "作者修订后的解析．");
+  await agreeLicense(page);
+  await page.locator("#q-submit-btn").click();
+  await expect(page.locator("#q-submit-success")).toBeVisible();
+  expect(submitted).toMatchObject({
+    submissionId: id,
+    baseRevision: 2,
+    payload: {
+      question: { hints: ["保留的提示"], external_media: question.external_media, solution: "作者修订后的解析．" }
+    }
+  });
+});

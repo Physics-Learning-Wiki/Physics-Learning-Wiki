@@ -237,7 +237,9 @@ export function mountQuestionDraft(form: HTMLFormElement, editors: Record<string
         if (same(snapshot(), submitted)) {
           dirty = false;
           if (timer) clearTimeout(timer);
-          window.localStorage.removeItem(key);
+          const stored = window.localStorage.getItem(key);
+          const saved = stored ? parseQuestionDraft(stored) : undefined;
+          if (!saved || same(saved, submitted)) window.localStorage.removeItem(key);
         } else {
           dirty = true;
           flush();

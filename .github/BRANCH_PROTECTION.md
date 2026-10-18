@@ -33,10 +33,10 @@
 
 仓库运行以下两类自动化 PR 任务：
 - `bot/community-submissions-<run-id>`：由 `.github/workflows/generate-community.yml` 生成的社区投稿同步 PR；已有开放 PR 时继续使用其分支，关闭或合并后创建后继分支并保留旧分支．
-- `bot/question-import`：由题库导入工作流生成的题目入库草稿 PR．
+- `codex/question-submission/issue-<number>-r<revision>-<run-id>`：由题库导入工作流生成的题目入库草稿 PR．
 
 ### 审阅与 CI 触发流程：
-1. **CI 触发与批准**：使用默认 `GITHUB_TOKEN` 创建或更新 PR 后，检查可能需要维护者批准；按照该 PR 的 Actions 提示操作，并核实两个必需检查均对应最新提交．若没有生成检查运行，使用独立且权限受限的 `COMMUNITY_BOT_TOKEN`（例如由既有机制生成的 GitHub App 安装令牌）触发 PR 检查．其他提交上的手动 Build 不能代替本 PR 的必需检查．参见 [GitHub 官方触发规则](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#triggering-a-workflow-from-a-workflow)．
+1. **CI 触发与批准**：使用默认 `GITHUB_TOKEN` 创建或更新 PR 后，检查可能需要维护者批准；按照该 PR 的 Actions 提示操作，并核实两个必需检查均对应最新提交．若检查未生成或无法批准，停止合并并检查工作流权限与触发记录，继续使用已约定的 `GITHUB_TOKEN` 策略．其他提交上的手动 Build 不能代替本 PR 的必需检查．参见 [GitHub 官方触发规则](https://docs.github.com/en/actions/how-tos/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#triggering-a-workflow-from-a-workflow)．
 2. **内容对抗核验**：维护者核实 `docs/community/` 下生成的 Markdown 不含可疑外部引用或未授权内容．
 3. **合并前确认**：确认两项必需状态检查（Required Status Checks）全部通过后，维护者方可执行 Squash & Merge．
 

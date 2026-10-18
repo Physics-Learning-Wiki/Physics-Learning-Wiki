@@ -4,10 +4,12 @@
 
 ## 实施批次
 
-- [ ] A：Issue 派生编号、来源关联、幂等导入、PR 恢复、真实草稿状态、历史迁移清单．
-- [ ] B：共享投稿契约、D1 迁移、凭证摘要、幂等操作、失败恢复、统一错误与许可记录．
-- [ ] C：两类表单草稿与导出、数值容差和同尺度单位别名、媒体审核记录．
-- [ ] D：进度与管理页面、作者修订、受管 PR 三方合并、部署清单与实际发布确认．
+以下勾选表示代码与本地验证完成，生产环境真实链路另行记录．
+
+- [x] A：Issue 派生编号、来源关联、幂等导入、PR 恢复、真实草稿状态、历史迁移清单．
+- [x] B：共享投稿契约、D1 迁移、凭证摘要、幂等操作、失败恢复、统一错误与许可记录．
+- [x] C：两类表单草稿与导出、数值容差和同尺度单位别名、媒体审核记录．
+- [x] D：进度与管理页面、作者修订、受管 PR 三方合并、部署清单与实际发布确认．
 - [ ] E：社区导航和分页、明确撤稿、贡献统计审核 PR、分类初审、七日关注队列．
 
 ## 发布约束
@@ -20,8 +22,10 @@ GitHub 是稿件与审核记录的权威来源；D1 只保存凭证摘要、关�
 
 实施前已验证：Worker 25 项测试，以及导入与社区相关 44 项测试通过．
 
-A: 14 targeted tests passed; read-only remote migration inventory found no legacy open question PRs or closed community submissions. Production branch protection remains a separate administrator prerequisite.
+A: 14 targeted tests passed; read-only remote migration inventory found no legacy open question PRs or closed community submissions. 2026-10-18 已应用并回读验证 main 保护，详见 submission-protection-verification.json；只读历史清单见 submission-migration.json．
 
 B: 31 Worker/contract tests passed, including real Miniflare D1 SQLite concurrency, response-loss recovery, revision authentication and withdrawal requests. Generated contract check passes. D1 provisioning and both production write flags remain explicitly disabled until operator validation.
 
 C: 8 browser form regressions passed after aligning chapter separators and selectable taxonomy IDs. Forms typecheck/unit/build checks, runtime tests and Quiz grading tests pass. Draft and receipt storage are separate; authorization must be confirmed again on restore.
+
+D：新增部署清单、正文版本标记及线上 SHA / 题库指纹核验；33 项 Worker 测试通过，覆盖上游成功但 D1 写回失败、匿名凭证、版本冲突和实际线上版本状态．本地裸 Git 远端验证三个并行投稿 PR、五次重试、PR 创建失败恢复和人工编辑合并．

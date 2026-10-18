@@ -38,6 +38,7 @@ async function harness(t) {
           updated_at: new Date().toISOString(), html_url: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/" + number,
           labels: data.labels.map(name => ({ name })) };
         issues.push(issue);
+        if (state.delayResponse) await state.delayResponse;
         if (state.committedTimeout) { state.committedTimeout = false; throw new Error("connection lost: secret-must-not-leak"); }
         return Response.json(issue, { status: 201 });
       }
@@ -89,6 +90,62 @@ test("D1: parallel requests reserve only one upstream side effect", async t => {
   const results = await Promise.all([h.call(envelope, { key }), h.call(envelope, { key }), h.call(envelope, { key })]);
   assert.ok(results.every(r => [200, 201, 202].includes(r.status)), await Promise.all(results.map(r => r.clone().text())));
   assert.equal(h.issues.length, 1);
+});
+
+test("D1: finalization failure after an upstream commit remains recoverable across a restart", async t => {
+  const h = await harness(t), envelope = base(), key = crypto.randomUUID();
+  let fail = true;
+  h.env.SUBMISSIONS_DB = {
+    prepare: (...args) => h.db.prepare(...args),
+    batch: (...args) => { if (fail) { fail = false; throw new Error("D1 write unavailable"); } return h.db.batch(...args); }
+  };
+  assert.equal((await h.call(envelope, { key })).status, 202);
+  assert.equal(h.issues.length, 1);
+  h.env.SUBMISSIONS_DB = h.db;
+  const result = await h.call(undefined, { method: "GET", path: "/v1/submissions/" + envelope.submissionId });
+  assert.equal(result.status, 200);
+  assert.equal((await result.json()).issueNumber, 100);
+  assert.equal((await h.call(envelope, { key })).status, 200);
+  assert.equal(h.issues.length, 1);
+});
+
+test("D1: a delayed original response cannot overwrite a newer recovered revision", async t => {
+  const h = await harness(t), envelope = base();
+  let resume;
+  h.state.delayResponse = new Promise(resolve => { resume = resolve; });
+  const original = h.call(envelope);
+  while (!h.issues.length) await new Promise(resolve => setTimeout(resolve, 5));
+  const path = "/v1/submissions/" + envelope.submissionId;
+  const recovered = await (await h.call(undefined, { path, method: "GET" })).json();
+  assert.equal(recovered.revision, 1);
+  const revised = await h.call({ ...envelope, baseRevision: 1 }, { path: path + "/revisions" });
+  assert.equal(revised.status, 200);
+  resume();
+  assert.equal((await original).status, 201);
+  assert.equal((await h.db.prepare("SELECT revision FROM submissions WHERE id=?").bind(envelope.submissionId).first()).revision, 2);
+});
+
+test("status requires verified deployment records and retains only the actually live version", async t => {
+  const h = await harness(t), envelope = base();
+  await h.call(envelope);
+  const path = "/v1/submissions/" + envelope.submissionId;
+  const fence = String.fromCharCode(96).repeat(3);
+  const event = record => h.comments.push({ id: h.comments.length + 1, user: { id: 99 },
+    performed_via_github_app: { slug: "github-actions" }, body: fence + "json plw-submission-status-v1\n" + JSON.stringify(record) + "\n" + fence });
+  h.issues[0].labels = [{ name: "投稿状态:published" }];
+  let data = await (await h.call(undefined, { path, method: "GET" })).json();
+  assert.notEqual(data.stage, "published");
+  event({ stage: "published", revision: 1, sourceSha: "a".repeat(40), url: "https://example.com/live/" });
+  await h.call({ ...envelope, baseRevision: 1 }, { path: path + "/revisions" });
+  data = await (await h.call(undefined, { path, method: "GET" })).json();
+  assert.equal(data.revision, 2);
+  assert.equal(data.stage, "received");
+  assert.equal(data.published.revision, 1);
+  event({ stage: "reviewing", revision: 2, sourceSha: "b".repeat(40), available: false });
+  data = await (await h.call(undefined, { path, method: "GET" })).json();
+  assert.equal(data.published, undefined);
+  h.issues[0].state = "closed";
+  assert.notEqual(data.stage, "withdrawn");
 });
 
 test("D1: revisions require the original credential and base revision; withdrawal is only a request", async t => {

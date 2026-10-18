@@ -26,7 +26,7 @@ export async function loadRevisionContext(
     if (!response.ok || !data.record) throw new Error(data.message || "无法载入最新稿件．");
     if (signal.aborted) return;
     receipt.revision = data.revision;
-    client.setRevision(receipt);
+    client.setRevision(receipt, data.record);
     const set = (id: string, value: unknown) => {
       const node = form.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("#" + id);
       if (!node || value === undefined) return;
@@ -92,7 +92,7 @@ export async function loadRevisionContext(
       set("q-submit-img-url", image?.url || "");
       set("q-submit-img-alt", image?.alt || "");
       set("q-submit-img-rights", image?.rights_note || "");
-      set("q-submit-attribution", payload.attribution || "");
+      set("q-submit-attribution", payload.attribution || q.attribution || "");
     } else {
       set("submit-type", data.record.type);
       set("submit-title", payload.title);
@@ -104,6 +104,16 @@ export async function loadRevisionContext(
       set("submit-attribution", payload.attribution || "");
     }
     const source = data.record.sourceDeclaration;
+    const attribution = payload.attribution || (payload.question?.attribution as string | undefined) || "匿名";
+    const named = attribution !== "匿名";
+    const radio = form.querySelector<HTMLInputElement>(
+      'input[type="radio"][value="' + (named ? "named" : "anonymous") + '"]'
+    );
+    if (radio) {
+      radio.checked = true;
+      radio.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    if (named) set(data.record.type === "question" ? "q-submit-attribution" : "submit-attribution", attribution);
     set("submission-source-kind", source.kind);
     set("submission-source-note", source.note);
     set("submission-source-url", source.source || "");

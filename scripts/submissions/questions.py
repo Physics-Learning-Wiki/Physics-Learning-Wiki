@@ -24,6 +24,13 @@ def git(*args, check=True):
     return result.stdout.strip()
 
 
+def managed_path(root, relative):
+    path = root / relative
+    if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+        raise ValueError("Managed question path escapes the repository")
+    return path
+
+
 def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local") -> str:
     root = Path.cwd()
     issue = api.api(f"issues/{number}")
@@ -35,6 +42,7 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
     pr = select_pr(prs, number)
     if revision_event and pr is None:
         api.stage(number, "needs_info", revision["revision"],
+                  waitingFor="maintainer",
                   note="已记录新修订；当前没有开放的投稿 PR，需维护者审核后安排修订 PR．")
         return "Revision recorded; maintainer action required"
 
@@ -68,10 +76,10 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
         if any(item["filename"] not in {qpath, state_path}
                and not item["filename"].startswith("question-bank/assets/") for item in paths):
             raise ValueError("PR contains changes outside its managed question and assets")
-        saved = json.loads((root / state_path).read_text(encoding="utf-8"))
+        saved = json.loads(managed_path(root, state_path).read_text(encoding="utf-8"))
         if digest(saved["payload"]) != record["fingerprint"]:
             raise ValueError("Imported base record does not match PR metadata")
-        current = yaml.safe_load((root / qpath).read_text(encoding="utf-8"))
+        current = yaml.safe_load(managed_path(root, qpath).read_text(encoding="utf-8"))
         _, incoming = submission_document(root, payload)
         incoming["id"] = current["id"]
         incoming["version"] = saved["generated"]["version"]
@@ -79,21 +87,37 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
         merged = three_way(saved["generated"], current, incoming)
         if question_content_fingerprint(merged, root) != question_content_fingerprint(current, root):
             merged.pop("review", None)  # Old attestations remain in Git history.
-        output = root / qpath
+            merged["status"] = "draft"
+        output = managed_path(root, qpath)
     else:
         git("switch", "--detach", "origin/main")
         output, generated = submission_document(root, payload)
         qpath = output.relative_to(root).as_posix()
         state_path = f"question-bank/submissions/issue-{number}.json"
+        output = managed_path(root, qpath)
         if output.exists():
             current = yaml.safe_load(output.read_text(encoding="utf-8"))
-            if current.get("status") == "published":
-                raise ValueError("Published content requires a maintainer amendment PR")
             if current == generated:
                 api.stage(number, "draft_ready", revision["revision"],
                           note="题目草稿已入库，等待专业审核．", question=current["id"])
                 return "Draft is already imported"
-        merged = generated
+            previous_state = managed_path(root, state_path)
+            if not previous_state.exists():
+                raise ValueError("Existing imported content needs a reviewed base before creating an amendment")
+            saved = json.loads(previous_state.read_text(encoding="utf-8"))
+            if revision["revision"] <= saved["payload"].get("revision", 1):
+                api.stage(number, "draft_ready", saved["payload"].get("revision", 1), question=current["id"],
+                          note="本版本已在主分支入库，保持现有内容与审核记录．")
+                return "Revision is already imported"
+            generated["id"] = current["id"]
+            generated["version"] = saved["generated"]["version"]
+            merged = three_way(saved["generated"], current, generated)
+            generated["version"] = current["version"] + (current.get("status") == "published")
+            merged["version"] = generated["version"]
+            merged.pop("review", None)
+            merged["status"] = "draft"
+        else:
+            merged = generated
         if not re.fullmatch(r"[A-Za-z0-9-]{1,80}", run_key):
             raise ValueError("Invalid run identifier")
         branch = f"codex/question-submission/issue-{number}-r{revision['revision']}-{run_key}"
@@ -102,14 +126,14 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
             # Resume only this run's orphaned branch after PR creation failed.
             git("fetch", "--no-tags", "origin", "refs/heads/" + branch)
             git("switch", "--detach", "FETCH_HEAD")
-            saved = json.loads((root / state_path).read_text(encoding="utf-8"))
+            saved = json.loads(managed_path(root, state_path).read_text(encoding="utf-8"))
             if saved.get("payload") != payload or yaml.safe_load((root / qpath).read_text(encoding="utf-8")) != saved["generated"]:
                 raise ValueError("Orphaned branch differs from the current approved payload")
             previous_head = git("rev-parse", "HEAD")
 
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(yaml.safe_dump(merged, allow_unicode=True, sort_keys=False, width=120), encoding="utf-8")
-    record_path = root / state_path
+    record_path = managed_path(root, state_path)
     record_path.parent.mkdir(parents=True, exist_ok=True)
     record_path.write_text(json.dumps({"payload": payload, "generated": generated}, ensure_ascii=False, indent=2) + "\n",
                            encoding="utf-8")
@@ -130,6 +154,7 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
     record = {"repo": REPO, "issue": number, "question": merged["id"], "path": qpath,
               "revision": revision["revision"], "fingerprint": digest(payload)}
     body = f"Refs #{number}\n\n题目草稿：{merged['id']}，投稿修订：{revision['revision']}．\n\n"
+    body += "已有正式题目的修订必须重新完成三维人工签署并发布；主分支检查禁止以草稿替换线上题目．\n\n"
     body += "<!-- plw-question-pr:" + json.dumps(record, separators=(",", ":")) + " -->"
     if pr:
         api.api(f"pulls/{pr['number']}", method="PATCH", body={"body": body})
@@ -188,6 +213,7 @@ def main():
         issue = api.api(f"issues/{number}")
         rev = latest_revision(issue, api.pages(f"issues/{number}/comments?per_page=100"))
         api.stage(number, "needs_info", rev["revision"],
+                  waitingFor="maintainer",
                   note="自动整理暂停：存在内容冲突或校验问题，请维护者查看 Actions 运行并处理．")
         raise
 

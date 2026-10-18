@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-18",
+  "repository": "Physics-Learning-Wiki/Physics-Learning-Wiki",
+  "branch": "main",
+  "verifiedBy": "scripts/admin/branch_protection.py --check",
+  "requiredChecks": [
+    "Check Characters",
+    "Physics-Learning-Wiki Page Build"
+  ],
+  "strict": true,
+  "reviews": {
+    "required_approving_review_count": 1,
+    "dismiss_stale_reviews": true,
+    "require_last_push_approval": true
+  },
+  "enforceAdmins": true,
+  "allowForcePushes": false,
+  "allowDeletions": false,
+  "requireConversationResolution": true
+}

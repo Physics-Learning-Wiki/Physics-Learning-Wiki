@@ -24,7 +24,8 @@ const REPRESENTATIVE_PAGES = [
   "courses/index.html",
   "quiz/index.html",
   "submit/index.html",
-  "quiz/contribute/index.html"
+  "quiz/contribute/index.html",
+  "submission/status/index.html"
 ];
 const FEATURE_RESOURCE_PATTERNS = {
   conceptReference: /(?:^|\/)features\/concept-reference\.(?:js|css)/i,
@@ -34,6 +35,7 @@ const FEATURE_RESOURCE_PATTERNS = {
   quizCss: /quiz\.css/i,
   submit: /(?:submit-form|features\/submit)\.(?:js|css)/i,
   questionContribute: /(?:question-contribute|features\/question-contribute)\.js/i,
+  submissionStatus: /(?:^|\/)features\/submission-status\.(?:js|css)/i,
   easyMde: /easymde/i,
   pagefind: /(?:^|\/)pagefind(?:\/|\.|-)/i
 };
@@ -43,7 +45,8 @@ const FEATURE_SELECTORS = {
   mermaid: "[data-plw-mermaid-source], .mermaid",
   quiz: "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-library-root, #plw-quiz-home-root, .plw-quiz-inline-root",
   submit: "#submission-form",
-  "question-contribute": "#plw-question-contribute-form"
+  "question-contribute": "#plw-question-contribute-form",
+  "submission-status": "#plw-submission-status"
 };
 const OLD_MATHJAX_FALLBACK_GIF = "R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 

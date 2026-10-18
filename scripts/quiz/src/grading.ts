@@ -23,7 +23,7 @@ export function isAnswerComplete(question: Question, answer: UserAnswer): boolea
   if (question.type === "multiple_choice") return Array.isArray(answer) && answer.length > 0;
   if (question.type === "true_false") return typeof answer === "boolean";
   if (!isNumericAnswer(answer) || parseNumeric(answer.value) === null) return false;
-  return !question.answer.unit.required || Boolean(answer.unit && question.answer.unit.accepted.includes(answer.unit));
+  return answer.unit ? question.answer.unit.accepted.includes(answer.unit) : !question.answer.unit.required;
 }
 
 export function gradeNumericAnswer(
@@ -34,10 +34,9 @@ export function gradeNumericAnswer(
   if (value === null) return false;
   const expected = expectedAnswer.value;
   const tolerance = expectedAnswer.tolerance;
-  const allowed =
-    tolerance.type === "absolute" ? tolerance.value : tolerance.value * Math.max(Math.abs(expected), Number.EPSILON);
+  const allowed = tolerance.type === "absolute" ? tolerance.value : tolerance.value * Math.abs(expected);
   if (Math.abs(value - expected) > allowed) return false;
-  return !expectedAnswer.unit.required || Boolean(answer.unit && expectedAnswer.unit.accepted.includes(answer.unit));
+  return answer.unit ? expectedAnswer.unit.accepted.includes(answer.unit) : !expectedAnswer.unit.required;
 }
 
 export function gradeQuestion(question: Question, answer: UserAnswer): boolean {

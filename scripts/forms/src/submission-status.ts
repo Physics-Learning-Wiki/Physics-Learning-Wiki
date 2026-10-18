@@ -116,7 +116,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
         receiptCard(document, own, result);
         if (data.operationState && data.operationState !== "completed") return;
         actions.hidden = false;
-        withdrawal.querySelector<HTMLButtonElement>('button[type="submit"]')!.disabled = Boolean(
+        withdrawal.querySelector<HTMLButtonElement>("#submission-withdraw-submit")!.disabled = Boolean(
           data.withdrawalRequested
         );
         const edit = container.querySelector<HTMLAnchorElement>("#submission-edit-link")!;

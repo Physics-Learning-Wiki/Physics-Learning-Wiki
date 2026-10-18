@@ -40,6 +40,8 @@ nav:
     - 参与贡献:
       - 如何参与: intro/htc.md
       - 投稿: submit.md
+      - 投稿进度与管理: submission/status.md
+      - 社区角: community/index.md
       - 内容编写指引: intro/writing.md
       - 信息框与补充内容规范: intro/admonitions.md
       - 格式手册: intro/format.md
@@ -305,6 +307,7 @@ plugins:
 
 hooks:
   - hooks/community_content.py
+  - hooks/submission_release.py
   - hooks/on_env.py
   - hooks/question_bank.py
   - hooks/concept_reference.py

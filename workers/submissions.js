@@ -1,4 +1,4 @@
-import { fieldErrors, machineBlock, publicRecord, readBlocks, TYPE_LABELS } from "../contracts/envelope.js";
+import { fieldErrors, machineBlock, publicRecord, readBlocks, publicBody } from "../contracts/envelope.js";
 import { ApiError, readJson, response, timedFetch, verifyTurnstile } from "./http.js";
 
 const REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki";
@@ -47,25 +47,11 @@ function resultFor(receipt, operation, number) {
   return { submissionId: receipt.id, issueNumber: number, issueUrl: issueUrl(number),
     revision: operation.revision, operationId: operation.operation_id, operationState: "completed" };
 }
-function publicBody(record) {
-  const payload = record.payload;
-  const lines = ["## 投稿信息", "", "- **投稿类型**: " + TYPE_LABELS[record.type],
-    "- **署名**: " + (payload.attribution || "匿名"),
-    "- **许可协议**: CC BY-SA 4.0；作者已明确确认",
-    "- **投稿修订**: " + record.revision];
-  if (payload.chapter) lines.push("- **目标章节**: " + payload.chapter);
-  lines.push("", "---", "", payload.content);
-  if (record.type === "question") {
-    lines.push("", "## 参考解析", "", payload.question.solution);
-  }
-  lines.push("", machineBlock("plw-submission-v1", record));
-  return lines.join("\n");
-}
 async function finish(db, receipt, operation, number) {
   const result = resultFor(receipt, operation, number);
   await db.batch([
-    db.prepare("UPDATE submissions SET issue_number=?, revision=?, status_checked_at=NULL WHERE id=?")
-      .bind(number, operation.kind === "withdrawal" ? receipt.revision : operation.revision, receipt.id),
+    db.prepare("UPDATE submissions SET issue_number=?, revision=?, status_checked_at=NULL WHERE id=? AND revision<=?")
+      .bind(number, operation.revision, receipt.id, operation.revision),
     db.prepare("UPDATE submission_operations SET state='completed', result_json=? WHERE submission_id=? AND operation_key=?")
       .bind(JSON.stringify(result), receipt.id, operation.operation_key)
   ]);
@@ -126,10 +112,11 @@ async function obtainStatus(db, receipt, env, includeRecord) {
     type: receipt.kind, revision: current.revision, stage, withdrawalRequested,
     updatedAt: issue.updated_at, ...stateDetails };
   // Keep the current live version visible while a new revision is being reviewed.
-  const published = comments.filter(c => c.performed_via_github_app?.slug === "github-actions")
+  const deployed = comments.filter(c => c.performed_via_github_app?.slug === "github-actions")
     .flatMap(c => readBlocks(c.body, "plw-submission-status-v1"))
-    .filter(record => record.stage === "published" && record.url && record.sourceSha).at(-1);
-  if (published && stage !== "withdrawn") data.published = published;
+    .filter(record => record.sourceSha).at(-1);
+  if (deployed?.stage === "published" && deployed.url && stage !== "withdrawn" && deployed.available !== false)
+    data.published = deployed;
   await db.prepare("UPDATE submissions SET status_json=?, status_checked_at=? WHERE id=?")
     .bind(JSON.stringify(data), Date.now(), receipt.id).run();
   return includeRecord ? { ...data, record: current } : data;

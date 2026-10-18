@@ -50,7 +50,21 @@ export function fieldErrors(data, withdrawal = false) {
       if (!["https:", "http:"].includes(new URL(declaration.source).protocol)) throw new Error();
     } catch { result["/sourceDeclaration/source"] = "请填写有效的来源网址"; }
   }
+  if (new TextEncoder().encode(publicBody(publicRecord(data, 1, "2000-01-01T00:00:00.000Z"))).length > 59900)
+    result["/payload/content"] = "稿件连同题目与许可记录过大，请缩短正文或拆分投稿";
   return result;
+}
+
+export function publicBody(record) {
+  const payload = record.payload;
+  const lines = ["## 投稿信息", "", "- **投稿类型**: " + TYPE_LABELS[record.type],
+    "- **署名**: " + (payload.attribution || "匿名"),
+    "- **许可协议**: CC BY-SA 4.0；作者已明确确认", "- **投稿修订**: " + record.revision];
+  if (payload.chapter) lines.push("- **目标章节**: " + payload.chapter);
+  lines.push("", "---", "", payload.content);
+  if (record.type === "question") lines.push("", "## 参考解析", "", payload.question.solution);
+  lines.push("", machineBlock("plw-submission-v1", record));
+  return lines.join("\n");
 }
 
 export function publicRecord(envelope, revision, confirmedAt) {

@@ -580,6 +580,14 @@ const NAV_TREE = [
     ]
   },
   {
+    "label": "submission",
+    "children": [
+      {
+        "label": "status"
+      }
+    ]
+  },
+  {
     "label": "index",
     "children": [
       {

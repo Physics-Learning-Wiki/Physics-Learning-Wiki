@@ -35,13 +35,14 @@ def blocks(body: str, kind: str) -> list[dict]:
     return result
 
 
-def latest_revision(issue: dict, comments: list[dict]) -> dict:
+def revision_history(issue: dict, comments: list[dict]) -> list[dict]:
     records = blocks(issue.get("body") or "", "plw-submission-v1")
     if records:
         initial = records[-1]
         if initial.get("revision") != 1:
             raise ValueError("Initial revision must be 1")
         current = initial
+        history = [initial]
         for comment in sorted(comments, key=lambda c: c["id"]):
             if comment.get("user", {}).get("id") != issue.get("user", {}).get("id"):
                 continue
@@ -51,18 +52,23 @@ def latest_revision(issue: dict, comments: list[dict]) -> dict:
                     raise ValueError("Revision source mismatch")
                 if candidate.get("revision") == current["revision"] + 1:
                     current = candidate
+                    history.append(candidate)
                 elif candidate.get("revision") != current["revision"]:
                     raise ValueError("Non-contiguous submission revisions")
                 elif candidate != current:
                     raise ValueError("Conflicting submission revisions")
-        return current
+        return history
     legacy = blocks(issue.get("body") or "", "plw-question-submission-v2")
     if len(legacy) != 1:
         raise ValueError("Issue requires exactly one supported submission record")
-    return {"schemaVersion": 1, "type": "question", "revision": 1,
+    return [{"schemaVersion": 1, "type": "question", "revision": 1,
             "payload": {"question": legacy[0]["question"]},
             "licenseConsent": legacy[0].get("licenseConsent"),
-            "licenseVersion": legacy[0].get("licenseVersion")}
+            "licenseVersion": legacy[0].get("licenseVersion")}]
+
+
+def latest_revision(issue: dict, comments: list[dict]) -> dict:
+    return revision_history(issue, comments)[-1]
 
 
 def question_payload(issue: dict, revision: dict) -> dict:
@@ -82,7 +88,7 @@ def metadata(body: str) -> dict | None:
 def select_pr(prs: list[dict], issue_number: int, repo: str = REPO) -> dict | None:
     matches = []
     for pr in prs:
-        if pr.get("head", {}).get("repo", {}).get("full_name") != repo:
+        if ((pr.get("head") or {}).get("repo") or {}).get("full_name") != repo:
             continue
         record = metadata(pr.get("body", ""))
         legacy = pr.get("head", {}).get("ref") == f"question-submission/issue-{issue_number}"

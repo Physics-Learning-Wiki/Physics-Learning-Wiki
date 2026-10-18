@@ -2,10 +2,9 @@ from __future__ import annotations
 
 import json
 import subprocess
-from datetime import datetime, timezone
 from urllib.parse import quote
 
-from .records import PREFIX, REPO, STAGES, block
+from .records import PREFIX, REPO, STAGES, block, blocks, latest_revision
 
 
 class GitHub:
@@ -32,10 +31,24 @@ class GitHub:
             raise ValueError("Invalid paginated response")
         return [item for page in pages for item in page]
 
-    def stage(self, number, stage, revision, *, note="", **details):
+    def stage(self, number, stage, revision, *, note="", update_labels=True, **details):
         if stage not in STAGES:
             raise ValueError("Unknown submission stage")
         issue = self.api(f"issues/{number}")
+        comments = self.pages(f"issues/{number}/comments?per_page=100")
+        try:
+            if latest_revision(issue, comments)["revision"] > revision:
+                update_labels = False
+        except ValueError:
+            pass  # Legacy community articles have no claimable credential record.
+        states = [record for comment in comments
+                  if (comment.get("performed_via_github_app") or {}).get("slug") == "github-actions"
+                  for record in blocks(comment.get("body") or "", "plw-submission-status-v1")
+                  if record.get("revision") == revision]
+        if stage == "received" and any(record.get("stage") != "received" for record in states):
+            return  # Opening/triage events must not undo an acceptance or import.
+        if stage == "draft_ready" and not details.get("sourceSha") and any(record.get("stage") == "published" for record in states):
+            update_labels = False
         labels = [label["name"] for label in issue["labels"] if not label["name"].startswith(PREFIX)]
         target = PREFIX + stage
         try:
@@ -47,11 +60,9 @@ class GitHub:
         if target not in labels:
             labels.append(target)
         record = {"stage": stage, "revision": revision, **details}
-        comments = self.pages(f"issues/{number}/comments?per_page=100")
         marker = block("plw-submission-status-v1", record)
-        if not any(marker in (comment.get("body") or "") and comment.get("performed_via_github_app")
-                   for comment in comments):
+        if not states or states[-1] != record:
             self.api(f"issues/{number}/comments", method="POST",
                      body={"body": note + "\n\n" + marker})
-        if {label["name"] for label in issue["labels"]} != set(labels):
+        if update_labels and {label["name"] for label in issue["labels"]} != set(labels):
             self.api(f"issues/{number}", method="PATCH", body={"labels": labels})

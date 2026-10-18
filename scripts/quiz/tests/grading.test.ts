@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   countProgress,
   gradeQuestion,
+  gradeNumericAnswer,
   isAnswerComplete,
   makeResult,
   parseNumeric,
@@ -11,6 +12,32 @@ import {
   summarizeObjectives
 } from "../src/grading.js";
 import type { Question } from "../src/types.js";
+
+test("numeric grading preserves tiny scales, finite extremes, exact units and scientific notation", () => {
+  const expected = (value: number, tolerance: { type: "absolute" | "relative"; value: number }) => ({
+    value,
+    tolerance,
+    unit: { required: true, canonical: "m", accepted: ["m", "metre"] }
+  });
+  assert.equal(
+    gradeNumericAnswer(expected(1e-30, { type: "relative", value: 0.01 }), { value: "1.005e-30", unit: "metre" }),
+    true
+  );
+  assert.equal(
+    gradeNumericAnswer(expected(1e-30, { type: "relative", value: 0.01 }), { value: "1e-20", unit: "m" }),
+    false
+  );
+  assert.equal(
+    gradeNumericAnswer(expected(1e300, { type: "relative", value: 0.01 }), { value: "1.005e300", unit: "m" }),
+    true
+  );
+  assert.equal(
+    gradeNumericAnswer(expected(0, { type: "absolute", value: 1e-30 }), { value: "5e-31", unit: "m" }),
+    true
+  );
+  assert.equal(gradeNumericAnswer(expected(1, { type: "absolute", value: 0 }), { value: "1e0", unit: "M" }), false);
+  assert.equal(gradeNumericAnswer(expected(1, { type: "absolute", value: 0 }), { value: "1e309", unit: "m" }), false);
+});
 
 const base = {
   id: "q",

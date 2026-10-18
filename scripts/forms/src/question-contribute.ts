@@ -300,7 +300,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
               rights_note: form.querySelector<HTMLInputElement>("#q-submit-img-rights")?.value.trim() || ""
             }
           ]
-        : undefined;
+        : [];
+      externalMedia.push(...(client.additionalMedia() as typeof externalMedia));
       const questionPayload = {
         type,
         stem,
@@ -320,7 +321,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         estimated_seconds: rawSeconds ? Number(rawSeconds) : undefined,
         attribution,
         ai_assisted: Boolean(form.querySelector<HTMLInputElement>("#q-submit-ai")?.checked),
-        external_media: externalMedia
+        external_media: externalMedia.length ? externalMedia : undefined,
+        ...client.questionExtras(type)
       };
 
       const titlePreview =
