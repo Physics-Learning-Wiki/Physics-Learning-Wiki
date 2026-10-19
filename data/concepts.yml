@@ -1,6 +1,31 @@
 version: 1
 
 concepts:
+  measurement-error:
+    name: 测量误差
+    english: Measurement error
+    summary: 测得量值减去参考量值，有符号；参考真值未知时，不能直接知道相对于真值的误差．
+    target: experiment/error-analysis/measurement-basics.md#误差偏差和残差各指什么
+  measurement-uncertainty:
+    name: 测量不确定度
+    english: Measurement uncertainty
+    summary: 根据所用信息表征赋予被测量的量值分散性的非负参数，不等同于已知误差．
+    target: experiment/error-analysis/measurement-basics.md#不确定度不是已知误差
+  standard-uncertainty:
+    name: 标准不确定度
+    english: Standard uncertainty
+    summary: 以标准差形式表达的测量不确定度，可通过观测序列的统计分析或其他可靠信息评定．
+    target: experiment/error-analysis/uncertainty-evaluation.md#标准不确定度与两种评定方法
+  uncertainty-propagation:
+    name: 不确定度传播
+    english: Propagation of uncertainty
+    summary: 按测量模型将输入量的不确定度与相关性传到输出量；一阶传播依赖局部线性近似．
+    target: experiment/error-analysis/uncertainty-propagation.md#从局部变化推导传播式
+  least-squares:
+    name: 最小二乘法
+    english: Least squares
+    summary: 通过最小化观测残差的平方和或加权平方和估计模型参数，结果解释依赖测量与模型假设．
+    target: experiment/error-analysis/least-squares.md#从残差平方和出发
   derivative:
     name: 导数
     english: Derivative

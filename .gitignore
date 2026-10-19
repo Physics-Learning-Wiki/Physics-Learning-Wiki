@@ -15,6 +15,7 @@ node_modules/
 References/
 *.pyc
 *.txt
+!/docs/experiment/error-analysis/_order.txt
 .codex/
 .claude/
 .github/skills/
@@ -28,3 +29,4 @@ superpowers
 .superpowers
 
 .tmp-inspect/
+.tmp-error-analysis/

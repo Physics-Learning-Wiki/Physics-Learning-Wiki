@@ -87,6 +87,43 @@ const NAV_TREE = [
       },
       {
         "label": "instruments"
+      },
+      {
+        "label": "error-analysis",
+        "children": [
+          {
+            "label": "measurement-basics"
+          },
+          {
+            "label": "data-recording"
+          },
+          {
+            "label": "repeated-measurements"
+          },
+          {
+            "label": "systematic-errors-outliers"
+          },
+          {
+            "label": "uncertainty-evaluation"
+          },
+          {
+            "label": "uncertainty-propagation"
+          },
+          {
+            "label": "least-squares"
+          },
+          {
+            "label": "case-studies"
+          },
+          {
+            "label": "examples",
+            "children": [
+              {
+                "label": "readme"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

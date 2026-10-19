@@ -1,0 +1,9 @@
+measurement-basics.md
+data-recording.md
+repeated-measurements.md
+systematic-errors-outliers.md
+uncertainty-evaluation.md
+uncertainty-propagation.md
+least-squares.md
+case-studies.md
+examples

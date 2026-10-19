@@ -14,6 +14,10 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 
 ## B
 
+<!-- plw:glossary-entry standard-uncertainty -->
+
+<!-- plw:glossary-entry uncertainty-propagation -->
+
 -   **标量积（dot product）**：实欧氏空间中两矢量的点积，$\boldsymbol a\cdot\boldsymbol b=|\boldsymbol a||\boldsymbol b|\cos\theta$，是内积的一种具体形式；一般内积不必采用这一坐标表达式．见 [正文](../math/linear-algebra/inner-product.md)．
 -   **比热容（specific heat capacity，$c$）**：单位质量物质在指定过程中的热容，需说明过程条件，单位为 $\mathrm{J/(kg\cdot K)}$．见 [正文](../thermodynamics/chapter-1/heat-and-its-nature.md)．
 -   **本征值（eigenvalue）**：量子力学算符本征方程中对应的数值；线性代数主线称特征值．见 [正文](../math/linear-algebra/hermitian-unitary.md)．
@@ -22,7 +26,9 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 ## C
 
 -   **参考系（reference frame）**：描述运动所选的参考物体与测时、定位约定；坐标系是在其中标记位置的数学工具．见 [正文](../mechanics/kinematics/reference-frames.md)．
--   **测量不确定度（measurement uncertainty）**：根据所用信息表征赋予被测量量值分散性的非负参数，不等同于已知误差．见 [正文](../experiment/index.md)．
+<!-- plw:glossary-entry measurement-error -->
+
+<!-- plw:glossary-entry measurement-uncertainty -->
 -   **冲量（impulse，$\boldsymbol I$）**：力的时间积分 $\boldsymbol I=\int\boldsymbol F\,\mathrm dt$，等于相应动量变化；与碰撞参数区别．见 [正文](../mechanics/dynamics/momentum-energy.md)．
 
 ## D
@@ -145,6 +151,8 @@ description: 物理学习术语速查，提供中文主名、英文对照、适�
 -   **约当（Jordan）**：本站采用的主译名，亦译若当、若尔当；约当引理与约当标准形中的人名相同、结论不同．见 [正文](../math/complex-analysis/residue-calculus.md)．
 
 ## Z
+
+<!-- plw:glossary-entry least-squares -->
 
 -   **振幅（amplitude，$A$）**：简谐振动中振动物理量偏离平衡值的最大绝对值，不限于距离．见 [正文](../mechanics/oscillation-wave/linear-oscillation.md)．
 -   **质心（center of mass）**：质点系位置按质量加权的平均位置 $\boldsymbol r_c=\sum_i m_i\boldsymbol r_i/\sum_i m_i$．见 [正文](../mechanics/dynamics/system-of-particles.md)．

@@ -222,7 +222,16 @@ nav:
     - 固体物理基础: modern/solid-state.md
   - 实验物理:
     - 实验简介: experiment/index.md
-    - 误差分析与数据处理: experiment/error-analysis.md
+    - 误差分析与数据处理:
+      - 导读与学习路线: experiment/error-analysis.md
+      - 测量、误差与不确定度: experiment/error-analysis/measurement-basics.md
+      - 数据记录与有效数字: experiment/error-analysis/data-recording.md
+      - 重复测量与统计描述: experiment/error-analysis/repeated-measurements.md
+      - 系统效应与异常数据: experiment/error-analysis/systematic-errors-outliers.md
+      - 标准不确定度的评定: experiment/error-analysis/uncertainty-evaluation.md
+      - 不确定度传播与合成: experiment/error-analysis/uncertainty-propagation.md
+      - 直线拟合与结果检验: experiment/error-analysis/least-squares.md
+      - 综合数据处理与实验报告: experiment/error-analysis/case-studies.md
     - 常用测量仪器: experiment/instruments.md
   - 计算物理与工具:
     - 工具简介: tools/index.md
