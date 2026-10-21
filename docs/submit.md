@@ -58,6 +58,7 @@ description: "向本站提交物理学习内容、笔记与修订建议．"
       <label><input type="radio" name="attribution-type" value="named" checked> 姓名/网名</label>
       <label><input type="radio" name="attribution-type" value="anonymous"> 匿名</label>
     </div>
+    <label for="submit-attribution">署名名称</label>
     <input type="text" id="submit-attribution" data-submission-field="/payload/attribution" name="attribution"
            placeholder="你希望在页面上显示的署名" maxlength="60">
   </div>
@@ -80,7 +81,7 @@ description: "向本站提交物理学习内容、笔记与修订建议．"
       <label for="submission-source-permission">改编授权依据</label>
       <input type="text" id="submission-source-permission" maxlength="2000" data-submission-field="/sourceDeclaration/permission">
     </div>
-    <label><input type="checkbox" id="submit-license" required data-submission-field="/licenseConsent"> 我有权分享上述内容，并明确同意按 CC BY-SA 4.0 许可公开发布．</label>
+    <label class="submit-checkbox-label"><input type="checkbox" id="submit-license" required data-submission-field="/licenseConsent"> 我有权分享上述内容，并明确同意按 CC BY-SA 4.0 许可公开发布．</label>
   </fieldset>
 
   <div class="submit-field">
@@ -88,7 +89,7 @@ description: "向本站提交物理学习内容、笔记与修订建议．"
   </div>
 
   <div class="submit-actions">
-    <button type="submit" id="submit-btn">提交投稿</button>
+    <button type="submit" id="submit-btn" class="submit-button submit-button--primary">提交投稿</button>
     <span id="submit-status" role="alert" aria-live="assertive" aria-atomic="true"></span>
   </div>
 </form>

@@ -17,6 +17,7 @@ export function createVerification(
   controls.className = "submit-verification-actions";
   const retry = document.createElement("button");
   retry.type = "button";
+  retry.className = "submit-button";
   retry.textContent = "重新验证";
   retry.hidden = true;
   const fallback = document.createElement("a");
@@ -78,6 +79,7 @@ export function createVerification(
     disposed = true;
     ++generation;
     widget?.dispose();
+    controls.remove();
     signal.removeEventListener("abort", dispose);
   };
   signal.addEventListener("abort", dispose, { once: true });

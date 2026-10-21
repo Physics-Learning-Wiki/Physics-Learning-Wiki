@@ -42,6 +42,8 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
   if (!container) return () => {};
   const document = container.ownerDocument;
   const lookup = container.querySelector<HTMLFormElement>("#submission-lookup-form")!;
+  // Production minification removes the redundant type="submit" attribute.
+  const lookupButton = lookup.querySelector<HTMLButtonElement>("button")!;
   const idInput = container.querySelector<HTMLInputElement>("#submission-lookup-id")!;
   const fileInput = container.querySelector<HTMLInputElement>("#submission-receipt-file")!;
   const message = container.querySelector<HTMLElement>("#submission-query-message")!;
@@ -53,6 +55,15 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
     withdrawalSnapshot = "",
     busy = false,
     generation = 0;
+  const setMessage = (text: string, state: "pending" | "success" | "error") => {
+    message.textContent = text;
+    message.className = "submit-feedback " + state;
+  };
+  const setLookupPending = (pending: boolean) => {
+    lookupButton.disabled = pending;
+    lookupButton.textContent = pending ? "正在查询…" : "查询进度";
+    lookup.setAttribute("aria-busy", String(pending));
+  };
   const safeLink = (label: string, value: string) => {
     const url = new URL(value);
     const allowed =
@@ -70,12 +81,17 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
     const queryGeneration = ++generation;
     const id = idInput.value.trim();
     if (!/^[a-f0-9-]{36}$/.test(id)) {
-      message.textContent = "请填写回执中的有效投稿编号．";
+      setLookupPending(false);
+      setMessage("请填写回执中的有效投稿编号．", "error");
       return;
     }
     const own = receipt?.submissionId === id ? receipt : readReceipt(document, id);
     actions.hidden = true;
     result.replaceChildren();
+    widget?.dispose();
+    widget = undefined;
+    setLookupPending(true);
+    setMessage("正在查询投稿进度…", "pending");
     try {
       const response = await fetch(SUBMISSION_ENDPOINT + "/" + id, {
         signal,
@@ -86,7 +102,12 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
       if (!response.ok) throw new Error(data.message || "查询失败，请保留回执后重试．");
       current = data;
       receipt = own;
-      message.textContent = (STAGES[data.stage] || "等待处理") + "；最新稿件版本：" + data.revision;
+      setMessage(
+        (STAGES[data.stage] || "等待处理") + "；最新稿件版本：" + data.revision,
+        data.stage === "processing" || (data.operationState && data.operationState !== "completed")
+          ? "pending"
+          : "success"
+      );
       if (data.withdrawalRequested) message.textContent += "；已有撤稿申请，等待审核或下线确认．";
       if (data.operationState && data.operationState !== "completed") message.textContent += "；上一操作仍在确认中．";
       if (data.issueUrl) safeLink("查看公开 Issue 与处理记录", data.issueUrl);
@@ -123,13 +144,12 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
         const editUrl = new URL(data.type === "question" ? "quiz/contribute/" : "submit/", siteRoot(document));
         editUrl.searchParams.set("submission", id);
         edit.href = editUrl.href;
-        widget?.dispose();
         const target = container.querySelector<HTMLElement>("#turnstile-widget")!;
         widget = createVerification(
           target,
           signal,
           text => {
-            message.textContent = text;
+            setMessage(text, "error");
           },
           undefined,
           data.type === "question" ? "submit-question" : "submit-general"
@@ -138,7 +158,9 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
       }
     } catch (error) {
       if (!signal.aborted && queryGeneration === generation)
-        message.textContent = error instanceof Error ? error.message : "查询暂不可用．";
+        setMessage(error instanceof Error ? error.message : "查询暂不可用．", "error");
+    } finally {
+      if (!signal.aborted && queryGeneration === generation) setLookupPending(false);
     }
   };
   lookup.addEventListener(
@@ -163,7 +185,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
           idInput.value = parsed.submissionId;
           await query();
         } catch (error) {
-          message.textContent = error instanceof Error ? error.message : "无法读取回执．";
+          setMessage(error instanceof Error ? error.message : "无法读取回执．", "error");
         }
       })();
     },
@@ -177,10 +199,15 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
         if (busy || !receipt || !current || !widget?.token) return;
         const reason = container.querySelector<HTMLTextAreaElement>("#submission-withdraw-reason")!.value.trim();
         if (withdrawalKey && withdrawalSnapshot !== reason) {
-          message.textContent = "上一撤稿申请仍在确认中，请先查询结果再修改说明．";
+          setMessage("上一撤稿申请仍在确认中，请先查询结果再修改说明．", "pending");
           return;
         }
         busy = true;
+        const withdrawButton = withdrawal.querySelector<HTMLButtonElement>("#submission-withdraw-submit")!;
+        withdrawButton.disabled = true;
+        withdrawButton.textContent = "正在提交撤稿申请…";
+        withdrawal.setAttribute("aria-busy", "true");
+        setMessage("正在提交撤稿申请…", "pending");
         withdrawalKey ||= crypto.randomUUID();
         withdrawalSnapshot = reason;
         try {
@@ -203,14 +230,21 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
             withdrawalKey = undefined;
             await query();
           }
-          message.textContent =
+          setMessage(
             response.status === 202
               ? "正在确认撤稿申请，请保留回执后查询．"
-              : "撤稿申请已收到，等待维护者审核与下线确认．";
+              : "撤稿申请已收到，等待维护者审核与下线确认．",
+            response.status === 202 ? "pending" : "success"
+          );
         } catch (error) {
-          if (!signal.aborted) message.textContent = error instanceof Error ? error.message : "请保留回执后重试．";
+          if (!signal.aborted) setMessage(error instanceof Error ? error.message : "请保留回执后重试．", "error");
         } finally {
           busy = false;
+          if (!signal.aborted) {
+            withdrawButton.disabled = Boolean(current?.withdrawalRequested);
+            withdrawButton.textContent = "提交撤稿申请";
+            withdrawal.setAttribute("aria-busy", "false");
+          }
           widget?.reset();
         }
       })();

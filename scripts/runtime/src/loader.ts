@@ -365,15 +365,15 @@ const featureRegistry: FeatureRegistry = {
     moduleUrl: "_static/js/features/quiz.js"
   },
   submit: {
-    stylesheet: "_static/css/features/submit.css?v=2",
+    stylesheet: "_static/css/features/submit.css?v=3",
     moduleUrl: "_static/js/features/submit.js"
   },
   "question-contribute": {
-    stylesheet: "_static/css/features/question-contribute.css?v=2",
+    stylesheet: "_static/css/features/question-contribute.css?v=3",
     moduleUrl: "_static/js/features/question-contribute.js"
   },
   "submission-status": {
-    stylesheet: "_static/css/features/submission-status.css?v=1",
+    stylesheet: "_static/css/features/submission-status.css?v=2",
     moduleUrl: "_static/js/features/submission-status.js"
   }
 };

@@ -28,6 +28,14 @@ export function numericAnswer(form: HTMLFormElement): Extract<Question, { type: 
 export function mountNumericPreview(form: HTMLFormElement, signal: AbortSignal): void {
   const output = form.querySelector<HTMLElement>("#q-submit-numeric-result");
   const update = () => {
+    const tolerance = form.querySelector<HTMLInputElement>("#q-submit-tolerance");
+    const hint = form.querySelector<HTMLElement>("#q-submit-tolerance-hint");
+    const relative = form.querySelector<HTMLSelectElement>("#q-submit-tolerance-type")?.value === "relative";
+    if (tolerance) tolerance.placeholder = relative ? "例如 1 表示 1%；支持科学计数法" : "例如 0.1；支持科学计数法";
+    if (hint)
+      hint.textContent = relative
+        ? "相对容差按百分比填写，输入 1 表示允许误差不超过标准答案绝对值的 1%．"
+        : "绝对容差与答案同单位，例如填 0.1 表示允许误差不超过 0.1．";
     if (!output) return;
     const example = form.querySelector<HTMLInputElement>("#q-submit-numeric-example")?.value || "";
     const unit = form.querySelector<HTMLInputElement>("#q-submit-numeric-example-unit")?.value || "";

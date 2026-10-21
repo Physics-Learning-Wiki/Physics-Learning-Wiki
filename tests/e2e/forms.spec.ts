@@ -1,9 +1,18 @@
 import { expect, test, type Page } from "@playwright/test";
+import { mockTurnstile } from "./helpers/turnstile.js";
+import { mkdir } from "node:fs/promises";
+import { resolve } from "node:path";
 
 const basePath = "/Physics-Learning-Wiki/";
 const mathJaxUrl = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js";
 const turnstileUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const draftKey = "plw:submission-draft:v1:/Physics-Learning-Wiki/";
+
+async function saveUiEvidence(page: Page, name: string): Promise<void> {
+  const directory = resolve("artifacts/ui-audit-2026-10-21/after");
+  await mkdir(directory, { recursive: true });
+  await page.screenshot({ path: resolve(directory, name + ".png"), fullPage: true });
+}
 
 test("draft writes flush on instant navigation and storage failures do not disable submission", async ({ page }) => {
   await mockTurnstile(page);
@@ -132,40 +141,6 @@ test("verification resource failure retries without losing the editor or double 
   await expect(page.locator(".CodeMirror")).toContainText("重试后保留正文");
   await expect(page.locator("#submit-status")).toBeEmpty();
 });
-
-async function mockTurnstile(page: Page): Promise<void> {
-  await page.route(turnstileUrl, route =>
-    route.fulfill({
-      contentType: "text/javascript",
-      body: `
-        window.__plwTurnstileCounts = { render: 0, remove: 0, reset: 0 };
-        window.__plwTurnstileWidgets = new Map();
-        window.turnstile = {
-          render(container, options) {
-            const id = String(++window.__plwTurnstileCounts.render);
-            const node = document.createElement("div");
-            node.className = "plw-test-turnstile-widget";
-            node.textContent = "Test verification";
-            container.append(node);
-            window.__plwTurnstileWidgets.set(id, { container, options });
-            setTimeout(() => options.callback("test-turnstile-token"), 0);
-            return id;
-          },
-          remove(id) {
-            window.__plwTurnstileCounts.remove += 1;
-            window.__plwTurnstileWidgets.get(id)?.container.replaceChildren();
-            window.__plwTurnstileWidgets.delete(id);
-          },
-          reset(id) {
-            window.__plwTurnstileCounts.reset += 1;
-            const widget=window.__plwTurnstileWidgets.get(id);
-            if(widget)setTimeout(()=>widget.options.callback("test-turnstile-token"),0);
-          }
-        };
-      `
-    })
-  );
-}
 
 async function setEditorText(page: Page, index: number, value: string): Promise<void> {
   await page.locator(".CodeMirror").nth(index).click();
@@ -362,6 +337,8 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   await agreeLicense(page);
   await page.locator("#q-submit-btn").click();
   await expect(page.locator("#q-submit-status")).toContainText("单选题需要 2 到 6 个选项");
+  await expect(page.locator("#q-submit-status")).toHaveCSS("border-top-style", "solid");
+  await saveUiEvidence(page, "question-validation-error");
   await page.locator("#q-submit-choices").fill("A|加速度增加\nB|速度不变");
   await page.locator("#q-submit-topic").selectOption({ index: 1 });
   await page.locator("#q-submit-btn").click();
@@ -484,10 +461,13 @@ test("question numeric drafts restore explicitly and never restore identity, con
   await mockTurnstile(page);
   await page.goto(`${basePath}quiz/contribute/`);
   await page.locator("#q-submit-type").selectOption("numeric");
+  await expect(page.locator("#q-submit-tolerance-hint")).toContainText("绝对容差与答案同单位");
+  await expect(page.getByLabel("试算答案单位", { exact: true })).toBeVisible();
   await setEditorText(page, 0, "测量一个极小物理量的数值．");
   await setEditorText(page, 1, "根据给定条件计算．");
   await page.locator("#q-submit-answer").fill("1e-30");
   await page.locator("#q-submit-tolerance-type").selectOption("relative");
+  await expect(page.locator("#q-submit-tolerance-hint")).toContainText("输入 1 表示");
   await page.locator("#q-submit-tolerance").fill("1");
   await page.locator("#q-submit-unit-required").check();
   await page.locator("#q-submit-unit-canonical").fill("m");
@@ -507,6 +487,10 @@ test("question numeric drafts restore explicitly and never restore identity, con
   await expect(page.locator("#q-submit-type")).toHaveValue("numeric");
   await expect(page.locator("#q-submit-answer")).toHaveValue("1e-30");
   await expect(page.locator("#q-submit-tolerance")).toHaveValue("1");
+  await expect(page.locator("#q-submit-tolerance-hint")).toContainText("输入 1 表示");
+  await page.locator("#q-submit-tolerance-type").selectOption("absolute");
+  await expect(page.locator("#q-submit-tolerance-hint")).toContainText("绝对容差与答案同单位");
+  await expect(page.locator("#q-submit-tolerance")).toHaveValue("1");
   await expect(page.locator("#q-submit-attribution")).toHaveValue("");
   await expect(page.locator("#q-submit-license")).not.toBeChecked();
   const exported = page.waitForEvent("download");
@@ -515,6 +499,7 @@ test("question numeric drafts restore explicitly and never restore identity, con
 });
 
 test("receipt management authenticates through headers and withdrawal remains pending", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
   await mockTurnstile(page);
   const id = "123e4567-e89b-42d3-a456-426614174000",
     token = "a".repeat(64);
@@ -558,6 +543,18 @@ test("receipt management authenticates through headers and withdrawal remains pe
   await expect(page.locator("#submission-author-actions")).toBeVisible();
   await expect(page.getByRole("link", { name: "访问当前线上版本（第 1 版）" })).toBeVisible();
   await expect(page.locator("#submission-edit-link")).toHaveAttribute("href", new RegExp("submission=" + id));
+  await saveUiEvidence(page, "receipt-management-mobile");
+  const downloaded = page.waitForEvent("download");
+  await page.getByRole("button", { name: "下载管理回执", exact: true }).click();
+  const download = await downloaded;
+  expect(download.suggestedFilename()).toBe("plw-receipt-" + id + ".json");
+  const stream = await download.createReadStream();
+  let rawReceipt = "";
+  for await (const chunk of stream!) rawReceipt += chunk.toString("utf8");
+  expect(JSON.parse(rawReceipt)).toMatchObject({ submissionId: id, token, revision: 2 });
+  await page.getByRole("button", { name: "查询进度", exact: true }).click();
+  await expect(page.locator("#submission-query-message")).toContainText("已收到");
+  await expect(page.locator("#plw-submission-status .submit-verification-actions")).toHaveCount(1);
   await page.locator("#submission-withdraw-reason").fill("需要修正后重新整理．");
   await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toBeVisible();
   await page.getByRole("button", { name: "提交撤稿申请", exact: true }).click();
@@ -565,6 +562,7 @@ test("receipt management authenticates through headers and withdrawal remains pe
   expect(requests.find(r => r.method === "POST")?.authorization).toBe("Bearer " + token);
   expect(requests.every(r => !r.url.includes(token))).toBe(true);
   await expect(page.getByRole("button", { name: "提交撤稿申请", exact: true })).toBeDisabled();
+  await saveUiEvidence(page, "withdrawal-received-mobile");
 });
 
 test("author revision retains structured question metadata and requires renewed consent", async ({ page }) => {
@@ -635,4 +633,138 @@ test("author revision retains structured question metadata and requires renewed 
       question: { hints: ["保留的提示"], external_media: question.external_media, solution: "作者修订后的解析．" }
     }
   });
+});
+
+test("lookup rejects invalid IDs and receipts, reports pending and recovers after a server failure", async ({
+  page
+}) => {
+  const id = "123e4567-e89b-42d3-a456-426614174000";
+  let release: (() => void) | undefined;
+  let fail = true;
+  let requests = 0;
+  await page.route("https://submit.folderrewind.top/**", async route => {
+    requests++;
+    if (fail)
+      await new Promise<void>(resolve => {
+        release = resolve;
+      });
+    await route.fulfill({
+      status: fail ? 503 : 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify(
+        fail
+          ? { message: "暂时不可用，请重试．" }
+          : {
+              submissionId: id,
+              type: "notes",
+              revision: 1,
+              stage: "received"
+            }
+      )
+    });
+  });
+  await page.goto(`${basePath}submission/status/`);
+  const message = page.locator("#submission-query-message");
+  await page.getByLabel("投稿编号", { exact: true }).fill("invalid");
+  await page.getByRole("button", { name: "查询进度", exact: true }).click();
+  await expect(message).toContainText("有效投稿编号");
+  await expect(message).toHaveClass(/error/);
+  expect(requests).toBe(0);
+  await page.locator("#submission-receipt-file").setInputFiles({
+    name: "bad-receipt.json",
+    mimeType: "application/json",
+    buffer: Buffer.from("{}")
+  });
+  await expect(message).toContainText("回执格式无效");
+  await page.getByLabel("投稿编号", { exact: true }).fill(id);
+  await page.getByRole("button", { name: "查询进度", exact: true }).click();
+  await expect(message).toHaveClass(/pending/);
+  await expect(page.getByRole("button", { name: "正在查询…", exact: true })).toBeDisabled();
+  await expect.poll(() => Boolean(release)).toBe(true);
+  release!();
+  await expect(message).toContainText("暂时不可用");
+  await expect(message).toHaveClass(/error/);
+  fail = false;
+  await page.getByRole("button", { name: "查询进度", exact: true }).click();
+  await expect(message).toContainText("已收到");
+  await expect(message).toHaveClass(/success/);
+  await expect(page.locator("#submission-author-actions")).toBeHidden();
+});
+
+test("withdrawal failure and accepted-pending responses preserve the receipt and retry feedback", async ({ page }) => {
+  await mockTurnstile(page);
+  const receipt = {
+    schemaVersion: 1,
+    submissionId: "123e4567-e89b-42d3-a456-426614174000",
+    token: "b".repeat(64),
+    operationKey: "123e4567-e89b-42d3-a456-426614174001",
+    revision: 1,
+    type: "notes"
+  };
+  let fail = true;
+  const keys: string[] = [];
+  await page.route("https://submit.folderrewind.top/**", async route => {
+    const post = route.request().method() === "POST";
+    if (post) keys.push(route.request().headers()["idempotency-key"]);
+    await route.fulfill({
+      status: post ? (fail ? 503 : 202) : 200,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify(
+        post
+          ? { message: "暂时无法提交撤稿申请．" }
+          : {
+              submissionId: receipt.submissionId,
+              type: "notes",
+              stage: "received",
+              revision: 1
+            }
+      )
+    });
+  });
+  await page.goto(`${basePath}submission/status/`);
+  await page.locator("#submission-receipt-file").setInputFiles({
+    name: "receipt.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(receipt))
+  });
+  await page.getByLabel("撤稿申请说明", { exact: true }).fill("修订后重新整理．");
+  await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toBeVisible();
+  const submit = page.getByRole("button", { name: "提交撤稿申请", exact: true });
+  await submit.click();
+  await expect(page.locator("#submission-query-message")).toHaveClass(/error/);
+  await expect(submit).toBeEnabled();
+  await expect(page.getByRole("button", { name: "下载管理回执", exact: true })).toBeVisible();
+  fail = false;
+  await submit.click();
+  await expect(page.locator("#submission-query-message")).toContainText("正在确认撤稿申请");
+  await expect(page.locator("#submission-query-message")).toHaveClass(/pending/);
+  expect(keys).toHaveLength(2);
+  expect(keys[0]).toBe(keys[1]);
+});
+
+test("question submission server errors keep the editor and render the shared error panel", async ({ page }) => {
+  await mockTurnstile(page);
+  await page.route("https://submit.folderrewind.top/**", route =>
+    route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      headers: { "access-control-allow-origin": "*" },
+      body: JSON.stringify({ message: "题目服务暂时不可用，请保留草稿．" })
+    })
+  );
+  await page.goto(`${basePath}quiz/contribute/`);
+  await expect(page.locator(".CodeMirror")).toHaveCount(2);
+  await page.locator("#q-submit-type").selectOption("true_false");
+  await setEditorText(page, 0, "质量是惯性大小的量度．");
+  await setEditorText(page, 1, "根据惯性的定义判断．");
+  await page.locator("#q-submit-answer").fill("true");
+  await agreeLicense(page);
+  await page.getByRole("button", { name: "提交题目投稿", exact: true }).click();
+  await expect(page.locator("#q-submit-status")).toContainText("题目服务暂时不可用");
+  await expect(page.locator("#q-submit-status")).toHaveCSS("border-top-style", "solid");
+  await expect(page.locator(".CodeMirror").first()).toContainText("质量是惯性大小的量度");
+  await expect(page.locator("#q-submit-success")).toBeHidden();
+  await saveUiEvidence(page, "question-server-error");
 });

@@ -127,6 +127,7 @@ export function receiptCard(document: Document, receipt: Receipt, parent: HTMLEl
   parent.querySelector("[data-submission-receipt]")?.remove();
   const card = document.createElement("section");
   card.dataset.submissionReceipt = "true";
+  card.className = "submit-receipt";
   const description = document.createElement("p");
   description.textContent = "请保存管理回执，用于查询进度、修订和申请撤稿．管理凭证不会进入公开链接．";
   const link = document.createElement("a");
@@ -136,11 +137,13 @@ export function receiptCard(document: Document, receipt: Receipt, parent: HTMLEl
   link.textContent = "查询投稿进度与管理稿件";
   const download = document.createElement("button");
   download.type = "button";
+  download.className = "submit-button";
   download.textContent = "下载管理回执";
   download.addEventListener("click", () =>
     downloadJson(document, "plw-receipt-" + receipt.submissionId + ".json", receipt)
   );
   const label = document.createElement("label");
+  label.className = "submit-checkbox-label";
   const remember = document.createElement("input");
   remember.type = "checkbox";
   remember.addEventListener("change", () => {
@@ -153,7 +156,10 @@ export function receiptCard(document: Document, receipt: Receipt, parent: HTMLEl
       }
   });
   label.append(remember, " 在本机长期保存管理凭证（共用设备请勿选择）");
-  card.append(description, link, document.createTextNode(" "), download, label);
+  const actions = document.createElement("div");
+  actions.className = "submit-actions";
+  actions.append(link, download);
+  card.append(description, actions, label);
   parent.append(card);
   return card;
 }

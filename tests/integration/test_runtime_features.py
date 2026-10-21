@@ -141,6 +141,9 @@ def test_math_is_ignored_as_raw_tex_and_indexed_as_readable_text() -> None:
     assert formula.get("data-pagefind-ignore") == "all"
     assert index_text is not None
     assert index_text.get_text() == "F/m=a"
+    assert index_text.get("aria-hidden") == "true"
+    assert not index_text.has_attr("hidden")
+    assert not index_text.has_attr("data-pagefind-ignore")
     assert clean_math_content(r"\boldsymbol{\mathbf{r}}(t)") == "r(t)"
 
 

@@ -46,8 +46,9 @@ status: review
     <label for="q-submit-tolerance-type">容差类型</label>
     <select id="q-submit-tolerance-type"><option value="absolute">绝对容差</option><option value="relative">相对容差（百分比）</option></select>
     <label for="q-submit-tolerance">容差数值 <span class="submit-required">*</span></label>
-    <input type="text" id="q-submit-tolerance" data-submission-field="/payload/question/answer/tolerance" placeholder="相对容差填 1 表示 1%；支持科学计数法">
-    <label><input type="checkbox" id="q-submit-unit-required"> 答案必须填写单位</label>
+    <input type="text" id="q-submit-tolerance" data-submission-field="/payload/question/answer/tolerance" aria-describedby="q-submit-tolerance-hint" placeholder="例如 0.1；支持科学计数法">
+    <p id="q-submit-tolerance-hint" class="submit-hint">绝对容差与答案同单位，例如填 0.1 表示允许误差不超过 0.1．</p>
+    <label class="submit-checkbox-label"><input type="checkbox" id="q-submit-unit-required"> 答案必须填写单位</label>
     <label for="q-submit-unit-canonical">规范单位</label>
     <input type="text" id="q-submit-unit-canonical" maxlength="50" data-submission-field="/payload/question/answer/unit">
     <label for="q-submit-unit-accepted">可接受的同尺度单位写法（逗号分隔）</label>
@@ -55,7 +56,8 @@ status: review
     <p>单位区分大小写，所有写法需与规范单位同尺度；系统不会自动换算 cm 与 m．</p>
     <label for="q-submit-numeric-example">试算：输入一个学生答案</label>
     <input type="text" id="q-submit-numeric-example" placeholder="数值，支持科学计数法">
-    <input type="text" id="q-submit-numeric-example-unit" aria-label="试算答案单位">
+    <label for="q-submit-numeric-example-unit">试算答案单位</label>
+    <input type="text" id="q-submit-numeric-example-unit" placeholder="例如 m/s">
     <p id="q-submit-numeric-result" role="status"></p>
   </fieldset>
 
@@ -143,7 +145,9 @@ status: review
       <p>链接仅供编辑组审核，不会自动插入正式题目．提供图片时必须填写替代文本、来源及授权依据．</p>
       <label for="q-submit-img-url">插图审核材料 HTTPS 链接（选填）</label>
       <input type="url" id="q-submit-img-url" data-submission-field="/payload/question/external_media" placeholder="https://...">
+      <label for="q-submit-img-alt">图片替代文本（提供图片时必填）</label>
       <input type="text" id="q-submit-img-alt" placeholder="图片替代文本（例如：小车在斜面上下滑示意图）">
+      <label for="q-submit-img-rights">图片来源与版权依据（提供图片时必填）</label>
       <input type="text" id="q-submit-img-rights" placeholder="图片来源与版权授权（例如：自主绘制 / CC-BY-SA）">
     </div>
 
@@ -159,6 +163,7 @@ status: review
       <label><input type="radio" name="q-attribution-type" value="named" checked> 姓名/网名</label>
       <label><input type="radio" name="q-attribution-type" value="anonymous"> 匿名</label>
     </div>
+    <label for="q-submit-attribution">署名名称</label>
     <input type="text" id="q-submit-attribution" placeholder="你希望在题目署名中显示的名称" maxlength="60">
   </div>
 
@@ -182,7 +187,7 @@ status: review
       <label for="submission-source-permission">改编授权依据</label>
       <input type="text" id="submission-source-permission" maxlength="2000" data-submission-field="/sourceDeclaration/permission">
     </div>
-    <label><input type="checkbox" id="q-submit-license" required data-submission-field="/licenseConsent"> 我有权分享上述内容，并明确同意按 CC BY-SA 4.0 许可公开发布．</label>
+    <label class="submit-checkbox-label"><input type="checkbox" id="q-submit-license" required data-submission-field="/licenseConsent"> 我有权分享上述内容，并明确同意按 CC BY-SA 4.0 许可公开发布．</label>
   </fieldset>
 
   <div class="submit-field">
@@ -190,7 +195,7 @@ status: review
   </div>
 
   <div class="submit-actions">
-    <button type="submit" id="q-submit-btn">提交题目投稿</button>
+    <button type="submit" id="q-submit-btn" class="submit-button submit-button--primary">提交题目投稿</button>
     <span id="q-submit-status" role="alert" aria-live="assertive" aria-atomic="true"></span>
   </div>
 </form>

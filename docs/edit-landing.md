@@ -1,4 +1,5 @@
 ---
+title: 编辑与投稿入口
 meta:
   - name: robots
     content: noindex, follow
@@ -28,7 +29,11 @@ meta:
 -   通过 GitHub 编辑时，请按现有规范维护文件头的 author 字段．
 -   通过邮箱投稿时，可以在邮件中注明希望使用的署名方式（GitHub ID、姓名、网名或匿名），编辑组会在整理时补入相应信息．
 
-<a href="../submit/" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.0; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #e85d04; border-radius: 6px; background-color: #e85d04; color: #fff; outline: none; font-size: 0.9em;">Web 投稿</a><a id="btn-startedit" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.0; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #6190e8; border-radius: 6px; background-color: #6190e8; color: #fff; outline: none; font-size: 0.9em; margin-left: 0.75em;">在 GitHub 上编辑</a><a href="mailto:submit@folderrewind.top?subject=%5BPhysics%20Learning%20Wiki%20%E6%8A%95%E7%A8%BF%5D" style="padding: 0.6em 1.2em; display: inline-block; line-height: 1.0; text-decoration: none; white-space: nowrap; cursor: pointer; border: 1px solid #268c5a; border-radius: 6px; background-color: #268c5a; color: #fff; outline: none; font-size: 0.9em; margin-left: 0.75em;">通过邮箱投稿</a>
+<div class="grid">
+  <a class="md-button md-button--primary" href="../submit/">Web 投稿</a>
+  <a class="md-button" id="btn-startedit">在 GitHub 上编辑</a>
+  <a class="md-button" href="mailto:submit@folderrewind.top?subject=%5BPhysics%20Learning%20Wiki%20%E6%8A%95%E7%A8%BF%5D">通过邮箱投稿</a>
+</div>
 
 <script>
     function getQueryVariable(name, dft)

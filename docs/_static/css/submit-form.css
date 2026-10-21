@@ -1,4 +1,4 @@
-/* docs/_static/css/submit-form.css */
+/* Source for generated form feature stylesheets and the legacy CSS entry. */
 
 /* Native select popup & form color-scheme adaptation */
 :root,
@@ -12,6 +12,7 @@
 
 /* Form field layout */
 .submit-field {
+  min-width: 0;
   margin-bottom: 1.5rem;
 }
 .editor-toolbar button.plw-editor-toolbar__icon {
@@ -35,6 +36,8 @@
 .submit-field select,
 .submit-field input:not([type="checkbox"]):not([type="radio"]) {
   width: 100%;
+  min-width: 0;
+  min-height: 44px;
   max-width: 560px;
   padding: 0.55rem 0.75rem;
   border: 1px solid var(--md-default-fg-color--lighter, #cbd5e0);
@@ -81,6 +84,8 @@
 /* Textarea fallback (when EasyMDE fails to load) */
 .submit-field textarea {
   width: 100%;
+  min-width: 0;
+  min-height: 44px;
   max-width: 560px;
   padding: 0.55rem 0.75rem;
   border: 1px solid var(--md-default-fg-color--lighter, #cbd5e0);
@@ -169,11 +174,18 @@
   gap: 1rem;
   margin-top: 1.5rem;
 }
-#submit-btn {
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
   padding: 0.65em 1.8em;
-  background: var(--md-accent-fg-color, #526cfe);
-  color: #fff;
-  border: none;
+  background: var(--md-default-bg-color, #fff);
+  color: var(--md-typeset-a-color, #3f51b5);
+  border: 1px solid currentColor;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 500;
@@ -181,25 +193,24 @@
   transition: background 0.2s, transform 0.1s, box-shadow 0.2s, filter 0.2s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
-#submit-btn:hover:not(:disabled) {
-  filter: brightness(1.08);
+.submit-button:hover:not(:disabled) {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
-#submit-btn:active:not(:disabled) {
+.submit-button:active:not(:disabled) {
   transform: translateY(1px);
 }
-#submit-btn:disabled {
-  background: var(--md-default-fg-color--lighter, #a0aec0);
+.submit-button:disabled {
+  opacity: 0.65;
   cursor: not-allowed;
   box-shadow: none;
   filter: none;
 }
-#submit-status {
+:is(#submit-status, #q-submit-status, .submit-feedback) {
   font-size: 0.9rem;
   line-height: 1.4;
 }
-#submit-status.error {
-  color: #e53e3e;
+:is(#submit-status, #q-submit-status, .submit-feedback).error {
+  color: #b91c1c;
   background: #fff5f5;
   border: 1px solid #feb2b2;
   padding: 0.4rem 0.8rem;
@@ -284,7 +295,7 @@
   color: #a0aec0;
 }
 
-[data-md-color-scheme="slate"] #submit-status.error {
+[data-md-color-scheme="slate"] :is(#submit-status, #q-submit-status, .submit-feedback).error {
   background: #3b1e1e;
   border-color: #742a2a;
   color: #feb2b2;
@@ -325,8 +336,128 @@
   color: #e2e8f0;
 }
 
-.submit-draft { margin: 1rem 0; padding: .75rem; border: 1px solid var(--md-default-fg-color--lighter); border-radius: 6px; }
-.submit-draft p { margin-top: 0; font-size: .8rem; }
-.submit-draft button, .submit-verification-actions button { border: 1px solid var(--md-default-fg-color--lighter); border-radius: 6px; padding: .4rem .7rem; min-height: 44px; margin-right: .5rem; cursor: pointer; }
-.submit-draft button[hidden], .submit-verification-actions button[hidden] { display: none; }
-.submit-verification-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .8rem; }
+.submit-draft {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+}
+.submit-draft p {
+  margin-top: 0;
+  font-size: 0.8rem;
+}
+.submit-draft button,
+.submit-verification-actions button {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  min-height: 44px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+.submit-draft button[hidden],
+.submit-verification-actions button[hidden] {
+  display: none;
+}
+.submit-verification-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+/* Shared actions, receipts and management layout. */
+.submit-button--primary {
+  background: var(--md-typeset-a-color, #3f51b5);
+  color: var(--md-default-bg-color, #fff);
+  border-color: var(--md-typeset-a-color, #3f51b5);
+}
+.submit-button:focus-visible {
+  outline: 2px solid var(--md-typeset-a-color, #3f51b5);
+  outline-offset: 3px;
+}
+:is(#submit-status, #q-submit-status, .submit-feedback) {
+  display: block;
+  flex-basis: 100%;
+  overflow-wrap: anywhere;
+}
+:is(#submit-status, #q-submit-status, .submit-feedback):empty {
+  display: none;
+}
+.submit-feedback:not(:empty) {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--md-typeset-a-color, #3f51b5);
+  border-radius: 6px;
+}
+.submit-feedback.success {
+  color: #166534;
+  background: #f0fff4;
+  border-color: #166534;
+}
+.submit-feedback.pending {
+  color: var(--md-typeset-a-color, #3f51b5);
+  background: var(--md-code-bg-color);
+}
+[data-md-color-scheme="slate"] .submit-feedback.success {
+  background: #1a3a2a;
+  border-color: #86efac;
+  color: #c6f6d5;
+}
+.submit-receipt {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.submit-receipt > p:first-child {
+  margin-top: 0;
+}
+.submit-receipt .submit-actions {
+  margin: 0.75rem 0;
+}
+#submission-lookup-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+#submission-lookup-form .submit-field {
+  flex: 1 1 16rem;
+  margin-bottom: 0;
+}
+#plw-submission-status {
+  min-width: 0;
+}
+.submit-field input[type="file"] {
+  overflow: hidden;
+}
+.submit-field input[type="file"]::file-selector-button {
+  min-height: 44px;
+  margin-right: 0.5rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  color: inherit;
+  background: var(--md-default-bg-color);
+  cursor: pointer;
+}
+.submit-field > :is(input, select, textarea) + label {
+  margin-top: 0.75rem;
+}
+@media (max-width: 600px) {
+  #submission-lookup-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #submission-lookup-form .submit-field {
+    flex: auto;
+  }
+}
+:is(#submission-form, #plw-question-contribute-form, #plw-submission-status, .submit-receipt) [hidden],
+.submit-button[hidden],
+.submit-checkbox-label[hidden] {
+  display: none !important;
+}

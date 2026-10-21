@@ -147,22 +147,23 @@ export class LibrarySurface {
     }
     shell.append(tabs);
 
-    // Global Notice / Flash Alert
-    if (route.notice || this.flash || this.store.getStatus() !== "ready" || this.catalogError) {
+    // Empty storage is a normal state: only render notices with actionable text.
+    const status = this.store.getStatus();
+    const notice = [
+      route.notice,
+      this.flash,
+      status === "corrupt_data" ? "本地数据损坏，原文已保留，当前只读。" : "",
+      status === "version_mismatch" ? "当前版本无法读取较新或未知格式，原文已保留，当前只读。" : "",
+      status === "unavailable" ? "浏览器存储不可用，本地学习档案不可写。" : "",
+      this.catalogError ? `题库暂不可用：${this.catalogError}` : ""
+    ]
+      .filter(Boolean)
+      .join(" ");
+    if (notice) {
       const note = document.createElement("div");
       note.className = "plw-quiz-notice plw-quiz-library__notice";
       note.setAttribute("role", "status");
-      const status = this.store.getStatus();
-      note.textContent = [
-        route.notice,
-        this.flash,
-        status === "corrupt_data" ? "本地数据损坏，原文已保留，当前只读。" : "",
-        status === "version_mismatch" ? "当前版本无法读取较新或未知格式，原文已保留，当前只读。" : "",
-        status === "unavailable" ? "浏览器存储不可用，本地学习档案不可写。" : "",
-        this.catalogError ? `题库暂不可用：${this.catalogError}` : ""
-      ]
-        .filter(Boolean)
-        .join(" ");
+      note.textContent = notice;
       shell.append(note);
     }
     this.flash = "";

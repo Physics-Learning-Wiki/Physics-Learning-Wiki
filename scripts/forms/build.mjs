@@ -27,8 +27,15 @@ const features = [
 ];
 
 const easyMdeCss = await readFile(resolve(root, "node_modules/easymde/dist/easymde.min.css"), "utf8");
-const formCss = await readFile(resolve(root, "docs/_static/css/submit-form.css"), "utf8");
+const formCss = await readFile(resolve(root, "scripts/forms/src/styles.css"), "utf8");
 const staleOutputs = [];
+const legacyStylesheet = resolve(root, "docs/_static/css/submit-form.css");
+if (check) {
+  const current = await readFile(legacyStylesheet).catch(() => Buffer.alloc(0));
+  if (!current.equals(Buffer.from(formCss))) staleOutputs.push("legacy stylesheet");
+} else {
+  await writeFile(legacyStylesheet, formCss);
+}
 
 for (const feature of features) {
   await mkdir(dirname(feature.javascript), { recursive: true });

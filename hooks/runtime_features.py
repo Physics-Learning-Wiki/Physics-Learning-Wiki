@@ -58,9 +58,9 @@ MATH_REPLACEMENTS = {
 }
 QUIZ_STYLESHEET = "_static/css/quiz.css?v=5"
 FEATURE_STYLESHEETS = {
-    "submit": "_static/css/features/submit.css?v=2",
-    "question-contribute": "_static/css/features/question-contribute.css?v=2",
-    "submission-status": "_static/css/features/submission-status.css?v=1",
+    "submit": "_static/css/features/submit.css?v=3",
+    "question-contribute": "_static/css/features/question-contribute.css?v=3",
+    "submission-status": "_static/css/features/submission-status.css?v=2",
     "concept-reference": "_static/css/features/concept-reference.css",
 }
 
@@ -176,7 +176,7 @@ def transform_page_html(output: str, page_url: str = "", search_metadata=None) -
             formula["data-pagefind-ignore"] = "all"
             searchable_text = _math_text_for_pagefind(formula.get_text())
             if searchable_text:
-                index_text = soup.new_tag("span", attrs={"class": "plw-pagefind-math"})
+                index_text = soup.new_tag("span", attrs={"class": "plw-pagefind-math", "aria-hidden": "true"})
                 index_text.string = searchable_text
                 formula.insert_after(index_text)
 

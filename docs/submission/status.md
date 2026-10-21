@@ -9,21 +9,29 @@ status: review
 
 <section id="plw-submission-status">
   <form id="submission-lookup-form">
-    <label for="submission-lookup-id">投稿编号</label>
-    <input id="submission-lookup-id" type="text" required autocomplete="off">
-    <button type="submit">查询进度</button>
+    <div class="submit-field">
+      <label for="submission-lookup-id">投稿编号</label>
+      <input id="submission-lookup-id" type="text" required autocomplete="off" placeholder="填写管理回执中的投稿编号">
+    </div>
+    <button class="submit-button submit-button--primary" type="submit">查询进度</button>
   </form>
-  <label for="submission-receipt-file">导入管理回执</label>
-  <input id="submission-receipt-file" type="file" accept="application/json,.json">
-  <p id="submission-query-message" role="status"></p>
+  <div class="submit-field">
+    <label for="submission-receipt-file">导入管理回执</label>
+    <input id="submission-receipt-file" type="file" accept="application/json,.json">
+  </div>
+  <p id="submission-query-message" class="submit-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
   <div id="submission-query-result"></div>
   <section id="submission-author-actions" hidden>
-    <p><a id="submission-edit-link" href="#">编辑最新版本</a></p>
+    <p><a id="submission-edit-link" class="submit-button" href="#">编辑最新版本</a></p>
     <form id="submission-withdraw-form">
-      <label for="submission-withdraw-reason">撤稿申请说明</label>
-      <textarea id="submission-withdraw-reason" required maxlength="2000"></textarea>
+      <div class="submit-field">
+        <label for="submission-withdraw-reason">撤稿申请说明</label>
+        <textarea id="submission-withdraw-reason" required maxlength="2000"></textarea>
+      </div>
       <div id="turnstile-widget"></div>
-      <button id="submission-withdraw-submit" type="submit">提交撤稿申请</button>
+      <div class="submit-actions">
+        <button id="submission-withdraw-submit" class="submit-button" type="submit">提交撤稿申请</button>
+      </div>
     </form>
     <p>撤稿申请由维护者审核，实际下线后才会标记「已撤回」．关闭 GitHub Issue 表示处理结束，不会自动撤稿．</p>
   </section>
