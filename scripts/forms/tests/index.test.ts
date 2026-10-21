@@ -3,6 +3,58 @@ import { test } from "node:test";
 
 import { parsePairs } from "../src/parse-pairs.js";
 import { parseDraft, sameDraft, type SubmissionDraft } from "../src/draft.js";
+import { parseQuizSetDraft } from "../src/quiz-set-draft.js";
+
+test("set drafts preserve identities and unfinished fields without exporting receipt credentials", () => {
+  const source = {
+    schemaVersion: 1,
+    kind: "quiz-set",
+    updatedAt: 1,
+    title: "练习",
+    content: "简介",
+    attribution: "",
+    sourceDeclaration: { kind: "original", note: "原创" },
+    quizSet: {
+      tags: [],
+      feedbackMode: "deferred",
+      selection: { type: "fixed", order: "fixed", items: [] },
+      newQuestions: []
+    },
+    editing: { clientId: "11111111-1111-4111-8111-111111111111", fields: { "q-submit-stem": "未完成的题干" } },
+    token: "secret",
+    turnstileToken: "verification",
+    licenseConsent: true
+  };
+  const parsed = parseQuizSetDraft(JSON.stringify(source));
+  assert.equal(parsed.editing?.clientId, source.editing.clientId);
+  assert.doesNotMatch(JSON.stringify(parsed), /secret|verification|licenseConsent/);
+  assert.throws(() => parseQuizSetDraft(JSON.stringify({ ...source, schemaVersion: 99 })));
+  assert.throws(() =>
+    parseQuizSetDraft(JSON.stringify({ ...source, sourceDeclaration: { kind: "original", note: "", source: {} } }))
+  );
+  assert.throws(() =>
+    parseQuizSetDraft(
+      JSON.stringify({
+        ...source,
+        quizSet: {
+          ...source.quizSet,
+          newQuestions: [
+            {
+              clientId: source.editing.clientId,
+              sourceDeclaration: source.sourceDeclaration,
+              question: { type: "true_false", stem: {}, solution: "解析", answer: { value: true } }
+            }
+          ]
+        }
+      })
+    )
+  );
+  assert.throws(() =>
+    parseQuizSetDraft(
+      JSON.stringify({ ...source, editing: { ...source.editing, fields: { "q-submit-license": true } } })
+    )
+  );
+});
 
 test("question submission option parsing is case-insensitive and rejects invalid pairs", () => {
   assert.deepEqual(parsePairs("a | left\nB|right", "选项"), { A: "left", B: "right" });

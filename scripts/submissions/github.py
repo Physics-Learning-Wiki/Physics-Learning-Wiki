@@ -50,7 +50,10 @@ class GitHub:
         deployed = next((record for record in reversed(states) if record.get("sourceSha")), {})
         if (stage in {"accepted", "importing", "draft_ready", "reviewing"} and not details.get("sourceSha")
                 and deployed.get("stage") in {"published", "withdrawn"}):
-            return  # Late import/retry events cannot undo confirmed deployment evidence.
+            if not details.get("resources"):
+                return  # Late import/retry events cannot undo confirmed deployment evidence.
+            # Independent question progress may change after the primary set is retired.
+            stage = deployed["stage"]
         labels = [label["name"] for label in issue["labels"] if not label["name"].startswith(PREFIX)]
         target = PREFIX + stage
         try:

@@ -11,7 +11,7 @@ jobs:
     if: >-
       github.event.pull_request.merged == true &&
       github.event.pull_request.head.repo.full_name == github.repository &&
-      contains(github.event.pull_request.body, 'plw-question-pr:')
+      (contains(github.event.pull_request.body, 'plw-question-pr:') || contains(github.event.pull_request.body, 'plw-quiz-set-pr:'))
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}

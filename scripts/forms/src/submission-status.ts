@@ -32,8 +32,10 @@ interface Status {
   pr?: string;
   withdrawalRequested?: boolean;
   published?: { url: string; revision: number };
+  publishedResources?: Array<{ question: string; version: number; url: string }>;
   operationState?: string;
   mediaReview?: Array<{ decision: string }>;
+  resources?: Array<{ type: string; question?: string; set?: string; version?: number; stage: string; url?: string }>;
   record?: { payload?: { question?: { external_media?: unknown[] } } };
 }
 
@@ -114,6 +116,25 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
       if (data.pr) safeLink("查看稿件 PR", data.pr);
       if (data.published?.url)
         safeLink("访问当前线上版本（第 " + data.published.revision + " 版）", data.published.url);
+      for (const resource of data.publishedResources || [])
+        safeLink(`已核验线上新题：${resource.question}（资源版本 ${resource.version}）`, resource.url);
+      if (data.type === "quiz-set") {
+        const note = document.createElement("p");
+        note.textContent = "撤稿申请默认只针对题集；自创新题仍可通过本回执修订，新题退役需另外说明并核查引用．";
+        result.append(note);
+      }
+      if (data.resources?.length) {
+        const list = document.createElement("ul");
+        for (const resource of data.resources) {
+          const row = document.createElement("li");
+          row.textContent = `${resource.type === "question" ? "新题" : "题集"} ${
+            resource.question || resource.set || ""
+          }：${STAGES[resource.stage] || resource.stage}（资源版本 ${resource.version || 1}）`;
+          list.append(row);
+          if (resource.url) safeLink("访问资源：" + (resource.question || resource.set), resource.url);
+        }
+        result.append(list);
+      }
       const media = data.mediaReview;
       if (media?.length) {
         const note = document.createElement("p");
@@ -131,17 +152,26 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
         note.textContent = "插图仍为审核材料，正式发布前由维护者核对入库结果．";
         result.append(note);
       }
-      if (own && data.revision > 0 && !["withdrawn", "processing"].includes(data.stage)) {
+      if (
+        own &&
+        data.revision > 0 &&
+        data.stage !== "processing" &&
+        (data.stage !== "withdrawn" || data.type === "quiz-set")
+      ) {
         own.revision = data.revision;
         storeReceipt(document, own);
         receiptCard(document, own, result);
         if (data.operationState && data.operationState !== "completed") return;
         actions.hidden = false;
+        withdrawal.hidden = data.type === "quiz-set" && data.stage === "withdrawn";
         withdrawal.querySelector<HTMLButtonElement>("#submission-withdraw-submit")!.disabled = Boolean(
           data.withdrawalRequested
         );
         const edit = container.querySelector<HTMLAnchorElement>("#submission-edit-link")!;
-        const editUrl = new URL(data.type === "question" ? "quiz/contribute/" : "submit/", siteRoot(document));
+        const editUrl = new URL(
+          data.type === "question" ? "quiz/contribute/" : data.type === "quiz-set" ? "quiz/contribute-set/" : "submit/",
+          siteRoot(document)
+        );
         editUrl.searchParams.set("submission", id);
         edit.href = editUrl.href;
         const target = container.querySelector<HTMLElement>("#turnstile-widget")!;
@@ -152,7 +182,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext) {
             setMessage(text, "error");
           },
           undefined,
-          data.type === "question" ? "submit-question" : "submit-general"
+          data.type === "question" ? "submit-question" : data.type === "quiz-set" ? "submit-quiz-set" : "submit-general"
         );
         await widget.ready;
       }

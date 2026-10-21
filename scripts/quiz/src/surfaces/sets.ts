@@ -240,6 +240,7 @@ export class SetsSurface {
         <div>
           <h3>${escapeHtml(item.title)} ${draftBadge}</h3>
           ${item.description ? `<p class="plw-quiz-landing__desc">${escapeHtml(item.description)}</p>` : ""}
+          ${item.authors?.length ? `<p>编排：${escapeHtml(item.authors.map(a => a.name).join("、"))}</p>` : ""}
           <p class="plw-quiz-landing__card-meta">
             <span>题量：${item.questionCount} 题</span> ·
             <span>模式：${modeText}</span>

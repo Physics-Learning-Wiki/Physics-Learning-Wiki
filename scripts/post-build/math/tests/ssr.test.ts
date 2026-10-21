@@ -153,30 +153,31 @@ test("renderMathInQuestion processes stem, solution, hints, choices, and feedbac
   assert.equal(question.feedback.choicesHtml.B, "<p>纯文本反馈</p>");
 });
 
-test("post-build taskHandler.process sets data-plw-math-css on Quiz pages without static math and does not inject link", async () => {
-  const handler = Object.assign(Object.create(taskHandler), {
-    siteDir: "/site",
-    cssHash: "test-hash-123",
-    renderer: await createRenderer()
-  });
+for (const feature of ["quiz", "quiz-set-contribute"])
+  test(`post-build math CSS supports ${feature} without static math`, async () => {
+    const handler = Object.assign(Object.create(taskHandler), {
+      siteDir: "/site",
+      cssHash: "test-hash-123",
+      renderer: await createRenderer()
+    });
 
-  const quizDoc = parse(`
+    const quizDoc = parse(`
     <html>
       <head><title>Quiz</title></head>
       <body>
-        <article class="md-content__inner md-typeset" data-plw-features="quiz">
-          <div id="plw-quiz-root"></div>
+        <article class="md-content__inner md-typeset" data-plw-features="${feature}">
+          <div></div>
         </article>
       </body>
     </html>
   `);
-  await handler.process(quizDoc, "/site/quiz/index.html");
+    await handler.process(quizDoc, "/site/quiz/index.html");
 
-  const article = quizDoc.querySelector("article");
-  assert.equal(article?.getAttribute("data-plw-math-css"), "assets/stylesheets/mathjax.css?hash=test-hash-123");
-  const headLinks = quizDoc.querySelectorAll("head link[rel='stylesheet']");
-  assert.equal(headLinks.length, 0, "Should not inject head link for quiz-only page");
-});
+    const article = quizDoc.querySelector("article");
+    assert.equal(article?.getAttribute("data-plw-math-css"), "assets/stylesheets/mathjax.css?hash=test-hash-123");
+    const headLinks = quizDoc.querySelectorAll("head link[rel='stylesheet']");
+    assert.equal(headLinks.length, 0, "Should not inject head link for quiz-only page");
+  });
 
 test("post-build taskHandler.process ignores pages without math and without quiz", async () => {
   const handler = Object.assign(Object.create(taskHandler), {

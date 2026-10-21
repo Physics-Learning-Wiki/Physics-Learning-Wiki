@@ -26,7 +26,8 @@ def git(*args, check=True):
 
 def managed_path(root, relative):
     path = root / relative
-    if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+    if any(part.is_symlink() or getattr(part, "is_junction", lambda: False)()
+           for part in [path, *path.parents] if part != root.parent) or not path.resolve().is_relative_to(root.resolve()):
         raise ValueError("Managed question path escapes the repository")
     return path
 
@@ -34,6 +35,9 @@ def managed_path(root, relative):
 def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local") -> str:
     root = Path.cwd()
     issue = api.api(f"issues/{number}")
+    if "投稿-题集" in {x["name"] for x in issue["labels"]}:
+        from .sets import import_pr as import_set_pr
+        return import_set_pr(api, number, revision_event=revision_event, run_key=run_key)
     if "pull_request" in issue or "投稿-题目" not in {x["name"] for x in issue["labels"]}:
         raise ValueError("Issue is not a question submission")
     revision = latest_revision(issue, api.pages(f"issues/{number}/comments?per_page=100"))
@@ -172,6 +176,9 @@ def import_pr(api: GitHub, number: int, *, revision_event=False, run_key="local"
 
 def complete(api: GitHub, pr: dict):
     record = metadata(pr.get("body", ""))
+    if record and record.get("type") == "quiz-set":
+        from .sets import complete as complete_set
+        return complete_set(api, pr, record)
     if not record or record.get("repo") != REPO or pr["head"]["repo"]["full_name"] != REPO:
         return
     if not pr.get("merged") or pr["base"]["ref"] != "main":

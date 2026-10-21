@@ -94,11 +94,15 @@ def submission_document(root: Path, payload: dict[str, Any]) -> tuple[Path, dict
         match = ISSUE_URL_RE.fullmatch(str(issue_url))
         if not match:
             raise ValueError("submission requires a canonical repository Issue URL")
-        question_id = f"q-issue-{match[1]}"
+        item_key = payload.get("itemKey")
+        if item_key is not None and not re.fullmatch(r"[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}", item_key):
+            raise ValueError("Invalid submission item key")
+        question_id = f"q-issue-{match[1]}" + ("-" + item_key if item_key else "")
         output = root / "question-bank" / "questions" / "inbox" / f"{question_id}.yml"
         # Already imported IDs and paths are permanent, including legacy q-NNNNNN.
         for document in load_tree(root / "question-bank" / "questions")[0]:
-            if document.data.get("submission", {}).get("issue_url") == issue_url:
+            if (document.data.get("submission", {}).get("issue_url") == issue_url
+                    and document.data.get("submission", {}).get("item_key") == item_key):
                 question_id, output = document.data["id"], document.path
                 break
     else:
@@ -150,6 +154,8 @@ def submission_document(root: Path, payload: dict[str, Any]) -> tuple[Path, dict
             question[field] = source[field]
 
     submission_meta: dict[str, Any] = {}
+    if payload.get("itemKey"):
+        submission_meta["item_key"] = payload["itemKey"]
     if payload.get("issueUrl"):
         submission_meta["issue_url"] = payload.get("issueUrl")
     if source.get("external_media"):

@@ -4,6 +4,10 @@ on:
   pull_request:
     paths: &quiz-paths
       - 'question-bank/**'
+      - 'contracts/**'
+      - 'scripts/submissions/**'
+      - 'workers/**'
+      - 'docs/_static/js/features/quiz-set-contribute.js'
       - 'scripts/question_bank/**'
       - 'data/concepts.yml'
       - 'scripts/concepts/**'

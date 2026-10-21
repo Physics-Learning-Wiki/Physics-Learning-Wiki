@@ -251,6 +251,36 @@ export class LibrarySurface {
         this.render();
       });
       actions.append(add);
+      const contribute = document.createElement("button");
+      contribute.type = "button";
+      contribute.textContent = "从当前收藏夹投稿题集";
+      contribute.className = "plw-quiz-btn--secondary plw-quiz-btn--sm";
+      contribute.addEventListener("click", () => {
+        const ids = Object.entries(snapshot.library.savedQuestions)
+          .filter(
+            ([, saved]) =>
+              route.collection === "all" ||
+              (route.collection === "unfiled"
+                ? !saved.collectionIds.length
+                : saved.collectionIds.includes(route.collection))
+          )
+          .map(([id]) => id)
+          .filter(id => this.questions.get(id)?.status === "published");
+        if (!ids.length) {
+          this.flash = "当前收藏夹没有可投稿的已发布题目．";
+          this.render();
+          return;
+        }
+        const handoff = crypto.randomUUID();
+        try {
+          sessionStorage.setItem("plw:set-handoff:" + handoff, JSON.stringify(ids));
+          window.location.assign(`${resolveSiteUrl("quiz/contribute-set/")}?collectionDraft=${handoff}`);
+        } catch {
+          this.flash = "浏览器无法暂存引用，请直接进入贡献题集页选题．";
+          this.render();
+        }
+      });
+      actions.append(contribute);
 
       if (route.collection !== "all" && route.collection !== "unfiled") {
         const rename = document.createElement("button");

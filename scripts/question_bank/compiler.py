@@ -54,6 +54,9 @@ def compile_question(
         "objectiveIds": list(source.get("objectives", [])),
         "relatedPages": list(source.get("related_pages", [])),
         "stemHtml": render_markdown(source.get("stem", "")),
+        "authors": source.get("authors", []),
+        "provenance": source.get("provenance", {}),
+        "license": source.get("license", ""),
         "source": {
             "stemMarkdown": source.get("stem", ""),
             "choices": [
@@ -301,6 +304,8 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             "description": set_data.get("description", ""),
             "tags": set_data.get("tags", []),
             "status": set_data["status"],
+            "authors": set_data.get("authors", []),
+            "version": set_data.get("version", 1),
             "selectionType": sel_type,
             "questionCount": question_count,
             "estimatedMinutes": estimated_minutes,

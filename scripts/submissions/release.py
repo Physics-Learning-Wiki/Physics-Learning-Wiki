@@ -16,7 +16,7 @@ import frontmatter
 import yaml
 
 from scripts.question_bank.maintenance import ISSUE_URL_RE
-from scripts.question_bank.media import question_content_fingerprint
+from scripts.question_bank.media import question_content_fingerprint, set_content_fingerprint
 from .github import GitHub
 from .records import REPO, blocks, latest_revision
 
@@ -34,12 +34,15 @@ def source_sha(root):
 
 def build_release(root: Path, site: Path, site_url=SITE_URL, sha=None):
     entries = {}
+    dependents = {}
+    questions = {}
     def add(issue, entry):
         if str(issue) in entries:
             raise ValueError(f"Submission #{issue} has multiple primary resources")
         entries[str(issue)] = {"issue": int(issue), **entry}
     for path in (root / "question-bank/questions").rglob("*.yml"):
         question = yaml.safe_load(path.read_text(encoding="utf-8"))
+        questions[question["id"]] = question
         submission = question.get("submission", {})
         match = ISSUE_URL_RE.fullmatch(submission.get("issue_url", ""))
         if not match:
@@ -54,7 +57,30 @@ def build_release(root: Path, site: Path, site_url=SITE_URL, sha=None):
             entry["submissionId"] = submission["submission_id"]
         if stage == "published":
             entry["url"] = urljoin(site_url, "quiz/questions/") + "?q=" + quote(question["id"], safe="")
+        entry["version"] = question.get("version", 1)
+        if submission.get("item_key"):
+            dependents.setdefault(match[1], []).append(entry)
+        else:
+            add(match[1], entry)
+    for path in (root / "question-bank/sets").rglob("*.yml"):
+        document = yaml.safe_load(path.read_text(encoding="utf-8"))
+        submission = document.get("submission", {})
+        match = ISSUE_URL_RE.fullmatch(submission.get("issue_url", ""))
+        if not match:
+            continue
+        stage = {"published": "published", "draft": "draft_ready", "retired": "withdrawn"}[document["status"]]
+        entry = {"type": "quiz-set", "set": document["id"], "version": document.get("version", 1),
+                 "revision": submission.get("revision", 1), "submissionId": submission.get("submission_id"),
+                 "stage": stage, "fingerprint": set_content_fingerprint(document),
+                 "author": "、".join(a["name"] for a in document.get("authors", []) if a.get("kind") == "human") or "匿名",
+                 "resources": sorted(dependents.pop(match[1], []), key=lambda r: r["question"])}
+        if stage == "published":
+            entry["url"] = urljoin(site_url, "quiz/play/") + "?set=" + quote(document["id"], safe="")
+            entry["questionFingerprints"] = {qid: question_content_fingerprint(questions[qid], root)
+                                             for qid in document["selection"]["questions"]}
         add(match[1], entry)
+    if dependents:
+        raise ValueError("Submission questions require their primary set resource")
     manifest_path = root / "data/community-generated.json"
     owned = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {"files": {}}
     for path in (root / "docs").rglob("*.md"):
@@ -89,7 +115,7 @@ def build_release(root: Path, site: Path, site_url=SITE_URL, sha=None):
         add(match[1], entry)
     for issue, decision in owned.get("withdrawn", {}).items():
         add(issue, {**decision, "stage": "withdrawn", "removedUrl": urljoin(site_url, f"community/{issue}/")})
-    result = {"schemaVersion": 1, "sourceSha": sha or source_sha(root), "siteUrl": site_url, "entries": entries}
+    result = {"schemaVersion": 2, "sourceSha": sha or source_sha(root), "siteUrl": site_url, "entries": entries}
     destination = site / RELEASE_PATH
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -117,6 +143,11 @@ def served_questions(site_url, opener):
 
 
 def verify_removed(entry, *, site_url=SITE_URL, opener=urlopen, catalog=None):
+    if entry.get("type") == "quiz-set":
+        manifest, sets = served_sets(site_url, opener)
+        if entry["set"] in manifest.get("sets", {}) or any(s["id"] == entry["set"] for s in sets):
+            raise ValueError("Withdrawn set is still in the actually served manifest or catalog")
+        return
     if entry.get("type") == "question":
         catalog = served_questions(site_url, opener) if catalog is None else catalog
         if any(question["id"] == entry["question"] for question in catalog):
@@ -136,16 +167,35 @@ def verify_removed(entry, *, site_url=SITE_URL, opener=urlopen, catalog=None):
 
 def verify_release(expected_sha, *, site_url=SITE_URL, opener=urlopen):
     release = json.loads(fetch_bytes(urljoin(site_url, RELEASE_PATH) + "?verify=" + expected_sha, opener))
-    if release.get("schemaVersion") != 1 or release.get("sourceSha") != expected_sha or release.get("siteUrl") != site_url:
+    if release.get("schemaVersion") not in {1, 2} or release.get("sourceSha") != expected_sha or release.get("siteUrl") != site_url:
         raise ValueError("The publicly served release does not match this deployment")
     catalog = None
-    for entry in release.get("entries", {}).values():
+    resources = [resource for entry in release.get("entries", {}).values() for resource in [entry, *entry.get("resources", [])]]
+    for entry in resources:
         if entry["type"] == "question" and entry["stage"] in {"published", "withdrawn"} and catalog is None:
             catalog = served_questions(site_url, opener)
         if entry["stage"] == "withdrawn":
             verify_removed(entry, site_url=site_url, opener=opener, catalog=catalog)
             continue
         if entry["stage"] != "published":
+            continue
+        if entry["type"] == "quiz-set":
+            manifest, sets = served_sets(site_url, opener)
+            target = manifest.get("sets", {}).get(entry["set"])
+            if not target or target.get("status") != "published" or not any(s["id"] == entry["set"] and s["status"] == "published" and s.get("runnable") for s in sets):
+                raise ValueError("Set is absent from the actually served catalog")
+            bundle_url = urljoin(site_url + "_generated/question-bank/", target["bundle"])
+            bundle = json.loads(fetch_bytes(checked_site_url(bundle_url, site_url), opener))
+            if bundle.get("preview") or not bundle.get("runnable") or set_content_fingerprint(bundle["set"]) != entry["fingerprint"]:
+                raise ValueError("Published set bundle differs from expected content")
+            fingerprints = {q["id"]: q.get("contentFingerprint") for q in bundle["questions"]}
+            if fingerprints != entry.get("questionFingerprints"):
+                raise ValueError("Published set references different question versions")
+            if catalog is None:
+                catalog = served_questions(site_url, opener)
+            served = {q["id"]: q.get("contentFingerprint") for q in catalog}
+            if any(served.get(qid) != fingerprint for qid, fingerprint in fingerprints.items()):
+                raise ValueError("Set dependencies differ from the served question catalog")
             continue
         url = checked_site_url(entry["url"], site_url)
         resource = fetch_bytes(url, opener)
@@ -155,6 +205,15 @@ def verify_release(expected_sha, *, site_url=SITE_URL, opener=urlopen):
             if not any(q["id"] == entry["question"] and q.get("contentFingerprint") == entry["fingerprint"] for q in catalog):
                 raise ValueError("Question is absent or differs from the actually served catalog")
     return release
+
+
+def served_sets(site_url, opener):
+    base = site_url + "_generated/question-bank/"
+    manifest = json.loads(fetch_bytes(urljoin(base, "manifest.json"), opener))
+    if manifest.get("preview"):
+        raise ValueError("Preview sets cannot confirm publication")
+    catalog = json.loads(fetch_bytes(checked_site_url(urljoin(base, manifest["catalogs"]["sets"]), site_url), opener))
+    return manifest, catalog
 
 
 def reconcile_release(api, release, *, opener=urlopen):

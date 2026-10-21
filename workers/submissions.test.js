@@ -12,6 +12,58 @@ const base = () => ({ schemaVersion: 1, submissionId: crypto.randomUUID(), type:
   licenseConsent: true, licenseVersion: "CC-BY-SA-4.0", sourceDeclaration: { kind: "original", note: "由本人整理撰写" },
   turnstileToken: "valid" });
 
+const setEnvelope = () => {
+  const value = base(), key = crypto.randomUUID();
+  value.type = "quiz-set";
+  value.payload.quizSet = { tags: [], feedbackMode: "deferred", selection: { type: "fixed", order: "fixed",
+    items: [{ kind: "new", clientId: key }, { kind: "existing", questionId: "q-000001" }] },
+    newQuestions: [{ clientId: key, question: { type: "true_false", stem: "判断．", solution: "解析．", answer: { value: false } },
+      sourceDeclaration: { kind: "original", note: "原创" } }] };
+  return value;
+};
+
+test("set contract validates item identities, independent sources and UTF-8 body budgets", () => {
+  assert.deepEqual(fieldErrors(setEnvelope()), {});
+  const duplicate = setEnvelope(); duplicate.payload.quizSet.selection.items.push(duplicate.payload.quizSet.selection.items[0]);
+  assert.match(Object.values(fieldErrors(duplicate)).join(" "), /重复/);
+  const missing = setEnvelope(); missing.payload.quizSet.newQuestions = [];
+  assert.match(Object.values(fieldErrors(missing)).join(" "), /不存在/);
+  const source = setEnvelope(); source.payload.quizSet.newQuestions[0].sourceDeclaration = { kind: "adapted", note: "改编" };
+  assert.ok(Object.keys(fieldErrors(source)).some(k => k.includes("sourceDeclaration")));
+  const tooLarge = setEnvelope(); tooLarge.payload.content = "中文".repeat(11000);
+  assert.match(Object.values(fieldErrors(tooLarge)).join(" "), /过大/);
+});
+
+test("D1: mixed set creation, idempotency and revisions preserve the new submission type", async t => {
+  const h = await harness(t); h.state.verification.action = "submit-quiz-set";
+  const value = setEnvelope(), key = crypto.randomUUID();
+  assert.equal((await h.call(value, { key })).status, 201);
+  assert.equal((await h.call(value, { key })).status, 200);
+  assert.equal(h.issues.length, 1);
+  assert.ok(h.issues[0].labels.some(l => l.name === "投稿-题集"));
+  assert.equal(h.issues[0].body.split("判断．").length - 1, 1);
+  const revision = structuredClone(value); revision.baseRevision = 1;
+  revision.payload.quizSet.selection.items.reverse();
+  assert.equal((await h.call(revision, { path: `/v1/submissions/${value.submissionId}/revisions` })).status, 200);
+  assert.equal(h.comments.length, 1);
+});
+
+test("set status keeps verified question versions after the primary set is withdrawn", async t => {
+  const h = await harness(t); h.state.verification.action = "submit-quiz-set";
+  const value = setEnvelope(); await h.call(value);
+  const question = { type: "question", question: "q-issue-100-item", version: 1, stage: "published",
+    url: "https://physics-learning-wiki.github.io/Physics-Learning-Wiki/quiz/questions/?q=q-issue-100-item" };
+  for (const state of [{ sourceSha: "a".repeat(40), resources: [question] },
+    { pr: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/pull/200", resources: [{ ...question, version: 2, stage: "draft_ready", url: undefined }] }]) {
+    h.comments.push({ id: h.comments.length + 1, performed_via_github_app: { slug: "github-actions" },
+      body: "```json plw-submission-status-v1\n" + JSON.stringify({ revision: 1, stage: "withdrawn", ...state }) + "\n```" });
+  }
+  const status = await (await h.call(null, { path: `/v1/submissions/${value.submissionId}`, method: "GET" })).json();
+  assert.equal(status.stage, "withdrawn");
+  assert.equal(status.resources[0].version, 2);
+  assert.equal(status.publishedResources[0].version, 1);
+});
+
 async function harness(t) {
   const mf = new Miniflare({ modules: true, script: "export default { fetch() { return new Response('test'); } }",
     compatibilityDate: "2024-01-01", d1Databases: ["SUBMISSIONS_DB"] });

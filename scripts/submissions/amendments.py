@@ -6,7 +6,7 @@ import yaml
 
 
 def check_amendments(root, base):
-    files = subprocess.run(["git", "diff", "--name-only", base, "--", "question-bank/questions"],
+    files = subprocess.run(["git", "diff", "--name-only", base, "--", "question-bank/questions", "question-bank/sets"],
                            cwd=root, check=True, capture_output=True, text=True, encoding="utf-8").stdout.splitlines()
     for name in files:
         previous = subprocess.run(["git", "show", base + ":" + name], cwd=root,

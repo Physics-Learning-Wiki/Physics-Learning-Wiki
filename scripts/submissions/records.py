@@ -81,7 +81,7 @@ def question_payload(issue: dict, revision: dict) -> dict:
 
 
 def metadata(body: str) -> dict | None:
-    match = re.search(r"<!-- plw-question-pr:(\{[^\n]+\}) -->", body or "")
+    match = re.search(r"<!-- plw-(?:question|quiz-set)-pr:(\{[^\n]+\}) -->", body or "")
     return json.loads(match[1]) if match else None
 
 

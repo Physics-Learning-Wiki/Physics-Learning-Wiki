@@ -59,7 +59,7 @@ export async function verifyTurnstile(token, type, env) {
   } catch { throw new ApiError(502, "VERIFICATION_UNAVAILABLE", "人机验证服务暂时不可用，请重试"); }
   const allowed = (env.ALLOWED_HOSTNAMES || "physics-learning-wiki.github.io").split(",").map(v => v.trim());
   const production = env.ENVIRONMENT === "production" || env.NODE_ENV === "production";
-  const expected = type === "question" ? "submit-question" : "submit-general";
+  const expected = type === "question" ? "submit-question" : type === "quiz-set" ? "submit-quiz-set" : "submit-general";
   if (!result.success || !result.hostname || !allowed.includes(result.hostname) ||
       (production && ["localhost", "127.0.0.1"].includes(result.hostname)) || result.action !== expected) {
     throw new ApiError(403, "VERIFICATION_FAILED", "人机验证未通过，请重新验证");

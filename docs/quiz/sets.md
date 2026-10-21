@@ -8,6 +8,8 @@ hide:
 
 本目录汇集了 Physics Learning Wiki 的全部知识小测集合，涵盖快速自测与综合演练卷．你可以按物理主题、反馈模式或关键词进行筛选．
 
+[编排并投稿题集](contribute-set.md){ .md-button }
+
 ***
 
 <div id="plw-quiz-sets-root" data-manifest-url="../../_generated/question-bank/manifest.json">

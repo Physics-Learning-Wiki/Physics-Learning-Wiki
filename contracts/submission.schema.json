@@ -32,7 +32,8 @@
         "notes",
         "errata",
         "question",
-        "suggestion"
+        "suggestion",
+        "quiz-set"
       ]
     },
     "payload": {
@@ -65,6 +66,9 @@
         },
         "question": {
           "$ref": "#/$defs/questionSource"
+        },
+        "quizSet": {
+          "$ref": "#/$defs/quizSetSource"
         }
       }
     },
@@ -153,6 +157,35 @@
             "not": {
               "required": [
                 "question"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": {
+            "const": "quiz-set"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "required": [
+              "quizSet"
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "payload": {
+            "not": {
+              "required": [
+                "quizSet"
               ]
             }
           }
@@ -959,6 +992,170 @@
           "maxLength": 2048
         }
       }
+    },
+    "sourceDeclaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "note"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "original",
+            "adapted"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "\\S"
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "permission": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "adapted"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "source",
+              "permission"
+            ]
+          }
+        }
+      ]
+    },
+    "quizSetSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tags",
+        "feedbackMode",
+        "selection",
+        "newQuestions"
+      ],
+      "properties": {
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "feedbackMode": {
+          "enum": [
+            "immediate",
+            "deferred"
+          ]
+        },
+        "selection": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "order",
+            "items"
+          ],
+          "properties": {
+            "type": {
+              "const": "fixed"
+            },
+            "order": {
+              "enum": [
+                "fixed",
+                "shuffle"
+              ]
+            },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "kind",
+                      "questionId"
+                    ],
+                    "properties": {
+                      "kind": {
+                        "const": "existing"
+                      },
+                      "questionId": {
+                        "type": "string",
+                        "pattern": "^(?:[a-z][a-z0-9-]{7,63}|q-\\d{6})$"
+                      }
+                    }
+                  },
+                  {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "kind",
+                      "clientId"
+                    ],
+                    "properties": {
+                      "kind": {
+                        "const": "new"
+                      },
+                      "clientId": {
+                        "$ref": "#/$defs/clientId"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "newQuestions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "clientId",
+              "question",
+              "sourceDeclaration"
+            ],
+            "properties": {
+              "clientId": {
+                "$ref": "#/$defs/clientId"
+              },
+              "question": {
+                "$ref": "#/$defs/questionSource"
+              },
+              "sourceDeclaration": {
+                "$ref": "#/$defs/sourceDeclaration"
+              }
+            }
+          }
+        }
+      }
+    },
+    "clientId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
     }
   }
 }

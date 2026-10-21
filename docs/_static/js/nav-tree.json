@@ -600,6 +600,9 @@ const NAV_TREE = [
     "label": "index",
     "children": [
       {
+        "label": "contribute-set"
+      },
+      {
         "label": "contribute"
       },
       {

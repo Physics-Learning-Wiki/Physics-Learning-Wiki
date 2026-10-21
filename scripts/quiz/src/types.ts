@@ -23,6 +23,9 @@ export interface Choice {
 }
 
 export interface QuestionBase {
+  authors?: Array<{ name: string; kind: "human" | "ai" }>;
+  provenance?: { type?: string; note?: string; source?: string; permission?: string };
+  license?: string;
   id: string;
   version: number;
   status: "draft" | "published" | "retired";
@@ -161,6 +164,11 @@ export interface SetSelectionQuery {
 export type SetSelection = SetSelectionFixed | SetSelectionQuery;
 
 export interface QuizSetDef {
+  version?: number;
+  authors?: Array<{ name: string; kind: "human" | "ai" }>;
+  provenance?: Record<string, unknown>;
+  license?: string;
+  submission?: Record<string, unknown>;
   schema_version: 1;
   id: string;
   title: string;
@@ -196,6 +204,8 @@ export interface Manifest {
 }
 
 export interface SetCatalogItem {
+  authors?: Array<{ name: string; kind: "human" | "ai" }>;
+  version?: number;
   id: string;
   title: string;
   description: string;

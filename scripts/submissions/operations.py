@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 import re
 
-from .contract import validate_question
+from .contract import validate_question, validate_quiz_set
 from .github import GitHub
 from .records import PREFIX, block, blocks, digest, latest_revision
 
@@ -27,12 +27,17 @@ def classify(issue, comments):
             return 1, ["稿件版本记录无效，请维护者核对后协助恢复．"]
         body = re.sub(r"```json plw-[\s\S]*?```", "", issue.get("body") or "").strip()
         kind = next((kind for kind, label in (("errata", "投稿-勘误"), ("suggestion", "投稿-建议"),
-                    ("question", "投稿-题目")) if label in {x["name"] for x in issue["labels"]}), "notes")
+                    ("question", "投稿-题目"), ("quiz-set", "投稿-题集")) if label in {x["name"] for x in issue["labels"]}), "notes")
         record = {"type": kind, "revision": 1, "payload": {"content": body, "title": issue["title"]}}
     payload, kind = record["payload"], record["type"]
     content = payload.get("content", "").strip()
     hints = []
-    if kind == "question":
+    if kind == "quiz-set":
+        try:
+            validate_quiz_set(payload.get("quizSet", {}))
+        except ValueError:
+            hints.append("题集结构或新题未通过共享契约，请核对题目引用、题干和来源．")
+    elif kind == "question":
         try:
             validate_question(payload.get("question", {}))
         except ValueError:
@@ -74,7 +79,7 @@ def triage(api, number):
 def editorial_event(api, event):
     """Return whether this event may synchronize a community review PR."""
     issue = event.get("issue", {})
-    if not issue or "pull_request" in issue or "投稿-题目" in {x["name"] for x in issue.get("labels", [])}:
+    if not issue or "pull_request" in issue or {"投稿-题目", "投稿-题集"} & {x["name"] for x in issue.get("labels", [])}:
         return False
     comments = api.pages(f"issues/{issue['number']}/comments?per_page=100")
     if event.get("comment"):

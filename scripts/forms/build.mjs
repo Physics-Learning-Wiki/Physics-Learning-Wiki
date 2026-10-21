@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const check = process.argv.includes("--check");
 const features = [
+  { name: "quiz-set-contribute", entry: resolve(root, "scripts/forms/src/quiz-set-contribute.ts"), javascript: resolve(root, "docs/_static/js/features/quiz-set-contribute.js"), stylesheet: resolve(root, "docs/_static/css/features/quiz-set-contribute.css") },
   {
     name: "submit",
     entry: resolve(root, "scripts/forms/src/submit.ts"),

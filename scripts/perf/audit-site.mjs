@@ -25,6 +25,7 @@ const REPRESENTATIVE_PAGES = [
   "quiz/index.html",
   "submit/index.html",
   "quiz/contribute/index.html",
+  "quiz/contribute-set/index.html",
   "submission/status/index.html"
 ];
 const FEATURE_RESOURCE_PATTERNS = {
@@ -35,6 +36,7 @@ const FEATURE_RESOURCE_PATTERNS = {
   quizCss: /quiz\.css/i,
   submit: /(?:submit-form|features\/submit)\.(?:js|css)/i,
   questionContribute: /(?:question-contribute|features\/question-contribute)\.js/i,
+  quizSetContribute: /(?:^|\/)features\/quiz-set-contribute\.(?:js|css)/i,
   submissionStatus: /(?:^|\/)features\/submission-status\.(?:js|css)/i,
   easyMde: /easymde/i,
   pagefind: /(?:^|\/)pagefind(?:\/|\.|-)/i
@@ -46,6 +48,7 @@ const FEATURE_SELECTORS = {
   quiz: "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-library-root, #plw-quiz-home-root, .plw-quiz-inline-root",
   submit: "#submission-form",
   "question-contribute": "#plw-question-contribute-form",
+  "quiz-set-contribute": "#plw-quiz-set-contribute",
   "submission-status": "#plw-submission-status"
 };
 const OLD_MATHJAX_FALLBACK_GIF = "R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
@@ -132,6 +135,7 @@ function countFeatures(pageDocuments) {
     if (!article) continue;
     const declaredValue = article.getAttribute("data-plw-features");
     const declared = new Set((declaredValue ?? "").split(/\s+/).filter(Boolean));
+    const activeRoot = selector => article.querySelectorAll(selector).find(node => !ancestorTag(node, "template"));
     if (declaredValue !== null) {
       pagesWithAttribute += 1;
       for (const feature of declared) counts[feature] = (counts[feature] ?? 0) + 1;
@@ -141,12 +145,12 @@ function countFeatures(pageDocuments) {
         failures.push(`${page.path}: unknown declared feature "${feature}"`);
         continue;
       }
-      if (!article.querySelector(FEATURE_SELECTORS[feature])) {
+      if (!activeRoot(FEATURE_SELECTORS[feature])) {
         failures.push(`${page.path}: declares ${feature} but its feature root is missing`);
       }
     }
     for (const [feature, selector] of Object.entries(FEATURE_SELECTORS)) {
-      if (article.querySelector(selector) && !declared.has(feature)) {
+      if (activeRoot(selector) && !declared.has(feature)) {
         failures.push(`${page.path}: contains ${feature} feature root but does not declare it`);
       }
     }

@@ -4,7 +4,7 @@ import { ApiError, readJson, response, timedFetch, verifyTurnstile } from "./htt
 const REPO = "Physics-Learning-Wiki/Physics-Learning-Wiki";
 const API = "https://api.github.com/repos/" + REPO;
 const UUID = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
-const LABELS = { "full-page": "投稿-完整页面", notes: "投稿-笔记/提纲", errata: "投稿-勘误", question: "投稿-题目", suggestion: "投稿-建议" };
+const LABELS = { "full-page": "投稿-完整页面", notes: "投稿-笔记/提纲", errata: "投稿-勘误", question: "投稿-题目", "quiz-set": "投稿-题集", suggestion: "投稿-建议" };
 const STAGES = new Set(["received", "needs_info", "accepted", "importing", "draft_ready", "reviewing", "published", "rejected", "withdrawn", "resolved"]);
 
 function canonical(value) {
@@ -106,12 +106,20 @@ async function obtainStatus(db, receipt, env, includeRecord) {
   const data = { submissionId: receipt.id, issueNumber: receipt.issue_number, issueUrl: issueUrl(receipt.issue_number),
     type: receipt.kind, revision: current.revision, stage, withdrawalRequested,
     updatedAt: issue.updated_at, ...stateDetails };
+  if (receipt.kind === "quiz-set" && !data.resources) {
+    const previous = comments.filter(c => c.performed_via_github_app?.slug === "github-actions")
+      .flatMap(c => readBlocks(c.body, "plw-submission-status-v1"))
+      .filter(record => record.revision <= current.revision && Array.isArray(record.resources)).at(-1);
+    if (previous) data.resources = previous.resources;
+  }
   // Keep the current live version visible while a new revision is being reviewed.
   const deployed = comments.filter(c => c.performed_via_github_app?.slug === "github-actions")
     .flatMap(c => readBlocks(c.body, "plw-submission-status-v1"))
     .filter(record => record.sourceSha).at(-1);
   if (deployed?.stage === "published" && deployed.url && stage !== "withdrawn" && deployed.available !== false)
     data.published = deployed;
+  if (receipt.kind === "quiz-set" && Array.isArray(deployed?.resources))
+    data.publishedResources = deployed.resources.filter(resource => resource.stage === "published" && resource.url);
   await db.prepare("UPDATE submissions SET status_json=?, status_checked_at=? WHERE id=?")
     .bind(JSON.stringify(data), Date.now(), receipt.id).run();
   return includeRecord ? { ...data, record: current } : data;

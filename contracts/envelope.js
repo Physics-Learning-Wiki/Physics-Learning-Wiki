@@ -3,7 +3,7 @@ import { validateQuestion, unsafeMarkdown, hasHtmlOrUnsafe, hasControlCharacters
 
 export const LICENSE_VERSION = "CC-BY-SA-4.0";
 export const TYPE_LABELS = { "full-page": "完整页面", notes: "笔记/提纲", errata: "勘误纠错",
-  question: "题目投稿", suggestion: "建议/想法" };
+  question: "题目投稿", "quiz-set": "题集投稿", suggestion: "建议/想法" };
 
 export function fieldErrors(data, withdrawal = false) {
   const validate = withdrawal ? validateWithdrawal : validateEnvelope;
@@ -40,19 +40,46 @@ export function fieldErrors(data, withdrawal = false) {
       result["/payload/question" + field] = error;
     }
   }
-  const declaration = data.sourceDeclaration;
+  if (data.type === "quiz-set") {
+    const set = data.payload.quizSet;
+    const keys = new Set();
+    set.newQuestions.forEach((entry, index) => {
+      const path = `/payload/quizSet/newQuestions/${index}`;
+      if (keys.has(entry.clientId)) result[path + "/clientId"] = "新题条目标识重复";
+      keys.add(entry.clientId);
+      const error = validateQuestion(entry.question);
+      if (error) result[path + "/question"] = error;
+      validateDeclaration(entry.sourceDeclaration, path + "/sourceDeclaration", result);
+    });
+    const selected = new Set();
+    set.selection.items.forEach((item, index) => {
+      const key = item.kind === "new" ? item.clientId : item.questionId;
+      const path = `/payload/quizSet/selection/items/${index}`;
+      if (selected.has(key)) result[path] = "题集不能重复引用同一道题";
+      selected.add(key);
+      if (item.kind === "new" && !keys.has(key)) result[path] = "引用的新题不存在";
+    });
+    if (set.tags.some(tag => hasControlCharacters(tag) || hasHtmlOrUnsafe(tag)))
+      result["/payload/quizSet/tags"] = "标签包含不安全内容";
+  }
+  validateDeclaration(data.sourceDeclaration, "/sourceDeclaration", result);
+  if (new TextEncoder().encode(JSON.stringify(data)).length > 131072)
+    result["/payload"] = "请求超过 128 KiB，请拆分投稿或导出草稿";
+  if (new TextEncoder().encode(publicBody(publicRecord(data, (data.baseRevision || 0) + 1, "2000-01-01T00:00:00.000Z"))).length > 59900)
+    result["/payload/content"] = "稿件连同题目与许可记录过大，请缩短正文或拆分投稿";
+  return result;
+}
+
+function validateDeclaration(declaration, path, result) {
   if (Object.values(declaration).some(value => typeof value === "string" &&
     (hasControlCharacters(value) || hasHtmlOrUnsafe(value)))) {
-    result["/sourceDeclaration"] = "来源声明包含不安全的元数据";
+    result[path] = "来源声明包含不安全的元数据";
   }
   if (declaration.kind === "adapted") {
     try {
       if (!["https:", "http:"].includes(new URL(declaration.source).protocol)) throw new Error();
-    } catch { result["/sourceDeclaration/source"] = "请填写有效的来源网址"; }
+    } catch { result[path + "/source"] = "请填写有效的来源网址"; }
   }
-  if (new TextEncoder().encode(publicBody(publicRecord(data, 1, "2000-01-01T00:00:00.000Z"))).length > 59900)
-    result["/payload/content"] = "稿件连同题目与许可记录过大，请缩短正文或拆分投稿";
-  return result;
 }
 
 export function publicBody(record) {
@@ -63,6 +90,11 @@ export function publicBody(record) {
   if (payload.chapter) lines.push("- **目标章节**: " + payload.chapter);
   lines.push("", "---", "", payload.content);
   if (record.type === "question") lines.push("", "## 参考解析", "", payload.question.solution);
+  if (record.type === "quiz-set") {
+    lines.push("", "## 题集编排", "", ...payload.quizSet.selection.items.map((item, index) =>
+      `${index + 1}. ${item.kind === "existing" ? "引用题目 " + item.questionId : "本次新题 " + item.clientId}`));
+    lines.push("", "新题数：" + payload.quizSet.newQuestions.length + "；完整题目及各自来源见下方结构化记录．");
+  }
   lines.push("", machineBlock("plw-submission-v1", record));
   return lines.join("\n");
 }

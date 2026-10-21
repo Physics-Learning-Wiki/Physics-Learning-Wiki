@@ -251,6 +251,7 @@ nav:
     - 题库浏览: quiz/questions.md
     - 我的题库: quiz/library.md
     - 贡献题目: quiz/contribute.md
+    - 贡献题集: quiz/contribute-set.md
   - 竞赛相关:
     - 竞赛简介: contest/index.md
     - 赛事:

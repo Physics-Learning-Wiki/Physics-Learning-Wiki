@@ -28,7 +28,7 @@
     "e2e:quiz": "playwright test tests/e2e/quiz.spec.ts tests/e2e/quiz-library.spec.ts",
     "e2e:search": "playwright test tests/e2e/search.spec.ts",
     "e2e:mermaid": "playwright test tests/e2e/mermaid.spec.ts",
-    "e2e:forms": "playwright test tests/e2e/forms.spec.ts",
+    "e2e:forms": "playwright test tests/e2e/forms.spec.ts tests/e2e/quiz-set-contribute.spec.ts",
     "search:index": "pagefind --site site",
     "media:optimize": "node scripts/post-build/media/optimize-images.mjs",
     "media:check": "node scripts/post-build/media/check-sharp.mjs",

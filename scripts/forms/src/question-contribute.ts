@@ -7,7 +7,9 @@ import type { FeatureDisposer, FeatureMountContext } from "./types.js";
 import { createSubmissionClient, mountSourceDeclaration, sourceDeclaration } from "./submission-client.js";
 import { mountQuestionDraft } from "./question-draft.js";
 import { numericAnswer, mountNumericPreview } from "./numeric-fields.js";
-import { loadRevisionContext } from "./revision-context.js";
+import { validateQuestion } from "../../../contracts/validation.js";
+import type { NewSetQuestion } from "../../../contracts/envelope.js";
+import { loadRevisionContext, populateQuestionForm } from "./revision-context.js";
 
 function setError(status: HTMLElement, message: string): void {
   status.textContent = message;
@@ -103,7 +105,15 @@ async function loadTaxonomyTopics(form: HTMLFormElement, signal: AbortSignal): P
   }
 }
 
-export async function mount(root: ParentNode, { signal }: FeatureMountContext): Promise<FeatureDisposer> {
+export async function mountQuestionEditor(
+  root: ParentNode,
+  { signal }: FeatureMountContext,
+  options?: {
+    initial?: NewSetQuestion;
+    fields?: Record<string, string | boolean>;
+    onSave: (question: Record<string, unknown>, declaration: NewSetQuestion["sourceDeclaration"]) => void;
+  }
+): Promise<FeatureDisposer> {
   const form = queryInRoot<HTMLFormElement>(root, "#plw-question-contribute-form");
   if (!form || signal.aborted) return () => undefined;
 
@@ -117,8 +127,9 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   const issueLink = queryInRoot<HTMLAnchorElement>(root, "#q-submit-issue-link");
   if (!status || !submitButton || !stemTextarea || !solutionTextarea || !typeSelect) return () => undefined;
 
-  const client = createSubmissionClient(form, signal);
+  const client = createSubmissionClient(form, signal, { editorOnly: Boolean(options) });
   mountSourceDeclaration(form, signal);
+  if (options?.initial) client.setQuestionSource(options.initial.question);
   let draft: ReturnType<typeof mountQuestionDraft> | undefined;
   let stemEditor: EditorHandle | undefined;
   let solutionEditor: EditorHandle | undefined;
@@ -161,7 +172,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     signal
   );
 
-  if (stemEditor && solutionEditor)
+  if (!options && stemEditor && solutionEditor)
     draft = mountQuestionDraft(form, { "q-submit-stem": stemEditor, "q-submit-solution": solutionEditor }, signal);
   mountNumericPreview(form, signal);
   form.addEventListener(
@@ -181,11 +192,11 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
       }
 
       const licenseCheck = form.querySelector<HTMLInputElement>("#q-submit-license");
-      if (!licenseCheck?.checked) {
+      if (!options && !licenseCheck?.checked) {
         setError(status, "请确认您有权按 CC BY-SA 4.0 协议分享本题目");
         return;
       }
-      if (!widget?.token) {
+      if (!options && !widget?.token) {
         setError(status, "请完成人机验证");
         return;
       }
@@ -325,6 +336,15 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
         ...client.questionExtras(type)
       };
 
+      if (options) {
+        const error = validateQuestion(JSON.parse(JSON.stringify(questionPayload)));
+        if (error) {
+          setError(status, error);
+          return;
+        }
+        options.onSave(questionPayload, sourceDeclaration(form));
+        return;
+      }
       const titlePreview =
         stem
           .replace(/[#*`$\n]/g, " ")
@@ -339,13 +359,13 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
           payload: { title: "[题目] " + titlePreview, content: stem, attribution, question: questionPayload },
           licenseConsent: Boolean(licenseCheck?.checked),
           sourceDeclaration: sourceDeclaration(form),
-          turnstileToken: widget.token
+          turnstileToken: widget!.token!
         });
         if (data.operationState === "processing") {
           status.textContent = "正在确认提交结果，请保存管理回执后查询；题目草稿继续保留．";
           submitButton.disabled = false;
           submitButton.textContent = "查询后重试原提交";
-          widget.reset();
+          widget?.reset();
           return;
         }
         if (signal.aborted) return;
@@ -371,7 +391,7 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
   );
 
   const taxonomyPromise = loadTaxonomyTopics(form, signal);
-  if (turnstileContainer)
+  if (!options && turnstileContainer)
     widget = createVerification(
       turnstileContainer,
       signal,
@@ -384,16 +404,54 @@ export async function mount(root: ParentNode, { signal }: FeatureMountContext): 
     );
   const turnstilePromise = widget?.ready ?? Promise.resolve();
   await Promise.all([taxonomyPromise, turnstilePromise]);
-  if (stemEditor && solutionEditor)
+  if (!options && stemEditor && solutionEditor)
     await loadRevisionContext(
       form,
       client,
       { "q-submit-stem": stemEditor, "q-submit-solution": solutionEditor },
       signal
     );
+  if (options && stemEditor && solutionEditor) {
+    const editors = { "q-submit-stem": stemEditor, "q-submit-solution": solutionEditor };
+    if (options.initial) {
+      populateQuestionForm(form, editors, options.initial.question, String(options.initial.question.attribution || ""));
+      for (const [key, value] of Object.entries(options.initial.sourceDeclaration)) {
+        const id = { kind: "kind", note: "note", source: "url", permission: "permission" }[key];
+        const input = form.querySelector<HTMLInputElement>("#submission-source-" + id);
+        if (input) {
+          input.value = value;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      }
+    }
+    for (const [id, value] of Object.entries(options.fields || {})) {
+      const input = form.querySelector<HTMLInputElement>("#" + id);
+      if (!input) continue;
+      if (id in editors) editors[id as keyof typeof editors].instance.value(String(value));
+      else if (input.type === "checkbox") input.checked = Boolean(value);
+      else input.value = String(value);
+      input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    submitButton.textContent = "保存到新题池";
+    const license = form.querySelector<HTMLInputElement>("#q-submit-license");
+    if (license) {
+      license.required = false;
+      license.closest("label")!.hidden = true;
+    }
+    for (const editor of Object.values(editors))
+      editor.instance.codemirror.on("change", () => {
+        stemTextarea.value = stemEditor!.instance.value();
+        solutionTextarea.value = solutionEditor!.instance.value();
+        form.dispatchEvent(new Event("input", { bubbles: true }));
+      });
+  }
   if (signal.aborted) {
     dispose();
     return () => undefined;
   }
   return dispose;
+}
+
+export async function mount(root: ParentNode, context: FeatureMountContext): Promise<FeatureDisposer> {
+  return mountQuestionEditor(root, context);
 }

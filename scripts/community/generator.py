@@ -65,7 +65,7 @@ def validate_issues(issues: object) -> list[dict]:
         if not isinstance(labels, list) or any(not isinstance(label, dict) or not isinstance(label.get("name"), str) for label in labels):
             raise ValueError(f"Invalid Issue {number}: labels")
         names = {label["name"] for label in labels}
-        if ("投稿-题目" in names or WITHDRAWN in names or "投稿状态:withdrawn" in names
+        if ("投稿-题目" in names or "投稿-题集" in names or WITHDRAWN in names or "投稿状态:withdrawn" in names
                 or not ({LABEL, "投稿状态:published"} & names)):
             continue
         if issue["state"] == "closed" and "投稿状态:published" not in names and "plw-submission-v1" not in (issue["body"] or ""):
@@ -108,7 +108,7 @@ def fetch_issues(*, token: str | None = None, opener=None, include_withdrawn=Fal
     if include_withdrawn:
         active += [issue for issue in issues if "pull_request" not in issue
                    and WITHDRAWN in {label["name"] for label in issue["labels"]}
-                   and "投稿-题目" not in {label["name"] for label in issue["labels"]}]
+                   and not {"投稿-题目", "投稿-题集"} & {label["name"] for label in issue["labels"]}]
     from scripts.submissions.records import blocks, revision_history
     for issue in active:
         if not blocks(issue.get("body") or "", "plw-submission-v1"):

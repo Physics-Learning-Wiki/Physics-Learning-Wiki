@@ -76,6 +76,10 @@ def question_content_fingerprint(data: dict[str, Any], root: Path) -> str:
     return fingerprint({"question": payload, "assets": asset_bytes})
 
 
+def set_content_fingerprint(data: dict[str, Any]) -> str:
+    return fingerprint({key: value for key, value in data.items() if key not in {"status", "submission"}})
+
+
 def validate_assets(data: dict[str, Any], path: Path, root: Path) -> list[Issue]:
     issues: list[Issue] = []
     assets = data.get("assets", [])

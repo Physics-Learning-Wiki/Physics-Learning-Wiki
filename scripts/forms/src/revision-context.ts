@@ -37,62 +37,7 @@ export async function loadRevisionContext(
     };
     const payload = data.record.payload;
     if (data.record.type === "question") {
-      const q = payload.question!;
-      set("q-submit-type", q.type);
-      set("q-submit-stem", q.stem);
-      set("q-submit-solution", q.solution);
-      const answer = q.answer as
-        | {
-            choice?: string;
-            choices?: string[];
-            value?: number | boolean;
-            tolerance?: { type: string; value: number };
-            unit?: { required: boolean; canonical?: string; accepted: string[] };
-          }
-        | undefined;
-      set("q-submit-answer", answer?.choice ?? answer?.choices?.join(", ") ?? answer?.value ?? "");
-      set(
-        "q-submit-choices",
-        (q.choices as Array<{ id: string; content: string }> | undefined)
-          ?.map(c => c.id + "|" + c.content)
-          .join("\n") || ""
-      );
-      const grading = q.grading as { rubric: Array<{ id: string; label: string; points: number }> } | undefined;
-      set("q-submit-rubric", grading?.rubric.map(r => r.id + "|" + r.label + "|" + r.points).join("\n"));
-      const feedback = q.feedback as
-        | { correct?: string; incorrect?: string; choices?: Record<string, string> }
-        | undefined;
-      set("q-submit-correct-feedback", feedback?.correct || "");
-      set("q-submit-incorrect-feedback", feedback?.incorrect || "");
-      set(
-        "q-submit-choice-feedback",
-        Object.entries(feedback?.choices || {})
-          .map(([key, value]) => key + "|" + value)
-          .join("\n")
-      );
-      set("q-submit-tolerance-type", answer?.tolerance?.type || "absolute");
-      set(
-        "q-submit-tolerance",
-        answer?.tolerance ? answer.tolerance.value * (answer.tolerance.type === "relative" ? 100 : 1) : ""
-      );
-      set("q-submit-unit-required", answer?.unit?.required || false);
-      set("q-submit-unit-canonical", answer?.unit?.canonical || "");
-      set("q-submit-unit-accepted", answer?.unit?.accepted.join(", ") || "");
-      set("q-submit-topic", (q.topics as string[] | undefined)?.[0] || "");
-      set("q-submit-concepts", (q.concepts as string[] | undefined)?.join(", ") || "");
-      for (const [field, key] of [
-        ["q-submit-diff", "difficulty"],
-        ["q-submit-cognitive", "cognitive_level"],
-        ["q-submit-style", "style"],
-        ["q-submit-seconds", "estimated_seconds"],
-        ["q-submit-ai", "ai_assisted"]
-      ])
-        set(field, q[key]);
-      const image = (q.external_media as Array<{ url: string; alt: string; rights_note: string }> | undefined)?.[0];
-      set("q-submit-img-url", image?.url || "");
-      set("q-submit-img-alt", image?.alt || "");
-      set("q-submit-img-rights", image?.rights_note || "");
-      set("q-submit-attribution", payload.attribution || q.attribution || "");
+      populateQuestionForm(form, editors, payload.question!, payload.attribution);
     } else {
       set("submit-type", data.record.type);
       set("submit-title", payload.title);
@@ -125,4 +70,72 @@ export async function loadRevisionContext(
   } catch (error) {
     if (!signal.aborted) status.textContent = error instanceof Error ? error.message : "无法载入稿件．";
   }
+}
+
+export function populateQuestionForm(
+  form: HTMLFormElement,
+  editors: Record<string, EditorHandle>,
+  q: Record<string, unknown>,
+  attribution = ""
+) {
+  const payload = { attribution };
+  const set = (id: string, value: unknown) => {
+    const node = form.querySelector<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("#" + id);
+    if (!node || value === undefined) return;
+    if (editors[id]) editors[id].instance.value(String(value));
+    else if (node instanceof HTMLInputElement && node.type === "checkbox") node.checked = Boolean(value);
+    else node.value = String(value);
+    node.dispatchEvent(new Event("change", { bubbles: true }));
+  };
+  set("q-submit-type", q.type);
+  set("q-submit-stem", q.stem);
+  set("q-submit-solution", q.solution);
+  const answer = q.answer as
+    | {
+        choice?: string;
+        choices?: string[];
+        value?: number | boolean;
+        tolerance?: { type: string; value: number };
+        unit?: { required: boolean; canonical?: string; accepted: string[] };
+      }
+    | undefined;
+  set("q-submit-answer", answer?.choice ?? answer?.choices?.join(", ") ?? answer?.value ?? "");
+  set(
+    "q-submit-choices",
+    (q.choices as Array<{ id: string; content: string }> | undefined)?.map(c => c.id + "|" + c.content).join("\n") || ""
+  );
+  const grading = q.grading as { rubric: Array<{ id: string; label: string; points: number }> } | undefined;
+  set("q-submit-rubric", grading?.rubric.map(r => r.id + "|" + r.label + "|" + r.points).join("\n"));
+  const feedback = q.feedback as { correct?: string; incorrect?: string; choices?: Record<string, string> } | undefined;
+  set("q-submit-correct-feedback", feedback?.correct || "");
+  set("q-submit-incorrect-feedback", feedback?.incorrect || "");
+  set(
+    "q-submit-choice-feedback",
+    Object.entries(feedback?.choices || {})
+      .map(([key, value]) => key + "|" + value)
+      .join("\n")
+  );
+  set("q-submit-tolerance-type", answer?.tolerance?.type || "absolute");
+  set(
+    "q-submit-tolerance",
+    answer?.tolerance ? answer.tolerance.value * (answer.tolerance.type === "relative" ? 100 : 1) : ""
+  );
+  set("q-submit-unit-required", answer?.unit?.required || false);
+  set("q-submit-unit-canonical", answer?.unit?.canonical || "");
+  set("q-submit-unit-accepted", answer?.unit?.accepted.join(", ") || "");
+  set("q-submit-topic", (q.topics as string[] | undefined)?.[0] || "");
+  set("q-submit-concepts", (q.concepts as string[] | undefined)?.join(", ") || "");
+  for (const [field, key] of [
+    ["q-submit-diff", "difficulty"],
+    ["q-submit-cognitive", "cognitive_level"],
+    ["q-submit-style", "style"],
+    ["q-submit-seconds", "estimated_seconds"],
+    ["q-submit-ai", "ai_assisted"]
+  ])
+    set(field, q[key]);
+  const image = (q.external_media as Array<{ url: string; alt: string; rights_note: string }> | undefined)?.[0];
+  set("q-submit-img-url", image?.url || "");
+  set("q-submit-img-alt", image?.alt || "");
+  set("q-submit-img-rights", image?.rights_note || "");
+  set("q-submit-attribution", payload.attribution || q.attribution || "");
 }

@@ -411,6 +411,7 @@ export const taskHandler = new (class implements TaskHandler<MathGlobalInitializ
     const features = (article?.getAttribute("data-plw-features") ?? "").split(/\s+/).filter(Boolean);
     const hasDynamicQuiz =
       features.includes("quiz") ||
+      features.includes("quiz-set-contribute") ||
       Boolean(
         article?.querySelector(
           "#plw-quiz-root, #plw-quiz-sets-root, #plw-quiz-questions-root, #plw-quiz-library-root, #plw-quiz-home-root, .plw-quiz-inline-root"

@@ -26,6 +26,7 @@ FEATURE_SELECTORS = (
     ),
     ("submit", ("#submission-form",)),
     ("question-contribute", ("#plw-question-contribute-form",)),
+    ("quiz-set-contribute", ("#plw-quiz-set-contribute",)),
     ("submission-status", ("#plw-submission-status",)),
 )
 IGNORE_SELECTORS = (
@@ -60,6 +61,7 @@ QUIZ_STYLESHEET = "_static/css/quiz.css?v=5"
 FEATURE_STYLESHEETS = {
     "submit": "_static/css/features/submit.css?v=3",
     "question-contribute": "_static/css/features/question-contribute.css?v=3",
+    "quiz-set-contribute": "_static/css/features/quiz-set-contribute.css?v=1",
     "submission-status": "_static/css/features/submission-status.css?v=2",
     "concept-reference": "_static/css/features/concept-reference.css",
 }
@@ -119,7 +121,7 @@ def transform_page_html(output: str, page_url: str = "", search_metadata=None) -
         features = [
             name
             for name, selectors in FEATURE_SELECTORS
-            if any(article.select_one(selector) is not None for selector in selectors)
+            if any(any(node.find_parent("template") is None for node in article.select(selector)) for selector in selectors)
         ]
         if features:
             article["data-plw-features"] = " ".join(features)
@@ -245,3 +247,14 @@ def on_post_build(config, **kwargs):
         if not changed:
             continue
         html_path.write_text(str(soup), encoding="utf-8")
+
+
+def on_page_markdown(markdown, page, config, files):
+    marker = "<!-- plw:question-editor-template -->"
+    if marker not in markdown:
+        return markdown
+    source = (Path(config["docs_dir"]) / "quiz/contribute.md").read_text(encoding="utf-8")
+    form = re.search(r'<form id="plw-question-contribute-form"[\s\S]*?</form>', source)
+    if not form:
+        raise ValueError("Shared question editor form is missing")
+    return markdown.replace(marker, '<template id="plw-set-question-template">' + form[0] + '</template>')

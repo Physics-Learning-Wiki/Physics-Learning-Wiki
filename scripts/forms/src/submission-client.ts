@@ -43,7 +43,7 @@ export function parseReceipt(value: unknown): Receipt | undefined {
     !/^[a-f0-9-]{36}$/.test(data.operationKey) ||
     !Number.isSafeInteger(data.revision) ||
     data.revision < 0 ||
-    !["full-page", "notes", "errata", "question", "suggestion"].includes(data.type)
+    !["full-page", "notes", "errata", "question", "quiz-set", "suggestion"].includes(data.type)
   )
     return;
   return {
@@ -164,14 +164,18 @@ export function receiptCard(document: Document, receipt: Receipt, parent: HTMLEl
   return card;
 }
 
-export function createSubmissionClient(form: HTMLFormElement, signal: AbortSignal) {
+export function createSubmissionClient(
+  form: HTMLFormElement,
+  signal: AbortSignal,
+  options: { editorOnly?: boolean } = {}
+) {
   const document = form.ownerDocument;
   const key = "plw:pending-submission:v1:" + siteRoot(document).pathname + ":" + form.id;
   let attempt: Attempt | undefined;
   let revisionReceipt: Receipt | undefined;
   let revisionRecord: SubmissionEnvelope | undefined;
   try {
-    const stored = JSON.parse(document.defaultView!.sessionStorage.getItem(key) || "null");
+    const stored = options.editorOnly ? null : JSON.parse(document.defaultView!.sessionStorage.getItem(key) || "null");
     const receipt = parseReceipt(stored?.receipt);
     if (receipt && stored.pending && typeof stored.snapshot === "string")
       attempt = { receipt, snapshot: stored.snapshot, pending: true };
@@ -199,6 +203,9 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
         /* Optional. */
       }
     },
+    setQuestionSource(question: Record<string, unknown>) {
+      revisionRecord = { payload: { question } } as SubmissionEnvelope;
+    },
     questionExtras(type: string): Record<string, unknown> {
       const original = revisionRecord?.payload.question;
       if (!original) return {};
@@ -223,6 +230,7 @@ export function createSubmissionClient(form: HTMLFormElement, signal: AbortSigna
     async submit(
       input: Omit<SubmissionEnvelope, "schemaVersion" | "submissionId" | "licenseVersion">
     ): Promise<SubmissionResult> {
+      if (options.editorOnly) throw new Error("此题请通过题集统一投稿．");
       if (new URL(document.baseURI).searchParams.has("submission") && !revisionReceipt)
         throw new Error("尚未载入要修订的稿件，请先导入管理回执并重新查询最新版本．");
       const { turnstileToken, ...snapshotData } = input;
