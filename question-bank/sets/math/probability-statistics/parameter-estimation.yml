@@ -1,0 +1,32 @@
+schema_version: 1
+id: math.probability-statistics.parameter-estimation
+title: 参数估计：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 参数估计
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000304
+  - q-000305
+  - q-000306
+  - q-000307
+  - q-000308
+  - q-000309
+  - q-000310
+  - q-000311
+  - q-000312
+  - q-000313
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

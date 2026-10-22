@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000183
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-evaluation
+objectives:
+- experiment.error-analysis.uncertainty-evaluation.calculation
+related_pages:
+- experiment.error-analysis.uncertainty-evaluation
+choice_order: fixed
+type: numeric
+stem: 对称均匀范围 ±0.06 mm，标准不确定度多少 mm？
+answer:
+  value: 0.034641016151377546
+  tolerance:
+    type: absolute
+    value: 6.928203230275509e-06
+  unit:
+    required: true
+    canonical: mm
+    accepted:
+    - mm
+solution: '均匀模型 u=a/√3≈0.0346410 mm．
+
+
+  关键算式：
+
+
+  $$
+
+  \text{计算结果}=0.0346410162\,\mathrm{mm}
+
+  $$
+
+  '
+hints:
+- 范围须配分布；标准不确定度的可靠度不是覆盖概率，先统一为输出贡献．
+feedback:
+  correct: 关键结论与题设条件相符．均匀模型 u=a/√3≈0.0346410 mm．
+  incorrect: 请重新检查模型、条件和计算：均匀模型 u=a/√3≈0.0346410 mm．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

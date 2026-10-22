@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000168
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.outlier-tests
+objectives:
+- experiment.error-analysis.outlier-tests.concepts
+related_pages:
+- experiment.error-analysis.outlier-tests
+choice_order: shuffle
+type: multiple_choice
+stem: 一次异常值分析必须记录哪些内容？
+choices:
+- id: A
+  content: 候选选择和原始值
+- id: B
+  content: 统计量、阈值、假设及处理理由
+- id: C
+  content: 删除后标准差变小即可替代理由
+- id: D
+  content: 只保留最后通过检验的数据
+answer:
+  choices:
+  - A
+  - B
+solution: 原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+hints:
+- 先说明候选是否预先指定，再核对分母尺度、自由度和单双端阈值．
+feedback:
+  correct: 关键结论与题设条件相符．原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+  incorrect: 请重新检查模型、条件和计算：原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+  choices:
+    A: 此项符合题设．原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+    B: 此项符合题设．原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+    C: 此项不符合题设：原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+    D: 此项不符合题设：原始数据和选择过程决定可复查性，不能只报告删点后的好看结果．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

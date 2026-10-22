@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.weighted-measurements
+title: 不等精度测量与结果合并：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 不等精度测量与结果合并
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000142
+  - q-000143
+  - q-000144
+  - q-000145
+  - q-000146
+  - q-000147
+  - q-000148
+  - q-000149
+  - q-000150
+  - q-000151
+  - q-000152
+  - q-000153
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

@@ -1,0 +1,32 @@
+schema_version: 1
+id: math.probability-statistics.law-of-large-numbers-and-central-limit-theorem
+title: 大数定律及中心极限定理：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: published
+tags:
+- 误差分析与数据处理
+- 大数定律及中心极限定理
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000282
+  - q-000283
+  - q-000284
+  - q-000285
+  - q-000286
+  - q-000287
+  - q-000288
+  - q-000289
+  - q-000290
+  - q-000291
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

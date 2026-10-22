@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000144
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.weighted-measurements
+objectives:
+- experiment.error-analysis.weighted-measurements.concepts
+related_pages:
+- experiment.error-analysis.weighted-measurements
+choice_order: shuffle
+type: multiple_choice
+stem: 对同一量合并前必须核查什么？
+choices:
+- id: A
+  content: 测量条件和被测量是否相容
+- id: B
+  content: 共同校准造成的相关性
+- id: C
+  content: 优先结果是否更接近期待值
+- id: D
+  content: 残差越小就应自动缩放已知 u
+answer:
+  choices:
+  - A
+  - B
+solution: 权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+hints:
+- 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
+feedback:
+  correct: 关键结论与题设条件相符．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+  incorrect: 请重新检查模型、条件和计算：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+  choices:
+    A: 此项符合题设．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+    B: 此项符合题设．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+    C: 此项不符合题设：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+    D: 此项不符合题设：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

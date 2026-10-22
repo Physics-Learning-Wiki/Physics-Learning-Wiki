@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000132
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.repeated-measurements
+objectives:
+- experiment.error-analysis.repeated-measurements.concepts
+related_pages:
+- experiment.error-analysis.repeated-measurements
+choice_order: shuffle
+type: multiple_choice
+stem: 哪些信息支持使用 s/√n 评定均值的重复性分量？
+choices:
+- id: A
+  content: 观测独立且条件稳定
+- id: B
+  content: 描述对象确为观测均值
+- id: C
+  content: 存在未处理线性漂移
+- id: D
+  content: 共同校准也按次数平均
+answer:
+  choices:
+  - A
+  - B
+solution: 均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+hints:
+- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+feedback:
+  correct: 关键结论与题设条件相符．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+  incorrect: 请重新检查模型、条件和计算：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+  choices:
+    A: 此项符合题设．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+    B: 此项符合题设．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+    C: 此项不符合题设：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+    D: 此项不符合题设：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

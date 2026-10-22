@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000139
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.repeated-measurements
+objectives:
+- experiment.error-analysis.repeated-measurements.analysis
+related_pages:
+- experiment.error-analysis.repeated-measurements
+choice_order: fixed
+type: free_response
+stem: Peters、极差和最大误差法能否统一赋 n−1 自由度？
+reference_answer: 不能；须定义估计量、中心和分布，评估相对波动或相应抽样分布．
+solution: '给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
+
+
+  关键算式：
+
+
+  $$
+
+  s_P=\sqrt{\pi/2}\frac{\sum_i|x_i-\bar x|}{\sqrt{n(n-1)}},\quad s_R=R/d_2(n)
+
+  $$
+
+  '
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：结论或模型错误
+    points: 0
+  - id: partial
+    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：不能；须定义估计量、中心和分布，评估相对波动或相应抽样分布．
+    points: 1
+hints:
+- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+feedback:
+  correct: 关键结论与题设条件相符．给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
+  incorrect: 请重新检查模型、条件和计算：给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

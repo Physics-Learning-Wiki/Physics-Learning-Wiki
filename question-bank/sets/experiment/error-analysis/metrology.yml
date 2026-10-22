@@ -1,0 +1,32 @@
+schema_version: 1
+id: experiment.error-analysis.metrology
+title: 测量仪器与计量溯源：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 测量仪器与计量溯源
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000110
+  - q-000111
+  - q-000112
+  - q-000113
+  - q-000114
+  - q-000115
+  - q-000116
+  - q-000117
+  - q-000118
+  - q-000119
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

@@ -1,0 +1,30 @@
+schema_version: 1
+id: experiment.error-analysis.measurement-basics
+title: 测量、误差与不确定度：专题习题
+description: 8 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 测量、误差与不确定度
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000102
+  - q-000103
+  - q-000104
+  - q-000105
+  - q-000106
+  - q-000107
+  - q-000108
+  - q-000109
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

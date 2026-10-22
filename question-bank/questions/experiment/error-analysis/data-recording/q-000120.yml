@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000120
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.data-recording
+objectives:
+- experiment.error-analysis.data-recording.concepts
+related_pages:
+- experiment.error-analysis.data-recording
+choice_order: shuffle
+type: single_choice
+stem: 原始读数 12.14 mm、零点 +0.04 mm．记录应怎样保存？
+choices:
+- id: A
+  content: 保留两原始值，另列修正后的 12.10 mm
+- id: B
+  content: 用 12.10 覆盖原读数
+- id: C
+  content: 把原读数添零改成 12.14000
+answer:
+  choice: A
+solution: 原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+hints:
+- 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
+feedback:
+  correct: 关键结论与题设条件相符．原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+  incorrect: 请重新检查模型、条件和计算：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+  choices:
+    A: 此项符合题设．原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+    B: 此项不符合题设：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+    C: 此项不符合题设：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

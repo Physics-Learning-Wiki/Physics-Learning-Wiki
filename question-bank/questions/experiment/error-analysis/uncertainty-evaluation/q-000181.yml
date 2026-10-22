@@ -1,0 +1,36 @@
+schema_version: 3
+id: q-000181
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-evaluation
+objectives:
+- experiment.error-analysis.uncertainty-evaluation.concepts
+related_pages:
+- experiment.error-analysis.uncertainty-evaluation
+choice_order: fixed
+type: true_false
+stem: B 类评定的自由度总是无穷．
+answer:
+  value: false
+solution: 只有可靠度足够高可作无穷近似；有限相对不可靠度可对应有限等效自由度．
+hints:
+- 范围须配分布；标准不确定度的可靠度不是覆盖概率，先统一为输出贡献．
+feedback:
+  correct: 关键结论与题设条件相符．只有可靠度足够高可作无穷近似；有限相对不可靠度可对应有限等效自由度．
+  incorrect: 请重新检查模型、条件和计算：只有可靠度足够高可作无穷近似；有限相对不可靠度可对应有限等效自由度．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

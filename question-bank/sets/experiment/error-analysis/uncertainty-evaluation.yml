@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.uncertainty-evaluation
+title: 标准不确定度的评定：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 标准不确定度的评定
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000178
+  - q-000179
+  - q-000180
+  - q-000181
+  - q-000182
+  - q-000183
+  - q-000184
+  - q-000185
+  - q-000186
+  - q-000187
+  - q-000188
+  - q-000189
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

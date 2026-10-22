@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000271
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.probability-statistics
+concepts:
+- statistics.one-dimensional-random-variables-and-distributions
+objectives:
+- math.probability-statistics.one-dimensional-random-variables-and-distributions.concepts
+related_pages:
+- math.probability-statistics.one-dimensional-random-variables-and-distributions
+choice_order: shuffle
+type: single_choice
+stem: 固定振幅正弦项的相位在完整周期均匀时，输出服从什么？
+choices:
+- id: A
+  content: 反正弦分布
+- id: B
+  content: 必为均匀分布
+- id: C
+  content: 必为正态分布
+answer:
+  choice: A
+solution: 变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+hints:
+- 区分连续密度与离散质量，用生成机制、支撑与矩选择分布．
+feedback:
+  correct: 关键结论与题设条件相符．变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+  incorrect: 请重新检查模型、条件和计算：变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+  choices:
+    A: 此项符合题设．变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+    B: 此项不符合题设：变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+    C: 此项不符合题设：变量变换须计多个相位原像，密度在端点附近较大，方差为振幅平方的一半．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:664e0786a7e824ee8586e2bbfdc9aa178734739c71721e4d5436da8aa49233da
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:664e0786a7e824ee8586e2bbfdc9aa178734739c71721e4d5436da8aa49233da
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:664e0786a7e824ee8586e2bbfdc9aa178734739c71721e4d5436da8aa49233da

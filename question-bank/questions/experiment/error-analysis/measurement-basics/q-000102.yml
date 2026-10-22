@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000102
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.measurement-basics
+objectives:
+- experiment.error-analysis.measurement-basics.concepts
+related_pages:
+- experiment.error-analysis.measurement-basics
+choice_order: shuffle
+type: single_choice
+stem: 五次称量几乎相同，却比标准器量值整体高 0.2 g．直接支持哪一判断？
+choices:
+- id: A
+  content: 重复性好，但存在共同偏移线索
+- id: B
+  content: 准确度必定很高
+- id: C
+  content: 平均后偏移必定消失
+answer:
+  choice: A
+solution: 集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+hints:
+- 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
+feedback:
+  correct: 关键结论与题设条件相符．集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+  incorrect: 请重新检查模型、条件和计算：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+  choices:
+    A: 此项符合题设．集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+    B: 此项不符合题设：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+    C: 此项不符合题设：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

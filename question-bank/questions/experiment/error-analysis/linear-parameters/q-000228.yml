@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000228
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.linear-parameters
+objectives:
+- experiment.error-analysis.linear-parameters.concepts
+related_pages:
+- experiment.error-analysis.linear-parameters
+choice_order: shuffle
+type: multiple_choice
+stem: 已知正定绝对协方差 Σ 的 GLS 需要什么？
+choices:
+- id: A
+  content: 设计矩阵满列秩
+- id: B
+  content: 权矩阵为 Σ 的逆
+- id: C
+  content: 总是再乘 SSE/(n−p)
+- id: D
+  content: 独立原始观测保证参数无关
+answer:
+  choices:
+  - A
+  - B
+solution: 绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+hints:
+- 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
+feedback:
+  correct: 关键结论与题设条件相符．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+  incorrect: 请重新检查模型、条件和计算：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+  choices:
+    A: 此项符合题设．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+    B: 此项符合题设．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+    C: 此项不符合题设：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+    D: 此项不符合题设：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

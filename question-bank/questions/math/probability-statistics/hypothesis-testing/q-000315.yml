@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000315
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.probability-statistics
+concepts:
+- statistics.hypothesis-testing
+objectives:
+- math.probability-statistics.hypothesis-testing.concepts
+related_pages:
+- math.probability-statistics.hypothesis-testing
+choice_order: shuffle
+type: single_choice
+stem: 方差未知且不强加两组方差相等，独立正态组均值可优先用什么？
+choices:
+- id: A
+  content: Welch t比较
+- id: B
+  content: 把任一组方差当精确总体值
+- id: C
+  content: 任意删除方差大的一组
+answer:
+  choice: A
+solution: Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+hints:
+- 先定原假设、备择和水平，再匹配统计量与采样关系；不拒绝不是证明．
+feedback:
+  correct: 关键结论与题设条件相符．Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+  incorrect: 请重新检查模型、条件和计算：Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+  choices:
+    A: 此项符合题设．Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+    B: 此项不符合题设：Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+    C: 此项不符合题设：Welch用两组方差和各样本量，配近似自由度；须先检查独立、对象和总体条件．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

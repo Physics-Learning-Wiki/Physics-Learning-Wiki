@@ -1,0 +1,36 @@
+schema_version: 3
+id: q-000240
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.nonlinear-fitting
+objectives:
+- experiment.error-analysis.nonlinear-fitting.concepts
+related_pages:
+- experiment.error-analysis.nonlinear-fitting
+choice_order: fixed
+type: true_false
+stem: 优化器返回成功且参数修正很小，就足以证明找到了全局最优和正确物理模型．
+answer:
+  value: false
+solution: 还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
+hints:
+- 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
+feedback:
+  correct: 关键结论与题设条件相符．还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
+  incorrect: 请重新检查模型、条件和计算：还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

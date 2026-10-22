@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000259
+version: 1
+status: published
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.case-studies
+objectives:
+- experiment.error-analysis.case-studies.concepts
+related_pages:
+- experiment.error-analysis.case-studies
+choice_order: shuffle
+type: single_choice
+stem: 真实预算表中一项标 2 ppm 相对标准不确定度，表示什么？
+choices:
+- id: A
+  content: 相对比值 2×10^-6
+- id: B
+  content: 2%
+- id: C
+  content: 2×10^-2 的方差份额
+answer:
+  choice: A
+solution: ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+hints:
+- 把原始数据、修正、输入预算、计算与报告连成链，检查共同来源和单位．
+feedback:
+  correct: 关键结论与题设条件相符．ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+  incorrect: 请重新检查模型、条件和计算：ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+  choices:
+    A: 此项符合题设．ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+    B: 此项不符合题设：ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+    C: 此项不符合题设：ppm 是相对量单位，须核查列的是标准量、扩展量、修正还是方差份额．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:09dd164b7b38e0c73ec9d7310e7d536952762a4d19b45aaa2c86899dd87857f7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:09dd164b7b38e0c73ec9d7310e7d536952762a4d19b45aaa2c86899dd87857f7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:09dd164b7b38e0c73ec9d7310e7d536952762a4d19b45aaa2c86899dd87857f7

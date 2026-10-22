@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.error-allocation
+title: 误差分配与测量方案优化：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 误差分配与测量方案优化
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000202
+  - q-000203
+  - q-000204
+  - q-000205
+  - q-000206
+  - q-000207
+  - q-000208
+  - q-000209
+  - q-000210
+  - q-000211
+  - q-000212
+  - q-000213
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

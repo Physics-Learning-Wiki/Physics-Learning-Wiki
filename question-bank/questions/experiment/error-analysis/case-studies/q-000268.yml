@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000268
+version: 1
+status: published
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.case-studies
+objectives:
+- experiment.error-analysis.case-studies.analysis
+related_pages:
+- experiment.error-analysis.case-studies
+choice_order: fixed
+type: free_response
+stem: 读真实万有引力实验 ppm 预算时怎样区分修正与不确定度贡献？
+reference_answer: 修正带符号进入估计，标准不确定度描述剩余信息分散．
+solution: '核查列单位、标准/扩展形式、方法和共享来源；总项与细项不能重复加，读真实论文并保留方法范围，不能将示意数据称为实测．
+
+
+  关键算式：
+
+
+  $$
+
+  1\,\mathrm{ppm}=10^{-6}
+
+  $$
+
+  '
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：结论或模型错误
+    points: 0
+  - id: partial
+    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：修正带符号进入估计，标准不确定度描述剩余信息分散．
+    points: 1
+hints:
+- 把原始数据、修正、输入预算、计算与报告连成链，检查共同来源和单位．
+feedback:
+  correct: 关键结论与题设条件相符．核查列单位、标准/扩展形式、方法和共享来源；总项与细项不能重复加，读真实论文并保留方法范围，不能将示意数据称为实测．
+  incorrect: 请重新检查模型、条件和计算：核查列单位、标准/扩展形式、方法和共享来源；总项与细项不能重复加，读真实论文并保留方法范围，不能将示意数据称为实测．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f9f22a2b7744ec354f1886e790c18b4bb39ca62687f356b187ba419a6b0f926d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f9f22a2b7744ec354f1886e790c18b4bb39ca62687f356b187ba419a6b0f926d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f9f22a2b7744ec354f1886e790c18b4bb39ca62687f356b187ba419a6b0f926d

@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000267
+version: 1
+status: published
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.case-studies
+objectives:
+- experiment.error-analysis.case-studies.analysis
+related_pages:
+- experiment.error-analysis.case-studies
+choice_order: fixed
+type: free_response
+stem: 解释量块比较 l=l_s+Δl−l_s(Δtδα+α_sδt) 中各输入和传播步骤．
+reference_answer: 区分参考长度、长度差、共同温偏、膨胀系数差、参考系数和两物体温差．
+solution: '给六个偏导，先修正再传播；嵌套模型应保留共享温标和材料来源相关性，不能任加一个温度安全余量．
+
+
+  关键算式：
+
+
+  $$
+
+  l=l_s+\Delta l-l_s(\Delta t\,\delta\alpha+\alpha_s\delta t)
+
+  $$
+
+  '
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：结论或模型错误
+    points: 0
+  - id: partial
+    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：区分参考长度、长度差、共同温偏、膨胀系数差、参考系数和两物体温差．
+    points: 1
+hints:
+- 把原始数据、修正、输入预算、计算与报告连成链，检查共同来源和单位．
+feedback:
+  correct: 关键结论与题设条件相符．给六个偏导，先修正再传播；嵌套模型应保留共享温标和材料来源相关性，不能任加一个温度安全余量．
+  incorrect: 请重新检查模型、条件和计算：给六个偏导，先修正再传播；嵌套模型应保留共享温标和材料来源相关性，不能任加一个温度安全余量．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0eb8dfd1b64b11ffdf45782c12659cee53e7f26a3a5f148f75fa2206ff99abca
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0eb8dfd1b64b11ffdf45782c12659cee53e7f26a3a5f148f75fa2206ff99abca
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0eb8dfd1b64b11ffdf45782c12659cee53e7f26a3a5f148f75fa2206ff99abca

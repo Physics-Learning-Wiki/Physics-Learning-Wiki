@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "repository": "D:\\Programs\\Physics-Learning-Wiki",
+  "reviewer": "Leafuke",
+  "reviewed_on": "2026-10-22",
+  "dimensions": [
+    "physics",
+    "pedagogy",
+    "copyright"
+  ],
+  "questions": [
+    {
+      "id": "q-000258",
+      "version": 1,
+      "content_fingerprint": "sha256:87e498f2930d4b8c792200b7711c064eac46362915ffc0ed5a07e2a09ecd9e07",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000258.yml"
+    },
+    {
+      "id": "q-000259",
+      "version": 1,
+      "content_fingerprint": "sha256:09dd164b7b38e0c73ec9d7310e7d536952762a4d19b45aaa2c86899dd87857f7",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000259.yml"
+    },
+    {
+      "id": "q-000260",
+      "version": 1,
+      "content_fingerprint": "sha256:ca938478fbcfaabf3aa4112bbfe45548436739d501ec7baa56e67ef700fd5ff0",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000260.yml"
+    },
+    {
+      "id": "q-000261",
+      "version": 1,
+      "content_fingerprint": "sha256:85bbb3911707c7fd4c6f2e2d9443b3011bfcbcc9618dddf88190775f4615de19",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000261.yml"
+    },
+    {
+      "id": "q-000262",
+      "version": 1,
+      "content_fingerprint": "sha256:bc8abbf53d037dfea81e2ed1f6002a753a77e5cff11b9e61227d564bbbd9b056",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000262.yml"
+    },
+    {
+      "id": "q-000263",
+      "version": 1,
+      "content_fingerprint": "sha256:19f32e2dc8247b4d7728e6a10fd935b01a38c625e67be7267f29757992cc1fc5",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000263.yml"
+    },
+    {
+      "id": "q-000264",
+      "version": 1,
+      "content_fingerprint": "sha256:a4f1ac13f50c7feb16fa8fc4be465856b93bf2cb39f0478b5129788860563d34",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000264.yml"
+    },
+    {
+      "id": "q-000265",
+      "version": 1,
+      "content_fingerprint": "sha256:cc5bf986a509b38ba9c8d4b805bf223a8737b954700ae84e97c3052d5a12c685",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000265.yml"
+    },
+    {
+      "id": "q-000266",
+      "version": 1,
+      "content_fingerprint": "sha256:5a1c1a434c4a5a426b4fde2fb0fc9dda78ee72f842c002684f31d62fc66c12d1",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000266.yml"
+    },
+    {
+      "id": "q-000267",
+      "version": 1,
+      "content_fingerprint": "sha256:0eb8dfd1b64b11ffdf45782c12659cee53e7f26a3a5f148f75fa2206ff99abca",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000267.yml"
+    },
+    {
+      "id": "q-000268",
+      "version": 1,
+      "content_fingerprint": "sha256:f9f22a2b7744ec354f1886e790c18b4bb39ca62687f356b187ba419a6b0f926d",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000268.yml"
+    },
+    {
+      "id": "q-000269",
+      "version": 1,
+      "content_fingerprint": "sha256:bb5f16947ea39058c4b2fffb8739b5158220c4553933434f526d578411ccc15b",
+      "path": "question-bank/questions/experiment/error-analysis/case-studies/q-000269.yml"
+    },
+    {
+      "id": "q-000270",
+      "version": 1,
+      "content_fingerprint": "sha256:0cff538ac6f8ea11a382d884cf6899de7461a586c12bcc899e6eae3db3626fb3",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000270.yml"
+    },
+    {
+      "id": "q-000271",
+      "version": 1,
+      "content_fingerprint": "sha256:664e0786a7e824ee8586e2bbfdc9aa178734739c71721e4d5436da8aa49233da",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000271.yml"
+    },
+    {
+      "id": "q-000272",
+      "version": 1,
+      "content_fingerprint": "sha256:2b6dac7e530cf9fe30236c7382b140e9b195aebcebb5874c44046e2a19743ad8",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000272.yml"
+    },
+    {
+      "id": "q-000273",
+      "version": 1,
+      "content_fingerprint": "sha256:76b70622deb84b225e0c7f923051058ffe986291cffa6099e0ac22efaf4e3791",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000273.yml"
+    },
+    {
+      "id": "q-000274",
+      "version": 1,
+      "content_fingerprint": "sha256:88905a3613675fe753485196db1603691417c08519397c62881b04801e61f1b5",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000274.yml"
+    },
+    {
+      "id": "q-000275",
+      "version": 1,
+      "content_fingerprint": "sha256:a395e8e2b8d758875ce6517344c1237bc0a55a538379e8b26e42265a942bea9e",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000275.yml"
+    },
+    {
+      "id": "q-000276",
+      "version": 1,
+      "content_fingerprint": "sha256:b73939bda4680fadac93647321a74cb456ad96ff6e07edb4052d7b98138c8961",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000276.yml"
+    },
+    {
+      "id": "q-000277",
+      "version": 1,
+      "content_fingerprint": "sha256:ab30e0357f8279dfac368e469f1b164296c92750dcabc187856643cefc68e079",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000277.yml"
+    },
+    {
+      "id": "q-000278",
+      "version": 1,
+      "content_fingerprint": "sha256:dc22619fb4cabc4a667831d45306b222e3b84b7827822eaaab212fd18b67bb74",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000278.yml"
+    },
+    {
+      "id": "q-000279",
+      "version": 1,
+      "content_fingerprint": "sha256:6fbc31692a012c3cf742ee593cc0dab85898d170160444e012c6abe4aeff8881",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000279.yml"
+    },
+    {
+      "id": "q-000280",
+      "version": 1,
+      "content_fingerprint": "sha256:1c61698926fd4d4fe0e9001e93ffcaf113857e298f4de6035c075e3bcace9a94",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000280.yml"
+    },
+    {
+      "id": "q-000281",
+      "version": 1,
+      "content_fingerprint": "sha256:a4fdd4c7875e783dec1073479c50d788d234f894b1b41f0c45b1e4654163ff08",
+      "path": "question-bank/questions/math/probability-statistics/one-dimensional-random-variables-and-distributions/q-000281.yml"
+    },
+    {
+      "id": "q-000282",
+      "version": 1,
+      "content_fingerprint": "sha256:bdf62f1d65079330b6ad740fb5fae50ff8a5a26791c68a36b7f937c8845801a2",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000282.yml"
+    },
+    {
+      "id": "q-000283",
+      "version": 1,
+      "content_fingerprint": "sha256:043d8ef5ab1ff12b15a6f0a7f6f84389bb0666689e555c5c3b2eb899dfedfb9d",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000283.yml"
+    },
+    {
+      "id": "q-000284",
+      "version": 1,
+      "content_fingerprint": "sha256:1b4365fd26726dd818dd2953b944239bce10e83bb94a54ee2876820f60496d58",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000284.yml"
+    },
+    {
+      "id": "q-000285",
+      "version": 1,
+      "content_fingerprint": "sha256:b0996b6316159ea242a603c1ad0f61a724c77cbd2c2ed2bd98426fe56613f9ce",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000285.yml"
+    },
+    {
+      "id": "q-000286",
+      "version": 1,
+      "content_fingerprint": "sha256:4cfe8365079aea029cf893f7f8e4e1aa033fc6ded6529e5c273ddbdf40526068",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000286.yml"
+    },
+    {
+      "id": "q-000287",
+      "version": 1,
+      "content_fingerprint": "sha256:c0705f6be675eea501fa1a94da829d922f25a8ed62ba690cf3163885735068c2",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000287.yml"
+    },
+    {
+      "id": "q-000288",
+      "version": 1,
+      "content_fingerprint": "sha256:d53cc8be9354c1ad2c3d7c7d47b7118af9bafff3265be3a815570e590c6a5a9d",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000288.yml"
+    },
+    {
+      "id": "q-000289",
+      "version": 1,
+      "content_fingerprint": "sha256:a8a648e55bd2ac6f5fadf7f72ca4a7167198e611985899baea24dc8ea2e0dc9d",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000289.yml"
+    },
+    {
+      "id": "q-000290",
+      "version": 1,
+      "content_fingerprint": "sha256:54527cccb74baa28c6ac40b4338b6a91ac806c6c2ebf7adb46a43bc6817eb2bf",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000290.yml"
+    },
+    {
+      "id": "q-000291",
+      "version": 1,
+      "content_fingerprint": "sha256:73fb0f5d4431fd43d51e730e4c1ceaddb1a43a0f4106dcc2455acf01f5bc48a4",
+      "path": "question-bank/questions/math/probability-statistics/law-of-large-numbers-and-central-limit-theorem/q-000291.yml"
+    },
+    {
+      "id": "q-000292",
+      "version": 1,
+      "content_fingerprint": "sha256:8f4fa98c49c3a92cc3bf51721fa2f55af37049aa6bb9983a2cc13eaa1244b71c",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000292.yml"
+    },
+    {
+      "id": "q-000293",
+      "version": 1,
+      "content_fingerprint": "sha256:1a7dbae97219c5231f3090cf62317ba0e2c297a346095b864ef4a3ad4a6dc45d",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000293.yml"
+    },
+    {
+      "id": "q-000294",
+      "version": 1,
+      "content_fingerprint": "sha256:f96f60c75d21abeb23c8808a24d16bc3a7f0eeff73a9431a7b5bcc3f8f13623f",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000294.yml"
+    },
+    {
+      "id": "q-000295",
+      "version": 1,
+      "content_fingerprint": "sha256:6e16b76450d964366caf4eab7a836bd20d0b0343d6a1306fa36ed5a4241c470b",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000295.yml"
+    },
+    {
+      "id": "q-000296",
+      "version": 1,
+      "content_fingerprint": "sha256:1f646cb27933a5099de38a340d3908a814c38ec6963b69e2965f24fd12f1a840",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000296.yml"
+    },
+    {
+      "id": "q-000297",
+      "version": 1,
+      "content_fingerprint": "sha256:3246d608a8270689dae3cfe93a5ee86e7e4ba631ded877dc83b05dbf8d0acdc1",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000297.yml"
+    },
+    {
+      "id": "q-000298",
+      "version": 1,
+      "content_fingerprint": "sha256:a93f3855426183fb560b98570024712614af730156e3eaad0f9c35b22e5d2d47",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000298.yml"
+    },
+    {
+      "id": "q-000299",
+      "version": 1,
+      "content_fingerprint": "sha256:69f78c188db9aa578bbae4ef8aeffaf105f111b596cdff8df50d3398d30b701e",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000299.yml"
+    },
+    {
+      "id": "q-000300",
+      "version": 1,
+      "content_fingerprint": "sha256:34e733c5899d4dcda277ec43277ca856ea9b47399df624554d8cc0bb706c8514",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000300.yml"
+    },
+    {
+      "id": "q-000301",
+      "version": 1,
+      "content_fingerprint": "sha256:7f69f9050449303d0242946e57281ec7b53a425cc28b8088e86ce0adc6acecb3",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000301.yml"
+    },
+    {
+      "id": "q-000302",
+      "version": 1,
+      "content_fingerprint": "sha256:3eb3d04bed21a6ec82585c10ca20ed86fe68a74658a6b4bf4411cd1bdb2fccd1",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000302.yml"
+    },
+    {
+      "id": "q-000303",
+      "version": 1,
+      "content_fingerprint": "sha256:094a3ba1d690f7b2ce52ecf64b6ded0bfebbe36f34a9540c79e5f53d13214bad",
+      "path": "question-bank/questions/math/probability-statistics/sample-and-sampling-distribution/q-000303.yml"
+    }
+  ],
+  "related_sets": [
+    {
+      "id": "experiment.error-analysis.case-studies",
+      "fingerprint": "sha256:c62fb4cc0422d61e8c5bbefec0b170b31a92dad3d55ccaf6901a4cf733415f19"
+    },
+    {
+      "id": "math.probability-statistics.law-of-large-numbers-and-central-limit-theorem",
+      "fingerprint": "sha256:dedd29f3fca6e9081521087cef053b08358f01438ab812dac00ca28465c999bf"
+    },
+    {
+      "id": "math.probability-statistics.one-dimensional-random-variables-and-distributions",
+      "fingerprint": "sha256:139da3679011723dd4ecce46b36183059570766860268e65b88295628e8b07ca"
+    },
+    {
+      "id": "math.probability-statistics.sample-and-sampling-distribution",
+      "fingerprint": "sha256:ae6d4cc4b92ffe525e4941978ea3fd20f3c4fb3e69c80dcd13882643d9c65286"
+    }
+  ]
+}

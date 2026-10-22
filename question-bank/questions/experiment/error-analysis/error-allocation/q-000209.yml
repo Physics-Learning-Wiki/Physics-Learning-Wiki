@@ -1,0 +1,55 @@
+schema_version: 3
+id: q-000209
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.error-allocation
+objectives:
+- experiment.error-analysis.error-allocation.calculation
+related_pages:
+- experiment.error-analysis.error-allocation
+choice_order: fixed
+type: numeric
+stem: 允许删除独立分量后合成 u 最多降低 5%，q/uc 的最大值是多少？
+answer:
+  value: 0.3122498999199199
+  tolerance:
+    type: absolute
+    value: 6.244997998398399e-05
+  unit:
+    required: false
+    canonical: ''
+    accepted: []
+solution: '由 1−√(1−(q/uc)²)≤0.05，得 √0.0975≈0.312250．
+
+
+  关键算式：
+
+
+  $$
+
+  \text{计算结果}=0.3122499
+
+  $$
+
+  '
+hints:
+- 先把每项转换为输出贡献，再从总方差约束反解，检查目标可行性．
+feedback:
+  correct: 关键结论与题设条件相符．由 1−√(1−(q/uc)²)≤0.05，得 √0.0975≈0.312250．
+  incorrect: 请重新检查模型、条件和计算：由 1−√(1−(q/uc)²)≤0.05，得 √0.0975≈0.312250．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

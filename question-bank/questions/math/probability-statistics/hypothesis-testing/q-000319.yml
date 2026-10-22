@@ -1,0 +1,55 @@
+schema_version: 3
+id: q-000319
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.probability-statistics
+concepts:
+- statistics.hypothesis-testing
+objectives:
+- math.probability-statistics.hypothesis-testing.calculation
+related_pages:
+- math.probability-statistics.hypothesis-testing
+choice_order: fixed
+type: numeric
+stem: n=9，均值10.20，s=.30，精确参考10.00，单组t统计量多少？
+answer:
+  value: 2
+  tolerance:
+    type: absolute
+    value: 0.0004
+  unit:
+    required: false
+    canonical: ''
+    accepted: []
+solution: '(10.20−10.00)/(.30/√9)=2，自由度8．
+
+
+  关键算式：
+
+
+  $$
+
+  \text{计算结果}=2
+
+  $$
+
+  '
+hints:
+- 先定原假设、备择和水平，再匹配统计量与采样关系；不拒绝不是证明．
+feedback:
+  correct: 关键结论与题设条件相符．(10.20−10.00)/(.30/√9)=2，自由度8．
+  incorrect: 请重新检查模型、条件和计算：(10.20−10.00)/(.30/√9)=2，自由度8．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000103
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.measurement-basics
+objectives:
+- experiment.error-analysis.measurement-basics.concepts
+related_pages:
+- experiment.error-analysis.measurement-basics
+choice_order: shuffle
+type: single_choice
+stem: 为什么测量误差的「绝对」不等于取绝对值？
+choices:
+- id: A
+  content: 它按被测量单位表达，仍可带符号
+- id: B
+  content: 所有误差本来都非负
+- id: C
+  content: 相对误差才有符号
+answer:
+  choice: A
+solution: 绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+hints:
+- 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
+feedback:
+  correct: 关键结论与题设条件相符．绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+  incorrect: 请重新检查模型、条件和计算：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+  choices:
+    A: 此项符合题设．绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+    B: 此项不符合题设：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+    C: 此项不符合题设：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

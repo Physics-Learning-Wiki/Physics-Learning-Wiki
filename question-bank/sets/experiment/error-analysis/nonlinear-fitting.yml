@@ -1,0 +1,32 @@
+schema_version: 1
+id: experiment.error-analysis.nonlinear-fitting
+title: 非线性拟合与线性化：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 非线性拟合与线性化
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000238
+  - q-000239
+  - q-000240
+  - q-000241
+  - q-000242
+  - q-000243
+  - q-000244
+  - q-000245
+  - q-000246
+  - q-000247
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

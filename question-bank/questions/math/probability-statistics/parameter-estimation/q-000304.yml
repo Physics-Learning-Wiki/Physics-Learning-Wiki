@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000304
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.probability-statistics
+concepts:
+- statistics.parameter-estimation
+objectives:
+- math.probability-statistics.parameter-estimation.concepts
+related_pages:
+- math.probability-statistics.parameter-estimation
+choice_order: shuffle
+type: single_choice
+stem: 似然 L(θ) 的基本解释是什么？
+choices:
+- id: A
+  content: 固定观测后作为参数的函数
+- id: B
+  content: 未经先验就已有的参数概率密度
+- id: C
+  content: 必须在参数轴积分为一
+answer:
+  choice: A
+solution: 似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+hints:
+- 先说明估计准则；似然、无偏、方差和区间覆盖是不同性质．
+feedback:
+  correct: 关键结论与题设条件相符．似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+  incorrect: 请重新检查模型、条件和计算：似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+  choices:
+    A: 此项符合题设．似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+    B: 此项不符合题设：似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+    C: 此项不符合题设：似然来源于观测分布，但将数据固定看参数，不自动是后验概率．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

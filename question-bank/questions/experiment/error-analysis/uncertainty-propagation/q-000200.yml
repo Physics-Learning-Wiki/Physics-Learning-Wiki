@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000200
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-propagation
+objectives:
+- experiment.error-analysis.uncertainty-propagation.analysis
+related_pages:
+- experiment.error-analysis.uncertainty-propagation
+choice_order: fixed
+type: free_response
+stem: 如何由配对数据估计相关系数，同时避免遗漏校准来源？
+reference_answer: 先作散点图，再以中心化乘积和除以两平方和根号．
+solution: '说明配对样本量、异常和非线性；观察象限只能粗估，共同校准即使未在样本中变化也可造成相关输入信息．
+
+
+  关键算式：
+
+
+  $$
+
+  r=\frac{\sum_k(x_k-\bar x)(y_k-\bar y)}{\sqrt{\sum_k(x_k-\bar x)^2\sum_k(y_k-\bar y)^2}}
+
+  $$
+
+  '
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：结论或模型错误
+    points: 0
+  - id: partial
+    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：先作散点图，再以中心化乘积和除以两平方和根号．
+    points: 1
+hints:
+- 先写测量方程与偏导，检查单位、符号、协方差和一阶近似．
+feedback:
+  correct: 关键结论与题设条件相符．说明配对样本量、异常和非线性；观察象限只能粗估，共同校准即使未在样本中变化也可造成相关输入信息．
+  incorrect: 请重新检查模型、条件和计算：说明配对样本量、异常和非线性；观察象限只能粗估，共同校准即使未在样本中变化也可造成相关输入信息．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

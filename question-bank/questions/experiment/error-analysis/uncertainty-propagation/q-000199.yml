@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000199
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-propagation
+objectives:
+- experiment.error-analysis.uncertainty-propagation.analysis
+related_pages:
+- experiment.error-analysis.uncertainty-propagation
+choice_order: fixed
+type: free_response
+stem: sin、cos、tan、cot 的反求角度偏差和 u 怎样传播？
+reference_answer: 先求反求导数再链式乘原模型导数；分别 1/cosφ、−1/sinφ、cos²φ、−sin²φ．
+solution: '角度以弧度计；偏差保留符号，方差按完整协方差；接近奇异点不能机械给对称范围．
+
+
+  关键算式：
+
+
+  $$
+
+  \frac{\mathrm d\phi}{\mathrm dz}=\frac1{\cos\phi},\ -\frac1{\sin\phi},\ \cos^2\phi,\ -\sin^2\phi
+
+  $$
+
+  '
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：结论或模型错误
+    points: 0
+  - id: partial
+    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：先求反求导数再链式乘原模型导数；分别 1/cosφ、−1/sinφ、cos²φ、−sin²φ．
+    points: 1
+hints:
+- 先写测量方程与偏导，检查单位、符号、协方差和一阶近似．
+feedback:
+  correct: 关键结论与题设条件相符．角度以弧度计；偏差保留符号，方差按完整协方差；接近奇异点不能机械给对称范围．
+  incorrect: 请重新检查模型、条件和计算：角度以弧度计；偏差保留符号，方差按完整协方差；接近奇异点不能机械给对称范围．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

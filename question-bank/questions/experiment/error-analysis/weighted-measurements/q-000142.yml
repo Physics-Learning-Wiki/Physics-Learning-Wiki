@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000142
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.weighted-measurements
+objectives:
+- experiment.error-analysis.weighted-measurements.concepts
+related_pages:
+- experiment.error-analysis.weighted-measurements
+choice_order: shuffle
+type: single_choice
+stem: 已知独立结果标准不确定度之比为 1:2，逆方差权重比为何？
+choices:
+- id: A
+  content: '4:1'
+- id: B
+  content: '2:1'
+- id: C
+  content: '1:2'
+answer:
+  choice: A
+solution: 权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+hints:
+- 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
+feedback:
+  correct: 关键结论与题设条件相符．权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+  incorrect: 请重新检查模型、条件和计算：权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+  choices:
+    A: 此项符合题设．权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+    B: 此项不符合题设：权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+    C: 此项不符合题设：权重与方差倒数成比例，所以标准差扩大二倍，权重缩为四分之一．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

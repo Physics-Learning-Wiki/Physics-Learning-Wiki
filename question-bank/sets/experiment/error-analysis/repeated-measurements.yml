@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.repeated-measurements
+title: 重复测量与统计描述：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 重复测量与统计描述
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000130
+  - q-000131
+  - q-000132
+  - q-000133
+  - q-000134
+  - q-000135
+  - q-000136
+  - q-000137
+  - q-000138
+  - q-000139
+  - q-000140
+  - q-000141
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

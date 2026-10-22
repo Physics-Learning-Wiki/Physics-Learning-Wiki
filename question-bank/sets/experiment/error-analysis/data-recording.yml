@@ -1,0 +1,32 @@
+schema_version: 1
+id: experiment.error-analysis.data-recording
+title: 数据记录与有效数字：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 数据记录与有效数字
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000120
+  - q-000121
+  - q-000122
+  - q-000123
+  - q-000124
+  - q-000125
+  - q-000126
+  - q-000127
+  - q-000128
+  - q-000129
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

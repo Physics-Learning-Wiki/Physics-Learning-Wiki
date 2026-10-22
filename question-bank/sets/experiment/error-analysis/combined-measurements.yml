@@ -1,0 +1,32 @@
+schema_version: 1
+id: experiment.error-analysis.combined-measurements
+title: 组合测量的数据处理：专题习题
+description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 组合测量的数据处理
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000248
+  - q-000249
+  - q-000250
+  - q-000251
+  - q-000252
+  - q-000253
+  - q-000254
+  - q-000255
+  - q-000256
+  - q-000257
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

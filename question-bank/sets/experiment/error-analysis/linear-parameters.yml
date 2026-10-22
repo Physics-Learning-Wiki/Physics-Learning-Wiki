@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.linear-parameters
+title: 一般线性参数估计：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 一般线性参数估计
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000226
+  - q-000227
+  - q-000228
+  - q-000229
+  - q-000230
+  - q-000231
+  - q-000232
+  - q-000233
+  - q-000234
+  - q-000235
+  - q-000236
+  - q-000237
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

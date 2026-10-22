@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000216
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.least-squares
+objectives:
+- experiment.error-analysis.least-squares.concepts
+related_pages:
+- experiment.error-analysis.least-squares
+choice_order: shuffle
+type: multiple_choice
+stem: 直线普通最小二乘的噪声估计需要什么？
+choices:
+- id: A
+  content: 横坐标可视为已知且 Sxx>0
+- id: B
+  content: 独立同方差零均值误差和充分模型
+- id: C
+  content: 只有两个点也可估残差方差
+- id: D
+  content: 高 R² 已证明线性模型
+answer:
+  choices:
+  - A
+  - B
+solution: 两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+hints:
+- 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
+feedback:
+  correct: 关键结论与题设条件相符．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+  incorrect: 请重新检查模型、条件和计算：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+  choices:
+    A: 此项符合题设．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+    B: 此项符合题设．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+    C: 此项不符合题设：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+    D: 此项不符合题设：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

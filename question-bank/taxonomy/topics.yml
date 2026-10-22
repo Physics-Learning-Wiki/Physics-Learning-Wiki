@@ -1,44 +1,41 @@
 mechanics:
   title: 经典力学
-
 mechanics.kinematics:
   title: 运动学
   parent: mechanics
-
 mechanics.dynamics:
   title: 动力学
   parent: mechanics
-
 mechanics.analytical:
   title: 分析力学
   parent: mechanics
-
 electromagnetism:
   title: 电磁学
-
 electromagnetism.electrostatics:
   title: 静电学
   parent: electromagnetism
-
 math:
   title: 数学工具与数理方法
-
 math.complex-analysis:
   title: 复变函数与复分析
   parent: math
-
 math.transforms:
   title: 积分变换与广义函数
   parent: math
-
 math.differential-equations:
   title: 物理微分方程与定解问题
   parent: math
-
 math.special-functions:
   title: 常用特殊函数
   parent: math
-
 math.eigenfunction-greens:
   title: 本征值理论与格林函数
+  parent: math
+experiment:
+  title: 实验物理
+experiment.error-analysis:
+  title: 误差分析与数据处理
+  parent: experiment
+math.probability-statistics:
+  title: 概率与统计
   parent: math

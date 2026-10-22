@@ -1,0 +1,34 @@
+schema_version: 1
+id: experiment.error-analysis.uncertainty-propagation
+title: 不确定度传播与合成：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: draft
+tags:
+- 误差分析与数据处理
+- 不确定度传播与合成
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000190
+  - q-000191
+  - q-000192
+  - q-000193
+  - q-000194
+  - q-000195
+  - q-000196
+  - q-000197
+  - q-000198
+  - q-000199
+  - q-000200
+  - q-000201
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0

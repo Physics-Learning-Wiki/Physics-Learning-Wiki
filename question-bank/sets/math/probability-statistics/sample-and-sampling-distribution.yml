@@ -1,0 +1,34 @@
+schema_version: 1
+id: math.probability-statistics.sample-and-sampling-distribution
+title: 样本及抽样分布：专题习题
+description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+status: published
+tags:
+- 误差分析与数据处理
+- 样本及抽样分布
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000292
+  - q-000293
+  - q-000294
+  - q-000295
+  - q-000296
+  - q-000297
+  - q-000298
+  - q-000299
+  - q-000300
+  - q-000301
+  - q-000302
+  - q-000303
+  order: fixed
+version: 1
+authors:
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: 对应误差分析课程的固定教学题集，题目均为原创草稿．
+  ai_assisted: true
+license: CC-BY-SA-4.0
