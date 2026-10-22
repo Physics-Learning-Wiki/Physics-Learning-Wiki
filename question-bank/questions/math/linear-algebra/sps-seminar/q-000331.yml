@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000331
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 线性映射的定义**
+
+  把整个平面向右平移两格：$T(x,y)=(x+2,y)$．它是从 $\mathbb R^2$ 到自身的线性映射吗？
+choices:
+- id: A
+  content: 是，因为直线平移后还是直线．
+- id: B
+  content: 是，因为每个点都移动相同距离．
+- id: C
+  content: 不是，因为零向量被送到了非零向量．
+answer:
+  choice: C
+hints:
+- 只需跟踪原点，不必检查所有向量．
+solution: 不是．线性映射必须满足 $T(\mathbf0)=\mathbf0$，而这里 $T(0,0)=(2,0)$．平移保留了许多熟悉的几何形状，但它把「没有位移」送成了一个非零向量，因此不保留向量空间的线性结构．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 直线仍是直线并不足以说明映射线性．
+    B: 统一平移仍会移动零向量．
+    C: 线性映射固定零向量，平移不满足这一必要条件．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 线性映射的定义 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

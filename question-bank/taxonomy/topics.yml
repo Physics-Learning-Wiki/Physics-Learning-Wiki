@@ -39,3 +39,6 @@ experiment.error-analysis:
 math.probability-statistics:
   title: 概率与统计
   parent: math
+math.linear-algebra:
+  title: 线性代数
+  parent: math

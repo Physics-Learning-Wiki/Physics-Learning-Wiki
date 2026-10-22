@@ -1,0 +1,48 @@
+schema_version: 3
+id: q-000345
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+- linalg.vector-space
+type: true_false
+choice_order: fixed
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3 函数的正交性**
+
+  在实多项式空间上定义 $\langle p,q\rangle=\int_{-1}^{1}p(x)q(x)\,\mathrm dx$．
+
+  判断：常数函数 $p(x)=1$ 与函数 $q(x)=x$ 在这个内积下正交，即使它们的函数图像并不是两根互相垂直的箭头．
+answer:
+  value: true
+hints:
+- 画出 y=x 在 -1 到 1 之间的图像：两侧对积分的贡献有什么关系？
+solution: |-
+  正交的定义是内积为零．这里
+
+  $$
+  \langle1,x\rangle=\int_{-1}^{1}x\,\mathrm dx=0.
+  $$
+
+  左半区间的负贡献与右半区间的正贡献恰好抵消，不必计算复杂积分．函数空间中的「正交」由所选内积定义，不是在函数图像的交点处量夹角．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.3 函数的正交性 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

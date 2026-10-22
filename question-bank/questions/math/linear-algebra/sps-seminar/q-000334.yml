@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000334
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 读懂矩阵的列**
+
+  在输入和输出都采用标准基时，线性映射满足
+
+  $$
+  T(\mathbf e_1)=\begin{pmatrix}1\\1\end{pmatrix},\qquad
+  T(\mathbf e_2)=\begin{pmatrix}0\\2\end{pmatrix}.
+  $$
+
+  哪个矩阵表示 $T$？
+choices:
+- id: A
+  content: $\begin{pmatrix}1&1\\0&2\end{pmatrix}$
+- id: B
+  content: $\begin{pmatrix}1&0\\1&2\end{pmatrix}$
+- id: C
+  content: $\begin{pmatrix}0&1\\2&1\end{pmatrix}$
+answer:
+  choice: B
+hints:
+- 用矩阵乘 $(1,0)^{\mathsf T}$ 会选出哪一列？
+solution: |-
+  矩阵第 $j$ 列记录第 $j$ 个输入基向量的像，因此把两列按给定顺序并排放好：
+
+  $$
+  A=\begin{pmatrix}1&0\\1&2\end{pmatrix}.
+  $$
+
+  对一般输入，$T(x\mathbf e_1+y\mathbf e_2)=xT(\mathbf e_1)+yT(\mathbf e_2)$．知道两根基箭头的去向，就知道所有箭头的去向．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 这里把基向量的像横着排成了行，交换了行列的角色．
+    B: 第一列和第二列分别就是两根基箭头的像．
+    C: 两列次序反了；输入基的顺序也属于矩阵表示的一部分．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 读懂矩阵的列 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,36 @@
+linalg.vector-space:
+  title: 线性空间与抽象向量
+  topics:
+  - math.linear-algebra
+linalg.basis-coordinates:
+  title: 基、维数与坐标
+  topics:
+  - math.linear-algebra
+linalg.linear-map:
+  title: 线性映射与线性同构
+  topics:
+  - math.linear-algebra
+linalg.image-kernel:
+  title: 像、核与信息丢失
+  topics:
+  - math.linear-algebra
+linalg.matrix-representation:
+  title: 线性映射的矩阵表示
+  topics:
+  - math.linear-algebra
+linalg.matrix-operations:
+  title: 矩阵的基本运算与转置
+  topics:
+  - math.linear-algebra
+linalg.composition:
+  title: 映射复合与矩阵乘法顺序
+  topics:
+  - math.linear-algebra
+linalg.inner-product:
+  title: 内积、长度与正交性
+  topics:
+  - math.linear-algebra
+linalg.determinant:
+  title: 行列式、面积缩放与取向
+  topics:
+  - math.linear-algebra

@@ -1,0 +1,38 @@
+schema_version: 3
+id: q-000329
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.vector-space
+type: true_false
+choice_order: fixed
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1 线性空间的封闭性**
+
+  判断：只允许非负整数的「苹果数、梨数」二元组，在通常的加法和实数数乘下，构成一个实向量空间．
+answer:
+  value: false
+hints:
+- 试着用负数或一半去乘一个允许的库存．
+solution: 不构成．虽然两个实际库存可以相加，但 $-1\cdot(1,0)=(-1,0)$ 已经离开这个集合，$\tfrac12\cdot(1,0)$ 也不是整数库存．若想把水果类别当作实向量空间的基，就要允许任意实系数的形式组合；这时描述的对象已不限于实际水果个数．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.1 线性空间的封闭性 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

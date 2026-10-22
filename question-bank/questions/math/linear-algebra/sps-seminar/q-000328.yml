@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000328
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.vector-space
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1 多项式也是向量**
+
+  把次数不超过 $2$ 的实系数多项式看成向量空间，取基 $(1,x,x^2)$．对于 $p(x)=-1+2x$，哪种理解正确？
+choices:
+- id: A
+  content: 空间是二维的，因为最高次数是 $2$．
+- id: B
+  content: 空间是一维的，因为只有一个自变量 $x$．
+- id: C
+  content: 空间是三维的，$p$ 的坐标为 $(-1,2,0)^{\mathsf T}$．
+answer:
+  choice: C
+hints:
+- 数一数可以独立指定的系数；缺少的二次项也有系数．
+solution: 基中的 $1$ 是常数函数，它也占一个独立方向．任意多项式可写成 $a\cdot1+b\cdot x+c\cdot x^2$，所以空间是三维的．这里 $p=-1\cdot1+2\cdot x+0\cdot
+  x^2$，坐标为 $(-1,2,0)^{\mathsf T}$．函数的自变量只有一个，不代表函数所在的线性空间只有一维．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 常数项也是一个独立方向，不能漏掉．
+    B: 自变量的个数与函数空间的维数不同．
+    C: 常数、一次、二次三个系数分别是三个坐标．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.1 多项式也是向量 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

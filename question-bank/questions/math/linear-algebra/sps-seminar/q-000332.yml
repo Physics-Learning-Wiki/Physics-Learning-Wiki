@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000332
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 线性的必要条件**
+
+  映射 $F:\mathbb R\to\mathbb R$ 满足 $F(0)=0$．仅凭这一点，能断定它线性吗？
+choices:
+- id: A
+  content: 能；固定零向量就是线性的完整定义．
+- id: B
+  content: 不能；$F(x)=x^2$ 就是一个反例．
+- id: C
+  content: 不能；因为任何非零线性映射都必须移动零向量．
+answer:
+  choice: B
+hints:
+- 试试 $F(x)=x^2$：把输入翻倍，输出也一定翻倍吗？
+solution: 不能．例如 $F(x)=x^2$ 固定 $0$，但 $F(2\cdot1)=4$，而 $2F(1)=2$，不保持数乘．固定零向量是线性的必要条件，可以用来排除某些映射，却不能单独作为线性的充分条件．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 线性还要求保持加法和数乘．
+    B: 它固定零点，却不保持缩放关系．
+    C: 恰好相反，所有线性映射都固定零向量．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 线性的必要条件 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

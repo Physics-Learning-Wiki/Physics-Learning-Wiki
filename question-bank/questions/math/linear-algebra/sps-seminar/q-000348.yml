@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000348
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6 交换两列**
+
+  两个不共线的平面向量 $\mathbf u,\mathbf v$ 张成一个平行四边形，且 $\det[\mathbf u\ \mathbf v]=4$．交换两列成为 $[\mathbf v\ \mathbf u]$ 后，普通面积与行列式如何改变？
+
+  可以比较两种边界走法：先走 $\mathbf u$ 再走 $\mathbf v$，或先走 $\mathbf v$ 再走 $\mathbf u$．
+choices:
+- id: A
+  content: 普通面积仍为 4，行列式变为 -4．
+- id: B
+  content: 普通面积与行列式都仍为 4．
+- id: C
+  content: 普通面积变为 0，行列式也变为 0．
+answer:
+  choice: A
+hints:
+- 换走边的顺序，会改变围住的点集，还是改变绕行方向？
+solution: 两种走法围住的是同一个平行四边形，普通面积都为 $4$．但边界顺序从 $0\to\mathbf u\to\mathbf u+\mathbf v\to\mathbf v\to0$，变为 $0\to\mathbf
+  v\to\mathbf u+\mathbf v\to\mathbf u\to0$，绕行方向反转．因此交换两列后行列式为 $-4$．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 点集相同、取向反转，所以大小不变而符号改变．
+    B: 普通面积不变，但有向面积还记录绕行方向．
+    C: 交换不共线的两列，不会使它们变成共线．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.6 交换两列 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
