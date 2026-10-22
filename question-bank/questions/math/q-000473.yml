@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000473
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,24 +9,30 @@ concepts:
 - math.delay-equation
 type: numeric
 choice_order: fixed
-stem: |-
-  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+stem: 'Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
 
-  采用 $\dot\theta(t)=-\lambda\theta(t-\tau)$，其中教学参数 $\lambda=1\,\mathrm{s}^{-1}$、$\tau=0.2\,\mathrm s$，历史为 $\theta(t)=1$（$-\tau\leq t\leq0$）。温差已经归一化，为无量纲量。
 
-  先在 $0\leq t\leq\tau$ 使用已知常数历史，再把得到的解用于 $\tau\leq t\leq2\tau$。求 $\theta(0.4\,\mathrm s)$。只输入十进制数，允许绝对误差 $0.001$，不填单位。
-solution: |-
-  首段中 $\theta(t-\tau)=1$，因此 $\dot\theta=-\lambda$，结合初值得到 $\theta(t)=1-\lambda t$。
+  采用 $\dot\theta(t)=-\lambda\theta(t-\tau)$，其中教学参数 $\lambda=1\,\mathrm{s}^{-1}$、$\tau=0.2\,\mathrm s$，历史为 $\theta(t)=1$（$-\tau\leq
+  t\leq0$）。温差已经归一化，为无量纲量。
+
+
+  先在 $0\leq t\leq\tau$ 使用已知常数历史，再把得到的解用于 $\tau\leq t\leq2\tau$。求 $\theta(0.4\,\mathrm s)$。只输入十进制数，允许绝对误差 $0.001$，不填单位。'
+solution: '首段中 $\theta(t-\tau)=1$，因此 $\dot\theta=-\lambda$，结合初值得到 $\theta(t)=1-\lambda t$。
+
 
   第二段的延迟值为 $1-\lambda(t-\tau)$，所以 $\dot\theta=-\lambda+\lambda^2(t-\tau)$。从 $t=\tau$ 起积分并与首段衔接，得到
 
+
   $$\theta(t)=1-\lambda t+\frac{\lambda^2}{2}(t-\tau)^2,\qquad\tau\leq t\leq2\tau.$$
+
 
   在 $t=0.4\,\mathrm s$ 处，$\theta=1-0.4+(0.2)^2/2=0.62$。检查：两段在 $t=\tau$ 的值都是 $0.8$；第二段导数等于负的首段延迟值；每一项均无量纲。此结果使用原延迟方程的分段积分，没有把延迟作泰勒近似。
 
+
   研究对应：Section II C, delayed exponential and piecewise polynomial representation, Eqs. (19)–(21)。教学范围：只求前两个延迟区间；不推断很长时间的单调性、稳定性或样品的实际冷却常数。
 
-  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -56,3 +62,19 @@ answer:
     required: false
     canonical: '1'
     accepted: []
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d802e66773252e2e50f367145cb49a99423fb53870414060f1a6e5e153902f3d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d802e66773252e2e50f367145cb49a99423fb53870414060f1a6e5e153902f3d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d802e66773252e2e50f367145cb49a99423fb53870414060f1a6e5e153902f3d

@@ -1,0 +1,26 @@
+schema_version: 1
+id: electromagnetism.electrostatics.chapter-3.selftest
+title: 静电学第 3 章概念与方法自测
+description: 与五章静电学正文配套；新增内容待人工审核．
+status: published
+tags:
+- 电磁学
+- 第 3 章
+- 静电学
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000508
+  - q-000509
+  - q-000510
+  - q-000511
+  - q-000512
+  - q-000513
+  - q-000514
+  - q-000515
+  - q-000516
+  - q-000517
+  - q-000518
+  - q-000519
+  order: fixed

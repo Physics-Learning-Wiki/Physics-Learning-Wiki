@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000542
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dielectric-energy
+type: single_choice
+choice_order: shuffle
+stem: 储能密度 E·D/2 的简单形式需要哪些条件？
+solution: 非线性需沿充电路径积分，滞回还涉及耗散．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 只需材料中没有自由体电荷
+- id: B
+  content: 相应线性、可逆的静态材料模型
+- id: C
+  content: 任何材料、任何频率都成立
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．非线性需沿充电路径积分，滞回还涉及耗散．
+  incorrect: 请先重新核对模型条件．非线性需沿充电路径积分，滞回还涉及耗散．
+  choices:
+    A: 源类型不能代替本构与可逆性条件．
+    B: 非线性需沿充电路径积分，滞回还涉及耗散．
+    C: 忽略了色散、损耗与非线性．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a67d22113e39f46d2a1f264747b62fd8c390b2bfa168088a81eb169c8a85ff9a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a67d22113e39f46d2a1f264747b62fd8c390b2bfa168088a81eb169c8a85ff9a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a67d22113e39f46d2a1f264747b62fd8c390b2bfa168088a81eb169c8a85ff9a

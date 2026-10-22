@@ -2,7 +2,7 @@ schema_version: 1
 id: mechanics.research-2024-2026.set-04
 title: 近期研究中的经典力学：第4组
 description: 本科研究背景练习；覆盖analytical。全套为待人工审核草稿。
-status: draft
+status: published
 feedback_mode: immediate
 selection:
   type: fixed

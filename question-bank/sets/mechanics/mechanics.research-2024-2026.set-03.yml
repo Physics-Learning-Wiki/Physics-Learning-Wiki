@@ -2,7 +2,7 @@ schema_version: 1
 id: mechanics.research-2024-2026.set-03
 title: 近期研究中的经典力学：第3组
 description: 本科研究背景练习；覆盖analytical、dynamics。全套为待人工审核草稿。
-status: draft
+status: published
 feedback_mode: immediate
 selection:
   type: fixed

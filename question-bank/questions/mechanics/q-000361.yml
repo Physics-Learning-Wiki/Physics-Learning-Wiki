@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000361
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -9,39 +9,52 @@ concepts:
 - oscillations.harmonic-motion
 type: numeric
 choice_order: fixed
-stem: |-
-  悬浮纳米球在光阱紧束缚主轴上的机械频率被报告为 $121.1\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+stem: '悬浮纳米球在光阱紧束缚主轴上的机械频率被报告为 $121.1\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
 
   为建立经典运动学尺度，另设该方向做确定性的简谐运动 $X(t)=A\cos(2\pi ft)$，取教学振幅 $A=1.00\,\mathrm{nm}$、$f=121.1\,\mathrm{kHz}$。这不是论文的量子态振幅或测得轨迹；忽略阻尼。
 
-  求最大速率。以十进制或科学计数法输入，单位填 `m/s`，保留三位有效数字。
+
+  求最大速率。以十进制或科学计数法输入，单位填 `m/s`，保留三位有效数字。'
 hints:
 - 频率 f 不是角频率；对余弦求导会出现 2πf。
 - 纳米需要换成米，千赫需要换成每秒。
 feedback:
   correct: 由简谐位移函数求最大速度并正确换算长度和频率，并保留了题设的适用条件。
   incorrect: 频率 f 不是角频率；对余弦求导会出现 2πf。
-solution: |-
-  对位移求导：
+solution: '对位移求导：
+
 
   $$
+
   \dot X=-2\pi fA\sin(2\pi ft),\qquad v_{\max}=2\pi fA.
+
   $$
+
 
   先统一单位，$f=121100\,\mathrm{s^{-1}}$，$A=10^{-9}\,\mathrm{m}$，所以
 
+
   $$
+
   v_{\max}=2\pi\times121100\times10^{-9}
+
   =7.609\times10^{-4}\,\mathrm{m/s}\approx7.61\times10^{-4}\,\mathrm{m/s}.
+
   $$
+
 
   最大速度出现在通过平衡位置时，而在位移极值处速度为零。
 
+
   **检查与物理含义：** 能量法给出 mvmax²/2=kA²/2，配合 k=mω² 再得 vmax=ωA；单位为 s⁻¹·m。容差覆盖三位有效数字的舍入而不接受漏 2π。
+
 
   **适用范围：** 确定轨迹的经典振幅不等同于量子态的位置方差，不能据此计算论文的纯度或量子关联。
 
-  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark
+  modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -65,3 +78,19 @@ answer:
     canonical: m/s
     accepted:
     - m/s
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:409ebfb7873d21b948e5c03fc20e0986e34854749cdbe7de18ac65fc255458eb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:409ebfb7873d21b948e5c03fc20e0986e34854749cdbe7de18ac65fc255458eb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:409ebfb7873d21b948e5c03fc20e0986e34854749cdbe7de18ac65fc255458eb

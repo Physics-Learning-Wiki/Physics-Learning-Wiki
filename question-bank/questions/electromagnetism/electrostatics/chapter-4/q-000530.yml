@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000530
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dipole-energy
+type: single_choice
+choice_order: shuffle
+stem: 线性感生偶极 $p=\alpha E$ 在给定静态外场中的有效能量为？
+solution: 须把建立偶极的内部代价与外场耦合共同极小化．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$
+- id: B
+  content: $-\alpha E^2/2$
+- id: C
+  content: $-\alpha E^2$
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．须把建立偶极的内部代价与外场耦合共同极小化．
+  incorrect: 请先重新核对模型条件．须把建立偶极的内部代价与外场耦合共同极小化．
+  choices:
+    A: 中性粒子仍可有极化能与非均匀场合力．
+    B: 须把建立偶极的内部代价与外场耦合共同极小化．
+    C: 直接代入永久偶极公式漏掉响应建立能量．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fb41f9df2e38c80e30c58d875deecc8ad4b1f03fabc6fdd548b770877f37e083
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fb41f9df2e38c80e30c58d875deecc8ad4b1f03fabc6fdd548b770877f37e083
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fb41f9df2e38c80e30c58d875deecc8ad4b1f03fabc6fdd548b770877f37e083

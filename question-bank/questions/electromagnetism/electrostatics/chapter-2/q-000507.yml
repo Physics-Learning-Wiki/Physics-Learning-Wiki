@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000507
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.multipoles
+type: single_choice
+choice_order: shuffle
+stem: 线四极子在 $z=\pm a$ 放 $+q$、原点放 $-2q$，其非零远场领先势按何种距离幂衰减？
+solution: 单极、偶极均为零，四极势按三次反比衰减．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $r^{-3}$
+- id: B
+  content: $r^{-2}$
+- id: C
+  content: $r^{-4}$
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．单极、偶极均为零，四极势按三次反比衰减．
+  incorrect: 请先重新核对模型条件．单极、偶极均为零，四极势按三次反比衰减．
+  choices:
+    A: 单极、偶极均为零，四极势按三次反比衰减．
+    B: 这是偶极势的衰减阶次．
+    C: 四极电场按四次反比衰减，势比它少一次．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1ac9768d77de250554360ed8c86ff3179a5567fd54b12238077010369ee1b7d0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1ac9768d77de250554360ed8c86ff3179a5567fd54b12238077010369ee1b7d0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1ac9768d77de250554360ed8c86ff3179a5567fd54b12238077010369ee1b7d0

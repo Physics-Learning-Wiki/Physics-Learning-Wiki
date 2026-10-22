@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000493
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,24 +9,30 @@ concepts:
 - math.eigenfunction-expansion
 type: numeric
 choice_order: fixed
-stem: |-
-  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+stem: 'Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
 
   给定一个原创无量纲算子的正交归一模态
 
+
   $$r_1=\frac1{\sqrt2}(1,1)^T,\quad r_2=\frac1{\sqrt2}(1,-1)^T,\qquad j_1=0.10,\quad j_2=2.00.$$
 
-  格林矩阵为 $G=r_1r_1^T/j_1+r_2r_2^T/j_2$。输入 $I=(1,0)^T$，响应 $V=GI$。求第一个节点的响应 $V_1$。只输入十进制数，允许绝对误差 $0.001$，不填单位。
-solution: |-
-  两个模态对输入的投影均为 $r_n^TI=1/\sqrt2$，它们在第一个输出节点的分量也均为 $1/\sqrt2$。因此
+
+  格林矩阵为 $G=r_1r_1^T/j_1+r_2r_2^T/j_2$。输入 $I=(1,0)^T$，响应 $V=GI$。求第一个节点的响应 $V_1$。只输入十进制数，允许绝对误差 $0.001$，不填单位。'
+solution: '两个模态对输入的投影均为 $r_n^TI=1/\sqrt2$，它们在第一个输出节点的分量也均为 $1/\sqrt2$。因此
+
 
   $$V_1=\frac{1/2}{0.10}+\frac{1/2}{2.00}=5+0.25=5.25.$$
 
+
   检查：两个贡献都是正数；不能只保留较小本征值的贡献后将它声称为精确总响应。独立重建算子可得 $J=\begin{pmatrix}1.05&-0.95\\-0.95&1.05\end{pmatrix}$，其逆矩阵第一列为 $(5.25,4.75)^T$，代回给出指定输入。
 
-  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, spectral expansion of the inverse Laplacian。教学范围：此响应为无量纲教学结果，未将小本征值与论文的实际共振频率或测得电压对应。
 
-  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, spectral expansion of the
+  inverse Laplacian。教学范围：此响应为无量纲教学结果，未将小本征值与论文的实际共振频率或测得电压对应。
+
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -56,3 +62,19 @@ answer:
     required: false
     canonical: '1'
     accepted: []
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bc39d6cf88ab8ddb47d9bf13d42dcb7f4719ab9b7766811644545cea736a7295
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bc39d6cf88ab8ddb47d9bf13d42dcb7f4719ab9b7766811644545cea736a7295
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bc39d6cf88ab8ddb47d9bf13d42dcb7f4719ab9b7766811644545cea736a7295

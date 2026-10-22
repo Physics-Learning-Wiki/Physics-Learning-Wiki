@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000526
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy
+type: single_choice
+choice_order: shuffle
+stem: 真实点电荷 $q$ 距接地平面 $d$，扣除点自能的相互作用能为？
+solution: 对实际感应力从无穷远积分，或使用二分之一 q 乘感应势．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $-kq^2/(2d)$
+- id: B
+  content: $+kq^2/(4d)$
+- id: C
+  content: $-kq^2/(4d)$
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．对实际感应力从无穷远积分，或使用二分之一 q 乘感应势．
+  incorrect: 请先重新核对模型条件．对实际感应力从无穷远积分，或使用二分之一 q 乘感应势．
+  choices:
+    A: 把像误当作独立固定真实源，能量多算一倍．
+    B: 吸引过程从无穷远靠近释放能量，势能为负．
+    C: 对实际感应力从无穷远积分，或使用二分之一 q 乘感应势．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c65f008b7c853ed7d702aa89c972e1e4450d7c03d337e102f47e31adce633354
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c65f008b7c853ed7d702aa89c972e1e4450d7c03d337e102f47e31adce633354
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c65f008b7c853ed7d702aa89c972e1e4450d7c03d337e102f47e31adce633354

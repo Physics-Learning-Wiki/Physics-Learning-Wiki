@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000532
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.polarization
+type: single_choice
+choice_order: shuffle
+stem: 宏观极化强度的定义是什么？
+solution: 既计大小也计方向，单位为 C/m²．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 单位体积的净电荷
+- id: B
+  content: 单位面积的自由电流
+- id: C
+  content: 单位体积的偶极矩矢量和
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．既计大小也计方向，单位为 C/m²．
+  incorrect: 请先重新核对模型条件．既计大小也计方向，单位为 C/m²．
+  choices:
+    A: 那是体电荷密度，单位为 C/m³．
+    B: 电流与这里的静态偶极密度不同．
+    C: 既计大小也计方向，单位为 C/m²．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dbd67642ef91f2225afde3164a64c3dadee65da78a342ec1062cf82dd5c7d448
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dbd67642ef91f2225afde3164a64c3dadee65da78a342ec1062cf82dd5c7d448
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dbd67642ef91f2225afde3164a64c3dadee65da78a342ec1062cf82dd5c7d448

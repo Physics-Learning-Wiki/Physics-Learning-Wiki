@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000554
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy
+type: free_response
+choice_order: fixed
+stem: '**球的两种能量算法**
+
+
+  均匀实心球半径 R、总电荷 Q．分别用电荷—电势积分和全空间场积分求自能，再与同半径同电荷薄壳比较．说明点极限及负相互作用能与正场能的关系．'
+solution: '1. 球内势为 $kQ(3-r^2/R^2)/(2R)$，$\rho=3Q/(4\pi R^3)$．代入 $W=\frac12\int_0^R\rho\varphi4\pi r^2\mathrm{d}r$ 得 $3kQ^2/(5R)$．
+
+  2. 场积分分内外，内部为 $kQ^2/(10R)$、外部为 $kQ^2/(2R)$，相加一致．
+
+  3. 薄壳只有外部贡献，能量较小．半径趋零的自能发散；点电荷负相互作用能是剔除自能后的交叉贡献，不与正的完整平方积分矛盾．
+
+  4. 评分检查二分之一、体积权重、积分域、边界条件与模型限度．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 球内势为 $kQ(3-r^2/R^2)/(2R)$，$\rho=3Q/(4\pi R^3)$．代入 $W=\frac12\int_0^R\rho\varphi4\pi r^2\mathrm{d}r$
+  得 $3kQ^2/(5R)$．
+
+  2. 场积分分内外，内部为 $kQ^2/(10R)$、外部为 $kQ^2/(2R)$，相加一致．
+
+  3. 薄壳只有外部贡献，能量较小．半径趋零的自能发散；点电荷负相互作用能是剔除自能后的交叉贡献，不与正的完整平方积分矛盾．
+
+  4. 评分检查二分之一、体积权重、积分域、边界条件与模型限度．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:14df6f904d4cb0345cafabec8938036676f2c475766a311d1fafce6cf3e32022
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:14df6f904d4cb0345cafabec8938036676f2c475766a311d1fafce6cf3e32022
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:14df6f904d4cb0345cafabec8938036676f2c475766a311d1fafce6cf3e32022

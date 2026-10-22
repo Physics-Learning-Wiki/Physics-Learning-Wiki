@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000467
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.transforms
@@ -9,31 +9,42 @@ concepts:
 - math.laplace-method
 type: numeric
 choice_order: fixed
-stem: |-
-  La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+stem: 'La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+
 
   论文通过逆拉普拉斯变换获得吸收通量和累计量。为手算检验这一流程，本题采用原创的无量纲通量变换
 
+
   $$
+
   J(s)=\frac{6}{(s+2)(s+3)},\qquad
+
   J(s)=\int_0^\infty e^{-st}j(t)dt,\qquad C(t)=\int_0^t j(u)du.
-  $$
-
-  可用 $\mathcal L[e^{-at}]=1/(s+a)$。求 $C(\ln2)$。输入十进制数，允许绝对误差 $0.001$，不填单位。
-solution: |-
-  分解为 $J(s)=6/(s+2)-6/(s+3)$，故 $j(t)=6e^{-2t}-6e^{-3t}$。由累计量定义，
 
   $$
+
+
+  可用 $\mathcal L[e^{-at}]=1/(s+a)$。求 $C(\ln2)$。输入十进制数，允许绝对误差 $0.001$，不填单位。'
+solution: '分解为 $J(s)=6/(s+2)-6/(s+3)$，故 $j(t)=6e^{-2t}-6e^{-3t}$。由累计量定义，
+
+
+  $$
+
   C(t)=3(1-e^{-2t})-2(1-e^{-3t})=1-3e^{-2t}+2e^{-3t}.
+
   $$
+
 
   在 $t=\ln2$ 时，两个指数分别为 $1/4$ 和 $1/8$，所以 $C=1-3/4+1/4=0.5$。
 
+
   检查：$C(0)=0$，$C(\infty)=1$；$j(t)=6e^{-3t}(e^t-1)\geq0$，因此累计量从零单调增加到一。模型在数学上可作为归一化吸收时间示例。
+
 
   研究对应：Section 1, Eq. (2); Section 2, Eq. (14) inverse-Laplace construction。教学范围：该有理函数不是从论文数据拟合，也不预测其多边形吸收体的吸收概率。
 
-  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。
+
+  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -63,3 +74,19 @@ answer:
     required: false
     canonical: '1'
     accepted: []
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:972cc193159ab4cb5d2f041474f93e23e5979d3be22c48e831abe2b4a67364b8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:972cc193159ab4cb5d2f041474f93e23e5979d3be22c48e831abe2b4a67364b8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:972cc193159ab4cb5d2f041474f93e23e5979d3be22c48e831abe2b4a67364b8

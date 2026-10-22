@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000502
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.field
+type: single_choice
+choice_order: shuffle
+stem: 均匀带电半圆弧半径 $R$，位于上半平面，总电荷 $Q>0$，圆心电场为？
+solution: 横向抵消，纵向积分为 $-k\lambda\int_0^\pi\sin\theta\,\mathrm d\theta/R$．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$
+- id: B
+  content: $-kQ\boldsymbol e_y/R^2$
+- id: C
+  content: $-2kQ\boldsymbol e_y/(\pi R^2)$
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．横向抵消，纵向积分为 $-k\lambda\int_0^\pi\sin\theta\,\mathrm d\theta/R$．
+  incorrect: 请先重新核对模型条件．横向抵消，纵向积分为 $-k\lambda\int_0^\pi\sin\theta\,\mathrm d\theta/R$．
+  choices:
+    A: 半圆不具备完整圆周的方向抵消．
+    B: 大小不能直接相加，须计入投影与弧长权重．
+    C: 横向抵消，纵向积分为 $-k\lambda\int_0^\pi\sin\theta\,\mathrm d\theta/R$．
+related_pages:
+- electromagnetism.electrostatics.chapter-1.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6f64a33cc08659db952963f0b7cad470e2e089c2de43275219910a81fc2129e7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6f64a33cc08659db952963f0b7cad470e2e089c2de43275219910a81fc2129e7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6f64a33cc08659db952963f0b7cad470e2e089c2de43275219910a81fc2129e7

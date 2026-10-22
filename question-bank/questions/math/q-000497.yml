@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000497
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,26 +9,32 @@ concepts:
 - math.eigenfunction-expansion
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+stem: 'Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+
 
   用指数等待时间的模型 $\dot x=(P-I)x/\mu$，$\mu>0$，取
 
+
   $$P=\begin{pmatrix}0&1&0\\1/2&0&1/2\\0&1&0\end{pmatrix}.$$
+
 
   ![三节点路径的连接关系](asset:math-network)
 
-  图中文字说明：只有相邻节点连接；数值权重和作用方向以所给矩阵为准，图中连线不代表相同矩阵元。给定 $r_0=(1,1,1)^T$、$r_1=(1,0,-1)^T$、$r_2=(1,-1,1)^T$。选出所有正确陈述，采用完全一致评分。
-solution: |-
-  直接相乘得到 $Pr_0=r_0$、$Pr_1=0$、$Pr_2=-r_2$。若 $Pr=\lambda r$，令 $x=a(t)r$，则 $\dot a=(\lambda-1)a/\mu$。所以三个模态分别具有衰减率 $0,1/\mu,2/\mu$。
+
+  图中文字说明：只有相邻节点连接；数值权重和作用方向以所给矩阵为准，图中连线不代表相同矩阵元。给定 $r_0=(1,1,1)^T$、$r_1=(1,0,-1)^T$、$r_2=(1,-1,1)^T$。选出所有正确陈述，采用完全一致评分。'
+solution: '直接相乘得到 $Pr_0=r_0$、$Pr_1=0$、$Pr_2=-r_2$。若 $Pr=\lambda r$，令 $x=a(t)r$，则 $\dot a=(\lambda-1)a/\mu$。所以三个模态分别具有衰减率 $0,1/\mu,2/\mu$。
+
 
   算术和不一定守恒，因为矩阵列和不是全为一。例如 $x=(0,1,0)^T$ 时，$\dot x=(1,-1,1)^T/\mu$，三个导数之和为 $1/\mu$。真正的常数左向量权重可取 $(1/4,1/2,1/4)$，但题目的正确选项只需上述直接反例即可排除算术平均守恒。
 
+
   检查：矩阵行和为一保证常数右模态不变；这与任意初值的算术平均守恒是两个不同条件。
+
 
   研究对应：Results, Eq. (2), relation between homogeneous network eigenvalues and relaxation modes。教学范围：这里的 x 是按所给列向量方程演化的节点标量；未把它误当成采用转置生成元的列概率分布。
 
-  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -72,3 +78,19 @@ answer:
 assets:
 - id: math-network
   path: math/math-network.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c8a2947ce18bc5baac2d866f715a284312ec4a02f0bf621ee741f131b0e72098
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c8a2947ce18bc5baac2d866f715a284312ec4a02f0bf621ee741f131b0e72098
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c8a2947ce18bc5baac2d866f715a284312ec4a02f0bf621ee741f131b0e72098

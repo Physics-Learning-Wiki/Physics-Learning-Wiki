@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000518
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conductors
+type: single_choice
+choice_order: shuffle
+stem: 导体局部面密度能否仅由局部曲率唯一决定？
+solution: 尖端增强不是无条件的局部反比律．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 能，只由材料电阻率决定
+- id: B
+  content: 不能，还取决于整体边界与外部源
+- id: C
+  content: 能，任何情况下都严格与曲率半径成反比
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．尖端增强不是无条件的局部反比律．
+  incorrect: 请先重新核对模型条件．尖端增强不是无条件的局部反比律．
+  choices:
+    A: 理想静电分布主要由静电几何及约束决定．
+    B: 尖端增强不是无条件的局部反比律．
+    C: 把特殊相连远球近似推广成普遍定律．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:acb0e0f09959d3ac941aeb9652f2d1a0d8d0f1b2a1a8873ceaa4e410652dd04f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:acb0e0f09959d3ac941aeb9652f2d1a0d8d0f1b2a1a8873ceaa4e410652dd04f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:acb0e0f09959d3ac941aeb9652f2d1a0d8d0f1b2a1a8873ceaa4e410652dd04f

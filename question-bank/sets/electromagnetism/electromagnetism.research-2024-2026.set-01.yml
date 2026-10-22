@@ -2,7 +2,7 @@ schema_version: 1
 id: electromagnetism.research-2024-2026.set-01
 title: 近期研究中的电磁学：第1组
 description: 本科研究背景练习；覆盖electrostatics。全套为待人工审核草稿。
-status: draft
+status: published
 feedback_mode: immediate
 selection:
   type: fixed

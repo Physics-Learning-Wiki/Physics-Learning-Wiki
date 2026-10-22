@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000365
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -9,26 +9,32 @@ concepts:
 - oscillations.damping
 type: numeric
 choice_order: fixed
-stem: |-
-  芯片扭转微摆实验报告极低的机械损耗；比较这类装置的衰减时间前，需要辨认论文采用的阻尼率约定。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+stem: '芯片扭转微摆实验报告极低的机械损耗；比较这类装置的衰减时间前，需要辨认论文采用的阻尼率约定。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
 
-  对自由衰减作线性模型 $\ddot\theta+\gamma\dot\theta+\omega_0^2\theta=0$，其中 $\gamma$ 的单位为 $\mathrm{s^{-1}}$。在 $\gamma\ll\omega_0$ 时，振幅包络为 $A(t)=A_0e^{-\gamma t/2}$。采用论文报告的 $\gamma/(2\pi)=16\,\mu\mathrm{Hz}$，并按 $1\,\mu\mathrm{Hz}=10^{-6}\,\mathrm{s^{-1}}$ 换算。
 
-  从 $t=0$ 开始，振幅包络第一次降至 $A_0/2$ 需要多少时间？以 $\mathrm{s}$ 为单位，保留到最接近的整数秒。
+  对自由衰减作线性模型 $\ddot\theta+\gamma\dot\theta+\omega_0^2\theta=0$，其中 $\gamma$ 的单位为 $\mathrm{s^{-1}}$。在 $\gamma\ll\omega_0$ 时，振幅包络为
+  $A(t)=A_0e^{-\gamma t/2}$。采用论文报告的 $\gamma/(2\pi)=16\,\mu\mathrm{Hz}$，并按 $1\,\mu\mathrm{Hz}=10^{-6}\,\mathrm{s^{-1}}$ 换算。
+
+
+  从 $t=0$ 开始，振幅包络第一次降至 $A_0/2$ 需要多少时间？以 $\mathrm{s}$ 为单位，保留到最接近的整数秒。'
 hints:
 - 先把给定的 γ/(2π) 换成微分方程中的 γ。
 - 对振幅比取自然对数；振幅和能量的指数不同。
 feedback:
   correct: 按明确的阻尼率约定，把微赫兹线宽转换为振幅包络的衰减时间。，并保留了题设的适用条件。
   incorrect: 先把给定的 γ/(2π) 换成微分方程中的 γ。
-solution: |-
-  先把论文的频率形式换成运动方程中的阻尼率：$\gamma=2\pi(16\times10^{-6})\,\mathrm{s^{-1}}$。由 $e^{-\gamma t_{1/2}/2}=1/2$，取对数得 $t_{1/2}=2\ln2/\gamma=\ln2/(16\pi\times10^{-6})=13789.725\ldots\,\mathrm{s}$。因此填入 $13790\,\mathrm{s}$。注意题目问振幅，机械能的包络在该近似中按 $e^{-\gamma t}$ 衰减，不能直接用能量半衰时间替代。
+solution: '先把论文的频率形式换成运动方程中的阻尼率：$\gamma=2\pi(16\times10^{-6})\,\mathrm{s^{-1}}$。由 $e^{-\gamma t_{1/2}/2}=1/2$，取对数得 $t_{1/2}=2\ln2/\gamma=\ln2/(16\pi\times10^{-6})=13789.725\ldots\,\mathrm{s}$。因此填入
+  $13790\,\mathrm{s}$。注意题目问振幅，机械能的包络在该近似中按 $e^{-\gamma t}$ 衰减，不能直接用能量半衰时间替代。
+
 
   **检查与物理含义：** $\gamma t$ 无量纲；把结果代回得到 $A/A_0=0.500000\ldots$。当损耗趋零时半振幅时间趋于无穷大，符合无阻尼极限。容差仅覆盖整数秒舍入。
 
+
   **适用范围：** 该时间是题设指数包络的预测，不表示实验在所有环境扰动下都能连续保持同样的衰减率。
 
-  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Published abstract; author manuscript main text accompanying Fig. 1, γ=ω₀/Q；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Published abstract; author manuscript main text accompanying
+  Fig. 1, γ=ω₀/Q；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -52,3 +58,19 @@ answer:
     canonical: s
     accepted:
     - s
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:52ff419906545b540093e35c014333238a2479f9a189c929ff18d0a6e13eb306
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:52ff419906545b540093e35c014333238a2479f9a189c929ff18d0a6e13eb306
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:52ff419906545b540093e35c014333238a2479f9a189c929ff18d0a6e13eb306

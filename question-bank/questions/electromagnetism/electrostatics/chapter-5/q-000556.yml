@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000556
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.bound-charge
+type: free_response
+choice_order: fixed
+stem: '**非均匀极化与电荷守恒**
+
+
+  无限长半径 R 的圆柱，给定极化 P=αs e_s，圆柱外 P=0，无自由电荷也无附加外场．求束缚体面密度、单位长度总束缚电荷、D 和内外 E，并检验边界跃变．'
+solution: '1. $\rho_b=-s^{-1}\mathrm{d}(sP_s)/\mathrm{d}s=-2\alpha$；侧面 $\sigma_b=\alpha R$．单位长度两项为 $-2\pi\alpha R^2$ 与 $+2\pi\alpha
+  R^2$，和为零．
+
+  2. 圆柱对称、轴上正则且无自由电荷，D 的高斯关系给 $\boldsymbol D=0$，所以内部 $\boldsymbol E=-\alpha s\boldsymbol e_s/\varepsilon_0$，外部为零．
+
+  3. 外减内法向场为 $\alpha R/\varepsilon_0=\sigma_b/\varepsilon_0$，符合总电荷边界关系．
+
+  4. 本题给定 P，不额外要求普通线性无外场介质自发具有同一 P．评分含柱坐标散度、面法向、总量和跃变检验．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. $\rho_b=-s^{-1}\mathrm{d}(sP_s)/\mathrm{d}s=-2\alpha$；侧面 $\sigma_b=\alpha R$．单位长度两项为 $-2\pi\alpha R^2$
+  与 $+2\pi\alpha R^2$，和为零．
+
+  2. 圆柱对称、轴上正则且无自由电荷，D 的高斯关系给 $\boldsymbol D=0$，所以内部 $\boldsymbol E=-\alpha s\boldsymbol e_s/\varepsilon_0$，外部为零．
+
+  3. 外减内法向场为 $\alpha R/\varepsilon_0=\sigma_b/\varepsilon_0$，符合总电荷边界关系．
+
+  4. 本题给定 P，不额外要求普通线性无外场介质自发具有同一 P．评分含柱坐标散度、面法向、总量和跃变检验．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c3664423dbaf83f3acbbd78337b912d8464ad21d1a18d255b1103f4032f1674b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c3664423dbaf83f3acbbd78337b912d8464ad21d1a18d255b1103f4032f1674b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c3664423dbaf83f3acbbd78337b912d8464ad21d1a18d255b1103f4032f1674b

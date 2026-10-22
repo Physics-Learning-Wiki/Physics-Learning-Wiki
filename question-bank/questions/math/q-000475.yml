@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000475
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,32 +9,41 @@ concepts:
 - math.separable-ode
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+stem: 'Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
 
   在宽度为 $h$ 的静止通道中，用 $y=0$ 表示冷端、$y=h$ 表示热端。取二元混合物、常系数、线性温度梯度。由论文的通量式，在零通量条件下得到
 
+
   $$\frac{dC}{dy}=-\kappa C(1-C),\qquad C(0)=c_0,\quad0<c_0<1,\quad\kappa>0.$$
+
 
   这里 $C$ 为质量分数，$\kappa$ 的单位为长度的倒数。可用 $\int dC/[C(1-C)]=\ln[C/(1-C)]$。
 
+
   ![热端、冷端与正向坐标的原创示意](asset:math-channel)
 
-  图中文字说明：热端在上方 $y=h$，冷端在下方 $y=0$，坐标正向由冷到热。正确的浓度解是哪一个？
-solution: |-
-  分离变量并从零点积分，得到
+
+  图中文字说明：热端在上方 $y=h$，冷端在下方 $y=0$，坐标正向由冷到热。正确的浓度解是哪一个？'
+solution: '分离变量并从零点积分，得到
+
 
   $$\ln\frac{C}{1-C}-\ln\frac{c_0}{1-c_0}=-\kappa y.$$
 
+
   因此 $C/(1-C)=[c_0/(1-c_0)]e^{-\kappa y}$。解出 $C$：
+
 
   $$C(y)=\frac{c_0}{c_0+(1-c_0)e^{\kappa y}}.$$
 
+
   检查：在 $y=0$ 取值为 $c_0$；直接求导满足原方程；随着 $y$ 增大浓度降低且保持在零与一之间。指数中的 $\kappa y$ 无量纲。此解对应静止、零通量、常系数的单通道教学模型。
+
 
   研究对应：Results, Theoretical framework for thermodiffusive separation, Eq. (1) and its zero-flux steady-state reduction。教学范围：不计算多通道流动、实际盐水的多组分耦合或整机脱盐产率。
 
-  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -52,7 +61,8 @@ feedback:
     D: 由对数比值积分精确得到。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, Eq. (1) and its zero-flux steady-state reduction 构造。从真实通量结构限制到一维静止常系数情形，精确求可分离方程。 数值来源：not_applicable；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, Eq. (1) and its zero-flux steady-state
+    reduction 构造。从真实通量结构限制到一维静止常系数情形，精确求可分离方程。 数值来源：not_applicable；不复制论文表述或图件。
   source: https://doi.org/10.1038/s44221-025-00428-5
   ai_assisted: true
 authors:
@@ -73,3 +83,19 @@ answer:
 assets:
 - id: math-channel
   path: math/math-channel.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bcc6401f30bd51d0489cf42dcb574902b787cbed42ee3b96b6f8d3710b227157
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bcc6401f30bd51d0489cf42dcb574902b787cbed42ee3b96b6f8d3710b227157
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bcc6401f30bd51d0489cf42dcb574902b787cbed42ee3b96b6f8d3710b227157

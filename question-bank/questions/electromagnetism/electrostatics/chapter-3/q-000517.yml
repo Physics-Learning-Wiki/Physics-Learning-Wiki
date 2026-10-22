@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000517
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.images
+type: single_choice
+choice_order: shuffle
+stem: 从接地球改成中性孤立球，须怎样修改像构造？
+solution: 中心像只加球面常势，保留等势并满足净电荷条件．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 保持接地球像不变
+- id: B
+  content: 把所有像撤掉
+- id: C
+  content: 在球心加入使像总电荷为零的中心像
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．中心像只加球面常势，保留等势并满足净电荷条件．
+  incorrect: 请先重新核对模型条件．中心像只加球面常势，保留等势并满足净电荷条件．
+  choices:
+    A: 接地球的感应总电荷通常非零．
+    B: 这样失去球面等势条件．
+    C: 中心像只加球面常势，保留等势并满足净电荷条件．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c00f149ceff75881a6c2effbe67571f3f21b41d4188c4166606a02502cecffb1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c00f149ceff75881a6c2effbe67571f3f21b41d4188c4166606a02502cecffb1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c00f149ceff75881a6c2effbe67571f3f21b41d4188c4166606a02502cecffb1

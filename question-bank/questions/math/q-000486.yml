@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000486
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,26 +9,33 @@ concepts:
 - math.airy-function
 type: numeric
 choice_order: fixed
-stem: |-
-  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+stem: 'Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
 
-  论文在初始面使用有限能量剖面 $F(x)=\operatorname{Ai}(x/x_0)e^{\alpha x/x_0}$。取原创教学参数 $x_0=2.00\,\mathrm{mm}$、$\alpha=0.10$，并给出数学常数 $\operatorname{Ai}(0)=0.3550280539$、$\operatorname{Ai}^{\prime}(0)=-0.2588194038$；后一个导数是对 Ai 自身的无量纲自变量求导。
 
-  求 $L=F^{\prime}(0)/F(0)$，其中 $F^{\prime}$ 对 $x$ 求导。输入数值并使用单位标签 `mm^-1`，允许绝对误差 $0.0001$。
-solution: |-
-  对乘积和复合函数求导：
+  论文在初始面使用有限能量剖面 $F(x)=\operatorname{Ai}(x/x_0)e^{\alpha x/x_0}$。取原创教学参数 $x_0=2.00\,\mathrm{mm}$、$\alpha=0.10$，并给出数学常数 $\operatorname{Ai}(0)=0.3550280539$、$\operatorname{Ai}^{\prime}(0)=-0.2588194038$；后一个导数是对
+  Ai 自身的无量纲自变量求导。
+
+
+  求 $L=F^{\prime}(0)/F(0)$，其中 $F^{\prime}$ 对 $x$ 求导。输入数值并使用单位标签 `mm^-1`，允许绝对误差 $0.0001$。'
+solution: '对乘积和复合函数求导：
+
 
   $$F^{\prime}(x)=\frac{e^{\alpha x/x_0}}{x_0}\left[\operatorname{Ai}^{\prime}(x/x_0)+\alpha\operatorname{Ai}(x/x_0)\right].$$
 
+
   在零点除以 $F(0)$，得到
+
 
   $$L=\frac1{x_0}\left[\frac{\operatorname{Ai}^{\prime}(0)}{\operatorname{Ai}(0)}+\alpha\right]\approx-0.3145056\,\mathrm{mm}^{-1}.$$
 
+
   检查：结果的单位是长度的倒数；指数截断给对数斜率增加 $\alpha/x_0=0.05\,\mathrm{mm}^{-1}$。当 $\alpha=0$ 时恢复单纯 Ai 剖面的斜率，不能把 Ai 的无量纲导数直接当成 F 的物理坐标导数。
+
 
   研究对应：Results, Airy beam generation and characterization, Eq. (1) at z=0 and definition of truncation factor α。教学范围：没有将这些教学参数当作论文装置值，也未由局部斜率推断整条传播轨迹。
 
-  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -59,3 +66,19 @@ answer:
     canonical: mm^-1
     accepted:
     - mm^-1
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31437abef4de1154601cdbcdbc956065efa3b6890f6acdbdadbd9d1a52ae7dc1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31437abef4de1154601cdbcdbc956065efa3b6890f6acdbdadbd9d1a52ae7dc1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31437abef4de1154601cdbcdbc956065efa3b6890f6acdbdadbd9d1a52ae7dc1

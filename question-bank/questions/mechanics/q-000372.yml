@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000372
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,30 +10,39 @@ concepts:
 - dynamics.energy-partition
 type: numeric
 choice_order: fixed
-stem: |-
-  自由空间中内部滚转会带动整体反转，因此只计算内部部件相对外壳的转动能会遗漏整体运动与速度叠加。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
+stem: '自由空间中内部滚转会带动整体反转，因此只计算内部部件相对外壳的转动能会遗漏整体运动与速度叠加。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
 
-  原创同轴教学模型中，外壳惯量 $I$、转子惯量 $J$，外壳惯性系角度 $\theta$、转子相对角度 $\phi$。总动能为 $T=\frac12I\dot\theta^2+\frac12J(\dot\theta+\dot\phi)^2$。系统无外力矩，且总角动量为零：$(I+J)\dot\theta+J\dot\phi=0$。给定 $I=3J$、$J=2.00\times10^{-6}\,\mathrm{kg\,m^2}$，某瞬间 $\dot\phi=4.00\,\mathrm{rad/s}$。
+
+  原创同轴教学模型中，外壳惯量 $I$、转子惯量 $J$，外壳惯性系角度 $\theta$、转子相对角度 $\phi$。总动能为 $T=\frac12I\dot\theta^2+\frac12J(\dot\theta+\dot\phi)^2$。系统无外力矩，且总角动量为零：$(I+J)\dot\theta+J\dot\phi=0$。给定
+  $I=3J$、$J=2.00\times10^{-6}\,\mathrm{kg\,m^2}$，某瞬间 $\dot\phi=4.00\,\mathrm{rad/s}$。
+
 
   ![外壳与同轴内部转子示意，θ 为外壳绝对角，φ 为转子相对外壳的角。](asset:m023)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  求该瞬间两部分相对于惯性系的总转动动能 T。以 $\mathrm{J}$ 为单位给出数值，至少保留三位有效数字。
+
+  求该瞬间两部分相对于惯性系的总转动动能 T。以 $\mathrm{J}$ 为单位给出数值，至少保留三位有效数字。'
 hints:
 - 利用零总角动量先求外壳角速度。
 - 两个动能都必须使用惯性系中的角速度。
 feedback:
   correct: 在零总角动量约束下消去循环速度，计算内部相对运动的真实动能成本。，并保留了题设的适用条件。
   incorrect: 利用零总角动量先求外壳角速度。
-solution: |-
-  由守恒式得 $\dot\theta=-J\dot\phi/(I+J)$，而转子绝对角速度为 $\dot\theta+\dot\phi=I\dot\phi/(I+J)$。代回动能：$T=\frac12\frac{IJ^2+JI^2}{(I+J)^2}\dot\phi^2=\frac12\frac{IJ}{I+J}\dot\phi^2$。因此相对运动的有效惯量为 $I_{\rm eff}=IJ/(I+J)=3J/4=1.50\times10^{-6}\,\mathrm{kg\,m^2}$。于是 $T=\frac12(1.50\times10^{-6})(4.00)^2=1.20\times10^{-5}\,\mathrm{J}$。
+solution: '由守恒式得 $\dot\theta=-J\dot\phi/(I+J)$，而转子绝对角速度为 $\dot\theta+\dot\phi=I\dot\phi/(I+J)$。代回动能：$T=\frac12\frac{IJ^2+JI^2}{(I+J)^2}\dot\phi^2=\frac12\frac{IJ}{I+J}\dot\phi^2$。因此相对运动的有效惯量为
+  $I_{\rm eff}=IJ/(I+J)=3J/4=1.50\times10^{-6}\,\mathrm{kg\,m^2}$。于是 $T=\frac12(1.50\times10^{-6})(4.00)^2=1.20\times10^{-5}\,\mathrm{J}$。
 
-  **检查与物理含义：** 直接计算 $\dot\theta=-1\,\mathrm{rad/s}$、转子绝对角速度为 $3\,\mathrm{rad/s}$，两部分动能分别为 $3\times10^{-6}$ 和 $9\times10^{-6}\,\mathrm{J}$，合计与消元结果一致。$I\to\infty$ 时有效惯量趋于 J。容差对应三位有效数字的舍入。
+
+  **检查与物理含义：** 直接计算 $\dot\theta=-1\,\mathrm{rad/s}$、转子绝对角速度为 $3\,\mathrm{rad/s}$，两部分动能分别为 $3\times10^{-6}$ 和 $9\times10^{-6}\,\mathrm{J}$，合计与消元结果一致。$I\to\infty$
+  时有效惯量趋于 J。容差对应三位有效数字的舍入。
+
 
   **适用范围：** 给定惯量与角速度全是教学参数；有效惯量结论依赖零总角动量，不能套用于外壳锁死或非零总角动量状态。
 
-  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript pp. 3–4, Fig. 3c,d; counterrotation in free space；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。
+
+  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript pp. 3–4, Fig. 3c,d; counterrotation
+  in free space；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -60,3 +69,19 @@ answer:
 assets:
 - id: m023
   path: mechanics/m023.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:2c4fda8ccb287bf9050d4c55ffc82f50cd3611bb9fa92e789e920c1b477b51de
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:2c4fda8ccb287bf9050d4c55ffc82f50cd3611bb9fa92e789e920c1b477b51de
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:2c4fda8ccb287bf9050d4c55ffc82f50cd3611bb9fa92e789e920c1b477b51de

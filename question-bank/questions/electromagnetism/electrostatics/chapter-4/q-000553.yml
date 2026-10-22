@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000553
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy-force
+type: free_response
+choice_order: fixed
+stem: '**两种约束下的平行板运动**
+
+
+  真空平行板面积 A、间距 d，比较固定 Q 与固定 U 时使 d 缓慢减小的过程．分别推导力，写出电源功、场能变化与机械功平衡，并用另一板的场核验．'
+solution: '1. $C=\varepsilon_0A/d$．固定 Q 时 $W=Q^2d/(2\varepsilon_0A)$，力 $F_d=-Q^2/(2\varepsilon_0A)$．电源不做功，机械输出为场能减少．
+
+  2. 固定 U 时 $\mathrm{d}W=U\mathrm{d}Q-F_d\mathrm{d}d$，$\mathrm{d}Q=U\mathrm{d}C$，因此 $F_d=U^2C''(d)/2=-\varepsilon_0AU^2/(2d^2)$．电源输入为场能增加的两倍．
+
+  3. 同一瞬时场强下两式均为 $-\varepsilon_0E^2A/2$．用 $Q$ 乘另一板的场 $\sigma/(2\varepsilon_0)$ 验证，不能乘总场．
+
+  4. 评分需包含坐标方向、固定量、电源项和独立受力检验．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. $C=\varepsilon_0A/d$．固定 Q 时 $W=Q^2d/(2\varepsilon_0A)$，力 $F_d=-Q^2/(2\varepsilon_0A)$．电源不做功，机械输出为场能减少．
+
+  2. 固定 U 时 $\mathrm{d}W=U\mathrm{d}Q-F_d\mathrm{d}d$，$\mathrm{d}Q=U\mathrm{d}C$，因此 $F_d=U^2C''(d)/2=-\varepsilon_0AU^2/(2d^2)$．电源输入为场能增加的两倍．
+
+  3. 同一瞬时场强下两式均为 $-\varepsilon_0E^2A/2$．用 $Q$ 乘另一板的场 $\sigma/(2\varepsilon_0)$ 验证，不能乘总场．
+
+  4. 评分需包含坐标方向、固定量、电源项和独立受力检验．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8ede01245c2e2dbf01c253f6972d06c176cd85969c3483fc35c53be32b94c6c1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8ede01245c2e2dbf01c253f6972d06c176cd85969c3483fc35c53be32b94c6c1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8ede01245c2e2dbf01c253f6972d06c176cd85969c3483fc35c53be32b94c6c1

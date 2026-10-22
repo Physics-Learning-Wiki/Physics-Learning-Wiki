@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000358
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,22 +10,29 @@ concepts:
 - kinematics.relative-velocity
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  仿鸟机器人使用两段式腿机构调节足端位置；运动学映射决定关节速度怎样变为足端速度。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+stem: '仿鸟机器人使用两段式腿机构调节足端位置；运动学映射决定关节速度怎样变为足端速度。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
 
   建立原创平面双连杆近似。两杆长为 $\ell_1,\ell_2$，绝对角度 $q_1,q_2$ 都从同一水平向右轴逆时针量起，**不是相邻杆的相对夹角**。机身髋点 $H$ 以速度 $V\boldsymbol e_x$ 平移，不转动。足端相对髋点的位置已给为
 
+
   $$
+
   \boldsymbol r_{F/H}=\ell_1(\cos q_1,\sin q_1)+\ell_2(\cos q_2,\sin q_2).
+
   $$
+
 
   考虑 $q_1=0,\ q_2=\pi/2$ 的瞬间，角速度分别为 $\dot q_1,\dot q_2$。
 
+
   ![两杆由髋点 H 经关节 J 到足端 F，第一杆在指定瞬间水平，第二杆竖直；ℓ1、ℓ2 为杆长，q1、q2 均从水平正向定义。](asset:m009)
+
 
   *原创教学示意图，非按比例绘制。*
 
-  选择所有正确的瞬时运动学判断。
+
+  选择所有正确的瞬时运动学判断。'
 hints:
 - 先在一般角度下求导，再代入特定构型。
 - 绝对角度与关节相对夹角的定义不同，注意题设。
@@ -37,27 +44,39 @@ feedback:
     B: 第一杆水平，其转动产生竖直的端点切向速度。
     C: 机身只有水平平移，因此仅 x 分量加 V。
     D: 本构型中两贡献正交，应作矢量合成而非速率相加。
-solution: |-
-  逐项求导得到相对速度
+solution: '逐项求导得到相对速度
+
 
   $$
+
   \boldsymbol v_{F/H}=(-\ell_1\dot q_1\sin q_1-\ell_2\dot q_2\sin q_2,\;
+
   \ell_1\dot q_1\cos q_1+\ell_2\dot q_2\cos q_2).
+
   $$
+
 
   代入指定构型，$v_{x,F/H}=-\ell_2\dot q_2$，$v_{y,F/H}=\ell_1\dot q_1$。再加上髋点平移速度：
 
+
   $$
+
   \boldsymbol v_F=(V-\ell_2\dot q_2,\ \ell_1\dot q_1).
+
   $$
+
 
   足端速率是这两个分量平方和的平方根，不能一般地把两个杆端速度大小直接相加。
 
+
   **检查与物理含义：** 分别令一个角速度为零：水平杆单独转动只给竖直速度，竖直杆单独转动只给水平速度；再令 V=0 可恢复固定髋点模型。
+
 
   **适用范围：** 该绝对角模型不是论文真实电机传动映射，不预测扭矩、足底接触力或被动脚趾效应。
 
-  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Bird-inspired biped mechanism, Fig. 1d–e; Methods: Dynamics modeling and simulation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Bird-inspired biped mechanism, Fig. 1d–e;
+  Methods: Dynamics modeling and simulation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -88,3 +107,19 @@ answer:
 assets:
 - id: m009
   path: mechanics/m009.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e955c4ee9245847f638fa210cf569a3cc6902a3db8945d63bde512557519d5b7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e955c4ee9245847f638fa210cf569a3cc6902a3db8945d63bde512557519d5b7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e955c4ee9245847f638fa210cf569a3cc6902a3db8945d63bde512557519d5b7

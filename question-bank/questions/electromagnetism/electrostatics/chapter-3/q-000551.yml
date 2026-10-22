@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000551
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.images
+type: free_response
+choice_order: fixed
+stem: '**接地球与孤立球的构造**
+
+
+  点电荷 $q$ 距半径 $R$ 的球心 $a>R$．推导接地球像的大小和位置，求受力；再将球改为给定净电荷 $Q_0$ 的孤立球，构造新解并给球势．'
+solution: '1. 球面距离满足 $d_2=(R/a)d_1$ 时可逐点消势，比较余弦系数得像位置 $b=R^2/a$、像电荷 $q''=-qR/a$．
+
+  2. 验证球面零势、无穷远衰减及区域内源正确．受力 $F_z=kqq''/(a-b)^2=-kq^2Ra/(a^2-R^2)^2$．
+
+  3. 孤立球加中心像 $q_c=Q_0-q''$，球面仍等势，总像电荷为 $Q_0$，球势为 $kq_c/R$．力还须加 $kqq_c/a^2$．
+
+  4. 评分核对：像放在区域外、边界逐点验证、净电荷约束与两个受力贡献．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 球面距离满足 $d_2=(R/a)d_1$ 时可逐点消势，比较余弦系数得像位置 $b=R^2/a$、像电荷 $q''=-qR/a$．
+
+  2. 验证球面零势、无穷远衰减及区域内源正确．受力 $F_z=kqq''/(a-b)^2=-kq^2Ra/(a^2-R^2)^2$．
+
+  3. 孤立球加中心像 $q_c=Q_0-q''$，球面仍等势，总像电荷为 $Q_0$，球势为 $kq_c/R$．力还须加 $kqq_c/a^2$．
+
+  4. 评分核对：像放在区域外、边界逐点验证、净电荷约束与两个受力贡献．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5ca6ec9b63c8a68381871274251eb151b191a7f8280a418cff1484e2b9204d22
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5ca6ec9b63c8a68381871274251eb151b191a7f8280a418cff1484e2b9204d22
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5ca6ec9b63c8a68381871274251eb151b191a7f8280a418cff1484e2b9204d22

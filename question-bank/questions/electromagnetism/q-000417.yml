@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000417
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,31 +10,42 @@ concepts:
 - electrostatics.source-work
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  接触主导压力传感器通过较薄或较高介电常数的介质加强局部电位移。比例关系成立时的固定条件必须明确。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+stem: '接触主导压力传感器通过较薄或较高介电常数的介质加强局部电位移。比例关系成立时的固定条件必须明确。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
 
-  取一个厚度 h、面积 A 的理想均匀平行板接触区。电源保持非零电压 $V>0$，几何不变。将绝对介电常数从 $\varepsilon>\varepsilon_0$ 改为 $2\varepsilon$；不考虑损耗。给定 $E=V/h$、$D=\varepsilon E$、$P=(\varepsilon-\varepsilon_0)E$、$U=\tfrac12\varepsilon E^2Ah$。
 
-  哪些判断正确？
-solution: |-
-  固定电压和厚度使 E 不变。因此 D 与场能 U 均增加为原来的两倍。但极化强度之比为
+  取一个厚度 h、面积 A 的理想均匀平行板接触区。电源保持非零电压 $V>0$，几何不变。将绝对介电常数从 $\varepsilon>\varepsilon_0$ 改为 $2\varepsilon$；不考虑损耗。给定 $E=V/h$、$D=\varepsilon
+  E$、$P=(\varepsilon-\varepsilon_0)E$、$U=\tfrac12\varepsilon E^2Ah$。
+
+
+  哪些判断正确？'
+solution: '固定电压和厚度使 E 不变。因此 D 与场能 U 均增加为原来的两倍。但极化强度之比为
+
   $(2\varepsilon-\varepsilon_0)/(\varepsilon-\varepsilon_0)$，一般不等于 2，因为 P 中需要减去真空部分。
+
 
   检查：场能增加的能量来源包含电源及介质引入过程，不能用孤立定电荷条件替代恒压条件；各式的单位也分别为 V/m、C/m² 和 J。
 
+
   选项辨析：
+
 
   固定电压和厚度使 E=V/h 保持不变。
 
+
   D=εE，在 E 不变时与绝对介电常数成正比。
+
 
   P=(ε−ε₀)E；改变 ε 时减去的真空项不随之加倍。
 
+
   固定 E 和体积时，给定场能与 ε 成正比。
+
 
   适用范围：不描述真实材料在改变成分后可能发生的机械、色散或界面变化。
 
-  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Eqs. (1)–(3), electric displacement and energy-density discussion。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。
+
+  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Eqs. (1)–(3), electric displacement
+  and energy-density discussion。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。'
 hints:
 - 先确认 E=V/h 是否改变，然后使用各量的定义。
 - 极化强度 P 与 D 不完全相同。
@@ -73,3 +84,19 @@ answer:
   - A
   - B
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e20c8109ca3d00f02437ab8f964233b517842ccbce21e3646ffe1d3b097b7df9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e20c8109ca3d00f02437ab8f964233b517842ccbce21e3646ffe1d3b097b7df9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e20c8109ca3d00f02437ab8f964233b517842ccbce21e3646ffe1d3b097b7df9

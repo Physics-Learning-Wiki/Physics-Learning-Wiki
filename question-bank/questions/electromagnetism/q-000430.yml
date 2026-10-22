@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000430
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.induction
@@ -10,38 +10,55 @@ concepts:
 - induction.mutual-inductance
 type: single_choice
 choice_order: shuffle
-stem: |-
-  无线植入微器件研究采用发射线圈、中继线圈和芯片微线圈，并讨论线圈取向对耦合的影响。本题只考察其中接收线圈的几何投影，用低频均匀场模型代替论文的近 GHz 电磁场。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
+stem: '无线植入微器件研究采用发射线圈、中继线圈和芯片微线圈，并讨论线圈取向对耦合的影响。本题只考察其中接收线圈的几何投影，用低频均匀场模型代替论文的近 GHz 电磁场。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
 
-  一个刚性平面接收线圈有 \(N\) 匝，每匝面积为 \(A\)。线圈附近的磁场为 \(\mathbf B(t)=B(t)\hat{\mathbf z}\)，在每匝内部均匀。定义面积法向 \(\hat{\mathbf n}\) 与 \(+\hat{\mathbf z}\) 的夹角为 \(\theta\)；线圈尺寸、位置和磁场幅度均保持不变，忽略接收电流对原磁场的影响。
 
-  在某一 \(B(t)\ne0\) 的时刻，将线圈从 \(\theta=0^\circ\) 转到 \(\theta=60^\circ\)，磁通链 \(\Lambda=N\int_A\mathbf B\cdot\hat{\mathbf n}\,dA\) 变为原值的多少？
+  一个刚性平面接收线圈有 \(N\) 匝，每匝面积为 \(A\)。线圈附近的磁场为 \(\mathbf B(t)=B(t)\hat{\mathbf z}\)，在每匝内部均匀。定义面积法向 \(\hat{\mathbf n}\) 与 \(+\hat{\mathbf
+  z}\) 的夹角为 \(\theta\)；线圈尺寸、位置和磁场幅度均保持不变，忽略接收电流对原磁场的影响。
+
+
+  在某一 \(B(t)\ne0\) 的时刻，将线圈从 \(\theta=0^\circ\) 转到 \(\theta=60^\circ\)，磁通链 \(\Lambda=N\int_A\mathbf B\cdot\hat{\mathbf n}\,dA\)
+  变为原值的多少？
+
 
   ![教学模型示意：左侧蓝色箭头表示沿 \(+z\) 的磁场，右侧椭圆表示接收线圈；其面积法向 \(\hat{\mathbf n}\) 相对 \(+z\) 倾斜 \(\theta\)，面积为 \(A\)。](asset:tilted-receiver)
 
-  图为原创教学示意，非按比例绘制。左侧蓝色箭头表示沿 \(+z\) 的磁场，右侧椭圆表示接收线圈；其面积法向 \(\hat{\mathbf n}\) 相对 \(+z\) 倾斜 \(\theta\)，面积为 \(A\)。
-solution: |-
-  磁通只计入穿过线圈面的磁场分量：
+
+  图为原创教学示意，非按比例绘制。左侧蓝色箭头表示沿 \(+z\) 的磁场，右侧椭圆表示接收线圈；其面积法向 \(\hat{\mathbf n}\) 相对 \(+z\) 倾斜 \(\theta\)，面积为 \(A\)。'
+solution: '磁通只计入穿过线圈面的磁场分量：
+
 
   $$
+
   \Lambda(\theta)=NAB(t)\cos\theta.
+
   $$
 
-  所以 \(\Lambda(60^\circ)/\Lambda(0^\circ)=\cos60^\circ=1/2\)。这里夹角是磁场与面积法向的夹角，不能误用磁场与线圈平面的夹角。检查：\(\theta=90^\circ\) 时理想均匀场与线圈面平行，磁通为零；\(\theta=180^\circ\) 时有向磁通反号。
+
+  所以 \(\Lambda(60^\circ)/\Lambda(0^\circ)=\cos60^\circ=1/2\)。这里夹角是磁场与面积法向的夹角，不能误用磁场与线圈平面的夹角。检查：\(\theta=90^\circ\) 时理想均匀场与线圈面平行，磁通为零；\(\theta=180^\circ\)
+  时有向磁通反号。
+
 
   选项辨析：
 
+
   “原值的 \(1/2\)”正确：法向投影因子为 \(\cos60^\circ=1/2\)。
+
 
   “原值的 \(\sqrt3/2\)”混用了正弦；题目定义的是磁场与法向的夹角。
 
+
   “与原值相同”忽略了有向面积的投影，即使面积和磁场大小不变，磁通也随取向变化。
+
 
   “变为零”对应法向与磁场垂直的 \(90^\circ\)，不对应这里的 \(60^\circ\)。
 
+
   适用范围：磁通投影比不等于论文装置实测的传输效率比；实际近 GHz 系统存在非均匀场、谐振和负载。
 
-  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results: System overview, Fig. 1a; coupling discussion associated with Fig. 5; Methods: RF wireless link and coil design。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。
+
+  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results: System overview,
+  Fig. 1a; coupling discussion associated with Fig. 5; Methods: RF wireless link and coil design。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。'
 hints:
 - 磁通积分中的点积要求使用磁场与面积法向的夹角。
 - 先写出 \(NAB\cos\theta\)，再比较两个取向。
@@ -80,3 +97,19 @@ answer:
 assets:
 - id: tilted-receiver
   path: electromagnetism/tilted-receiver.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:428e368ffbefdfc6e7b3e7eb4e399b50cef5096d5a159948d75905055a6f49c7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:428e368ffbefdfc6e7b3e7eb4e399b50cef5096d5a159948d75905055a6f49c7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:428e368ffbefdfc6e7b3e7eb4e399b50cef5096d5a159948d75905055a6f49c7

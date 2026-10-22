@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000400
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,40 +10,55 @@ concepts:
 - electrostatics.capacitance
 type: single_choice
 choice_order: shuffle
-stem: |-
-  近期的石墨滑片驱动器把滑片与左右埋置电极之间的间隙看作两个电容。滑片没有直接接入电源，其电势由电荷约束决定。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+stem: '近期的石墨滑片驱动器把滑片与左右埋置电极之间的间隙看作两个电容。滑片没有直接接入电源，其电势由电荷约束决定。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+
 
   将该装置约化为图示电路：左端接 $0$，右端接恒定电势 $V>0$。两电容为 $C_L=3C$、$C_R=C$，其中 $C>0$。中间导体初始中性，整个过程无电荷注入或泄漏；忽略其与其他物体的电容。
 
+
   若中间导体电势为 $V_f$，与电势为 $V_j$ 的电极相对的一面带电 $C_j(V_f-V_j)$。$V_f$ 等于什么？
+
 
   ![教学模型示意：左端为零电势，经电容 C_L 连接中间浮置节点；节点再经 C_R 连接右端电势 V。中间节点标为 V_f、净电荷 Q；本题 Q=0。](asset:floating-circuit)
 
-  图为原创教学示意，非按比例绘制。左端为零电势，经电容 C_L 连接中间浮置节点；节点再经 C_R 连接右端电势 V。中间节点标为 V_f、净电荷 Q；本题 Q=0。
-solution: |-
-  中间导体是一个等势体，但不与地相连。将其两面的电荷相加，使用净电荷为零的条件：
+
+  图为原创教学示意，非按比例绘制。左端为零电势，经电容 C_L 连接中间浮置节点；节点再经 C_R 连接右端电势 V。中间节点标为 V_f、净电荷 Q；本题 Q=0。'
+solution: '中间导体是一个等势体，但不与地相连。将其两面的电荷相加，使用净电荷为零的条件：
+
 
   $$
+
   3C V_f+C(V_f-V)=0.
+
   $$
+
 
   因此 $4CV_f=CV$，得到 $V_f=V/4$。这里电势较接近电容较大的左端电势，因为相同电势差在较大电容上对应更多电荷。
 
+
   检查：若改成两边电容相等，上式给出 $V/2$；若右侧电容趋于零，中间电势趋于左端的零电势。解位于两个端电势之间，符合中性浮置节点的加权平均性质。
+
 
   选项辨析：
 
+
   电势为 $V/4$ 满足两面电荷相加为零。
+
 
   电势为 $3V/4$ 把电容权重对调；直接代入净电荷式不为零。
 
+
   只有两侧电容相等时，中性浮置导体才处于两个端电势的算术平均值。
+
 
   未接地的中性导体可以具有非零电势；中性不等于接地。
 
+
   适用范围：没有计算实际边缘电场，也未模拟论文中的电荷注入。
 
-  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Design of the electrostatic in-plane SSL actuator, Fig. 1a and paragraph beginning “The left and right sides…”。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。
+
+  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Design of the electrostatic in-plane SSL actuator,
+  Fig. 1a and paragraph beginning “The left and right sides…”。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。'
 hints:
 - 先相加中间导体两面的电荷，不能直接把浮置导体当成接地。
 - 净电荷约束是 $C_LV_f+C_R(V_f-V)=0$。
@@ -82,3 +97,19 @@ answer:
 assets:
 - id: floating-circuit
   path: electromagnetism/floating-circuit.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ee3a05fa19096eb9056507098f3b25bda9deea812d614cf2f0a0b9c44c1154fe
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ee3a05fa19096eb9056507098f3b25bda9deea812d614cf2f0a0b9c44c1154fe
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ee3a05fa19096eb9056507098f3b25bda9deea812d614cf2f0a0b9c44c1154fe

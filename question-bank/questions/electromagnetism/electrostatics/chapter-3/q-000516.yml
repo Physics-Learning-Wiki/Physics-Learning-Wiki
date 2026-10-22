@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000516
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.images
+type: single_choice
+choice_order: shuffle
+stem: 点电荷距球心 $a>R$，半径 $R$ 接地球的像位置距球心多远？
+solution: 由球面到两源的距离比例与所有角度上的零势条件得到．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $R^2/a$
+- id: B
+  content: $a$
+- id: C
+  content: $R$
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．由球面到两源的距离比例与所有角度上的零势条件得到．
+  incorrect: 请先重新核对模型条件．由球面到两源的距离比例与所有角度上的零势条件得到．
+  choices:
+    A: 由球面到两源的距离比例与所有角度上的零势条件得到．
+    B: 该位置在球外，会给物理区域添加错误源．
+    C: 像在边界上会引入错误奇点．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:000818c9a7c5493d968931444c74371f56def528a90dbbbb82d2c32e48a66eef
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:000818c9a7c5493d968931444c74371f56def528a90dbbbb82d2c32e48a66eef
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:000818c9a7c5493d968931444c74371f56def528a90dbbbb82d2c32e48a66eef

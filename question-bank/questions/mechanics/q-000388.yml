@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000388
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,12 +10,14 @@ concepts:
 - analytical.tangent-stiffness
 type: single_choice
 choice_order: shuffle
-stem: |-
-  动力学超材料可通过预压改变其工作状态并切换动态响应。一个单坐标非线性模型可以显示预变形如何改变局部刚度。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
+stem: '动力学超材料可通过预压改变其工作状态并切换动态响应。一个单坐标非线性模型可以显示预变形如何改变局部刚度。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
 
-  以长度量纲的广义坐标 q 描述一种形变，动能 $T=\frac12m\dot q^2$，弹性势能 $U(q)=\frac12kq^2+\frac14\beta q^4$，$m,k>0$，$\beta$ 为常数。恒定广义力 $F_0$ 将系统保持在平衡 $q_0$，满足 $F_0=kq_0+\beta q_0^3$。令 $q=q_0+\eta$，只保留 $\eta$ 的一阶项，且假设局部平衡稳定。
 
-  正确的扰动方程及小振动角频率是哪一组？
+  以长度量纲的广义坐标 q 描述一种形变，动能 $T=\frac12m\dot q^2$，弹性势能 $U(q)=\frac12kq^2+\frac14\beta q^4$，$m,k>0$，$\beta$ 为常数。恒定广义力 $F_0$ 将系统保持在平衡
+  $q_0$，满足 $F_0=kq_0+\beta q_0^3$。令 $q=q_0+\eta$，只保留 $\eta$ 的一阶项，且假设局部平衡稳定。
+
+
+  正确的扰动方程及小振动角频率是哪一组？'
 hints:
 - 先利用平衡条件消去常数力，再对剩余恢复力线性化。
 - 需要的是 U 的二阶导数，而不是 U′/q。
@@ -27,14 +29,18 @@ feedback:
     B: 当 β 非零且 q₀ 改变时，局部势能曲率通常改变。
     C: 刚度与力的量纲不同；恒力的导数为零。
     D: 这是将部分静态力除以位移的割线量，遗漏三次力求导带来的系数。
-solution: |-
-  完整方程为 $m\ddot q=F_0-U\prime(q)$。在 $q_0$ 附近展开，$U\prime(q_0+\eta)=U\prime(q_0)+U\prime\prime(q_0)\eta+O(\eta^2)$。常数项由平衡条件与 $F_0$ 抵消，剩 $m\ddot\eta+(k+3\beta q_0^2)\eta=0$。因此 $\omega=\sqrt{(k+3\beta q_0^2)/m}$，稳定性要求括号内为正。恒力决定平衡位置，但其对 q 的导数为零，不应作为额外刚度直接相加。
+solution: '完整方程为 $m\ddot q=F_0-U\prime(q)$。在 $q_0$ 附近展开，$U\prime(q_0+\eta)=U\prime(q_0)+U\prime\prime(q_0)\eta+O(\eta^2)$。常数项由平衡条件与
+  $F_0$ 抵消，剩 $m\ddot\eta+(k+3\beta q_0^2)\eta=0$。因此 $\omega=\sqrt{(k+3\beta q_0^2)/m}$，稳定性要求括号内为正。恒力决定平衡位置，但其对 q 的导数为零，不应作为额外刚度直接相加。
+
 
   **检查与物理含义：** $\beta q_0^2$ 与 k 同为力/长度量纲。$\beta=0$ 时频率与偏置无关；$q_0=0$ 时回到 $\sqrt{k/m}$。若切线刚度变负，给出的稳定小振动假设失效。
 
+
   **适用范围：** 局部线性频率的改变只是预压调节动力学的一种机制；论文的大振幅脉冲、空间能量传输和结构优化还涉及更多自由度。
 
-  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript Reprogrammable architectures, Fig. 5; publisher Supplement on precompression and nonlinear dynamic model；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。
+
+  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript Reprogrammable architectures,
+  Fig. 5; publisher Supplement on precompression and nonlinear dynamic model；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -59,3 +65,19 @@ choices:
   content: $m\ddot\eta+(k+\beta q_0^2)\eta=0$，$\omega=\sqrt{(k+\beta q_0^2)/m}$。
 answer:
   choice: A
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f536011026e493a487f2147f320bd980c8da23ad770b28341b1071b19a90fd7c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f536011026e493a487f2147f320bd980c8da23ad770b28341b1071b19a90fd7c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f536011026e493a487f2147f320bd980c8da23ad770b28341b1071b19a90fd7c

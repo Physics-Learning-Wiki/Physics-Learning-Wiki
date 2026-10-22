@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000437
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.induction
@@ -10,45 +10,64 @@ concepts:
 - induction.lenz-law
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  旋转永磁体研究指出，材料与边界会影响感应电场的空间分布。分析边界电荷时，仍需满足时变磁通给出的法拉第环路约束。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+stem: '旋转永磁体研究指出，材料与边界会影响感应电场的空间分布。分析边界电荷时，仍需满足时变磁通给出的法拉第环路约束。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+
 
   某固定圆形路径位于 \(xy\) 平面，半径为 \(r\)，法向取 \(+\hat{\mathbf z}\)，从 \(+z\) 看逆时针为正向。在路径所围圆盘内，磁场均匀指向 \(+z\)，且在考察时刻 \(dB_z/dt>0\)。规定该时刻的磁通变化不受材料电荷重排影响。
 
+
   令 \(\mathbf E\) 为满足法拉第定律的总电场。另加的静电场可写为 \(-\nabla\phi\)，其中 \(\phi\) 为单值且连续可微的势。以下结论哪些正确？
+
 
   ![教学模型示意：圆周位于 \(xy\) 平面，法向 \(+z\) 指向读者，从 \(+z\) 看逆时针为正向。题设时刻穿出纸面的磁场正在增大；图中方向标记用于规定有向磁通。](asset:rotating-flux-loop)
 
-  图为原创教学示意，非按比例绘制。圆周位于 \(xy\) 平面，法向 \(+z\) 指向读者，从 \(+z\) 看逆时针为正向。题设时刻穿出纸面的磁场正在增大；图中方向标记用于规定有向磁通。
-solution: |-
-  法拉第定律给出
+
+  图为原创教学示意，非按比例绘制。圆周位于 \(xy\) 平面，法向 \(+z\) 指向读者，从 \(+z\) 看逆时针为正向。题设时刻穿出纸面的磁场正在增大；图中方向标记用于规定有向磁通。'
+solution: '法拉第定律给出
+
 
   $$
+
   \oint\mathbf E\cdot d\boldsymbol\ell
+
   =-\pi r^2\frac{dB_z}{dt}<0.
+
   $$
+
 
   因此相对于逆时针正向，电场的净环流为负。另一方面，单值静电势满足
 
+
   $$
+
   \oint(-\nabla\phi)\cdot d\boldsymbol\ell=0.
+
   $$
+
 
   叠加静电场可以改变各点的局部电场，但无法改变该闭合回路的非零环流，也不可能使回路上每一点的总切向电场同时为零。由于闭合环路积分非零，总电场不能在包含该环路的整个区域写成单值标势的负梯度。
 
+
   选项辨析：
+
 
   “给定正向的环流为负”正确：正向磁通增加时，法拉第定律给出负环流。
 
+
   “每一点切向电场都为零”错误，那会使环流为零，与保持不变的非零磁通变化矛盾。
+
 
   “总电场是单值静电势的负梯度”错误，非零闭合环路积分排除了这种全局表示。
 
+
   “静电场叠加不改变环流”正确，因为单值势梯度的闭合积分为零；局部场仍可改变。
+
 
   适用范围：本题只约束环流，不由此确定非轴对称介质中的局部电场大小，也不讨论神经刺激阈值。
 
-  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: governing A–V formulation; Discussion, paragraphs on conductivity, geometry and boundary effects。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。
+
+  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: governing A–V formulation; Discussion,
+  paragraphs on conductivity, geometry and boundary effects。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。'
 hints:
 - 先固定法向与环路方向，再使用法拉第定律中的负号。
 - 单值静电势的梯度沿闭合路径积分为零。
@@ -89,3 +108,19 @@ answer:
 assets:
 - id: rotating-flux-loop
   path: electromagnetism/rotating-flux-loop.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f061aab299497a3e09b2f8e6e5c6df95f2d0f1e2bed02cfa391f28f67611306c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f061aab299497a3e09b2f8e6e5c6df95f2d0f1e2bed02cfa391f28f67611306c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f061aab299497a3e09b2f8e6e5c6df95f2d0f1e2bed02cfa391f28f67611306c

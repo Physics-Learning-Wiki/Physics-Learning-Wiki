@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000558
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dielectric-energy
+type: free_response
+choice_order: fixed
+stem: '**介质插入的能量与力**
+
+
+  平板长 L、宽 b、间距 d，刚性线性介质板填满间距，已插入长度 x．忽略边缘对电容的高阶修正，求 C(x)；分别求固定 U 和固定 Q 时的插入力，解释局部边缘场与总能量法的关系．'
+solution: '1. 按并排面积分区，有 $C(x)=\varepsilon_0b[L+(\varepsilon_r-1)x]/d$，所以 $C''=\varepsilon_0b(\varepsilon_r-1)/d$．
+
+  2. 固定 U：$F_x=U^2C''/2$；固定 Q：$F_x=Q^2C''/(2C^2)$．普通 εr>1 时均指向插入方向，但沿过程的力值不同．
+
+  3. 固定 U 的电源输入 $U\mathrm{d}Q=U^2\mathrm{d}C$，一半增加储能，一半输出机械功；固定 Q 则机械功来自储能减少．
+
+  4. 局部力的空间分布涉及边缘非均匀场；总电容的领先构型变化仍可给领先合力．评分须限制刚性、准静态、线性可逆与无损模型，不能声称局部边缘场不存在．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 按并排面积分区，有 $C(x)=\varepsilon_0b[L+(\varepsilon_r-1)x]/d$，所以 $C''=\varepsilon_0b(\varepsilon_r-1)/d$．
+
+  2. 固定 U：$F_x=U^2C''/2$；固定 Q：$F_x=Q^2C''/(2C^2)$．普通 εr>1 时均指向插入方向，但沿过程的力值不同．
+
+  3. 固定 U 的电源输入 $U\mathrm{d}Q=U^2\mathrm{d}C$，一半增加储能，一半输出机械功；固定 Q 则机械功来自储能减少．
+
+  4. 局部力的空间分布涉及边缘非均匀场；总电容的领先构型变化仍可给领先合力．评分须限制刚性、准静态、线性可逆与无损模型，不能声称局部边缘场不存在．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b66db3812db2e3a92dada062c7521bbd0afe35ee246b0a2ec60e26f5d5564bb0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b66db3812db2e3a92dada062c7521bbd0afe35ee246b0a2ec60e26f5d5564bb0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b66db3812db2e3a92dada062c7521bbd0afe35ee246b0a2ec60e26f5d5564bb0

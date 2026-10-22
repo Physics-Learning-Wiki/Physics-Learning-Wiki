@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000357
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -9,16 +9,19 @@ concepts:
 - kinematics.relative-velocity
 type: single_choice
 choice_order: shuffle
-stem: |-
-  仿鸟机器人研究通过规划足端轨迹实现行走，支撑相中脚推着机身前进。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+stem: '仿鸟机器人研究通过规划足端轨迹实现行走，支撑相中脚推着机身前进。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
 
   只看一小段直线支撑相。地面参考系中，机身以恒定速度 $V>0$ 向右平移而不转动，脚端与地面无滑移。与机身固连的坐标轴也向右为正。忽略其它关节细节，机身位置记 $x_B$，脚端位置记 $x_F$。
 
+
   ![机身 B 向右以 V 平移，脚端 F 接触地面且无滑移；x 轴向右，机身坐标原点随 B 移动。](asset:m008)
+
 
   *原创教学示意图，非按比例绘制。*
 
-  此时脚端相对机身的速度是多少？
+
+  此时脚端相对机身的速度是多少？'
 hints:
 - 先明确“无滑移”说明脚在哪个参考系静止。
 - 写出相对位置 xF−xB 后再求导。
@@ -30,20 +33,27 @@ feedback:
     B: 没有第二个向右的速度贡献。
     C: 相对位置是脚端位置减去机身位置，因此相对速度向后。
     D: 这对应脚端在地面系中的速度，不是机身系。
-solution: |-
-  脚端在地面系中静止，故 $\dot x_F=0$；机身有 $\dot x_B=V$。脚端相对机身的位置是 $x_{F/B}=x_F-x_B$，所以
+solution: '脚端在地面系中静止，故 $\dot x_F=0$；机身有 $\dot x_B=V$。脚端相对机身的位置是 $x_{F/B}=x_F-x_B$，所以
+
 
   $$
+
   v_{F/B}=\dot x_F-\dot x_B=-V.
+
   $$
+
 
   支撑脚在机身坐标中向后运动，与地面上脚没有滑动并不矛盾。这是规划行走支撑相足端轨迹时必须采用的参考系转换。
 
+
   **检查与物理含义：** $V\to0$ 时相对速度为零；用 $v_F=v_{F/B}+v_B$ 返回地面系得到零，满足无滑移。
+
 
   **适用范围：** 机身转动时必须加入角速度叉乘位置的项；腾空摆动相中脚端也不再静止。
 
-  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Methods: Foot trajectory generation; Extended Data Fig. 7, stance and swing phases；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Methods: Foot trajectory generation; Extended
+  Data Fig. 7, stance and swing phases；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -71,3 +81,19 @@ answer:
 assets:
 - id: m008
   path: mechanics/m008.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:05a79646b7ea3badee4644ece7eb77ce41a6a6a6d3e47b347c7a7ebce0851369
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:05a79646b7ea3badee4644ece7eb77ce41a6a6a6d3e47b347c7a7ebce0851369
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:05a79646b7ea3badee4644ece7eb77ce41a6a6a6d3e47b347c7a7ebce0851369

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000413
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,21 +10,26 @@ concepts:
 - electrostatics.electric-dipole
 type: true_false
 choice_order: fixed
-stem: |-
-  研究中的离子分配可以形成整体中性、但正负电荷空间分离的离子对。这是检验高斯定理含义的一个具体情形。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+stem: '研究中的离子分配可以形成整体中性、但正负电荷空间分离的离子对。这是检验高斯定理含义的一个具体情形。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+
 
   仅取一个固定的 $+e,-e$ 点电荷对作为教学模型，置于真空，忽略其他物体。一个闭合高斯面同时包围这两个电荷，但不穿过它们。
 
-  判断：“由于高斯面内总电荷为零，所以该高斯面上每一点的电场都必须为零。”
-solution: |-
-  该判断错误。高斯定理只给出
+
+  判断：“由于高斯面内总电荷为零，所以该高斯面上每一点的电场都必须为零。”'
+solution: '该判断错误。高斯定理只给出
+
   $\oint \mathbf E\cdot d\mathbf A=(e-e)/\varepsilon_0=0$，这是正负通量相抵消的整体约束，并非逐点约束。
+
 
   例如在两电荷连线远处，两个库仑场的距离不同，不能精确抵消，留下偶极场。检查：若闭合面只包围正离子，通量应变为 $e/\varepsilon_0$；这再次表明高斯定理控制的是所包围的净电荷。
 
+
   适用范围：不计算真实水和聚合物的束缚电荷，也不将真空场强用于分子体系预测。
 
-  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Fig. 4A, two-surface ion-pair model。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。
+
+  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Fig. 4A, two-surface ion-pair
+  model。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。'
 hints:
 - 把高斯定理写成闭合面积分，而不是逐点的等式。
 - 不同位置的向外和向内通量可以互相抵消。
@@ -46,3 +51,19 @@ authors:
 license: CC-BY-SA-4.0
 answer:
   value: false
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fcd78b1c201c9f2f173d6e0c11b709f3e73861e90723247c693d8f325627ed95
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fcd78b1c201c9f2f173d6e0c11b709f3e73861e90723247c693d8f325627ed95
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fcd78b1c201c9f2f173d6e0c11b709f3e73861e90723247c693d8f325627ed95

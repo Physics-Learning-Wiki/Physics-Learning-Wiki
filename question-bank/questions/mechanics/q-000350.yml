@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000350
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -10,16 +10,20 @@ concepts:
 - newton.free-body-diagram
 type: single_choice
 choice_order: shuffle
-stem: |-
-  弹簧跳跃研究指出，不能忽略的脚端质量会改变离地时刻。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
+stem: '弹簧跳跃研究指出，不能忽略的脚端质量会改变离地时刻。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
 
-  把装置简化为竖直的机身质量 $m_b$、脚端质量 $m_f>0$ 和两者之间的无质量弹簧，劲度系数为 $k$。自然长度记为 $L_0$。令 $x$ 为弹簧相对自然长度的**伸长量**，伸长为正。脚还接触水平地面时保持静止，地面对脚只有向上的支持力 $N$，重力加速度为 $g$。弹簧可承受拉伸与压缩，释放时从压缩状态向上伸展。假设储能足够使系统离地，忽略摩擦和阻尼。
+
+  把装置简化为竖直的机身质量 $m_b$、脚端质量 $m_f>0$ 和两者之间的无质量弹簧，劲度系数为 $k$。自然长度记为 $L_0$。令 $x$ 为弹簧相对自然长度的**伸长量**，伸长为正。脚还接触水平地面时保持静止，地面对脚只有向上的支持力
+  $N$，重力加速度为 $g$。弹簧可承受拉伸与压缩，释放时从压缩状态向上伸展。假设储能足够使系统离地，忽略摩擦和阻尼。
+
 
   ![竖直机身质量 mb、连接弹簧 k、脚端质量 mf 和水平地面；x 表示弹簧伸长量，竖直向上为正。](asset:m001)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  在支持力首次降至零的时刻，弹簧伸长量应满足哪一关系？
+
+  在支持力首次降至零的时刻，弹簧伸长量应满足哪一关系？'
 hints:
 - 先隔离脚端，不要把机身和脚端的重力混在同一受力图中。
 - 支持力不能为负；离地边界取支持力为零。
@@ -31,26 +35,37 @@ feedback:
     B: 此边界式的研究对象是静止的脚端，须使用脚端质量。
     C: 脚端平衡与支持力为零给出正伸长量。
     D: 在自然长度处弹簧力为零，仍有脚端重力需要地面支撑。
-solution: |-
-  对脚端单独列竖直方向的受力平衡。弹簧伸长时向上拉脚，拉力为 $kx$；重力向下。因此
+solution: '对脚端单独列竖直方向的受力平衡。弹簧伸长时向上拉脚，拉力为 $kx$；重力向下。因此
+
 
   $$
+
   N+kx-m_fg=0,
+
   $$
+
 
   即 $N=m_fg-kx$。接触边界条件是 $N=0$，得到
 
+
   $$
+
   x_{\mathrm{off}}=\frac{m_fg}{k}>0.
+
   $$
+
 
   脚端质量使弹簧在超过自然长度以后才失去接触，这正是该简化装置的延迟离地。机身质量影响能否到达此状态及到达速度，但不进入脚端瞬时静力边界式。
 
+
   **检查与物理含义：** $m_fg/k$ 的量纲为长度；$m_f\to0$ 时恢复 $x_{\mathrm{off}}\to0$；$x=0$ 时 $N=m_fg>0$，符号符合接触条件。
+
 
   **适用范围：** 该边界只适用于可伸长的双向弹簧和静止脚端；不适用于存在几何转动、拉脱黏附或只能压缩的单向弹性元件。
 
-  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.1, Fig. 2 and Eqs. (1)–(5)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。
+
+  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.1, Fig. 2 and Eqs.
+  (1)–(5)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -78,3 +93,19 @@ answer:
 assets:
 - id: m001
   path: mechanics/m001.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:50a9ec9b35368b13e3c04fe0db7d15f1fe52adc511f5f5922a6c5f9f6ab6db2e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:50a9ec9b35368b13e3c04fe0db7d15f1fe52adc511f5f5922a6c5f9f6ab6db2e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:50a9ec9b35368b13e3c04fe0db7d15f1fe52adc511f5f5922a6c5f9f6ab6db2e

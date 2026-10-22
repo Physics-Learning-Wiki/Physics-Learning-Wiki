@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000531
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dipole-energy
+type: single_choice
+choice_order: shuffle
+stem: 同向永久偶极沿两者连线排列，取向固定，远场相互作用是？
+solution: W=−2kp₁p₂/r³，径向力为负．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 吸引，能量按负的 r⁻³ 变化
+- id: B
+  content: 排斥，因为偶极矩同向
+- id: C
+  content: 没有作用，因为各自总电荷为零
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．W=−2kp₁p₂/r³，径向力为负．
+  incorrect: 请先重新核对模型条件．W=−2kp₁p₂/r³，径向力为负．
+  choices:
+    A: W=−2kp₁p₂/r³，径向力为负．
+    B: 要分别检查正负电荷位置和角因子．
+    C: 总电荷零不消除偶极项．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0f053048045a55fab6cf3d85d4bc1396bc640f8312e55f9e6163210e69e94d27
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0f053048045a55fab6cf3d85d4bc1396bc640f8312e55f9e6163210e69e94d27
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0f053048045a55fab6cf3d85d4bc1396bc640f8312e55f9e6163210e69e94d27

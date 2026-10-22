@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000418
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,39 +10,54 @@ concepts:
 - electrostatics.capacitance
 type: single_choice
 choice_order: shuffle
-stem: |-
-  接触主导传感器论文讨论金属层开裂形成浮置电极片的影响，并利用导电复合层维持电连接。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+stem: '接触主导传感器论文讨论金属层开裂形成浮置电极片的影响，并利用导电复合层维持电连接。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+
 
   图中完整接触区与浮置断片各自对底电极的电容均为 $C_0$。完整区直接接电势 V；断片仅通过跨裂纹电容 $C_s$ 与完整区耦合，底电极接地。没有其他耦合。测量上端到地的等效电容。
 
+
   当 $0<C_s\ll C_0$ 时，等效电容最接近哪一个值？（未开裂、两片都直接接上端时为 $2C_0$。）
+
 
   ![教学模型示意：左端 V 直接连接左支路 C₀，同时经水平跨裂纹电容 C_s 连接右侧浮置片；浮置片经另一 C₀ 接到底部公共地。](asset:cracked-electrode)
 
-  图为原创教学示意，非按比例绘制。左端 V 直接连接左支路 C₀，同时经水平跨裂纹电容 C_s 连接右侧浮置片；浮置片经另一 C₀ 接到底部公共地。
-solution: |-
-  完整区贡献一条 $C_0$ 支路；断片所在支路是 $C_s$ 与 $C_0$ 串联。故
+
+  图为原创教学示意，非按比例绘制。左端 V 直接连接左支路 C₀，同时经水平跨裂纹电容 C_s 连接右侧浮置片；浮置片经另一 C₀ 接到底部公共地。'
+solution: '完整区贡献一条 $C_0$ 支路；断片所在支路是 $C_s$ 与 $C_0$ 串联。故
+
 
   $$
+
   C_{\mathrm{eq}}=C_0+\frac{C_sC_0}{C_s+C_0}
+
   \simeq C_0+C_s\simeq C_0.
+
   $$
+
 
   浮置断片不是“没有物理电容”，而是其对地电容被小跨裂纹电容限制。检查：$C_s\to0$ 时只剩完整区；$C_s\to\infty$ 时恢复 $2C_0$。
 
+
   选项辨析：
+
 
   小跨裂纹电容限制了断片支路，主项仅剩直接相连的 C₀。
 
+
   这需要断片电势几乎等于驱动电势，通常对应跨裂纹耦合很强或导电连接恢复。
+
 
   这把两个对地电容错误地当成唯一的串联路径，忽略直接支路。
 
+
   完整接触区仍有直接对地电容 C₀，不会整体消失。
+
 
   适用范围：未计算裂纹几何与跨裂纹电容的定量关系，也不复现裂纹统计分布。
 
-  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Working mechanism, Fig. 2d–h and paragraph on floating electrodes caused by cracks。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。
+
+  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Working mechanism, Fig.
+  2d–h and paragraph on floating electrodes caused by cracks。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。'
 hints:
 - 把直接接电源的支路与经裂纹耦合的支路分开。
 - 断片支路中的两个电容是串联。
@@ -81,3 +96,19 @@ answer:
 assets:
 - id: cracked-electrode
   path: electromagnetism/cracked-electrode.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:182a5c5b112da5fb6335e1db511c209547dae35831163338df8de745aabb980b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:182a5c5b112da5fb6335e1db511c209547dae35831163338df8de745aabb980b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:182a5c5b112da5fb6335e1db511c209547dae35831163338df8de745aabb980b

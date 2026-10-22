@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000382
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,16 +10,21 @@ concepts:
 - analytical.generalized-coordinate
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  转动单元材料把边界拉伸转换为内部转角变化，因此边界力不能不经几何关系就当作转角的广义力矩。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
+stem: '转动单元材料把边界拉伸转换为内部转角变化，因此边界力不能不经几何关系就当作转角的广义力矩。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
 
-  给定一自由度单元 $X(\theta)=2(a\cos\theta+b\sin\theta)$、$Y(\theta)=2(a\sin\theta+b\cos\theta)$。边界成对拉力的广义幅值为 $F_X,F_Y$，定义其总虚功为 $\delta W=F_X\,\delta X+F_Y\,\delta Y$；这一定义已计入两侧边界，不能再额外乘 2。定义与转角 $\theta$ 共轭的广义力 $Q_\theta$ 为 $\delta W=Q_\theta\delta\theta$。记 $X\prime=dX/d\theta$、$Y\prime=dY/d\theta$。
+
+  给定一自由度单元 $X(\theta)=2(a\cos\theta+b\sin\theta)$、$Y(\theta)=2(a\sin\theta+b\cos\theta)$。边界成对拉力的广义幅值为 $F_X,F_Y$，定义其总虚功为 $\delta
+  W=F_X\,\delta X+F_Y\,\delta Y$；这一定义已计入两侧边界，不能再额外乘 2。定义与转角 $\theta$ 共轭的广义力 $Q_\theta$ 为 $\delta W=Q_\theta\delta\theta$。记
+  $X\prime=dX/d\theta$、$Y\prime=dY/d\theta$。
+
 
   ![单元边界的共轭载荷示意：水平尺寸 X 对应水平拉力 F_X，竖直尺寸 Y 对应竖直拉力 F_Y；内部单自由度用 θ 标示。](asset:m033)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  以下哪些陈述成立？选择所有成立的陈述。
+
+  以下哪些陈述成立？选择所有成立的陈述。'
 hints:
 - 把所有虚位移写成同一个广义虚位移 δθ。
 - 区分局部一阶响应与任意有限变形。
@@ -31,14 +36,18 @@ feedback:
     B: 力乘几何导数给出与角度共轭的力矩量纲。
     C: 一阶几何导数为零并不抹去高阶几何变化或失稳过程。
     D: 该结论严格限定为当前状态的一阶虚功。
-solution: |-
-  由 $\delta X=X\prime\delta\theta$、$\delta Y=Y\prime\delta\theta$，得到 $Q_\theta=F_XX\prime+F_YY\prime$。其中 $X\prime,Y\prime$ 在弧度约定下具有长度量纲，所以 $Q_\theta$ 具有力矩量纲。若某状态 $X\prime=0$，水平载荷在该状态对微小转角的一阶虚功为零；但 X 的二阶及更高阶变化仍可能非零，不能推出任何大小的水平力都不可能引起有限变形。
+solution: '由 $\delta X=X\prime\delta\theta$、$\delta Y=Y\prime\delta\theta$，得到 $Q_\theta=F_XX\prime+F_YY\prime$。其中 $X\prime,Y\prime$
+  在弧度约定下具有长度量纲，所以 $Q_\theta$ 具有力矩量纲。若某状态 $X\prime=0$，水平载荷在该状态对微小转角的一阶虚功为零；但 X 的二阶及更高阶变化仍可能非零，不能推出任何大小的水平力都不可能引起有限变形。
+
 
   **检查与物理含义：** 取 $\theta=0$，得到 $Q_\theta=2bF_X+2aF_Y$；两个正拉力都促使两个尺寸共同增加，符号与该初态的几何响应一致。
 
+
   **适用范围：** 零一阶虚功不等于所有方向都刚性，也不等于确定了实际材料的极限承载能力。
 
-  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, Eqs. (1)–(6), geometric derivatives and equivalent strain energy；[论文 DOI](https://doi.org/10.1093/jom/ufae029)。
+
+  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, Eqs. (1)–(6), geometric derivatives and equivalent
+  strain energy；[论文 DOI](https://doi.org/10.1093/jom/ufae029)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -69,3 +78,19 @@ answer:
 assets:
 - id: m033
   path: mechanics/m033.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:116f3401e7cc597029e0cd8b0abf8501389f4b7b08a95655b623bef98e118076
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:116f3401e7cc597029e0cd8b0abf8501389f4b7b08a95655b623bef98e118076
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:116f3401e7cc597029e0cd8b0abf8501389f4b7b08a95655b623bef98e118076

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000412
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,35 +10,49 @@ concepts:
 - electrostatics.electric-potential
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  离子分配研究把化学环境引起的自由能差作为起电驱动力，并指出外加电场是可能的进一步影响因素。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+stem: '离子分配研究把化学环境引起的自由能差作为起电驱动力，并指出外加电场是可能的进一步影响因素。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
 
-  在图示的教学模型中，正负离子分别位于 $z=+\ell/2$、$z=-\ell/2$，带电 $+e$、$-e$；$\ell,e>0$。施加均匀外场 $\mathbf E=E\hat{\mathbf z}$，其中 $E>0$，取外场电势 $\Phi_{\mathrm{ext}}=-Ez$。交换离子的位置时保持外场和间距不变。只把 $\sum q_i\Phi_{\mathrm{ext}}$ 称为“外场相互作用能”，不把离子互作用或溶剂自由能计入它。
+
+  在图示的教学模型中，正负离子分别位于 $z=+\ell/2$、$z=-\ell/2$，带电 $+e$、$-e$；$\ell,e>0$。施加均匀外场 $\mathbf E=E\hat{\mathbf z}$，其中 $E>0$，取外场电势 $\Phi_{\mathrm{ext}}=-Ez$。交换离子的位置时保持外场和间距不变。只把
+  $\sum q_i\Phi_{\mathrm{ext}}$ 称为“外场相互作用能”，不把离子互作用或溶剂自由能计入它。
+
 
   哪些说法正确？
 
+
   ![教学模型示意：正离子在上、负离子在下，+z 向上；本题外场也沿 +z。两离子相对中点的坐标为 ±ℓ/2，表面间距 d 只示意装置背景。](asset:ion-pair)
 
-  图为原创教学示意，非按比例绘制。正离子在上、负离子在下，+z 向上；本题外场也沿 +z。两离子相对中点的坐标为 ±ℓ/2，表面间距 d 只示意装置背景。
-solution: |-
-  初始外场相互作用能为
-  $e(-E\ell/2)+(-e)(+E\ell/2)=-eE\ell$。交换后为 $+eE\ell$，所以变化为 $2eE\ell>0$。这也等于偶极表达式 $U_{\mathrm{ext}}=-\mathbf p\cdot\mathbf E$ 的结果。
+
+  图为原创教学示意，非按比例绘制。正离子在上、负离子在下，+z 向上；本题外场也沿 +z。两离子相对中点的坐标为 ±ℓ/2，表面间距 d 只示意装置背景。'
+solution: '初始外场相互作用能为
+
+  $e(-E\ell/2)+(-e)(+E\ell/2)=-eE\ell$。交换后为 $+eE\ell$，所以变化为 $2eE\ell>0$。这也等于偶极表达式 $U_{\mathrm{ext}}=-\mathbf p\cdot\mathbf
+  E$ 的结果。
+
 
   检查：$E\to0$ 时外场偏置消失；电势加任意常数，能量变化因总电荷为零而不变。要决定真实离子偏好，还必须与其他自由能贡献合并。
 
+
   选项辨析：
+
 
   两个离子的 qΦ 项各为 −eEℓ/2，相加得到负值。
 
+
   交换前后能量分别为 −eEℓ 和 +eEℓ，差为正的两倍。
+
 
   中性只消除常数电势项；空间分离的正负电荷仍形成偶极。
 
+
   化学、溶剂和其他相互作用的自由能也会影响分配，题目没有给出它们。
+
 
   适用范围：没有由静电一项推断源论文材料的起电序列。
 
-  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Fig. 1B and Fig. 4A; Discussion paragraph listing external electric fields among future factors。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。
+
+  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Fig. 1B and Fig. 4A; Discussion
+  paragraph listing external electric fields among future factors。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。'
 hints:
 - 逐个写出 qΦ，注意负离子的电荷与位置同时为负。
 - 外加场能只是总自由能的一部分。
@@ -80,3 +94,19 @@ answer:
 assets:
 - id: ion-pair
   path: electromagnetism/ion-pair.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:569c50bd8930aa632a19c4215a8e685d28064730850dd51278a5dc3e8d17cd39
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:569c50bd8930aa632a19c4215a8e685d28064730850dd51278a5dc3e8d17cd39
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:569c50bd8930aa632a19c4215a8e685d28064730850dd51278a5dc3e8d17cd39

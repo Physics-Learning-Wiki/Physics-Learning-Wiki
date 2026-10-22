@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000545
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.field
+type: free_response
+choice_order: fixed
+stem: '**圆环与圆盘的两次积分**
+
+
+  半径 $a$ 的圆环总电荷 $Q$；半径 $a$ 的圆盘面密度 $\sigma$．从库仑微元分别推导轴线上电场，求圆环场极大点，并检验圆盘的远场及无限平面极限．'
+solution: '1. 圆环横向场抵消，$E_z=kQz/(a^2+z^2)^{3/2}$．正半轴求导的分子为 $a^2-2z^2$，极大点为 $a/\sqrt2$，值为 $2kQ/(3\sqrt3a^2)$．
+
+  2. 圆盘取环微元 $\mathrm{d}q=2\pi\sigma s\,\mathrm{d}s$，在 $z>0$ 积分得 $E_z=\sigma[1-z/\sqrt{a^2+z^2}]/(2\varepsilon_0)$．
+
+  3. $z\gg a$ 时为 $kQ_{\mathrm{disk}}/z^2$，$Q_{\mathrm{disk}}=\pi a^2\sigma$；固定 $z,\sigma$ 而 $a\to\infty$ 时为 $\sigma/(2\varepsilon_0)$．两极限控制不同尺度．
+
+  4. 评分核对：方向与投影、环形微元、积分过程、极值与两个极限均须出现．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 圆环横向场抵消，$E_z=kQz/(a^2+z^2)^{3/2}$．正半轴求导的分子为 $a^2-2z^2$，极大点为 $a/\sqrt2$，值为 $2kQ/(3\sqrt3a^2)$．
+
+  2. 圆盘取环微元 $\mathrm{d}q=2\pi\sigma s\,\mathrm{d}s$，在 $z>0$ 积分得 $E_z=\sigma[1-z/\sqrt{a^2+z^2}]/(2\varepsilon_0)$．
+
+  3. $z\gg a$ 时为 $kQ_{\mathrm{disk}}/z^2$，$Q_{\mathrm{disk}}=\pi a^2\sigma$；固定 $z,\sigma$ 而 $a\to\infty$ 时为 $\sigma/(2\varepsilon_0)$．两极限控制不同尺度．
+
+  4. 评分核对：方向与投影、环形微元、积分过程、极值与两个极限均须出现．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-1.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:552823656b12b572302e15670b91e3f517469e0f5c16d4fa9e5344778c1e5dae
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:552823656b12b572302e15670b91e3f517469e0f5c16d4fa9e5344778c1e5dae
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:552823656b12b572302e15670b91e3f517469e0f5c16d4fa9e5344778c1e5dae

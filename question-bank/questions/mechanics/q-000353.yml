@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000353
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,32 +10,40 @@ concepts:
 - kinematics.velocity-time-graph
 type: numeric
 choice_order: fixed
-stem: |-
-  仿鸟机器人论文报告跳跃起飞约在 $0.17\,\mathrm{s}$ 内达到 $2.4\,\mathrm{m/s}$。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+stem: '仿鸟机器人论文报告跳跃起飞约在 $0.17\,\mathrm{s}$ 内达到 $2.4\,\mathrm{m/s}$。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
 
   为估计这一短时加速阶段的路程，把质心运动**另行近似为沿固定直线、从静止开始的匀加速运动**，取 $T=0.17\,\mathrm{s}$、$v_f=2.4\,\mathrm{m/s}$。该直线未指定为竖直方向，所得路程不是论文中的起飞高度。
 
-  求此近似模型在加速阶段走过的路程。用小数输入，单位填 `m`，保留三位小数。
+
+  求此近似模型在加速阶段走过的路程。用小数输入，单位填 `m`，保留三位小数。'
 hints:
 - 在速度—时间图上画出从零到末速率的直线。
 - 平均速率为起、末速率的算术平均。
 feedback:
   correct: 从起止速率和持续时间估算匀加速路程，并区分教学近似与实测轨迹，并保留了题设的适用条件。
   incorrect: 在速度—时间图上画出从零到末速率的直线。
-solution: |-
-  匀加速且从静止开始，速度随时间线性增长：$v(t)=v_ft/T$。路程等于速度—时间图下的三角形面积：
+solution: '匀加速且从静止开始，速度随时间线性增长：$v(t)=v_ft/T$。路程等于速度—时间图下的三角形面积：
+
 
   $$
+
   s=\int_0^T v(t)\,dt=\frac12v_fT=\frac12\times2.4\times0.17=0.204\,\mathrm{m}.
+
   $$
+
 
   也可先算 $a=v_f/T$，再用 $s=aT^2/2$，得到相同结果。
 
+
   **检查与物理含义：** 速度图面积与匀加速公式两种方法均为 0.204 m；结果小于末速率乘总时间的 0.408 m，符合起始速率为零。容差 0.0005 m 对应三位小数四舍五入。
+
 
   **适用范围：** 真实过程的速度曲线和方向可能变化，此数值不能冒充实验位移、离地高度或机械功。
 
-  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods: Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods:
+  Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -59,3 +67,19 @@ answer:
     canonical: m
     accepted:
     - m
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:45d42544b9dda4d8d9e4f1a484431dd1bdfb5c7c44913f89065f1a93947ee9e8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:45d42544b9dda4d8d9e4f1a484431dd1bdfb5c7c44913f89065f1a93947ee9e8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:45d42544b9dda4d8d9e4f1a484431dd1bdfb5c7c44913f89065f1a93947ee9e8

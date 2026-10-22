@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000508
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conductors
+type: single_choice
+choice_order: shuffle
+stem: 理想导体静电平衡时，下列哪个区域必为零场？
+solution: 自由电荷已调整到不再被宏观场驱动的状态．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 所有几何内部，包括带电空腔
+- id: B
+  content: 导体外部所有空间
+- id: C
+  content: 金属材料内部
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．自由电荷已调整到不再被宏观场驱动的状态．
+  incorrect: 请先重新核对模型条件．自由电荷已调整到不再被宏观场驱动的状态．
+  choices:
+    A: 空腔不是金属材料，内部源可以产生场．
+    B: 表面电荷与外源通常产生外部场．
+    C: 自由电荷已调整到不再被宏观场驱动的状态．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce56eaf9eb9d6538dc428a9e6456809212ab3e1bf6e6e70622d22a2de3f7b794
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce56eaf9eb9d6538dc428a9e6456809212ab3e1bf6e6e70622d22a2de3f7b794
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce56eaf9eb9d6538dc428a9e6456809212ab3e1bf6e6e70622d22a2de3f7b794

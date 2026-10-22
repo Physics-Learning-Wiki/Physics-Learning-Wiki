@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000552
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.shielding
+type: free_response
+choice_order: fixed
+stem: '**屏蔽与操作顺序**
+
+
+  孤立中性导体壳内放固定点电荷 $q>0$，壳外无其他源．比较接地前后金属净电荷和外部场；随后先断开接地再取走 q，求最终电荷与空腔场．讨论 q 偏心是否影响这些总量结论．'
+solution: '1. 初始金属净电荷零，内面总电荷 −q，外面 +q；外部一般非零．若外形为球，外部等效球心点电荷 q．
+
+  2. 接地后外边界零势、无外源，外场零，外面无电荷，金属净电荷 −q．
+
+  3. 先断地保持 −q，再取走内部 q；空腔无源、内壁等势，内部零场，净电荷 −q 移到外表面．
+
+  4. 偏心改变内面局部分布与腔内场，不改变上述净电荷约束．评分应分别说明材料、空腔、外部和操作时的电荷通路．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 初始金属净电荷零，内面总电荷 −q，外面 +q；外部一般非零．若外形为球，外部等效球心点电荷 q．
+
+  2. 接地后外边界零势、无外源，外场零，外面无电荷，金属净电荷 −q．
+
+  3. 先断地保持 −q，再取走内部 q；空腔无源、内壁等势，内部零场，净电荷 −q 移到外表面．
+
+  4. 偏心改变内面局部分布与腔内场，不改变上述净电荷约束．评分应分别说明材料、空腔、外部和操作时的电荷通路．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b2653ef7706de075e1e96e8e2236d0a247adcf9b1e8fdd1ffa6a7a9732980dc7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b2653ef7706de075e1e96e8e2236d0a247adcf9b1e8fdd1ffa6a7a9732980dc7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b2653ef7706de075e1e96e8e2236d0a247adcf9b1e8fdd1ffa6a7a9732980dc7

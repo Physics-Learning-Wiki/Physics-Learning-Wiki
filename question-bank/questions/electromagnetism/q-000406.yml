@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000406
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,44 +10,62 @@ concepts:
 - electrostatics.source-work
 type: single_choice
 choice_order: shuffle
-stem: |-
-  滑片研究观察到直流偏压下的电荷注入会使平衡位置偏离几何中心。论文把这一变化写成横向力中的额外电荷项。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+stem: '滑片研究观察到直流偏压下的电荷注入会使平衡位置偏离几何中心。论文把这一变化写成横向力中的额外电荷项。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+
 
   沿用图中向右为 $+x$ 的约定，定义 $S=L-d>0$、$\kappa=\varepsilon_0w/h>0$。本题直接给出带电滑片的近似力：
 
+
   $$
+
   F_x=\frac{\kappa V^2}{2}\left(1-\frac{2x}{S}\right)-\frac{QV}{S}.
+
   $$
+
 
   电源维持 $V>0$，滑片在观察期间保持固定净电荷 $Q<0$。假设 $|Q|$ 足够小，使平衡位置仍位于 $0<x<S$，忽略摩擦。相对于中性时的 $x=S/2$，平衡位置如何变化？
 
+
   ![教学模型示意：滑片的右重叠为 x，左重叠为 L−d−x；右下电极电势 V，左下电极接地。图中 Q 指滑片净电荷，正 x 方向向右。](asset:floating-slider)
 
-  图为原创教学示意，非按比例绘制。滑片的右重叠为 x，左重叠为 L−d−x；右下电极电势 V，左下电极接地。图中 Q 指滑片净电荷，正 x 方向向右。
-solution: |-
-  令 $F_x=0$，乘以 $S$ 并整理：
+
+  图为原创教学示意，非按比例绘制。滑片的右重叠为 x，左重叠为 L−d−x；右下电极电势 V，左下电极接地。图中 Q 指滑片净电荷，正 x 方向向右。'
+solution: '令 $F_x=0$，乘以 $S$ 并整理：
+
 
   $$
+
   x_*=\frac S2-\frac{Q}{\kappa V}.
+
   $$
+
 
   由于 $Q<0$ 且 $\kappa V>0$，位移 $\Delta x=-Q/(\kappa V)>0$，故向右偏移。力的斜率 $\partial F_x/\partial x=-\kappa V^2/S<0$，所以该区间内的平衡仍具有回复性。
 
+
   检查：$Q\to0$ 恢复中心平衡；$Q/(\kappa V)$ 的量纲是长度。不能只看电压正负，因为电荷符号也参与决定偏移。
+
 
   选项辨析：
 
+
   向右偏移对应 $\Delta x=-Q/(\kappa V)>0$。
+
 
   向左偏移与本题 Q<0、V>0 的符号组合相反。
 
+
   中心处中性回复项为零，但电荷项不为零。
+
 
   题目已限制电荷足够小，零点仍在允许区间内，且力的斜率保持负值。
 
+
   适用范围：本题不推导空气离化或注入速率，也不预测实际注入电荷数值。
 
-  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Actuated stroke enhancement by charge injection, Eqs. (3)–(4) and Fig. 5。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。
+
+  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Actuated stroke enhancement by charge injection, Eqs.
+  (3)–(4) and Fig. 5。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。'
 hints:
 - 先令给定的总横向力为零，不要仅根据两电极电压猜测。
 - 固定 Q<0 时，−Q/(κV) 为正。
@@ -86,3 +104,19 @@ answer:
 assets:
 - id: floating-slider
   path: electromagnetism/floating-slider.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a24d3c183aa30d90264be6863e1bcb615d5c23d04a0d9056f2e7c45230d9f257
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a24d3c183aa30d90264be6863e1bcb615d5c23d04a0d9056f2e7c45230d9f257
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a24d3c183aa30d90264be6863e1bcb615d5c23d04a0d9056f2e7c45230d9f257

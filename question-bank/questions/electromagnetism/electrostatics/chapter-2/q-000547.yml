@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000547
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.potential-reference
+type: free_response
+choice_order: fixed
+stem: '**保守性、零点与分段势**
+
+
+  先由点电荷场证明静电环路定理，再求均匀带电实心长圆柱的电势，圆柱半径 $R$、体密度 $\rho$，取 $\varphi(R)=0$．讨论能否改取无穷远零势，并验证势的导数．'
+solution: '1. 点场有 $\boldsymbol E\cdot\mathrm{d}\boldsymbol l=kQ\,\mathrm{d}r/r^2=-\mathrm{d}(kQ/r)$，端点相同则积分零．固定多源由线性叠加推广，路径须避开奇点．
+
+  2. 圆柱内场为 $\rho s/(2\varepsilon_0)$，外场为 $\rho R^2/(2\varepsilon_0s)$．分别从 R 积分：内势 $\rho(R^2-s^2)/(4\varepsilon_0)$，外势 $-\rho
+  R^2\ln(s/R)/(2\varepsilon_0)$．
+
+  3. 势在表面连续，负导数恢复两区场．无限圆柱外场积分到无穷远对数发散，不能要求有限的无穷远零势．
+
+  4. 评分核对：证明、叠加条件、分段积分常数、导数与远处条件分别自检．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 点场有 $\boldsymbol E\cdot\mathrm{d}\boldsymbol l=kQ\,\mathrm{d}r/r^2=-\mathrm{d}(kQ/r)$，端点相同则积分零．固定多源由线性叠加推广，路径须避开奇点．
+
+  2. 圆柱内场为 $\rho s/(2\varepsilon_0)$，外场为 $\rho R^2/(2\varepsilon_0s)$．分别从 R 积分：内势 $\rho(R^2-s^2)/(4\varepsilon_0)$，外势 $-\rho
+  R^2\ln(s/R)/(2\varepsilon_0)$．
+
+  3. 势在表面连续，负导数恢复两区场．无限圆柱外场积分到无穷远对数发散，不能要求有限的无穷远零势．
+
+  4. 评分核对：证明、叠加条件、分段积分常数、导数与远处条件分别自检．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0b66f9871fa8dc4588b8216ae1b9663c4c57549929615bb5d6e7b3c6abdd1aa6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0b66f9871fa8dc4588b8216ae1b9663c4c57549929615bb5d6e7b3c6abdd1aa6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0b66f9871fa8dc4588b8216ae1b9663c4c57549929615bb5d6e7b3c6abdd1aa6

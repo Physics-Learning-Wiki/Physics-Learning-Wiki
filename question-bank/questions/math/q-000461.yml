@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000461
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.transforms
@@ -9,24 +9,30 @@ concepts:
 - math.fourier-method
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+stem: 'Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
 
   研究光栅的两方向三次项可分别控制。本题用有限包络使振幅可积，设
 
-  $$
-  f(x,y)=g(x)h(y),\quad G(q_x)=\int g(x)e^{-iq_xx}dx,\quad H(q_y)=\int h(y)e^{-iq_yy}dy.
+
   $$
 
-  二维变换定义为 $\widehat f(q_x,q_y)=\iint f(x,y)e^{-i(q_xx+q_yy)}dxdy$，且可交换积分。选出所有正确关系；采用完全一致评分。
-solution: |-
-  因积分核和振幅均可分离，先对 $x$ 积分，再对 $y$ 积分，得到 $\widehat f=GH$。取复模平方给出 $|\widehat f|^2=|G|^2|H|^2$。若 $g,h$ 都归一化为各自强度积分为一，则利用分离积分，输入二维总强度也为一。
+  f(x,y)=g(x)h(y),\quad G(q_x)=\int g(x)e^{-iq_xx}dx,\quad H(q_y)=\int h(y)e^{-iq_yy}dy.
+
+  $$
+
+
+  二维变换定义为 $\widehat f(q_x,q_y)=\iint f(x,y)e^{-i(q_xx+q_yy)}dxdy$，且可交换积分。选出所有正确关系；采用完全一致评分。'
+solution: '因积分核和振幅均可分离，先对 $x$ 积分，再对 $y$ 积分，得到 $\widehat f=GH$。取复模平方给出 $|\widehat f|^2=|G|^2|H|^2$。若 $g,h$ 都归一化为各自强度积分为一，则利用分离积分，输入二维总强度也为一。
+
 
   二维振幅不是两条一维振幅的和；乘积结构保留两个方向同时出现的图样。检查：选 $g(x)=e^{-x^2}$、$h(y)=e^{-y^2}$ 时，直接的二维高斯积分与乘积表达完全相同。
 
+
   研究对应：Published article, Eq. (1) and Appendix A Eq. (A3)。教学范围：忽略实际阵列有限尺寸、非可分离误差和仪器模糊。
 
-  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -65,3 +71,19 @@ answer:
   - A
   - B
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:34453faa5ba8092c945457c5246b0ab604631022208a65bb21a8b9218a741ed9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:34453faa5ba8092c945457c5246b0ab604631022208a65bb21a8b9218a741ed9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:34453faa5ba8092c945457c5246b0ab604631022208a65bb21a8b9218a741ed9

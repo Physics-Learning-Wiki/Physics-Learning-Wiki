@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000445
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.maxwell-waves
@@ -10,44 +10,66 @@ concepts:
 - waves.propagating-modes
 type: numeric
 choice_order: fixed
-stem: |-
-  可重构剪纸超表面研究利用机械变形改变反射相位分布，实现波束转向。本题取一个原创的恒定相位梯度示例，使用论文给出的广义反射关系。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+stem: '可重构剪纸超表面研究利用机械变形改变反射相位分布，实现波束转向。本题取一个原创的恒定相位梯度示例，使用论文给出的广义反射关系。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
 
-  反射面为 \(z=0\)，空气位于 \(z>0\)。平面波沿 \(-z\) 正入射，波长 \(\lambda=30.0\ \mathrm{mm}\)。相邻单元沿 \(+x\) 的间距为 \(p=10.0\ \mathrm{mm}\)，展开后的目标反射相位每个单元增加 \(\Delta\phi=\pi/3\)。
+
+  反射面为 \(z=0\)，空气位于 \(z>0\)。平面波沿 \(-z\) 正入射，波长 \(\lambda=30.0\ \mathrm{mm}\)。相邻单元沿 \(+x\) 的间距为 \(p=10.0\ \mathrm{mm}\)，展开后的目标反射相位每个单元增加
+  \(\Delta\phi=\pi/3\)。
+
 
   将阵列近似为恒定连续相位梯度 \(G=\Delta\phi/p\)，忽略其他衍射级次。目标反射波在 \(xz\) 平面内，反射角 \(\theta\) 从 \(+z\) 向 \(+x\) 计，满足
 
+
   $$
+
   \sin\theta=\frac{\lambda G}{2\pi},\qquad -90^\circ\le\theta\le90^\circ.
+
   $$
+
 
   求 \(\theta\)，以度（输入单位 \(\mathrm{deg}\)）作答。
 
+
   ![教学模型示意：超表面位于 \(z=0\)，空气在上方；入射波沿 \(-z\)，反射波位于 \(xz\) 面并向 \(+x,+z\) 传播。相位沿 \(+x\) 增加，\(\theta\) 从 \(+z\) 量起。](asset:phase-gradient)
 
-  图为原创教学示意，非按比例绘制。超表面位于 \(z=0\)，空气在上方；入射波沿 \(-z\)，反射波位于 \(xz\) 面并向 \(+x,+z\) 传播。相位沿 \(+x\) 增加，\(\theta\) 从 \(+z\) 量起。
-solution: |-
-  相位梯度为
+
+  图为原创教学示意，非按比例绘制。超表面位于 \(z=0\)，空气在上方；入射波沿 \(-z\)，反射波位于 \(xz\) 面并向 \(+x,+z\) 传播。相位沿 \(+x\) 增加，\(\theta\) 从 \(+z\) 量起。'
+solution: '相位梯度为
+
 
   $$
+
   G=\frac{\pi/3}{0.0100\ \mathrm m}
+
   =\frac{100\pi}{3}\ \mathrm{rad/m}.
+
   $$
+
 
   因此
 
+
   $$
+
   \sin\theta
+
   =\frac{0.0300}{2\pi}\frac{100\pi}{3}
+
   =\frac12,
+
   \qquad \theta=30.0^\circ.
+
   $$
+
 
   这里用的是展开相位的增量，不能在求梯度前把每个单元相位各自折回主值后任意相减。检查：\(\lambda G\) 无量纲，正梯度给出正的切向波矢，且 \(|\sin\theta|\le1\) 满足传播条件。
 
+
   适用范围：只求目标级次的几何方向，不预测能量转换效率、带宽或离散阵列中其他级次。
 
-  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection, Eq. (3)。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection,
+  Eq. (3)。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。'
 hints:
 - 将单元间距换为米，计算 \(\Delta\phi/p\)。
 - 代入反射关系后取规定角度区间内的反正弦。
@@ -80,3 +102,19 @@ answer:
 assets:
 - id: phase-gradient
   path: electromagnetism/phase-gradient.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b3cb0f1ac9ae8c6f2fe916d3767f49d9b02d859ea214f11fc996fc9b8e53b032
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b3cb0f1ac9ae8c6f2fe916d3767f49d9b02d859ea214f11fc996fc9b8e53b032
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b3cb0f1ac9ae8c6f2fe916d3767f49d9b02d859ea214f11fc996fc9b8e53b032

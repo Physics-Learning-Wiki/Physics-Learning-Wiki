@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000369
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -10,26 +10,34 @@ concepts:
 - oscillations.model-validity
 type: free_response
 choice_order: fixed
-stem: |-
-  扭转微摆研究通过悬挂的硬化趋势补偿重力的软化趋势，以减小频率对振幅变化的敏感性。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+stem: '扭转微摆研究通过悬挂的硬化趋势补偿重力的软化趋势，以减小频率对振幅变化的敏感性。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
 
-  取转角 $\theta=0$ 为向下稳定位置。悬挂恢复力矩的展开为 $\kappa\theta+\beta\theta^3+O(\theta^5)$，重力恢复力矩为 $mg\ell\sin\theta$。转动惯量为 $I$，忽略阻尼和驱动。定义 $K=\kappa+mg\ell>0$、$B=\beta-mg\ell/6$，保留三阶项后方程为 $I\ddot\theta+K\theta+B\theta^3=0$。设幅度为 $A$，满足 $|B|A^2\ll K$；用 $\theta\approx A\cos(\Omega t)$，并可用 $\cos^3u=(3\cos u+\cos3u)/4$。这里 $A$ 以弧度计。
 
-  用只匹配基频项的谐波平衡法，求 $\Omega$ 到 $A^2$ 的首阶修正，说明 $B$ 的符号如何影响频率；给出使这项振幅频移消失的 $\beta$，并说明这是否足以证明真实微摆在所有振幅下等时。
+  取转角 $\theta=0$ 为向下稳定位置。悬挂恢复力矩的展开为 $\kappa\theta+\beta\theta^3+O(\theta^5)$，重力恢复力矩为 $mg\ell\sin\theta$。转动惯量为 $I$，忽略阻尼和驱动。定义
+  $K=\kappa+mg\ell>0$、$B=\beta-mg\ell/6$，保留三阶项后方程为 $I\ddot\theta+K\theta+B\theta^3=0$。设幅度为 $A$，满足 $|B|A^2\ll K$；用 $\theta\approx
+  A\cos(\Omega t)$，并可用 $\cos^3u=(3\cos u+\cos3u)/4$。这里 $A$ 以弧度计。
+
+
+  用只匹配基频项的谐波平衡法，求 $\Omega$ 到 $A^2$ 的首阶修正，说明 $B$ 的符号如何影响频率；给出使这项振幅频移消失的 $\beta$，并说明这是否足以证明真实微摆在所有振幅下等时。'
 hints:
 - 把三次余弦分成基频和三次谐波，只匹配基频系数。
 - 得到 Ω² 后再展开平方根；最后回到 B 的定义。
 feedback:
   correct: 用基频谐波平衡推导振幅频移，并辨别消除三阶非线性与证明完全等时性的区别。，并保留了题设的适用条件。
   incorrect: 把三次余弦分成基频和三次谐波，只匹配基频系数。
-solution: |-
-  代入试探解，基频项系数为 $-I\Omega^2A+KA+3BA^3/4$。将其置零得到 $\Omega^2=K/I+3BA^2/(4I)$。令 $\omega_0=\sqrt{K/I}$，展开平方根：$\Omega\approx\omega_0[1+3BA^2/(8K)]$，误差来自更高阶小量和被忽略的高次恢复项。因此 $B>0$ 时频率随振幅增加而升高（硬化），$B<0$ 时降低（软化）。使该 $A^2$ 修正消失须令 $B=0$，即 $\beta=mg\ell/6$。但完整恢复力矩仍可能含五阶及更高阶项，实际装置还可能有振幅相关惯量、耗散和驱动效应；此条件只取消本展开的领先非线性频移，不能证明任意振幅下等时。基频匹配忽略了大小为 $BA^3/4$ 的三次谐波力矩，其造成的波形修正与弱非线性近似一致。
+solution: '代入试探解，基频项系数为 $-I\Omega^2A+KA+3BA^3/4$。将其置零得到 $\Omega^2=K/I+3BA^2/(4I)$。令 $\omega_0=\sqrt{K/I}$，展开平方根：$\Omega\approx\omega_0[1+3BA^2/(8K)]$，误差来自更高阶小量和被忽略的高次恢复项。因此
+  $B>0$ 时频率随振幅增加而升高（硬化），$B<0$ 时降低（软化）。使该 $A^2$ 修正消失须令 $B=0$，即 $\beta=mg\ell/6$。但完整恢复力矩仍可能含五阶及更高阶项，实际装置还可能有振幅相关惯量、耗散和驱动效应；此条件只取消本展开的领先非线性频移，不能证明任意振幅下等时。基频匹配忽略了大小为
+  $BA^3/4$ 的三次谐波力矩，其造成的波形修正与弱非线性近似一致。
+
 
   **检查与物理含义：** $BA^2/K$ 无量纲；$A\to0$ 或 $B\to0$ 时回到 $\omega_0$。仅保留重力非线性且无悬挂时，$B/K=-1/6$，得到 $\Omega\approx\omega_0(1-A^2/16)$，与直接展开重力恢复力矩的软化符号一致。
 
+
   **适用范围：** 谐波平衡只保留基频与领先振幅频移；不等于重现实验的完整非线性拟合，更不推出大振幅稳定性。
 
-  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Main text Eqs. (4)–(5), Fig. 2; Supplement: Nonlinear oscillation；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Main text Eqs. (4)–(5), Fig. 2; Supplement: Nonlinear
+  oscillation；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。'
 difficulty: 3
 cognitive_level: analyze
 style: computational
@@ -59,3 +67,19 @@ grading:
     label: 正确推导基频平衡与平方根展开，解释硬化/软化、给出补偿条件，并明确高阶项限制。
     points: 1
 reference_answer: 基频平衡给出 Ω²=K/I+3BA²/(4I)，故 Ω≈√(K/I)[1+3BA²/(8K)]。B>0 硬化、B<0 软化；β=mgℓ/6 消除三阶恢复力矩的领先振幅频移。忽略高阶项和有限振幅效应，因此不能推出全振幅等时。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:564eacb4fc5a0b997f34822c8c569881c22fbce0020a9fe439e10969c77a5f88
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:564eacb4fc5a0b997f34822c8c569881c22fbce0020a9fe439e10969c77a5f88
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:564eacb4fc5a0b997f34822c8c569881c22fbce0020a9fe439e10969c77a5f88

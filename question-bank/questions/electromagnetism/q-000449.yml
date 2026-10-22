@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000449
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.maxwell-waves
@@ -11,71 +11,114 @@ concepts:
 - waves.transverse-polarization
 type: free_response
 choice_order: fixed
-stem: |-
-  剪纸超表面研究将反射波转向偏离镜面方向，并讨论转换效率。比较不同角度的电场幅值时，需要先考虑穿过表面的法向能流。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+stem: '剪纸超表面研究将反射波转向偏离镜面方向，并讨论转换效率。比较不同角度的电场幅值时，需要先考虑穿过表面的法向能流。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+
 
   表面为 \(z=0\)，空气位于 \(z>0\)。入射平面波沿 \(\hat{\mathbf k}_{\rm i}=-\hat{\mathbf z}\) 传播，反射目标波沿
 
+
   $$
+
   \hat{\mathbf k}_{\rm r}=\sin\theta\,\hat{\mathbf x}+\cos\theta\,\hat{\mathbf z},
+
   \qquad 0<\theta<90^\circ
+
   $$
+
 
   传播。两波电场均沿 \(y\) 方向，其各自峰值为 \(E_{\rm i}>0\) 和 \(E_{\rm r}>0\)。空气中可用
 
+
   $$
+
   \mathbf B=\frac1c\,\hat{\mathbf k}\times\mathbf E,\qquad
+
   \overline{\mathbf S}=\frac1{\mu_0}\langle\mathbf E\times\mathbf B\rangle,\qquad
+
   \eta_0=\mu_0c.
+
   $$
+
 
   模型规定没有透射、吸收或其他传播反射级次；在覆盖许多相位周期的平面面积上作空间平均，忽略边缘效应。
 
+
   **任务：推导法向平均功率守恒所要求的 \(E_{\rm r}/E_{\rm i}\)，并在 \(\theta=60^\circ\) 时给出该比值、解释它是否意味着能量增加。** 推导中先写出两波各自的磁场方向，再计算各自平均坡印廷矢量的法向分量。
+
 
   ![教学模型示意：反射面位于 \(z=0\)，入射沿 \(-z\)，目标反射沿 \(+x,+z\)；\(\theta\) 从 \(+z\) 轴量起。两波电场均沿垂直于图面的 \(y\) 方向，磁场方向由各自传播方向与电场叉乘决定。](asset:phase-gradient)
 
-  图为原创教学示意，非按比例绘制。反射面位于 \(z=0\)，入射沿 \(-z\)，目标反射沿 \(+x,+z\)；\(\theta\) 从 \(+z\) 轴量起。两波电场均沿垂直于图面的 \(y\) 方向，磁场方向由各自传播方向与电场叉乘决定。
-solution: |-
-  由叉乘，
+
+  图为原创教学示意，非按比例绘制。反射面位于 \(z=0\)，入射沿 \(-z\)，目标反射沿 \(+x,+z\)；\(\theta\) 从 \(+z\) 轴量起。两波电场均沿垂直于图面的 \(y\) 方向，磁场方向由各自传播方向与电场叉乘决定。'
+solution: '由叉乘，
+
 
   $$
+
   \mathbf B_{\rm i}=\frac{E_{\rm i}}c\,\hat{\mathbf x}
+
   \quad\text{（乘以该波的瞬时正弦因子）},
+
   $$
+
 
   因为 \((-\hat{\mathbf z})\times\hat{\mathbf y}=\hat{\mathbf x}\)。反射波的磁场方向为
 
+
   $$
+
   \mathbf B_{\rm r}=\frac{E_{\rm r}}c
+
   \left(-\cos\theta\,\hat{\mathbf x}+\sin\theta\,\hat{\mathbf z}\right)
+
   \quad\text{（乘以反射波的瞬时正弦因子）}.
+
   $$
+
 
   每个平面波的电磁场同相，正弦平方的时间平均为 \(1/2\)，于是
 
+
   $$
+
   \overline{\mathbf S}_{\rm i}
+
   =-\frac{E_{\rm i}^2}{2\eta_0}\hat{\mathbf z},\qquad
+
   \overline{\mathbf S}_{\rm r}
+
   =\frac{E_{\rm r}^2}{2\eta_0}
+
   (\sin\theta\,\hat{\mathbf x}+\cos\theta\,\hat{\mathbf z}).
+
   $$
+
 
   在题设大面积平均和单一传播通道条件下，入射功率的法向大小等于向上的反射功率：
 
-  $$
-  \frac{E_{\rm i}^2}{2\eta_0}
-  =\frac{E_{\rm r}^2}{2\eta_0}\cos\theta
-  \quad\Rightarrow\quad
-  \frac{E_{\rm r}}{E_{\rm i}}=\frac1{\sqrt{\cos\theta}}.
+
   $$
 
-  当 \(\theta=60^\circ\) 时，比值为 \(\sqrt2\)。反射场幅增大不意味着能量增加：斜波的能流只有 \(\cos\theta\) 的比例穿过同一水平表面，幅值平方的增大正好补偿投影。检查：\(\theta\to0\) 时比值趋 1；接近掠射时所需场幅发散，提示该理想单级次模型在极端角度的实现限制。局部相干交叉项需结合空间平均或完整近场处理，不能把这里的整体功率条件直接当作任意一点的边界实现方案。
+  \frac{E_{\rm i}^2}{2\eta_0}
+
+  =\frac{E_{\rm r}^2}{2\eta_0}\cos\theta
+
+  \quad\Rightarrow\quad
+
+  \frac{E_{\rm r}}{E_{\rm i}}=\frac1{\sqrt{\cos\theta}}.
+
+  $$
+
+
+  当 \(\theta=60^\circ\) 时，比值为 \(\sqrt2\)。反射场幅增大不意味着能量增加：斜波的能流只有 \(\cos\theta\) 的比例穿过同一水平表面，幅值平方的增大正好补偿投影。检查：\(\theta\to0\)
+  时比值趋 1；接近掠射时所需场幅发散，提示该理想单级次模型在极端角度的实现限制。局部相干交叉项需结合空间平均或完整近场处理，不能把这里的整体功率条件直接当作任意一点的边界实现方案。
+
 
   适用范围：真实超表面还可能需要近场、非局部耦合或额外衍射通道满足完整边界条件；该幅值关系不证明实际效率为 100%。
 
-  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection, Eq. (3); reflected-beam characterization and conversion-efficiency discussion。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection,
+  Eq. (3); reflected-beam characterization and conversion-efficiency discussion。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。'
 hints:
 - 先分别计算 \((-\hat{\mathbf z})\times\hat{\mathbf y}\) 与 \(\hat{\mathbf k}_{\rm r}\times\hat{\mathbf y}\)。
 - 坡印廷矢量沿各自传播方向；反射波穿过水平表面的功率还需乘 \(\cos\theta\)。
@@ -116,3 +159,19 @@ reference_answer: 入射磁场沿 \(+x\)，反射磁场沿 \(-\cos\theta\,\hat x
 assets:
 - id: phase-gradient
   path: electromagnetism/phase-gradient.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:71d97ba5cf9f63bee2c35ab8890c5909b0decf2f9736ebb3ecc97e4bb928efe6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:71d97ba5cf9f63bee2c35ab8890c5909b0decf2f9736ebb3ecc97e4bb928efe6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:71d97ba5cf9f63bee2c35ab8890c5909b0decf2f9736ebb3ecc97e4bb928efe6

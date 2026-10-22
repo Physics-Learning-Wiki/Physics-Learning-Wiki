@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000534
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.bound-charge
+type: single_choice
+choice_order: shuffle
+stem: 均匀极化球 $\boldsymbol P=P\boldsymbol e_z$ 的表面束缚密度为？
+solution: 球面法向随极角变化，P 与法向点积给密度．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $P\cos\theta$
+- id: B
+  content: $P$
+- id: C
+  content: $0$
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．球面法向随极角变化，P 与法向点积给密度．
+  incorrect: 请先重新核对模型条件．球面法向随极角变化，P 与法向点积给密度．
+  choices:
+    A: 球面法向随极角变化，P 与法向点积给密度．
+    B: 只有法向与 P 一致的位置才等于 P．
+    C: 体密度零不代表表面密度零．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:91ab0bd6d2bde1f060eb0559c8e9d03134e0d7279933a0f39f26fc2839811b1c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:91ab0bd6d2bde1f060eb0559c8e9d03134e0d7279933a0f39f26fc2839811b1c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:91ab0bd6d2bde1f060eb0559c8e9d03134e0d7279933a0f39f26fc2839811b1c

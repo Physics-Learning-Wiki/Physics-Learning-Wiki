@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000535
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.polarization
+type: single_choice
+choice_order: shuffle
+stem: 均匀极化球内的附加场为？
+solution: 球几何给退极化因子 1/3．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $-\boldsymbol P/\varepsilon_0$
+- id: B
+  content: $+\boldsymbol P/(3\varepsilon_0)$
+- id: C
+  content: $-\boldsymbol P/(3\varepsilon_0)$
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．球几何给退极化因子 1/3．
+  incorrect: 请先重新核对模型条件．球几何给退极化因子 1/3．
+  choices:
+    A: 这是法向极化大板内部的几何结果．
+    B: 退极化场与极化方向相反．
+    C: 球几何给退极化因子 1/3．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:94d2c7bc815104bebf003c98aaf2e24734ae04c6e995bcd017af003a5493ab86
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:94d2c7bc815104bebf003c98aaf2e24734ae04c6e995bcd017af003a5493ab86
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:94d2c7bc815104bebf003c98aaf2e24734ae04c6e995bcd017af003a5493ab86

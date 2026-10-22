@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000408
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,41 +10,57 @@ concepts:
 - electrostatics.floating-conductor
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  传感器论文比较了不同间隙下邻近单元的串扰，并把局部场约束作为设计目标。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+stem: '传感器论文比较了不同间隙下邻近单元的串扰，并把局部场约束作为设计目标。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
 
   用图示最小模型描述串扰：驱动节点电势为 $V_s>0$，通过互电容 $C_m>0$ 耦合到一个净电荷为零的浮置邻近节点。该节点另通过 $C_g>0$ 耦合到地，电势为 $V_v$。电容均为线性常数，无泄漏。
 
+
   哪些判断正确？
+
 
   ![教学模型示意：左侧驱动节点 V_s 经 C_m 连接右侧浮置节点 V_v；该节点经 C_g 接地。右节点总电荷 Q_v=0。](asset:crosstalk-circuit)
 
-  图为原创教学示意，非按比例绘制。左侧驱动节点 V_s 经 C_m 连接右侧浮置节点 V_v；该节点经 C_g 接地。右节点总电荷 Q_v=0。
-solution: |-
-  邻近节点的电荷约束为
+
+  图为原创教学示意，非按比例绘制。左侧驱动节点 V_s 经 C_m 连接右侧浮置节点 V_v；该节点经 C_g 接地。右节点总电荷 Q_v=0。'
+solution: '邻近节点的电荷约束为
+
   $C_m(V_v-V_s)+C_gV_v=0$，所以
 
+
   $$
+
   \frac{V_v}{V_s}=\frac{C_m}{C_m+C_g}.
+
   $$
+
 
   对 $C_m$ 求导为 $C_g/(C_m+C_g)^2>0$；对 $C_g$ 求导为 $-C_m/(C_m+C_g)^2<0$。因此减小互耦、增大对地电容都会降低这一电势串扰比例。同时放大两电容不改变比例。
 
+
   检查：$C_m\to0$ 时串扰消失；$C_g\to0$ 时浮置节点跟随驱动电势。接地改变节点约束，但不意味着互电容不存在。
+
 
   选项辨析：
 
+
   互耦电容减小会降低给定分式，符合局部场约束的目标。
+
 
   较大的对地电容在本模型中使节点更接近地电势。
 
+
   接地只固定节点电势，几何互电容和可能流向地的感应电荷仍可存在。
+
 
   共同尺度因子在分子和分母中抵消。
 
+
   适用范围：此电势比不是论文定义的压力串扰率，不能直接代入论文百分比作器件预测。
 
-  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Results, Fig. 2d–e and crosstalk discussion; Methods, Crosstalk simulations。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces
+  applications，Results, Fig. 2d–e and crosstalk discussion; Methods, Crosstalk simulations。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。'
 hints:
 - 写出邻近节点两侧电容电荷的和，并令其为零。
 - 比较的是 V_v/V_s，不是单个电容的大小。
@@ -86,3 +102,19 @@ answer:
 assets:
 - id: crosstalk-circuit
   path: electromagnetism/crosstalk-circuit.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:74adf31455767312e180109de84ebae74f3eb0a8d9a372aa64c5abd8f000b72f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:74adf31455767312e180109de84ebae74f3eb0a8d9a372aa64c5abd8f000b72f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:74adf31455767312e180109de84ebae74f3eb0a8d9a372aa64c5abd8f000b72f

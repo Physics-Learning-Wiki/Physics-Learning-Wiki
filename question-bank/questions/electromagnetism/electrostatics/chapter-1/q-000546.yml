@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000546
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.cavity-field
+type: free_response
+choice_order: fixed
+stem: '**偏心空腔与零通量**
+
+
+  均匀体密度 $\rho$ 的绝缘球中挖去完全内含的球形空腔，腔心相对原球心位移为 $\boldsymbol a$．求腔内场，并解释为什么任意腔内闭合面通量为零却不要求场为零．若材料改为静电平衡导体，应重新检查哪些条件？'
+solution: '1. 割补为完整 $+\rho$ 大球与 $-\rho$ 小球．对腔内点，$\boldsymbol r=\boldsymbol a+\boldsymbol r''$．
+
+  2. 两内部场叠加得 $\boldsymbol E=\rho(\boldsymbol r-\boldsymbol r'')/(3\varepsilon_0)=\rho\boldsymbol a/(3\varepsilon_0)$，为匀强场．
+
+  3. 腔内无电荷，匀强场的流入流出通量抵消．零通量仅是整体约束．
+
+  4. 改为导体时原先的固定均匀体电荷模型不成立，源会重排；无源封闭导体空腔在静电平衡时零场，不能沿用绝缘球割补结果．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 割补为完整 $+\rho$ 大球与 $-\rho$ 小球．对腔内点，$\boldsymbol r=\boldsymbol a+\boldsymbol r''$．
+
+  2. 两内部场叠加得 $\boldsymbol E=\rho(\boldsymbol r-\boldsymbol r'')/(3\varepsilon_0)=\rho\boldsymbol a/(3\varepsilon_0)$，为匀强场．
+
+  3. 腔内无电荷，匀强场的流入流出通量抵消．零通量仅是整体约束．
+
+  4. 改为导体时原先的固定均匀体电荷模型不成立，源会重排；无源封闭导体空腔在静电平衡时零场，不能沿用绝缘球割补结果．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-1.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5f0c76a33036ff0c1e786e257e9b5c96a0143331096cd6a3305d54f782b750f0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5f0c76a33036ff0c1e786e257e9b5c96a0143331096cd6a3305d54f782b750f0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5f0c76a33036ff0c1e786e257e9b5c96a0143331096cd6a3305d54f782b750f0

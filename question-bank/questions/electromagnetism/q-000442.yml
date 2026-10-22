@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000442
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.maxwell-waves
@@ -11,47 +11,67 @@ concepts:
 - waves.poynting-vector
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  宽带吸收研究使用有损阻抗网格和金属背板构成吸收体。为辨认耗散的作用，本题把网格、间隔层和背板都改成严格无损的教学极限。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+stem: '宽带吸收研究使用有损阻抗网格和金属背板构成吸收体。为辨认耗散的作用，本题把网格、间隔层和背板都改成严格无损的教学极限。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+
 
   一束单频平面波从空气正入射。前表面网格的面导纳为 \(Y_{\rm s}=jB\)，其中 \(B\) 为实数；间隔层无损，背板为理想完美导体。系统处于周期稳态，没有外部有源元件，也没有其他传播散射通道。
 
+
   在 \(e^{j\omega t}\) 约定下，网格单位面积的平均耗散功率为
 
+
   $$
+
   \overline p_{\rm s}=\tfrac12\operatorname{Re}(Y_{\rm s})|E_t|^2.
+
   $$
+
 
   以下结论哪些正确？
 
+
   ![教学模型示意：入射波照射平面网格，后方间隔层终止于完美导体背板；空气中存在入射与反射，背板后无透射。此题额外规定所有组成部分无损。](asset:absorber-sheet)
 
-  图为原创教学示意，非按比例绘制。入射波照射平面网格，后方间隔层终止于完美导体背板；空气中存在入射与反射，背板后无透射。此题额外规定所有组成部分无损。
-solution: |-
-  因为 \(\operatorname{Re}(Y_{\rm s})=0\)，网格不耗散平均功率；间隔层和理想导体也无损。周期稳态下储能经过一周期回到原值，平均储能增长率为零。因此平均吸收率为零。
+
+  图为原创教学示意，非按比例绘制。入射波照射平面网格，后方间隔层终止于完美导体背板；空气中存在入射与反射，背板后无透射。此题额外规定所有组成部分无损。'
+solution: '因为 \(\operatorname{Re}(Y_{\rm s})=0\)，网格不耗散平均功率；间隔层和理想导体也无损。周期稳态下储能经过一周期回到原值，平均储能增长率为零。因此平均吸收率为零。
+
 
   背板使透射率为零，又无其他传播通道，能量守恒给出
 
+
   $$
+
   \mathcal R+\mathcal A+\mathcal T=1
+
   \quad\Rightarrow\quad \mathcal R=1,\ |r|=1.
+
   $$
+
 
   无平均吸收不表示场或瞬时储能为零。电场与磁场可以形成驻波，并在一个周期内交换能量。
 
+
   选项辨析：
+
 
   “平均吸收率为零”正确，所有部分无损且不存在平均能量积累。
 
+
   “反射系数模为 1”正确，零吸收、零透射和无其他传播通道要求全部功率反射。
+
 
   “任意时刻场能都为零”错误，无损电容、电感或驻波区域仍可暂时储能。
 
+
   “零透射意味着全吸收”错误，还必须计算反射；本题全部功率通过反射离开。
+
 
   适用范围：这是明确的无损极限，不是论文实际有损样品；也不排除结构内很大的局部场或储能。
 
-  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption using dispersion engineering, Fig. 1; grid conductance and reactive spacer discussion。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。
+
+  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption
+  using dispersion engineering, Fig. 1; grid conductance and reactive spacer discussion。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。'
 hints:
 - 先从给定公式判断网格有没有平均耗散。
 - 周期稳态的平均储能变化为零，再使用全部传播通道的功率守恒。
@@ -92,3 +112,19 @@ answer:
 assets:
 - id: absorber-sheet
   path: electromagnetism/absorber-sheet.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ae62fdb92e89a865b33b583890c7d8dea016ab7b6be69949c59df0fcca2c0698
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ae62fdb92e89a865b33b583890c7d8dea016ab7b6be69949c59df0fcca2c0698
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ae62fdb92e89a865b33b583890c7d8dea016ab7b6be69949c59df0fcca2c0698

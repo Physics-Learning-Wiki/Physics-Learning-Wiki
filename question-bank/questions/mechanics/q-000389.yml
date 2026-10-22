@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000389
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -11,26 +11,32 @@ concepts:
 - newton.system-boundary
 type: true_false
 choice_order: fixed
-stem: |-
-  动力学超材料设计可以把输入脉冲的能量集中到指定区域。判断这一现象时，需要区分全结构和目标区域。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
+stem: '动力学超材料设计可以把输入脉冲的能量集中到指定区域。判断这一现象时，需要区分全结构和目标区域。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
 
-  考虑由 N 个刚体单元和保守弹性连接构成的封闭模型，$L=T(\dot q)-U(q)$ 不显含时间，质量矩阵恒定。一次边界脉冲已经结束；此后没有外力作功、没有阻尼。全系统机械能为 $E=T+U$。选定其中几个单元为区域 R，它们的动能和为 $K_R$；区域 R 仍与其他单元通过弹性连接作用。
 
-  判断正误：“在脉冲结束后，只要 $K_R$ 在某段时间增加，就能断定全系统的机械能 E 不守恒。”
+  考虑由 N 个刚体单元和保守弹性连接构成的封闭模型，$L=T(\dot q)-U(q)$ 不显含时间，质量矩阵恒定。一次边界脉冲已经结束；此后没有外力作功、没有阻尼。全系统机械能为 $E=T+U$。选定其中几个单元为区域 R，它们的动能和为
+  $K_R$；区域 R 仍与其他单元通过弹性连接作用。
+
+
+  判断正误：“在脉冲结束后，只要 $K_R$ 在某段时间增加，就能断定全系统的机械能 E 不守恒。”'
 hints:
 - 守恒量是全系统的 T+U，而题目观察的是局部的一部分动能。
 - 目标区域边界上的连接力可以作功。
 feedback:
   correct: 区分全系统守恒与局部区域动能增长，理解动力学能量聚集的边界。，并保留了题设的适用条件。
   incorrect: 守恒量是全系统的 T+U，而题目观察的是局部的一部分动能。
-solution: |-
-  该判断错误。拉格朗日方程与时间不显含条件给出 $dE/dt=0$，全系统动能与弹性势能之和恒定。区域 R 不是隔绝的机械子系统，边界连接力可对它作功；同时区域附近的弹性储能也可转为单元动能。因此 $K_R$ 增长可以由其他位置的能量减少或势能转化来补偿。仅观察局部动能上升，不能推出全系统产生了新的能量。
+solution: '该判断错误。拉格朗日方程与时间不显含条件给出 $dE/dt=0$，全系统动能与弹性势能之和恒定。区域 R 不是隔绝的机械子系统，边界连接力可对它作功；同时区域附近的弹性储能也可转为单元动能。因此 $K_R$ 增长可以由其他位置的能量减少或势能转化来补偿。仅观察局部动能上升，不能推出全系统产生了新的能量。
 
-  **检查与物理含义：** 由 $\dot E=\dot q^T(M\ddot q+\nabla U)=0$ 可直接验证全局守恒。若某时刻 $K_R$ 增加 $\Delta K_R>0$，其余动能和全部势能的总变化就必须为 $-\Delta K_R$。
+
+  **检查与物理含义：** 由 $\dot E=\dot q^T(M\ddot q+\nabla U)=0$ 可直接验证全局守恒。若某时刻 $K_R$ 增加 $\Delta K_R>0$，其余动能和全部势能的总变化就必须为 $-\Delta
+  K_R$。
+
 
   **适用范围：** 真实样品存在阻尼和驱动边界；本题以无耗散模型说明能量聚集本身与守恒不冲突，不声称实验能量损失为零。
 
-  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript energy focusing objective and Mechanical model; publisher abstract and Supplement §2；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。
+
+  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript energy focusing objective
+  and Mechanical model; publisher abstract and Supplement §2；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -46,3 +52,19 @@ authors:
 license: CC-BY-SA-4.0
 answer:
   value: false
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a33e535f7ddae7161d6c0e1544c52e68698b556e354d35e4221ef6d1c4723db7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a33e535f7ddae7161d6c0e1544c52e68698b556e354d35e4221ef6d1c4723db7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a33e535f7ddae7161d6c0e1544c52e68698b556e354d35e4221ef6d1c4723db7

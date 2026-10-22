@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000422
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.magnetostatics
@@ -10,33 +10,45 @@ concepts:
 - magnetostatics.magnetic-gradient
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  双永磁源控制系统希望在工作区降低场梯度，同时利用磁力矩驱动器件。这使“磁场强”与“平移磁力强”成为不同设计指标。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+stem: '双永磁源控制系统希望在工作区降低场梯度，同时利用磁力矩驱动器件。这使“磁场强”与“平移磁力强”成为不同设计指标。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+
 
   在一小块区域内，把外场近似为严格均匀且非零的 $\mathbf B$。器件约化为固定大小的永久磁偶极矩 $\mathbf m$，姿态可转动。采用
+
   $\boldsymbol\tau=\mathbf m\times\mathbf B$、
+
   $\mathbf F=\nabla(\mathbf m\cdot\mathbf B)$ 和
+
   $U=-\mathbf m\cdot\mathbf B$；求空间梯度时固定器件姿态。
 
-  哪些判断正确？
-solution: |-
-  匀强场没有空间梯度，因此点偶极的合平移力为零。但磁矩与磁场不平行时，叉乘通常不为零，仍能产生力矩。势能为 $-mB\cos\theta$，平行时最小，反平行时最大。
+
+  哪些判断正确？'
+solution: '匀强场没有空间梯度，因此点偶极的合平移力为零。但磁矩与磁场不平行时，叉乘通常不为零，仍能产生力矩。势能为 $-mB\cos\theta$，平行时最小，反平行时最大。
+
 
   检查：两种共线姿态的力矩都为零，但势能曲率符号不同；“零力矩”并不自动表示稳定。此模型中降低梯度不妨碍利用非零磁场驱动转动。
 
+
   选项辨析：
+
 
   在固定磁矩姿态下，均匀外场的空间梯度为零。
 
+
   力矩由方向叉乘决定，不要求空间梯度。
+
 
   反平行给出 +mB，是势能最大值；平行才给出 −mB。
 
+
   平行附近的势能增量约为 mBθ²/2，为正。
+
 
   适用范围：合平移力为零只指本模型的磁力，不排除流体耦合把转动转化为推进。
 
-  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous environments，Introduction, torque-driven versus force-driven modes; field-gradient discussion around Fig. 6。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。
+
+  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous
+  environments，Introduction, torque-driven versus force-driven modes; field-gradient discussion around Fig. 6。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。'
 hints:
 - 先区分空间梯度与姿态变化。
 - 检查平行和反平行两种零力矩姿态的势能。
@@ -75,3 +87,19 @@ answer:
   - A
   - B
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:702fa861db0375373cede1324d5fb54bcb7039bafc0ac0addfd9ace87dccf116
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:702fa861db0375373cede1324d5fb54bcb7039bafc0ac0addfd9ace87dccf116
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:702fa861db0375373cede1324d5fb54bcb7039bafc0ac0addfd9ace87dccf116

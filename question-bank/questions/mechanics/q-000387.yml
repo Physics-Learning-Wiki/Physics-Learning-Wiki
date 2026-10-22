@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000387
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -11,16 +11,21 @@ concepts:
 - newton.action-reaction
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  刚体单元超材料用柔性连接势能生成运动方程；一个一致的保守连接模型应同时满足内部受力关系和能量曲率的对称性。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
+stem: '刚体单元超材料用柔性连接势能生成运动方程；一个一致的保守连接模型应同时满足内部受力关系和能量曲率的对称性。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
 
-  取相邻两单元的简化平面自由度 $u_1,u_2$（沿 x 的位移）和 $\theta_1,\theta_2$（小转角）。连接势能为 $U=\frac12k(u_2-u_1)^2+\frac12\kappa(\theta_2-\theta_1)^2$，$k,\kappa>0$。定义 $F_i=-\partial U/\partial u_i$、$\tau_i=-\partial U/\partial\theta_i$。令 $z=(u_1,u_2,\theta_1,\theta_2)^T$，刚度矩阵定义为 $K_{ij}=\partial^2U/(\partial z_i\partial z_j)$。
+
+  取相邻两单元的简化平面自由度 $u_1,u_2$（沿 x 的位移）和 $\theta_1,\theta_2$（小转角）。连接势能为 $U=\frac12k(u_2-u_1)^2+\frac12\kappa(\theta_2-\theta_1)^2$，$k,\kappa>0$。定义
+  $F_i=-\partial U/\partial u_i$、$\tau_i=-\partial U/\partial\theta_i$。令 $z=(u_1,u_2,\theta_1,\theta_2)^T$，刚度矩阵定义为 $K_{ij}=\partial^2U/(\partial
+  z_i\partial z_j)$。
+
 
   ![两个刚体单元由柔性连接相连，分别标出同向的位移 u₁、u₂ 与同向小转角 θ₁、θ₂；连接仅由题设相对位移和相对转角势能表示。](asset:m038)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  以下哪些陈述成立？选择所有成立的陈述。
+
+  以下哪些陈述成立？选择所有成立的陈述。'
 hints:
 - 对每个坐标分别求偏导，注意相对差中的正负号。
 - 先检查势能只依赖差值，再看二阶导数矩阵。
@@ -32,14 +37,18 @@ feedback:
     B: 连接只依赖相对位移，因此均匀平移不改变它的形变能。
     C: 这里的刚度是同一光滑势能的 Hessian，混合二阶偏导相等。
     D: 两端恢复力矩方向相反，趋于缩小相对转角。
-solution: |-
-  求导得 $F_1=k(u_2-u_1)$、$F_2=-k(u_2-u_1)$，所以内部平移力相反。给两个 u 同加一个常数，差值不变，势能不变，体现均匀平移不拉伸连接。刚度矩阵分成 $k\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 和 $\kappa\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 两块，对称性也可由光滑势能的混合二阶偏导交换得到。转动力矩为 $\tau_1=\kappa(\theta_2-\theta_1)$、$\tau_2=-\kappa(\theta_2-\theta_1)$，故两者同样相反，而不是相同方向。
+solution: '求导得 $F_1=k(u_2-u_1)$、$F_2=-k(u_2-u_1)$，所以内部平移力相反。给两个 u 同加一个常数，差值不变，势能不变，体现均匀平移不拉伸连接。刚度矩阵分成 $k\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$
+  和 $\kappa\begin{pmatrix}1&-1\\-1&1\end{pmatrix}$ 两块，对称性也可由光滑势能的混合二阶偏导交换得到。转动力矩为 $\tau_1=\kappa(\theta_2-\theta_1)$、$\tau_2=-\kappa(\theta_2-\theta_1)$，故两者同样相反，而不是相同方向。
+
 
   **检查与物理含义：** 各平移刚度块的行和为零，因此均匀平移向量是零模；同理均匀转角不产生相对转动储能。正 k、κ 使势能非负。
 
+
   **适用范围：** 真实几何连接可耦合平移与转动，甚至包含大转角非线性；本题的分块形式不是整个实验结构的完整刚度矩阵。
 
-  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript Mechanical model, elastic ligament energies and Lagrangian equations; publisher Supplement §1–2；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。
+
+  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript Mechanical model, elastic
+  ligament energies and Lagrangian equations; publisher Supplement §1–2；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。'
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -70,3 +79,19 @@ answer:
 assets:
 - id: m038
   path: mechanics/m038.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:21390948cf562f591792a056da0bce82cbb7ebac5ddbbdd89081642479fd15d9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:21390948cf562f591792a056da0bce82cbb7ebac5ddbbdd89081642479fd15d9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:21390948cf562f591792a056da0bce82cbb7ebac5ddbbdd89081642479fd15d9

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000468
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.transforms
@@ -9,23 +9,30 @@ concepts:
 - math.laplace-method
 type: single_choice
 choice_order: shuffle
-stem: |-
-  La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+stem: 'La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
 
-  将研究的恒定温度边界改为一个明确的教学时序：边界值在 $0\leq t<t_0$ 为零，在 $t\geq t_0$ 为常数 $f_0$，其中 $t_0>0$。在单边变换 $F(s)=\int_0^\infty e^{-st}f(t)dt$、$s>0$ 下，应给变换后边值问题输入哪一边界值？
-solution: |-
-  只有 $t\geq t_0$ 的积分有贡献，因此
+
+  将研究的恒定温度边界改为一个明确的教学时序：边界值在 $0\leq t<t_0$ 为零，在 $t\geq t_0$ 为常数 $f_0$，其中 $t_0>0$。在单边变换 $F(s)=\int_0^\infty e^{-st}f(t)dt$、$s>0$
+  下，应给变换后边值问题输入哪一边界值？'
+solution: '只有 $t\geq t_0$ 的积分有贡献，因此
+
 
   $$
+
   F(s)=f_0\int_{t_0}^\infty e^{-st}dt
+
   =\frac{f_0}{s}e^{-st_0}.
+
   $$
+
 
   时间延迟对应衰减因子 $e^{-st_0}$，原来的阶跃变换仍含 $1/s$。检查：$t_0\to0$ 时还原论文常值边界的 $f_0/s$；对于实正 $s$，更晚的信号在变换积分中的权重更小。
 
+
   研究对应：Section 2, Eq. (5b) and its following derivation of constant boundary transform。教学范围：不求变换后的空间解，不声称论文实际采用了延迟边界。
 
-  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。
+
+  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -43,7 +50,8 @@ feedback:
     D: 从 $t_0$ 到无穷的积分直接给出该式。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P204 的 Section 2, Eq. (5b) and its following derivation of constant boundary transform 构造。原创加入启动延迟，以同一积分定义推导边界时序对变换的作用。 数值来源：not_applicable；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P204 的 Section 2, Eq. (5b) and its following derivation of constant boundary transform 构造。原创加入启动延迟，以同一积分定义推导边界时序对变换的作用。
+    数值来源：not_applicable；不复制论文表述或图件。
   source: https://doi.org/10.1007/s10915-026-03222-x
   ai_assisted: true
 authors:
@@ -61,3 +69,19 @@ choices:
   content: $f_0e^{-st_0}/s$
 answer:
   choice: D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31213b544523d8e98bfbb16ad927d263f1e975ce179f9f1b3f90091ca1cf38b8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31213b544523d8e98bfbb16ad927d263f1e975ce179f9f1b3f90091ca1cf38b8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31213b544523d8e98bfbb16ad927d263f1e975ce179f9f1b3f90091ca1cf38b8

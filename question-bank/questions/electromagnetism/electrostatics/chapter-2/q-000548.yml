@@ -1,0 +1,85 @@
+schema_version: 3
+id: q-000548
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.multipoles
+type: free_response
+choice_order: fixed
+stem: '**偶极子的完整场与误差**
+
+
+  两点电荷 $\pm q$ 位于 $z=\pm a$．从精确电势展开得到偶极远场，再求球坐标和坐标无关的场．用正轴精确解估计 $z=10a$ 处领先项的误差．'
+solution: '1. $\varphi=kq(1/|\boldsymbol r-a\boldsymbol e_z|-1/|\boldsymbol r+a\boldsymbol e_z|)$，$p=2qa$，远处得 $\varphi\simeq
+  kp\cos\theta/r^2$．
+
+  2. 负梯度给 $E_r=2kp\cos\theta/r^3$、$E_\theta=kp\sin\theta/r^3$，合成 $\boldsymbol E=k[3(\boldsymbol p\cdot\boldsymbol n)\boldsymbol
+  n-\boldsymbol p]/r^3$．
+
+  3. 正轴精确式为 $2kpz^{-3}(1-a^2/z^2)^{-2}$．相对领先项的首个修正约 $2a^2/z^2$，在 $10a$ 处约百分之二．
+
+  4. 评分核对：说明远场条件、角向尺度因子、特殊方向与误差的适用含义．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. $\varphi=kq(1/|\boldsymbol r-a\boldsymbol e_z|-1/|\boldsymbol r+a\boldsymbol e_z|)$，$p=2qa$，远处得 $\varphi\simeq
+  kp\cos\theta/r^2$．
+
+  2. 负梯度给 $E_r=2kp\cos\theta/r^3$、$E_\theta=kp\sin\theta/r^3$，合成 $\boldsymbol E=k[3(\boldsymbol p\cdot\boldsymbol n)\boldsymbol
+  n-\boldsymbol p]/r^3$．
+
+  3. 正轴精确式为 $2kpz^{-3}(1-a^2/z^2)^{-2}$．相对领先项的首个修正约 $2a^2/z^2$，在 $10a$ 处约百分之二．
+
+  4. 评分核对：说明远场条件、角向尺度因子、特殊方向与误差的适用含义．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a128a2a493e67fe9e5babe4ce0b715369eade2f0c412764915b76ba775546620
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a128a2a493e67fe9e5babe4ce0b715369eade2f0c412764915b76ba775546620
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a128a2a493e67fe9e5babe4ce0b715369eade2f0c412764915b76ba775546620

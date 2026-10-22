@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000525
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy
+type: single_choice
+choice_order: shuffle
+stem: 场能积分推导中的边界项何时可以去掉？
+solution: 有限区域或无限分布须重新检查，不能自动删除．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 在具体边界或衰减条件使其消失时
+- id: B
+  content: 任何区域都可以
+- id: C
+  content: 只要没有导体就可以
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．有限区域或无限分布须重新检查，不能自动删除．
+  incorrect: 请先重新核对模型条件．有限区域或无限分布须重新检查，不能自动删除．
+  choices:
+    A: 有限区域或无限分布须重新检查，不能自动删除．
+    B: 分部积分总会产生边界项．
+    C: 即使没有导体，有限外边界也可能贡献．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b5231060f4883a73c3a7ad06d50c00b011b9ddea36dd72f487aa4a3ecbf48fb8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b5231060f4883a73c3a7ad06d50c00b011b9ddea36dd72f487aa4a3ecbf48fb8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b5231060f4883a73c3a7ad06d50c00b011b9ddea36dd72f487aa4a3ecbf48fb8

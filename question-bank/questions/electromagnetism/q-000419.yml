@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000419
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,45 +10,67 @@ concepts:
 - electrostatics.model-validity
 type: free_response
 choice_order: fixed
-stem: |-
-  接触主导压力传感器通过增大有效接触区域，使接触电容成为总响应的主要部分。这个“主导”条件可以用简单分区模型检验。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+stem: '接触主导压力传感器通过增大有效接触区域，使接触电容成为总响应的主要部分。这个“主导”条件可以用简单分区模型检验。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+
 
   图中总面积为 A，接触面积占比为 $0<f<1$。两层介质的等效电厚度记为
+
   $k=d_1/\varepsilon_{r1}+d_2/\varepsilon_{r2}>0$。接触区只有这两层；其余面积在相同两层上方还串联一个厚度 g 的空气隙。上方两个区域均由同一理想导体保持电势 V，底电极接地。忽略区域之间的边缘耦合。
 
+
   请建立总电容，并确定采用“只保留接触区”的近似何时可靠。用
-  $\eta=C_{\mathrm{noncontact}}/C_{\mathrm{contact}}$ 定义所忽略项相对于保留项的比例，要求 $\eta<5\%$。先写两个分区的电容并联式，再解出 f 的条件；最后代入示例 $k=3.0\,\mathrm{nm}$、$g=1.0\,\mathrm{\mu m}$，解释接触比例的阈值。
+
+  $\eta=C_{\mathrm{noncontact}}/C_{\mathrm{contact}}$ 定义所忽略项相对于保留项的比例，要求 $\eta<5\%$。先写两个分区的电容并联式，再解出 f 的条件；最后代入示例 $k=3.0\,\mathrm{nm}$、$g=1.0\,\mathrm{\mu
+  m}$，解释接触比例的阈值。
+
 
   ![教学模型示意：左侧 fA 区域上电极直接接触双层介质，右侧 (1−f)A 区域在介质之上留空气隙 g。两个上电极部分都接 V，底电极接 0；介质层参数分别为 d₁、εᵣ₁ 和 d₂、εᵣ₂。](asset:layered-contact)
 
-  图为原创教学示意，非按比例绘制。左侧 fA 区域上电极直接接触双层介质，右侧 (1−f)A 区域在介质之上留空气隙 g。两个上电极部分都接 V，底电极接 0；介质层参数分别为 d₁、εᵣ₁ 和 d₂、εᵣ₂。
-solution: |-
-  接触区与非接触区的面电容分别为 $\varepsilon_0/k$ 与 $\varepsilon_0/(k+g)$，两个区域并联，故
+
+  图为原创教学示意，非按比例绘制。左侧 fA 区域上电极直接接触双层介质，右侧 (1−f)A 区域在介质之上留空气隙 g。两个上电极部分都接 V，底电极接 0；介质层参数分别为 d₁、εᵣ₁ 和 d₂、εᵣ₂。'
+solution: '接触区与非接触区的面电容分别为 $\varepsilon_0/k$ 与 $\varepsilon_0/(k+g)$，两个区域并联，故
+
 
   $$
+
   C=A\varepsilon_0\left(\frac f k+\frac{1-f}{k+g}\right).
+
   $$
+
 
   所定义的忽略项比例为
 
+
   $$
+
   \eta=\frac{(1-f)k}{f(k+g)}.
+
   $$
+
 
   全部分母为正，因此 $\eta<0.05$ 等价于
+
   $k(1-f)<0.05f(k+g)$，即
 
+
   $$
+
   f>\frac{k}{1.05k+0.05g}.
+
   $$
+
 
   代入同一单位的 $k=3.0$ nm、$g=1000$ nm，得 $f>3/53.15\simeq0.0564$。接触面积超过约 5.64% 时，所忽略非接触支路小于保留接触支路的 5%。
 
+
   检查：$f\to1$ 时忽略项趋于零；$g\to0$ 时两区面电容相同，只有 f 接近 1 才能忽略余区。此处误差分母是保留项，而非精确总值；若以总值归一化，误差为 $\eta/(1+\eta)$。
+
 
   适用范围：阈值仅属于该二分区模型；不是论文实验阈值，也不预测接触面积随压力的本构关系。
 
-  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Eq. (7), Fig. 1e and Fig. 2a–b; paragraphs describing contact-dominated capacitance。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。
+
+  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Eq. (7), Fig. 1e and Fig.
+  2a–b; paragraphs describing contact-dominated capacitance。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。'
 hints:
 - 同一区域中的空气和介质串联，不同面积区域并联。
 - 把忽略项除以保留项，再解对正数 f 的不等式。
@@ -87,3 +109,19 @@ reference_answer: 应给出 $C=A\varepsilon_0[f/k+(1-f)/(k+g)]$、$\eta=(1-f)k/[
 assets:
 - id: layered-contact
   path: electromagnetism/layered-contact.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46cfb4a7ff4ff64d521e254aed7813c8dfc42e0df2727a55aaa1393dd651a63c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46cfb4a7ff4ff64d521e254aed7813c8dfc42e0df2727a55aaa1393dd651a63c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46cfb4a7ff4ff64d521e254aed7813c8dfc42e0df2727a55aaa1393dd651a63c

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000482
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,28 +9,35 @@ concepts:
 - math.bessel-function
 type: true_false
 choice_order: fixed
-stem: |-
-  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+stem: 'Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
 
   论文中的贝塞尔束由有限装置生成。为检查一种理想化的限制，设无限横截面上的无量纲幅度为 $u(r)=J_0(kr)$，$k>0$，截至半径 $R$ 的积分强度为
 
+
   $$P(R)=2\pi\int_0^R rJ_0(kr)^2\,dr.$$
+
 
   给定大正数 $s$ 下 $J_0(s)=\sqrt{2/(\pi s)}\cos(s-\pi/4)+O(s^{-3/2})$，且 $\cos^2$ 在长区间上的平均值为 $1/2$。
 
-  判断：由于 $J_0(kr)$ 振幅随 $r$ 衰减，$P(R)$ 在 $R\to\infty$ 时趋于有限常数。
-solution: |-
-  判断为错误。平方并乘上径向积分权重后，大半径的主项为
+
+  判断：由于 $J_0(kr)$ 振幅随 $r$ 衰减，$P(R)$ 在 $R\to\infty$ 时趋于有限常数。'
+solution: '判断为错误。平方并乘上径向积分权重后，大半径的主项为
+
 
   $$rJ_0(kr)^2=\frac{2}{\pi k}\cos^2(kr-\pi/4)+O(r^{-1}).$$
 
+
   虽然点上的振幅衰减，面积权重 $r$ 恰好抵消平方振幅中的 $1/r$。对主项积分并乘以 $2\pi$，得 $P(R)=2R/k+o(R)$，因此总积分发散。误差的积分至多是对数阶，不会抵消线性增长。
+
 
   检查：近轴处 $J_0$ 有限，不是发散来源；发散来自无限延伸的环形尾部。该结论解释为什么理想无限贝塞尔剖面不能直接代表有限功率装置，未否定有限孔径实验在有限距离内的束形稳定性。
 
+
   研究对应：Methods, Sub-THz Bessel beam generation and reception; Results, finite non-diffracting region in Fig. 6 discussion。教学范围：这里的积分强度是理想标量模型量，不等同于论文完整天线功率标定。
 
-  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -53,3 +60,19 @@ authors:
 license: CC-BY-SA-4.0
 answer:
   value: false
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:90b855c5a4744309b9804dc34e5442b248d1ff6e15e62511e7a3a7e954b3d951
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:90b855c5a4744309b9804dc34e5442b248d1ff6e15e62511e7a3a7e954b3d951
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:90b855c5a4744309b9804dc34e5442b248d1ff6e15e62511e7a3a7e954b3d951

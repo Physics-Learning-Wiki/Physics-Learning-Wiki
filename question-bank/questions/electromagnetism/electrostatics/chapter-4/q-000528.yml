@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000528
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy-force
+type: single_choice
+choice_order: shuffle
+stem: 计算平行板一板受力时，直接用本板电荷乘板间总场会怎样？
+solution: 总场含本板自场，受力只用另一板的场．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 多算一倍
+- id: B
+  content: 恰好正确
+- id: C
+  content: 少算一半
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．总场含本板自场，受力只用另一板的场．
+  incorrect: 请先重新核对模型条件．总场含本板自场，受力只用另一板的场．
+  choices:
+    A: 总场含本板自场，受力只用另一板的场．
+    B: 不能把自场作为自身受力来源．
+    C: 相反，额外计入自场使结果过大．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:84dd6602df61028726cbedd7e6c67eaaec043e363f493d2a46c72793cd57790b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:84dd6602df61028726cbedd7e6c67eaaec043e363f493d2a46c72793cd57790b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:84dd6602df61028726cbedd7e6c67eaaec043e363f493d2a46c72793cd57790b

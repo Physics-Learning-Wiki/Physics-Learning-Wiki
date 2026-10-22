@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000549
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.multipoles
+type: free_response
+choice_order: fixed
+stem: '**方框四极子与原点变换**
+
+
+  在 $(a,a,0)$、$(-a,-a,0)$ 放 $+q$，另两角放 $-q$．证明单极与偶极为零，计算无迹四极矩并写领先电势．讨论平移原点后领先阶是否改变．'
+solution: '1. 四角电荷和为零，位置加权电荷和也为零，所以 $Q=0$、$\boldsymbol p=0$．
+
+  2. 按 $\mathcal Q_{ij}=\sum q(3x_ix_j-r^2\delta_{ij})$ 逐项求和，对角与含 z 项抵消，$\mathcal Q_{xy}=\mathcal Q_{yx}=12qa^2$．
+
+  3. 电势为 $12kqa^2xy/r^5=6kqa^2\sin^2\theta\sin2\phi/r^3$ 的领先项；场按四次反比衰减．
+
+  4. 当总电荷与偶极都为零，平移不改变四极矩；完整物理势也不变．评分需包括矩约定、角因子及原点条件，不能只给衰减阶次．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 四角电荷和为零，位置加权电荷和也为零，所以 $Q=0$、$\boldsymbol p=0$．
+
+  2. 按 $\mathcal Q_{ij}=\sum q(3x_ix_j-r^2\delta_{ij})$ 逐项求和，对角与含 z 项抵消，$\mathcal Q_{xy}=\mathcal Q_{yx}=12qa^2$．
+
+  3. 电势为 $12kqa^2xy/r^5=6kqa^2\sin^2\theta\sin2\phi/r^3$ 的领先项；场按四次反比衰减．
+
+  4. 当总电荷与偶极都为零，平移不改变四极矩；完整物理势也不变．评分需包括矩约定、角因子及原点条件，不能只给衰减阶次．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b74ecf3a068c053226e259fd36592ee3e4b1e3c458ce51b4a7c0f4595dfe74ec
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b74ecf3a068c053226e259fd36592ee3e4b1e3c458ce51b4a7c0f4595dfe74ec
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b74ecf3a068c053226e259fd36592ee3e4b1e3c458ce51b4a7c0f4595dfe74ec

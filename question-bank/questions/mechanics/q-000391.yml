@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000391
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -10,30 +10,38 @@ concepts:
 - newton.net-force
 type: numeric
 choice_order: fixed
-stem: |-
-  水凝胶弹射的快速形变在毫秒量级完成。把已报告的质量、速度和形变时长用于平均力估算时，需要另行明确接触持续时间的教学近似。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+stem: '水凝胶弹射的快速形变在毫秒量级完成。把已报告的质量、速度和形变时长用于平均力估算时，需要另行明确接触持续时间的教学近似。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
 
-  论文代表性载荷质量为 $m=203\,\mathrm{mg}$，由含阻力的飞行模型反推起飞速度约 $v=16.6\,\mathrm{m/s}$，快速形变时长约 $1.6\,\mathrm{ms}$。本题额外假定载荷从静止起，在接触时段 $T=1.60\,\mathrm{ms}$ 内竖直加速到该速度，且此段可忽略空气阻力。取 $g=9.80\,\mathrm{m/s^2}$，弹射器对载荷的向上接触力记为 $F_c(t)$。定义 $\overline F_c=T^{-1}\int_0^T F_c(t)\,dt$。
+
+  论文代表性载荷质量为 $m=203\,\mathrm{mg}$，由含阻力的飞行模型反推起飞速度约 $v=16.6\,\mathrm{m/s}$，快速形变时长约 $1.6\,\mathrm{ms}$。本题额外假定载荷从静止起，在接触时段 $T=1.60\,\mathrm{ms}$
+  内竖直加速到该速度，且此段可忽略空气阻力。取 $g=9.80\,\mathrm{m/s^2}$，弹射器对载荷的向上接触力记为 $F_c(t)$。定义 $\overline F_c=T^{-1}\int_0^T F_c(t)\,dt$。
+
 
   ![载荷位于弹射器上方，向上接触力 F_c 与向下重力 mg 标于载荷，旁边注明竖直正方向；基底和驱动器只用于辨认施力对象。](asset:m042)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  在这些假设下，平均向上接触力是多少？以 $\mathrm{N}$ 为单位，保留三位有效数字。
+
+  在这些假设下，平均向上接触力是多少？以 $\mathrm{N}$ 为单位，保留三位有效数字。'
 hints:
 - 先将 mg（毫克）与 ms（毫秒）换成 SI 单位。
 - 动量变化对应合力冲量；接触力还要补偿向下重力。
 feedback:
   correct: 用冲量而非峰值加速度估计平均接触力，并保留重力修正。，并保留了题设的适用条件。
   incorrect: 先将 mg（毫克）与 ms（毫秒）换成 SI 单位。
-solution: |-
-  换算质量与时间：$m=203\times10^{-6}\,\mathrm{kg}$，$T=1.60\times10^{-3}\,\mathrm{s}$。竖直动量定理给出 $\int_0^T[F_c(t)-mg]dt=mv$，因此 $\overline F_c=mv/T+mg$。代入得 $mv/T=2.106125\,\mathrm{N}$，$mg=0.0019894\,\mathrm{N}$，相加为 $2.1081144\,\mathrm{N}$，三位有效数字为 $2.11\,\mathrm{N}$。这是一段时间内的平均接触力，不能当作峰值。
+solution: '换算质量与时间：$m=203\times10^{-6}\,\mathrm{kg}$，$T=1.60\times10^{-3}\,\mathrm{s}$。竖直动量定理给出 $\int_0^T[F_c(t)-mg]dt=mv$，因此
+  $\overline F_c=mv/T+mg$。代入得 $mv/T=2.106125\,\mathrm{N}$，$mg=0.0019894\,\mathrm{N}$，相加为 $2.1081144\,\mathrm{N}$，三位有效数字为 $2.11\,\mathrm{N}$。这是一段时间内的平均接触力，不能当作峰值。
+
 
   **检查与物理含义：** 合力平均值乘 T 恰为 $mv$，重力冲量约占总接触冲量的 $0.094\%$；保留它后接触力略大于平均合力，符号正确。容差只对应三位有效数字舍入，不表示模型精度。
 
+
   **适用范围：** 接触时段或速度反演若变化，平均力估计也会变化；本数值不是对论文峰值力传感器记录的替代。
 
-  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: Fig. 1b,c, representative projectile mass; Eq. (1) inferred speed; 1.6 ms deformation time；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。
+
+  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: Fig. 1b,c, representative projectile
+  mass; Eq. (1) inferred speed; 1.6 ms deformation time；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -60,3 +68,19 @@ answer:
 assets:
 - id: m042
   path: mechanics/m042.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d9ad249a8fd5d651f9f7d18be9cce9f6cfc29c7fe3a0a16907bebaf7c9edc391
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d9ad249a8fd5d651f9f7d18be9cce9f6cfc29c7fe3a0a16907bebaf7c9edc391
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d9ad249a8fd5d651f9f7d18be9cce9f6cfc29c7fe3a0a16907bebaf7c9edc391

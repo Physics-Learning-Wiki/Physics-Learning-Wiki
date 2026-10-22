@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000440
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.maxwell-waves
@@ -9,43 +9,62 @@ concepts:
 - waves.impedance-matching
 type: single_choice
 choice_order: shuffle
-stem: |-
-  宽带电磁吸收研究将阻抗网格、薄间隔层和金属背板组合，通过调节输入导纳来减少反射。本题只判断某一个频率的匹配条件。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+stem: '宽带电磁吸收研究将阻抗网格、薄间隔层和金属背板组合，通过调节输入导纳来减少反射。本题只判断某一个频率的匹配条件。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+
 
   一束平面电磁波从空气正入射到带理想金属背板的平面结构。令结构在前表面呈现的输入阻抗为 \(Z_{\rm in}\)，空气波阻抗为实数 \(\eta_0=377\ \Omega\)。同一空气区域内的电场反射系数为
 
+
   $$
+
   r=\frac{Z_{\rm in}-\eta_0}{Z_{\rm in}+\eta_0}.
+
   $$
+
 
   哪一个输入阻抗能在该频率使 \(r=0\)？
 
+
   ![教学模型示意：平面阻抗网格在前表面，后方依次为厚度 \(d\) 的间隔层与理想金属背板；入射波和反射波均在前方空气中，\(Z_{\rm in}\) 表示从空气看入整个结构的输入阻抗。](asset:absorber-sheet)
 
-  图为原创教学示意，非按比例绘制。平面阻抗网格在前表面，后方依次为厚度 \(d\) 的间隔层与理想金属背板；入射波和反射波均在前方空气中，\(Z_{\rm in}\) 表示从空气看入整个结构的输入阻抗。
-solution: |-
-  要使反射系数为零，分子必须为零、分母不能为零：
+
+  图为原创教学示意，非按比例绘制。平面阻抗网格在前表面，后方依次为厚度 \(d\) 的间隔层与理想金属背板；入射波和反射波均在前方空气中，\(Z_{\rm in}\) 表示从空气看入整个结构的输入阻抗。'
+solution: '要使反射系数为零，分子必须为零、分母不能为零：
+
 
   $$
+
   Z_{\rm in}-\eta_0=0
+
   \quad\Rightarrow\quad Z_{\rm in}=377\ \Omega.
+
   $$
 
-  因此输入阻抗要同时满足实部等于空气波阻抗、虚部为零。金属背板本身造成零透射，但前表面的完整输入阻抗可由网格和间隔层共同调节。检查：短路 \(Z_{\rm in}=0\) 给出 \(r=-1\)，并不是零反射；\(Z_{\rm in}=2\eta_0\) 给出 \(r=1/3\)。
+
+  因此输入阻抗要同时满足实部等于空气波阻抗、虚部为零。金属背板本身造成零透射，但前表面的完整输入阻抗可由网格和间隔层共同调节。检查：短路 \(Z_{\rm in}=0\) 给出 \(r=-1\)，并不是零反射；\(Z_{\rm in}=2\eta_0\)
+  给出 \(r=1/3\)。
+
 
   选项辨析：
 
+
   “\(377\ \Omega\)”正确，分子为零而分母为 \(754\ \Omega\)。
+
 
   “零阻抗”给出电场反射系数 \(-1\)，对应全反射的短路边界。
 
+
   “\(754\ \Omega\)”给出反射系数 \(1/3\)，电阻实部过大而不匹配。
+
 
   “纯虚阻抗 \(j377\ \Omega\)”没有提供所需实部；其反射系数模为 1。
 
+
   适用范围：单频匹配不证明宽带匹配，也不单独确定网格各元件值或论文装置的吸收带宽。
 
-  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption using dispersion engineering, Fig. 1 and Eq. (1)。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。
+
+  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption
+  using dispersion engineering, Fig. 1 and Eq. (1)。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。'
 hints:
 - 零反射要求分子为零，不是令分母为零。
 - 匹配的是整个结构在入射面呈现的输入阻抗。
@@ -84,3 +103,19 @@ answer:
 assets:
 - id: absorber-sheet
   path: electromagnetism/absorber-sheet.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4b3f340ab9b089e0c1cef5ce5b01e2c57453a698c8922b5119f8b7eb3497a29d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4b3f340ab9b089e0c1cef5ce5b01e2c57453a698c8922b5119f8b7eb3497a29d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4b3f340ab9b089e0c1cef5ce5b01e2c57453a698c8922b5119f8b7eb3497a29d

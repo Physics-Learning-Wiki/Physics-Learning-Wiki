@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000536
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.displacement
+type: single_choice
+choice_order: shuffle
+stem: 电位移的正确宏观定义是？
+solution: 该整理使 D 的散度等于自由电荷密度．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: D = P
+- id: B
+  content: D = ε₀ E + P
+- id: C
+  content: D = ε₀ E − P
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．该整理使 D 的散度等于自由电荷密度．
+  incorrect: 请先重新核对模型条件．该整理使 D 的散度等于自由电荷密度．
+  choices:
+    A: 遗漏真空电场贡献．
+    B: 该整理使 D 的散度等于自由电荷密度．
+    C: 符号与束缚密度 −∇·P 的移项不符．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eda742714aa8c85e7681833402e132aaa4e410942d86da3bd421361efd96a116
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eda742714aa8c85e7681833402e132aaa4e410942d86da3bd421361efd96a116
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eda742714aa8c85e7681833402e132aaa4e410942d86da3bd421361efd96a116

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000463
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.transforms
@@ -9,24 +9,31 @@ concepts:
 - math.fourier-method
 type: numeric
 choice_order: fixed
-stem: |-
-  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+stem: 'Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
 
   论文所用单个光栅的载波周期为 $p=120\,\mathrm{nm}$，载波项写为 $e^{iKx}$，且一个周期的相位变化为 $2\pi$。
 
-  求 $K$，用 $\mathrm{\mu m}^{-1}$ 表示，保留两位小数。输入数值并使用单位标签 `um^-1`；允许绝对误差 $0.01$。这里“弧度”视为无量纲。
-solution: |-
-  一个周期满足 $Kp=2\pi$。由于 $120\,\mathrm{nm}=0.120\,\mathrm{\mu m}$，
+
+  求 $K$，用 $\mathrm{\mu m}^{-1}$ 表示，保留两位小数。输入数值并使用单位标签 `um^-1`；允许绝对误差 $0.01$。这里“弧度”视为无量纲。'
+solution: '一个周期满足 $Kp=2\pi$。由于 $120\,\mathrm{nm}=0.120\,\mathrm{\mu m}$，
+
 
   $$
+
   K=\frac{2\pi}{0.120\,\mathrm{\mu m}}\approx52.36\,\mathrm{\mu m}^{-1}.
+
   $$
 
-  检查：$Kp\approx6.2832$，即一周相位。$1/p\approx8.33\,\mathrm{\mu m}^{-1}$ 是空间周期频率，不是采用 $e^{iKx}$ 约定的空间角频率。数值答案不允许靠单位标签自动进行 nm 与 μm 的换算。
+
+  检查：$Kp\approx6.2832$，即一周相位。$1/p\approx8.33\,\mathrm{\mu m}^{-1}$ 是空间周期频率，不是采用 $e^{iKx}$ 约定的空间角频率。数值答案不允许靠单位标签自动进行 nm 与 μm
+  的换算。
+
 
   研究对应：Published article, Materials and methods, Eq. (1) and grating-parameter paragraph (p. 153401-3)。教学范围：不从这一周期推断完整艾里图样或透射效率。
 
-  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -57,3 +64,19 @@ answer:
     canonical: um^-1
     accepted:
     - um^-1
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:006546645dafc86a195d4c7514de5a3cd017e23b7bd16f85a0fb9e27550ed90f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:006546645dafc86a195d4c7514de5a3cd017e23b7bd16f85a0fb9e27550ed90f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:006546645dafc86a195d4c7514de5a3cd017e23b7bd16f85a0fb9e27550ed90f

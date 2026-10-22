@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000405
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,35 +10,51 @@ concepts:
 - electrostatics.capacitance
 type: numeric
 choice_order: fixed
-stem: |-
-  石墨滑片驱动器利用左右电极重叠面积随位置的变化产生横向力。论文给出了中性滑片的简化电容模型，并与场计算比较。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+stem: '石墨滑片驱动器利用左右电极重叠面积随位置的变化产生横向力。论文给出了中性滑片的简化电容模型，并与场计算比较。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
 
-  图中导体滑片宽度为 $w$（垂直纸面），长度为 $L$。两下电极之间的水平间隔为 $d$，与滑片的垂直空气间隙为 $h$。右侧重叠长度为 $x$，左侧为 $S-x$，其中 $S=L-d$；向右运动使 $x$ 增加。左电极接地，右电极由理想电源保持电势 $V$。滑片净电荷固定为零。
+
+  图中导体滑片宽度为 $w$（垂直纸面），长度为 $L$。两下电极之间的水平间隔为 $d$，与滑片的垂直空气间隙为 $h$。右侧重叠长度为 $x$，左侧为 $S-x$，其中 $S=L-d$；向右运动使 $x$ 增加。左电极接地，右电极由理想电源保持电势
+  $V$。滑片净电荷固定为零。
+
 
   忽略边缘场和摩擦，取
-  $C_L=\varepsilon_0 w(S-x)/h$、$C_R=\varepsilon_0 wx/h$，等效电容为两者串联值。采用论文模型中的参数 $L=15\,\mathrm{\mu m}$、$d=2\,\mathrm{\mu m}$、$w=8\,\mathrm{\mu m}$、$h=0.9\,\mathrm{\mu m}$、$x=3\,\mathrm{\mu m}$、$V=200\,\mathrm V$；取 $\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+
+  $C_L=\varepsilon_0 w(S-x)/h$、$C_R=\varepsilon_0 wx/h$，等效电容为两者串联值。采用论文模型中的参数 $L=15\,\mathrm{\mu m}$、$d=2\,\mathrm{\mu m}$、$w=8\,\mathrm{\mu
+  m}$、$h=0.9\,\mathrm{\mu m}$、$x=3\,\mathrm{\mu m}$、$V=200\,\mathrm V$；取 $\varepsilon_0=8.854\times10^{-12}\,\mathrm{F/m}$。
+
 
   已知恒压微小移动中电源功为 $V\,dQ_{\mathrm{src}}$。求电场沿 $+x$ 方向的力，**以 uN（微牛）为单位输入带符号的数值及单位**，保留三位小数。
 
+
   ![教学模型示意：上方滑片跨过两个下电极；两侧重叠分别为 a=L−d−x 和 x，中间水平间隔 d，垂直间距 h，纸面外宽度 w。右电极为 V，左电极为 0；正 x 方向向右。](asset:floating-slider)
 
-  图为原创教学示意，非按比例绘制。上方滑片跨过两个下电极；两侧重叠分别为 a=L−d−x 和 x，中间水平间隔 d，垂直间距 h，纸面外宽度 w。右电极为 V，左电极为 0；正 x 方向向右。
-solution: |-
-  记 $\kappa=\varepsilon_0w/h$。由串联关系
+
+  图为原创教学示意，非按比例绘制。上方滑片跨过两个下电极；两侧重叠分别为 a=L−d−x 和 x，中间水平间隔 d，垂直间距 h，纸面外宽度 w。右电极为 V，左电极为 0；正 x 方向向右。'
+solution: '记 $\kappa=\varepsilon_0w/h$。由串联关系
+
   $C_{\mathrm{eq}}=\kappa x(S-x)/S$。固定电压时，电源输出 $V^2dC_{\mathrm{eq}}$，场能增加其中一半，因此
+
   $F_xdx=\tfrac12 V^2dC_{\mathrm{eq}}$，得到
 
+
   $$
+
   F_x=\frac{\varepsilon_0wV^2}{2h}\left(1-\frac{2x}{S}\right).
+
   $$
+
 
   代入 $S=13\,\mathrm{\mu m}$ 得 $F_x=8.47562\times10^{-7}\,\mathrm N=+0.848\,\mathrm{uN}$。正号表示向右，趋近重叠对称的位置。
 
+
   检查：$\varepsilon_0wV^2/h$ 的单位为力；$x=S/2$ 时力为零；交换左右重叠会改变力的符号。该符号也与电容增大方向一致。
+
 
   适用范围：结果是论文参数下的教学近似，不是新的实测力，也不包含电荷注入后的偏移。
 
-  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Fig. 1a and Eq. (1); parameter paragraph accompanying Fig. 1d。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。
+
+  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Fig. 1a and Eq. (1); parameter paragraph accompanying
+  Fig. 1d。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。'
 hints:
 - 先求串联等效电容，再在固定 V 的条件下计入电源功。
 - 固定电压时，机械功是电源输出减去场能增量。
@@ -71,3 +87,19 @@ answer:
 assets:
 - id: floating-slider
   path: electromagnetism/floating-slider.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46f5ce6fd279ffbda929933a24a0638d16f99607a7cc316ed932dbe59cad01ce
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46f5ce6fd279ffbda929933a24a0638d16f99607a7cc316ed932dbe59cad01ce
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:46f5ce6fd279ffbda929933a24a0638d16f99607a7cc316ed932dbe59cad01ce

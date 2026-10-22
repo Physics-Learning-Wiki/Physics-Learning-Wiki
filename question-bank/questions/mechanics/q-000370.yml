@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000370
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,16 +10,20 @@ concepts:
 - dynamics.angular-momentum
 type: single_choice
 choice_order: shuffle
-stem: |-
-  软体滚动研究指出，在无外力矩的自由空间里，身体的局部滚转可以伴随整体反向转动。用一个可解的内部转子模型分析这一守恒机制。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
+stem: '软体滚动研究指出，在无外力矩的自由空间里，身体的局部滚转可以伴随整体反向转动。用一个可解的内部转子模型分析这一守恒机制。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
 
-  两同轴刚体在自由空间中转动：外壳对共同轴的转动惯量为 $I>0$，内部转子为 $J>0$。外壳相对惯性参考系的角度是 $\theta$，转子相对外壳的角度是 $\phi$，二者正方向相同。忽略势能，$L=\frac12I\dot\theta^2+\frac12J(\dot\theta+\dot\phi)^2$。内部电机可对 $\phi$ 作功，但系统所受关于共同轴的外力矩为零，且初始总角动量为零。
+
+  两同轴刚体在自由空间中转动：外壳对共同轴的转动惯量为 $I>0$，内部转子为 $J>0$。外壳相对惯性参考系的角度是 $\theta$，转子相对外壳的角度是 $\phi$，二者正方向相同。忽略势能，$L=\frac12I\dot\theta^2+\frac12J(\dot\theta+\dot\phi)^2$。内部电机可对
+  $\phi$ 作功，但系统所受关于共同轴的外力矩为零，且初始总角动量为零。
+
 
   ![两同轴刚体的俯视示意：外壳角度 θ 相对固定参考方向，转子相对外壳角度 φ，正方向均为逆时针。](asset:m021)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  下列哪个表达式是守恒量，并能给出 $\dot\theta$ 与 $\dot\phi$ 的关系？
+
+  下列哪个表达式是守恒量，并能给出 $\dot\theta$ 与 $\dot\phi$ 的关系？'
 hints:
 - 先写出两个刚体相对于同一惯性参考系的角速度。
 - 对 θ 的角速度求偏导，使用零外力矩。
@@ -31,14 +35,18 @@ feedback:
     B: 同向定义的转子绝对角速度是两角速度之和，交叉项的符号不能改成负。
     C: 共轭动量就是两刚体相对惯性系的总角动量。
     D: 外壳自身会受到内部电机的力矩，因此其角动量并不单独守恒。
-solution: |-
-  惯性系中转子的角速度是 $\dot\theta+\dot\phi$。整体转动坐标 $\theta$ 不显含于拉格朗日量，且其广义外力为零，因此 $p_\theta=\partial L/\partial\dot\theta=I\dot\theta+J(\dot\theta+\dot\phi)$ 守恒。初值为零，故 $(I+J)\dot\theta+J\dot\phi=0$，即 $\dot\theta=-J\dot\phi/(I+J)$。内部电机对两部分施加的力矩相反，改变相对运动但不改变总角动量。
+solution: '惯性系中转子的角速度是 $\dot\theta+\dot\phi$。整体转动坐标 $\theta$ 不显含于拉格朗日量，且其广义外力为零，因此 $p_\theta=\partial L/\partial\dot\theta=I\dot\theta+J(\dot\theta+\dot\phi)$
+  守恒。初值为零，故 $(I+J)\dot\theta+J\dot\phi=0$，即 $\dot\theta=-J\dot\phi/(I+J)$。内部电机对两部分施加的力矩相反，改变相对运动但不改变总角动量。
+
 
   **检查与物理含义：** $p_\theta$ 的量纲为角动量。若 $J\to0$，相对转动对外壳的影响趋零；若 $I\to\infty$，外壳角速度也趋零。反向符号保证两部分角动量相抵。
 
+
   **适用范围：** 同轴转子是原创教学类比；论文中的弯曲软体不是由两个理想刚体组成。地面接触后的外力矩也不包含在此模型中。
 
-  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript pp. 3–4, Fig. 3c,d; free-space roll and whole-body counterrotation；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。
+
+  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript pp. 3–4, Fig. 3c,d; free-space
+  roll and whole-body counterrotation；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -66,3 +74,19 @@ answer:
 assets:
 - id: m021
   path: mechanics/m021.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7022b7699e4eb76366f844ceed89c0eb4a31672e225ddf5d125327d42d1c4b29
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7022b7699e4eb76366f844ceed89c0eb4a31672e225ddf5d125327d42d1c4b29
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7022b7699e4eb76366f844ceed89c0eb4a31672e225ddf5d125327d42d1c4b29

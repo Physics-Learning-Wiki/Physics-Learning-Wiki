@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000529
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dipole-energy
+type: single_choice
+choice_order: shuffle
+stem: 永久偶极在均匀外电场中一般有什么机械作用？
+solution: 两端力反向等大，可构成力偶．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 总有向强场的净力
+- id: B
+  content: 既无合力也必无力矩
+- id: C
+  content: 可有力矩，合力为零
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．两端力反向等大，可构成力偶．
+  incorrect: 请先重新核对模型条件．两端力反向等大，可构成力偶．
+  choices:
+    A: 均匀场没有强弱位置差．
+    B: 不平行时仍有 p×E 力矩．
+    C: 两端力反向等大，可构成力偶．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e54516b11359f5ba28100863867ff55bcf37f4b88bb8d1c8712df7c3d1477763
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e54516b11359f5ba28100863867ff55bcf37f4b88bb8d1c8712df7c3d1477763
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e54516b11359f5ba28100863867ff55bcf37f4b88bb8d1c8712df7c3d1477763

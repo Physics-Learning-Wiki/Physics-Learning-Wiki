@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000555
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dipole-energy
+type: free_response
+choice_order: fixed
+stem: '**永久与感生偶极**
+
+
+  给定缓变静电外场 E，推导固定永久偶极的能量、力矩和净力．再设线性感生偶极 p=αE，从内部代价与耦合能极小化推导有效能与净力，解释二分之一因子．'
+solution: '1. 两端势差展开给 $W=-\boldsymbol p\cdot\boldsymbol E$，角度求导给 $\boldsymbol\tau=\boldsymbol p\times\boldsymbol E$；固定 p 对位置求导得
+  $\boldsymbol F=\nabla(\boldsymbol p\cdot\boldsymbol E)$．
+
+  2. 感生偶极总有效函数为 $p^2/(2\alpha)-\boldsymbol p\cdot\boldsymbol E$，极小化给 $\boldsymbol p=\alpha\boldsymbol E$，代回为 $-\alpha E^2/2$．
+
+  3. 感生净力为 $\alpha\nabla E^2/2$．直接将 p 代进永久偶极能量漏掉建立响应的代价，会多一倍．
+
+  4. 评分需写明给定外源、缓变、小粒子、线性与取向条件，不将有效能当作完整电源总能．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 1200
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+  min_chars: 30
+  max_chars: 8000
+  rows: 10
+  placeholder: 请写出区域、条件、关键方程、推导与检验．
+reference_answer: '1. 两端势差展开给 $W=-\boldsymbol p\cdot\boldsymbol E$，角度求导给 $\boldsymbol\tau=\boldsymbol p\times\boldsymbol E$；固定
+  p 对位置求导得 $\boldsymbol F=\nabla(\boldsymbol p\cdot\boldsymbol E)$．
+
+  2. 感生偶极总有效函数为 $p^2/(2\alpha)-\boldsymbol p\cdot\boldsymbol E$，极小化给 $\boldsymbol p=\alpha\boldsymbol E$，代回为 $-\alpha E^2/2$．
+
+  3. 感生净力为 $\alpha\nabla E^2/2$．直接将 p 代进永久偶极能量漏掉建立响应的代价，会多一倍．
+
+  4. 评分需写明给定外源、缓变、小粒子、线性与取向条件，不将有效能当作完整电源总能．'
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 条件或主方程错误，尚未形成有效推导
+    points: 0
+  - id: partial
+    label: 模型与主方程正确，推导或结果检验不完整
+    points: 0.5
+  - id: complete
+    label: 条件、推导、结果与独立检验均完整
+    points: 1
+feedback:
+  correct: 请按题目各项要求逐步核验．
+  incorrect: 先定位条件、方程、运算或检验中的缺口，再订正．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31ac7b97ac68b5d07564967aa54df9e625bb40b0e5d9e808235d031bcf956114
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31ac7b97ac68b5d07564967aa54df9e625bb40b0e5d9e808235d031bcf956114
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:31ac7b97ac68b5d07564967aa54df9e625bb40b0e5d9e808235d031bcf956114

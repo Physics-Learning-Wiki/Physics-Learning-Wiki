@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000499
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,30 +9,40 @@ concepts:
 - math.green-function
 type: single_choice
 choice_order: shuffle
-stem: |-
-  La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+stem: 'La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+
 
   论文在变换后用格林函数构造扩散边值问题。本题把空间简化为半直线 $x>0$，考虑
 
+
   $$\left(s-D\frac{d^2}{dx^2}\right)G(x,a)=\delta(x-a),\quad G(0,a)=0,\quad G(x,a)\to0\ (x\to\infty),$$
+
 
   其中 $s,D,a>0$，$\alpha=\sqrt{s/D}$。已知全直线自由核 $g(x-a)=e^{-\alpha|x-a|}/(2D\alpha)$ 满足同样的单位点源方程。可以在物理区域外的镜像点 $-a$ 放置同形核。
 
+
   ![半直线边界、内部点源和外部镜像点](asset:math-halfline)
 
-  图中文字说明：蓝色区域为 $x>0$，边界在 $0$，单位源在 $a$，镜像点 $-a$ 不属于物理区域。哪个表达式同时满足所给边界和源方程？
-solution: |-
-  在边界 $x=0$，自由源和镜像源的距离都是 $a$，所以必须相减以使两项抵消：
+
+  图中文字说明：蓝色区域为 $x>0$，边界在 $0$，单位源在 $a$，镜像点 $-a$ 不属于物理区域。哪个表达式同时满足所给边界和源方程？'
+solution: '在边界 $x=0$，自由源和镜像源的距离都是 $a$，所以必须相减以使两项抵消：
+
 
   $$G(x,a)=\frac{e^{-\alpha|x-a|}-e^{-\alpha(x+a)}}{2D\alpha},\qquad x>0.$$
 
-  第二项的奇点在区域外，因此在 $x>0$ 内满足齐次方程；第一项保留位于 $a$ 的单位点源。两项在正无穷都衰减。进一步检查，源点处函数连续，而导数跳跃为 $G_x(a^+,a)-G_x(a^-,a)=-1/D$；对方程跨源点积分，$-D$ 乘此跳跃恰为一。
+
+  第二项的奇点在区域外，因此在 $x>0$ 内满足齐次方程；第一项保留位于 $a$ 的单位点源。两项在正无穷都衰减。进一步检查，源点处函数连续，而导数跳跃为 $G_x(a^+,a)-G_x(a^-,a)=-1/D$；对方程跨源点积分，$-D$
+  乘此跳跃恰为一。
+
 
   加号会给出非零边界；只保留自由源也不满足边界；整体反号则产生负单位源。该镜像构造只适用于本题的平直一维边界，并非直接求解论文全部多边形几何。
 
-  研究对应：Section 2, Eqs. (5a), (6), (7), free-space modified-Helmholtz Green function and boundary correction。教学范围：一维指数核是本题提供的教学对应，不冒充论文二维 K0 核；不复现 lightning 数值算法。
 
-  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。
+  研究对应：Section 2, Eqs. (5a), (6), (7), free-space modified-Helmholtz Green function and boundary correction。教学范围：一维指数核是本题提供的教学对应，不冒充论文二维
+  K0 核；不复现 lightning 数值算法。
+
+
+  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -50,7 +60,8 @@ feedback:
     D: 虽然边界抵消，但整体反号把源变为负单位源。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P204 的 Section 2, Eqs. (5a), (6), (7), free-space modified-Helmholtz Green function and boundary correction 构造。原创改为一维半直线，提供已知自由核，以镜像项完成同一“源特解加齐次边界修正”结构。 数值来源：not_applicable；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P204 的 Section 2, Eqs. (5a), (6), (7), free-space modified-Helmholtz Green function and boundary correction
+    构造。原创改为一维半直线，提供已知自由核，以镜像项完成同一“源特解加齐次边界修正”结构。 数值来源：not_applicable；不复制论文表述或图件。
   source: https://doi.org/10.1007/s10915-026-03222-x
   ai_assisted: true
 authors:
@@ -71,3 +82,19 @@ answer:
 assets:
 - id: math-halfline
   path: math/math-halfline.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f52e26b502651fcad9b19812cf279598ddefeea6763467664fcfe159f663ffe6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f52e26b502651fcad9b19812cf279598ddefeea6763467664fcfe159f663ffe6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f52e26b502651fcad9b19812cf279598ddefeea6763467664fcfe159f663ffe6

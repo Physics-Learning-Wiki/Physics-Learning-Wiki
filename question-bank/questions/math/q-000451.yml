@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000451
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,26 +9,34 @@ concepts:
 - complex.conformal-map
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+stem: 'Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
 
   复应力势经坐标映射后，求导变量必须区分。教学中取 $z=\omega(\zeta)=2i\zeta$，定义 $F(\zeta)=\phi(\omega(\zeta))$，其中 $\phi$ 解析，撇号分别表示对各自自变量求导。
 
-  选出所有恒成立的关系。答案需选全，采用完全一致评分。
-solution: |-
-  一次求导给出 $F^{\prime}(\zeta)=\phi^{\prime}(z)\omega^{\prime}(\zeta)=2i\phi^{\prime}(z)$。因此
+
+  选出所有恒成立的关系。答案需选全，采用完全一致评分。'
+solution: '一次求导给出 $F^{\prime}(\zeta)=\phi^{\prime}(z)\omega^{\prime}(\zeta)=2i\phi^{\prime}(z)$。因此
+
 
   $$
+
   \phi^{\prime}(z)=\frac{F^{\prime}(\zeta)}{2i}=-\frac{i}{2}F^{\prime}(\zeta).
+
   $$
 
-  因为 $\omega^{\prime\prime}=0$，再次求导得到 $F^{\prime\prime}=(2i)^2\phi^{\prime\prime}=-4\phi^{\prime\prime}$，故 $\phi^{\prime\prime}=-F^{\prime\prime}/4$。取模可得 $|\phi^{\prime}|=|F^{\prime}|/2$。旋转因子不改变模，缩放因子才使梯度模缩小。
+
+  因为 $\omega^{\prime\prime}=0$，再次求导得到 $F^{\prime\prime}=(2i)^2\phi^{\prime\prime}=-4\phi^{\prime\prime}$，故 $\phi^{\prime\prime}=-F^{\prime\prime}/4$。取模可得
+  $|\phi^{\prime}|=|F^{\prime}|/2$。旋转因子不改变模，缩放因子才使梯度模缩小。
+
 
   检查：以 $\phi(z)=z^2$ 代入，则 $F=-4\zeta^2$，两种求导路径均给出 $\phi^{\prime\prime}=2$。
 
+
   研究对应：The concept of conformal mapping, Eqs. (22b), (22c), (23), and affine map (26a)。教学范围：仅检验仿射映射下的链式法则；非线性映射二阶导数另有修正项。
 
-  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -68,3 +76,19 @@ answer:
   - A
   - B
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4fd520d21e0c8a9d3138e59fef25c215cab176956a3e27abca58374cabb50cf1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4fd520d21e0c8a9d3138e59fef25c215cab176956a3e27abca58374cabb50cf1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4fd520d21e0c8a9d3138e59fef25c215cab176956a3e27abca58374cabb50cf1

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000380
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,16 +10,20 @@ concepts:
 - analytical.kinematic-material-response
 type: single_choice
 choice_order: shuffle
-stem: |-
-  跷跷板启发的负泊松比材料利用刚性单元的协调转动，使两个正交尺寸同时改变。论文先用几何投影计算这种响应。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
+stem: '跷跷板启发的负泊松比材料利用刚性单元的协调转动，使两个正交尺寸同时改变。论文先用几何投影计算这种响应。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
 
-  采用论文分析中的尺寸关系：$X(\theta)=2(a\cos\theta+b\sin\theta)$，$Y(\theta)=2(a\sin\theta+b\cos\theta)$，其中 $a,b>0$ 为固定长度，$\theta$ 为协调转动的广义坐标。初态取 $\theta=0$，施加小的正增量 $d\theta$。定义沿 X 方向加载的增量泊松比 $\nu_{XY}=-(dY/Y)/(dX/X)$，各分母按初态取值。
+
+  采用论文分析中的尺寸关系：$X(\theta)=2(a\cos\theta+b\sin\theta)$，$Y(\theta)=2(a\sin\theta+b\cos\theta)$，其中 $a,b>0$ 为固定长度，$\theta$ 为协调转动的广义坐标。初态取
+  $\theta=0$，施加小的正增量 $d\theta$。定义沿 X 方向加载的增量泊松比 $\nu_{XY}=-(dY/Y)/(dX/X)$，各分母按初态取值。
+
 
   ![两段长度向量的原创投影图：a 与水平夹角为 θ，b 与竖直夹角为 θ，其和的水平与竖直投影分别为 X/2、Y/2；这不是实际铰链网络。](asset:m031)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  $\theta=0$ 时的 $\nu_{XY}$ 是哪一个表达式？
+
+  $\theta=0$ 时的 $\nu_{XY}$ 是哪一个表达式？'
 hints:
 - 分别求 X、Y 对 θ 的导数，并代入 θ=0。
 - 泊松比是应变之比，不是尺寸增量或尺寸的单独比值。
@@ -31,14 +35,17 @@ feedback:
     B: 这是交换加载和横向方向后可能出现的比值，未对应题目定义。
     C: 直接取长度比没有完整计算两个相对应变。
     D: 需要分别用各自初始尺寸归一化，再取横向与纵向应变之比。
-solution: |-
-  初态尺寸为 $X_0=2a$、$Y_0=2b$。对几何关系微分，在 $\theta=0$ 得 $dX=2b\,d\theta$、$dY=2a\,d\theta$，因此 $dX/X_0=(b/a)d\theta$，$dY/Y_0=(a/b)d\theta$。代入定义：$\nu_{XY}=-[(a/b)/(b/a)]=-a^2/b^2$。两个尺寸对同一正转角增量都增加，故横向应变与纵向应变同号，泊松比带负号。
+solution: '初态尺寸为 $X_0=2a$、$Y_0=2b$。对几何关系微分，在 $\theta=0$ 得 $dX=2b\,d\theta$、$dY=2a\,d\theta$，因此 $dX/X_0=(b/a)d\theta$，$dY/Y_0=(a/b)d\theta$。代入定义：$\nu_{XY}=-[(a/b)/(b/a)]=-a^2/b^2$。两个尺寸对同一正转角增量都增加，故横向应变与纵向应变同号，泊松比带负号。
+
 
   **检查与物理含义：** 结果无量纲且为负；$a=b$ 时两方向的相对应变相等，得到 $\nu_{XY}=-1$。交换 X、Y 方向后比值互为倒数，符合各向异性几何模型。
 
+
   **适用范围：** 这是机构模型在指定状态与方向的增量泊松比，不是任意有限变形下的常数，也不能直接套用各向同性连续体的泊松比范围。
 
-  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, Eqs. (1)–(3), X/Y geometry and Poisson ratio；[论文 DOI](https://doi.org/10.1093/jom/ufae029)。
+
+  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, Eqs. (1)–(3), X/Y geometry and Poisson ratio；[论文
+  DOI](https://doi.org/10.1093/jom/ufae029)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -66,3 +73,19 @@ answer:
 assets:
 - id: m031
   path: mechanics/m031.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaaff78f650d80e2a719980b1eaa2996478e29446c9cfd391d5f4d786ad3aa59
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaaff78f650d80e2a719980b1eaa2996478e29446c9cfd391d5f4d786ad3aa59
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaaff78f650d80e2a719980b1eaa2996478e29446c9cfd391d5f4d786ad3aa59

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000423
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.magnetostatics
@@ -10,40 +10,58 @@ concepts:
 - magnetostatics.dipole-field
 type: single_choice
 choice_order: shuffle
-stem: |-
-  双永磁源研究发现，增大磁体间距可扩大近无梯度工作区域，但会减弱中心磁场。下面检查这一权衡的点偶极版本。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+stem: '双永磁源研究发现，增大磁体间距可扩大近无梯度工作区域，但会减弱中心磁场。下面检查这一权衡的点偶极版本。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+
 
   图中两同向轴向磁偶极子位于 $x=\pm a$，每个磁矩为 m。对 $|x|\ll a$，给定轴线上磁场
 
-  $$
-  B(x)=\frac{\mu_0m}{2\pi}\left[(a-x)^{-3}+(a+x)^{-3}\right].
+
   $$
 
-  可用 $(1+u)^{-3}=1-3u+6u^2+O(u^3)$。将“均匀范围”定义为满足 $|B(x)/B(0)-1|<\delta$ 的中心区半宽 r，其中固定的小数 $\delta>0$ 不变。若 a 加倍，m 不变，按二阶近似，B(0) 和 r 分别如何变化？
+  B(x)=\frac{\mu_0m}{2\pi}\left[(a-x)^{-3}+(a+x)^{-3}\right].
+
+  $$
+
+
+  可用 $(1+u)^{-3}=1-3u+6u^2+O(u^3)$。将“均匀范围”定义为满足 $|B(x)/B(0)-1|<\delta$ 的中心区半宽 r，其中固定的小数 $\delta>0$ 不变。若 a 加倍，m 不变，按二阶近似，B(0)
+  和 r 分别如何变化？
+
 
   ![教学模型示意：两个同向磁源在 x=±a，观察点沿中间 x 轴移动；r 是题干定义的中心区半宽，不是磁体尺寸。](asset:symmetric-dipoles)
 
-  图为原创教学示意，非按比例绘制。两个同向磁源在 x=±a，观察点沿中间 x 轴移动；r 是题干定义的中心区半宽，不是磁体尺寸。
-solution: |-
-  两侧奇次项相消，得到
+
+  图为原创教学示意，非按比例绘制。两个同向磁源在 x=±a，观察点沿中间 x 轴移动；r 是题干定义的中心区半宽，不是磁体尺寸。'
+solution: '两侧奇次项相消，得到
+
   $B(0)=\mu_0m/(\pi a^3)$ 以及
+
   $B(x)/B(0)\simeq1+6(x/a)^2$。因此近似半宽为 $r\simeq a\sqrt{\delta/6}$。
+
 
   a 加倍时，中心场变为原来的 1/8，满足同一相对偏差的半宽变为两倍。检查：r/a 由固定 δ 决定，所以在 δ 很小时展开保持自洽。这里使用相对场偏差，不能与任意绝对梯度阈值混同。
 
+
   选项辨析：
+
 
   中心场按 a⁻³，固定相对误差的半宽按 a 变化。
 
+
   磁偶极场不是按距离的一次方衰减，均匀范围也依赖几何尺度。
+
 
   这把距离增大与距离缩小的变化颠倒了。
 
+
   在固定磁矩时扩大源间距不能保持中心场强不变。
+
 
   适用范围：这里的相对场偏差阈值不同于论文的具体梯度指标，不能把本题 r 当成论文数值。
 
-  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous environments，Results, Figs. 5–6; paragraph stating that larger magnet separation enlarges the gradient-free region at the expense of average field strength。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。
+
+  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous
+  environments，Results, Figs. 5–6; paragraph stating that larger magnet separation enlarges the gradient-free region at the
+  expense of average field strength。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。'
 hints:
 - 先计算中心场，再对 B(x)/B(0) 作无量纲展开。
 - 奇次项因对称性相消，最低变化项是 x²。
@@ -82,3 +100,19 @@ answer:
 assets:
 - id: symmetric-dipoles
   path: electromagnetism/symmetric-dipoles.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:057dc6e3f31a534633782517cd98cf17644535492f509c1ebc4466695b8c93f3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:057dc6e3f31a534633782517cd98cf17644535492f509c1ebc4466695b8c93f3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:057dc6e3f31a534633782517cd98cf17644535492f509c1ebc4466695b8c93f3

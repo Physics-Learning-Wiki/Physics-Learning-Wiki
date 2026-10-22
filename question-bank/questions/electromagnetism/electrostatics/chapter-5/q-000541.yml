@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000541
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.interfaces
+type: single_choice
+choice_order: shuffle
+stem: 介质球相对介电系数 $\varepsilon_r$，真空远处匀强场 $E_0$，球内场为？
+solution: 球面条件与退极化因子共同给出该响应．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $E_0/\varepsilon_r$
+- id: B
+  content: $0$
+- id: C
+  content: $3E_0/(\varepsilon_r+2)$
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．球面条件与退极化因子共同给出该响应．
+  incorrect: 请先重新核对模型条件．球面条件与退极化因子共同给出该响应．
+  choices:
+    A: 不能把大板几何的因子用于球．
+    B: 有限正介电系数的一般绝缘球不等于导体．
+    C: 球面条件与退极化因子共同给出该响应．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e6cea88bc8290a92f7dfc53f44e93c24f312b761956441465105a211b157479c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e6cea88bc8290a92f7dfc53f44e93c24f312b761956441465105a211b157479c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e6cea88bc8290a92f7dfc53f44e93c24f312b761956441465105a211b157479c

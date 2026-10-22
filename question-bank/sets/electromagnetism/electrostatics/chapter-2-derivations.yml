@@ -1,0 +1,17 @@
+schema_version: 1
+id: electromagnetism.electrostatics.chapter-2.derivations
+title: 静电学第 2 章综合推导自评
+description: 与五章静电学正文配套；新增内容待人工审核．
+status: published
+tags:
+- 电磁学
+- 第 2 章
+- 静电学
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000547
+  - q-000548
+  - q-000549
+  order: fixed

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000404
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,49 +10,74 @@ concepts:
 - electrostatics.laplace-boundary
 type: free_response
 choice_order: fixed
-stem: |-
-  纳米间隙压力传感器的研究把边缘电场向外延伸视为环境干扰的入口。下面用一个可解析的边界扰动模型理解电场为何具有空间尺度。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+stem: '纳米间隙压力传感器的研究把边缘电场向外延伸视为环境干扰的入口。下面用一个可解析的边界扰动模型理解电场为何具有空间尺度。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
 
   图中 $z>0$ 是均匀、无自由电荷的介质。外部图案电极在平面 $z=0$ 上产生理想化电势边界
 
+
   $$
+
   \Phi(x,0)=\Phi_0\cos(kx),\qquad k=2\pi/\Lambda>0.
+
   $$
+
 
   忽略 y 方向变化，要求电势在 $z\to\infty$ 时有界。该连续边界电势是一种教学模式，不表示整片金属能同时具有不同电势。
 
-  请推导并解释这个模式的**垂直衰减长度**。可按下列顺序完成同一推导：将 $\Phi=f(z)\cos(kx)$ 代入 $\partial_x^2\Phi+\partial_z^2\Phi=0$；由边界条件选择解；求振幅下降到边界值 $1/e$ 所需的高度，并解释它随横向周期 $\Lambda$ 的变化。
+
+  请推导并解释这个模式的**垂直衰减长度**。可按下列顺序完成同一推导：将 $\Phi=f(z)\cos(kx)$ 代入 $\partial_x^2\Phi+\partial_z^2\Phi=0$；由边界条件选择解；求振幅下降到边界值 $1/e$
+  所需的高度，并解释它随横向周期 $\Lambda$ 的变化。
+
 
   ![教学模型示意：水平边界为 z=0，x 轴向右、z 轴向上。边界电势沿 x 周期变化，周期 Λ；上方是无自由电荷的半空间。正负号仅示意边界电势的符号，不表示电极形状。](asset:fringe-mode)
 
-  图为原创教学示意，非按比例绘制。水平边界为 z=0，x 轴向右、z 轴向上。边界电势沿 x 周期变化，周期 Λ；上方是无自由电荷的半空间。正负号仅示意边界电势的符号，不表示电极形状。
-solution: |-
-  代入拉普拉斯方程得
+
+  图为原创教学示意，非按比例绘制。水平边界为 z=0，x 轴向右、z 轴向上。边界电势沿 x 周期变化，周期 Λ；上方是无自由电荷的半空间。正负号仅示意边界电势的符号，不表示电极形状。'
+solution: '代入拉普拉斯方程得
+
 
   $$
-  -k^2f(z)\cos(kx)+f''(z)\cos(kx)=0,
-  \qquad f''-k^2f=0.
+
+  -k^2f(z)\cos(kx)+f''''(z)\cos(kx)=0,
+
+  \qquad f''''-k^2f=0.
+
   $$
+
 
   一般解是 $f=a e^{kz}+b e^{-kz}$。无穷远有界排除增长项，边界 $f(0)=\Phi_0$ 给出
 
+
   $$
+
   \Phi(x,z)=\Phi_0e^{-kz}\cos(kx).
+
   $$
+
 
   因此衰减长度满足 $e^{-k\ell}=1/e$，即
 
+
   $$
+
   \ell=\frac1k=\frac{\Lambda}{2\pi}.
+
   $$
+
 
   横向变化越细，$k$ 越大，相同模式向远处延伸的尺度越短。电场由负梯度得到：$E_x=k\Phi_0e^{-kz}\sin(kx)$，$E_z=k\Phi_0e^{-kz}\cos(kx)$；它们具有相同的指数尺度。
 
+
   检查：$k$ 的量纲为长度的倒数；将解代回两项二阶导数，大小相等、符号相反。$z=0$ 恢复给定边界。该模型只解释一个空间模式，并未证明真实传感器完全没有干扰。
+
 
   适用范围：横向周期 Λ 不是论文电极间隙 d；本推导不把二者混同，也不定量拟合论文的真实边缘场。
 
-  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Results, working-principle subsection, paragraphs describing fringe fields emerging from electrode edges; Fig. 1e–h。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces
+  applications，Results, working-principle subsection, paragraphs describing fringe fields emerging from electrode edges; Fig.
+  1e–h。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。'
 hints:
 - 先分离出公共的 cos(kx)，得到 f(z) 的常微分方程。
 - 增长指数与无穷远有界条件不相容。
@@ -91,3 +116,19 @@ reference_answer: 应得到 $f''-k^2f=0$、$f=\Phi_0e^{-kz}$，从而 $\ell=1/k=
 assets:
 - id: fringe-mode
   path: electromagnetism/fringe-mode.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a59959370ef1c33e8e44628d0573edc028c8c2f90ac8a45c773791b3bcb20f06
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a59959370ef1c33e8e44628d0573edc028c8c2f90ac8a45c773791b3bcb20f06
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a59959370ef1c33e8e44628d0573edc028c8c2f90ac8a45c773791b3bcb20f06

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000464
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.transforms
@@ -9,32 +9,46 @@ concepts:
 - math.convolution
 type: free_response
 choice_order: fixed
-stem: |-
-  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+stem: 'Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
 
-  论文把高斯模糊宽度写为 $\sigma_c(z)=1.1\,\mathrm{cm}\,(z/19.4\,\mathrm m)$。在 $z=19.4\,\mathrm m$ 的探测平面，本题选一个归一化的一维模拟强度 $I_0(x)$，其中心为零、均方根宽度为教学值 $\sigma_0=0.8\,\mathrm{cm}$：
+
+  论文把高斯模糊宽度写为 $\sigma_c(z)=1.1\,\mathrm{cm}\,(z/19.4\,\mathrm m)$。在 $z=19.4\,\mathrm m$ 的探测平面，本题选一个归一化的一维模拟强度 $I_0(x)$，其中心为零、均方根宽度为教学值
+  $\sigma_0=0.8\,\mathrm{cm}$：
+
 
   $$
+
   \int I_0dx=1,\quad\int xI_0dx=0,\quad\int x^2I_0dx=\sigma_0^2.
+
   $$
 
-  模糊强度为 $I=I_0*g_{\sigma_c}$，其中高斯核归一化、均值为零、方差为 $\sigma_c^2$，全部积分均在实轴上，二阶矩有限。请通过令 $x=v+u$ 展开卷积的二阶矩，求模糊后强度的均方根宽度，说明交叉项为何消失。不要求假设 $I_0$ 是高斯函数。
-solution: |-
-  交换积分先得到 $\int I dx=(\int I_0dv)(\int gdu)=1$。一阶矩为 $\iint(v+u)I_0(v)g(u)dvdu=0$，所以新分布仍以零为中心。
+
+  模糊强度为 $I=I_0*g_{\sigma_c}$，其中高斯核归一化、均值为零、方差为 $\sigma_c^2$，全部积分均在实轴上，二阶矩有限。请通过令 $x=v+u$ 展开卷积的二阶矩，求模糊后强度的均方根宽度，说明交叉项为何消失。不要求假设
+  $I_0$ 是高斯函数。'
+solution: '交换积分先得到 $\int I dx=(\int I_0dv)(\int gdu)=1$。一阶矩为 $\iint(v+u)I_0(v)g(u)dvdu=0$，所以新分布仍以零为中心。
+
 
   二阶矩为
 
-  $$
-  \int x^2I(x)dx=\iint(v^2+2vu+u^2)I_0(v)g(u)dvdu.
+
   $$
 
-  第一项是 $\sigma_0^2$；最后一项是 $\sigma_c^2$；交叉项是 $2(\int vI_0dv)(\int ugdu)=0$。故 $\sigma^2=\sigma_0^2+\sigma_c^2$。代入 $\sigma_c=1.1\,\mathrm{cm}$，得 $\sigma=\sqrt{0.8^2+1.1^2}\,\mathrm{cm}=\sqrt{1.85}\,\mathrm{cm}\approx1.36\,\mathrm{cm}$。
+  \int x^2I(x)dx=\iint(v^2+2vu+u^2)I_0(v)g(u)dvdu.
+
+  $$
+
+
+  第一项是 $\sigma_0^2$；最后一项是 $\sigma_c^2$；交叉项是 $2(\int vI_0dv)(\int ugdu)=0$。故 $\sigma^2=\sigma_0^2+\sigma_c^2$。代入 $\sigma_c=1.1\,\mathrm{cm}$，得
+  $\sigma=\sqrt{0.8^2+1.1^2}\,\mathrm{cm}=\sqrt{1.85}\,\mathrm{cm}\approx1.36\,\mathrm{cm}$。
+
 
   检查：方差单位为长度平方；核宽度趋于零时恢复 $\sigma_0$；合成宽度大于任一单独宽度，但不是两个宽度直接相加。这一矩结论不要求原图样为高斯。
 
+
   研究对应：Published article, Results, Gaussian smearing law σc(z) and its calibration at 19.4 m (p. 153401-3)。教学范围：不把教学输入宽度当作论文实测艾里束宽度；不复现完整二维图样拟合。
 
-  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。'
 difficulty: 3
 cognitive_level: analyze
 style: computational
@@ -72,3 +86,19 @@ grading:
     label: 正确展开积分、消去交叉项、给出带单位宽度，并说明不要求原强度为高斯。
     points: 1
 reference_answer: 卷积仍归一化且均值为零；展开 $(v+u)^2$，交叉项因两个一阶矩为零而消失，故 $\sigma^2=\sigma_0^2+\sigma_c^2=1.85\,\mathrm{cm}^2$，$\sigma\approx1.36\,\mathrm{cm}$。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1691856cbad7114d0616e7bc85a45cd2fb8e326f1eb45a09320a6c3d062dff64
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1691856cbad7114d0616e7bc85a45cd2fb8e326f1eb45a09320a6c3d062dff64
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1691856cbad7114d0616e7bc85a45cd2fb8e326f1eb45a09320a6c3d062dff64

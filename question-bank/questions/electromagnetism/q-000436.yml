@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000436
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.induction
@@ -9,50 +9,75 @@ concepts:
 - induction.faraday-law
 type: numeric
 choice_order: fixed
-stem: |-
-  旋转永磁体刺激研究包含 10 转每秒的磁体模型。这里选择同为 10 Hz 的单周期磁场作为教学条件；局部磁场幅值和观察半径为示例值，并不来自该研究的测量。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+stem: '旋转永磁体刺激研究包含 10 转每秒的磁体模型。这里选择同为 10 Hz 的单周期磁场作为教学条件；局部磁场幅值和观察半径为示例值，并不来自该研究的测量。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+
 
   在半径 \(r=2.00\ \mathrm{cm}\) 的圆形路径及其内部，规定磁场空间均匀且
 
+
   $$
+
   \mathbf B(t)=B_0\cos(2\pi ft)\hat{\mathbf z},\qquad
+
   B_0=10.0\ \mathrm{mT},\quad f=10.0\ \mathrm{Hz}.
+
   $$
+
 
   场与材料分布轴对称，故切向电场 \(E_\varphi\) 沿该圆周不随方位变化。规定从 \(+z\) 方向朝原点看，逆时针为圆周正方向。忽略感应电流对给定磁场的影响。
 
+
   求该圆周上切向感应电场的峰值，以 \(\mathrm{mV/m}\) 作答。
+
 
   ![教学模型示意：圆形观察路径位于 \(xy\) 平面，半径为 \(r\)，\(+z\) 指向读者；圆周正向为从 \(+z\) 看见的逆时针。图中的轴向磁场标记表示其正方向，实际符号随时间变化。](asset:rotating-flux-loop)
 
-  图为原创教学示意，非按比例绘制。圆形观察路径位于 \(xy\) 平面，半径为 \(r\)，\(+z\) 指向读者；圆周正向为从 \(+z\) 看见的逆时针。图中的轴向磁场标记表示其正方向，实际符号随时间变化。
-solution: |-
-  法拉第定律在所定义的正方向下为
+
+  图为原创教学示意，非按比例绘制。圆形观察路径位于 \(xy\) 平面，半径为 \(r\)，\(+z\) 指向读者；圆周正向为从 \(+z\) 看见的逆时针。图中的轴向磁场标记表示其正方向，实际符号随时间变化。'
+solution: '法拉第定律在所定义的正方向下为
+
 
   $$
+
   2\pi r E_\varphi(t)
+
   =-\frac{d}{dt}\left[\pi r^2B_0\cos(2\pi ft)\right].
+
   $$
+
 
   于是
 
+
   $$
+
   E_\varphi(t)=\frac{r}{2}(2\pi f)B_0\sin(2\pi ft),\qquad
+
   E_{\varphi,0}=\pi rfB_0.
+
   $$
+
 
   代入 SI 单位得
 
+
   $$
+
   E_{\varphi,0}=\pi(0.0200)(10.0)(0.0100)
+
   =0.00628319\ \mathrm{V/m}=6.28319\ \mathrm{mV/m}.
+
   $$
+
 
   可答 \(6.28\ \mathrm{mV/m}\)。检查：结果在中心 \(r\to0\) 时趋零；单位 \(\mathrm m\,\mathrm{s}^{-1}\mathrm T=\mathrm{V/m}\)。
 
+
   适用范围：真实磁场和头部边界通常不轴对称；该电场峰值不代表论文中任何组织位置的预测值或刺激阈值。
 
-  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: Computational models, diametric single-magnet Model B; Results and Discussion of rotational-frequency dependence。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。
+
+  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: Computational models, diametric single-magnet
+  Model B; Results and Discussion of rotational-frequency dependence。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。'
 hints:
 - 磁通面积是 \(\pi r^2\)，环路长度是 \(2\pi r\)。
 - 先求环路电动势，再除以圆周长；不要把电动势和电场混为同一量。
@@ -85,3 +110,19 @@ answer:
 assets:
 - id: rotating-flux-loop
   path: electromagnetism/rotating-flux-loop.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051916f360fdb9a704fef2e85ad1a63e6e76777e224022538af84bf62d2414d2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051916f360fdb9a704fef2e85ad1a63e6e76777e224022538af84bf62d2414d2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051916f360fdb9a704fef2e85ad1a63e6e76777e224022538af84bf62d2414d2

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000441
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.maxwell-waves
@@ -10,30 +10,41 @@ concepts:
 - waves.poynting-vector
 type: numeric
 choice_order: fixed
-stem: |-
-  宽带吸收研究在设计实例中使用反射振幅门限 \(\rho_0=0.1\)。本题把这个设计门限换算为理想金属背板结构的吸收率；它不是某个实验频点的实测吸收数据。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+stem: '宽带吸收研究在设计实例中使用反射振幅门限 \(\rho_0=0.1\)。本题把这个设计门限换算为理想金属背板结构的吸收率；它不是某个实验频点的实测吸收数据。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+
 
   设在某一频率，电场反射系数的模恰为 \(|r|=0.100\)。入射波与唯一的反射传播波都在空气中正入射或正反射；理想金属背板使透射功率为零。假设不存在其他散射通道，未反射的入射功率全部被结构吸收。
 
-  求吸收功率占入射功率的百分数，以 \(\%\) 作答。
-solution: |-
-  相同介质和入射条件下，平均功率正比于电场幅值平方，因此功率反射率为
+
+  求吸收功率占入射功率的百分数，以 \(\%\) 作答。'
+solution: '相同介质和入射条件下，平均功率正比于电场幅值平方，因此功率反射率为
+
 
   $$
+
   \mathcal R=|r|^2=(0.100)^2=0.0100.
+
   $$
+
 
   金属背板使功率透射率 \(\mathcal T=0\)，能量守恒给出
 
+
   $$
+
   \mathcal A=1-\mathcal R-\mathcal T=0.9900.
+
   $$
+
 
   所以吸收百分数为 \(99.0\%\)。把振幅的 \(10\%\) 直接从 \(100\%\) 中减去会混淆振幅和功率。检查：\(|r|=1\) 时吸收为零，\(|r|=0\) 时在本题封闭通道假设下吸收为 \(100\%\)。
 
+
   适用范围：仅换算门限的物理含义；不能据此声称论文所有频率或所有角度都达到 99% 吸收。
 
-  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: proof-of-concept experimental demonstration, Fig. 6 and its design paragraph specifying rho0=0.1。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。
+
+  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: proof-of-concept
+  experimental demonstration, Fig. 6 and its design paragraph specifying rho0=0.1。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。'
 hints:
 - 功率反射率等于电场反射系数模的平方。
 - 使用吸收率加反射率加透射率等于 1。
@@ -63,3 +74,19 @@ answer:
     canonical: '%'
     accepted:
     - '%'
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7e9b3fcb8324cb802688fd81cd885e3b5372e236cbe3e2b3226c66d8204ed7a8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7e9b3fcb8324cb802688fd81cd885e3b5372e236cbe3e2b3226c66d8204ed7a8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7e9b3fcb8324cb802688fd81cd885e3b5372e236cbe3e2b3226c66d8204ed7a8

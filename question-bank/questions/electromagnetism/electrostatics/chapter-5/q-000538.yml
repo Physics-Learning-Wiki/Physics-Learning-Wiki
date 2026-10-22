@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000538
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.displacement
+type: single_choice
+choice_order: shuffle
+stem: 线性本构关系中的 E 指什么？
+solution: 响应须与极化产生的附加场自洽．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 只有撤去材料时的外场
+- id: B
+  content: 任意一个分子附近的精确局域场
+- id: C
+  content: 材料中的总宏观电场
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．响应须与极化产生的附加场自洽．
+  incorrect: 请先重新核对模型条件．响应须与极化产生的附加场自洽．
+  choices:
+    A: 忽略了极化对内部总场的反馈．
+    B: 宏观参数与微观局域场不可直接混为一谈．
+    C: 响应须与极化产生的附加场自洽．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bf4367c5e2711b4b4d86e1b4eaae1670155482067d07ce43d925f75d7a17d190
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bf4367c5e2711b4b4d86e1b4eaae1670155482067d07ce43d925f75d7a17d190
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:bf4367c5e2711b4b4d86e1b4eaae1670155482067d07ce43d925f75d7a17d190

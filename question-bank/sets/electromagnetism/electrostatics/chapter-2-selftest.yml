@@ -1,0 +1,26 @@
+schema_version: 1
+id: electromagnetism.electrostatics.chapter-2.selftest
+title: 静电学第 2 章概念与方法自测
+description: 与五章静电学正文配套；新增内容待人工审核．
+status: published
+tags:
+- 电磁学
+- 第 2 章
+- 静电学
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000013
+  - q-000022
+  - q-000015
+  - q-000016
+  - q-000017
+  - q-000018
+  - q-000020
+  - q-000021
+  - q-000504
+  - q-000505
+  - q-000506
+  - q-000507
+  order: fixed

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000396
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,16 +10,20 @@ concepts:
 - kinematics.acceleration
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  翅果研究用多点追踪展示种子与翼尖的平滑螺旋下降。用匀半径、匀进动的教学轨迹分离水平绕行和竖直下降的运动学。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
+stem: '翅果研究用多点追踪展示种子与翼尖的平滑螺旋下降。用匀半径、匀进动的教学轨迹分离水平绕行和竖直下降的运动学。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
 
-  取固定惯性坐标系，z 轴竖直向上。一个被追踪点的理想轨迹为 $x(t)=R\cos(\Omega t)$、$y(t)=R\sin(\Omega t)$、$z(t)=-Vt$，其中 $R,\Omega,V>0$ 为常数。这里 $\Omega$ 描述轨迹绕 z 轴的进动，不是翅果绕展向的滚转角速度；该轨迹不用于求未知气动力。
+
+  取固定惯性坐标系，z 轴竖直向上。一个被追踪点的理想轨迹为 $x(t)=R\cos(\Omega t)$、$y(t)=R\sin(\Omega t)$、$z(t)=-Vt$，其中 $R,\Omega,V>0$ 为常数。这里 $\Omega$
+  描述轨迹绕 z 轴的进动，不是翅果绕展向的滚转角速度；该轨迹不用于求未知气动力。
+
 
   ![固定 z 轴周围的理想下降螺线，水平绕行半径 R、向下速度分量 V 和一圈竖直下降量以符号标示；x、y 为水平坐标。](asset:m047)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  以下哪些陈述成立？选择所有成立的陈述。
+
+  以下哪些陈述成立？选择所有成立的陈述。'
 hints:
 - 逐分量求一阶和二阶时间导数。
 - 进动一圈对应 Ωt 增加 2π，而不是展向滚转一圈。
@@ -31,14 +35,19 @@ feedback:
     B: 给定轨迹的二阶导数为零；若分析受力，空气动力须参与竖直平衡。
     C: 两次求导后只剩水平向心项。
     D: 先求绕轴周期，再乘以恒定下降速率。
-solution: |-
-  逐分量求导，$\mathbf v=(-R\Omega\sin\Omega t,\ R\Omega\cos\Omega t,\ -V)$，故速率 $|\mathbf v|=\sqrt{R^2\Omega^2+V^2}$ 恒定。再求导得 $\mathbf a=(-R\Omega^2\cos\Omega t,\ -R\Omega^2\sin\Omega t,\ 0)$，加速度完全水平、指向 z 轴，其大小为 $R\Omega^2$。竖直速度为常数，故 $a_z=0$；有重力并不意味着净加速度只能等于重力。进动周期 $T=2\pi/\Omega$，一圈的竖直下降量为 $VT=2\pi V/\Omega$。
+solution: '逐分量求导，$\mathbf v=(-R\Omega\sin\Omega t,\ R\Omega\cos\Omega t,\ -V)$，故速率 $|\mathbf v|=\sqrt{R^2\Omega^2+V^2}$ 恒定。再求导得
+  $\mathbf a=(-R\Omega^2\cos\Omega t,\ -R\Omega^2\sin\Omega t,\ 0)$，加速度完全水平、指向 z 轴，其大小为 $R\Omega^2$。竖直速度为常数，故 $a_z=0$；有重力并不意味着净加速度只能等于重力。进动周期
+  $T=2\pi/\Omega$，一圈的竖直下降量为 $VT=2\pi V/\Omega$。
+
 
   **检查与物理含义：** $\mathbf v\cdot\mathbf a=0$，说明加速度只改变方向而不改变速率；$R\to0$ 时回到竖直匀速下降、加速度为零。螺距 $2\pi V/\Omega$ 的量纲为长度。
 
+
   **适用范围：** 真实轨迹会随释放瞬态、形态和气流变化；本题不由运动学公式反推出具体升力或力矩。
 
-  **来源定位：** Precession dynamics and morphology of rolling samaras，§3.1, Fig. 3a–c and text on smooth helical seed/wingtip trajectories；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。
+
+  **来源定位：** Precession dynamics and morphology of rolling samaras，§3.1, Fig. 3a–c and text on smooth helical seed/wingtip
+  trajectories；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -69,3 +78,19 @@ answer:
 assets:
 - id: m047
   path: mechanics/m047.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b0e12ced278891654767bef33dab7e84236f2f805c3483d676115206f77a0fce
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b0e12ced278891654767bef33dab7e84236f2f805c3483d676115206f77a0fce
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:b0e12ced278891654767bef33dab7e84236f2f805c3483d676115206f77a0fce

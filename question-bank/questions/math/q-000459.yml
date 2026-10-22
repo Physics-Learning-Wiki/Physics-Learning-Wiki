@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000459
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,20 +9,24 @@ concepts:
 - complex.taylor-series
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+stem: 'Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
 
   把二态模型参数写为 $z=1+\varepsilon$，并在 $\varepsilon=0$ 选择 $E(0)=1$ 的解析分支 $E(\varepsilon)=\sqrt{1+\varepsilon}$。可使用规则：泰勒级数的收敛半径等于展开点到该分支最近的复奇点的距离。
 
-  该分支在原点展开的收敛半径是多少？
-solution: |-
-  平方根的分支点在 $1+\varepsilon=0$，即 $\varepsilon=-1$，它到展开点 $0$ 的距离为 $1$。在开圆盘 $|\varepsilon|<1$ 内可以连续选择 $E(0)=1$ 的解析分支，因此半径至少为 $1$；分支点又禁止跨过 $-1$ 解析延拓为一个以零点为中心的更大圆盘，故半径恰好为 $1$。
+
+  该分支在原点展开的收敛半径是多少？'
+solution: '平方根的分支点在 $1+\varepsilon=0$，即 $\varepsilon=-1$，它到展开点 $0$ 的距离为 $1$。在开圆盘 $|\varepsilon|<1$ 内可以连续选择 $E(0)=1$ 的解析分支，因此半径至少为
+  $1$；分支点又禁止跨过 $-1$ 解析延拓为一个以零点为中心的更大圆盘，故半径恰好为 $1$。
+
 
   检查：前几项为 $1+\varepsilon/2-\varepsilon^2/8+\cdots$。小正参数使根增加，与实函数的单调性相符；收敛半径不是简单地由实轴上函数是否有实数值决定。
 
+
   研究对应：Methods, Eqs. (7) and (8), square-root parameter dependence。教学范围：不宣称一阶展开在整个研究参数空间有效。
 
-  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -58,3 +62,19 @@ choices:
   content: $\infty$
 answer:
   choice: A
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1293da98231724ab96049276083f4f7fe0882abdd9f544b860cdbe90c6acc8d8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1293da98231724ab96049276083f4f7fe0882abdd9f544b860cdbe90c6acc8d8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1293da98231724ab96049276083f4f7fe0882abdd9f544b860cdbe90c6acc8d8

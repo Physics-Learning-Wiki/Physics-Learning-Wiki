@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000472
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,22 +9,26 @@ concepts:
 - math.linear-ode
 type: true_false
 choice_order: fixed
-stem: |-
-  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+stem: 'Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+
 
   取论文用来比较的无延迟基准方程 $\dot T=-\lambda(T-T_b)$，其中两份样品使用相同的常数 $\lambda>0$ 与 $T_b$。设 $T_A(0)>T_B(0)$。
 
-  判断：在这个模型中，所有有限的 $t\geq0$ 都满足 $T_A(t)>T_B(t)$，两条温度曲线不会交叉。
-solution: |-
-  判断为正确。令 $d(t)=T_A(t)-T_B(t)$，两方程相减得到 $\dot d=-\lambda d$。所以
+
+  判断：在这个模型中，所有有限的 $t\geq0$ 都满足 $T_A(t)>T_B(t)$，两条温度曲线不会交叉。'
+solution: '判断为正确。令 $d(t)=T_A(t)-T_B(t)$，两方程相减得到 $\dot d=-\lambda d$。所以
+
 
   $$d(t)=d(0)e^{-\lambda t}.$$
 
+
   初值差为正，指数在有限时间始终为正，故差值保持正号。两条曲线可以共同趋近环境温度，但这不等于在某个有限时刻交叉。检查：结论依赖相同的冷却率和环境温度；若模型或参数改变，应重新写差方程，不能直接使用此结论。
+
 
   研究对应：Section II, ordinary Newton law, Eqs. (1) and (2)。教学范围：不排除真实实验或不同参数、非线性、延迟模型中的温度交叉。
 
-  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -46,3 +50,19 @@ authors:
 license: CC-BY-SA-4.0
 answer:
   value: true
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fd2407f254e2753b07d9310b71c555e1d2107cc309b24ea07d1052b74a9a4f7f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fd2407f254e2753b07d9310b71c555e1d2107cc309b24ea07d1052b74a9a4f7f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:fd2407f254e2753b07d9310b71c555e1d2107cc309b24ea07d1052b74a9a4f7f

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000506
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.multipoles
+type: single_choice
+choice_order: shuffle
+stem: 以中点为原点的有限偶极子，远场偶极式与精确场是什么关系？
+solution: 有限偶极保留更高阶项，特殊方向需分别检查误差．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 只有总电荷非零才能使用
+- id: B
+  content: 仅在距离远大于尺寸时给出领先项
+- id: C
+  content: 全空间完全相同
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．有限偶极保留更高阶项，特殊方向需分别检查误差．
+  incorrect: 请先重新核对模型条件．有限偶极保留更高阶项，特殊方向需分别检查误差．
+  choices:
+    A: 偶极领先项恰常用于总电荷为零的体系．
+    B: 有限偶极保留更高阶项，特殊方向需分别检查误差．
+    C: 靠近电荷时有限几何不能省略．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:019031ffe4498a767a5cf2e4a8fc56d2ac303b880ad92bfbdb0c2fa8ada6e97a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:019031ffe4498a767a5cf2e4a8fc56d2ac303b880ad92bfbdb0c2fa8ada6e97a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:019031ffe4498a767a5cf2e4a8fc56d2ac303b880ad92bfbdb0c2fa8ada6e97a

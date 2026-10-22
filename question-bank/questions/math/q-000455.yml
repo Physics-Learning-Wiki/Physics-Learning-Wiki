@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000455
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,31 +9,42 @@ concepts:
 - complex.harmonic-conjugate
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+stem: 'Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
 
   圆孔映射的虚坐标为 $\eta=\ln(r/R)$。取 $R>0$，在孔外 $x^2+y^2>R^2$ 定义
 
+
   $$
+
   \eta(x,y)=\frac12\ln\frac{x^2+y^2}{R^2},\qquad \Delta\eta=\eta_{xx}+\eta_{yy}.
-  $$
-
-  这个坐标函数的 $\Delta\eta$ 等于什么？
-solution: |-
-  先求 $\eta_x=x/(x^2+y^2)$、$\eta_y=y/(x^2+y^2)$。继续求导：
 
   $$
+
+
+  这个坐标函数的 $\Delta\eta$ 等于什么？'
+solution: '先求 $\eta_x=x/(x^2+y^2)$、$\eta_y=y/(x^2+y^2)$。继续求导：
+
+
+  $$
+
   \eta_{xx}=\frac{y^2-x^2}{(x^2+y^2)^2},\qquad
+
   \eta_{yy}=\frac{x^2-y^2}{(x^2+y^2)^2}.
+
   $$
+
 
   两项相消，故 $\Delta\eta=0$。这说明所选坐标在孔外调和，是解析映射用于二维边值问题的一个基本性质。
 
+
   检查：$R$ 只贡献常数 $-\ln R$，不影响导数；结论没有覆盖被排除的原点，不能把有奇点的全平面分布问题与本题混为一谈。
+
 
   研究对应：The concept of conformal mapping, Eq. (25b)。教学范围：不讨论原点的狄拉克分布源，也不验证其他应力函数。
 
-  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -69,3 +80,19 @@ choices:
   content: $1/\sqrt{x^2+y^2}$
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:32c65bd7888179fb330620bdc67fae8a26cc04020627e9a5612b366d63628f1c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:32c65bd7888179fb330620bdc67fae8a26cc04020627e9a5612b366d63628f1c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:32c65bd7888179fb330620bdc67fae8a26cc04020627e9a5612b366d63628f1c

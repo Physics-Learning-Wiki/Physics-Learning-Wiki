@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000351
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,12 +10,13 @@ concepts:
 - kinematics.velocity-time-graph
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  仿鸟机器人研究报告：配合螺旋桨的跳跃起飞在约 $0.17\,\mathrm{s}$ 内达到约 $2.4\,\mathrm{m/s}$，仅使用双腿跳跃时离地速率约为 $2.2\,\mathrm{m/s}$。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+stem: '仿鸟机器人研究报告：配合螺旋桨的跳跃起飞在约 $0.17\,\mathrm{s}$ 内达到约 $2.4\,\mathrm{m/s}$，仅使用双腿跳跃时离地速率约为 $2.2\,\mathrm{m/s}$。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
 
   把这两个速率与时间作为已给的近似数据，两种测试的机器人质量相同。第一种测试从静止开始，但此处没有给出速度方向随时间的信息。仅比较离地时的**质心平动动能**，不计转动、势能和电能输入。
 
-  根据这些条件，选择所有成立的判断。
+
+  根据这些条件，选择所有成立的判断。'
 hints:
 - 数据给出的是时间区间端点；不要由平均量推断整个时间函数。
 - 在相同质量下比较动能，须对速率比取平方。
@@ -27,28 +28,40 @@ feedback:
     B: 两个端点只能给出平均量，不能确定中间变化。
     C: 同质量时动能正比于速率平方，而非速率本身。
     D: 初速度为零时，速度矢量变化的大小正好等于末速率；方向仍未知。
-solution: |-
-  第一种测试的平均速率变化率是
+solution: '第一种测试的平均速率变化率是
+
 
   $$
+
   \frac{\Delta |\boldsymbol v|}{\Delta t}=\frac{2.4}{0.17}\approx14.1\,\mathrm{m/s^2}.
+
   $$
+
 
   因为初速度为零，平均**矢量加速度的大小**也为 $|\boldsymbol v_f|/\Delta t=14.1\,\mathrm{m/s^2}$；但其方向仍需最终速度方向。这个数值不意味着任一瞬间的加速度恒定。
 
+
   相同质量下，两种离地平动动能之比为
 
+
   $$
+
   \frac{K_{\mathrm{legs}}}{K_{\mathrm{jump+prop}}}=\left(\frac{2.2}{2.4}\right)^2\approx0.840.
+
   $$
+
 
   速率比约 $0.917$，不等于动能比，也不能直接当作总能量效率。
 
+
   **检查与物理含义：** 两个比值均无量纲；动能比 0.840 小于速率比 0.917，符合较小于 1 的数平方后变小。平均矢量加速度的结论明确使用初速度为零。
+
 
   **适用范围：** 未给速度方向和完整时间曲线，因此不能求瞬时加速度或飞行距离；动能比不是实验的总效率。
 
-  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods: Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods:
+  Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -76,3 +89,19 @@ answer:
   - A
   - C
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22894b6c25d0fa1bdc36d6704985f0e959252563879c6d75b3be9ee6d0fd8de0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22894b6c25d0fa1bdc36d6704985f0e959252563879c6d75b3be9ee6d0fd8de0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22894b6c25d0fa1bdc36d6704985f0e959252563879c6d75b3be9ee6d0fd8de0

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000470
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,24 +9,29 @@ concepts:
 - math.linear-ode
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+stem: 'Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+
 
   设环境温度恒定，温差为 $\theta(t)$，模型为 $\dot\theta(t)=-\lambda\theta(t-\tau)$，其中 $\lambda>0$、$\tau>0$。仅在 $\lambda\tau\ll1$ 且解足够光滑的范围内，使用一阶近似
 
+
   $$\theta(t-\tau)\approx\theta(t)-\tau\dot\theta(t).$$
 
-  把近似方程写成 $\dot\theta=-k\theta$。正确的有效衰减率 $k$ 是哪一个？
-solution: |-
-  代入所给展开，得 $\dot\theta=-\lambda\theta+\lambda\tau\dot\theta$。把所有导数项放到左边：$(1-\lambda\tau)\dot\theta=-\lambda\theta$，所以
+
+  把近似方程写成 $\dot\theta=-k\theta$。正确的有效衰减率 $k$ 是哪一个？'
+solution: '代入所给展开，得 $\dot\theta=-\lambda\theta+\lambda\tau\dot\theta$。把所有导数项放到左边：$(1-\lambda\tau)\dot\theta=-\lambda\theta$，所以
+
 
   $$k=\frac{\lambda}{1-\lambda\tau}.$$
 
+
   在所用小延迟范围内分母为正，近似解为 $\theta(t)=\theta(0)e^{-kt}$。检查：$\tau\to0$ 时 $k\to\lambda$；$\lambda\tau$ 无量纲，$k$ 的单位仍为时间的倒数。不能把分母接近零时的发散解释为原延迟系统的可靠预测，因为那已经超出一阶展开的假设。
+
 
   研究对应：Section II A, Taylor expansion and Eqs. (4)–(6)。教学范围：此有效率只属于截断的局部近似，不能外推到 λτ 接近一或较大的延迟。
 
-  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -62,3 +67,19 @@ choices:
   content: $\lambda-\tau$
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5dc582b642807801c9321fce1d960d9d8848b76fe8b9bdaecf93fff979dc3626
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5dc582b642807801c9321fce1d960d9d8848b76fe8b9bdaecf93fff979dc3626
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5dc582b642807801c9321fce1d960d9d8848b76fe8b9bdaecf93fff979dc3626

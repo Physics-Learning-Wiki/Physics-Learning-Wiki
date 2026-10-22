@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000373
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.analytical
@@ -10,16 +10,20 @@ concepts:
 - analytical.holonomic-constraint
 type: single_choice
 choice_order: shuffle
-stem: |-
-  软体滚动研究区分自由空间中的内部滚转和地面接触产生的平移。为单独检查接触运动学，取一个理想薄轮作为教学类比。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
+stem: '软体滚动研究区分自由空间中的内部滚转和地面接触产生的平移。为单独检查接触运动学，取一个理想薄轮作为教学类比。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
 
-  轮半径为 R，在水平面作理想无滑动滚动。轮心的水平投影坐标为 $(x,y)$，滚动朝向与 x 轴的夹角为 $\psi$，绕轮轴的自转角为 $\theta$。允许轮在一点接触的理想化下改变朝向。无滑动条件给定为 $\dot x=R\dot\theta\cos\psi$、$\dot y=R\dot\theta\sin\psi$。这里 R 恒定，且未预先指定 $\psi(t)$。
+
+  轮半径为 R，在水平面作理想无滑动滚动。轮心的水平投影坐标为 $(x,y)$，滚动朝向与 x 轴的夹角为 $\psi$，绕轮轴的自转角为 $\theta$。允许轮在一点接触的理想化下改变朝向。无滑动条件给定为 $\dot x=R\dot\theta\cos\psi$、$\dot
+  y=R\dot\theta\sin\psi$。这里 R 恒定，且未预先指定 $\psi(t)$。
+
 
   ![理想轮运动的俯视方向图：轮心投影为 (x,y)，航向 ψ 相对固定 x 轴，滚动速度沿航向。侧视小图标示半径 R 和自转角 θ。](asset:m024)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  下列哪项正确描述这组约束？
+
+  下列哪项正确描述这组约束？'
 hints:
 - 对候选的位置关系求导，看是否出现题目没有的项。
 - 比较可以转向与航向被固定这两种情形。
@@ -31,14 +35,18 @@ feedback:
     B: 速度形式的约束可能可积，固定航向就是本题中的反例。
     C: 无滑动指接触点相对地面瞬时静止，轮心可以移动。
     D: 航向变化使滚动结果依赖路径；固定航向则可直接积分。
-solution: |-
-  当 $\psi$ 可改变时，位置增量依赖自转增量发生时的朝向：$dx=R\cos\psi\,d\theta$、$dy=R\sin\psi\,d\theta$。以不同顺序转向和滚动，即使自转总增量相同，也可到达不同的 $(x,y)$；因此不能把它们简化成仅依赖当前 $(\theta,\psi)$ 的两条位置约束，是标准的非完整滚动约束。若额外固定 $\psi=\psi_0$，则可以积分为 $x-R\theta\cos\psi_0=C_x$、$y-R\theta\sin\psi_0=C_y$，在这个受限情形中成为完整约束。
+solution: '当 $\psi$ 可改变时，位置增量依赖自转增量发生时的朝向：$dx=R\cos\psi\,d\theta$、$dy=R\sin\psi\,d\theta$。以不同顺序转向和滚动，即使自转总增量相同，也可到达不同的 $(x,y)$；因此不能把它们简化成仅依赖当前
+  $(\theta,\psi)$ 的两条位置约束，是标准的非完整滚动约束。若额外固定 $\psi=\psi_0$，则可以积分为 $x-R\theta\cos\psi_0=C_x$、$y-R\theta\sin\psi_0=C_y$，在这个受限情形中成为完整约束。
+
 
   **检查与物理含义：** 直接对固定朝向的积分式求导可还原两条速度约束；若允许 $\dot\psi\ne0$，同样的候选位置式会多出 $R\theta\dot\psi$ 项。
 
+
   **适用范围：** 约束分类针对题设理想轮。软体滚动可能有变形、滑动或多个接触区，需要不同的接触模型。
 
-  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript p. 4 and Fig. 3d, surface interaction and friction converting roll into translation；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。
+
+  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript p. 4 and Fig. 3d, surface interaction
+  and friction converting roll into translation；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -66,3 +74,19 @@ answer:
 assets:
 - id: m024
   path: mechanics/m024.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3fc88475fe46c424c66866a6a68247b3640bd5d4ef7d7a0aba7c5798e6ad2c68
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3fc88475fe46c424c66866a6a68247b3640bd5d4ef7d7a0aba7c5798e6ad2c68
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3fc88475fe46c424c66866a6a68247b3640bd5d4ef7d7a0aba7c5798e6ad2c68

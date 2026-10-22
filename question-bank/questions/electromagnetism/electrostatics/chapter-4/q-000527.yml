@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000527
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy-force
+type: single_choice
+choice_order: shuffle
+stem: 固定电压下电容增量 $\mathrm dC>0$，电源输入与场能增加之比为？
+solution: 电源输入 $U^2\mathrm dC$，场能增加 $U^2\mathrm dC/2$．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: '0'
+- id: B
+  content: '2'
+- id: C
+  content: '1'
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．电源输入 $U^2\mathrm dC$，场能增加 $U^2\mathrm dC/2$．
+  incorrect: 请先重新核对模型条件．电源输入 $U^2\mathrm dC$，场能增加 $U^2\mathrm dC/2$．
+  choices:
+    A: 固定电压不代表电荷不流动．
+    B: 电源输入 $U^2\mathrm dC$，场能增加 $U^2\mathrm dC/2$．
+    C: 还要有一部分能量成为机械输出．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4935f20b5bcfb015e9f2fd7c89f1a142d894c83fd53e45260d445b1399f8e8db
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4935f20b5bcfb015e9f2fd7c89f1a142d894c83fd53e45260d445b1399f8e8db
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4935f20b5bcfb015e9f2fd7c89f1a142d894c83fd53e45260d445b1399f8e8db

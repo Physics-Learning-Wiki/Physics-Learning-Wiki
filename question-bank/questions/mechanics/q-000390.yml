@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000390
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -10,12 +10,13 @@ concepts:
 - dynamics.drag-model
 type: single_choice
 choice_order: shuffle
-stem: |-
-  水凝胶弹射研究记录约 6.15 m 的上升高度，并在包含空气阻力的模型中反推出约 16.6 m/s 的起飞速度；后一数值不是本题假定的直接测速结果。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+stem: '水凝胶弹射研究记录约 6.15 m 的上升高度，并在包含空气阻力的模型中反推出约 16.6 m/s 的起飞速度；后一数值不是本题假定的直接测速结果。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+
 
   令最高点相对脱离点的高度为 $h=6.15\,\mathrm{m}$，取 $g=9.80\,\mathrm{m/s^2}$。为比较反演方法，假设载荷离开弹射器后质量不变、只作竖直上升，除重力外空气阻力始终做非正功，且不存在继续供能。真空近似忽略全部空气阻力。
 
-  下列哪项正确描述由高度反推初速度的结果？
+
+  下列哪项正确描述由高度反推初速度的结果？'
 hints:
 - 先用无阻力的能量方程算出基准值。
 - 在能量方程中给耗散能一个非负符号，再比较所需初动能。
@@ -27,14 +28,19 @@ feedback:
     B: 代入给定高度与 g 得不到 16.6 m/s；论文更大的数值依赖含阻力反演。
     C: 上升段阻力与速度反向，对载荷做负功。
     D: 高度同时取决于初动能和沿程损耗，未给损耗模型时无法唯一反演。
-solution: |-
-  真空模型中 $mv_{\rm vac}^2/2=mgh$，得到 $v_{\rm vac}=\sqrt{2gh}=\sqrt{2\times9.80\times6.15}=10.9790709989\ldots\,\mathrm{m/s}$，约为 $11.0\,\mathrm{m/s}$。若上升段有严格为正的耗散能 $E_d$，则 $mv_0^2/2=mgh+E_d$，故同一高度要求 $v_0>v_{\rm vac}$。因此包含阻力的 16.6 m/s 可以大于真空估计，这反映模型中的能量损失补偿；不能据此把两个数字当作相互矛盾的直接速度测量。
+solution: '真空模型中 $mv_{\rm vac}^2/2=mgh$，得到 $v_{\rm vac}=\sqrt{2gh}=\sqrt{2\times9.80\times6.15}=10.9790709989\ldots\,\mathrm{m/s}$，约为
+  $11.0\,\mathrm{m/s}$。若上升段有严格为正的耗散能 $E_d$，则 $mv_0^2/2=mgh+E_d$，故同一高度要求 $v_0>v_{\rm vac}$。因此包含阻力的 16.6 m/s 可以大于真空估计，这反映模型中的能量损失补偿；不能据此把两个数字当作相互矛盾的直接速度测量。
 
-  **检查与物理含义：** 若以 $16.6\,\mathrm{m/s}$ 在真空中起飞，预测高度为 $v_0^2/(2g)=14.06\ldots\,\mathrm{m}$，显著高于 6.15 m，方向上与有耗散上升一致。$E_d\to0$ 时两种反演相同。
+
+  **检查与物理含义：** 若以 $16.6\,\mathrm{m/s}$ 在真空中起飞，预测高度为 $v_0^2/(2g)=14.06\ldots\,\mathrm{m}$，显著高于 6.15 m，方向上与有耗散上升一致。$E_d\to0$
+  时两种反演相同。
+
 
   **适用范围：** 本题只比较阻力的符号影响，没有验证论文选用的阻力系数、形状参数或反演误差。
 
-  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: The ejection actuation mechanism, Fig. 1c, Eq. (1) and inferred launch velocity；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。
+
+  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: The ejection actuation mechanism,
+  Fig. 1c, Eq. (1) and inferred launch velocity；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -59,3 +65,19 @@ choices:
   content: 只知道最高点高度，就能在不指定阻力的情况下唯一确定实际起飞速度。
 answer:
   choice: A
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:30d9300d516fdc66b9c30b6634390ca22c0cf25f53b4b440f31aa54006fb17ae
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:30d9300d516fdc66b9c30b6634390ca22c0cf25f53b4b440f31aa54006fb17ae
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:30d9300d516fdc66b9c30b6634390ca22c0cf25f53b4b440f31aa54006fb17ae

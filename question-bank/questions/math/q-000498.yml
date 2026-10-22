@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000498
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,20 +9,24 @@ concepts:
 - math.eigenfunction-expansion
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+stem: 'Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
 
-  在指数等待模型 $\dot x=(P-I)x/\mu$ 中，设 $P$ 在二维子空间 $S=\{(a,b,c)^T:a+b+c=0\}$ 上恒满足 $Pw=-\tfrac12w$，$\mu>0$。初值 $w_0=(1,-1,0)^T$ 位于 $S$。可以任选 $S$ 的两条独立向量作为展开基底。
 
-  关于基底选择与后续解，哪一结论正确？
-solution: |-
-  对任何 $w\in S$，生成元都作用为 $(P-I)w/\mu=-3w/(2\mu)$。因此无论怎样把初值展开成该子空间的两个基向量，每个系数都乘同一个 $e^{-3t/(2\mu)}$。
+  在指数等待模型 $\dot x=(P-I)x/\mu$ 中，设 $P$ 在二维子空间 $S=\{(a,b,c)^T:a+b+c=0\}$ 上恒满足 $Pw=-\tfrac12w$，$\mu>0$。初值 $w_0=(1,-1,0)^T$ 位于
+  $S$。可以任选 $S$ 的两条独立向量作为展开基底。
+
+
+  关于基底选择与后续解，哪一结论正确？'
+solution: '对任何 $w\in S$，生成元都作用为 $(P-I)w/\mu=-3w/(2\mu)$。因此无论怎样把初值展开成该子空间的两个基向量，每个系数都乘同一个 $e^{-3t/(2\mu)}$。
+
 
   重新合并后恒得 $x(t)=e^{-3t/(2\mu)}w_0$。检查：零时刻恢复初值，代回方程成立，分量和始终为零。更换基底会改变展开系数的具体表示，但不会改变作为向量的解；重本征值本身也不意味着缺少唯一演化。
 
+
   研究对应：Results, homogeneous exponential limit Eq. (2) and eigenvalue-based relaxation analysis。教学范围：这里已假定给定子空间由普通本征向量构成，不涉及不可对角化矩阵的广义本征模。
 
-  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -40,7 +44,8 @@ feedback:
     D: 共同的衰减因子可直接乘在整个初始向量上。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P210 的 Results, homogeneous exponential limit Eq. (2) and eigenvalue-based relaxation analysis 构造。原创考察一个二维重本征值子空间，说明有限模态展开中基底任意性不会改变预测。 数值来源：illustrative；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P210 的 Results, homogeneous exponential limit Eq. (2) and eigenvalue-based relaxation analysis 构造。原创考察一个二维重本征值子空间，说明有限模态展开中基底任意性不会改变预测。
+    数值来源：illustrative；不复制论文表述或图件。
   source: https://doi.org/10.1038/s41467-026-72161-w
   ai_assisted: true
 authors:
@@ -58,3 +63,19 @@ choices:
   content: 无论怎样选择 S 的基底，解都是 $e^{-3t/(2\mu)}w_0$。
 answer:
   choice: D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88d7aef3540eec80173edc57cbba442a29e51093ec9584eb7b499e7d49e216f5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88d7aef3540eec80173edc57cbba442a29e51093ec9584eb7b499e7d49e216f5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88d7aef3540eec80173edc57cbba442a29e51093ec9584eb7b499e7d49e216f5

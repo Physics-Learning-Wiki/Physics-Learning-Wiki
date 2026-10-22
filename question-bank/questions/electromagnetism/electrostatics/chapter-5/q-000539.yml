@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000539
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.interfaces
+type: single_choice
+choice_order: shuffle
+stem: 两介质界面无自由面电荷，哪些分量连续？
+solution: 分别来自小柱高斯关系与静电小回路．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: E 的全部分量
+- id: B
+  content: 法向 D 和切向 E
+- id: C
+  content: 法向 E 和切向 D
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．分别来自小柱高斯关系与静电小回路．
+  incorrect: 请先重新核对模型条件．分别来自小柱高斯关系与静电小回路．
+  choices:
+    A: 法向 E 可因束缚面电荷跃变．
+    B: 分别来自小柱高斯关系与静电小回路．
+    C: 把两类边界条件交换了．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3910332ab2d7b7238d4950bdf1107318b3e5c5b27d1e46bc5b49d8fd28bed4bf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3910332ab2d7b7238d4950bdf1107318b3e5c5b27d1e46bc5b49d8fd28bed4bf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3910332ab2d7b7238d4950bdf1107318b3e5c5b27d1e46bc5b49d8fd28bed4bf

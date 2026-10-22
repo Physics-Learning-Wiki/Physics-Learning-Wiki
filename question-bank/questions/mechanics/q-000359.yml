@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000359
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,18 +10,23 @@ concepts:
 - kinematics.position-time-graph
 type: single_choice
 choice_order: shuffle
-stem: |-
-  机器人研究使用 $240\,\mathrm{Hz}$ 的运动捕捉数据，并通过对位置求导计算速度。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+stem: '机器人研究使用 $240\,\mathrm{Hz}$ 的运动捕捉数据，并通过对位置求导计算速度。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
 
   用中心差分估计某水平分量的速度：
 
+
   $$
+
   \widehat v(t)=\frac{\widehat x(t+\Delta t)-\widehat x(t-\Delta t)}{2\Delta t},\qquad \Delta t=1/240\,\mathrm{s}.
+
   $$
+
 
   为单独研究测量误差，假定真实位置在该小区间是时间的二次多项式，所以精确位置的中心差分给出真实瞬时速度。两次位置测量各有未知误差，绝对值均不超过 $\varepsilon=0.10\,\mathrm{mm}$；这是教学假定，并非论文给出的仪器精度。
 
-  不假定两个误差的符号或相关性，速度误差绝对值的最紧通用上界是多少？
+
+  不假定两个误差的符号或相关性，速度误差绝对值的最紧通用上界是多少？'
 hints:
 - 把两个测量值分别写成真实值加误差。
 - 最坏情况下，一个误差为正极值、另一个为负极值。
@@ -33,27 +38,39 @@ feedback:
     B: 保留了分子中的 2，却漏掉中心差分分母中的 2。
     C: 求导中的误差按时间间隔相除，不是相乘。
     D: 两个误差的最坏差为 2ε，分母也含 2Δt。
-solution: |-
-  设两个位置误差为 $e_+,e_-$，则
+solution: '设两个位置误差为 $e_+,e_-$，则
+
 
   $$
+
   \widehat v-v=\frac{e_+-e_-}{2\Delta t}.
+
   $$
+
 
   由三角不等式，$|e_+-e_-|\le2\varepsilon$，故
 
+
   $$
+
   |\widehat v-v|\le\frac{\varepsilon}{\Delta t}
+
   =10^{-4}\times240=0.024\,\mathrm{m/s}.
+
   $$
+
 
   当两个误差取相反极值时达到此界。较密采样可减小一般光滑轨迹的截断误差，却可能放大固定大小的位置测量误差。
 
+
   **检查与物理含义：** 取 e+=ε、e−=−ε 达到所求上界，说明不是松界；米除以秒为速度。中心差分对二次多项式的偶次项正好相消。
+
 
   **适用范围：** 真实噪声可能相关且数据可能滤波；该最坏误差界不是实验速度的不确定度报告。
 
-  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods: Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods:
+  Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -78,3 +95,19 @@ choices:
   content: $0.024\,\mathrm{m/s}$
 answer:
   choice: D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6d8fc5a81df23ac832a6782828286b3fdca574c8755778801e4d3145fbc98a37
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6d8fc5a81df23ac832a6782828286b3fdca574c8755778801e4d3145fbc98a37
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6d8fc5a81df23ac832a6782828286b3fdca574c8755778801e4d3145fbc98a37

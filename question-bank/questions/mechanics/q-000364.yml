@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000364
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -10,38 +10,50 @@ concepts:
 - dynamics.energy-conservation
 type: true_false
 choice_order: fixed
-stem: |-
-  二维悬浮振子论文同时讨论频率接近和光场介导的耦合，这两件事需要区分。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+stem: '二维悬浮振子论文同时讨论频率接近和光场介导的耦合，这两件事需要区分。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
 
   在本题刻意去掉光腔耦合，取经典方程
 
+
   $$
+
   \ddot X+\omega_X^2X=0,\qquad \ddot Y+\omega_Y^2Y=0,
+
   $$
+
 
   其中两正频率非常接近。初态为 $X(0)=A$、$\dot X(0)=0$、$Y(0)=\dot Y(0)=0$。没有外力、噪声或阻尼。
 
-  判断：只要两频率足够接近，初始的 X 方向能量就必然周期性转移到 Y 方向。
+
+  判断：只要两频率足够接近，初始的 X 方向能量就必然周期性转移到 Y 方向。'
 hints:
 - 检查两条微分方程中是否出现另一方向的坐标。
 - 直接代入 Y=0，检查是否同时满足方程和初值。
 feedback:
   correct: 区分近简并与实际耦合，识别能量交换所需机制，并保留了题设的适用条件。
   incorrect: 检查两条微分方程中是否出现另一方向的坐标。
-solution: |-
-  Y 方程是独立的齐次方程，其零初值给出唯一解 $Y(t)=0$。X 方程给出 $X(t)=A\cos\omega_Xt$。各方向的能量分别为
+solution: 'Y 方程是独立的齐次方程，其零初值给出唯一解 $Y(t)=0$。X 方程给出 $X(t)=A\cos\omega_Xt$。各方向的能量分别为
+
 
   $$
+
   E_X=\frac12m(\dot X^2+\omega_X^2X^2)=\frac12m\omega_X^2A^2,\qquad E_Y=0.
+
   $$
+
 
   所以判断不成立。频率接近可以使已有耦合产生显著影响，但不会凭空在方程中加入能量交换项；即使两频率完全相同，本初值下仍无能量转移。
 
+
   **检查与物理含义：** 分别对 EX、EY 求时间导数并用运动方程替换，均为零；完全简并极限不改变零解。
+
 
   **适用范围：** 实际论文存在光场耦合、共同环境和量子噪声，本去耦反例不否认其观察到的相关性。
 
-  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark
+  modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -57,3 +69,19 @@ authors:
 license: CC-BY-SA-4.0
 answer:
   value: false
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:384f27c10b74fd517d6bb0a49315ebbc7207efe999f7ad4a664a919f1639acf1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:384f27c10b74fd517d6bb0a49315ebbc7207efe999f7ad4a664a919f1639acf1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:384f27c10b74fd517d6bb0a49315ebbc7207efe999f7ad4a664a919f1639acf1

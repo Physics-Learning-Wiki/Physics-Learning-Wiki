@@ -104,3 +104,64 @@ electrostatics.earnshaw-theorem:
   aliases:
     - earnshaws-theorem
     - earnshaw-theorem
+
+electrostatics.charge:
+  title: 电荷与库仑模型
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.field:
+  title: 电场积分与叠加
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.local-equations:
+  title: 静电场局域方程
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.multipoles:
+  title: 偶极与电多极展开
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.conductors:
+  title: 导体平衡与感应
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.shielding:
+  title: 静电屏蔽与空腔
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.uniqueness:
+  title: 静电唯一性
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.images:
+  title: 静电镜像法
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.energy:
+  title: 组装能与场能
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.energy-force:
+  title: 能量约束与静电力
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.dipole-energy:
+  title: 偶极能量与受力
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.bound-charge:
+  title: 束缚电荷
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.displacement:
+  title: 电位移与本构
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.interfaces:
+  title: 介质界面条件
+  topics:
+  - electromagnetism.electrostatics
+electrostatics.dielectric-energy:
+  title: 介质储能与受力
+  topics:
+  - electromagnetism.electrostatics

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000435
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.induction
@@ -9,40 +9,57 @@ concepts:
 - induction.faraday-law
 type: single_choice
 choice_order: shuffle
-stem: |-
-  旋转永磁体刺激研究比较不同磁极布置，并指出磁极结构和转速都会影响感应电场的时间变化。本题规定一个周期性磁通模型，单独分析每转磁通周期数的作用。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+stem: '旋转永磁体刺激研究比较不同磁极布置，并指出磁极结构和转速都会影响感应电场的时间变化。本题规定一个周期性磁通模型，单独分析每转磁通周期数的作用。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+
 
   某固定单匝回路的外加磁通为
 
+
   $$
+
   \Phi(t)=\Phi_0\cos(p\Omega t),
+
   $$
+
 
   其中 \(\Phi_0>0\)，\(\Omega>0\) 是磁体机械转动角速度，整数 \(p\) 是每转中磁通经历的完整周期数。忽略回路电流的反作用。
 
-  两个教学构型的 \(\Phi_0\) 和 \(\Omega\) 完全相同，但 \(p\) 分别为 1 和 2。第二个构型的感应电动势峰值是第一个的多少倍？
-solution: |-
-  对磁通求导，
+
+  两个教学构型的 \(\Phi_0\) 和 \(\Omega\) 完全相同，但 \(p\) 分别为 1 和 2。第二个构型的感应电动势峰值是第一个的多少倍？'
+solution: '对磁通求导，
+
 
   $$
+
   \mathcal E(t)=-\frac{d\Phi}{dt}=p\Omega\Phi_0\sin(p\Omega t).
+
   $$
 
-  所以峰值为 \(\mathcal E_0=p\Omega\Phi_0\)，从 \(p=1\) 到 \(p=2\) 时增大为 2 倍。增加的是磁通每单位时间的变化次数，不是题设中的磁通幅值。单位检查：\(\mathrm{s}^{-1}\mathrm{Wb}=\mathrm V\)；在 \(\Omega\to0\) 时感应电动势趋零。
+
+  所以峰值为 \(\mathcal E_0=p\Omega\Phi_0\)，从 \(p=1\) 到 \(p=2\) 时增大为 2 倍。增加的是磁通每单位时间的变化次数，不是题设中的磁通幅值。单位检查：\(\mathrm{s}^{-1}\mathrm{Wb}=\mathrm
+  V\)；在 \(\Omega\to0\) 时感应电动势趋零。
+
 
   选项辨析：
 
+
   “2 倍”正确：峰值与 \(p\Omega\) 成正比，题设保持 \(\Phi_0,\Omega\) 不变。
+
 
   “1 倍”忽略了每转磁通变化次数的增加；相同转速不一定意味着相同磁通频率。
 
+
   “4 倍”错误地把电动势幅值当成与频率平方成正比；一次时间导数只产生一次频率因子。
+
 
   “\(1/2\) 倍”将更快磁通变化的效应反向理解；相同幅度下更快变化产生更大感应电动势。
 
+
   适用范围：真实磁极构型改变还会改变空间分布和磁通幅值；不能只凭磁极数推断原论文所有构型的电场比。
 
-  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: Computational models; Discussion of magnet pole number and rotational frequency; Conclusions。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。
+
+  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: Computational models; Discussion of
+  magnet pole number and rotational frequency; Conclusions。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。'
 hints:
 - 机械角速度为 \(\Omega\)，磁通的角频率为 \(p\Omega\)。
 - 对余弦函数求导时必须保留链式法则因子 \(p\Omega\)。
@@ -78,3 +95,19 @@ choices:
   content: 1 倍。
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ebc3be81451e34338edf4a54782494179c04f6c36ab8be958c1cf97ae911833f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ebc3be81451e34338edf4a54782494179c04f6c36ab8be958c1cf97ae911833f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ebc3be81451e34338edf4a54782494179c04f6c36ab8be958c1cf97ae911833f

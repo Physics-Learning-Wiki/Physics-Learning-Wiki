@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000496
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,26 +9,33 @@ concepts:
 - math.eigenfunction-expansion
 type: numeric
 choice_order: fixed
-stem: |-
-  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+stem: 'Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+
 
   指数等待时间下，两个节点的教学模型为
 
+
   $$\dot x_1=\frac{x_2-x_1}{\mu_1},\qquad\dot x_2=\frac{x_1-x_2}{\mu_2},$$
 
-  取 $\mu_1=1.00\,\mathrm s$、$\mu_2=3.00\,\mathrm s$，$x_1(0)=1$、$x_2(0)=0$。节点量已经无量纲化。求差值 $d(t)=x_1(t)-x_2(t)$ 第一次降至 $0.10$ 的时间。输入数值并使用单位标签 `s`，允许绝对误差 $0.001$。
-solution: |-
-  两方程相减得到
+
+  取 $\mu_1=1.00\,\mathrm s$、$\mu_2=3.00\,\mathrm s$，$x_1(0)=1$、$x_2(0)=0$。节点量已经无量纲化。求差值 $d(t)=x_1(t)-x_2(t)$ 第一次降至 $0.10$
+  的时间。输入数值并使用单位标签 `s`，允许绝对误差 $0.001$。'
+solution: '两方程相减得到
+
 
   $$\dot d=-\left(\frac1{\mu_1}+\frac1{\mu_2}\right)d=-\frac43\,\mathrm s^{-1}d.$$
 
+
   由 $d(0)=1$，得 $d(t)=e^{-4t/(3\,\mathrm s)}$。解 $d=0.10$，得到 $t=(3/4)\ln10\,\mathrm s\approx1.726939\,\mathrm s$。指数严格下降，因此这是唯一也就是第一次达到该值的时刻。
+
 
   检查：衰减率来自两个等待率之和，不是平均等待时间的倒数；$\mu_1x_1+\mu_2x_2$ 保持常数，长期两节点都趋于 $1/4$，并不影响差模趋零。此守恒量也可直接由原方程核验。
 
+
   研究对应：Results, Eq. (2), node-dependent exponential mean waiting times μ_i。教学范围：参数为教学值；不使用论文对一般等待核或长尾分布的近似混合时间公式。
 
-  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -59,3 +66,19 @@ answer:
     canonical: s
     accepted:
     - s
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1dc582258b572d10216445b91feefafc55423e9ba6515945673deaa0eca076eb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1dc582258b572d10216445b91feefafc55423e9ba6515945673deaa0eca076eb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1dc582258b572d10216445b91feefafc55423e9ba6515945673deaa0eca076eb

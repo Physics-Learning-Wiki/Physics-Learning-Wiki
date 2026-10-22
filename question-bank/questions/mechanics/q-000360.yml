@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000360
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -9,12 +9,13 @@ concepts:
 - oscillations.harmonic-motion
 type: single_choice
 choice_order: shuffle
-stem: |-
-  二维悬浮机械振子研究报告，同一纳米球在光阱两个主轴上的振动频率约为 $f_X=121.1\,\mathrm{kHz}$ 和 $f_Y=108.5\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+stem: '二维悬浮机械振子研究报告，同一纳米球在光阱两个主轴上的振动频率约为 $f_X=121.1\,\mathrm{kHz}$ 和 $f_Y=108.5\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
 
   在本题的裸机械小振幅模型中，两个方向的势能分别为 $k_XX^2/2$ 与 $k_YY^2/2$，同一粒子质量为 $m$。忽略光腔反作用和阻尼，只用已给的近似频率。
 
-  刚度比 $k_X/k_Y$ 最接近哪一个值？
+
+  刚度比 $k_X/k_Y$ 最接近哪一个值？'
 hints:
 - 先写出 k=mω²，再考虑两个方向的质量是否相同。
 - 频率使用同一单位后，可以直接取比。
@@ -26,20 +27,27 @@ feedback:
     B: 这是近似频率比，尚未平方。
     C: 使用了频率平方与刚度成正比的关系。
     D: 这是所求刚度比的倒数。
-solution: |-
-  沿任一主轴有 $m\ddot X+k_XX=0$，故 $k_X=m(2\pi f_X)^2$，同理 $k_Y=m(2\pi f_Y)^2$。因此质量和 $2\pi$ 都消去：
+solution: '沿任一主轴有 $m\ddot X+k_XX=0$，故 $k_X=m(2\pi f_X)^2$，同理 $k_Y=m(2\pi f_Y)^2$。因此质量和 $2\pi$ 都消去：
+
 
   $$
+
   \frac{k_X}{k_Y}=\left(\frac{121.1}{108.5}\right)^2\approx1.246\approx1.25.
+
   $$
+
 
   较高的频率对应较陡的势能曲率。
 
+
   **检查与物理含义：** 频率比无量纲；X 方向频率较高，刚度比应大于 1；把两频率都换成 Hz 后比值不变。
+
 
   **适用范围：** 此比值描述所设裸机械二次势，不是强耦合系统所有有效谱峰的刚度反演。
 
-  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark
+  modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -64,3 +72,19 @@ choices:
   content: '0.80'
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce6ef4cd6c2499c4dbb3bf9b05265382674186666cb95a0f2a6802025271dd13
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce6ef4cd6c2499c4dbb3bf9b05265382674186666cb95a0f2a6802025271dd13
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:ce6ef4cd6c2499c4dbb3bf9b05265382674186666cb95a0f2a6802025271dd13

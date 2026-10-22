@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000513
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.uniqueness
+type: single_choice
+choice_order: shuffle
+stem: 仅给每个导体净电荷而未固定势基准，唯一性可能保留什么自由度？
+solution: 共同常数不改变电场，各导体相对电势不是随意的．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 电势整体加同一常数
+- id: B
+  content: 各点电场任意改变
+- id: C
+  content: 各导体分别加任意不同常数
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．共同常数不改变电场，各导体相对电势不是随意的．
+  incorrect: 请先重新核对模型条件．共同常数不改变电场，各导体相对电势不是随意的．
+  choices:
+    A: 共同常数不改变电场，各导体相对电势不是随意的．
+    B: 场唯一性已经排除这种改变．
+    C: 不同常数一般改变区域内电场并违反原净电荷数据．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3b2384622ecc43f14fc51ccbbc337b7be1038a6b6df44d7f95436c1d5e0e7b44
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3b2384622ecc43f14fc51ccbbc337b7be1038a6b6df44d7f95436c1d5e0e7b44
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:3b2384622ecc43f14fc51ccbbc337b7be1038a6b6df44d7f95436c1d5e0e7b44

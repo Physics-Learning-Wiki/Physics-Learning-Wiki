@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000514
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.images
+type: single_choice
+choice_order: shuffle
+stem: 验证镜像解时最完整的一组检查是什么？
+solution: 这些条件共同允许使用唯一性．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 只验证离真实电荷最近的边界点
+- id: B
+  content: 只让镜像总电荷等于真实电荷的负值
+- id: C
+  content: 区域内源、全部边界、远处条件及区域外像的位置
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．这些条件共同允许使用唯一性．
+  incorrect: 请先重新核对模型条件．这些条件共同允许使用唯一性．
+  choices:
+    A: 一个点不能代表整个边界．
+    B: 总量不足以保证边界等势．
+    C: 这些条件共同允许使用唯一性．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4a47b78e42e58b0e9d992f359adc43b07aa694b217ead009d40bad0a6f390491
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4a47b78e42e58b0e9d992f359adc43b07aa694b217ead009d40bad0a6f390491
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4a47b78e42e58b0e9d992f359adc43b07aa694b217ead009d40bad0a6f390491

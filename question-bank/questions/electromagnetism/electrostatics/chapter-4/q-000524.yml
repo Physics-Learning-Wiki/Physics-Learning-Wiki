@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000524
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.energy
+type: single_choice
+choice_order: shuffle
+stem: 同半径 $R$、同总电荷 $Q$ 的均匀实心球与薄球壳，哪一个自能更大？
+solution: 分别为 $3kQ^2/(5R)$ 与 $kQ^2/(2R)$，实心球还含内部场能．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 一样
+- id: B
+  content: 实心球
+- id: C
+  content: 薄球壳
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．分别为 $3kQ^2/(5R)$ 与 $kQ^2/(2R)$，实心球还含内部场能．
+  incorrect: 请先重新核对模型条件．分别为 $3kQ^2/(5R)$ 与 $kQ^2/(2R)$，实心球还含内部场能．
+  choices:
+    A: 相同外部场不代表全空间场能相同．
+    B: 分别为 $3kQ^2/(5R)$ 与 $kQ^2/(2R)$，实心球还含内部场能．
+    C: 两者外部贡献相同，球壳没有额外内部场能．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:357fbac80981116fc4d5dd44120be321aed0dc70a14b6693f39a780a77dc288d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:357fbac80981116fc4d5dd44120be321aed0dc70a14b6693f39a780a77dc288d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:357fbac80981116fc4d5dd44120be321aed0dc70a14b6693f39a780a77dc288d

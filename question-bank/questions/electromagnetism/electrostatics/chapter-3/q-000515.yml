@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000515
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.images
+type: single_choice
+choice_order: shuffle
+stem: 点电荷 $q$ 距接地平面 $d$，所受感应力的大小为？
+solution: 像电荷为 −q，与真实电荷距离为 2d．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$
+- id: B
+  content: $kq^2/(4d^2)$
+- id: C
+  content: $kq^2/d^2$
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．像电荷为 −q，与真实电荷距离为 2d．
+  incorrect: 请先重新核对模型条件．像电荷为 −q，与真实电荷距离为 2d．
+  choices:
+    A: 接地不等于无感应面电荷．
+    B: 像电荷为 −q，与真实电荷距离为 2d．
+    C: 把到平面的距离错当成到像的距离．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9cdb22e275a993ff09a2e1584ba5470d28f33e0ff69db3e86ecb76529de7f7a8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9cdb22e275a993ff09a2e1584ba5470d28f33e0ff69db3e86ecb76529de7f7a8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9cdb22e275a993ff09a2e1584ba5470d28f33e0ff69db3e86ecb76529de7f7a8

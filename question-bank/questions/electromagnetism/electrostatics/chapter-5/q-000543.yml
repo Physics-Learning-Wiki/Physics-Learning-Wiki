@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000543
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dielectric-energy
+type: single_choice
+choice_order: shuffle
+stem: 保持电压给真空电容器完全插入普通线性介质后，场能和电源功如何？
+solution: 电源输入是场能增量的两倍，忽略损耗时另一半为机械功．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 场能增加，电源还提供机械输出所需能量
+- id: B
+  content: 场能必减少，电源不做功
+- id: C
+  content: 场能增加，所以介质必被排斥
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．电源输入是场能增量的两倍，忽略损耗时另一半为机械功．
+  incorrect: 请先重新核对模型条件．电源输入是场能增量的两倍，忽略损耗时另一半为机械功．
+  choices:
+    A: 电源输入是场能增量的两倍，忽略损耗时另一半为机械功．
+    B: 这是把固定电荷与固定电压过程混用．
+    C: 不能只对场能取负导数而漏掉电源．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59d0740e2cf2bc1e75f66fdff722fa8fb2987fd0f03151be1a07086ebe633da1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59d0740e2cf2bc1e75f66fdff722fa8fb2987fd0f03151be1a07086ebe633da1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59d0740e2cf2bc1e75f66fdff722fa8fb2987fd0f03151be1a07086ebe633da1

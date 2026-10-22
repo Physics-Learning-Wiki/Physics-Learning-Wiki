@@ -1,0 +1,26 @@
+schema_version: 1
+id: electromagnetism.electrostatics.chapter-4.selftest
+title: 静电学第 4 章概念与方法自测
+description: 与五章静电学正文配套；新增内容待人工审核．
+status: published
+tags:
+- 电磁学
+- 第 4 章
+- 静电学
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000520
+  - q-000521
+  - q-000522
+  - q-000523
+  - q-000524
+  - q-000525
+  - q-000526
+  - q-000527
+  - q-000528
+  - q-000529
+  - q-000530
+  - q-000531
+  order: fixed

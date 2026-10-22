@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000521
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.capacitance
+type: single_choice
+choice_order: shuffle
+stem: 两个串联电容储电量大小相等，需要哪个中节点条件？
+solution: 节点两侧电荷和为零才给等量异号．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 无任何条件
+- id: B
+  content: 中间浮置节点净电荷为零
+- id: C
+  content: 中节点电势一定为零
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．节点两侧电荷和为零才给等量异号．
+  incorrect: 请先重新核对模型条件．节点两侧电荷和为零才给等量异号．
+  choices:
+    A: 预带净电荷的中节点会改变两电容的电荷关系．
+    B: 节点两侧电荷和为零才给等量异号．
+    C: 浮置不等于接地．
+related_pages:
+- electromagnetism.electrostatics.chapter-4.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0623870ea514e648d3af4da6da8fa494ebf5c75d36f83e170344f4943cc527ea
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0623870ea514e648d3af4da6da8fa494ebf5c75d36f83e170344f4943cc527ea
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0623870ea514e648d3af4da6da8fa494ebf5c75d36f83e170344f4943cc527ea

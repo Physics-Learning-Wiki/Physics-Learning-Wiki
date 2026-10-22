@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000509
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conductors
+type: single_choice
+choice_order: shuffle
+stem: 两块互不连接的中性导体靠近同一外电荷，能否断言两块电势相同？
+solution: 零净电荷分别约束各表面的积分，不直接规定电势．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 能，因为静电场处处为零
+- id: B
+  content: 不能，各自等势但两者值可不同
+- id: C
+  content: 能，因为两者净电荷都是零
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．零净电荷分别约束各表面的积分，不直接规定电势．
+  incorrect: 请先重新核对模型条件．零净电荷分别约束各表面的积分，不直接规定电势．
+  choices:
+    A: 仅金属材料内部场为零．
+    B: 零净电荷分别约束各表面的积分，不直接规定电势．
+    C: 把积分电荷条件误当成共同电势条件．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:433183a23a63b58e3da03a78ff59fec1c2e3f468c799eacb85cc59b40731010d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:433183a23a63b58e3da03a78ff59fec1c2e3f468c799eacb85cc59b40731010d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:433183a23a63b58e3da03a78ff59fec1c2e3f468c799eacb85cc59b40731010d

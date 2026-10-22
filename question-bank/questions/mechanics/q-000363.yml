@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000363
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -10,12 +10,13 @@ concepts:
 - oscillations.model-validity
 type: single_choice
 choice_order: shuffle
-stem: |-
-  论文强调，两方向谱峰的重叠会影响把二维运动近似为两个独立可分辨振动的做法。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+stem: '论文强调，两方向谱峰的重叠会影响把二维运动近似为两个独立可分辨振动的做法。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
 
   取两个机械频率 $121.1\,\mathrm{kHz}$ 与 $108.5\,\mathrm{kHz}$。设两峰的功率谱半高全宽相同，记为 $\Delta f$；以下线宽是教学设定。这里只采用粗略标准：若 $\Delta f/|f_X-f_Y|\ll1$，峰重叠较小。
 
-  下列线宽中，哪一个最支持使用该分离近似？
+
+  下列线宽中，哪一个最支持使用该分离近似？'
 hints:
 - 先算两个峰中心之间的频率间隔。
 - 用比值判断“远小于”，不要只比较频率本身是否很高。
@@ -27,20 +28,27 @@ feedback:
     B: 线宽约为频率间隔的百分之八，是给定选项中最小的重叠尺度。
     C: 线宽已大于频率间隔。
     D: 线宽与间隔相同，不能称为远小于。
-solution: |-
-  两中心频率之差为
+solution: '两中心频率之差为
+
 
   $$
+
   \delta f=121.1-108.5=12.6\,\mathrm{kHz}.
+
   $$
+
 
   应比较无量纲比值 $\Delta f/\delta f$。线宽为 $1.0\,\mathrm{kHz}$ 时，比值约 $0.079$；其它给定线宽分别与间隔相当或更大，难以作为重叠很小的依据。频率单位必须相同后再比较。
 
+
   **检查与物理含义：** 四个比值依次约为 0.079、1、2、10，比较无量纲且排序不依赖采用 Hz 或 kHz。
+
 
   **适用范围：** 线宽小只是所给分离近似的尺度依据，不充分证明两个随机过程独立，也不替代完整的耦合谱拟合。
 
-  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark
+  modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。'
 difficulty: 1
 cognitive_level: apply
 style: conceptual
@@ -65,3 +73,19 @@ choices:
   content: $12.6\,\mathrm{kHz}$
 answer:
   choice: B
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaf8ca2e4e353750bf6a6f959022ef45047140b69f8396c83fafcd0b76152553
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaf8ca2e4e353750bf6a6f959022ef45047140b69f8396c83fafcd0b76152553
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:eaf8ca2e4e353750bf6a6f959022ef45047140b69f8396c83fafcd0b76152553

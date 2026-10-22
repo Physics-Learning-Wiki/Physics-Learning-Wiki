@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000375
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -10,16 +10,20 @@ concepts:
 - newton.friction
 type: single_choice
 choice_order: shuffle
-stem: |-
-  风滚草启发的机器人利用风被动移动，论文讨论了气动力与接触阻力对移动能力的共同影响。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
+stem: '风滚草启发的机器人利用风被动移动，论文讨论了气动力与接触阻力对移动能力的共同影响。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
 
-  把静止机器人近似为半径 R 的球。水平风速为 $w>0$，阻力作用线通过球心，大小 $F_D=\frac12\rho C_DAw^2$，其中空气密度 $\rho$、阻力系数 $C_D$、迎风面积 A 均为正。地面可提供大小不超过 $\tau_r$ 的抗滚动阻力矩。假设静摩擦足以防滑，忽略升力，球心距接触点的竖直高度为 R。研究从静止开始向下风方向滚动的阈值，不讨论已运动时的气动变化。
+
+  把静止机器人近似为半径 R 的球。水平风速为 $w>0$，阻力作用线通过球心，大小 $F_D=\frac12\rho C_DAw^2$，其中空气密度 $\rho$、阻力系数 $C_D$、迎风面积 A 均为正。地面可提供大小不超过 $\tau_r$
+  的抗滚动阻力矩。假设静摩擦足以防滑，忽略升力，球心距接触点的竖直高度为 R。研究从静止开始向下风方向滚动的阈值，不讨论已运动时的气动变化。
+
 
   ![球形机器人与水平地面：风力 F_D 水平作用于球心，半径 R 为风力到接触点的力臂，抗滚动阻力矩 τ_r 与滚动趋势相反。](asset:m026)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  使风力刚好克服最大抗滚动阻力矩的临界风速 $w_c$ 是哪一个？
+
+  使风力刚好克服最大抗滚动阻力矩的临界风速 $w_c$ 是哪一个？'
 hints:
 - 临界平衡应比较力矩，不要把力和力矩直接相等。
 - 这里球尚未运动，故相对风速等于 w。
@@ -31,14 +35,18 @@ feedback:
     B: 二次阻力对应速度的平方，求速度必须开平方。
     C: 风力力臂应使所需风力等于 τr/R，而不是 τrR。
     D: 先把风力换成关于接触点的力矩，再与阻力矩相等。
-solution: |-
-  以地面接触点取矩，重力通过球心的竖直线，关于该点的力矩为零；水平风力的力臂为 R，提供起动方向的力矩 $F_DR$。临界条件为 $F_DR=\tau_r$。代入阻力表达式得到 $\frac12\rho C_DA w_c^2R=\tau_r$，因此 $w_c=\sqrt{2\tau_r/(\rho C_DAR)}$。等号表示临界状态，略超过此值才有净起动方向力矩。
+solution: '以地面接触点取矩，重力通过球心的竖直线，关于该点的力矩为零；水平风力的力臂为 R，提供起动方向的力矩 $F_DR$。临界条件为 $F_DR=\tau_r$。代入阻力表达式得到 $\frac12\rho C_DA w_c^2R=\tau_r$，因此
+  $w_c=\sqrt{2\tau_r/(\rho C_DAR)}$。等号表示临界状态，略超过此值才有净起动方向力矩。
+
 
   **检查与物理含义：** $\rho AR$ 具有质量量纲，故 $\tau_r/(\rho AR)$ 为速度平方。$\tau_r\to0$ 时阈值趋零；增大迎风面积使阈值降低，符合相同风速能产生更大风力的判断。
 
+
   **适用范围：** 真实多孔球的阻力和升力会随姿态、雷诺数与变形变化；本题不宣称单一常数模型给出实测起动风速。
 
-  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Tumbleweed aerodynamics; Fig. 2N–Q; wind-driven motion and ground resistance；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。
+
+  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Tumbleweed aerodynamics;
+  Fig. 2N–Q; wind-driven motion and ground resistance；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -66,3 +74,19 @@ answer:
 assets:
 - id: m026
   path: mechanics/m026.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:57f9f4a816cb3bbc301c2b09e78f5d6d1cc5c276f50e4d4a44bfe38df459fa8b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:57f9f4a816cb3bbc301c2b09e78f5d6d1cc5c276f50e4d4a44bfe38df459fa8b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:57f9f4a816cb3bbc301c2b09e78f5d6d1cc5c276f50e4d4a44bfe38df459fa8b

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000477
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,20 +9,24 @@ concepts:
 - math.separable-ode
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+stem: 'Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
 
   精确教学方程为 $C^{\prime}=-\kappa C(1-C)$，其中 $\kappa>0$、$0<C<1$。稀溶液近似把右边替换为 $-\kappa C$。本题只比较同一给定浓度处的局部斜率，不比较两条解在长区间内的累计误差。
 
-  定义斜率相对误差为 $\varepsilon=|(-\kappa C)-[-\kappa C(1-C)]|/|{-\kappa C(1-C)}|$。选出所有正确结论，采用完全一致评分。
-solution: |-
-  两斜率的差的绝对值是 $\kappa C^2$，精确斜率的模为 $\kappa C(1-C)$，所以 $\varepsilon=C/(1-C)$。此函数随 $C$ 增大而增大，因此若 $C\leq0.05$，则 $\varepsilon\leq0.05/0.95=1/19$。
 
-  精确方程还给出 $(\ln C)^{\prime}=C^{\prime}/C=-\kappa(1-C)$，以及 $C^{\prime}<0$。浓度虽然单调下降，斜率仍随浓度改变，因而一般不是直线。检查：$C\to0$ 时局部相对误差趋于零；$C$ 接近一时不能采用这种稀溶液近似。
+  定义斜率相对误差为 $\varepsilon=|(-\kappa C)-[-\kappa C(1-C)]|/|{-\kappa C(1-C)}|$。选出所有正确结论，采用完全一致评分。'
+solution: '两斜率的差的绝对值是 $\kappa C^2$，精确斜率的模为 $\kappa C(1-C)$，所以 $\varepsilon=C/(1-C)$。此函数随 $C$ 增大而增大，因此若 $C\leq0.05$，则 $\varepsilon\leq0.05/0.95=1/19$。
+
+
+  精确方程还给出 $(\ln C)^{\prime}=C^{\prime}/C=-\kappa(1-C)$，以及 $C^{\prime}<0$。浓度虽然单调下降，斜率仍随浓度改变，因而一般不是直线。检查：$C\to0$ 时局部相对误差趋于零；$C$
+  接近一时不能采用这种稀溶液近似。
+
 
   研究对应：Results, Theoretical framework for thermodiffusive separation, nonlinear C(1−C) term in Eq. (1)。教学范围：给出的上界仅约束同一浓度处的局部斜率误差，不能直接当作有限通道上解的相对误差。
 
-  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -62,3 +66,19 @@ answer:
   - A
   - B
   - C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27635db44635fc43c298e021077c627d8ebb313d53bc1a087aa1026e8d25e4db
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27635db44635fc43c298e021077c627d8ebb313d53bc1a087aa1026e8d25e4db
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27635db44635fc43c298e021077c627d8ebb313d53bc1a087aa1026e8d25e4db

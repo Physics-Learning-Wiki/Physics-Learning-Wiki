@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000511
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.shielding
+type: single_choice
+choice_order: shuffle
+stem: 一个封闭导体空腔内无电荷，外部静电源改变时腔内场如何？
+solution: 内壁等势且内部调和，最大值原理给常势．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 与外部场处处相同
+- id: B
+  content: 只有壳接地才为零
+- id: C
+  content: 保持为零
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．内壁等势且内部调和，最大值原理给常势．
+  incorrect: 请先重新核对模型条件．内壁等势且内部调和，最大值原理给常势．
+  choices:
+    A: 导体感应电荷会改变边界，不能忽略屏蔽．
+    B: 孤立壳也可使无源封闭腔零场，势常数可改变．
+    C: 内壁等势且内部调和，最大值原理给常势．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59c2e64d0d5186bffd777347e409f9c18488e36635afec6450192797a4e8f577
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59c2e64d0d5186bffd777347e409f9c18488e36635afec6450192797a4e8f577
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:59c2e64d0d5186bffd777347e409f9c18488e36635afec6450192797a4e8f577

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000401
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.electrostatics
@@ -10,41 +10,58 @@ concepts:
 - electrostatics.capacitance
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  石墨滑片的横向运动会改变两电极之间的等效电容。理解驱动力时，必须把维持电压的电源纳入能量账本。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+stem: '石墨滑片的横向运动会改变两电极之间的等效电容。理解驱动力时，必须把维持电压的电源纳入能量账本。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+
 
   考虑一个准静态、无耗散的小位移，使中性滑片装置的等效电容从 $C_{\mathrm{eq}}$ 增加 $dC_{\mathrm{eq}}>0$。理想电源始终保持两端电压 $V>0$ 不变；滑片净电荷维持为零。只保留一阶微小量。
 
-  给定场能 $U_{\mathrm{field}}=\tfrac12 C_{\mathrm{eq}}V^2$，电源正端输送电荷 $dQ_{\mathrm{src}}$ 时对装置做功 $dW_{\mathrm{src}}=V\,dQ_{\mathrm{src}}$。哪些说法正确？
-solution: |-
-  恒压条件下 $Q_{\mathrm{src}}=C_{\mathrm{eq}}V$，故 $dQ_{\mathrm{src}}=V\,dC_{\mathrm{eq}}$，电源输出功为 $V^2dC_{\mathrm{eq}}$。场能增加一半：
+
+  给定场能 $U_{\mathrm{field}}=\tfrac12 C_{\mathrm{eq}}V^2$，电源正端输送电荷 $dQ_{\mathrm{src}}$ 时对装置做功 $dW_{\mathrm{src}}=V\,dQ_{\mathrm{src}}$。哪些说法正确？'
+solution: '恒压条件下 $Q_{\mathrm{src}}=C_{\mathrm{eq}}V$，故 $dQ_{\mathrm{src}}=V\,dC_{\mathrm{eq}}$，电源输出功为 $V^2dC_{\mathrm{eq}}$。场能增加一半：
+
 
   $$
+
   dU_{\mathrm{field}}=\frac12V^2dC_{\mathrm{eq}}.
+
   $$
+
 
   能量守恒给出电场对机械自由度所做的功：
 
+
   $$
+
   dW_{\mathrm{mech}}=dW_{\mathrm{src}}-dU_{\mathrm{field}}
+
   =\frac12V^2dC_{\mathrm{eq}}>0.
+
   $$
+
 
   所以增加的场能和正机械功均来自电源。检查：两部分之和恰等于电源输出，单位都是 $\mathrm{V^2F=J}$。若电容不改变，三项都为零。
 
+
   选项辨析：
+
 
   电源功为 $V^2dC_{\mathrm{eq}}$：使用恒压下的电荷增量即可得到。
 
+
   场能增加一半电源功，来自对 $\tfrac12 C_{\mathrm{eq}}V^2$ 在固定 V 时求微分。
+
 
   机械功为 $\tfrac12V^2dC_{\mathrm{eq}}>0$，与朝电容增加方向的驱动一致。
 
+
   仅对场能取负梯度而忽略电源，会在恒压情况下得到错误的功和力方向。
+
 
   适用范围：本能量核算只适用于题设约束，不能把恒压表达式直接用于孤立定电荷装置。
 
-  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Fig. 1a, Eq. (1), and the paragraph introducing the series-capacitor model。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。
+
+  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Fig. 1a, Eq. (1), and the paragraph introducing the
+  series-capacitor model。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。'
 hints:
 - 恒压不表示电源不做功；电容变化时电源端电荷也变化。
 - 先求 $dQ_{\mathrm{src}}$，再用电源功减去场能增量。
@@ -83,3 +100,19 @@ answer:
   - A
   - B
   - C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7261e829c110fd642ca15c370d3a200c6c67f1f5806cff85d1f5423bf6412371
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7261e829c110fd642ca15c370d3a200c6c67f1f5806cff85d1f5423bf6412371
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:7261e829c110fd642ca15c370d3a200c6c67f1f5806cff85d1f5423bf6412371

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000504
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.local-equations
+type: single_choice
+choice_order: shuffle
+stem: 光滑无源区域中，零场和任意匀强场均有零散度与零旋度，这说明什么？
+solution: 相同局部源项并不消除齐次解．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 确定局部方程后仍需边界或远处数据
+- id: B
+  content: 散度定理失效
+- id: C
+  content: 电势不存在
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．相同局部源项并不消除齐次解．
+  incorrect: 请先重新核对模型条件．相同局部源项并不消除齐次解．
+  choices:
+    A: 相同局部源项并不消除齐次解．
+    B: 数学定理仍成立，缺少的是物理边界数据．
+    C: 匀强静电场具有线性电势．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:413798af2001c112cf483ea20e1a79f3b123cedeb3e7724fda4cf3ba4a6a14db
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:413798af2001c112cf483ea20e1a79f3b123cedeb3e7724fda4cf3ba4a6a14db
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:413798af2001c112cf483ea20e1a79f3b123cedeb3e7724fda4cf3ba4a6a14db

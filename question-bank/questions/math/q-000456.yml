@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000456
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,31 +9,43 @@ concepts:
 - complex.conformal-map
 type: numeric
 choice_order: fixed
-stem: |-
-  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+stem: 'Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
 
   本题坐标均已无量纲化，取 $z=\omega(\zeta)=2i e^{-i\zeta}$，以及 $F(\zeta)=\phi(\omega(\zeta))=e^{2i\zeta}$。在 $\zeta=0$ 附近使用局部逆映射。
 
-  求 $\phi^{\prime\prime}(2i)$ 的实数值，撇号表示对 $\phi$ 自变量 $z$ 求导。可从 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 出发。输入十进制数，允许绝对误差 $0.001$，不填单位。
-solution: |-
-  对 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 再求一次 $\zeta$ 导数，得到
+
+  求 $\phi^{\prime\prime}(2i)$ 的实数值，撇号表示对 $\phi$ 自变量 $z$ 求导。可从 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 出发。输入十进制数，允许绝对误差 $0.001$，不填单位。'
+solution: '对 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 再求一次 $\zeta$ 导数，得到
+
 
   $$
+
   F^{\prime\prime}=\phi^{\prime\prime}(\omega^{\prime})^2+\phi^{\prime}\omega^{\prime\prime},\qquad
+
   \phi^{\prime\prime}=\frac{F^{\prime\prime}\omega^{\prime}-F^{\prime}\omega^{\prime\prime}}{(\omega^{\prime})^3}.
+
   $$
+
 
   在零点，$F^{\prime}=2i$、$F^{\prime\prime}=-4$、$\omega^{\prime}=2$、$\omega^{\prime\prime}=-2i$。所以
 
-  $$
-  \phi^{\prime\prime}(2i)=\frac{(-4)2-(2i)(-2i)}{8}=-\frac32=-1.5.
+
   $$
 
-  独立检查：由 $z^2=-4e^{-2i\zeta}$ 得 $\phi(z)=-4/z^2$，直接求导为 $\phi^{\prime\prime}=-24/z^4$，在 $z=2i$ 同样得到 $-1.5$。若遗漏 $\omega^{\prime\prime}$ 项则结果不符。
+  \phi^{\prime\prime}(2i)=\frac{(-4)2-(2i)(-2i)}{8}=-\frac32=-1.5.
+
+  $$
+
+
+  独立检查：由 $z^2=-4e^{-2i\zeta}$ 得 $\phi(z)=-4/z^2$，直接求导为 $\phi^{\prime\prime}=-24/z^4$，在 $z=2i$ 同样得到 $-1.5$。若遗漏 $\omega^{\prime\prime}$
+  项则结果不符。
+
 
   研究对应：The concept of conformal mapping, Eq. (23), exponential geometry Eq. (25a)。教学范围：解析势是教学构造，不代表测得的应力势或拟合参数。
 
-  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -63,3 +75,19 @@ answer:
     required: false
     canonical: '1'
     accepted: []
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c0cb986eb3a333b7c584d0aa9ceb3a6771bfb45b8ea177df9bebdd1986cbe229
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c0cb986eb3a333b7c584d0aa9ceb3a6771bfb45b8ea177df9bebdd1986cbe229
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:c0cb986eb3a333b7c584d0aa9ceb3a6771bfb45b8ea177df9bebdd1986cbe229

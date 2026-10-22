@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000533
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.bound-charge
+type: single_choice
+choice_order: shuffle
+stem: 均匀极化的有限物体，束缚电荷怎样分布？
+solution: 体密度由散度给出，表面由法向分量给出．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 只要 P 非零，体密度必非零
+- id: B
+  content: 体密度零，表面可非零
+- id: C
+  content: 所有束缚电荷都为零
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．体密度由散度给出，表面由法向分量给出．
+  incorrect: 请先重新核对模型条件．体密度由散度给出，表面由法向分量给出．
+  choices:
+    A: 常矢量的散度为零．
+    B: 体密度由散度给出，表面由法向分量给出．
+    C: 忽略了边界处极化的变化．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8fd725133cb936f943bc45c72da4cb9fa7be1f7bffb3d1d33e7c52e9f606ac81
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8fd725133cb936f943bc45c72da4cb9fa7be1f7bffb3d1d33e7c52e9f606ac81
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8fd725133cb936f943bc45c72da4cb9fa7be1f7bffb3d1d33e7c52e9f606ac81

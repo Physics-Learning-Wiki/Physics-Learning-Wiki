@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000505
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.earnshaw-theorem
+type: single_choice
+choice_order: shuffle
+stem: 电势 $\varphi=A(x^2-y^2)$，$A>0$，原点对自由正点电荷而言是？
+solution: 沿 x 位移势能升高，沿 y 位移下降，不能三维稳定．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 三维稳定平衡
+- id: B
+  content: 根本不是平衡点
+- id: C
+  content: 鞍点平衡
+answer:
+  choice: C
+feedback:
+  correct: 判断正确．沿 x 位移势能升高，沿 y 位移下降，不能三维稳定．
+  incorrect: 请先重新核对模型条件．沿 x 位移势能升高，沿 y 位移下降，不能三维稳定．
+  choices:
+    A: 只检查 x 方向会漏掉 y 方向的不稳定．
+    B: 原点梯度为零，平衡与稳定要分开．
+    C: 沿 x 位移势能升高，沿 y 位移下降，不能三维稳定．
+related_pages:
+- electromagnetism.electrostatics.chapter-2.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dddf5d42008fc27ee5ea28a7bc8726d11468ef697e8322b9ec135d1bbbfbe285
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dddf5d42008fc27ee5ea28a7bc8726d11468ef697e8322b9ec135d1bbbfbe285
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:dddf5d42008fc27ee5ea28a7bc8726d11468ef697e8322b9ec135d1bbbfbe285

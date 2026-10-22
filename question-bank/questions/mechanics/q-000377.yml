@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000377
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -11,16 +11,20 @@ concepts:
 - newton.friction
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  风滚机器人研究显示气动力可带有随姿态改变的竖直分量；上向气动力既可能降低接触阻力，也会改变接触和防滑条件。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
+stem: '风滚机器人研究显示气动力可带有随姿态改变的竖直分量；上向气动力既可能降低接触阻力，也会改变接触和防滑条件。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
 
-  考虑质量 M、半径 R 的球在水平地面保持接触且竖直加速度为零。重力为 Mg，恒定向上气动力为 $F_L$，法向力为 N。接触模型取最大滚动阻力矩 $\tau_r=\mu_rNR$，最大静摩擦力 $f_{s,\max}=\mu_sN$，其中 $\mu_r,\mu_s>0$。水平风力通过球心。先限于 $0\le F_L<Mg$，再检查若超出该范围是否还能延用模型。图右侧三支箭头仅表示竖直力方向，不表示作用点或相对大小。
+
+  考虑质量 M、半径 R 的球在水平地面保持接触且竖直加速度为零。重力为 Mg，恒定向上气动力为 $F_L$，法向力为 N。接触模型取最大滚动阻力矩 $\tau_r=\mu_rNR$，最大静摩擦力 $f_{s,\max}=\mu_sN$，其中
+  $\mu_r,\mu_s>0$。水平风力通过球心。先限于 $0\le F_L<Mg$，再检查若超出该范围是否还能延用模型。图右侧三支箭头仅表示竖直力方向，不表示作用点或相对大小。
+
 
   ![左侧画出接地球、半径 R 和通过球心的水平风力；右侧独立列出 N、F_L 向上及 Mg 向下的方向示意，箭头不表示作用点或相对大小。](asset:m028)
 
+
   *原创教学示意图，非按比例绘制。*
 
-  以下哪些判断成立？选择所有成立的判断。
+
+  以下哪些判断成立？选择所有成立的判断。'
 hints:
 - 先写竖直受力平衡，再分别代入两个接触模型。
 - 法向力有非负约束；出现负值时应修改接触状态。
@@ -32,14 +36,18 @@ feedback:
     B: 阻力矩除以风力的力臂 R 后得到克服抗滚动阻力矩的阈值；仍需检查是否先发生滑动。
     C: 负的法向力意味着地面需要拉住球，与无黏附单侧接触不相容。
     D: 上向气动力同时降低可用摩擦力，接触模型的适用条件必须一并检查。
-solution: |-
-  竖直平衡给出 $N+F_L-Mg=0$，所以 $N=Mg-F_L>0$。风力关于接触点的力矩为 $F_DR$，因此仅按抗滚动力矩条件，克服最大滚动阻力矩的水平力阈值为 $F_{D,c}=\tau_r/R=\mu_r(Mg-F_L)$，会随上向气动力增加而下降；这还不是已保证纯滚动的总起动判据。但静摩擦容量同时下降为 $\mu_s(Mg-F_L)$，故纯滚动仍须另行核对。如果 $F_L>Mg$，形式代入会得到负 N；普通无黏附地面不能向下拉球，原“持续接触且竖直加速度为零”的假设失效，应改用脱离后的运动方程。
+solution: '竖直平衡给出 $N+F_L-Mg=0$，所以 $N=Mg-F_L>0$。风力关于接触点的力矩为 $F_DR$，因此仅按抗滚动力矩条件，克服最大滚动阻力矩的水平力阈值为 $F_{D,c}=\tau_r/R=\mu_r(Mg-F_L)$，会随上向气动力增加而下降；这还不是已保证纯滚动的总起动判据。但静摩擦容量同时下降为
+  $\mu_s(Mg-F_L)$，故纯滚动仍须另行核对。如果 $F_L>Mg$，形式代入会得到负 N；普通无黏附地面不能向下拉球，原“持续接触且竖直加速度为零”的假设失效，应改用脱离后的运动方程。
+
 
   **检查与物理含义：** $F_L=0$ 时返回 $N=Mg$；$F_L\to Mg^-$ 时两种接触承载能力均趋零。阈值 $\mu_r(Mg-F_L)$ 的量纲为力，且不随 R 变化是此特定阻力矩模型的结果。
 
+
   **适用范围：** 真实升力可正可负并随姿态变化；临界零法向力处的弹性回弹和飞行需要重新建模。
 
-  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Tumbleweed aerodynamics, Fig. 2N–Q, orientation-dependent lift and elastic rebound；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。
+
+  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Tumbleweed aerodynamics,
+  Fig. 2N–Q, orientation-dependent lift and elastic rebound；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。'
 difficulty: 2
 cognitive_level: analyze
 style: conceptual
@@ -70,3 +78,19 @@ answer:
 assets:
 - id: m028
   path: mechanics/m028.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0027019d42d35dd3717c655127cf3b9114e6a31befe83569cf9a82d55ad59ca9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0027019d42d35dd3717c655127cf3b9114e6a31befe83569cf9a82d55ad59ca9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0027019d42d35dd3717c655127cf3b9114e6a31befe83569cf9a82d55ad59ca9

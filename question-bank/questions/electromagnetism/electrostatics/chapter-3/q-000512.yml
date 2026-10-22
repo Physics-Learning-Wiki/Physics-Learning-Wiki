@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000512
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.shielding
+type: single_choice
+choice_order: shuffle
+stem: 净电荷为 $Q_c$ 的孤立导体壳内放净电荷 $q$，内外表面总电荷分别为？
+solution: 金属内高斯面给内面 −q，金属净电荷守恒给外面．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$ 与 $Q_c$
+- id: B
+  content: $-q$ 与 $Q_c+q$
+- id: C
+  content: $-q$ 与 $0$
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．金属内高斯面给内面 −q，金属净电荷守恒给外面．
+  incorrect: 请先重新核对模型条件．金属内高斯面给内面 −q，金属净电荷守恒给外面．
+  choices:
+    A: 内部源必须被内表面感应电荷抵消其穿过金属的通量．
+    B: 金属内高斯面给内面 −q，金属净电荷守恒给外面．
+    C: 外面为零是无外源接地壳的结果，不是一般孤立壳．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a3f2bdc7bce84f112671295394047836af7c55257f4a26546964ba4e394163e1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a3f2bdc7bce84f112671295394047836af7c55257f4a26546964ba4e394163e1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:a3f2bdc7bce84f112671295394047836af7c55257f4a26546964ba4e394163e1

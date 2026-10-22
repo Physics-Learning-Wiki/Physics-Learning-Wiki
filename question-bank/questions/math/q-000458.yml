@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000458
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,26 +9,33 @@ concepts:
 - complex.residue-theorem
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+stem: 'Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
 
   从二态模型 $H(z)=\begin{pmatrix}0&1\\z&0\end{pmatrix}$ 构造响应矩阵 $G(w;z)=(wI-H(z))^{-1}$，其中 $z$ 是固定参数，$w$ 是求响应的复变量。给定非对角元
 
-  $$
-  G_{12}(w;z)=\frac{1}{w^2-z}.
+
   $$
 
-  选出所有正确陈述。只研究此矩阵元，不需要任何量子力学知识；采用完全一致评分。
-solution: |-
-  当 $z=1$ 时，分母为 $(w-1)(w+1)$。在 $w=1$ 的留数是 $1/2$，在 $w=-1$ 的留数是 $-1/2$，二者均是简单极点。代入 $w=0$ 得 $-1$，并不是零点。
+  G_{12}(w;z)=\frac{1}{w^2-z}.
+
+  $$
+
+
+  选出所有正确陈述。只研究此矩阵元，不需要任何量子力学知识；采用完全一致评分。'
+solution: '当 $z=1$ 时，分母为 $(w-1)(w+1)$。在 $w=1$ 的留数是 $1/2$，在 $w=-1$ 的留数是 $-1/2$，二者均是简单极点。代入 $w=0$ 得 $-1$，并不是零点。
+
 
   当 $z=0$ 时，响应元变成 $w^{-2}$，在 $w=0$ 有二阶极点。这与把本征值看作参数 $z$ 的平方根时出现分支点并不矛盾：研究的是不同的函数与不同的复变量。
 
+
   检查：$1/(w^2-1)=\tfrac12/(w-1)-\tfrac12/(w+1)$，合并分式恢复原式。
+
 
   研究对应：Methods, Eq. (7); resolvent constructed for teaching from that explicit matrix。教学范围：不推断实际装置的传输函数、稳定性或极点残量的实验大小。
 
-  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -67,3 +74,19 @@ answer:
   choices:
   - A
   - C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5b5513bad603867561713c90cd5587026ffaa605585bb62f55b514cdbcd5aca2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5b5513bad603867561713c90cd5587026ffaa605585bb62f55b514cdbcd5aca2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:5b5513bad603867561713c90cd5587026ffaa605585bb62f55b514cdbcd5aca2

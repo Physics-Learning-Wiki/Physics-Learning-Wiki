@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000362
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -10,22 +10,29 @@ concepts:
 - oscillations.damping
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  论文将沿光腔轴、直接耦合光场的运动称为亮模，与它正交的方向称为暗模。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+stem: '论文将沿光腔轴、直接耦合光场的运动称为亮模，与它正交的方向称为暗模。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
 
   取一个明确的经典近似：粒子质量 $m$，主轴势能 $U=(k_XX^2+k_YY^2)/2$。腔轴位于两轴中间，定义
 
+
   $$
+
   b=\frac{X+Y}{\sqrt2},\qquad d=\frac{X-Y}{\sqrt2}.
+
   $$
+
 
   题设仅沿 $b$ 方向施加粘滞阻尼力 $F_b=-\gamma\dot b$，$\gamma>0$，沿 $d$ 方向无直接阻尼。
 
+
   ![X 轴水平向右，Y 轴竖直向上；亮方向 b 为右上45度，暗方向 d 为右下45度，两者正交。](asset:m013)
+
 
   *原创教学示意图，非按比例绘制。*
 
-  选择所有正确的判断。
+
+  选择所有正确的判断。'
 hints:
 - 由 b、d 的定义反解 X、Y，再代入两种能量。
 - 阻尼功率由题设的实际力方向决定。
@@ -37,27 +44,39 @@ feedback:
     B: 力乘对应方向速度给出非正的阻尼功率。
     C: 交叉项系数与两刚度之差成正比。
     D: 正交变换不把物理上指定为单方向的阻尼变成各向同性阻尼。
-solution: |-
-  变换矩阵为正交矩阵，其逆给出 $X=(b+d)/\sqrt2$、$Y=(b-d)/\sqrt2$。于是
+solution: '变换矩阵为正交矩阵，其逆给出 $X=(b+d)/\sqrt2$、$Y=(b-d)/\sqrt2$。于是
+
 
   $$
+
   T=\frac12m(\dot b^2+\dot d^2),\qquad
+
   U=\frac{k_X+k_Y}{4}(b^2+d^2)+\frac{k_X-k_Y}{2}bd.
+
   $$
+
 
   因此正交变换保留动能形式；若 $k_X=k_Y$，势能中的交叉项也消失。阻尼功率则是
 
+
   $$
+
   P_{\mathrm{damp}}=F_b\dot b=-\gamma\dot b^2\le0.
+
   $$
+
 
   没有直接的 $d$ 阻尼项不意味着任意情况下暗模能量都不变：当 $k_X\ne k_Y$ 时，势能交叉项允许它与亮模交换能量。
 
+
   **检查与物理含义：** 由逆变换求 Xdot²+Ydot² 可精确化为 bdot²+ddot²；势能交叉项在交换 X/Y 后变号，在相同刚度极限消失；阻尼功率非正。
+
 
   **适用范围：** 此题不含光腔自由度、噪声或量子协方差，不能检验论文的量子纯度、纠缠或真实冷却速率。
 
-  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark
+  modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。'
 difficulty: 2
 cognitive_level: analyze
 style: computational
@@ -88,3 +107,19 @@ answer:
 assets:
 - id: m013
   path: mechanics/m013.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:99e5d29a28b2077e89f34222d7083454b1843c4eddc284ecf6bfca64bd0df0b3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:99e5d29a28b2077e89f34222d7083454b1843c4eddc284ecf6bfca64bd0df0b3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:99e5d29a28b2077e89f34222d7083454b1843c4eddc284ecf6bfca64bd0df0b3

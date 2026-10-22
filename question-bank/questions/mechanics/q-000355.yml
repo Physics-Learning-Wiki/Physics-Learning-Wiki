@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000355
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.dynamics
@@ -10,44 +10,60 @@ concepts:
 - newton.system-boundary
 type: numeric
 choice_order: fixed
-stem: |-
-  弹簧跳跃研究以地面支持力降至零定义离地，而支持力曲线的面积控制质心动量变化。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
+stem: '弹簧跳跃研究以地面支持力降至零定义离地，而支持力曲线的面积控制质心动量变化。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
+
 
   某教学模型总质量 $M=0.20\,\mathrm{kg}$，初始质心静止。竖直向上为正。在 $0\le t\le T$ 的接触阶段，给定**示意性的**总地面反力
 
+
   $$
+
   N(t)=N_0(1-t/T),\qquad N_0=10.0\,\mathrm{N},\quad T=0.080\,\mathrm{s}.
+
   $$
+
 
   除地面反力外，外力只有重力，取 $g=10.0\,\mathrm{m/s^2}$。$t=T$ 时离地，不另加碰撞冲量。
 
-  求离地瞬间质心向上的速度。用小数输入，单位填 `m/s`，保留两位小数。
+
+  求离地瞬间质心向上的速度。用小数输入，单位填 `m/s`，保留两位小数。'
 hints:
 - 支持力不是合力；先减去重力再积分。
 - 线性下降至零的支持力图像面积是三角形面积。
 feedback:
   correct: 用外力冲量计算质心速度并扣除重力冲量，并保留了题设的适用条件。
   incorrect: 支持力不是合力；先减去重力再积分。
-solution: |-
-  对整机使用动量定理，内部弹簧力不进入合外力：
+solution: '对整机使用动量定理，内部弹簧力不进入合外力：
+
 
   $$
+
   MV=\int_0^T[N(t)-Mg]dt=\frac12N_0T-MgT.
+
   $$
+
 
   支持力冲量为 $0.400\,\mathrm{N\,s}$，重力冲量大小为 $0.160\,\mathrm{N\,s}$。净冲量为 $0.240\,\mathrm{N\,s}$，故
 
+
   $$
+
   V=0.240/0.20=1.20\,\mathrm{m/s}.
+
   $$
+
 
   只用支持力面积会漏掉整个接触时间内的重力作用。
 
+
   **检查与物理含义：** 独立以平均净力 3.0 N 乘持续时间计算，仍得 0.240 N·s；净冲量为正且量纲除以质量后为速度。0.005 m/s 容差对应两位小数。
+
 
   **适用范围：** 结论只适用于题设简化模型，不等于验证完整装置或论文的全部结论。
 
-  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.1, Fig. 2 and Eqs. (1)–(5)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。
+
+  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.1, Fig. 2 and Eqs.
+  (1)–(5)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -71,3 +87,19 @@ answer:
     canonical: m/s
     accepted:
     - m/s
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1db683e4c67184905245b2ba091f0cabfcc04070e42a82cb50ec42a314e3ab0d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1db683e4c67184905245b2ba091f0cabfcc04070e42a82cb50ec42a314e3ab0d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:1db683e4c67184905245b2ba091f0cabfcc04070e42a82cb50ec42a314e3ab0d

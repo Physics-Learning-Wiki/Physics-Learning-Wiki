@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000398
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.kinematics
@@ -10,12 +10,14 @@ concepts:
 - kinematics.uniform-motion
 type: single_choice
 choice_order: shuffle
-stem: |-
-  翅果下降速度影响其在风中停留的时间，因此也是种子扩散运动学的重要量。研究表 1 给出不同物种及汇总的下降速率。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
+stem: '翅果下降速度影响其在风中停留的时间，因此也是种子扩散运动学的重要量。研究表 1 给出不同物种及汇总的下降速率。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
 
-  明确采用表 1 最后一行的平均下降速率 $V_d=158\,\mathrm{cm/s}$，将其作为恒定代表值。设翅果已进入稳定下降，在相对空气的周期平均运动中，竖直速度为 $-V_d$、水平速度为零。空气相对地面以恒定 $U=0.500\,\mathrm{m/s}$ 向东移动，无竖直风。初始高度 $H=3.16\,\mathrm{m}$。本题跟踪周期平均的轨迹中心，忽略螺旋绕行产生的有界水平摆动与释放瞬态。
 
-  周期平均轨迹中心到达地面时，向东位移最接近多少？
+  明确采用表 1 最后一行的平均下降速率 $V_d=158\,\mathrm{cm/s}$，将其作为恒定代表值。设翅果已进入稳定下降，在相对空气的周期平均运动中，竖直速度为 $-V_d$、水平速度为零。空气相对地面以恒定 $U=0.500\,\mathrm{m/s}$
+  向东移动，无竖直风。初始高度 $H=3.16\,\mathrm{m}$。本题跟踪周期平均的轨迹中心，忽略螺旋绕行产生的有界水平摆动与释放瞬态。
+
+
+  周期平均轨迹中心到达地面时，向东位移最接近多少？'
 hints:
 - 统一长度单位后，用高度除以下降速率。
 - 相对空气的平均水平速度为零，不代表相对地面的平均水平速度为零。
@@ -27,14 +29,18 @@ feedback:
     B: 先由下降高度求飞行时间，再乘水平风速。
     C: 下降速率的数值不等于水平位移，必须结合高度和风速。
     D: 把 158 cm/s 当成 158 m/s 会使下降时间少两个数量级。
-solution: |-
-  先换算 $V_d=1.58\,\mathrm{m/s}$。无竖直风，地面参考系中的下降时间为 $t_f=H/V_d=3.16/1.58=2.00\,\mathrm{s}$。水平速度按参考系相加为 U，因此向东位移 $\Delta x=Ut_f=0.500\times2.00=1.00\,\mathrm{m}$。该估计只使用给定的平均下降速度与空气平移，不把瞬时螺旋半径混入平均漂移。
+solution: '先换算 $V_d=1.58\,\mathrm{m/s}$。无竖直风，地面参考系中的下降时间为 $t_f=H/V_d=3.16/1.58=2.00\,\mathrm{s}$。水平速度按参考系相加为 U，因此向东位移 $\Delta
+  x=Ut_f=0.500\times2.00=1.00\,\mathrm{m}$。该估计只使用给定的平均下降速度与空气平移，不把瞬时螺旋半径混入平均漂移。
+
 
   **检查与物理含义：** $\Delta x/H=U/V_d=0.31646\ldots$ 无量纲。令风速为零，平均水平位移为零；在同高度同风速下更慢下降将延长时间并增加漂移距离。
 
+
   **适用范围：** 不预测真实种子落点分布；湍流、起动阶段、不同样本下降速度与地形均未计入。论文正文与表格汇总数字有差异，本题明确只用表 1。
 
-  **来源定位：** Precession dynamics and morphology of rolling samaras，Table 1, mean descent velocity 158 cm/s; Introduction on wind-assisted dispersal；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。
+
+  **来源定位：** Precession dynamics and morphology of rolling samaras，Table 1, mean descent velocity 158 cm/s; Introduction on
+  wind-assisted dispersal；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -59,3 +65,19 @@ choices:
   content: 0.0100 m。
 answer:
   choice: B
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22eed79030a7d04b659fb2fdc57fc9d629c6dead16b4f685bf229ed767d13f53
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22eed79030a7d04b659fb2fdc57fc9d629c6dead16b4f685bf229ed767d13f53
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:22eed79030a7d04b659fb2fdc57fc9d629c6dead16b4f685bf229ed767d13f53

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000481
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,26 +9,33 @@ concepts:
 - math.bessel-function
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+stem: 'Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
 
   采用解释贝塞尔束近轴结构的教学模型 $u^{\prime\prime}+u^{\prime}/r+k^2u=0$，$k>0$，并取轴线上规则解 $u(0)=1$。设
 
+
   $$u(r)=a_0+a_1r^2+a_2r^4+\cdots,\qquad a_0=1.$$
 
-  可逐项求导和比较同次幂。选出所有正确结论；采用完全一致评分。这里只问近轴级数，不把低阶截断用于远处各环。
-solution: |-
-  对 $a_n r^{2n}$ 求两次导数，并加上一次导数除以 $r$，得到 $4n^2a_n r^{2n-2}$。比较 $r^{2n}$ 系数，得
+
+  可逐项求导和比较同次幂。选出所有正确结论；采用完全一致评分。这里只问近轴级数，不把低阶截断用于远处各环。'
+solution: '对 $a_n r^{2n}$ 求两次导数，并加上一次导数除以 $r$，得到 $4n^2a_n r^{2n-2}$。比较 $r^{2n}$ 系数，得
+
 
   $$4(n+1)^2a_{n+1}+k^2a_n=0.$$
 
+
   因此 $a_1=-k^2/4$，$a_2=k^4/64$，且偶次幂展开给出 $u^{\prime}(0)=0$。局部二阶导数为 $u^{\prime\prime}(0)=2a_1=-k^2/2$，不是 $-k^2$。
+
 
   检查：首项 $1-k^2r^2/4$ 表示中心向外首先降低；$k^2r^2$ 与 $k^4r^4$ 均无量纲。保留四次项后代回方程可消去常数项与二次项，但不意味着整个无限区间已经精确。
 
-  研究对应：Results, Effect of beam type, measured narrow central lobe and concentric side structure in Fig. 6。教学范围：本题 k 为符号教学尺度；未从论文测量反演 k，也不以四次多项式拟合完整环形分布。
 
-  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+  研究对应：Results, Effect of beam type, measured narrow central lobe and concentric side structure in Fig. 6。教学范围：本题 k 为符号教学尺度；未从论文测量反演
+  k，也不以四次多项式拟合完整环形分布。
+
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -68,3 +75,19 @@ answer:
   - A
   - B
   - C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4be8460612e3f41a1c50342abd62858dded63b1f8476f188f9babca6597a7a0a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4be8460612e3f41a1c50342abd62858dded63b1f8476f188f9babca6597a7a0a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:4be8460612e3f41a1c50342abd62858dded63b1f8476f188f9babca6597a7a0a

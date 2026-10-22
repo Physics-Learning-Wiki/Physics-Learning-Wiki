@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000426
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - electromagnetism.magnetostatics
@@ -10,32 +10,43 @@ concepts:
 - magnetostatics.superposition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  微机器人研究通过三对正交线圈独立控制场方向。二维旋转场可由其中两对线圈合成。 [研究来源](https://www.nature.com/articles/s41467-025-65459-8)
+stem: '微机器人研究通过三对正交线圈独立控制场方向。二维旋转场可由其中两对线圈合成。 [研究来源](https://www.nature.com/articles/s41467-025-65459-8)
+
 
   在中心工作区，两对线圈分别产生 x、y 方向的均匀场。控制电流使
+
   $B_x=B_0\cos\omega t$、$B_y=B_0\sin\omega t$、$B_z=0$，其中 $B_0,\omega>0$。线圈响应视为线性且无相位延迟，只讨论逐时刻磁场，不讨论感应电场。
 
-  从 +z 方向看向原点，磁场矢量的运动是什么？
-solution: |-
-  磁场大小
+
+  从 +z 方向看向原点，磁场矢量的运动是什么？'
+solution: '磁场大小
+
   $|\mathbf B|=B_0\sqrt{\cos^2\omega t+\sin^2\omega t}=B_0$，始终不变。t=0 时沿 +x，稍后 y 分量为正，因此从 +z 观察，方向由 +x 转向 +y，按逆时针旋转。
+
 
   检查：在四分之一周期时场沿 +y，半周期时沿 −x。若两分量同相，则得到沿固定斜线往复的场，不能得到该圆周轨迹。
 
+
   选项辨析：
+
 
   正交、等幅、相差四分之一周期的分量形成逆时针圆周轨迹。
 
+
   给定正正弦 y 分量使初始方向从 +x 转向 +y，与顺时针相反。
+
 
   这种轨迹需要两分量同相，而题目给的是正弦与余弦。
 
+
   两个分量平方和恒为 B₀²，没有同时为零的时刻。
+
 
   适用范围：不计算真实线圈的频率响应，也不忽略现实中的感应电场；后者只是本题不求的量。
 
-  来源定位：Soft magnetic microrobots with remote sensing and communication capabilities，Methods, Magnetic navigation; Results, 40 mT rotating-field navigation paragraph。DOI: [10.1038/s41467-025-65459-8](https://doi.org/10.1038/s41467-025-65459-8)。
+
+  来源定位：Soft magnetic microrobots with remote sensing and communication capabilities，Methods, Magnetic navigation; Results,
+  40 mT rotating-field navigation paragraph。DOI: [10.1038/s41467-025-65459-8](https://doi.org/10.1038/s41467-025-65459-8)。'
 hints:
 - 先求 B 的模，再比较 t=0 和很小正时间的方向。
 - 观察方向已指定为从 +z 看向原点。
@@ -71,3 +82,19 @@ choices:
   content: 大小恒为 B₀，顺时针旋转。
 answer:
   choice: B
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:00d41a689b03d6c25ed0008b3ceb06b9875a899df1a18e71f02560e4e21308c0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:00d41a689b03d6c25ed0008b3ceb06b9875a899df1a18e71f02560e4e21308c0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:00d41a689b03d6c25ed0008b3ceb06b9875a899df1a18e71f02560e4e21308c0

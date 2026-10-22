@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000457
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.complex-analysis
@@ -9,20 +9,23 @@ concepts:
 - complex.singularities
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+stem: 'Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
 
   二态模型的一支谱局部写成 $E(z)=\sqrt z$。已知：沿绕原点的一周连续延拓，根会变号；而 $|E(z)|=\sqrt{|z|}\to0$ 当 $z\to0$。
 
-  若把 $E$ 看作复参数的多值函数，原点应如何分类？这里不预先把域切开。
-solution: |-
-  原点是分支点。绕行改变函数值表明无法在整个穿孔邻域单值解析，因而不能直接套用单值函数的可去奇点定理。又因模趋于零，它也不是使模发散的普通极点。
+
+  若把 $E$ 看作复参数的多值函数，原点应如何分类？这里不预先把域切开。'
+solution: '原点是分支点。绕行改变函数值表明无法在整个穿孔邻域单值解析，因而不能直接套用单值函数的可去奇点定理。又因模趋于零，它也不是使模发散的普通极点。
+
 
   更强的检查：若在原点存在解析根 $f$，则 $f^2=z$ 且 $f(0)=0$。设非零解析函数 $f$ 的零点阶数为整数 $m\geq1$，则 $f^2$ 的零点阶数为 $2m$，不能等于 $z$ 的一阶零点。这排除了可去延拓。
 
+
   研究对应：Methods, Eqs. (7)–(10)。教学范围：不借此判断矩阵元是否有极点，也不涉及贝里相位。
 
-  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -58,3 +61,19 @@ choices:
   content: 一阶极点
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8429dd7b88cae27b04b0f29f3e31575d1d9e829be3a5e4380fa4cc6500080881
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8429dd7b88cae27b04b0f29f3e31575d1d9e829be3a5e4380fa4cc6500080881
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8429dd7b88cae27b04b0f29f3e31575d1d9e829be3a5e4380fa4cc6500080881

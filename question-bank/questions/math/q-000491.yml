@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000491
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,26 +9,33 @@ concepts:
 - math.eigenfunction-expansion
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+stem: 'Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
 
   考虑原创无量纲矩阵及其右本征向量矩阵
 
+
   $$J=\begin{pmatrix}1&1\\0&2\end{pmatrix},\quad P=\begin{pmatrix}1&1\\0&1\end{pmatrix},\quad J=P\begin{pmatrix}1&0\\0&2\end{pmatrix}P^{-1}.$$
 
-  $P$ 的两列记为 $r_1,r_2$；左基底行向量 $\ell_1,\ell_2$ 是 $P^{-1}$ 的两行，满足 $\ell_i r_j=\delta_{ij}$。选出所有正确结论，采用完全一致评分。这里“左基底”完全由上述定义给出。
-solution: |-
-  直接求逆有 $P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$。因此 $\ell_1=(1,-1)$、$\ell_2=(0,1)$，它们与右列向量的四个乘积组成单位矩阵。
+
+  $P$ 的两列记为 $r_1,r_2$；左基底行向量 $\ell_1,\ell_2$ 是 $P^{-1}$ 的两行，满足 $\ell_i r_j=\delta_{ij}$。选出所有正确结论，采用完全一致评分。这里“左基底”完全由上述定义给出。'
+solution: '直接求逆有 $P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$。因此 $\ell_1=(1,-1)$、$\ell_2=(0,1)$，它们与右列向量的四个乘积组成单位矩阵。
+
 
   逆算子为
 
+
   $$G=P\begin{pmatrix}1&0\\0&1/2\end{pmatrix}P^{-1}=r_1\ell_1+\frac12r_2\ell_2=\begin{pmatrix}1&-1/2\\0&1/2\end{pmatrix}.$$
+
 
   右向量没有正交归一，因此不能把 $P^{-1}$ 换成 $P^T$。检查：$PP^{-1}$ 与 $JG$ 都是单位矩阵；使用简单转置则不满足这些检验。这是基底代数问题，无需非厄米谱分类知识。
 
-  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, left/right eigenstate expansion of G。教学范围：仅讨论可对角化的示例；不处理缺陷矩阵或异常点处的广义本征向量。
 
-  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, left/right eigenstate expansion
+  of G。教学范围：仅讨论可对角化的示例；不处理缺陷矩阵或异常点处的广义本征向量。
+
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -68,3 +75,19 @@ answer:
   - A
   - B
   - D
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d8111a43110049950f361ed10e3dc6bf001326250f6b5d728df38eedeff5e63a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d8111a43110049950f361ed10e3dc6bf001326250f6b5d728df38eedeff5e63a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:d8111a43110049950f361ed10e3dc6bf001326250f6b5d728df38eedeff5e63a

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000510
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.conductors
+type: single_choice
+choice_order: shuffle
+stem: 两接地外板与中间带电板的间距分别为 $a,b$，中板净面密度为 $\sigma$，其左侧表面密度为？
+solution: 中板势为 $V=\sigma ab/[\varepsilon_0(a+b)]$，左面密度为 $\varepsilon_0V/a$．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\sigma b/(a+b)$
+- id: B
+  content: $\sigma/2$
+- id: C
+  content: $\sigma a/(a+b)$
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．中板势为 $V=\sigma ab/[\varepsilon_0(a+b)]$，左面密度为 $\varepsilon_0V/a$．
+  incorrect: 请先重新核对模型条件．中板势为 $V=\sigma ab/[\varepsilon_0(a+b)]$，左面密度为 $\varepsilon_0V/a$．
+  choices:
+    A: 中板势为 $V=\sigma ab/[\varepsilon_0(a+b)]$，左面密度为 $\varepsilon_0V/a$．
+    B: 只有两间距相等时才平均分配．
+    C: 把右侧分配误用于左侧；较窄间隙对应较大电容．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:60d8d419483017d80088a4047539d0afe0f34c6549c1820e3081d31c06a0c18f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:60d8d419483017d80088a4047539d0afe0f34c6549c1820e3081d31c06a0c18f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:60d8d419483017d80088a4047539d0afe0f34c6549c1820e3081d31c06a0c18f

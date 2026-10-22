@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000540
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.interfaces
+type: single_choice
+choice_order: shuffle
+stem: 两层介质沿板间法向串联填充，通常相同的量是什么？
+solution: 无自由界面电荷使 Dn 相同，电压按层积分．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 法向电位移
+- id: B
+  content: 每层电压
+- id: C
+  content: 每层场强
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．无自由界面电荷使 Dn 相同，电压按层积分．
+  incorrect: 请先重新核对模型条件．无自由界面电荷使 Dn 相同，电压按层积分．
+  choices:
+    A: 无自由界面电荷使 Dn 相同，电压按层积分．
+    B: 两层厚度与介电系数不同时电压不同．
+    C: 介电系数不同会使 E=D/ε 不同．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8079763cf66427283cfc0266b0062a39374c4b62a0e7dbad17f61e999bdc7b15
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8079763cf66427283cfc0266b0062a39374c4b62a0e7dbad17f61e999bdc7b15
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8079763cf66427283cfc0266b0062a39374c4b62a0e7dbad17f61e999bdc7b15

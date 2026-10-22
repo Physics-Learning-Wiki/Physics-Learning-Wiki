@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000471
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.differential-equations
@@ -9,20 +9,24 @@ concepts:
 - math.delay-equation
 type: multiple_choice
 choice_order: shuffle
-stem: |-
-  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+stem: 'Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
 
-  使用无量纲时间，考虑 $\dot\theta(t)=-\theta(t-\tau)$，$t\geq0$，$\tau=0.2$。为了启动演化，分别给出区间 $-0.2\leq s\leq0$ 上的两段历史：$h_A(s)=1$ 和 $h_B(s)=1+s$；在该区间令 $\theta(s)=h(s)$。
 
-  选出所有正确陈述。这里 $\dot\theta(0^+)$ 由延迟方程从右侧给定，不要求它等于历史函数在零点的左导数。采用完全一致评分。
-solution: |-
-  两段历史的端点都是 $h_A(0)=h_B(0)=1$。但启动时方程读取的是历史的另一点：$\dot\theta(0^+)=-h(-0.2)$。因此第一种历史给出 $-1$，第二种历史给出 $-0.8$。
+  使用无量纲时间，考虑 $\dot\theta(t)=-\theta(t-\tau)$，$t\geq0$，$\tau=0.2$。为了启动演化，分别给出区间 $-0.2\leq s\leq0$ 上的两段历史：$h_A(s)=1$ 和 $h_B(s)=1+s$；在该区间令
+  $\theta(s)=h(s)$。
+
+
+  选出所有正确陈述。这里 $\dot\theta(0^+)$ 由延迟方程从右侧给定，不要求它等于历史函数在零点的左导数。采用完全一致评分。'
+solution: '两段历史的端点都是 $h_A(0)=h_B(0)=1$。但启动时方程读取的是历史的另一点：$\dot\theta(0^+)=-h(-0.2)$。因此第一种历史给出 $-1$，第二种历史给出 $-0.8$。
+
 
   虽然当前温差相同，两解的右侧初始斜率不同，所以只给 $\theta(0)$ 不能在这个延迟问题中确定后续解。只给 $h(-0.2)$ 也不够：当 $0<t<0.2$ 时，方程依次读取历史区间的其他点。检查：这里的结论没有否定普通无延迟一阶初值问题的唯一性；它指出延迟方程需要不同类型的初始资料。
 
+
   研究对应：Section II B, historical initial condition for the delayed cooling law。教学范围：只判断启动和首个区间所需信息，不分析全局稳定性或记忆效应的全部分类。
 
-  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -61,3 +65,19 @@ answer:
   choices:
   - A
   - B
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:492d1567e42b84c03e30ef8ed1cc5cc74605a8cfed03255b12b96680cd7f8e7b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:492d1567e42b84c03e30ef8ed1cc5cc74605a8cfed03255b12b96680cd7f8e7b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:492d1567e42b84c03e30ef8ed1cc5cc74605a8cfed03255b12b96680cd7f8e7b

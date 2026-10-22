@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000500
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.charge
+type: single_choice
+choice_order: shuffle
+stem: 两最初中性的物体在无外界电荷交换时摩擦，一物体失去 $n$ 个电子，净电荷为何？
+solution: 失去负电荷后净电荷为正，另一物体获得同量负电荷．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$
+- id: B
+  content: $+ne$
+- id: C
+  content: $-ne$
+answer:
+  choice: B
+feedback:
+  correct: 判断正确．失去负电荷后净电荷为正，另一物体获得同量负电荷．
+  incorrect: 请先重新核对模型条件．失去负电荷后净电荷为正，另一物体获得同量负电荷．
+  choices:
+    A: 总系统守恒不意味着每个物体分别保持中性．
+    B: 失去负电荷后净电荷为正，另一物体获得同量负电荷．
+    C: 失去电子不是获得电子，正负号相反．
+related_pages:
+- electromagnetism.electrostatics.chapter-1.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:aff973521da6cd1d661426046c65561dd1dc753b2ee8ae75b0423b7a72b8ca54
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:aff973521da6cd1d661426046c65561dd1dc753b2ee8ae75b0423b7a72b8ca54
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:aff973521da6cd1d661426046c65561dd1dc753b2ee8ae75b0423b7a72b8ca54

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000368
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - mechanics.oscillations
@@ -10,12 +10,14 @@ concepts:
 - analytical.equilibrium-stability
 type: single_choice
 choice_order: shuffle
-stem: |-
-  扭转微摆研究比较了正常和倒置重力方向，显示悬挂刚度可以改变倒置构型的稳定性。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+stem: '扭转微摆研究比较了正常和倒置重力方向，显示悬挂刚度可以改变倒置构型的稳定性。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
 
-  原创教学模型中，摆的转动惯量为 $I>0$，质心到转轴距离为 $\ell>0$，悬挂提供扭转势能 $\kappa\theta^2/2$，其中 $\kappa>0$。倒置位置定义为 $\theta=0$，重力势能为 $mg\ell\cos\theta$。因此 $U(\theta)=\kappa\theta^2/2+mg\ell\cos\theta$。只讨论 $\theta=0$ 附近的线性稳定性，不讨论大角度逃逸。
 
-  下列哪一组严格条件和小振动角频率是正确的？
+  原创教学模型中，摆的转动惯量为 $I>0$，质心到转轴距离为 $\ell>0$，悬挂提供扭转势能 $\kappa\theta^2/2$，其中 $\kappa>0$。倒置位置定义为 $\theta=0$，重力势能为 $mg\ell\cos\theta$。因此
+  $U(\theta)=\kappa\theta^2/2+mg\ell\cos\theta$。只讨论 $\theta=0$ 附近的线性稳定性，不讨论大角度逃逸。
+
+
+  下列哪一组严格条件和小振动角频率是正确的？'
 hints:
 - 在平衡点求势能的二阶导数。
 - 小振动要求势能曲率为正。
@@ -27,14 +29,18 @@ feedback:
     B: 负曲率导致线性不稳定，不能把增长率当作振动频率。
     C: 倒置重力提供负的势能曲率，悬挂刚度必须超过其绝对值。
     D: 倒置重力项降低而非增加线性恢复刚度。
-solution: |-
-  $U\prime(0)=0$，所以倒置位置是平衡点；是否稳定取决于 $U\prime\prime(0)=\kappa-mg\ell$。当 $\kappa>mg\ell$ 时势能在该点有正曲率，线性方程为 $I\ddot\theta+(\kappa-mg\ell)\theta=0$，故 $\omega=\sqrt{(\kappa-mg\ell)/I}$。当 $\kappa<mg\ell$ 时存在指数增长解。当二者相等时线性刚度为零，线性分析不能给出正的小振动频率，需检查更高阶项。
+solution: '$U\prime(0)=0$，所以倒置位置是平衡点；是否稳定取决于 $U\prime\prime(0)=\kappa-mg\ell$。当 $\kappa>mg\ell$ 时势能在该点有正曲率，线性方程为 $I\ddot\theta+(\kappa-mg\ell)\theta=0$，故
+  $\omega=\sqrt{(\kappa-mg\ell)/I}$。当 $\kappa<mg\ell$ 时存在指数增长解。当二者相等时线性刚度为零，线性分析不能给出正的小振动频率，需检查更高阶项。
+
 
   **检查与物理含义：** $\kappa$ 与 $mg\ell$ 都具有力矩量纲；曲率除以转动惯量具有 $\mathrm{s^{-2}}$ 量纲。令 $g\to0$，恢复为普通扭转振子的 $\sqrt{\kappa/I}$。
 
+
   **适用范围：** “稳定”限定为正线性曲率；临界点和大角度运动不由本题线性近似决定。
 
-  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Fig. 1c, pendulum orientation and normal/inverted resonance frequencies；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Fig. 1c, pendulum orientation and normal/inverted
+  resonance frequencies；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -59,3 +65,19 @@ choices:
   content: 任意 $\kappa>0$ 都稳定，且 $\omega=\sqrt{(\kappa+mg\ell)/I}$。
 answer:
   choice: C
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:62d4431ba66c3d78d3e0cc5bc97d8e0b554dab44a2099fd68d04637e1933eeec
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:62d4431ba66c3d78d3e0cc5bc97d8e0b554dab44a2099fd68d04637e1933eeec
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:62d4431ba66c3d78d3e0cc5bc97d8e0b554dab44a2099fd68d04637e1933eeec

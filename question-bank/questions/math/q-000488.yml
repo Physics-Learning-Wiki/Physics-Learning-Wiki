@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000488
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,28 +9,35 @@ concepts:
 - math.airy-function
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+stem: 'Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+
 
   取论文场表达式的理想零截断参考：$E(x,z)=\operatorname{Ai}(s)e^{i\Phi(x,z)}$，其中相位 $\Phi$ 为实数，
 
+
   $$s=\frac{x}{x_0}-\frac{z^2}{4k^2x_0^4},\qquad x_0>0,\ k>0.$$
+
 
   给定艾里强度的主峰位于 $s=s_m=-1.01879$，即相应的 $\operatorname{Ai}^{\prime}(s_m)=0$，而非 $s=0$。这里 $x,z,x_0$ 为长度，$k$ 为长度的倒数。
 
+
   ![理想艾里强度及主峰位置的原创计算图](asset:math-airy)
 
-  图中文字说明：横轴是无量纲 $s$，主峰标为 $s_m$；图为理想函数计算，不是无线实验数据。主峰在 $(x,z)$ 坐标中满足哪一条曲线？
-solution: |-
-  实相位因子不改变强度，故主峰条件就是 $s=s_m$。把定义式乘以 $x_0$ 并解出 $x$，得到
+
+  图中文字说明：横轴是无量纲 $s$，主峰标为 $s_m$；图为理想函数计算，不是无线实验数据。主峰在 $(x,z)$ 坐标中满足哪一条曲线？'
+solution: '实相位因子不改变强度，故主峰条件就是 $s=s_m$。把定义式乘以 $x_0$ 并解出 $x$，得到
+
 
   $$x_m(z)=x_0s_m+\frac{z^2}{4k^2x_0^3}.$$
 
+
   检查：在初始面 $z=0$，主峰已经位于负的 $x_0s_m$，并不在坐标原点；第二项具有长度单位。令自变量为零也会得到一条抛物线，但它与真正主峰轨迹相差固定的横向偏移。此比较针对理想零截断形式；有限截断时还需考虑复自变量和幅度因子。
+
 
   研究对应：Results, Airy beam generation and characterization, Eq. (1), parabolic bending discussion。教学范围：不把 s=0 曲线当作精确主峰；此题也没有分析有限截断、遮挡或学习模型的性能。
 
-  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。'
 difficulty: 1
 cognitive_level: apply
 style: graphical
@@ -48,7 +55,8 @@ feedback:
     D: 这是 s=0 的位置，遗漏了主峰相对偏移。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Eq. (1), parabolic bending discussion 构造。取零截断参考，明确给出实际函数主峰的数学常数，检查把函数位置转换为路径的步骤。 数值来源：mixed；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Eq. (1), parabolic bending discussion 构造。取零截断参考，明确给出实际函数主峰的数学常数，检查把函数位置转换为路径的步骤。
+    数值来源：mixed；不复制论文表述或图件。
   source: https://doi.org/10.1038/s41467-025-62443-0
   ai_assisted: true
 authors:
@@ -69,3 +77,19 @@ answer:
 assets:
 - id: math-airy
   path: math/math-airy.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88105540e3e5631a8e8a2ea4bd27ef3c71b275433f1f7365ac5a1f0ea09ab85e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88105540e3e5631a8e8a2ea4bd27ef3c71b275433f1f7365ac5a1f0ea09ab85e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:88105540e3e5631a8e8a2ea4bd27ef3c71b275433f1f7365ac5a1f0ea09ab85e

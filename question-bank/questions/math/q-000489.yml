@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000489
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,22 +9,27 @@ concepts:
 - math.airy-function
 type: single_choice
 choice_order: shuffle
-stem: |-
-  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+stem: 'Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
 
-  论文采用 Ai 形状构造场剖面。本题检查其定义方程的解空间：设 $u(s),v(s)$ 都满足 $y^{\prime\prime}=sy$，定义朗斯基量 $W(s)=u(s)v^{\prime}(s)-u^{\prime}(s)v(s)$，并给定 $W(0)=1/\pi$。
 
-  在整个实轴上，关于 $W$ 和这两个解的正确结论是哪一个？可用“某点朗斯基量非零则两解线性独立”这一判据。
-solution: |-
-  直接求导，两个一阶导数乘积抵消，得到
+  论文采用 Ai 形状构造场剖面。本题检查其定义方程的解空间：设 $u(s),v(s)$ 都满足 $y^{\prime\prime}=sy$，定义朗斯基量 $W(s)=u(s)v^{\prime}(s)-u^{\prime}(s)v(s)$，并给定
+  $W(0)=1/\pi$。
+
+
+  在整个实轴上，关于 $W$ 和这两个解的正确结论是哪一个？可用“某点朗斯基量非零则两解线性独立”这一判据。'
+solution: '直接求导，两个一阶导数乘积抵消，得到
+
 
   $$W^{\prime}=u v^{\prime\prime}-u^{\prime\prime}v=u(sv)-(su)v=0.$$
 
+
   因此 $W(s)=W(0)=1/\pi$，在整个实轴上非零，两解线性独立。检查：这个方程没有一阶导数项，正是朗斯基量保持常数的原因；单独看到两解满足同一个方程并不能判断它们成比例。选择哪一个线性组合来表示实际场，还要加入边界或衰减条件。
+
 
   研究对应：Results, Airy beam generation and characterization, Ai mode in Eq. (1)。教学范围：论文没有给出本题朗斯基计算；本题是围绕其实际 Ai 模型作本科数学延伸，不将第二解自动作为有限能量物理场。
 
-  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -42,7 +47,8 @@ feedback:
     D: 同一二阶方程可以有两个独立解，且给定零点值已排除 W=0。
 provenance:
   type: original
-  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Ai mode in Eq. (1) 构造。原创补充艾里方程及两解的初始朗斯基量，训练对特殊函数基底的独立性检查。 数值来源：not_applicable；不复制论文表述或图件。
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Ai mode in Eq. (1) 构造。原创补充艾里方程及两解的初始朗斯基量，训练对特殊函数基底的独立性检查。
+    数值来源：not_applicable；不复制论文表述或图件。
   source: https://doi.org/10.1038/s41467-025-62443-0
   ai_assisted: true
 authors:
@@ -60,3 +66,19 @@ choices:
   content: $W(s)=0$，因为两解满足相同的方程。
 answer:
   choice: A
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8aeeb1f77a4423373cef5818e55e88e8ba856714670311496e15348407573a65
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8aeeb1f77a4423373cef5818e55e88e8ba856714670311496e15348407573a65
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:8aeeb1f77a4423373cef5818e55e88e8ba856714670311496e15348407573a65

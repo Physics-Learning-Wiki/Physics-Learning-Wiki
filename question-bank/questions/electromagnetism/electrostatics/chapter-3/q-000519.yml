@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000519
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.uniqueness
+type: single_choice
+choice_order: shuffle
+stem: 唯一性证明中为何可由梯度平方的体积分为零推出场相同？
+solution: 这一步与相容边界项消失配合，得到两解之差为常数．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 被积函数非负，在相应光滑条件下只能处处为零
+- id: B
+  content: 因为任意零积分函数都为零
+- id: C
+  content: 因为导体净电荷必全为零
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．这一步与相容边界项消失配合，得到两解之差为常数．
+  incorrect: 请先重新核对模型条件．这一步与相容边界项消失配合，得到两解之差为常数．
+  choices:
+    A: 这一步与相容边界项消失配合，得到两解之差为常数．
+    B: 正负函数可积分抵消，非负性不可省．
+    C: 固定净电荷可以非零，证明比较的是相同数据的两解．
+related_pages:
+- electromagnetism.electrostatics.chapter-3.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e0c7b052dd10890363d1c3c6844458a2a801a6e45f4b25b862cfe862582f246c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e0c7b052dd10890363d1c3c6844458a2a801a6e45f4b25b862cfe862582f246c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e0c7b052dd10890363d1c3c6844458a2a801a6e45f4b25b862cfe862582f246c

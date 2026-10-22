@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000494
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.eigenfunction-greens
@@ -9,36 +9,48 @@ concepts:
 - math.green-function
 type: free_response
 choice_order: fixed
-stem: |-
-  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+stem: 'Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
 
   作为论文格林矩阵方法的原创离散边值示例，取三处内部节点，外侧固定值为 $v_0=v_4=0$，内部算子与中心点源为
 
+
   $$L=\begin{pmatrix}2&-1&0\\-1&2&-1\\0&-1&2\end{pmatrix},\qquad f=(0,1,0)^T.$$
+
 
   ![三内部节点与两个零边界的示意](asset:math-chain)
 
+
   图中文字说明：节点 0、4 为零边界，1、2、3 为未知量，单位点源位于节点 2。给定正交归一本征向量
+
 
   $$q_-=(1,\sqrt2,1)^T/2,\quad q_0=(1,0,-1)^T/\sqrt2,\quad q_+=(1,-\sqrt2,1)^T/2,$$
 
-  对应本征值为 $2-\sqrt2,\ 2,\ 2+\sqrt2$。可使用 $L^{-1}f=\sum_n q_n(q_n^Tf)/\lambda_n$。请用这个展开求三个内部响应，并代回 $Lv=f$ 检查，说明为什么其中一个模态没有贡献。
-solution: |-
-  三个输入投影依次为 $q_-^Tf=1/\sqrt2$、$q_0^Tf=0$、$q_+^Tf=-1/\sqrt2$。反对称模态 $q_0$ 在中心节点为零，因此中心点源对它的投影为零。
+
+  对应本征值为 $2-\sqrt2,\ 2,\ 2+\sqrt2$。可使用 $L^{-1}f=\sum_n q_n(q_n^Tf)/\lambda_n$。请用这个展开求三个内部响应，并代回 $Lv=f$ 检查，说明为什么其中一个模态没有贡献。'
+solution: '三个输入投影依次为 $q_-^Tf=1/\sqrt2$、$q_0^Tf=0$、$q_+^Tf=-1/\sqrt2$。反对称模态 $q_0$ 在中心节点为零，因此中心点源对它的投影为零。
+
 
   两侧节点的响应相同，均为
 
+
   $$v_1=v_3=\frac1{2\sqrt2}\left(\frac1{2-\sqrt2}-\frac1{2+\sqrt2}\right)=\frac12.$$
+
 
   中心节点为
 
+
   $$v_2=\frac12\left(\frac1{2-\sqrt2}+\frac1{2+\sqrt2}\right)=1.$$
+
 
   所以 $v=(1/2,1,1/2)^T$。代回得到 $(2v_1-v_2,-v_1+2v_2-v_3,-v_2+2v_3)^T=(0,1,0)^T$；外侧零值正是给定离散算子的边界约定。检查：所有本征值为正且非零，逆算子存在；响应关于中心对称，与点源及边界对称性一致。
 
-  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, complete inverse-matrix eigenstate expansion。教学范围：这是数学离散边值例子，不代表论文的拓扑电路几何或损耗参数。
 
-  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, complete inverse-matrix eigenstate
+  expansion。教学范围：这是数学离散边值例子，不代表论文的拓扑电路几何或损耗参数。
+
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。'
 difficulty: 3
 cognitive_level: analyze
 style: computational
@@ -79,3 +91,19 @@ grading:
     label: 完整计算投影和响应，说明中心节点使反对称模态不被激发，并用源方程、边界和对称性核验。
     points: 1
 reference_answer: 三个投影是 $1/\sqrt2,0,-1/\sqrt2$；中心点源不耦合反对称模态。展开给 $v=(1/2,1,1/2)^T$，直接代回得到 $Lv=(0,1,0)^T$，并满足外侧零边界。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:48d55259575914236a546121cd2d0cbceb4a36962f89f71a85471e370b3c7c86
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:48d55259575914236a546121cd2d0cbceb4a36962f89f71a85471e370b3c7c86
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:48d55259575914236a546121cd2d0cbceb4a36962f89f71a85471e370b3c7c86

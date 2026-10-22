@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000483
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.special-functions
@@ -9,24 +9,29 @@ concepts:
 - math.bessel-function
 type: numeric
 choice_order: fixed
-stem: |-
-  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+stem: 'Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
 
   用原创的理想剖面 $u(r)=J_0(kr)$、相对强度 $I(r)=J_0(kr)^2$ 解释论文报告的中心峰和环。给定 $J_0$ 的第一个正零点为 $j_{0,1}=2.4048255577$，取教学尺度 $k=2.00\,\mathrm{mm}^{-1}$。
 
+
   ![理想零阶贝塞尔强度随无量纲半径的曲线](asset:math-bessel)
 
-  图中文字说明：横轴是 $s=kr$，纵轴是 $J_0(s)^2$；曲线是给定理想函数的计算图，不是实测数据。求第一暗环的半径 $r_1$，输入数值并使用单位标签 `mm`，允许绝对误差 $0.001$。
-solution: |-
-  暗环处强度为零，等价于 $J_0(kr_1)=0$。第一个正根要求 $kr_1=j_{0,1}$，所以
+
+  图中文字说明：横轴是 $s=kr$，纵轴是 $J_0(s)^2$；曲线是给定理想函数的计算图，不是实测数据。求第一暗环的半径 $r_1$，输入数值并使用单位标签 `mm`，允许绝对误差 $0.001$。'
+solution: '暗环处强度为零，等价于 $J_0(kr_1)=0$。第一个正根要求 $kr_1=j_{0,1}$，所以
+
 
   $$r_1=\frac{2.4048255577}{2.00\,\mathrm{mm}^{-1}}=1.20241277885\,\mathrm{mm}.$$
 
+
   检查：将半径乘以 $k$ 恢复无量纲零点；$k$ 增大时，整个径向剖面按反比缩小，第一暗环也向轴线靠近。这个教学尺度未从论文的角度扫描或装置参数拟合。
+
 
   研究对应：Results, Effect of beam type, first concentric-ring discussion around Fig. 6(c)。教学范围：第一暗环位置不等于论文的旁瓣峰角；未将教学半径换成论文的接收扫描角。
 
-  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。'
 difficulty: 1
 cognitive_level: apply
 style: graphical
@@ -60,3 +65,19 @@ answer:
 assets:
 - id: math-bessel
   path: math/math-bessel.svg
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:15e5f42b0c0bcf9415d607f7d954a6d5f69e736f771a23c46343d44fae75acd1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:15e5f42b0c0bcf9415d607f7d954a6d5f69e736f771a23c46343d44fae75acd1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:15e5f42b0c0bcf9415d607f7d954a6d5f69e736f771a23c46343d44fae75acd1

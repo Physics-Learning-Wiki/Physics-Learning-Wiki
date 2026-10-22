@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000537
+version: 1
+status: published
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.displacement
+type: single_choice
+choice_order: shuffle
+stem: 没有自由电荷的介质区域内，能否断言 D 为零？
+solution: 边界、旋度与本构仍参与确定辅助场．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 根据 PLW 静电学五章教学目标独立编写；未代签人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 不能，只知道其散度为零
+- id: B
+  content: 能，因为高斯关系右端为零
+- id: C
+  content: 能，因为束缚电荷不产生场
+answer:
+  choice: A
+feedback:
+  correct: 判断正确．边界、旋度与本构仍参与确定辅助场．
+  incorrect: 请先重新核对模型条件．边界、旋度与本构仍参与确定辅助场．
+  choices:
+    A: 边界、旋度与本构仍参与确定辅助场．
+    B: 零净通量不代表局部场为零．
+    C: 束缚电荷参与真实总场．
+related_pages:
+- electromagnetism.electrostatics.chapter-5.exercises
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f1c21e6c04b6c3a512913a00d81570879b9a7cc4f25f23ef71ad518e5b3e285e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f1c21e6c04b6c3a512913a00d81570879b9a7cc4f25f23ef71ad518e5b3e285e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:f1c21e6c04b6c3a512913a00d81570879b9a7cc4f25f23ef71ad518e5b3e285e
