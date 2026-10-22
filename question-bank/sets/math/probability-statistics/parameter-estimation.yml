@@ -2,7 +2,7 @@ schema_version: 1
 id: math.probability-statistics.parameter-estimation
 title: 参数估计：专题习题
 description: 10 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
-status: draft
+status: published
 tags:
 - 误差分析与数据处理
 - 参数估计

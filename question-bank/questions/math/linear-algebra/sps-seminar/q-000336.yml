@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000336
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,17 +9,22 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 矩阵的加法与数乘**
+stem: '**SPS 线性代数研讨班配套 · §2.2 矩阵的加法与数乘**
+
 
   设
 
-  $$
-  A=\begin{pmatrix}1&0\\-1&2\end{pmatrix},\qquad
-  B=\begin{pmatrix}0&3\\1&-1\end{pmatrix}.
+
   $$
 
-  $2A+B$ 等于什么？这里只做对应位置的运算．
+  A=\begin{pmatrix}1&0\\-1&2\end{pmatrix},\qquad
+
+  B=\begin{pmatrix}0&3\\1&-1\end{pmatrix}.
+
+  $$
+
+
+  $2A+B$ 等于什么？这里只做对应位置的运算．'
 choices:
 - id: A
   content: $\begin{pmatrix}2&6\\0&2\end{pmatrix}$
@@ -31,15 +36,19 @@ answer:
   choice: B
 hints:
 - 数乘会作用到每一格，包括负数和零．
-solution: |-
-  先把 $A$ 的每个元素乘以 $2$，再与 $B$ 的对应元素相加：
+solution: '先把 $A$ 的每个元素乘以 $2$，再与 $B$ 的对应元素相加：
+
 
   $$
+
   2A+B=\begin{pmatrix}2+0&0+3\\-2+1&4-1\end{pmatrix}
+
   =\begin{pmatrix}2&3\\-1&3\end{pmatrix}.
+
   $$
 
-  作用于同一个输入 $\mathbf v$ 时，这也表示把输出 $A\mathbf v$ 放大两倍，再与 $B\mathbf v$ 相加．
+
+  作用于同一个输入 $\mathbf v$ 时，这也表示把输出 $A\mathbf v$ 放大两倍，再与 $B\mathbf v$ 相加．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -62,3 +71,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27d3138720834b4aa0d262301422efaf9096577e045ce665f40b78134cee2a23
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27d3138720834b4aa0d262301422efaf9096577e045ce665f40b78134cee2a23
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:27d3138720834b4aa0d262301422efaf9096577e045ce665f40b78134cee2a23

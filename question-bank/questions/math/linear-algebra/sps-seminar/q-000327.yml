@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000327
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1 基与维数**
+stem: '**SPS 线性代数研讨班配套 · §2.1 基与维数**
 
-  平面中有两个非零箭头 $\mathbf u=(1,0)^{\mathsf T}$、$\mathbf w=(2,0)^{\mathsf T}$．为什么它们不能作为整个 $\mathbb R^2$ 的一组基？
+
+  平面中有两个非零箭头 $\mathbf u=(1,0)^{\mathsf T}$、$\mathbf w=(2,0)^{\mathsf T}$．为什么它们不能作为整个 $\mathbb R^2$ 的一组基？'
 choices:
 - id: A
   content: 因为基向量的长度必须等于 1．
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e3fa7c36288dcad6e3fcd9c70398b9b7a16ecc6321dc38232dd1675fad0aa3dc
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e3fa7c36288dcad6e3fcd9c70398b9b7a16ecc6321dc38232dd1675fad0aa3dc
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:e3fa7c36288dcad6e3fcd9c70398b9b7a16ecc6321dc38232dd1675fad0aa3dc

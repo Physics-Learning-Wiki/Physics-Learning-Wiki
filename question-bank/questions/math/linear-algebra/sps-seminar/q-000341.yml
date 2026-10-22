@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000341
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,16 +9,20 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.4 矩阵转置**
+stem: '**SPS 线性代数研讨班配套 · §2.4 矩阵转置**
+
 
   设
 
-  $$
-  M=\begin{pmatrix}1&0&2\\-1&3&4\end{pmatrix}.
+
   $$
 
-  把原来的每一行改排为一列，$M^{\mathsf T}$ 是哪个矩阵？
+  M=\begin{pmatrix}1&0&2\\-1&3&4\end{pmatrix}.
+
+  $$
+
+
+  把原来的每一行改排为一列，$M^{\mathsf T}$ 是哪个矩阵？'
 choices:
 - id: A
   content: $\begin{pmatrix}1&0&2\\-1&3&4\end{pmatrix}$
@@ -30,14 +34,17 @@ answer:
   choice: B
 hints:
 - 先检查尺寸：原来 2 行 3 列，转置后应为 3 行 2 列．
-solution: |-
-  第一行 $(1,0,2)$ 变成第一列，第二行 $(-1,3,4)$ 变成第二列：
+solution: '第一行 $(1,0,2)$ 变成第一列，第二行 $(-1,3,4)$ 变成第二列：
+
 
   $$
+
   M^{\mathsf T}=\begin{pmatrix}1&-1\\0&3\\2&4\end{pmatrix}.
+
   $$
 
-  结果有三行两列，元素的数值没有改变；转置只交换行号和列号，不是求逆，也不是将元素取负．
+
+  结果有三行两列，元素的数值没有改变；转置只交换行号和列号，不是求逆，也不是将元素取负．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -60,3 +67,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9f58a9de1dd4813143e4350d5cf4cb8d9272703f96312c4017b0c233292ee448
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9f58a9de1dd4813143e4350d5cf4cb8d9272703f96312c4017b0c233292ee448
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:9f58a9de1dd4813143e4350d5cf4cb8d9272703f96312c4017b0c233292ee448

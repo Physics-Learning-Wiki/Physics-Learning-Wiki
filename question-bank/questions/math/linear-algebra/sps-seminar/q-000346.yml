@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000346
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 剪切与面积**
+stem: '**SPS 线性代数研讨班配套 · §2.6 剪切与面积**
 
-  对平面施加剪切 $T(x,y)=(x+y,y)$．单位正方形变成底边长为 $1$、高为 $1$ 的斜平行四边形．哪句话正确？
+
+  对平面施加剪切 $T(x,y)=(x+y,y)$．单位正方形变成底边长为 $1$、高为 $1$ 的斜平行四边形．哪句话正确？'
 choices:
 - id: A
   content: 面积不变，但某些长度与夹角会改变．
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6435011a7c5356a7014aa909018774ccff8fd1fdbcc2931a4a7ca4b3846d9706
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6435011a7c5356a7014aa909018774ccff8fd1fdbcc2931a4a7ca4b3846d9706
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6435011a7c5356a7014aa909018774ccff8fd1fdbcc2931a4a7ca4b3846d9706

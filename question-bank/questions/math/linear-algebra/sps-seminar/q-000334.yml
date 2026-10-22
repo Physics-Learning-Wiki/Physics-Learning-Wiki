@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000334
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,17 +9,22 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 读懂矩阵的列**
+stem: '**SPS 线性代数研讨班配套 · §2.2 读懂矩阵的列**
+
 
   在输入和输出都采用标准基时，线性映射满足
 
-  $$
-  T(\mathbf e_1)=\begin{pmatrix}1\\1\end{pmatrix},\qquad
-  T(\mathbf e_2)=\begin{pmatrix}0\\2\end{pmatrix}.
+
   $$
 
-  哪个矩阵表示 $T$？
+  T(\mathbf e_1)=\begin{pmatrix}1\\1\end{pmatrix},\qquad
+
+  T(\mathbf e_2)=\begin{pmatrix}0\\2\end{pmatrix}.
+
+  $$
+
+
+  哪个矩阵表示 $T$？'
 choices:
 - id: A
   content: $\begin{pmatrix}1&1\\0&2\end{pmatrix}$
@@ -31,14 +36,17 @@ answer:
   choice: B
 hints:
 - 用矩阵乘 $(1,0)^{\mathsf T}$ 会选出哪一列？
-solution: |-
-  矩阵第 $j$ 列记录第 $j$ 个输入基向量的像，因此把两列按给定顺序并排放好：
+solution: '矩阵第 $j$ 列记录第 $j$ 个输入基向量的像，因此把两列按给定顺序并排放好：
+
 
   $$
+
   A=\begin{pmatrix}1&0\\1&2\end{pmatrix}.
+
   $$
 
-  对一般输入，$T(x\mathbf e_1+y\mathbf e_2)=xT(\mathbf e_1)+yT(\mathbf e_2)$．知道两根基箭头的去向，就知道所有箭头的去向．
+
+  对一般输入，$T(x\mathbf e_1+y\mathbf e_2)=xT(\mathbf e_1)+yT(\mathbf e_2)$．知道两根基箭头的去向，就知道所有箭头的去向．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -61,3 +69,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:214d6ef1bf5f82adea209c5f867ae2eb1b19de1188e115d8311ad1ec147285d8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:214d6ef1bf5f82adea209c5f867ae2eb1b19de1188e115d8311ad1ec147285d8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:214d6ef1bf5f82adea209c5f867ae2eb1b19de1188e115d8311ad1ec147285d8

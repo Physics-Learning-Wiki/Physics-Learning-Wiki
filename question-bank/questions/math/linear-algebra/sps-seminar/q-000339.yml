@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000339
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 复合的顺序**
+stem: '**SPS 线性代数研讨班配套 · §2.2 复合的顺序**
 
-  令 $R$ 为绕原点逆时针旋转 $90^\circ$，$S$ 为只把水平分量扩大两倍．对初始箭头 $\mathbf e_1=(1,0)^{\mathsf T}$，比较 $RS\mathbf e_1$ 与 $SR\mathbf e_1$．不必做完整矩阵乘法，想象箭头的变化即可．
+
+  令 $R$ 为绕原点逆时针旋转 $90^\circ$，$S$ 为只把水平分量扩大两倍．对初始箭头 $\mathbf e_1=(1,0)^{\mathsf T}$，比较 $RS\mathbf e_1$ 与 $SR\mathbf e_1$．不必做完整矩阵乘法，想象箭头的变化即可．'
 choices:
 - id: A
   content: 结果相同，因为都是一次旋转加一次拉伸．
@@ -24,12 +24,13 @@ answer:
   choice: C
 hints:
 - 水平拉伸对已经竖直的箭头有什么影响？
-solution: |-
-  $RS$ 先拉伸再旋转：$(1,0)\to(2,0)\to(0,2)$．
+solution: '$RS$ 先拉伸再旋转：$(1,0)\to(2,0)\to(0,2)$．
+
 
   $SR$ 先旋转再水平拉伸：$(1,0)\to(0,1)\to(0,1)$；竖直箭头没有水平分量可拉伸．
 
-  两个输出不同，所以这两个变换不能交换次序．这也解释了矩阵乘法一般不满足交换律．
+
+  两个输出不同，所以这两个变换不能交换次序．这也解释了矩阵乘法一般不满足交换律．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -52,3 +53,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:76f8e6436bed858bbbfc6708cf24e15fff90560c0a181a7b555045722caddc41
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:76f8e6436bed858bbbfc6708cf24e15fff90560c0a181a7b555045722caddc41
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:76f8e6436bed858bbbfc6708cf24e15fff90560c0a181a7b555045722caddc41

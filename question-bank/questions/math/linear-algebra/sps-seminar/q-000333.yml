@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000333
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,12 +9,13 @@ concepts:
 - linalg.image-kernel
 type: free_response
 choice_order: fixed
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 投影、像与信息丢失**
+stem: '**SPS 线性代数研讨班配套 · §2.2 投影、像与信息丢失**
+
 
   从俯视图看一个三维点，只保留水平坐标：$Q:\mathbb R^3\to\mathbb R^2$，$Q(x,y,z)=(x,y)$．
 
-  不必写矩阵，用一两句话回答：输出能覆盖整个 $\mathbb R^2$ 吗？仅凭输出能唯一恢复三维输入吗？给出两个输出相同的不同输入．
+
+  不必写矩阵，用一两句话回答：输出能覆盖整个 $\mathbb R^2$ 吗？仅凭输出能唯一恢复三维输入吗？给出两个输出相同的不同输入．'
 response:
   format: plain_text
   required: true
@@ -37,10 +38,10 @@ grading:
 reference_answer: 能覆盖整个 $\mathbb R^2$；不能唯一恢复输入．例如 $(1,2,0)$ 与 $(1,2,5)$ 的输出都为 $(1,2)$，高度信息丢失．
 hints:
 - 把同一竖直线上的两个点投影到地面，影子会在哪里？
-solution: |-
-  任意平面点 $(a,b)$ 都可以由 $(a,b,0)$ 得到，所以像就是整个目标空间 $\mathbb R^2$，秩为 $2$．
+solution: '任意平面点 $(a,b)$ 都可以由 $(a,b,0)$ 得到，所以像就是整个目标空间 $\mathbb R^2$，秩为 $2$．
 
-  但 $(1,2,0)$ 与 $(1,2,5)$ 都变成 $(1,2)$，输出中没有高度信息．所有 $(0,0,z)$ 都被送到零向量，它们组成核．像占满目标空间与输入能否唯一恢复，是两个不同问题．
+
+  但 $(1,2,0)$ 与 $(1,2,5)$ 都变成 $(1,2)$，输出中没有高度信息．所有 $(0,0,z)$ 都被送到零向量，它们组成核．像占满目标空间与输入能否唯一恢复，是两个不同问题．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -59,3 +60,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:586df80fa2511bcd9242584705571a8d1667421e3ec96ac48a45e74dac406143
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:586df80fa2511bcd9242584705571a8d1667421e3ec96ac48a45e74dac406143
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:586df80fa2511bcd9242584705571a8d1667421e3ec96ac48a45e74dac406143

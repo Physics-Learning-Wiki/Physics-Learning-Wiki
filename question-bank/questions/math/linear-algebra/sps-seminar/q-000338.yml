@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000338
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -10,17 +10,22 @@ concepts:
 - linalg.composition
 type: free_response
 choice_order: fixed
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 一次完整的矩阵乘法**
+stem: '**SPS 线性代数研讨班配套 · §2.2 一次完整的矩阵乘法**
+
 
   设
 
-  $$
-  A=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
-  B=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+
   $$
 
-  算出 $AB$，写出其中一格的「行乘列」过程，并说清 $AB\mathbf v$ 是先做 $A$ 还是先做 $B$．可按「第一行 a,b；第二行 c,d」的格式，用算出的数字填写矩阵．
+  A=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+
+  B=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+
+  $$
+
+
+  算出 $AB$，写出其中一格的「行乘列」过程，并说清 $AB\mathbf v$ 是先做 $A$ 还是先做 $B$．可按「第一行 a,b；第二行 c,d」的格式，用算出的数字填写矩阵．'
 response:
   format: plain_text
   required: true
@@ -43,26 +48,39 @@ grading:
 reference_answer: $AB=\begin{pmatrix}2&1\\0&1\end{pmatrix}$；例如左上格为 $1\cdot2+1\cdot0=2$；先做 $B$，再做 $A$．
 hints:
 - 第一行第一列取左矩阵第一行与右矩阵第一列；理解作用次序时，从最靠近输入的矩阵开始．
-solution: |-
-  四格分别计算，避免把矩阵乘法误作逐格相乘：
+solution: '四格分别计算，避免把矩阵乘法误作逐格相乘：
+
 
   $$
+
   \begin{aligned}
+
   (AB)_{11}&=1\cdot2+1\cdot0=2,\\
+
   (AB)_{12}&=1\cdot0+1\cdot1=1,\\
+
   (AB)_{21}&=0\cdot2+1\cdot0=0,\\
+
   (AB)_{22}&=0\cdot0+1\cdot1=1.
+
   \end{aligned}
+
   $$
+
 
   因此
 
-  $$
-  AB=\begin{pmatrix}2&1\\0&1\end{pmatrix},\qquad
-  AB\mathbf v=A(B\mathbf v).
+
   $$
 
-  先做 $B$：把水平分量扩大两倍；再做 $A$：把竖直分量加到水平分量上．整个变换是 $(x,y)\mapsto(2x+y,y)$，与乘积矩阵一致．
+  AB=\begin{pmatrix}2&1\\0&1\end{pmatrix},\qquad
+
+  AB\mathbf v=A(B\mathbf v).
+
+  $$
+
+
+  先做 $B$：把水平分量扩大两倍；再做 $A$：把竖直分量加到水平分量上．整个变换是 $(x,y)\mapsto(2x+y,y)$，与乘积矩阵一致．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -81,3 +99,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:297359e9ba34b9c9a76627deb233e12497a409aacfbc92fe7c845db4230de05b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:297359e9ba34b9c9a76627deb233e12497a409aacfbc92fe7c845db4230de05b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:297359e9ba34b9c9a76627deb233e12497a409aacfbc92fe7c845db4230de05b

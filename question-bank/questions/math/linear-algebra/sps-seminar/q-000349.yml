@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000349
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -10,16 +10,20 @@ concepts:
 - linalg.image-kernel
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 行列式为零的图像**
+stem: '**SPS 线性代数研讨班配套 · §2.6 行列式为零的图像**
+
 
   矩阵
 
-  $$
-  C=\begin{pmatrix}1&2\\1&2\end{pmatrix}
+
   $$
 
-  的第二列是第一列的两倍．无需展开行列式，想象单位正方形的两条边变换后会怎样：哪种描述正确？
+  C=\begin{pmatrix}1&2\\1&2\end{pmatrix}
+
+  $$
+
+
+  的第二列是第一列的两倍．无需展开行列式，想象单位正方形的两条边变换后会怎样：哪种描述正确？'
 choices:
 - id: A
   content: 正方形的像仍有非零面积，因为矩阵不是零矩阵．
@@ -31,10 +35,10 @@ answer:
   choice: C
 hints:
 - 如果两条边指向同一条直线，还能围出非零面积吗？
-solution: |-
-  两根基箭头的像都沿着 $(1,1)^{\mathsf T}$ 方向，因此正方形的像压成一条线段，普通面积为零，行列式也为零．
+solution: '两根基箭头的像都沿着 $(1,1)^{\mathsf T}$ 方向，因此正方形的像压成一条线段，普通面积为零，行列式也为零．
 
-  一般输入的输出为 $C(x,y)^{\mathsf T}=(x+2y,x+2y)^{\mathsf T}$，整个平面的像是一条直线，秩为 $1$．不同输入会重合，例如 $(2,0)$ 与 $(0,1)$ 都变成 $(2,2)$，所以不能唯一恢复输入．
+
+  一般输入的输出为 $C(x,y)^{\mathsf T}=(x+2y,x+2y)^{\mathsf T}$，整个平面的像是一条直线，秩为 $1$．不同输入会重合，例如 $(2,0)$ 与 $(0,1)$ 都变成 $(2,2)$，所以不能唯一恢复输入．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -57,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6db7d6e45a4327aceec8414d2e0f25dab0465a68374371f78bc89c88706d0c0b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6db7d6e45a4327aceec8414d2e0f25dab0465a68374371f78bc89c88706d0c0b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6db7d6e45a4327aceec8414d2e0f25dab0465a68374371f78bc89c88706d0c0b

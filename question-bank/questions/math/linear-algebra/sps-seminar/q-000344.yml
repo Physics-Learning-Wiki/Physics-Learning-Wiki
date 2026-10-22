@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000344
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -10,10 +10,11 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.3 斜基下的长度**
+stem: '**SPS 线性代数研讨班配套 · §2.3 斜基下的长度**
 
-  在通常的欧氏平面中，$\mathbf b_1=(1,0)^{\mathsf T}$、$\mathbf b_2=(1,1)^{\mathsf T}$．向量 $\mathbf v=\mathbf b_1+\mathbf b_2$ 在这组基下的坐标为 $(1,1)^{\mathsf T}$．它的长度平方是多少？
+
+  在通常的欧氏平面中，$\mathbf b_1=(1,0)^{\mathsf T}$、$\mathbf b_2=(1,1)^{\mathsf T}$．向量 $\mathbf v=\mathbf b_1+\mathbf b_2$ 在这组基下的坐标为
+  $(1,1)^{\mathsf T}$．它的长度平方是多少？'
 choices:
 - id: A
   content: $2$
@@ -25,18 +26,24 @@ answer:
   choice: C
 hints:
 - 先把两根具体的箭头相加，再在通常的直角坐标系中计算．
-solution: |-
-  先回到通常的直角坐标：$\mathbf v=(2,1)^{\mathsf T}$，所以 $\lVert\mathbf v\rVert^2=2^2+1^2=5$．
+solution: '先回到通常的直角坐标：$\mathbf v=(2,1)^{\mathsf T}$，所以 $\lVert\mathbf v\rVert^2=2^2+1^2=5$．
+
 
   也可直接展开内积：
 
-  $$
-  \lVert\mathbf b_1+\mathbf b_2\rVert^2
-  =\lVert\mathbf b_1\rVert^2+2\mathbf b_1\cdot\mathbf b_2+\lVert\mathbf b_2\rVert^2
-  =1+2+2=5.
+
   $$
 
-  斜基下的两个坐标都是 1，但两根基箭头既不正交，也不都归一，不能直接把展开系数平方求和．
+  \lVert\mathbf b_1+\mathbf b_2\rVert^2
+
+  =\lVert\mathbf b_1\rVert^2+2\mathbf b_1\cdot\mathbf b_2+\lVert\mathbf b_2\rVert^2
+
+  =1+2+2=5.
+
+  $$
+
+
+  斜基下的两个坐标都是 1，但两根基箭头既不正交，也不都归一，不能直接把展开系数平方求和．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -59,3 +66,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0df9320b0f9e4545597db5f85af0fc73d9613d1771e99c7655b9218651910bd0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0df9320b0f9e4545597db5f85af0fc73d9613d1771e99c7655b9218651910bd0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0df9320b0f9e4545597db5f85af0fc73d9613d1771e99c7655b9218651910bd0

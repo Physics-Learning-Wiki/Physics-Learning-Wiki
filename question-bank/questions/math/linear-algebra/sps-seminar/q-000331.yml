@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000331
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 线性映射的定义**
+stem: '**SPS 线性代数研讨班配套 · §2.2 线性映射的定义**
 
-  把整个平面向右平移两格：$T(x,y)=(x+2,y)$．它是从 $\mathbb R^2$ 到自身的线性映射吗？
+
+  把整个平面向右平移两格：$T(x,y)=(x+2,y)$．它是从 $\mathbb R^2$ 到自身的线性映射吗？'
 choices:
 - id: A
   content: 是，因为直线平移后还是直线．
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:baed54cc6c4b8334c974b3d8b99f0692b7117c464e4a5cca9b919cc93c19652f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:baed54cc6c4b8334c974b3d8b99f0692b7117c464e4a5cca9b919cc93c19652f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:baed54cc6c4b8334c974b3d8b99f0692b7117c464e4a5cca9b919cc93c19652f

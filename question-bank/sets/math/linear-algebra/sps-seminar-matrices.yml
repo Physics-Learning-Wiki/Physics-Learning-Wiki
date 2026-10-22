@@ -2,7 +2,7 @@ schema_version: 1
 id: math.linear-algebra.sps-seminar.matrices
 title: SPS 线性代数研讨班配套｜矩阵入门：看懂并动手算
 description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.2、§2.4、§2.5：矩阵的列、加法与数乘、乘积尺寸、行乘列、复合顺序、可逆变换与转置。8 道入门题，约 12 分钟；先想图像与含义，再做短计算，每题均有提示和解析。建议备纸笔；自由作答题按参考答案自评。
-status: draft
+status: published
 tags:
 - SPS 线性代数研讨班配套
 - 线性代数

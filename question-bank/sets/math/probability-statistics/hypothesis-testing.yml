@@ -2,7 +2,7 @@ schema_version: 1
 id: math.probability-statistics.hypothesis-testing
 title: 假设检验：专题习题
 description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
-status: draft
+status: published
 tags:
 - 误差分析与数据处理
 - 假设检验

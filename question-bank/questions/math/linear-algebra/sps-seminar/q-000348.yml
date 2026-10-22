@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000348
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,12 +9,13 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 交换两列**
+stem: '**SPS 线性代数研讨班配套 · §2.6 交换两列**
+
 
   两个不共线的平面向量 $\mathbf u,\mathbf v$ 张成一个平行四边形，且 $\det[\mathbf u\ \mathbf v]=4$．交换两列成为 $[\mathbf v\ \mathbf u]$ 后，普通面积与行列式如何改变？
 
-  可以比较两种边界走法：先走 $\mathbf u$ 再走 $\mathbf v$，或先走 $\mathbf v$ 再走 $\mathbf u$．
+
+  可以比较两种边界走法：先走 $\mathbf u$ 再走 $\mathbf v$，或先走 $\mathbf v$ 再走 $\mathbf u$．'
 choices:
 - id: A
   content: 普通面积仍为 4，行列式变为 -4．
@@ -26,8 +27,8 @@ answer:
   choice: A
 hints:
 - 换走边的顺序，会改变围住的点集，还是改变绕行方向？
-solution: 两种走法围住的是同一个平行四边形，普通面积都为 $4$．但边界顺序从 $0\to\mathbf u\to\mathbf u+\mathbf v\to\mathbf v\to0$，变为 $0\to\mathbf
-  v\to\mathbf u+\mathbf v\to\mathbf u\to0$，绕行方向反转．因此交换两列后行列式为 $-4$．
+solution: 两种走法围住的是同一个平行四边形，普通面积都为 $4$．但边界顺序从 $0\to\mathbf u\to\mathbf u+\mathbf v\to\mathbf v\to0$，变为 $0\to\mathbf v\to\mathbf
+  u+\mathbf v\to\mathbf u\to0$，绕行方向反转．因此交换两列后行列式为 $-4$．
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -50,3 +51,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0cde3eee26e9c8404b2fb7b623e2c40b997db2edee2c92a8b872b5911dfae931
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0cde3eee26e9c8404b2fb7b623e2c40b997db2edee2c92a8b872b5911dfae931
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:0cde3eee26e9c8404b2fb7b623e2c40b997db2edee2c92a8b872b5911dfae931

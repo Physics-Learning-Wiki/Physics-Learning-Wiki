@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000310
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.probability-statistics
@@ -64,3 +64,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6eb7fad7abb5b3a447bbb90544f7bcea51b9b8e8965d0e4ecb1373de661075ea
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6eb7fad7abb5b3a447bbb90544f7bcea51b9b8e8965d0e4ecb1373de661075ea
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6eb7fad7abb5b3a447bbb90544f7bcea51b9b8e8965d0e4ecb1373de661075ea

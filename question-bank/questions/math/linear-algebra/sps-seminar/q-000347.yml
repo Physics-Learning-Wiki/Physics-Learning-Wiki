@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000347
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,16 +9,20 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 行列式的大小与符号**
+stem: '**SPS 线性代数研讨班配套 · §2.6 行列式的大小与符号**
+
 
   在平面标准坐标中，线性变换的矩阵为
 
-  $$
-  A=\begin{pmatrix}-2&1\\0&3\end{pmatrix}.
+
   $$
 
-  用 $2\times2$ 行列式公式 $ad-bc$ 算一次，并说明单位正方形的像的普通面积与取向．原正方形的边界按逆时针顺序走．
+  A=\begin{pmatrix}-2&1\\0&3\end{pmatrix}.
+
+  $$
+
+
+  用 $2\times2$ 行列式公式 $ad-bc$ 算一次，并说明单位正方形的像的普通面积与取向．原正方形的边界按逆时针顺序走．'
 choices:
 - id: A
   content: $\det A=-6$，普通面积为 $-6$，取向翻转．
@@ -30,14 +34,17 @@ answer:
   choice: B
 hints:
 - 先算带符号的数，再把它的绝对值与符号分别解释．
-solution: |-
-  行列式为
+solution: '行列式为
+
 
   $$
+
   \det A=(-2)\cdot3-1\cdot0=-6.
+
   $$
 
-  普通面积是非负的，故像的面积为 $|\det A|=6$．负号表示取向翻转：沿对应顶点的相同顺序走，原来的逆时针变成顺时针．负号不表示「负的普通面积」．
+
+  普通面积是非负的，故像的面积为 $|\det A|=6$．负号表示取向翻转：沿对应顶点的相同顺序走，原来的逆时针变成顺时针．负号不表示「负的普通面积」．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -60,3 +67,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:39da27d5439c5fd4603a2e32d55edc2e1b0cb85c5b5c5bab9d0684078f2685ba
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:39da27d5439c5fd4603a2e32d55edc2e1b0cb85c5b5c5bab9d0684078f2685ba
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:39da27d5439c5fd4603a2e32d55edc2e1b0cb85c5b5c5bab9d0684078f2685ba

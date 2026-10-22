@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000340
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -10,10 +10,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.5 可逆变换**
+stem: '**SPS 线性代数研讨班配套 · §2.5 可逆变换**
 
-  线性变换 $D(x,y)=(3x,y)$ 把水平方向拉长三倍．哪种操作能对所有输入撤销它？
+
+  线性变换 $D(x,y)=(3x,y)$ 把水平方向拉长三倍．哪种操作能对所有输入撤销它？'
 choices:
 - id: A
   content: 把水平分量缩为三分之一，竖直分量不变．
@@ -48,3 +48,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:cf928c2636e57e4aa2efdc44d80749e8ddd0522cfe408bd632b648656362a11f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:cf928c2636e57e4aa2efdc44d80749e8ddd0522cfe408bd632b648656362a11f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:cf928c2636e57e4aa2efdc44d80749e8ddd0522cfe408bd632b648656362a11f

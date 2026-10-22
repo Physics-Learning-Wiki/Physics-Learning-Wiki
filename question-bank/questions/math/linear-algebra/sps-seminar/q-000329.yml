@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000329
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.vector-space
 type: true_false
 choice_order: fixed
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1 线性空间的封闭性**
+stem: '**SPS 线性代数研讨班配套 · §2.1 线性空间的封闭性**
 
-  判断：只允许非负整数的「苹果数、梨数」二元组，在通常的加法和实数数乘下，构成一个实向量空间．
+
+  判断：只允许非负整数的「苹果数、梨数」二元组，在通常的加法和实数数乘下，构成一个实向量空间．'
 answer:
   value: false
 hints:
@@ -36,3 +36,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6a6fa71bdd74b568e7abde5441350c3a55b28174b59819e8ef25c8bc6522b2ee
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6a6fa71bdd74b568e7abde5441350c3a55b28174b59819e8ef25c8bc6522b2ee
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:6a6fa71bdd74b568e7abde5441350c3a55b28174b59819e8ef25c8bc6522b2ee

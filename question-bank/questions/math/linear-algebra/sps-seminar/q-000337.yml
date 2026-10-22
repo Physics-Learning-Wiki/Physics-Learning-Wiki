@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000337
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -10,10 +10,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2 矩阵乘法的尺寸**
+stem: '**SPS 线性代数研讨班配套 · §2.2 矩阵乘法的尺寸**
 
-  $A$ 是 $2\times3$ 矩阵，$B$ 是 $3\times1$ 矩阵．哪句话正确？先想输入、输出之间能否接上．
+
+  $A$ 是 $2\times3$ 矩阵，$B$ 是 $3\times1$ 矩阵．哪句话正确？先想输入、输出之间能否接上．'
 choices:
 - id: A
   content: $AB$ 是 $2\times1$，$BA$ 未定义．
@@ -25,8 +25,8 @@ answer:
   choice: A
 hints:
 - 矩阵作用在列向量上；先做右边的映射，再做左边的映射．
-solution: $B$ 把一个数（$\mathbb R^1$ 中的列向量）变成三分量列向量，$A$ 再把它变成两分量列向量，因此 $AB$ 是 $2\times1$．反过来，$A$ 的两个输出分量不能直接送进只接收一个分量的
-  $B$，所以 $BA$ 未定义．对应尺寸规则是 $(2\times3)(3\times1)\to2\times1$．
+solution: $B$ 把一个数（$\mathbb R^1$ 中的列向量）变成三分量列向量，$A$ 再把它变成两分量列向量，因此 $AB$ 是 $2\times1$．反过来，$A$ 的两个输出分量不能直接送进只接收一个分量的 $B$，所以
+  $BA$ 未定义．对应尺寸规则是 $(2\times3)(3\times1)\to2\times1$．
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -49,3 +49,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051c94ae8a7d521e76490cac8bab555f4c54b61a657fedc0bfe49c549d70549d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051c94ae8a7d521e76490cac8bab555f4c54b61a657fedc0bfe49c549d70549d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:051c94ae8a7d521e76490cac8bab555f4c54b61a657fedc0bfe49c549d70549d

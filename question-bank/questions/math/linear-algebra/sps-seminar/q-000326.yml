@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000326
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,11 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1 向量与坐标**
+stem: '**SPS 线性代数研讨班配套 · §2.1 向量与坐标**
 
-  在通常的平面直角坐标系中，$\mathbf b_1=(1,0)^{\mathsf T}$、$\mathbf b_2=(1,1)^{\mathsf T}$，取有序基 $\mathcal B=(\mathbf b_1,\mathbf b_2)$．同一个箭头 $\mathbf v=(3,2)^{\mathsf T}$ 改用这组基描述，哪句话正确？
+
+  在通常的平面直角坐标系中，$\mathbf b_1=(1,0)^{\mathsf T}$、$\mathbf b_2=(1,1)^{\mathsf T}$，取有序基 $\mathcal B=(\mathbf b_1,\mathbf b_2)$．同一个箭头
+  $\mathbf v=(3,2)^{\mathsf T}$ 改用这组基描述，哪句话正确？'
 choices:
 - id: A
   content: $[\mathbf v]_{\mathcal B}=(3,2)^{\mathsf T}$；换基不可能改变坐标．
@@ -24,14 +25,17 @@ answer:
   choice: B
 hints:
 - 先看竖直方向需要几份斜着的基向量，再补水平方向．
-solution: |-
-  先沿 $\mathbf b_2$ 走两份，到达 $(2,2)$；再沿 $\mathbf b_1$ 走一份，到达 $(3,2)$，所以
+solution: '先沿 $\mathbf b_2$ 走两份，到达 $(2,2)$；再沿 $\mathbf b_1$ 走一份，到达 $(3,2)$，所以
+
 
   $$
+
   \mathbf v=\mathbf b_1+2\mathbf b_2,\qquad [\mathbf v]_{\mathcal B}=\begin{pmatrix}1\\2\end{pmatrix}.
+
   $$
 
-  坐标记录的是各个基向量用了多少份．换一套记录方式，并没有移动这个箭头．
+
+  坐标记录的是各个基向量用了多少份．换一套记录方式，并没有移动这个箭头．'
 feedback:
   correct: 已抓住本题的关键；可以再用自己的话解释一次．
   incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
@@ -54,3 +58,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:871220dbd788d2539cee094297a71b6b7512b289c67f5e6304dc3dca7bc26c14
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:871220dbd788d2539cee094297a71b6b7512b289c67f5e6304dc3dca7bc26c14
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-22'
+    question_version: 1
+    content_fingerprint: sha256:871220dbd788d2539cee094297a71b6b7512b289c67f5e6304dc3dca7bc26c14
