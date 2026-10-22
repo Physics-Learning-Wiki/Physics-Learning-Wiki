@@ -1,12 +1,40 @@
 ---
-title: 综合数据处理与实验报告
+assessments:
+- placement: footer
+  set: experiment.error-analysis.case-studies
 author: Physics Learning Wiki Team
-status: review
 description: 用单摆计时和铜棒热膨胀两套自编教学数据，完整演示修正、不确定度预算、拟合、结果报告和 Python 复现，判断优先改进的测量环节．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.case-studies.concepts
+  title: 综合数据处理与实验报告：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.case-studies.calculation
+  title: 综合数据处理与实验报告：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.case-studies.analysis
+  title: 综合数据处理与实验报告：说明方法、结果与限制
+page_id: experiment.error-analysis.case-studies
 prerequisites:
-  - uncertainty-propagation
-  - least-squares
+- uncertainty-propagation
+- least-squares
+status: review
+title: 综合数据处理与实验报告
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+综合数据处理与实验报告：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+综合数据处理与实验报告：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+综合数据处理与实验报告：说明方法、结果与限制．
 
 ## 从一份记录走到一份结论
 
@@ -159,10 +187,40 @@ Report (standard): alpha = (1.696 +/- 0.035) x 10^-5 /K
 
 若要与参考值比较，应同时考虑参考值的不确定度和可能的相关性；「与课本相差不到某百分比」不能替代上述分析．
 
-上一页：[直线拟合与结果检验](least-squares.md)．回到 [章节导读](../error-analysis.md)，或将此流程用于自己的实验记录．
+## 有限自由度预算的贯通案例
+
+补充一个修正后的教学长度结果 $L=20.00\,\mathrm{mm}$．十次重复均值的标准不确定度为 0.03 mm，自由度 9；独立证书修正分量为 0.04 mm，其相对不可靠度依据历史校准重复性判断为 25%，故等效自由度约 8．其他分量在本模型精度下可忽略．按 [评定篇](uncertainty-evaluation.md) 得 $u_c=0.05\,\mathrm{mm}$、$\nu_{\rm eff}=15.243902$、$k\approx2.128483$、$U=0.106424\,\mathrm{mm}$．
+
+最终写为 $L=(20.00\pm0.11)\,\mathrm{mm}$，扩展不确定度，包含因子约 2.1285，有效自由度约 15.24；在给定独立性、可靠度与输出分布近似条件下作约 95% 覆盖解释．若证书分量实际均匀且占主导，应重新检查区间解释，不把自由度公式当万能校正．
+
+## 比较校准中的嵌套模型
+
+设量块长度比较的教学近似模型为
+
+$$
+l=l_s+\Delta l-l_s(\Delta t\,\delta\alpha+\alpha_s\delta t).
+$$
+
+$l_s$ 是参考量块长度，$\Delta l$ 为比较仪长度差，$\Delta t$ 为相对参考温度的共同偏离，$\delta\alpha$ 为两量块膨胀系数差，$\delta t$ 为两者温差．模型来自一阶热膨胀近似，符号由所用差值方向定义．
+
+例：$l_s=100\,\mathrm{mm}$、$\Delta l=0.002\,\mathrm{mm}$、$\Delta t=1\,\mathrm K$、$\delta\alpha=10^{-6}\,\mathrm{K^{-1}}$、$\alpha_s=10^{-5}\,\mathrm{K^{-1}}$、$\delta t=0.1\,\mathrm K$，热修正为 -0.0002 mm，结果为 100.0018 mm．灵敏系数依输入顺序为 $1-(\Delta t\,\delta\alpha+\alpha_s\delta t)$、1、$-l_s\delta\alpha$、$-l_s\Delta t$、$-l_s\delta t$、$-l_s\alpha_s$．分别乘对应标准不确定度，再加入相关项．共用温度计或共同材料系数时不能默认独立．
+
+例如六项独立标准不确定度依次为 0.0001 mm、0.0002 mm、0.2 K、$0.2\times10^{-6}\,\mathrm{K^{-1}}$、$0.5\times10^{-6}\,\mathrm{K^{-1}}$、0.02 K，合成约为 0.00022633 mm．应保留未修约系数；嵌套修正不是给结果再随意加一项「温度误差」．
+
+## 真实复杂预算怎样读
+
+讲义展示的 HUST 引力常量实验可联系原始论文 [Li 等，2018](https://doi.org/10.1038/s41586-018-0431-5) 阅读：不同测量方法的修正值与标准不确定度分开列示，几何、质量、扭丝、环境及统计贡献需要按各自测量模型解释．本页不复用论文截图或改写论文数值为自测数据．
+
+读真实表时先核对相对单位 ppm 是否指量值比、列的是标准量还是扩展量、修正正负是否施加、各项是否独立．2 ppm 的相对标准不确定度表示 $2\times10^{-6}$，不等于 2%．若两项独立相对标准贡献为 3 和 4 ppm，总贡献为 5 ppm；它们的方差份额为 36% 和 64%，不是直接用 3/7 和 4/7．若某列已有一个总效应，不要把其细项再重复计入．核对共享来源、采用方法以及不同方法之间的共同分量后，才讨论合并与改进方向．
+
+复杂案例统一可用 [补充复算脚本](examples/advanced-analysis.py) 与 CSV 重算．脚本不替代输入信息和物理条件的判断．
 
 ## 参考资料与注释
 
 本页案例和数据自编．测量模型、标准不确定度合成与报告方式依据 JCGM，[*GUM*](https://doi.org/10.59161/JCGM100-2008E)，2008，第 4—7 节．教学流程参考李祝《误差分析与数据处理》课程讲义，文件「04 第三章 误差的合成与分配」中的误差分配与最佳测量方案，文件「06 第四章 测量不确定度」中的应用实例，以及文件「07」「08」中的铜棒线性参数估计．[^sources]
 
 [^sources]: 参考资料用于选择教学问题和核对方法；本章未复用讲义截图，未将自编数据标作原讲义或真实实验数据．拟合软件选项见 [SciPy `curve_fit` 官方文档](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html)．
+
+## 阅读连接
+
+上一页：[组合测量的数据处理](combined-measurements.md)．下一页：[章节导读](../error-analysis.md)．

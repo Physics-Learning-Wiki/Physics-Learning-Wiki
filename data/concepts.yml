@@ -91,3 +91,58 @@ concepts:
     english: Rayleigh dissipation function
     summary: 本入门模型中表示线性黏滞阻力的速度二次函数，其速度偏导给出反号的阻力广义力；静止介质中两倍函数值为损失功率。
     target: mechanics/analytical/nonconservative-forces.md#瑞利耗散函数从哪里来
+  metrological-traceability:
+    name: 计量溯源性
+    english: Metrological traceability
+    summary: 测量结果经有文件记录、每环贡献不确定度的不间断校准链联系到参考的性质．
+    target: experiment/error-analysis/metrology.md
+  weighted-mean:
+    name: 加权平均
+    english: Weighted mean
+    summary: 按相容信息为观测赋权的平均；独立已知方差下最小方差线性无偏组合使用逆方差权．
+    target: experiment/error-analysis/weighted-measurements.md
+  outlier-test:
+    name: 异常值检验
+    english: Outlier test
+    summary: 在明确总体、候选选择及显著性水平下评估可疑观测的统计方法，不直接证明物理失效．
+    target: experiment/error-analysis/outlier-tests.md
+  uncertainty-allocation:
+    name: 不确定度分配
+    english: Uncertainty allocation
+    summary: 从输出目标与灵敏系数反推输入要求，并结合相关性、可实现性与成本调整预算．
+    target: experiment/error-analysis/error-allocation.md
+  linear-parameter-estimation:
+    name: 线性参数估计
+    english: Linear parameter estimation
+    summary: 用满列秩设计矩阵组织多观测、多参数模型，并求参数及其协方差．
+    target: experiment/error-analysis/linear-parameters.md
+  nonlinear-fitting:
+    name: 非线性拟合
+    english: Nonlinear fitting
+    summary: 从初值出发以局部雅可比和迭代估计非线性模型参数，需要收敛与可辨识性检查．
+    target: experiment/error-analysis/nonlinear-fitting.md
+  combined-measurement:
+    name: 组合测量
+    english: Combined measurement
+    summary: 独立观测若干参数组合，由观测方程共同估计各分量及其相关性．
+    target: experiment/error-analysis/combined-measurements.md
+  sampling-distribution:
+    name: 抽样分布
+    english: Sampling distribution
+    summary: 统计量在重复抽样中的分布，用于说明自由度、区间与检验条件．
+    target: math/probability-statistics/sample-and-sampling-distribution.md
+  maximum-likelihood:
+    name: 最大似然估计
+    english: Maximum likelihood estimation
+    summary: 将观测固定后选择使其似然最大的参数；似然不是参数的概率密度．
+    target: math/probability-statistics/parameter-estimation.md
+  hypothesis-test:
+    name: 假设检验
+    english: Hypothesis test
+    summary: 在指定模型与显著性水平下，用样本证据检验原假设而不将不拒绝当作证明．
+    target: math/probability-statistics/hypothesis-testing.md
+  central-limit-theorem:
+    name: 中心极限定理
+    english: Central limit theorem
+    summary: 在独立同分布、有限非零方差等条件下，标准化均值的分布渐近正态．
+    target: math/probability-statistics/law-of-large-numbers-and-central-limit-theorem.md

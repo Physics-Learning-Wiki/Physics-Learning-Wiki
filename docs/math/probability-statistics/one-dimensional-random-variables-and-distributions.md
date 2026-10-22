@@ -1,8 +1,36 @@
 ---
+assessments:
+- placement: footer
+  set: math.probability-statistics.one-dimensional-random-variables-and-distributions
 author: Physics Learning Wiki
+description: 介绍一维随机变量及其分布，内容包括学习目标、随机变量、分布函数．
+learning_objectives:
+- anchor: course-concepts
+  id: math.probability-statistics.one-dimensional-random-variables-and-distributions.concepts
+  title: 一维随机变量及其分布：辨认概念与适用条件
+- anchor: course-calculation
+  id: math.probability-statistics.one-dimensional-random-variables-and-distributions.calculation
+  title: 一维随机变量及其分布：完成定量计算并检查单位
+- anchor: course-analysis
+  id: math.probability-statistics.one-dimensional-random-variables-and-distributions.analysis
+  title: 一维随机变量及其分布：说明方法、结果与限制
+page_id: math.probability-statistics.one-dimensional-random-variables-and-distributions
 status: review
-description: "介绍一维随机变量及其分布，内容包括学习目标、随机变量、分布函数．"
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+一维随机变量及其分布：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+一维随机变量及其分布：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+一维随机变量及其分布：说明方法、结果与限制．
 
 ## 一维随机变量及其分布
 
@@ -131,7 +159,7 @@ $$
 -   $\mu$ 决定分布的中心位置，$\sigma$ 决定分布的宽度
 -   当 $\mu = 0$，$\sigma = 1$ 时，称为 **标准正态分布**  $N(0, 1)$
 
-正态分布之所以在物理学中极为重要，是因为 **中心极限定理**：大量独立随机变量之和（或均值）近似服从正态分布，无论每个变量本身服从什么分布．
+正态分布之所以在物理学中极为重要，是因为 **中心极限定理**：独立同分布、有限非零方差等条件下，标准化的和（或均值）渐近服从正态分布；强偏斜、重尾或相关采样需另行检查．
 
 ## 高斯积分
 
@@ -172,24 +200,24 @@ $$
     
     其中 $(2k-1)!! = 1 \cdot 3 \cdot 5 \cdots (2k-1)$ 为双阶乘．
 
-### $I_0$ 的推导
+### 全轴高斯积分的推导
 
-$I_0$ 是最基本的高斯积分，其推导利用了一个巧妙的技巧——将一维积分转化为二维极坐标积分：
+$J$ 是最基本的高斯积分，其推导利用了一个巧妙的技巧——将一维积分转化为二维极坐标积分：
 
 $$
-I_0^2 = \left(\int_{-\infty}^{+\infty} e^{-\alpha x^2}\,\mathrm{d}x\right)\!\left(\int_{-\infty}^{+\infty} e^{-\alpha y^2}\,\mathrm{d}y\right) = \int_{-\infty}^{+\infty}\!\!\int_{-\infty}^{+\infty} e^{-\alpha(x^2+y^2)}\,\mathrm{d}x\,\mathrm{d}y
+J^2 = \left(\int_{-\infty}^{+\infty} e^{-\alpha x^2}\,\mathrm{d}x\right)\!\left(\int_{-\infty}^{+\infty} e^{-\alpha y^2}\,\mathrm{d}y\right) = \int_{-\infty}^{+\infty}\!\!\int_{-\infty}^{+\infty} e^{-\alpha(x^2+y^2)}\,\mathrm{d}x\,\mathrm{d}y
 $$
 
 转化为极坐标 $(r, \theta)$：
 
 $$
-I_0^2 = \int_0^{2\pi}\!\mathrm{d}\theta\int_0^{+\infty} e^{-\alpha r^2}\,r\,\mathrm{d}r = 2\pi \cdot \dfrac{1}{2\alpha} = \dfrac{\pi}{\alpha}
+J^2 = \int_0^{2\pi}\!\mathrm{d}\theta\int_0^{+\infty} e^{-\alpha r^2}\,r\,\mathrm{d}r = 2\pi \cdot \dfrac{1}{2\alpha} = \dfrac{\pi}{\alpha}
 $$
 
 因此：
 
 $$
-I_0 = \int_{-\infty}^{+\infty} e^{-\alpha x^2}\,\mathrm{d}x = \sqrt{\dfrac{\pi}{\alpha}}
+J = \int_{-\infty}^{+\infty} e^{-\alpha x^2}\,\mathrm{d}x = \sqrt{\dfrac{\pi}{\alpha}}
 $$
 
 ### 递推关系
@@ -225,6 +253,39 @@ $$
 | 正态分布 |   $N(\mu,\sigma^2)$   | $\dfrac{1}{\sigma\sqrt{2\pi}}e^{-(x-\mu)^2/2\sigma^2}$ | $(-\infty,+\infty)$ |
 
 各分布的期望和方差将在 [随机变量的数字特征](./characteristic-values-of-random-variables.md) 页面中汇总．
+
+## 测量误差中其他分布
+
+这些分布不是按哪一个标准差更小来选择，而要解释可用信息．以下均以零为中心；平移后均值同样平移，方差不变．
+
+对称三角分布半宽为 $h>0$，密度 $f(x)=(h-|x|)/h^2$（$|x|\leq h$，其他为零），均值零、方差 $h^2/6$．它可由两个独立 $U(-h/2,h/2)$ 相加得到；两项若相关不能直接这样推断．CDF 为
+
+$$
+F(x)=\begin{cases}
+0,&x<-h,\\
+(x+h)^2/(2h^2),&-h\leq x\leq0,\\
+1-(h-x)^2/(2h^2),&0<x\leq h,\\
+1,&x>h.
+\end{cases}
+$$
+
+两个独立均匀量 $U(-a,a)$ 与 $U(-b,b)$ 相加，$a\geq b>0$，卷积得到梯形分布，支撑为 $[-a-b,a+b]$．中部 $|x|\leq a-b$ 的密度为 $1/(2a)$，两边密度为 $(a+b-|x|)/(4ab)$．均值零、方差 $(a^2+b^2)/3$；$a=b$ 时退化为半宽 $2a$ 的三角分布．令 $z_+=\max(z,0)$，其 CDF 可写成
+
+$$
+F(x)=\frac{(x+a+b)_+^2-(x+a-b)_+^2-(x-a+b)_+^2+(x-a-b)_+^2}{8ab}.
+$$
+
+反正弦分布来自 $X=h\sin\Phi$、$\Phi$ 在完整周期上均匀．同一 $x$ 通常有两个相位原像，变量变换给 $f(x)=1/[\pi\sqrt{h^2-x^2}]$（$|x|<h$），$F(x)=1/2+\arcsin(x/h)/\pi$；支撑外 CDF 分别为零和一．均值零，方差 $h^2/2$．边缘密度发散仍可积，不表示端点有离散概率质量．
+
+等概率两点分布 $P(X=-h)=P(X=h)=1/2$ 为离散分布，没有普通连续密度．CDF 在 $-h$ 处跳到 1/2，在 $h$ 处跳到 1；均值零、方差 $h^2$．改变两点概率后均值不再为零．
+
+## 例题：同样范围并不等于同样分散
+
+四种误差都限于 ±0.06 mm，均匀、三角、反正弦、等概率两点模型的标准差依次为 0.0346410、0.0244949、0.0424264、0.0600000 mm．给出界限还不足以唯一确定标准差；应由相位、叠加机制或证书等资料选择模型．
+
+对非对称均匀范围 $[a,b]$，$E(X)=(a+b)/2$、$\operatorname{Var}(X)=(b-a)^2/12$．偏离 \[-0.02,+0.06] mm 应先取中心 +0.02 mm，再给标准差约 0.0230940 mm，不能把估计中心固定为零却声称方差是零中心二阶矩．
+
+来源：[SciPy 三角分布](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.triang.html)、[梯形分布](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.trapezoid.html)、[反正弦分布](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.arcsine.html)；矩和卷积式由上述模型积分得到．应用见 [标准不确定度评定](../../experiment/error-analysis/uncertainty-evaluation.md)．
 
 ## 学习衔接
 

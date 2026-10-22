@@ -1,11 +1,39 @@
 ---
-title: 系统效应与异常数据
+assessments:
+- placement: footer
+  set: experiment.error-analysis.systematic-errors-outliers
 author: Physics Learning Wiki Team
-status: review
 description: 通过零点偏差、温漂、对消与替代测量理解系统效应，建立异常数据的复查和保留流程，避免自动删点代替实验判断．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.systematic-errors-outliers.concepts
+  title: 系统效应与异常数据：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.systematic-errors-outliers.calculation
+  title: 系统效应与异常数据：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.systematic-errors-outliers.analysis
+  title: 系统效应与异常数据：说明方法、结果与限制
+page_id: experiment.error-analysis.systematic-errors-outliers
 prerequisites:
-  - measurement-error
+- measurement-error
+status: review
+title: 系统效应与异常数据
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+系统效应与异常数据：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+系统效应与异常数据：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+系统效应与异常数据：说明方法、结果与限制．
 
 ## 为什么平均以后仍会测错
 
@@ -81,8 +109,39 @@ Grubbs 等检验还要求明确分布假设、显著性水平和所检验的异�
 
 发现偏差时要讨论修正，尚有信息不足时要评定相应分散，而不是简单把「系统误差」写成一个任意安全余量．重复性与共同校准影响可以同时存在．A/B 类描述如何评定不确定度，不等同于这里的随机/系统分类．
 
-上一页：[重复测量与统计描述](repeated-measurements.md)．下一页：[标准不确定度的评定](uncertainty-evaluation.md)．
+## 顺序残差的定量线索
+
+以下是传统诊断量，不自动附带显著性水平，也不能从未检出证明没有系统效应．偶数 $n=2m$ 的顺序残差可计算 Malikov 前后半列差
+
+$$
+D=\sum_{i=1}^m v_i-\sum_{i=m+1}^{2m}v_i
+=m(\bar x_{\rm first}-\bar x_{\rm last}).
+$$
+
+例：9.8、9.9、10.1、10.2 的均值为 10，前后半残差和之差为 -0.6，提示条件可能改变．奇数数据先明确分组；事后寻找最显著分界点会引入选择问题．需要检验时使用预先分组的均值差模型．
+
+Abbe–Helmert 型观察使用相邻残差积 $C=\sum_{i=1}^{n-1}v_iv_{i+1}$，标准化为 $r_1=C/\sum_i v_i^2$．正值大提示同向连串，负值提示交替；趋势、周期和相关噪声都可能造成它，不能由此确证周期误差．上例 $C=0.03$、$r_1=0.3$．存在全零残差时分母为零，不定义该比值．
+
+比较贝塞尔与 Peters 标准差也可发现数据形状差异，但二者差别可能来自小样本偶然性、离群或非正态．没有完整校准的阈值时，不宣称「超过某值就是系统误差」．接着画顺序图、环境图、多个滞后自相关及频谱．等间隔采样的频谱峰可提示周期，但混叠、窗长、趋势和周期噪声均需排查；按峰值判断原因必须由独立环境/装置证据支持．依据：[NIST 自相关](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35c.htm)．
+
+## 组间比较要比较什么
+
+独立结果 $x_1,x_2$ 的差值标准不确定度为 $\sqrt{u_1^2+u_2^2}$；有共同来源则减去两倍协方差．例如 10.00±0.02 与 10.10±0.03 mm（这里正负均为标准不确定度）给标准化差约 2.7735，可提示复查，不能未经分布与自由度信息就声称精确 95% 拒绝．原始两组均值、方差和样本量齐备时可采用 Welch t；方差比较、正态性及秩和方法见 [假设检验](../../math/probability-statistics/hypothesis-testing.md)．它们检验不同假设，不能任选一个来寻找显著．
+
+## 从测量顺序抑制漂移
+
+天平交换法针对两臂不等：若两次平衡满足 $ml_1=P_1l_2$ 和 $ml_2=P_2l_1$，则 $m=\sqrt{P_1P_2}$．这是交换载荷位置，不是替代法；两次臂长关系和其他条件必须稳定．
+
+线性漂移 $b(t)=b_0+kt$ 下，按对称时刻观测同一对象，两个读数均值的偏移为中点的 $b(t_0)$．ABBA 顺序可使 A、B 两组的平均观测时刻相同，差值中的线性漂移抵消；共同常数 $b_0$ 并不因此知道或归零．非线性漂移留下剩余项，应增加监测．
+
+周期偏移 $b(\phi)=a\sin\phi$ 的半周期配对满足 $[b(\phi)+b(\phi+\pi)]/2=0$．例如两相位偏移 +0.03、-0.03 mm 平均为零．必须有稳定周期和相位控制；半周期错配、偶次谐波或别的共同偏差不保证消除．
+
+异常数据统计方法继续到 [异常值检验与处理](outlier-tests.md)，不要用这些诊断量代替调查日志．
 
 ## 参考资料与注释
 
 [^gum]: JCGM，[*GUM*](https://doi.org/10.59161/JCGM100-2008E)，2008，第 3.2、3.3、3.4 节与附录 F．选题参考李祝《误差分析与数据处理》课程讲义，文件「03 第二章 系统误差 粗大误差」，「系统误差的发现」「系统误差的减小和消除」「判别粗大误差的准则」．本页例题自编，强调原始数据保存与模型条件．
+
+## 阅读连接
+
+上一页：[不等精度测量与结果合并](weighted-measurements.md)．下一页：[异常值检验与处理](outlier-tests.md)．

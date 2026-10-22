@@ -13,22 +13,33 @@ description: 从原始测量记录出发，学习重复测量、系统效应、�
 
 ## 从哪里开始
 
-前半章需要代数、单位换算和基本作图能力，不要求先通读统计学．传播篇再用到 [导数](concept:derivative) 与简单偏导；拟合篇会就地解释残差和参数不确定度．需要概率语言时，可查 [随机变量与分布](../math/probability-statistics/one-dimensional-random-variables-and-distributions.md) 和 [期望与方差](../math/probability-statistics/characteristic-values-of-random-variables.md)．
+基础路线需要代数、单位换算和基本作图能力，不要求先通读统计学．传播篇再用到 [导数](concept:derivative) 与简单偏导；拟合篇会就地解释残差和参数不确定度．需要概率语言时，可查 [随机变量与分布](../math/probability-statistics/one-dimensional-random-variables-and-distributions.md) 和 [期望与方差](../math/probability-statistics/characteristic-values-of-random-variables.md)．
+
+基础路线依次阅读测量、数据记录、重复测量、系统效应、评定、传播、直线拟合与综合报告；仪器与合并专题按需要插入．进阶路线继续异常检验、预算优化、矩阵估计、非线性和组合测量．数学支撑集中在概率统计栏目，避免重复建设．
+
+每篇专题配置一套交互习题，客观题自动反馈，推导题按参考解析自评．题目完成独立人工审核前仅在草稿预览模式开放；正式页面按既有规则隐藏草稿入口．
 
 主线概念和关键推导在正文．标为「进阶补充」的折叠内容可以在第一遍跳过．Python 用来复算和绘图；读懂物理方法不以会编程为前提．
 
 ## 推荐阅读顺序
 
-| 顺序 | 专题                                                        | 读完应能完成的任务                |
-| -- | --------------------------------------------------------- | ------------------------ |
-| 1  | [测量、误差与不确定度](error-analysis/measurement-basics.md)        | 定义被测量，区分偏差、分散性和不确定度．     |
-| 2  | [数据记录与有效数字](error-analysis/data-recording.md)             | 保存可追溯的原始记录，正确修约和写单位．     |
-| 3  | [重复测量与统计描述](error-analysis/repeated-measurements.md)      | 区分样本标准差与平均值的标准不确定度．      |
-| 4  | [系统效应与异常数据](error-analysis/systematic-errors-outliers.md) | 判断何时需要修正、复查或保留可疑观测．      |
-| 5  | [标准不确定度的评定](error-analysis/uncertainty-evaluation.md)     | 把重复观测、仪器规格和证书信息转成标准不确定度． |
-| 6  | [不确定度传播与合成](error-analysis/uncertainty-propagation.md)    | 根据测量模型合成输入量的贡献，检查相关性．    |
-| 7  | [直线拟合与结果检验](error-analysis/least-squares.md)              | 估计斜率、截距和不确定度，结合残差检查模型．   |
-| 8  | [综合数据处理与实验报告](error-analysis/case-studies.md)             | 独立完成单摆和热膨胀的分析、预算与报告．     |
+| 顺序 | 专题                                                        | 练习题数 |
+| -- | --------------------------------------------------------- | ---- |
+| 1  | [测量、误差与不确定度](error-analysis/measurement-basics.md)        | 8    |
+| 2  | [测量仪器与计量溯源](error-analysis/metrology.md)                  | 10   |
+| 3  | [数据记录与有效数字](error-analysis/data-recording.md)             | 10   |
+| 4  | [重复测量与统计描述](error-analysis/repeated-measurements.md)      | 12   |
+| 5  | [不等精度测量与结果合并](error-analysis/weighted-measurements.md)    | 12   |
+| 6  | [系统效应与异常数据](error-analysis/systematic-errors-outliers.md) | 12   |
+| 7  | [异常值检验与处理](error-analysis/outlier-tests.md)               | 12   |
+| 8  | [标准不确定度的评定](error-analysis/uncertainty-evaluation.md)     | 12   |
+| 9  | [不确定度传播与合成](error-analysis/uncertainty-propagation.md)    | 12   |
+| 10 | [误差分配与测量方案优化](error-analysis/error-allocation.md)         | 12   |
+| 11 | [直线拟合与结果检验](error-analysis/least-squares.md)              | 12   |
+| 12 | [一般线性参数估计](error-analysis/linear-parameters.md)           | 12   |
+| 13 | [非线性拟合与线性化](error-analysis/nonlinear-fitting.md)          | 10   |
+| 14 | [组合测量的数据处理](error-analysis/combined-measurements.md)      | 10   |
+| 15 | [综合数据处理与实验报告](error-analysis/case-studies.md)             | 12   |
 
 正在写实验报告的读者可以先浏览最后一篇的完整流程，再沿链接补齐不熟悉的步骤．不要仅复制其中的数值或不确定度假设到自己的实验．
 

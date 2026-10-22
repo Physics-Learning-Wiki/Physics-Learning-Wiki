@@ -225,13 +225,21 @@ nav:
     - 误差分析与数据处理:
       - 导读与学习路线: experiment/error-analysis.md
       - 测量、误差与不确定度: experiment/error-analysis/measurement-basics.md
+      - 测量仪器与计量溯源: experiment/error-analysis/metrology.md
       - 数据记录与有效数字: experiment/error-analysis/data-recording.md
       - 重复测量与统计描述: experiment/error-analysis/repeated-measurements.md
+      - 不等精度测量与结果合并: experiment/error-analysis/weighted-measurements.md
       - 系统效应与异常数据: experiment/error-analysis/systematic-errors-outliers.md
+      - 异常值检验与处理: experiment/error-analysis/outlier-tests.md
       - 标准不确定度的评定: experiment/error-analysis/uncertainty-evaluation.md
       - 不确定度传播与合成: experiment/error-analysis/uncertainty-propagation.md
+      - 误差分配与测量方案优化: experiment/error-analysis/error-allocation.md
       - 直线拟合与结果检验: experiment/error-analysis/least-squares.md
+      - 一般线性参数估计: experiment/error-analysis/linear-parameters.md
+      - 非线性拟合与线性化: experiment/error-analysis/nonlinear-fitting.md
+      - 组合测量的数据处理: experiment/error-analysis/combined-measurements.md
       - 综合数据处理与实验报告: experiment/error-analysis/case-studies.md
+      - 复算数据与脚本: experiment/error-analysis/examples/readme.md
     - 常用测量仪器: experiment/instruments.md
   - 计算物理与工具:
     - 工具简介: tools/index.md

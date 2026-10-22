@@ -1,11 +1,39 @@
 ---
-title: 数据记录与有效数字
+assessments:
+- placement: footer
+  set: experiment.error-analysis.data-recording
 author: Physics Learning Wiki Team
-status: review
 description: 学会保存原始读数、单位与实验条件，区分分辨率和不确定度，并按有效数字与末位对齐规则报告计算结果．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.data-recording.concepts
+  title: 数据记录与有效数字：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.data-recording.calculation
+  title: 数据记录与有效数字：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.data-recording.analysis
+  title: 数据记录与有效数字：说明方法、结果与限制
+page_id: experiment.error-analysis.data-recording
 prerequisites:
-  - measurement-error
+- measurement-error
+status: review
+title: 数据记录与有效数字
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+数据记录与有效数字：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+数据记录与有效数字：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+数据记录与有效数字：说明方法、结果与限制．
 
 ## 计算器显示的位数都可信吗
 
@@ -78,8 +106,26 @@ $$
 
 加减前必须统一单位．传播与拟合时也应固定一套单位，例如长度全部用米，或明确全程用毫米再转换．相对标准不确定度 $u(x)/|x|$ 无量纲，可写为百分数；当 $x$ 接近零时它可能失去解释价值，应优先报告有量纲的不确定度．
 
-上一页：[测量、误差与不确定度](measurement-basics.md)．下一页：[重复测量与统计描述](repeated-measurements.md)，学习怎样从多次记录中提取分散性信息．
+## 传统近似数运算怎样使用
+
+加减时，传统记录口诀以最粗小数位约束结果；乘除和开方以最少有效位数估计信息量．如 11.4+2.56 的未修约和为 13.96，粗略写 14.0；2.000/0.99 的未修约值约 2.02020，按两位有效数字写 2.0．这些是缺少明确预算时的近似记数规则，不代替不确定度传播．相消差值、相关输入、非线性函数尤其应回到模型．中间计算保留保护位，不能每一步修约再传播．
+
+对数自变量须无量纲，例如写 $\ln(x/x_0)$；局部有 $u(\ln x)\approx u(x)/|x|$（理解为固定参考尺度后的对数）．常用对数还除以 $\ln10$．三角函数导数使用弧度，角度不确定度越小才可能支持更多函数值位数，没有独立于工作角度的固定小数位表．例如 $\phi=30^\circ$、$u(\phi)=0.1^\circ$，先将后者换成 0.00174533 rad，才可用余弦作灵敏系数．
+
+## 报告简记和修约约定
+
+$100.02147(35)\,\mathrm g$ 的括号表示标准不确定度为 0.00035 g，前提是报告已经说明括号含义；不是 35 g，也不是直接给扩展范围．用扩展不确定度时另报包含因子和覆盖解释．
+
+有些传统规程对不确定度采用向上进位（有非零舍去部分就进一）、或保留一位时按首位/后续位采取「三分之一」等专门规则．这些规则的阈值须按指定规程解释，不能与最近舍入混用．本章明确使用两位有效数字和五成双；若实验规程要求保守进位，声明改用该规程后再对齐估计值末位．例如 0.01231 按两位最近舍入为 0.012，按两位向上进位为 0.013．
 
 ## 参考资料与注释
 
 [^gum]: JCGM，[*GUM*](https://doi.org/10.59161/JCGM100-2008E)，2008，第 4.3.7 条与第 7.2.6 条．选题参考李祝《误差分析与数据处理》课程讲义，文件「01 第一章 误差理论与数据处理 - 绪论」，第四节「有效数字和数据运算」；文件「06 第四章 测量不确定度」，「不确定度的报告」．本页采用明确声明的两位有效数字教学约定．
+
+## 进阶：讲义三分之一规则的具体对照
+
+讲义 06 的一位「三分之一」示例，以舍去尾数相对该位的单位比例约三分之一为进位分界，区别于最近舍入的二分之一．其例子为 0.001001 保留一位写 0.001，而 0.001334 写 0.002；保留两位按「非零即进」时前者写 0.0011．这是该讲义给定的保守报告约定，不是本章默认规则．临界恰等情形和特殊数值须遵循所用规程，不根据两个例子扩张成未经说明的通用标准．
+
+## 阅读连接
+
+上一页：[测量仪器与计量溯源](metrology.md)．下一页：[重复测量与统计描述](repeated-measurements.md)．

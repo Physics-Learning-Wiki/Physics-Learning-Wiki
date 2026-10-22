@@ -46,3 +46,17 @@ uv run --with numpy==2.5.4 --with scipy==1.18.1 --with matplotlib==3.11.2 python
 ## 返回学习主线
 
 先读 [重复测量](../repeated-measurements.md)、[不确定度传播](../uncertainty-propagation.md) 与 [直线拟合](../least-squares.md) 理解方法，再回到 [综合案例](../case-studies.md) 组织报告．这里的代码不会判断真实实验是否满足物理假设．
+
+## 补充案例的独立复算
+
+[advanced-analysis.py](advanced-analysis.py) 包含加权合并、固定候选预测与 Grubbs、有限自由度、预算分配、组合测量、指数拟合和比较校准的复算及交叉检查．原始输入为 [加权长度](weighted-lengths.csv)、[有限自由度预算](budget-inputs.csv)、[组合长度](combined-lengths.csv)、[衰减电压](decay-voltage.csv)．其余固定输入与模型假设在脚本及相应正文中明列，均为自编教学数据．
+
+运行命令：
+
+```powershell
+uv run --with numpy --with scipy python docs/experiment/error-analysis/examples/advanced-analysis.py
+```
+
+默认写入 .tmp-error-analysis/advanced/results.json，数据按脚本所在位置读取；可以指定 --output-dir．输出不得与教学源目录相同．脚本用独立求解器、正交条件和数值导数复核解析结果，不修改站点依赖声明．
+
+重要检查结果：加权长度 9.944444…mm、标准不确定度 0.0666667…mm；有限自由度约 15.243902、包含因子约 2.128483；组合三段为 10.035、19.9925、30.000 mm；衰减参数约 5.013523 V 和 0.299970 s⁻¹．完整矩阵和迭代轨迹在 JSON 中保留额外位数．这些数值不是对真实仪器性能的声明．

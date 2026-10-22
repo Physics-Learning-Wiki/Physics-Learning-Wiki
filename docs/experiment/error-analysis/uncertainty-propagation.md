@@ -1,12 +1,40 @@
 ---
-title: 不确定度传播与合成
+assessments:
+- placement: footer
+  set: experiment.error-analysis.uncertainty-propagation
 author: Physics Learning Wiki Team
-status: review
 description: 从测量模型的一阶展开推导灵敏系数与不确定度传播，计算圆柱体体积，并讨论共同校准、协方差和显著非线性的限制．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.uncertainty-propagation.concepts
+  title: 不确定度传播与合成：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.uncertainty-propagation.calculation
+  title: 不确定度传播与合成：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.uncertainty-propagation.analysis
+  title: 不确定度传播与合成：说明方法、结果与限制
+page_id: experiment.error-analysis.uncertainty-propagation
 prerequisites:
-  - standard-uncertainty
-  - derivative
+- standard-uncertainty
+- derivative
+status: review
+title: 不确定度传播与合成
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+不确定度传播与合成：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+不确定度传播与合成：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+不确定度传播与合成：说明方法、结果与限制．
 
 ## 输入不确定，计算出来的量会怎样
 
@@ -103,10 +131,31 @@ $$
 
 每项 $c_i u(x_i)$ 的单位是否等于输出单位？有没有共享校准或重复计入的来源？输出对输入变化是否仍近似线性？通过这些检查后，再修约并报告．
 
-上一页：[标准不确定度的评定](uncertainty-evaluation.md)．下一页：[直线拟合与结果检验](least-squares.md)．
+## 有符号偏差与角度传播
+
+已知小偏差 $e_i=x_i-x_{i,\rm ref}$ 时，输出偏差一阶为 $e_y\approx\sum_i c_i e_i$，不是平方和．例如 $y=x_1-2x_2$、偏差分别 +0.03 和 +0.01，输出偏差为 +0.01；先修正后计算可得同一一阶结果．偏差的不确定度另按方差公式传播，不能因为偏差相反就宣称剩余不确定度为零．
+
+若 $\sin\phi=z=f(\boldsymbol x)$，局部 $\mathrm d\phi=\mathrm dz/\cos\phi$；对余弦、正切、余切反求角度，导数分别为 $-1/\sin\phi$、$\cos^2\phi$、$-\sin^2\phi$，都以弧度计．把它们与 $z$ 对输入的导数相乘，既可传播有符号偏差，也可传播标准不确定度．
+
+例：$\phi=\arcsin z$、$z=0.5$、$u(z)=0.001$，$u(\phi)\approx0.001/\sqrt{1-0.5^2}=0.00115470$ rad，换为约 0.0661595°．当 $z$ 接近 ±1 时斜率发散，分布可能越过定义域，一阶对称区间失效，应检查完整分布．
+
+## 从成对数据估计相关性
+
+有配对独立观测 $(x_k,y_k)$ 时，样本相关系数为
+
+$$
+r=\frac{\sum_k(x_k-\bar x)(y_k-\bar y)}
+{\sqrt{\sum_k(x_k-\bar x)^2\sum_k(y_k-\bar y)^2}}.
+$$
+
+先画散点图检查非线性和孤立点，再报告样本量与条件．理论上 $Y=aX+b$、非零方差时，相关系数为 $\operatorname{sign}(a)$；零相关不排除非线性依赖．按象限数或目测斜带只能作粗略探索，不替代上述计算，也不能用样本相关掩盖未观测到的共同校准模型．输入是否相关要同时结合共同来源和配对数据，而非任意选一个缩小输出的系数．
 
 ## 参考资料与注释
 
 [^gum]: JCGM，[*GUM*](https://doi.org/10.59161/JCGM100-2008E)，2008，第 5.1、5.2 节．选题参考李祝《误差分析与数据处理》课程讲义，文件「04 第三章 误差的合成与分配」，「函数误差」「误差间的相关关系和相关系数」；文件「06 第四章 测量不确定度」，「合成标准不确定度」及圆柱体例题．本页数值条件自编．
 
 [^nonlinear]: JCGM，[*JCGM 100:2008/Amd.1:2026—Nonlinearity in measurement models*](https://doi.org/10.59161/PPDI3267)，2026，对第 4.1.4 条和 H.1.7 节的修订．分布传播另见 [JCGM 101:2008](https://doi.org/10.59161/JCGM101-2008)．
+
+## 阅读连接
+
+上一页：[标准不确定度的评定](uncertainty-evaluation.md)．下一页：[误差分配与测量方案优化](error-allocation.md)．

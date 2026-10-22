@@ -1,12 +1,40 @@
 ---
-title: 直线拟合与结果检验
+assessments:
+- placement: footer
+  set: experiment.error-analysis.least-squares
 author: Physics Learning Wiki Team
-status: review
 description: 推导直线最小二乘、残差与参数不确定度，用铜棒热膨胀示例比较普通和加权拟合，讨论协方差、误差棒与模型限制．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.least-squares.concepts
+  title: 直线拟合与结果检验：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.least-squares.calculation
+  title: 直线拟合与结果检验：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.least-squares.analysis
+  title: 直线拟合与结果检验：说明方法、结果与限制
+page_id: experiment.error-analysis.least-squares
 prerequisites:
-  - standard-uncertainty
-  - uncertainty-propagation
+- standard-uncertainty
+- uncertainty-propagation
+status: review
+title: 直线拟合与结果检验
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+直线拟合与结果检验：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+直线拟合与结果检验：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+直线拟合与结果检验：说明方法、结果与限制．
 
 ## 一条看起来顺眼的直线能告诉我们什么
 
@@ -158,10 +186,18 @@ params, covariance = curve_fit(
 
 这里 `curve_fit` 来自 `scipy.optimize`．`sigma` 传入标准不确定度，不是其平方或权重；`absolute_sigma=True` 保留输入的绝对尺度．默认的相对尺度处理会按残差重缩放协方差，不能在本例中悄悄替换．完整脚本还提供解析雅可比和数据检查，见 [下载与复现](case-studies.md#下载与复现)．
 
-上一页：[不确定度传播与合成](uncertainty-propagation.md)．下一页：[综合数据处理与实验报告](case-studies.md)．矩阵最小二乘和非线性方法留作延伸阅读．
+## 与一般参数估计的连接
+
+算术平均是常数模型 $y_i=a+\epsilon_i$ 的最小二乘解；已知不等方差时令 $\sum_i w_i(y_i-a)=0$，便得逆方差加权平均．因此直线、结果合并和组合测量属于同一线性参数框架．本页 $n-2$ 是一般残差自由度 $n-p$ 在两个参数时的特例，不是所有拟合都减二．
+
+继续 [一般线性参数估计](linear-parameters.md)，学习矩阵正规方程、秩和一般参数协方差；[非线性拟合](nonlinear-fitting.md) 再说明怎样求初值修正并更新．
 
 ## 参考资料与注释
 
 [^nist]: NIST/SEMATECH，[*e-Handbook of Statistical Methods*，4.4.3.1：Least Squares](https://www.itl.nist.gov/div898/handbook/pmd/section4/pmd431.htm)．选题参考李祝《误差分析与数据处理》课程讲义，文件「07 第五章 线性参数的最小二乘 1」，最小二乘原理、正规方程与铜棒例题；文件「08 第五章 线性参数的最小二乘 2」，精度估计．本页数据和叙述自编．
 
 [^scipy]: SciPy，[`scipy.optimize.curve_fit` 官方文档](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html)，`sigma`、`absolute_sigma`、`pcov` 的说明．
+
+## 阅读连接
+
+上一页：[误差分配与测量方案优化](error-allocation.md)．下一页：[一般线性参数估计](linear-parameters.md)．

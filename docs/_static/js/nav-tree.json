@@ -95,13 +95,22 @@ const NAV_TREE = [
             "label": "measurement-basics"
           },
           {
+            "label": "metrology"
+          },
+          {
             "label": "data-recording"
           },
           {
             "label": "repeated-measurements"
           },
           {
+            "label": "weighted-measurements"
+          },
+          {
             "label": "systematic-errors-outliers"
+          },
+          {
+            "label": "outlier-tests"
           },
           {
             "label": "uncertainty-evaluation"
@@ -110,7 +119,19 @@ const NAV_TREE = [
             "label": "uncertainty-propagation"
           },
           {
+            "label": "error-allocation"
+          },
+          {
             "label": "least-squares"
+          },
+          {
+            "label": "linear-parameters"
+          },
+          {
+            "label": "nonlinear-fitting"
+          },
+          {
+            "label": "combined-measurements"
           },
           {
             "label": "case-studies"

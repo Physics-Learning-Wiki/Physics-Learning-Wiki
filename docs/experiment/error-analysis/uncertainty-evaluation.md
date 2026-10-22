@@ -1,11 +1,39 @@
 ---
-title: 标准不确定度的评定
+assessments:
+- placement: footer
+  set: experiment.error-analysis.uncertainty-evaluation
 author: Physics Learning Wiki Team
-status: review
 description: 将重复测量、分辨率、规格限值和校准证书转为标准不确定度，区分 A/B 类评定、合成与扩展不确定度，并解释包含因子的条件．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.uncertainty-evaluation.concepts
+  title: 标准不确定度的评定：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.uncertainty-evaluation.calculation
+  title: 标准不确定度的评定：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.uncertainty-evaluation.analysis
+  title: 标准不确定度的评定：说明方法、结果与限制
+page_id: experiment.error-analysis.uncertainty-evaluation
 prerequisites:
-  - measurement-uncertainty
+- measurement-uncertainty
+status: review
+title: 标准不确定度的评定
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+标准不确定度的评定：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+标准不确定度的评定：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+标准不确定度的评定：说明方法、结果与限制．
 
 ## 怎样把不同来源的信息放在一起
 
@@ -107,8 +135,32 @@ $$
 
 列出每项输入的估计值、修正量、单位、信息来源、分布、标准不确定度和相关关系．检查同一影响是否重复计入，例如既在重复散布中体现又单列成另一项．共同校准来源应在相关性中体现，而不是伪装成每个读数独立的噪声．
 
-上一页：[系统效应与异常数据](systematic-errors-outliers.md)．下一页：[不确定度传播与合成](uncertainty-propagation.md)．
+## 非对称范围与其他分布
+
+若相对当前估计的偏离均匀分布在 $[a,b]$，并不以零对称，则其均值为 $(a+b)/2$、标准不确定度为 $(b-a)/\sqrt{12}$．应将中心偏移并入修正，不能把区间宽度和偏移都当随机标准差．例如偏离在 \[-0.02,+0.06] mm，中心修正 +0.02 mm，$u=0.08/\sqrt{12}=0.0230940\,\mathrm{mm}$．
+
+反正弦偏离常由固定振幅、相位均匀的正弦项产生，半宽 $a$ 给 $u=a/\sqrt2$；等概率两点 ±a 给 $u=a$；三角分布给 $a/\sqrt6$．两个独立均匀量 $U(-a,a)$ 和 $U(-b,b)$（$a\geq b>0$）之和为梯形分布，标准差 $\sqrt{(a^2+b^2)/3}$．这些模型表达不同先验信息，不因结果更小就任意选择．密度、分布函数与矩的推导统一见 [一维随机变量](../../math/probability-statistics/one-dimensional-random-variables-and-distributions.md)．
+
+均匀分布的正负一个标准差区间覆盖率为 $1/\sqrt3\approx57.7\%$，不是正态的约 68.3%．某一矩形项主导时，不可机械给 $k=2$ 附加 95% 的解释．
+
+## 有限 B 类自由度到最终因子
+
+若对所评定的标准不确定度本身的相对不可靠度判断为 $r=\Delta u/u$，GUM 给等效近似 $\nu\approx1/(2r^2)$．这里的 $r$ 不是仪器相对误差，也不是 $1-$ 覆盖概率．证书已给自由度时优先记录证书信息；视为充分已知时才用无穷近似．
+
+例：独立同单位输出贡献为 $q_A=0.03$、$\nu_A=9$ 和 $q_B=0.04$，后者相对不可靠度为 25%，故 $\nu_B=8$．
+
+$$
+u_c=0.05,\qquad
+\nu_{\rm eff}=\frac{0.05^4}{0.03^4/9+0.04^4/8}
+=15.243902\ldots.
+$$
+
+若输出分布可近似正态且其他条件支持 t 因子近似，则 $k=t_{0.975,15.243902}=2.128483\ldots$，$U=0.106424\ldots$．两位修约报告 $U=0.11$ 并注明实际包含因子及近似覆盖条件，不把它写成精确 t 定理．若查整数表向下取自由度，另声明规则．完整预算见 [综合报告](case-studies.md)．依据：[GUM G.4.2](https://www.iso.org/sites/JCGM/GUM/JCGM100/C045315e-html/C045315e_FILES/MAIN_C045315e/AG_e.html)．
 
 ## 参考资料与注释
 
 [^gum]: JCGM，[*GUM*](https://doi.org/10.59161/JCGM100-2008E)，2008，第 3.3、4.2、4.3、6 节及附录 G．选题参考李祝《误差分析与数据处理》课程讲义，文件「05 第四章 测量不确定度」，第一、二节；文件「06 第四章 测量不确定度」，「展伸不确定度」「不确定度的报告」．本文统一称「扩展不确定度」．
+
+## 阅读连接
+
+上一页：[异常值检验与处理](outlier-tests.md)．下一页：[不确定度传播与合成](uncertainty-propagation.md)．

@@ -1,9 +1,37 @@
 ---
-title: 测量、误差与不确定度
+assessments:
+- placement: footer
+  set: experiment.error-analysis.measurement-basics
 author: Physics Learning Wiki Team
-status: review
 description: 从被测量和测量模型出发，区分误差、偏差、精密度、准确度与测量不确定度，并用零点修正说明结果为何仍有不确定度．
+learning_objectives:
+- anchor: course-concepts
+  id: experiment.error-analysis.measurement-basics.concepts
+  title: 测量、误差与不确定度：辨认概念与适用条件
+- anchor: course-calculation
+  id: experiment.error-analysis.measurement-basics.calculation
+  title: 测量、误差与不确定度：完成定量计算并检查单位
+- anchor: course-analysis
+  id: experiment.error-analysis.measurement-basics.analysis
+  title: 测量、误差与不确定度：说明方法、结果与限制
+page_id: experiment.error-analysis.measurement-basics
+status: review
+title: 测量、误差与不确定度
 ---
+
+## 本页学习目标
+
+<span id="course-concepts"></span>
+
+测量、误差与不确定度：辨认概念与适用条件．
+
+<span id="course-calculation"></span>
+
+测量、误差与不确定度：完成定量计算并检查单位．
+
+<span id="course-analysis"></span>
+
+测量、误差与不确定度：说明方法、结果与限制．
 
 ## 一组很整齐的数据就可靠吗
 
@@ -85,7 +113,13 @@ $$
 -   与课本数值很接近不等于结果可靠，应同时检查模型和不确定度预算．
 -   量子力学的不确定性关系与这里的测量不确定度是不同问题，不用前者解释普通仪器读数的分散．
 
-上一页：[章节导读](../error-analysis.md)．下一页：[数据记录与有效数字](data-recording.md)，把这些区别落实到原始记录和结果写法．
+## 三类误差与术语对照
+
+随机误差随重复条件不可预测地变化，系统误差固定或按可预测规律改变，粗大误差通常指失效或异常造成的明显偏离；统计异常不自动等于操作错误．已知偏差应修正，未知但有资料支持的范围应建立分布．恒定、线性漂移、周期或复杂变化是系统效应的不同模式，不应只看残差是否集中．
+
+旧讲义可能把 correctness 译为「准确度」、accuracy 译为「精确度」；本章采用 VIM 对照：trueness 为正确度，precision 为精密度，accuracy 为准确度．它们的教学关注分别是系统偏移、重复分散和与真值接近的定性关系．真值、约定量值和具有不确定度的标准器参考值也应分清；参考值不是因为被指定就变成无误差．
+
+例如六次称量都因同一砝码偏大 0.2 g，重复性可能很好，平均也保留这一偏移．如果把不同砝码随机用于多次测量，影响的统计角色会改变．继续 [测量仪器与计量溯源](metrology.md)，辨别示值误差、允许误差、证书修正和不确定度．
 
 ## 参考资料与注释
 
@@ -94,3 +128,15 @@ $$
 [^accuracy]: JCGM，*VIM*，2012，条目 [2.13：measurement accuracy](https://jcgm.bipm.org/vim/en/2.13.html)、2.14—2.15．
 
 [^uncertainty]: JCGM，*VIM*，2012，条目 [2.26：measurement uncertainty](https://jcgm.bipm.org/vim/en/2.26.html)．选题参考李祝《误差分析与数据处理》课程讲义，文件「01 第一章 误差理论与数据处理 - 绪论」，第二、三节；文件「05 第四章 测量不确定度」，第一节．正文与例题均重新编写．
+
+## 进阶：单摆模型近似带来的偏移
+
+若振幅 $\theta_0$ 不能忽略，理想单摆的周期展开为 $T\approx T_0(1+\theta_0^2/16+11\theta_0^4/3072)$，角度以弧度计．例如 5° 时首项相对修正约 0.000476，约 476 ppm，不能在要求更高精度时仍无说明地忽略．这是模型偏移估计，不是直接把修正数当标准差．
+
+若小角线性阻尼模型为 $\ddot\theta+2\gamma\dot\theta+\omega_0^2\theta=0$，欠阻尼时周期为 $2\pi/\sqrt{\omega_0^2-\gamma^2}$．若用质量为 $M$ 的均匀细杆近似有质量悬线，端点摆球质量 $m$，整体刚性转动，则物理摆模型给 $T=2\pi\sqrt{(l/g)(m+M/3)/(m+M/2)}$．真实柔性悬线、空气作用和大振幅并不一定满足这两个简化模型，应从实际动力学选择修正与剩余不确定度．不能把任一近似式当所有单摆的通用补丁．
+
+有限振幅展开可由能量积分得到，参见原始教学研究 [The pendulum—Rich physics from a simple system](https://www.pas.rochester.edu/~badolato/PHY_123/Resources_files/The%20pendulum%20-%20Rich%20physics%20from%20a%20simple%20system.pdf)；后两式分别由线性阻尼特征根和转动惯量/重力恢复力矩推得．
+
+## 阅读连接
+
+上一页：[章节导读](../error-analysis.md)．下一页：[测量仪器与计量溯源](metrology.md)．
