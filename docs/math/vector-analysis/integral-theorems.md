@@ -43,7 +43,7 @@ $$
 \oiint_S \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{S} = \iiint_V \dfrac{\rho(\boldsymbol{r})}{\varepsilon_0} \mathrm{d}V = \dfrac{1}{\varepsilon_0} Q_{\text{enclosed}}
 $$
 
-无需任何经验假设，积分高斯通量定律直接由散度定理纯数学得出！
+这里以微分高斯方程作为物理前提，再由散度定理得到积分形式．散度定理本身是数学恒等关系，不能单独给出电荷与电场之间的经验源项．点电荷奇点不能直接代入要求光滑的定理，应挖去奇点后处理其边界贡献，或使用分布意义的表达．
 
 ***
 
@@ -67,13 +67,13 @@ $$
 
 ### 法拉第电磁感应定律的推导
 
-将 $\boldsymbol{F} = \boldsymbol{E}$ 代入，利用微观法拉第方程 $\nabla\times\boldsymbol{E} = -\dfrac{\partial\boldsymbol{B}}{\partial t}$：
+对空间中固定的曲面与回路，将 $\boldsymbol{F} = \boldsymbol{E}$ 代入，利用局域法拉第方程 $\nabla\times\boldsymbol{E} = -\dfrac{\partial\boldsymbol{B}}{\partial t}$：
 
 $$
 \oint_C \boldsymbol{E} \cdot \mathrm{d}\boldsymbol{r} = \iint_S \left(-\dfrac{\partial\boldsymbol{B}}{\partial t}\right) \cdot \mathrm{d}\boldsymbol{S} = -\dfrac{\mathrm{d}}{\mathrm{d}t}\iint_S \boldsymbol{B} \cdot \mathrm{d}\boldsymbol{S} = -\dfrac{\mathrm{d}\Phi_B}{\mathrm{d}t}
 $$
 
-环路感应电动势严格等于磁通量随时间的变化率！
+固定回路的环流等于磁通量变化率的负值．若回路运动，还须处理运动边界及磁力项，不能直接照搬上述换序步骤．静电情形的旋度为零；从局部旋度零进一步推出全局单值势，还需要单连通等区域条件，或另行确认所有闭合回路的积分均为零．
 
 ***
 
@@ -99,9 +99,9 @@ $$
 \oiint_S \left( \psi \dfrac{\partial\phi}{\partial n} - \phi \dfrac{\partial\psi}{\partial n} \right) \mathrm{d}S = \iiint_V \left( \psi \nabla^2\phi - \phi \nabla^2\psi \right) \mathrm{d}V
 $$
 
-???+ tip "格林恒等式在电磁学中的两大神级推论"
-    1.  **静电场唯一性定理**：令 $\psi = \phi$ 为同一边值条件下两个解的差 $\delta\phi$，第一恒等式直接证明 $\iiint |\nabla\delta\phi|^2\mathrm{d}V = 0 \implies \nabla\delta\phi = 0$，证明了给定导体边界电势时内部电场严格唯一！
-    2.  **格林函数边值积分表示**：在第二恒等式中令 $\psi = G(\boldsymbol{r}, \boldsymbol{r}')$，利用 $\nabla^2 G = \delta$，直接推导出非齐次边界条件下任意电势的边界积分闭合通解！
+???+ tip "格林恒等式的静电应用"
+    1.  **静电场唯一性**：令两解之差为 $w$，并在第一恒等式中取两个标量均为 $w$．相同源使 $\nabla^2w=0$，相容的导体和外边界数据使边界项消失，于是 $\int |\nabla w|^2\,\mathrm{d}V=0$，得到电场相同．固定导体净电荷与固定电势需分别说明边界项为何消失，完整推导见 [静电边值问题唯一性](../../electromagnetism/chapter-3/uniqueness.md)．
+    2.  **Green 函数表示**：第二恒等式可以把势表示成源积分与边界积分．须先指定 Green 函数满足的源项归一化和边界条件，不能省略源项或认为数学恒等式自动给出所有边值解．详见 [格林函数方法](../eigenfunction-methods/greens-function.md)．
 
 ***
 

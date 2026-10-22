@@ -1,15 +1,16 @@
 ---
-status: planned
-author: Physics Learning Wiki Team
-description: 讨论静电场的高斯定理、电势与导体电容（规划建设中）．
-meta:
-  - name: robots
-    content: noindex, follow
+title: 静电学专题导读
+status: draft
+description: 从原静电场入口进入电荷与场、电势、导体边值问题及电容静电能四章正文．
 ---
 
-## 静电场
+## 静电学的四条学习任务
 
-!!! info "建设中"
-    本页面正在根据电磁学建设规划进行编写．欢迎参阅 [电磁学课程路线](../courses/electromagnetism.md) 了解大纲与推荐学习顺序，或参考 [电磁学章节编写说明](./electromagnetism-writing.md) 参与贡献．
+原「静电场」专题现按学习依赖展开为四章．可从头连续学习，也可根据问题选择入口：
 
-TO DO
+1. [第 1 章：电荷与静电场](./chapter-1/index.md)．
+2. [第 2 章：电势与静电场方程](./chapter-2/index.md)．
+3. [第 3 章：静电场中的导体与边值问题](./chapter-3/index.md)．
+4. [第 4 章：电容与静电能](./chapter-4/index.md)．
+
+材料响应接续在 [第五章：电介质](./chapter-5/index.md)．首次系统学习建议从 [电磁学导读](./index.md) 开始；每章均有配套推导题与自测入口．

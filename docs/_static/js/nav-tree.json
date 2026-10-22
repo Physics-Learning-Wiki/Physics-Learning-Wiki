@@ -73,6 +73,145 @@ const NAV_TREE = [
       },
       {
         "label": "maxwell"
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "charge-coulomb"
+          },
+          {
+            "label": "continuous-charge"
+          },
+          {
+            "label": "electric-field"
+          },
+          {
+            "label": "exercises"
+          },
+          {
+            "label": "field-integrals"
+          },
+          {
+            "label": "gauss-law"
+          },
+          {
+            "label": "superposition"
+          },
+          {
+            "label": "symmetry"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "dipole"
+          },
+          {
+            "label": "exercises"
+          },
+          {
+            "label": "field-equations"
+          },
+          {
+            "label": "harmonic-stability"
+          },
+          {
+            "label": "multipoles"
+          },
+          {
+            "label": "potential-calculation"
+          },
+          {
+            "label": "potential-gradient"
+          },
+          {
+            "label": "potential-reference"
+          },
+          {
+            "label": "work-circulation"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "equilibrium"
+          },
+          {
+            "label": "exercises"
+          },
+          {
+            "label": "image-plane"
+          },
+          {
+            "label": "image-sphere"
+          },
+          {
+            "label": "induction"
+          },
+          {
+            "label": "shielding"
+          },
+          {
+            "label": "uniqueness"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "assembly-energy"
+          },
+          {
+            "label": "capacitance"
+          },
+          {
+            "label": "capacitor-networks"
+          },
+          {
+            "label": "dipole-energy"
+          },
+          {
+            "label": "energy-force"
+          },
+          {
+            "label": "exercises"
+          },
+          {
+            "label": "field-energy"
+          }
+        ]
+      },
+      {
+        "label": "index",
+        "children": [
+          {
+            "label": "bound-charge"
+          },
+          {
+            "label": "dielectric-energy"
+          },
+          {
+            "label": "displacement"
+          },
+          {
+            "label": "exercises"
+          },
+          {
+            "label": "interfaces"
+          },
+          {
+            "label": "polarization-field"
+          },
+          {
+            "label": "polarization"
+          }
+        ]
       }
     ]
   },

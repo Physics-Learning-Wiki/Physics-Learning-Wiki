@@ -146,3 +146,93 @@ concepts:
     english: Central limit theorem
     summary: 在独立同分布、有限非零方差等条件下，标准化均值的分布渐近正态．
     target: math/probability-statistics/law-of-large-numbers-and-central-limit-theorem.md
+  electric-charge:
+    name: 电荷
+    english: Electric charge
+    summary: 电磁相互作用中带正负号的源量，孤立系统总电荷守恒．
+    target: electromagnetism/chapter-1/charge-coulomb.md
+  coulombs-law:
+    name: 库仑定律
+    english: Coulomb’s law
+    summary: 真空中静止点电荷间作用力沿连线、与电荷乘积成正比并按距离平方反比变化．
+    target: electromagnetism/chapter-1/charge-coulomb.md
+  electric-field:
+    name: 电场
+    english: Electric field
+    summary: 用理想静止试验电荷的受力与电荷量之比描述的矢量场，须区分源场与探针受力．
+    target: electromagnetism/chapter-1/electric-field.md
+  electric-flux:
+    name: 电通量
+    english: Electric flux
+    summary: 电场通过定向曲面的面积分；闭合面通常取外法向，净通量不等于局部场强．
+    target: electromagnetism/chapter-1/gauss-law.md
+  gauss-law:
+    name: 高斯定理
+    english: Gauss’s law
+    summary: 真空闭合面总电通量等于包围净电荷除以真空介电系数，直接求局部场还需对称性等信息．
+    target: electromagnetism/chapter-1/gauss-law.md
+  electric-potential:
+    name: 电势
+    english: Electric potential
+    summary: 静电场的标量势，差值的负值给单位电荷场力功；整体零点可以平移．
+    target: electromagnetism/chapter-2/potential-reference.md
+  electric-dipole:
+    name: 电偶极子
+    english: Electric dipole
+    summary: 由相邻等量异号电荷构成的模型，偶极矩从负端指向正端，远场领先项与偶极矩有关．
+    target: electromagnetism/chapter-2/dipole.md
+  electric-quadrupole:
+    name: 电四极矩
+    english: Electric quadrupole moment
+    summary: 描述电荷分布二阶形状信息的矩，总电荷和偶极矩为零时可主导远场．
+    target: electromagnetism/chapter-2/multipoles.md
+  poisson-equation:
+    name: 泊松方程
+    english: Poisson equation
+    summary: 把电势的拉普拉斯与源电荷联系起来的局域方程，确定解还需要边界或远处条件．
+    target: electromagnetism/chapter-2/field-equations.md
+  electrostatic-equilibrium:
+    name: 静电平衡
+    english: Electrostatic equilibrium
+    summary: 理想宏观导体内自由电荷不再发生定向迁移的状态，材料内部电场为零且连通导体等势．
+    target: electromagnetism/chapter-3/equilibrium.md
+  electrostatic-uniqueness:
+    name: 静电边值问题唯一性
+    english: Electrostatic uniqueness theorem
+    summary: 给定区域、源和相容边界及远处条件后，若静电解存在则其场唯一；势可能保留共同常数自由度．
+    target: electromagnetism/chapter-3/uniqueness.md
+  image-charge-method:
+    name: 镜像法
+    english: Method of images
+    summary: 用求解区域外的虚设电荷构造具有相同内部源与边界数据的解，再由唯一性确认物理场．
+    target: electromagnetism/chapter-3/image-plane.md
+  capacitance:
+    name: 电容
+    english: Capacitance
+    summary: 固定几何线性两导体体系中，等量异号电荷大小与两端电势差的比例系数．
+    target: electromagnetism/chapter-4/capacitance.md
+  electrostatic-energy:
+    name: 静电能
+    english: Electrostatic energy
+    summary: 准静态组装电荷分布所需的功，计算须说明系统边界、自能处理及电源约束．
+    target: electromagnetism/chapter-4/assembly-energy.md
+  polarization:
+    name: 极化强度
+    english: Polarization
+    summary: 宏观平均后单位体积的电偶极矩矢量和，描述材料中正负电荷相对位移或取向响应．
+    target: electromagnetism/chapter-5/polarization.md
+  bound-charge:
+    name: 束缚电荷
+    english: Bound charge
+    summary: 由极化的散度和边界法向分量表征的宏观等效电荷，同样参与总电场的产生．
+    target: electromagnetism/chapter-5/bound-charge.md
+  electric-displacement:
+    name: 电位移
+    english: Electric displacement
+    summary: 由真空介电系数乘电场加极化定义的辅助场，散度由自由电荷决定，求解仍需本构与边界．
+    target: electromagnetism/chapter-5/displacement.md
+  gradient:
+    name: 梯度
+    english: Gradient
+    summary: 标量场的局部最大增长方向及相应方向变化率构成的矢量，电场是静电势的负梯度．
+    target: electromagnetism/chapter-2/potential-gradient.md

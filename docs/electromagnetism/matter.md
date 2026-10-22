@@ -1,15 +1,13 @@
 ---
-status: planned
-author: Physics Learning Wiki Team
-description: 讨论电介质极化、磁介质磁化与介质中的麦克斯韦方程（规划建设中）．
-meta:
-  - name: robots
-    content: noindex, follow
+title: 物质中的电磁场导读
+status: draft
+description: 导向电介质的极化、束缚电荷、电位移及界面求解，预留后续磁介质学习接口．
 ---
 
-## 物质中的电磁场
+## 电介质：已经展开的主线
 
-!!! info "建设中"
-    本页面正在根据电磁学建设规划进行编写．欢迎参阅 [电磁学课程路线](../courses/electromagnetism.md) 了解大纲与推荐学习顺序，或参考 [电磁学章节编写说明](./electromagnetism-writing.md) 参与贡献．
+材料响应的静电部分集中在 [第五章：电介质](./chapter-5/index.md)，依次讨论极化、束缚电荷、附加场、电位移、本构关系、界面条件及储能受力．其先修是前四章的场、势、边值与能量方法；不在本入口重复维护正文．
 
-TO DO
+## 磁介质：后续接口
+
+磁化强度、束缚电流及磁场强度将在后续磁场阶段建设．当前可查看 [恒定磁场](./magnetostatics.md) 的建设入口，不能把电极化的所有结论直接换符号用于磁介质．
