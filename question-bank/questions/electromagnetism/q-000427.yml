@@ -1,0 +1,86 @@
+schema_version: 3
+id: q-000427
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.magnetic-gradient
+- magnetostatics.field-uniformity
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  微机器人也可以被梯度磁场拖动。描述某点附近的梯度时，不能只写一个随 z 增大的分量而忽略其他方向。 [研究来源](https://www.nature.com/articles/s41467-025-65459-8)
+
+  在无电流、均匀非磁介质的小区域内，考虑图中教学场
+
+  $$
+  \mathbf B=(-Gx/2)\hat{\mathbf x}+(-Gy/2)\hat{\mathbf y}
+  +(B_0+Gz)\hat{\mathbf z},
+  $$
+
+  其中 $B_0,G>0$。哪些判断正确？
+
+  ![教学模型示意：原点 O 附近采用 x、y、z 三轴；图中列出 B_z=B₀+Gz 以及两个横向分量 −Gx/2、−Gy/2。它们共同定义题设局部场。](asset:gradient-coordinates)
+
+  图为原创教学示意，非按比例绘制。原点 O 附近采用 x、y、z 三轴；图中列出 B_z=B₀+Gz 以及两个横向分量 −Gx/2、−Gy/2。它们共同定义题设局部场。
+solution: |-
+  散度为
+  $-G/2-G/2+G=0$。每个分量只依赖自身坐标，所有旋度中的交叉偏导均为零，故 $\nabla\times\mathbf B=0$。原点的磁场为 $B_0\hat{\mathbf z}$。
+
+  如果删除横向分量，仅保留 $(B_0+Gz)\hat{\mathbf z}$，散度就变成 G，违反磁场无散条件。检查：G→0 恢复匀强场；该线性场是局部展开，不要求在无穷远仍然适用。
+
+  选项辨析：
+
+  两个横向负梯度恰好抵消轴向正梯度。
+
+  各交叉偏导都为零，符合局部无电流静磁场条件。
+
+  只剩轴向线性项时散度为 G，不能满足无磁单极子约束。
+
+  线性局部展开不能无限外推，远处场由完整磁源几何决定。
+
+  适用范围：此线性场不是由论文线圈直接重建，也未验证其大范围可实现性。
+
+  来源定位：Soft magnetic microrobots with remote sensing and communication capabilities，Results, navigation paragraph reporting gradient-field dragging; Methods, magnetic-field control。DOI: [10.1038/s41467-025-65459-8](https://doi.org/10.1038/s41467-025-65459-8)。
+hints:
+- 分别计算三个分量对各自坐标的导数。
+- 旋度使用的是交叉偏导，不是散度中使用的同向偏导。
+feedback:
+  correct: 关键理解：检验局部梯度磁场是否满足无源、无电流的 Maxwell 约束。
+  incorrect: 请检查：分别计算三个分量对各自坐标的导数。
+  choices:
+    A: 两个横向负梯度恰好抵消轴向正梯度。
+    B: 各交叉偏导都为零，符合局部无电流静磁场条件。
+    C: 只剩轴向线性项时散度为 G，不能满足无磁单极子约束。
+    D: 线性局部展开不能无限外推，远处场由完整磁源几何决定。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-65459-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 该场满足 ∇·B=0。
+- id: B
+  content: 该场满足 ∇×B=0。
+- id: C
+  content: 可以删去两个横向分量，同时保留 G≠0 而不影响 ∇·B=0。
+- id: D
+  content: 这个局部模型必然能精确描述任意远处的真实线圈磁场。
+answer:
+  choices:
+  - A
+  - B
+assets:
+- id: gradient-coordinates
+  path: electromagnetism/gradient-coordinates.svg

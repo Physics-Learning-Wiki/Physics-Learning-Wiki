@@ -1,0 +1,84 @@
+schema_version: 3
+id: q-000407
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.fringing-field
+- electrostatics.model-validity
+type: single_choice
+choice_order: shuffle
+stem: |-
+  纳米间隙传感器论文用含边缘修正的电容公式讨论间隙与抗干扰能力的关系。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
+  对边长 $W$、间隙 $d$ 的正方形电极，采用教学化写法
+
+  $$
+  C_{\mathrm{tot}}=C_{\mathrm{pp}}(1+s)^2,\qquad
+  s=\frac{d}{\pi W}\left[1+\ln\left(\frac{2\pi W}{d}\right)\right],
+  $$
+
+  其中 $C_{\mathrm{pp}}=\varepsilon W^2/d$，$C_{\mathrm{fr}}=C_{\mathrm{tot}}-C_{\mathrm{pp}}$。$W$ 和 $\varepsilon$ 固定，在该连续介质公式的形式极限 $d/W\to0$ 下，可用 $t\ln(1/t)\to0$。哪一结论必然由这个模型得到？
+solution: |-
+  边缘项的比例为
+
+  $$
+  \frac{C_{\mathrm{fr}}}{C_{\mathrm{tot}}}
+  =1-\frac{1}{(1+s)^2}.
+  $$
+
+  因 $s\to0$，这个比例趋于零。它没有说明边缘电容本身趋于零：$C_{\mathrm{pp}}$ 同时按 $1/d$ 增大，比例的分母也在变化。事实上本公式的首阶边缘项约为
+  $2\varepsilon W[1+\ln(2\pi W/d)]/\pi$，并不趋于零。
+
+  检查：比值无量纲且在 $s>0$ 时介于 0 与 1 之间。真实极小间隙还受接触、粗糙度等条件限制，不能无限外推。
+
+  选项辨析：
+
+  比例趋于零直接来自 s→0 和所给比值式。
+
+  绝对边缘项不由比例极限决定；本公式中其首阶项甚至含增长的对数。
+
+  总电容的主项按 1/d 增大，不会趋于零。
+
+  单个电容公式的形式极限不能证明现实器件对所有外扰完全免疫。
+
+  适用范围：不把形式极限视为任意小间隙都可制造，也不声称绝对边缘电容严格为零。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Results, working-principle subsection, Eqs. (1)–(2)。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+hints:
+- 先把边缘电容除以总电容，约去共同因子。
+- 占比变小不一定意味着分子变小。
+feedback:
+  correct: 关键理解：区分边缘项占比减小与边缘项绝对消失。
+  incorrect: 请检查：先把边缘电容除以总电容，约去共同因子。
+  choices:
+    A: 比例趋于零直接来自 s→0 和所给比值式。
+    B: 总电容的主项按 1/d 增大，不会趋于零。
+    C: 单个电容公式的形式极限不能证明现实器件对所有外扰完全免疫。
+    D: 绝对边缘项不由比例极限决定；本公式中其首阶项甚至含增长的对数。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-57232-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $C_{\mathrm{fr}}/C_{\mathrm{tot}}\to0$。
+- id: B
+  content: $C_{\mathrm{tot}}\to0$。
+- id: C
+  content: 外部物体在任何距离、任何材料下都无法改变电场。
+- id: D
+  content: $C_{\mathrm{fr}}\to0$。
+answer:
+  choice: A

@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000480
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.bessel-function
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
+  为解释论文观察到的中心峰和同心环，本题建立一个轴对称理想剖面 $u(r)$，$r\geq0$，满足
+
+  $$u^{\prime\prime}+\frac1r u^{\prime}+k^2u=0\quad(r>0),\qquad k>0.$$
+
+  给定其通解为 $u(r)=A J_0(kr)+B Y_0(kr)$。所需的特殊函数知识全部如下：$J_0(s)\to1$，而 $Y_0(s)\sim(2/\pi)\ln s$ 当 $s\to0^+$。要求轴线上 $u$ 有限并归一化为 $u(0)=1$。满足要求的解是哪一个？这一理想方程是本题教学模型，不是论文对实测束形的完整拟合。
+solution: |-
+  当 $r\to0^+$ 时，$Y_0(kr)$ 按对数发散，而 $J_0(kr)$ 有有限极限一。常数倍的有限项无法抵消非零的对数发散，所以有限性要求 $B=0$。
+
+  随后 $u(0)=A=1$，因此 $u(r)=J_0(kr)$。检查：它满足给定方程及轴线归一化；如果将中心轴从区域中移除，有限性条件便不同，不能一概排除 $Y_0$。理想剖面只用于理解径向函数选择，实际有限孔径束仍有有限传播距离。
+
+  研究对应：Results, Effect of beam type, Fig. 6(a)–(c); Methods, Sub-THz Bessel beam generation and reception, Fig. 7(c),(d)。教学范围：论文没有直接推导本题径向方程；此处是对其观测环形结构的标准理想化解释，不重现测量数据。
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先用有限性决定对数发散项的系数。
+- 再用轴线取值决定另一个系数。
+feedback:
+  correct: 先筛除奇异解，再用归一化固定幅度。
+  incorrect: 方程的通解并不自动满足轴线条件。
+  choices:
+    A: 有限性给 B=0，归一化给 A=1。
+    B: 在轴线附近对数发散。
+    C: 有限但在轴线取值二，不满足给定归一化。
+    D: 增加有限的 J0 项不能取消 Y0 的发散。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P207 的 Results, Effect of beam type, Fig. 6(a)–(c); Methods, Sub-THz Bessel beam generation and reception, Fig. 7(c),(d) 构造。原创引入明确给出的零阶贝塞尔径向方程，以轴线有限性解释理想中心剖面的函数选择。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-024-70542-z
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $u(r)=J_0(kr)$
+- id: B
+  content: $u(r)=Y_0(kr)$
+- id: C
+  content: $u(r)=2J_0(kr)$
+- id: D
+  content: $u(r)=J_0(kr)+Y_0(kr)$
+answer:
+  choice: A

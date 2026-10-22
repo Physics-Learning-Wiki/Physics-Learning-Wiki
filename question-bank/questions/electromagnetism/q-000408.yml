@@ -1,0 +1,88 @@
+schema_version: 3
+id: q-000408
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.fringing-field
+- electrostatics.floating-conductor
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  传感器论文比较了不同间隙下邻近单元的串扰，并把局部场约束作为设计目标。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
+  用图示最小模型描述串扰：驱动节点电势为 $V_s>0$，通过互电容 $C_m>0$ 耦合到一个净电荷为零的浮置邻近节点。该节点另通过 $C_g>0$ 耦合到地，电势为 $V_v$。电容均为线性常数，无泄漏。
+
+  哪些判断正确？
+
+  ![教学模型示意：左侧驱动节点 V_s 经 C_m 连接右侧浮置节点 V_v；该节点经 C_g 接地。右节点总电荷 Q_v=0。](asset:crosstalk-circuit)
+
+  图为原创教学示意，非按比例绘制。左侧驱动节点 V_s 经 C_m 连接右侧浮置节点 V_v；该节点经 C_g 接地。右节点总电荷 Q_v=0。
+solution: |-
+  邻近节点的电荷约束为
+  $C_m(V_v-V_s)+C_gV_v=0$，所以
+
+  $$
+  \frac{V_v}{V_s}=\frac{C_m}{C_m+C_g}.
+  $$
+
+  对 $C_m$ 求导为 $C_g/(C_m+C_g)^2>0$；对 $C_g$ 求导为 $-C_m/(C_m+C_g)^2<0$。因此减小互耦、增大对地电容都会降低这一电势串扰比例。同时放大两电容不改变比例。
+
+  检查：$C_m\to0$ 时串扰消失；$C_g\to0$ 时浮置节点跟随驱动电势。接地改变节点约束，但不意味着互电容不存在。
+
+  选项辨析：
+
+  互耦电容减小会降低给定分式，符合局部场约束的目标。
+
+  较大的对地电容在本模型中使节点更接近地电势。
+
+  接地只固定节点电势，几何互电容和可能流向地的感应电荷仍可存在。
+
+  共同尺度因子在分子和分母中抵消。
+
+  适用范围：此电势比不是论文定义的压力串扰率，不能直接代入论文百分比作器件预测。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Results, Fig. 2d–e and crosstalk discussion; Methods, Crosstalk simulations。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+hints:
+- 写出邻近节点两侧电容电荷的和，并令其为零。
+- 比较的是 V_v/V_s，不是单个电容的大小。
+feedback:
+  correct: 关键理解：用浮置邻近节点模型判断抑制电容串扰的方法。
+  incorrect: 请检查：写出邻近节点两侧电容电荷的和，并令其为零。
+  choices:
+    A: 互耦电容减小会降低给定分式，符合局部场约束的目标。
+    B: 较大的对地电容在本模型中使节点更接近地电势。
+    C: 接地只固定节点电势，几何互电容和可能流向地的感应电荷仍可存在。
+    D: 共同尺度因子在分子和分母中抵消。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-57232-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 固定 C_g 时，减小 C_m 可降低 V_v/V_s。
+- id: B
+  content: 固定 C_m 时，增大 C_g 可降低 V_v/V_s。
+- id: C
+  content: 把邻近节点接地后，C_m 必然变为零。
+- id: D
+  content: 两电容同时乘同一个正因子时，电势串扰比保持不变。
+answer:
+  choices:
+  - A
+  - B
+  - D
+assets:
+- id: crosstalk-circuit
+  path: electromagnetism/crosstalk-circuit.svg

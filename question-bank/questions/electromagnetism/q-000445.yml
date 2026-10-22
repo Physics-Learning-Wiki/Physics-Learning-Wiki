@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000445
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.phase-gradient
+- waves.propagating-modes
+type: numeric
+choice_order: fixed
+stem: |-
+  可重构剪纸超表面研究利用机械变形改变反射相位分布，实现波束转向。本题取一个原创的恒定相位梯度示例，使用论文给出的广义反射关系。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+
+  反射面为 \(z=0\)，空气位于 \(z>0\)。平面波沿 \(-z\) 正入射，波长 \(\lambda=30.0\ \mathrm{mm}\)。相邻单元沿 \(+x\) 的间距为 \(p=10.0\ \mathrm{mm}\)，展开后的目标反射相位每个单元增加 \(\Delta\phi=\pi/3\)。
+
+  将阵列近似为恒定连续相位梯度 \(G=\Delta\phi/p\)，忽略其他衍射级次。目标反射波在 \(xz\) 平面内，反射角 \(\theta\) 从 \(+z\) 向 \(+x\) 计，满足
+
+  $$
+  \sin\theta=\frac{\lambda G}{2\pi},\qquad -90^\circ\le\theta\le90^\circ.
+  $$
+
+  求 \(\theta\)，以度（输入单位 \(\mathrm{deg}\)）作答。
+
+  ![教学模型示意：超表面位于 \(z=0\)，空气在上方；入射波沿 \(-z\)，反射波位于 \(xz\) 面并向 \(+x,+z\) 传播。相位沿 \(+x\) 增加，\(\theta\) 从 \(+z\) 量起。](asset:phase-gradient)
+
+  图为原创教学示意，非按比例绘制。超表面位于 \(z=0\)，空气在上方；入射波沿 \(-z\)，反射波位于 \(xz\) 面并向 \(+x,+z\) 传播。相位沿 \(+x\) 增加，\(\theta\) 从 \(+z\) 量起。
+solution: |-
+  相位梯度为
+
+  $$
+  G=\frac{\pi/3}{0.0100\ \mathrm m}
+  =\frac{100\pi}{3}\ \mathrm{rad/m}.
+  $$
+
+  因此
+
+  $$
+  \sin\theta
+  =\frac{0.0300}{2\pi}\frac{100\pi}{3}
+  =\frac12,
+  \qquad \theta=30.0^\circ.
+  $$
+
+  这里用的是展开相位的增量，不能在求梯度前把每个单元相位各自折回主值后任意相减。检查：\(\lambda G\) 无量纲，正梯度给出正的切向波矢，且 \(|\sin\theta|\le1\) 满足传播条件。
+
+  适用范围：只求目标级次的几何方向，不预测能量转换效率、带宽或离散阵列中其他级次。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection, Eq. (3)。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+hints:
+- 将单元间距换为米，计算 \(\Delta\phi/p\)。
+- 代入反射关系后取规定角度区间内的反正弦。
+feedback:
+  correct: 关键理解：把离散单元的相位增量换算为连续梯度，再由切向波矢匹配求反射角。
+  incorrect: 请检查：将单元间距换为米，计算 \(\Delta\phi/p\)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56211-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 30.0
+  tolerance:
+    type: absolute
+    value: 0.05
+  unit:
+    required: true
+    canonical: deg
+    accepted:
+    - deg
+assets:
+- id: phase-gradient
+  path: electromagnetism/phase-gradient.svg

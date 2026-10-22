@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000461
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.fourier-method
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  研究光栅的两方向三次项可分别控制。本题用有限包络使振幅可积，设
+
+  $$
+  f(x,y)=g(x)h(y),\quad G(q_x)=\int g(x)e^{-iq_xx}dx,\quad H(q_y)=\int h(y)e^{-iq_yy}dy.
+  $$
+
+  二维变换定义为 $\widehat f(q_x,q_y)=\iint f(x,y)e^{-i(q_xx+q_yy)}dxdy$，且可交换积分。选出所有正确关系；采用完全一致评分。
+solution: |-
+  因积分核和振幅均可分离，先对 $x$ 积分，再对 $y$ 积分，得到 $\widehat f=GH$。取复模平方给出 $|\widehat f|^2=|G|^2|H|^2$。若 $g,h$ 都归一化为各自强度积分为一，则利用分离积分，输入二维总强度也为一。
+
+  二维振幅不是两条一维振幅的和；乘积结构保留两个方向同时出现的图样。检查：选 $g(x)=e^{-x^2}$、$h(y)=e^{-y^2}$ 时，直接的二维高斯积分与乘积表达完全相同。
+
+  研究对应：Published article, Eq. (1) and Appendix A Eq. (A3)。教学范围：忽略实际阵列有限尺寸、非可分离误差和仪器模糊。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 先固定 $y$，完成内层 $x$ 积分。
+- 注意变换振幅与取模平方后强度的区别。
+feedback:
+  correct: 正确分开两方向积分，并保持强度归一化。
+  incorrect: 可分离函数产生乘积；不能把振幅或强度随意相加。
+  choices:
+    A: Fubini 分离积分给出两个一维变换的乘积。
+    B: 复数乘积的模等于两个模的乘积。
+    C: 加法对应的是不同的输入函数，不是 $g(x)h(y)$。
+    D: 二维强度积分等于两个一维强度积分的乘积。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P203 的 Published article, Eq. (1) and Appendix A Eq. (A3) 构造。保留两个方向可分离的包络与相位，研究二维傅里叶积分的结构。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevLett.134.153401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\widehat f(q_x,q_y)=G(q_x)H(q_y)$
+- id: B
+  content: $|\widehat f|^2=|G|^2|H|^2$
+- id: C
+  content: $\widehat f(q_x,q_y)=G(q_x)+H(q_y)$
+- id: D
+  content: 若 $\int|g|^2dx=\int|h|^2dy=1$，则 $\iint|f|^2dxdy=1$。
+answer:
+  choices:
+  - A
+  - B
+  - D

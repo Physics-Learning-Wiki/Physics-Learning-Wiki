@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000374
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.cyclic-coordinate
+- analytical.geometric-phase
+- dynamics.angular-momentum
+type: free_response
+choice_order: fixed
+stem: |-
+  软体滚转的关键是内部形变和整体姿态之间的耦合。以下教学模型把这种耦合写成可逐段积分的关系，检验“总角动量为零”是否必然意味着“总姿态不变”。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
+
+  在无外力矩下，外壳角度为 $\theta$，转子相对角度为 $\phi$，总角动量恒为零。形变执行器还能缓慢改变两部分的正惯量 I、J，但不引入额外绕共同轴的形变角动量。模型给出 $(I+J)\dot\theta+J\dot\phi=0$。定义 $\alpha=J/(I+J)$，故 $d\theta=-\alpha\,d\phi$。完成图示封闭循环：① 在 $\alpha=\alpha_1$ 时将 $\phi$ 从 0 增至 $\Delta$；② 保持 $\phi=\Delta$，把 $\alpha$ 改为 $\alpha_2$；③ 在 $\alpha=\alpha_2$ 时将 $\phi$ 降回 0；④ 保持 $\phi=0$，恢复 $\alpha_1$。其中 $0<\alpha_1,\alpha_2<1$，$\Delta>0$。每段转接时可以停下；所有参数最终回到初值。
+
+  ![形变参数平面中的矩形循环：横轴 φ，纵轴 α，依次经过 (0,α₁)、(Δ,α₁)、(Δ,α₂)、(0,α₂)，箭头表示运动顺序；图示取 α₂ 大于 α₁。](asset:m025)
+
+  *原创教学示意图，非按比例绘制。*
+
+  求一个循环的净外壳姿态变化 $\Delta\theta$，解释它与零总角动量为何相容；再说明固定 $\alpha$ 的往返相对转动为何没有同样效果，并说明本题是否断言无需输入能量。
+hints:
+- 逐段积分 dθ=−αdφ，不要只比较 φ 的起点和终点。
+- 区分总角动量、各部分角速度、整体净姿态和机械能。
+feedback:
+  correct: 积分零角动量约束，说明非互易内部形变为何可留下整体姿态变化。，并保留了题设的适用条件。
+  incorrect: 逐段积分 dθ=−αdφ，不要只比较 φ 的起点和终点。
+solution: |-
+  在第一段，$\Delta\theta_1=-\alpha_1\Delta$。第二段 $d\phi=0$，按给定约束 $d\theta=0$。第三段相对角增量为 $-\Delta$，所以 $\Delta\theta_3=-\alpha_2(-\Delta)=\alpha_2\Delta$。第四段同样无姿态增量。因此 $\Delta\theta=(\alpha_2-\alpha_1)\Delta$。在每一瞬间，外壳和转子角动量仍严格相反；零总角动量约束的是加权角速度之和，不要求外壳角速度为零。形变循环通过不同的耦合比走过往返路径，使姿态增量不能抵消。若 $\alpha_1=\alpha_2$，则 $\Delta\theta=0$，互易往返运动无净效果。执行器改变惯量和相对角时可以作功，且可能消耗内部能源；本推导只证明运动学和角动量相容，不证明能耗为零。
+
+  **检查与物理含义：** 结果以弧度为单位；交换循环方向会使 $\Delta\theta$ 反号。任一参数循环幅度为零（$\Delta=0$ 或 $\alpha_2=\alpha_1$）时，净姿态变化都为零。
+
+  **适用范围：** 真实三维软体的形变空间、惯量张量与几何耦合更复杂；这里只证明给定模型允许这种净姿态变化，不预测论文装置每周期的滚转角。
+
+  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript pp. 3–4, sequential deformation and free-space counterrotation, Fig. 3c,d；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；抽取内部形变与整体反向转动的耦合，构造两个可控形变参数的原创教学模型；公式不是论文软体的定量拟合。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1103/PhysRevLett.134.198401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未能按各段的相对角变化积分，或将零总角动量等同于外壳静止。
+    points: 0
+  - id: partial
+    label: 得到净姿态公式，但缺少守恒相容性、互易极限或能源边界的说明。
+    points: 0.5
+  - id: mastered
+    label: 正确积分全部阶段，解释非互易耦合、零角动量与固定 α 极限，并明确能量结论未被证明。
+    points: 1
+reference_answer: 四段姿态增量分别为 −α₁Δ、0、+α₂Δ、0，合计 Δθ=(α₂−α₁)Δ。总角动量始终为零，但权重随形变改变，外壳姿态可累计变化。固定 α 的往返相对转动完全抵消。内部执行器仍可能需要能量，本题不计算能耗。
+assets:
+- id: m025
+  path: mechanics/m025.svg

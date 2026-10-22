@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000416
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.capacitance
+- electrostatics.dielectric-boundary
+type: numeric
+choice_order: fixed
+stem: |-
+  接触主导传感器的一种绝缘层组合是 5 nm 的 Y₂O₃ 与 50 nm 的 HfO₂。较高的面电容使小接触面积也能产生明显电容变化。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+
+  使用论文报告的两层厚度 $d_1=5\,\mathrm{nm}$、$d_2=50\,\mathrm{nm}$。为便于计算，本题取示例相对介电常数 $\varepsilon_{r1}=10$、$\varepsilon_{r2}=20$；这两个数不声称是论文测量值。取 $\varepsilon_0=8.85\times10^{-12}\,\mathrm{F/m}$。
+
+  两层在同一面积 A 上串联，界面无自由电荷，忽略边缘场。求 $C/A$，**以 mF/m^2 为单位输入数值及单位**，保留两位小数。
+
+  ![教学模型示意：两层绝缘介质夹在同一对平行导体之间，层厚分别为 d₁ 和 d₂；电势由上方 V 降到下方 0，两层承担串联电压降。](asset:two-layer)
+
+  图为原创教学示意，非按比例绘制。两层绝缘介质夹在同一对平行导体之间，层厚分别为 d₁ 和 d₂；电势由上方 V 降到下方 0，两层承担串联电压降。
+solution: |-
+  两层中 $D=Q/A$ 相同，电压为
+  $V=D[d_1/(\varepsilon_0\varepsilon_{r1})+d_2/(\varepsilon_0\varepsilon_{r2})]$。所以
+
+  $$
+  \frac CA=\frac{\varepsilon_0}{d_1/\varepsilon_{r1}+d_2/\varepsilon_{r2}}
+  =\frac{8.85\times10^{-12}}{(0.5+2.5)\times10^{-9}}
+  =2.95\times10^{-3}\,\mathrm{F/m^2}.
+  $$
+
+  即 $2.95\,\mathrm{mF/m^2}$。检查：每层的等效电厚度相加；不能直接把两层电容相加。令任一层厚度趋于零，应恢复另一层的平行板结果。
+
+  适用范围：计算结果依赖示例介电常数，不能标为论文实测面电容。
+
+  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Contact-dominated design, paragraph following Eqs. (1)–(3), 5-nm/50-nm Y2O3/HfO2。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。
+hints:
+- 串联时相同的是两层的 Q/A，电压降相加。
+- 分母中应是 d₁/εᵣ₁+d₂/εᵣ₂。
+feedback:
+  correct: 关键理解：通过串联电压降计算层状介质的面电容。
+  incorrect: 请检查：串联时相同的是两层的 Q/A，电压降相加。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-63018-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 2.95
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: mF/m^2
+    accepted:
+    - mF/m^2
+assets:
+- id: two-layer
+  path: electromagnetism/two-layer.svg

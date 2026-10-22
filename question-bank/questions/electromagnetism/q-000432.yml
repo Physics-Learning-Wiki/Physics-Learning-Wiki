@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000432
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.resonance
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  植入微器件研究在封装和含水环境下考察无线线圈的谐振变化，并指出水分进入会影响谐振频率和品质因数。本题用一个简化的串联 RLC 电路理解电容增大这一单独因素。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
+
+  设电路电感 \(L>0\)、串联电阻 \(R>0\)，初始电容为 \(C>0\)。本题定义零电抗的驱动谐振角频率和品质因数为
+
+  $$
+  \omega_0=\frac1{\sqrt{LC}},\qquad Q=\frac{\omega_0L}{R}.
+  $$
+
+  假设封装变化只使电容从 \(C\) 增大到 \(4C\)，而 \(L\) 和 \(R\) 都保持不变。以下结论哪些正确？
+solution: |-
+  由给定公式直接比较：
+
+  $$
+  \omega'_0=\frac1{\sqrt{4LC}}=\frac{\omega_0}{2},\qquad
+  Q'=\frac{\omega'_0L}{R}=\frac Q2.
+  $$
+
+  新谐振点满足 \(\omega'_0L=1/(\omega'_0\,4C)\)，所以电感与电容电抗相互抵消，串联输入阻抗为 \(R\)。\(Q\) 的降低并不要求电阻增大：在这里 \(R\) 被保持不变，改变的是 \(\omega_0L/R\) 中的频率。检查：电容增大使电荷变化更慢，与频率降低的方向一致。
+
+  选项辨析：
+
+  “谐振角频率为原来的一半”正确，因为 \(\omega_0\propto C^{-1/2}\)。
+
+  “品质因数为原来的一半”正确，因为 \(L,R\) 固定而 \(\omega_0\) 减半。
+
+  “新谐振点输入阻抗等于 \(R\)”正确，串联电感与电容的虚部正好相消。
+
+  “电阻必然变成 \(2R\)”错误，题设明确保持 \(R\) 不变，品质因数变化由频率变化造成。
+
+  适用范围：实际水分进入可能同时改变损耗和寄生参数；本题不把纯电容变化视为论文装置的完整解释。
+
+  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results, Fig. 5d resonance characterization and associated encapsulation discussion; Methods: RF wireless link and coil design, water infiltration paragraph。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。
+hints:
+- 对比变化前后公式中的 \(C^{-1/2}\) 因子。
+- 品质因数包含频率；不要把品质因数降低直接等同于电阻增大。
+feedback:
+  correct: 关键理解：在明确的串联 RLC 模型中区分谐振频率、品质因数和电阻。
+  incorrect: 请检查：对比变化前后公式中的 \(C^{-1/2}\) 因子。
+  choices:
+    A: “谐振角频率为原来的一半”正确，因为 \(\omega_0\propto C^{-1/2}\)。
+    B: “品质因数为原来的一半”正确，因为 \(L,R\) 固定而 \(\omega_0\) 减半。
+    C: “新谐振点输入阻抗等于 \(R\)”正确，串联电感与电容的虚部正好相消。
+    D: “电阻必然变成 \(2R\)”错误，题设明确保持 \(R\) 不变，品质因数变化由频率变化造成。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-54542-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 新的谐振角频率为原来的一半。
+- id: B
+  content: 新的品质因数为原来的一半。
+- id: C
+  content: 在新的零电抗谐振点，电路输入阻抗等于 \(R\)。
+- id: D
+  content: 品质因数降低说明本题中电阻必然变成 \(2R\)。
+answer:
+  choices:
+  - A
+  - B
+  - C

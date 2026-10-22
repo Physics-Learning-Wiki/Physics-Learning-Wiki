@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000378
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- dynamics.energy-conservation
+- newton.system-boundary
+type: single_choice
+choice_order: shuffle
+stem: |-
+  风滚机器人在风不足或遇到障碍时采用主动辅助；评价这种混合移动的收益，需要分别记录环境风的输入、电机的输入和损耗。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
+
+  取机器人为研究对象，把平动与转动动能之和记为 K，重力势能为 U。某段运动中，风力对机器人作功 $W_w=0.300\,\mathrm{J}$，电机从内部能源向机械运动提供 $W_m=0.200\,\mathrm{J}$，机械耗散为 $E_d=0.100\,\mathrm{J}$，重力势能增加 $\Delta U=0.250\,\mathrm{J}$。该段没有其他机械能输入或输出。这里电机输入按机械功计，未把电池效率并入 $W_m$。
+
+  下列哪一项同时给出正确的动能变化和能量解释？
+hints:
+- 明确 K 同时包含平动和转动，而 U 已单独计入。
+- 把 ΔK+ΔU 放在能量方程的一边，所有输入与损耗放另一边。
+feedback:
+  correct: 对风力与主动推进共同作功的过程建立包含势能和耗散的能量收支。，并保留了题设的适用条件。
+  incorrect: 明确 K 同时包含平动和转动，而 U 已单独计入。
+  choices:
+    A: 先算总机械能增加，再扣除重力势能增加，即得到总动能增加。
+    B: 势能增加是机械能的一部分，求动能时应从输入净值中扣除。
+    C: 0.400 J 是总机械能增加，尚未分出抬升所增加的势能。
+    D: 环境风同样可对机器人作正功，不能从机械能边界中删除。
+solution: |-
+  包含重力势能的机械能方程为 $\Delta K+\Delta U=W_w+W_m-E_d$。因此 $\Delta K=0.300+0.200-0.100-0.250=0.150\,\mathrm{J}$。风和电机都向机械系统输入能量，能量的一部分用于抬升、一部分耗散，其余增加动能。把风视为外部能源后，被动移动并不意味着没有能量输入。
+
+  **检查与物理含义：** 回代得 $0.150+0.250=0.300+0.200-0.100=0.400\,\mathrm{J}$。所有项均为能量，且增加动能未超过总机械输入。
+
+  **适用范围：** 仅凭这些机械功不能计算电池消耗或综合效率；还需电机、电源与控制系统的损耗信息。
+
+  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Hybrid mobility; discussion of wind-driven travel and active assistance；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；用明确的机械能边界比较被动风驱与主动辅助，不推断具体电池续航。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-025-66513-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\Delta K=0.150\,\mathrm{J}$；风和电机都是输入，重力势能增加和耗散都占用输入能量。
+- id: B
+  content: $\Delta K=0.650\,\mathrm{J}$；上升时重力势能增加应与风功相加。
+- id: C
+  content: $\Delta K=0.400\,\mathrm{J}$；只要仍在移动，重力势能增加可以不计。
+- id: D
+  content: $\Delta K=-0.150\,\mathrm{J}$；只有电机输入才可计入能量方程。
+answer:
+  choice: A

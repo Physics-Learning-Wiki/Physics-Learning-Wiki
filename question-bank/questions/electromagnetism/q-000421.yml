@@ -1,0 +1,74 @@
+schema_version: 3
+id: q-000421
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.dipole-torque
+type: single_choice
+choice_order: shuffle
+stem: |-
+  永磁机器人系统用旋转场对小磁性器件施加力矩；论文指出同步运动需要磁力矩平衡黏性阻力矩。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+
+  在教学模型中，器件的固定磁矩大小为 m，外加旋转磁场大小恒为 B，器件相对外场的滞后角为 $\delta$。磁力矩为 $mB\sin\delta$，黏性阻力矩为 $\zeta\Omega$，$\zeta>0$。假设同步稳态时两者平衡，忽略惯性与其他阻力。
+
+  正角速度 $\Omega$ 必须满足哪一必要条件，才可能存在同步稳态？
+solution: |-
+  同步平衡要求 $\sin\delta=\zeta\Omega/(mB)$。因 $|\sin\delta|\le1$，正角速度必须满足
+
+  $$
+  \Omega\le\frac{mB}{\zeta}.
+  $$
+
+  这只是由最大可用磁力矩得到的必要上界；端点的稳定性和进入稳态的过程未由该不等式保证。检查：磁场变强上界提高，黏性阻力系数变大上界降低；$mB/\zeta$ 的单位为 s⁻¹。
+
+  选项辨析：
+
+  这是正弦值不超过 1 所给出的力矩上限。
+
+  更大的角速度需要超过最大磁力矩，反而无法满足给定平衡式。
+
+  增加角度不能使 sinδ 超过 1，力矩存在上界。
+
+  该比值的量纲是时间，不能作为角速度上界。
+
+  适用范围：给出必要上界，不宣称在界限处一定稳定，也不预测实际器件的失步频率。
+
+  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous environments，Paragraph introducing inverse-control fitness function: magnetic torque must balance drag torque to maintain synchronous rotation。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。
+hints:
+- 稳态方程需要有真实的滞后角。
+- 正弦函数的绝对值不超过 1。
+feedback:
+  correct: 关键理解：由最大磁力矩判断同步跟随的必要条件。
+  incorrect: 请检查：稳态方程需要有真实的滞后角。
+  choices:
+    A: 增加角度不能使 sinδ 超过 1，力矩存在上界。
+    B: 更大的角速度需要超过最大磁力矩，反而无法满足给定平衡式。
+    C: 这是正弦值不超过 1 所给出的力矩上限。
+    D: 该比值的量纲是时间，不能作为角速度上界。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41598-025-15247-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 任意大的 Ω 都可以，只需增加滞后角。
+- id: B
+  content: $\Omega\ge mB/\zeta$。
+- id: C
+  content: $\Omega\le mB/\zeta$。
+- id: D
+  content: $\Omega\le\zeta/(mB)$。
+answer:
+  choice: C

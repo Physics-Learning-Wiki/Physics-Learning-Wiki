@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000376
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- dynamics.rotational-motion
+- newton.friction
+- newton.incline-components
+type: numeric
+choice_order: fixed
+stem: |-
+  球形风滚机器人要把气动力同时转化为质心平动和壳体转动；只按质点计算会高估同一驱动力下的加速度。（[研究来源](https://doi.org/10.1038/s41467-025-66513-1)）
+
+  把机器人理想化为质量 $M=0.300\,\mathrm{kg}$、半径 R 的均匀薄球壳，转动惯量 $I=\frac23MR^2$。它在倾角 $\beta$ 的粗糙坡面纯滚动，$\sin\beta=0.200$。通过球心、沿坡向上的恒力为 $F=0.900\,\mathrm{N}$。取沿坡向上为正，$g=10.0\,\mathrm{m/s^2}$；忽略滚动阻力和其他气动力，静摩擦足够大。
+
+  ![薄球壳沿斜面滚动，F 沿坡向上通过球心，摩擦 f 沿坡向下，重力 Mg 竖直向下；正加速度沿坡向上。](asset:m027)
+
+  *原创教学示意图，非按比例绘制。*
+
+  求球心沿坡的加速度 a，以 $\mathrm{m/s^2}$ 为单位，保留三位有效数字。
+hints:
+- 平动方程中的静摩擦还要满足转动方程。
+- 用 a=Rα 消去角加速度，再消去摩擦力。
+feedback:
+  correct: 同时应用质心平动和转动方程，计入纯滚动的转动惯量。，并保留了题设的适用条件。
+  incorrect: 平动方程中的静摩擦还要满足转动方程。
+solution: |-
+  设静摩擦大小 f，方向沿坡向下以提供向上滚动所需的转动。平动方程为 $Ma=F-Mg\sin\beta-f$；转动方程结合无滑动关系给出 $fR=I(a/R)$，即 $f=Ia/R^2$。相加消去 f 得 $(M+I/R^2)a=F-Mg\sin\beta$。代入薄球壳惯量：$a=[0.900-0.300\times10.0\times0.200]/[(5/3)\times0.300]=0.600\,\mathrm{m/s^2}$。
+
+  **检查与物理含义：** 所得摩擦为 $f=(2/3)Ma=0.120\,\mathrm{N}$，回代平动方程净力为 $0.180\,\mathrm{N}=Ma$。忽略转动的质点结果为 $1.00\,\mathrm{m/s^2}$，比计入壳体转动后的结果大，能量分配趋势一致。容差对应三位有效数字。
+
+  **适用范围：** 真实风滚草机器人不是均匀薄球壳，风力也不一定平行坡面；本题参数与惯量均为教学设定。
+
+  **来源定位：** Tumbleweed-inspired robots with hybrid mobility for terrestrial exploration，Results: Bio-inspired sphere; Tumbleweed aerodynamics and hybrid mobility；[论文 DOI](https://doi.org/10.1038/s41467-025-66513-1)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；以均匀薄球壳代替论文的多孔球架，风力简化为通过球心的坡面平行力。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-025-66513-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 0.6
+  tolerance:
+    type: absolute
+    value: 0.0005
+  unit:
+    required: true
+    canonical: m/s^2
+    accepted:
+    - m/s^2
+assets:
+- id: m027
+  path: mechanics/m027.svg

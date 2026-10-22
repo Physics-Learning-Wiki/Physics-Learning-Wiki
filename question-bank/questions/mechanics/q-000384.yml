@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000384
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.elastic-energy
+- analytical.homogenization
+- analytical.model-validity
+type: free_response
+choice_order: fixed
+stem: |-
+  跷跷板材料研究用离散铰链能量与等效连续体的应变能相匹配，从微观转动机构得到宏观模量。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
+
+  单元宽度和高度为 $X(\theta)=2(a\cos\theta+b\sin\theta)$、$Y(\theta)=2(a\sin\theta+b\cos\theta)$，出平面厚度为 $h>0$。a、b、h 为常数。在给定状态 $\theta$ 附近作小增量 $\delta\theta$，所有有效铰链归属于单元的储能总和已给为 $U_h=7\kappa(\delta\theta)^2$，$\kappa>0$。仅施加 X 方向共轭载荷，Y 方向允许按机构自由变形；用等效单轴应变能 $U_c=\frac12E_X(\delta X/X)^2XYh$ 定义 $E_X$。使用 $\delta X=X\prime(\theta)\delta\theta$，且 $X,Y>0$、$X\prime\ne0$。
+
+  ![等效单元尺寸示意，宽 X、高 Y、出平面厚度 h；水平共轭拉力使单元产生 δX，内部协调转角增量为 δθ，竖直边界自由。](asset:m035)
+
+  *原创教学示意图，非按比例绘制。*
+
+  令两种能量相等，推导 $E_X(\theta)$；再求 $\theta=0$ 时的表达式并检查量纲。最后解释公式在 $X\prime\to0$ 时发散能说明什么、不能说明什么。
+hints:
+- 先把 δX 换成 δθ，再比较两种能量中 (δθ)² 的系数。
+- 初态代入前先求 X 对 θ 的导数；最后检查模量是否具有压强量纲。
+feedback:
+  correct: 以能量等价推导等效弹性模量，并检验几何奇点与模型适用范围。，并保留了题设的适用条件。
+  incorrect: 先把 δX 换成 δθ，再比较两种能量中 (δθ)² 的系数。
+solution: |-
+  把几何关系代入连续体能量，$U_c=\frac12E_X[X\prime\delta\theta/X]^2XYh=\frac12E_XhY(X\prime)^2(\delta\theta)^2/X$。与 $U_h=7\kappa(\delta\theta)^2$ 比较系数，得到 $E_X=14\kappa X/[hY(X\prime)^2]$。在 $\theta=0$ 时，$X=2a$、$Y=2b$、$X\prime=2b$，所以 $E_X(0)=7\kappa a/(2hb^3)$。$\kappa$ 的量纲为力乘长度，$a/(hb^3)$ 的量纲为长度的负三次方，乘积为力除以面积，确为模量。若 $X\prime\to0$，一阶转角变化几乎不产生 X 向伸长，因而用“X 向小应变”定义的本机构线性模量趋大。它表明这一几何映射接近奇异，不能证明真实材料无限刚；铰链非线性、单元弹性、高阶几何与其他形变模式此时可能变得重要。
+
+  **检查与物理含义：** 将 $E_X$ 代回 $U_c$ 恰得 $7\kappa(\delta\theta)^2$。当 $a=b$ 且 $\theta=0$，结果为 $7\kappa/(2ha^2)>0$；在固定厚度与铰链刚度下，面内长度共同放大会使模量按长度平方的倒数缩放。
+
+  **适用范围：** 等效模量由题设机构和能量边界定义；不包含真实薄片的附加拉伸、弯曲或有限变形失稳。
+
+  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, hinge strain energy and equivalent modulus Eqs. (4)–(6)；[论文 DOI](https://doi.org/10.1093/jom/ufae029)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；在明确的单轴自由横向变形条件下，从论文的铰链储能计数独立推导等效模量。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1093/jom/ufae029
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未能把连续体应变能转成同一转角增量，或遗漏单元体积。
+    points: 0
+  - id: partial
+    label: 正确得到一般模量与初态结果，但量纲或几何奇点的物理限制解释不完整。
+    points: 0.5
+  - id: mastered
+    label: 完整匹配能量并正确化简，检查压强量纲，说明几何奇点与真实材料响应之间的范围限制。
+    points: 1
+reference_answer: 能量等价给 E_X=14κX/[hY(X′)²]。在 θ=0，X=2a、Y=2b、X′=2b，故 E_X(0)=7κa/(2hb³)，量纲为 Pa。X′趋零造成一阶运动学映射奇异和模型模量发散，不证明真实材料无限刚。
+assets:
+- id: m035
+  path: mechanics/m035.svg

@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000487
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.airy-function
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  考虑论文初始场的无量纲形式 $f_\alpha(s)=\operatorname{Ai}(s)e^{\alpha s}$，积分强度为 $\int_{-\infty}^{\infty}|f_\alpha(s)|^2ds$。允许使用
+
+  $$\operatorname{Ai}(s)\sim\frac{s^{-1/4}}{2\sqrt\pi}e^{-2s^{3/2}/3}\quad(s\to+\infty),$$
+  $$\operatorname{Ai}(-v)\sim\frac{v^{-1/4}}{\sqrt\pi}\sin\left(\frac23v^{3/2}+\frac\pi4\right)\quad(v\to+\infty).$$
+
+  平方正弦的振荡具有非零平均，不会单独使 $v^{-1/2}$ 尾部积分收敛。选出所有正确判断，采用完全一致评分。
+solution: |-
+  负半轴令 $s=-v$，强度尾部带因子 $v^{-1/2}e^{-2\alpha v}$ 乘有界振荡。当 $\alpha>0$，指数衰减使它可积。正半轴的强度指数为 $-4s^{3/2}/3+2\alpha s$；对任何有限的常数 $\alpha$，负的 $s^{3/2}$ 项最终占优，所以此端可积。
+
+  当 $\alpha=0$，负半轴只有 $v^{-1/2}$ 的平方振幅衰减及非零平均振荡，总积分发散；当 $\alpha<0$，负半轴指数增长，也不能得到有限积分强度。检查：截断所修正的是负半轴的长尾，而正半轴本已快速衰减。对任意有限区间，Ai 光滑，因此没有额外的内部积分奇点。
+
+  研究对应：Results, Airy beam generation and characterization, Eq. (1), finite-energy truncation parameter discussion。教学范围：仅检验一维初始剖面的积分收敛，不计算真实有限阵列的辐射效率或无障碍传输保证。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 负半轴必须把 s 写成 −v，再判断指数符号。
+- 正半轴比较 s 与 s^(3/2) 的增长速度。
+feedback:
+  correct: 分别检查了两端的函数渐近行为。
+  incorrect: 在负半轴，正截断参数对应衰减；不能把两端的 s 符号混在一起。
+  choices:
+    A: 指数衰减支配幂次尾部。
+    B: s^(3/2) 比 s 增长更快，负的高次指数决定收敛。
+    C: 未截断 Ai 的负半轴平方振幅衰减不足以可积。
+    D: 负的 α 在 s=−v 上产生正增长指数。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Eq. (1), finite-energy truncation parameter
+    discussion 构造。为真实截断机制补充完整的两端渐近式，以本科反常积分比较证明其作用。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-62443-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\alpha>0$ 时，负半轴多出的 $e^{-2\alpha v}$ 使强度尾部可积。
+- id: B
+  content: 对固定有限 $\alpha$，正半轴的 $s^{3/2}$ 衰减最终压过线性指数项。
+- id: C
+  content: $\alpha=0$ 时两端都自动给出有限积分强度。
+- id: D
+  content: $\alpha<0$ 会使负半轴尾部指数增长，不能起到所需的有限能量截断作用。
+answer:
+  choices:
+  - A
+  - B
+  - D

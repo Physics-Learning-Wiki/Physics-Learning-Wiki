@@ -1,0 +1,76 @@
+schema_version: 3
+id: q-000409
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.capacitance
+- electrostatics.fringing-field
+type: single_choice
+choice_order: shuffle
+stem: |-
+  纳米间隙传感器研究指出，增加屏蔽电极可能引入寄生电容；其设计希望减少对额外屏蔽层的依赖。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
+  某理想读出器测得压力敏感电容 $C_s$ 与一个恒定寄生电容 $C_p>0$ 的并联总值。压力使 $C_s$ 从 $C_{s0}$ 增加 $\Delta C_s>0$，而 $C_p$ 不变。假设屏蔽层本身没有改变 $C_s$ 的物理响应。
+
+  相对于没有 $C_p$ 的情形，归一化读数 $R=\Delta C_{\mathrm{tot}}/C_{\mathrm{tot},0}$ 如何变化？
+solution: |-
+  并联关系给出 $C_{\mathrm{tot},0}=C_{s0}+C_p$，而增量仍为 $\Delta C_{\mathrm{tot}}=\Delta C_s$。因此
+
+  $$
+  R=\frac{\Delta C_s}{C_{s0}+C_p}
+  <\frac{\Delta C_s}{C_{s0}}.
+  $$
+
+  寄生电容只增加了本模型的基线，所以归一化变化减小，但绝对变化并未消失。检查：$C_p\to0$ 恢复原值；$C_p\gg C_{s0}$ 时归一化变化很小。噪声模型未给出，故不能直接宣称某个信噪比数值。
+
+  选项辨析：
+
+  这是并联恒定电容增加基线但不贡献增量的直接结果。
+
+  分母变大而分子不变，比例实际减小。
+
+  恒定寄生项不会抵消已有的 ΔC_s。
+
+  本题明确排除了对敏感结构的机械改变，不能额外假设有效面积被放大。
+
+  适用范围：未给出读出噪声谱，因此这里只判断归一化响应，不量化实际信噪比。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Introduction, discussion of EMI shielding; Results, paragraph on avoiding parasitic shielding capacitance。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+hints:
+- 把总电容的基线和增量分开写。
+- 恒定寄生项只出现在基线分母。
+feedback:
+  correct: 关键理解：解释恒定寄生电容为何稀释归一化电容响应。
+  incorrect: 请检查：把总电容的基线和增量分开写。
+  choices:
+    A: 恒定寄生项不会抵消已有的 ΔC_s。
+    B: 分母变大而分子不变，比例实际减小。
+    C: 本题明确排除了对敏感结构的机械改变，不能额外假设有效面积被放大。
+    D: 这是并联恒定电容增加基线但不贡献增量的直接结果。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-57232-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 绝对电容增量必然变为零。
+- id: B
+  content: 归一化读数增大，因为总电容更大。
+- id: C
+  content: 寄生电容一定提高压力引起的有效面积变化。
+- id: D
+  content: 归一化读数减小，绝对电容增量不变。
+answer:
+  choice: D

@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000456
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.conformal-map
+type: numeric
+choice_order: fixed
+stem: |-
+  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  本题坐标均已无量纲化，取 $z=\omega(\zeta)=2i e^{-i\zeta}$，以及 $F(\zeta)=\phi(\omega(\zeta))=e^{2i\zeta}$。在 $\zeta=0$ 附近使用局部逆映射。
+
+  求 $\phi^{\prime\prime}(2i)$ 的实数值，撇号表示对 $\phi$ 自变量 $z$ 求导。可从 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 出发。输入十进制数，允许绝对误差 $0.001$，不填单位。
+solution: |-
+  对 $F^{\prime}=\phi^{\prime}\omega^{\prime}$ 再求一次 $\zeta$ 导数，得到
+
+  $$
+  F^{\prime\prime}=\phi^{\prime\prime}(\omega^{\prime})^2+\phi^{\prime}\omega^{\prime\prime},\qquad
+  \phi^{\prime\prime}=\frac{F^{\prime\prime}\omega^{\prime}-F^{\prime}\omega^{\prime\prime}}{(\omega^{\prime})^3}.
+  $$
+
+  在零点，$F^{\prime}=2i$、$F^{\prime\prime}=-4$、$\omega^{\prime}=2$、$\omega^{\prime\prime}=-2i$。所以
+
+  $$
+  \phi^{\prime\prime}(2i)=\frac{(-4)2-(2i)(-2i)}{8}=-\frac32=-1.5.
+  $$
+
+  独立检查：由 $z^2=-4e^{-2i\zeta}$ 得 $\phi(z)=-4/z^2$，直接求导为 $\phi^{\prime\prime}=-24/z^4$，在 $z=2i$ 同样得到 $-1.5$。若遗漏 $\omega^{\prime\prime}$ 项则结果不符。
+
+  研究对应：The concept of conformal mapping, Eq. (23), exponential geometry Eq. (25a)。教学范围：解析势是教学构造，不代表测得的应力势或拟合参数。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 二次求导时，$\phi^{\prime}$ 本身也通过 $z(\zeta)$ 变化。
+- 先列出零点处的四个导数，再代入。
+feedback:
+  correct: 保留了非线性映射引入的额外二阶项。
+  incorrect: 检查链式法则中 $\phi^{\prime}\omega^{\prime\prime}$ 的符号和因子。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P201 的 The concept of conformal mapping, Eq. (23), exponential geometry Eq. (25a) 构造。将实际指数映射无量纲化并给定原创解析势，比较复合求导与显式反代。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-025-88114-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: -1.5
+  tolerance:
+    type: absolute
+    value: 0.001
+  unit:
+    required: false
+    canonical: '1'
+    accepted: []

@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000395
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.kinematics
+concepts:
+- kinematics.angular-motion
+- kinematics.measurement
+type: single_choice
+choice_order: shuffle
+stem: |-
+  滚转翅果研究分别测量展向滚转和绕竖直轴的进动。表 1 给出白蜡树种 F. americana 的两种角速度均值，可用于构造一个代表性匀速估计。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
+
+  取表 1 的均值 $\omega_r=442.6\,\mathrm{rad/s}$、$\omega_p=79.6\,\mathrm{rad/s}$，分别代表滚转与进动的正速率。教学近似把两个速率都视为常数，一整圈角度为 $2\pi$。本题只计算“均值之比”，不把它等同于逐个样本圈数比的统计均值。
+
+  在完成一整圈进动所需的时间里，代表性模型完成的滚转圈数最接近多少？
+hints:
+- 先由 ωp 求进动周期。
+- 滚转角还要除以 2π 才是圈数。
+feedback:
+  correct: 将两种角速度转换为同一时间窗内的圈数比，避免混淆弧度与转数。，并保留了题设的适用条件。
+  incorrect: 先由 ωp 求进动周期。
+  choices:
+    A: 先用进动速率确定时间窗，再换算同一时间内的滚转圈数。
+    B: 把滚转与进动的速率比取反了。
+    C: 角速度不是在一圈进动时间内的转数，既遗漏时间也遗漏弧度换圈。
+    D: 该数接近一圈进动期间累积的滚转弧度，还需除以每圈 2π。
+solution: |-
+  一圈进动需要 $T_p=2\pi/\omega_p$。在同一时间内，滚转角为 $\omega_rT_p$，再除以每圈的 $2\pi$ 得滚转圈数 $N_r=\omega_rT_p/(2\pi)=\omega_r/\omega_p$。代入 $N_r=442.6/79.6=5.5603\ldots$，约为 5.56 圈。分子和分母均是弧度每秒，因此比值无量纲。
+
+  **检查与物理含义：** $T_p\approx0.0789\,\mathrm{s}$，滚转角约 $34.9\,\mathrm{rad}$，除以 $2\pi$ 后确为约 5.56 圈。此计算没有把“均值之比”误称为“比值的均值”。
+
+  **适用范围：** 论文摘要另有约七圈的概括，正文及表格存在不同的汇总表述；本题严格限定为表 1 指定行的比值，不把这些表述强行视作同一统计量。
+
+  **来源定位：** Precession dynamics and morphology of rolling samaras，§3.1, Table 1 F. americana row; compare separate abstract summary with caution；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；只使用论文表 1 的指定物种均值，构造两个恒定角速度的代表性圈数比。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1098/rsif.2025.0391
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 5.56 圈。
+- id: B
+  content: 0.180 圈。
+- id: C
+  content: 442.6 圈。
+- id: D
+  content: 34.9 圈。
+answer:
+  choice: A

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000463
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.fourier-method
+type: numeric
+choice_order: fixed
+stem: |-
+  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  论文所用单个光栅的载波周期为 $p=120\,\mathrm{nm}$，载波项写为 $e^{iKx}$，且一个周期的相位变化为 $2\pi$。
+
+  求 $K$，用 $\mathrm{\mu m}^{-1}$ 表示，保留两位小数。输入数值并使用单位标签 `um^-1`；允许绝对误差 $0.01$。这里“弧度”视为无量纲。
+solution: |-
+  一个周期满足 $Kp=2\pi$。由于 $120\,\mathrm{nm}=0.120\,\mathrm{\mu m}$，
+
+  $$
+  K=\frac{2\pi}{0.120\,\mathrm{\mu m}}\approx52.36\,\mathrm{\mu m}^{-1}.
+  $$
+
+  检查：$Kp\approx6.2832$，即一周相位。$1/p\approx8.33\,\mathrm{\mu m}^{-1}$ 是空间周期频率，不是采用 $e^{iKx}$ 约定的空间角频率。数值答案不允许靠单位标签自动进行 nm 与 μm 的换算。
+
+  研究对应：Published article, Materials and methods, Eq. (1) and grating-parameter paragraph (p. 153401-3)。教学范围：不从这一周期推断完整艾里图样或透射效率。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先把纳米换成微米。
+- 令 $x$ 增加一个周期，要求相位增加 $2\pi$。
+feedback:
+  correct: 同时处理了 $2\pi$ 因子和长度单位。
+  incorrect: 请核对所求是角频率，以及 120 nm 等于多少 μm。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P203 的 Published article, Materials and methods, Eq. (1) and grating-parameter paragraph (p. 153401-3)
+    构造。只将真实载波周期转成所选傅里叶约定下的空间角频率。 数值来源：mixed；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevLett.134.153401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 52.35987755982989
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: um^-1
+    accepted:
+    - um^-1

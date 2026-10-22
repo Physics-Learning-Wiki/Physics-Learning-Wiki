@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000485
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.airy-function
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  论文艾里束初始剖面含 $\operatorname{Ai}(x/x_0)$。先取未截断的理想参考函数 $u(x)=\operatorname{Ai}(x/x_0)$，$x_0>0$ 为长度。给定艾里函数的定义方程 $\operatorname{Ai}^{\prime\prime}(s)=s\operatorname{Ai}(s)$，撇号表示对无量纲变量 $s$ 求导。
+
+  关于物理坐标 $x$ 的方程是哪一个？
+solution: |-
+  令 $s=x/x_0$。链式法则给出 $u^{\prime\prime}(x)=x_0^{-2}\operatorname{Ai}^{\prime\prime}(s)$。代入定义方程，得到
+
+  $$u^{\prime\prime}(x)=\frac1{x_0^2}\frac{x}{x_0}\operatorname{Ai}(x/x_0)=\frac{x}{x_0^3}u(x).$$
+
+  检查：$x/x_0^3$ 的单位是长度的负二次，与两次坐标导数一致；在 $x=0$，二阶导数为零。这是未加指数截断的参考剖面方程；对论文的完整截断函数求导还会出现额外项。
+
+  研究对应：Results, Airy beam generation and characterization, Eq. (1), initial profile at z=0。教学范围：不把未截断参考函数称为有限能量束；也不求完整传播解。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 二次求导需要两个 1/x0 因子。
+- 定义方程中的 s 也要换成 x/x0。
+feedback:
+  correct: 两个导数缩放因子与函数自变量缩放都保留了。
+  incorrect: 先按链式法则求导，再代入定义方程，不要直接替换函数名。
+  choices:
+    A: 遗漏长度尺度，量纲也不符。
+    B: 只换了自变量，却漏掉二次求导因子。
+    C: 艾里定义方程中没有该负号。
+    D: 链式法则产生 1/x0²，原方程再贡献 x/x0。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Eq. (1), initial profile at z=0 构造。明确取零截断的理想参考剖面，检查其特殊函数方程的坐标缩放。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-62443-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $u^{\prime\prime}=xu$
+- id: B
+  content: $u^{\prime\prime}=(x/x_0)u$
+- id: C
+  content: $u^{\prime\prime}=-(x/x_0^3)u$
+- id: D
+  content: $u^{\prime\prime}=(x/x_0^3)u$
+answer:
+  choice: D

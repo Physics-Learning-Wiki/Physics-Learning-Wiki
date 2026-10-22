@@ -1,0 +1,95 @@
+schema_version: 3
+id: q-000443
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.impedance-matching
+- waves.standing-waves
+type: single_choice
+choice_order: shuffle
+stem: |-
+  宽带吸收研究把金属背板前的薄间隔层视作一个反应性支路，并利用其导纳的频率变化设计网格。本题采用论文理论部分的均匀空气间隔层模型。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+
+  空气间隔层厚度为 \(d>0\)，后端为完美导体。在 \(e^{j\omega t}\) 约定下，其正入射输入面导纳为
+
+  $$
+  Y_{\rm sp}=-\frac{j}{\eta_0\tan(k_0d)},\qquad
+  k_0=\frac{\omega}{c},\quad \eta_0=\mu_0c.
+  $$
+
+  在 \(k_0d\ll1\) 的范围，只保留最低阶非零项。若把它表示成 \(Y_{\rm sp}=1/(j\omega L_{\rm s})\) 的等效电感支路，哪项结果正确？
+
+  ![教学模型示意：网格后为厚度 \(d\) 的空气层，末端为完美导体；本题只计算由前表面看向这段空气层及其金属背板的导纳，不包含网格自身导纳。](asset:absorber-sheet)
+
+  图为原创教学示意，非按比例绘制。网格后为厚度 \(d\) 的空气层，末端为完美导体；本题只计算由前表面看向这段空气层及其金属背板的导纳，不包含网格自身导纳。
+solution: |-
+  小参数展开为 \(\tan(k_0d)=k_0d+O((k_0d)^3)\)，因此
+
+  $$
+  Y_{\rm sp}\simeq-\frac{j}{\eta_0k_0d}
+  =-\frac{j}{(\mu_0c)(\omega/c)d}
+  =-\frac{j}{\omega\mu_0d}.
+  $$
+
+  与 \(1/(j\omega L_{\rm s})=-j/(\omega L_{\rm s})\) 比较，得到
+
+  $$
+  L_{\rm s}=\mu_0d.
+  $$
+
+  这里的 \(L_{\rm s}\) 是面阻抗模型中的等效电感参数，单位为 H。符号检查：按所用时间约定，电感的导纳虚部为负。量纲检查：\(\mu_0d\) 的单位为 H，\(\omega L_{\rm s}\) 的单位为 \(\Omega\)。近似的相对误差随 \((k_0d)^2\) 缩小，不能把它延伸到接近四分之一波长处。
+
+  选项辨析：
+
+  “\(-j/(\omega\mu_0d)\)，\(L_{\rm s}=\mu_0d\)”正确，满足展开、符号和量纲。
+
+  “正虚部的倒频率导纳”与正电感在 \(e^{j\omega t}\) 约定下的符号不符。
+
+  “\(j\omega\varepsilon_0d\)”具有电容型频率依赖，不能由给定短路导纳的薄层展开得到。
+
+  “\(-j\omega\mu_0d\)”把阻抗量级当成导纳，单位也是 \(\Omega\) 而非 S。
+
+  适用范围：实际演示样品还含介质基板；本题不把其完整层状结构当作纯空气层，也不在较厚间隔层使用薄层近似。
+
+  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption using dispersion engineering, Fig. 1 and the shorted-spacer admittance immediately preceding Eq. (1)。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。
+hints:
+- 先使用 \(\tan x\simeq x\)，再把 \(\eta_0k_0\) 化成 \(\omega\mu_0\)。
+- 注意 \(1/j=-j\)；先识别导纳，再判断等效元件。
+feedback:
+  correct: 关键理解：从短路线导纳的小参数展开识别金属背板薄间隔层的等效电感。
+  incorrect: 请检查：先使用 \(\tan x\simeq x\)，再把 \(\eta_0k_0\) 化成 \(\omega\mu_0\)。
+  choices:
+    A: “\(j\omega\varepsilon_0d\)”具有电容型频率依赖，不能由给定短路导纳的薄层展开得到。
+    B: “正虚部的倒频率导纳”与正电感在 \(e^{j\omega t}\) 约定下的符号不符。
+    C: “\(-j\omega\mu_0d\)”把阻抗量级当成导纳，单位也是 \(\Omega\) 而非 S。
+    D: “\(-j/(\omega\mu_0d)\)，\(L_{\rm s}=\mu_0d\)”正确，满足展开、符号和量纲。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56167-4
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: \(Y_{\rm sp}\simeq j\omega\varepsilon_0d\)，相当于普通电容。
+- id: B
+  content: \(Y_{\rm sp}\simeq+j/(\omega\mu_0d)\)，且 \(L_{\rm s}=\mu_0d\)。
+- id: C
+  content: \(Y_{\rm sp}\simeq-j\omega\mu_0d\)，且 \(L_{\rm s}=\mu_0d\)。
+- id: D
+  content: \(Y_{\rm sp}\simeq-j/(\omega\mu_0d)\)，且 \(L_{\rm s}=\mu_0d\)。
+answer:
+  choice: D
+assets:
+- id: absorber-sheet
+  path: electromagnetism/absorber-sheet.svg

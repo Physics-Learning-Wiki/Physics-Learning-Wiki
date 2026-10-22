@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000352
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- newton.internal-external-force
+- dynamics.center-of-mass
+type: true_false
+choice_order: fixed
+stem: |-
+  弹簧跳跃装置可能带着尚未释放完的弹性能离地；研究特别区分了内部振动与质心上升。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
+
+  装置所有零件都已离开地面，未喷出或抛出任何质量。离地瞬间，整体质心竖直向上的速度为 $V>0$。此后只有均匀重力作为外力，忽略空气阻力；内部弹簧仍可推动各零件相对运动。
+
+  判断：无论内部弹性能随后怎样交换，整体质心最高点相对离地质心位置的升高仍为 $V^2/(2g)$。
+hints:
+- 把所有零件作为一个系统，写出系统的合外力。
+- 内部弹力是否能改变总动量？分清某零件的高度与质心高度。
+feedback:
+  correct: 用质心运动定理辨别内部能量与整体抛体高度，并保留了题设的适用条件。
+  incorrect: 把所有零件作为一个系统，写出系统的合外力。
+solution: |-
+  对整个装置求和，内部弹簧力成对抵消，故
+
+  $$
+  M\ddot Y=-Mg.
+  $$
+
+  从离地时刻起，$\dot Y=V-gt$，在 $t_*=V/g$ 时质心到达最高点。代入位移式
+
+  $$
+  Y(t_*)-Y(0)=Vt_*-\frac12gt_*^2=\frac{V^2}{2g}.
+  $$
+
+  所以判断成立。内部弹性势能可转为相对质心的动能，使某个零件的最高点改变，但不会增大质心的既定上升高度。
+
+  **检查与物理含义：** $V^2/g$ 的量纲为长度；$V\to0$ 时质心不再继续上升；对所有零件求和时内力严格抵消。
+
+  **适用范围：** 若存在空气动力、绳索牵引、仍接触地面或喷出质量，就不能直接套用此质心弹道。
+
+  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.1, Fig. 2 and Eqs. (1)–(5)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；取论文离地后两质量系统的无阻力极限；不允许质量离开系统。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1016/j.mechmachtheory.2024.105688
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: true

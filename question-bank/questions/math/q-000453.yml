@@ -1,0 +1,58 @@
+schema_version: 3
+id: q-000453
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.multivalued
+type: numeric
+choice_order: fixed
+stem: |-
+  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  使用无量纲模型
+
+  $$
+  H(z)=\begin{pmatrix}0&1\\z&0\end{pmatrix},\qquad E^2=z.
+  $$
+
+  取教学参数 $z=3+4i$，并选择实部为正的根 $E=a+ib$。求 $a$。只输入十进制数，允许绝对误差 $0.001$，不填单位。
+solution: |-
+  展开 $(a+ib)^2=3+4i$ 得 $a^2-b^2=3$、$2ab=4$。又有 $a^2+b^2=|3+4i|=5$，相加即 $2a^2=8$。由指定分支 $a>0$，得到 $a=2$，随后 $b=1$。
+
+  检查：$(2+i)^2=3+4i$，另一根 $-2-i$ 的实部为负，故被分支条件排除。所有量都无量纲；该题不需要矩阵动力学知识。
+
+  研究对应：Methods, Berry phase in non-Hermitian systems, Eqs. (7) and (8)。教学范围：未计算贝里相位、噪声灵敏度或实验响应。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 令平方根为 $a+ib$，比较平方后的实部和虚部。
+- 利用 $a^2+b^2=|z|$ 与差平方关系相加。
+feedback:
+  correct: 选择分支后，实部唯一为正值。
+  incorrect: 不要把复数的实部直接开平方；先比较模及实虚部。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P202 的 Methods, Berry phase in non-Hermitian systems, Eqs. (7) and (8) 构造。保留二阶谱方程，选用原创无量纲参数 3+4i，只计算指定平方根的实部。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s42005-024-01595-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 2
+  tolerance:
+    type: absolute
+    value: 0.001
+  unit:
+    required: false
+    canonical: '1'
+    accepted: []

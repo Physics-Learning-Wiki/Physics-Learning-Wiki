@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000402
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.fringing-field
+- electrostatics.model-validity
+type: true_false
+choice_order: fixed
+stem: |-
+  滑片研究将平行板电容模型与有限元场计算比较，并指出滑片行程两端的偏差较明显。 [研究来源](https://www.nature.com/articles/s41467-024-55078-0)
+
+  某教学模型忽略边缘场，写出 $C=\varepsilon A/h$，其中 $A$ 为电极与滑片的投影重叠面积，$h>0$ 为垂直间隙。当滑片移动到 $A=0$，该模型给出 $C=0$。
+
+  判断：“因此，具有有限尺寸的真实电极在零投影重叠处，其耦合电容必然严格为零。”
+solution: |-
+  该判断错误。$C=\varepsilon A/h$ 只保留重叠区域内近似均匀的场。有限导体的场线可以绕过边缘，投影不重叠仍可能产生静电耦合。
+
+  当重叠横向尺度与间隙相当或更小时，边缘区域不再是小修正。用模型预测的零值去证明模型忽略项也为零，是循环推理。论文的有限元与简化模型在行程端部偏差增大，与这一近似限制相符。
+
+  检查：把重叠尺度增大到远大于间隙，边缘占比通常减小，平行板近似才更有依据；这并不要求边缘场精确消失。
+
+  适用范围：判断并未求出实际残余电容，也没有声称所有有限导体几何都具有同样的边缘修正。
+
+  来源定位：Electrostatic in-plane structural superlubric actuator，Results, Design of the electrostatic in-plane SSL actuator, paragraph discussing Fig. 1f–g discrepancies near x=0 and x=13 μm。DOI: [10.1038/s41467-024-55078-0](https://doi.org/10.1038/s41467-024-55078-0)。
+hints:
+- 检查公式本身忽略了什么，再判断能否把其零值推广到真实几何。
+- 有限电极边缘可以存在弯曲的场线。
+feedback:
+  correct: 关键理解：区分理想平行板模型的零电容与真实边缘电场。
+  incorrect: 请检查：检查公式本身忽略了什么，再判断能否把其零值推广到真实几何。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-55078-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

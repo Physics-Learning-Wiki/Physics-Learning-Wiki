@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000356
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- newton.vector-components
+- dynamics.rotational-motion
+type: single_choice
+choice_order: shuffle
+stem: |-
+  研究显示，转动部件的惯性可使跳跃机构在弹簧完全放松前失去接触。（[研究来源](https://doi.org/10.1016/j.mechmachtheory.2024.105688)）
+
+  取无质量长杆，长 $\ell$，顶端集中质量 $m$，下端在接触阶段固定于水平地面的点 $O$。杆与水平向右方向夹角为 $0<\theta<\pi/2$。底部驱动机构只在装置内部交换力矩，地面可提供保持 $O$ 静止的接触力；整机竖直外力只有向上的总支持力 $N$ 和重力 $mg$。集中质量的位置为 $y=\ell\sin\theta$，取竖直向上为正。
+
+  ![长杆从地面点 O 向右上方伸出，杆端质量 m，杆长 ℓ；θ 从水平向右轴量起，y 轴竖直向上。](asset:m007)
+
+  *原创教学示意图，非按比例绘制。*
+
+  接触阶段的支持力应是哪一表达式？其中点表示对时间求导。
+hints:
+- 先求 y 的两次时间导数，再写竖直方向的整体受力方程。
+- 链式法则对 cosθ 求导时会再产生一个角速度。
+feedback:
+  correct: 保留转动运动的向心加速度投影并据此写出支持力，并保留了题设的适用条件。
+  incorrect: 先求 y 的两次时间导数，再写竖直方向的整体受力方程。
+  choices:
+    A: 题设角度从水平线起算，因此正弦、余弦的位置不能互换。
+    B: 对位置连续微分并代入竖直整体动力学，保留了两个加速度项。
+    C: 向心加速度指向 O，其竖直投影向下，不能取正号。
+    D: 漏掉角速度平方项，会遗漏提前失去接触的重要机制。
+solution: |-
+  先对位置做两次时间微分，不能把转动看作沿固定方向的加速：
+
+  $$
+  \dot y=\ell\dot\theta\cos\theta,\qquad
+  \ddot y=\ell\ddot\theta\cos\theta-\ell\dot\theta^2\sin\theta.
+  $$
+
+  后一个负项是向心加速度的竖直投影。整个无质量杆加顶端质量系统满足 $N-mg=m\ddot y$，因此
+
+  $$
+  N=m\left(g+\ell\ddot\theta\cos\theta-\ell\dot\theta^2\sin\theta\right).
+  $$
+
+  较大的角速度可以通过负的向心项降低支持力；一旦计算值到零，非黏附接触模型必须转入离地阶段。
+
+  **检查与物理含义：** 每一括号项均为加速度；$\dot\theta=\ddot\theta=0$ 时 $N=mg$；$\theta\to0$ 时向心加速度纯水平，竖直向心项趋零。
+
+  **适用范围：** 式子只适用于点 O 仍保持接触的阶段；N 不能继续取负值，也没有据此求出实际装置的离地时刻。
+
+  **来源定位：** Characterising the take-off dynamics and energy efficiency in spring-driven jumping robots，§2.2 Rotational linkage jumping systems, Fig. 3 and Eqs. (6)–(8)；[论文 DOI](https://doi.org/10.1016/j.mechmachtheory.2024.105688)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；抽取论文旋转单杆模型的竖直整体动力学，不求驱动弹簧的完整运动过程。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1016/j.mechmachtheory.2024.105688
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $m(g+\ell\ddot\theta\sin\theta-\ell\dot\theta^2\cos\theta)$
+- id: B
+  content: $m(g+\ell\ddot\theta\cos\theta-\ell\dot\theta^2\sin\theta)$
+- id: C
+  content: $m(g+\ell\ddot\theta\cos\theta+\ell\dot\theta^2\sin\theta)$
+- id: D
+  content: $m(g+\ell\ddot\theta\cos\theta)$
+answer:
+  choice: B
+assets:
+- id: m007
+  path: mechanics/m007.svg

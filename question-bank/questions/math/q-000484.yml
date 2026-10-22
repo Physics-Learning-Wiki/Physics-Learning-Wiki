@@ -1,0 +1,72 @@
+schema_version: 3
+id: q-000484
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.bessel-function
+type: free_response
+choice_order: fixed
+stem: |-
+  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
+  有限装置只能截取贝塞尔剖面的一部分。取教学幅度 $u(r)=A J_0(kr)$，$A$ 为实常数、$k>0$，在半径 $a>0$ 内定义积分强度
+
+  $$P(a)=2\pi A^2\int_0^a rJ_0(kr)^2\,dr.$$
+
+  允许直接使用 $J_0^{\prime}(s)=-J_1(s)$、$J_1^{\prime}(s)=J_0(s)-J_1(s)/s$，以及 $J_0(0)=1$、$J_1(s)\sim s/2$ 当 $s\to0$。
+
+  请通过对 $F(s)=\tfrac12s^2[J_0(s)^2+J_1(s)^2]$ 求导，推导 $P(a)$ 的闭式，并核对 $ka\ll1$ 时是否还原近似均匀幅度在圆盘内的结果。这里半径只通过上述径向积分定义，不要求电磁功率公式。
+solution: |-
+  乘积求导并代入两个导数关系：
+
+  $$F^{\prime}=s(J_0^2+J_1^2)+s^2[J_0(-J_1)+J_1(J_0-J_1/s)]=sJ_0^2.$$
+
+  交叉项抵消，$sJ_1^2$ 也抵消。令 $s=kr$，有 $r\,dr=s\,ds/k^2$。因 $F(0)=0$，所以
+
+  $$P(a)=\frac{2\pi A^2}{k^2}F(ka)=\pi A^2a^2[J_0(ka)^2+J_1(ka)^2].$$
+
+  当 $ka\to0$，括号趋于一，故 $P(a)\sim\pi a^2A^2$，正好是圆盘面积乘以近轴近似常数强度。检查：右边非负，且对 $a$ 求导得到 $2\pi A^2aJ_0(ka)^2$，与积分上限求导一致；当 $A=0$ 时总量为零。公式没有把有限孔径产生的后续传播场也设为完整无限 J0 束。
+
+  研究对应：Methods, Sub-THz Bessel beam generation and reception, finite axicon and energy in concentric rings。教学范围：积分不是论文仪器的标定功率；没有声称硬截断后的传播仍精确不衍射。
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+hints:
+- 先保留两个 J 函数的导数，再代入给定关系。
+- 代换 s=kr 时，r dr 带出 1/k²。
+- 用零点极限检查积分下端和小孔径结果。
+feedback:
+  correct: 原函数构造、径向代换和小孔径检验彼此一致。
+  incorrect: 不要漏掉面积积分的 r 权重或变量代换中的第二个 1/k。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P207 的 Methods, Sub-THz Bessel beam generation and reception, finite axicon and energy in concentric rings
+    构造。以原创的径向截断积分定量说明有限半径内的模式权重，提供所有递推关系供本科推导。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-024-70542-z
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未正确用递推式求导或变量代换使单位和系数不一致。
+    points: 0
+  - id: partial
+    label: 得到闭式或正确原函数，但缺少下端处理、小孔径核对或完整推导。
+    points: 0.5
+  - id: mastered
+    label: 清楚完成抵消、变量代换、下端与小孔径检查，给出正确闭式并限定为径向教学积分。
+    points: 1
+reference_answer: $F^{\prime}(s)=sJ_0(s)^2$ 且 $F(0)=0$。变量代换后 $P(a)=\pi A^2a^2[J_0(ka)^2+J_1(ka)^2]$。小 ka 时趋于 $\pi A^2a^2$；上限求导与原积分一致。

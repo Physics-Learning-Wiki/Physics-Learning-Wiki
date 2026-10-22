@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000367
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.oscillations
+concepts:
+- oscillations.damping
+- oscillations.driven-motion
+- dynamics.energy-conservation
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  极低损耗使扭转微摆适合精密测量，但连续测量中的恒幅振动仍可能需要驱动补偿能量损失。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+
+  用线性模型 $I\ddot\theta+I\gamma\dot\theta+I\omega_0^2\theta=\tau_0\cos(\omega_0t)$，$I,\gamma,\omega_0,\tau_0>0$。假设已进入共振稳态，$\theta(t)=A\sin(\omega_0t)$，$A>0$。定义机械能 $E=I\dot\theta^2/2+I\omega_0^2\theta^2/2$，周期平均记为 $\langle\cdot\rangle$，并可用 $\langle\cos^2(\omega_0t)\rangle=1/2$。
+
+  以下哪些陈述成立？选择所有成立的陈述。
+hints:
+- 先代入给定稳态解核对幅值关系。
+- 分别计算阻尼功率和驱动力矩功率，再做周期平均。
+feedback:
+  correct: 由稳态能量平衡理解高品质因数振子的驱动功率，而不把低损耗误认为零损耗。，并保留了题设的适用条件。
+  incorrect: 先代入给定稳态解核对幅值关系。
+  choices:
+    A: 直接代入稳态解，阻尼项与驱动力矩相等。
+    B: 用阻尼力矩乘角速度，再对一个周期平均。
+    C: 任何正的线性阻尼都会带走能量；高品质因数只表示衰减慢。
+    D: 稳态的平均输入补偿平均损耗，二者为 γ 倍的储能。
+solution: |-
+  将给定稳态解代入方程，惯性项与弹性项相消，得到 $I\gamma A\omega_0\cos(\omega_0t)=\tau_0\cos(\omega_0t)$，所以 $A=\tau_0/(I\gamma\omega_0)$。阻尼瞬时耗散功率为 $I\gamma\dot\theta^2$，周期平均为 $I\gamma A^2\omega_0^2/2$。外力矩的平均输入功率是 $\langle\tau_0\cos(\omega_0t)\dot\theta\rangle=\tau_0A\omega_0/2$，与损耗相等。稳态机械能为常数 $E_0=I\omega_0^2A^2/2$，因而平均损耗与储能之比为 $\gamma$。若撤去驱动，能量会衰减；损耗虽小却不为零。
+
+  **检查与物理含义：** $I\gamma A^2\omega_0^2$ 的量纲为功率；输入和耗散周期平均逐项相等。固定振幅时所需驱动力矩随 $\gamma\to0$ 而趋零，但固定驱动力矩的线性稳态振幅会发散，说明这两个极限条件不能混用。
+
+  **适用范围：** 实际高品质因数振子在大振幅时可能受非线性限制；本题没有把线性共振发散当成实验预测。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Main text Fig. 1 ringdown and Fig. 3 driven amplitude stabilization；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；把实验的低损耗背景转化为明确的线性共振驱动模型；驱动参数均为符号教学量。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1103/nmx5-hygh
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $A=\tau_0/(I\gamma\omega_0)$。
+- id: B
+  content: 平均耗散功率为 $I\gamma A^2\omega_0^2/2$。
+- id: C
+  content: 只要品质因数很大，撤去驱动后仍能永远保持同样的非零振幅。
+- id: D
+  content: 稳态下平均输入功率等于 $\gamma E_0$，其中 $E_0=I\omega_0^2A^2/2$。
+answer:
+  choices:
+  - A
+  - B
+  - D

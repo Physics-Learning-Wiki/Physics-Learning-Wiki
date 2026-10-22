@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000393
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- dynamics.impulse-momentum
+- newton.internal-external-force
+- newton.system-boundary
+type: single_choice
+choice_order: shuffle
+stem: |-
+  水凝胶弹射研究强调刚性基底参与快速形变与载荷耦合；基底并非在动量账目中可以自动忽略的背景。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+
+  考虑质量 M 的弹射器固定在刚性基底上，质量 m 的载荷最初静止。一个持续 T 的竖直发射过程后，弹射器各部分再次静止，载荷以速度 $v>0$ 向上运动。取“弹射器＋载荷”为系统，不含基底和地球；质量无损失。此段基底对该系统的向上冲量为 $J_b$，重力加速度为 g，忽略空气阻力及其他外力。
+
+  ![系统边界包围弹射器 M 与载荷 m，但不包围下方基底；标出基底向上冲量 J_b、重力方向和末态载荷速度 v。](asset:m044)
+
+  *原创教学示意图，非按比例绘制。*
+
+  下列哪一项是正确的动量关系及其解释？
+hints:
+- 先列出系统边界之外有哪些物体对系统施力。
+- 把初末总动量分别写出，再对整个系统使用动量定理。
+feedback:
+  correct: 辨别装置与载荷组成的系统仍受基底外冲量，避免误用孤立系统动量守恒。，并保留了题设的适用条件。
+  incorrect: 先列出系统边界之外有哪些物体对系统施力。
+  choices:
+    A: 重力冲量为 −(M+m)gT；只有在定量足够小时才可近似忽略。
+    B: 系统总动量的改变由基底与重力的净外冲量决定。
+    C: 基底被排除在系统之外，其作用是外力，不能把系统当作孤立。
+    D: 按题设向上为正，Jb 的贡献为正。
+solution: |-
+  系统初动量为零，末动量为 mv。弹射器与载荷之间的接触作用为内力，其冲量在系统总和中抵消；基底作用与重力仍是外力。向上取正，动量定理为 $mv=J_b-(M+m)gT$，故 $J_b=mv+(M+m)gT$。弹射器最终静止而载荷有向上动量，与守恒原理并不冲突，因为所选系统获得了外冲量。若要讨论更大隔离系统的总动量，必须把地球及其反冲也纳入。
+
+  **检查与物理含义：** 若 $v=0$ 且系统始终静止，公式给出 $J_b=(M+m)gT$，恰好是支持重力所需的冲量。若 T 很短，重力冲量可小，但基底冲量仍是 mv 的主要来源。
+
+  **适用范围：** 题设不计算实际基底冲量随时间的波形，也不忽略发射过程中弹射器的瞬时内部运动。
+
+  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: The ejection actuation mechanism, Fig. 1a,b; substrate-mediated momentum generation and Fig. 2 substrate comparison；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；把论文的基底耦合抽取成一个可明确记录外冲量的发射过程。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-026-77391-6
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $mv=J_b$ 在任意 T 下都严格成立，因为重力不产生冲量。
+- id: B
+  content: $mv=J_b-(M+m)gT$，基底为所选系统提供外冲量。
+- id: C
+  content: $mv=0$，因为所有弹射器都只能施加内力。
+- id: D
+  content: $mv=-J_b-(M+m)gT$，向上的基底冲量应按负号计。
+answer:
+  choice: B
+assets:
+- id: m044
+  path: mechanics/m044.svg

@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000361
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.oscillations
+concepts:
+- oscillations.harmonic-motion
+type: numeric
+choice_order: fixed
+stem: |-
+  悬浮纳米球在光阱紧束缚主轴上的机械频率被报告为 $121.1\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
+  为建立经典运动学尺度，另设该方向做确定性的简谐运动 $X(t)=A\cos(2\pi ft)$，取教学振幅 $A=1.00\,\mathrm{nm}$、$f=121.1\,\mathrm{kHz}$。这不是论文的量子态振幅或测得轨迹；忽略阻尼。
+
+  求最大速率。以十进制或科学计数法输入，单位填 `m/s`，保留三位有效数字。
+hints:
+- 频率 f 不是角频率；对余弦求导会出现 2πf。
+- 纳米需要换成米，千赫需要换成每秒。
+feedback:
+  correct: 由简谐位移函数求最大速度并正确换算长度和频率，并保留了题设的适用条件。
+  incorrect: 频率 f 不是角频率；对余弦求导会出现 2πf。
+solution: |-
+  对位移求导：
+
+  $$
+  \dot X=-2\pi fA\sin(2\pi ft),\qquad v_{\max}=2\pi fA.
+  $$
+
+  先统一单位，$f=121100\,\mathrm{s^{-1}}$，$A=10^{-9}\,\mathrm{m}$，所以
+
+  $$
+  v_{\max}=2\pi\times121100\times10^{-9}
+  =7.609\times10^{-4}\,\mathrm{m/s}\approx7.61\times10^{-4}\,\mathrm{m/s}.
+  $$
+
+  最大速度出现在通过平衡位置时，而在位移极值处速度为零。
+
+  **检查与物理含义：** 能量法给出 mvmax²/2=kA²/2，配合 k=mω² 再得 vmax=ωA；单位为 s⁻¹·m。容差覆盖三位有效数字的舍入而不接受漏 2π。
+
+  **适用范围：** 确定轨迹的经典振幅不等同于量子态的位置方差，不能据此计算论文的纯度或量子关联。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；使用报告频率，另设经典小振幅轨迹，以训练振动速度尺度。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-025-59213-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 0.000760893740699448
+  tolerance:
+    type: absolute
+    value: 5.0e-07
+  unit:
+    required: true
+    canonical: m/s
+    accepted:
+    - m/s

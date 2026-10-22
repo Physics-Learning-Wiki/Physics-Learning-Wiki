@@ -1,0 +1,60 @@
+schema_version: 3
+id: q-000479
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.boundary-data
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  仍取静止二元零通量模型 $C^{\prime}=-\kappa C(1-C)$，其中 $h>0$、$\kappa>0$，并要求整个通道 $0\leq y\leq h$ 内 $0<C(y)<1$。现同时指定教学边界值 $C(0)=0.2$ 和 $C(h)=0.2$。
+
+  关于这个边值问题，哪一判断正确？
+solution: |-
+  在题设浓度范围内，$\kappa C(1-C)>0$，因此 $C^{\prime}<0$。若存在解，它在长度为正的通道中必须严格下降，必有 $C(h)<C(0)$，与给定相等的端点矛盾。
+
+  所以这组边界值与所给零通量方程不相容。常数函数 $C=0.2$ 也不满足方程，因为其导数是零，而右端为 $-0.16\kappa$。检查：若去掉热扩散梯度使 $\kappa=0$，相等的端点可以相容；但这不在本题条件内。允许外部维持浓度并产生非零通量时，需要另一个方程模型。
+
+  研究对应：Results, Theoretical framework for thermodiffusive separation, zero-flux concentration equation following Eq. (1)。教学范围：只证明所给零通量模型无解，不声称任何具有相同端点浓度的实际系统都无稳态。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先看 0<C<1 使右边有什么符号。
+- 比较严格单调函数在区间两端的值。
+feedback:
+  correct: 通过导数符号发现了边界资料的不相容。
+  incorrect: 边界值的数目不能代替相容性检查。
+  choices:
+    A: 常数函数的零导数不等于给定方程的负右端。
+    B: 严格下降与相等端点矛盾。
+    C: 还必须逐点满足微分方程，不能只连接端点。
+    D: 一阶方程通常不能任意独立指定两个端点值，本题更可直接证明矛盾。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, zero-flux concentration equation following Eq. (1) 构造。原创给出不相容的等端点条件，检验一阶边值问题而非求装置性能。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s44221-025-00428-5
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 常数解 $C(y)=0.2$ 满足全部条件。
+- id: B
+  content: 无满足全部条件的零通量解。
+- id: C
+  content: 任意连接两个端点的平滑曲线都是解。
+- id: D
+  content: 一定有唯一的非恒定解，因为边界值已经给齐。
+answer:
+  choice: B

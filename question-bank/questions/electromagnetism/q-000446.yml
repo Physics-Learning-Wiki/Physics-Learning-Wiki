@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000446
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.geometric-phase
+type: single_choice
+choice_order: shuffle
+stem: |-
+  剪纸超表面研究利用单元旋转所引入的几何相位。论文模型中，指定圆偏振通道的交叉偏振反射系数含有 \(e^{i2\sigma\alpha}\) 因子。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+
+  本题直接定义该通道的复反射系数为
+
+  $$
+  r_{\rm cross}(\alpha)=t\,e^{i2\sigma\alpha},
+  $$
+
+  其中 \(t\ne0\) 是与旋转角 \(\alpha\) 无关的复常数。通道标记取 \(\sigma=-1\)；正旋转角的约定已固定。将单元从 \(\alpha=0^\circ\) 转到 \(+30^\circ\)，该通道的相位变化主值是多少？相位变化取 \((-180^\circ,180^\circ]\) 内的代表值。
+solution: |-
+  比较两次反射系数，常数 \(t\) 相消：
+
+  $$
+  \frac{r_{\rm cross}(30^\circ)}{r_{\rm cross}(0)}
+  =e^{i2(-1)(30^\circ)}=e^{-i60^\circ}.
+  $$
+
+  所以相位变化主值为 \(-60^\circ=-\pi/3\)。它既包含两倍角因子，也包含题目指定的通道符号。由于指数因子的模为 1，该理想公式中的旋转只改变相位，不改变 \(|t|\)。若 \(\alpha\) 增加 \(180^\circ\)，相位增加整周，反射系数回到原值，是一个一致性检查。
+
+  选项辨析：
+
+  “\(-60^\circ\)”正确，是 \(2(-1)(30^\circ)\) 的主值。
+
+  “\(+60^\circ\)”漏掉了题目指定的负通道符号。
+
+  “\(-30^\circ\)”保留了符号但漏掉两倍角因子。
+
+  “\(+30^\circ\)”同时漏掉两倍角因子和负通道符号。
+
+  适用范围：真实单元旋转可能同时影响耦合和幅度；本题不据理想相位因子推断实际转换效率。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Kirigami transformation and geometric phase, Eq. (1) and following phase relation。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+hints:
+- 先取新旧复反射系数之比，消去 \(t\)。
+- 相位增量为 \(2\sigma\Delta\alpha\)，不要遗漏 \(\sigma=-1\)。
+feedback:
+  correct: 关键理解：按给定偏振约定计算旋转单元的两倍角几何相位变化。
+  incorrect: 请检查：先取新旧复反射系数之比，消去 \(t\)。
+  choices:
+    A: “\(+60^\circ\)”漏掉了题目指定的负通道符号。
+    B: “\(+30^\circ\)”同时漏掉两倍角因子和负通道符号。
+    C: “\(-60^\circ\)”正确，是 \(2(-1)(30^\circ)\) 的主值。
+    D: “\(-30^\circ\)”保留了符号但漏掉两倍角因子。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56211-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: \(+60^\circ\)。
+- id: B
+  content: \(+30^\circ\)。
+- id: C
+  content: \(-60^\circ\)。
+- id: D
+  content: \(-30^\circ\)。
+answer:
+  choice: C

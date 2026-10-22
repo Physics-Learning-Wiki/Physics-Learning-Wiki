@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000428
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.induced-magnetization
+- magnetostatics.magnetic-gradient
+type: numeric
+choice_order: fixed
+stem: |-
+  磁性水凝胶机器人包含铁氧化物颗粒，研究还演示了在 10 mT 磁场、120 mT/mm 梯度下的拖动。这里用一个线性感应磁矩模型估算力的尺度。 [研究来源](https://www.nature.com/articles/s41467-025-65459-8)
+
+  设物体在局部轴向场中具有 $m_z=\alpha B_z$，并给定其有效磁能
+  $U=-\tfrac12\alpha B_z^2$。取示例 $\alpha=1.0\times10^{-9}\,\mathrm{A\,m^2/T}$，沿 z 的场值与梯度采用论文报告条件：
+  $B_z=10\,\mathrm{mT}$、$\partial B_z/\partial z=120\,\mathrm{mT/mm}>0$。假设 α 固定，其他方向在此点不影响轴向导数。
+
+  由 $F_z=-\partial U/\partial z$ 求力，**以 nN 为单位输入带符号数值及单位**，保留两位小数。
+solution: |-
+  对给定能量求导得到
+  $F_z=\alpha B_z(\partial B_z/\partial z)$。将单位统一：
+  $10\,\mathrm{mT}=0.010\,\mathrm T$，
+  $120\,\mathrm{mT/mm}=120\,\mathrm{T/m}$。于是
+
+  $$
+  F_z=10^{-9}\times0.010\times120
+  =1.20\times10^{-9}\,\mathrm N=+1.20\,\mathrm{nN}.
+  $$
+
+  正力指向场增强的 +z 方向。检查：梯度为零时力为零；$\mathrm{(A\,m^2/T)\,T\,(T/m)=N}$。给定感应能中的 1/2 抵消求导产生的 2。
+
+  适用范围：α 是示例，不是论文磁化测量；所得力不能视为实验机器人受力的测量结果。
+
+  来源定位：Soft magnetic microrobots with remote sensing and communication capabilities，Results, navigation paragraph reporting 10 mT field and 120 mT mm−1 gradient。DOI: [10.1038/s41467-025-65459-8](https://doi.org/10.1038/s41467-025-65459-8)。
+hints:
+- 感应磁矩模型的给定能量含 1/2；不要直接把它换成永久磁矩的势能。
+- mT/mm 与 T/m 数值相同。
+feedback:
+  correct: 关键理解：正确使用线性感应磁矩的能量求力而不多出因子二。
+  incorrect: 请检查：感应磁矩模型的给定能量含 1/2；不要直接把它换成永久磁矩的势能。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-65459-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 1.2
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: nN
+    accepted:
+    - nN

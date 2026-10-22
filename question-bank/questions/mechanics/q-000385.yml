@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000385
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.generalized-coordinate
+type: single_choice
+choice_order: shuffle
+stem: |-
+  可重编程动力学超材料的模型把每个平面单元视为可平移和转动的刚体，把柔性连接的变形写入势能。两者在自由度计数中的作用不同。（[研究来源](https://doi.org/10.1038/s41563-024-02008-6)）
+
+  一个原创教学阵列有 6 个平面刚体，每个自由刚体可用 $(x_i,y_i,\theta_i)$ 描述。刚体之间由有限刚度、允许拉伸和弯曲的柔性连接相连；这些连接只贡献势能，不构成刚性几何约束。第 1 个刚体完全固定；第 2 个刚体的中心被限制在给定水平直线上，但可沿线移动且可转动。其余 4 个刚体无额外支承。所有运动限于同一平面。
+
+  ![六刚体教学阵列：1 号完全固定，2 号中心在水平导轨上，其余单元可平移和转动；细连接线表示有限刚度的柔性连接。](asset:m036)
+
+  *原创教学示意图，非按比例绘制。*
+
+  模型需要多少个独立广义坐标？
+hints:
+- 先计每个平面刚体的两项平移和一项转动。
+- 弹性连接的变形是能量代价，不自动等于不可违反的几何关系。
+feedback:
+  correct: 区分有限刚度的连接势能与刚性几何约束，正确计算受支承后的广义坐标数。，并保留了题设的适用条件。
+  incorrect: 先计每个平面刚体的两项平移和一项转动。
+  choices:
+    A: 这种结果通常来自忽略各单元转动或把弹性连接误作额外刚性约束。
+    B: 每个平面刚体有三项自由度，再分别扣除完全固定和单向导轨的约束。
+    C: 只扣除了完全固定的单元，遗漏第 2 个单元中心的竖直约束。
+    D: 忽略了两个支承所施加的约束。
+solution: |-
+  6 个自由平面刚体原有 $6\times3=18$ 个坐标。第 1 个刚体的两项平移和一项转动均固定，去掉 3 个。第 2 个刚体只固定中心的竖直坐标，沿线位置与转角仍自由，再去掉 1 个。因此独立广义坐标数为 $18-3-1=14$。有限刚度连接通过力影响运动，但没有令某个坐标关系被严格固定，不能再按刚性杆约束扣除自由度。
+
+  **检查与物理含义：** 也可逐块相加：固定单元 0 个，导轨单元 2 个，其余四块各 3 个，得到 0+2+4×3=14，与整体扣除法一致。
+
+  **适用范围：** 若实际连接被建模成不可伸长连杆或理想铰链，就必须重新计数，不能继续沿用本有限刚度模型。
+
+  **来源定位：** Automated discovery of reprogrammable nonlinear dynamic metamaterials，Author manuscript Mechanical model, rigid blocks and Eqs. (1)–(5); publisher Supplement §1–2；[论文 DOI](https://doi.org/10.1038/s41563-024-02008-6)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；使用论文刚体单元加柔性连接的建模思想，另设支承用于明确自由度计数。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41563-024-02008-6
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 10 个。
+- id: B
+  content: 14 个。
+- id: C
+  content: 15 个。
+- id: D
+  content: 18 个。
+answer:
+  choice: B
+assets:
+- id: m036
+  path: mechanics/m036.svg

@@ -1,0 +1,114 @@
+schema_version: 3
+id: q-000439
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.faraday-law
+type: free_response
+choice_order: fixed
+stem: |-
+  旋转永磁体研究发现，感应电场的空间分布受磁场形状和几何条件影响。下面使用一个原创轴对称场剖面，解释为什么最强感应电场的位置不能只由局部磁场最大处判断。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+
+  在一个足够长的轴对称教学模型横截面内，规定
+
+  $$
+  B_z(r,t)=
+  \begin{cases}
+  B_0(1-r^2/a^2)\cos(\omega t),&0\le r\le a,\\
+  0,&r>a,
+  \end{cases}
+  \qquad B_0,a,\omega>0.
+  $$
+
+  其中 \(r\) 是距 \(z\) 轴的距离；磁场只沿 \(z\) 方向，剖面不随 \(z\) 变化。总电场的切向分量也轴对称，且中心处有限。规定 \(+\hat{\mathbf z}\) 为面法向，从 \(+z\) 看逆时针为切向正方向；磁场由外源给定，不计感应反作用。
+
+  **任务：确定切向感应电场幅值最大的半径及该最大幅值。** 可按以下步骤组织推导：先分别求 \(r\le a\) 与 \(r>a\) 圆周包围的磁通，由法拉第定律求 \(E_\varphi\)；再比较两个区域的幅值极值，并检查 \(r=a\) 处的连续性。
+
+  ![教学模型示意：以 \(z\) 轴为中心，虚线圆 \(r=a\) 划分非零磁场区和外区；可在任意半径 \(r\) 取同心积分圆周。法向 \(+z\) 指向读者，圆周正向为逆时针。](asset:radial-flux-profile)
+
+  图为原创教学示意，非按比例绘制。以 \(z\) 轴为中心，虚线圆 \(r=a\) 划分非零磁场区和外区；可在任意半径 \(r\) 取同心积分圆周。法向 \(+z\) 指向读者，圆周正向为逆时针。
+solution: |-
+  对内区 \(r\le a\)，磁通必须对非均匀场积分：
+
+  $$
+  \Phi(r,t)=2\pi B_0\cos(\omega t)\int_0^r
+  \left(1-\frac{\rho^2}{a^2}\right)\rho\,d\rho
+  =\pi B_0\left(r^2-\frac{r^4}{2a^2}\right)\cos(\omega t).
+  $$
+
+  由 \(2\pi rE_\varphi=-\partial_t\Phi\)，
+
+  $$
+  E_\varphi(r,t)=B_0\omega
+  \left(\frac r2-\frac{r^3}{4a^2}\right)\sin(\omega t),
+  \qquad 0\le r\le a.
+  $$
+
+  外区包围的总磁通不再增加，为
+  \(\Phi(a,t)=\pi B_0a^2\cos(\omega t)/2\)，所以
+
+  $$
+  E_\varphi(r,t)=\frac{B_0\omega a^2}{4r}\sin(\omega t),
+  \qquad r>a.
+  $$
+
+  内区括号为非负，其幅值导数正比于
+
+  $$
+  \frac12-\frac{3r^2}{4a^2}.
+  $$
+
+  它在 \(r_*=a\sqrt{2/3}\) 由正转负，给出内区最大值
+
+  $$
+  E_{\max}=\frac{B_0\omega a}{3}\sqrt{\frac23}.
+  $$
+
+  外区幅值随 \(1/r\) 单调下降，边界值为 \(B_0\omega a/4\)，小于内区最大值，因此上述极值也是全局最大值。两段在 \(r=a\) 均给出同一电场，中心极限为零；单位 \(B_0\omega a\) 为 \(\mathrm{V/m}\)。磁场在中心最强，但中心所围磁通面积趋零，故最大感应电场出现在有限半径。
+
+  适用范围：该原创剖面不是论文磁体或头部的有限元重建，结果不能用于确定实际刺激位置或疗效。
+
+  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Discussion: spatial electric-field profiles, magnet geometry and boundary considerations; Conclusions。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。
+hints:
+- 非均匀磁场的磁通是 \(2\pi\int B_z(\rho,t)\rho\,d\rho\)，不能用圆边缘的场乘面积。
+- 外区的磁通已经包含全部非零磁场，而环路周长仍随 \(r\) 增大。
+- 对内区的幅值求导，并与边界及外区单调性比较。
+feedback:
+  correct: 关键理解：从轴对称磁通积分推导分段感应电场，并确定其幅值最大的位置。
+  incorrect: 请检查：非均匀磁场的磁通是 \(2\pi\int B_z(\rho,t)\rho\,d\rho\)，不能用圆边缘的场乘面积。
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 720
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.3390/bioengineering11030258
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 尚未正确计算非均匀磁通，或把局部磁场峰值位置直接当作电场峰值位置。
+    points: 0
+  - id: partial
+    label: 正确得到至少一个区域的电场或内区极值，但缺少外区比较、连续性检查或最大幅值。
+    points: 0.5
+  - id: mastered
+    label: 正确推导内外区电场，给出 \(r_*=a\sqrt{2/3}\) 及 \(E_{\max}=B_0\omega a\sqrt{2/3}/3\)，并完成边界与极限检查。
+    points: 1
+reference_answer: 由两段磁通积分得内区 \(E_\varphi=B_0\omega(r/2-r^3/(4a^2))\sin\omega t\)，外区 \(E_\varphi=B_0\omega a^2\sin\omega t/(4r)\)。两段在
+  \(a\) 连续；内区幅值导数在 \(a\sqrt{2/3}\) 变号，外区递减，故全局最大幅值为 \(B_0\omega a\sqrt{2/3}/3\)。
+assets:
+- id: radial-flux-profile
+  path: electromagnetism/radial-flux-profile.svg

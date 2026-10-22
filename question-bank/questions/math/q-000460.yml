@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000460
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.fourier-method
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  把单个衍射级次的教学振幅写为 $f(x)=g(x)e^{iKx}$，其中 $g(x)$ 包含入射包络与三次相位，$K>0$ 是载波空间角频率。统一采用
+
+  $$
+  G(q)=\int_{-\infty}^{\infty}g(x)e^{-iqx}\,dx.
+  $$
+
+  则 $f$ 的傅里叶变换是哪一个？不需要计算 $G$ 的具体形状。
+solution: |-
+  把相位因子合并：
+
+  $$
+  \widehat f(q)=\int g(x)e^{iKx}e^{-iqx}\,dx
+  =\int g(x)e^{-i(q-K)x}\,dx=G(q-K).
+  $$
+
+  因此原来位于 $q=0$ 附近的谱特征被移到 $q=K$ 附近。这解释了载波如何把含艾里结构的衍射级次从中心分开。
+
+  检查：若 $K=0$ 则还原 $G(q)$；正负号由本题指数 $e^{-iqx}$ 决定，不能脱离约定背诵。
+
+  研究对应：Published article, Materials and methods, Eq. (1); Airy beam dynamics, Fraunhofer Fourier-transform paragraph (p. 153401-3)。教学范围：不计算二值光栅的衍射效率、完整多级次图样或中子传播轨迹。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 把两个指数相乘后合并指数。
+- 与 $G$ 的定义逐项比较。
+feedback:
+  correct: 通过定义确定了频谱平移的符号。
+  incorrect: 先合并指数，避免混淆调制、平移和伸缩。
+  choices:
+    A: 正载波相位对应谱变量替换为 $q-K$。
+    B: 频域乘线性相位对应实空间平移，不是本题的调制。
+    C: 这是伸缩形式，且缺少相应归一化因子。
+    D: 这是相反号载波所对应的平移。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P203 的 Published article, Materials and methods, Eq. (1); Airy beam dynamics, Fraunhofer Fourier-transform paragraph (p. 153401-3) 构造。选择一个复指数衍射级次，忽略二值光栅的其他级次，仅研究载波对谱位置的作用。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevLett.134.153401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $G(q-K)$
+- id: B
+  content: $e^{iKq}G(q)$
+- id: C
+  content: $G(Kq)$
+- id: D
+  content: $G(q+K)$
+answer:
+  choice: A

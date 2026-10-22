@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000490
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.green-function
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
+  论文把线性电路响应写成 $V=GI$，其中 $G=J^{-1}$。本题只取一个无量纲的两节点教学算子
+
+  $$J=\begin{pmatrix}2&-1\\-1&2\end{pmatrix},\qquad I=\begin{pmatrix}1\\0\end{pmatrix}.$$
+
+  输入只作用在第一个节点。响应 $V$ 是哪一个？所有量已经无量纲化，不要求电路器件知识。
+solution: |-
+  行列式为 $4-1=3$，因此
+
+  $$G=J^{-1}=\frac13\begin{pmatrix}2&1\\1&2\end{pmatrix}.$$
+
+  与第一单位列向量相乘会选出逆矩阵第一列，故 $V=(2/3,1/3)^T$。检查：直接代回 $JV=I$，第一分量为 $4/3-1/3=1$，第二分量为 $-2/3+2/3=0$。格林矩阵将各输入位置与各响应位置关联；它的一列是固定输入位置下的全部响应。
+
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, unnumbered equations G=J^{-1} and V=GI。教学范围：此矩阵不拟合论文电路，也不包含其拓扑结构、工作频率或实际阻抗单位。
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先求行列式与逆矩阵。
+- 矩阵乘第一单位列向量会选出哪一列？
+feedback:
+  correct: 把逆算子和指定输入位置正确对应。
+  incorrect: 要求解 JV=I，不能把 JI 当作响应。
+  choices:
+    A: 这是 JI，不是 J 的逆作用于 I。
+    B: 除非输入恰好是本征值一的本征向量，否则响应不等于输入。
+    C: 这是 J 的逆矩阵第一列，并通过直接代回检验。
+    D: 这是逆矩阵第二列，对应输入在第二节点。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P209 的 Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, unnumbered equations G=J^{-1} and V=GI 构造。原创两节点无量纲算子演示格林矩阵单列的定义，数学目标是逆算子的作用。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-65422-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $(2,\ -1)^T$
+- id: B
+  content: $(1,\ 0)^T$
+- id: C
+  content: $(2/3,\ 1/3)^T$
+- id: D
+  content: $(1/3,\ 2/3)^T$
+answer:
+  choice: C

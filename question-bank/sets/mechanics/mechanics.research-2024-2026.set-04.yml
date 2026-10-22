@@ -1,0 +1,20 @@
+schema_version: 1
+id: mechanics.research-2024-2026.set-04
+title: 近期研究中的经典力学：第4组
+description: 本科研究背景练习；覆盖analytical。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000380
+  - q-000381
+  - q-000382
+  - q-000383
+  - q-000384
+  - q-000385
+  - q-000386
+  - q-000387
+  - q-000388
+  - q-000389
+  order: fixed

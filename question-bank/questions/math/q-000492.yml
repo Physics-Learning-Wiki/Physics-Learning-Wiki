@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000492
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.eigenfunction-expansion
+type: true_false
+choice_order: fixed
+stem: |-
+  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
+  在无量纲教学模型中，$J_\varepsilon=\operatorname{diag}(\varepsilon,1)$，$0<\varepsilon<1$，输入固定为 $I=(0,1)^T$，响应为 $V=J_\varepsilon^{-1}I$。
+
+  判断：只要 $\varepsilon\to0^+$，响应 $V$ 就必然发散，因为逆算子含有 $1/\varepsilon$。
+solution: |-
+  判断为错误。逆矩阵是 $\operatorname{diag}(1/\varepsilon,1)$，但其作用于给定输入得到 $V=(0,1)^T$，与 $\varepsilon$ 无关。
+
+  小本征值对应的第一个模态没有被输入激发，模态系数是零，所以该输入下没有 $1/\varepsilon$ 发散。检查：如果输入改为 $(1,0)^T$，才得到 $(1/\varepsilon,0)^T$；这说明还必须考虑输入的模态投影。逆算子的范数可以增长，而某个固定输入的响应仍然有界，两者没有矛盾。
+
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, V=Σ φ_n^R(φ_n^L I)/j_n。教学范围：不声称实际电路没有其他噪声或模态输入；只判断题设固定输入。
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+hints:
+- 先把逆矩阵实际作用到给定输入上。
+- 哪个模态的输入分量为零？
+feedback:
+  correct: 区分了算子可能放大的方向与具体输入所激发的方向。
+  incorrect: 不能只看分母小，还要检查对应模态的分子系数。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P209 的 Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, V=Σ φ_n^R(φ_n^L
+    I)/j_n 构造。取对角极限把分母增强和输入耦合分开，构造一个清楚的零投影反例。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-65422-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

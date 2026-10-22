@@ -1,0 +1,192 @@
+electrostatics.capacitance:
+  title: 电容与等效电容
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-capacitance
+electrostatics.floating-conductor:
+  title: 浮置导体与电荷约束
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-floating-conductor
+electrostatics.source-work:
+  title: 静电驱动中的电源功
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-source-work
+electrostatics.fringing-field:
+  title: 边缘电场与寄生耦合
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-fringing-field
+electrostatics.model-validity:
+  title: 静电模型的适用范围
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-model-validity
+electrostatics.laplace-boundary:
+  title: 拉普拉斯方程与电势边界
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-laplace-boundary
+electrostatics.charge-conservation:
+  title: 电荷守恒与接触起电
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-charge-conservation
+electrostatics.electric-dipole:
+  title: 电偶极矩与远场
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-electric-dipole
+electrostatics.dielectric-boundary:
+  title: 介质边界与电位移
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-dielectric-boundary
+electrostatics.polarization:
+  title: 线性电介质极化
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-polarization
+electrostatics.contact-capacitance:
+  title: 接触面积与电容感测
+  topics:
+  - electromagnetism.electrostatics
+  aliases:
+  - research-electrostatics-contact-capacitance
+magnetostatics.dipole-field:
+  title: 磁偶极子的磁场
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-dipole-field
+magnetostatics.superposition:
+  title: 磁场叠加与对称性
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-superposition
+magnetostatics.dipole-torque:
+  title: 磁偶极力矩与势能
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-dipole-torque
+magnetostatics.field-uniformity:
+  title: 局部磁场均匀性
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-field-uniformity
+magnetostatics.helmholtz-coils:
+  title: 亥姆霍兹线圈磁场
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-helmholtz-coils
+magnetostatics.magnetic-gradient:
+  title: 磁场梯度与磁力
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-magnetic-gradient
+magnetostatics.induced-magnetization:
+  title: 感应磁矩与磁化能
+  topics:
+  - electromagnetism.magnetostatics
+  aliases:
+  - research-magnetostatics-induced-magnetization
+induction.faraday-law:
+  title: 磁通量与法拉第定律
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-faraday-law
+induction.mutual-inductance:
+  title: 互感与近场耦合
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-mutual-inductance
+induction.resonance:
+  title: 感应电路的共振
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-resonance
+induction.lenz-law:
+  title: 楞次定律与电流方向
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-lenz-law
+induction.eddy-current:
+  title: 涡电流及其能量耗散
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-eddy-current
+induction.quasistatic:
+  title: 电磁准静态近似
+  topics:
+  - electromagnetism.induction
+  aliases:
+  - research-induction-quasistatic
+waves.impedance-matching:
+  title: 波阻抗与反射匹配
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-impedance-matching
+waves.poynting-vector:
+  title: 坡印廷矢量与能流
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-poynting-vector
+waves.standing-waves:
+  title: 驻波与背板边界
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-standing-waves
+waves.energy-conservation:
+  title: 电磁波功率守恒
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-energy-conservation
+waves.phase-gradient:
+  title: 相位梯度与波束方向
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-phase-gradient
+waves.geometric-phase:
+  title: 几何相位与偏振转换
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-geometric-phase
+waves.transverse-polarization:
+  title: 横波条件与偏振
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-transverse-polarization
+waves.propagating-modes:
+  title: 传播模式与波矢约束
+  topics:
+  - electromagnetism.maxwell-waves
+  aliases:
+  - research-waves-propagating-modes

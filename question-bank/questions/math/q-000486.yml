@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000486
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.airy-function
+type: numeric
+choice_order: fixed
+stem: |-
+  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  论文在初始面使用有限能量剖面 $F(x)=\operatorname{Ai}(x/x_0)e^{\alpha x/x_0}$。取原创教学参数 $x_0=2.00\,\mathrm{mm}$、$\alpha=0.10$，并给出数学常数 $\operatorname{Ai}(0)=0.3550280539$、$\operatorname{Ai}^{\prime}(0)=-0.2588194038$；后一个导数是对 Ai 自身的无量纲自变量求导。
+
+  求 $L=F^{\prime}(0)/F(0)$，其中 $F^{\prime}$ 对 $x$ 求导。输入数值并使用单位标签 `mm^-1`，允许绝对误差 $0.0001$。
+solution: |-
+  对乘积和复合函数求导：
+
+  $$F^{\prime}(x)=\frac{e^{\alpha x/x_0}}{x_0}\left[\operatorname{Ai}^{\prime}(x/x_0)+\alpha\operatorname{Ai}(x/x_0)\right].$$
+
+  在零点除以 $F(0)$，得到
+
+  $$L=\frac1{x_0}\left[\frac{\operatorname{Ai}^{\prime}(0)}{\operatorname{Ai}(0)}+\alpha\right]\approx-0.3145056\,\mathrm{mm}^{-1}.$$
+
+  检查：结果的单位是长度的倒数；指数截断给对数斜率增加 $\alpha/x_0=0.05\,\mathrm{mm}^{-1}$。当 $\alpha=0$ 时恢复单纯 Ai 剖面的斜率，不能把 Ai 的无量纲导数直接当成 F 的物理坐标导数。
+
+  研究对应：Results, Airy beam generation and characterization, Eq. (1) at z=0 and definition of truncation factor α。教学范围：没有将这些教学参数当作论文装置值，也未由局部斜率推断整条传播轨迹。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 对数导数把乘积转为两部分。
+- Ai 的导数和指数导数都要乘 1/x0。
+feedback:
+  correct: 正确把截断与空间尺度两种作用分开。
+  incorrect: 核对是否漏掉指数的导数，或把无量纲导数直接作为物理导数。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Eq. (1) at z=0 and definition of truncation
+    factor α 构造。保留初始场的真实函数乘积，选取教学参数计算一点的对数斜率。 数值来源：mixed；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-62443-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: -0.31450556647123606
+  tolerance:
+    type: absolute
+    value: 0.0001
+  unit:
+    required: true
+    canonical: mm^-1
+    accepted:
+    - mm^-1

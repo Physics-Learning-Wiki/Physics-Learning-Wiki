@@ -1,0 +1,48 @@
+schema_version: 3
+id: q-000472
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.linear-ode
+type: true_false
+choice_order: fixed
+stem: |-
+  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  取论文用来比较的无延迟基准方程 $\dot T=-\lambda(T-T_b)$，其中两份样品使用相同的常数 $\lambda>0$ 与 $T_b$。设 $T_A(0)>T_B(0)$。
+
+  判断：在这个模型中，所有有限的 $t\geq0$ 都满足 $T_A(t)>T_B(t)$，两条温度曲线不会交叉。
+solution: |-
+  判断为正确。令 $d(t)=T_A(t)-T_B(t)$，两方程相减得到 $\dot d=-\lambda d$。所以
+
+  $$d(t)=d(0)e^{-\lambda t}.$$
+
+  初值差为正，指数在有限时间始终为正，故差值保持正号。两条曲线可以共同趋近环境温度，但这不等于在某个有限时刻交叉。检查：结论依赖相同的冷却率和环境温度；若模型或参数改变，应重新写差方程，不能直接使用此结论。
+
+  研究对应：Section II, ordinary Newton law, Eqs. (1) and (2)。教学范围：不排除真实实验或不同参数、非线性、延迟模型中的温度交叉。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+hints:
+- 将两个微分方程相减。
+- 指数衰减因子会不会改变初值差的符号？
+feedback:
+  correct: 通过差方程证明了次序保持。
+  incorrect: 共同的长期极限不意味着在有限时间发生交叉。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P205 的 Section II, ordinary Newton law, Eqs. (1) and (2) 构造。严格限定为相同常参数的无延迟方程，用解差说明这一基准模型的限制。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevE.109.044149
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: true

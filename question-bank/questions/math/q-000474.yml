@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000474
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.linear-ode
+type: free_response
+choice_order: fixed
+stem: |-
+  Santos（2024）研究带时间延迟的牛顿冷却模型，用它讨论热历史对后续冷却的影响。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevE.109.044149)。
+
+  论文在延迟项的二阶截断中得到含二阶时间导数的方程。为独立检验“方程阶数改变后需要什么初始资料”，本题使用原创的无量纲教学方程
+
+  $$\theta^{\prime\prime}+5\theta^{\prime}+4\theta=0.$$
+
+  两种情形都给定 $\theta(0)=1$：情形甲另给 $\theta^{\prime}(0)=0$，情形乙另给 $\theta^{\prime}(0)=-4$。请求出这两个解，并用它们说明单独的 $\theta(0)$ 是否能确定二阶演化。系数 $5,4$ 是教学选取，不要求由某个真实延迟参数反推。
+solution: |-
+  设解为 $e^{rt}$，特征方程 $r^2+5r+4=(r+1)(r+4)=0$，因此一般解为 $\theta=Ae^{-t}+Be^{-4t}$。共同初值要求 $A+B=1$。
+
+  情形甲有 $-A-4B=0$，解得 $A=4/3$、$B=-1/3$，所以 $\theta_{\text{甲}}=(4e^{-t}-e^{-4t})/3$。情形乙有 $-A-4B=-4$，得到 $A=0$、$B=1$，所以 $\theta_{\text{乙}}=e^{-4t}$。
+
+  两个解的初值相同，但导数和后续曲线不同。这一反例表明，只给函数在一点的值不足以确定该二阶方程的解；还需要一个独立条件，例如初始导数。检查：每个指数对应一个特征根，两解均满足微分方程；分别代入零点可验证各自的两个初值。该教学比较没有证明截断方程在任意时间都逼近原延迟模型，截断精度是另一问题。
+
+  研究对应：Section II A, second-order expansion, Eqs. (5)–(8), discussion of two initial conditions。教学范围：没有将这些教学系数当作论文拟合值；没有检验二阶近似相对于完整延迟模型的误差。
+
+  来源：[DOI 10.1103/PhysRevE.109.044149](https://doi.org/10.1103/PhysRevE.109.044149)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+hints:
+- 先分解特征多项式。
+- 把函数和导数的零点值写成 A、B 的两个线性方程。
+- 比较两组系数，不要只比较两解的共同终值。
+feedback:
+  correct: 求解并用明确反例说明了第二个初始条件的作用。
+  incorrect: 需给出两条满足各自条件的解；只说“二阶需要两个条件”还缺少本题的验证。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P205 的 Section II A, second-order expansion, Eqs. (5)–(8), discussion of two initial conditions 构造。保留二阶截断的数学结构，用可整除特征多项式的原创方程检查初值数目。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevE.109.044149
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未正确建立特征方程或两解不满足题设初值。
+    points: 0
+  - id: partial
+    label: 找到一般解及至少一组正确系数，但初值非唯一性的论证或代回检查不完整。
+    points: 0.5
+  - id: mastered
+    label: 正确求出两解、核验方程与初值，并用不同解说明单个函数初值不足，同时限定为教学二阶模型。
+    points: 1
+reference_answer: 一般解为 $Ae^{-t}+Be^{-4t}$。甲为 $(4e^{-t}-e^{-4t})/3$，乙为 $e^{-4t}$。相同的函数初值对应不同的解，必须补充独立条件；代回方程和初值可验证。

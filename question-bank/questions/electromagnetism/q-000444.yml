@@ -1,0 +1,74 @@
+schema_version: 3
+id: q-000444
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.impedance-matching
+type: true_false
+choice_order: fixed
+stem: |-
+  宽带吸收研究通过专门的色散网络扩展匹配范围。下面比较一个更简单的固定电容网格，说明为什么单频调谐不能直接推出连续频带内的精确匹配。 [研究来源](https://www.nature.com/articles/s41467-025-56167-4)
+
+  在一个薄间隔层教学模型中，背板支路为
+
+  $$
+  Y_{\rm sp}=-\frac{j}{\omega L},\qquad L>0,
+  $$
+
+  网格支路为
+
+  $$
+  Y_{\rm s}=\frac1{\eta_0}+j\omega C,\qquad C>0.
+  $$
+
+  \(L,C,\eta_0\) 在考察频带内均保持不变；总导纳为两个支路之和。精确匹配要求 \(Y_{\rm s}+Y_{\rm sp}=1/\eta_0\)。
+
+  判断：“只要在某个 \(\omega_0>0\) 调到精确匹配，同一固定电容就能在包含 \(\omega_0\) 的非零宽度连续频带内保持精确匹配。”
+solution: |-
+  该陈述错误。需要抵消的虚部为
+
+  $$
+  F(\omega)=\omega C-\frac1{\omega L}.
+  $$
+
+  匹配方程只在
+
+  $$
+  \omega_0=\frac1{\sqrt{LC}}
+  $$
+
+  成立。更直接地，在所有 \(\omega>0\) 上，
+
+  $$
+  F'(\omega)=C+\frac1{\omega^2L}>0,
+  $$
+
+  所以虚部严格递增，不可能在非零宽度区间恒为零。普通正电容的虚导纳随频率增加，而被要求补偿的量 \(1/(\omega L)\) 随频率降低，二者只能在一点相等。该结论针对精确零反射；允许有限反射容差时仍可定义有限工作带宽。
+
+  适用范围：本题不证明所有无源复杂网络都没有宽带吸收能力，也不替代论文的有限带宽设计与优化。
+
+  来源定位：Passive highly dispersive matching network enabling broadband electromagnetic absorption，Results: Broadband absorption using dispersion engineering, Fig. 1 and Eq. (1); discussion of the required susceptance slope。DOI: [10.1038/s41467-025-56167-4](https://doi.org/10.1038/s41467-025-56167-4)。
+hints:
+- 把总导纳的虚部单独写出，要求它为零。
+- 检查固定 \(C\) 时该虚部对频率的导数是否可能在一段区间为零。
+feedback:
+  correct: 关键理解：用导纳的频率依赖判断固定电容抵消电感型支路的带宽限制。
+  incorrect: 请检查：把总导纳的虚部单独写出，要求它为零。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56167-4
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

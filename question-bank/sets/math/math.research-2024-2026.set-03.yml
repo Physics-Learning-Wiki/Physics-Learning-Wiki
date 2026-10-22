@@ -1,0 +1,20 @@
+schema_version: 1
+id: math.research-2024-2026.set-03
+title: 近期研究中的数学方法：第3组
+description: 本科研究背景练习；覆盖微分方程与边值问题。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000470
+  - q-000471
+  - q-000472
+  - q-000473
+  - q-000474
+  - q-000475
+  - q-000476
+  - q-000477
+  - q-000478
+  - q-000479
+  order: fixed

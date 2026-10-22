@@ -1,0 +1,85 @@
+schema_version: 3
+id: q-000447
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.transverse-polarization
+- waves.energy-conservation
+- waves.geometric-phase
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  剪纸超表面研究讨论线偏振入射所含的两种圆偏振分量，并在单通道效率表征中使用相应的入射功率归一化。本题只分析偏振分解和相位因子的功率意义。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+
+  对同一传播方向，定义单位偏振向量
+
+  $$
+  \mathbf e_+=\frac{\hat{\mathbf x}+i\hat{\mathbf y}}{\sqrt2},\qquad
+  \mathbf e_-=\frac{\hat{\mathbf x}-i\hat{\mathbf y}}{\sqrt2}.
+  $$
+
+  两向量按厄米内积正交，且
+
+  $$
+  \hat{\mathbf x}=\frac{\mathbf e_++\mathbf e_-}{\sqrt2}.
+  $$
+
+  入射光为 \(x\) 线偏振，总功率为 \(P\)。假设理想装置把两种正交分量送入可分别探测的两个通道，每个分量都完全转换且保持自身功率；各通道只额外乘一个模为 1 的相位因子。以下结论哪些正确？
+solution: |-
+  两个偏振分量的归一化幅度都是 \(1/\sqrt2\)，所以各自功率占比为 \(|1/\sqrt2|^2=1/2\)，分别为 \(P/2\)。因两分量正交，计算总功率时没有偏振交叉项。
+
+  模为 1 的相位因子 \(e^{i\phi}\) 不改变通道幅度平方。因此理想情况下只收集其中一个通道得到 \(P/2\)，同时收集两个通道可得到总计 \(P\)。未收集的另一半功率仍位于另一个通道，并没有因此被吸收。
+
+  选项辨析：
+
+  “每个分量为 \(P/2\)”正确，展开系数为 \(1/\sqrt2\)，功率系数为 \(1/2\)。
+
+  “单通道得到一半”正确，这是题设正交分解和逐通道无损转换的结果。
+
+  “功率乘以 \(\phi^2\)”错误，功率乘的是 \(|e^{i\phi}|^2=1\)。
+
+  “未探测的一半必定被吸收”错误，另一通道仍携带那部分功率，题设装置无损。
+
+  适用范围：真实样品可能存在损耗、未转换分量和多个衍射级次；本题的半功率是理想输入分解，不是实测效率。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: polarization conversion discussion following Eq. (1); beam-splitter characterization and normalization of a single circular-polarization channel。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+hints:
+- 通道功率与展开系数的模平方成正比。
+- 区分“没有被当前探测器收集”与“被材料吸收”。
+feedback:
+  correct: 关键理解：用正交偏振分解解释线偏振入射的单圆偏振通道功率。
+  incorrect: 请检查：通道功率与展开系数的模平方成正比。
+  choices:
+    A: “每个分量为 \(P/2\)”正确，展开系数为 \(1/\sqrt2\)，功率系数为 \(1/2\)。
+    B: “单通道得到一半”正确，这是题设正交分解和逐通道无损转换的结果。
+    C: “功率乘以 \(\phi^2\)”错误，功率乘的是 \(|e^{i\phi}|^2=1\)。
+    D: “未探测的一半必定被吸收”错误，另一通道仍携带那部分功率，题设装置无损。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56211-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 每个圆偏振入射分量的功率为 \(P/2\)。
+- id: B
+  content: 只收集一个完全转换的通道时，得到的功率为总入射功率的一半。
+- id: C
+  content: 相位因子 \(e^{i\phi}\) 会把通道功率乘以 \(\phi^2\)。
+- id: D
+  content: 只探测到一个通道，说明另外一半功率必定被装置吸收。
+answer:
+  choices:
+  - A
+  - B

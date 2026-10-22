@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000434
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.mutual-inductance
+type: true_false
+choice_order: fixed
+stem: |-
+  无线植入微器件研究中的外部发射线圈与芯片接收线圈大小不同。讨论这种链路时，不能把磁耦合的互易性误读为两个线圈自身参数相同。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
+
+  在没有磁滞、非互易介质或有源磁性元件的线性磁准静态模型中，两个固定线圈满足 \(M_{12}=M_{21}=M\)。其磁场储能可写成
+
+  $$
+  U=\frac12L_1I_1^2+MI_1I_2+\frac12L_2I_2^2.
+  $$
+
+  判断：“因为互感满足互易性，所以两个线圈的自感必定满足 \(L_1=L_2\)。”
+solution: |-
+  该陈述错误。互易性要求储能中的交叉系数对称，并不限制两个平方项的系数必须相等。一个允许的反例是
+
+  $$
+  L_1=4\ \mu\mathrm H,\quad L_2=1\ \mu\mathrm H,\quad M=1\ \mu\mathrm H.
+  $$
+
+  该例满足 \(M^2<L_1L_2\)，电感矩阵正定，储能对非零电流为正；同时 \(M_{12}=M_{21}\) 而 \(L_1\ne L_2\)。线圈匝数和几何尺寸可以不同。互易性约束的是两个方向的互感系数，而不是要求器件彼此相同。
+
+  适用范围：这一区分不意味着实际不同发射源和负载下的端到端效率必定相等，也不估计论文各线圈自感。
+
+  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results: System overview, Fig. 1a; Methods: RF wireless link and coil design。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。
+hints:
+- 分别观察储能中的两个平方项和一个交叉项。
+- 可尝试构造 \(L_1\ne L_2\) 且 \(M^2<L_1L_2\) 的例子。
+feedback:
+  correct: 关键理解：区分互感的互易性与两个线圈自感是否相等。
+  incorrect: 请检查：分别观察储能中的两个平方项和一个交叉项。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-54542-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

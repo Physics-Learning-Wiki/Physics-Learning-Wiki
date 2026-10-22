@@ -1,0 +1,101 @@
+schema_version: 3
+id: q-000433
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.mutual-inductance
+- induction.resonance
+type: single_choice
+choice_order: shuffle
+stem: |-
+  无线脑刺激微器件研究采用发射线圈、中继线圈和接收微线圈的三级耦合结构。本题用弱耦合的集中参数模型，分析中继调谐为何能增强传递的信号。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
+
+  三线圈沿同一轴放置。采用 \(e^{j\omega t}\) 复振幅约定，\(\omega>0\) 固定。发射电流复振幅 \(I_1\ne0\) 由理想电流源保持不变；中继的串联阻抗为
+
+  $$
+  Z_2=R+jX,\quad X=\omega L-\frac1{\omega C},\quad R,L>0.
+  $$
+
+  接收端开路。忽略发射与接收的直接互感及接收端反作用，给定
+
+  $$
+  \mathcal E_2=-j\omega M_{12}I_1,\qquad
+  I_2=\mathcal E_2/Z_2,\qquad
+  \mathcal E_3=-j\omega M_{23}I_2,
+  $$
+
+  其中互感 \(M_{12},M_{23}>0\) 均固定。只调节 \(C>0\)，何时接收电动势幅值 \(|\mathcal E_3|\) 最大？
+
+  ![教学模型示意：三个线圈共轴，依次为发射线圈、中继线圈和开路接收线圈；\(M_{12}\) 与 \(M_{23}\) 标记相邻磁耦合，中继等效串联阻抗为 \(Z_2\)。](asset:three-coil-link)
+
+  图为原创教学示意，非按比例绘制。三个线圈共轴，依次为发射线圈、中继线圈和开路接收线圈；\(M_{12}\) 与 \(M_{23}\) 标记相邻磁耦合，中继等效串联阻抗为 \(Z_2\)。
+solution: |-
+  代入中继电流，
+
+  $$
+  \mathcal E_3=-\frac{\omega^2M_{12}M_{23}I_1}{R+jX},\qquad
+  |\mathcal E_3|=\frac{\omega^2M_{12}M_{23}|I_1|}{\sqrt{R^2+X^2}}.
+  $$
+
+  分子与 \(R\) 均保持不变，分母在 \(X=0\) 时最小。因此调到
+
+  $$
+  \omega L=\frac1{\omega C},\qquad C=\frac1{\omega^2L}
+  $$
+
+  时幅值最大。负号影响相位，不改变这个幅值条件。检查：当 \(|X|\gg R\) 时中继电流很小；当 \(X=0\) 时最大幅值仍由有限的 \(R\) 限制，并非无限大。
+
+  选项辨析：
+
+  “调至 \(X=0\)”正确，此时阻抗模为允许的最小值 \(R\)。
+
+  “调至 \(|X|=R\)”使阻抗模变成 \(\sqrt2R\)，接收幅值小于谐振值。
+
+  “让 \(C\to0^+\)”使中继近似开路，\(|X|\to\infty\)，接收幅值趋零。
+
+  “调节 \(C\) 不影响幅值”忽略了中继电流随阻抗变化，即使互感固定也会改变三级传递。
+
+  适用范围：实际近 GHz 装置需要考虑传播、寄生参数与负载反射阻抗；本题的最大条件不直接给出原系统的最优供电效率。
+
+  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results, Fig. 1a three-coil architecture; Fig. 5; Methods: RF wireless link and coil design。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。
+hints:
+- 先把 \(\mathcal E_3\) 写成 \(I_1/Z_2\) 的倍数，再取模。
+- 本题调节电容，驱动频率保持不变；分母的模为 \(\sqrt{R^2+X^2}\)。
+feedback:
+  correct: 关键理解：在固定驱动频率和电流下，用中继阻抗解释接收开路电压的最大条件。
+  incorrect: 请检查：先把 \(\mathcal E_3\) 写成 \(I_1/Z_2\) 的倍数，再取模。
+  choices:
+    A: “调至 \(|X|=R\)”使阻抗模变成 \(\sqrt2R\)，接收幅值小于谐振值。
+    B: “调节 \(C\) 不影响幅值”忽略了中继电流随阻抗变化，即使互感固定也会改变三级传递。
+    C: “让 \(C\to0^+\)”使中继近似开路，\(|X|\to\infty\)，接收幅值趋零。
+    D: “调至 \(X=0\)”正确，此时阻抗模为允许的最小值 \(R\)。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-54542-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 调至 \(|X|=R\)。
+- id: B
+  content: 只要互感不变，调节 \(C\) 不会影响接收幅值。
+- id: C
+  content: 让 \(C\to0^+\)，使电容电抗很大。
+- id: D
+  content: 调至 \(X=0\)，即 \(C=1/(\omega^2L)\)。
+answer:
+  choice: D
+assets:
+- id: three-coil-link
+  path: electromagnetism/three-coil-link.svg
