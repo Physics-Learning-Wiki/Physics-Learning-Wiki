@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000360
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.oscillations
+concepts:
+- oscillations.harmonic-motion
+type: single_choice
+choice_order: shuffle
+stem: |-
+  二维悬浮机械振子研究报告，同一纳米球在光阱两个主轴上的振动频率约为 $f_X=121.1\,\mathrm{kHz}$ 和 $f_Y=108.5\,\mathrm{kHz}$。（[研究来源](https://doi.org/10.1038/s41467-025-59213-3)）
+
+  在本题的裸机械小振幅模型中，两个方向的势能分别为 $k_XX^2/2$ 与 $k_YY^2/2$，同一粒子质量为 $m$。忽略光腔反作用和阻尼，只用已给的近似频率。
+
+  刚度比 $k_X/k_Y$ 最接近哪一个值？
+hints:
+- 先写出 k=mω²，再考虑两个方向的质量是否相同。
+- 频率使用同一单位后，可以直接取比。
+feedback:
+  correct: 从同质量振动的频率平方推断有效刚度比，并保留了题设的适用条件。
+  incorrect: 先写出 k=mω²，再考虑两个方向的质量是否相同。
+  choices:
+    A: 两频率接近，刚度不可能由这些数据推出相差一倍。
+    B: 这是近似频率比，尚未平方。
+    C: 使用了频率平方与刚度成正比的关系。
+    D: 这是所求刚度比的倒数。
+solution: |-
+  沿任一主轴有 $m\ddot X+k_XX=0$，故 $k_X=m(2\pi f_X)^2$，同理 $k_Y=m(2\pi f_Y)^2$。因此质量和 $2\pi$ 都消去：
+
+  $$
+  \frac{k_X}{k_Y}=\left(\frac{121.1}{108.5}\right)^2\approx1.246\approx1.25.
+  $$
+
+  较高的频率对应较陡的势能曲率。
+
+  **检查与物理含义：** 频率比无量纲；X 方向频率较高，刚度比应大于 1；把两频率都换成 Hz 后比值不变。
+
+  **适用范围：** 此比值描述所设裸机械二次势，不是强耦合系统所有有效谱峰的刚度反演。
+
+  **来源定位：** High purity two-dimensional levitated mechanical oscillator，Introduction, paragraphs on parabolic trap and bright/dark modes; Results, Fig. 1；[论文 DOI](https://doi.org/10.1038/s41467-025-59213-3)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；用实验报告的机械频率构造经典裸光阱二次势模型；不复现量子冷却。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-025-59213-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: '2.00'
+- id: B
+  content: '1.12'
+- id: C
+  content: '1.25'
+- id: D
+  content: '0.80'
+answer:
+  choice: C

@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000454
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.multivalued
+type: free_response
+choice_order: fixed
+stem: |-
+  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  论文二态模型的谱满足 $E^2=z$。取参数路径 $z(\theta)=e^{i\theta}$，从 $\theta=0$ 开始连续追踪根，初值 $E(0)=1$；允许 $0\leq\theta\leq4\pi$。
+
+  ![复参数在单位圆上逆时针绕行的示意图](asset:math-loop)
+
+  图中文字说明：圆心为 $0$，路径半径为 $1$，起点为正实轴上的 $z=1$，箭头只表示 $\theta$ 增大的方向，不表示本征值运动。
+
+  请给出沿路径的连续根表达式，并据此论证：绕一周后根是否复原，以及为何不能在整个穿孔平面 $\mathbb C\setminus\{0\}$ 上定义一个连续单值平方根。答案须说明逐点取主值与连续追踪的区别。
+solution: |-
+  候选连续根为 $E(\theta)=e^{i\theta/2}$，其平方正好是 $z(\theta)$，且满足初值。任意其他连续根与它之比只可能为 $+1$ 或 $-1$；比值连续且起初为 $+1$，因此沿整个区间保持 $+1$。
+
+  于是 $E(2\pi)=-1$，一周后交换到另一根；$E(4\pi)=1$，两周后才返回原根。若穿孔平面上有连续单值平方根，限制在这条闭合圆周上，起点与终点同为 $z=1$ 时必须给出同一值，这与上面的连续延拓结果矛盾。
+
+  逐点主值把辐角强制限制在一个区间，在跨过割线时会发生跳变；它不能同时满足这次绕行的连续性。检查 $E(\theta)^2=e^{i\theta}$ 及两个端点均成立。本结论只谈根的交换，不包含量子态额外的几何相位。
+
+  研究对应：Methods, Eqs. (7)–(11), circular parameter path (10)。教学范围：连续追踪的是瞬时本征值函数，不声称真实动态过程必然绝热跟随，也未证明论文的拓扑分类。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+difficulty: 3
+cognitive_level: analyze
+style: graphical
+estimated_seconds: 780
+hints:
+- 从初值出发，把参数辐角除以二。
+- 若两个连续根都满足初值，考虑它们的比值。
+- 同一点的单值函数必须在闭合路径首尾给出相同值。
+feedback:
+  correct: 论证同时用到了平方关系、连续性和闭合路径。
+  incorrect: 仅写出两个平方根还不够；需说明沿路径如何连续选根。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P202 的 Methods, Eqs. (7)–(11), circular parameter path (10) 构造。保留局部二态平方根结构，固定单位圆半径，剥离贝里相位及非厄米动力学。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s42005-024-01595-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+assets:
+- id: math-loop
+  path: math/math-loop.svg
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未建立满足初值的连续平方根，或混淆参数与本征值。
+    points: 0
+  - id: partial
+    label: 已得分支交换，但缺少单值性反证或主值跳变说明。
+    points: 0.5
+  - id: mastered
+    label: 正确给出连续根、首尾比较、全局单值性反证及主值区别，并限定为本征值的数学结论。
+    points: 1
+reference_answer: $E(\theta)=e^{i\theta/2}$；一周后为 $-1$，两周后为 $1$。若全局连续单值根存在，其在单位圆首尾应相同，与连续延拓矛盾。逐点主值跨割线时不连续。

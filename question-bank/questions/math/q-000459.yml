@@ -1,0 +1,60 @@
+schema_version: 3
+id: q-000459
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.taylor-series
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  把二态模型参数写为 $z=1+\varepsilon$，并在 $\varepsilon=0$ 选择 $E(0)=1$ 的解析分支 $E(\varepsilon)=\sqrt{1+\varepsilon}$。可使用规则：泰勒级数的收敛半径等于展开点到该分支最近的复奇点的距离。
+
+  该分支在原点展开的收敛半径是多少？
+solution: |-
+  平方根的分支点在 $1+\varepsilon=0$，即 $\varepsilon=-1$，它到展开点 $0$ 的距离为 $1$。在开圆盘 $|\varepsilon|<1$ 内可以连续选择 $E(0)=1$ 的解析分支，因此半径至少为 $1$；分支点又禁止跨过 $-1$ 解析延拓为一个以零点为中心的更大圆盘，故半径恰好为 $1$。
+
+  检查：前几项为 $1+\varepsilon/2-\varepsilon^2/8+\cdots$。小正参数使根增加，与实函数的单调性相符；收敛半径不是简单地由实轴上函数是否有实数值决定。
+
+  研究对应：Methods, Eqs. (7) and (8), square-root parameter dependence。教学范围：不宣称一阶展开在整个研究参数空间有效。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 寻找 $1+\varepsilon$ 的零点。
+- 求它到展开点的复平面距离。
+feedback:
+  correct: 用最近分支点确定了局部展开的范围。
+  incorrect: 应定位复奇点，不能只看函数在正实轴上的表现。
+  choices:
+    A: 分支点 $-1$ 距离展开点为 $1$。
+    B: 展开点不是奇点，存在非零收敛邻域。
+    C: 半径为 $2$ 的圆盘已经包含分支点。
+    D: 存在有限距离的分支点，不能是整函数级数。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P202 的 Methods, Eqs. (7) and (8), square-root parameter dependence 构造。将参数原点平移到正常点，研究可控的本科泰勒展开范围。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s42005-024-01595-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $1$
+- id: B
+  content: $0$
+- id: C
+  content: $2$
+- id: D
+  content: $\infty$
+answer:
+  choice: A

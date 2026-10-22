@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000462
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.convolution
+type: true_false
+choice_order: fixed
+stem: |-
+  Sarenac 等（2025）用带三次相位的光栅产生中子艾里束，并用远场傅里叶变换和高斯模糊描述探测图样。 [研究来源（DOI）](https://doi.org/10.1103/PhysRevLett.134.153401)。
+
+  论文为描述测量图样的展宽，对模拟强度作高斯卷积。本题取一维非负可积强度 $I_0(x)$，定义
+
+  $$
+  I(x)=\int_{-\infty}^{\infty} I_0(x-u)g_\sigma(u)\,du,\qquad
+  g_\sigma(u)=\frac{e^{-u^2/(2\sigma^2)}}{\sqrt{2\pi}\sigma},\quad\sigma>0.
+  $$
+
+  判断：因为 $\int g_\sigma du=1$，卷积后每个峰的高度都与卷积前相同。
+solution: |-
+  判断为错误。核积分为一保证的是总积分：交换积分并令 $v=x-u$，得 $\int I(x)dx=\int I_0(v)dv$。某点的 $I(x)$ 却是邻近原强度的加权平均，不要求保持局部峰高。
+
+  例如令 $I_0$ 为归一化、标准差为 $a>0$ 的高斯分布。卷积后标准差为 $\sqrt{a^2+\sigma^2}$，峰高由 $1/(\sqrt{2\pi}a)$ 降为 $1/(\sqrt{2\pi}\sqrt{a^2+\sigma^2})$。这是明确反例。
+
+  检查：$I(x)\leq\sup I_0$；在核宽度趋于零的极限才恢复原强度图样。
+
+  研究对应：Published article, Results, paragraph beginning “To account for experimental effects that cause smearing…” (p. 153401-3)。教学范围：不估计论文的真实峰高，也不把模糊解释成无损相干传播。
+
+  来源：[DOI 10.1103/PhysRevLett.134.153401](https://doi.org/10.1103/PhysRevLett.134.153401)。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+hints:
+- 把“保持总面积”和“保持每一点数值”分开。
+- 卷积是邻域中的加权平均。
+feedback:
+  correct: 识别了总积分守恒并不意味着峰高守恒。
+  incorrect: 归一化只约束核的总权重；请检查局部平均的效果。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P203 的 Published article, Results, paragraph beginning “To account for experimental effects that cause
+    smearing…” (p. 153401-3) 构造。以一维归一化强度卷积分析后处理的数学作用，不把核当作相干波幅叠加。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1103/PhysRevLett.134.153401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

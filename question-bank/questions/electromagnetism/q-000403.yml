@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000403
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.capacitance
+- electrostatics.planar-symmetry
+type: numeric
+choice_order: fixed
+stem: |-
+  一种抗干扰压力传感器采用约 900 nm 的电极间隙，以增强局部电容并减小边缘场的相对影响。 [研究来源](https://www.nature.com/articles/s41467-025-57232-8)
+
+  用图示的均匀空气平行板模型估算一个单元的电容。采用论文报告的初始间隙 $d=900\,\mathrm{nm}$；本题另选示例有效面积 $A=0.90\,\mathrm{mm^2}$。取空气介电常数为 $\varepsilon_0=8.85\times10^{-12}\,\mathrm{F/m}$，忽略支撑结构、粗糙度和边缘场。
+
+  由 $C=\varepsilon_0 A/d$，求电容，**以 pF 为单位输入数值及单位**，保留两位小数。
+
+  ![教学模型示意：上下平行电极的电势分别为 V 和 0，垂直间距为 d；有效面积为 A=WL，L 垂直纸面。中间为空气。](asset:parallel-pixel)
+
+  图为原创教学示意，非按比例绘制。上下平行电极的电势分别为 V 和 0，垂直间距为 d；有效面积为 A=WL，L 垂直纸面。中间为空气。
+solution: |-
+  先统一为 SI 单位：$A=0.90\times10^{-6}\,\mathrm{m^2}$，$d=900\times10^{-9}\,\mathrm m$。因此
+
+  $$
+  C=\frac{8.85\times10^{-12}\times0.90\times10^{-6}}
+  {900\times10^{-9}}\,\mathrm F
+  =8.85\times10^{-12}\,\mathrm F=8.85\,\mathrm{pF}.
+  $$
+
+  检查：$\mathrm{(F/m)m^2/m=F}$；面积增大应增加电容，而间隙增大应减小电容。这里两长度单位换算产生的量级已显式保留。
+
+  适用范围：8.85 pF 是本题示例面积下的模型估算，不是论文测得的电容。
+
+  来源定位：Interference-free nanogap pressure sensor array with high spatial resolution for wireless human-machine interfaces applications，Results, working-principle subsection, paragraph introducing the 900 nm gap; Fig. 3e fabrication confirmation。DOI: [10.1038/s41467-025-57232-8](https://doi.org/10.1038/s41467-025-57232-8)。
+hints:
+- 平方毫米要按面积单位换算，不能只乘一个 10⁻³。
+- 先把 A 和 d 都换为 SI 单位，最后把 F 换成 pF。
+feedback:
+  correct: 关键理解：正确使用报告间隙并完成面积与纳米单位换算。
+  incorrect: 请检查：平方毫米要按面积单位换算，不能只乘一个 10⁻³。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-57232-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 8.85
+  tolerance:
+    type: absolute
+    value: 0.01
+  unit:
+    required: true
+    canonical: pF
+    accepted:
+    - pF
+assets:
+- id: parallel-pixel
+  path: electromagnetism/parallel-pixel.svg

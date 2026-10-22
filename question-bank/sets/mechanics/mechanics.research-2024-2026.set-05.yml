@@ -1,0 +1,20 @@
+schema_version: 1
+id: mechanics.research-2024-2026.set-05
+title: 近期研究中的经典力学：第5组
+description: 本科研究背景练习；覆盖dynamics、kinematics。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000390
+  - q-000391
+  - q-000392
+  - q-000393
+  - q-000394
+  - q-000395
+  - q-000396
+  - q-000397
+  - q-000398
+  - q-000399
+  order: fixed

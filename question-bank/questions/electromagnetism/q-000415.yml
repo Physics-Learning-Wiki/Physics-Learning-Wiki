@@ -1,0 +1,80 @@
+schema_version: 3
+id: q-000415
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.dielectric-boundary
+- electrostatics.polarization
+type: single_choice
+choice_order: shuffle
+stem: |-
+  接触主导压力传感器使用薄的高介电常数层状绝缘膜，提高接触区域的单位面积电容。 [研究来源](https://www.nature.com/articles/s41467-025-63018-9)
+
+  取一个接触区域的一维局部模型：两个平行导体之间依次放置线性介质 1、2，绝对介电常数满足 $\varepsilon_2=4\varepsilon_1$。电场垂直界面；介质交界面无自由面电荷，忽略边缘场。两层厚度都非零，两导体分别保持电势 $V>0$ 和 $0$。
+
+  法向电场大小之比 $E_1/E_2$ 等于多少？
+
+  ![教学模型示意：上、下导体电势为 V 和 0，中间依次是厚度 d₁、介电常数 ε₁ 的上层与 d₂、ε₂ 的下层；电场只沿法向 z。](asset:two-layer)
+
+  图为原创教学示意，非按比例绘制。上、下导体电势为 V 和 0，中间依次是厚度 d₁、介电常数 ε₁ 的上层与 d₂、ε₂ 的下层；电场只沿法向 z。
+solution: |-
+  跨越介质界面使用电位移的法向边界条件：
+  $D_{1n}-D_{2n}=\sigma_{\mathrm{free}}=0$。因此
+  $\varepsilon_1E_1=\varepsilon_2E_2$，得到 $E_1/E_2=4$。
+
+  低介电常数层承受更强的电场。这与电压如何分配还需乘各层厚度相区别。检查：若两层介电常数相等，场比恢复为 1；结论不要求界面束缚电荷为零。
+
+  选项辨析：
+
+  法向 D 连续使电场与介电常数成反比，故 E₁/E₂=4。
+
+  这把 D=εE 的反比关系倒置了。
+
+  只有介电常数相同等特殊条件才有相同的法向电场。
+
+  界面无自由电荷不排除导体电极所建立的非零场。
+
+  适用范围：介电常数比 4 是教学示例，不是论文所用两种材料的实测比值。
+
+  来源定位：Contact-dominated localized electric-displacement-field-enhanced pressure sensing，Results, Contact-dominated design, Fig. 1a–c and paragraph specifying layered dielectrics。DOI: [10.1038/s41467-025-63018-9](https://doi.org/10.1038/s41467-025-63018-9)。
+hints:
+- 连续的是法向 D，而不一定是法向 E。
+- 使用 D=εE，并区分自由面电荷与束缚电荷。
+feedback:
+  correct: 关键理解：用无自由界面电荷条件判断法向电场的分配。
+  incorrect: 请检查：连续的是法向 D，而不一定是法向 E。
+  choices:
+    A: 这把 D=εE 的反比关系倒置了。
+    B: 只有介电常数相同等特殊条件才有相同的法向电场。
+    C: 法向 D 连续使电场与介电常数成反比，故 E₁/E₂=4。
+    D: 界面无自由电荷不排除导体电极所建立的非零场。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-63018-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 1/4。
+- id: B
+  content: 1。
+- id: C
+  content: 4。
+- id: D
+  content: 由无自由电荷可知两层电场都为零。
+answer:
+  choice: C
+assets:
+- id: two-layer
+  path: electromagnetism/two-layer.svg

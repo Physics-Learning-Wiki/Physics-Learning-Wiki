@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000410
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.charge-conservation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  一项接触起电研究分析水合氢离子与氢氧根离子在两种聚合物表面之间的偏好分配。两类离子的转移会共同决定表面的净电荷。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+
+  两个表面 A、B 初始均中性，组成与外界绝缘的整体。一次示例转移中，8 个带 $+e$ 的离子和 3 个带 $-e$ 的离子都从 A 转移到 B；没有其他电荷转移或化学反应。$e>0$ 为元电荷。分离后两表面的净电荷是什么？
+solution: |-
+  B 得到的代数电荷为 $8e-3e=5e$。A 失去同样的代数电荷，因此为 $-5e$。总电荷仍为零。转移的离子总数是 11，但净电荷不能按总数相加。
+
+  检查：将所有转移方向反过来，两表面的符号互换；若两类离子转移数相等，净转移电荷为零。
+
+  选项辨析：
+
+  两类离子的代数贡献相减，且两表面电荷总和仍为零。
+
+  把负离子也算作正电荷，错误地把粒子数当成净电荷数。
+
+  在整体与外界绝缘的条件下，这会凭空增加总电荷。
+
+  该符号对应净正电荷从 B 流向 A，与题给方向相反。
+
+  适用范围：转移数 8 和 3 是示例；电荷守恒不能决定哪种聚合物更易获得某类离子。
+
+  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Hypothesis of thermodynamically driven water-ion transfer, Fig. 1B and associated paragraph。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。
+hints:
+- 电荷要按正负代数相加，而不是按离子总数相加。
+- 先算 B 获得的净电荷，再由整体守恒求 A。
+feedback:
+  correct: 关键理解：按载流子符号核算接触分离后的电荷守恒。
+  incorrect: 请检查：电荷要按正负代数相加，而不是按离子总数相加。
+  choices:
+    A: 该符号对应净正电荷从 B 流向 A，与题给方向相反。
+    B: 两类离子的代数贡献相减，且两表面电荷总和仍为零。
+    C: 在整体与外界绝缘的条件下，这会凭空增加总电荷。
+    D: 把负离子也算作正电荷，错误地把粒子数当成净电荷数。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-46932-2
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: A 为 +5e，B 为 −5e。
+- id: B
+  content: A 为 −5e，B 为 +5e。
+- id: C
+  content: A、B 都为 +5e。
+- id: D
+  content: A 为 −11e，B 为 +11e。
+answer:
+  choice: B

@@ -1,0 +1,20 @@
+schema_version: 1
+id: electromagnetism.research-2024-2026.set-05
+title: 近期研究中的电磁学：第5组
+description: 本科研究背景练习；覆盖maxwell-waves。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000440
+  - q-000441
+  - q-000442
+  - q-000443
+  - q-000444
+  - q-000445
+  - q-000446
+  - q-000447
+  - q-000448
+  - q-000449
+  order: fixed

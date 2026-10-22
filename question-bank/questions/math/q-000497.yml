@@ -1,0 +1,74 @@
+schema_version: 3
+id: q-000497
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.eigenfunction-expansion
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  用指数等待时间的模型 $\dot x=(P-I)x/\mu$，$\mu>0$，取
+
+  $$P=\begin{pmatrix}0&1&0\\1/2&0&1/2\\0&1&0\end{pmatrix}.$$
+
+  ![三节点路径的连接关系](asset:math-network)
+
+  图中文字说明：只有相邻节点连接；数值权重和作用方向以所给矩阵为准，图中连线不代表相同矩阵元。给定 $r_0=(1,1,1)^T$、$r_1=(1,0,-1)^T$、$r_2=(1,-1,1)^T$。选出所有正确陈述，采用完全一致评分。
+solution: |-
+  直接相乘得到 $Pr_0=r_0$、$Pr_1=0$、$Pr_2=-r_2$。若 $Pr=\lambda r$，令 $x=a(t)r$，则 $\dot a=(\lambda-1)a/\mu$。所以三个模态分别具有衰减率 $0,1/\mu,2/\mu$。
+
+  算术和不一定守恒，因为矩阵列和不是全为一。例如 $x=(0,1,0)^T$ 时，$\dot x=(1,-1,1)^T/\mu$，三个导数之和为 $1/\mu$。真正的常数左向量权重可取 $(1/4,1/2,1/4)$，但题目的正确选项只需上述直接反例即可排除算术平均守恒。
+
+  检查：矩阵行和为一保证常数右模态不变；这与任意初值的算术平均守恒是两个不同条件。
+
+  研究对应：Results, Eq. (2), relation between homogeneous network eigenvalues and relaxation modes。教学范围：这里的 x 是按所给列向量方程演化的节点标量；未把它误当成采用转置生成元的列概率分布。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 先分别计算 P 乘三个给定向量。
+- 衰减率是 (1−λ)/μ，不是 λ/μ。
+- 检查平均值守恒需看总导数，不能仅看行和。
+feedback:
+  correct: 正确将转移矩阵本征值转换为连续时间衰减率。
+  incorrect: 把常数右模态与平均值的左不变量区分开。
+  choices:
+    A: P 的本征值一变为生成元的零本征值。
+    B: P 的本征值零给出 −1/μ 的生成元本征值。
+    C: P 的本征值负一给出 −2/μ 的生成元本征值。
+    D: 行和为一不足以保证算术平均守恒；还要相应列和条件。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P210 的 Results, Eq. (2), relation between homogeneous network eigenvalues and relaxation modes 构造。原创三节点路径矩阵给出三个易核验模态，同时检查右常数模与左守恒量的区别。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-026-72161-w
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $r_0$ 对应不衰减模态。
+- id: B
+  content: $r_1$ 的幅度按 $e^{-t/\mu}$ 衰减。
+- id: C
+  content: $r_2$ 的幅度按 $e^{-2t/\mu}$ 衰减。
+- id: D
+  content: 因为 P 每行和为一，所以任意初值下三个节点的算术平均必定守恒。
+answer:
+  choices:
+  - A
+  - B
+  - C
+assets:
+- id: math-network
+  path: math/math-network.svg

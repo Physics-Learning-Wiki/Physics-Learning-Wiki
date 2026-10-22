@@ -1,0 +1,60 @@
+schema_version: 3
+id: q-000457
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.singularities
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  二态模型的一支谱局部写成 $E(z)=\sqrt z$。已知：沿绕原点的一周连续延拓，根会变号；而 $|E(z)|=\sqrt{|z|}\to0$ 当 $z\to0$。
+
+  若把 $E$ 看作复参数的多值函数，原点应如何分类？这里不预先把域切开。
+solution: |-
+  原点是分支点。绕行改变函数值表明无法在整个穿孔邻域单值解析，因而不能直接套用单值函数的可去奇点定理。又因模趋于零，它也不是使模发散的普通极点。
+
+  更强的检查：若在原点存在解析根 $f$，则 $f^2=z$ 且 $f(0)=0$。设非零解析函数 $f$ 的零点阶数为整数 $m\geq1$，则 $f^2$ 的零点阶数为 $2m$，不能等于 $z$ 的一阶零点。这排除了可去延拓。
+
+  研究对应：Methods, Eqs. (7)–(10)。教学范围：不借此判断矩阵元是否有极点，也不涉及贝里相位。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+hints:
+- 可去奇点定理需要穿孔邻域上的单值解析函数。
+- 根的模不发散，但绕行后会变号。
+feedback:
+  correct: 利用多值性而非仅靠函数模判断。
+  incorrect: 有界性并不足以把多值函数的分支点判成可去奇点。
+  choices:
+    A: 二阶极点也会发散，并不能解释绕行换支。
+    B: 缺少整个穿孔邻域上的单值解析前提。
+    C: 绕行会换支，符合分支点的特征。
+    D: 一阶极点会发散，且是单值函数的孤立奇点。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P202 的 Methods, Eqs. (7)–(10) 构造。只讨论论文平方根本征值的复分析分类。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s42005-024-01595-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 二阶极点
+- id: B
+  content: 可去奇点
+- id: C
+  content: 分支点
+- id: D
+  content: 一阶极点
+answer:
+  choice: C

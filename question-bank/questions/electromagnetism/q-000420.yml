@@ -1,0 +1,87 @@
+schema_version: 3
+id: q-000420
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.dipole-field
+- magnetostatics.superposition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  一种永磁机器人控制系统使用两个同步磁源，在中间区域建立可控制的磁场。下面取它们的一个静态取向来检查场的叠加。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+
+  将两磁体看作点磁偶极子，分别位于 $x=-a$、$x=+a$，磁矩均为 $\mathbf m=m\hat{\mathbf x}$，$m,a>0$。求原点的磁场。可用单个偶极子的磁场：
+
+  $$
+  \mathbf B(\mathbf r)=\frac{\mu_0}{4\pi r^3}
+  [3(\mathbf m\cdot\hat{\mathbf r})\hat{\mathbf r}-\mathbf m],
+  $$
+
+  其中 $\mathbf r$ 从磁源指向观察点。忽略其他磁性物体。
+
+  ![教学模型示意：两点磁源位于 x=−a 与 x=+a，磁矩均沿 +x，原点 O 在中间，两侧距离均为 a。](asset:symmetric-dipoles)
+
+  图为原创教学示意，非按比例绘制。两点磁源位于 x=−a 与 x=+a，磁矩均沿 +x，原点 O 在中间，两侧距离均为 a。
+solution: |-
+  左源到原点的单位矢量为 $+\hat{\mathbf x}$，右源到原点为 $-\hat{\mathbf x}$。在后一种情形，点积和单位矢量同时改变符号，所以二者产生的轴向场都沿 $+\hat{\mathbf x}$，各为 $\mu_0m/(2\pi a^3)$。相加得
+
+  $$
+  \mathbf B(0)=\frac{\mu_0m}{\pi a^3}\hat{\mathbf x}.
+  $$
+
+  检查：将两个磁矩都反向，总场也反向；距离加倍，中心场变为原来的 1/8。不能仅因源位于两侧就认定磁场相消。
+
+  选项辨析：
+
+  两个同向磁矩的轴向场在中心同向相加。
+
+  空间位置对称并不自动使矢量场相消；磁矩的方向也必须考虑。
+
+  给定磁矩沿 +x，中心属于两源的轴线上，叠加方向为 +x。
+
+  该值遗漏轴向系数 2 以及第二个磁源的贡献。
+
+  适用范围：不计算机器人运动学，也不把点偶极近似当成论文的精确有限磁体模型。
+
+  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous environments，Field generation discussion, Fig. 1 and paragraph describing superposition of two identical magnetic dipole sources。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。
+hints:
+- 分别写出两个从源指向原点的单位矢量。
+- 右源的点积和方向矢量会同时改变符号。
+feedback:
+  correct: 关键理解：利用磁偶极方向与叠加求中心场。
+  incorrect: 请检查：分别写出两个从源指向原点的单位矢量。
+  choices:
+    A: 空间位置对称并不自动使矢量场相消；磁矩的方向也必须考虑。
+    B: 给定磁矩沿 +x，中心属于两源的轴线上，叠加方向为 +x。
+    C: 该值遗漏轴向系数 2 以及第二个磁源的贡献。
+    D: 两个同向磁矩的轴向场在中心同向相加。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41598-025-15247-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0$。
+- id: B
+  content: $-\mu_0m\,\hat{\mathbf x}/(\pi a^3)$。
+- id: C
+  content: $\mu_0m\,\hat{\mathbf x}/(4\pi a^3)$。
+- id: D
+  content: $\mu_0m\,\hat{\mathbf x}/(\pi a^3)$。
+answer:
+  choice: D
+assets:
+- id: symmetric-dipoles
+  path: electromagnetism/symmetric-dipoles.svg

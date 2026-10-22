@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000414
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-dipole
+- electrostatics.potential-superposition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  接触起电研究使用空间分离的正负离子来表征界面电荷偏置。整体中性会改变远处电势的主要衰减阶数。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+
+  忽略界面，把该离子对放在绝对介电常数为 $\varepsilon$ 的无限均匀介质中。正电荷 $+e$ 在 $z=\ell/2$，负电荷 $-e$ 在 $z=-\ell/2$。在正 z 轴上 $r>\ell/2$ 的位置，电势为
+
+  $$
+  \Phi(r)=\frac{e}{4\pi\varepsilon}
+  \left(\frac1{r-\ell/2}-\frac1{r+\ell/2}\right).
+  $$
+
+  在 $r\gg\ell$ 时，非零的主导电势按什么规律随 r 衰减？
+solution: |-
+  先合并分式，避免把两个大项分别近似而丢失相消：
+
+  $$
+  \Phi(r)=\frac{e\ell}{4\pi\varepsilon[r^2-(\ell/2)^2]}
+  \simeq\frac{e\ell}{4\pi\varepsilon r^2}.
+  $$
+
+  因此主导势按 $r^{-2}$ 衰减。单极的 $r^{-1}$ 项因总电荷为零而消失；偶极电场再对空间求导，才具有 $r^{-3}$ 尺度。检查：$\ell\to0$ 时偶极势消失；误差的相对量级是 $(\ell/r)^2$。
+
+  选项辨析：
+
+  这对应非零净电荷的单极项；本题正负电荷的单极项相消。
+
+  相减后分子为 eℓ，远场分母约为 r²，因此是偶极电势。
+
+  这个阶数对应偶极电场的典型远场尺度，不是本题的电势。
+
+  两电荷距离不同，电势不能在正轴上逐点相消。
+
+  适用范围：不包含真实界面极化，也不把远场展开用于离子间距离同量级的区域。
+
+  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Fig. 4A and ion-pair separation coordinate。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。
+hints:
+- 先把两个分式通分，再取 r 远大于 ℓ 的极限。
+- 题目问的是电势，而不是电场。
+feedback:
+  correct: 关键理解：从相消的库仑势识别电偶极的远场衰减。
+  incorrect: 请检查：先把两个分式通分，再取 r 远大于 ℓ 的极限。
+  choices:
+    A: 相减后分子为 eℓ，远场分母约为 r²，因此是偶极电势。
+    B: 两电荷距离不同，电势不能在正轴上逐点相消。
+    C: 这个阶数对应偶极电场的典型远场尺度，不是本题的电势。
+    D: 这对应非零净电荷的单极项；本题正负电荷的单极项相消。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-46932-2
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $r^{-2}$。
+- id: B
+  content: 在所有 r 处严格为零。
+- id: C
+  content: $r^{-3}$。
+- id: D
+  content: $r^{-1}$。
+answer:
+  choice: A

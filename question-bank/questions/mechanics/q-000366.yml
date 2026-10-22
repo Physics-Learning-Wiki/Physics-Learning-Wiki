@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000366
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.oscillations
+concepts:
+- oscillations.harmonic-motion
+- oscillations.parameter-sensitivity
+type: single_choice
+choice_order: shuffle
+stem: |-
+  扭转微摆的频率既受悬挂刚度影响，也受重力恢复力矩影响；论文把频率对重力的灵敏度作为重力计的关键指标。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+
+  采用原创单自由度教学模型 $f(g)=\frac{1}{2\pi}\sqrt{(\kappa+mg\ell)/I}$。其中 $I,m,\ell,\kappa$ 为正常数，改变 $g$ 时均不变。在参考重力 $g_0$ 下，使用论文报告的近似值 $f(g_0)=32\,\mathrm{Hz}$，$\left.\frac{df}{dg}\right|_{g_0}=5\,\mathrm{Hz}/g_0$；后一写法表示 $g_0(df/dg)=5\,\mathrm{Hz}$。定义重力刚度占比 $r=mg_0\ell/(\kappa+mg_0\ell)$。
+
+  在这个模型中，r 最接近以下哪一个数？
+hints:
+- 先求 df/dg，再寻找能够形成刚度比值的组合。
+- 检查求导中的 1/2 和各量的单位。
+feedback:
+  correct: 用频率对重力加速度的导数，区分重力刚度和总恢复刚度。，并保留了题设的适用条件。
+  incorrect: 先求 df/dg，再寻找能够形成刚度比值的组合。
+  choices:
+    A: 对频率的平方根关系求导后得到重力刚度约占总刚度的 31%。
+    B: 把频率相对变化直接当成刚度相对变化，遗漏了平方根求导的系数。
+    C: 在正确的微分关系外又额外乘了一个 2。
+    D: 该值大于 1，与两项均为正的刚度组成也不相容。
+solution: |-
+  令 $K=\kappa+mg\ell$。对 $f=(2\pi)^{-1}\sqrt{K/I}$ 求导，得到 $df/dg=f\,m\ell/(2K)$。在 $g_0$ 处乘以 $2g_0/f$，恰有 $r=(2g_0/f)(df/dg)$，所以 $r=2\times5/32=0.3125$。该比值不是 $5/32$，因为频率与刚度的平方根成正比。
+
+  **检查与物理含义：** $g_0(df/dg)/f$ 无量纲，且 $0<r<1$。若悬挂刚度趋零，模型给出 $df/dg=f/(2g)$，相同公式正好返回 $r=1$。
+
+  **适用范围：** 忽略悬挂参数随环境与重力方向改变的耦合；由近似报告值得到的 0.3125 不代表实验四位有效数字的测量精度。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Published abstract; main text Eqs. (2)–(3), gravitational stiffness and Fig. 2；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；用悬挂线性刚度加重力线性刚度的教学模型解释论文给出的频率与重力灵敏度。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1103/nmx5-hygh
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: '0.3125'
+- id: B
+  content: '0.15625'
+- id: C
+  content: '0.625'
+- id: D
+  content: '1.60'
+answer:
+  choice: A

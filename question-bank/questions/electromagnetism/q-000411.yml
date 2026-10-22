@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000411
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.electrostatics
+concepts:
+- electrostatics.electric-dipole
+type: numeric
+choice_order: fixed
+stem: |-
+  接触起电研究用正、负离子的 z 坐标差来描述其在两表面之间的分离。该坐标差与物理电偶极矩相差一个电荷因子。 [研究来源](https://www.nature.com/articles/s41467-024-46932-2)
+
+  图中正离子为 $+e$，负离子为 $-e$，且 $z_+-z_-=\ell=2.00\,\mathrm{nm}$。这是用于计算的示例离子间距；取 $e=1.60\times10^{-19}\,\mathrm C$。两离子构成整体中性的电荷对。
+
+  求物理电偶极矩的 z 分量 $p_z$，**以 C*m 为单位输入带符号的十进制或科学计数法数值及单位**，保留三位有效数字。
+
+  ![教学模型示意：上方 A 与下方 B 表面之间有一正一负离子，正离子坐标 z_+ 高于负离子坐标 z_-；+z 向上，ℓ=z_+−z_-，d 表示两表面间距。](asset:ion-pair)
+
+  图为原创教学示意，非按比例绘制。上方 A 与下方 B 表面之间有一正一负离子，正离子坐标 z_+ 高于负离子坐标 z_-；+z 向上，ℓ=z_+−z_-，d 表示两表面间距。
+solution: |-
+  根据定义 $p_z=\sum_i q_i z_i=e z_+-e z_-=e\ell$。因正离子位于更大的 z，符号为正：
+
+  $$
+  p_z=1.60\times10^{-19}\times2.00\times10^{-9}
+  =+3.20\times10^{-28}\,\mathrm{C\,m}.
+  $$
+
+  检查：单位是电荷乘长度；共同平移两离子，额外项等于总电荷乘平移量，因整体中性而抵消。论文的坐标差指标若只有长度单位，就不能直接当成以 C m 为单位的物理偶极矩。
+
+  适用范围：不包含水分子或聚合物的极化贡献；示例间距不是从图中数字化取得。
+
+  来源定位：Thermodynamic driving forces in contact electrification between polymeric materials，Results, Validation by two-surface simulations, Fig. 4A and paragraph defining the ionic separation coordinate。DOI: [10.1038/s41467-024-46932-2](https://doi.org/10.1038/s41467-024-46932-2)。
+hints:
+- 物理偶极矩是 Σq_i z_i，而不是单独的坐标差。
+- 将纳米换为米后再乘元电荷。
+feedback:
+  correct: 关键理解：把离子坐标差转换为具有正确单位的电偶极矩。
+  incorrect: 请检查：物理偶极矩是 Σq_i z_i，而不是单独的坐标差。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-46932-2
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 3.2e-28
+  tolerance:
+    type: absolute
+    value: 1.0e-30
+  unit:
+    required: true
+    canonical: C*m
+    accepted:
+    - C*m
+assets:
+- id: ion-pair
+  path: electromagnetism/ion-pair.svg

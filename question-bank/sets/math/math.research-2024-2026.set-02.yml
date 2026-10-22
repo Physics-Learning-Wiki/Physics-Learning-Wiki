@@ -1,0 +1,20 @@
+schema_version: 1
+id: math.research-2024-2026.set-02
+title: 近期研究中的数学方法：第2组
+description: 本科研究背景练习；覆盖积分变换与广义函数。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000460
+  - q-000461
+  - q-000462
+  - q-000463
+  - q-000464
+  - q-000465
+  - q-000466
+  - q-000467
+  - q-000468
+  - q-000469
+  order: fixed

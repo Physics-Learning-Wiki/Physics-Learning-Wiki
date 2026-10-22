@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000392
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- dynamics.drag-model
+- dynamics.energy-conservation
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  水凝胶弹射论文的高度反演公式包含上升段空气阻力；下面以常系数二次阻力模型检验这一反演结构。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+
+  质量 m 的载荷从 $y=0$ 以 $v_0>0$ 竖直向上运动，取向上为正。上升时 $v=\dot y\ge0$，运动方程 $m\dot v=-mg-cv^2$，其中 $c>0$ 为常数。最高点为 $y=h>0$，此处 $v=0$。定义 $u(y)=v^2$，并只对上升段使用该模型。
+
+  以下哪些陈述成立？选择所有成立的陈述。
+hints:
+- 先使用 u=v²，将链式法则中的 v 因子一起处理。
+- 在解中代入最高点边界条件，再解出初始速度。
+feedback:
+  correct: 把速度随时间的方程改写为速度平方随高度的方程，并检查阻力反演的量纲与极限。，并保留了题设的适用条件。
+  incorrect: 先使用 u=v²，将链式法则中的 v 因子一起处理。
+  choices:
+    A: 利用 v dv/dy= dv/dt，把速度平方变成线性未知函数。
+    B: 从 cv² 的力单位反推，得到 kg/m。
+    C: 该负指数形式没有正确地从最高点条件反解初速度。
+    D: 空气阻力消耗能量，且指数不等式给出严格的模型证明。
+solution: |-
+  链式法则给出 $\dot v=v\,dv/dy$，因此 $du/dy=2v\,dv/dy=-2g-(2c/m)u$。解这条一阶线性方程得 $u(y)+mg/c=(v_0^2+mg/c)e^{-2cy/m}$。在 $y=h$ 代入 $u=0$，整理为 $v_0^2=(mg/c)(e^{2ch/m}-1)$。因为 $cv^2$ 为力，c 的量纲为质量/长度。又因正的 $x=2ch/m$ 满足 $e^x-1>x$，故 $v_0^2>2gh$。把正指数误换成饱和的负指数会得到错误的反演关系。
+
+  **检查与物理含义：** $2ch/m$ 无量纲。令 $c\to0$，用 $e^{2ch/m}-1\sim2ch/m$ 得 $v_0^2\to2gh$，连续回到真空结果。
+
+  **适用范围：** 不评估真实载荷的阻力系数是否恒定，也不包含旋转、姿态变化或下降段阻力方向翻转。
+
+  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: Eq. (1), drag-corrected launch velocity inferred from height；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；独立推导常系数二次阻力的竖直上升公式，结构上对应论文 Eq. (1) 的高度反演。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-026-77391-6
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\dfrac{du}{dy}=-2g-\dfrac{2c}{m}u$。
+- id: B
+  content: c 的 SI 单位为 $\mathrm{kg/m}$。
+- id: C
+  content: 反演结果为 $v_0^2=\dfrac{mg}{c}(1-e^{-2ch/m})$。
+- id: D
+  content: 同一正高度 h 下，若 c>0，则反推速度严格大于 $\sqrt{2gh}$。
+answer:
+  choices:
+  - A
+  - B
+  - D

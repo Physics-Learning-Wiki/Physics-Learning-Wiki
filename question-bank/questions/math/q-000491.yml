@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000491
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.eigenfunction-expansion
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
+  考虑原创无量纲矩阵及其右本征向量矩阵
+
+  $$J=\begin{pmatrix}1&1\\0&2\end{pmatrix},\quad P=\begin{pmatrix}1&1\\0&1\end{pmatrix},\quad J=P\begin{pmatrix}1&0\\0&2\end{pmatrix}P^{-1}.$$
+
+  $P$ 的两列记为 $r_1,r_2$；左基底行向量 $\ell_1,\ell_2$ 是 $P^{-1}$ 的两行，满足 $\ell_i r_j=\delta_{ij}$。选出所有正确结论，采用完全一致评分。这里“左基底”完全由上述定义给出。
+solution: |-
+  直接求逆有 $P^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix}$。因此 $\ell_1=(1,-1)$、$\ell_2=(0,1)$，它们与右列向量的四个乘积组成单位矩阵。
+
+  逆算子为
+
+  $$G=P\begin{pmatrix}1&0\\0&1/2\end{pmatrix}P^{-1}=r_1\ell_1+\frac12r_2\ell_2=\begin{pmatrix}1&-1/2\\0&1/2\end{pmatrix}.$$
+
+  右向量没有正交归一，因此不能把 $P^{-1}$ 换成 $P^T$。检查：$PP^{-1}$ 与 $JG$ 都是单位矩阵；使用简单转置则不满足这些检验。这是基底代数问题，无需非厄米谱分类知识。
+
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, left/right eigenstate expansion of G。教学范围：仅讨论可对角化的示例；不处理缺陷矩阵或异常点处的广义本征向量。
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 先求 P 的逆矩阵，再读取各行。
+- 将每个本征值取倒数，基底变换方向保持不变。
+feedback:
+  correct: 正确使用了双正交基底及本征值的倒数。
+  incorrect: 一般本征向量矩阵的逆不等于转置，必须检验基底的正交性。
+  choices:
+    A: 它们是实际逆矩阵的两行。
+    B: 左、右基底夹住本征值倒数，构成逆算子。
+    C: 仅在实正交等额外条件下成立；本题 P 的列向量不正交。
+    D: 矩阵乘法与模态展开得到同一结果。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P209 的 Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, left/right
+    eigenstate expansion of G 构造。用可手算的三角矩阵显式构造左基底，检验不可直接用转置替代逆矩阵的原因。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-65422-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\ell_1=(1,-1)$，$\ell_2=(0,1)$。
+- id: B
+  content: $G=r_1\ell_1+\tfrac12r_2\ell_2$。
+- id: C
+  content: 因为 P 由本征向量组成，所以总可以令 $P^{-1}=P^T$。
+- id: D
+  content: $G=\begin{pmatrix}1&-1/2\\0&1/2\end{pmatrix}$。
+answer:
+  choices:
+  - A
+  - B
+  - D

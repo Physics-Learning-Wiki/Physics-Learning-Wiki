@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000481
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.bessel-function
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Bodet 等（2024）测量亚太赫兹贝塞尔束，观察到中心窄峰、同心环及有限距离内较稳定的束形。 [研究来源（DOI）](https://doi.org/10.1038/s41598-024-70542-z)。
+
+  采用解释贝塞尔束近轴结构的教学模型 $u^{\prime\prime}+u^{\prime}/r+k^2u=0$，$k>0$，并取轴线上规则解 $u(0)=1$。设
+
+  $$u(r)=a_0+a_1r^2+a_2r^4+\cdots,\qquad a_0=1.$$
+
+  可逐项求导和比较同次幂。选出所有正确结论；采用完全一致评分。这里只问近轴级数，不把低阶截断用于远处各环。
+solution: |-
+  对 $a_n r^{2n}$ 求两次导数，并加上一次导数除以 $r$，得到 $4n^2a_n r^{2n-2}$。比较 $r^{2n}$ 系数，得
+
+  $$4(n+1)^2a_{n+1}+k^2a_n=0.$$
+
+  因此 $a_1=-k^2/4$，$a_2=k^4/64$，且偶次幂展开给出 $u^{\prime}(0)=0$。局部二阶导数为 $u^{\prime\prime}(0)=2a_1=-k^2/2$，不是 $-k^2$。
+
+  检查：首项 $1-k^2r^2/4$ 表示中心向外首先降低；$k^2r^2$ 与 $k^4r^4$ 均无量纲。保留四次项后代回方程可消去常数项与二次项，但不意味着整个无限区间已经精确。
+
+  研究对应：Results, Effect of beam type, measured narrow central lobe and concentric side structure in Fig. 6。教学范围：本题 k 为符号教学尺度；未从论文测量反演 k，也不以四次多项式拟合完整环形分布。
+
+  来源：[DOI 10.1038/s41598-024-70542-z](https://doi.org/10.1038/s41598-024-70542-z)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 求导后把每项都整理成 r 的偶次幂。
+- 二阶导数在零点等于二次项系数的两倍。
+feedback:
+  correct: 正确保留了径向项 u′/r 对系数的贡献。
+  incorrect: 不能把二维径向方程直接当作 u″+k²u=0。
+  choices:
+    A: 常数项比较给出 4a1+k²=0。
+    B: 二次项比较给出 16a2+k²a1=0。
+    C: 每项的第一导数都含正的奇次幂，零点极限为零。
+    D: 忽略了径向项会产生这个错误；正确值为 −k²/2。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P207 的 Results, Effect of beam type, measured narrow central lobe and concentric side structure in Fig.
+    6 构造。在原创给定的 J0 径向方程内计算局部级数，建立中心曲率与径向尺度参数的关系。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-024-70542-z
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $a_1=-k^2/4$。
+- id: B
+  content: $a_2=k^4/64$。
+- id: C
+  content: $u^{\prime}(0)=0$。
+- id: D
+  content: $u^{\prime\prime}(0)=-k^2$。
+answer:
+  choices:
+  - A
+  - B
+  - C

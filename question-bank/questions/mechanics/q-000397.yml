@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000397
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.kinematics
+concepts:
+- kinematics.angular-motion
+- kinematics.relative-velocity
+type: true_false
+choice_order: fixed
+stem: |-
+  滚转翅果同时具有展向滚转和绕竖直轴的进动；这两项角速度的方向通常不同。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
+
+  只考察一个瞬间。理想化展向单位向量 $\mathbf e_s$ 水平，竖直单位向量为 $\mathbf e_z$，且 $\mathbf e_s\cdot\mathbf e_z=0$。相对于随进动转动的参考架，翅果以角速率 $\omega_r>0$ 绕展向滚转；该参考架相对惯性系以角速率 $\omega_p>0$ 绕竖直轴转动。两项瞬时角速度贡献分别为 $\omega_r\mathbf e_s$ 与 $\omega_p\mathbf e_z$，无其他转动分量。
+
+  ![同一瞬间的角速度轴图：水平展向 e_s 与竖直方向 e_z 正交，分别标出 ω_r 和 ω_p，二者正向按箭头定义。](asset:m048)
+
+  *原创教学示意图，非按比例绘制。*
+
+  判断正误：“此刻翅果相对于惯性系的总角速度大小必为 $\omega_r+\omega_p$。”
+hints:
+- 先把两个贡献写成角速度向量。
+- 平方求模时检查交叉点积，而不要直接加两个正数。
+feedback:
+  correct: 把不同轴的瞬时角速度按矢量合成，区分角速率之和与角速度合矢量大小。，并保留了题设的适用条件。
+  incorrect: 先把两个贡献写成角速度向量。
+solution: |-
+  该判断错误。瞬时角速度应作矢量合成：$\boldsymbol\omega=\omega_r\mathbf e_s+\omega_p\mathbf e_z$。点乘自身并使用两轴正交，得 $|\boldsymbol\omega|^2=\omega_r^2+\omega_p^2$，所以大小为 $\sqrt{\omega_r^2+\omega_p^2}$。对两个严格正的正交分量，这小于它们的标量和。标量直接相加只适用于同向共线贡献，而不适用于本题两条正交轴。
+
+  **检查与物理含义：** 若两速率相等为 $\omega$，正确合速率是 $\sqrt2\omega$ 而非 $2\omega$；若其中一项趋零，则回到另一项的大小。
+
+  **适用范围：** 真实翅果展向可能有锥角；非正交时需保留交叉点积。本题不讨论有限转动顺序的交换问题。
+
+  **来源定位：** Precession dynamics and morphology of rolling samaras，Introduction and §3.1, spanwise rolling superimposed on vertical precession; Figs. 1 and 3；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；把论文的双轴转动简化为某瞬间正交的滚转与进动，讨论角速度而非有限转角叠加。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1098/rsif.2025.0391
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false
+assets:
+- id: m048
+  path: mechanics/m048.svg

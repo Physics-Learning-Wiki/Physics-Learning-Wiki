@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000466
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.generalized-functions
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+
+  取 $\partial_tu=D\Delta u$，初值为 $u_0=0.3\delta(\boldsymbol x-\boldsymbol a)+0.7\delta(\boldsymbol x-\boldsymbol b)$；两个点都在扩散区域内。边界自 $t=0$ 起保持时间无关的值 $f(\boldsymbol x)$。定义 $U=\int_0^\infty e^{-st}u\,dt$，其中 $s>0$。使用 $\int\delta(\boldsymbol x-\boldsymbol a)d\boldsymbol x=1$。
+
+  选出所有正确陈述；采用完全一致评分。
+solution: |-
+  拉普拉斯变换是线性的，且时间导数贡献 $sU-u_0$，故 $(s-D\Delta)U$ 等于题设的两个带权点源。边界上 $f$ 不依赖时间，所以 $U|_{\partial\Omega}=f\int_0^\infty e^{-st}dt=f/s$。
+
+  初值总积分为 $0.3+0.7=1$，这是狄拉克分布的归一化，不要求把点源当作有限高度的普通函数。检查：令两点重合，源项仍成为单位权重点源；令边界值为零，变换后也为零。
+
+  研究对应：Section 2, Eqs. (5a), (5b), (7), particular-solution construction。教学范围：初值归一化不代表有非零边界注入时的后续总量守恒。
+
+  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 初值项不会因拉普拉斯变换消失。
+- 时间常数的单边拉普拉斯变换为常数除以 s。
+feedback:
+  correct: 点源权重和时间边界变换均保持一致。
+  incorrect: 将时间积分与空间分布的作用区分开。
+  choices:
+    A: 源项就是初值分布的线性组合。
+    B: 常值边界对时间积分产生因子 $1/s$。
+    C: 遗漏了时间积分，量纲也不一致。
+    D: 每个点源积分为一，总权重相加得到一。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P204 的 Section 2, Eqs. (5a), (5b), (7), particular-solution construction 构造。将初值原创扩为两点混合，用分布归一化和变换线性性检查研究框架的输入。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1007/s10915-026-03222-x
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $(s-D\Delta)U=0.3\delta(\boldsymbol x-\boldsymbol a)+0.7\delta(\boldsymbol x-\boldsymbol b)$。
+- id: B
+  content: 边界上 $U=f/s$。
+- id: C
+  content: 边界上 $U=f$。
+- id: D
+  content: 初值的空间总积分为 $1$。
+answer:
+  choices:
+  - A
+  - B
+  - D

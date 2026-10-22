@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000368
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.oscillations
+concepts:
+- oscillations.harmonic-motion
+- analytical.equilibrium-stability
+type: single_choice
+choice_order: shuffle
+stem: |-
+  扭转微摆研究比较了正常和倒置重力方向，显示悬挂刚度可以改变倒置构型的稳定性。（[研究来源](https://doi.org/10.1103/nmx5-hygh)）
+
+  原创教学模型中，摆的转动惯量为 $I>0$，质心到转轴距离为 $\ell>0$，悬挂提供扭转势能 $\kappa\theta^2/2$，其中 $\kappa>0$。倒置位置定义为 $\theta=0$，重力势能为 $mg\ell\cos\theta$。因此 $U(\theta)=\kappa\theta^2/2+mg\ell\cos\theta$。只讨论 $\theta=0$ 附近的线性稳定性，不讨论大角度逃逸。
+
+  下列哪一组严格条件和小振动角频率是正确的？
+hints:
+- 在平衡点求势能的二阶导数。
+- 小振动要求势能曲率为正。
+feedback:
+  correct: 从势能曲率判断倒置构型是否可作小振动。，并保留了题设的适用条件。
+  incorrect: 在平衡点求势能的二阶导数。
+  choices:
+    A: 零线性刚度不对应非零简谐频率，必须另作高阶分析。
+    B: 负曲率导致线性不稳定，不能把增长率当作振动频率。
+    C: 倒置重力提供负的势能曲率，悬挂刚度必须超过其绝对值。
+    D: 倒置重力项降低而非增加线性恢复刚度。
+solution: |-
+  $U\prime(0)=0$，所以倒置位置是平衡点；是否稳定取决于 $U\prime\prime(0)=\kappa-mg\ell$。当 $\kappa>mg\ell$ 时势能在该点有正曲率，线性方程为 $I\ddot\theta+(\kappa-mg\ell)\theta=0$，故 $\omega=\sqrt{(\kappa-mg\ell)/I}$。当 $\kappa<mg\ell$ 时存在指数增长解。当二者相等时线性刚度为零，线性分析不能给出正的小振动频率，需检查更高阶项。
+
+  **检查与物理含义：** $\kappa$ 与 $mg\ell$ 都具有力矩量纲；曲率除以转动惯量具有 $\mathrm{s^{-2}}$ 量纲。令 $g\to0$，恢复为普通扭转振子的 $\sqrt{\kappa/I}$。
+
+  **适用范围：** “稳定”限定为正线性曲率；临界点和大角度运动不由本题线性近似决定。
+
+  **来源定位：** Ultralow Loss Torsion Micropendula for Chipscale Gravimetry，Fig. 1c, pendulum orientation and normal/inverted resonance frequencies；[论文 DOI](https://doi.org/10.1103/nmx5-hygh)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；以重力势能和线性悬挂势能解释论文正常/倒置比较；不复制实际微加工结构。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1103/nmx5-hygh
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\kappa=mg\ell$ 时是具有非零线性频率的简谐振子。
+- id: B
+  content: $\kappa<mg\ell$，且 $\omega=\sqrt{(mg\ell-\kappa)/I}$。
+- id: C
+  content: $\kappa>mg\ell$，且 $\omega=\sqrt{(\kappa-mg\ell)/I}$。
+- id: D
+  content: 任意 $\kappa>0$ 都稳定，且 $\omega=\sqrt{(\kappa+mg\ell)/I}$。
+answer:
+  choice: C

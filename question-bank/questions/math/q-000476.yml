@@ -1,0 +1,63 @@
+schema_version: 3
+id: q-000476
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.boundary-data
+type: numeric
+choice_order: fixed
+stem: |-
+  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  采用无流动、零通量的二元教学模型
+
+  $$\frac{dC}{dy}=-S_T\frac{dT}{dy}C(1-C),$$
+
+  其中 $S_T$ 为待定常数。假设端点值为 $C(0)=0.10$、$C(h)=0.05$，热端与冷端温差为 $T(h)-T(0)=8\,\mathrm K$。这些数值均为教学选取，不是论文测量值。可用 $d\ln[C/(1-C)]/dy=C^{\prime}/[C(1-C)]$。
+
+  求与上述端点条件相容的 $S_T$。输入数值并使用单位标签 `K^-1`，允许绝对误差 $0.0001$。
+solution: |-
+  将方程写成对数比值的导数并从零积分到 $h$：
+
+  $$\ln\frac{C(h)}{1-C(h)}-\ln\frac{C(0)}{1-C(0)}=-S_T[T(h)-T(0)].$$
+
+  两端浓度比值分别为 $1/19$ 与 $1/9$，所以 $S_T=\ln(19/9)/(8\,\mathrm K)\approx0.0934018\,\mathrm K^{-1}$。
+
+  检查：浓度向较热端降低，给出正的 $S_T$；$S_T\Delta T$ 无量纲；将结果代回指数关系，浓度比值之比为 $9/19$。这里仅作给定模型内的参数识别，没有用这两个教学浓度估计任何实际溶液的材料常数。
+
+  研究对应：Results, Theoretical framework for thermodiffusive separation, Eq. (1), definition S_T=D_T/D。教学范围：这一数值只是教学模型内的反算结果，不代表论文中海水或其他溶液的测量 Soret 系数。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 对数比值的变化等于 −S_T 乘温差。
+- 先把 0.10 和 0.05 各自转成 C/(1−C)。
+feedback:
+  correct: 端点信息和温差正确确定了模型中的系数。
+  incorrect: 直接对浓度取对数会漏掉非稀释条件下的 1−C 因子。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, Eq. (1), definition S_T=D_T/D 构造。用原创端点条件反求常系数，以检验非线性浓度方程的可识别关系。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s44221-025-00428-5
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 0.09340180022877764
+  tolerance:
+    type: absolute
+    value: 0.0001
+  unit:
+    required: true
+    canonical: K^-1
+    accepted:
+    - K^-1

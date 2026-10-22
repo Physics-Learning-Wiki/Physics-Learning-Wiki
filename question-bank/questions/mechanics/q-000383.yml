@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000383
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.scaling
+- analytical.kinematic-material-response
+type: single_choice
+choice_order: shuffle
+stem: |-
+  转动铰链材料的泊松比主要由几何比例决定，但等效弹性模量还包含铰链刚度和单元尺寸。（[研究来源](https://doi.org/10.1093/jom/ufae029)）
+
+  采用一自由度单元的关系 $X=2(a\cos\theta+b\sin\theta)$、$Y=2(a\sin\theta+b\cos\theta)$，以及小增量等效模量 $E_X=\frac{14\kappa}{h}\frac{X}{Y}\left(\frac{d\theta}{dX}\right)^2$。其中 h 是出平面厚度，$\kappa$ 是转动弹簧刚度。现在只把两个面内长度同时放大为 $a_{\rm new}=\lambda a$、$b_{\rm new}=\lambda b$，$\lambda>0$；保持 $\theta,h,\kappa$ 不变，且 $dX/d\theta\ne0$。泊松比定义为 $\nu_{XY}=-(dY/Y)/(dX/X)$。
+
+  与原单元相比，放大后的模量和泊松比如何变化？
+hints:
+- 分别追踪 X/Y 与 dθ/dX 的缩放。
+- 不要把题设固定的厚度或弹簧刚度也一起缩放。
+feedback:
+  correct: 在指定保持不变的参数下进行尺度分析，区分无量纲几何响应与有量纲刚度。，并保留了题设的适用条件。
+  incorrect: 分别追踪 X/Y 与 dθ/dX 的缩放。
+  choices:
+    A: 遗漏了 dθ/dX 随面内尺度的变化。
+    B: 泊松比是两个相对应变之比，不带长度尺度。
+    C: 几何放大使单位尺寸变化所需转角减小，导数应按 1/λ 缩放。
+    D: 等效模量含几何导数的平方，无量纲的应变比则保持不变。
+solution: |-
+  在同一角度下，X、Y 以及 $dX/d\theta,dY/d\theta$ 都乘以 $\lambda$。因此 $X/Y$ 不变，而 $d\theta/dX$ 乘以 $1/\lambda$，得到 $E_{X,\rm new}=E_X/\lambda^2$。两个相对应变 $dX/X$、$dY/Y$ 都不因共同缩放而改变，故 $\nu_{XY,\rm new}=\nu_{XY}$。这里 h 和铰链刚度被明确固定，不能套用所有尺寸与材料同时缩放的另一种情形。
+
+  **检查与物理含义：** $\kappa/h$ 的量纲是力，乘 $(d\theta/dX)^2$ 得压强。$\lambda=1$ 时所有量不变；面内尺寸加倍时模量变为四分之一，而泊松比不变。
+
+  **适用范围：** 实际制造时铰链截面和厚度也可能改变刚度，因此此结论只适用于题设的受控缩放。
+
+  **来源定位：** Auxetic metamaterial inspired by the seesaw motion，§2 Analysis, equivalent modulus expression E_i and geometric dimension equations；[论文 DOI](https://doi.org/10.1093/jom/ufae029)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；对论文的线性等效模量表达式进行受控尺度分析，明确固定哪些参数。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1093/jom/ufae029
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $E_{X,\rm new}=E_X$，泊松比不变。
+- id: B
+  content: $E_{X,\rm new}=E_X/\lambda^2$，泊松比乘以 $\lambda$。
+- id: C
+  content: $E_{X,\rm new}=\lambda^2E_X$，泊松比不变。
+- id: D
+  content: $E_{X,\rm new}=E_X/\lambda^2$，泊松比不变。
+answer:
+  choice: D

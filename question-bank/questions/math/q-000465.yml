@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000465
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.laplace-method
+type: single_choice
+choice_order: shuffle
+stem: |-
+  La Croix 与 Lindsay（2026）把有吸收边界的热扩散问题作拉普拉斯变换，再求解变换后的边值问题。 [研究来源（DOI）](https://doi.org/10.1007/s10915-026-03222-x)。
+
+  在扩散区域内部取 $\partial_tu=D\Delta u$，$D>0$，初值为点源 $u(\boldsymbol x,0)=\delta(\boldsymbol x-\boldsymbol x_0)$。定义
+
+  $$
+  U(\boldsymbol x,s)=\int_0^\infty e^{-st}u(\boldsymbol x,t)dt,\qquad \operatorname{Re}s>0,
+  $$
+
+  并假定无穷远时间的分部积分边界项为零。变换后的内部方程是哪一个？这里只讨论时间变换，不要求求出空间解。
+solution: |-
+  对时间导数分部积分：
+
+  $$
+  \int_0^\infty e^{-st}\partial_tu\,dt
+  =[e^{-st}u]_0^\infty+sU=-u_0+sU.
+  $$
+
+  空间算子可移出时间积分，故 $sU-u_0=D\Delta U$。整理为 $(s-D\Delta)U=\delta(\boldsymbol x-\boldsymbol x_0)$。初始点源成为变换后椭圆方程的源项。
+
+  检查：若初值为零，右端才变为零；若忽略空间变化，方程退化为 $U=u_0/s$，与常量时间函数的变换一致。
+
+  研究对应：Section 2, Eqs. (4), (5a); Section 1 point-source initial condition。教学范围：未求空间边界问题，也未验证 lightning 方法的收敛性。
+
+  来源：[DOI 10.1007/s10915-026-03222-x](https://doi.org/10.1007/s10915-026-03222-x)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先对时间导数作一次分部积分。
+- 下限 $t=0$ 的项带负号。
+feedback:
+  correct: 保留了初值并正确移动空间项。
+  incorrect: 初值不能在时间变换时丢掉，也不会额外乘上 s。
+  choices:
+    A: 只适用于零初值，与点源初值不符。
+    B: 初值项是 $u_0$，不是 $su_0$。
+    C: 把移项后的空间算子符号写反了。
+    D: 由 $sU-u_0=D\Delta U$ 直接得到。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P204 的 Section 2, Eqs. (4), (5a); Section 1 point-source initial condition 构造。保留研究的变换步骤，聚焦初值项，不使用其高阶数值算法。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1007/s10915-026-03222-x
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $(s-D\Delta)U=0$
+- id: B
+  content: $(s-D\Delta)U=s\delta(\boldsymbol x-\boldsymbol x_0)$
+- id: C
+  content: $(s+D\Delta)U=\delta(\boldsymbol x-\boldsymbol x_0)$
+- id: D
+  content: $(s-D\Delta)U=\delta(\boldsymbol x-\boldsymbol x_0)$
+answer:
+  choice: D

@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000495
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.eigenfunction-expansion
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  在论文指数等待时间的精确极限中，节点标量列向量 $x(t)$ 满足 $\dot x=(P-I)x/\mu$，$\mu>0$。取原创三节点均匀混合模型
+
+  $$P=\begin{pmatrix}0&1/2&1/2\\1/2&0&1/2\\1/2&1/2&0\end{pmatrix},\qquad x(0)=(3,0,0)^T.$$
+
+  这里 $I$ 是单位矩阵，$x$ 是节点标量，不必解释为归一化概率。已知常数向量 $(1,1,1)^T$ 的 $P$ 本征值为一，而分量和为零的向量的本征值为 $-1/2$。求 $t\to\infty$ 的 $x(t)$。
+solution: |-
+  把初值分解为 $x(0)=(1,1,1)^T+(2,-1,-1)^T$。第一项是本征值一的常数模态，在生成元 $(P-I)/\mu$ 下本征值为零；第二项的分量和为零，衰减率为 $[1-(-1/2)]/\mu=3/(2\mu)$。
+
+  所以 $x(t)=(1,1,1)^T+e^{-3t/(2\mu)}(2,-1,-1)^T$，极限为 $(1,1,1)^T$。检查：三个分量之和始终为三；零时刻恢复给定初值。此处算术平均守恒依赖所给对称、双随机矩阵，不能随意推广到所有异质网络。
+
+  研究对应：Results, Eq. (2), homogeneous exponential waiting-time limit and transition-matrix eigenmode discussion。教学范围：只使用精确指数等待极限；不将本题算术平均结论推广到异质等待时间或任意有向网络。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 分离初始向量的平均值部分和零和部分。
+- P 的本征值一在 P−I 中变成零。
+feedback:
+  correct: 保留了不衰减的常数模态，并让零和部分衰减。
+  incorrect: 扩散生成元有零本征值，所以不是每个模态都衰减到零。
+  choices:
+    A: 初值不是纯常数模态，非均匀部分会随时间变化。
+    B: 初始平均为一，这个常数模态保持不变。
+    C: 总和将从三变为九，不符合本题算子的守恒关系。
+    D: 误把零本征值模态也当作衰减项。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P210 的 Results, Eq. (2), homogeneous exponential waiting-time limit and transition-matrix eigenmode discussion 构造。原创三节点对称模型，将初值分为常数和零和模态，直接求长期投影。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-026-72161-w
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $(3,0,0)^T$
+- id: B
+  content: $(1,1,1)^T$
+- id: C
+  content: $(3,3,3)^T$
+- id: D
+  content: $(0,0,0)^T$
+answer:
+  choice: B

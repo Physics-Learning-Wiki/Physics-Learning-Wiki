@@ -1,0 +1,80 @@
+schema_version: 3
+id: q-000359
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.kinematics
+concepts:
+- kinematics.measurement
+- kinematics.position-time-graph
+type: single_choice
+choice_order: shuffle
+stem: |-
+  机器人研究使用 $240\,\mathrm{Hz}$ 的运动捕捉数据，并通过对位置求导计算速度。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
+  用中心差分估计某水平分量的速度：
+
+  $$
+  \widehat v(t)=\frac{\widehat x(t+\Delta t)-\widehat x(t-\Delta t)}{2\Delta t},\qquad \Delta t=1/240\,\mathrm{s}.
+  $$
+
+  为单独研究测量误差，假定真实位置在该小区间是时间的二次多项式，所以精确位置的中心差分给出真实瞬时速度。两次位置测量各有未知误差，绝对值均不超过 $\varepsilon=0.10\,\mathrm{mm}$；这是教学假定，并非论文给出的仪器精度。
+
+  不假定两个误差的符号或相关性，速度误差绝对值的最紧通用上界是多少？
+hints:
+- 把两个测量值分别写成真实值加误差。
+- 最坏情况下，一个误差为正极值、另一个为负极值。
+feedback:
+  correct: 估计位置差分重建速度时的最坏误差界，并保留了题设的适用条件。
+  incorrect: 把两个测量值分别写成真实值加误差。
+  choices:
+    A: 不能保证两个误差相消；相反极值能够达到更大误差。
+    B: 保留了分子中的 2，却漏掉中心差分分母中的 2。
+    C: 求导中的误差按时间间隔相除，不是相乘。
+    D: 两个误差的最坏差为 2ε，分母也含 2Δt。
+solution: |-
+  设两个位置误差为 $e_+,e_-$，则
+
+  $$
+  \widehat v-v=\frac{e_+-e_-}{2\Delta t}.
+  $$
+
+  由三角不等式，$|e_+-e_-|\le2\varepsilon$，故
+
+  $$
+  |\widehat v-v|\le\frac{\varepsilon}{\Delta t}
+  =10^{-4}\times240=0.024\,\mathrm{m/s}.
+  $$
+
+  当两个误差取相反极值时达到此界。较密采样可减小一般光滑轨迹的截断误差，却可能放大固定大小的位置测量误差。
+
+  **检查与物理含义：** 取 e+=ε、e−=−ε 达到所求上界，说明不是松界；米除以秒为速度。中心差分对二次多项式的偶次项正好相消。
+
+  **适用范围：** 真实噪声可能相关且数据可能滤波；该最坏误差界不是实验速度的不确定度报告。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods: Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；采用论文的采样率，另给位置误差界和二次真实轨迹以隔离速度重建的测量误差。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41586-024-08228-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $0.012\,\mathrm{m/s}$
+- id: B
+  content: $0.048\,\mathrm{m/s}$
+- id: C
+  content: $4.17\times10^{-7}\,\mathrm{m/s}$
+- id: D
+  content: $0.024\,\mathrm{m/s}$
+answer:
+  choice: D

@@ -1,0 +1,80 @@
+schema_version: 3
+id: q-000431
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.faraday-law
+- induction.mutual-inductance
+type: numeric
+choice_order: fixed
+stem: |-
+  无线植入微器件研究用线圈间的磁耦合供能。为单独理解感应电压，本题用两个固定线圈的低频集中参数模型，所有数值均为教学示例。 [研究来源](https://www.nature.com/articles/s41467-024-54542-1)
+
+  发射线圈电流为
+
+  $$
+  I_1(t)=I_0\cos(2\pi f t),\qquad I_0=0.50\ \mathrm A,\quad f=1.00\ \mathrm{MHz}.
+  $$
+
+  接收线圈保持开路。两线圈的互感恒为 \(M=20.0\ \mathrm{nH}\)，并按同名端约定使接收磁通链为 \(\Lambda_2(t)=M I_1(t)\)。感应电动势定义为 \(\mathcal E_2=-d\Lambda_2/dt\)。
+
+  假设磁准静态模型成立，忽略寄生电容、传播延迟和接收线圈对发射电流的影响。求 \(\mathcal E_2\) 的峰值，以 \(\mathrm{mV}\) 作答。
+
+  ![教学模型示意：发射线圈电流为 \(I_1(t)\)，接收线圈两端开路；两线圈的位置和取向固定，以互感 \(M\) 表示磁通链耦合。](asset:two-coil-link)
+
+  图为原创教学示意，非按比例绘制。发射线圈电流为 \(I_1(t)\)，接收线圈两端开路；两线圈的位置和取向固定，以互感 \(M\) 表示磁通链耦合。
+solution: |-
+
+  $$
+  \mathcal E_2(t)=-M\frac{dI_1}{dt}
+  =2\pi fMI_0\sin(2\pi ft).
+  $$
+
+  峰值为
+
+  $$
+  \mathcal E_{2,0}
+  =2\pi(1.00\times10^6)(20.0\times10^{-9})(0.50)
+  =0.0628319\ \mathrm V=62.8319\ \mathrm{mV}.
+  $$
+
+  取 \(62.8\ \mathrm{mV}\)。互感已包括接收线圈的匝数，不能再乘一次匝数。单位检查：\(\mathrm{Hz}\cdot\mathrm H\cdot\mathrm A=\mathrm V\)。当 \(f\to0\) 或 \(M\to0\) 时，感应电压随之趋零；余弦电流对应正弦电动势，峰值时刻并不相同。
+
+  适用范围：所得为教学模型的开路电动势峰值，不是论文微芯片的供电电压或可用功率。
+
+  来源定位：Patterned electrical brain stimulation by a wireless network of implantable microdevices，Results: System overview, Fig. 1a,d; Methods: RF wireless link and coil design。DOI: [10.1038/s41467-024-54542-1](https://doi.org/10.1038/s41467-024-54542-1)。
+hints:
+- 先由 \(\Lambda_2=MI_1\) 求时间导数；互感恒定。
+- 把 MHz 和 nH 换成 SI 单位，最后由 V 换成 mV。
+feedback:
+  correct: 关键理解：将互感定义与正弦电流的时间导数结合，计算开路感应电压峰值。
+  incorrect: 请检查：先由 \(\Lambda_2=MI_1\) 求时间导数；互感恒定。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-024-54542-1
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: 62.8319
+  tolerance:
+    type: absolute
+    value: 0.1
+  unit:
+    required: true
+    canonical: mV
+    accepted:
+    - mV
+assets:
+- id: two-coil-link
+  path: electromagnetism/two-coil-link.svg

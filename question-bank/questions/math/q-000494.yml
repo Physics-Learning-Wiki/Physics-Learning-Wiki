@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000494
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.eigenfunction-greens
+concepts:
+- math.green-function
+type: free_response
+choice_order: fixed
+stem: |-
+  Tang 等（2025）以电路研究损耗引起的边界模变化，并用电路矩阵的逆矩阵和本征模展开计算响应。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-65422-7)。
+
+  作为论文格林矩阵方法的原创离散边值示例，取三处内部节点，外侧固定值为 $v_0=v_4=0$，内部算子与中心点源为
+
+  $$L=\begin{pmatrix}2&-1&0\\-1&2&-1\\0&-1&2\end{pmatrix},\qquad f=(0,1,0)^T.$$
+
+  ![三内部节点与两个零边界的示意](asset:math-chain)
+
+  图中文字说明：节点 0、4 为零边界，1、2、3 为未知量，单位点源位于节点 2。给定正交归一本征向量
+
+  $$q_-=(1,\sqrt2,1)^T/2,\quad q_0=(1,0,-1)^T/\sqrt2,\quad q_+=(1,-\sqrt2,1)^T/2,$$
+
+  对应本征值为 $2-\sqrt2,\ 2,\ 2+\sqrt2$。可使用 $L^{-1}f=\sum_n q_n(q_n^Tf)/\lambda_n$。请用这个展开求三个内部响应，并代回 $Lv=f$ 检查，说明为什么其中一个模态没有贡献。
+solution: |-
+  三个输入投影依次为 $q_-^Tf=1/\sqrt2$、$q_0^Tf=0$、$q_+^Tf=-1/\sqrt2$。反对称模态 $q_0$ 在中心节点为零，因此中心点源对它的投影为零。
+
+  两侧节点的响应相同，均为
+
+  $$v_1=v_3=\frac1{2\sqrt2}\left(\frac1{2-\sqrt2}-\frac1{2+\sqrt2}\right)=\frac12.$$
+
+  中心节点为
+
+  $$v_2=\frac12\left(\frac1{2-\sqrt2}+\frac1{2+\sqrt2}\right)=1.$$
+
+  所以 $v=(1/2,1,1/2)^T$。代回得到 $(2v_1-v_2,-v_1+2v_2-v_3,-v_2+2v_3)^T=(0,1,0)^T$；外侧零值正是给定离散算子的边界约定。检查：所有本征值为正且非零，逆算子存在；响应关于中心对称，与点源及边界对称性一致。
+
+  研究对应：Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, complete inverse-matrix eigenstate expansion。教学范围：这是数学离散边值例子，不代表论文的拓扑电路几何或损耗参数。
+
+  来源：[DOI 10.1038/s41467-025-65422-7](https://doi.org/10.1038/s41467-025-65422-7)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+hints:
+- 先计算三个模态对中心单位向量的内积。
+- 将两个非零贡献相加，注意第三模态中心分量的负号。
+- 最后用原三行差分关系核对。
+feedback:
+  correct: 模态投影、对称性和直接代回相互印证。
+  incorrect: 中心点源并非等量激发所有模态；先检查投影是否为零。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P209 的 Methods, Mapping between the eigenstates of the Laplacian J and the voltage distribution, complete
+    inverse-matrix eigenstate expansion 构造。将同一逆算子方法用于原创三节点离散边值模型，完整给出本征基以避免额外谱计算负担。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-65422-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+assets:
+- id: math-chain
+  path: math/math-chain.svg
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未正确使用模态投影，或所得向量不满足源方程。
+    points: 0
+  - id: partial
+    label: 得到正确响应但省略关键投影、零贡献原因或代回检查。
+    points: 0.5
+  - id: mastered
+    label: 完整计算投影和响应，说明中心节点使反对称模态不被激发，并用源方程、边界和对称性核验。
+    points: 1
+reference_answer: 三个投影是 $1/\sqrt2,0,-1/\sqrt2$；中心点源不耦合反对称模态。展开给 $v=(1/2,1,1/2)^T$，直接代回得到 $Lv=(0,1,0)^T$，并满足外侧零边界。

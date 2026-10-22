@@ -1,0 +1,20 @@
+schema_version: 1
+id: math.research-2024-2026.set-05
+title: 近期研究中的数学方法：第5组
+description: 本科研究背景练习；覆盖本征函数与格林函数。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000490
+  - q-000491
+  - q-000492
+  - q-000493
+  - q-000494
+  - q-000495
+  - q-000496
+  - q-000497
+  - q-000498
+  - q-000499
+  order: fixed

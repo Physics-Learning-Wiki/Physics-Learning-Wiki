@@ -1,0 +1,20 @@
+schema_version: 1
+id: electromagnetism.research-2024-2026.set-02
+title: 近期研究中的电磁学：第2组
+description: 本科研究背景练习；覆盖electrostatics。全套为待人工审核草稿。
+status: draft
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000410
+  - q-000411
+  - q-000412
+  - q-000413
+  - q-000414
+  - q-000415
+  - q-000416
+  - q-000417
+  - q-000418
+  - q-000419
+  order: fixed

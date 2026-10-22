@@ -1,0 +1,95 @@
+schema_version: 3
+id: q-000438
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.induction
+concepts:
+- induction.quasistatic
+type: single_choice
+choice_order: shuffle
+stem: |-
+  旋转永磁体电场研究采用磁准静态模型，并扫描转动频率。下面对一个另行指定的简单材料做尺度检查；示例材料参数不代表真实脑组织参数。 [研究来源](https://www.mdpi.com/2306-5354/11/3/258)
+
+  一个均匀、线性、各向同性且无色散的教学介质满足
+
+  $$
+  \mathbf J_{\rm c}=\sigma\mathbf E,\qquad
+  \mathbf J_{\rm d}=\varepsilon\frac{\partial\mathbf E}{\partial t}.
+  $$
+
+  局部非零电场以 \(f=400\ \mathrm{Hz}\) 作正弦变化，介质参数为
+
+  $$
+  \sigma=0.20\ \mathrm{S/m},\qquad \varepsilon=80\varepsilon_0,\qquad
+  \varepsilon_0=8.85\times10^{-12}\ \mathrm{F/m}.
+  $$
+
+  定义幅值比 \(\eta=J_{{\rm d},0}/J_{{\rm c},0}\)，即位移电流峰值除以传导电流峰值。哪项结论正确？此处只检验电流幅值比，不要求据此证明完整准静态模型成立。
+solution: |-
+  若电场峰值为 \(E_0\)，则
+
+  $$
+  J_{{\rm c},0}=\sigma E_0,\qquad J_{{\rm d},0}=2\pi f\varepsilon E_0.
+  $$
+
+  相除得
+
+  $$
+  \frac{J_{{\rm d},0}}{J_{{\rm c},0}}
+  =\frac{2\pi f\varepsilon}{\sigma}
+  =\frac{2\pi(400)(80)(8.85\times10^{-12})}{0.20}
+  \approx8.90\times10^{-6}.
+  $$
+
+  因此该例中位移电流幅值远小于传导电流幅值。比值无量纲，因为 \(\varepsilon/\sigma\) 的单位是秒。若频率上升或电导率下降，比值会增大；还需另外检查空间尺度、传播延迟和材料色散，才可完整判断近似。
+
+  选项辨析：
+
+  “比值约 \(8.9\times10^{-6}\)，传导电流占主导”正确，位移电流是分子且比值远小于 1。
+
+  “同一小比值表示位移电流占主导”颠倒了分子和分母的意义。
+
+  “比值约 \(8.9\times10^6\)”存在量级或 SI 单位换算错误。
+
+  “任意频率都可忽略”错误，因为比值与频率成正比，还依赖 \(\varepsilon/\sigma\)。
+
+  适用范围：真实低频生物组织的介电参数和色散需要独立资料；本题计算不能证明论文组织模型的全部近似有效。
+
+  来源定位：Electric Field Characteristics of Rotating Permanent Magnet Stimulation，Methods: governing equations and magnetoquasistatic computational model; Results: frequency sweep; Discussion of conductivity approximations。DOI: [10.3390/bioengineering11030258](https://doi.org/10.3390/bioengineering11030258)。
+hints:
+- 正弦电场的时间导数峰值为 \(2\pi fE_0\)。
+- 用位移电流除以传导电流；共同的 \(E_0\) 会消去。
+feedback:
+  correct: 关键理解：通过位移电流与传导电流的幅值比检验忽略位移电流的一项必要尺度条件。
+  incorrect: 请检查：正弦电场的时间导数峰值为 \(2\pi fE_0\)。
+  choices:
+    A: “同一小比值表示位移电流占主导”颠倒了分子和分母的意义。
+    B: “比值约 \(8.9\times10^{-6}\)，传导电流占主导”正确，位移电流是分子且比值远小于 1。
+    C: “比值约 \(8.9\times10^6\)”存在量级或 SI 单位换算错误。
+    D: “任意频率都可忽略”错误，因为比值与频率成正比，还依赖 \(\varepsilon/\sigma\)。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.3390/bioengineering11030258
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 比值约 \(8.9\times10^{-6}\)，位移电流占主导。
+- id: B
+  content: 比值约 \(8.9\times10^{-6}\)，传导电流占主导。
+- id: C
+  content: 比值约 \(8.9\times10^{6}\)，可以忽略传导电流。
+- id: D
+  content: 只要 \(\sigma>0\)，在任意频率下都可以忽略位移电流。
+answer:
+  choice: B

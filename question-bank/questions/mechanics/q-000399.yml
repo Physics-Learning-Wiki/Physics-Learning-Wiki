@@ -1,0 +1,47 @@
+schema_version: 3
+id: q-000399
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.kinematics
+concepts:
+- kinematics.measurement
+- kinematics.angular-motion
+type: true_false
+choice_order: fixed
+stem: |-
+  滚转翅果研究使用高速影像分析快速转动，图 1 标明 1000 帧每秒的记录。连续转角若只存储在一个周期内，过边界时会出现与真实转向无关的数值跳变。（[研究来源](https://doi.org/10.1098/rsif.2025.0391)）
+
+  沿用采样率 $f_s=1000\,\mathrm{frame/s}$，相邻帧间隔 $\Delta t=0.00100\,\mathrm{s}$。某教学角度记录以 $[0,2\pi)$ 范围存储，连续两帧为 $\phi_n=6.10\,\mathrm{rad}$、$\phi_{n+1}=0.338\,\mathrm{rad}$。两值是原创示例，并非论文原始追踪点。另知真实相位每帧的变化绝对值小于 $\pi$，且同一个可辨认标记对应完整 $2\pi$ 周期。
+
+  判断正误：“因为直接差分 $(\phi_{n+1}-\phi_n)/\Delta t$ 为负，所以这两帧必然证明物体发生了负向滚转。”
+hints:
+- 先检查原始差值是否满足题设的每帧转角上限。
+- 角度加减 2π 表示同一方向，选择与连续性约束一致的增量。
+feedback:
+  correct: 识别角度周期表示造成的伪跳变，并在明确采样约束下正确解包相位。，并保留了题设的适用条件。
+  incorrect: 先检查原始差值是否满足题设的每帧转角上限。
+solution: |-
+  该判断错误。原始存储值之差为 $0.338-6.10=-5.762\,\mathrm{rad}$，其绝对值超过题设允许的每帧真实变化 $\pi$。应给后一帧加 $2\pi$ 后求差，得 $\Delta\phi=0.338+2\pi-6.10=0.521185\ldots\,\mathrm{rad}$，满足限制且为正。于是两帧间平均角速度约为 $521\,\mathrm{rad/s}$。错误的负值来自相位从接近 $2\pi$ 回到零附近的表示方式，不是由这两帧证实的反向转动。
+
+  **检查与物理含义：** 校正后的相位增量落在 $(-\pi,\pi)$ 内且唯一；相邻其他 $2\pi$ 分支都违反给定界限。若没有此类转速界限，仅靠两个周期化角度一般无法排除额外整圈的混叠。
+
+  **适用范围：** 真实姿态追踪还会有标记遮挡、角度噪声与轴线变化；本题只隔离周期表示造成的跳变。
+
+  **来源定位：** Precession dynamics and morphology of rolling samaras，Fig. 1 caption, 1000 fps imaging; §2 high-speed tracking methodology；[论文 DOI](https://doi.org/10.1098/rsif.2025.0391)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；将论文高速角度追踪背景转化为带明确无混叠条件的两帧相位解包问题。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1098/rsif.2025.0391
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

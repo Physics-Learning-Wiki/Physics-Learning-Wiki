@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000394
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.dynamics
+concepts:
+- dynamics.elastic-collision
+- dynamics.energy-partition
+- dynamics.model-validity
+type: free_response
+choice_order: fixed
+stem: |-
+  水凝胶弹射研究强调形变、基底和载荷共同决定动能传递。为判断“质量匹配”这一常见直觉能说明多少，构造一个去掉持续驱动和基底冲量的理想碰撞对照。（[研究来源](https://doi.org/10.1038/s41467-026-77391-6)）
+
+  在这一个对照模型中，有效驱动体质量为 $M>0$、碰撞前速度为 $u>0$，载荷质量为 $m>0$、初速度为零。二者沿同一直线作一次完全弹性接触，接触期间对这两个物体的外冲量可忽略。碰撞后驱动体速度为 U，载荷速度为 v。初始机械能全部为 $E_0=Mu^2/2$，定义载荷获能比例 $\eta=(mv^2/2)/E_0$。这里不把基底固定条件同时施加到驱动体上。
+
+  ![一维接触前后示意：质量 M 的有效驱动体以 u 接近静止载荷 m；接触后分别以带符号的 U 与 v 运动，模型边界没有固定基底。](asset:m045)
+
+  *原创教学示意图，非按比例绘制。*
+
+  推导非平凡碰撞分支的 U、v 及 $\eta(m/M)$，求使 $\eta$ 最大的质量比；再说明为何不能仅凭此结果断言论文的水凝胶装置也必然在相同质量比下效率最高。
+hints:
+- 将两条守恒方程整理，使能量式含有 (u−U)(u+U)。
+- 求得能量比例后，用 (M−m)²≥0 检查最大值与等号条件。
+feedback:
+  correct: 推导有限质量驱动体向载荷的能量传递上限，并明确理想碰撞与基底耦合弹射的差别。，并保留了题设的适用条件。
+  incorrect: 将两条守恒方程整理，使能量式含有 (u−U)(u+U)。
+solution: |-
+  动量与能量守恒为 $Mu=MU+mv$、$Mu^2=MU^2+mv^2$。能量式写为 $M(u-U)(u+U)=mv^2$，动量式为 $M(u-U)=mv$。对发生动量传递的非平凡分支相除，得到 $u+U=v$。联立解得 $U=(M-m)u/(M+m)$、$v=2Mu/(M+m)$。于是 $\eta=4Mm/(M+m)^2=4r/(1+r)^2$，其中 $r=m/M>0$。由于 $(M+m)^2-4Mm=(M-m)^2\ge0$，$\eta\le1$，且只在 $m=M$ 时取等号；此时驱动体停止，载荷速度为 u。质量极小或极大时 η 都趋零。真实水凝胶弹射包含持续形变、储能释放、耗散和基底外冲量，并非此孤立的两刚体完全弹性碰撞；有效驱动质量也不一定等于装置总质量，因此理想最优条件只能作为比较模型，不能直接当作实验结论。
+
+  **检查与物理含义：** 把 U、v 代回可同时还原 Mu 和 $Mu^2/2$。$m=M$ 时 U=0、v=u；$m\to0$ 时载荷速度趋于 2u 但载荷能量比例趋零，说明速度最大与获能最大并非同一目标。
+
+  **适用范围：** 这里的最优质量比属于理想对照模型，不能作为论文实测最优载荷、能量效率或材料设计推荐。
+
+  **来源定位：** Dynamic coupling enables impulsive ejection in a hydrogel catapult，Results: dynamic coupling among deformation, substrate and projectile; projectile-load dependence and Fig. 2；[论文 DOI](https://doi.org/10.1038/s41467-026-77391-6)。
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 780
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；将论文的载荷耦合问题与一个可严格求解的极限传能模型对照；不声称论文提出此碰撞公式或最优质量结论。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41467-026-77391-6
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未能同时使用动量和能量方程，或把驱动体误设为固定而仍声称两体动量守恒。
+    points: 0
+  - id: partial
+    label: 求出速度与获能比例，但未完整证明最优质量比或未说明真实装置的范围限制。
+    points: 0.5
+  - id: mastered
+    label: 正确求解碰撞分支、证明最大值与极限，并明确基底耦合和持续形变使理想条件不可直接移植。
+    points: 1
+reference_answer: U=(M−m)u/(M+m)，v=2Mu/(M+m)。η=4r/(1+r)²≤1，r=m/M，等号在 r=1。该结论只适用于无外冲量、无持续驱动的完全弹性两体模型；真实水凝胶的基底、形变和损耗使其最优载荷不能由本式直接确定。
+assets:
+- id: m045
+  path: mechanics/m045.svg

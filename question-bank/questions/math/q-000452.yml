@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000452
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.multivalued
+type: true_false
+choice_order: fixed
+stem: |-
+  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  令 $R>0$ 为圆孔半径，圆心位于原点。对映射 $z=iR e^{-i\zeta}$，可在适当的局部区域写成
+
+  $$
+  \zeta=\frac{\pi}{2}-\theta+i\ln(r/R),\qquad z=r e^{i\theta}.
+  $$
+
+  判断：这个式子无需割线或辐角范围，就在完整孔外区域 $|z|>R$ 上给出连续、单值的逆映射。
+solution: |-
+  判断为错误。固定 $r>R$ 绕孔一周，连续辐角从 $\theta$ 增加到 $\theta+2\pi$，物理点 $z$ 回到起点，但式中的 $\zeta$ 减少 $2\pi$。
+
+  这也可从原映射看出：$e^{-i(\zeta+2\pi)}=e^{-i\zeta}$，所以不同的 $\zeta$ 可映到同一个 $z$。在选定的割线域、限定辐角区间内，可以建立局部或分支意义的逆；整个环绕孔的区域不能直接沿用一个全局辐角。
+
+  检查：取 $z=2iR$，用 $\theta=\pi/2$ 与 $5\pi/2$ 得到的两个逆值相差 $2\pi$，正映射值相同。
+
+  研究对应：The concept of conformal mapping, Eqs. (25a) and (25b)。教学范围：这是对教学使用范围的数学澄清，不把局部公式的存在误称为论文整体失效。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+hints:
+- 沿 $r$ 不变的闭合圆周追踪 $\theta$。
+- 比较 $\zeta$ 与 $\zeta+2\pi$ 的正映射。
+feedback:
+  correct: 正确区分局部解析可逆与全局单值可逆。
+  incorrect: 检验绕孔一周后逆坐标是否真正回到原值。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P201 的 The concept of conformal mapping, Eqs. (25a) and (25b) 构造。对所给圆孔逆式作全球单值性检查，补充本科应用中不可省略的辐角约定。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-025-88114-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

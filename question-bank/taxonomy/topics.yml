@@ -42,3 +42,16 @@ math.probability-statistics:
 math.linear-algebra:
   title: 线性代数
   parent: math
+
+mechanics.oscillations:
+  title: 振动与耦合振动
+  parent: mechanics
+electromagnetism.magnetostatics:
+  title: 静磁学与磁场控制
+  parent: electromagnetism
+electromagnetism.induction:
+  title: 电磁感应与耦合电路
+  parent: electromagnetism
+electromagnetism.maxwell-waves:
+  title: 麦克斯韦方程与电磁波
+  parent: electromagnetism

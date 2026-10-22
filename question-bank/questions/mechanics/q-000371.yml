@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000371
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.time-dependent-lagrangian
+- dynamics.energy-conservation
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  软体滚动由内部肌肉或驱动器改变形状；“无需外力矩”描述角动量条件，并不自动意味着被驱动的机械自由度能量守恒。（[研究来源](https://doi.org/10.1103/PhysRevLett.134.198401)）
+
+  取一个形变广义坐标 $q$（弧度），等效惯量 $J>0$。驱动器规定随时间变化的自然角 $a(t)$，模型为 $L=\frac12J\dot q^2-U(q,t)$、$U=\frac12\kappa[q-a(t)]^2$，$\kappa>0$。除这一含时势能外，无阻尼或其他广义力。所考察的机械能是 $E=J\dot q^2/2+U$；驱动器的电源或化学能不计入 E。
+
+  以下哪些陈述成立？选择所有成立的陈述。
+hints:
+- 先求 ∂U/∂q，再对动能与势能之和求时间导数。
+- 能量边界不包含驱动器能源，这对“守恒”的表述很关键。
+feedback:
+  correct: 对含时势能写出机械能变化率，辨别内部驱动的功与角动量守恒。，并保留了题设的适用条件。
+  incorrect: 先求 ∂U/∂q，再对动能与势能之和求时间导数。
+  choices:
+    A: 广义力是势能对形变坐标的负偏导。
+    B: 使用运动方程后，只剩势能的显含时间变化。
+    C: 机械驱动能量可来自整机内部能源；角动量条件不抹去这一能量交换。
+    D: 自然角固定时势能不显含时间，且题设没有耗散或额外作功。
+solution: |-
+  对 $q$ 求导，恢复广义力为 $Q_q=-\partial U/\partial q=-\kappa(q-a)$，运动方程为 $J\ddot q+\kappa(q-a)=0$。对能量作全微分：$\dot E=J\dot q\ddot q+\kappa(q-a)(\dot q-\dot a)$。用运动方程消去前两项，得到 $\dot E=-\kappa(q-a)\dot a$。该式可正可负，代表驱动器与机械自由度之间的能量交换。当 $\dot a=0$ 时，本无阻尼模型的机械能才恒定。外力矩为零可保证另一个整体转动自由度的总角动量守恒，但不能使本含时机械能自动守恒。
+
+  **检查与物理含义：** $\kappa(q-a)\dot a$ 具有功率量纲。若 $q>a$ 且驱动器增大 $a$，固定瞬时形状的弹性势能降低，故显含时间项为负；与导数符号一致。
+
+  **适用范围：** 本单坐标模型不计算整机的平移、转动或驱动器热损耗；总能量守恒应对更完整的系统另行记账。
+
+  **来源定位：** Mechanics of Soft-Body Rolling Motion without External Torque，Author manuscript Fig. 1 active body deformation; pp. 3–4 discussion of no external torque and internal rolling；[论文 DOI](https://doi.org/10.1103/PhysRevLett.134.198401)。
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；以可控自然角的弹性关节表示主动形变，连接论文的内部驱动与无外力矩滚转机制。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1103/PhysRevLett.134.198401
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $Q_q=-\kappa[q-a(t)]$。
+- id: B
+  content: $\dot E=-\kappa[q-a(t)]\dot a(t)$。
+- id: C
+  content: 只要整机无外力矩，无论 $a(t)$ 如何变化，这里定义的 E 都恒定。
+- id: D
+  content: 若 $a(t)$ 固定，则本题无阻尼模型的 E 恒定。
+answer:
+  choices:
+  - A
+  - B
+  - D

@@ -1,0 +1,48 @@
+schema_version: 3
+id: q-000424
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.field-uniformity
+- magnetostatics.superposition
+type: true_false
+choice_order: fixed
+stem: |-
+  永磁控制系统用对称布置减小工作区中心的磁场梯度。论文仍需评估有限区域内的场强和梯度变化。 [研究来源](https://www.nature.com/articles/s41598-025-15247-7)
+
+  某对称磁源沿 x 轴产生的局部磁场大小具有展开
+  $B(x)=B_0[1+6(x/a)^2+O((x/a)^4)]$，$B_0,a>0$。于是 $B'(0)=0$。
+
+  判断：“只要中心点的一阶梯度为零，就能断言某个有限宽度区域内磁场严格均匀。”
+solution: |-
+  该判断错误。已给展开的二阶项不为零，说明偏离中心后磁场通常改变。$B'(0)=0$ 只消除了中心的一阶变化；严格均匀要求整个区域内所有空间变化都为零。
+
+  检查：在相同小参数范围内，把离中心的距离加倍，二阶相对偏差约增为四倍。研究中的近无梯度区域必须配合明确容差定义。
+
+  适用范围：不否定中心附近近似均匀的实用性，只要求给出容差和空间范围。
+
+  来源定位：Design and control of a permanent magnet-based robotic system for navigating tetherless magnetic devices in viscous environments，Results, field-gradient analysis, Fig. 6 and paragraph defining threshold-based gradient-free space。DOI: [10.1038/s41598-025-15247-7](https://doi.org/10.1038/s41598-025-15247-7)。
+hints:
+- 检查题目已经给出的二阶项。
+- 点上的条件不能自动推广为一个有限区域的恒等式。
+feedback:
+  correct: 关键理解：识别局部对称约束与有限区域均匀性的差别。
+  incorrect: 请检查：检查题目已经给出的二阶项。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41598-025-15247-7
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+answer:
+  value: false

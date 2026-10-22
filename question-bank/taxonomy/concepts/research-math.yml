@@ -1,0 +1,87 @@
+complex.conformal-map:
+  title: 保角映射与复坐标求导
+  topics:
+  - math.complex-analysis
+  aliases:
+  - conformal mapping
+  - 复坐标变换
+math.fourier-method:
+  title: 傅里叶变换的相位与可分离性
+  topics:
+  - math.transforms
+  aliases:
+  - Fourier transform
+math.convolution:
+  title: 卷积与积分矩
+  topics:
+  - math.transforms
+  aliases:
+  - convolution
+  - 展宽
+math.laplace-method:
+  title: 拉普拉斯变换与初边值资料
+  topics:
+  - math.transforms
+  aliases:
+  - Laplace transform
+math.generalized-functions:
+  title: 狄拉克分布与点源
+  topics:
+  - math.transforms
+  aliases:
+  - Dirac delta
+  - 广义函数
+math.linear-ode:
+  title: 线性常微分方程与初值
+  topics:
+  - math.differential-equations
+  aliases:
+  - linear ODE
+math.delay-equation:
+  title: 延迟方程的历史与分段积分
+  topics:
+  - math.differential-equations
+  aliases:
+  - delay differential equation
+  - method of steps
+math.separable-ode:
+  title: 可分离非线性常微分方程
+  topics:
+  - math.differential-equations
+  aliases:
+  - separable differential equation
+math.boundary-data:
+  title: 边界资料的识别与相容性
+  topics:
+  - math.differential-equations
+  aliases:
+  - boundary data
+  - 边值相容性
+math.bessel-function:
+  title: 贝塞尔函数的轴线、零点与积分
+  topics:
+  - math.special-functions
+  aliases:
+  - Bessel function
+  - J0
+math.airy-function:
+  title: 艾里函数的缩放、截断与渐近性
+  topics:
+  - math.special-functions
+  aliases:
+  - Airy function
+  - Ai
+math.eigenfunction-expansion:
+  title: 本征模展开与左右基底
+  topics:
+  - math.eigenfunction-greens
+  aliases:
+  - eigenfunction expansion
+  - biorthogonal basis
+math.green-function:
+  title: 离散与连续格林函数
+  topics:
+  - math.eigenfunction-greens
+  aliases:
+  - Green function
+  - inverse operator

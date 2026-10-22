@@ -1,0 +1,65 @@
+schema_version: 3
+id: q-000469
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.transforms
+concepts:
+- math.laplace-method
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Luo 等（2026）研究网络扩散的等待时间与松弛速度；指数等待时间是其一般模型的一个可解极限。 [研究来源（DOI）](https://doi.org/10.1038/s41467-026-72161-w)。
+
+  在论文的无记忆极限，各节点等待时间密度可写为 $\rho(t)=\mu^{-1}e^{-t/\mu}$，$t\geq0$，其中平均等待时间 $\mu>0$。采用 $\widehat\rho(s)=\int_0^\infty e^{-st}\rho(t)dt$，$s\geq0$。
+
+  正确的变换是哪一个？
+solution: |-
+  合并指数后有
+
+  $$
+  \widehat\rho(s)=\frac1\mu\int_0^\infty e^{-(s+1/\mu)t}dt
+  =\frac{1/\mu}{s+1/\mu}=\frac1{1+\mu s}.
+  $$
+
+  检查：$\widehat\rho(0)=1$，正好对应密度总积分为一；$-\widehat\rho^{\prime}(0)=\mu$，恢复平均等待时间。分母中的 $\mu s$ 必须无量纲。
+
+  研究对应：Results, exponential waiting-time paragraph before Eq. (2), transform definition following Eq. (3)。教学范围：相同平均值并不使任意等待时间分布具有相同变换或相同扩散动力学。
+
+  来源：[DOI 10.1038/s41467-026-72161-w](https://doi.org/10.1038/s41467-026-72161-w)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 把两个指数的衰减率相加。
+- 用 s=0 检查归一化。
+feedback:
+  correct: 直接积分并通过归一化检验。
+  incorrect: 核中已有 1/μ 的归一化因子，不能漏掉。
+  choices:
+    A: 指数核的衰减率相加，不是相减。
+    B: 该式对应固定等待时间的狄拉克核，不是指数密度。
+    C: 合并衰减率后的积分得到此式。
+    D: 多了时间量纲，且 s=0 时通常不等于一。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P210 的 Results, exponential waiting-time paragraph before Eq. (2), transform definition following Eq. (3) 构造。只计算一般框架中的一个精确可解核，不采用近似的长尾公式。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-026-72161-w
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $1/(1-\mu s)$
+- id: B
+  content: $e^{-\mu s}$
+- id: C
+  content: $1/(1+\mu s)$
+- id: D
+  content: $\mu/(1+\mu s)$
+answer:
+  choice: C

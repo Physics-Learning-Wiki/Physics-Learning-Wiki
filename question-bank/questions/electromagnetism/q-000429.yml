@@ -1,0 +1,77 @@
+schema_version: 3
+id: q-000429
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.magnetostatics
+concepts:
+- magnetostatics.induced-magnetization
+- magnetostatics.dipole-torque
+type: free_response
+choice_order: fixed
+stem: |-
+  微机器人制造过程中用静磁场对铁氧化物颗粒进行取向。为理解磁各向异性对姿态的作用，下面采用一个独立的线性响应模型。 [研究来源](https://www.nature.com/articles/s41467-025-65459-8)
+
+  在物体本征方向中，长轴与垂直方向的磁化响应系数分别为 $\alpha_\parallel>\alpha_\perp>0$。外磁场大小 $B>0$ 恒定，长轴与磁场夹角为 θ。给定有效磁能
+
+  $$
+  U(\theta)=-\frac{B^2}{2}
+  \left(\alpha_\parallel\cos^2\theta+\alpha_\perp\sin^2\theta\right).
+  $$
+
+  以增大 θ 为正转动方向，求 $\tau_\theta=-dU/d\theta$，并判断 θ=0 和 θ=π/2 的稳定性。用小角度展开核对结论，并解释为什么长轴平行和反平行都能成为同类最低能取向。
+solution: |-
+  记 $\Delta\alpha=\alpha_\parallel-\alpha_\perp>0$，能量可写为
+  $U=-B^2[\alpha_\perp+\Delta\alpha\cos^2\theta]/2$。求导得
+
+  $$
+  \tau_\theta=-B^2\Delta\alpha\sin\theta\cos\theta
+  =-\frac{B^2\Delta\alpha}{2}\sin2\theta.
+  $$
+
+  在 θ=0 附近，$U\simeq-\alpha_\parallel B^2/2+
+  B^2\Delta\alpha\,\theta^2/2$，曲率为正，是稳定取向。令 θ=π/2+u，则
+  $U\simeq-\alpha_\perp B^2/2-B^2\Delta\alpha\,u^2/2$，曲率为负，是不稳定取向。
+
+  能量只含方向余弦的平方，所以 θ 与 θ+π 等价：这是无永久极性标记的诱导各向异性轴，而非固定永久磁矩。检查：$\alpha_\parallel=\alpha_\perp$ 时所有取向等能，力矩消失；B 反向也不改变能量。
+
+  适用范围：未从论文推定 α 的数值或颗粒的实际磁滞性质；此模型只解释一种可能的取向能机制。
+
+  来源定位：Soft magnetic microrobots with remote sensing and communication capabilities，Methods, magnetic field-assisted photolithography paragraph; Fig. 1a iron-oxide nanoparticle hydrogel。DOI: [10.1038/s41467-025-65459-8](https://doi.org/10.1038/s41467-025-65459-8)。
+hints:
+- 先用 Δα 化简能量，再按题目约定对 θ 求负导数。
+- 零力矩只能定位平衡点，还需检查势能曲率。
+feedback:
+  correct: 关键理解：从各向异性诱导磁化能推导回复力矩并判断稳定取向。
+  incorrect: 请检查：先用 Δα 化简能量，再按题目约定对 θ 求负导数。
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 720
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-65459-8
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+response:
+  format: plain_text
+  required: true
+grading:
+  mode: self_assessed
+  rubric:
+  - id: not_yet
+    label: 未正确对取向能求导或未区分平衡与稳定。
+    points: 0
+  - id: partial
+    label: 力矩表达式基本正确，但稳定性或轴向二重等价解释不完整。
+    points: 0.5
+  - id: mastered
+    label: 正确求出 sin2θ 型力矩、两类平衡稳定性，并以小角度和各向同性极限核对。
+    points: 1
+reference_answer: 应得到 $\tau_\theta=-B^2(\alpha_\parallel-\alpha_\perp)\sin2\theta/2$；θ=0、π 为最低能稳定轴向，θ=π/2 为最高能不稳定取向。必须解释诱导轴的
+  θ→θ+π 等价性，不能套用永久磁矩的单一极性。

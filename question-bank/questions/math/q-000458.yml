@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000458
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.residue-theorem
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Ryu 等（2024）用含复参数的二阶矩阵说明异常点附近的两支本征值如何交换；这里仅研究其复函数结构。 [研究来源（DOI）](https://doi.org/10.1038/s42005-024-01595-9)。
+
+  从二态模型 $H(z)=\begin{pmatrix}0&1\\z&0\end{pmatrix}$ 构造响应矩阵 $G(w;z)=(wI-H(z))^{-1}$，其中 $z$ 是固定参数，$w$ 是求响应的复变量。给定非对角元
+
+  $$
+  G_{12}(w;z)=\frac{1}{w^2-z}.
+  $$
+
+  选出所有正确陈述。只研究此矩阵元，不需要任何量子力学知识；采用完全一致评分。
+solution: |-
+  当 $z=1$ 时，分母为 $(w-1)(w+1)$。在 $w=1$ 的留数是 $1/2$，在 $w=-1$ 的留数是 $-1/2$，二者均是简单极点。代入 $w=0$ 得 $-1$，并不是零点。
+
+  当 $z=0$ 时，响应元变成 $w^{-2}$，在 $w=0$ 有二阶极点。这与把本征值看作参数 $z$ 的平方根时出现分支点并不矛盾：研究的是不同的函数与不同的复变量。
+
+  检查：$1/(w^2-1)=\tfrac12/(w-1)-\tfrac12/(w+1)$，合并分式恢复原式。
+
+  研究对应：Methods, Eq. (7); resolvent constructed for teaching from that explicit matrix。教学范围：不推断实际装置的传输函数、稳定性或极点残量的实验大小。
+
+  来源：[DOI 10.1038/s42005-024-01595-9](https://doi.org/10.1038/s42005-024-01595-9)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 先固定 $z=1$，分解关于 $w$ 的分母。
+- 留数可用 $\lim_{w\to w_0}(w-w_0)G_{12}$。
+feedback:
+  correct: 正确区分响应变量的有理极点与参数空间的平方根分支。
+  incorrect: 固定参数后再判断关于响应变量的奇点。
+  choices:
+    A: 去掉因子 $w-1$ 后，余下分母在该点为 $2$。
+    B: 另一个因子在 $w=-1$ 为 $-2$，留数应为负。
+    C: 此时函数精确等于 $w^{-2}$。
+    D: 直接代入给出 $-1$，不是零。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P202 的 Methods, Eq. (7); resolvent constructed for teaching from that explicit matrix 构造。从已发表的二阶矩阵原创构造一个响应矩阵元；不把该响应声称为论文测量量。
+    数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s42005-024-01595-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $z=1$ 时，$w=1$ 的留数为 $1/2$。
+- id: B
+  content: $z=1$ 时，$w=-1$ 的留数为 $1/2$。
+- id: C
+  content: $z=0$ 时，$w=0$ 为二阶极点。
+- id: D
+  content: $z=1$ 时，$w=0$ 为零点。
+answer:
+  choices:
+  - A
+  - C

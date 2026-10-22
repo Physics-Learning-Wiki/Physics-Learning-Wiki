@@ -1,0 +1,78 @@
+schema_version: 3
+id: q-000351
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.kinematics
+concepts:
+- kinematics.acceleration
+- kinematics.velocity-time-graph
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  仿鸟机器人研究报告：配合螺旋桨的跳跃起飞在约 $0.17\,\mathrm{s}$ 内达到约 $2.4\,\mathrm{m/s}$，仅使用双腿跳跃时离地速率约为 $2.2\,\mathrm{m/s}$。（[研究来源](https://doi.org/10.1038/s41586-024-08228-9)）
+
+  把这两个速率与时间作为已给的近似数据，两种测试的机器人质量相同。第一种测试从静止开始，但此处没有给出速度方向随时间的信息。仅比较离地时的**质心平动动能**，不计转动、势能和电能输入。
+
+  根据这些条件，选择所有成立的判断。
+hints:
+- 数据给出的是时间区间端点；不要由平均量推断整个时间函数。
+- 在相同质量下比较动能，须对速率比取平方。
+feedback:
+  correct: 区分速率变化、速度矢量变化与动能比例，并保留了题设的适用条件。
+  incorrect: 数据给出的是时间区间端点；不要由平均量推断整个时间函数。
+  choices:
+    A: 以末速率减去零，再除以时间即可。
+    B: 两个端点只能给出平均量，不能确定中间变化。
+    C: 同质量时动能正比于速率平方，而非速率本身。
+    D: 初速度为零时，速度矢量变化的大小正好等于末速率；方向仍未知。
+solution: |-
+  第一种测试的平均速率变化率是
+
+  $$
+  \frac{\Delta |\boldsymbol v|}{\Delta t}=\frac{2.4}{0.17}\approx14.1\,\mathrm{m/s^2}.
+  $$
+
+  因为初速度为零，平均**矢量加速度的大小**也为 $|\boldsymbol v_f|/\Delta t=14.1\,\mathrm{m/s^2}$；但其方向仍需最终速度方向。这个数值不意味着任一瞬间的加速度恒定。
+
+  相同质量下，两种离地平动动能之比为
+
+  $$
+  \frac{K_{\mathrm{legs}}}{K_{\mathrm{jump+prop}}}=\left(\frac{2.2}{2.4}\right)^2\approx0.840.
+  $$
+
+  速率比约 $0.917$，不等于动能比，也不能直接当作总能量效率。
+
+  **检查与物理含义：** 两个比值均无量纲；动能比 0.840 小于速率比 0.917，符合较小于 1 的数平方后变小。平均矢量加速度的结论明确使用初速度为零。
+
+  **适用范围：** 未给速度方向和完整时间曲线，因此不能求瞬时加速度或飞行距离；动能比不是实验的总效率。
+
+  **来源定位：** Fast ground-to-air transition with avian-inspired multifunctional legs，Ground-to-air transition, Fig. 2b–e; Methods: Foot trajectory generation；[论文 DOI](https://doi.org/10.1038/s41586-024-08228-9)。
+difficulty: 1
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: original
+  note: 原创中文教学题与推导。研究事实见所引论文；保留论文报告的近似离地速率与时间；仅讨论端点运动学和质心平动能，不重建完整起飞轨迹。 参数来源与适用范围详见配套研究映射；不转载论文图像或措辞。
+  source: https://doi.org/10.1038/s41586-024-08228-9
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 第一种测试的平均速率变化率约为 $14.1\,\mathrm{m/s^2}$。
+- id: B
+  content: 第一种测试的加速度在这 $0.17\,\mathrm{s}$ 内必定恒定。
+- id: C
+  content: 双腿测试的离地平动动能约为配合螺旋桨测试的 $84.0\%$。
+- id: D
+  content: 由于初速度为零，第一种测试平均矢量加速度的大小约为 $14.1\,\mathrm{m/s^2}$。
+answer:
+  choices:
+  - A
+  - C
+  - D

@@ -1,0 +1,98 @@
+schema_version: 3
+id: q-000448
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- electromagnetism.maxwell-waves
+concepts:
+- waves.phase-gradient
+- waves.propagating-modes
+type: single_choice
+choice_order: shuffle
+stem: |-
+  剪纸超表面研究利用相位梯度控制反射方向，但目标方向仍必须满足自由空间平面波的传播条件。下面检查一个过大的教学相位梯度。 [研究来源](https://www.nature.com/articles/s41467-025-56211-3)
+
+  空气位于反射面 \(z=0\) 的上方，入射波沿 \(-z\) 正入射。设目标反射级次在 \(xz\) 平面内，其切向波矢由相位梯度给定为
+
+  $$
+  k_x=G=\frac{3\pi}{\lambda},
+  $$
+
+  空气波数为 \(k_0=2\pi/\lambda\)。该级次须满足
+
+  $$
+  k_z^2=k_0^2-k_x^2.
+  $$
+
+  关于这个目标级次，下列哪项判断正确？
+
+  ![教学模型示意：示意图定义表面、法向与切向坐标；斜向虚线箭头只表示待检验的目标方向。是否存在对应实传播方向必须由题给波矢条件判断，图不预先保证它可传播。](asset:phase-gradient)
+
+  图为原创教学示意，非按比例绘制。示意图定义表面、法向与切向坐标；斜向虚线箭头只表示待检验的目标方向。是否存在对应实传播方向必须由题给波矢条件判断，图不预先保证它可传播。
+solution: |-
+
+  $$
+  \frac{k_x}{k_0}=\frac{3\pi/\lambda}{2\pi/\lambda}=\frac32>1.
+  $$
+
+  因此
+
+  $$
+  k_z^2=k_0^2\left(1-\frac94\right)
+  =-\frac54k_0^2<0.
+  $$
+
+  不存在实数反射角满足 \(\sin\theta=3/2\)。在上方半空间，可选择沿 \(z\) 衰减的倏逝分量，但它不是远场传播反射波。增加振幅不能改变线性介质的波矢色散关系。检查：传播与倏逝的界限是 \(|k_x|=k_0\)，对应掠射极限 \(k_z=0\)。
+
+  选项辨析：
+
+  “没有实传播角”正确，因为 \(|k_x|>k_0\) 使 \(k_z\) 成为纯虚数。
+
+  “将正弦值截为 1”不满足原先指定的切向波矢；掠射要求恰有 \(|k_x|=k_0\)。
+
+  “增大幅度即可传播”错误，在线性空气中传播条件由波数和波矢决定，与幅度无关。
+
+  “整个结构没有任何反射功率”超出结论；功率可能进入其他传播级次、吸收或其他允许通道。
+
+  适用范围：此检查不预测实际周期结构的全部衍射谱；一个目标级次不能传播不等于整体无反射。
+
+  来源定位：Abnormal beam steering with kirigami reconfigurable metasurfaces，Results: Phase distribution design for anomalous reflection, Eq. (3)。DOI: [10.1038/s41467-025-56211-3](https://doi.org/10.1038/s41467-025-56211-3)。
+hints:
+- 先比较 \(|k_x|\) 与 \(k_0\)，再判断 \(k_z^2\) 的符号。
+- 实反射角必须满足 \(|\sin\theta|\le1\)。
+feedback:
+  correct: 关键理解：用真空色散关系识别目标切向波矢是否对应可传播反射波。
+  incorrect: 请检查：先比较 \(|k_x|\) 与 \(k_0\)，再判断 \(k_z^2\) 的符号。
+  choices:
+    A: “没有实传播角”正确，因为 \(|k_x|>k_0\) 使 \(k_z\) 成为纯虚数。
+    B: “整个结构没有任何反射功率”超出结论；功率可能进入其他传播级次、吸收或其他允许通道。
+    C: “增大幅度即可传播”错误，在线性空气中传播条件由波数和波矢决定，与幅度无关。
+    D: “将正弦值截为 1”不满足原先指定的切向波矢；掠射要求恰有 \(|k_x|=k_0\)。
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 原创研究背景教学题。研究事实见所列论文；题干明确区分教学理想化、示例参数和报告参数。未复制或翻译论文图文；不代表复现或验证论文全部结论。
+  source: https://doi.org/10.1038/s41467-025-56211-3
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 该目标级次没有实数传播反射角，只能对应倏逝分量或不能作为目标远场级次出现。
+- id: B
+  content: 该级次不能传播，因此整个结构一定没有任何反射功率。
+- id: C
+  content: 只需增大反射电场幅度，该目标级次就能以实角度传播。
+- id: D
+  content: 反射角是 \(90^\circ\)，因为超过上限的正弦值可直接截为 1。
+answer:
+  choice: A
+assets:
+- id: phase-gradient
+  path: electromagnetism/phase-gradient.svg

@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000478
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.boundary-data
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  取常数 $S_T$，在 $0\leq y\leq h$ 上满足
+
+  $$\frac{d}{dy}\ln\frac{C(y)}{1-C(y)}=-S_T\frac{dT}{dy},\qquad C(0)=c_0\in(0,1).$$
+
+  比较两个教学温度剖面：$T_1(y)=T_0+\Delta T\,y/h$ 与 $T_2(y)=T_0+\Delta T\,(y/h)^2$，其中 $\Delta T>0$。二者都满足该静止零通量模型，且使用相同的 $S_T,c_0$。关于热端浓度 $C(h)$，哪一结论成立？
+solution: |-
+  积分给出
+
+  $$\ln\frac{C(h)}{1-C(h)}=\ln\frac{c_0}{1-c_0}-S_T[T(h)-T(0)].$$
+
+  两种温度剖面的端点温差都是 $\Delta T$，因此热端的对数浓度比值相同。由于 $C\mapsto\ln[C/(1-C)]$ 在 $(0,1)$ 上严格递增，两个热端浓度也相同。
+
+  通道内部的温度和浓度一般不同；只是这个常系数、无流动、零通量模型的端点关系只依赖温差。检查：若 $S_T$ 随温度或浓度变化，或存在对流与非零通量，就不能未经重新积分仍沿用本结论。论文的实际装置包含更丰富的流动与传质过程。
+
+  研究对应：Results, Theoretical framework for thermodiffusive separation, zero-flux reduction of Eq. (1); nonlinear temperature-profile discussion。教学范围：不据此否定论文完整流动系统中改变温度剖面可以改变产率的结果；此结论仅适用于题设一维零通量模型。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 把右边从零积分到 h。
+- 两种温度函数是否具有相同的端点差？
+feedback:
+  correct: 识别了端点关系与内部剖面的区别。
+  incorrect: 直接积分全微分，先判断依赖的是温度路径还是端点温差。
+  choices:
+    A: 内部温度不同，一般会产生不同的内部浓度。
+    B: 所给常系数方程积分后只含温度的端点差。
+    C: 没有这样的二分之一因子；导数积分恢复完整温差。
+    D: 已有方程和相同冷端浓度足以作端点比较。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, zero-flux reduction of Eq. (1); nonlinear temperature-profile discussion 构造。把流动等作用剥离，在常系数极限中比较具有相同端点的两个原创温度函数。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s44221-025-00428-5
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 两种情况的所有内部浓度也必然相同。
+- id: B
+  content: 两种情况的 $C(h)$ 相同，因为积分只含端点温差。
+- id: C
+  content: 二次温度剖面必使 $C(h)$ 减半。
+- id: D
+  content: 仅凭方程无法判断端点浓度的关系。
+answer:
+  choice: B

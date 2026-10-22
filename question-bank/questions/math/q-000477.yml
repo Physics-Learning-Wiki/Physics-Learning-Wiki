@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000477
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.differential-equations
+concepts:
+- math.separable-ode
+type: multiple_choice
+choice_order: shuffle
+stem: |-
+  Xu 与 Torres（2025）研究多通道热扩散脱盐；其浓度分布同时受普通扩散和温度梯度驱动。 [研究来源（DOI）](https://doi.org/10.1038/s44221-025-00428-5)。
+
+  精确教学方程为 $C^{\prime}=-\kappa C(1-C)$，其中 $\kappa>0$、$0<C<1$。稀溶液近似把右边替换为 $-\kappa C$。本题只比较同一给定浓度处的局部斜率，不比较两条解在长区间内的累计误差。
+
+  定义斜率相对误差为 $\varepsilon=|(-\kappa C)-[-\kappa C(1-C)]|/|{-\kappa C(1-C)}|$。选出所有正确结论，采用完全一致评分。
+solution: |-
+  两斜率的差的绝对值是 $\kappa C^2$，精确斜率的模为 $\kappa C(1-C)$，所以 $\varepsilon=C/(1-C)$。此函数随 $C$ 增大而增大，因此若 $C\leq0.05$，则 $\varepsilon\leq0.05/0.95=1/19$。
+
+  精确方程还给出 $(\ln C)^{\prime}=C^{\prime}/C=-\kappa(1-C)$，以及 $C^{\prime}<0$。浓度虽然单调下降，斜率仍随浓度改变，因而一般不是直线。检查：$C\to0$ 时局部相对误差趋于零；$C$ 接近一时不能采用这种稀溶液近似。
+
+  研究对应：Results, Theoretical framework for thermodiffusive separation, nonlinear C(1−C) term in Eq. (1)。教学范围：给出的上界仅约束同一浓度处的局部斜率误差，不能直接当作有限通道上解的相对误差。
+
+  来源：[DOI 10.1038/s44221-025-00428-5](https://doi.org/10.1038/s44221-025-00428-5)。
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+hints:
+- 先求两个斜率的差，再除以精确斜率的模。
+- 用 C>0 和 1−C>0 判断导数符号。
+feedback:
+  correct: 分别检查了近似误差、对数导数与单调性。
+  incorrect: 局部斜率近似与整条解的误差不同；单调也不等于线性。
+  choices:
+    A: 分子与分母约去 κC 后得到这一比值。
+    B: C/(1−C) 随 C 单调增加，端点给出上界。
+    C: 除以 C 并使用正性即可推出两个结论。
+    D: 斜率依赖 C；单调函数完全可以是曲线。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P206 的 Results, Theoretical framework for thermodiffusive separation, nonlinear C(1−C) term in Eq. (1)
+    构造。针对真实非线性因子构造局部斜率误差检验，不把近似当作原论文的精确方程。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s44221-025-00428-5
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: 相对误差为 $C/(1-C)$。
+- id: B
+  content: 若 $C\leq0.05$，则局部斜率相对误差不超过 $1/19$。
+- id: C
+  content: 精确方程给出 $(\ln C)^{\prime}=-\kappa(1-C)$，且浓度沿正向坐标递减。
+- id: D
+  content: 只要浓度单调下降，浓度剖面就是直线。
+answer:
+  choices:
+  - A
+  - B
+  - C

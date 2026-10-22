@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000489
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.special-functions
+concepts:
+- math.airy-function
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Chen 等（2025）利用有限能量艾里束调整传播路径，以绕过无线链路中的障碍物。 [研究来源（DOI）](https://doi.org/10.1038/s41467-025-62443-0)。
+
+  论文采用 Ai 形状构造场剖面。本题检查其定义方程的解空间：设 $u(s),v(s)$ 都满足 $y^{\prime\prime}=sy$，定义朗斯基量 $W(s)=u(s)v^{\prime}(s)-u^{\prime}(s)v(s)$，并给定 $W(0)=1/\pi$。
+
+  在整个实轴上，关于 $W$ 和这两个解的正确结论是哪一个？可用“某点朗斯基量非零则两解线性独立”这一判据。
+solution: |-
+  直接求导，两个一阶导数乘积抵消，得到
+
+  $$W^{\prime}=u v^{\prime\prime}-u^{\prime\prime}v=u(sv)-(su)v=0.$$
+
+  因此 $W(s)=W(0)=1/\pi$，在整个实轴上非零，两解线性独立。检查：这个方程没有一阶导数项，正是朗斯基量保持常数的原因；单独看到两解满足同一个方程并不能判断它们成比例。选择哪一个线性组合来表示实际场，还要加入边界或衰减条件。
+
+  研究对应：Results, Airy beam generation and characterization, Ai mode in Eq. (1)。教学范围：论文没有给出本题朗斯基计算；本题是围绕其实际 Ai 模型作本科数学延伸，不将第二解自动作为有限能量物理场。
+
+  来源：[DOI 10.1038/s41467-025-62443-0](https://doi.org/10.1038/s41467-025-62443-0)。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+hints:
+- 先对 W 作乘积求导。
+- 把两个二阶导数都替换为 s 乘对应函数。
+feedback:
+  correct: 用方程本身证明了非零朗斯基量保持常数。
+  incorrect: 先求导再代入；不能凭两解满足同一个方程推断线性相关。
+  choices:
+    A: W 的导数为零，由初值确定非零常数。
+    B: 该表达式导数不为零，与计算矛盾。
+    C: 它连给定的 W(0)=1/π 都不满足。
+    D: 同一二阶方程可以有两个独立解，且给定零点值已排除 W=0。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P208 的 Results, Airy beam generation and characterization, Ai mode in Eq. (1) 构造。原创补充艾里方程及两解的初始朗斯基量，训练对特殊函数基底的独立性检查。 数值来源：not_applicable；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41467-025-62443-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $W(s)=1/\pi$，两解线性独立。
+- id: B
+  content: $W(s)=e^s/\pi$。
+- id: C
+  content: $W(s)=s/\pi$。
+- id: D
+  content: $W(s)=0$，因为两解满足相同的方程。
+answer:
+  choice: A

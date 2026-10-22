@@ -1,0 +1,75 @@
+schema_version: 3
+id: q-000450
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.complex-analysis
+concepts:
+- complex.conformal-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  Mose 等（2025）在光弹性应力分析中，把圆孔附近的区域映射为较简单的复平面区域。 [研究来源（DOI）](https://doi.org/10.1038/s41598-025-88114-0)。
+
+  取圆孔中心为原点、半径为 $R>0$，只研究孔外 $r>R$ 的局部区域。令 $\zeta=\xi+i\eta$，采用论文所用映射
+
+  $$
+  z=iR e^{-i\zeta}=r e^{i\theta}.
+  $$
+
+  ![圆孔及外部一点的坐标示意，图不按比例绘制](asset:math-hole)
+
+  图中文字说明：白色圆盘是孔，圆心为 $0$；孔外一点为 $z$，到圆心距离为 $r$，与正实轴夹角为 $\theta$。不要求处理整个圆周的分支拼接。孔外区域对应哪一条件？
+solution: |-
+  把 $\zeta=\xi+i\eta$ 代入，得到
+
+  $$
+  z=iR e^{-i\xi+\eta},\qquad |z|=R e^\eta.
+  $$
+
+  因此 $\eta=\ln(r/R)$。孔外 $r/R>1$，所以 $\eta>0$；圆周本身才对应 $\eta=0$。这里用模确定径向坐标，不需要先选定辐角分支。
+
+  检查：当 $r\to R^+$ 时，$\eta\to0^+$；当 $r$ 增大时，$\eta$ 单调增大。对数的自变量 $r/R$ 无量纲。
+
+  研究对应：The concept of conformal mapping, Eqs. (25a)–(25c), Fig. 4。教学范围：不重建光弹性应力，也不证明映射在整个环域上单值可逆。
+
+  来源：[DOI 10.1038/s41598-025-88114-0](https://doi.org/10.1038/s41598-025-88114-0)。
+difficulty: 1
+cognitive_level: apply
+style: graphical
+estimated_seconds: 240
+hints:
+- 先取映射两边的模。
+- 注意 $-i(\xi+i\eta)=-i\xi+\eta$。
+feedback:
+  correct: 正确使用模把孔外区域变为半平面。
+  incorrect: 检查复指数实部的符号，及边界与区域的区别。
+  choices:
+    A: 实坐标控制辐角，不能单独判定孔内外。
+    B: 因为 $r/R=e^\eta>1$，所以 $\eta>0$。
+    C: 负的虚坐标对应 $r<R$，位于孔内。
+    D: 零虚坐标只对应圆周边界。
+provenance:
+  type: original
+  note: 原创本科教学题；依据 P201 的 The concept of conformal mapping, Eqs. (25a)–(25c), Fig. 4 构造。保留论文的圆孔映射，只求径向区域对应，不计算应力。 数值来源：illustrative；不复制论文表述或图件。
+  source: https://doi.org/10.1038/s41598-025-88114-0
+  ai_assisted: true
+authors:
+- name: ChatGPT (GPT-6 Astra Pro)
+  kind: ai
+license: CC-BY-SA-4.0
+choices:
+- id: A
+  content: $\xi>0$
+- id: B
+  content: $\eta>0$
+- id: C
+  content: $\eta<0$
+- id: D
+  content: $\eta=0$
+answer:
+  choice: B
+assets:
+- id: math-hole
+  path: math/math-hole.svg

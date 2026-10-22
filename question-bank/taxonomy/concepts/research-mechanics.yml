@@ -1,0 +1,221 @@
+analytical.cyclic-coordinate:
+  title: 循环坐标与共轭动量
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-cyclic-coordinate
+analytical.elastic-energy:
+  title: 离散弹性储能
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-elastic-energy
+analytical.energy-integral:
+  title: 能量积分
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-energy-integral
+analytical.equilibrium-stability:
+  title: 平衡与局部稳定性
+  topics:
+  - mechanics.oscillations
+  - mechanics.analytical
+  aliases:
+  - analytical-equilibrium-stability
+analytical.geometric-phase:
+  title: 形变循环与几何相位
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-geometric-phase
+analytical.homogenization:
+  title: 能量等价与等效模量
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-homogenization
+analytical.kinematic-material-response:
+  title: 机构几何与材料应变响应
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-kinematic-material-response
+analytical.model-validity:
+  title: 分析力学模型适用范围
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-model-validity
+analytical.periodic-cell-accounting:
+  title: 周期单元共享能量计数
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-periodic-cell-accounting
+analytical.scaling:
+  title: 力学模型尺度分析
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-scaling
+analytical.stiffness-matrix:
+  title: 势能曲率与刚度矩阵
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-stiffness-matrix
+analytical.tangent-stiffness:
+  title: 预变形与切线刚度
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-tangent-stiffness
+analytical.time-dependent-lagrangian:
+  title: 含时拉格朗日量与能量交换
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-time-dependent-lagrangian
+analytical.virtual-work:
+  title: 虚功与广义力
+  topics:
+  - mechanics.analytical
+  aliases:
+  - analytical-virtual-work
+dynamics.angular-momentum:
+  title: 质点系角动量守恒
+  topics:
+  - mechanics.analytical
+  aliases:
+  - dynamics-angular-momentum
+dynamics.center-of-mass:
+  title: 质心运动
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-center-of-mass
+dynamics.drag-model:
+  title: 空气阻力与模型反演
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-drag-model
+dynamics.elastic-collision:
+  title: 一维弹性碰撞
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-elastic-collision
+dynamics.energy-conservation:
+  title: 机械能与功的收支
+  topics:
+  - mechanics.oscillations
+  - mechanics.analytical
+  - mechanics.dynamics
+  aliases:
+  - dynamics-energy-conservation
+dynamics.energy-partition:
+  title: 平动、转动与内部动能分配
+  topics:
+  - mechanics.dynamics
+  - mechanics.analytical
+  aliases:
+  - dynamics-energy-partition
+dynamics.impulse-momentum:
+  title: 冲量与动量定理
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-impulse-momentum
+dynamics.model-validity:
+  title: 动力学近似的适用范围
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-model-validity
+dynamics.rotational-motion:
+  title: 刚体转动动力学
+  topics:
+  - mechanics.dynamics
+  - mechanics.analytical
+  aliases:
+  - dynamics-rotational-motion
+dynamics.torque-balance:
+  title: 力矩平衡与临界条件
+  topics:
+  - mechanics.dynamics
+  aliases:
+  - dynamics-torque-balance
+kinematics.angular-motion:
+  title: 角运动与角速度合成
+  topics:
+  - mechanics.kinematics
+  aliases:
+  - kinematics-angular-motion
+kinematics.linkage-velocity:
+  title: 连杆机构速度关系
+  topics:
+  - mechanics.kinematics
+  aliases:
+  - kinematics-linkage-velocity
+kinematics.measurement:
+  title: 运动测量与数值差分
+  topics:
+  - mechanics.kinematics
+  aliases:
+  - kinematics-measurement
+kinematics.three-dimensional-motion:
+  title: 三维参数轨迹运动学
+  topics:
+  - mechanics.kinematics
+  aliases:
+  - kinematics-three-dimensional-motion
+oscillations.coupled-modes:
+  title: 耦合振动与模态坐标
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-coupled-modes
+oscillations.damping:
+  title: 阻尼与振幅衰减
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-damping
+oscillations.driven-motion:
+  title: 受迫振动与功率平衡
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-driven-motion
+oscillations.harmonic-motion:
+  title: 简谐振动与小振动
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-harmonic-motion
+oscillations.model-validity:
+  title: 振动模型与适用条件
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-model-validity
+oscillations.nonlinear-motion:
+  title: 弱非线性振动
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-nonlinear-motion
+oscillations.parameter-sensitivity:
+  title: 振动频率参数灵敏度
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-parameter-sensitivity
+oscillations.resonance:
+  title: 共振频率与谱线分辨
+  topics:
+  - mechanics.oscillations
+  aliases:
+  - oscillations-resonance
