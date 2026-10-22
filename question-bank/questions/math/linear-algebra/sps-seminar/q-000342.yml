@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000342
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3 长度从哪里来**
+
+  只告诉你某个实向量空间中的向量有坐标 $(1,1)^{\mathsf T}$，没有给基向量的长度、夹角或内积．能直接断言这个向量长度为 $\sqrt2$ 吗？
+choices:
+- id: A
+  content: 能，任何一组坐标都可以直接平方求和再开方．
+- id: B
+  content: 能，只要坐标都是实数．
+- id: C
+  content: 不能，还缺少内积等几何信息．
+answer:
+  choice: C
+hints:
+- 两根基箭头各取一份，若它们很长或夹角改变，合成箭头会不会一样长？
+solution: 不能．坐标只说明用了第一根和第二根基向量各一份．要谈长度与角度，还需指定内积；只有这组基相对该内积正交归一时，才能直接用坐标平方和开方．相同的线性空间可以配上不同的内积，从而得到不同的长度规则．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 该公式对所选坐标基有正交归一的前提．
+    B: 坐标取实数并不能规定基向量的长度与夹角．
+    C: 加法、数乘和坐标本身尚未指定长度规则．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.3 长度从哪里来 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

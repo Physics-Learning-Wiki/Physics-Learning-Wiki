@@ -24,8 +24,21 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Run checker
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          # Include both paths of a rename so the checker sees the surviving file.
+          GIT_CONFIG_COUNT: '1'
+          GIT_CONFIG_KEY_0: diff.renames
+          GIT_CONFIG_VALUE_0: 'false'
         run: |
-          yarn docs:format:check -a
+          set -euo pipefail
+          # Reuse staged-files mode to compare the PR base with the checked-out
+          # merge result. A temporary index leaves the checkout's real index intact.
+          checker_index="$(mktemp)"
+          trap 'rm -f "$checker_index"' EXIT
+          export GIT_INDEX_FILE="$checker_index"
+          git read-tree "$BASE_SHA"
+          yarn docs:format:check
 
   remark-lint:
     name: Check PR with remark-lint

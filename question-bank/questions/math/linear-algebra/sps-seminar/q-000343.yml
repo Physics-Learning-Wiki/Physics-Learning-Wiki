@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000343
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: numeric
+choice_order: fixed
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3 内积：投影后再缩放**
+
+  在通常的欧氏平面中，$\mathbf u=(3,0)^{\mathsf T}$、$\mathbf v=(2,1)^{\mathsf T}$．$\mathbf v$ 在 $\mathbf u$ 方向上的投影长度为 $2$．求 $\mathbf u\cdot\mathbf v$（填一个数，无需单位）．
+answer:
+  value: 6
+  tolerance:
+    value: 0
+    type: absolute
+  unit:
+    required: false
+    accepted: []
+hints:
+- 不要把投影长度直接当作点积；还要乘上长度 3．
+solution: |-
+  点积是投影的有向长度再乘以另一向量的长度．本题中投影与 $\mathbf u$ 同向，投影有向长度为 $2$，而 $\lVert\mathbf u\rVert=3$，所以
+
+  $$
+  \mathbf u\cdot\mathbf v=3\times2=6.
+  $$
+
+  按坐标算也是 $3\cdot2+0\cdot1=6$．只有用于投影的方向向量已经归一时，点积本身才直接等于投影的有向长度．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.3 内积：投影后再缩放 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

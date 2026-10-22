@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000340
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.5 可逆变换**
+
+  线性变换 $D(x,y)=(3x,y)$ 把水平方向拉长三倍．哪种操作能对所有输入撤销它？
+choices:
+- id: A
+  content: 把水平分量缩为三分之一，竖直分量不变．
+- id: B
+  content: 把水平分量减去 3．
+- id: C
+  content: 任何拉伸都丢失信息，因此不存在逆操作．
+answer:
+  choice: A
+hints:
+- 撤销一个三倍放大，应该再乘什么数？
+solution: 已知输出为 $(X,Y)=(3x,y)$，原输入就是 $(X/3,Y)$．所以 $D^{-1}$ 把水平分量缩为三分之一，竖直分量保持不变．拉长虽然改变形状，却没有让不同输入重合，因此信息仍可恢复．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 连续做三倍和三分之一倍，回到原输入．
+    B: 减去固定数是在平移，不能普遍撤销三倍缩放．
+    C: 非零倍数的拉伸可以撤销；完全压扁一个方向才会丢失该方向信息．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.5 可逆变换 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000327
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1 基与维数**
+
+  平面中有两个非零箭头 $\mathbf u=(1,0)^{\mathsf T}$、$\mathbf w=(2,0)^{\mathsf T}$．为什么它们不能作为整个 $\mathbb R^2$ 的一组基？
+choices:
+- id: A
+  content: 因为基向量的长度必须等于 1．
+- id: B
+  content: 因为两个箭头方向重复，只能张成一条直线．
+- id: C
+  content: 因为二维空间至少需要三个基向量．
+answer:
+  choice: B
+hints:
+- 想象只允许沿这两种箭头走正数或负数份，能不能离开水平轴？
+solution: 两个箭头都水平，任意线性组合 $a\mathbf u+b\mathbf w=(a+2b,0)^{\mathsf T}$ 仍然水平，无法到达 $(0,1)$．而且 $\mathbf w=2\mathbf u$，第二个箭头没有提供独立的新方向．数出两个箭头，并不等于找到了二维空间的一组基．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 基向量不必归一；问题在于方向重复．
+    B: 它们线性相关，无法张成整个平面．
+    C: 二维空间的一组基恰有两个向量，但必须线性无关．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.1 基与维数 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

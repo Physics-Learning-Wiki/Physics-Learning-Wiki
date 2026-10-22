@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000330
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.vector-space
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 线性同构**
+
+  设 $V=\{a+bx\mid a,b\in\mathbb R\}$，规定 $F(a+bx)=(a,b)^{\mathsf T}\in\mathbb R^2$．这个对应怎样帮助我们理解「线性同构」？
+choices:
+- id: A
+  content: 它证明多项式与平面箭头在任何意义下都是同一个对象．
+- id: B
+  content: 它给出了一个可逆且保持加法、数乘的对应．
+- id: C
+  content: 它只能说明集合大小相同，与线性运算无关．
+answer:
+  choice: B
+hints:
+- 检查两件事：能否来回翻译？翻译后加法和数乘是否一致？
+solution: 给出两个系数就唯一确定一个一次以下多项式，给出多项式也能唯一读出两个系数．多项式相加、数乘，对应于系数逐项相加、数乘，所以 $F$ 是保持线性运算的双射．它让两个空间可以互相翻译，但多项式与数对仍是不同类型的对象；这里的对应使用了所选基
+  $(1,x)$．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 线性结构可以对应，不等于对象的具体含义相同．
+    B: 系数记录完整，也保留线性运算，这正是线性同构．
+    C: 这个对应还逐项保留了加法与数乘，信息比一般集合双射更多．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 线性同构 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

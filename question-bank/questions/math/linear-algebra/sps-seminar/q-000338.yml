@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000338
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+- linalg.composition
+type: free_response
+choice_order: fixed
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 一次完整的矩阵乘法**
+
+  设
+
+  $$
+  A=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+  B=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+  $$
+
+  算出 $AB$，写出其中一格的「行乘列」过程，并说清 $AB\mathbf v$ 是先做 $A$ 还是先做 $B$．可按「第一行 a,b；第二行 c,d」的格式，用算出的数字填写矩阵．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 2000
+  rows: 5
+  placeholder: 用自己的话解释，或逐行写出计算；普通文字和数字即可．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：还不能用行乘列算出乘积．
+    points: 0
+  - id: partial
+    label: 部分掌握：矩阵、单格计算或作用次序中仍有遗漏或错误．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：矩阵四格正确，展示一格行乘列，并指出先 B 后 A．
+    points: 1
+reference_answer: $AB=\begin{pmatrix}2&1\\0&1\end{pmatrix}$；例如左上格为 $1\cdot2+1\cdot0=2$；先做 $B$，再做 $A$．
+hints:
+- 第一行第一列取左矩阵第一行与右矩阵第一列；理解作用次序时，从最靠近输入的矩阵开始．
+solution: |-
+  四格分别计算，避免把矩阵乘法误作逐格相乘：
+
+  $$
+  \begin{aligned}
+  (AB)_{11}&=1\cdot2+1\cdot0=2,\\
+  (AB)_{12}&=1\cdot0+1\cdot1=1,\\
+  (AB)_{21}&=0\cdot2+1\cdot0=0,\\
+  (AB)_{22}&=0\cdot0+1\cdot1=1.
+  \end{aligned}
+  $$
+
+  因此
+
+  $$
+  AB=\begin{pmatrix}2&1\\0&1\end{pmatrix},\qquad
+  AB\mathbf v=A(B\mathbf v).
+  $$
+
+  先做 $B$：把水平分量扩大两倍；再做 $A$：把竖直分量加到水平分量上．整个变换是 $(x,y)\mapsto(2x+y,y)$，与乘积矩阵一致．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 150
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 一次完整的矩阵乘法 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

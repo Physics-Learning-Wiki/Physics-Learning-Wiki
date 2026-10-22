@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000326
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1 向量与坐标**
+
+  在通常的平面直角坐标系中，$\mathbf b_1=(1,0)^{\mathsf T}$、$\mathbf b_2=(1,1)^{\mathsf T}$，取有序基 $\mathcal B=(\mathbf b_1,\mathbf b_2)$．同一个箭头 $\mathbf v=(3,2)^{\mathsf T}$ 改用这组基描述，哪句话正确？
+choices:
+- id: A
+  content: $[\mathbf v]_{\mathcal B}=(3,2)^{\mathsf T}$；换基不可能改变坐标．
+- id: B
+  content: $[\mathbf v]_{\mathcal B}=(1,2)^{\mathsf T}$；箭头本身没有改变．
+- id: C
+  content: $[\mathbf v]_{\mathcal B}=(1,2)^{\mathsf T}$；箭头的终点移动到了原直角坐标系的 $(1,2)$．
+answer:
+  choice: B
+hints:
+- 先看竖直方向需要几份斜着的基向量，再补水平方向．
+solution: |-
+  先沿 $\mathbf b_2$ 走两份，到达 $(2,2)$；再沿 $\mathbf b_1$ 走一份，到达 $(3,2)$，所以
+
+  $$
+  \mathbf v=\mathbf b_1+2\mathbf b_2,\qquad [\mathbf v]_{\mathcal B}=\begin{pmatrix}1\\2\end{pmatrix}.
+  $$
+
+  坐标记录的是各个基向量用了多少份．换一套记录方式，并没有移动这个箭头．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 同一个向量不变，但展开系数通常随基改变．
+    B: 一份水平基向量加两份斜基向量，仍到达原来的终点．
+    C: 把新基下的系数误读成原直角坐标，会把换坐标与移动向量混淆．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.1 向量与坐标 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

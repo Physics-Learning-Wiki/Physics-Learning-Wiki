@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000335
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 矩阵乘列向量**
+
+  计算
+
+  $$
+  \begin{pmatrix}1&2\\0&1\end{pmatrix}\begin{pmatrix}2\\1\end{pmatrix}.
+  $$
+
+  可以逐行计算，也可以把它看成「第一列的两倍加第二列」．
+choices:
+- id: A
+  content: $(4,1)^{\mathsf T}$
+- id: B
+  content: $(2,1)^{\mathsf T}$
+- id: C
+  content: $(2,5)^{\mathsf T}$
+answer:
+  choice: A
+hints:
+- 每个输出分量都是一行与输入列的对应元素相乘再求和．
+solution: |-
+  逐行计算得到
+
+  $$
+  \begin{pmatrix}1\cdot2+2\cdot1\\0\cdot2+1\cdot1\end{pmatrix}
+  =\begin{pmatrix}4\\1\end{pmatrix}.
+  $$
+
+  按列看，同一个运算是 $2(1,0)^{\mathsf T}+1(2,1)^{\mathsf T}$．两个输入坐标就是组合两列的系数．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 正确，两行分别给出 4 和 1．
+    B: 这相当于忽略了第一行里的非对角元素 2．
+    C: 这是误用转置矩阵时会得到的结果；应按原矩阵的行计算．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 矩阵乘列向量 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

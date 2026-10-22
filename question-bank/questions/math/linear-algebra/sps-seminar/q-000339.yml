@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000339
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2 复合的顺序**
+
+  令 $R$ 为绕原点逆时针旋转 $90^\circ$，$S$ 为只把水平分量扩大两倍．对初始箭头 $\mathbf e_1=(1,0)^{\mathsf T}$，比较 $RS\mathbf e_1$ 与 $SR\mathbf e_1$．不必做完整矩阵乘法，想象箭头的变化即可．
+choices:
+- id: A
+  content: 结果相同，因为都是一次旋转加一次拉伸．
+- id: B
+  content: $RS\mathbf e_1=(0,1)^{\mathsf T}$，$SR\mathbf e_1=(0,2)^{\mathsf T}$．
+- id: C
+  content: $RS\mathbf e_1=(0,2)^{\mathsf T}$，$SR\mathbf e_1=(0,1)^{\mathsf T}$．
+answer:
+  choice: C
+hints:
+- 水平拉伸对已经竖直的箭头有什么影响？
+solution: |-
+  $RS$ 先拉伸再旋转：$(1,0)\to(2,0)\to(0,2)$．
+
+  $SR$ 先旋转再水平拉伸：$(1,0)\to(0,1)\to(0,1)$；竖直箭头没有水平分量可拉伸．
+
+  两个输出不同，所以这两个变换不能交换次序．这也解释了矩阵乘法一般不满足交换律．
+feedback:
+  correct: 已抓住本题的关键；可以再用自己的话解释一次．
+  incorrect: 先展开提示，想清楚对象与操作，再对照解析检查．
+  choices:
+    A: 操作种类相同，并不保证顺序不重要．
+    B: 把乘积中的作用次序读反了：最右边的映射先作用．
+    C: 先拉伸的箭头已经变长；先旋转的箭头则不再有水平分量．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿 §2.2 复合的顺序 的教学范围对齐．题干、选项、提示与解析独立编写；仅参考概念范围和教学顺序，未转载讲义文字、图像或其中引用的教材段落．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
