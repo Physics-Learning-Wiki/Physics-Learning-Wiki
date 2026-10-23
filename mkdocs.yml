@@ -194,11 +194,57 @@ nav:
 
   - 电磁学:
     - 电磁学导读: electromagnetism/index.md
-    - 第 1 章 电荷与静电场: electromagnetism/chapter-1/index.md
-    - 第 2 章 电势与静电场方程: electromagnetism/chapter-2/index.md
-    - 第 3 章 静电场中的导体与边值问题: electromagnetism/chapter-3/index.md
-    - 第 4 章 电容与静电能: electromagnetism/chapter-4/index.md
-    - 第 5 章 电介质: electromagnetism/chapter-5/index.md
+    - 第 1 章 电荷与静电场:
+      - 章节导读: electromagnetism/chapter-1/index.md
+      - 电荷与库仑定律: electromagnetism/chapter-1/charge-coulomb.md
+      - 电场、叠加与电场线: electromagnetism/chapter-1/electric-field.md
+      - 连续电荷分布与积分建模: electromagnetism/chapter-1/continuous-charge.md
+      - 直线、圆环与圆盘的电场: electromagnetism/chapter-1/field-integrals.md
+      - 电通量与高斯定理: electromagnetism/chapter-1/gauss-law.md
+      - 高斯定理与三类对称性: electromagnetism/chapter-1/symmetry.md
+      - 叠加、割补与分段电荷模型: electromagnetism/chapter-1/superposition.md
+      - 综合练习与自测: electromagnetism/chapter-1/exercises.md
+    - 第 2 章 电势与静电场方程:
+      - 章节导读: electromagnetism/chapter-2/index.md
+      - 静电场的功与环路定理: electromagnetism/chapter-2/work-circulation.md
+      - 电势、电势差与参考零点: electromagnetism/chapter-2/potential-reference.md
+      - 电势的计算: electromagnetism/chapter-2/potential-calculation.md
+      - 等势面与电势梯度: electromagnetism/chapter-2/potential-gradient.md
+      - 静电场的局域方程: electromagnetism/chapter-2/field-equations.md
+      - 调和电势与静电平衡稳定性: electromagnetism/chapter-2/harmonic-stability.md
+      - 电偶极子的完整远场: electromagnetism/chapter-2/dipole.md
+      - 电四极子与多极展开: electromagnetism/chapter-2/multipoles.md
+      - 综合练习与自测: electromagnetism/chapter-2/exercises.md
+    - 第 3 章 静电场中的导体与边值问题:
+      - 章节导读: electromagnetism/chapter-3/index.md
+      - 导体静电平衡与表面边界条件: electromagnetism/chapter-3/equilibrium.md
+      - 静电感应与多导体系统: electromagnetism/chapter-3/induction.md
+      - 空腔导体与静电屏蔽: electromagnetism/chapter-3/shielding.md
+      - 边值问题与唯一性定理: electromagnetism/chapter-3/uniqueness.md
+      - 接地平面的镜像法: electromagnetism/chapter-3/image-plane.md
+      - 导体球的镜像法: electromagnetism/chapter-3/image-sphere.md
+      - 综合练习与自测: electromagnetism/chapter-3/exercises.md
+    - 第 4 章 电容与静电能:
+      - 章节导读: electromagnetism/chapter-4/index.md
+      - 电容的定义与几何计算: electromagnetism/chapter-4/capacitance.md
+      - 组合电容与插入金属板: electromagnetism/chapter-4/capacitor-networks.md
+      - 组装功与电荷系相互作用能: electromagnetism/chapter-4/assembly-energy.md
+      - 连续分布的自能与场能: electromagnetism/chapter-4/field-energy.md
+      - 能量法与电容器受力: electromagnetism/chapter-4/energy-force.md
+      - 电偶极子的能量、力矩与相互作用: electromagnetism/chapter-4/dipole-energy.md
+      - 综合练习与自测: electromagnetism/chapter-4/exercises.md
+    - 第 5 章 电介质:
+      - 章节导读: electromagnetism/chapter-5/index.md
+      - 极化机制与极化强度: electromagnetism/chapter-5/polarization.md
+      - 束缚面电荷与体电荷: electromagnetism/chapter-5/bound-charge.md
+      - 极化电荷产生的附加场: electromagnetism/chapter-5/polarization-field.md
+      - 电位移与本构关系: electromagnetism/chapter-5/displacement.md
+      - 介质界面与静电场求解: electromagnetism/chapter-5/interfaces.md
+      - 介质中的储能与受力: electromagnetism/chapter-5/dielectric-energy.md
+      - 综合练习与自测: electromagnetism/chapter-5/exercises.md
+    - 专题导读:
+      - 静电学: electromagnetism/electrostatics.md
+      - 物质中的电磁场: electromagnetism/matter.md
     - 恒定电流与电路（待建设）: electromagnetism/dc-circuit.md
     - 恒定磁场（待建设）: electromagnetism/magnetostatics.md
     - 电磁感应（待建设）: electromagnetism/induction.md

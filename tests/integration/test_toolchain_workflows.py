@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 import tomllib
 
 import pytest
@@ -138,26 +139,59 @@ def test_build_and_release_workflow_contracts():
     "command", [["sync"], ["run", "python", "-c", "raise SystemExit(0)"]]
 )
 def test_project_commands_reject_lock_drift_without_rewriting(tmp_path, command):
-    for filename in ("pyproject.toml", "uv.lock", ".python-version", "README.md"):
-        shutil.copyfile(ROOT / filename, tmp_path / filename)
+    project = tomllib.loads(
+        (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+    )["project"]
+    # Exercise the lock policy without relying on cached third-party metadata.
+    source = (
+        "[project]\n"
+        'name = "lock-drift-fixture"\n'
+        f'version = "{project["version"]}"\n'
+        f'requires-python = "{project["requires-python"]}"\n'
+        "dependencies = []\n"
+    )
     manifest = tmp_path / "pyproject.toml"
-    source = manifest.read_text(encoding="utf-8")
-    version = tomllib.loads(source)["project"]["version"]
+    manifest.write_text(source, encoding="utf-8")
+    env = {
+        **os.environ,
+        "UV_LOCKED": "true",
+        "UV_OFFLINE": "true",
+        "UV_CACHE_DIR": str(tmp_path / "empty-cache"),
+        "UV_PYTHON": sys.executable,
+        "UV_PYTHON_DOWNLOADS": "never",
+        "UV_PROJECT_ENVIRONMENT": str(tmp_path / ".venv"),
+    }
+    env.pop("VIRTUAL_ENV", None)
+    uv = shutil.which("uv")
+    assert uv is not None
+    locked = subprocess.run(
+        [uv, "lock"],
+        cwd=tmp_path,
+        env={**env, "UV_LOCKED": "false"},
+        capture_output=True,
+        text=True,
+        timeout=90,
+    )
+    assert locked.returncode == 0, locked.stderr
+    lock = tmp_path / "uv.lock"
+    before = hashlib.sha256(lock.read_bytes()).digest()
+    matching = subprocess.run(
+        [uv, *command],
+        cwd=tmp_path,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=90,
+    )
+    assert matching.returncode == 0, matching.stderr
+    assert hashlib.sha256(lock.read_bytes()).digest() == before
+
+    version = project["version"]
     replacement = "0.0.0+drift" if version != "0.0.0+drift" else "0.0.1+drift"
     manifest.write_text(
         source.replace(f'version = "{version}"', f'version = "{replacement}"', 1),
         encoding="utf-8",
     )
-    lock = tmp_path / "uv.lock"
-    before = hashlib.sha256(lock.read_bytes()).digest()
-    env = {
-        **os.environ,
-        "UV_LOCKED": "true",
-        "UV_OFFLINE": "true",
-        "UV_PROJECT_ENVIRONMENT": str(tmp_path / ".venv"),
-    }
-    uv = shutil.which("uv")
-    assert uv is not None
     result = subprocess.run(
         [uv, *command],
         cwd=tmp_path,
