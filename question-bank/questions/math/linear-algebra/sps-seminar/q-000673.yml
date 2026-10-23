@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000673
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  同一线性变换的两种表示满足 $A^{\prime}=C^{-1}AC$，$C$ 可逆。已知 $\det A=-4$，以下哪项必然成立？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $\det A^{\prime}=4$，因为换基去掉了负号
+- id: B
+  content: $\det A^{\prime}$ 取决于 $\det C$ 的大小
+- id: C
+  content: $\det A^{\prime}=-4$
+answer:
+  choice: C
+hints:
+- 对三个因子的乘积取行列式。
+solution: $\det A^{\prime}=\det(C^{-1})\det A\det C=\det A=-4$。换基前后表示同一变换，其行列式相同；C 的因子在往返中相消。
+feedback:
+  correct: 正确。相似变换保持行列式。
+  incorrect: 再想一想：对三个因子的乘积取行列式。
+  choices:
+    A: 取向符号属于所研究的变换，不会被相似变换去掉。
+    B: 去程与回程的行列式互为倒数，会相消。
+    C: 相似变换保持行列式。

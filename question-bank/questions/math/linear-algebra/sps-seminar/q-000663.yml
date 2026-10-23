@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000663
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+- linalg.inner-product
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.5 体积保持与正交性 · 2026-10-24 更新稿**
+
+  剪切矩阵
+
+  $$
+  H=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+  $$
+
+  的行列式为 $1$。能否仅据此判断它是正交矩阵？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.5 体积保持与正交性；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 能，面积不变必然保证所有长度不变
+- id: B
+  content: 不能；它把单位向量 $(0,1)^{\mathsf T}$ 变成长度为 $\sqrt{2}$ 的向量
+- id: C
+  content: 能，所有可逆矩阵都是正交矩阵
+answer:
+  choice: B
+hints:
+- 检查一个单位向量的长度就足以否定正交性。
+solution: $H(0,1)^{\mathsf T}=(1,1)^{\mathsf T}$，长度由 $1$ 变为 $\sqrt{2}$。所以 $H$ 保持面积却不保持所有长度。$\det Q=\pm1$ 是正交矩阵的必要条件，反过来不充分。
+feedback:
+  correct: 正确。一个长度改变的例子就能否定正交性。
+  incorrect: 再想一想：检查一个单位向量的长度就足以否定正交性。
+  choices:
+    A: 面积由多个方向共同决定，面积保持不等于逐个长度保持。
+    B: 一个长度改变的例子就能否定正交性。
+    C: 可逆只保证可恢复输入，不保证长度保持。

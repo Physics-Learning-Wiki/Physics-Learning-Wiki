@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000679
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  特征向量满足 $A\mathbf v=\lambda\mathbf v$。为什么定义还要求 $\mathbf v\ne\mathbf0$？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 因为线性映射不能把零向量映成零向量
+- id: B
+  content: 因为把零向量代入时，对任意 λ 等式都成立，不能识别特征方向
+- id: C
+  content: 因为 λ 不允许为零
+answer:
+  choice: B
+hints:
+- 直接把 $\mathbf v=\mathbf0$ 代入两侧。
+solution: 任何线性映射都满足 $A\mathbf0=\mathbf0$，而 $\lambda\mathbf0=\mathbf0$ 对任何 λ 都成立。因此必须排除零向量；特征值本身仍然可以是零。
+feedback:
+  correct: 正确。零向量没有可供识别的方向，也不能限制 λ。
+  incorrect: 再想一想：直接把 $\mathbf v=\mathbf0$ 代入两侧。
+  choices:
+    A: 线性映射恰恰一定把零向量映到零向量。
+    B: 零向量没有可供识别的方向，也不能限制 λ。
+    C: 非零条件施加在特征向量上，不施加在特征值上。

@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000670
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  在换基演示中，第一帧与第二帧只替换了坐标网格，代表输入向量的箭头端点保持不动。这一步发生了什么？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 同一向量改用另一组基记录，坐标可能改变
+- id: B
+  content: 对向量执行了一次物理旋转
+- id: C
+  content: 向量被乘以了新的矩阵表示，所以几何对象必然改变
+answer:
+  choice: A
+hints:
+- 区分描述方式的变化与实际执行线性变换。
+solution: 换基是对同一对象重新记录坐标。只有执行所研究的变换 T 时，输入向量才按 T 变成输出；换算坐标的数值乘法本身不表示这里的几何箭头被移动。
+feedback:
+  correct: 正确。箭头不动、坐标记录改变，正是这一步的意义。
+  incorrect: 再想一想：区分描述方式的变化与实际执行线性变换。
+  choices:
+    A: 箭头不动、坐标记录改变，正是这一步的意义。
+    B: 网格改变不等于把箭头实际旋转。
+    C: 坐标列的数值变化不必对应几何向量变化。
