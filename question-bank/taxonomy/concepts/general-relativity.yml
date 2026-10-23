@@ -1,0 +1,118 @@
+gr.tensor.index-manipulation:
+  title: 指标升降与张量分量
+  topics:
+    - modern.general-relativity
+  aliases:
+    - index-lowering
+
+gr.metric.line-element:
+  title: 线元与度规
+  topics:
+    - modern.general-relativity
+  aliases:
+    - line-element
+
+gr.metric.surface-induced:
+  title: 曲面诱导度规
+  topics:
+    - modern.general-relativity
+  aliases:
+    - induced-metric
+
+gr.tensor.scalar-invariant:
+  title: 标量的坐标不变性
+  topics:
+    - modern.general-relativity
+  aliases:
+    - scalar-invariance
+
+gr.connection.christoffel:
+  title: Christoffel 符号
+  topics:
+    - modern.general-relativity
+  aliases:
+    - christoffel-symbols
+
+gr.curvature.riemann:
+  title: 黎曼曲率张量
+  topics:
+    - modern.general-relativity
+  aliases:
+    - riemann-tensor
+
+gr.geodesic.action:
+  title: 从作用量导出测地线
+  topics:
+    - modern.general-relativity
+  aliases:
+    - geodesic-action
+
+gr.geodesic.affine-parameter:
+  title: 仿射参数
+  topics:
+    - modern.general-relativity
+  aliases:
+    - affine-parameter
+
+gr.connection.metric-compatibility:
+  title: 度规相容性
+  topics:
+    - modern.general-relativity
+  aliases:
+    - metric-compatibility
+
+gr.spacetime.schwarzschild:
+  title: Schwarzschild 时空
+  topics:
+    - modern.general-relativity
+  aliases:
+    - schwarzschild-metric
+
+gr.curvature.ricci:
+  title: Ricci 张量与 Ricci 标量
+  topics:
+    - modern.general-relativity
+  aliases:
+    - ricci-tensor
+
+gr.curvature.kretschmann:
+  title: Kretschmann 标量
+  topics:
+    - modern.general-relativity
+  aliases:
+    - kretschmann-scalar
+
+gr.spacetime.coordinate-singularity:
+  title: 坐标奇点与曲率奇点
+  topics:
+    - modern.general-relativity
+  aliases:
+    - coordinate-singularity
+
+gr.coordinates.eddington-finkelstein:
+  title: Eddington–Finkelstein 坐标
+  topics:
+    - modern.general-relativity
+  aliases:
+    - eddington-finkelstein
+
+gr.cosmology.frw:
+  title: FRW 度规
+  topics:
+    - modern.general-relativity
+  aliases:
+    - frw-metric
+
+gr.cosmology.friedmann:
+  title: Friedmann 方程
+  topics:
+    - modern.general-relativity
+  aliases:
+    - friedmann-equations
+
+gr.cosmology.continuity:
+  title: 宇宙学连续性方程
+  topics:
+    - modern.general-relativity
+  aliases:
+    - continuity-equation
