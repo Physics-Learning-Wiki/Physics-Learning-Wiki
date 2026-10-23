@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000560
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  平面中用两支不共线的箭头作基，坐标出现负数意味着什么？
+
+  平面中用两支不共线的箭头作基，坐标出现负数意味着什么？'
 choices:
 - id: A
   content: 沿对应基向量的反方向取倍数
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6b89f142aa3d2e0106a57c49fd9a938bdf64e08f69430a35044db2b8184affad
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6b89f142aa3d2e0106a57c49fd9a938bdf64e08f69430a35044db2b8184affad
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6b89f142aa3d2e0106a57c49fd9a938bdf64e08f69430a35044db2b8184affad

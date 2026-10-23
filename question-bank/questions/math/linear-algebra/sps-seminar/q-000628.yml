@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000628
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
 
-  观察三维割补动画时，只把摄像机换个角度，物体的体积会怎样？
+
+  观察三维割补动画时，只把摄像机换个角度，物体的体积会怎样？'
 choices:
 - id: A
   content: 保持不变，屏幕上的投影形状可能改变
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5466b7e3b6cc0feffc429f047901fb3c486bbcf8d1aab88863d2eebf02ecce88
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5466b7e3b6cc0feffc429f047901fb3c486bbcf8d1aab88863d2eebf02ecce88
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5466b7e3b6cc0feffc429f047901fb3c486bbcf8d1aab88863d2eebf02ecce88

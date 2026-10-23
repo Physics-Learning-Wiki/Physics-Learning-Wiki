@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000617
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  哪个矩阵能撤销 $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ 的剪切？
+
+  哪个矩阵能撤销 $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ 的剪切？'
 choices:
 - id: A
   content: $\begin{pmatrix}1&-2\\0&1\end{pmatrix}$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ca3744423dd5a544abb5d9bcc6aebfb2ed6be4403cb11b73b390fd0baea7b8f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ca3744423dd5a544abb5d9bcc6aebfb2ed6be4403cb11b73b390fd0baea7b8f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ca3744423dd5a544abb5d9bcc6aebfb2ed6be4403cb11b73b390fd0baea7b8f

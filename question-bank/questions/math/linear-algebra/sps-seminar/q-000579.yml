@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000579
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  求 $\begin{pmatrix}1&0\\0&2\end{pmatrix}+\begin{pmatrix}0&1\\1&0\end{pmatrix}$．
+
+  求 $\begin{pmatrix}1&0\\0&2\end{pmatrix}+\begin{pmatrix}0&1\\1&0\end{pmatrix}$．'
 choices:
 - id: A
   content: $\begin{pmatrix}1&1\\1&2\end{pmatrix}$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0920c15ff4bcd2012f91ac1877457e6acb439f53055e05939dad7095a379e051
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0920c15ff4bcd2012f91ac1877457e6acb439f53055e05939dad7095a379e051
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0920c15ff4bcd2012f91ac1877457e6acb439f53055e05939dad7095a379e051

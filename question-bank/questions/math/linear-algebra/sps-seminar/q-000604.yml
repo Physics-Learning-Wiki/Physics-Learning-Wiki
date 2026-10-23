@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000604
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6**
+stem: '**SPS 线性代数研讨班配套 · §2.6**
 
-  两个平面变换的行列式分别为 -1 和 -1，复合后取向怎样？
+
+  两个平面变换的行列式分别为 -1 和 -1，复合后取向怎样？'
 choices:
 - id: A
   content: 保持原取向
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bac977d508ceb8d4d2e7cc9a40bc0e926b063fc87d001cc9a629763c0560be3e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bac977d508ceb8d4d2e7cc9a40bc0e926b063fc87d001cc9a629763c0560be3e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bac977d508ceb8d4d2e7cc9a40bc0e926b063fc87d001cc9a629763c0560be3e

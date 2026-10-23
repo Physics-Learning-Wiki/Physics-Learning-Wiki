@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000609
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
 
-  对 $T:V\to W$，输入用基 $\mathcal B$，输出用基 $\mathcal C$．矩阵第 j 列应怎样记录？
+
+  对 $T:V\to W$，输入用基 $\mathcal B$，输出用基 $\mathcal C$．矩阵第 j 列应怎样记录？'
 choices:
 - id: A
   content: 用 $\mathcal C$ 坐标记录 $T(b_j)$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f28e78c5ba4f518b0e5fb90b22d1d4fcf2a6062fb0ec2bb62bfd81f7f18bc348
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f28e78c5ba4f518b0e5fb90b22d1d4fcf2a6062fb0ec2bb62bfd81f7f18bc348
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f28e78c5ba4f518b0e5fb90b22d1d4fcf2a6062fb0ec2bb62bfd81f7f18bc348

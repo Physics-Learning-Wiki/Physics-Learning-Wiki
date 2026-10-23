@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000589
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  同一个线性映射，换一组基后，表示矩阵可能变化吗？
+
+  同一个线性映射，换一组基后，表示矩阵可能变化吗？'
 choices:
 - id: A
   content: 可能，因为输入和输出的坐标描述改变了
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:d8f8f8d368c715b8567c076893caa03d4d6b3f425470961c3f8768ea12e2e94a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:d8f8f8d368c715b8567c076893caa03d4d6b3f425470961c3f8768ea12e2e94a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:d8f8f8d368c715b8567c076893caa03d4d6b3f425470961c3f8768ea12e2e94a

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000635
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.3 与 §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.3 与 §2.2.7 · 2026-10-23 更新稿**
 
-  线性同构 $T:V\to W$ 在输入基 $\mathcal B$、输出基 $\mathcal C$ 下的矩阵为 $A$。用 $A^{-1}$ 恢复坐标时，哪种写法正确？
+
+  线性同构 $T:V\to W$ 在输入基 $\mathcal B$、输出基 $\mathcal C$ 下的矩阵为 $A$。用 $A^{-1}$ 恢复坐标时，哪种写法正确？'
 choices:
 - id: A
   content: $[v]_{\mathcal B}=A^{-1}[T(v)]_{\mathcal C}$
@@ -24,11 +24,9 @@ answer:
   choice: A
 hints:
 - 原关系为 $[T(v)]_{\mathcal C}=A[v]_{\mathcal B}$。
-solution: 逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal
-  B}(T^{-1})=A^{-1}$。
+solution: 逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal B}(T^{-1})=A^{-1}$。
 feedback:
-  correct: 正确。逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal
-    B}(T^{-1})=A^{-1}$。
+  correct: 正确。逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal B}(T^{-1})=A^{-1}$。
   incorrect: 再想一想：原关系为 $[T(v)]_{\mathcal C}=A[v]_{\mathcal B}$。
   choices:
     A: 逆映射的方向与两套基的角色一同反转。
@@ -49,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:54dee10693652d6da19ec4ceefe95d724960d5da8c880039934544a14a2559dc
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:54dee10693652d6da19ec4ceefe95d724960d5da8c880039934544a14a2559dc
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:54dee10693652d6da19ec4ceefe95d724960d5da8c880039934544a14a2559dc

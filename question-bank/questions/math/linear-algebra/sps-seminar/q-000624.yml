@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000624
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
 
-  三维变换分别把 x、y、z 方向放大 2、1、3 倍，单位立方体变成多大体积？
+
+  三维变换分别把 x、y、z 方向放大 2、1、3 倍，单位立方体变成多大体积？'
 choices:
 - id: A
   content: $6$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ce9d171cf7d6cc89f257db0ea610572aa326f094b92fcdb0786c9269f2ac7c5d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ce9d171cf7d6cc89f257db0ea610572aa326f094b92fcdb0786c9269f2ac7c5d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ce9d171cf7d6cc89f257db0ea610572aa326f094b92fcdb0786c9269f2ac7c5d

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000568
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  一台机器把每个输入向量都变成零向量，它是线性映射吗？
+
+  一台机器把每个输入向量都变成零向量，它是线性映射吗？'
 choices:
 - id: A
   content: 是，但通常会丢失信息
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:40326b6528455b37a9a5740860a32cd4e50220a2a28a0cba8eeca5d778458170
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:40326b6528455b37a9a5740860a32cd4e50220a2a28a0cba8eeca5d778458170
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:40326b6528455b37a9a5740860a32cd4e50220a2a28a0cba8eeca5d778458170

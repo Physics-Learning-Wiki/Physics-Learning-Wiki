@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000581
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  对于列向量 v，ABv 对应怎样的操作顺序？
+
+  对于列向量 v，ABv 对应怎样的操作顺序？'
 choices:
 - id: A
   content: 先 B，再 A
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:cf7e2d81d66cb30ed8519ba09c3ffe0fc205b0b86749e72a5eef0a6596317700
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:cf7e2d81d66cb30ed8519ba09c3ffe0fc205b0b86749e72a5eef0a6596317700
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:cf7e2d81d66cb30ed8519ba09c3ffe0fc205b0b86749e72a5eef0a6596317700

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000640
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.2 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.2 · 2026-10-23 更新稿**
 
-  讲义用 $|A|$ 表示行列式。对于实方阵 $A$，若 $\det A=-3$，下面哪句话正确？
+
+  讲义用 $|A|$ 表示行列式。对于实方阵 $A$，若 $\det A=-3$，下面哪句话正确？'
 choices:
 - id: A
   content: $|A|=3$，因为竖线总表示绝对值
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7e97406c74cfd6420b9cd71b0e6fd6834833136ff931e332520235ae142a0cc4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7e97406c74cfd6420b9cd71b0e6fd6834833136ff931e332520235ae142a0cc4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7e97406c74cfd6420b9cd71b0e6fd6834833136ff931e332520235ae142a0cc4

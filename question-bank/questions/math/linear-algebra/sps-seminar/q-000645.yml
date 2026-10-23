@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000645
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 按列展开 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 按列展开 · 2026-10-23 更新稿**
 
-  三维行列式按第一列展开时，先考虑第一列沿 $x$ 轴的分量，再通过剪切把其余两条边放进 $yz$ 平面。为什么此项的余子式要删去第一列和第一行？
+
+  三维行列式按第一列展开时，先考虑第一列沿 $x$ 轴的分量，再通过剪切把其余两条边放进 $yz$ 平面。为什么此项的余子式要删去第一列和第一行？'
 choices:
 - id: A
   content: 删列和删行都表示把整个图形平移一次
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a6664b6093a6f6b3a71f13cf931cad5353f0bdd37987b5d694a1559f65c18ebb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a6664b6093a6f6b3a71f13cf931cad5353f0bdd37987b5d694a1559f65c18ebb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a6664b6093a6f6b3a71f13cf931cad5353f0bdd37987b5d694a1559f65c18ebb

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000613
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  若 $T:V\to W$ 是线性同构，逆映射的方向是什么？
+
+  若 $T:V\to W$ 是线性同构，逆映射的方向是什么？'
 choices:
 - id: A
   content: $T^{-1}:W\to V$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:221343d8220c42e5da34b2453b233bbb4fbdd42e82f97ff735e480670ca85a8a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:221343d8220c42e5da34b2453b233bbb4fbdd42e82f97ff735e480670ca85a8a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:221343d8220c42e5da34b2453b233bbb4fbdd42e82f97ff735e480670ca85a8a

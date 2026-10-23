@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000583
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  已知 A 是 2×3 矩阵，B 是 3×4 矩阵，AB 的形状是什么？
+
+  已知 A 是 2×3 矩阵，B 是 3×4 矩阵，AB 的形状是什么？'
 choices:
 - id: A
   content: 2×4
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f85bc8fc0e3258318be294cce7358eea3cda9691a3926e3cca6b04936d5a426c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f85bc8fc0e3258318be294cce7358eea3cda9691a3926e3cca6b04936d5a426c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f85bc8fc0e3258318be294cce7358eea3cda9691a3926e3cca6b04936d5a426c

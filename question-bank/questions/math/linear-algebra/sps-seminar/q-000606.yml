@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000606
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6**
+stem: '**SPS 线性代数研讨班配套 · §2.6**
 
-  一个 2×2 矩阵的两列完全相同，行列式为什么为零？
+
+  一个 2×2 矩阵的两列完全相同，行列式为什么为零？'
 choices:
 - id: A
   content: 两条生成边共线，围不出面积
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e93bb005cb3d46045269299a3db575bbbca6fcae49788e4502ecffbd33199b76
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e93bb005cb3d46045269299a3db575bbbca6fcae49788e4502ecffbd33199b76
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e93bb005cb3d46045269299a3db575bbbca6fcae49788e4502ecffbd33199b76

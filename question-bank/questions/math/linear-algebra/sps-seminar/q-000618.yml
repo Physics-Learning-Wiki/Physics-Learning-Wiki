@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000618
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  绕原点顺时针旋转 30° 的逆操作是什么？
+
+  绕原点顺时针旋转 30° 的逆操作是什么？'
 choices:
 - id: A
   content: 绕原点逆时针旋转 30°
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:26f7cdadb9538e710d5f0f1ae1d8ee389a9415a0db9c3d52a031d64ea701f2a0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:26f7cdadb9538e710d5f0f1ae1d8ee389a9415a0db9c3d52a031d64ea701f2a0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:26f7cdadb9538e710d5f0f1ae1d8ee389a9415a0db9c3d52a031d64ea701f2a0

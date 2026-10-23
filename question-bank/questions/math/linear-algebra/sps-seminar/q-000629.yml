@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000629
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
 
-  一个物体在同一底面区域上由下表面 $z=f(x,y)$ 和上表面 $z=g(x,y)$ 围成，且 $0\le f\le g$。两个表面以下的体积都从 $z=0$ 算起。用上表面以下的体积减去下表面以下的体积时，减去的量表示什么？
+
+  一个物体在同一底面区域上由下表面 $z=f(x,y)$ 和上表面 $z=g(x,y)$ 围成，且 $0\le f\le g$。两个表面以下的体积都从 $z=0$ 算起。用上表面以下的体积减去下表面以下的体积时，减去的量表示什么？'
 choices:
 - id: A
   content: 位于物体下方、被前一个体积多算的部分
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:628742843d03c8e4d83859900361ac2c5ca26add4a61e5d9ff39c04a8a0ab9be
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:628742843d03c8e4d83859900361ac2c5ca26add4a61e5d9ff39c04a8a0ab9be
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:628742843d03c8e4d83859900361ac2c5ca26add4a61e5d9ff39c04a8a0ab9be

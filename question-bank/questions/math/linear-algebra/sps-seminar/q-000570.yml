@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000570
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.image-kernel
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  对 T(x,y)=(x,0)，输出 (2,0) 能唯一确定输入吗？
+
+  对 T(x,y)=(x,0)，输出 (2,0) 能唯一确定输入吗？'
 choices:
 - id: A
   content: 不能，(2,1) 和 (2,-1) 都可以
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af701e9a74b73fad5c68070148afb56e80903a7105f7691cfec2b3e4dcb068ce
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af701e9a74b73fad5c68070148afb56e80903a7105f7691cfec2b3e4dcb068ce
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af701e9a74b73fad5c68070148afb56e80903a7105f7691cfec2b3e4dcb068ce

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000646
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 按列展开 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 按列展开 · 2026-10-23 更新稿**
 
-  三阶行列式按第一列展开，第二项从该列取出 $a_{21}$。其余子式前的排列符号 $(-1)^{2+1}$ 是什么，几何上对应什么？
+
+  三阶行列式按第一列展开，第二项从该列取出 $a_{21}$。其余子式前的排列符号 $(-1)^{2+1}$ 是什么，几何上对应什么？'
 choices:
 - id: A
   content: 正号，因为普通底面积总为正
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:76ea93bf3255caa0658295f0b30855d59161bfa4badbee84a5dd33267a9ff3fb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:76ea93bf3255caa0658295f0b30855d59161bfa4badbee84a5dd33267a9ff3fb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:76ea93bf3255caa0658295f0b30855d59161bfa4badbee84a5dd33267a9ff3fb

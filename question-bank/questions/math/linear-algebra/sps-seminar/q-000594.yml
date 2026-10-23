@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000594
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.3**
+stem: '**SPS 线性代数研讨班配套 · §2.3**
 
-  在标准欧氏内积下，$(1,2)\cdot(2,-1)$ 等于多少？
+
+  在标准欧氏内积下，$(1,2)\cdot(2,-1)$ 等于多少？'
 choices:
 - id: A
   content: $0$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7da5267a4d1bf0677f3021e3e38f0bc6df10eb30af2b9d4fbbf41c8414a1c6b0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7da5267a4d1bf0677f3021e3e38f0bc6df10eb30af2b9d4fbbf41c8414a1c6b0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:7da5267a4d1bf0677f3021e3e38f0bc6df10eb30af2b9d4fbbf41c8414a1c6b0

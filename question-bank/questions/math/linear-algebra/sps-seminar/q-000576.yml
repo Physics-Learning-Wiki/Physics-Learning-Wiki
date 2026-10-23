@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000576
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  一个二维线性变换把两个标准基向量都送到同一支非零箭头，整个平面会怎样？
+
+  一个二维线性变换把两个标准基向量都送到同一支非零箭头，整个平面会怎样？'
 choices:
 - id: A
   content: 被压到一条直线上
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:862f9d31d021749a0e7734edd27ec82a49b7c957a1858d3d051376dd855eb5a2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:862f9d31d021749a0e7734edd27ec82a49b7c957a1858d3d051376dd855eb5a2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:862f9d31d021749a0e7734edd27ec82a49b7c957a1858d3d051376dd855eb5a2

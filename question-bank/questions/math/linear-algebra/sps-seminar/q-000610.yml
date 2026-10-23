@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000610
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
 
-  线性映射 $T:V\to V$ 的输入和输出用同一组基，是否保证 T 可逆？
+
+  线性映射 $T:V\to V$ 的输入和输出用同一组基，是否保证 T 可逆？'
 choices:
 - id: A
   content: 不保证，还须 T 是双射
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:805167892ecd28bd771e57ade23e1ca024882de6f35352def3428f5a75bcbb4f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:805167892ecd28bd771e57ade23e1ca024882de6f35352def3428f5a75bcbb4f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:805167892ecd28bd771e57ade23e1ca024882de6f35352def3428f5a75bcbb4f

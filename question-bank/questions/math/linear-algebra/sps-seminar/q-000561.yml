@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000561
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  为什么把零向量放进平面的一组基会出问题？
+
+  为什么把零向量放进平面的一组基会出问题？'
 choices:
 - id: A
   content: 它不能提供新方向，且展开系数不唯一
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5153587f12a3741ea5f02323afd3a4f4e5f262150cb8dacfa71941c0d311d6f0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5153587f12a3741ea5f02323afd3a4f4e5f262150cb8dacfa71941c0d311d6f0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:5153587f12a3741ea5f02323afd3a4f4e5f262150cb8dacfa71941c0d311d6f0

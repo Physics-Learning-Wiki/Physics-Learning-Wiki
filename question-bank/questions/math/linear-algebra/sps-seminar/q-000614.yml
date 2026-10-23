@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000614
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1.1 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.1.1 · 2026-10-23 更新稿**
 
-  在三维有序基 $(e_1,e_2,e_3)$ 下，$v=2e_1-e_3$ 的坐标列是什么？
+
+  在三维有序基 $(e_1,e_2,e_3)$ 下，$v=2e_1-e_3$ 的坐标列是什么？'
 choices:
 - id: A
   content: $(2,0,-1)^{\mathsf T}$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b84df8fcdc75c2d35ab2a893c66ca244dd5d1b38ec64d22508e912da2690aeb7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b84df8fcdc75c2d35ab2a893c66ca244dd5d1b38ec64d22508e912da2690aeb7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b84df8fcdc75c2d35ab2a893c66ca244dd5d1b38ec64d22508e912da2690aeb7

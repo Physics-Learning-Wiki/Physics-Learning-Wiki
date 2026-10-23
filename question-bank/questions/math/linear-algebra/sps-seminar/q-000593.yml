@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000593
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.3**
+stem: '**SPS 线性代数研讨班配套 · §2.3**
 
-  两个非零向量垂直时，一个在另一个方向上的投影是多少？
+
+  两个非零向量垂直时，一个在另一个方向上的投影是多少？'
 choices:
 - id: A
   content: 零
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:52836bfd446af81f6765200ffa8d2aa22a1324e1566e14636eb9ff006275c100
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:52836bfd446af81f6765200ffa8d2aa22a1324e1566e14636eb9ff006275c100
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:52836bfd446af81f6765200ffa8d2aa22a1324e1566e14636eb9ff006275c100

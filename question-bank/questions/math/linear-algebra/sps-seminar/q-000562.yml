@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000562
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.vector-space
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  过原点的一条直线，采用通常的加法和实数数乘，是实向量空间吗？
+
+  过原点的一条直线，采用通常的加法和实数数乘，是实向量空间吗？'
 choices:
 - id: A
   content: 是，因为相加和数乘都留在直线上
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b2581d1c12cb726eee325e9cf3a62aa181cfc4c11fd6759768bb63ec63365a8d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b2581d1c12cb726eee325e9cf3a62aa181cfc4c11fd6759768bb63ec63365a8d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b2581d1c12cb726eee325e9cf3a62aa181cfc4c11fd6759768bb63ec63365a8d

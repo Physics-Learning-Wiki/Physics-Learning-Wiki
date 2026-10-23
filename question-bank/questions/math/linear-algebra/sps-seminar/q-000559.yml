@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000559
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  把平面的一组基的顺序交换，原来的向量会发生什么？
+
+  把平面的一组基的顺序交换，原来的向量会发生什么？'
 choices:
 - id: A
   content: 向量不变，两个坐标的顺序交换
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b68674b9c2ad364426afcfd3b6393c806b2a57f8c68ffae48e646b5089cab2f4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b68674b9c2ad364426afcfd3b6393c806b2a57f8c68ffae48e646b5089cab2f4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b68674b9c2ad364426afcfd3b6393c806b2a57f8c68ffae48e646b5089cab2f4

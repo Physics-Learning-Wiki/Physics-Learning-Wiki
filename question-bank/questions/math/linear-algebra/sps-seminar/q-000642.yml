@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000642
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
 
-  二维行列式 $\det(u+w,v+z)$ 按两列分别展开，正确的是哪一项？
+
+  二维行列式 $\det(u+w,v+z)$ 按两列分别展开，正确的是哪一项？'
 choices:
 - id: A
   content: $\det(u,v)+\det(w,z)$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:41332ebb2a3f2972ef9b3f4309ef302a91e2dd3f47508c283e6a395d8ba8d18b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:41332ebb2a3f2972ef9b3f4309ef302a91e2dd3f47508c283e6a395d8ba8d18b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:41332ebb2a3f2972ef9b3f4309ef302a91e2dd3f47508c283e6a395d8ba8d18b

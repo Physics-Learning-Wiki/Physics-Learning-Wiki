@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000591
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.3**
+stem: '**SPS 线性代数研讨班配套 · §2.3**
 
-  在欧氏平面中，把非零向量 u 变成 -u，长度怎样变化？
+
+  在欧氏平面中，把非零向量 u 变成 -u，长度怎样变化？'
 choices:
 - id: A
   content: 长度不变
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6da03ac912e565374649170bbeddcff12d6c98808c5d729706b33e7c8c382c96
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6da03ac912e565374649170bbeddcff12d6c98808c5d729706b33e7c8c382c96
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6da03ac912e565374649170bbeddcff12d6c98808c5d729706b33e7c8c382c96

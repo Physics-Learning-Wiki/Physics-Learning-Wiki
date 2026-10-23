@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000616
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  剪切 $T(x,y)=(x+2y,y)$ 后得到 (7,2)，原来的输入是什么？
+
+  剪切 $T(x,y)=(x+2y,y)$ 后得到 (7,2)，原来的输入是什么？'
 choices:
 - id: A
   content: (3,2)
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f9c5405a7e6b31bf15217336eb7e7c48e9467419e187ecc3b7ee45e1ae3c7b0e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f9c5405a7e6b31bf15217336eb7e7c48e9467419e187ecc3b7ee45e1ae3c7b0e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f9c5405a7e6b31bf15217336eb7e7c48e9467419e187ecc3b7ee45e1ae3c7b0e

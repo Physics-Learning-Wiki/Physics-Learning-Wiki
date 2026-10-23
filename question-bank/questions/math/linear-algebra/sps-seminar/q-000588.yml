@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000588
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  单位矩阵 I 的几何作用是什么？
+
+  单位矩阵 I 的几何作用是什么？'
 choices:
 - id: A
   content: 每个向量保持原样
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:90a942b0d955e31283974c143536372b73fcd1a2dab3350f23b964617d062921
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:90a942b0d955e31283974c143536372b73fcd1a2dab3350f23b964617d062921
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:90a942b0d955e31283974c143536372b73fcd1a2dab3350f23b964617d062921

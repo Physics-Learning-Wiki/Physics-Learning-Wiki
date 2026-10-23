@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000585
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.image-kernel
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.5**
+stem: '**SPS 线性代数研讨班配套 · §2.5**
 
-  为什么不能给把平面压到 x 轴的投影找到一个恢复所有输入的逆矩阵？
+
+  为什么不能给把平面压到 x 轴的投影找到一个恢复所有输入的逆矩阵？'
 choices:
 - id: A
   content: 不同输入产生同一输出，无法知道原来的高度
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e5d408b167a966278fcddf1bf32a3b1fab5fcbbc262780098327d186c7bbad27
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e5d408b167a966278fcddf1bf32a3b1fab5fcbbc262780098327d186c7bbad27
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e5d408b167a966278fcddf1bf32a3b1fab5fcbbc262780098327d186c7bbad27

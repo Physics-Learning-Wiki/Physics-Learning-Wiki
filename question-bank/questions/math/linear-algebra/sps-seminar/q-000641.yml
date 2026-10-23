@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000641
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
 
-  方阵的列为 $u,v,w$。把第二列改为 $v+2u$，其余列不变，为什么行列式不变？
+
+  方阵的列为 $u,v,w$。把第二列改为 $v+2u$，其余列不变，为什么行列式不变？'
 choices:
 - id: A
   content: 展开后多出的项为 $2\det(u,u,w)=0$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ef22a7ff979f09220cdad645926c04ed290d633f2675066da8ae44d3944c3791
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ef22a7ff979f09220cdad645926c04ed290d633f2675066da8ae44d3944c3791
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:ef22a7ff979f09220cdad645926c04ed290d633f2675066da8ae44d3944c3791

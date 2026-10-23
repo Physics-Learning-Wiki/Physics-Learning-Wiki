@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000574
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  多项式映射 T(a+bx)=(a,b) 保留的核心结构是什么？
+
+  多项式映射 T(a+bx)=(a,b) 保留的核心结构是什么？'
 choices:
 - id: A
   content: 加法和实数数乘
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f31886ad19299e7b5de940280a35b2d8b777fefd99481ec30832d0d9214fd040
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f31886ad19299e7b5de940280a35b2d8b777fefd99481ec30832d0d9214fd040
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:f31886ad19299e7b5de940280a35b2d8b777fefd99481ec30832d0d9214fd040

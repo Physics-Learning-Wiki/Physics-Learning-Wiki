@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000623
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
 
-  在 $\mathbb R^3$ 的标准直角坐标系中，用实矩阵 $A$ 作用于向量。它的三列是三条标准基向量的像；单位立方体的像是什么？
+
+  在 $\mathbb R^3$ 的标准直角坐标系中，用实矩阵 $A$ 作用于向量。它的三列是三条标准基向量的像；单位立方体的像是什么？'
 choices:
 - id: A
   content: 由这三条向量张成的平行六面体，可能退化
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4291ed582ae9cfd4bd24892c6c3ea042a0866a74d20fefe5da65bb7f44f64636
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4291ed582ae9cfd4bd24892c6c3ea042a0866a74d20fefe5da65bb7f44f64636
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4291ed582ae9cfd4bd24892c6c3ea042a0866a74d20fefe5da65bb7f44f64636

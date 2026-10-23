@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000644
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
 
-  设 $A$ 是 $3\times3$ 实矩阵且 $\det A=-2$。把整个矩阵乘以 $2$，$\det(2A)$ 是多少？
+
+  设 $A$ 是 $3\times3$ 实矩阵且 $\det A=-2$。把整个矩阵乘以 $2$，$\det(2A)$ 是多少？'
 choices:
 - id: A
   content: $-16$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:22c6e7ead6dcde81553416d64456fc3962881baaa676f7e96a7cf793032ca585
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:22c6e7ead6dcde81553416d64456fc3962881baaa676f7e96a7cf793032ca585
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:22c6e7ead6dcde81553416d64456fc3962881baaa676f7e96a7cf793032ca585

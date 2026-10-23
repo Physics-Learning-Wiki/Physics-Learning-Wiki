@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000596
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.3**
+stem: '**SPS 线性代数研讨班配套 · §2.3**
 
-  一组基向量彼此垂直，但长度不都是 1，能总用坐标平方和当长度平方吗？
+
+  一组基向量彼此垂直，但长度不都是 1，能总用坐标平方和当长度平方吗？'
 choices:
 - id: A
   content: 不能，还要乘上各基向量长度的平方
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:23fc645a994ada0e7b97b5c127defd7b7970a2a8a371d3d954bc01dd4b27bcbb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:23fc645a994ada0e7b97b5c127defd7b7970a2a8a371d3d954bc01dd4b27bcbb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:23fc645a994ada0e7b97b5c127defd7b7970a2a8a371d3d954bc01dd4b27bcbb

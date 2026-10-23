@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000630
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 与附录 A · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 与附录 A · 2026-10-23 更新稿**
 
-  交换一个可逆 $3\times3$ 实矩阵的两列后，由列向量张成的平行六面体普通体积改变吗？
+
+  交换一个可逆 $3\times3$ 实矩阵的两列后，由列向量张成的平行六面体普通体积改变吗？'
 choices:
 - id: A
   content: 不改变，但有向体积变号
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:9aef5a3cd0fdfa2e2f84fec1b94de3300fbc599286d4c95188885ed435068c92
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:9aef5a3cd0fdfa2e2f84fec1b94de3300fbc599286d4c95188885ed435068c92
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:9aef5a3cd0fdfa2e2f84fec1b94de3300fbc599286d4c95188885ed435068c92

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000622
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  对可逆矩阵 A，等式 $A^{-1}Av=v$ 中右侧的 v 表示什么？
+
+  对可逆矩阵 A，等式 $A^{-1}Av=v$ 中右侧的 v 表示什么？'
 choices:
 - id: A
   content: 每个输入都被恢复，整体作用是恒等映射
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e0763e5cdb3aaf503360b86c530ce52969e9c0337440a3b0c70de14b2a515b8a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e0763e5cdb3aaf503360b86c530ce52969e9c0337440a3b0c70de14b2a515b8a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e0763e5cdb3aaf503360b86c530ce52969e9c0337440a3b0c70de14b2a515b8a

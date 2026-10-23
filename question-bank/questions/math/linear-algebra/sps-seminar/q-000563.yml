@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000563
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.vector-space
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  平面中所有长度恰好为 1 的向量，采用通常运算，能组成向量空间吗？
+
+  平面中所有长度恰好为 1 的向量，采用通常运算，能组成向量空间吗？'
 choices:
 - id: A
   content: 不能，乘以 0 或 2 后就离开这个集合
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:154303ba8ea7b91cce5b90358249ca0e9f1cfb0140e78ede75bf2882d409261f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:154303ba8ea7b91cce5b90358249ca0e9f1cfb0140e78ede75bf2882d409261f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:154303ba8ea7b91cce5b90358249ca0e9f1cfb0140e78ede75bf2882d409261f

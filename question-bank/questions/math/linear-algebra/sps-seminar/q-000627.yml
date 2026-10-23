@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000627
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
 
-  用外接长方体减去外围小块求体积，为什么要避免把同一小块减去两次？
+
+  用外接长方体减去外围小块求体积，为什么要避免把同一小块减去两次？'
 choices:
 - id: A
   content: 重复扣除会把目标体积算小
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bbf3b9c1dadadc6ae2136f437825fe815156ed8330ef6524e6da6d49c4ab10a1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bbf3b9c1dadadc6ae2136f437825fe815156ed8330ef6524e6da6d49c4ab10a1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:bbf3b9c1dadadc6ae2136f437825fe815156ed8330ef6524e6da6d49c4ab10a1

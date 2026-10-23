@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000621
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
 
-  在一维空间中，输入基为 $(e)$，输出基为 $(2e)$．恒等映射把坐标为 4 的输入送到输出坐标多少？
+
+  在一维空间中，输入基为 $(e)$，输出基为 $(2e)$．恒等映射把坐标为 4 的输入送到输出坐标多少？'
 choices:
 - id: A
   content: $2$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a1d1848047d3ffde6138548aaccc43476d196767b1f7d705c85876a083afebd0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a1d1848047d3ffde6138548aaccc43476d196767b1f7d705c85876a083afebd0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:a1d1848047d3ffde6138548aaccc43476d196767b1f7d705c85876a083afebd0

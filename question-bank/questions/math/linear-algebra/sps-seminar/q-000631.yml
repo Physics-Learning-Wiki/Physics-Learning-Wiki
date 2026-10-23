@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000631
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.2 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.2 · 2026-10-23 更新稿**
 
-  把实线性空间 $V$ 的基 $(b_1,b_2)$ 一一对应到 $W$ 的基 $(c_1,c_2)$，定义线性同构 $T(b_i)=c_i$。$T(2b_1-3b_2)$ 是什么？
+
+  把实线性空间 $V$ 的基 $(b_1,b_2)$ 一一对应到 $W$ 的基 $(c_1,c_2)$，定义线性同构 $T(b_i)=c_i$。$T(2b_1-3b_2)$ 是什么？'
 choices:
 - id: A
   content: $2c_1-3c_2$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:67cda5733ea2d2baaae047db9e17292d9393b8c132aea7f72167fa2307eb8322
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:67cda5733ea2d2baaae047db9e17292d9393b8c132aea7f72167fa2307eb8322
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:67cda5733ea2d2baaae047db9e17292d9393b8c132aea7f72167fa2307eb8322

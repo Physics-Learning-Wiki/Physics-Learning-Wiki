@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000569
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.image-kernel
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  映射 T(x,y)=(x,0) 把哪条方向的信息完全丢掉了？
+
+  映射 T(x,y)=(x,0) 把哪条方向的信息完全丢掉了？'
 choices:
 - id: A
   content: 竖直方向
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b9dec4ca741d89f73b57733929b4397eac051413bc9bbccbfdf97bffd5a04c0d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b9dec4ca741d89f73b57733929b4397eac051413bc9bbccbfdf97bffd5a04c0d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:b9dec4ca741d89f73b57733929b4397eac051413bc9bbccbfdf97bffd5a04c0d

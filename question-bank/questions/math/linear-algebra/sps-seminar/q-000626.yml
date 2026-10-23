@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000626
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
 
-  三维变换把所有向量压到一个平面里，为什么行列式为零？
+
+  三维变换把所有向量压到一个平面里，为什么行列式为零？'
 choices:
 - id: A
   content: 立方体的像没有三维体积
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:51873903f0dc7e5f0575056c6d0b1c42dad097e4a854b7a97f327db7059a79e3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:51873903f0dc7e5f0575056c6d0b1c42dad097e4a854b7a97f327db7059a79e3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:51873903f0dc7e5f0575056c6d0b1c42dad097e4a854b7a97f327db7059a79e3

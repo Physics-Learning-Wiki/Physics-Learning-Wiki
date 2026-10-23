@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000632
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  设 $T:V\to W$ 是实线性空间之间的线性同构，$w_1=T(v_1)$、$w_2=T(v_2)$。为什么 $T^{-1}(w_1+w_2)=v_1+v_2$？
+
+  设 $T:V\to W$ 是实线性空间之间的线性同构，$w_1=T(v_1)$、$w_2=T(v_2)$。为什么 $T^{-1}(w_1+w_2)=v_1+v_2$？'
 choices:
 - id: A
   content: 因为任何可逆函数都保持加法
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ee2dddfad87e87cc08d0ef8f1d3f14d6f16c1c21d7aca059ce6b397983f010e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ee2dddfad87e87cc08d0ef8f1d3f14d6f16c1c21d7aca059ce6b397983f010e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:6ee2dddfad87e87cc08d0ef8f1d3f14d6f16c1c21d7aca059ce6b397983f010e

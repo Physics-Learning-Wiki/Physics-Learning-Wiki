@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000636
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.4.2 拓展 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.4.2 拓展 · 2026-10-23 更新稿**
 
-  在实欧氏空间的标准正交归一基下，$\langle Ax,y\rangle=\langle x,A^{\mathsf T}y\rangle$ 表达了什么？
+
+  在实欧氏空间的标准正交归一基下，$\langle Ax,y\rangle=\langle x,A^{\mathsf T}y\rangle$ 表达了什么？'
 choices:
 - id: A
   content: $A^{\mathsf T}$ 总能撤销 $A$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e7ead49e1b326e8c142ce4909fc38d1727fa5b0fa2102cc7ce22321077b248a1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e7ead49e1b326e8c142ce4909fc38d1727fa5b0fa2102cc7ce22321077b248a1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e7ead49e1b326e8c142ce4909fc38d1727fa5b0fa2102cc7ce22321077b248a1

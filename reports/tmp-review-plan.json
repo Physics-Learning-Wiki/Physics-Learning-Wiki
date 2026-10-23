@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "D:\\Programs\\Physics-Learning-Wiki",
   "reviewer": "Leafuke",
-  "reviewed_on": "2026-10-22",
+  "reviewed_on": "2026-10-23",
   "dimensions": [
     "physics",
     "pedagogy",
@@ -10,1360 +10,533 @@
   ],
   "questions": [
     {
-      "id": "q-000350",
+      "id": "q-000559",
       "version": 1,
-      "content_fingerprint": "sha256:50a9ec9b35368b13e3c04fe0db7d15f1fe52adc511f5f5922a6c5f9f6ab6db2e",
-      "path": "question-bank/questions/mechanics/q-000350.yml"
+      "content_fingerprint": "sha256:b68674b9c2ad364426afcfd3b6393c806b2a57f8c68ffae48e646b5089cab2f4",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000559.yml"
     },
     {
-      "id": "q-000351",
+      "id": "q-000560",
       "version": 1,
-      "content_fingerprint": "sha256:22894b6c25d0fa1bdc36d6704985f0e959252563879c6d75b3be9ee6d0fd8de0",
-      "path": "question-bank/questions/mechanics/q-000351.yml"
+      "content_fingerprint": "sha256:6b89f142aa3d2e0106a57c49fd9a938bdf64e08f69430a35044db2b8184affad",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000560.yml"
     },
     {
-      "id": "q-000352",
+      "id": "q-000561",
       "version": 1,
-      "content_fingerprint": "sha256:5b18d6ecdd2bbc1a7f124e8a1a54d6be170f632e437d3e3b9ca588bef7b6b59d",
-      "path": "question-bank/questions/mechanics/q-000352.yml"
+      "content_fingerprint": "sha256:5153587f12a3741ea5f02323afd3a4f4e5f262150cb8dacfa71941c0d311d6f0",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000561.yml"
     },
     {
-      "id": "q-000353",
+      "id": "q-000562",
       "version": 1,
-      "content_fingerprint": "sha256:45d42544b9dda4d8d9e4f1a484431dd1bdfb5c7c44913f89065f1a93947ee9e8",
-      "path": "question-bank/questions/mechanics/q-000353.yml"
+      "content_fingerprint": "sha256:b2581d1c12cb726eee325e9cf3a62aa181cfc4c11fd6759768bb63ec63365a8d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000562.yml"
     },
     {
-      "id": "q-000354",
+      "id": "q-000563",
       "version": 1,
-      "content_fingerprint": "sha256:fa371ec834066cc376c1e4a7322de523585e2d55961a472a47cb82a2873bf563",
-      "path": "question-bank/questions/mechanics/q-000354.yml"
+      "content_fingerprint": "sha256:154303ba8ea7b91cce5b90358249ca0e9f1cfb0140e78ede75bf2882d409261f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000563.yml"
     },
     {
-      "id": "q-000355",
+      "id": "q-000564",
       "version": 1,
-      "content_fingerprint": "sha256:1db683e4c67184905245b2ba091f0cabfcc04070e42a82cb50ec42a314e3ab0d",
-      "path": "question-bank/questions/mechanics/q-000355.yml"
+      "content_fingerprint": "sha256:a38366d260e687f62ea676b31735f26cea4ea1d85f2b6940dc8fe2757b065026",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000564.yml"
     },
     {
-      "id": "q-000356",
+      "id": "q-000565",
       "version": 1,
-      "content_fingerprint": "sha256:b49e1951b7a3eda8ece77732a38dc74786057718543492348a8f7ed7d88ec34c",
-      "path": "question-bank/questions/mechanics/q-000356.yml"
+      "content_fingerprint": "sha256:8e2b094a9e27d5a14e74ba82639eb5713feb4251676e5dba1701aba973048753",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000565.yml"
     },
     {
-      "id": "q-000357",
+      "id": "q-000566",
       "version": 1,
-      "content_fingerprint": "sha256:05a79646b7ea3badee4644ece7eb77ce41a6a6a6d3e47b347c7a7ebce0851369",
-      "path": "question-bank/questions/mechanics/q-000357.yml"
+      "content_fingerprint": "sha256:ca05ef5f6be4905d8e68e158f47b3748a6e6b7d9a1bf2b9da459b07dec58a27f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000566.yml"
     },
     {
-      "id": "q-000358",
+      "id": "q-000567",
       "version": 1,
-      "content_fingerprint": "sha256:e955c4ee9245847f638fa210cf569a3cc6902a3db8945d63bde512557519d5b7",
-      "path": "question-bank/questions/mechanics/q-000358.yml"
+      "content_fingerprint": "sha256:e58a38163c1099a9d0e1f79a6b0c920832586754e6441649d89333afa4b31e6d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000567.yml"
     },
     {
-      "id": "q-000359",
+      "id": "q-000568",
       "version": 1,
-      "content_fingerprint": "sha256:6d8fc5a81df23ac832a6782828286b3fdca574c8755778801e4d3145fbc98a37",
-      "path": "question-bank/questions/mechanics/q-000359.yml"
+      "content_fingerprint": "sha256:40326b6528455b37a9a5740860a32cd4e50220a2a28a0cba8eeca5d778458170",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000568.yml"
     },
     {
-      "id": "q-000360",
+      "id": "q-000569",
       "version": 1,
-      "content_fingerprint": "sha256:ce6ef4cd6c2499c4dbb3bf9b05265382674186666cb95a0f2a6802025271dd13",
-      "path": "question-bank/questions/mechanics/q-000360.yml"
+      "content_fingerprint": "sha256:b9dec4ca741d89f73b57733929b4397eac051413bc9bbccbfdf97bffd5a04c0d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000569.yml"
     },
     {
-      "id": "q-000361",
+      "id": "q-000570",
       "version": 1,
-      "content_fingerprint": "sha256:409ebfb7873d21b948e5c03fc20e0986e34854749cdbe7de18ac65fc255458eb",
-      "path": "question-bank/questions/mechanics/q-000361.yml"
+      "content_fingerprint": "sha256:af701e9a74b73fad5c68070148afb56e80903a7105f7691cfec2b3e4dcb068ce",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000570.yml"
     },
     {
-      "id": "q-000362",
+      "id": "q-000571",
       "version": 1,
-      "content_fingerprint": "sha256:99e5d29a28b2077e89f34222d7083454b1843c4eddc284ecf6bfca64bd0df0b3",
-      "path": "question-bank/questions/mechanics/q-000362.yml"
+      "content_fingerprint": "sha256:040abd996f36e6eae928686639203c7399b17a93b2c2b878ddb47f3aca7e41b8",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000571.yml"
     },
     {
-      "id": "q-000363",
+      "id": "q-000572",
       "version": 1,
-      "content_fingerprint": "sha256:eaf8ca2e4e353750bf6a6f959022ef45047140b69f8396c83fafcd0b76152553",
-      "path": "question-bank/questions/mechanics/q-000363.yml"
+      "content_fingerprint": "sha256:4c94cf63cc35a37a3dc31ea17a652321b50a9e88f3b0b0b8a58fa53e441bba67",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000572.yml"
     },
     {
-      "id": "q-000364",
+      "id": "q-000573",
       "version": 1,
-      "content_fingerprint": "sha256:384f27c10b74fd517d6bb0a49315ebbc7207efe999f7ad4a664a919f1639acf1",
-      "path": "question-bank/questions/mechanics/q-000364.yml"
+      "content_fingerprint": "sha256:c3911594b71cf1d6c2d3ddfd83375fafdb95e05e71a194c90682bbc085e3625d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000573.yml"
     },
     {
-      "id": "q-000365",
+      "id": "q-000574",
       "version": 1,
-      "content_fingerprint": "sha256:52ff419906545b540093e35c014333238a2479f9a189c929ff18d0a6e13eb306",
-      "path": "question-bank/questions/mechanics/q-000365.yml"
+      "content_fingerprint": "sha256:f31886ad19299e7b5de940280a35b2d8b777fefd99481ec30832d0d9214fd040",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000574.yml"
     },
     {
-      "id": "q-000366",
+      "id": "q-000575",
       "version": 1,
-      "content_fingerprint": "sha256:d9cf049c18d4a414ccc4ea73c189f34d8ade8a0b074268f01a08761f89e4bfb0",
-      "path": "question-bank/questions/mechanics/q-000366.yml"
+      "content_fingerprint": "sha256:934d076040a98d9aa3c4a3030488f69f6f5ad6b8b8d8891743c1c150c3542a6b",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000575.yml"
     },
     {
-      "id": "q-000367",
+      "id": "q-000576",
       "version": 1,
-      "content_fingerprint": "sha256:216bb402d2f2f9ae016373bf8037336c3a38fb0f952281d2ac9334dfa60c08e2",
-      "path": "question-bank/questions/mechanics/q-000367.yml"
+      "content_fingerprint": "sha256:862f9d31d021749a0e7734edd27ec82a49b7c957a1858d3d051376dd855eb5a2",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000576.yml"
     },
     {
-      "id": "q-000368",
+      "id": "q-000577",
       "version": 1,
-      "content_fingerprint": "sha256:62d4431ba66c3d78d3e0cc5bc97d8e0b554dab44a2099fd68d04637e1933eeec",
-      "path": "question-bank/questions/mechanics/q-000368.yml"
+      "content_fingerprint": "sha256:e5ad0501e7b7c1aa04596a3f86a61692649b11596c262f893cb3fb90355d3ec5",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000577.yml"
     },
     {
-      "id": "q-000369",
+      "id": "q-000578",
       "version": 1,
-      "content_fingerprint": "sha256:564eacb4fc5a0b997f34822c8c569881c22fbce0020a9fe439e10969c77a5f88",
-      "path": "question-bank/questions/mechanics/q-000369.yml"
+      "content_fingerprint": "sha256:e8855656d070383bc9057dc5aa41fc4ae1ae4ddf7f449dc9bdb4d599f1df4df3",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000578.yml"
     },
     {
-      "id": "q-000370",
+      "id": "q-000579",
       "version": 1,
-      "content_fingerprint": "sha256:7022b7699e4eb76366f844ceed89c0eb4a31672e225ddf5d125327d42d1c4b29",
-      "path": "question-bank/questions/mechanics/q-000370.yml"
+      "content_fingerprint": "sha256:0920c15ff4bcd2012f91ac1877457e6acb439f53055e05939dad7095a379e051",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000579.yml"
     },
     {
-      "id": "q-000371",
+      "id": "q-000580",
       "version": 1,
-      "content_fingerprint": "sha256:c4c173dd2edab15518c769907304d5d2fab3d730b21ef9ad5981458ea49379d3",
-      "path": "question-bank/questions/mechanics/q-000371.yml"
+      "content_fingerprint": "sha256:2d104f617110c4c1464db2e89702bca8969153767d99536b3459c4da136f5240",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000580.yml"
     },
     {
-      "id": "q-000372",
+      "id": "q-000581",
       "version": 1,
-      "content_fingerprint": "sha256:2c4fda8ccb287bf9050d4c55ffc82f50cd3611bb9fa92e789e920c1b477b51de",
-      "path": "question-bank/questions/mechanics/q-000372.yml"
+      "content_fingerprint": "sha256:cf7e2d81d66cb30ed8519ba09c3ffe0fc205b0b86749e72a5eef0a6596317700",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000581.yml"
     },
     {
-      "id": "q-000373",
+      "id": "q-000582",
       "version": 1,
-      "content_fingerprint": "sha256:3fc88475fe46c424c66866a6a68247b3640bd5d4ef7d7a0aba7c5798e6ad2c68",
-      "path": "question-bank/questions/mechanics/q-000373.yml"
+      "content_fingerprint": "sha256:153a354defe60068a5c0f68dac5b80cc00934a8877a13c096ad30b1229baf321",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000582.yml"
     },
     {
-      "id": "q-000374",
+      "id": "q-000583",
       "version": 1,
-      "content_fingerprint": "sha256:7f872fe74665753c1772e0e0f6169a99161f61da59eea4aace4723bbb6dcb16f",
-      "path": "question-bank/questions/mechanics/q-000374.yml"
+      "content_fingerprint": "sha256:f85bc8fc0e3258318be294cce7358eea3cda9691a3926e3cca6b04936d5a426c",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000583.yml"
     },
     {
-      "id": "q-000375",
+      "id": "q-000584",
       "version": 1,
-      "content_fingerprint": "sha256:57f9f4a816cb3bbc301c2b09e78f5d6d1cc5c276f50e4d4a44bfe38df459fa8b",
-      "path": "question-bank/questions/mechanics/q-000375.yml"
+      "content_fingerprint": "sha256:af63b289fc55985aaa47a398b586ae8882f293bf16073490b7a211401159ede7",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000584.yml"
     },
     {
-      "id": "q-000376",
+      "id": "q-000585",
       "version": 1,
-      "content_fingerprint": "sha256:cc7a63b35fbd0e529c73a41e1e3890206020e40206f1c6df76e83be628dd69a1",
-      "path": "question-bank/questions/mechanics/q-000376.yml"
+      "content_fingerprint": "sha256:e5d408b167a966278fcddf1bf32a3b1fab5fcbbc262780098327d186c7bbad27",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000585.yml"
     },
     {
-      "id": "q-000377",
+      "id": "q-000586",
       "version": 1,
-      "content_fingerprint": "sha256:0027019d42d35dd3717c655127cf3b9114e6a31befe83569cf9a82d55ad59ca9",
-      "path": "question-bank/questions/mechanics/q-000377.yml"
+      "content_fingerprint": "sha256:cd53b5933ab017dea4473c47b4b321dcf16ec0cad45602b401eed09b97e07fdf",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000586.yml"
     },
     {
-      "id": "q-000378",
+      "id": "q-000587",
       "version": 1,
-      "content_fingerprint": "sha256:935a81ee9e53ea1af50fe71cf8493a4ef95d29a4460bb7c834cf6b640dc30262",
-      "path": "question-bank/questions/mechanics/q-000378.yml"
+      "content_fingerprint": "sha256:7346acb491b0e4687e0d39498109607c35e104eb7b18499789d84c87781247d6",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000587.yml"
     },
     {
-      "id": "q-000379",
+      "id": "q-000588",
       "version": 1,
-      "content_fingerprint": "sha256:14bec10ba1d9b9e703aaf163a39053efe753a67345dcd4c4bd5fa98c580318e5",
-      "path": "question-bank/questions/mechanics/q-000379.yml"
+      "content_fingerprint": "sha256:90a942b0d955e31283974c143536372b73fcd1a2dab3350f23b964617d062921",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000588.yml"
     },
     {
-      "id": "q-000380",
+      "id": "q-000589",
       "version": 1,
-      "content_fingerprint": "sha256:eaaff78f650d80e2a719980b1eaa2996478e29446c9cfd391d5f4d786ad3aa59",
-      "path": "question-bank/questions/mechanics/q-000380.yml"
+      "content_fingerprint": "sha256:d8f8f8d368c715b8567c076893caa03d4d6b3f425470961c3f8768ea12e2e94a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000589.yml"
     },
     {
-      "id": "q-000381",
+      "id": "q-000590",
       "version": 1,
-      "content_fingerprint": "sha256:007bdfbe4d1782260416bdd3f141aaed2d2ee686ac5d175eeb3143cbab9e3fdd",
-      "path": "question-bank/questions/mechanics/q-000381.yml"
+      "content_fingerprint": "sha256:14caa4aec04827504468835aa0d51fcc62cd9a2d0753f28bef19c9aac2b4776d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000590.yml"
     },
     {
-      "id": "q-000382",
+      "id": "q-000591",
       "version": 1,
-      "content_fingerprint": "sha256:116f3401e7cc597029e0cd8b0abf8501389f4b7b08a95655b623bef98e118076",
-      "path": "question-bank/questions/mechanics/q-000382.yml"
+      "content_fingerprint": "sha256:6da03ac912e565374649170bbeddcff12d6c98808c5d729706b33e7c8c382c96",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000591.yml"
     },
     {
-      "id": "q-000383",
+      "id": "q-000592",
       "version": 1,
-      "content_fingerprint": "sha256:9f868d59b572dd15410ba06c0fd8ad75c18d889f011cb63c42b088a4c8da6d3d",
-      "path": "question-bank/questions/mechanics/q-000383.yml"
+      "content_fingerprint": "sha256:d836a2741e14cda1c8ef00a81a1d8c3653f706b11e819eb8d7fdfbe1d309ed44",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000592.yml"
     },
     {
-      "id": "q-000384",
+      "id": "q-000593",
       "version": 1,
-      "content_fingerprint": "sha256:6b9ffb27ade0ac6de776b229243eb9adb5cb9534b7dba84c3082b008b31c1194",
-      "path": "question-bank/questions/mechanics/q-000384.yml"
+      "content_fingerprint": "sha256:52836bfd446af81f6765200ffa8d2aa22a1324e1566e14636eb9ff006275c100",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000593.yml"
     },
     {
-      "id": "q-000385",
+      "id": "q-000594",
       "version": 1,
-      "content_fingerprint": "sha256:42eebc9ccbd638452e955ee16e27382472726637a4acc6533d57e57d28e5deb9",
-      "path": "question-bank/questions/mechanics/q-000385.yml"
+      "content_fingerprint": "sha256:7da5267a4d1bf0677f3021e3e38f0bc6df10eb30af2b9d4fbbf41c8414a1c6b0",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000594.yml"
     },
     {
-      "id": "q-000386",
+      "id": "q-000595",
       "version": 1,
-      "content_fingerprint": "sha256:98940e7551286506c233bf058779eea923ba1d20fd0f39ef6c685e255cba1312",
-      "path": "question-bank/questions/mechanics/q-000386.yml"
+      "content_fingerprint": "sha256:6fbf4ea2fc2ad7376d89459a1cc506400e2938abc368be213e2cb518cc26546f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000595.yml"
     },
     {
-      "id": "q-000387",
+      "id": "q-000596",
       "version": 1,
-      "content_fingerprint": "sha256:21390948cf562f591792a056da0bce82cbb7ebac5ddbbdd89081642479fd15d9",
-      "path": "question-bank/questions/mechanics/q-000387.yml"
+      "content_fingerprint": "sha256:23fc645a994ada0e7b97b5c127defd7b7970a2a8a371d3d954bc01dd4b27bcbb",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000596.yml"
     },
     {
-      "id": "q-000388",
-      "version": 1,
-      "content_fingerprint": "sha256:f536011026e493a487f2147f320bd980c8da23ad770b28341b1071b19a90fd7c",
-      "path": "question-bank/questions/mechanics/q-000388.yml"
-    },
-    {
-      "id": "q-000389",
-      "version": 1,
-      "content_fingerprint": "sha256:a33e535f7ddae7161d6c0e1544c52e68698b556e354d35e4221ef6d1c4723db7",
-      "path": "question-bank/questions/mechanics/q-000389.yml"
-    },
-    {
-      "id": "q-000390",
-      "version": 1,
-      "content_fingerprint": "sha256:30d9300d516fdc66b9c30b6634390ca22c0cf25f53b4b440f31aa54006fb17ae",
-      "path": "question-bank/questions/mechanics/q-000390.yml"
-    },
-    {
-      "id": "q-000391",
-      "version": 1,
-      "content_fingerprint": "sha256:d9ad249a8fd5d651f9f7d18be9cce9f6cfc29c7fe3a0a16907bebaf7c9edc391",
-      "path": "question-bank/questions/mechanics/q-000391.yml"
-    },
-    {
-      "id": "q-000392",
-      "version": 1,
-      "content_fingerprint": "sha256:4dc0417180ec1a4fcd7de39ca51d5ddc1dcd018104a3ce8b9112284d3bfa57f0",
-      "path": "question-bank/questions/mechanics/q-000392.yml"
-    },
-    {
-      "id": "q-000393",
-      "version": 1,
-      "content_fingerprint": "sha256:7677ae21c074365871b60d580c73b7fc736ce44c00bf0abddc45b62dd455919a",
-      "path": "question-bank/questions/mechanics/q-000393.yml"
-    },
-    {
-      "id": "q-000394",
-      "version": 1,
-      "content_fingerprint": "sha256:f2c0f635c68c5a68b3f704234e93c9787b85a7da5f550887962e2c922cc534ad",
-      "path": "question-bank/questions/mechanics/q-000394.yml"
-    },
-    {
-      "id": "q-000395",
-      "version": 1,
-      "content_fingerprint": "sha256:42d207f31b598e5942a4e834261d57262acb2f6699b8d3017a6d67521d957da6",
-      "path": "question-bank/questions/mechanics/q-000395.yml"
-    },
-    {
-      "id": "q-000396",
-      "version": 1,
-      "content_fingerprint": "sha256:b0e12ced278891654767bef33dab7e84236f2f805c3483d676115206f77a0fce",
-      "path": "question-bank/questions/mechanics/q-000396.yml"
-    },
-    {
-      "id": "q-000397",
-      "version": 1,
-      "content_fingerprint": "sha256:f1e9f81ee2fc9e1fe95ba57fb6d110b7adaa0d9c290dec3f8ca46c3792ad0290",
-      "path": "question-bank/questions/mechanics/q-000397.yml"
-    },
-    {
-      "id": "q-000398",
-      "version": 1,
-      "content_fingerprint": "sha256:22eed79030a7d04b659fb2fdc57fc9d629c6dead16b4f685bf229ed767d13f53",
-      "path": "question-bank/questions/mechanics/q-000398.yml"
-    },
-    {
-      "id": "q-000399",
-      "version": 1,
-      "content_fingerprint": "sha256:ce485c0d31666da574c202d39dec63ab290f5d3f1b9f166162b208e2ab6d6825",
-      "path": "question-bank/questions/mechanics/q-000399.yml"
-    },
-    {
-      "id": "q-000400",
-      "version": 1,
-      "content_fingerprint": "sha256:ee3a05fa19096eb9056507098f3b25bda9deea812d614cf2f0a0b9c44c1154fe",
-      "path": "question-bank/questions/electromagnetism/q-000400.yml"
-    },
-    {
-      "id": "q-000401",
-      "version": 1,
-      "content_fingerprint": "sha256:7261e829c110fd642ca15c370d3a200c6c67f1f5806cff85d1f5423bf6412371",
-      "path": "question-bank/questions/electromagnetism/q-000401.yml"
-    },
-    {
-      "id": "q-000402",
-      "version": 1,
-      "content_fingerprint": "sha256:8e9db52cc9eb498f1383deb024cbb22a1016e64e9524d586ee4de0e25987b2a6",
-      "path": "question-bank/questions/electromagnetism/q-000402.yml"
-    },
-    {
-      "id": "q-000403",
-      "version": 1,
-      "content_fingerprint": "sha256:4c856d1ad54208de70a5ccd7791e3794eb0a634774ae7f64c75dbc73a09143dd",
-      "path": "question-bank/questions/electromagnetism/q-000403.yml"
-    },
-    {
-      "id": "q-000404",
-      "version": 1,
-      "content_fingerprint": "sha256:a59959370ef1c33e8e44628d0573edc028c8c2f90ac8a45c773791b3bcb20f06",
-      "path": "question-bank/questions/electromagnetism/q-000404.yml"
-    },
-    {
-      "id": "q-000405",
-      "version": 1,
-      "content_fingerprint": "sha256:46f5ce6fd279ffbda929933a24a0638d16f99607a7cc316ed932dbe59cad01ce",
-      "path": "question-bank/questions/electromagnetism/q-000405.yml"
-    },
-    {
-      "id": "q-000406",
-      "version": 1,
-      "content_fingerprint": "sha256:a24d3c183aa30d90264be6863e1bcb615d5c23d04a0d9056f2e7c45230d9f257",
-      "path": "question-bank/questions/electromagnetism/q-000406.yml"
-    },
-    {
-      "id": "q-000407",
-      "version": 1,
-      "content_fingerprint": "sha256:01698fe5c431992f27b303bf3af491369f43f5fc32a4f6e63bd14c65e3286afe",
-      "path": "question-bank/questions/electromagnetism/q-000407.yml"
-    },
-    {
-      "id": "q-000408",
-      "version": 1,
-      "content_fingerprint": "sha256:74adf31455767312e180109de84ebae74f3eb0a8d9a372aa64c5abd8f000b72f",
-      "path": "question-bank/questions/electromagnetism/q-000408.yml"
-    },
-    {
-      "id": "q-000409",
-      "version": 1,
-      "content_fingerprint": "sha256:20476702befa26f7cf9fc6d534817ab459b063a97c4df8195ac685c0e5c0113c",
-      "path": "question-bank/questions/electromagnetism/q-000409.yml"
-    },
-    {
-      "id": "q-000410",
-      "version": 1,
-      "content_fingerprint": "sha256:ed6cb82abca119f5a3ad0d724b5bd4746de59c351752f9dde2f16681720cfccb",
-      "path": "question-bank/questions/electromagnetism/q-000410.yml"
-    },
-    {
-      "id": "q-000411",
-      "version": 1,
-      "content_fingerprint": "sha256:000a59134c37737382b63e8bbe773480c8d493f45ed89e705404532c3b591bb2",
-      "path": "question-bank/questions/electromagnetism/q-000411.yml"
-    },
-    {
-      "id": "q-000412",
-      "version": 1,
-      "content_fingerprint": "sha256:569c50bd8930aa632a19c4215a8e685d28064730850dd51278a5dc3e8d17cd39",
-      "path": "question-bank/questions/electromagnetism/q-000412.yml"
-    },
-    {
-      "id": "q-000413",
-      "version": 1,
-      "content_fingerprint": "sha256:fcd78b1c201c9f2f173d6e0c11b709f3e73861e90723247c693d8f325627ed95",
-      "path": "question-bank/questions/electromagnetism/q-000413.yml"
-    },
-    {
-      "id": "q-000414",
-      "version": 1,
-      "content_fingerprint": "sha256:05bc51b31e9b79f0baa23f30a2726659504eca81064caa24ecb3593ee418ad4d",
-      "path": "question-bank/questions/electromagnetism/q-000414.yml"
-    },
-    {
-      "id": "q-000415",
-      "version": 1,
-      "content_fingerprint": "sha256:a374f74943cdfe1c57b140a4811ff7e154ba63e534e5947e77345543ffa313e2",
-      "path": "question-bank/questions/electromagnetism/q-000415.yml"
-    },
-    {
-      "id": "q-000416",
-      "version": 1,
-      "content_fingerprint": "sha256:173dfc3034de106a820e92276469f98424e9a709848cc9aa2b06e82f20915188",
-      "path": "question-bank/questions/electromagnetism/q-000416.yml"
-    },
-    {
-      "id": "q-000417",
-      "version": 1,
-      "content_fingerprint": "sha256:e20c8109ca3d00f02437ab8f964233b517842ccbce21e3646ffe1d3b097b7df9",
-      "path": "question-bank/questions/electromagnetism/q-000417.yml"
-    },
-    {
-      "id": "q-000418",
-      "version": 1,
-      "content_fingerprint": "sha256:182a5c5b112da5fb6335e1db511c209547dae35831163338df8de745aabb980b",
-      "path": "question-bank/questions/electromagnetism/q-000418.yml"
-    },
-    {
-      "id": "q-000419",
-      "version": 1,
-      "content_fingerprint": "sha256:46cfb4a7ff4ff64d521e254aed7813c8dfc42e0df2727a55aaa1393dd651a63c",
-      "path": "question-bank/questions/electromagnetism/q-000419.yml"
-    },
-    {
-      "id": "q-000420",
-      "version": 1,
-      "content_fingerprint": "sha256:60c8a08e7c061dd19cf7636e7ab78ef1d32360dd94451083b5336310f53c0c12",
-      "path": "question-bank/questions/electromagnetism/q-000420.yml"
-    },
-    {
-      "id": "q-000421",
-      "version": 1,
-      "content_fingerprint": "sha256:24bf92ef2eb29d0e5da29c639ad25c714f753f6a02c2dd07547c4e7ea013dc63",
-      "path": "question-bank/questions/electromagnetism/q-000421.yml"
-    },
-    {
-      "id": "q-000422",
-      "version": 1,
-      "content_fingerprint": "sha256:702fa861db0375373cede1324d5fb54bcb7039bafc0ac0addfd9ace87dccf116",
-      "path": "question-bank/questions/electromagnetism/q-000422.yml"
-    },
-    {
-      "id": "q-000423",
-      "version": 1,
-      "content_fingerprint": "sha256:057dc6e3f31a534633782517cd98cf17644535492f509c1ebc4466695b8c93f3",
-      "path": "question-bank/questions/electromagnetism/q-000423.yml"
-    },
-    {
-      "id": "q-000424",
-      "version": 1,
-      "content_fingerprint": "sha256:ca8caf8d18d7946c644b70a28d42ceac2676e9a7ec2c0cbbb0693ba2697dbc40",
-      "path": "question-bank/questions/electromagnetism/q-000424.yml"
-    },
-    {
-      "id": "q-000425",
-      "version": 1,
-      "content_fingerprint": "sha256:08091da059c254db2a5d3d1121dd9f2ffe661da1f0ef1b856ed9e84cb8591675",
-      "path": "question-bank/questions/electromagnetism/q-000425.yml"
-    },
-    {
-      "id": "q-000426",
-      "version": 1,
-      "content_fingerprint": "sha256:00d41a689b03d6c25ed0008b3ceb06b9875a899df1a18e71f02560e4e21308c0",
-      "path": "question-bank/questions/electromagnetism/q-000426.yml"
-    },
-    {
-      "id": "q-000427",
-      "version": 1,
-      "content_fingerprint": "sha256:b94e4a09d9d8f23572db95a2d2617b945cec3862cedcea8ee9512e4279fae115",
-      "path": "question-bank/questions/electromagnetism/q-000427.yml"
-    },
-    {
-      "id": "q-000428",
-      "version": 1,
-      "content_fingerprint": "sha256:2a31bbdd0af6e627cefd1a4017982de1bea76cf821d96f0960191eb64b87c965",
-      "path": "question-bank/questions/electromagnetism/q-000428.yml"
-    },
-    {
-      "id": "q-000429",
-      "version": 1,
-      "content_fingerprint": "sha256:95e096d9670be3370cfd0bfe5a61a4d58bb21a9ba52e805b52101f8f5fb61a53",
-      "path": "question-bank/questions/electromagnetism/q-000429.yml"
-    },
-    {
-      "id": "q-000430",
-      "version": 1,
-      "content_fingerprint": "sha256:428e368ffbefdfc6e7b3e7eb4e399b50cef5096d5a159948d75905055a6f49c7",
-      "path": "question-bank/questions/electromagnetism/q-000430.yml"
-    },
-    {
-      "id": "q-000431",
-      "version": 1,
-      "content_fingerprint": "sha256:072728b47f96a55817b1181d4d1014342d9d649cc854ea54e658b00a7165e0ba",
-      "path": "question-bank/questions/electromagnetism/q-000431.yml"
-    },
-    {
-      "id": "q-000432",
-      "version": 1,
-      "content_fingerprint": "sha256:cbe637347b881b2f856fec7e28132af028fc015a8c343fa9968f8991e2716658",
-      "path": "question-bank/questions/electromagnetism/q-000432.yml"
-    },
-    {
-      "id": "q-000433",
-      "version": 1,
-      "content_fingerprint": "sha256:fe1e8fe5f4c37db133dc1114b6072e56e542178ab99179ab59e175278687469e",
-      "path": "question-bank/questions/electromagnetism/q-000433.yml"
-    },
-    {
-      "id": "q-000434",
-      "version": 1,
-      "content_fingerprint": "sha256:be9231b106d731a55eb28091c72362d5e14075f52ac6082773e8459e8ce17c96",
-      "path": "question-bank/questions/electromagnetism/q-000434.yml"
-    },
-    {
-      "id": "q-000435",
-      "version": 1,
-      "content_fingerprint": "sha256:ebc3be81451e34338edf4a54782494179c04f6c36ab8be958c1cf97ae911833f",
-      "path": "question-bank/questions/electromagnetism/q-000435.yml"
-    },
-    {
-      "id": "q-000436",
-      "version": 1,
-      "content_fingerprint": "sha256:051916f360fdb9a704fef2e85ad1a63e6e76777e224022538af84bf62d2414d2",
-      "path": "question-bank/questions/electromagnetism/q-000436.yml"
-    },
-    {
-      "id": "q-000437",
-      "version": 1,
-      "content_fingerprint": "sha256:f061aab299497a3e09b2f8e6e5c6df95f2d0f1e2bed02cfa391f28f67611306c",
-      "path": "question-bank/questions/electromagnetism/q-000437.yml"
-    },
-    {
-      "id": "q-000438",
-      "version": 1,
-      "content_fingerprint": "sha256:db2c3e48fb0add309955fedeeb1a9b7ebe375a580cce5cb7c9ac59804521d78f",
-      "path": "question-bank/questions/electromagnetism/q-000438.yml"
-    },
-    {
-      "id": "q-000439",
-      "version": 1,
-      "content_fingerprint": "sha256:3726452cd39e4deb6a16e64dde0be68e098865972431ff3da9b7fd7d0802ec67",
-      "path": "question-bank/questions/electromagnetism/q-000439.yml"
-    },
-    {
-      "id": "q-000440",
-      "version": 1,
-      "content_fingerprint": "sha256:4b3f340ab9b089e0c1cef5ce5b01e2c57453a698c8922b5119f8b7eb3497a29d",
-      "path": "question-bank/questions/electromagnetism/q-000440.yml"
-    },
-    {
-      "id": "q-000441",
-      "version": 1,
-      "content_fingerprint": "sha256:7e9b3fcb8324cb802688fd81cd885e3b5372e236cbe3e2b3226c66d8204ed7a8",
-      "path": "question-bank/questions/electromagnetism/q-000441.yml"
-    },
-    {
-      "id": "q-000442",
-      "version": 1,
-      "content_fingerprint": "sha256:ae62fdb92e89a865b33b583890c7d8dea016ab7b6be69949c59df0fcca2c0698",
-      "path": "question-bank/questions/electromagnetism/q-000442.yml"
-    },
-    {
-      "id": "q-000443",
-      "version": 1,
-      "content_fingerprint": "sha256:61c188545f43a2f1f9f693410ba8852957081611c18021d45b8a698830368bcb",
-      "path": "question-bank/questions/electromagnetism/q-000443.yml"
-    },
-    {
-      "id": "q-000444",
-      "version": 1,
-      "content_fingerprint": "sha256:70874f1c5713f22dfbe0a2e87c5d52182c1ac71082573304781fa6007bb4171d",
-      "path": "question-bank/questions/electromagnetism/q-000444.yml"
-    },
-    {
-      "id": "q-000445",
-      "version": 1,
-      "content_fingerprint": "sha256:b3cb0f1ac9ae8c6f2fe916d3767f49d9b02d859ea214f11fc996fc9b8e53b032",
-      "path": "question-bank/questions/electromagnetism/q-000445.yml"
-    },
-    {
-      "id": "q-000446",
-      "version": 1,
-      "content_fingerprint": "sha256:f1513c357a49f0825a08a6e1fd992b54cc2c761f055dc656a55b3214cc0d9c74",
-      "path": "question-bank/questions/electromagnetism/q-000446.yml"
-    },
-    {
-      "id": "q-000447",
-      "version": 1,
-      "content_fingerprint": "sha256:2c2eb3b8a4e34180fcc7fd67b9ae964c4203d70961382e1d573a54d9ef99bb60",
-      "path": "question-bank/questions/electromagnetism/q-000447.yml"
-    },
-    {
-      "id": "q-000448",
-      "version": 1,
-      "content_fingerprint": "sha256:4a71318fcc8246396dd46f4cac5664cd47f7d196fd5bfc883844622247544659",
-      "path": "question-bank/questions/electromagnetism/q-000448.yml"
-    },
-    {
-      "id": "q-000449",
-      "version": 1,
-      "content_fingerprint": "sha256:71d97ba5cf9f63bee2c35ab8890c5909b0decf2f9736ebb3ecc97e4bb928efe6",
-      "path": "question-bank/questions/electromagnetism/q-000449.yml"
-    },
-    {
-      "id": "q-000450",
-      "version": 1,
-      "content_fingerprint": "sha256:b16cd791c61617eb25bee12b772f0a02de8bd4fb97531b77ed04b35af7a5fe87",
-      "path": "question-bank/questions/math/q-000450.yml"
-    },
-    {
-      "id": "q-000451",
-      "version": 1,
-      "content_fingerprint": "sha256:4fd520d21e0c8a9d3138e59fef25c215cab176956a3e27abca58374cabb50cf1",
-      "path": "question-bank/questions/math/q-000451.yml"
-    },
-    {
-      "id": "q-000452",
-      "version": 1,
-      "content_fingerprint": "sha256:325fb050834ed22f9e660dd25beeff2ef1dee7ca9d89be5c882c88ee33c0f46a",
-      "path": "question-bank/questions/math/q-000452.yml"
-    },
-    {
-      "id": "q-000453",
-      "version": 1,
-      "content_fingerprint": "sha256:46bd3ebd073c760f86842a1c49a2251746cc80b1518e1d41faee417f72323482",
-      "path": "question-bank/questions/math/q-000453.yml"
-    },
-    {
-      "id": "q-000454",
-      "version": 1,
-      "content_fingerprint": "sha256:ce90930b94cf005925adfee5aa96636ee7de196ab34d9106ebaf738b1cccc285",
-      "path": "question-bank/questions/math/q-000454.yml"
-    },
-    {
-      "id": "q-000455",
-      "version": 1,
-      "content_fingerprint": "sha256:32c65bd7888179fb330620bdc67fae8a26cc04020627e9a5612b366d63628f1c",
-      "path": "question-bank/questions/math/q-000455.yml"
-    },
-    {
-      "id": "q-000456",
-      "version": 1,
-      "content_fingerprint": "sha256:c0cb986eb3a333b7c584d0aa9ceb3a6771bfb45b8ea177df9bebdd1986cbe229",
-      "path": "question-bank/questions/math/q-000456.yml"
-    },
-    {
-      "id": "q-000457",
-      "version": 1,
-      "content_fingerprint": "sha256:8429dd7b88cae27b04b0f29f3e31575d1d9e829be3a5e4380fa4cc6500080881",
-      "path": "question-bank/questions/math/q-000457.yml"
-    },
-    {
-      "id": "q-000458",
-      "version": 1,
-      "content_fingerprint": "sha256:5b5513bad603867561713c90cd5587026ffaa605585bb62f55b514cdbcd5aca2",
-      "path": "question-bank/questions/math/q-000458.yml"
-    },
-    {
-      "id": "q-000459",
-      "version": 1,
-      "content_fingerprint": "sha256:1293da98231724ab96049276083f4f7fe0882abdd9f544b860cdbe90c6acc8d8",
-      "path": "question-bank/questions/math/q-000459.yml"
-    },
-    {
-      "id": "q-000460",
-      "version": 1,
-      "content_fingerprint": "sha256:33e83b5b154403f6cd1b802c135ba325effc403dd3aa926abcb37673c69afc19",
-      "path": "question-bank/questions/math/q-000460.yml"
-    },
-    {
-      "id": "q-000461",
-      "version": 1,
-      "content_fingerprint": "sha256:34453faa5ba8092c945457c5246b0ab604631022208a65bb21a8b9218a741ed9",
-      "path": "question-bank/questions/math/q-000461.yml"
-    },
-    {
-      "id": "q-000462",
-      "version": 1,
-      "content_fingerprint": "sha256:829e395600b8e0b2914c38162c80f4cfb5d26ae446dba9e0b4ce55bccdab4766",
-      "path": "question-bank/questions/math/q-000462.yml"
-    },
-    {
-      "id": "q-000463",
-      "version": 1,
-      "content_fingerprint": "sha256:006546645dafc86a195d4c7514de5a3cd017e23b7bd16f85a0fb9e27550ed90f",
-      "path": "question-bank/questions/math/q-000463.yml"
-    },
-    {
-      "id": "q-000464",
-      "version": 1,
-      "content_fingerprint": "sha256:1691856cbad7114d0616e7bc85a45cd2fb8e326f1eb45a09320a6c3d062dff64",
-      "path": "question-bank/questions/math/q-000464.yml"
-    },
-    {
-      "id": "q-000465",
-      "version": 1,
-      "content_fingerprint": "sha256:e4feeddece5c239192cf9d6e6d5f416f8d3235b9b6827117f99fc1aac9cec1a4",
-      "path": "question-bank/questions/math/q-000465.yml"
-    },
-    {
-      "id": "q-000466",
-      "version": 1,
-      "content_fingerprint": "sha256:3b3f4d2fd18af12254134c1db3ccab9f2c64dd8579d2327e9beb6b3c98a25b36",
-      "path": "question-bank/questions/math/q-000466.yml"
-    },
-    {
-      "id": "q-000467",
-      "version": 1,
-      "content_fingerprint": "sha256:972cc193159ab4cb5d2f041474f93e23e5979d3be22c48e831abe2b4a67364b8",
-      "path": "question-bank/questions/math/q-000467.yml"
-    },
-    {
-      "id": "q-000468",
-      "version": 1,
-      "content_fingerprint": "sha256:31213b544523d8e98bfbb16ad927d263f1e975ce179f9f1b3f90091ca1cf38b8",
-      "path": "question-bank/questions/math/q-000468.yml"
-    },
-    {
-      "id": "q-000469",
-      "version": 1,
-      "content_fingerprint": "sha256:da8b7430a4a4a98996c38e972371bb12c7c2b73eea436c0a6c3f5df53ec354e0",
-      "path": "question-bank/questions/math/q-000469.yml"
-    },
-    {
-      "id": "q-000470",
-      "version": 1,
-      "content_fingerprint": "sha256:5dc582b642807801c9321fce1d960d9d8848b76fe8b9bdaecf93fff979dc3626",
-      "path": "question-bank/questions/math/q-000470.yml"
-    },
-    {
-      "id": "q-000471",
-      "version": 1,
-      "content_fingerprint": "sha256:492d1567e42b84c03e30ef8ed1cc5cc74605a8cfed03255b12b96680cd7f8e7b",
-      "path": "question-bank/questions/math/q-000471.yml"
-    },
-    {
-      "id": "q-000472",
-      "version": 1,
-      "content_fingerprint": "sha256:fd2407f254e2753b07d9310b71c555e1d2107cc309b24ea07d1052b74a9a4f7f",
-      "path": "question-bank/questions/math/q-000472.yml"
-    },
-    {
-      "id": "q-000473",
-      "version": 1,
-      "content_fingerprint": "sha256:d802e66773252e2e50f367145cb49a99423fb53870414060f1a6e5e153902f3d",
-      "path": "question-bank/questions/math/q-000473.yml"
-    },
-    {
-      "id": "q-000474",
-      "version": 1,
-      "content_fingerprint": "sha256:14568b3c2afad291c6a1387fb4887f98dd68f3b44a56c085496f993f1b6815aa",
-      "path": "question-bank/questions/math/q-000474.yml"
-    },
-    {
-      "id": "q-000475",
-      "version": 1,
-      "content_fingerprint": "sha256:bcc6401f30bd51d0489cf42dcb574902b787cbed42ee3b96b6f8d3710b227157",
-      "path": "question-bank/questions/math/q-000475.yml"
-    },
-    {
-      "id": "q-000476",
-      "version": 1,
-      "content_fingerprint": "sha256:2625318923f95e724e53efeff395eac89e18c7ea0c5dc1e5a446f0917cd7608d",
-      "path": "question-bank/questions/math/q-000476.yml"
-    },
-    {
-      "id": "q-000477",
-      "version": 1,
-      "content_fingerprint": "sha256:27635db44635fc43c298e021077c627d8ebb313d53bc1a087aa1026e8d25e4db",
-      "path": "question-bank/questions/math/q-000477.yml"
-    },
-    {
-      "id": "q-000478",
-      "version": 1,
-      "content_fingerprint": "sha256:2a1fb1292d700c029d66a10328c8b2279a96df8a0f9deccfdde2ca7578e75584",
-      "path": "question-bank/questions/math/q-000478.yml"
-    },
-    {
-      "id": "q-000479",
-      "version": 1,
-      "content_fingerprint": "sha256:29b51276aa58244a982468fb20cb1921f26732bb5866a10ccff3dacf8ee4bd89",
-      "path": "question-bank/questions/math/q-000479.yml"
-    },
-    {
-      "id": "q-000480",
-      "version": 1,
-      "content_fingerprint": "sha256:202144d4ca6db1b8c39270328145051622af3f5052520ff2115b1c53792a7301",
-      "path": "question-bank/questions/math/q-000480.yml"
-    },
-    {
-      "id": "q-000481",
-      "version": 1,
-      "content_fingerprint": "sha256:4be8460612e3f41a1c50342abd62858dded63b1f8476f188f9babca6597a7a0a",
-      "path": "question-bank/questions/math/q-000481.yml"
-    },
-    {
-      "id": "q-000482",
-      "version": 1,
-      "content_fingerprint": "sha256:90b855c5a4744309b9804dc34e5442b248d1ff6e15e62511e7a3a7e954b3d951",
-      "path": "question-bank/questions/math/q-000482.yml"
-    },
-    {
-      "id": "q-000483",
-      "version": 1,
-      "content_fingerprint": "sha256:15e5f42b0c0bcf9415d607f7d954a6d5f69e736f771a23c46343d44fae75acd1",
-      "path": "question-bank/questions/math/q-000483.yml"
-    },
-    {
-      "id": "q-000484",
-      "version": 1,
-      "content_fingerprint": "sha256:1b3bc25e7024da4287fd7458d82afdc55a67249dfe8ad1b301dbb232ab7b1ca4",
-      "path": "question-bank/questions/math/q-000484.yml"
-    },
-    {
-      "id": "q-000485",
-      "version": 1,
-      "content_fingerprint": "sha256:6b1e0b5cb5ee8edf5abe0797b5630efcbe6ef3744f41342a9c481cdbf11c90d6",
-      "path": "question-bank/questions/math/q-000485.yml"
-    },
-    {
-      "id": "q-000486",
-      "version": 1,
-      "content_fingerprint": "sha256:31437abef4de1154601cdbcdbc956065efa3b6890f6acdbdadbd9d1a52ae7dc1",
-      "path": "question-bank/questions/math/q-000486.yml"
-    },
-    {
-      "id": "q-000487",
-      "version": 1,
-      "content_fingerprint": "sha256:84f7f87711914f3ad3dc765e41fd9669f1081841f3753b4c12298f7576100688",
-      "path": "question-bank/questions/math/q-000487.yml"
-    },
-    {
-      "id": "q-000488",
-      "version": 1,
-      "content_fingerprint": "sha256:88105540e3e5631a8e8a2ea4bd27ef3c71b275433f1f7365ac5a1f0ea09ab85e",
-      "path": "question-bank/questions/math/q-000488.yml"
-    },
-    {
-      "id": "q-000489",
-      "version": 1,
-      "content_fingerprint": "sha256:8aeeb1f77a4423373cef5818e55e88e8ba856714670311496e15348407573a65",
-      "path": "question-bank/questions/math/q-000489.yml"
-    },
-    {
-      "id": "q-000490",
-      "version": 1,
-      "content_fingerprint": "sha256:3d9bb4a66db8e390b224d78cfb2a3e990edc8601a761607d7e158fd5a9183616",
-      "path": "question-bank/questions/math/q-000490.yml"
-    },
-    {
-      "id": "q-000491",
-      "version": 1,
-      "content_fingerprint": "sha256:d8111a43110049950f361ed10e3dc6bf001326250f6b5d728df38eedeff5e63a",
-      "path": "question-bank/questions/math/q-000491.yml"
-    },
-    {
-      "id": "q-000492",
-      "version": 1,
-      "content_fingerprint": "sha256:01efd05795ae540dab971b5cb77be3b773e56750b9bc284b4ad2f0b84b666634",
-      "path": "question-bank/questions/math/q-000492.yml"
-    },
-    {
-      "id": "q-000493",
-      "version": 1,
-      "content_fingerprint": "sha256:bc39d6cf88ab8ddb47d9bf13d42dcb7f4719ab9b7766811644545cea736a7295",
-      "path": "question-bank/questions/math/q-000493.yml"
-    },
-    {
-      "id": "q-000494",
-      "version": 1,
-      "content_fingerprint": "sha256:48d55259575914236a546121cd2d0cbceb4a36962f89f71a85471e370b3c7c86",
-      "path": "question-bank/questions/math/q-000494.yml"
-    },
-    {
-      "id": "q-000495",
-      "version": 1,
-      "content_fingerprint": "sha256:b265b143737828d67784827d73c647fc83ec6b72b8bcdf6d97ee2a6c7ffefdc3",
-      "path": "question-bank/questions/math/q-000495.yml"
-    },
-    {
-      "id": "q-000496",
-      "version": 1,
-      "content_fingerprint": "sha256:1dc582258b572d10216445b91feefafc55423e9ba6515945673deaa0eca076eb",
-      "path": "question-bank/questions/math/q-000496.yml"
-    },
-    {
-      "id": "q-000497",
-      "version": 1,
-      "content_fingerprint": "sha256:c8a2947ce18bc5baac2d866f715a284312ec4a02f0bf621ee741f131b0e72098",
-      "path": "question-bank/questions/math/q-000497.yml"
-    },
-    {
-      "id": "q-000498",
-      "version": 1,
-      "content_fingerprint": "sha256:88d7aef3540eec80173edc57cbba442a29e51093ec9584eb7b499e7d49e216f5",
-      "path": "question-bank/questions/math/q-000498.yml"
-    },
-    {
-      "id": "q-000499",
-      "version": 1,
-      "content_fingerprint": "sha256:f52e26b502651fcad9b19812cf279598ddefeea6763467664fcfe159f663ffe6",
-      "path": "question-bank/questions/math/q-000499.yml"
-    },
-    {
-      "id": "q-000500",
-      "version": 1,
-      "content_fingerprint": "sha256:aff973521da6cd1d661426046c65561dd1dc753b2ee8ae75b0423b7a72b8ca54",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000500.yml"
-    },
-    {
-      "id": "q-000501",
-      "version": 1,
-      "content_fingerprint": "sha256:94048b33b1d9f95d50413514d51586c20676c7abbd38915a2dd683ad42699c39",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000501.yml"
-    },
-    {
-      "id": "q-000502",
-      "version": 1,
-      "content_fingerprint": "sha256:6f64a33cc08659db952963f0b7cad470e2e089c2de43275219910a81fc2129e7",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000502.yml"
-    },
-    {
-      "id": "q-000503",
-      "version": 1,
-      "content_fingerprint": "sha256:b52824c8741ce88ecb711a34c71b7a86dee7a882d37ce40ffdeda867518a9a25",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000503.yml"
-    },
-    {
-      "id": "q-000504",
-      "version": 1,
-      "content_fingerprint": "sha256:413798af2001c112cf483ea20e1a79f3b123cedeb3e7724fda4cf3ba4a6a14db",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000504.yml"
-    },
-    {
-      "id": "q-000505",
-      "version": 1,
-      "content_fingerprint": "sha256:dddf5d42008fc27ee5ea28a7bc8726d11468ef697e8322b9ec135d1bbbfbe285",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000505.yml"
-    },
-    {
-      "id": "q-000506",
-      "version": 1,
-      "content_fingerprint": "sha256:019031ffe4498a767a5cf2e4a8fc56d2ac303b880ad92bfbdb0c2fa8ada6e97a",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000506.yml"
-    },
-    {
-      "id": "q-000507",
-      "version": 1,
-      "content_fingerprint": "sha256:1ac9768d77de250554360ed8c86ff3179a5567fd54b12238077010369ee1b7d0",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000507.yml"
-    },
-    {
-      "id": "q-000508",
-      "version": 1,
-      "content_fingerprint": "sha256:ce56eaf9eb9d6538dc428a9e6456809212ab3e1bf6e6e70622d22a2de3f7b794",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000508.yml"
-    },
-    {
-      "id": "q-000509",
-      "version": 1,
-      "content_fingerprint": "sha256:433183a23a63b58e3da03a78ff59fec1c2e3f468c799eacb85cc59b40731010d",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000509.yml"
+      "id": "q-000597",
+      "version": 2,
+      "content_fingerprint": "sha256:78f767dabdcb3957364aaf898de58fdb1e32680b5d22dbd00ffe920e23dbf624",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000597.yml"
     },
     {
-      "id": "q-000510",
+      "id": "q-000598",
       "version": 1,
-      "content_fingerprint": "sha256:60d8d419483017d80088a4047539d0afe0f34c6549c1820e3081d31c06a0c18f",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000510.yml"
+      "content_fingerprint": "sha256:f4def9d480a556b5395abd75f8f9d8adfa1eb3689195399b4222ed11deb14788",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000598.yml"
     },
     {
-      "id": "q-000511",
+      "id": "q-000599",
       "version": 1,
-      "content_fingerprint": "sha256:59c2e64d0d5186bffd777347e409f9c18488e36635afec6450192797a4e8f577",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000511.yml"
+      "content_fingerprint": "sha256:83034c93c19be1cc26f77e5aede45471c1da5da0c2bc2ed0a8a1acc6afbee719",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000599.yml"
     },
     {
-      "id": "q-000512",
+      "id": "q-000600",
       "version": 1,
-      "content_fingerprint": "sha256:a3f2bdc7bce84f112671295394047836af7c55257f4a26546964ba4e394163e1",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000512.yml"
+      "content_fingerprint": "sha256:3a7a3c3b2ff83a67a7b6bb53594bc6590c5f1bd4fb687804fae54cacfa5e8409",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000600.yml"
     },
     {
-      "id": "q-000513",
+      "id": "q-000601",
       "version": 1,
-      "content_fingerprint": "sha256:3b2384622ecc43f14fc51ccbbc337b7be1038a6b6df44d7f95436c1d5e0e7b44",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000513.yml"
+      "content_fingerprint": "sha256:b96f0c738ea503531673094080e3428d7c07cf644c6430f339b9be25572e98f5",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000601.yml"
     },
     {
-      "id": "q-000514",
+      "id": "q-000602",
       "version": 1,
-      "content_fingerprint": "sha256:4a47b78e42e58b0e9d992f359adc43b07aa694b217ead009d40bad0a6f390491",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000514.yml"
+      "content_fingerprint": "sha256:36e1d00e7d595c7c3c5c398575a174fff7730a0430879f62add5d3890a031401",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000602.yml"
     },
     {
-      "id": "q-000515",
+      "id": "q-000603",
       "version": 1,
-      "content_fingerprint": "sha256:9cdb22e275a993ff09a2e1584ba5470d28f33e0ff69db3e86ecb76529de7f7a8",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000515.yml"
+      "content_fingerprint": "sha256:bb653ce76e55d2e1b5c96f0797ab07114a04b4c3f6592a6d95e15d1f27db0b19",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000603.yml"
     },
     {
-      "id": "q-000516",
+      "id": "q-000604",
       "version": 1,
-      "content_fingerprint": "sha256:000818c9a7c5493d968931444c74371f56def528a90dbbbb82d2c32e48a66eef",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000516.yml"
+      "content_fingerprint": "sha256:bac977d508ceb8d4d2e7cc9a40bc0e926b063fc87d001cc9a629763c0560be3e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000604.yml"
     },
     {
-      "id": "q-000517",
+      "id": "q-000605",
       "version": 1,
-      "content_fingerprint": "sha256:c00f149ceff75881a6c2effbe67571f3f21b41d4188c4166606a02502cecffb1",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000517.yml"
+      "content_fingerprint": "sha256:5183fc5289d0e59d1576e85f321b5addbde129fdd8bf6882f6ccf71a759af10a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000605.yml"
     },
     {
-      "id": "q-000518",
+      "id": "q-000606",
       "version": 1,
-      "content_fingerprint": "sha256:acb0e0f09959d3ac941aeb9652f2d1a0d8d0f1b2a1a8873ceaa4e410652dd04f",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000518.yml"
+      "content_fingerprint": "sha256:e93bb005cb3d46045269299a3db575bbbca6fcae49788e4502ecffbd33199b76",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000606.yml"
     },
     {
-      "id": "q-000519",
+      "id": "q-000607",
       "version": 1,
-      "content_fingerprint": "sha256:e0c7b052dd10890363d1c3c6844458a2a801a6e45f4b25b862cfe862582f246c",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000519.yml"
+      "content_fingerprint": "sha256:83070a27b8aa7fb52b64c4861dc74a2882841187096497145def632f57f965a8",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000607.yml"
     },
     {
-      "id": "q-000520",
+      "id": "q-000608",
       "version": 1,
-      "content_fingerprint": "sha256:26682d36be0c0de5d5082fc1c559a9f7dc82b321ef3ce9c46d16e0e936257062",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000520.yml"
+      "content_fingerprint": "sha256:9e365759268d75676535b745732e4a644c9e3345ed1c8ba546d10ef684984a30",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000608.yml"
     },
     {
-      "id": "q-000521",
+      "id": "q-000609",
       "version": 1,
-      "content_fingerprint": "sha256:0623870ea514e648d3af4da6da8fa494ebf5c75d36f83e170344f4943cc527ea",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000521.yml"
+      "content_fingerprint": "sha256:f28e78c5ba4f518b0e5fb90b22d1d4fcf2a6062fb0ec2bb62bfd81f7f18bc348",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000609.yml"
     },
     {
-      "id": "q-000522",
+      "id": "q-000610",
       "version": 1,
-      "content_fingerprint": "sha256:d794fc0d4777726cdc693d29e0640065a8017538aafab74d3746fc40e0bc33a2",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000522.yml"
+      "content_fingerprint": "sha256:805167892ecd28bd771e57ade23e1ca024882de6f35352def3428f5a75bcbb4f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000610.yml"
     },
     {
-      "id": "q-000523",
+      "id": "q-000611",
       "version": 1,
-      "content_fingerprint": "sha256:f55c2f4d3b4a3a61af14446b5fb84e6c76a71bd7a271eafc82b2fbc3b57ada7d",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000523.yml"
+      "content_fingerprint": "sha256:adb8d326abbda0f914ed96d745efd6082484e1b8efa6e73ef96720532fb5cdb7",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000611.yml"
     },
     {
-      "id": "q-000524",
+      "id": "q-000612",
       "version": 1,
-      "content_fingerprint": "sha256:357fbac80981116fc4d5dd44120be321aed0dc70a14b6693f39a780a77dc288d",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000524.yml"
+      "content_fingerprint": "sha256:6f066ad655d7a55450d58eb6dc6de44dcf9df8ecfc3c4594bf9ecb15d4f48931",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000612.yml"
     },
     {
-      "id": "q-000525",
+      "id": "q-000613",
       "version": 1,
-      "content_fingerprint": "sha256:b5231060f4883a73c3a7ad06d50c00b011b9ddea36dd72f487aa4a3ecbf48fb8",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000525.yml"
+      "content_fingerprint": "sha256:221343d8220c42e5da34b2453b233bbb4fbdd42e82f97ff735e480670ca85a8a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000613.yml"
     },
     {
-      "id": "q-000526",
+      "id": "q-000614",
       "version": 1,
-      "content_fingerprint": "sha256:c65f008b7c853ed7d702aa89c972e1e4450d7c03d337e102f47e31adce633354",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000526.yml"
+      "content_fingerprint": "sha256:b84df8fcdc75c2d35ab2a893c66ca244dd5d1b38ec64d22508e912da2690aeb7",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000614.yml"
     },
     {
-      "id": "q-000527",
+      "id": "q-000615",
       "version": 1,
-      "content_fingerprint": "sha256:4935f20b5bcfb015e9f2fd7c89f1a142d894c83fd53e45260d445b1399f8e8db",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000527.yml"
+      "content_fingerprint": "sha256:e4763d1d6f47673a97b6902ee421136579899202a7c3748f4455f808dffa006a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000615.yml"
     },
     {
-      "id": "q-000528",
+      "id": "q-000616",
       "version": 1,
-      "content_fingerprint": "sha256:84dd6602df61028726cbedd7e6c67eaaec043e363f493d2a46c72793cd57790b",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000528.yml"
+      "content_fingerprint": "sha256:f9c5405a7e6b31bf15217336eb7e7c48e9467419e187ecc3b7ee45e1ae3c7b0e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000616.yml"
     },
     {
-      "id": "q-000529",
+      "id": "q-000617",
       "version": 1,
-      "content_fingerprint": "sha256:e54516b11359f5ba28100863867ff55bcf37f4b88bb8d1c8712df7c3d1477763",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000529.yml"
+      "content_fingerprint": "sha256:6ca3744423dd5a544abb5d9bcc6aebfb2ed6be4403cb11b73b390fd0baea7b8f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000617.yml"
     },
     {
-      "id": "q-000530",
+      "id": "q-000618",
       "version": 1,
-      "content_fingerprint": "sha256:fb41f9df2e38c80e30c58d875deecc8ad4b1f03fabc6fdd548b770877f37e083",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000530.yml"
+      "content_fingerprint": "sha256:26f7cdadb9538e710d5f0f1ae1d8ee389a9415a0db9c3d52a031d64ea701f2a0",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000618.yml"
     },
     {
-      "id": "q-000531",
+      "id": "q-000619",
       "version": 1,
-      "content_fingerprint": "sha256:0f053048045a55fab6cf3d85d4bc1396bc640f8312e55f9e6163210e69e94d27",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000531.yml"
+      "content_fingerprint": "sha256:2bc8bd02ecb75f92d7de4db22ef9bb7432cf5aedaf9f8ab6f0ba3d22b734cdac",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000619.yml"
     },
     {
-      "id": "q-000532",
+      "id": "q-000620",
       "version": 1,
-      "content_fingerprint": "sha256:dbd67642ef91f2225afde3164a64c3dadee65da78a342ec1062cf82dd5c7d448",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000532.yml"
+      "content_fingerprint": "sha256:f5ab4327fbc3d3522b01ca51e3147f7136b73538ea9d43a308d15500c72b4c24",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000620.yml"
     },
     {
-      "id": "q-000533",
+      "id": "q-000621",
       "version": 1,
-      "content_fingerprint": "sha256:8fd725133cb936f943bc45c72da4cb9fa7be1f7bffb3d1d33e7c52e9f606ac81",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000533.yml"
+      "content_fingerprint": "sha256:a1d1848047d3ffde6138548aaccc43476d196767b1f7d705c85876a083afebd0",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000621.yml"
     },
     {
-      "id": "q-000534",
+      "id": "q-000622",
       "version": 1,
-      "content_fingerprint": "sha256:91ab0bd6d2bde1f060eb0559c8e9d03134e0d7279933a0f39f26fc2839811b1c",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000534.yml"
+      "content_fingerprint": "sha256:e0763e5cdb3aaf503360b86c530ce52969e9c0337440a3b0c70de14b2a515b8a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000622.yml"
     },
     {
-      "id": "q-000535",
+      "id": "q-000623",
       "version": 1,
-      "content_fingerprint": "sha256:94d2c7bc815104bebf003c98aaf2e24734ae04c6e995bcd017af003a5493ab86",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000535.yml"
+      "content_fingerprint": "sha256:4291ed582ae9cfd4bd24892c6c3ea042a0866a74d20fefe5da65bb7f44f64636",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000623.yml"
     },
     {
-      "id": "q-000536",
+      "id": "q-000624",
       "version": 1,
-      "content_fingerprint": "sha256:eda742714aa8c85e7681833402e132aaa4e410942d86da3bd421361efd96a116",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000536.yml"
+      "content_fingerprint": "sha256:ce9d171cf7d6cc89f257db0ea610572aa326f094b92fcdb0786c9269f2ac7c5d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000624.yml"
     },
     {
-      "id": "q-000537",
+      "id": "q-000625",
       "version": 1,
-      "content_fingerprint": "sha256:f1c21e6c04b6c3a512913a00d81570879b9a7cc4f25f23ef71ad518e5b3e285e",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000537.yml"
+      "content_fingerprint": "sha256:8db11c2dfc9bdfffbafa8e8a5d7f6aa0815a004609a25398d17b64d2b28cb909",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000625.yml"
     },
     {
-      "id": "q-000538",
+      "id": "q-000626",
       "version": 1,
-      "content_fingerprint": "sha256:bf4367c5e2711b4b4d86e1b4eaae1670155482067d07ce43d925f75d7a17d190",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000538.yml"
+      "content_fingerprint": "sha256:51873903f0dc7e5f0575056c6d0b1c42dad097e4a854b7a97f327db7059a79e3",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000626.yml"
     },
     {
-      "id": "q-000539",
+      "id": "q-000627",
       "version": 1,
-      "content_fingerprint": "sha256:3910332ab2d7b7238d4950bdf1107318b3e5c5b27d1e46bc5b49d8fd28bed4bf",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000539.yml"
+      "content_fingerprint": "sha256:bbf3b9c1dadadc6ae2136f437825fe815156ed8330ef6524e6da6d49c4ab10a1",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000627.yml"
     },
     {
-      "id": "q-000540",
+      "id": "q-000628",
       "version": 1,
-      "content_fingerprint": "sha256:8079763cf66427283cfc0266b0062a39374c4b62a0e7dbad17f61e999bdc7b15",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000540.yml"
+      "content_fingerprint": "sha256:5466b7e3b6cc0feffc429f047901fb3c486bbcf8d1aab88863d2eebf02ecce88",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000628.yml"
     },
     {
-      "id": "q-000541",
+      "id": "q-000629",
       "version": 1,
-      "content_fingerprint": "sha256:e6cea88bc8290a92f7dfc53f44e93c24f312b761956441465105a211b157479c",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000541.yml"
+      "content_fingerprint": "sha256:628742843d03c8e4d83859900361ac2c5ca26add4a61e5d9ff39c04a8a0ab9be",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000629.yml"
     },
     {
-      "id": "q-000542",
+      "id": "q-000630",
       "version": 1,
-      "content_fingerprint": "sha256:a67d22113e39f46d2a1f264747b62fd8c390b2bfa168088a81eb169c8a85ff9a",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000542.yml"
+      "content_fingerprint": "sha256:9aef5a3cd0fdfa2e2f84fec1b94de3300fbc599286d4c95188885ed435068c92",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000630.yml"
     },
     {
-      "id": "q-000543",
+      "id": "q-000631",
       "version": 1,
-      "content_fingerprint": "sha256:59d0740e2cf2bc1e75f66fdff722fa8fb2987fd0f03151be1a07086ebe633da1",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000543.yml"
+      "content_fingerprint": "sha256:67cda5733ea2d2baaae047db9e17292d9393b8c132aea7f72167fa2307eb8322",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000631.yml"
     },
     {
-      "id": "q-000544",
+      "id": "q-000632",
       "version": 1,
-      "content_fingerprint": "sha256:4af8a0cfcb542145203efc87f5ebdd083e9e6d037ff0c71367dfdd3cfc0deb37",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000544.yml"
+      "content_fingerprint": "sha256:6ee2dddfad87e87cc08d0ef8f1d3f14d6f16c1c21d7aca059ce6b397983f010e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000632.yml"
     },
     {
-      "id": "q-000545",
+      "id": "q-000633",
       "version": 1,
-      "content_fingerprint": "sha256:552823656b12b572302e15670b91e3f517469e0f5c16d4fa9e5344778c1e5dae",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000545.yml"
+      "content_fingerprint": "sha256:fd112a7f7d80f9e8475f859527f56c7482500dc9156bcfe72734f5bcaebea3f1",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000633.yml"
     },
     {
-      "id": "q-000546",
+      "id": "q-000634",
       "version": 1,
-      "content_fingerprint": "sha256:5f0c76a33036ff0c1e786e257e9b5c96a0143331096cd6a3305d54f782b750f0",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-1/q-000546.yml"
+      "content_fingerprint": "sha256:0b8bdcd61bd57524d31fbd107c65ce74ebb65eb97d47884c04cc8e4676a2e494",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000634.yml"
     },
     {
-      "id": "q-000547",
+      "id": "q-000635",
       "version": 1,
-      "content_fingerprint": "sha256:0b66f9871fa8dc4588b8216ae1b9663c4c57549929615bb5d6e7b3c6abdd1aa6",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000547.yml"
+      "content_fingerprint": "sha256:54dee10693652d6da19ec4ceefe95d724960d5da8c880039934544a14a2559dc",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000635.yml"
     },
     {
-      "id": "q-000548",
+      "id": "q-000636",
       "version": 1,
-      "content_fingerprint": "sha256:a128a2a493e67fe9e5babe4ce0b715369eade2f0c412764915b76ba775546620",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000548.yml"
+      "content_fingerprint": "sha256:e7ead49e1b326e8c142ce4909fc38d1727fa5b0fa2102cc7ce22321077b248a1",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000636.yml"
     },
     {
-      "id": "q-000549",
+      "id": "q-000637",
       "version": 1,
-      "content_fingerprint": "sha256:b74ecf3a068c053226e259fd36592ee3e4b1e3c458ce51b4a7c0f4595dfe74ec",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-2/q-000549.yml"
+      "content_fingerprint": "sha256:0a2817a8b7549b607fe836c435e16642ba3bbe658024f298cf45209bbc89c667",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000637.yml"
     },
     {
-      "id": "q-000550",
+      "id": "q-000638",
       "version": 1,
-      "content_fingerprint": "sha256:e18fabdcf79a30033a7531e5e0f2f76e43bb323c91edf3b17351d200e1216a0f",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000550.yml"
+      "content_fingerprint": "sha256:41ecb110084a723f55b05f0f1072934de9f9ba470b41ab7be1a1a2891bc6b388",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000638.yml"
     },
     {
-      "id": "q-000551",
+      "id": "q-000639",
       "version": 1,
-      "content_fingerprint": "sha256:5ca6ec9b63c8a68381871274251eb151b191a7f8280a418cff1484e2b9204d22",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000551.yml"
+      "content_fingerprint": "sha256:45612077061435d4904f5875aae79d4ec4647a800f84a8b3beb45cd5eca45695",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000639.yml"
     },
     {
-      "id": "q-000552",
+      "id": "q-000640",
       "version": 1,
-      "content_fingerprint": "sha256:b2653ef7706de075e1e96e8e2236d0a247adcf9b1e8fdd1ffa6a7a9732980dc7",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-3/q-000552.yml"
+      "content_fingerprint": "sha256:7e97406c74cfd6420b9cd71b0e6fd6834833136ff931e332520235ae142a0cc4",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000640.yml"
     },
     {
-      "id": "q-000553",
+      "id": "q-000641",
       "version": 1,
-      "content_fingerprint": "sha256:8ede01245c2e2dbf01c253f6972d06c176cd85969c3483fc35c53be32b94c6c1",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000553.yml"
+      "content_fingerprint": "sha256:ef22a7ff979f09220cdad645926c04ed290d633f2675066da8ae44d3944c3791",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000641.yml"
     },
     {
-      "id": "q-000554",
+      "id": "q-000642",
       "version": 1,
-      "content_fingerprint": "sha256:14df6f904d4cb0345cafabec8938036676f2c475766a311d1fafce6cf3e32022",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000554.yml"
+      "content_fingerprint": "sha256:41332ebb2a3f2972ef9b3f4309ef302a91e2dd3f47508c283e6a395d8ba8d18b",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000642.yml"
     },
     {
-      "id": "q-000555",
+      "id": "q-000643",
       "version": 1,
-      "content_fingerprint": "sha256:31ac7b97ac68b5d07564967aa54df9e625bb40b0e5d9e808235d031bcf956114",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-4/q-000555.yml"
+      "content_fingerprint": "sha256:48062c5a4e8674cd959eab5da02865d399bff1710b5c65af207e7a44e4f3f63e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000643.yml"
     },
     {
-      "id": "q-000556",
+      "id": "q-000644",
       "version": 1,
-      "content_fingerprint": "sha256:c3664423dbaf83f3acbbd78337b912d8464ad21d1a18d255b1103f4032f1674b",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000556.yml"
+      "content_fingerprint": "sha256:22c6e7ead6dcde81553416d64456fc3962881baaa676f7e96a7cf793032ca585",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000644.yml"
     },
     {
-      "id": "q-000557",
+      "id": "q-000645",
       "version": 1,
-      "content_fingerprint": "sha256:bd2ce508713c955383ef72887e593e42f669b30eace8315cb7de1c7e980c1e91",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000557.yml"
+      "content_fingerprint": "sha256:a6664b6093a6f6b3a71f13cf931cad5353f0bdd37987b5d694a1559f65c18ebb",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000645.yml"
     },
     {
-      "id": "q-000558",
+      "id": "q-000646",
       "version": 1,
-      "content_fingerprint": "sha256:b66db3812db2e3a92dada062c7521bbd0afe35ee246b0a2ec60e26f5d5564bb0",
-      "path": "question-bank/questions/electromagnetism/electrostatics/chapter-5/q-000558.yml"
+      "content_fingerprint": "sha256:76ea93bf3255caa0658295f0b30855d59161bfa4badbee84a5dd33267a9ff3fb",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000646.yml"
     }
   ],
-  "related_sets": [
-    {
-      "id": "electromagnetism.electrostatics.chapter-1.derivations",
-      "fingerprint": "sha256:0cbc945e237e8f8cb44711c42deb6fea2c763897768b41afe1978dc00a853e77"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-1.selftest",
-      "fingerprint": "sha256:542a323cf26c2a749e4e082a8f47e9593f276b86edcd33f9ca46d4df111cfd3d"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-2.derivations",
-      "fingerprint": "sha256:085614dc784782a53b7c8353d6e515c75bddf6ba5f601441e2ecb5e684499573"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-2.selftest",
-      "fingerprint": "sha256:062541f8d52c28c0d57690bc6e1e1cdc28e09f0d302801f3e69a616d39d98798"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-3.derivations",
-      "fingerprint": "sha256:a2ae0373f109a509ddd0a0e09ae473be03b7ea193b96a07addb14ae8e065ce7c"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-3.selftest",
-      "fingerprint": "sha256:5b9e3ba002409b3a67a80e676f591f677dfe3a2929d57725e19683c095ac737c"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-4.derivations",
-      "fingerprint": "sha256:522ccb2d69d466c807e17bd9ba6bbf134c7209ef4350674fbc71ce474ebe1493"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-4.selftest",
-      "fingerprint": "sha256:e972c79b0c9d53f84b006e239faea99f9504bc41dfa0ae5bcc738aab5ff97886"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-5.derivations",
-      "fingerprint": "sha256:0703fe711ebf611724b91dff3a5971b1f07383d07be03a5c42cef8e9d417b92a"
-    },
-    {
-      "id": "electromagnetism.electrostatics.chapter-5.selftest",
-      "fingerprint": "sha256:b80c28d419b889dafd918dbefb2a34310f4dec1e6dbae0adf86f5b1dff0bd53e"
-    },
-    {
-      "id": "electromagnetism.research-2024-2026.set-01",
-      "fingerprint": "sha256:5f973be029cbf37c5e7bd782993215cd3beba9aab5a66407cd334812f371a300"
-    },
-    {
-      "id": "electromagnetism.research-2024-2026.set-02",
-      "fingerprint": "sha256:10825694a75da1d3888a4eaa7264c0d73ea9999ce28811d7ec167d1ac9b2efcb"
-    },
-    {
-      "id": "electromagnetism.research-2024-2026.set-03",
-      "fingerprint": "sha256:6042bafac5531b03522c18bd8a232a3b5ced0e34c47b01c4303e5a592d0aea8f"
-    },
-    {
-      "id": "electromagnetism.research-2024-2026.set-04",
-      "fingerprint": "sha256:24cf0089500e46b511b3b38b498107781c683d58398a619672d2c54808467213"
-    },
-    {
-      "id": "electromagnetism.research-2024-2026.set-05",
-      "fingerprint": "sha256:788db3ff374f43df683a1181add44258996eb2dac5b3332942b9013f1ec64ec8"
-    },
-    {
-      "id": "math.research-2024-2026.set-01",
-      "fingerprint": "sha256:d5025bc0d44fa8c8b592f87508125efa9c18efd913154ad46a7030a42887f561"
-    },
-    {
-      "id": "math.research-2024-2026.set-02",
-      "fingerprint": "sha256:46adbbbb0dc0c9439fe4ad6987e26665ec1a9d3871d1dedfbf5fe4619935af14"
-    },
-    {
-      "id": "math.research-2024-2026.set-03",
-      "fingerprint": "sha256:016cceb713cb84d5411250c9d2cd5932505b0d3525195ff91d75cfaccc3a1a40"
-    },
-    {
-      "id": "math.research-2024-2026.set-04",
-      "fingerprint": "sha256:bafff1cefa918c27e90066e12c6374672024f582c9322278b3611ee27f535ddb"
-    },
-    {
-      "id": "math.research-2024-2026.set-05",
-      "fingerprint": "sha256:51547468ad443a8f97df212d304ee2d84ea7666cdd6095ef3d3e80aea79bd1e3"
-    },
-    {
-      "id": "mechanics.research-2024-2026.set-01",
-      "fingerprint": "sha256:6c1c14ea0a327ddea4e79ccb76689ddc70d5c08dd4521e881e1a0438af88ca8e"
-    },
-    {
-      "id": "mechanics.research-2024-2026.set-02",
-      "fingerprint": "sha256:a61af5cff9ae806b4d78d585057a9cbe4a025f9be4e2318ae0922e35f8df187c"
-    },
-    {
-      "id": "mechanics.research-2024-2026.set-03",
-      "fingerprint": "sha256:c72f7f47ff440ab1d120c24ac403155d5253f4f317f8517955342bec97d81d0e"
-    },
-    {
-      "id": "mechanics.research-2024-2026.set-04",
-      "fingerprint": "sha256:4910f4a267119587d69d2f299d8d40acf0b52085ee81956b0d8f0c0f60120d66"
-    },
-    {
-      "id": "mechanics.research-2024-2026.set-05",
-      "fingerprint": "sha256:e06fe26a8b348aaa89ecb9ab4c0fd901f7373ab311110d8749dbca85ebf2329e"
-    }
-  ]
+  "related_sets": []
 }

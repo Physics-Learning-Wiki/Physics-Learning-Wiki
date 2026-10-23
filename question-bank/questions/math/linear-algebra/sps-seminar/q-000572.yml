@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000572
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  映射 T(x,y)=(x,2y) 会把过原点的直线变成什么？
+
+  映射 T(x,y)=(x,2y) 会把过原点的直线变成什么？'
 choices:
 - id: A
   content: 仍是过原点的直线
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4c94cf63cc35a37a3dc31ea17a652321b50a9e88f3b0b0b8a58fa53e441bba67
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4c94cf63cc35a37a3dc31ea17a652321b50a9e88f3b0b0b8a58fa53e441bba67
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:4c94cf63cc35a37a3dc31ea17a652321b50a9e88f3b0b0b8a58fa53e441bba67

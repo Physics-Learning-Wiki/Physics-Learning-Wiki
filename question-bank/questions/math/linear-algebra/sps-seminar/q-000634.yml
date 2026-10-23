@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000634
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.2 与 §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.2 与 §2.2.7 · 2026-10-23 更新稿**
 
-  令 $\Phi:\mathcal P_1(\mathbb R)\to\mathbb R^2$ 为 $\Phi(a+bx)=(a,b)^{\mathsf T}$。$\Phi^{-1}((3,-2)^{\mathsf T})$ 是哪个多项式？
+
+  令 $\Phi:\mathcal P_1(\mathbb R)\to\mathbb R^2$ 为 $\Phi(a+bx)=(a,b)^{\mathsf T}$。$\Phi^{-1}((3,-2)^{\mathsf T})$ 是哪个多项式？'
 choices:
 - id: A
   content: $3x-2$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0b8bdcd61bd57524d31fbd107c65ce74ebb65eb97d47884c04cc8e4676a2e494
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0b8bdcd61bd57524d31fbd107c65ce74ebb65eb97d47884c04cc8e4676a2e494
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:0b8bdcd61bd57524d31fbd107c65ce74ebb65eb97d47884c04cc8e4676a2e494

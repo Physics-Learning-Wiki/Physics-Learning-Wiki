@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000571
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  把平面中的每支箭头绕原点旋转同一个角度，为什么保持线性？
+
+  把平面中的每支箭头绕原点旋转同一个角度，为什么保持线性？'
 choices:
 - id: A
   content: 旋转保留向量相加的平行四边形关系和数乘
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:040abd996f36e6eae928686639203c7399b17a93b2c2b878ddb47f3aca7e41b8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:040abd996f36e6eae928686639203c7399b17a93b2c2b878ddb47f3aca7e41b8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:040abd996f36e6eae928686639203c7399b17a93b2c2b878ddb47f3aca7e41b8

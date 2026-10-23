@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000615
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
 
-  设 $T:V\to W$、$S:W\to U$ 都是线性同构。先施加 $T$，再施加 $S$；要撤销整个过程，应先做哪一步？
+
+  设 $T:V\to W$、$S:W\to U$ 都是线性同构。先施加 $T$，再施加 $S$；要撤销整个过程，应先做哪一步？'
 choices:
 - id: A
   content: 先 $S^{-1}$，再 $T^{-1}$
@@ -24,15 +24,13 @@ answer:
   choice: A
 hints:
 - 先撤销最后发生的操作．
-solution: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
-  S^{-1}$。
+solution: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ S^{-1}$。
 feedback:
   correct: 正确。最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
     S^{-1}$。
   incorrect: 再想一想：先撤销最后发生的操作．
   choices:
-    A: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
-      S^{-1}$。
+    A: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ S^{-1}$。
     B: 最后作用的是 $S$，所以必须先撤销 $S$。若 $V,W,U$ 不同，$T^{-1}$ 甚至不能接收最终输出。
     C: 相减不是复合的逆操作；要逐步撤销每个映射。
 difficulty: 1
@@ -50,3 +48,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e4763d1d6f47673a97b6902ee421136579899202a7c3748f4455f808dffa006a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e4763d1d6f47673a97b6902ee421136579899202a7c3748f4455f808dffa006a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e4763d1d6f47673a97b6902ee421136579899202a7c3748f4455f808dffa006a

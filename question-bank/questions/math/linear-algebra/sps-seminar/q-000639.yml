@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000639
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.2 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.2 · 2026-10-23 更新稿**
 
-  在三阶行列式的莱布尼茨公式中，排列 $(\sigma(1),\sigma(2),\sigma(3))=(2,3,1)$ 对应的项是 $a_{12}a_{23}a_{31}$。它前面的符号是什么？
+
+  在三阶行列式的莱布尼茨公式中，排列 $(\sigma(1),\sigma(2),\sigma(3))=(2,3,1)$ 对应的项是 $a_{12}a_{23}a_{31}$。它前面的符号是什么？'
 choices:
 - id: A
   content: 负号，因为不是恒等排列
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:45612077061435d4904f5875aae79d4ec4647a800f84a8b3beb45cd5eca45695
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:45612077061435d4904f5875aae79d4ec4647a800f84a8b3beb45cd5eca45695
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:45612077061435d4904f5875aae79d4ec4647a800f84a8b3beb45cd5eca45695

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000573
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.basis-coordinates
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.1**
+stem: '**SPS 线性代数研讨班配套 · §2.1**
 
-  一组基有两支向量，就必须画成互相垂直吗？
+
+  一组基有两支向量，就必须画成互相垂直吗？'
 choices:
 - id: A
   content: 不必，只要在平面中不共线
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:c3911594b71cf1d6c2d3ddfd83375fafdb95e05e71a194c90682bbc085e3625d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:c3911594b71cf1d6c2d3ddfd83375fafdb95e05e71a194c90682bbc085e3625d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:c3911594b71cf1d6c2d3ddfd83375fafdb95e05e71a194c90682bbc085e3625d

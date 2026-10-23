@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000584
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.composition
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.5**
+stem: '**SPS 线性代数研讨班配套 · §2.5**
 
-  先左右镜面反射，再做同一次反射，结果是什么？
+
+  先左右镜面反射，再做同一次反射，结果是什么？'
 choices:
 - id: A
   content: 回到原向量
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af63b289fc55985aaa47a398b586ae8882f293bf16073490b7a211401159ede7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af63b289fc55985aaa47a398b586ae8882f293bf16073490b7a211401159ede7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:af63b289fc55985aaa47a398b586ae8882f293bf16073490b7a211401159ede7

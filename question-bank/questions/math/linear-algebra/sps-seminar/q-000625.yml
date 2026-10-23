@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000625
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6 与附录 A · 2026-10-23 更新稿**
 
-  在同一组标准正交归一基下，一个三维实线性变换的表示矩阵行列式为 $-4$，单位立方体的普通体积与取向如何？
+
+  在同一组标准正交归一基下，一个三维实线性变换的表示矩阵行列式为 $-4$，单位立方体的普通体积与取向如何？'
 choices:
 - id: A
   content: 体积为 4，取向反转
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:8db11c2dfc9bdfffbafa8e8a5d7f6aa0815a004609a25398d17b64d2b28cb909
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:8db11c2dfc9bdfffbafa8e8a5d7f6aa0815a004609a25398d17b64d2b28cb909
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:8db11c2dfc9bdfffbafa8e8a5d7f6aa0815a004609a25398d17b64d2b28cb909

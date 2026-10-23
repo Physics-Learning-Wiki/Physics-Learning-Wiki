@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000602
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.determinant
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6**
+stem: '**SPS 线性代数研讨班配套 · §2.6**
 
-  将平面中的所有向量都乘以 2，单位正方形面积变为多少？
+
+  将平面中的所有向量都乘以 2，单位正方形面积变为多少？'
 choices:
 - id: A
   content: $4$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:36e1d00e7d595c7c3c5c398575a174fff7730a0430879f62add5d3890a031401
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:36e1d00e7d595c7c3c5c398575a174fff7730a0430879f62add5d3890a031401
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:36e1d00e7d595c7c3c5c398575a174fff7730a0430879f62add5d3890a031401

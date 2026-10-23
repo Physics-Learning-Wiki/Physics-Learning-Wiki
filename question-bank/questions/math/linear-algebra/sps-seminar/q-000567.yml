@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000567
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.linear-map
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  对线性映射 T，已知 T(u) 和 T(v)，怎样得到 T(u+v)？
+
+  对线性映射 T，已知 T(u) 和 T(v)，怎样得到 T(u+v)？'
 choices:
 - id: A
   content: 把 T(u) 与 T(v) 相加
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e58a38163c1099a9d0e1f79a6b0c920832586754e6441649d89333afa4b31e6d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e58a38163c1099a9d0e1f79a6b0c920832586754e6441649d89333afa4b31e6d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:e58a38163c1099a9d0e1f79a6b0c920832586754e6441649d89333afa4b31e6d

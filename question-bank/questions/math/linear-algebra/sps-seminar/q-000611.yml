@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000611
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-representation
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
 
-  V 是二维空间、W 是三维空间，$T:V\to W$ 的矩阵有几行几列？
+
+  V 是二维空间、W 是三维空间，$T:V\to W$ 的矩阵有几行几列？'
 choices:
 - id: A
   content: 3 行 2 列
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:adb8d326abbda0f914ed96d745efd6082484e1b8efa6e73ef96720532fb5cdb7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:adb8d326abbda0f914ed96d745efd6082484e1b8efa6e73ef96720532fb5cdb7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:adb8d326abbda0f914ed96d745efd6082484e1b8efa6e73ef96720532fb5cdb7

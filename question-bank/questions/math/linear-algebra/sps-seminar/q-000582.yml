@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000582
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.matrix-operations
 type: single_choice
 choice_order: shuffle
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.2**
+stem: '**SPS 线性代数研讨班配套 · §2.2**
 
-  令 $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$B=\begin{pmatrix}1&0\\0&2\end{pmatrix}$．AB 的第一行是什么？
+
+  令 $A=\begin{pmatrix}1&1\\0&1\end{pmatrix}$，$B=\begin{pmatrix}1&0\\0&2\end{pmatrix}$．AB 的第一行是什么？'
 choices:
 - id: A
   content: $(1,2)$
@@ -47,3 +47,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:153a354defe60068a5c0f68dac5b80cc00934a8877a13c096ad30b1229baf321
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:153a354defe60068a5c0f68dac5b80cc00934a8877a13c096ad30b1229baf321
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:153a354defe60068a5c0f68dac5b80cc00934a8877a13c096ad30b1229baf321
