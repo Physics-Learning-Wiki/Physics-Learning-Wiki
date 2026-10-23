@@ -17,19 +17,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Set up locked Node toolchain
+        uses: ./.github/actions/setup-node
         with:
-          node-version: 20.x
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        id: cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('yarn.lock') }}
-          restore-keys: ${{ runner.os }}-node-
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile --production
+          cache: 'false'
+
       - name: Fetch Authors
         run: |
           rm -rf authors.json

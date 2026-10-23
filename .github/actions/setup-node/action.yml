@@ -1,0 +1,49 @@
+name: Set up PLW Node toolchain
+description: Select Node, bootstrap pinned Corepack, and install locked Yarn dependencies.
+inputs:
+  cache:
+    description: Cache Yarn downloads in read-only jobs only.
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Select Node.js
+      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      with:
+        node-version-file: .nvmrc
+        package-manager-cache: false
+    - name: Bootstrap Corepack and Yarn
+      shell: bash
+      run: |
+        set -euo pipefail
+        corepack_version="$(cat .corepack-version)"
+        corepack_prefix="$RUNNER_TEMP/plw-corepack"
+        npm install --prefix "$corepack_prefix" --no-save --no-package-lock --ignore-scripts --no-audit --no-fund "corepack@$corepack_version"
+        corepack_bin="$corepack_prefix/node_modules/.bin"
+        "$corepack_bin/corepack" enable yarn --install-directory "$corepack_bin"
+        echo "$corepack_bin" >> "$GITHUB_PATH"
+        test "$("$corepack_bin/corepack" --version)" = "$corepack_version"
+        expected_yarn="$(node -p "require('./package.json').packageManager.split('+')[0].slice('yarn@'.length)")"
+        test "$("$corepack_bin/corepack" yarn --version)" = "$expected_yarn"
+    - name: Restore Yarn download cache
+      if: inputs.cache == 'true'
+      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+      with:
+        cache: yarn
+        cache-dependency-path: yarn.lock
+        package-manager-cache: false
+    - name: Install JavaScript dependencies
+      shell: bash
+      run: |
+        set -euo pipefail
+        test "$(node --version)" = "v$(cat .nvmrc)"
+        test "$(corepack --version)" = "$(cat .corepack-version)"
+        corepack yarn install --frozen-lockfile --production=false
+    - name: Report Node toolchain
+      shell: bash
+      run: |
+        node --version
+        corepack --version
+        corepack yarn --version
+        sha256sum yarn.lock

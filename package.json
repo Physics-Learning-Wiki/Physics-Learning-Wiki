@@ -65,7 +65,7 @@
   },
   "homepage": "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki#readme",
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=24.22.1 <25"
   },
   "dependencies": {
     "@mathjax/src": "^4.0.0",

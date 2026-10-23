@@ -77,18 +77,18 @@ jobs:
         with:
           version: latest
           enable-cache: true
-      - uses: actions/setup-node@v4
+      - name: Set up locked Node toolchain
+        uses: ./.github/actions/setup-node
         with:
-          node-version: '20.x'
-          cache: yarn
+          cache: 'true'
+
       - name: Install Python dependencies
         run: uv sync --dev --frozen
-      - name: Install JavaScript dependencies
-        run: corepack yarn --frozen-lockfile
+
       - name: Check Sharp native runtime
         run: corepack yarn media:check
       - name: Install Playwright Chromium
-        run: npx playwright install --with-deps chromium
+        run: corepack yarn playwright install --with-deps chromium
       - name: Validate and test Python tools
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
@@ -104,30 +104,30 @@ jobs:
           uv run python -m scripts.question_bank benchmark --repeat 5 --json-output question-bank-benchmark.json
       - name: Check quiz TypeScript and bundle
         run: |
-          yarn quiz:format:check
-          yarn quiz:typecheck
-          yarn quiz:test
-          yarn post-build:test
-          yarn submit:check
-          yarn submit:test
-          yarn forms:typecheck
-          yarn forms:test
-          yarn forms:build:check
-          yarn media:test
-          yarn quiz:build:check
-          yarn runtime:typecheck
-          yarn runtime:test
-          yarn runtime:build:check
-          yarn features:typecheck
-          yarn features:build:check
+          corepack yarn quiz:format:check
+          corepack yarn quiz:typecheck
+          corepack yarn quiz:test
+          corepack yarn post-build:test
+          corepack yarn submit:check
+          corepack yarn submit:test
+          corepack yarn forms:typecheck
+          corepack yarn forms:test
+          corepack yarn forms:build:check
+          corepack yarn media:test
+          corepack yarn quiz:build:check
+          corepack yarn runtime:typecheck
+          corepack yarn runtime:test
+          corepack yarn runtime:build:check
+          corepack yarn features:typecheck
+          corepack yarn features:build:check
       - name: Build MkDocs site for smoke test
         run: |
           test -z "$PLW_QUIZ_PREVIEW"
           uv run mkdocs build --clean
       - name: Run browser smoke test
         run: |
-          yarn e2e:smoke
-          yarn playwright test tests/e2e/concept-popover.spec.ts tests/e2e/concept-reference.spec.ts
+          corepack yarn e2e:smoke
+          corepack yarn playwright test tests/e2e/concept-popover.spec.ts tests/e2e/concept-reference.spec.ts
       - uses: actions/upload-artifact@v4
         with:
           name: question-bank-metrics

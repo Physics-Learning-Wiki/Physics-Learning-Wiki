@@ -27,12 +27,13 @@ jobs:
         with:
           python-version: "3.11"
       - uses: astral-sh/setup-uv@v6
-      - uses: actions/setup-node@v4
+      - name: Set up locked Node toolchain
+        uses: ./.github/actions/setup-node
         with:
-          node-version: "20.x"
-          cache: "yarn"
+          cache: 'false'
+
       - run: uv sync --frozen
-      - run: corepack yarn --frozen-lockfile
+
       - name: Generate contributor statistics and community review PR
         run: uv run python -m scripts.community.sync --contributors
       - name: Link submissions to their review PR
