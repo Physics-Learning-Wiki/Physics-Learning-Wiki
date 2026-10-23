@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000636
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.4.2 拓展 · 2026-10-23 更新稿**
+
+  在实欧氏空间的标准正交归一基下，$\langle Ax,y\rangle=\langle x,A^{\mathsf T}y\rangle$ 表达了什么？
+choices:
+- id: A
+  content: $A^{\mathsf T}$ 总能撤销 $A$
+- id: B
+  content: 可以把对被测向量的变换，转移为对测量向量的相应变换
+- id: C
+  content: $Ax$ 与 $A^{\mathsf T}y$ 必定是同一向量
+answer:
+  choice: B
+hints:
+- 比较等式两边哪个向量先被变换，最后得到的量又是什么。
+solution: 左侧先变换 $x$，再用 $y$ 测量；右侧用 $A^{\mathsf T}y$ 测量原来的 $x$，得到同一个内积数值。此处转置表示伴随作用，并不一般等于逆变换。
+feedback:
+  correct: 正确。左侧先变换 $x$，再用 $y$ 测量；右侧用 $A^{\mathsf T}y$ 测量原来的 $x$，得到同一个内积数值。此处转置表示伴随作用，并不一般等于逆变换。
+  incorrect: 再想一想：比较等式两边哪个向量先被变换，最后得到的量又是什么。
+  choices:
+    A: 伴随用于转移内积中的作用位置；只有满足正交性等额外条件时，转置才等于逆。
+    B: 两种过程得到相同的测量值，正是伴随关系的含义。
+    C: 内积相等不要求两个变换后的向量相同。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.4.2 拓展；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

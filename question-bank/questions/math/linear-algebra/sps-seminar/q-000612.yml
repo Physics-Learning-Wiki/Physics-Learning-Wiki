@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000612
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.image-kernel
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 原像 · 2026-10-23 更新稿**
+
+  对 $T(x,y)=x$，集合 $T^{-1}(\{2\})$ 表示什么？
+choices:
+- id: A
+  content: 所有形如 (2,y) 的输入
+- id: B
+  content: 唯一一个输入 (2,0)
+- id: C
+  content: 一个必定存在的逆线性映射
+answer:
+  choice: A
+hints:
+- 这里的逆号作用在集合上，表示寻找所有原像．
+solution: 横坐标为 2 的每个点都输出 2，因此原像是一整条直线．集合原像可以存在，即使 T 没有逆映射．
+feedback:
+  correct: 正确。横坐标为 2 的每个点都输出 2，因此原像是一整条直线．集合原像可以存在，即使 T 没有逆映射．
+  incorrect: 再想一想：这里的逆号作用在集合上，表示寻找所有原像．
+  choices:
+    A: 横坐标为 2 的每个点都输出 2，因此原像是一整条直线．集合原像可以存在，即使 T 没有逆映射．
+    B: $(2,0)$ 只是原像中的一个点；$(2,1)$ 等点也映到 $2$。
+    C: $T^{-1}(\{2\})$ 在这里是集合原像的记号，不是在声称 $T$ 存在逆映射。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7 原像；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

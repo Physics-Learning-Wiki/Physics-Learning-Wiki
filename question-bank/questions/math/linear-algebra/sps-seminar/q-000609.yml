@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000609
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+
+  对 $T:V\to W$，输入用基 $\mathcal B$，输出用基 $\mathcal C$．矩阵第 j 列应怎样记录？
+choices:
+- id: A
+  content: 用 $\mathcal C$ 坐标记录 $T(b_j)$
+- id: B
+  content: 用 $\mathcal B$ 坐标记录 $b_j$
+- id: C
+  content: 用 $\mathcal C$ 坐标记录 $b_j$，不必作用 T
+answer:
+  choice: A
+hints:
+- 先变换输入基向量，再描述输出．
+solution: 第 j 列是第 j 个输入基向量的像，在输出空间的基下的坐标．直接记录输入会漏掉 T，且输入基向量未必属于输出空间．
+feedback:
+  correct: 正确。第 j 列是第 j 个输入基向量的像，在输出空间的基下的坐标．直接记录输入会漏掉 T，且输入基向量未必属于输出空间．
+  incorrect: 再想一想：先变换输入基向量，再描述输出．
+  choices:
+    A: 第 j 列是第 j 个输入基向量的像，在输出空间的基下的坐标．直接记录输入会漏掉 T，且输入基向量未必属于输出空间．
+    B: $[b_j]_{\mathcal B}$ 只记录输入基向量本身，完全没有记录 $T$ 对它的作用。
+    C: 必须先作用 $T$；而且 $b_j\in V$，未必能直接用 $W$ 的基 $\mathcal C$ 展开。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

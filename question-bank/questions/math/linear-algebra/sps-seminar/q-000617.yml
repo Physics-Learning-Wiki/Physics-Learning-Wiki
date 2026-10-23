@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000617
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  哪个矩阵能撤销 $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$ 的剪切？
+choices:
+- id: A
+  content: $\begin{pmatrix}1&-2\\0&1\end{pmatrix}$
+- id: B
+  content: $\begin{pmatrix}1&0\\2&1\end{pmatrix}$
+- id: C
+  content: $\begin{pmatrix}-1&-2\\0&-1\end{pmatrix}$
+answer:
+  choice: A
+hints:
+- 撤销 (x,y) 到 (x+2y,y)，需要从横坐标减去 2y．
+solution: 逆变换是 (X,Y) 到 (X-2Y,Y)．与 A 相乘，右上角为 $1(-2)+2(1)=0$，对角线仍为 1，得到单位矩阵．转置或把全矩阵取负都不能撤销这个剪切．
+feedback:
+  correct: 正确。逆变换是 (X,Y) 到 (X-2Y,Y)．与 A 相乘，右上角为 $1(-2)+2(1)=0$，对角线仍为 1，得到单位矩阵．转置或把全矩阵取负都不能撤销这个剪切．
+  incorrect: 再想一想：撤销 (x,y) 到 (x+2y,y)，需要从横坐标减去 2y．
+  choices:
+    A: 逆变换是 (X,Y) 到 (X-2Y,Y)．与 A 相乘，右上角为 $1(-2)+2(1)=0$，对角线仍为 1，得到单位矩阵．转置或把全矩阵取负都不能撤销这个剪切．
+    B: 这是 $A^{\mathsf T}$，它改变纵坐标；原剪切改变横坐标，转置不能撤销它。
+    C: 这是 $-A$，将整个矩阵取负不等于取逆；与 $A$ 的乘积不是 $I$。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

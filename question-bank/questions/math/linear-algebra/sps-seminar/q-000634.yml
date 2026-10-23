@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000634
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.2 与 §2.2.7 · 2026-10-23 更新稿**
+
+  令 $\Phi:\mathcal P_1(\mathbb R)\to\mathbb R^2$ 为 $\Phi(a+bx)=(a,b)^{\mathsf T}$。$\Phi^{-1}((3,-2)^{\mathsf T})$ 是哪个多项式？
+choices:
+- id: A
+  content: $3x-2$
+- id: B
+  content: $3-2x$
+- id: C
+  content: $3+2x$
+answer:
+  choice: B
+hints:
+- 坐标顺序对应有序基 $(1,x)$。
+solution: 第一坐标 $3$ 是常数项系数，第二坐标 $-2$ 是 $x$ 的系数，所以逆映射还原为 $3-2x$。再作用 $\Phi$ 就回到原来的坐标列。
+feedback:
+  correct: 正确。第一坐标 $3$ 是常数项系数，第二坐标 $-2$ 是 $x$ 的系数，所以逆映射还原为 $3-2x$。再作用 $\Phi$ 就回到原来的坐标列。
+  incorrect: 再想一想：坐标顺序对应有序基 $(1,x)$。
+  choices:
+    A: 这把常数项与一次项的系数位置颠倒了。
+    B: 按基顺序恢复多项式即可。
+    C: 第二坐标为负，必须保留一次项系数的负号。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.2 与 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

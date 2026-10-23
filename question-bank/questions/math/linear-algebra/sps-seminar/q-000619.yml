@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000619
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  把横坐标压缩到原来的一半、纵坐标不变，会不可逆吗？
+choices:
+- id: A
+  content: 不会，横向放大两倍即可恢复
+- id: B
+  content: 会，只要叫压缩就不可逆
+- id: C
+  content: 会，因为它必定压成一条线
+answer:
+  choice: A
+hints:
+- 缩短与彻底消去一个方向是两回事．
+solution: 非零比例缩放没有混淆不同输入，所以仍可逆．把横坐标乘以零才完全丢掉横向信息，不能恢复．
+feedback:
+  correct: 正确。非零比例缩放没有混淆不同输入，所以仍可逆．把横坐标乘以零才完全丢掉横向信息，不能恢复．
+  incorrect: 再想一想：缩短与彻底消去一个方向是两回事．
+  choices:
+    A: 非零比例缩放没有混淆不同输入，所以仍可逆．把横坐标乘以零才完全丢掉横向信息，不能恢复．
+    B: 非零比例的压缩仍保留全部坐标信息；只有压掉某个方向等操作才会失去可逆性。
+    C: 横坐标乘以一半后仍可取任意实数，整个平面没有变成一条线。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

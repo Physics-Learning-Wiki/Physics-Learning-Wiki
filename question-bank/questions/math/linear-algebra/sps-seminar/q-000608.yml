@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000608
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 拓展 · 2026-10-23 更新稿**
+
+  固定基后，表示映射 $\mathcal M_{\mathcal B}$ 接收什么，输出什么？
+choices:
+- id: A
+  content: 接收线性映射，输出它的矩阵
+- id: B
+  content: 接收向量，输出它的长度
+- id: C
+  content: 接收矩阵，输出一个任意向量
+answer:
+  choice: A
+hints:
+- 这里的输入对象是一个操作本身．
+solution: 先有线性映射 T，再用基记录各基向量的像，得到矩阵．表示映射作用于 T；T 本身才作用于普通向量．
+feedback:
+  correct: 正确。先有线性映射 T，再用基记录各基向量的像，得到矩阵．表示映射作用于 T；T 本身才作用于普通向量．
+  incorrect: 再想一想：这里的输入对象是一个操作本身．
+  choices:
+    A: 先有线性映射 T，再用基记录各基向量的像，得到矩阵．表示映射作用于 T；T 本身才作用于普通向量．
+    B: 把向量送到长度是另一种操作。这里表示映射的输入是 $T$，输出是记录 $T$ 的矩阵。
+    C: 方向写反了：固定基后，是把线性映射表示为矩阵，不是从矩阵任选一个向量。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3 拓展；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000622
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  对可逆矩阵 A，等式 $A^{-1}Av=v$ 中右侧的 v 表示什么？
+choices:
+- id: A
+  content: 每个输入都被恢复，整体作用是恒等映射
+- id: B
+  content: 每个输入都变成零
+- id: C
+  content: 只恢复某一支基向量就足够，不必对其他向量成立
+answer:
+  choice: A
+hints:
+- 逆操作应当撤销 A 对任意输入的效果．
+solution: $A^{-1}A=I$，而 Iv=v 对所有向量成立．零矩阵会让输入消失；只恢复一支向量不足以证明所有方向都被恢复．
+feedback:
+  correct: 正确。$A^{-1}A=I$，而 Iv=v 对所有向量成立．零矩阵会让输入消失；只恢复一支向量不足以证明所有方向都被恢复．
+  incorrect: 再想一想：逆操作应当撤销 A 对任意输入的效果．
+  choices:
+    A: $A^{-1}A=I$，而 Iv=v 对所有向量成立．零矩阵会让输入消失；只恢复一支向量不足以证明所有方向都被恢复．
+    B: 零输出对应零映射；逆变换与原变换复合得到的是 $I$，满足 $Iv=v$。
+    C: 只恢复一支向量不能保证恢复其他方向；需要对所有输入成立，或验证一整组基。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

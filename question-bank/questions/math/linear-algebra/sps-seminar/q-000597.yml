@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000597
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -9,7 +9,10 @@ concepts:
 - linalg.inner-product
 type: single_choice
 choice_order: shuffle
-stem: "**SPS 线性代数研讨班配套 · §2.3**\n\n对函数内积 $\\langle f,g\rangle=\\int_{-1}^{1}f(x)g(x)\\,dx$，正交是否要求每一点的乘积都为零？"
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3**
+
+  对函数内积 $\langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx$，正交是否要求每一点的乘积都为零？
 choices:
 - id: A
   content: 不要求，积分中的正负贡献可以抵消

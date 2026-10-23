@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000645
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.3 按列展开 · 2026-10-23 更新稿**
+
+  三维行列式按第一列展开时，先考虑第一列沿 $x$ 轴的分量，再通过剪切把其余两条边放进 $yz$ 平面。为什么此项的余子式要删去第一列和第一行？
+choices:
+- id: A
+  content: 删列和删行都表示把整个图形平移一次
+- id: B
+  content: 删列表示单独取出了高度边；删行表示底面只需保留 $y,z$ 坐标
+- id: C
+  content: 因为第一列和第一行的元素都必定为零
+answer:
+  choice: B
+hints:
+- 矩阵的列标记哪条边，行又标记哪一个坐标分量？
+solution: 第一列的高度分量已单独提出，剩余两列给出底面两条边。底面在剪切后位于 $yz$ 平面，所以只需读取两条边的 $y,z$ 分量。删行是读取坐标的步骤，本身并不是剪切或平移。
+feedback:
+  correct: 正确。第一列的高度分量已单独提出，剩余两列给出底面两条边。底面在剪切后位于 $yz$ 平面，所以只需读取两条边的 $y,z$ 分量。删行是读取坐标的步骤，本身并不是剪切或平移。
+  incorrect: 再想一想：矩阵的列标记哪条边，行又标记哪一个坐标分量？
+  choices:
+    A: 剪切改变边的分量；删行删列则是在选取余子矩阵，它们不是同一种几何操作。
+    B: 分别跟踪“哪条边”和“哪个坐标”，就能理解两种删除的作用。
+    C: 高度系数可以非零，原矩阵的对应行也不必为零；删除并不是清零。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.6.3 按列展开；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
