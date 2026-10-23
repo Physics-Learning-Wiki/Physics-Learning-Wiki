@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000593
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3**
+
+  两个非零向量垂直时，一个在另一个方向上的投影是多少？
+choices:
+- id: A
+  content: 零
+- id: B
+  content: 等于两个长度之和
+- id: C
+  content: 一定等于 1
+answer:
+  choice: A
+hints:
+- 沿另一支箭头看，是否有前进或后退？
+solution: 垂直方向没有沿该方向的分量，投影为零，因此点积也为零；这不要求向量本身为零．
+feedback:
+  correct: 正确．垂直方向没有沿该方向的分量，投影为零，因此点积也为零；这不要求向量本身为零．
+  incorrect: 先想一想：沿另一支箭头看，是否有前进或后退？
+  choices:
+    A: 垂直方向没有沿该方向的分量，投影为零，因此点积也为零；这不要求向量本身为零．
+    B: 这个判断不符合本题的结构．垂直方向没有沿该方向的分量，投影为零，因此点积也为零；这不要求向量本身为零．
+    C: 注意区分相关概念．垂直方向没有沿该方向的分量，投影为零，因此点积也为零；这不要求向量本身为零．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.3 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

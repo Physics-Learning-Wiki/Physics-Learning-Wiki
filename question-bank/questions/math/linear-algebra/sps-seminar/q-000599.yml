@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000599
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6**
+
+  平面中绕原点旋转 90°，面积和取向怎样变化？
+choices:
+- id: A
+  content: 面积与取向都保持
+- id: B
+  content: 面积保持，取向反转
+- id: C
+  content: 面积变为零
+answer:
+  choice: A
+hints:
+- 旋转不会把有序基的转向翻过去．
+solution: 旋转保面积，且旋转后的两个有序基方向仍有原来的取向，所以行列式为 +1．反射才翻转取向．
+feedback:
+  correct: 正确．旋转保面积，且旋转后的两个有序基方向仍有原来的取向，所以行列式为 +1．反射才翻转取向．
+  incorrect: 先想一想：旋转不会把有序基的转向翻过去．
+  choices:
+    A: 旋转保面积，且旋转后的两个有序基方向仍有原来的取向，所以行列式为 +1．反射才翻转取向．
+    B: 这个判断不符合本题的结构．旋转保面积，且旋转后的两个有序基方向仍有原来的取向，所以行列式为 +1．反射才翻转取向．
+    C: 注意区分相关概念．旋转保面积，且旋转后的两个有序基方向仍有原来的取向，所以行列式为 +1．反射才翻转取向．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.6 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

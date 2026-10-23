@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000578
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  令 $A=\begin{pmatrix}0&1\\1&0\end{pmatrix}$，求 $A(2,-1)^{\mathsf T}$．
+choices:
+- id: A
+  content: $(-1,2)^{\mathsf T}$
+- id: B
+  content: $(2,-1)^{\mathsf T}$
+- id: C
+  content: $(-2,1)^{\mathsf T}$
+answer:
+  choice: A
+hints:
+- 这两行分别取走输入的哪个分量？
+solution: 第一行取第二个分量 -1，第二行取第一个分量 2；矩阵交换两个坐标，没有把它们全部取负．
+feedback:
+  correct: 正确．第一行取第二个分量 -1，第二行取第一个分量 2；矩阵交换两个坐标，没有把它们全部取负．
+  incorrect: 先想一想：这两行分别取走输入的哪个分量？
+  choices:
+    A: 第一行取第二个分量 -1，第二行取第一个分量 2；矩阵交换两个坐标，没有把它们全部取负．
+    B: 这个判断不符合本题的结构．第一行取第二个分量 -1，第二行取第一个分量 2；矩阵交换两个坐标，没有把它们全部取负．
+    C: 注意区分相关概念．第一行取第二个分量 -1，第二行取第一个分量 2；矩阵交换两个坐标，没有把它们全部取负．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

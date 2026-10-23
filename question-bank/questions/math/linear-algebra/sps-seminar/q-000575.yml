@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000575
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  矩阵的第二列表示什么？
+choices:
+- id: A
+  content: 第二个输入基向量经过变换后的坐标
+- id: B
+  content: 所有输入的第二个输出分量
+- id: C
+  content: 第二个输入基向量本身永远不变
+answer:
+  choice: A
+hints:
+- 用只有第二个分量为 1 的列向量作输入．
+solution: 这个输入在线性组合中只选中第二列，因此第二列记录该基向量的像；第二个输出分量则由第二行决定．
+feedback:
+  correct: 正确．这个输入在线性组合中只选中第二列，因此第二列记录该基向量的像；第二个输出分量则由第二行决定．
+  incorrect: 先想一想：用只有第二个分量为 1 的列向量作输入．
+  choices:
+    A: 这个输入在线性组合中只选中第二列，因此第二列记录该基向量的像；第二个输出分量则由第二行决定．
+    B: 这个判断不符合本题的结构．这个输入在线性组合中只选中第二列，因此第二列记录该基向量的像；第二个输出分量则由第二行决定．
+    C: 注意区分相关概念．这个输入在线性组合中只选中第二列，因此第二列记录该基向量的像；第二个输出分量则由第二行决定．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

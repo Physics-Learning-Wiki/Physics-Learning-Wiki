@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000569
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.image-kernel
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  映射 T(x,y)=(x,0) 把哪条方向的信息完全丢掉了？
+choices:
+- id: A
+  content: 竖直方向
+- id: B
+  content: 水平方向
+- id: C
+  content: 两条方向都完整保留
+answer:
+  choice: A
+hints:
+- 比较 (1,0) 与 (0,1) 的像．
+solution: 任意 (0,y) 都变成 (0,0)，竖直方向被压缩掉；横坐标仍保留在输出里．
+feedback:
+  correct: 正确．任意 (0,y) 都变成 (0,0)，竖直方向被压缩掉；横坐标仍保留在输出里．
+  incorrect: 先想一想：比较 (1,0) 与 (0,1) 的像．
+  choices:
+    A: 任意 (0,y) 都变成 (0,0)，竖直方向被压缩掉；横坐标仍保留在输出里．
+    B: 这个判断不符合本题的结构．任意 (0,y) 都变成 (0,0)，竖直方向被压缩掉；横坐标仍保留在输出里．
+    C: 注意区分相关概念．任意 (0,y) 都变成 (0,0)，竖直方向被压缩掉；横坐标仍保留在输出里．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

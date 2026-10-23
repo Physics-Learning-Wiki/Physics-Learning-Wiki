@@ -1,7 +1,8 @@
 schema_version: 1
 id: math.linear-algebra.sps-seminar.matrices
 title: SPS 线性代数研讨班配套｜矩阵入门：看懂并动手算
-description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.2、§2.4、§2.5：矩阵的列、加法与数乘、乘积尺寸、行乘列、复合顺序、可逆变换与转置。8 道入门题，约 12 分钟；先想图像与含义，再做短计算，每题均有提示和解析。建议备纸笔；自由作答题按参考答案自评。
+description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.2、§2.4、§2.5：矩阵的列、加法与数乘、乘积尺寸、行乘列、复合顺序、可逆变换与转置。每次从已发布候选题中随机抽取 6
+  道，单次不重复；当前有 8 道已发布候选题；24 道扩充题池见预览题集，待人工审核后接入。不同次练习可能遇到相同题目。每次含 2–4 道短计算题。每题均有提示和解析。
 status: published
 tags:
 - SPS 线性代数研讨班配套
@@ -10,18 +11,25 @@ tags:
 - 直观理解
 feedback_mode: immediate
 selection:
-  type: fixed
-  questions:
-  - q-000334
-  - q-000335
-  - q-000336
-  - q-000337
-  - q-000338
-  - q-000339
-  - q-000340
-  - q-000341
-  order: fixed
-version: 1
+  type: query
+  count: 6
+  filters:
+    question_ids:
+    - q-000334
+    - q-000335
+    - q-000336
+    - q-000337
+    - q-000338
+    - q-000339
+    - q-000340
+    - q-000341
+  constraints:
+  - field: style
+    values:
+    - computational
+    min: 2
+    max: 4
+version: 2
 authors:
 - name: farawayshore
   kind: human
@@ -30,6 +38,6 @@ authors:
   kind: ai
 provenance:
   type: original
-  note: 围绕 SPS 线性代数研讨班第一、二讲的教学范围独立编排；保留由概念到操作的固定题序。
+  note: 围绕 SPS 线性代数研讨班第一、二讲独立编排；采用限定候选池的随机抽题，单次题目不重复，保留即时反馈。
   ai_assisted: true
 license: CC-BY-SA-4.0

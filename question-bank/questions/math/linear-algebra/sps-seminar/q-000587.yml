@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000587
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.4**
+
+  任意矩阵连续转置两次会怎样？
+choices:
+- id: A
+  content: 恢复原矩阵
+- id: B
+  content: 一定变成单位矩阵
+- id: C
+  content: 所有元素取相反数
+answer:
+  choice: A
+hints:
+- 每个元素的行号和列号交换两次．
+solution: 元素从第 i 行第 j 列移到第 j 行第 i 列，再移回来．这个过程不改变数值，也不执行求逆．
+feedback:
+  correct: 正确．元素从第 i 行第 j 列移到第 j 行第 i 列，再移回来．这个过程不改变数值，也不执行求逆．
+  incorrect: 先想一想：每个元素的行号和列号交换两次．
+  choices:
+    A: 元素从第 i 行第 j 列移到第 j 行第 i 列，再移回来．这个过程不改变数值，也不执行求逆．
+    B: 这个判断不符合本题的结构．元素从第 i 行第 j 列移到第 j 行第 i 列，再移回来．这个过程不改变数值，也不执行求逆．
+    C: 注意区分相关概念．元素从第 i 行第 j 列移到第 j 行第 i 列，再移回来．这个过程不改变数值，也不执行求逆．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.4 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

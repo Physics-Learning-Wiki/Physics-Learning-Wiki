@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000603
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6**
+
+  把一个矩阵的第一列乘以 2，第二列保持不变，行列式怎样变化？
+choices:
+- id: A
+  content: 变为原来的 2 倍
+- id: B
+  content: 变为原来的 4 倍
+- id: C
+  content: 一定保持不变
+answer:
+  choice: A
+hints:
+- 只拉长平行四边形的一条生成边．
+solution: 有向面积对每一列都是线性的，只缩放一列时行列式乘 2；同时缩放两列才会乘 4．
+feedback:
+  correct: 正确．有向面积对每一列都是线性的，只缩放一列时行列式乘 2；同时缩放两列才会乘 4．
+  incorrect: 先想一想：只拉长平行四边形的一条生成边．
+  choices:
+    A: 有向面积对每一列都是线性的，只缩放一列时行列式乘 2；同时缩放两列才会乘 4．
+    B: 这个判断不符合本题的结构．有向面积对每一列都是线性的，只缩放一列时行列式乘 2；同时缩放两列才会乘 4．
+    C: 注意区分相关概念．有向面积对每一列都是线性的，只缩放一列时行列式乘 2；同时缩放两列才会乘 4．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.6 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000564
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.vector-space
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  次数不超过 1 的实系数多项式中，零多项式扮演什么角色？
+choices:
+- id: A
+  content: 向量加法的零元
+- id: B
+  content: 额外的一条基方向
+- id: C
+  content: 不是这个空间的元素
+answer:
+  choice: A
+hints:
+- 把它与任意多项式相加．
+solution: 任意多项式加零多项式保持不变，这正是零向量的作用．零多项式不是独立的基方向．
+feedback:
+  correct: 正确．任意多项式加零多项式保持不变，这正是零向量的作用．零多项式不是独立的基方向．
+  incorrect: 先想一想：把它与任意多项式相加．
+  choices:
+    A: 任意多项式加零多项式保持不变，这正是零向量的作用．零多项式不是独立的基方向．
+    B: 这个判断不符合本题的结构．任意多项式加零多项式保持不变，这正是零向量的作用．零多项式不是独立的基方向．
+    C: 注意区分相关概念．任意多项式加零多项式保持不变，这正是零向量的作用．零多项式不是独立的基方向．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000591
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3**
+
+  在欧氏平面中，把非零向量 u 变成 -u，长度怎样变化？
+choices:
+- id: A
+  content: 长度不变
+- id: B
+  content: 长度变为负数
+- id: C
+  content: 长度变为零
+answer:
+  choice: A
+hints:
+- 长度没有方向，箭头有方向．
+solution: 取负只把箭头反向；内积 (-u)·(-u)=u·u，所以长度不变且仍为正．
+feedback:
+  correct: 正确．取负只把箭头反向；内积 (-u)·(-u)=u·u，所以长度不变且仍为正．
+  incorrect: 先想一想：长度没有方向，箭头有方向．
+  choices:
+    A: 取负只把箭头反向；内积 (-u)·(-u)=u·u，所以长度不变且仍为正．
+    B: 这个判断不符合本题的结构．取负只把箭头反向；内积 (-u)·(-u)=u·u，所以长度不变且仍为正．
+    C: 注意区分相关概念．取负只把箭头反向；内积 (-u)·(-u)=u·u，所以长度不变且仍为正．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.3 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

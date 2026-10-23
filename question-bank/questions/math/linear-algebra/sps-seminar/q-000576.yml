@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000576
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  一个二维线性变换把两个标准基向量都送到同一支非零箭头，整个平面会怎样？
+choices:
+- id: A
+  content: 被压到一条直线上
+- id: B
+  content: 仍完整覆盖整个平面
+- id: C
+  content: 所有向量都必定变成零
+answer:
+  choice: A
+hints:
+- 任意输出都是这同一支箭头的倍数．
+solution: 若两列同为 w，输出是 (x+y)w，只有一条方向；并非所有输出都为零，但信息已经丢失．
+feedback:
+  correct: 正确．若两列同为 w，输出是 (x+y)w，只有一条方向；并非所有输出都为零，但信息已经丢失．
+  incorrect: 先想一想：任意输出都是这同一支箭头的倍数．
+  choices:
+    A: 若两列同为 w，输出是 (x+y)w，只有一条方向；并非所有输出都为零，但信息已经丢失．
+    B: 这个判断不符合本题的结构．若两列同为 w，输出是 (x+y)w，只有一条方向；并非所有输出都为零，但信息已经丢失．
+    C: 注意区分相关概念．若两列同为 w，输出是 (x+y)w，只有一条方向；并非所有输出都为零，但信息已经丢失．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

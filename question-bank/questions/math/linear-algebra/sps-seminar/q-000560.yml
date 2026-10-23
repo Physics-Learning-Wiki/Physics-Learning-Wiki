@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000560
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  平面中用两支不共线的箭头作基，坐标出现负数意味着什么？
+choices:
+- id: A
+  content: 沿对应基向量的反方向取倍数
+- id: B
+  content: 这个向量不存在
+- id: C
+  content: 所选的基一定错误
+answer:
+  choice: A
+hints:
+- 数乘允许负数．
+solution: 负系数只改变对应分量的方向，例如 -2 倍基向量表示反向的两倍．坐标可以是任意实数．
+feedback:
+  correct: 正确．负系数只改变对应分量的方向，例如 -2 倍基向量表示反向的两倍．坐标可以是任意实数．
+  incorrect: 先想一想：数乘允许负数．
+  choices:
+    A: 负系数只改变对应分量的方向，例如 -2 倍基向量表示反向的两倍．坐标可以是任意实数．
+    B: 这个判断不符合本题的结构．负系数只改变对应分量的方向，例如 -2 倍基向量表示反向的两倍．坐标可以是任意实数．
+    C: 注意区分相关概念．负系数只改变对应分量的方向，例如 -2 倍基向量表示反向的两倍．坐标可以是任意实数．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000605
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6**
+
+  一个二维线性变换行列式为 1，就一定保留所有长度吗？
+choices:
+- id: A
+  content: 不一定，例如横向拉长、纵向压短可以保持面积
+- id: B
+  content: 一定，因为面积与长度是同一回事
+- id: C
+  content: 不一定，但它一定会反转取向
+answer:
+  choice: A
+hints:
+- 比较面积约束与每条边长度的约束．
+solution: 横向伸长两倍、纵向压缩为一半，面积倍数仍是 1，长度却变化．行列式为正还说明取向没有反转．
+feedback:
+  correct: 正确．横向伸长两倍、纵向压缩为一半，面积倍数仍是 1，长度却变化．行列式为正还说明取向没有反转．
+  incorrect: 先想一想：比较面积约束与每条边长度的约束．
+  choices:
+    A: 横向伸长两倍、纵向压缩为一半，面积倍数仍是 1，长度却变化．行列式为正还说明取向没有反转．
+    B: 这个判断不符合本题的结构．横向伸长两倍、纵向压缩为一半，面积倍数仍是 1，长度却变化．行列式为正还说明取向没有反转．
+    C: 注意区分相关概念．横向伸长两倍、纵向压缩为一半，面积倍数仍是 1，长度却变化．行列式为正还说明取向没有反转．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.6 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

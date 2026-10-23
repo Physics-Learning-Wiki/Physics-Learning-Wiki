@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000567
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  对线性映射 T，已知 T(u) 和 T(v)，怎样得到 T(u+v)？
+choices:
+- id: A
+  content: 把 T(u) 与 T(v) 相加
+- id: B
+  content: 必须额外测量，无法推断
+- id: C
+  content: 把两个结果逐分量相乘
+answer:
+  choice: A
+hints:
+- 线性映射保留加法．
+solution: 可加性给出 T(u+v)=T(u)+T(v)．这使得只知道基向量的像，就能推出所有线性组合的像．
+feedback:
+  correct: 正确．可加性给出 T(u+v)=T(u)+T(v)．这使得只知道基向量的像，就能推出所有线性组合的像．
+  incorrect: 先想一想：线性映射保留加法．
+  choices:
+    A: 可加性给出 T(u+v)=T(u)+T(v)．这使得只知道基向量的像，就能推出所有线性组合的像．
+    B: 这个判断不符合本题的结构．可加性给出 T(u+v)=T(u)+T(v)．这使得只知道基向量的像，就能推出所有线性组合的像．
+    C: 注意区分相关概念．可加性给出 T(u+v)=T(u)+T(v)．这使得只知道基向量的像，就能推出所有线性组合的像．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
