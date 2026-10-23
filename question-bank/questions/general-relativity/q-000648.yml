@@ -5,6 +5,12 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.metric.surface-induced
+  - gr.tensor.index-manipulation
+  - gr.tensor.scalar-invariant
 type: free_response
 choice_order: fixed
 stem: |
@@ -106,6 +112,10 @@ hints:
   - "度规矩阵是对角的，直接读线元即可。"
   - "标量是 $V^iV_i$，不是 $V^iV^j$。"
   - "区分'同一点的标量在坐标变换下不变'与'标量场随位置变化'。"
+feedback:
+  correct: '正确：写出环面度规与逆度规，用度规计算内积，并说明逐点变化与坐标不变性不矛盾。'
+  incorrect: '请检查：度规对角元是 r^2 与 (R+r cosθ)^2；标量在一点的值不随坐标变，但标量场可随位置变。'
+
 difficulty: 2
 cognitive_level: apply
 style: computational
