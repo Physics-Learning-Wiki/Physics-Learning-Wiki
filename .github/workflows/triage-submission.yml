@@ -16,7 +16,7 @@ jobs:
       !github.event.issue.pull_request &&
       (contains(github.event.issue.labels.*.name, '投稿-待审核') || contains(github.event.issue.body, 'plw-submission-v1')) &&
       (github.event_name == 'issues' || contains(github.event.comment.body, 'plw-submission-v1'))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       GH_TOKEN: ${{ github.token }}
     steps:

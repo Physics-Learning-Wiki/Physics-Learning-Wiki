@@ -11,7 +11,7 @@ on:
 jobs:
   downgrade:
     name: Downgrade stable pages to review
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:

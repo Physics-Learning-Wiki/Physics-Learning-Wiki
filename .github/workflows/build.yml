@@ -15,7 +15,7 @@ on:
 jobs:
   build:
     name: Physics-Learning-Wiki Page Build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -108,7 +108,7 @@ jobs:
     name: Deploy to GitHub Pages
     needs: build
     if: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && github.repository_owner == 'Physics-Learning-Wiki' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     steps:

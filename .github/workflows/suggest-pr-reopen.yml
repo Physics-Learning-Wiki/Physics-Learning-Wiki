@@ -11,7 +11,7 @@ permissions:
 jobs:
   comment:
     if: github.event.pull_request.merged == false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Post comment
         uses: actions/github-script@v8
