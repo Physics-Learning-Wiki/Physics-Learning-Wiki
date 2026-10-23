@@ -1,0 +1,158 @@
+schema_version: 3
+id: q-000649
+version: 1
+status: draft
+locale: zh-CN
+related_pages:
+  - modern.general-relativity
+type: free_response
+choice_order: fixed
+stem: |
+  在平面极坐标 $(r,\varphi)$ 中，度规为
+
+  $$
+  \mathrm{d}s^2=\mathrm{d}r^2+r^2\,\mathrm{d}\varphi^2 .
+  $$
+
+  1. 求所有非零的 Christoffel 符号 $\Gamma^i{}_{jk}$。
+  2. 采用约定
+
+  $$
+  R^i{}_{jkl}=\partial_k\Gamma^i{}_{jl}-\partial_l\Gamma^i{}_{jk}
+  +\Gamma^i{}_{km}\Gamma^m{}_{jl}-\Gamma^i{}_{lm}\Gamma^m{}_{jk},
+  $$
+
+  计算唯一可能非零的独立分量 $R^r{}_{\varphi r\varphi}$，并说明黎曼张量整体为零。
+  3. 既然 Christoffel 符号不为零，为什么这仍然是平直空间？
+response:
+  format: plain_text
+  required: true
+  min_chars: 100
+  max_chars: 8000
+  rows: 12
+  placeholder: "写出度规、导数、Christoffel 符号和黎曼张量的计算……"
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  非零分量为
+
+  $$
+  \Gamma^r{}_{\varphi\varphi}=-r,
+  \qquad
+  \Gamma^\varphi{}_{r\varphi}=\Gamma^\varphi{}_{\varphi r}=\frac{1}{r}.
+  $$
+
+  按题给约定，
+
+  $$
+  R^r{}_{\varphi r\varphi}
+  =\partial_r(-r)-\partial_\varphi 0
+  -(-r)\left(\frac{1}{r}\right)=0 .
+  $$
+
+  其余分量由对称性和二维情形只有这一个独立分量可知全为零。Christoffel 符号的非零只反映坐标基随位置变化；判断内禀弯曲要看黎曼张量。
+solution: |
+  度规及其逆为
+
+  $$
+  g_{ij}=
+  \begin{pmatrix}
+  1 & 0\\
+  0 & r^2
+  \end{pmatrix},
+  \qquad
+  g^{ij}=
+  \begin{pmatrix}
+  1 & 0\\
+  0 & r^{-2}
+  \end{pmatrix}.
+  $$
+
+  只有 $g_{\varphi\varphi}=r^2$ 依赖坐标，且
+
+  $$
+  \partial_r g_{\varphi\varphi}=2r,
+  \qquad
+  \partial_\varphi g_{\varphi\varphi}=0 .
+  $$
+
+  由
+
+  $$
+  \Gamma^i{}_{jk}=\frac{1}{2}g^{i\ell}
+  \left(\partial_j g_{k\ell}+\partial_k g_{j\ell}-\partial_\ell g_{jk}\right)
+  $$
+
+  得
+
+  $$
+  \Gamma^r{}_{\varphi\varphi}
+  =\frac{1}{2}g^{rr}(-\partial_r g_{\varphi\varphi})
+  =-\frac{1}{2}(2r)=-r,
+  $$
+
+  $$
+  \Gamma^\varphi{}_{r\varphi}
+  =\frac{1}{2}g^{\varphi\varphi}\partial_r g_{\varphi\varphi}
+  =\frac{1}{2}\frac{1}{r^2}(2r)=\frac{1}{r},
+  $$
+
+  并且 $\Gamma^\varphi{}_{\varphi r}=\Gamma^\varphi{}_{r\varphi}$。其余分量全为零。
+
+  计算 $R^r{}_{\varphi r\varphi}$：
+
+  $$
+  R^r{}_{\varphi r\varphi}
+  =\partial_r\Gamma^r{}_{\varphi\varphi}
+  -\partial_\varphi\Gamma^r{}_{\varphi r}
+  +\Gamma^r{}_{rm}\Gamma^m{}_{\varphi\varphi}
+  -\Gamma^r{}_{\varphi m}\Gamma^m{}_{\varphi r}.
+  $$
+
+  第一项给出 $\partial_r(-r)=-1$，第二项为零，第三项因所有 $\Gamma^r{}_{rm}=0$ 而为零；最后一项只有 $m=\varphi$ 贡献：
+
+  $$
+  \Gamma^r{}_{\varphi\varphi}\Gamma^\varphi{}_{\varphi r}
+  =(-r)\left(\frac{1}{r}\right)=-1 .
+  $$
+
+  因此
+
+  $$
+  R^r{}_{\varphi r\varphi}=-1-(-1)=0 .
+  $$
+
+  在二维空间中黎曼张量只有一个独立分量，其余分量由指标对称性得到，所以
+
+  $$
+  R^i{}_{jkl}=0 .
+  $$
+
+  Christoffel 符号不为零并不表示空间弯曲：它描述的是坐标基如何随位置变化。极坐标的基矢方向随 $\varphi$ 转动，因此即使平面是平直的，也会出现非零的联络。黎曼张量才是内禀曲率的判据。
+hints:
+  - '先写出 $g^{rr}=1$ 与 $g^{\varphi\varphi}=1/r^2$。'
+  - '非零联络来自 $g_{\varphi\varphi}=r^2$ 对 $r$ 的导数。'
+  - "二维情形的黎曼张量只有一个独立分量。"
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: "原创题干与完整解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0
