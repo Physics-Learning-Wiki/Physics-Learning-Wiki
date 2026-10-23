@@ -25,13 +25,15 @@ jobs:
           files: |
             docs/**/*.md
             docs/**/*.tex
-      - name: Setup Python
+      - name: Set up locked Python toolchain
         if: steps.changed-files.outputs.any_changed == 'true'
-        uses: actions/setup-python@v5
+        uses: ./.github/actions/setup-python
         with:
-          python-version: '3.11'
+          profile: stdlib
+          cache: 'false'
+
       - name: Check Changed Files
         if: steps.changed-files.outputs.any_changed == 'true'
-        run: python scripts/check-characters.py
+        run: uv run --no-project python scripts/check-characters.py
         env:
           CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}

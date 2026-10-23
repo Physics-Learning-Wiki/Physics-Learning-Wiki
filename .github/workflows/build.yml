@@ -24,20 +24,16 @@ jobs:
           fetch-depth: 0
           submodules: true
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: '3.10'
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
-        with:
-          version: "latest"
+          profile: project
+          cache: 'true'
+
       - name: Set up locked Node toolchain
         uses: ./.github/actions/setup-node
         with:
           cache: 'true'
-
-      - name: Install Python dependencies
-        run: uv sync
 
       - name: Check Sharp native runtime
         run: corepack yarn media:check

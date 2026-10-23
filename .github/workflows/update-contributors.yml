@@ -23,16 +23,16 @@ jobs:
           fetch-depth: 0
           submodules: true
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: "3.11"
-      - uses: astral-sh/setup-uv@v6
+          profile: project
+          cache: 'false'
+
       - name: Set up locked Node toolchain
         uses: ./.github/actions/setup-node
         with:
           cache: 'false'
-
-      - run: uv sync --frozen
 
       - name: Generate contributor statistics and community review PR
         run: uv run python -m scripts.community.sync --contributors

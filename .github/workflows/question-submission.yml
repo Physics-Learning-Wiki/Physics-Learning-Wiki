@@ -30,6 +30,10 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync --dev --frozen
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
+        with:
+          profile: project
+          cache: 'false'
+
       - run: uv run python -m scripts.submissions.questions

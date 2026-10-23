@@ -36,9 +36,12 @@ jobs:
         with:
           ref: main
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: '3.10'
+          profile: stdlib
+          cache: 'false'
+
       # Read the currently published snapshot, also when retrying an older run.
       # No expiring build artifact or project dependency environment is needed.
       - name: Fetch published sitemap

@@ -25,7 +25,11 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha || 'main' }}
           persist-credentials: false
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync --frozen
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
+        with:
+          profile: project
+          cache: 'false'
+
       - name: Verify served resources before updating public states
         run: uv run python -m scripts.submissions.release --verify --sha "$SUBMISSION_RELEASE_SHA"

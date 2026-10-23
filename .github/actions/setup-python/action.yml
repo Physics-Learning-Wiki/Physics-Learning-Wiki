@@ -1,0 +1,58 @@
+name: Set up PLW Python toolchain
+description: Install pinned uv and managed Python, with explicit dependency and cache policies.
+inputs:
+  cache:
+    description: Cache uv downloads in read-only jobs only.
+    required: false
+    default: 'false'
+  profile:
+    description: Install project dependencies, format tools, or just the stdlib interpreter.
+    required: false
+    default: project
+runs:
+  using: composite
+  steps:
+    - name: Select uv
+      uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+      with:
+        version-file: pyproject.toml
+        enable-cache: ${{ inputs.cache }}
+        cache-dependency-glob: |
+          uv.lock
+          pyproject.toml
+          .python-version
+          .github/actions/setup-python/action.yml
+    - name: Select managed Python and execution policy
+      shell: bash
+      env:
+        PROFILE: ${{ inputs.profile }}
+        UV_MANAGED_PYTHON: 'true'
+        UV_PYTHON_CPYTHON_BUILD: '20261021'
+      run: |
+        set -euo pipefail
+        case "$PROFILE" in
+          project|format|stdlib) ;;
+          *) echo "Unknown Python dependency profile: $PROFILE" >&2; exit 1 ;;
+        esac
+        python_version="$(cat .python-version)"
+        uv python install "$python_version"
+        printf 'UV_PYTHON=%s\n' "$python_version" >> "$GITHUB_ENV"
+        printf 'UV_MANAGED_PYTHON=true\nUV_PYTHON_CPYTHON_BUILD=20261021\n' >> "$GITHUB_ENV"
+        if [[ "$PROFILE" != stdlib ]]; then
+          echo 'UV_LOCKED=true' >> "$GITHUB_ENV"
+        fi
+        uv --version
+        uv run --no-project --python "$python_version" python --version
+        sha256sum uv.lock
+    - name: Install project dependencies
+      if: inputs.profile == 'project'
+      shell: bash
+      run: |
+        uv sync --locked
+        echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"
+    - name: Install format tools
+      if: inputs.profile == 'format'
+      shell: bash
+      run: |
+        uv sync --locked --only-group format
+        echo "$GITHUB_WORKSPACE/.venv/bin" >> "$GITHUB_PATH"

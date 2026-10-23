@@ -24,8 +24,12 @@ jobs:
         with:
           ref: main
           persist-credentials: false
-      - uses: astral-sh/setup-uv@v6
-      - run: uv sync --frozen
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
+        with:
+          profile: project
+          cache: 'false'
+
       - name: Record a versioned editorial decision
         if: github.event.action == 'labeled'
         run: uv run python -m scripts.submissions.operations status-event

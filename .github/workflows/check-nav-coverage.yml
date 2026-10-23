@@ -15,10 +15,11 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: '3.11'
-      - name: Install PyYAML
-        run: pip install PyYAML==6.0.2
+          profile: project
+          cache: 'true'
+
       - name: Check MkDocs nav coverage
-        run: python scripts/check-nav-coverage.py --ignore-file scripts/nav-coverage-ignore.txt
+        run: uv run python scripts/check-nav-coverage.py --ignore-file scripts/nav-coverage-ignore.txt

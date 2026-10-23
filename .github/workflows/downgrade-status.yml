@@ -18,11 +18,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: "3.11"
+          profile: stdlib
+          cache: 'false'
+
       - name: Downgrade changed stable pages
-        shell: python
+        shell: uv run --no-project python {0}
         run: |
           import subprocess, sys
           from pathlib import Path

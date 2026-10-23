@@ -49,11 +49,11 @@ jobs:
         with:
           cache: 'true'
 
-      - uses: actions/setup-python@v6
+      - name: Set up locked Python toolchain
+        uses: ./.github/actions/setup-python
         with:
-          python-version: '3.11'
-      - name: Install clang-format-18 and ruff from pypi
-        run: pip install clang-format==18.1.5 ruff==0.4.4
+          profile: format
+          cache: 'true'
 
       - name: Format changed files
         env:
@@ -85,19 +85,19 @@ jobs:
             esac
           done
           if ((${#markdown_files[@]})); then
-            python3 scripts/linter_patch.py --files "${markdown_files[@]}" --mode pre
+            uv run --only-group format python scripts/linter_patch.py --files "${markdown_files[@]}" --mode pre
           fi
           if ((${#remark_files[@]})); then
             corepack yarn remark "${remark_files[@]}" -o
           fi
           if ((${#python_files[@]})); then
-            ruff format "${python_files[@]}"
+            uv run --only-group format ruff format "${python_files[@]}"
           fi
           if ((${#clang_files[@]})); then
-            clang-format -i "${clang_files[@]}"
+            uv run --only-group format clang-format -i "${clang_files[@]}"
           fi
           if ((${#markdown_files[@]})); then
-            python3 scripts/linter_patch.py --files "${markdown_files[@]}" --mode post
+            uv run --only-group format python scripts/linter_patch.py --files "${markdown_files[@]}" --mode post
           fi
       
       - name: Generate patch

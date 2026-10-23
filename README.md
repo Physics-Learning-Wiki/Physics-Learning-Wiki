@@ -62,6 +62,8 @@ Remove-Item Env:PLW_QUIZ_PREVIEW
 
 ### 环境准备
 
+开发与核心 CI 固定使用 Node.js 24.22.1、Python 3.12.15、uv 0.13.5、Corepack 0.36.0 和 Yarn 1.22.22．安装指定版本的 [Node.js](https://nodejs.org/en/download)、[uv](https://docs.astral.sh/uv/getting-started/installation/) 和 [Corepack](https://github.com/nodejs/corepack#how-to-install) 后，由 uv 安装 Python、Corepack 选择仓库锁定的 Yarn．版本来源、工作流范围及人工更新步骤见 [工具链维护说明](.github/TOOLCHAIN.md)．
+
 1. 克隆仓库：
 
 ```bash
@@ -72,8 +74,10 @@ cd Physics-Learning-Wiki
 2. 安装依赖：
 
 ```bash
-pip install uv
-uv sync --index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+uv python install
+uv sync --locked
+corepack enable yarn
+corepack yarn install --frozen-lockfile
 ```
 
 3. 安装自定义主题（Windows 下请使用 Git Bash 执行）：
