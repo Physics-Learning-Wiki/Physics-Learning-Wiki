@@ -142,9 +142,29 @@ description: "介绍通过 GitHub、网页投稿及邮箱参与本站贡献的�
 
 ### 在构建的网页中预览变更
 
-在 Pull Request 页面下方可以找到测试页面，点击 netlify/physics-learning-wiki/deploy-preview 一项的 Details 链接（如下图），可以进入自动构建的，由您变更后的页面供您预览．
+在本地安装仓库指定版本的 Node.js、Python、uv 和 Corepack，并在仓库根目录执行以下命令准备依赖：
 
-![deploy\_preview](./images/deploy_preview.png)
+```bash
+uv python install
+uv sync --locked
+corepack yarn install --frozen-lockfile
+```
+
+使用 Git Bash 或其他 Bash 环境安装主题，再启动本地预览：
+
+```bash
+bash scripts/pre-build/install-theme.sh
+uv run mkdocs serve
+```
+
+浏览器打开终端显示的地址即可检查页面内容和链接．需要检查搜索索引、数学渲染后处理或性能预算时，在 Bash 环境运行完整构建，再启动支持站点子路径的预览服务器：
+
+```bash
+corepack yarn site:build
+corepack yarn node scripts/test/serve-site.mjs --site site --host 127.0.0.1 --port 4173
+```
+
+打开 `http://127.0.0.1:4173/Physics-Learning-Wiki/` 预览生成的页面．完整构建需要访问 GitHub 下载构建资源．
 
 ### 对于目录和引用的变更
 

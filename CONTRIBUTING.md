@@ -56,13 +56,13 @@ Material instant navigation 会在同一个文档中替换文章内容。离开�
 - 优化器处理符合条件的本地 PNG/JPEG，在 HTML 中生成 WebP `srcset`、原图 fallback、尺寸与延迟解码标记。若内容必须保留原样，可显式使用 `data-plw-no-optimize`。
 - 超过 500 KiB 的作者源 raster 必须在 `scripts/perf/large-image-allowlist.json` 中有精确路径。不要用通配符，也不要由脚本自动新增 allowlist 项；需要新增时在变更中说明源图和原因。
 - `scripts/perf/budgets.json` 是 HTML、Math CSS、runtime loader 和源图片阈值的唯一预算配置。扩大任意上限都必须在 diff 中明确修改，并经代码评审说明原因。
-- gzip/Brotli 值是本机固定参数压缩估算，不代表 GitHub Pages 或 Netlify 实际传输字节。
+- gzip/Brotli 值是本机固定参数压缩估算，不代表托管平台实际传输字节．
 
 ## 构建与验证
 
 物理内容改动可手动运行 `uv run python scripts/check-terminology.py`，或指定修改的文件／目录．规则、局部豁免和退出码见 [`scripts/README.md`](scripts/README.md#手动术语检查)；此检查器只读，不增加 CI 门禁．语境提示需结合 [`写作指引`](docs/intro/writing.md) 人工判断．公式、表格与标题改动还需检查生产页面及旧锚点．
 
-GitHub Pages 与 Netlify 共用生产编排。安装依赖后，在 Bash 环境运行：
+GitHub Pages 使用统一生产编排．按 [工具链维护说明](.github/TOOLCHAIN.md) 安装固定版本及锁定依赖后，在 Bash 环境运行：
 
 ```bash
 corepack yarn site:build

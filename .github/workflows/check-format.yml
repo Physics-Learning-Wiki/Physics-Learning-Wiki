@@ -1,5 +1,8 @@
 name: Check PR Format
 
+permissions:
+  contents: read
+
 on:
   pull_request:
     branches:
@@ -11,8 +14,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Set up locked Node toolchain
         uses: ./.github/actions/setup-node
@@ -41,8 +45,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 0
       - name: Set up locked Node toolchain
         uses: ./.github/actions/setup-node
@@ -105,7 +110,7 @@ jobs:
           mkdir -p .debug
           git diff > .debug/changed.patch
       - name: Upload patch to artifacts
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: changes by bot
           path: .debug/changed.patch

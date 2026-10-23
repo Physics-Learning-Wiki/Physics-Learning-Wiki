@@ -1,5 +1,10 @@
 name: 'Close Stale Pull Request'
 
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
 on:
   workflow_dispatch:
   # schedule:
@@ -10,7 +15,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Close Stale PR
-        uses: actions/stale@v9
+        uses: actions/stale@5bef64f19d7facfb25b37b414482c7164d639639 # v9
         with:
           stale-pr-message: |
             你好 :wave:

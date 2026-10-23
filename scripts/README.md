@@ -4,7 +4,7 @@
 
 ## 生产构建
 
-`build/build-site.sh` 是 GitHub Pages 与 Netlify 共用的完整生产构建入口，通过 `corepack yarn site:build` 调用。它运行前置脚本、构建前端 feature、构建 MkDocs、生成 Pagefind、运行 MathJax SSR、优化响应式图片、压缩 HTML、生成 SEO 文件并执行 blocking 性能审计。
+`build/build-site.sh` 是 GitHub Pages 的完整生产构建入口，通过 `corepack yarn site:build` 调用．它运行前置脚本、构建前端 feature、构建 MkDocs、生成 Pagefind、运行 MathJax SSR、优化响应式图片、压缩 HTML、生成 SEO 文件并执行 blocking 性能审计．运行环境及安装约定见 [工具链维护说明](../.github/TOOLCHAIN.md)．
 
 ## 构建阶段脚本
 

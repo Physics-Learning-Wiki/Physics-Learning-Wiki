@@ -20,4 +20,4 @@ corepack yarn perf:audit --mode blocking
 
 预算定义在 [`scripts/perf/budgets.json`](../../scripts/perf/budgets.json)。提高预算必须修改此文件并在 PR diff 中解释原因；审计脚本不会自动提高上限或扩展图片 allowlist。
 
-Playwright 的冷加载和 instant navigation 行为门禁运行 `corepack yarn e2e`。浏览器请求/传输、字体、LCP 和 CLS 作为本地固定 Chromium 条件下的报告，不是 blocking 预算。报告中的 gzip/Brotli 字节使用 Node.js zlib 固定参数计算，不能代表 GitHub Pages 或 Netlify 的实际压缩传输。
+Playwright 的冷加载和 instant navigation 行为门禁运行 `corepack yarn e2e`．浏览器请求/传输、字体、LCP 和 CLS 作为本地固定 Chromium 条件下的报告，不是 blocking 预算．报告中的 gzip/Brotli 字节使用 Node.js zlib 固定参数计算，不能代表托管平台的实际压缩传输．

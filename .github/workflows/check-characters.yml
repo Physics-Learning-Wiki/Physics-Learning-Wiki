@@ -1,5 +1,8 @@
 name: Check Characters
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -14,13 +17,14 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false
           fetch-depth: 2
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Get Changed Files
         id: changed-files
-        uses: tj-actions/changed-files@v46
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46
         with:
           files: |
             docs/**/*.md

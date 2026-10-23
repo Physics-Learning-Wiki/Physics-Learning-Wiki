@@ -1,6 +1,9 @@
 # .github/workflows/downgrade-status.yml
 name: Downgrade Content Status on Change
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -15,9 +18,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
+          persist-credentials: true
       - name: Set up locked Python toolchain
         uses: ./.github/actions/setup-python
         with:
