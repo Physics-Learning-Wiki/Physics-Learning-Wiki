@@ -2,6 +2,11 @@
 author: 匿名同学
 status: review
 description: "从等效原理、度规与曲率引入广义相对论，并讨论史瓦西时空及经典检验．"
+page_id: modern.general-relativity
+assessments:
+  - set: modern.general-relativity.foundations
+    placement: footer
+    title: 广义相对论基础自测
 ---
 
 ## 广义相对论基础（General Relativity Basics）
