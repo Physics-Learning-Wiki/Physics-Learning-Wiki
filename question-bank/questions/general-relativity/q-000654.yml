@@ -5,6 +5,12 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.cosmology.frw
+  - gr.cosmology.friedmann
+  - gr.cosmology.continuity
 type: free_response
 choice_order: fixed
 stem: |
@@ -240,6 +246,10 @@ hints:
   - '$\Gamma^0{}_{ij}=a\dot a\delta_{ij}=H g_{ij}$。'
   - "空间分量的方程要先用第一 Friedmann 方程消去 $H^2$。"
   - '守恒律中记住 $\nabla_\mu T^{\mu 0}$ 有三项贡献。'
+feedback:
+  correct: '正确：得到 Γ^0_{ij}=H g_{ij}、Γ^i_{0j}=Hδ^i_j，并导出两个 Friedmann 方程与连续性方程。'
+  incorrect: '请检查：先算 R_{00} 与 R_{ij}；00 分量给第一 Friedmann 方程，空间分量消去 H^2 后给加速度方程。'
+
 difficulty: 3
 cognitive_level: analyze
 style: computational
