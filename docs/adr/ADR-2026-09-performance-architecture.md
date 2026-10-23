@@ -43,7 +43,8 @@
 ### 构建与性能门禁
 
 - GitHub Pages 和 Netlify 调用 `scripts/build/build-site.sh`，以相同顺序完成前端构建、MkDocs、Pagefind、Math SSR、响应式图片、HTML 压缩、SEO 输出和静态性能审计。
-- 确定性的资源、HTML、功能标记、搜索和图片预算由 `scripts/perf/audit-site.mjs --mode blocking` 阻断。
+- 确定性的资源、生成路径、代表页面存在性、功能标记、搜索和图片检查由 `scripts/perf/audit-site.mjs --mode blocking` 阻断．
+- 2026-10-23 调整：代表页面的未压缩 HTML 体积阈值移入 `budgets.json` 的 `reportOnly`，超限只报告．原阈值未区分正文、MathJax SSR 与无障碍标记、完整导航的增长，也没有与用户体验目标对应的推导依据；不再据此阻断内容发布或裁剪导航．保留原参考值及压缩估算，其他资源预算和完整性门禁继续阻断．
 - Playwright 验证冷加载与 instant navigation 下的懒加载行为并阻断回归。请求量、实际传输字节、字体、LCP 与 CLS 在固定本地 Chromium 条件下报告；这些指标不代替线上 CDN 压缩与缓存测量，也不设为不稳定的 CI 硬门槛。
 
 ## 后果

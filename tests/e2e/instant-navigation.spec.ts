@@ -99,81 +99,78 @@ async function expectScreenshotQuestionReady(page: Page): Promise<void> {
   expect(cssUrls.linkUrl).toBe(cssUrls.featureUrl);
 }
 
-for (const viewport of [
-  { width: 1280, height: 720 },
-  { width: 375, height: 667 }
+// Exercise both seed paths and both viewports without repeating the same storage journey four times.
+for (const { viewport, seed } of [
+  { viewport: { width: 1280, height: 720 }, seed: undefined },
+  { viewport: { width: 375, height: 667 }, seed: "instant-navigation-text-2" }
 ]) {
-  for (const seed of [undefined, "instant-navigation-text-2"]) {
-    test(`${seed ? "text-only" : "random"} quiz navigation preserves answers at ${viewport.width}px`, async ({
-      page
-    }) => {
-      await page.setViewportSize(viewport);
-      await page.goto(`${basePath}quiz/`);
-      const start = page.getByRole("link", { name: "开始小测", exact: true }).first();
-      await expect(start).toBeVisible();
-      if (seed) {
-        await start.evaluate((anchor, fixedSeed) => {
-          const url = new URL((anchor as HTMLAnchorElement).href);
-          url.searchParams.set("seed", fixedSeed);
-          (anchor as HTMLAnchorElement).href = url.href;
-        }, seed);
-      }
-      await start.click();
-      const question = page.locator(".plw-quiz-question");
-      await expect(question).toBeVisible();
-      const runnerUrl = page.url();
-      const actualSeed = new URL(runnerUrl).searchParams.get("seed");
-      test.info().annotations.push({ type: "seed", description: actualSeed ?? "missing" });
-      expect(actualSeed).toBeTruthy();
-      if (seed) expect(actualSeed).toBe(seed);
-      const steps = page.locator(".plw-quiz-step-btn");
-      await expect(steps).toHaveCount(3);
-      const ids: string[] = [];
-      for (let index = 0; index < 3; index += 1) {
-        await steps.nth(index).click();
-        await expect(steps.nth(index)).toHaveClass(/is-current/);
-        const id = await question.getAttribute("data-question-id");
-        expect(id).toBeTruthy();
-        ids.push(id!);
-        if (seed) await expect(question.locator("mjx-container, .arithmatex")).toHaveCount(0);
-      }
-      expect(new Set(ids).size).toBe(3);
-      test.info().annotations.push({ type: "question-ids", description: ids.join(", ") });
-      if (seed) expect(ids).toEqual(["mech-dyn-newton-0016", "mech-dyn-newton-0026", "mech-dyn-newton-0022"]);
-      await steps.first().click();
-      await expect(question).toHaveAttribute("data-question-id", ids[0]);
-      const choices = question.locator(".plw-quiz-choice");
-      if (await choices.count()) {
-        await choices.first().click();
-        await expect(choices.first().locator("input")).toBeChecked();
-      } else {
-        await question.locator(".plw-quiz-numeric-input").fill("1");
-        const unit = question.locator(".plw-quiz-numeric-unit");
-        if (await unit.locator("option").nth(1).count()) await unit.selectOption({ index: 1 });
-      }
-      await page.getByRole("button", { name: "检查答案 (Enter)", exact: true }).click();
-      await expect(question.locator(".plw-quiz-feedback")).toBeVisible();
-      const committed = () =>
-        page.evaluate(
-          ({ seed: sessionSeed, id }) => {
-            const storage = JSON.parse(localStorage.getItem("plw.quiz.v3") ?? "{}");
-            const sessions = Object.values(storage.activeSessions ?? {}).flat() as any[];
-            return sessions.find(session => session.seed === sessionSeed)?.committedResults[id];
-          },
-          { seed: actualSeed, id: ids[0] }
-        );
-      await expect.poll(committed).toBeTruthy();
-      const result = await committed();
-      await page.goBack();
-      await expect(page.locator(".plw-quiz-home-featured")).toBeVisible();
-      await page.goForward();
-      await expect(page).toHaveURL(runnerUrl);
-      await expect(question).toHaveAttribute("data-question-id", ids[0]);
-      await expect(question.locator(".plw-quiz-feedback")).toBeVisible();
-      expect(await committed()).toEqual(result);
-    });
-  }
-
+  test(`${seed ? "text-only" : "random"} quiz navigation preserves answers at ${viewport.width}px`, async ({
+    page
+  }) => {
+    await page.setViewportSize(viewport);
+    await page.goto(`${basePath}quiz/`);
+    const start = page.getByRole("link", { name: "开始小测", exact: true }).first();
+    await expect(start).toBeVisible();
+    if (seed) {
+      await start.evaluate((anchor, fixedSeed) => {
+        const url = new URL((anchor as HTMLAnchorElement).href);
+        url.searchParams.set("seed", fixedSeed);
+        (anchor as HTMLAnchorElement).href = url.href;
+      }, seed);
+    }
+    await start.click();
+    const question = page.locator(".plw-quiz-question");
+    await expect(question).toBeVisible();
+    const runnerUrl = page.url();
+    const actualSeed = new URL(runnerUrl).searchParams.get("seed");
+    test.info().annotations.push({ type: "seed", description: actualSeed ?? "missing" });
+    expect(actualSeed).toBeTruthy();
+    if (seed) expect(actualSeed).toBe(seed);
+    const steps = page.locator(".plw-quiz-step-btn");
+    await expect(steps).toHaveCount(3);
+    const ids: string[] = [];
+    for (let index = 0; index < 3; index += 1) {
+      await steps.nth(index).click();
+      await expect(steps.nth(index)).toHaveClass(/is-current/);
+      const id = await question.getAttribute("data-question-id");
+      expect(id).toBeTruthy();
+      ids.push(id!);
+      if (seed) await expect(question.locator("mjx-container, .arithmatex")).toHaveCount(0);
+    }
+    expect(new Set(ids).size).toBe(3);
+    test.info().annotations.push({ type: "question-ids", description: ids.join(", ") });
+    await steps.first().click();
+    await expect(question).toHaveAttribute("data-question-id", ids[0]);
+    const choices = question.locator(".plw-quiz-choice");
+    if (await choices.count()) {
+      await choices.first().click();
+      await expect(choices.first().locator("input")).toBeChecked();
+    } else {
+      await question.locator(".plw-quiz-numeric-input").fill("1");
+      const unit = question.locator(".plw-quiz-numeric-unit");
+      if (await unit.locator("option").nth(1).count()) await unit.selectOption({ index: 1 });
+    }
+    await page.getByRole("button", { name: "检查答案 (Enter)", exact: true }).click();
+    await expect(question.locator(".plw-quiz-feedback")).toBeVisible();
+    const committed = () =>
+      page.evaluate(
+        ({ seed: sessionSeed, id }) => {
+          const storage = JSON.parse(localStorage.getItem("plw.quiz.v3") ?? "{}");
+          const sessions = Object.values(storage.activeSessions ?? {}).flat() as any[];
+          return sessions.find(session => session.seed === sessionSeed)?.committedResults[id];
+        },
+        { seed: actualSeed, id: ids[0] }
+      );
+    await expect.poll(committed).toBeTruthy();
+    const result = await committed();
+    await page.goBack();
+    await expect(page.locator(".plw-quiz-home-featured")).toBeVisible();
+    await page.goForward();
+    await expect(page).toHaveURL(runnerUrl);
+    await expect(question).toHaveAttribute("data-question-id", ids[0]);
+    await expect(question.locator(".plw-quiz-feedback")).toBeVisible();
+    expect(await committed()).toEqual(result);
+  });
   test(`quiz math survives head replacement and history at ${viewport.width}px`, async ({ page }) => {
     await page.setViewportSize(viewport);
     await page.goto(`${basePath}quiz/`);

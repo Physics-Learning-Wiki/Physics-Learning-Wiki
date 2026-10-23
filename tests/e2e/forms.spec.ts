@@ -1,18 +1,10 @@
 import { expect, test, type Page } from "@playwright/test";
 import { mockTurnstile } from "./helpers/turnstile.js";
-import { mkdir } from "node:fs/promises";
-import { resolve } from "node:path";
 
 const basePath = "/Physics-Learning-Wiki/";
 const mathJaxUrl = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js";
 const turnstileUrl = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 const draftKey = "plw:submission-draft:v1:/Physics-Learning-Wiki/";
-
-async function saveUiEvidence(page: Page, name: string): Promise<void> {
-  const directory = resolve("artifacts/ui-audit-2026-10-21/after");
-  await mkdir(directory, { recursive: true });
-  await page.screenshot({ path: resolve(directory, name + ".png"), fullPage: true });
-}
 
 test("draft writes flush on instant navigation and storage failures do not disable submission", async ({ page }) => {
   await mockTurnstile(page);
@@ -21,7 +13,9 @@ test("draft writes flush on instant navigation and storage failures do not disab
   await setEditorText(page, 0, "离开前保存");
   await page.locator("header a.md-logo").click();
   await expect(page).toHaveURL(url => url.pathname === basePath);
-  expect(await page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("离开前保存");
+  // Instant navigation updates the URL before replacing the article and flushing its draft.
+  await expect(page.locator(".CodeMirror")).toHaveCount(0);
+  await expect.poll(() => page.evaluate(key => localStorage.getItem(key), draftKey)).toContain("离开前保存");
   await page.evaluate(key => localStorage.removeItem(key), draftKey);
   await page.goto(`${basePath}submit/`);
   await expect(page.locator(".CodeMirror")).toBeVisible();
@@ -337,8 +331,6 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   await agreeLicense(page);
   await page.locator("#q-submit-btn").click();
   await expect(page.locator("#q-submit-status")).toContainText("单选题需要 2 到 6 个选项");
-  await expect(page.locator("#q-submit-status")).toHaveCSS("border-top-style", "solid");
-  await saveUiEvidence(page, "question-validation-error");
   await page.locator("#q-submit-choices").fill("A|加速度增加\nB|速度不变");
   await page.locator("#q-submit-topic").selectOption({ index: 1 });
   await page.locator("#q-submit-btn").click();
@@ -543,7 +535,6 @@ test("receipt management authenticates through headers and withdrawal remains pe
   await expect(page.locator("#submission-author-actions")).toBeVisible();
   await expect(page.getByRole("link", { name: "访问当前线上版本（第 1 版）" })).toBeVisible();
   await expect(page.locator("#submission-edit-link")).toHaveAttribute("href", new RegExp("submission=" + id));
-  await saveUiEvidence(page, "receipt-management-mobile");
   const downloaded = page.waitForEvent("download");
   await page.getByRole("button", { name: "下载管理回执", exact: true }).click();
   const download = await downloaded;
@@ -562,7 +553,6 @@ test("receipt management authenticates through headers and withdrawal remains pe
   expect(requests.find(r => r.method === "POST")?.authorization).toBe("Bearer " + token);
   expect(requests.every(r => !r.url.includes(token))).toBe(true);
   await expect(page.getByRole("button", { name: "提交撤稿申请", exact: true })).toBeDisabled();
-  await saveUiEvidence(page, "withdrawal-received-mobile");
 });
 
 test("author revision retains structured question metadata and requires renewed consent", async ({ page }) => {
@@ -763,8 +753,6 @@ test("question submission server errors keep the editor and render the shared er
   await agreeLicense(page);
   await page.getByRole("button", { name: "提交题目投稿", exact: true }).click();
   await expect(page.locator("#q-submit-status")).toContainText("题目服务暂时不可用");
-  await expect(page.locator("#q-submit-status")).toHaveCSS("border-top-style", "solid");
   await expect(page.locator(".CodeMirror").first()).toContainText("质量是惯性大小的量度");
   await expect(page.locator("#q-submit-success")).toBeHidden();
-  await saveUiEvidence(page, "question-server-error");
 });

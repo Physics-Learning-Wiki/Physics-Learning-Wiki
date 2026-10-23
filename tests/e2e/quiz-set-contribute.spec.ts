@@ -56,7 +56,6 @@ test("mixed set editing, trial isolation and successful submission retain stable
   await expect(page.locator("#set-items li")).toHaveCount(2);
   const before = await page.evaluate(() => localStorage.getItem("plw.quiz.v3"));
   await page.locator('[data-set-step="3"]').click();
-  await page.screenshot({ path: "artifacts/quiz-set-contribute.png", fullPage: true });
   await page.locator("#set-try").click();
   await expect(page.locator("#set-trial")).toContainText("第 1 / 2 题");
   await page.getByRole("button", { name: "返回题集编辑" }).click();

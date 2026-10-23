@@ -53,6 +53,7 @@ test("saving a question, organizing it, and restoring a backup", async ({ page }
   const second = page.locator(".plw-quiz-question-browser__card").nth(1);
   const secondId = await second.getAttribute("data-question-id");
   await second.getByRole("button", { name: "☆ 收藏" }).click();
+  await expect(second.getByRole("button", { name: "★ 已收藏" })).toBeVisible();
   await page.goto(`${basePath}quiz/library/?view=data`);
   await page.locator('input[type="file"]').setInputFiles({
     name: "backup.json",
@@ -71,6 +72,7 @@ test("local practice resumes after refresh with the same question", async ({ pag
   const first = page.locator(".plw-quiz-question-browser__card").first();
   await expect(first).toBeVisible();
   await first.getByRole("button", { name: "☆ 收藏" }).click();
+  await expect(first.getByRole("button", { name: "★ 已收藏" })).toBeVisible();
   await page.goto(`${basePath}quiz/library/?view=saved`);
   await page.getByRole("button", { name: "练习此题" }).click();
   await expect(page).toHaveURL(/\/quiz\/play\/\?session=[0-9a-f-]+$/);
@@ -149,6 +151,7 @@ test("failed launch cleanup cannot open the saved session directly", async ({ pa
   const first = page.locator(".plw-quiz-question-browser__card").first();
   await expect(first).toBeVisible();
   await first.getByRole("button", { name: "☆ 收藏" }).click();
+  await expect(first.getByRole("button", { name: "★ 已收藏" })).toBeVisible();
   await page.goto(`${basePath}quiz/library/?view=saved`);
   await page.getByRole("button", { name: "练习此题" }).click();
   await expect(page).toHaveURL(/\?launch=([0-9a-f-]+)$/);
@@ -164,7 +167,9 @@ test("late launch callback does not replace a newer route", async ({ page, conte
   const first = page.locator(".plw-quiz-question-browser__card").first();
   await expect(first).toBeVisible();
   await first.getByRole("button", { name: "☆ 收藏" }).click();
+  await expect(first.getByRole("button", { name: "★ 已收藏" })).toBeVisible();
   await page.goto(`${basePath}quiz/library/?view=saved`);
+  await expect(page.getByRole("button", { name: "练习此题" })).toBeVisible();
   const locker = await context.newPage();
   await locker.goto(`${basePath}`);
   await locker.evaluate(
@@ -222,6 +227,7 @@ test("objective errors enter the wrong book and mastery reopens after another er
   await page.goto(`${basePath}quiz/library/?view=mistakes`);
   await expect(page.getByRole("heading", { name: q!.id })).toBeVisible();
   await page.getByRole("button", { name: "标记已掌握" }).click();
+  await expect(page.getByText("错题状态已更新。", { exact: true })).toBeVisible();
   await page.goto(`${basePath}quiz/library/?view=mistakes&state=mastered`);
   await expect(page.getByRole("heading", { name: q!.id })).toBeVisible();
   await page.goto(`${basePath}quiz/questions/?q=${q!.id}`);

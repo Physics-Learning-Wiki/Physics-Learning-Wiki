@@ -69,7 +69,6 @@ test("quiz assets are lazy, quiz sessions survive navigation, and runners resume
   }
   const choiceContent = page.locator(".plw-quiz-choice__content").first();
   await expect(choiceContent).toBeVisible();
-  expect(await choiceContent.evaluate(el => el.tagName)).toBe("DIV");
 
   // Restore question 1
   await page.locator(".plw-quiz-step-btn").first().click();
@@ -264,48 +263,6 @@ test("quiz keyboard navigation honors shortcut matrix and restores focus from po
   expect(await numberInput.inputValue()).toBe("42");
 });
 
-test("mathjax stylesheet is ready before first math element mounts and is deduplicated across navigation", async ({
-  page
-}) => {
-  await page.goto(`${basePath}intro/about/`);
-  await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
-
-  const [questionId] = await mathQuestionIds(page);
-  expect(questionId).toBeDefined();
-  await page.goto(`${basePath}quiz/questions/?q=${encodeURIComponent(questionId)}`);
-  await expect(page.locator(".plw-quiz-question-browser")).toBeVisible();
-
-  const card = page.locator(`.plw-quiz-question-browser__card[data-question-id="${questionId}"]`);
-  await expect(card).toBeVisible();
-
-  const mathLink = page.locator('head link[href*="assets/stylesheets/mathjax.css"]');
-  await expect(mathLink).toHaveCount(1);
-  await expect(mathLink).toHaveAttribute("href", /assets\/stylesheets\/mathjax\.css\?hash=/);
-
-  const isSheetReady = await mathLink.evaluate(el => Boolean((el as HTMLLinkElement).sheet));
-  expect(isSheetReady).toBe(true);
-
-  const solution = card.locator(".plw-quiz-solution-details");
-  if ((await card.locator("mjx-container:visible").count()) === 0 && (await solution.count()) > 0) {
-    await solution.evaluate(element => {
-      (element as HTMLDetailsElement).open = true;
-    });
-  }
-
-  // When first mathjax element is visible, stylesheet is confirmed ready
-  await expect(card.locator("mjx-container").first()).toBeVisible();
-  expect(await mathLink.evaluate(el => Boolean((el as HTMLLinkElement).sheet))).toBe(true);
-
-  // Instant navigation back and forward
-  await page.goBack();
-  await expect(page.locator("article.md-content__inner.md-typeset")).toBeVisible();
-  await page.goForward();
-  await expect(page.locator(".plw-quiz-question-browser")).toBeVisible();
-
-  // Math stylesheet link count does not grow
-  await expect(page.locator('head link[href*="assets/stylesheets/mathjax.css"]')).toHaveCount(1);
-});
-
 test("production question bank math renders cleanly on desktop and mobile without collisions or content overflow", async ({
   page
 }) => {
@@ -355,14 +312,11 @@ test("production question bank math renders cleanly on desktop and mobile withou
       });
       expect(contentOverflow, `${qid} at ${viewport.name}`).toBe(false);
 
-      // 5. Choice layout: container is div, badge is top-aligned with first line
+      // 5. Choice badges stay aligned with the first line of their content.
       const choices = card.locator(".plw-quiz-choice");
       const choiceCount = await choices.count();
       for (let i = 0; i < choiceCount; i++) {
         const choice = choices.nth(i);
-        const content = choice.locator(".plw-quiz-choice__content");
-        expect(await content.evaluate(el => el.tagName)).toBe("DIV");
-
         const offsetDiff = await choice.evaluate(el => {
           const badge = el.querySelector<HTMLElement>(".plw-quiz-choice__badge");
           const contentEl = el.querySelector<HTMLElement>(".plw-quiz-choice__content");

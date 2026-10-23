@@ -437,10 +437,10 @@ async function buildReport(siteDir) {
   };
   const totalBytes = fileStats.reduce((sum, file) => sum + file.bytes, 0);
   const duplicateGeneratedPathFailures = pathCollisions.map(paths => `Case-insensitive site path collision: ${paths.join(", ")}`);
-  const representativeHtmlLimitFailures = Object.entries(budgets.blocking.representativeHtmlMaxBytes ?? {}).flatMap(([pagePath, maxBytes]) => {
+  const representativeHtmlWarnings = Object.entries(budgets.reportOnly.representativeHtmlMaxBytes ?? {}).flatMap(([pagePath, maxBytes]) => {
     const file = lookup.get(pagePath);
-    if (!file) return [`Representative HTML page is missing: ${pagePath}`];
-    return file.bytes <= maxBytes ? [] : [`Representative HTML page exceeds ${formatBytes(maxBytes)}: ${pagePath} (${formatBytes(file.bytes)})`];
+    if (!file || file.bytes <= maxBytes) return [];
+    return [`Representative HTML page exceeds ${formatBytes(maxBytes)}: ${pagePath} (${formatBytes(file.bytes)})`];
   });
   const ordinaryPageArchitectureFailures = Object.entries(ordinaryPageFeatureResources).flatMap(([pagePath, features]) =>
     Object.entries(features).filter(([, referenced]) => referenced).map(([feature]) => `${pagePath}: statically references ${feature}`)
@@ -458,7 +458,6 @@ async function buildReport(siteDir) {
   const mathCssHasSingleSharedFile = mathCss.length === 1;
   const ordinaryPageFeatureResourcesPass = Object.keys(ordinaryPageFeatureResources).length === ordinaryPages.length && ordinaryPageArchitectureFailures.length === 0;
   const runtimeLoaderPass = Boolean(runtimeLoader) && runtimeLoader.bytes <= budgets.blocking.runtimeLoaderMaxBytes;
-  const representativeHtmlPass = representativeHtmlLimitFailures.length === 0;
   const largeImageAllowlistPass = unallowlistedLargeImages.length === 0;
   const responsiveImagesPass = largeImagesWithoutResponsiveSource.length === 0 && missingResponsiveWebpFiles.size === 0;
   const featureIntegrityPass = featureDistribution.failures.length === 0;
@@ -475,7 +474,7 @@ async function buildReport(siteDir) {
     materialSearchRootClean: searchComponentResidues.length === 0,
     pagefindExcludes404,
     mathArchitectureAndSize: mathPass,
-    representativeHtmlCaps: representativeHtmlPass,
+    representativePagesPresent: missingRepresentativePages.length === 0,
     runtimeLoaderSize: runtimeLoaderPass,
     largeImagesHaveResponsiveWebp: responsiveImagesPass,
     featureIntegrity: featureIntegrityPass
@@ -498,7 +497,6 @@ async function buildReport(siteDir) {
     ...mathFailures,
     ...(dataLatexPages ? [`Production HTML contains data-latex attributes on ${dataLatexPages} pages`] : []),
     ...(fallbackGifPages ? [`Production HTML contains the legacy 1x1 MathJax fallback GIF on ${fallbackGifPages} pages`] : []),
-    ...representativeHtmlLimitFailures,
     ...(!runtimeLoader ? ["Runtime loader is missing: _static/js/runtime-loader.js"] : runtimeLoader.bytes > budgets.blocking.runtimeLoaderMaxBytes ? [`Runtime loader exceeds ${formatBytes(budgets.blocking.runtimeLoaderMaxBytes)}: ${formatBytes(runtimeLoader.bytes)}`] : []),
     ...largeImagesWithoutResponsiveSource.map(item => `${item.page}: large image lacks a responsive WebP source: ${item.image} (${item.bytes} bytes)`),
     ...[...missingResponsiveWebpFiles].map(item => `Responsive WebP source file is missing: ${item}`),
@@ -534,7 +532,7 @@ async function buildReport(siteDir) {
     representativePages,
     ordinaryPageFeatureResources,
     ordinaryPageArchitectureFailures,
-    representativeHtmlLimitFailures,
+    representativeHtmlWarnings,
     largeImageCounts: largeImageStats,
     largeImagesOver500KiB: largeImages.map(({ path: filePath, bytes }) => ({ path: filePath, bytes })),
     unallowlistedLargeImages: unallowlistedLargeImages.map(({ path: filePath, bytes }) => ({ path: filePath, bytes })),
@@ -571,6 +569,9 @@ function renderSummary(report, mode) {
     lines.push("Blocking checks:", ...report.blockingFailures.map(failure => `  FAIL ${failure}`));
   } else {
     lines.push("Blocking checks: all passed");
+  }
+  if (report.representativeHtmlWarnings.length) {
+    lines.push("HTML size warnings (report only):", ...report.representativeHtmlWarnings.map(warning => `  WARN ${warning}`));
   }
   lines.push("Largest HTML pages:");
   lines.push(...report.htmlTop20.slice(0, 10).map(file => `  ${formatBytes(file.bytes)}  ${file.path}`));

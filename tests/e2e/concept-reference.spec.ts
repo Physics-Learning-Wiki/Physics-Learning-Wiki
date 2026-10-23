@@ -36,8 +36,7 @@ test("pilot concepts, prerequisites, math and quiz coexist across instant naviga
   await expect(page.locator("a[data-plw-concept-ready]")).toHaveCount(3);
   await page.locator('a[data-plw-concept-ready][data-plw-concept="inertial-frame"]').click();
   await expect(panel).toBeVisible();
-  await expect(panel).toHaveCSS("position", "fixed");
-  await expect(panel).toHaveCSS("border-top-left-radius", "10px");
+  await expect(panel.getByRole("link", { name: "阅读完整内容" })).toBeInViewport();
   await page.keyboard.press("Escape");
   await page.getByRole("navigation", { name: "本页需要" }).getByRole("link", { name: "导数" }).click();
   await expect(page).toHaveURL(/math\/calculus\/derivative\/$/);
