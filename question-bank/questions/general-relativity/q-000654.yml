@@ -1,265 +1,435 @@
 schema_version: 3
 id: q-000654
 version: 1
-status: draft
+status: published
 locale: zh-CN
 related_pages:
-  - modern.general-relativity
+- modern.general-relativity
 topics:
-  - modern.general-relativity
+- modern.general-relativity
 concepts:
-  - gr.cosmology.frw
-  - gr.cosmology.friedmann
-  - gr.cosmology.continuity
+- gr.cosmology.frw
+- gr.cosmology.friedmann
+- gr.cosmology.continuity
 type: free_response
 choice_order: fixed
-stem: |
-  考虑空间平坦的 FRW 度规（$k=0$）
+stem: '考虑空间平坦的 FRW 度规（$k=0$）
+
 
   $$
+
   \mathrm{d}s^2=-\mathrm{d}t^2+a^2(t)\left(\mathrm{d}x^2+\mathrm{d}y^2+\mathrm{d}z^2\right).
+
   $$
+
 
   1. 求所有非零的 Christoffel 符号。
+
   2. 求 Ricci 张量的非零分量与 Ricci 标量。
+
   3. 取理想流体
 
+
   $$
+
   T_{\mu\nu}=(\rho+p)u_\mu u_\nu+p\,g_{\mu\nu},
+
   \qquad
+
   u^\mu=(1,0,0,0),
+
   $$
+
 
   并由
 
+
   $$
+
   G_{\mu\nu}+\Lambda g_{\mu\nu}=8\pi G\,T_{\mu\nu}
+
   $$
+
 
   导出
 
+
   $$
+
   H^2=\frac{8\pi G}{3}\rho+\frac{\Lambda}{3},
+
   \qquad
+
   \frac{\ddot a}{a}=-\frac{4\pi G}{3}(\rho+3p)+\frac{\Lambda}{3},
+
   $$
+
 
   其中 $H\equiv\dot a/a$。
+
   4. 由能量动量守恒 $\nabla_\mu T^{\mu\nu}=0$ 导出连续性方程
 
+
   $$
+
   \dot\rho+3H(\rho+p)=0 .
+
   $$
+
+  '
 response:
   format: plain_text
   required: true
   min_chars: 180
   max_chars: 16000
   rows: 20
-  placeholder: "先写联络，再算 Ricci；最后分别用 00 分量、空间分量和守恒律……"
+  placeholder: 先写联络，再算 Ricci；最后分别用 00 分量、空间分量和守恒律……
 grading:
   mode: self_assessed
   rubric:
-    - id: incomplete
-      label: 尚未掌握
-      points: 0
-    - id: partial
-      label: 部分掌握
-      points: 0.5
-    - id: complete
-      label: 基本掌握
-      points: 1
-reference_answer: |
-  非零联络为
+  - id: incomplete
+    label: 尚未掌握
+    points: 0
+  - id: partial
+    label: 部分掌握
+    points: 0.5
+  - id: complete
+    label: 基本掌握
+    points: 1
+reference_answer: '非零联络为
+
 
   $$
+
   \Gamma^0{}_{ij}=a\dot a\,\delta_{ij}=H g_{ij},
+
   \qquad
+
   \Gamma^i{}_{0j}=\Gamma^i{}_{j0}=H\delta^i{}_j .
-  $$
 
   $$
+
+
+  $$
+
   R_{00}=-3\frac{\ddot a}{a},
+
   \qquad
+
   R_{ij}=\left(\frac{\ddot a}{a}+2H^2\right)g_{ij},
+
   \qquad
+
   R=6\left(\frac{\ddot a}{a}+H^2\right).
-  $$
 
   $$
-  G_{00}=3H^2,
-  \qquad
-  G_{ij}=-\left(2\frac{\ddot a}{a}+H^2\right)g_{ij}.
+
+
   $$
+
+  G_{00}=3H^2,
+
+  \qquad
+
+  G_{ij}=-\left(2\frac{\ddot a}{a}+H^2\right)g_{ij}.
+
+  $$
+
 
   由 00 分量得第一 Friedmann 方程，由空间分量并消去 $H^2$ 得加速度方程；守恒律给出连续性方程。
-solution: |
-  记 $x^0=t$，$x^i=(x,y,z)$，$a=a(t)$，并令 $\dot a=\mathrm{d}a/\mathrm{d}t$。
+
+  '
+solution: '记 $x^0=t$，$x^i=(x,y,z)$，$a=a(t)$，并令 $\dot a=\mathrm{d}a/\mathrm{d}t$。
+
 
   度规和逆度规为
 
+
   $$
+
   g_{00}=-1,\qquad g_{ij}=a^2\delta_{ij},
+
   \qquad
+
   g^{00}=-1,\qquad g^{ij}=a^{-2}\delta^{ij}.
+
   $$
+
 
   只有时间导数非零：
 
+
   $$
+
   \partial_0 g_{ij}=2a\dot a\,\delta_{ij}.
+
   $$
+
 
   由
 
+
   $$
+
   \Gamma^\rho{}_{\mu\nu}
+
   =\frac{1}{2}g^{\rho\sigma}
+
   \left(\partial_\mu g_{\nu\sigma}+\partial_\nu g_{\mu\sigma}-\partial_\sigma g_{\mu\nu}\right)
+
   $$
+
 
   得
 
-  $$
-  \Gamma^0{}_{ij}
-  =\frac{1}{2}g^{00}(-\partial_0 g_{ij})
-  =a\dot a\,\delta_{ij}
-  =H g_{ij},
-  $$
 
   $$
-  \Gamma^i{}_{0j}
-  =\Gamma^i{}_{j0}
-  =\frac{1}{2}g^{ik}\partial_0 g_{jk}
-  =H\delta^i{}_j .
+
+  \Gamma^0{}_{ij}
+
+  =\frac{1}{2}g^{00}(-\partial_0 g_{ij})
+
+  =a\dot a\,\delta_{ij}
+
+  =H g_{ij},
+
   $$
+
+
+  $$
+
+  \Gamma^i{}_{0j}
+
+  =\Gamma^i{}_{j0}
+
+  =\frac{1}{2}g^{ik}\partial_0 g_{jk}
+
+  =H\delta^i{}_j .
+
+  $$
+
 
   其余分量为零。
 
+
   代入
 
+
   $$
+
   R_{\mu\nu}=\partial_\lambda\Gamma^\lambda{}_{\mu\nu}
+
   -\partial_\nu\Gamma^\lambda{}_{\mu\lambda}
+
   +\Gamma^\lambda{}_{\mu\nu}\Gamma^\sigma{}_{\lambda\sigma}
+
   -\Gamma^\sigma{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\sigma}.
+
   $$
+
 
   对于 $00$ 分量，注意 $\Gamma^\lambda{}_{0\lambda}=3H$，于是
 
+
   $$
+
   R_{00}=-\partial_0(3H)-3H^2
+
   =-3\left(\dot H+H^2\right)
+
   =-3\frac{\ddot a}{a}.
+
   $$
+
 
   对于空间分量，
 
+
   $$
+
   R_{ij}
+
   =\left(\frac{\ddot a}{a}+2H^2\right)g_{ij}.
+
   $$
+
 
   因此 Ricci 标量为
 
+
   $$
+
   R=g^{00}R_{00}+g^{ij}R_{ij}
+
   =6\left(\frac{\ddot a}{a}+H^2\right).
+
   $$
+
 
   爱因斯坦张量 $G_{\mu\nu}=R_{\mu\nu}-\dfrac{1}{2}Rg_{\mu\nu}$ 给出
 
+
   $$
+
   G_{00}=3H^2,
+
   \qquad
+
   G_{ij}=-\left(2\frac{\ddot a}{a}+H^2\right)g_{ij}.
+
   $$
+
 
   取 $00$ 分量：
 
+
   $$
+
   G_{00}+\Lambda g_{00}=8\pi G T_{00}
+
   \;\Longrightarrow\;
+
   3H^2-\Lambda=8\pi G\rho,
+
   $$
+
 
   即
 
+
   $$
+
   H^2=\frac{8\pi G}{3}\rho+\frac{\Lambda}{3}.
+
   $$
+
 
   取空间分量，并利用 $T_{ij}=p g_{ij}$：
 
+
   $$
+
   -\left(2\frac{\ddot a}{a}+H^2\right)+\Lambda=8\pi G p .
+
   $$
+
 
   把第一 Friedmann 方程代入消去 $H^2$，整理得
 
+
   $$
+
   \frac{\ddot a}{a}
+
   =-\frac{4\pi G}{3}(\rho+3p)+\frac{\Lambda}{3}.
+
   $$
+
 
   最后推导连续性方程。对于 $u^\mu=(1,0,0,0)$，
 
+
   $$
+
   T^{00}=\rho,
+
   \qquad
+
   T^{ij}=p\,a^{-2}\delta^{ij}.
+
   $$
+
 
   由
 
+
   $$
+
   \nabla_\mu T^{\mu 0}
+
   =\partial_\mu T^{\mu 0}
+
   +\Gamma^\mu{}_{\mu\lambda}T^{\lambda 0}
+
   +\Gamma^0{}_{\mu\lambda}T^{\mu\lambda}
+
   =0 .
+
   $$
+
 
   逐项计算：
 
-  $$
-  \partial_\mu T^{\mu 0}=\dot\rho,
-  \qquad
-  \Gamma^\mu{}_{\mu 0}T^{00}=3H\rho,
-  $$
 
   $$
-  \Gamma^0{}_{ij}T^{ij}
-  =(a\dot a\,\delta_{ij})\left(p\,a^{-2}\delta^{ij}\right)
-  =3Hp .
+
+  \partial_\mu T^{\mu 0}=\dot\rho,
+
+  \qquad
+
+  \Gamma^\mu{}_{\mu 0}T^{00}=3H\rho,
+
   $$
+
+
+  $$
+
+  \Gamma^0{}_{ij}T^{ij}
+
+  =(a\dot a\,\delta_{ij})\left(p\,a^{-2}\delta^{ij}\right)
+
+  =3Hp .
+
+  $$
+
 
   所以
 
+
   $$
+
   \dot\rho+3H(\rho+p)=0 .
+
   $$
+
 
   这就是宇宙学中的连续性（能量守恒）方程。
-hints:
-  - '先求 $g^{00}=-1$ 与 $g^{ij}=a^{-2}\delta^{ij}$。'
-  - '$\Gamma^0{}_{ij}=a\dot a\delta_{ij}=H g_{ij}$。'
-  - "空间分量的方程要先用第一 Friedmann 方程消去 $H^2$。"
-  - '守恒律中记住 $\nabla_\mu T^{\mu 0}$ 有三项贡献。'
-feedback:
-  correct: '正确：得到 Γ^0_{ij}=H g_{ij}、Γ^i_{0j}=Hδ^i_j，并导出两个 Friedmann 方程与连续性方程。'
-  incorrect: '请检查：先算 R_{00} 与 R_{ij}；00 分量给第一 Friedmann 方程，空间分量消去 H^2 后给加速度方程。'
 
+  '
+hints:
+- 先求 $g^{00}=-1$ 与 $g^{ij}=a^{-2}\delta^{ij}$。
+- $\Gamma^0{}_{ij}=a\dot a\delta_{ij}=H g_{ij}$。
+- 空间分量的方程要先用第一 Friedmann 方程消去 $H^2$。
+- 守恒律中记住 $\nabla_\mu T^{\mu 0}$ 有三项贡献。
+feedback:
+  correct: 正确：得到 Γ^0_{ij}=H g_{ij}、Γ^i_{0j}=Hδ^i_j，并导出两个 Friedmann 方程与连续性方程。
+  incorrect: 请检查：先算 R_{00} 与 R_{ij}；00 分量给第一 Friedmann 方程，空间分量消去 H^2 后给加速度方程。
 difficulty: 3
 cognitive_level: analyze
 style: computational
 estimated_seconds: 1500
 provenance:
   type: original
-  note: "原创题干与完整解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  note: 原创题干与完整解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:18d7c8fa494d4cbba5a6a349fa7ce699e8d8d750809b79c30b7e6b1e22ead7f7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:18d7c8fa494d4cbba5a6a349fa7ce699e8d8d750809b79c30b7e6b1e22ead7f7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:18d7c8fa494d4cbba5a6a349fa7ce699e8d8d750809b79c30b7e6b1e22ead7f7

@@ -1,96 +1,146 @@
 schema_version: 3
 id: q-000647
 version: 1
-status: draft
+status: published
 locale: zh-CN
 related_pages:
-  - modern.general-relativity
+- modern.general-relativity
 topics:
-  - modern.general-relativity
+- modern.general-relativity
 concepts:
-  - gr.tensor.index-manipulation
-  - gr.metric.line-element
-  - gr.tensor.scalar-invariant
+- gr.tensor.index-manipulation
+- gr.metric.line-element
+- gr.tensor.scalar-invariant
 type: single_choice
 choice_order: shuffle
-stem: |
-  在二维平面上使用极坐标 $(r,\varphi)$，度规为
+stem: '在二维平面上使用极坐标 $(r,\varphi)$，度规为
+
 
   $$
+
   \mathrm{d}s^2=\mathrm{d}r^2+r^2\,\mathrm{d}\varphi^2 .
+
   $$
+
 
   某矢量的逆变分量为 $(A^r,A^\varphi)$。按 $A_i=g_{ij}A^j$ 降指标后，下列哪一组协变分量正确？
+
+  '
 choices:
-  - id: A
-    content: '$(A_r,A_\varphi)=(A^r,A^\varphi)$'
-  - id: B
-    content: '$(A_r,A_\varphi)=(A^r,r^2A^\varphi)$'
-  - id: C
-    content: '$(A_r,A_\varphi)=(r^2A^r,A^\varphi)$'
-  - id: D
-    content: '$(A_r,A_\varphi)=(rA^r,rA^\varphi)$'
+- id: A
+  content: $(A_r,A_\varphi)=(A^r,A^\varphi)$
+- id: B
+  content: $(A_r,A_\varphi)=(A^r,r^2A^\varphi)$
+- id: C
+  content: $(A_r,A_\varphi)=(r^2A^r,A^\varphi)$
+- id: D
+  content: $(A_r,A_\varphi)=(rA^r,rA^\varphi)$
 answer:
   choice: B
 hints:
-  - '先写出度规矩阵，注意非对角分量 $g_{r\varphi}=0$。'
-  - '极坐标中 $g_{\varphi\varphi}=r^2$，它随 $r$ 变化。'
+- 先写出度规矩阵，注意非对角分量 $g_{r\varphi}=0$。
+- 极坐标中 $g_{\varphi\varphi}=r^2$，它随 $r$ 变化。
 feedback:
-  correct: '正确：极坐标的度规矩阵是 $\mathrm{diag}(1,r^2)$，降指标只改变 $\varphi$ 分量。'
-  incorrect: '再检查度规矩阵：$g_{rr}=1$、$g_{\varphi\varphi}=r^2$，非对角项为零。'
+  correct: 正确：极坐标的度规矩阵是 $\mathrm{diag}(1,r^2)$，降指标只改变 $\varphi$ 分量。
+  incorrect: 再检查度规矩阵：$g_{rr}=1$、$g_{\varphi\varphi}=r^2$，非对角项为零。
   choices:
-    A: '这相当于把极坐标误当成笛卡尔坐标，忽略了 $g_{\varphi\varphi}=r^2$。'
-    B: "正确。分量改变来自坐标基和度规，不来自空间弯曲。"
-    C: "把 $r^2$ 乘到了错误的分量上。"
-    D: "极坐标的度规分量是 $1$ 和 $r^2$，不是 $r$ 和 $r$。"
-solution: |
-  度规矩阵为
+    A: 这相当于把极坐标误当成笛卡尔坐标，忽略了 $g_{\varphi\varphi}=r^2$。
+    B: 正确。分量改变来自坐标基和度规，不来自空间弯曲。
+    C: 把 $r^2$ 乘到了错误的分量上。
+    D: 极坐标的度规分量是 $1$ 和 $r^2$，不是 $r$ 和 $r$。
+solution: '度规矩阵为
+
 
   $$
+
   g_{ij}=
+
   \begin{pmatrix}
+
   1 & 0\\
+
   0 & r^2
+
   \end{pmatrix},
+
   \qquad
+
   g^{ij}=
+
   \begin{pmatrix}
+
   1 & 0\\
+
   0 & r^{-2}
+
   \end{pmatrix}.
+
   $$
+
 
   用 $A_i=g_{ij}A^j$ 降指标：
 
+
   $$
+
   A_r=g_{rr}A^r+g_{r\varphi}A^\varphi=A^r,
+
   \qquad
+
   A_\varphi=g_{\varphi r}A^r+g_{\varphi\varphi}A^\varphi=r^2A^\varphi .
+
   $$
+
 
   因此
 
+
   $$
+
   (A_r,A_\varphi)=(A^r,r^2A^\varphi).
+
   $$
+
 
   这里虽然空间是平直的，但极坐标的基矢随位置改变，$g_{\varphi\varphi}=r^2$ 不是常数，所以协变分量与逆变分量不相等。标量
 
-  $$
-  A^iA_i=(A^r)^2+r^2(A^\varphi)^2
+
   $$
 
+  A^iA_i=(A^r)^2+r^2(A^\varphi)^2
+
+  $$
+
+
   在坐标变换下保持不变；改变的是分量，不是几何。
+
+  '
 difficulty: 1
 cognitive_level: apply
 style: computational
 estimated_seconds: 90
 provenance:
   type: original
-  note: "原创题干、选项与解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  note: 原创题干、选项与解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:568780aba708618e1c77b267426e1a703e3467c541be33fb531cc96b247aa966
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:568780aba708618e1c77b267426e1a703e3467c541be33fb531cc96b247aa966
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:568780aba708618e1c77b267426e1a703e3467c541be33fb531cc96b247aa966

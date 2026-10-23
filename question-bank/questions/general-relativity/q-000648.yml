@@ -1,131 +1,204 @@
 schema_version: 3
 id: q-000648
 version: 1
-status: draft
+status: published
 locale: zh-CN
 related_pages:
-  - modern.general-relativity
+- modern.general-relativity
 topics:
-  - modern.general-relativity
+- modern.general-relativity
 concepts:
-  - gr.metric.surface-induced
-  - gr.tensor.index-manipulation
-  - gr.tensor.scalar-invariant
+- gr.metric.surface-induced
+- gr.tensor.index-manipulation
+- gr.tensor.scalar-invariant
 type: free_response
 choice_order: fixed
-stem: |
-  用角坐标 $(\theta,\varphi)$ 参数化一个二维环面（torus），其诱导度规为
+stem: '用角坐标 $(\theta,\varphi)$ 参数化一个二维环面（torus），其诱导度规为
+
 
   $$
+
   \mathrm{d}s^2=r^2\,\mathrm{d}\theta^2+(R+r\cos\theta)^2\,\mathrm{d}\varphi^2,
+
   \qquad R>r>0,
+
   $$
+
 
   其中 $R$ 与 $r$ 是常数。
 
+
   1. 写出度规矩阵 $g_{ij}$ 与逆度规 $g^{ij}$。
+
   2. 设某矢量的逆变分量为 $(V^\theta,V^\varphi)$，求协变分量 $V_i$ 与标量 $V^iV_i$。
+
   3. 若 $V^\theta$ 与 $V^\varphi$ 都是常数，所得标量是否随 $\theta$ 改变？这与"标量的数值与坐标选择无关"矛盾吗？请解释。
+
+  '
 response:
   format: plain_text
   required: true
   min_chars: 80
   max_chars: 6000
   rows: 10
-  placeholder: "写出度规矩阵、逆度规、指标升降和最后的物理解释……"
+  placeholder: 写出度规矩阵、逆度规、指标升降和最后的物理解释……
 grading:
   mode: self_assessed
   rubric:
-    - id: incomplete
-      label: 尚未掌握
-      points: 0
-    - id: partial
-      label: 部分掌握
-      points: 0.5
-    - id: complete
-      label: 基本掌握
-      points: 1
-reference_answer: |
-  $$
+  - id: incomplete
+    label: 尚未掌握
+    points: 0
+  - id: partial
+    label: 部分掌握
+    points: 0.5
+  - id: complete
+    label: 基本掌握
+    points: 1
+reference_answer: '$$
+
   g_{ij}=\mathrm{diag}\left(r^2,(R+r\cos\theta)^2\right),
+
   \qquad
+
   g^{ij}=\mathrm{diag}\left(r^{-2},(R+r\cos\theta)^{-2}\right).
-  $$
 
   $$
+
+
+  $$
+
   V_\theta=r^2V^\theta,
+
   \qquad
+
   V_\varphi=(R+r\cos\theta)^2V^\varphi,
-  $$
 
   $$
-  V^iV_i=r^2(V^\theta)^2+(R+r\cos\theta)^2(V^\varphi)^2 .
+
+
   $$
+
+  V^iV_i=r^2(V^\theta)^2+(R+r\cos\theta)^2(V^\varphi)^2 .
+
+  $$
+
 
   若 $V^\varphi\neq0$，该标量随 $\theta$ 变化。这里比较的是环面上不同点的内积：保持分量不变并不等于把一个矢量沿环面平移。标量在**同一点**的数值不随坐标改变；但标量场完全可以随位置变化。
-solution: |
-  从线元直接读出
+
+  '
+solution: '从线元直接读出
+
 
   $$
+
   g_{\theta\theta}=r^2,
+
   \qquad
+
   g_{\varphi\varphi}=(R+r\cos\theta)^2,
+
   \qquad
+
   g_{\theta\varphi}=g_{\varphi\theta}=0 .
+
   $$
+
 
   因此
 
+
   $$
+
   g_{ij}=
+
   \begin{pmatrix}
+
   r^2 & 0\\
+
   0 & (R+r\cos\theta)^2
+
   \end{pmatrix},
+
   \qquad
+
   g^{ij}=
+
   \begin{pmatrix}
+
   r^{-2} & 0\\
+
   0 & (R+r\cos\theta)^{-2}
+
   \end{pmatrix}.
+
   $$
+
 
   用 $V_i=g_{ij}V^j$ 降指标：
 
+
   $$
+
   V_\theta=g_{\theta\theta}V^\theta=r^2V^\theta,
+
   \qquad
+
   V_\varphi=g_{\varphi\varphi}V^\varphi=(R+r\cos\theta)^2V^\varphi .
+
   $$
+
 
   于是
 
+
   $$
+
   V^iV_i=V^\theta V_\theta+V^\varphi V_\varphi
+
   =r^2(V^\theta)^2+(R+r\cos\theta)^2(V^\varphi)^2 .
+
   $$
+
 
   度规分量 $g_{\varphi\varphi}$ 显含 $\theta$。即使让两个分量在所有点都取相同的数值，标量仍会随 $\theta$ 改变，因为环面的坐标基和度规沿 $\theta$ 方向变化。
 
-  这并不与"标量不依赖坐标"矛盾。标量在**给定点**的数值对坐标变换不变；但一个标量场当然可以逐点变化。要保持分量不变来比较不同点，相当于人为指定了一个并非平行移动的矢量场，因此看到的是度规的逐点变化，而不是坐标变换。
-hints:
-  - "度规矩阵是对角的，直接读线元即可。"
-  - "标量是 $V^iV_i$，不是 $V^iV^j$。"
-  - "区分'同一点的标量在坐标变换下不变'与'标量场随位置变化'。"
-feedback:
-  correct: '正确：写出环面度规与逆度规，用度规计算内积，并说明逐点变化与坐标不变性不矛盾。'
-  incorrect: '请检查：度规对角元是 r^2 与 (R+r cosθ)^2；标量在一点的值不随坐标变，但标量场可随位置变。'
 
+  这并不与"标量不依赖坐标"矛盾。标量在**给定点**的数值对坐标变换不变；但一个标量场当然可以逐点变化。要保持分量不变来比较不同点，相当于人为指定了一个并非平行移动的矢量场，因此看到的是度规的逐点变化，而不是坐标变换。
+
+  '
+hints:
+- 度规矩阵是对角的，直接读线元即可。
+- 标量是 $V^iV_i$，不是 $V^iV^j$。
+- 区分'同一点的标量在坐标变换下不变'与'标量场随位置变化'。
+feedback:
+  correct: 正确：写出环面度规与逆度规，用度规计算内积，并说明逐点变化与坐标不变性不矛盾。
+  incorrect: 请检查：度规对角元是 r^2 与 (R+r cosθ)^2；标量在一点的值不随坐标变，但标量场可随位置变。
 difficulty: 2
 cognitive_level: apply
 style: computational
 estimated_seconds: 360
 provenance:
   type: original
-  note: "原创题干、数值设定与解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  note: 原创题干、数值设定与解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:eaebe63f9af1c29afe3c16623f2e1a180e46ea3203a720128138f89a1b9a92b0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:eaebe63f9af1c29afe3c16623f2e1a180e46ea3203a720128138f89a1b9a92b0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-23'
+    question_version: 1
+    content_fingerprint: sha256:eaebe63f9af1c29afe3c16623f2e1a180e46ea3203a720128138f89a1b9a92b0
