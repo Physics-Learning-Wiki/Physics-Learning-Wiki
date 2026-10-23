@@ -1,0 +1,138 @@
+schema_version: 3
+id: q-000651
+version: 1
+status: draft
+locale: zh-CN
+related_pages:
+  - modern.general-relativity
+type: free_response
+choice_order: fixed
+stem: |
+  设联络为 Levi-Civita 联络
+
+  $$
+  \Gamma^\rho{}_{\mu\nu}
+  =\frac{1}{2}g^{\rho\sigma}
+  \left(\partial_\mu g_{\nu\sigma}+\partial_\nu g_{\mu\sigma}-\partial_\sigma g_{\mu\nu}\right).
+  $$
+
+  证明度规相容性：
+
+  $$
+  \nabla_\alpha g_{\mu\nu}=0 .
+  $$
+
+  并说明这条性质在几何上意味着什么。
+response:
+  format: plain_text
+  required: true
+  min_chars: 100
+  max_chars: 6000
+  rows: 10
+  placeholder: "写出协变导数定义、降指标后的联络，并逐项抵消……"
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  $$
+  \nabla_\alpha g_{\mu\nu}
+  =\partial_\alpha g_{\mu\nu}
+  -\Gamma_{\nu\alpha\mu}-\Gamma_{\mu\alpha\nu}=0 .
+  $$
+
+  将 $\Gamma_{\lambda\mu\nu}=\frac{1}{2}\left(\partial_\mu g_{\nu\lambda}+\partial_\nu g_{\mu\lambda}-\partial_\lambda g_{\mu\nu}\right)$ 代入，三项 $\partial_\alpha g_{\mu\nu}$ 两两抵消。几何上，平行移动保持矢量的长度与夹角，度规在协变导数下是常数。
+solution: |
+  对协变二阶张量，
+
+  $$
+  \nabla_\alpha T_{\mu\nu}
+  =\partial_\alpha T_{\mu\nu}
+  -\Gamma^\rho{}_{\alpha\mu}T_{\rho\nu}
+  -\Gamma^\rho{}_{\alpha\nu}T_{\mu\rho} .
+  $$
+
+  取 $T_{\mu\nu}=g_{\mu\nu}$：
+
+  $$
+  \nabla_\alpha g_{\mu\nu}
+  =\partial_\alpha g_{\mu\nu}
+  -\Gamma^\rho{}_{\alpha\mu}g_{\rho\nu}
+  -\Gamma^\rho{}_{\alpha\nu}g_{\mu\rho} .
+  $$
+
+  定义
+
+  $$
+  \Gamma_{\lambda\mu\nu}\equiv g_{\lambda\rho}\Gamma^\rho{}_{\mu\nu},
+  $$
+
+  则
+
+  $$
+  \nabla_\alpha g_{\mu\nu}
+  =\partial_\alpha g_{\mu\nu}
+  -\Gamma_{\nu\alpha\mu}-\Gamma_{\mu\alpha\nu} .
+  $$
+
+  由 Levi-Civita 联络的显式形式，
+
+  $$
+  \Gamma_{\lambda\mu\nu}
+  =\frac{1}{2}
+  \left(\partial_\mu g_{\nu\lambda}+\partial_\nu g_{\mu\lambda}-\partial_\lambda g_{\mu\nu}\right).
+  $$
+
+  因此
+
+  $$
+  \Gamma_{\nu\alpha\mu}
+  =\frac{1}{2}
+  \left(\partial_\alpha g_{\mu\nu}+\partial_\mu g_{\alpha\nu}-\partial_\nu g_{\alpha\mu}\right),
+  $$
+
+  $$
+  \Gamma_{\mu\alpha\nu}
+  =\frac{1}{2}
+  \left(\partial_\alpha g_{\nu\mu}+\partial_\nu g_{\alpha\mu}-\partial_\mu g_{\alpha\nu}\right).
+  $$
+
+  利用 $g_{\mu\nu}=g_{\nu\mu}$，把两式相加：
+
+  $$
+  \Gamma_{\nu\alpha\mu}+\Gamma_{\mu\alpha\nu}
+  =\partial_\alpha g_{\mu\nu},
+  $$
+
+  其中 $\partial_\mu g_{\alpha\nu}$ 与 $\partial_\nu g_{\alpha\mu}$ 各自成对抵消。于是
+
+  $$
+  \nabla_\alpha g_{\mu\nu}=0 .
+  $$
+
+  几何上，这意味着沿曲线平行移动时矢量的长度以及两矢量之间的夹角保持不变：度规在 Levi-Civita 联络下是"常数"。这条性质也称为度规相容性，是 Levi-Civita 联络的定义特征之一。
+hints:
+  - '先写出协变二阶张量的协变导数公式，再令 $T_{\mu\nu}=g_{\mu\nu}$。'
+  - '把上指标联络降到下指标：$\Gamma_{\lambda\mu\nu}=g_{\lambda\rho}\Gamma^\rho{}_{\mu\nu}$。'
+  - '代入后注意 $g_{\mu\nu}$ 对称，许多项会成对抵消。'
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 420
+provenance:
+  type: original
+  note: "原创题干与完整证明；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0
