@@ -55,3 +55,9 @@ electromagnetism.induction:
 electromagnetism.maxwell-waves:
   title: 麦克斯韦方程与电磁波
   parent: electromagnetism
+
+modern:
+  title: 近代物理
+modern.general-relativity:
+  title: 广义相对论
+  parent: modern

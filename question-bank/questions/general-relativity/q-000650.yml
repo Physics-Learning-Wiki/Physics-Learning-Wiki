@@ -5,6 +5,11 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.geodesic.action
+  - gr.geodesic.affine-parameter
 type: free_response
 choice_order: fixed
 stem: |
@@ -168,6 +173,10 @@ hints:
   - '先令 $A=g_{\mu\nu}\dot x^\mu\dot x^\nu$，则 $L=\sqrt{A}$。'
   - '把 $\delta\dot x^\nu$ 分部积分，边界项因端点固定而消失。'
   - '最后用 $g^{\nu\sigma}$ 升指标，并注意 $g_{\mu\nu}$ 对称。'
+feedback:
+  correct: "正确：通过变分与分部积分得到含 L'/L 的方程，并说明仿射参数使右端消失。"
+  incorrect: "请检查：先令 A=g_{μν}ẋ^μẋ^ν，再对 δẋ^ν 分部积分；最后用 g^{νσ} 升指标。"
+
 difficulty: 3
 cognitive_level: analyze
 style: modeling

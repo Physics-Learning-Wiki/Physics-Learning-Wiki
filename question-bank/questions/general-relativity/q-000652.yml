@@ -5,6 +5,12 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.spacetime.schwarzschild
+  - gr.connection.christoffel
+  - gr.curvature.ricci
 type: free_response
 choice_order: fixed
 stem: |
@@ -221,6 +227,10 @@ hints:
   - '先写出 $g^{\mu\nu}$ 和所有非零的度规导数。'
   - '非零联络大多来自 $\partial_r g_{tt}$、$\partial_r g_{rr}$ 与 $\partial_r g_{\theta\theta}$。'
   - "代入 Schwarzschild 形式时，注意 $f'+2f'/r$ 的组合。"
+feedback:
+  correct: "正确：得到全部独立联络和 Ricci 分量，并用 f'+2f'/r=0、R_{θθ}=1-f-rf'=0 验证真空解。"
+  incorrect: "请检查：联络来自 g_{tt}、g_{rr}、g_{θθ} 的径向导数；代入 Schwarzschild 时注意 f=1-2M/r。"
+
 difficulty: 3
 cognitive_level: analyze
 style: computational

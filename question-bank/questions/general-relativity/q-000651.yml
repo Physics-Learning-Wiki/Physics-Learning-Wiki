@@ -5,6 +5,10 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.connection.metric-compatibility
 type: free_response
 choice_order: fixed
 stem: |
@@ -123,6 +127,10 @@ hints:
   - '先写出协变二阶张量的协变导数公式，再令 $T_{\mu\nu}=g_{\mu\nu}$。'
   - '把上指标联络降到下指标：$\Gamma_{\lambda\mu\nu}=g_{\lambda\rho}\Gamma^\rho{}_{\mu\nu}$。'
   - '代入后注意 $g_{\mu\nu}$ 对称，许多项会成对抵消。'
+feedback:
+  correct: '正确：把 Levi-Civita 联络的显式形式代入协变导数，利用度规对称性逐项抵消。'
+  incorrect: '请检查：∇_α g_{μν}=∂_α g_{μν}-Γ_{ναμ}-Γ_{μαν}，代入后三项 ∂_α g_{μν} 会两两抵消。'
+
 difficulty: 2
 cognitive_level: apply
 style: computational

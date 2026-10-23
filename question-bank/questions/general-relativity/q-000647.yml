@@ -5,6 +5,12 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.tensor.index-manipulation
+  - gr.metric.line-element
+  - gr.tensor.scalar-invariant
 type: single_choice
 choice_order: shuffle
 stem: |

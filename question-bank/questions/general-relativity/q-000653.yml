@@ -5,6 +5,12 @@ status: draft
 locale: zh-CN
 related_pages:
   - modern.general-relativity
+topics:
+  - modern.general-relativity
+concepts:
+  - gr.curvature.kretschmann
+  - gr.spacetime.coordinate-singularity
+  - gr.coordinates.eddington-finkelstein
 type: free_response
 choice_order: fixed
 stem: |
@@ -151,6 +157,10 @@ hints:
   - "先把 $r=2M$ 代入 $K$，注意 $(2M)^6=64M^6$。"
   - '求出 $\mathrm{d}r_*/\mathrm{d}r=1/f$，再算 $\mathrm{d}t$。'
   - "检查新度规中是否还存在 $1/f$ 因子。"
+feedback:
+  correct: '正确：K(2M) 有限而 K(0) 发散；在 EF 坐标中度规分量在视界处有限，说明 r=2M 是坐标奇点。'
+  incorrect: '请检查：先算 K(2M)=3/(4M^4)；再做 v=t+r_* 变换，抵消 1/f 项。'
+
 difficulty: 3
 cognitive_level: analyze
 style: computational
