@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000685
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.change-of-basis
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  对给定数域上的 $n\times n$ 矩阵 A，若想把它在某组基下表示成对角矩阵，需要找到什么？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 至少一个非零特征向量
+- id: B
+  content: n 个线性无关的特征向量
+- id: C
+  content: n 个互不相同的向量，无论是否线性相关
+answer:
+  choice: B
+hints:
+- 新的基必须张成整个空间，而且各基向量不能互相依赖。
+solution: 若存在 n 个线性无关的特征向量，它们可组成基。每个基向量的像只在自身方向上，于是表示矩阵为对角矩阵；反过来，对角表示中的基向量都是特征向量。只找到一个方向通常不够。
+feedback:
+  correct: 正确。独立的特征向量基正是对角化所需条件。
+  incorrect: 再想一想：新的基必须张成整个空间，而且各基向量不能互相依赖。
+  choices:
+    A: 一个方向通常不足以组成 n 维空间的基。
+    B: 独立的特征向量基正是对角化所需条件。
+    C: 互不相同仍可能共线，不能保证构成基。

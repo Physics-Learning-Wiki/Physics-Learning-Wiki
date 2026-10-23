@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000655
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.3 转置与行列式 · 2026-10-24 更新稿**
+
+  已知实方阵 $A$ 的行列式为 $-3$。把所有行和列互换得到 $A^{\mathsf T}$，其行列式是多少？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.3 转置与行列式；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $-3$
+- id: B
+  content: $3$
+- id: C
+  content: $-1/3$
+answer:
+  choice: A
+hints:
+- 转置与交换其中两列，是不同的操作。
+solution: 对任意方阵，$\det(A^{\mathsf T})=\det A$，所以仍为 $-3$。转置不是交换一对列；不能套用交换两列变号的结论。
+feedback:
+  correct: 正确。转置保持行列式，包括原来的负号。
+  incorrect: 再想一想：转置与交换其中两列，是不同的操作。
+  choices:
+    A: 转置保持行列式，包括原来的负号。
+    B: 交换两列才会变号；转置不是这一操作。
+    C: 倒数对应逆矩阵的行列式，不是转置。

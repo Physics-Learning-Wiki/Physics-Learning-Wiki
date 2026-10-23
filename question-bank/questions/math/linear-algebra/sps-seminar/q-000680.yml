@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000680
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  非零实向量 $\mathbf v$ 满足 $A\mathbf v=-2\mathbf v$。几何上应怎样理解？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 沿原直线反向，长度变为原来的 2 倍
+- id: B
+  content: 没有特征值，因为特征值必须为正
+- id: C
+  content: 向量被旋转了 90°
+answer:
+  choice: A
+hints:
+- 负数倍仍与原向量共线，但箭头反向。
+solution: 特征向量对应的不一定是正向拉伸。这里特征值为 $-2$，输出与输入共线且方向相反，长度乘以 $|-2|=2$。
+feedback:
+  correct: 正确。负号控制朝向，绝对值控制长度。
+  incorrect: 再想一想：负数倍仍与原向量共线，但箭头反向。
+  choices:
+    A: 负号控制朝向，绝对值控制长度。
+    B: 实特征值可以为负，也可以为零。
+    C: 乘以实标量不会把非零向量转到垂直方向。

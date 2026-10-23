@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000667
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  两组有序基为 $\mathcal B=(\mathbf e_1,\mathbf e_2)$ 与 $\mathcal B^{\prime}=(\mathbf e^{\prime}_1,\mathbf e^{\prime}_2)$，且 $P\mathbf e_i=\mathbf e^{\prime}_i$。记 $C=\mathcal M_{\mathcal B}(P)$。$C$ 的第 2 列记录什么？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $\mathbf e_2$ 在新基 $\mathcal B^{\prime}$ 下的坐标
+- id: B
+  content: $\mathbf e^{\prime}_2$ 在原基 $\mathcal B$ 下的坐标
+- id: C
+  content: $P^{-1}\mathbf e_2$ 在原基下的坐标
+answer:
+  choice: B
+hints:
+- 矩阵第 j 列记录第 j 个输入基向量的像，在输出基下的坐标。
+solution: $C$ 的输入、输出都用 $\mathcal B$。第 2 列是 $[P\mathbf e_2]_{\mathcal B}=[\mathbf e^{\prime}_2]_{\mathcal B}$。务必区分“基向量被
+  P 改变”与“同一向量的坐标换算”。
+feedback:
+  correct: 正确。新基向量在原基下的坐标正是 C 的列。
+  incorrect: 再想一想：矩阵第 j 列记录第 j 个输入基向量的像，在输出基下的坐标。
+  choices:
+    A: 这对应反方向的坐标换算，不是 C 的列定义。
+    B: 新基向量在原基下的坐标正是 C 的列。
+    C: 这里表示的是 P，不是其逆。

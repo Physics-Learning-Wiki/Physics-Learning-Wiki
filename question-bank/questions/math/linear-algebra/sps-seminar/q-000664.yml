@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000664
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.5 非方阵与零补全 · 2026-10-24 更新稿**
+
+  给一个 $3\times2$ 矩阵 $A$ 补上一列零，得到三阶方阵 $\widetilde A$。哪句话符合通常的行列式定义？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.5 非方阵与零补全；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $A$ 本身没有通常意义的行列式；$\det\widetilde A=0$
+- id: B
+  content: $\det A=0$，因为补零以后算出了零
+- id: C
+  content: $\det\widetilde A$ 一定非零，因为它现在是方阵
+answer:
+  choice: A
+hints:
+- 补零后得到的是另一个矩阵。
+solution: 通常的行列式只对方阵定义。$A$ 是非方阵，所以 $\det A$ 未定义；补零得到的 $\widetilde A$ 有零列，故其行列式为零。这不能反过来当作给 $A$ 定义了行列式。
+feedback:
+  correct: 正确。计算结果属于补全后的方阵。
+  incorrect: 再想一想：补零后得到的是另一个矩阵。
+  choices:
+    A: 计算结果属于补全后的方阵。
+    B: 补全改变了矩阵对象，不能把结果移给原非方阵。
+    C: 方阵的行列式可以为零；零列正是这种情况。

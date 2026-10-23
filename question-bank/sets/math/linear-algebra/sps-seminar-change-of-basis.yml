@@ -1,0 +1,52 @@
+schema_version: 1
+id: math.linear-algebra.sps-seminar.change-of-basis
+title: SPS 线性代数研讨班配套｜换基与相似变换：同一变换的不同表示
+description: 对齐《SPS线性代数研讨班第一、二讲》2026-10-24 更新稿。§2.6.6：新旧基坐标换算、相似变换的乘法顺序、完整往返计算与几何不变量。每次从 12 道候选题中随机抽取 8 道（5 道概念题、3
+  道短计算题），单次不重复；不同次练习可能重复。每题含提示和解析，简答题对照参考答案自评。新题待人工审核，当前仅在预览中可用。
+status: draft
+tags:
+- SPS 线性代数研讨班配套
+- 线性代数
+- 入门
+- 直观理解
+feedback_mode: immediate
+selection:
+  type: query
+  count: 8
+  filters:
+    question_ids:
+    - q-000667
+    - q-000668
+    - q-000669
+    - q-000670
+    - q-000671
+    - q-000672
+    - q-000673
+    - q-000674
+    - q-000675
+    - q-000676
+    - q-000677
+    - q-000678
+  slots:
+  - id: intuition
+    count: 5
+    filters:
+      styles:
+      - conceptual
+  - id: calculation
+    count: 3
+    filters:
+      styles:
+      - computational
+version: 1
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: '独立编排新版讲义配套练习；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。使用大于单次题量的候选池和明确概念/计算配额。'
+  ai_assisted: true
+license: CC-BY-SA-4.0

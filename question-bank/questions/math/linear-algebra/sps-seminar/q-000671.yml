@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000671
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+- linalg.matrix-representation
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  设 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，且 $A=\mathcal M_{\mathcal B}(T)$。求新基下的 $A^{\prime}=\mathcal M_{\mathcal B^{\prime}}(T)$ 时，正确关系是哪一个？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $A^{\prime}=CAC^{-1}$
+- id: B
+  content: $A^{\prime}=C^{-1}AC$
+- id: C
+  content: $A^{\prime}=AC^{-1}$
+answer:
+  choice: B
+hints:
+- 从新基输入出发：先转成原基输入，再执行 A，最后转回新基。
+solution: 矩阵从右往左作用：$C$ 把新坐标变为原坐标，$A$ 执行变换，$C^{-1}$ 把输出转回新坐标。因此 $A^{\prime}=C^{-1}AC$。
+feedback:
+  correct: 正确。三个因子的顺序与输入输出坐标方向一致。
+  incorrect: 再想一想：从新基输入出发：先转成原基输入，再执行 A，最后转回新基。
+  choices:
+    A: 在本题指定的 C 方向下，这把去程与回程交换了。
+    B: 三个因子的顺序与输入输出坐标方向一致。
+    C: 输入和输出都必须处理，不能只换算一侧。

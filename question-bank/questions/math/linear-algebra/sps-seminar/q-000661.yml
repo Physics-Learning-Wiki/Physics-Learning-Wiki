@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000661
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.5 矩阵幂与体积 · 2026-10-24 更新稿**
+
+  某三维线性变换的矩阵 $A$ 满足 $\det A=-2$。连续执行三次后，$\det(A^3)$ 和普通体积放大倍数分别是多少？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.5 矩阵幂与体积；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $-6$ 与 $6$
+- id: B
+  content: $-8$ 与 $8$
+- id: C
+  content: $8$ 与 $8$
+answer:
+  choice: B
+hints:
+- 连续复合的行列式相乘；普通体积取绝对值。
+solution: $\det(A^3)=(-2)^3=-8$。所以体积放大为 $8$ 倍，取向翻转三次后仍与原取向相反。
+feedback:
+  correct: 正确。三个负因子相乘为负，普通体积倍率为绝对值。
+  incorrect: 再想一想：连续复合的行列式相乘；普通体积取绝对值。
+  choices:
+    A: 复合时缩放因子相乘，不是相加。
+    B: 三个负因子相乘为负，普通体积倍率为绝对值。
+    C: 三次取向翻转不能抵消成保持取向。

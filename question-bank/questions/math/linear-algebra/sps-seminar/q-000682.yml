@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000682
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  已知
+
+  $$
+  A=\begin{pmatrix}3&1\\0&2\end{pmatrix}.
+  $$
+
+  将 $A\mathbf v=\lambda\mathbf v$ 移项后，矩阵 $A-\lambda I_2$ 是什么？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $\begin{pmatrix}3-\lambda&1-\lambda\\-\lambda&2-\lambda\end{pmatrix}$
+- id: B
+  content: $\begin{pmatrix}3-\lambda&1\\0&2-\lambda\end{pmatrix}$
+- id: C
+  content: $\begin{pmatrix}3\lambda&\lambda\\0&2\lambda\end{pmatrix}$
+answer:
+  choice: B
+hints:
+- λ 乘的是单位矩阵，所以只改变对角元素。
+solution: $\lambda I_2=\left(\begin{smallmatrix}\lambda&0\\0&\lambda\end{smallmatrix}\right)$。逐项相减，只在 A 的两个对角位置减
+  λ，非对角位置保持不变。
+feedback:
+  correct: 正确。单位矩阵只有对角元素非零。
+  incorrect: 再想一想：λ 乘的是单位矩阵，所以只改变对角元素。
+  choices:
+    A: 不能把 λ 从每一个元素中都减掉。
+    B: 单位矩阵只有对角元素非零。
+    C: 移项使用减法，不是把整个矩阵乘以 λ。

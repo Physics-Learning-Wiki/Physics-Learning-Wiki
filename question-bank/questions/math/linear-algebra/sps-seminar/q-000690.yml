@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000690
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  考虑实数或复数范围内的矩阵
+
+  $$
+  J=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+  $$
+
+  已经知道它的唯一特征值是 $1$。令 $\mathbf v=(x,y)^{\mathsf T}$。
+
+  1. 把 $J\mathbf v=\mathbf v$ 写成两个分量的等式，找出全部非零特征向量。
+  2. 能否选出两个线性无关的特征向量？能否对角化？
+  3. 允许 x、y 为复数，会改变上述结论吗？
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 180
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: free_response
+choice_order: fixed
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 3000
+  rows: 6
+  placeholder: 逐步写出计算或说明理由；普通文字和数字即可。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：尚未解出 y=0，或仍把重复特征值当作两个独立方向。
+    points: 0
+  - id: partial
+    label: 部分掌握：找出全部特征向量，但尚未解释独立性、对角化或复数情形。
+    points: 0.5
+  - id: complete
+    label: 基本掌握：三问均正确，并明确区分存在特征向量与存在特征向量基。
+    points: 1
+reference_answer: 特征向量恰为 $(x,0)^{\mathsf T}$，其中 $x\ne0$。它们都共线，不能组成二维空间的基，因此在实数和复数范围内均不能对角化。
+hints:
+- 第一分量给出 x+y=x；不要把重根的出现次数当作独立向量的个数。
+solution: $J\mathbf v=(x+y,y)^{\mathsf T}$，等式要求 $x+y=x$，即 $y=0$；非零条件要求 $x\ne0$。所有特征向量都是 $(1,0)^{\mathsf T}$ 的倍数，只有一个独立方向。允许复数也不会改变方程
+  y=0。这说明复矩阵有特征值，并不保证存在足够多的独立特征向量；“有特征向量”与“可对角化”是不同要求。
+feedback:
+  correct: 请对照参考答案检查每一步，并按量规自评。
+  incorrect: 先根据提示写出关键关系，再对照解析补充。

@@ -1,8 +1,8 @@
 schema_version: 1
 id: math.linear-algebra.sps-seminar.matrices
 title: SPS 线性代数研讨班配套｜矩阵入门：看懂并动手算
-description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.2、§2.4、§2.5：矩阵的列、加法与数乘、乘积尺寸、行乘列、复合顺序、可逆变换与转置。每次从已发布候选题中随机抽取 6
-  道，单次不重复；当前有 8 道已发布候选题；36 道扩充题池见预览题集，待人工审核后接入。不同次练习可能遇到相同题目。每次含 2–4 道短计算题。每题均有提示和解析。
+description: 对齐《SPS线性代数研讨班第一、二讲》2026-10-23 更新稿。§2.2、§2.4、§2.5：矩阵表示、基本运算、复合顺序、可逆变换、转置与伴随入门。每次从 36 道已发布候选题中随机抽取 8
+  道（5 道概念题、3 道短计算题），单次不重复；不同次练习可能遇到相同题目。每题均有提示和解析。
 status: published
 tags:
 - SPS 线性代数研讨班配套
@@ -12,7 +12,7 @@ tags:
 feedback_mode: immediate
 selection:
   type: query
-  count: 6
+  count: 8
   filters:
     question_ids:
     - q-000334
@@ -23,13 +23,46 @@ selection:
     - q-000339
     - q-000340
     - q-000341
-  constraints:
-  - field: style
-    values:
-    - computational
-    min: 2
-    max: 4
-version: 2
+    - q-000575
+    - q-000576
+    - q-000577
+    - q-000578
+    - q-000579
+    - q-000580
+    - q-000581
+    - q-000582
+    - q-000583
+    - q-000584
+    - q-000585
+    - q-000586
+    - q-000587
+    - q-000588
+    - q-000589
+    - q-000590
+    - q-000615
+    - q-000616
+    - q-000617
+    - q-000618
+    - q-000619
+    - q-000620
+    - q-000621
+    - q-000622
+    - q-000635
+    - q-000636
+    - q-000637
+    - q-000638
+  slots:
+  - id: intuition
+    count: 5
+    filters:
+      styles:
+      - conceptual
+  - id: calculation
+    count: 3
+    filters:
+      styles:
+      - computational
+version: 3
 authors:
 - name: farawayshore
   kind: human
@@ -38,6 +71,6 @@ authors:
   kind: ai
 provenance:
   type: original
-  note: 围绕 SPS 线性代数研讨班第一、二讲独立编排；采用限定候选池的随机抽题，单次题目不重复，保留即时反馈。
+  note: 围绕 SPS 线性代数研讨班第一、二讲独立编排；采用限定候选池的随机抽题，单次题目不重复，保留即时反馈。 2026-10-24 接入已经完成人工审核并发布的完整候选池，保留原题集 URL。
   ai_assisted: true
 license: CC-BY-SA-4.0

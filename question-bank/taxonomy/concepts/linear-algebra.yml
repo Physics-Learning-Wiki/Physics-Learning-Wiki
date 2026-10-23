@@ -34,3 +34,11 @@ linalg.determinant:
   title: 行列式、面积缩放与取向
   topics:
   - math.linear-algebra
+linalg.change-of-basis:
+  title: 换基与相似变换
+  topics:
+  - math.linear-algebra
+linalg.eigenvalues:
+  title: 特征值、特征向量与对角化
+  topics:
+  - math.linear-algebra

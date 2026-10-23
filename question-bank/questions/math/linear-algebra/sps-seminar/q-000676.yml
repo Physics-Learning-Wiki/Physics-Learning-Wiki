@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000676
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  有两种记法：$[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，以及 $[\mathbf x]_{\mathcal B^{\prime}}=P_{\mathrm c}[\mathbf x]_{\mathcal B}$。若 $A^{\prime}=C^{-1}AC$，用 $P_{\mathrm c}$ 应怎样写？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $P_{\mathrm c}=C^{-1}$，且 $A^{\prime}=P_{\mathrm c}AP_{\mathrm c}^{-1}$
+- id: B
+  content: $P_{\mathrm c}=C$，且 $A^{\prime}=P_{\mathrm c}^{-1}AP_{\mathrm c}$
+- id: C
+  content: $P_{\mathrm c}=C^{-1}$，且 $A^{\prime}=P_{\mathrm c}^{-1}AP_{\mathrm c}$
+answer:
+  choice: A
+hints:
+- 不要只记字母；先看它把哪一组坐标变成哪一组坐标。
+solution: 两条坐标式互为反向，所以 $P_{\mathrm c}=C^{-1}$。代入 $A^{\prime}=C^{-1}AC$，得到 $A^{\prime}=P_{\mathrm c}AP_{\mathrm c}^{-1}$。两种外观不同的公式表达同一件事。
+feedback:
+  correct: 正确。方向定义决定公式中的逆矩阵放在哪一侧。
+  incorrect: 再想一想：不要只记字母；先看它把哪一组坐标变成哪一组坐标。
+  choices:
+    A: 方向定义决定公式中的逆矩阵放在哪一侧。
+    B: 两种坐标换算方向相反，一般不相等。
+    C: 这里已经换成反向定义的矩阵，公式顺序也要随之改变。

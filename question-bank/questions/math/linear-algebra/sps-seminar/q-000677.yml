@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000677
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  从新坐标回到原坐标的矩阵为
+
+  $$
+  C=\begin{pmatrix}1&0\\1&1\end{pmatrix}.
+  $$
+
+  若某次计算得到输出的新坐标 $[\mathbf y]_{\mathcal B^{\prime}}=(2,-1)^{\mathsf T}$，则输出的原坐标是什么？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $(2,-3)^{\mathsf T}$
+- id: B
+  content: $(2,1)^{\mathsf T}$
+- id: C
+  content: $(1,-1)^{\mathsf T}$
+answer:
+  choice: B
+hints:
+- 本题要从新坐标返回原坐标，直接乘 C。
+solution: $[\mathbf y]_{\mathcal B}=C(2,-1)^{\mathsf T}=(2,2-1)^{\mathsf T}=(2,1)^{\mathsf T}$。两列线性组合也是同一计算。
+feedback:
+  correct: 正确。第二个原坐标为 2 加上负 1。
+  incorrect: 再想一想：本题要从新坐标返回原坐标，直接乘 C。
+  choices:
+    A: 这是误用逆矩阵得到的反方向结果。
+    B: 第二个原坐标为 2 加上负 1。
+    C: 矩阵乘列向量时，需要按行计算每个输出分量。

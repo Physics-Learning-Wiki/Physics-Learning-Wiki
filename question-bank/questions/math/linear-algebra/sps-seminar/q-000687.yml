@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000687
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  实平面中的旋转矩阵 $R=-I_2$ 表示旋转 $180^\circ$。对 $\mathbf v=(1,2)^{\mathsf T}$，它对应的特征值是多少？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $-1$
+- id: B
+  content: $1$
+- id: C
+  content: 不存在，因为任何旋转都没有实特征向量
+answer:
+  choice: A
+hints:
+- 计算 $R\mathbf v$，再与原向量比较。
+solution: $R\mathbf v=(-1,-2)^{\mathsf T}=-\mathbf v$，所以特征值为 $-1$。事实上每个非零实向量都是它的特征向量；不能把 90° 的结论推广到所有旋转。
+feedback:
+  correct: 正确。反向但保持长度，对应特征值负 1。
+  incorrect: 再想一想：计算 $R\mathbf v$，再与原向量比较。
+  choices:
+    A: 反向但保持长度，对应特征值负 1。
+    B: 特征值 1 意味着向量不变，这里方向反了。
+    C: 180° 旋转保持每条过原点的直线，与 90° 情况不同。

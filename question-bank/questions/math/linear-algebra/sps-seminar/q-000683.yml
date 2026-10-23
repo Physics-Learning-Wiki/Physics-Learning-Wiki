@@ -1,0 +1,56 @@
+schema_version: 3
+id: q-000683
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  对矩阵
+
+  $$
+  A=\begin{pmatrix}4&1\\0&2\end{pmatrix},
+  $$
+
+  解 $\det(A-\lambda I_2)=0$，得到哪些特征值？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $4$ 与 $2$
+- id: B
+  content: $1$ 与 $0$
+- id: C
+  content: 只有 $8$
+answer:
+  choice: A
+hints:
+- 二阶行列式等于主对角乘积减副对角乘积。
+solution: $\det(A-\lambda I_2)=(4-\lambda)(2-\lambda)-1\cdot0$，令其为零得到 $\lambda=4$ 或 $2$。行列式 $8$ 是两者之积，不是本题的特征值。
+feedback:
+  correct: 正确。两个因子分别为零，得到这两个根。
+  incorrect: 再想一想：二阶行列式等于主对角乘积减副对角乘积。
+  choices:
+    A: 两个因子分别为零，得到这两个根。
+    B: 非对角元素不直接给出本题的特征值。
+    C: 8 是 det A，不能把行列式当作唯一特征值。
