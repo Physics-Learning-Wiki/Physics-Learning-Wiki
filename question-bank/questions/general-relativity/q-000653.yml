@@ -1,0 +1,166 @@
+schema_version: 3
+id: q-000653
+version: 1
+status: draft
+locale: zh-CN
+related_pages:
+  - modern.general-relativity
+type: free_response
+choice_order: fixed
+stem: |
+  Schwarzschild 度规为
+
+  $$
+  \mathrm{d}s^2=-\left(1-\frac{2M}{r}\right)\mathrm{d}t^2
+  +\left(1-\frac{2M}{r}\right)^{-1}\mathrm{d}r^2
+  +r^2\left(\mathrm{d}\theta^2+\sin^2\theta\,\mathrm{d}\varphi^2\right),
+  $$
+
+  其 Kretschmann 标量为
+
+  $$
+  K\equiv R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma}=\frac{48M^2}{r^6}.
+  $$
+
+  1. 计算 $K$ 在 $r=2M$ 处的值以及 $r\to0$ 时的行为，由此判断哪一处是真正的曲率奇点。
+  2. 引入
+
+  $$
+  r_*=r+2M\ln\left(\frac{r}{2M}-1\right),
+  \qquad
+  v=t+r_* ,
+  $$
+
+  把度规改写为 $(v,r,\theta,\varphi)$ 坐标，并说明 $r=2M$ 处度规分量不再出现发散因子。
+  3. 结合以上两点，解释为什么 $r=2M$ 只是坐标奇点，而 $r=0$ 是物理奇点。
+response:
+  format: plain_text
+  required: true
+  min_chars: 120
+  max_chars: 9000
+  rows: 14
+  placeholder: "先算 $K$，再做坐标变换并检查度规在视界处的行为……"
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  $$
+  K(2M)=\frac{48M^2}{(2M)^6}=\frac{3}{4M^4}
+  $$
+
+  为有限值；$r\to0$ 时 $K\to\infty$。因此 $r=0$ 是曲率奇点。
+
+  在 $(v,r,\theta,\varphi)$ 坐标中
+
+  $$
+  \mathrm{d}s^2=-\left(1-\frac{2M}{r}\right)\mathrm{d}v^2
+  +2\,\mathrm{d}v\,\mathrm{d}r
+  +r^2\left(\mathrm{d}\theta^2+\sin^2\theta\,\mathrm{d}\varphi^2\right).
+  $$
+
+  当 $r\to2M$ 时 $g_{vv}\to0$、$g_{vr}=1$、$g_{rr}=0$，没有 $1/f$ 型发散；配合有限的曲率标量，可知 $r=2M$ 只是坐标奇点（事件视界），而 $r=0$ 是真正的曲率奇点。
+solution: |
+  先看 Kretschmann 标量。它是标量，在坐标变换下不变，因此可以用于判断内禀奇点。
+
+  在 $r=2M$ 处，
+
+  $$
+  K(2M)=\frac{48M^2}{(2M)^6}
+  =\frac{48M^2}{64M^6}
+  =\frac{3}{4M^4},
+  $$
+
+  这是有限值。反之，当 $r\to0$ 时
+
+  $$
+  K=\frac{48M^2}{r^6}\longrightarrow\infty .
+  $$
+
+  所以 $r=0$ 是曲率发散的真实奇点，而 $r=2M$ 不是曲率奇点。
+
+  现在做坐标变换。记
+
+  $$
+  f(r)=1-\frac{2M}{r},
+  \qquad
+  r_*=r+2M\ln\left(\frac{r}{2M}-1\right).
+  $$
+
+  对 $r$ 求导：
+
+  $$
+  \frac{\mathrm{d}r_*}{\mathrm{d}r}
+  =1+\frac{2M}{r-2M}
+  =\frac{1}{1-2M/r}
+  =\frac{1}{f(r)} .
+  $$
+
+  因此
+
+  $$
+  \mathrm{d}v=\mathrm{d}t+\frac{\mathrm{d}r}{f(r)},
+  \qquad
+  \mathrm{d}t=\mathrm{d}v-\frac{\mathrm{d}r}{f(r)} .
+  $$
+
+  代入度规的时间部分：
+
+  $$
+  -f\,\mathrm{d}t^2
+  =-f\left(\mathrm{d}v-\frac{\mathrm{d}r}{f}\right)^2
+  =-f\,\mathrm{d}v^2+2\,\mathrm{d}v\,\mathrm{d}r-\frac{\mathrm{d}r^2}{f}.
+  $$
+
+  再加上径向项 $\mathrm{d}r^2/f$，两项恰好抵消：
+
+  $$
+  -f\,\mathrm{d}t^2+\frac{\mathrm{d}r^2}{f}
+  =-f\,\mathrm{d}v^2+2\,\mathrm{d}v\,\mathrm{d}r .
+  $$
+
+  于是
+
+  $$
+  \mathrm{d}s^2
+  =-\left(1-\frac{2M}{r}\right)\mathrm{d}v^2
+  +2\,\mathrm{d}v\,\mathrm{d}r
+  +r^2\left(\mathrm{d}\theta^2+\sin^2\theta\,\mathrm{d}\varphi^2\right).
+  $$
+
+  在新坐标中，$r=2M$ 处的度规分量为
+
+  $$
+  g_{vv}\to0,\qquad g_{vr}=1,\qquad g_{rr}=0,
+  $$
+
+  角向分量也保持有限。这里不再出现 $1/f$ 型的发散因子，因此度规在该处是正则的（至少不再因坐标选择而奇异）。
+
+  结论：$r=2M$ 处的"发散"来自 Schwarzschild 坐标在视界处失效，是坐标奇点；$K$ 有限且存在正则坐标覆盖说明时空几何本身没有在视界处坏掉。$r=0$ 处 $K$ 发散，且不存在坐标变换能消除，是真正的曲率奇点。
+
+  注：上面的 $r_*$ 定义适用于 $r>2M$；若要延伸到 $r<2M$，可把对数写成 $\ln|r/(2M)-1|$。
+hints:
+  - "先把 $r=2M$ 代入 $K$，注意 $(2M)^6=64M^6$。"
+  - '求出 $\mathrm{d}r_*/\mathrm{d}r=1/f$，再算 $\mathrm{d}t$。'
+  - "检查新度规中是否还存在 $1/f$ 因子。"
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 900
+provenance:
+  type: original
+  note: "原创题干与完整解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0
