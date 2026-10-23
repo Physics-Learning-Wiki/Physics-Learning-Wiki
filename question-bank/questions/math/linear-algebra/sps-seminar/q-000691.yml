@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000691
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.determinant
+- linalg.image-kernel
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
+  设 $A$ 是实方阵，实数 $\lambda$ 满足 $\det(A-\lambda I)=0$。为什么这能保证存在非零实特征向量？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程的充分性；源文件 SHA-256: e61eb903d56eaa5d46e8509d1f1246fe91e77800413f5f1b3259be31d8a1a2bd。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 因为 $A-\lambda I$ 必须是零矩阵
+- id: B
+  content: 因为 $A-\lambda I$ 的列线性相关，存在非零系数列 $\mathbf c$ 使 $(A-\lambda I)\mathbf c=0$
+- id: C
+  content: 因为行列式为零就表示每一列都是零列
+answer:
+  choice: B
+hints:
+- 线性相关意味着存在一组不全为零的线性组合系数。
+solution: 行列式为零说明 $A-\lambda I$ 的列线性相关。取不全为零的组合系数组成 $\mathbf c$，则 $(A-\lambda I)\mathbf c=0$，所以 $A\mathbf c=\lambda\mathbf
+  c$ 且 $\mathbf c\ne0$。这就是所需特征向量的坐标。
+feedback:
+  correct: 正确。列的相关系数直接给出一个非零核向量。
+  incorrect: 再想一想：线性相关意味着存在一组不全为零的线性组合系数。
+  choices:
+    A: 奇异矩阵不一定是零矩阵，只需有非平凡的核。
+    B: 列的相关系数直接给出一个非零核向量。
+    C: 列之间可以相互依赖，而不必任何一列为零。

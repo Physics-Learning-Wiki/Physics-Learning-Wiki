@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000694
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.determinant
+- linalg.image-kernel
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
+  设 $A$ 为 $n$ 阶实方阵，$\lambda$ 为实数。$\det(A-\lambda I)=0$ 保证有非零特征向量。它是否保证每个非零向量都满足 $A\mathbf v=\lambda\mathbf v$？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程的充分性；源文件 SHA-256: e61eb903d56eaa5d46e8509d1f1246fe91e77800413f5f1b3259be31d8a1a2bd。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 保证，因为行列式是整个矩阵的量
+- id: B
+  content: 不保证；只有 $A-\lambda I$ 的核中的非零向量满足这个方程
+- id: C
+  content: 不保证，因为这个 λ 还不一定是特征值
+answer:
+  choice: B
+hints:
+- “至少存在一个非零解”与“所有非零向量都是解”是不同的命题。
+solution: 行列式为零保证核中至少有一个非零向量，并不保证核是整个空间。例如 $A=\operatorname{diag}(2,5)$、$\lambda=2$ 时，$(1,0)^{\mathsf T}$ 是特征向量，但
+  $(0,1)^{\mathsf T}$ 不满足该方程。只有 $A=\lambda I$ 时，每个非零向量才都属于这一特征值。
+feedback:
+  correct: 正确。解集是核去掉零向量，通常只占空间的一部分。
+  incorrect: 再想一想：“至少存在一个非零解”与“所有非零向量都是解”是不同的命题。
+  choices:
+    A: 矩阵的一个整体条件不意味着所有向量都落在其核里。
+    B: 解集是核去掉零向量，通常只占空间的一部分。
+    C: 在题设数域内，行列式方程的根确实是特征值；问题在于并非所有向量都适用。
