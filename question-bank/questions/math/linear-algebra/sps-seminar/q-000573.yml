@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000573
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  一组基有两支向量，就必须画成互相垂直吗？
+choices:
+- id: A
+  content: 不必，只要在平面中不共线
+- id: B
+  content: 必须，否则无法定义坐标
+- id: C
+  content: 必须，否则不是向量
+answer:
+  choice: A
+hints:
+- 基要求的是独立方向和唯一展开．
+solution: 斜着的两条独立方向也能覆盖平面并给出唯一坐标．垂直是方便的额外几何条件，不是基的定义．
+feedback:
+  correct: 正确．斜着的两条独立方向也能覆盖平面并给出唯一坐标．垂直是方便的额外几何条件，不是基的定义．
+  incorrect: 先想一想：基要求的是独立方向和唯一展开．
+  choices:
+    A: 斜着的两条独立方向也能覆盖平面并给出唯一坐标．垂直是方便的额外几何条件，不是基的定义．
+    B: 这个判断不符合本题的结构．斜着的两条独立方向也能覆盖平面并给出唯一坐标．垂直是方便的额外几何条件，不是基的定义．
+    C: 注意区分相关概念．斜着的两条独立方向也能覆盖平面并给出唯一坐标．垂直是方便的额外几何条件，不是基的定义．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

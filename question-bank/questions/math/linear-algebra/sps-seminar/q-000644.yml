@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000644
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.3 · 2026-10-23 更新稿**
+
+  设 $A$ 是 $3\times3$ 实矩阵且 $\det A=-2$。把整个矩阵乘以 $2$，$\det(2A)$ 是多少？
+choices:
+- id: A
+  content: $-16$
+- id: B
+  content: $-4$
+- id: C
+  content: $16$
+answer:
+  choice: A
+hints:
+- 整个三阶矩阵乘以二，意味着有几列各自乘以二？
+solution: 三列各带来一个因子 $2$，所以 $\det(2A)=2^3\det A=8\times(-2)=-16$。正的缩放因子不会消除原来的取向反转。
+feedback:
+  correct: 正确。三列各带来一个因子 $2$，所以 $\det(2A)=2^3\det A=8\times(-2)=-16$。正的缩放因子不会消除原来的取向反转。
+  incorrect: 再想一想：整个三阶矩阵乘以二，意味着有几列各自乘以二？
+  choices:
+    A: 三个列因子相乘，并保留原行列式的负号。
+    B: 这个结果只乘了一次二，相当于仅改变一列。
+    C: 绝对值是普通体积缩放比，但题目要求保留符号的行列式。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.6.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

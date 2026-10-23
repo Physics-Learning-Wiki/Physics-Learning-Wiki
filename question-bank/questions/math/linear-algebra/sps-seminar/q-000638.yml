@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000638
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.6 与 §2.2.7 · 2026-10-23 更新稿**
+
+  先做 $S(x,y)=(2x,y)$，再做 $H(x,y)=(x+y,y)$，最终得到 $(8,2)$。原来的输入是什么？
+choices:
+- id: A
+  content: $(3,2)$
+- id: B
+  content: $(2,2)$
+- id: C
+  content: $(4,2)$
+answer:
+  choice: A
+hints:
+- 先撤销最后的剪切，再撤销最初的横向拉伸。
+solution: 先用 $H^{-1}(X,Y)=(X-Y,Y)$ 得到 $(6,2)$，再将横坐标除以二，得到 $(3,2)$。代回检验：$(3,2)\to(6,2)\to(8,2)$。
+feedback:
+  correct: 正确。先用 $H^{-1}(X,Y)=(X-Y,Y)$ 得到 $(6,2)$，再将横坐标除以二，得到 $(3,2)$。代回检验：$(3,2)\to(6,2)\to(8,2)$。
+  incorrect: 再想一想：先撤销最后的剪切，再撤销最初的横向拉伸。
+  choices:
+    A: 按相反顺序撤销两步，结果可代回检验。
+    B: 先除以二再减去纵坐标，会得到这个答案；它颠倒了撤销顺序。
+    C: 只撤销拉伸而未撤销剪切，仍没有回到原输入。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.6 与 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

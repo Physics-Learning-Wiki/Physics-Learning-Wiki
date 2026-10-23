@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000627
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · 附录 A 三维割补 · 2026-10-23 更新稿**
+
+  用外接长方体减去外围小块求体积，为什么要避免把同一小块减去两次？
+choices:
+- id: A
+  content: 重复扣除会把目标体积算小
+- id: B
+  content: 重复扣除不会影响结果
+- id: C
+  content: 重复扣除一定把目标体积算大
+answer:
+  choice: A
+hints:
+- 每一块多余空间只应被移走一次．
+solution: 外接体积中每块空间只计入一次，若同一块外围空间减去两次，就额外减掉一份体积，得到的数偏小．需要划分成内部不重叠的小块，或明确处理重叠．
+feedback:
+  correct: 正确。外接体积中每块空间只计入一次，若同一块外围空间减去两次，就额外减掉一份体积，得到的数偏小．需要划分成内部不重叠的小块，或明确处理重叠．
+  incorrect: 再想一想：每一块多余空间只应被移走一次．
+  choices:
+    A: 外接体积中每块空间只计入一次，若同一块外围空间减去两次，就额外减掉一份体积，得到的数偏小．需要划分成内部不重叠的小块，或明确处理重叠．
+    B: 同一块外围空间只在外接体积中计入一次，多扣一次会产生额外的负贡献。
+    C: 额外的扣除使计算结果减小，不会使它增大。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 附录 A 三维割补；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

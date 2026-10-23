@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000583
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  已知 A 是 2×3 矩阵，B 是 3×4 矩阵，AB 的形状是什么？
+choices:
+- id: A
+  content: 2×4
+- id: B
+  content: 3×3
+- id: C
+  content: 4×2
+answer:
+  choice: A
+hints:
+- B 先把四个输入分量变成三个，再由 A 变成两个．
+solution: 中间维数 3 接得上，最终有 4 个输入分量、2 个输出分量，所以矩阵是 2 行 4 列．
+feedback:
+  correct: 正确．中间维数 3 接得上，最终有 4 个输入分量、2 个输出分量，所以矩阵是 2 行 4 列．
+  incorrect: 先想一想：B 先把四个输入分量变成三个，再由 A 变成两个．
+  choices:
+    A: 中间维数 3 接得上，最终有 4 个输入分量、2 个输出分量，所以矩阵是 2 行 4 列．
+    B: 这个判断不符合本题的结构．中间维数 3 接得上，最终有 4 个输入分量、2 个输出分量，所以矩阵是 2 行 4 列．
+    C: 注意区分相关概念．中间维数 3 接得上，最终有 4 个输入分量、2 个输出分量，所以矩阵是 2 行 4 列．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -268,11 +268,16 @@ export function renderFeedback(options: FeedbackOptions): HTMLElement {
   if (question.feedback?.choicesHtml && (typeof answer === "string" || Array.isArray(answer))) {
     const selected = Array.isArray(answer) ? answer : [answer];
     const explanations = selected
-      .map(id =>
-        question.feedback?.choicesHtml?.[id]
-          ? `<li><strong>${escapeHtml(id)}：</strong>${question.feedback.choicesHtml[id]}</li>`
-          : ""
-      )
+      .map(id => {
+        const explanation = question.feedback?.choicesHtml?.[id];
+        if (!explanation) return "";
+        const index =
+          question.type === "single_choice" || question.type === "multiple_choice"
+            ? question.choices.findIndex(choice => choice.id === id)
+            : -1;
+        const label = index >= 0 ? String.fromCharCode(65 + index) : id;
+        return `<li><strong>${escapeHtml(label)}：</strong>${explanation}</li>`;
+      })
       .filter(Boolean);
     if (explanations.length > 0)
       targeted = `<div class="plw-quiz-choice-feedback"><strong>所选选项解析：</strong><ul>${explanations.join(

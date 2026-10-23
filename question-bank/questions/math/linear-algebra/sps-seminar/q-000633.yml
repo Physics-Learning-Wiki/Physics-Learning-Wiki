@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000633
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.image-kernel
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.2 与 §2.2.7 · 2026-10-23 更新稿**
+
+  线性映射 $J:\mathbb R\to\mathbb R^2$ 定义为 $J(t)=(t,0)$。每个输入都能由其像唯一恢复，为什么它仍没有定义在整个 $\mathbb R^2$ 上的双侧逆映射？
+choices:
+- id: A
+  content: 因为它把所有输入都送到了同一个点
+- id: B
+  content: 因为线性映射的输入、输出必须同维
+- id: C
+  content: 因为 $(0,1)$ 等输出空间中的向量没有原像
+answer:
+  choice: C
+hints:
+- 双侧逆要求 $J^{-1}J=I_{\mathbb R}$，也要求 $JJ^{-1}=I_{\mathbb R^2}$。
+solution: $J$ 是单射，但像只覆盖 $x$ 轴，并不满射到 $\mathbb R^2$。投影 $P(x,y)=x$ 满足 $PJ=I_{\mathbb R}$，但 $JP(x,y)=(x,0)$，不是平面上的恒等映射。若把陪域限制为
+  $x$ 轴，才得到线性同构。
+feedback:
+  correct: 正确。$J$ 是单射，但像只覆盖 $x$ 轴，并不满射到 $\mathbb R^2$。投影 $P(x,y)=x$ 满足 $PJ=I_{\mathbb R}$，但 $JP(x,y)=(x,0)$，不是平面上的恒等映射。若把陪域限制为
+    $x$ 轴，才得到线性同构。
+  incorrect: 再想一想：双侧逆要求 $J^{-1}J=I_{\mathbb R}$，也要求 $JJ^{-1}=I_{\mathbb R^2}$。
+  choices:
+    A: 不同的 $t$ 给出不同的 $(t,0)$；它没有混淆输入。
+    B: 线性映射允许连接不同维空间，双侧可逆性才要求有限维空间同维。
+    C: 缺少满射性，无法对输出空间中的每个向量撤销操作。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.2 与 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

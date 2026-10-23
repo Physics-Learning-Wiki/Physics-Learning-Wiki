@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000614
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1.1 · 2026-10-23 更新稿**
+
+  在三维有序基 $(e_1,e_2,e_3)$ 下，$v=2e_1-e_3$ 的坐标列是什么？
+choices:
+- id: A
+  content: $(2,0,-1)^{\mathsf T}$
+- id: B
+  content: $(2,-1,0)^{\mathsf T}$
+- id: C
+  content: $(2,1)^{\mathsf T}$
+answer:
+  choice: A
+hints:
+- 未出现的基方向，系数为零，但位置仍要保留．
+solution: 三个系数依次为 2、0、-1．不能删掉中间的零，否则无法分辨 -1 对应第二条还是第三条基方向．
+feedback:
+  correct: 正确。三个系数依次为 2、0、-1．不能删掉中间的零，否则无法分辨 -1 对应第二条还是第三条基方向．
+  incorrect: 再想一想：未出现的基方向，系数为零，但位置仍要保留．
+  choices:
+    A: 三个系数依次为 2、0、-1．不能删掉中间的零，否则无法分辨 -1 对应第二条还是第三条基方向．
+    B: $-1$ 是 $e_3$ 的系数；放在第二个位置会表示另一个向量 $2e_1-e_2$。
+    C: 三维基下必须保留三个系数；零系数也要占据自己的位置。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.1.1；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

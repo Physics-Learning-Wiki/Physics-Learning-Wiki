@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000562
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.vector-space
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  过原点的一条直线，采用通常的加法和实数数乘，是实向量空间吗？
+choices:
+- id: A
+  content: 是，因为相加和数乘都留在直线上
+- id: B
+  content: 不是，因为它不是整个平面
+- id: C
+  content: 不是，因为直线只允许正方向
+answer:
+  choice: A
+hints:
+- 考虑反向、缩放和首尾相接．
+solution: 所有向量都可写成同一非零向量的实数倍，相加和数乘仍有这种形式，也包含零向量．向量空间不必是整个平面．
+feedback:
+  correct: 正确．所有向量都可写成同一非零向量的实数倍，相加和数乘仍有这种形式，也包含零向量．向量空间不必是整个平面．
+  incorrect: 先想一想：考虑反向、缩放和首尾相接．
+  choices:
+    A: 所有向量都可写成同一非零向量的实数倍，相加和数乘仍有这种形式，也包含零向量．向量空间不必是整个平面．
+    B: 这个判断不符合本题的结构．所有向量都可写成同一非零向量的实数倍，相加和数乘仍有这种形式，也包含零向量．向量空间不必是整个平面．
+    C: 注意区分相关概念．所有向量都可写成同一非零向量的实数倍，相加和数乘仍有这种形式，也包含零向量．向量空间不必是整个平面．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000637
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.4.2 拓展 · 2026-10-23 更新稿**
+
+  在 $\mathbb R^2$ 的标准欧氏内积下，取 $A=\begin{pmatrix}1&2\\0&1\end{pmatrix}$、$y=(1,0)^{\mathsf T}$。要使 $\langle Ax,y\rangle=\langle x,z\rangle$ 对每个 $x$ 成立，应选哪个 $z$？
+choices:
+- id: A
+  content: $(1,0)^{\mathsf T}$
+- id: B
+  content: $(1,-2)^{\mathsf T}$
+- id: C
+  content: $(1,2)^{\mathsf T}$
+answer:
+  choice: C
+hints:
+- 设 $x=(x_1,x_2)^{\mathsf T}$，直接算左侧读出了哪两个分量的组合。
+solution: $Ax=(x_1+2x_2,x_2)^{\mathsf T}$，与 $y$ 的内积为 $x_1+2x_2$。因此 $z=(1,2)^{\mathsf T}=A^{\mathsf T}y$；例如 $x=(1,1)^{\mathsf
+  T}$ 时两种算法都得到 $3$。
+feedback:
+  correct: 正确。$Ax=(x_1+2x_2,x_2)^{\mathsf T}$，与 $y$ 的内积为 $x_1+2x_2$。因此 $z=(1,2)^{\mathsf T}=A^{\mathsf T}y$；例如 $x=(1,1)^{\mathsf
+    T}$ 时两种算法都得到 $3$。
+  incorrect: 再想一想：设 $x=(x_1,x_2)^{\mathsf T}$，直接算左侧读出了哪两个分量的组合。
+  choices:
+    A: 这只能读出 $x_1$，漏掉了剪切带来的 $2x_2$。
+    B: 它给出 $x_1-2x_2$；把剪切系数取负是在考虑撤销，不是把测量作用转移到另一边。
+    C: 两个分量恰好给出所需测量组合。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.4.2 拓展；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

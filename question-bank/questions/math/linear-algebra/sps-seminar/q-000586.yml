@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000586
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.4**
+
+  矩阵 $\begin{pmatrix}1&2\\3&4\end{pmatrix}$ 转置后，第一行是什么？
+choices:
+- id: A
+  content: $(1,3)$
+- id: B
+  content: $(1,2)$
+- id: C
+  content: $(4,2)$
+answer:
+  choice: A
+hints:
+- 原来的第一列变成第一行．
+solution: 转置交换行列位置，第一列 (1,3) 变成第一行；它不是把行顺序倒过来．
+feedback:
+  correct: 正确．转置交换行列位置，第一列 (1,3) 变成第一行；它不是把行顺序倒过来．
+  incorrect: 先想一想：原来的第一列变成第一行．
+  choices:
+    A: 转置交换行列位置，第一列 (1,3) 变成第一行；它不是把行顺序倒过来．
+    B: 这个判断不符合本题的结构．转置交换行列位置，第一列 (1,3) 变成第一行；它不是把行顺序倒过来．
+    C: 注意区分相关概念．转置交换行列位置，第一列 (1,3) 变成第一行；它不是把行顺序倒过来．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.4 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

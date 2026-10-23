@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000566
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  在标准基中，$2(1,0)+3(0,1)$ 表示哪个向量？
+choices:
+- id: A
+  content: $(2,3)$
+- id: B
+  content: $(3,2)$
+- id: C
+  content: $(5,5)$
+answer:
+  choice: A
+hints:
+- 分别看横向与纵向贡献．
+solution: 第一项提供横向 2，第二项提供纵向 3，合起来是 (2,3)．两个系数分别控制两条方向．
+feedback:
+  correct: 正确．第一项提供横向 2，第二项提供纵向 3，合起来是 (2,3)．两个系数分别控制两条方向．
+  incorrect: 先想一想：分别看横向与纵向贡献．
+  choices:
+    A: 第一项提供横向 2，第二项提供纵向 3，合起来是 (2,3)．两个系数分别控制两条方向．
+    B: 这个判断不符合本题的结构．第一项提供横向 2，第二项提供纵向 3，合起来是 (2,3)．两个系数分别控制两条方向．
+    C: 注意区分相关概念．第一项提供横向 2，第二项提供纵向 3，合起来是 (2,3)．两个系数分别控制两条方向．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

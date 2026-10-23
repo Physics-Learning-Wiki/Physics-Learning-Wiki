@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000571
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  把平面中的每支箭头绕原点旋转同一个角度，为什么保持线性？
+choices:
+- id: A
+  content: 旋转保留向量相加的平行四边形关系和数乘
+- id: B
+  content: 只因为旋转后的图形好看
+- id: C
+  content: 只因为每支箭头都没有消失
+answer:
+  choice: A
+hints:
+- 先相加再旋转，和先旋转再相加作比较．
+solution: 绕原点的统一旋转把平行四边形整体搬过去，并保留带符号的比例，因此满足可加性与齐次性．
+feedback:
+  correct: 正确．绕原点的统一旋转把平行四边形整体搬过去，并保留带符号的比例，因此满足可加性与齐次性．
+  incorrect: 先想一想：先相加再旋转，和先旋转再相加作比较．
+  choices:
+    A: 绕原点的统一旋转把平行四边形整体搬过去，并保留带符号的比例，因此满足可加性与齐次性．
+    B: 这个判断不符合本题的结构．绕原点的统一旋转把平行四边形整体搬过去，并保留带符号的比例，因此满足可加性与齐次性．
+    C: 注意区分相关概念．绕原点的统一旋转把平行四边形整体搬过去，并保留带符号的比例，因此满足可加性与齐次性．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

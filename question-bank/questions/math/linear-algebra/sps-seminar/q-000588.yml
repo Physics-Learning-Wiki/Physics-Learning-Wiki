@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000588
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  单位矩阵 I 的几何作用是什么？
+choices:
+- id: A
+  content: 每个向量保持原样
+- id: B
+  content: 每个向量变成单位长度
+- id: C
+  content: 每个向量变成零
+answer:
+  choice: A
+hints:
+- 单位矩阵的每一列就是相应标准基向量．
+solution: I 保留所有基方向及其倍数，所以 Iv=v．名称中的单位不意味着把长度归一化．
+feedback:
+  correct: 正确．I 保留所有基方向及其倍数，所以 Iv=v．名称中的单位不意味着把长度归一化．
+  incorrect: 先想一想：单位矩阵的每一列就是相应标准基向量．
+  choices:
+    A: I 保留所有基方向及其倍数，所以 Iv=v．名称中的单位不意味着把长度归一化．
+    B: 这个判断不符合本题的结构．I 保留所有基方向及其倍数，所以 Iv=v．名称中的单位不意味着把长度归一化．
+    C: 注意区分相关概念．I 保留所有基方向及其倍数，所以 Iv=v．名称中的单位不意味着把长度归一化．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

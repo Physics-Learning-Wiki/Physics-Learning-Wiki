@@ -1,7 +1,8 @@
 schema_version: 1
 id: math.linear-algebra.sps-seminar.vectors-maps
 title: SPS 线性代数研讨班配套｜向量、坐标与线性映射
-description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.1–§2.2：向量与坐标、基与维数、抽象向量空间、线性同构、线性与投影。8 道入门题，约 10 分钟；先想图像与含义，再做短计算，每题均有提示和解析。建议备纸笔；自由作答题按参考答案自评。
+description: 与《SPS线性代数研讨班第一、二讲》2026-10-22 工作稿对齐。§2.1–§2.2：向量与坐标、基与维数、抽象向量空间、线性同构、线性与投影。每次从已发布候选题中随机抽取 6 道，单次不重复；当前有
+  8 道已发布候选题；36 道扩充题池见预览题集，待人工审核后接入。不同次练习可能遇到相同题目。每次至多 2 道短计算题，以直观理解为主。每题均有提示和解析。
 status: published
 tags:
 - SPS 线性代数研讨班配套
@@ -10,18 +11,25 @@ tags:
 - 直观理解
 feedback_mode: immediate
 selection:
-  type: fixed
-  questions:
-  - q-000326
-  - q-000327
-  - q-000328
-  - q-000329
-  - q-000330
-  - q-000331
-  - q-000332
-  - q-000333
-  order: fixed
-version: 1
+  type: query
+  count: 6
+  filters:
+    question_ids:
+    - q-000326
+    - q-000327
+    - q-000328
+    - q-000329
+    - q-000330
+    - q-000331
+    - q-000332
+    - q-000333
+  constraints:
+  - field: style
+    values:
+    - computational
+    min: 0
+    max: 2
+version: 2
 authors:
 - name: farawayshore
   kind: human
@@ -30,6 +38,6 @@ authors:
   kind: ai
 provenance:
   type: original
-  note: 围绕 SPS 线性代数研讨班第一、二讲的教学范围独立编排；保留由概念到操作的固定题序。
+  note: 围绕 SPS 线性代数研讨班第一、二讲独立编排；采用限定候选池的随机抽题，单次题目不重复，保留即时反馈。
   ai_assisted: true
 license: CC-BY-SA-4.0

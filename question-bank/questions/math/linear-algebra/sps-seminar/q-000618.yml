@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000618
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  绕原点顺时针旋转 30° 的逆操作是什么？
+choices:
+- id: A
+  content: 绕原点逆时针旋转 30°
+- id: B
+  content: 再顺时针旋转 30°
+- id: C
+  content: 把所有坐标都取负
+answer:
+  choice: A
+hints:
+- 要把角度的改变抵消．
+solution: 顺时针转 30° 后反向转 30°，总转角为零．重复同向旋转得到 60°，而坐标取负对应转 180°，都不能恢复一般向量．
+feedback:
+  correct: 正确。顺时针转 30° 后反向转 30°，总转角为零．重复同向旋转得到 60°，而坐标取负对应转 180°，都不能恢复一般向量．
+  incorrect: 再想一想：要把角度的改变抵消．
+  choices:
+    A: 顺时针转 30° 后反向转 30°，总转角为零．重复同向旋转得到 60°，而坐标取负对应转 180°，都不能恢复一般向量．
+    B: 两次同向旋转的总转角为 $60^\circ$，一般不会回到原来的方向。
+    C: 所有坐标取负对应绕原点旋转 $180^\circ$，不能抵消 $30^\circ$ 的旋转。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

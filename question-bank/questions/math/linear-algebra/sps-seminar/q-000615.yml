@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000615
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  设 $T:V\to W$、$S:W\to U$ 都是线性同构。先施加 $T$，再施加 $S$；要撤销整个过程，应先做哪一步？
+choices:
+- id: A
+  content: 先 $S^{-1}$，再 $T^{-1}$
+- id: B
+  content: 先 $T^{-1}$，再 $S^{-1}$
+- id: C
+  content: 把 T 和 S 的输出直接相减
+answer:
+  choice: A
+hints:
+- 先撤销最后发生的操作．
+solution: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
+  S^{-1}$。
+feedback:
+  correct: 正确。最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
+    S^{-1}$。
+  incorrect: 再想一想：先撤销最后发生的操作．
+  choices:
+    A: 最终结果是 $S(T(v))\in U$。先用 $S^{-1}:U\to W$ 恢复 $T(v)$，再用 $T^{-1}:W\to V$ 恢复 $v$，所以 $(S\circ T)^{-1}=T^{-1}\circ
+      S^{-1}$。
+    B: 最后作用的是 $S$，所以必须先撤销 $S$。若 $V,W,U$ 不同，$T^{-1}$ 甚至不能接收最终输出。
+    C: 相减不是复合的逆操作；要逐步撤销每个映射。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

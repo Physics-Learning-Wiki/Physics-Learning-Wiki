@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000589
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  同一个线性映射，换一组基后，表示矩阵可能变化吗？
+choices:
+- id: A
+  content: 可能，因为输入和输出的坐标描述改变了
+- id: B
+  content: 不可能，矩阵元素就是映射本身
+- id: C
+  content: 可能，但这必然意味着物理变换变了
+answer:
+  choice: A
+hints:
+- 区分操作与操作在坐标中的记录．
+solution: 矩阵记录基向量的像在所选基下的坐标；换基改变记录方式，同一个抽象映射仍可以保持不变．
+feedback:
+  correct: 正确．矩阵记录基向量的像在所选基下的坐标；换基改变记录方式，同一个抽象映射仍可以保持不变．
+  incorrect: 先想一想：区分操作与操作在坐标中的记录．
+  choices:
+    A: 矩阵记录基向量的像在所选基下的坐标；换基改变记录方式，同一个抽象映射仍可以保持不变．
+    B: 这个判断不符合本题的结构．矩阵记录基向量的像在所选基下的坐标；换基改变记录方式，同一个抽象映射仍可以保持不变．
+    C: 注意区分相关概念．矩阵记录基向量的像在所选基下的坐标；换基改变记录方式，同一个抽象映射仍可以保持不变．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

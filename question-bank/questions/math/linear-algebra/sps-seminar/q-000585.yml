@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000585
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.image-kernel
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.5**
+
+  为什么不能给把平面压到 x 轴的投影找到一个恢复所有输入的逆矩阵？
+choices:
+- id: A
+  content: 不同输入产生同一输出，无法知道原来的高度
+- id: B
+  content: 因为矩阵中只要有零就不可逆
+- id: C
+  content: 因为所有矩阵都不可逆
+answer:
+  choice: A
+hints:
+- 比较高度不同但横坐标相同的点．
+solution: (x,1) 与 (x,2) 的投影一样，恢复时没有办法区分．真正的障碍是信息丢失；单位矩阵也含零但可逆．
+feedback:
+  correct: 正确．(x,1) 与 (x,2) 的投影一样，恢复时没有办法区分．真正的障碍是信息丢失；单位矩阵也含零但可逆．
+  incorrect: 先想一想：比较高度不同但横坐标相同的点．
+  choices:
+    A: (x,1) 与 (x,2) 的投影一样，恢复时没有办法区分．真正的障碍是信息丢失；单位矩阵也含零但可逆．
+    B: 这个判断不符合本题的结构．(x,1) 与 (x,2) 的投影一样，恢复时没有办法区分．真正的障碍是信息丢失；单位矩阵也含零但可逆．
+    C: 注意区分相关概念．(x,1) 与 (x,2) 的投影一样，恢复时没有办法区分．真正的障碍是信息丢失；单位矩阵也含零但可逆．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.5 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

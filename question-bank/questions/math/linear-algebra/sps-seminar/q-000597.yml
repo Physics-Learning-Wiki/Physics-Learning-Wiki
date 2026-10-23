@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000597
+version: 2
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3**
+
+  对函数内积 $\langle f,g\rangle=\int_{-1}^{1}f(x)g(x)\,dx$，正交是否要求每一点的乘积都为零？
+choices:
+- id: A
+  content: 不要求，积分中的正负贡献可以抵消
+- id: B
+  content: 要求，否则积分不可能为零
+- id: C
+  content: 要求其中一个函数恒为零
+answer:
+  choice: A
+hints:
+- 比较常数函数 1 与函数 x．
+solution: 1 与 x 的乘积不是处处为零，但在对称区间上的积分为零．函数正交是整体积分条件，不是逐点条件．
+feedback:
+  correct: 正确．1 与 x 的乘积不是处处为零，但在对称区间上的积分为零．函数正交是整体积分条件，不是逐点条件．
+  incorrect: 先想一想：比较常数函数 1 与函数 x．
+  choices:
+    A: 1 与 x 的乘积不是处处为零，但在对称区间上的积分为零．函数正交是整体积分条件，不是逐点条件．
+    B: 这个判断不符合本题的结构．1 与 x 的乘积不是处处为零，但在对称区间上的积分为零．函数正交是整体积分条件，不是逐点条件．
+    C: 注意区分相关概念．1 与 x 的乘积不是处处为零，但在对称区间上的积分为零．函数正交是整体积分条件，不是逐点条件．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.3 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

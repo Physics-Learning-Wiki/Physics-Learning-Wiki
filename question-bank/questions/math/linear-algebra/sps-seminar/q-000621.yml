@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000621
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+
+  在一维空间中，输入基为 $(e)$，输出基为 $(2e)$．恒等映射把坐标为 4 的输入送到输出坐标多少？
+choices:
+- id: A
+  content: $2$
+- id: B
+  content: $4$
+- id: C
+  content: $8$
+answer:
+  choice: A
+hints:
+- 同一个向量既可以写成 4e，也可以写成输出基的某个倍数．
+solution: 4e=2(2e)，所以输出坐标为 2．向量本身没有缩短；只是输出采用的基向量长了一倍．
+feedback:
+  correct: 正确。4e=2(2e)，所以输出坐标为 2．向量本身没有缩短；只是输出采用的基向量长了一倍．
+  incorrect: 再想一想：同一个向量既可以写成 4e，也可以写成输出基的某个倍数．
+  choices:
+    A: 4e=2(2e)，所以输出坐标为 2．向量本身没有缩短；只是输出采用的基向量长了一倍．
+    B: 输出基已经变为 $2e$；输出坐标若仍为 $4$，表示的就会是 $8e$。
+    C: 基向量扩大两倍时，同一向量的系数应除以二，不能再乘以二。
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

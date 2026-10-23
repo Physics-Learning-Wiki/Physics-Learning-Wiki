@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000611
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+
+  V 是二维空间、W 是三维空间，$T:V\to W$ 的矩阵有几行几列？
+choices:
+- id: A
+  content: 3 行 2 列
+- id: B
+  content: 2 行 3 列
+- id: C
+  content: 2 行 2 列
+answer:
+  choice: A
+hints:
+- 每个输入基向量贡献一列，每列有输出空间维数那么多分量．
+solution: 有两个输入基向量，所以有两列；每个像用三个输出坐标记录，所以有三行．矩阵不要求输入与输出维数相同．
+feedback:
+  correct: 正确。有两个输入基向量，所以有两列；每个像用三个输出坐标记录，所以有三行．矩阵不要求输入与输出维数相同．
+  incorrect: 再想一想：每个输入基向量贡献一列，每列有输出空间维数那么多分量．
+  choices:
+    A: 有两个输入基向量，所以有两列；每个像用三个输出坐标记录，所以有三行．矩阵不要求输入与输出维数相同．
+    B: 行数由输出维数决定，列数由输入维数决定；这个选项把两者颠倒了。
+    C: 每个像位于三维输出空间，需要三个坐标，所以不能只用两行记录。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

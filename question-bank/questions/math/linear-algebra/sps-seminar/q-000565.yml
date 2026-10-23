@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000565
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  在有序基 $(1,x)$ 下，多项式 $3-2x$ 的坐标是什么？
+choices:
+- id: A
+  content: $(3,-2)$
+- id: B
+  content: $(-2,3)$
+- id: C
+  content: $(3,2)$
+answer:
+  choice: A
+hints:
+- 按基的顺序读取系数．
+solution: 展开就是 3 倍的 1 加 -2 倍的 x，因此坐标依次为 3、-2；负号不能丢失．
+feedback:
+  correct: 正确．展开就是 3 倍的 1 加 -2 倍的 x，因此坐标依次为 3、-2；负号不能丢失．
+  incorrect: 先想一想：按基的顺序读取系数．
+  choices:
+    A: 展开就是 3 倍的 1 加 -2 倍的 x，因此坐标依次为 3、-2；负号不能丢失．
+    B: 这个判断不符合本题的结构．展开就是 3 倍的 1 加 -2 倍的 x，因此坐标依次为 3、-2；负号不能丢失．
+    C: 注意区分相关概念．展开就是 3 倍的 1 加 -2 倍的 x，因此坐标依次为 3、-2；负号不能丢失．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

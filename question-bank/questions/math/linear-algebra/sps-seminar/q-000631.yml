@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000631
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.2 · 2026-10-23 更新稿**
+
+  把实线性空间 $V$ 的基 $(b_1,b_2)$ 一一对应到 $W$ 的基 $(c_1,c_2)$，定义线性同构 $T(b_i)=c_i$。$T(2b_1-3b_2)$ 是什么？
+choices:
+- id: A
+  content: $2c_1-3c_2$
+- id: B
+  content: $2b_1-3b_2$
+- id: C
+  content: $-3c_1+2c_2$
+answer:
+  choice: A
+hints:
+- 对应基向量时，线性组合的系数和顺序如何变化？
+solution: 线性性给出 $T(2b_1-3b_2)=2T(b_1)-3T(b_2)=2c_1-3c_2$。对应基之间的同构保留展开系数，输入、输出向量则属于各自的空间。
+feedback:
+  correct: 正确。线性性给出 $T(2b_1-3b_2)=2T(b_1)-3T(b_2)=2c_1-3c_2$。对应基之间的同构保留展开系数，输入、输出向量则属于各自的空间。
+  incorrect: 再想一想：对应基向量时，线性组合的系数和顺序如何变化？
+  choices:
+    A: 基向量按指定关系替换，原来的系数保持不变。
+    B: 这个表达式仍描述输入空间中的原向量，没有把基向量送到输出空间。
+    C: 系数不能调换位置；第一个系数始终跟随第一条基向量。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.2；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

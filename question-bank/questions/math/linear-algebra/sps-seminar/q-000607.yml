@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000607
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.1 · 2026-10-23 更新稿**
+
+  $\mathcal L(V,W)$ 中的一个元素是什么？
+choices:
+- id: A
+  content: 一个从 V 到 W 的线性映射
+- id: B
+  content: V 中的一支向量
+- id: C
+  content: W 的一组基
+answer:
+  choice: A
+hints:
+- 集合的元素由集合的定义决定．
+solution: $\mathcal L(V,W)$ 收集的是线性映射，每一个元素都能接收 V 中的向量并输出 W 中的向量；它不是向量的坐标表，也不是一组基．
+feedback:
+  correct: 正确。$\mathcal L(V,W)$ 收集的是线性映射，每一个元素都能接收 V 中的向量并输出 W 中的向量；它不是向量的坐标表，也不是一组基．
+  incorrect: 再想一想：集合的元素由集合的定义决定．
+  choices:
+    A: $\mathcal L(V,W)$ 收集的是线性映射，每一个元素都能接收 V 中的向量并输出 W 中的向量；它不是向量的坐标表，也不是一组基．
+    B: $V$ 中的向量是这些映射接收的输入；$\mathcal L(V,W)$ 收集的是映射本身。
+    C: $W$ 的基用于记录输出坐标，但一组基并不是从 $V$ 到 $W$ 的线性映射。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.1；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000610
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+
+  线性映射 $T:V\to V$ 的输入和输出用同一组基，是否保证 T 可逆？
+choices:
+- id: A
+  content: 不保证，还须 T 是双射
+- id: B
+  content: 保证，只要两组基相同
+- id: C
+  content: 保证，只要矩阵是方阵
+answer:
+  choice: A
+hints:
+- 试想把所有输入都送到零的映射．
+solution: 同一组基只确定表示方式．例如非零空间上的零映射有方阵表示，却把所有输入混在一起，不能求逆；双射才保证逆映射存在．
+feedback:
+  correct: 正确。同一组基只确定表示方式．例如非零空间上的零映射有方阵表示，却把所有输入混在一起，不能求逆；双射才保证逆映射存在．
+  incorrect: 再想一想：试想把所有输入都送到零的映射．
+  choices:
+    A: 同一组基只确定表示方式．例如非零空间上的零映射有方阵表示，却把所有输入混在一起，不能求逆；双射才保证逆映射存在．
+    B: 同一组基只统一坐标描述，不会使零映射等丢失信息的映射变成双射。
+    C: 方阵也可能不可逆，例如二维零矩阵。方阵尺寸不能替代双射条件。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

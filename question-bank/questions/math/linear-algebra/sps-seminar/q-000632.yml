@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000632
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  设 $T:V\to W$ 是实线性空间之间的线性同构，$w_1=T(v_1)$、$w_2=T(v_2)$。为什么 $T^{-1}(w_1+w_2)=v_1+v_2$？
+choices:
+- id: A
+  content: 因为任何可逆函数都保持加法
+- id: B
+  content: 因为 $T(v_1+v_2)=w_1+w_2$，而原像唯一
+- id: C
+  content: 因为 $T^{-1}$ 只是把每个向量取负
+answer:
+  choice: B
+hints:
+- 先对 $v_1+v_2$ 作用 $T$，再使用双射性。
+solution: 由 $T$ 的线性性，$T(v_1+v_2)=T(v_1)+T(v_2)=w_1+w_2$。双射性保证这个输出只有一个原像，所以逆映射把它送回 $v_1+v_2$。同理可证明逆映射保持数乘。
+feedback:
+  correct: 正确。由 $T$ 的线性性，$T(v_1+v_2)=T(v_1)+T(v_2)=w_1+w_2$。双射性保证这个输出只有一个原像，所以逆映射把它送回 $v_1+v_2$。同理可证明逆映射保持数乘。
+  incorrect: 再想一想：先对 $v_1+v_2$ 作用 $T$，再使用双射性。
+  choices:
+    A: 可逆不等于线性；例如 $f(x)=x^3$ 可逆，却不保持加法。
+    B: 线性性找到一个原像，双射性保证它就是唯一原像。
+    C: 撤销一般线性变换不等于取负；恒等映射的逆仍是恒等映射。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

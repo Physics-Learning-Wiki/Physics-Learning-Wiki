@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000580
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-operations
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  求 $2\begin{pmatrix}1&-1\\0&2\end{pmatrix}$．
+choices:
+- id: A
+  content: $\begin{pmatrix}2&-2\\0&4\end{pmatrix}$
+- id: B
+  content: $\begin{pmatrix}2&-1\\0&2\end{pmatrix}$
+- id: C
+  content: $\begin{pmatrix}3&1\\2&4\end{pmatrix}$
+answer:
+  choice: A
+hints:
+- 数乘作用于每一个元素．
+solution: 四个元素都乘以 2，负号保留，零仍为零．它既不是只改第一个元素，也不是给每个元素加 2．
+feedback:
+  correct: 正确．四个元素都乘以 2，负号保留，零仍为零．它既不是只改第一个元素，也不是给每个元素加 2．
+  incorrect: 先想一想：数乘作用于每一个元素．
+  choices:
+    A: 四个元素都乘以 2，负号保留，零仍为零．它既不是只改第一个元素，也不是给每个元素加 2．
+    B: 这个判断不符合本题的结构．四个元素都乘以 2，负号保留，零仍为零．它既不是只改第一个元素，也不是给每个元素加 2．
+    C: 注意区分相关概念．四个元素都乘以 2，负号保留，零仍为零．它既不是只改第一个元素，也不是给每个元素加 2．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 75
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

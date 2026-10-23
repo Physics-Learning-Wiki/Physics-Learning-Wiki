@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000620
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 · 2026-10-23 更新稿**
+
+  恒等映射保持每个向量不动；若输入与输出使用不同的基，它的表示矩阵一定是 I 吗？
+choices:
+- id: A
+  content: 不一定，它还要转换两种坐标描述
+- id: B
+  content: 一定，因为向量没有动
+- id: C
+  content: 不一定，因为恒等映射可能丢失信息
+answer:
+  choice: A
+hints:
+- 同一支箭头在两组基下可能有不同坐标．
+solution: 向量不动并不意味着坐标数字不变．用不同基描述输入输出时，恒等映射的矩阵承担坐标转换；恒等映射本身仍可逆且不丢失信息．
+feedback:
+  correct: 正确。向量不动并不意味着坐标数字不变．用不同基描述输入输出时，恒等映射的矩阵承担坐标转换；恒等映射本身仍可逆且不丢失信息．
+  incorrect: 再想一想：同一支箭头在两组基下可能有不同坐标．
+  choices:
+    A: 向量不动并不意味着坐标数字不变．用不同基描述输入输出时，恒等映射的矩阵承担坐标转换；恒等映射本身仍可逆且不丢失信息．
+    B: 向量相同并不要求两套基下的坐标数字相同；例如用两倍长的基向量，坐标会减半。
+    C: 恒等映射不会丢失信息。矩阵不一定为单位矩阵，是因为输入、输出的坐标约定不同。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

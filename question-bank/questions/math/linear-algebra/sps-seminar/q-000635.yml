@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000635
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.matrix-representation
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.3 与 §2.2.7 · 2026-10-23 更新稿**
+
+  线性同构 $T:V\to W$ 在输入基 $\mathcal B$、输出基 $\mathcal C$ 下的矩阵为 $A$。用 $A^{-1}$ 恢复坐标时，哪种写法正确？
+choices:
+- id: A
+  content: $[v]_{\mathcal B}=A^{-1}[T(v)]_{\mathcal C}$
+- id: B
+  content: $[v]_{\mathcal C}=A^{-1}[T(v)]_{\mathcal B}$
+- id: C
+  content: $[T(v)]_{\mathcal C}=A^{-1}[v]_{\mathcal B}$
+answer:
+  choice: A
+hints:
+- 原关系为 $[T(v)]_{\mathcal C}=A[v]_{\mathcal B}$。
+solution: 逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal
+  B}(T^{-1})=A^{-1}$。
+feedback:
+  correct: 正确。逆映射接收 $W$ 中的向量并输出 $V$ 中的向量，因此它的表示应把 $\mathcal C$ 坐标转换为 $\mathcal B$ 坐标：$\mathcal M_{\mathcal C\to\mathcal
+    B}(T^{-1})=A^{-1}$。
+  incorrect: 再想一想：原关系为 $[T(v)]_{\mathcal C}=A[v]_{\mathcal B}$。
+  choices:
+    A: 逆映射的方向与两套基的角色一同反转。
+    B: $\mathcal C$ 是 $W$ 的基，不能一般地用来表示 $v\in V$；输出坐标的基也写反了。
+    C: 这个选项仍沿原映射的方向作用，却把矩阵误换成逆矩阵。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.3 与 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

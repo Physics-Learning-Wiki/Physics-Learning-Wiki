@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000561
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.basis-coordinates
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.1**
+
+  为什么把零向量放进平面的一组基会出问题？
+choices:
+- id: A
+  content: 它不能提供新方向，且展开系数不唯一
+- id: B
+  content: 它会让所有向量的长度为零
+- id: C
+  content: 零向量不能与其他向量相加
+answer:
+  choice: A
+hints:
+- 给零向量乘任何数，结果都一样．
+solution: 零向量没有提供独立方向；对它的系数任意改变也不改变线性组合，因此不可能得到唯一坐标．
+feedback:
+  correct: 正确．零向量没有提供独立方向；对它的系数任意改变也不改变线性组合，因此不可能得到唯一坐标．
+  incorrect: 先想一想：给零向量乘任何数，结果都一样．
+  choices:
+    A: 零向量没有提供独立方向；对它的系数任意改变也不改变线性组合，因此不可能得到唯一坐标．
+    B: 这个判断不符合本题的结构．零向量没有提供独立方向；对它的系数任意改变也不改变线性组合，因此不可能得到唯一坐标．
+    C: 注意区分相关概念．零向量没有提供独立方向；对它的系数任意改变也不改变线性组合，因此不可能得到唯一坐标．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.1 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

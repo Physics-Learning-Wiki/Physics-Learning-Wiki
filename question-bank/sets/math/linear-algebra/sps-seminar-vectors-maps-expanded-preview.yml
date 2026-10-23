@@ -1,0 +1,77 @@
+schema_version: 1
+id: math.linear-algebra.sps-seminar.vectors-maps-expanded-preview
+title: SPS 线性代数研讨班配套｜向量、坐标与线性映射（扩充题池预览）
+description: 与《SPS线性代数研讨班第一、二讲》2026-10-23 更新稿对齐。§2.1–§2.2：向量与坐标、基与维数、抽象向量空间、线性同构、线性与投影。每次从 36 道候选题中随机抽取 8 道，单次不重复；此预览包含待人工审核的新题。不同次练习可能遇到相同题目。每次含
+  1 道短计算题，其余以直观理解为主。每题均有提示和解析。补充映射空间、表示映射、输入输出基及原像。 新增对应基、逆映射的线性性、单射与满射的区别，以及多项式坐标还原。
+status: draft
+tags:
+- SPS 线性代数研讨班配套
+- 线性代数
+- 入门
+- 直观理解
+feedback_mode: immediate
+selection:
+  type: query
+  count: 8
+  filters:
+    question_ids:
+    - q-000326
+    - q-000327
+    - q-000328
+    - q-000329
+    - q-000330
+    - q-000331
+    - q-000332
+    - q-000333
+    - q-000559
+    - q-000560
+    - q-000561
+    - q-000562
+    - q-000563
+    - q-000564
+    - q-000565
+    - q-000566
+    - q-000567
+    - q-000568
+    - q-000569
+    - q-000570
+    - q-000571
+    - q-000572
+    - q-000573
+    - q-000574
+    - q-000607
+    - q-000608
+    - q-000609
+    - q-000610
+    - q-000611
+    - q-000612
+    - q-000613
+    - q-000614
+    - q-000631
+    - q-000632
+    - q-000633
+    - q-000634
+  slots:
+  - id: intuition
+    count: 7
+    filters:
+      styles:
+      - conceptual
+  - id: calculation
+    count: 1
+    filters:
+      styles:
+      - computational
+version: 2
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+provenance:
+  type: original
+  note: '围绕 SPS 线性代数研讨班第一、二讲独立编排；采用限定候选池的随机抽题，单次题目不重复，保留即时反馈。补充映射空间、表示映射、输入输出基及原像。 新增对应基、逆映射的线性性、单射与满射的区别，以及多项式坐标还原。
+    对照 2026-10-23 讲义快照，SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。'
+  ai_assisted: true
+license: CC-BY-SA-4.0

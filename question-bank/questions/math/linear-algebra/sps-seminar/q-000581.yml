@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000581
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.composition
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2**
+
+  对于列向量 v，ABv 对应怎样的操作顺序？
+choices:
+- id: A
+  content: 先 B，再 A
+- id: B
+  content: 先 A，再 B
+- id: C
+  content: A 和 B 必须同时作用
+answer:
+  choice: A
+hints:
+- 从离输入最近的操作开始．
+solution: ABv=A(Bv)，先由 B 产生中间输出，再交给 A．矩阵书写顺序与口头叙述的先后相反．
+feedback:
+  correct: 正确．ABv=A(Bv)，先由 B 产生中间输出，再交给 A．矩阵书写顺序与口头叙述的先后相反．
+  incorrect: 先想一想：从离输入最近的操作开始．
+  choices:
+    A: ABv=A(Bv)，先由 B 产生中间输出，再交给 A．矩阵书写顺序与口头叙述的先后相反．
+    B: 这个判断不符合本题的结构．ABv=A(Bv)，先由 B 产生中间输出，再交给 A．矩阵书写顺序与口头叙述的先后相反．
+    C: 注意区分相关概念．ABv=A(Bv)，先由 B 产生中间输出，再交给 A．矩阵书写顺序与口头叙述的先后相反．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.2 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

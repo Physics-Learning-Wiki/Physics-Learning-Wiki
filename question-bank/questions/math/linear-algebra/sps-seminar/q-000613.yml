@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000613
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.linear-map
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.2.7 · 2026-10-23 更新稿**
+
+  若 $T:V\to W$ 是线性同构，逆映射的方向是什么？
+choices:
+- id: A
+  content: $T^{-1}:W\to V$
+- id: B
+  content: $T^{-1}:V\to W$
+- id: C
+  content: $T^{-1}:V\to V$，无论 W 是什么
+answer:
+  choice: A
+hints:
+- 撤销时从原来的输出出发．
+solution: T 将 V 中的对象送到 W；逆映射从 W 中的结果恢复 V 中的输入．两次复合分别是 V 与 W 上的恒等映射．
+feedback:
+  correct: 正确。T 将 V 中的对象送到 W；逆映射从 W 中的结果恢复 V 中的输入．两次复合分别是 V 与 W 上的恒等映射．
+  incorrect: 再想一想：撤销时从原来的输出出发．
+  choices:
+    A: T 将 V 中的对象送到 W；逆映射从 W 中的结果恢复 V 中的输入．两次复合分别是 V 与 W 上的恒等映射．
+    B: 这仍是原映射的方向。撤销操作必须从 $W$ 中的结果返回 $V$ 中的输入。
+    C: 逆映射的定义域是 $W$；只有在 $W=V$ 的特例中才能写成 $V\to V$。
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-23 本地更新稿 §2.2.7；源文件 SHA-256: 9f8269e91bc1a4300e435b360be36ed7b48f010b91081ef75d5f300df8bd43d2。独立编写题目与解析，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

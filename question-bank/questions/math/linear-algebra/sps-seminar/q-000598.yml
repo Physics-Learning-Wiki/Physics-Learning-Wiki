@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000598
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.inner-product
+type: single_choice
+choice_order: shuffle
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.3**
+
+  对实内积空间中的非零向量 u，u 与自身的内积能为负吗？
+choices:
+- id: A
+  content: 不能，必须为正
+- id: B
+  content: 能，只要 u 的坐标有负数
+- id: C
+  content: 能，只要 u 朝左
+answer:
+  choice: A
+hints:
+- 内积的正定性约束的是向量与自身．
+solution: 内积正定性要求非零向量的自内积严格为正．向量与另一向量的内积可以为负，但自内积不可以．
+feedback:
+  correct: 正确．内积正定性要求非零向量的自内积严格为正．向量与另一向量的内积可以为负，但自内积不可以．
+  incorrect: 先想一想：内积的正定性约束的是向量与自身．
+  choices:
+    A: 内积正定性要求非零向量的自内积严格为正．向量与另一向量的内积可以为负，但自内积不可以．
+    B: 这个判断不符合本题的结构．内积正定性要求非零向量的自内积严格为正．向量与另一向量的内积可以为负，但自内积不可以．
+    C: 注意区分相关概念．内积正定性要求非零向量的自内积严格为正．向量与另一向量的内积可以为负，但自内积不可以．
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: 与张梓超《SPS线性代数研讨班第一、二讲》工作稿 §2.3 教学范围对齐；题干、选项、提示和解析独立编写，未转载讲义文字或图片．
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
