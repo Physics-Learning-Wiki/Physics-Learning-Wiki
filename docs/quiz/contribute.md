@@ -10,7 +10,7 @@ status: review
 欢迎向 Physics Learning Wiki 贡献自测题目！无论是典型例题、概念辨析、图像分析还是原创练习，入库后都将成为全站自测与针对性练习资源的一部分．
 
 ??? note "补充说明"
-    提示：题型、题干与完整解析为必填项．自由作答题不要求唯一正确答案，而是要求提供参考答案和自评评分标准．
+    提示：题型、题干与完整解析为必填项．自由作答题不要求唯一正确答案，而是要求提供参考答案和自评评分标准．主题可以保持未指定；如已选择主题，请继续选择子主题，系统仅保存选定的子主题分类．
 
 ***
 
@@ -92,10 +92,18 @@ status: review
 
     <div class="submit-question-grid">
       <div class="submit-field">
-        <label for="q-submit-topic">物理主题</label>
-        <select id="q-submit-topic">
-          <option value="">-- 未指定（由维护者归类） --</option>
+        <label for="q-submit-topic-root">主题</label>
+        <select id="q-submit-topic-root" disabled>
+          <option value="">未指定（由维护者归类）</option>
         </select>
+      </div>
+      <div class="submit-field">
+        <label for="q-submit-subtopic">子主题</label>
+        <select id="q-submit-subtopic" aria-describedby="q-submit-topic-status" disabled>
+          <option value="">请先选择主题</option>
+        </select>
+        <input type="hidden" id="q-submit-topic">
+        <p id="q-submit-topic-status" class="submit-hint" role="status"></p>
       </div>
       
       <div class="submit-field">

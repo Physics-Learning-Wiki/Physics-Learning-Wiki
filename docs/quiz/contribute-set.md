@@ -62,5 +62,6 @@ hide:
   </form>
   <div id="set-question-editor" hidden></div>
   <div id="set-trial" class="plw-quiz-question" hidden></div>
+  <p class="submit-hint">新增题目沿用主题与子主题两级选择：可保持未指定；选择主题后，请继续选择子主题．</p>
   <!-- plw:question-editor-template -->
 </div>

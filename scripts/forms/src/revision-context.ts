@@ -1,6 +1,7 @@
 import type { EditorHandle } from "./editor.js";
 import { readReceipt, SUBMISSION_ENDPOINT, type createSubmissionClient } from "./submission-client.js";
 import type { SubmissionEnvelope } from "../../../contracts/envelope.js";
+import { restoreQuestionTopics } from "./question-topics.js";
 
 export async function loadRevisionContext(
   form: HTMLFormElement,
@@ -123,7 +124,7 @@ export function populateQuestionForm(
   set("q-submit-unit-required", answer?.unit?.required || false);
   set("q-submit-unit-canonical", answer?.unit?.canonical || "");
   set("q-submit-unit-accepted", answer?.unit?.accepted.join(", ") || "");
-  set("q-submit-topic", (q.topics as string[] | undefined)?.[0] || "");
+  restoreQuestionTopics(form, { "q-submit-topic": (q.topics as string[] | undefined)?.[0] || "" });
   set("q-submit-concepts", (q.concepts as string[] | undefined)?.join(", ") || "");
   for (const [field, key] of [
     ["q-submit-diff", "difficulty"],

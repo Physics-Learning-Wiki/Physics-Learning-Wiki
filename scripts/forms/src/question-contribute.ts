@@ -10,6 +10,7 @@ import { numericAnswer, mountNumericPreview } from "./numeric-fields.js";
 import { validateQuestion } from "../../../contracts/validation.js";
 import type { NewSetQuestion } from "../../../contracts/envelope.js";
 import { loadRevisionContext, populateQuestionForm } from "./revision-context.js";
+import { mountQuestionTopics, questionTopicError, restoreQuestionTopics } from "./question-topics.js";
 
 function setError(status: HTMLElement, message: string): void {
   status.textContent = message;
@@ -71,40 +72,6 @@ function setAttribution(form: HTMLFormElement, signal: AbortSignal): void {
   update();
 }
 
-async function loadTaxonomyTopics(form: HTMLFormElement, signal: AbortSignal): Promise<void> {
-  const topicSelect = form.querySelector<HTMLSelectElement>("#q-submit-topic");
-  if (!topicSelect || signal.aborted) return;
-
-  try {
-    const manifestPath = form.dataset.manifestUrl ?? "../../_generated/question-bank/manifest.json";
-    const manifestUrl = new URL(manifestPath, window.location.href);
-    const response = await fetch(manifestUrl, { cache: "no-cache", signal });
-    if (!response.ok || signal.aborted) return;
-    const manifest = (await response.json()) as {
-      catalogs?: { taxonomy?: string };
-    };
-    if (signal.aborted || !manifest.catalogs?.taxonomy) return;
-
-    const taxonomyResponse = await fetch(new URL(manifest.catalogs.taxonomy, manifestUrl), { signal });
-    if (!taxonomyResponse.ok || signal.aborted) return;
-    const taxonomy = (await taxonomyResponse.json()) as {
-      topics?: Record<string, { title?: string }>;
-    };
-    if (signal.aborted) return;
-
-    topicSelect.innerHTML = '<option value="">-- 未指定（由维护者归类） --</option>';
-    for (const [topicId, topic] of Object.entries(taxonomy.topics ?? {})) {
-      if (!/^[a-z][a-z0-9]*(\.[a-z][a-z0-9-]*)+$/.test(topicId)) continue;
-      const option = document.createElement("option");
-      option.value = topicId;
-      option.textContent = `${topic.title ?? topicId} (${topicId})`;
-      topicSelect.append(option);
-    }
-  } catch {
-    // Taxonomy is optional; leave the manual "unspecified" option available.
-  }
-}
-
 export async function mountQuestionEditor(
   root: ParentNode,
   { signal }: FeatureMountContext,
@@ -126,6 +93,7 @@ export async function mountQuestionEditor(
   const success = queryInRoot<HTMLElement>(root, "#q-submit-success");
   const issueLink = queryInRoot<HTMLAnchorElement>(root, "#q-submit-issue-link");
   if (!status || !submitButton || !stemTextarea || !solutionTextarea || !typeSelect) return () => undefined;
+  const taxonomyPromise = mountQuestionTopics(form, signal);
 
   const client = createSubmissionClient(form, signal, { editorOnly: Boolean(options) });
   mountSourceDeclaration(form, signal);
@@ -182,6 +150,13 @@ export async function mountQuestionEditor(
       if (submitButton.disabled) return;
       status.textContent = "";
       status.className = "";
+
+      const topicError = questionTopicError(form);
+      if (topicError) {
+        setError(status, topicError);
+        form.querySelector<HTMLSelectElement>("#q-submit-subtopic")?.focus();
+        return;
+      }
 
       const stem = stemEditor?.instance.value().trim() || stemTextarea.value.trim();
       const solution = solutionEditor?.instance.value().trim() || solutionTextarea.value.trim();
@@ -285,7 +260,7 @@ export async function mountQuestionEditor(
             }
           : undefined;
 
-      const selectedTopic = form.querySelector<HTMLSelectElement>("#q-submit-topic")?.value.trim();
+      const selectedTopic = form.querySelector<HTMLInputElement>("#q-submit-topic")?.value.trim();
       const rawConcepts = form.querySelector<HTMLInputElement>("#q-submit-concepts")?.value.trim() ?? "";
       const concepts = rawConcepts
         ? rawConcepts
@@ -390,7 +365,6 @@ export async function mountQuestionEditor(
     { signal }
   );
 
-  const taxonomyPromise = loadTaxonomyTopics(form, signal);
   if (!options && turnstileContainer)
     widget = createVerification(
       turnstileContainer,
@@ -431,6 +405,9 @@ export async function mountQuestionEditor(
       else if (input.type === "checkbox") input.checked = Boolean(value);
       else input.value = String(value);
       input.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+    if (options.fields && ("q-submit-topic" in options.fields || "q-submit-topic-root" in options.fields)) {
+      restoreQuestionTopics(form, options.fields);
     }
     submitButton.textContent = "保存到新题池";
     const license = form.querySelector<HTMLInputElement>("#q-submit-license");

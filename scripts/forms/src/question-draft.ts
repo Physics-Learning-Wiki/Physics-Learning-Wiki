@@ -1,6 +1,7 @@
 import type { EditorHandle } from "./editor.js";
 import { downloadJson } from "./downloads.js";
 import { siteRoot } from "./submission-client.js";
+import { restoreQuestionTopics } from "./question-topics.js";
 
 const FIELDS = [
   "q-submit-type",
@@ -12,6 +13,7 @@ const FIELDS = [
   "q-submit-choice-feedback",
   "q-submit-correct-feedback",
   "q-submit-incorrect-feedback",
+  "q-submit-topic-root",
   "q-submit-topic",
   "q-submit-concepts",
   "q-submit-diff",
@@ -173,6 +175,7 @@ export function mountQuestionDraft(form: HTMLFormElement, editors: Record<string
         }
         node.dispatchEvent(new Event("change", { bubbles: true }));
       }
+      restoreQuestionTopics(form, value.fields);
       form.querySelectorAll<HTMLInputElement>('input[id$="-license"]').forEach(node => {
         node.checked = false;
       });

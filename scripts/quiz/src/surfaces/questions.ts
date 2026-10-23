@@ -18,6 +18,8 @@ import { createAbortScope } from "../abort-scope.js";
 import { createSession } from "../session.js";
 import { QuizStore } from "../storage.js";
 import { createQuestionTools } from "../question-tools.js";
+import { TopicTree } from "../topics.js";
+import { fillTopicSelect } from "../topic-select.js";
 import type { Attempt, Manifest, Question, TaxonomyCatalog, UserAnswer } from "../types.js";
 
 export class QuestionsSurface {
@@ -31,6 +33,8 @@ export class QuestionsSurface {
 
   private keyword = "";
   private selectedTopic = "all";
+  private selectedSubtopic = "all";
+  private topicTree = new TopicTree();
   private selectedConcept = "all";
   private selectedType = "all";
   private selectedDifficulty = "all";
@@ -60,6 +64,7 @@ export class QuestionsSurface {
       await this.store.ready();
 
       this.questions = await loadQuestionCatalog(this.manifestUrl, this.manifest.catalogs.questions, this.abort.signal);
+      this.questions = this.questions.filter(question => this.manifest.preview || question.status === "published");
 
       if (this.manifest.catalogs.taxonomy) {
         try {
@@ -116,6 +121,7 @@ export class QuestionsSurface {
     for (const q of this.questions) {
       for (const t of q.topicIds ?? []) allTopics.add(t);
     }
+    this.topicTree = new TopicTree(this.taxonomy, allTopics);
 
     // 1. Filter Bar
     const filterBar = document.createElement("div");
@@ -129,18 +135,10 @@ export class QuestionsSurface {
           )}">
         </div>
         <div class="plw-quiz-select-wrap">
-          <select class="plw-quiz-filter-select" id="plw-filter-topic" aria-label="主题">
-            <option value="all">所有主题</option>
-            ${Array.from(allTopics)
-              .sort()
-              .map(tid => {
-                const title = this.taxonomy?.topics[tid]?.title ?? tid;
-                return `<option value="${escapeHtml(tid)}" ${this.selectedTopic === tid ? "selected" : ""}>${escapeHtml(
-                  title
-                )}</option>`;
-              })
-              .join("")}
-          </select>
+          <select class="plw-quiz-filter-select" id="plw-filter-topic" aria-label="主题"></select>
+        </div>
+        <div class="plw-quiz-select-wrap">
+          <select class="plw-quiz-filter-select" id="plw-filter-subtopic" aria-label="子主题"></select>
         </div>
       </div>
       <details class="plw-quiz-filter-more">
@@ -195,6 +193,26 @@ export class QuestionsSurface {
       </details>
     `;
 
+    const topicSelect = filterBar.querySelector<HTMLSelectElement>("#plw-filter-topic")!;
+    const subtopicSelect = filterBar.querySelector<HTMLSelectElement>("#plw-filter-subtopic")!;
+    fillTopicSelect(
+      topicSelect,
+      this.topicTree.roots,
+      this.taxonomy?.topics ? "所有主题" : "主题分类暂不可用",
+      this.selectedTopic
+    );
+    topicSelect.disabled = this.topicTree.roots.length === 0;
+    const updateSubtopics = () => {
+      fillTopicSelect(
+        subtopicSelect,
+        this.topicTree.subtopics(this.selectedTopic),
+        this.selectedTopic === "all" ? "请先选择主题" : "全部子主题",
+        this.selectedSubtopic
+      );
+      subtopicSelect.disabled = topicSelect.disabled || this.selectedTopic === "all";
+    };
+    updateSubtopics();
+
     const more = filterBar.querySelector<HTMLDetailsElement>(".plw-quiz-filter-more")!;
     const compactMedia = window.matchMedia("(max-width: 700px)");
     more.open = !compactMedia.matches;
@@ -218,6 +236,14 @@ export class QuestionsSurface {
 
     filterBar.querySelector("#plw-filter-topic")?.addEventListener("change", e => {
       this.selectedTopic = (e.target as HTMLSelectElement).value;
+      this.selectedSubtopic = "all";
+      updateSubtopics();
+      this.updateConceptOptions(filterBar.querySelector<HTMLSelectElement>("#plw-filter-concept")!);
+      refresh();
+    });
+
+    subtopicSelect.addEventListener("change", () => {
+      this.selectedSubtopic = subtopicSelect.value;
       this.updateConceptOptions(filterBar.querySelector<HTMLSelectElement>("#plw-filter-concept")!);
       refresh();
     });
@@ -250,6 +276,7 @@ export class QuestionsSurface {
     filterBar.querySelector("#plw-btn-reset-filters")?.addEventListener("click", () => {
       this.keyword = "";
       this.selectedTopic = "all";
+      this.selectedSubtopic = "all";
       this.selectedConcept = "all";
       this.selectedType = "all";
       this.selectedDifficulty = "all";
@@ -278,9 +305,7 @@ export class QuestionsSurface {
 
   private updateConceptOptions(select: HTMLSelectElement): void {
     const concepts = new Set(
-      this.questions
-        .filter(question => this.selectedTopic === "all" || question.topicIds?.includes(this.selectedTopic))
-        .flatMap(question => question.conceptIds ?? [])
+      this.questions.filter(question => this.matchesTopic(question)).flatMap(question => question.conceptIds ?? [])
     );
     if (this.selectedConcept !== "all" && !concepts.has(this.selectedConcept)) {
       this.selectedConcept = "all";
@@ -290,6 +315,11 @@ export class QuestionsSurface {
       .map(id => `<option value="${escapeHtml(id)}">${escapeHtml(this.taxonomy?.concepts[id]?.title ?? id)}</option>`)
       .join("")}`;
     select.value = this.selectedConcept;
+  }
+
+  private matchesTopic(question: Question): boolean {
+    const topicId = this.selectedSubtopic !== "all" ? this.selectedSubtopic : this.selectedTopic;
+    return this.topicTree.matches(question.topicIds, topicId === "all" ? undefined : topicId);
   }
 
   private updateList(listContainer: HTMLElement, countNotice: HTMLElement): void {
@@ -311,9 +341,7 @@ export class QuestionsSurface {
         if (!text.includes(this.keyword)) return false;
       }
 
-      if (this.selectedTopic !== "all") {
-        if (!q.topicIds || !q.topicIds.includes(this.selectedTopic)) return false;
-      }
+      if (!this.matchesTopic(q)) return false;
 
       if (this.selectedConcept !== "all") {
         if (!q.conceptIds || !q.conceptIds.includes(this.selectedConcept)) return false;
@@ -352,6 +380,7 @@ export class QuestionsSurface {
     }
     for (const [key, value, selector, label] of [
       ["topic", this.selectedTopic, "#plw-filter-topic", "主题"],
+      ["subtopic", this.selectedSubtopic, "#plw-filter-subtopic", "子主题"],
       ["concept", this.selectedConcept, "#plw-filter-concept", "概念"],
       ["type", this.selectedType, "#plw-filter-type", "题型"],
       ["difficulty", this.selectedDifficulty, "#plw-filter-diff", "难度"],
@@ -362,7 +391,7 @@ export class QuestionsSurface {
       const select = filterBar?.querySelector<HTMLSelectElement>(selector);
       filters.push([key, `${label}：${select?.selectedOptions[0]?.textContent ?? value}`]);
     }
-    const advancedCount = filters.filter(([key]) => !["keyword", "topic"].includes(key)).length;
+    const advancedCount = filters.filter(([key]) => !["keyword", "topic", "subtopic"].includes(key)).length;
     const moreSummary = filterBar?.querySelector(".plw-quiz-filter-more summary");
     if (moreSummary) moreSummary.textContent = advancedCount ? `更多筛选（${advancedCount}）` : "更多筛选";
 
@@ -392,6 +421,7 @@ export class QuestionsSurface {
         if (key === "all") {
           this.keyword = "";
           this.selectedTopic =
+            this.selectedSubtopic =
             this.selectedConcept =
             this.selectedType =
             this.selectedDifficulty =
@@ -405,6 +435,10 @@ export class QuestionsSurface {
               break;
             case "topic":
               this.selectedTopic = "all";
+              this.selectedSubtopic = "all";
+              break;
+            case "subtopic":
+              this.selectedSubtopic = "all";
               break;
             case "concept":
               this.selectedConcept = "all";

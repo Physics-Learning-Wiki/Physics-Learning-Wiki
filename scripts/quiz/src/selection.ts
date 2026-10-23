@@ -1,4 +1,5 @@
 import { shuffle } from "./random.js";
+import { getTopicDescendantsAndSelf } from "./topics.js";
 import type {
   FilterCriterion,
   Question,
@@ -42,22 +43,7 @@ export function* combinations<T>(items: readonly T[], count: number): Generator<
   }
 }
 
-export function getTopicDescendantsAndSelf(topicId: string, taxonomy?: TaxonomyCatalog): Set<string> {
-  const result = new Set<string>([topicId]);
-  if (!taxonomy || !taxonomy.topics) return result;
-
-  let changed = true;
-  while (changed) {
-    changed = false;
-    for (const [tid, topic] of Object.entries(taxonomy.topics)) {
-      if (topic.parent && result.has(topic.parent) && !result.has(tid)) {
-        result.add(tid);
-        changed = true;
-      }
-    }
-  }
-  return result;
-}
+export { getTopicDescendantsAndSelf } from "./topics.js";
 
 function matchesAnyOrAll(itemValues: readonly string[], criterion: FilterCriterion): boolean {
   if ("any" in criterion && Array.isArray(criterion.any)) {

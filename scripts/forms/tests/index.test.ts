@@ -111,6 +111,25 @@ test("question drafts whitelist fields and exclude identities, consent and recei
   assert.equal(parseQuestionDraft(raw.replace('"schemaVersion":1', '"schemaVersion":99')), undefined);
 });
 
+test("question draft v1 retains old topic IDs and unfinished root selections", () => {
+  const draft = (fields: Record<string, string>) =>
+    parseQuestionDraft(
+      JSON.stringify({
+        schemaVersion: 1,
+        kind: "question",
+        updatedAt: 1,
+        fields
+      })
+    );
+  assert.deepEqual(draft({ "q-submit-topic": "mechanics.dynamics" })?.fields, {
+    "q-submit-topic": "mechanics.dynamics"
+  });
+  assert.deepEqual(draft({ "q-submit-topic-root": "mechanics", "q-submit-topic": "" })?.fields, {
+    "q-submit-topic-root": "mechanics",
+    "q-submit-topic": ""
+  });
+});
+
 test("numeric examples share production grading and preserve unit scale and case", () => {
   const answer = {
     value: 3e8,

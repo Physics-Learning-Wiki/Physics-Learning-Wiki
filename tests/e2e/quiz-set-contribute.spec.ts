@@ -11,7 +11,7 @@ async function metadata(page: Page) {
   await page.locator("#set-source-note").fill("自主编排．");
 }
 
-async function newQuestion(page: Page) {
+async function newQuestion(page: Page, classified = false) {
   await page.locator('[data-set-step="2"]').click();
   await page.locator("#set-new").click();
   await expect(page.locator("#set-question-editor .CodeMirror")).toHaveCount(2);
@@ -25,6 +25,11 @@ async function newQuestion(page: Page) {
     .nth(1)
     .evaluate((node: any) => node.CodeMirror.setValue("根据牛顿第一定律．"));
   await page.locator("#q-submit-answer").fill("true");
+  if (classified) {
+    await expect(page.locator("#q-submit-topic-root")).toBeEnabled();
+    await page.locator("#q-submit-topic-root").selectOption("mechanics");
+    await page.locator("#q-submit-subtopic").selectOption("mechanics.dynamics");
+  }
   await page.locator("#submission-source-kind").selectOption("original");
   await page.locator("#submission-source-note").fill("独立原创．");
   await page.getByRole("button", { name: "保存到新题池" }).click();
@@ -49,7 +54,11 @@ test("mixed set editing, trial isolation and successful submission retain stable
   });
   await page.goto(base + "quiz/contribute-set/");
   await metadata(page);
-  await newQuestion(page);
+  await newQuestion(page, true);
+  await page.getByRole("button", { name: "编辑新题", exact: true }).click();
+  await expect(page.locator("#q-submit-topic-root")).toHaveValue("mechanics");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("mechanics.dynamics");
+  await page.getByRole("button", { name: "保存到新题池" }).click();
   await expect(page.locator("#set-search-results details").first()).toBeVisible();
   await page.locator("#set-search-results details").first().locator("summary").click();
   await page.locator("#set-search-results details").first().getByRole("button", { name: "加入题集" }).click();
@@ -65,6 +74,7 @@ test("mixed set editing, trial isolation and successful submission retain stable
   await expect(page.locator("#set-message")).toContainText("已提交");
   expect(payload.type).toBe("quiz-set");
   expect(payload.payload.quizSet.newQuestions).toHaveLength(1);
+  expect(payload.payload.quizSet.newQuestions[0].question.topics).toEqual(["mechanics.dynamics"]);
   expect(payload.payload.quizSet.selection.items[0].clientId).toBe(payload.payload.quizSet.newQuestions[0].clientId);
   await page.locator("header a.md-logo").click();
   await expect(page).toHaveURL(url => url.pathname === base);
@@ -102,13 +112,24 @@ test("draft recovery retains a single active editor and instant navigation relea
   await page.getByRole("button", { name: "编辑新题", exact: true }).click();
   await expect(page.locator(".CodeMirror")).toHaveCount(2);
   await expect(page.locator("#set-question-editor .submit-receipt")).toHaveCount(0);
+  await expect(page.locator("#q-submit-topic-root")).toBeEnabled();
+  await page.locator("#q-submit-topic-root").selectOption("math");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("");
   await page
     .locator(".CodeMirror")
     .nth(1)
     .evaluate((node: any) => node.CodeMirror.setValue("未保存的改动．"));
   await page.locator("header a.md-logo").click();
   await expect(page).toHaveURL(url => url.pathname === base);
-  expect(await page.evaluate(k => localStorage.getItem(k), key)).toContain("未保存的改动");
+  await expect.poll(() => page.evaluate(k => localStorage.getItem(k), key)).toContain("未保存的改动");
+  await page.goto(base + "quiz/contribute-set/");
+  await page.locator("#set-restore").click();
+  await expect(page.locator("#q-submit-topic-root")).toHaveValue("math");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("");
+  await expect(page.locator("#q-submit-topic")).toHaveValue("");
+  await page.locator("#q-submit-subtopic").selectOption("math.linear-algebra");
+  await page.getByRole("button", { name: "保存到新题池" }).click();
+  await expect.poll(() => page.evaluate(k => localStorage.getItem(k), key)).toContain("math.linear-algebra");
 });
 
 test("imported five-type draft runs with shuffled order and immediate feedback", async ({ page }) => {

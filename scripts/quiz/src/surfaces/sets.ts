@@ -1,6 +1,8 @@
 import { loadManifest, loadSetCatalog, loadTaxonomyCatalog, resolveSiteUrl } from "../data.js";
 import { createAbortScope } from "../abort-scope.js";
 import { escapeHtml } from "../question-renderer.js";
+import { TopicTree } from "../topics.js";
+import { fillTopicSelect } from "../topic-select.js";
 import type { Manifest, SetCatalogItem, TaxonomyCatalog } from "../types.js";
 
 export class SetsSurface {
@@ -13,6 +15,8 @@ export class SetsSurface {
 
   private keyword = "";
   private selectedTopic = "all";
+  private selectedSubtopic = "all";
+  private topicTree = new TopicTree();
   private selectedFeedbackMode = "all";
   private selectedTag = "all";
   private filterMediaCleanup?: () => void;
@@ -75,6 +79,7 @@ export class SetsSurface {
       for (const tid of item.topicIds) allTopics.add(tid);
       for (const tag of item.tags) allTags.add(tag);
     }
+    this.topicTree = new TopicTree(this.taxonomy, allTopics);
 
     // 2. Filter Bar
     const filterBar = document.createElement("details");
@@ -89,18 +94,10 @@ export class SetsSurface {
           )}">
         </div>
         <div class="plw-quiz-select-wrap">
-          <select class="plw-quiz-filter-select" id="plw-select-topic" aria-label="按主题筛选">
-            <option value="all">所有物理主题</option>
-            ${Array.from(allTopics)
-              .sort()
-              .map(tid => {
-                const title = this.taxonomy?.topics[tid]?.title ?? tid;
-                return `<option value="${escapeHtml(tid)}" ${this.selectedTopic === tid ? "selected" : ""}>${escapeHtml(
-                  title
-                )}</option>`;
-              })
-              .join("")}
-          </select>
+          <select class="plw-quiz-filter-select" id="plw-select-topic" aria-label="主题"></select>
+        </div>
+        <div class="plw-quiz-select-wrap">
+          <select class="plw-quiz-filter-select" id="plw-select-subtopic" aria-label="子主题"></select>
         </div>
         <div class="plw-quiz-select-wrap">
           <select class="plw-quiz-filter-select" id="plw-select-mode" aria-label="按反馈模式筛选">
@@ -126,6 +123,25 @@ export class SetsSurface {
         <button type="button" class="plw-quiz-btn--secondary plw-quiz-btn--sm" id="plw-btn-reset-sets-filters">重置筛选</button>
       </div>
     `;
+    const topicSelect = filterBar.querySelector<HTMLSelectElement>("#plw-select-topic")!;
+    const subtopicSelect = filterBar.querySelector<HTMLSelectElement>("#plw-select-subtopic")!;
+    fillTopicSelect(
+      topicSelect,
+      this.topicTree.roots,
+      this.taxonomy?.topics ? "所有主题" : "主题分类暂不可用",
+      this.selectedTopic
+    );
+    topicSelect.disabled = this.topicTree.roots.length === 0;
+    const updateSubtopics = () => {
+      fillTopicSelect(
+        subtopicSelect,
+        this.topicTree.subtopics(this.selectedTopic),
+        this.selectedTopic === "all" ? "请先选择主题" : "全部子主题",
+        this.selectedSubtopic
+      );
+      subtopicSelect.disabled = topicSelect.disabled || this.selectedTopic === "all";
+    };
+    updateSubtopics();
     const compactMedia = window.matchMedia("(max-width: 700px)");
     filterBar.open = !compactMedia.matches;
     this.filterMediaCleanup?.();
@@ -142,6 +158,13 @@ export class SetsSurface {
 
     filterBar.querySelector("#plw-select-topic")?.addEventListener("change", e => {
       this.selectedTopic = (e.target as HTMLSelectElement).value;
+      this.selectedSubtopic = "all";
+      updateSubtopics();
+      this.renderList(cardsGrid, countNotice);
+    });
+
+    subtopicSelect.addEventListener("change", () => {
+      this.selectedSubtopic = subtopicSelect.value;
       this.renderList(cardsGrid, countNotice);
     });
 
@@ -157,9 +180,10 @@ export class SetsSurface {
 
     filterBar.querySelector("#plw-btn-reset-sets-filters")?.addEventListener("click", () => {
       this.keyword = "";
-      this.selectedTopic = this.selectedFeedbackMode = this.selectedTag = "all";
+      this.selectedTopic = this.selectedSubtopic = this.selectedFeedbackMode = this.selectedTag = "all";
       filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")!.value = "";
       filterBar.querySelectorAll<HTMLSelectElement>("select").forEach(select => (select.value = "all"));
+      updateSubtopics();
       this.renderList(cardsGrid, countNotice);
       filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")?.focus();
     });
@@ -191,9 +215,8 @@ export class SetsSurface {
         if (!text.includes(this.keyword)) return false;
       }
 
-      if (this.selectedTopic !== "all") {
-        if (!item.topicIds.includes(this.selectedTopic)) return false;
-      }
+      const topicId = this.selectedSubtopic !== "all" ? this.selectedSubtopic : this.selectedTopic;
+      if (!this.topicTree.matches(item.topicIds, topicId === "all" ? undefined : topicId)) return false;
 
       if (this.selectedFeedbackMode !== "all") {
         if (item.feedbackMode !== this.selectedFeedbackMode) return false;
@@ -211,6 +234,7 @@ export class SetsSurface {
     const activeCount =
       Number(Boolean(this.keyword)) +
       Number(this.selectedTopic !== "all") +
+      Number(this.selectedSubtopic !== "all") +
       Number(this.selectedFeedbackMode !== "all") +
       Number(this.selectedTag !== "all");
     const summary = grid.parentElement?.querySelector(".plw-quiz-filter-bar summary");

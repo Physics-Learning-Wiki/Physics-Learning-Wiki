@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { mockTurnstile } from "./helpers/turnstile.js";
+import { mockTopicCatalogs, topicTaxonomy } from "./helpers/topic-catalogs.js";
 
 const basePath = "/Physics-Learning-Wiki/";
 const mathJaxUrl = "https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js";
@@ -276,7 +277,8 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   await expect(page.locator("#plw-question-contribute-form .CodeMirror")).toHaveCount(2);
   await expect(page.locator("#turnstile-widget .plw-test-turnstile-widget")).toHaveCount(1);
   await expect(page.locator('head link[data-plw-feature="question-contribute"]')).toHaveCount(1);
-  await expect.poll(() => page.locator("#q-submit-topic option").count()).toBeGreaterThan(1);
+  await expect.poll(() => page.locator("#q-submit-topic-root option").count()).toBeGreaterThan(1);
+  await expect(page.locator("#q-submit-subtopic")).toBeDisabled();
   expect(requests.some(url => new URL(url).pathname.endsWith("/_generated/question-bank/manifest.json"))).toBe(true);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/features/question-contribute.js"))).toHaveLength(1);
   expect(requests.filter(url => new URL(url).pathname.endsWith("/css/features/question-contribute.css"))).toHaveLength(
@@ -332,7 +334,11 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
   await page.locator("#q-submit-btn").click();
   await expect(page.locator("#q-submit-status")).toContainText("单选题需要 2 到 6 个选项");
   await page.locator("#q-submit-choices").fill("A|加速度增加\nB|速度不变");
-  await page.locator("#q-submit-topic").selectOption({ index: 1 });
+  await page.locator("#q-submit-topic-root").selectOption("mechanics");
+  await page.locator("#q-submit-btn").click();
+  await expect(page.locator("#q-submit-topic-status")).toContainText("请选择子主题");
+  expect(submissions).toHaveLength(0);
+  await page.locator("#q-submit-subtopic").selectOption("mechanics.dynamics");
   await page.locator("#q-submit-btn").click();
   await expect(page.locator("#q-submit-success")).toBeVisible();
   expect(submissions).toHaveLength(1);
@@ -349,7 +355,7 @@ test("question contribution loads taxonomy and disposes both editors and its Tur
         ],
         answer: { choice: "A" },
         solution: "由牛顿第二定律 $F=ma$，加速度增加。",
-        topics: [expect.any(String)]
+        topics: ["mechanics.dynamics"]
       }
     }
   });
@@ -555,74 +561,169 @@ test("receipt management authenticates through headers and withdrawal remains pe
   await expect(page.getByRole("button", { name: "提交撤稿申请", exact: true })).toBeDisabled();
 });
 
-test("author revision retains structured question metadata and requires renewed consent", async ({ page }) => {
-  await mockTurnstile(page);
-  const id = "123e4567-e89b-42d3-a456-426614174000",
-    token = "a".repeat(64);
-  await page.addInitScript(
-    ({ id, token }) =>
-      sessionStorage.setItem(
-        "plw:submission-receipt:v1:/Physics-Learning-Wiki/:" + id,
-        JSON.stringify({
-          schemaVersion: 1,
-          submissionId: id,
-          token,
-          operationKey: "123e4567-e89b-42d3-a456-426614174001",
-          revision: 1,
-          type: "question"
-        })
-      ),
-    { id, token }
-  );
-  let submitted: Record<string, unknown> | undefined;
-  const question = {
-    type: "true_false",
-    stem: "原稿判断题题干．",
-    solution: "原稿解析．",
-    answer: { value: true },
-    hints: ["保留的提示"],
-    external_media: [
-      { url: "https://example.com/a.png", alt: "图一", rights_note: "作者授权" },
-      { url: "https://example.com/b.png", alt: "图二", rights_note: "作者授权" }
-    ]
-  };
-  await page.route("https://submit.folderrewind.top/**", async route => {
-    if (route.request().method() === "POST") submitted = route.request().postDataJSON() as Record<string, unknown>;
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      headers: { "access-control-allow-origin": "*" },
-      body: JSON.stringify(
-        submitted
-          ? { revision: 3, issueUrl: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123" }
-          : {
-              revision: 2,
-              record: {
-                schemaVersion: 1,
-                submissionId: id,
-                type: "question",
-                payload: { title: "判断题", content: question.stem, question, attribution: "作者" },
-                sourceDeclaration: { kind: "original", note: "本人整理" }
+for (const taxonomyUnavailable of [false, true]) {
+  test(`author revision retains structured question metadata with taxonomy ${
+    taxonomyUnavailable ? "unavailable" : "available"
+  }`, async ({ page }) => {
+    await mockTurnstile(page);
+    if (taxonomyUnavailable) {
+      await page.route("**/catalog/taxonomy.*.json", route => route.fulfill({ status: 503, body: "Unavailable" }));
+    }
+    const id = "123e4567-e89b-42d3-a456-426614174000",
+      token = "a".repeat(64);
+    await page.addInitScript(
+      ({ id, token }) =>
+        sessionStorage.setItem(
+          "plw:submission-receipt:v1:/Physics-Learning-Wiki/:" + id,
+          JSON.stringify({
+            schemaVersion: 1,
+            submissionId: id,
+            token,
+            operationKey: "123e4567-e89b-42d3-a456-426614174001",
+            revision: 1,
+            type: "question"
+          })
+        ),
+      { id, token }
+    );
+    let submitted: Record<string, unknown> | undefined;
+    const question = {
+      type: "true_false",
+      stem: "原稿判断题题干．",
+      solution: "原稿解析．",
+      answer: { value: true },
+      topics: ["mechanics.dynamics", "mechanics.kinematics"],
+      hints: ["保留的提示"],
+      external_media: [
+        { url: "https://example.com/a.png", alt: "图一", rights_note: "作者授权" },
+        { url: "https://example.com/b.png", alt: "图二", rights_note: "作者授权" }
+      ]
+    };
+    await page.route("https://submit.folderrewind.top/**", async route => {
+      if (route.request().method() === "POST") submitted = route.request().postDataJSON() as Record<string, unknown>;
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        headers: { "access-control-allow-origin": "*" },
+        body: JSON.stringify(
+          submitted
+            ? { revision: 3, issueUrl: "https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues/123" }
+            : {
+                revision: 2,
+                record: {
+                  schemaVersion: 1,
+                  submissionId: id,
+                  type: "question",
+                  payload: { title: "判断题", content: question.stem, question, attribution: "作者" },
+                  sourceDeclaration: { kind: "original", note: "本人整理" }
+                }
               }
-            }
-      )
+        )
+      });
+    });
+    await page.goto(`${basePath}quiz/contribute/?submission=${id}`);
+    await expect(page.locator("#q-submit-status")).toContainText("正在修订第 2 版");
+    await expect(page.locator("#q-submit-license")).not.toBeChecked();
+    await expect(page.locator("#q-submit-attribution")).toHaveValue("作者");
+    await expect(page.locator("#q-submit-topic")).toHaveValue("mechanics.dynamics");
+    if (taxonomyUnavailable) {
+      await expect(page.locator("#q-submit-topic-root")).toBeDisabled();
+      await expect(page.locator("#q-submit-subtopic")).toBeDisabled();
+      await expect(page.locator("#q-submit-topic-status")).toContainText("已保留原主题：mechanics.dynamics");
+    } else {
+      await expect(page.locator("#q-submit-topic-root")).toHaveValue("mechanics");
+      await expect(page.locator("#q-submit-subtopic")).toHaveValue("mechanics.dynamics");
+      await page.locator("#q-submit-subtopic").selectOption("mechanics.oscillations");
+    }
+    await setEditorText(page, 1, "作者修订后的解析．");
+    await agreeLicense(page);
+    await page.locator("#q-submit-btn").click();
+    await expect(page.locator("#q-submit-success")).toBeVisible();
+    expect(submitted).toMatchObject({
+      submissionId: id,
+      baseRevision: 2,
+      payload: {
+        question: {
+          hints: ["保留的提示"],
+          external_media: question.external_media,
+          solution: "作者修订后的解析．",
+          topics: [taxonomyUnavailable ? "mechanics.dynamics" : "mechanics.oscillations", "mechanics.kinematics"]
+        }
+      }
     });
   });
-  await page.goto(`${basePath}quiz/contribute/?submission=${id}`);
-  await expect(page.locator("#q-submit-status")).toContainText("正在修订第 2 版");
-  await expect(page.locator("#q-submit-license")).not.toBeChecked();
-  await expect(page.locator("#q-submit-attribution")).toHaveValue("作者");
-  await setEditorText(page, 1, "作者修订后的解析．");
-  await agreeLicense(page);
-  await page.locator("#q-submit-btn").click();
-  await expect(page.locator("#q-submit-success")).toBeVisible();
-  expect(submitted).toMatchObject({
-    submissionId: id,
-    baseRevision: 2,
-    payload: {
-      question: { hints: ["保留的提示"], external_media: question.external_media, solution: "作者修订后的解析．" }
-    }
+}
+
+test("question topic drafts restore before taxonomy arrives, retain unfinished roots and import old IDs", async ({
+  page
+}) => {
+  await mockTurnstile(page);
+  await mockTopicCatalogs(page);
+  let releaseTaxonomy!: () => void;
+  const taxonomyGate = new Promise<void>(resolve => (releaseTaxonomy = resolve));
+  await page.route("**/catalog/taxonomy.topics.json", async route => {
+    await taxonomyGate;
+    await route.fulfill({ json: topicTaxonomy });
   });
+  const key = "plw:question-draft:v1:/Physics-Learning-Wiki/";
+  await page.addInitScript(
+    ({ key }) => {
+      if (!localStorage.getItem(key))
+        localStorage.setItem(
+          key,
+          JSON.stringify({
+            schemaVersion: 1,
+            kind: "question",
+            updatedAt: 1,
+            fields: { "q-submit-topic": "mechanics.dynamics", "q-submit-stem": "旧版分类草稿．" }
+          })
+        );
+    },
+    { key }
+  );
+  await page.goto(`${basePath}quiz/contribute/`, { waitUntil: "commit" });
+  await page.getByRole("button", { name: "恢复题目草稿", exact: true }).click();
+  await expect(page.locator("#q-submit-topic")).toHaveValue("mechanics.dynamics");
+  await expect(page.locator("#q-submit-topic-root")).toBeDisabled();
+  releaseTaxonomy();
+  await expect(page.locator("#q-submit-topic-root")).toHaveValue("mechanics");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("mechanics.dynamics");
+  // Authoring includes registered branches even when no visible question uses them.
+  await page.locator("#q-submit-topic-root").selectOption("math");
+  await expect(page.locator("#q-submit-topic")).toHaveValue("");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("");
+  await expect
+    .poll(() =>
+      page.evaluate(key => {
+        return JSON.parse(localStorage.getItem(key) || "{}").fields?.["q-submit-topic-root"];
+      }, key)
+    )
+    .toBe("math");
+  await page.reload();
+  await page.getByRole("button", { name: "恢复题目草稿", exact: true }).click();
+  await expect(page.locator("#q-submit-topic-root")).toHaveValue("math");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("");
+  await expect(page.locator("#q-submit-topic")).toHaveValue("");
+
+  await page.getByLabel("导入题目草稿", { exact: true }).setInputFiles({
+    name: "legacy-topic.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(
+      JSON.stringify({
+        schemaVersion: 1,
+        kind: "question",
+        updatedAt: 1,
+        fields: { "q-submit-topic": "methods.advanced" }
+      })
+    )
+  });
+  await page.getByRole("button", { name: "恢复题目草稿", exact: true }).click();
+  await expect(page.locator("#q-submit-topic-root")).toHaveValue("mechanics");
+  await expect(page.locator("#q-submit-subtopic")).toHaveValue("methods.advanced");
+  await expect(page.locator("#q-submit-subtopic option:checked")).toHaveText("动力学 / 进阶动力学");
+  await page.locator("#q-submit-topic-root").selectOption("");
+  await expect(page.locator("#q-submit-subtopic")).toBeDisabled();
+  await expect(page.locator("#q-submit-topic")).toHaveValue("");
 });
 
 test("lookup rejects invalid IDs and receipts, reports pending and recovers after a server failure", async ({

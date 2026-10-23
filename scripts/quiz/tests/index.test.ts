@@ -8,3 +8,4 @@ import "./random.test.js";
 import "./selection.test.js";
 import "./session.test.js";
 import "./storage.test.js";
+import "./topics.test.js";

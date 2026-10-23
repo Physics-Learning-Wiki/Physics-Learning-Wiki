@@ -214,7 +214,7 @@ export function createSubmissionClient(
         if (key in original && (key !== "choice_order" || original.type === type)) extras[key] = original[key];
       if (original.ai_name && form.querySelector<HTMLInputElement>("#q-submit-ai")?.checked)
         extras.ai_name = original.ai_name;
-      const topic = form.querySelector<HTMLSelectElement>("#q-submit-topic")?.value;
+      const topic = form.querySelector<HTMLInputElement>("#q-submit-topic")?.value;
       if (Array.isArray(original.topics) && original.topics.length > 1)
         extras.topics = [...new Set([...(topic ? [topic] : []), ...original.topics.slice(1)])];
       if (original.type === type && type === "free_response") {
