@@ -6,6 +6,8 @@
 
 `build/build-site.sh` 是 GitHub Pages 的完整生产构建入口，通过 `corepack yarn site:build` 调用．它运行前置脚本、构建前端 feature、构建 MkDocs、生成 Pagefind、运行 MathJax SSR、优化响应式图片、压缩 HTML、生成 SEO 文件并执行 blocking 性能审计．运行环境及安装约定见 [工具链维护说明](../.github/TOOLCHAIN.md)．
 
+源码检查使用 `uv run pytest tests/question_bank tests/integration tests/seo`．完整构建后运行 `uv run pytest tests/site --built-site-dir=site` 和 `corepack yarn e2e`，直接验证已有站点；产物测试不会重新构建全站．Build 工作流将源码检查与站点构建并行执行，并由原有必需检查统一汇总结果．
+
 ## 构建阶段脚本
 
 - `pre-build/`：安装或准备 MkDocs 主题、同步构建配置并生成导航资源。

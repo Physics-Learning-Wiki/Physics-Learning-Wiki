@@ -10,6 +10,9 @@ from scripts.question_bank.maintenance import import_issue, next_question_id
 from scripts.question_bank.validator import validate_repository
 
 
+ROOT = Path(__file__).parents[2]
+
+
 def test_next_question_id_generates_sequential_ids(tmp_path: Path) -> None:
     questions_dir = tmp_path / "question-bank" / "questions"
     questions_dir.mkdir(parents=True)
@@ -33,8 +36,8 @@ def test_next_question_id_generates_sequential_ids(tmp_path: Path) -> None:
     assert path2 == questions_dir / "inbox" / "q-000006.yml"
 
 
-def test_import_issue_minimal_payload(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
+def test_import_issue_minimal_payload(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
 
     payload = {
         "schemaVersion": 2,
@@ -70,8 +73,8 @@ def test_import_issue_minimal_payload(tmp_path: Path) -> None:
         imported_path.unlink(missing_ok=True)
 
 
-def test_import_issue_with_optional_metadata(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
+def test_import_issue_with_optional_metadata(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
 
     payload = {
         "schemaVersion": 2,
@@ -122,7 +125,7 @@ def test_import_issue_with_optional_metadata(tmp_path: Path) -> None:
         imported_path.unlink(missing_ok=True)
 
 
-def test_import_issue_rejects_v1_payload(tmp_path: Path) -> None:
+def test_import_issue_rejects_v1_payload(tmp_path: Path, submission_repository: Path) -> None:
     payload_v1 = {
         "schemaVersion": 1,
         "question": {
@@ -137,10 +140,10 @@ def test_import_issue_rejects_v1_payload(tmp_path: Path) -> None:
     input_file.write_text(json.dumps(payload_v1), encoding="utf-8")
 
     with pytest.raises(ValueError, match="unsupported question submission payload"):
-        import_issue(Path.cwd(), input_file)
+        import_issue(submission_repository, input_file)
 
 
-def test_import_issue_rejects_missing_license_consent(tmp_path: Path) -> None:
+def test_import_issue_rejects_missing_license_consent(tmp_path: Path, submission_repository: Path) -> None:
     payload_no_license = {
         "schemaVersion": 2,
         "licenseConsent": False,
@@ -155,11 +158,11 @@ def test_import_issue_rejects_missing_license_consent(tmp_path: Path) -> None:
     input_file.write_text(json.dumps(payload_no_license), encoding="utf-8")
 
     with pytest.raises(ValueError, match="CC-BY-SA-4.0"):
-        import_issue(Path.cwd(), input_file)
+        import_issue(submission_repository, input_file)
 
 
-def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
+def test_worker_submission_payload_e2e_all_types(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
     payloads = [
         {
             "schemaVersion": 2,
@@ -244,9 +247,9 @@ def test_worker_submission_payload_e2e_all_types(tmp_path: Path) -> None:
             path.unlink(missing_ok=True)
 
 
-def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
-    fixture_path = repo_root / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
+def test_submission_v2_contract_fixture(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
+    fixture_path = ROOT / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
     data = json.loads(fixture_path.read_text(encoding="utf-8"))
 
     imported_paths = []
@@ -273,9 +276,9 @@ def test_submission_v2_contract_fixture(tmp_path: Path) -> None:
             path.unlink(missing_ok=True)
 
 
-def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
-    fixture_path = repo_root / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
+def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
+    fixture_path = ROOT / "tests" / "question_bank" / "fixtures" / "submission_v2_contract.json"
     data = json.loads(fixture_path.read_text(encoding="utf-8"))
 
     for name, inv in data["invalid"].items():
@@ -299,8 +302,8 @@ def test_submission_v2_contract_fixture_invalid_rejected(tmp_path: Path) -> None
                 imported_path.unlink()
 
 
-def test_import_issue_strictly_enforces_license_consent(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
+def test_import_issue_strictly_enforces_license_consent(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
     valid_question = {
         "type": "true_false",
         "stem": "合外力为零时物体保持静止或匀速直线运动。",
@@ -367,8 +370,8 @@ def test_import_issue_strictly_enforces_license_consent(tmp_path: Path) -> None:
         import_issue(repo_root, f5)
 
 
-def test_import_issue_rejects_html_in_attribution_or_ai_name(tmp_path: Path) -> None:
-    repo_root = Path.cwd()
+def test_import_issue_rejects_html_in_attribution_or_ai_name(tmp_path: Path, submission_repository: Path) -> None:
+    repo_root = submission_repository
     base_question = {
         "type": "true_false",
         "stem": "重力加速度在地球表面不同纬度存在微小差异。",

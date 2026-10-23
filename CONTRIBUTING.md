@@ -68,17 +68,16 @@ GitHub Pages 使用统一生产编排．按 [工具链维护说明](.github/TOOL
 corepack yarn site:build
 ```
 
-等价入口是 `./scripts/build/build-site.sh`。它构建 feature 资源、MkDocs、Pagefind、MathJax SSR、响应式图片、压缩 HTML、SEO 文件，并以 blocking 模式运行静态性能审计。提交前运行：
+等价入口是 `./scripts/build/build-site.sh`．它构建 feature 资源、MkDocs、Pagefind、MathJax SSR、响应式图片、压缩 HTML、SEO 文件，并以 blocking 模式运行静态性能审计．构建成功后，直接验证同一份产物：
 
 ```bash
-corepack yarn perf:audit --mode blocking
-corepack yarn e2e:smoke
-corepack yarn e2e:quiz
-corepack yarn e2e:forms
+uv run pytest tests/site --built-site-dir=site
 corepack yarn e2e
 ```
 
-完整 CI 前端与内容检查命令列在 [`.github/workflows/build.yml`](.github/workflows/build.yml)，其中包括 `uv run python -m scripts.question_bank math-audit`、`uv run pytest tests/question_bank tests/integration tests/seo`、quiz/runtime/forms 类型检查与单测、生成产物检查以及 `corepack yarn media:test`。
+源码测试单独运行 `uv run pytest tests/question_bank tests/integration tests/seo`，只在临时项目中构建合成题库，不重建全站．产物测试要求显式传入 `--built-site-dir`；目录或必要文件缺失会失败，不会自动构建或跳过．性能审计已经在完整构建中执行，仅独立调整生成产物时需要再次手动运行 `corepack yarn perf:audit --mode blocking`．
+
+完整 CI 前端与内容检查命令列在 [`.github/workflows/build.yml`](.github/workflows/build.yml)，包括含草稿的题库校验、覆盖率、Python 测试、quiz 格式检查、quiz/runtime/forms/features 类型与产物检查、Node 单测和 Worker 契约检查．`tests` 与 `site` 并行执行，`site` 只构建一次全站并完成产物检查及完整 E2E；`Physics-Learning-Wiki Page Build` 汇总两者的成功结果后，主分支才会发布同一份 `site-artifact`．
 
 生产后处理会为页面贡献者信息读取 GitHub API。若本机未认证请求碰到 API 限额，可通过 GitHub CLI 登录后将 token 仅注入本次构建进程：
 

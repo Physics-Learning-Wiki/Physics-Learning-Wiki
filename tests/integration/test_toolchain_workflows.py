@@ -79,11 +79,45 @@ def test_build_and_release_workflow_contracts():
     workflows = ROOT / ".github/workflows"
     build = load_yaml(workflows / "build.yml")
     assert build["name"] == "Build"
+    jobs = build["jobs"]
+    assert set(jobs) == {"tests", "site", "build", "deploy"}
+    assert "needs" not in jobs["tests"]
+    assert "needs" not in jobs["site"]
     assert build["jobs"]["build"]["name"] == "Physics-Learning-Wiki Page Build"
+    assert jobs["build"]["needs"] == ["tests", "site"]
+    assert jobs["build"]["if"] == "${{ always() }}"
+    gate = jobs["build"]["steps"][0]
+    assert gate["env"] == {
+        "TEST_RESULT": "${{ needs.tests.result }}",
+        "SITE_RESULT": "${{ needs.site.result }}",
+    }
+    assert 'test "$TEST_RESULT" = success' in gate["run"]
+    assert 'test "$SITE_RESULT" = success' in gate["run"]
     assert build["jobs"]["deploy"]["needs"] == "build"
+    for guard in (
+        "github.event_name != 'pull_request'",
+        "github.ref == 'refs/heads/main'",
+        "github.repository_owner == 'Physics-Learning-Wiki'",
+    ):
+        assert guard in jobs["deploy"]["if"]
+    assert all(jobs[name]["permissions"] == {"contents": "read"}
+               for name in ("tests", "site", "build"))
+    assert jobs["deploy"]["permissions"] == {"contents": "write"}
+    assert build["concurrency"]["cancel-in-progress"] == "true"
+    assert "github.event.pull_request.number || github.ref" in build["concurrency"]["group"]
+    source_commands = "\n".join(step.get("run", "") for step in jobs["tests"]["steps"])
+    assert "validate --include-drafts" in source_commands
+    assert "corepack yarn quiz:format:check" in source_commands
+    assert "playwright install" not in source_commands
+    assert not (workflows / "check-question-bank.yml").exists()
+    site_commands = "\n".join(step.get("run", "") for step in jobs["site"]["steps"])
+    assert site_commands.count("./scripts/build/build-site.sh") == 1
+    assert "uv run pytest tests/site --built-site-dir=site" in site_commands
+    assert "corepack yarn e2e" in site_commands
+    assert "perf:audit" not in site_commands
     uploaded = {
         step["with"]["name"]
-        for step in build["jobs"]["build"]["steps"]
+        for step in jobs["site"]["steps"]
         if step.get("uses", "").startswith("actions/upload-artifact@")
     }
     downloaded = {

@@ -11,8 +11,8 @@ from scripts.question_bank.coverage import coverage_data, render_coverage
 from scripts.question_bank.validator import validate_repository
 
 
-def test_coverage_data_structure() -> None:
-    report = validate_repository()
+def test_coverage_data_structure(mixed_question_bank: Path) -> None:
+    report = validate_repository(mixed_question_bank)
     data = coverage_data(report, preview=False)
 
     assert "summary" in data
@@ -32,7 +32,8 @@ def test_coverage_data_structure() -> None:
     assert "测试集合状态与可行性" in rendered
 
 
-def test_cli_validate_and_coverage_commands(capsys) -> None:
+def test_cli_validate_and_coverage_commands(mixed_question_bank: Path, monkeypatch, capsys) -> None:
+    monkeypatch.chdir(mixed_question_bank)
     code_val = main(["validate"])
     assert code_val == 0
 

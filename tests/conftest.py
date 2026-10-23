@@ -14,6 +14,38 @@ from scripts.question_bank.batch_review import DIMENSIONS, apply_plan, create_pl
 from scripts.question_bank.validator import validate_repository
 
 
+def pytest_addoption(parser: pytest.Parser) -> None:
+    parser.addoption(
+        "--built-site-dir",
+        help="Read an existing production site; run corepack yarn site:build first.",
+    )
+
+
+@pytest.fixture
+def submission_repository(tmp_path: Path) -> Path:
+    """Exercise real imports without loading or writing the repository's questions."""
+    root = tmp_path / "submission-repo"
+    for directory in ("schemas", "taxonomy"):
+        shutil.copytree(ROOT / "question-bank" / directory, root / "question-bank" / directory)
+    for directory in ("questions", "sets"):
+        (root / "question-bank" / directory).mkdir()
+    docs = root / "docs"
+    docs.mkdir()
+    metadata = {
+        "page_id": "mechanics.dynamics.newton-laws",
+        "learning_objectives": [{
+            "id": "mechanics.newton.first-law",
+            "title": "Newton's first law",
+            "anchor": "newton-first-law",
+        }],
+    }
+    (docs / "newton-laws.md").write_text(
+        "---\n" + yaml.safe_dump(metadata) + '---\n<span id="newton-first-law"></span>\n',
+        encoding="utf-8",
+    )
+    return root
+
+
 @pytest.fixture
 def question_bank_repository(tmp_path: Path) -> Path:
     """Synthetic repository only: no attestation is written to real questions."""

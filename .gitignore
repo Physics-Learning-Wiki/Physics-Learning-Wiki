@@ -1,6 +1,6 @@
 /authors.json
 _build/
-site/
+/site/
 test-results/
 playwright-report/
 docs/_generated/question-bank/

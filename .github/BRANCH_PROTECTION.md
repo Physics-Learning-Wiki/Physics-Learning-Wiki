@@ -23,9 +23,7 @@
 | `Check Characters` | `.github/workflows/check-characters.yml` | 校验 Markdown 标点符号规范、全角句号、防止混排字符 |
 | `Physics-Learning-Wiki Page Build` | `.github/workflows/build.yml` | 全量题库校验、全量测试矩阵（pytest、typecheck、Playwright）、MkDocs 全站构建与页面审计 |
 
-> **注意：路径过滤工作流的排他性风险与防护设计**：
-> `.github/workflows/check-question-bank.yml` 配置了路径过滤器（`paths: &quiz-paths`）．根据 GitHub Actions 规则，若将带有路径过滤的工作流设为必需检查项，仅修改非题库文档（如力学、数学）的 PR 将不会触发该检查，从而导致 PR 永久停滞在“等待状态上报”而无法合并．
-> 由于 `Physics-Learning-Wiki Page Build` 在每个 PR 上都会无条件执行全量题库校验（`python -m scripts.question_bank validate` 及覆盖率测试）、单元测试与前端构建检查，因此将其作为必需检查即可实现全面的题库与构建安全防护，同时避免路径过滤带来的挂起死锁．若未来需要将 `Check Question Bank` 单独设为必需检查，必须先在对应工作流中添加路径未命中时的空通过兜底作业．
+> `Physics-Learning-Wiki Page Build` 是 Build 工作流的汇总 Job，每个 PR 都会执行．源码检查与生产构建分别在 `tests`、`site` 中并行运行，汇总 Job 通过 `always()` 检查两者，只有全部成功才通过；失败、取消或跳过均不能满足门禁．原 `Check Question Bank` 的草稿校验与 quiz 格式检查已合并到 Build，不再保留重复工作流．必需检查名称及分支保护配置保持不变．
 
 ---
 

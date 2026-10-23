@@ -23,7 +23,7 @@
 
    预期 `--check` 退出码为 `0`，输出 `Main branch protection matches all required checks, review and bypass settings`，最后一个命令返回 `true`．`404`、权限错误或任一策略不符都不是通过；用有 Administration 写权限的凭证重新执行，或按 [分支保护规范](BRANCH_PROTECTION.md#方法三github-web-控制台手动勾选) 在网页配置．
 
-3. 保存脱敏的命令输出与配置页面截图．用一个普通文档 PR 确认必须有一名有写权限且不是最新推送者的维护者审批、过期审批失效、分支需保持最新、会话需解决，且无需等待路径过滤的 `Check Question Bank`．不要用强推测试保护．
+3. 保存脱敏的命令输出与配置页面截图．用一个普通文档 PR 确认必须有一名有写权限且不是最新推送者的维护者审批、过期审批失效、分支需保持最新、会话需解决，且 `Physics-Learning-Wiki Page Build` 汇总源码测试和站点验证的成功结果．不要用强推测试保护．
 
 策略同时核对管理员约束、检查严格模式、禁止强推和删除；仅查询 `protected=true` 不能替代 `--check`．经典分支保护生效后，Rulesets 列表仍可为空．
 

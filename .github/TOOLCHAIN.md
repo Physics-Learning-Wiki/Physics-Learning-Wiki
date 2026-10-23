@@ -23,6 +23,7 @@ Node 支持范围为 `>=24.22.1 <25`，Python 支持范围为 `>=3.12.15,<3.13`�
 - 两种初始化的 `cache` 默认为 `false`．只有只读 job 可以显式启用缓存，具备仓库或 Issue、PR 写权限的 job 必须显式关闭；不缓存 `node_modules`，不因缓存命中跳过安装．
 - 纯标准库脚本使用 `uv run --no-project python`．需要项目依赖的脚本使用 `uv run`；格式工具使用 `uv run --only-group format`，并从同一虚拟环境提供 remark 所需的 clang-format．
 - 保留 `Build`、`Physics-Learning-Wiki Page Build`、制品名称及 `workflow_run` 订阅关系．保留直接推送任务所需认证，其余 checkout 关闭凭据持久化．高权限自动化继续使用可信主分支或受信任的发布提交．
+- Build 的 `tests`、`site` 并行运行，`build` 仅汇总两者的成功结果，`deploy` 保持原发布条件．`site` 只执行一次完整构建，随后运行 `uv run pytest tests/site --built-site-dir=site` 和完整 E2E；性能审计由构建脚本执行一次．题库专用工作流的检查已并入 Build，自动 benchmark 已移除，命令行工具保留．
 - 当前分支可直接修改及推送，沿用用户确认的仓库策略；本轮不调整远端分支保护、内容审核规则、投稿接口或 Worker 写入开关．
 
 ## 范围与验收
