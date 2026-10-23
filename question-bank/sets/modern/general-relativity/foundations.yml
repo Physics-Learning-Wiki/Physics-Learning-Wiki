@@ -1,0 +1,32 @@
+schema_version: 1
+id: modern.general-relativity.foundations
+title: 广义相对论基础：度规、联络与场方程
+description: 八道进阶自评题，覆盖指标升降、Christoffel 符号、测地线方程、度规相容性、Schwarzschild 解与 Friedmann 方程。建议在读完广义相对论入门页面后使用。
+status: draft
+tags:
+  - 广义相对论
+  - 微分几何
+  - 自评
+feedback_mode: deferred
+selection:
+  type: fixed
+  questions:
+    - q-000647
+    - q-000648
+    - q-000649
+    - q-000650
+    - q-000651
+    - q-000652
+    - q-000653
+    - q-000654
+  order: fixed
+version: 1
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+provenance:
+  type: original
+  note: "题集编排为原创；题目主题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习，但题干、解答与选项均为独立撰写，未复制原文措辞或插图。"
+  ai_assisted: true
+license: CC-BY-SA-4.0

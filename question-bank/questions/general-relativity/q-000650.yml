@@ -1,0 +1,183 @@
+schema_version: 3
+id: q-000650
+version: 1
+status: draft
+locale: zh-CN
+related_pages:
+  - modern.general-relativity
+type: free_response
+choice_order: fixed
+stem: |
+  考虑连接两个固定事件 $A$、$B$ 的曲线 $x^\mu(\lambda)$，作用量取为
+
+  $$
+  S[x]=\int_{\lambda_1}^{\lambda_2}\mathrm{d}\lambda\,L,
+  \qquad
+  L=\sqrt{g_{\mu\nu}(x)\dot x^\mu\dot x^\nu},
+  \qquad
+  \dot x^\mu\equiv\frac{\mathrm{d}x^\mu}{\mathrm{d}\lambda}.
+  $$
+
+  在端点固定的变分 $\delta x^\mu(\lambda_1)=\delta x^\mu(\lambda_2)=0$ 下，证明
+
+  $$
+  \ddot x^\sigma+\Gamma^\sigma{}_{\alpha\beta}\dot x^\alpha\dot x^\beta
+  =\frac{\dot L}{L}\dot x^\sigma,
+  $$
+
+  其中
+
+  $$
+  \Gamma^\sigma{}_{\alpha\beta}
+  =\frac{1}{2}g^{\sigma\nu}
+  \left(\partial_\alpha g_{\beta\nu}+\partial_\beta g_{\alpha\nu}-\partial_\nu g_{\alpha\beta}\right).
+  $$
+
+  再说明：为什么选择仿射参数后，右端消失，得到标准的测地线方程？如果改用 $S'=\int g_{\mu\nu}\dot x^\mu\dot x^\nu\,\mathrm{d}\lambda$，情况会怎样？
+response:
+  format: plain_text
+  required: true
+  min_chars: 150
+  max_chars: 12000
+  rows: 16
+  placeholder: '从 $\delta L$ 开始，分部积分并整理出 $\ddot x^\sigma$ 项……'
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  变分给出
+
+  $$
+  \delta S
+  =\int\mathrm{d}\lambda\left[
+  \frac{1}{2L}\partial_\rho g_{\mu\nu}\dot x^\mu\dot x^\nu\delta x^\rho
+  +\frac{1}{L}g_{\mu\nu}\dot x^\mu\delta\dot x^\nu
+  \right].
+  $$
+
+  对第二项分部积分并用端点固定条件，得到
+
+  $$
+  \partial_\nu g_{\alpha\beta}\dot x^\alpha\dot x^\beta
+  -2\frac{\mathrm{d}}{\mathrm{d}\lambda}\left(g_{\mu\nu}\dot x^\mu\right)
+  +2\frac{\dot L}{L}g_{\mu\nu}\dot x^\mu=0 .
+  $$
+
+  展开导数、用 $g^{\nu\sigma}$ 升指标，即得题给方程。若 $\lambda$ 为仿射参数，则 $L$ 沿曲线为常数，$\dot L=0$，方程化为标准测地线方程。$S'$ 不含根号，变分直接给出仿射参数化的测地线方程。
+solution: |
+  记
+
+  $$
+  A\equiv g_{\mu\nu}\dot x^\mu\dot x^\nu,
+  \qquad L=\sqrt{A}.
+  $$
+
+  对曲线作变分 $x^\mu\to x^\mu+\delta x^\mu$，有 $\delta\dot x^\mu=\dfrac{\mathrm{d}}{\mathrm{d}\lambda}\delta x^\mu$，并且
+
+  $$
+  \delta A
+  =\partial_\rho g_{\mu\nu}\,\delta x^\rho\,\dot x^\mu\dot x^\nu
+  +2g_{\mu\nu}\dot x^\mu\,\delta\dot x^\nu,
+  $$
+
+  其中用了 $g_{\mu\nu}=g_{\nu\mu}$。因此
+
+  $$
+  \delta S
+  =\int\mathrm{d}\lambda\,
+  \left[
+  \frac{1}{2L}\partial_\rho g_{\mu\nu}\dot x^\mu\dot x^\nu\,\delta x^\rho
+  +\frac{1}{L}g_{\mu\nu}\dot x^\mu\,\delta\dot x^\nu
+  \right].
+  $$
+
+  对第二项分部积分：
+
+  $$
+  \int_{\lambda_1}^{\lambda_2}\mathrm{d}\lambda\,
+  \frac{1}{L}g_{\mu\nu}\dot x^\mu\,\delta\dot x^\nu
+  =\left[\frac{1}{L}g_{\mu\nu}\dot x^\mu\,\delta x^\nu\right]_{\lambda_1}^{\lambda_2}
+  -\int_{\lambda_1}^{\lambda_2}\mathrm{d}\lambda\,
+  \frac{\mathrm{d}}{\mathrm{d}\lambda}
+  \left(\frac{1}{L}g_{\mu\nu}\dot x^\mu\right)\delta x^\nu .
+  $$
+
+  边界项因 $\delta x^\nu(\lambda_1)=\delta x^\nu(\lambda_2)=0$ 而消失。由于 $\delta x^\nu$ 任意，得到
+
+  $$
+  \frac{1}{2L}\partial_\nu g_{\alpha\beta}\dot x^\alpha\dot x^\beta
+  -\frac{\mathrm{d}}{\mathrm{d}\lambda}
+  \left(\frac{1}{L}g_{\mu\nu}\dot x^\mu\right)=0 .
+  $$
+
+  两边乘以 $L$：
+
+  $$
+  \frac{1}{2}\partial_\nu g_{\alpha\beta}\dot x^\alpha\dot x^\beta
+  -\frac{\mathrm{d}}{\mathrm{d}\lambda}\left(g_{\mu\nu}\dot x^\mu\right)
+  +\frac{\dot L}{L}g_{\mu\nu}\dot x^\mu=0 .
+  $$
+
+  展开全导数：
+
+  $$
+  \frac{\mathrm{d}}{\mathrm{d}\lambda}\left(g_{\mu\nu}\dot x^\mu\right)
+  =\partial_\rho g_{\mu\nu}\dot x^\rho\dot x^\mu+g_{\mu\nu}\ddot x^\mu .
+  $$
+
+  用 $g^{\nu\sigma}$ 升指标，并利用对称性合并 $\partial_\alpha g_{\beta\nu}$ 与 $\partial_\beta g_{\alpha\nu}$，得到
+
+  $$
+  \ddot x^\sigma
+  +\frac{1}{2}g^{\sigma\nu}
+  \left(\partial_\alpha g_{\beta\nu}+\partial_\beta g_{\alpha\nu}-\partial_\nu g_{\alpha\beta}\right)
+  \dot x^\alpha\dot x^\beta
+  =\frac{\dot L}{L}\dot x^\sigma .
+  $$
+
+  括号内正是 Levi-Civita 联络 $\Gamma^\sigma{}_{\alpha\beta}$，于是
+
+  $$
+  \ddot x^\sigma+\Gamma^\sigma{}_{\alpha\beta}\dot x^\alpha\dot x^\beta
+  =\frac{\dot L}{L}\dot x^\sigma .
+  $$
+
+  如果选择仿射参数，使 $L$ 沿曲线保持常数（例如类时曲线取固有时，类光曲线取仿射参数），则 $\dot L=0$，右端消失，得到标准测地线方程
+
+  $$
+  \ddot x^\sigma+\Gamma^\sigma{}_{\alpha\beta}\dot x^\alpha\dot x^\beta=0 .
+  $$
+
+  若改用不含根号的作用量
+
+  $$
+  S'=\int g_{\mu\nu}\dot x^\mu\dot x^\nu\,\mathrm{d}\lambda,
+  $$
+
+  变分直接给出仿射参数化的测地线方程；这个作用量不再具有任意重参数化不变性，但用来推导测地线更方便。
+hints:
+  - '先令 $A=g_{\mu\nu}\dot x^\mu\dot x^\nu$，则 $L=\sqrt{A}$。'
+  - '把 $\delta\dot x^\nu$ 分部积分，边界项因端点固定而消失。'
+  - '最后用 $g^{\nu\sigma}$ 升指标，并注意 $g_{\mu\nu}$ 对称。'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 900
+provenance:
+  type: original
+  note: "原创题干与完整推导；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0

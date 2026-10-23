@@ -1,0 +1,236 @@
+schema_version: 3
+id: q-000652
+version: 1
+status: draft
+locale: zh-CN
+related_pages:
+  - modern.general-relativity
+type: free_response
+choice_order: fixed
+stem: |
+  考虑静态球对称度规
+
+  $$
+  \mathrm{d}s^2=-e^{\nu(r)}\,\mathrm{d}t^2+e^{a(r)}\,\mathrm{d}r^2
+  +r^2\left(\mathrm{d}\theta^2+\sin^2\theta\,\mathrm{d}\varphi^2\right).
+  $$
+
+  1. 求所有独立非零的 Christoffel 符号。
+  2. 求 Ricci 张量的非零分量；已知 $R_{\varphi\varphi}=\sin^2\theta\,R_{\theta\theta}$。
+  3. 取
+
+  $$
+  e^{\nu(r)}=e^{-a(r)}=1-\frac{2M}{r},
+  $$
+
+  验证 $R_{\mu\nu}=0$（$r>2M$）。
+response:
+  format: plain_text
+  required: true
+  min_chars: 150
+  max_chars: 14000
+  rows: 18
+  placeholder: "写出度规逆、导数、联络，再代入 Ricci 张量公式……"
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  非零联络为
+
+  $$
+  \Gamma^t{}_{tr}=\frac{\nu'}{2},
+  \quad
+  \Gamma^r{}_{tt}=\frac{\nu'}{2}e^{\nu-a},
+  \quad
+  \Gamma^r{}_{rr}=\frac{a'}{2},
+  $$
+
+  $$
+  \Gamma^r{}_{\theta\theta}=-re^{-a},
+  \quad
+  \Gamma^r{}_{\varphi\varphi}=-r\sin^2\theta\,e^{-a},
+  \quad
+  \Gamma^\theta{}_{r\theta}=\Gamma^\varphi{}_{r\varphi}=\frac{1}{r},
+  $$
+
+  $$
+  \Gamma^\varphi{}_{\theta\varphi}=\cot\theta,
+  \qquad
+  \Gamma^\theta{}_{\varphi\varphi}=-\sin\theta\cos\theta .
+  $$
+
+  $$
+  R_{tt}=e^{\nu-a}\left(\frac{\nu''}{2}+\frac{(\nu')^2}{4}-\frac{a'\nu'}{4}+\frac{\nu'}{r}\right),
+  $$
+
+  $$
+  R_{rr}=-\frac{\nu''}{2}-\frac{(\nu')^2}{4}+\frac{a'\nu'}{4}+\frac{a'}{r},
+  $$
+
+  $$
+  R_{\theta\theta}=1-e^{-a}\left(1-\frac{ra'}{2}+\frac{r\nu'}{2}\right),
+  \qquad
+  R_{\varphi\varphi}=\sin^2\theta\,R_{\theta\theta}.
+  $$
+
+  取 $e^\nu=e^{-a}=f=1-2M/r$ 时，$f''+2f'/r=0$，故 $R_{tt}=R_{rr}=0$；又 $R_{\theta\theta}=1-f-rf'=0$，所以全部 $R_{\mu\nu}=0$。
+solution: |
+  度规及其逆为
+
+  $$
+  g_{\mu\nu}=\mathrm{diag}\left(-e^\nu,e^a,r^2,r^2\sin^2\theta\right),
+  \qquad
+  g^{\mu\nu}=\mathrm{diag}\left(-e^{-\nu},e^{-a},r^{-2},r^{-2}\sin^{-2}\theta\right).
+  $$
+
+  非零导数为
+
+  $$
+  \partial_r g_{tt}=-e^\nu\nu',
+  \qquad
+  \partial_r g_{rr}=e^a a',
+  $$
+
+  $$
+  \partial_r g_{\theta\theta}=2r,
+  \qquad
+  \partial_r g_{\varphi\varphi}=2r\sin^2\theta,
+  \qquad
+  \partial_\theta g_{\varphi\varphi}=2r^2\sin\theta\cos\theta .
+  $$
+
+  逐项代入
+
+  $$
+  \Gamma^\rho{}_{\mu\nu}
+  =\frac{1}{2}g^{\rho\sigma}
+  \left(\partial_\mu g_{\nu\sigma}+\partial_\nu g_{\mu\sigma}-\partial_\sigma g_{\mu\nu}\right)
+  $$
+
+  得到
+
+  $$
+  \Gamma^t{}_{tr}=\Gamma^t{}_{rt}=\frac{\nu'}{2},
+  \qquad
+  \Gamma^r{}_{tt}=\frac{\nu'}{2}e^{\nu-a},
+  \qquad
+  \Gamma^r{}_{rr}=\frac{a'}{2},
+  $$
+
+  $$
+  \Gamma^r{}_{\theta\theta}=-re^{-a},
+  \qquad
+  \Gamma^r{}_{\varphi\varphi}=-r\sin^2\theta\,e^{-a},
+  $$
+
+  $$
+  \Gamma^\theta{}_{r\theta}=\Gamma^\theta{}_{\theta r}=\frac{1}{r},
+  \qquad
+  \Gamma^\varphi{}_{r\varphi}=\Gamma^\varphi{}_{\varphi r}=\frac{1}{r},
+  $$
+
+  $$
+  \Gamma^\varphi{}_{\theta\varphi}=\Gamma^\varphi{}_{\varphi\theta}=\cot\theta,
+  \qquad
+  \Gamma^\theta{}_{\varphi\varphi}=-\sin\theta\cos\theta .
+  $$
+
+  把上述结果代入
+
+  $$
+  R_{\mu\nu}=\partial_\lambda\Gamma^\lambda{}_{\mu\nu}
+  -\partial_\nu\Gamma^\lambda{}_{\mu\lambda}
+  +\Gamma^\lambda{}_{\mu\nu}\Gamma^\sigma{}_{\lambda\sigma}
+  -\Gamma^\sigma{}_{\mu\lambda}\Gamma^\lambda{}_{\nu\sigma},
+  $$
+
+  可得
+
+  $$
+  R_{tt}=e^{\nu-a}\left(\frac{\nu''}{2}+\frac{(\nu')^2}{4}-\frac{a'\nu'}{4}+\frac{\nu'}{r}\right),
+  $$
+
+  $$
+  R_{rr}=-\frac{\nu''}{2}-\frac{(\nu')^2}{4}+\frac{a'\nu'}{4}+\frac{a'}{r},
+  $$
+
+  $$
+  R_{\theta\theta}=1-e^{-a}\left(1-\frac{ra'}{2}+\frac{r\nu'}{2}\right),
+  \qquad
+  R_{\varphi\varphi}=\sin^2\theta\,R_{\theta\theta}.
+  $$
+
+  其余分量由对称性为零。
+
+  现在取
+
+  $$
+  e^{\nu}=f(r),\qquad e^{a}=\frac{1}{f(r)},\qquad f(r)=1-\frac{2M}{r}.
+  $$
+
+  于是
+
+  $$
+  \nu'=\frac{f'}{f},\qquad a'=-\frac{f'}{f},\qquad
+  \nu''=\frac{f''}{f}-\frac{(f')^2}{f^2},
+  $$
+
+  且
+
+  $$
+  f'=\frac{2M}{r^2},\qquad f''=-\frac{4M}{r^3}.
+  $$
+
+  代入 $R_{tt}$ 与 $R_{rr}$，两者都含有组合
+
+  $$
+  f''+\frac{2}{r}f'=0,
+  $$
+
+  因而
+
+  $$
+  R_{tt}=0,\qquad R_{rr}=0 .
+  $$
+
+  对于角向分量，
+
+  $$
+  R_{\theta\theta}
+  =1-f-rf'
+  =1-\left(1-\frac{2M}{r}\right)-\frac{2M}{r}=0,
+  $$
+
+  从而 $R_{\varphi\varphi}=0$。所以
+
+  $$
+  R_{\mu\nu}=0 .
+  $$
+
+  这正是 Schwarzschild 度规满足真空 Einstein 方程 $R_{\mu\nu}=0$ 的直接验证。
+hints:
+  - '先写出 $g^{\mu\nu}$ 和所有非零的度规导数。'
+  - '非零联络大多来自 $\partial_r g_{tt}$、$\partial_r g_{rr}$ 与 $\partial_r g_{\theta\theta}$。'
+  - "代入 Schwarzschild 形式时，注意 $f'+2f'/r$ 的组合。"
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 1500
+provenance:
+  type: original
+  note: "原创题干与完整解答；选题参考 Sebastian Bahamonde, General Relativity（Winter Camp 2026, Institute for Basic Science）的练习主题，未复制原文措辞或插图。"
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0
