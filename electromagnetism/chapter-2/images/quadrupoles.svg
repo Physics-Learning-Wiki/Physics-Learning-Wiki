@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-labelledby="title desc"><title id="title">线四极子与平面方框四极子</title><desc id="desc">左：+q, −2q, +q；右：方框相邻异号、对角同号，两者总电荷与偶极矩均为零．</desc>
+<rect width="720" height="380" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#475569"/></marker></defs>
+<g font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" fill="#172033">
+<text x="24" y="30" fill="#172033" font-size="17">线四极子与平面方框四极子</text>
+<circle cx="95" cy="190" r="15" fill="#fff1f2" stroke="#ba2636" stroke-width="2"/>
+<text x="85" y="196" fill="#172033" font-size="14">+q</text>
+<circle cx="195" cy="190" r="15" fill="#e4f2ff" stroke="#155da0" stroke-width="2"/>
+<text x="185" y="196" fill="#172033" font-size="14">−2q</text>
+<circle cx="295" cy="190" r="15" fill="#fff1f2" stroke="#ba2636" stroke-width="2"/>
+<text x="285" y="196" fill="#172033" font-size="14">+q</text>
+<path d="M95 220 L295 220" fill="none" stroke="#475569" stroke-width="2"/>
+<text x="135" y="250" fill="#172033" font-size="17">a</text>
+<text x="235" y="250" fill="#172033" font-size="17">a</text>
+<circle cx="465" cy="115" r="15" fill="#fff1f2" stroke="#ba2636" stroke-width="2"/>
+<text x="455" y="121" fill="#172033" font-size="14">+q</text>
+<circle cx="600" cy="115" r="15" fill="#e4f2ff" stroke="#155da0" stroke-width="2"/>
+<text x="590" y="121" fill="#172033" font-size="14">−q</text>
+<circle cx="600" cy="250" r="15" fill="#fff1f2" stroke="#ba2636" stroke-width="2"/>
+<text x="590" y="256" fill="#172033" font-size="14">+q</text>
+<circle cx="465" cy="250" r="15" fill="#e4f2ff" stroke="#155da0" stroke-width="2"/>
+<text x="455" y="256" fill="#172033" font-size="14">−q</text>
+<rect x="465" y="115" width="135" height="135" fill="none" stroke="#475569" stroke-width="2"/>
+<text x="24" y="365" fill="#475569" font-size="13">PLW 原创 · 示意图非比例；曲线按正文公式采样</text>
+</g></svg>
