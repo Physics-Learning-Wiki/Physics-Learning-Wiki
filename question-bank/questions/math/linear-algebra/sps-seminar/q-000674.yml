@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000674
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  两个二阶矩阵 $A=I_2$ 与 $B=\operatorname{diag}(2,1/2)$ 的行列式都为 $1$。能否因此断定它们相似？
+
+  两个二阶矩阵 $A=I_2$ 与 $B=\operatorname{diag}(2,1/2)$ 的行列式都为 $1$。能否因此断定它们相似？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -49,3 +49,19 @@ feedback:
     A: 同一行列式只记录一个数，不能确定整个线性变换。
     B: 恒等矩阵的相似变换给出了直接反例。
     C: B 的行列式为 1，所以它可逆。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:274fe9a4aefe5103b55286583d9d6068f24a3718fbb6d1fe190e5fb3ae78755f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:274fe9a4aefe5103b55286583d9d6068f24a3718fbb6d1fe190e5fb3ae78755f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:274fe9a4aefe5103b55286583d9d6068f24a3718fbb6d1fe190e5fb3ae78755f

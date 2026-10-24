@@ -1,17 +1,18 @@
 schema_version: 3
 id: q-000667
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  两组有序基为 $\mathcal B=(\mathbf e_1,\mathbf e_2)$ 与 $\mathcal B^{\prime}=(\mathbf e^{\prime}_1,\mathbf e^{\prime}_2)$，且 $P\mathbf e_i=\mathbf e^{\prime}_i$。记 $C=\mathcal M_{\mathcal B}(P)$。$C$ 的第 2 列记录什么？
+
+  两组有序基为 $\mathcal B=(\mathbf e_1,\mathbf e_2)$ 与 $\mathcal B^{\prime}=(\mathbf e^{\prime}_1,\mathbf e^{\prime}_2)$，且 $P\mathbf
+  e_i=\mathbf e^{\prime}_i$。记 $C=\mathcal M_{\mathcal B}(P)$。$C$ 的第 2 列记录什么？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -40,8 +41,7 @@ answer:
   choice: B
 hints:
 - 矩阵第 j 列记录第 j 个输入基向量的像，在输出基下的坐标。
-solution: $C$ 的输入、输出都用 $\mathcal B$。第 2 列是 $[P\mathbf e_2]_{\mathcal B}=[\mathbf e^{\prime}_2]_{\mathcal B}$。务必区分“基向量被
-  P 改变”与“同一向量的坐标换算”。
+solution: $C$ 的输入、输出都用 $\mathcal B$。第 2 列是 $[P\mathbf e_2]_{\mathcal B}=[\mathbf e^{\prime}_2]_{\mathcal B}$。务必区分“基向量被 P 改变”与“同一向量的坐标换算”。
 feedback:
   correct: 正确。新基向量在原基下的坐标正是 C 的列。
   incorrect: 再想一想：矩阵第 j 列记录第 j 个输入基向量的像，在输出基下的坐标。
@@ -49,3 +49,19 @@ feedback:
     A: 这对应反方向的坐标换算，不是 C 的列定义。
     B: 新基向量在原基下的坐标正是 C 的列。
     C: 这里表示的是 P，不是其逆。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:b6f4b65e51fca8ba34124c32cf7b4525cc3ee65db64b47b7516c087d45c8eaf9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:b6f4b65e51fca8ba34124c32cf7b4525cc3ee65db64b47b7516c087d45c8eaf9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:b6f4b65e51fca8ba34124c32cf7b4525cc3ee65db64b47b7516c087d45c8eaf9

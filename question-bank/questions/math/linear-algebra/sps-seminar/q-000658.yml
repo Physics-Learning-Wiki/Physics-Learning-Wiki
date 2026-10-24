@@ -1,22 +1,26 @@
 schema_version: 3
 id: q-000658
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.4 三阶行列式的短计算 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.4 三阶行列式的短计算 · 2026-10-24 更新稿**
+
 
   计算
 
-  $$
-  A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}
+
   $$
 
-  的行列式。
+  A=\begin{pmatrix}1&1&0\\0&2&1\\1&0&1\end{pmatrix}
+
+  $$
+
+
+  的行列式。'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -53,3 +57,19 @@ feedback:
     A: 不要把右下方向的非零项 1 误写成减项。
     B: 两个非零正项分别为 2 和 1。
     C: 只乘主对角线会漏掉另一个非零排列项。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d3e1e7e65e3080aebc013a2e453819458d1a9b852bcc8733ce4cef42e9494b3c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d3e1e7e65e3080aebc013a2e453819458d1a9b852bcc8733ce4cef42e9494b3c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d3e1e7e65e3080aebc013a2e453819458d1a9b852bcc8733ce4cef42e9494b3c

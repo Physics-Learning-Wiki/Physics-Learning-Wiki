@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000691
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.eigenvalues
 - linalg.determinant
 - linalg.image-kernel
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
 
-  设 $A$ 是实方阵，实数 $\lambda$ 满足 $\det(A-\lambda I)=0$。为什么这能保证存在非零实特征向量？
+
+  设 $A$ 是实方阵，实数 $\lambda$ 满足 $\det(A-\lambda I)=0$。为什么这能保证存在非零实特征向量？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -50,3 +50,19 @@ feedback:
     A: 奇异矩阵不一定是零矩阵，只需有非平凡的核。
     B: 列的相关系数直接给出一个非零核向量。
     C: 列之间可以相互依赖，而不必任何一列为零。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:feb95ff3e5405a10bd5a3f407f35507783be3ba9f64cc5273eb9f0dabbaf277a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:feb95ff3e5405a10bd5a3f407f35507783be3ba9f64cc5273eb9f0dabbaf277a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:feb95ff3e5405a10bd5a3f407f35507783be3ba9f64cc5273eb9f0dabbaf277a

@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000661
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.5 矩阵幂与体积 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.5 矩阵幂与体积 · 2026-10-24 更新稿**
 
-  某三维线性变换的矩阵 $A$ 满足 $\det A=-2$。连续执行三次后，$\det(A^3)$ 和普通体积放大倍数分别是多少？
+
+  某三维线性变换的矩阵 $A$ 满足 $\det A=-2$。连续执行三次后，$\det(A^3)$ 和普通体积放大倍数分别是多少？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -47,3 +47,19 @@ feedback:
     A: 复合时缩放因子相乘，不是相加。
     B: 三个负因子相乘为负，普通体积倍率为绝对值。
     C: 三次取向翻转不能抵消成保持取向。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:835a03d7256f8145f51cd7b63d05bf7490b604c82c09068635932f047f567df1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:835a03d7256f8145f51cd7b63d05bf7490b604c82c09068635932f047f567df1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:835a03d7256f8145f51cd7b63d05bf7490b604c82c09068635932f047f567df1

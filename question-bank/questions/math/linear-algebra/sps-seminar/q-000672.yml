@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000672
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,18 +9,24 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.matrix-representation
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
 
   已知
 
-  $$
-  C=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
-  C^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\qquad
-  A=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+
   $$
 
-  坐标关系为 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$。新表示 $A^{\prime}=C^{-1}AC$ 是什么？
+  C=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+
+  C^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\qquad
+
+  A=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+
+  $$
+
+
+  坐标关系为 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$。新表示 $A^{\prime}=C^{-1}AC$ 是什么？'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -57,3 +63,19 @@ feedback:
     A: 按从右向左的次序相乘得到此矩阵。
     B: 这个符号来自误用 $CAC^{-1}$ 的反向公式。
     C: 在这组斜基下，原来的对角矩阵不再是对角形式。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:9b47ad7871310c6be181a1d1493d7d2e291b0c816eb88ca4232e2a9d42407ee3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:9b47ad7871310c6be181a1d1493d7d2e291b0c816eb88ca4232e2a9d42407ee3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:9b47ad7871310c6be181a1d1493d7d2e291b0c816eb88ca4232e2a9d42407ee3

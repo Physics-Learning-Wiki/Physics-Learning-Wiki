@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000671
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,11 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.matrix-representation
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  设 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，且 $A=\mathcal M_{\mathcal B}(T)$。求新基下的 $A^{\prime}=\mathcal M_{\mathcal B^{\prime}}(T)$ 时，正确关系是哪一个？
+
+  设 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，且 $A=\mathcal M_{\mathcal B}(T)$。求新基下的 $A^{\prime}=\mathcal
+  M_{\mathcal B^{\prime}}(T)$ 时，正确关系是哪一个？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -49,3 +50,19 @@ feedback:
     A: 在本题指定的 C 方向下，这把去程与回程交换了。
     B: 三个因子的顺序与输入输出坐标方向一致。
     C: 输入和输出都必须处理，不能只换算一侧。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:edfca7c7ca4eebdcc688191d1f21ed554c82b28ad7499a197cfa7dea8eb09b5d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:edfca7c7ca4eebdcc688191d1f21ed554c82b28ad7499a197cfa7dea8eb09b5d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:edfca7c7ca4eebdcc688191d1f21ed554c82b28ad7499a197cfa7dea8eb09b5d

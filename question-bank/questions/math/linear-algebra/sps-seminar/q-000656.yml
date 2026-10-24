@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000656
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.4 三阶行列式的对角线法 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.4 三阶行列式的对角线法 · 2026-10-24 更新稿**
 
-  使用萨鲁斯法则时，把三阶矩阵的前两列抄到右侧。这两列起什么作用？
+
+  使用萨鲁斯法则时，把三阶矩阵的前两列抄到右侧。这两列起什么作用？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -47,3 +47,19 @@ feedback:
     A: 三行五列也不是五阶方阵，更不是原计算对象。
     B: 辅助列只是让跨边界的斜线更容易看清。
     C: 这不是矩阵复合，也没有增加线性变换。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:382f940e38df86a2d83d755d700968b349150366400fbc2a01e3a9cfdea60e75
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:382f940e38df86a2d83d755d700968b349150366400fbc2a01e3a9cfdea60e75
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:382f940e38df86a2d83d755d700968b349150366400fbc2a01e3a9cfdea60e75

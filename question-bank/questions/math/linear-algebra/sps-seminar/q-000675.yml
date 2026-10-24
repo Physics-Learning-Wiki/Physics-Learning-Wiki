@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000675
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.inner-product
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  同一个平面旋转，在标准正交归一基下的矩阵满足 $A^{\mathsf T}A=I$。换到任意斜基后，关于新矩阵 $A^{\prime}$，哪种说法正确？
+
+  同一个平面旋转，在标准正交归一基下的矩阵满足 $A^{\mathsf T}A=I$。换到任意斜基后，关于新矩阵 $A^{\prime}$，哪种说法正确？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -49,3 +49,19 @@ feedback:
     A: 矩阵表示依赖基，普通转置条件也不能直接搬到任意斜基。
     B: 改变记录方式不会破坏原几何旋转的长度保持性。
     C: 必须区分几何内积与任意坐标列的普通点积。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:07b82026b17ca72e8cf61d3d56dd11dbed69e1eeaf9817686d1d83ed11093b1e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:07b82026b17ca72e8cf61d3d56dd11dbed69e1eeaf9817686d1d83ed11093b1e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:07b82026b17ca72e8cf61d3d56dd11dbed69e1eeaf9817686d1d83ed11093b1e

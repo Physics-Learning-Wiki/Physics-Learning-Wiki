@@ -1,17 +1,18 @@
 schema_version: 3
 id: q-000676
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  有两种记法：$[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，以及 $[\mathbf x]_{\mathcal B^{\prime}}=P_{\mathrm c}[\mathbf x]_{\mathcal B}$。若 $A^{\prime}=C^{-1}AC$，用 $P_{\mathrm c}$ 应怎样写？
+
+  有两种记法：$[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$，以及 $[\mathbf x]_{\mathcal B^{\prime}}=P_{\mathrm c}[\mathbf
+  x]_{\mathcal B}$。若 $A^{\prime}=C^{-1}AC$，用 $P_{\mathrm c}$ 应怎样写？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -48,3 +49,19 @@ feedback:
     A: 方向定义决定公式中的逆矩阵放在哪一侧。
     B: 两种坐标换算方向相反，一般不相等。
     C: 这里已经换成反向定义的矩阵，公式顺序也要随之改变。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3b387cd1f98eda73be907aace627a5dc57ff6c1acb84de80e34a564e85a28906
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3b387cd1f98eda73be907aace627a5dc57ff6c1acb84de80e34a564e85a28906
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3b387cd1f98eda73be907aace627a5dc57ff6c1acb84de80e34a564e85a28906

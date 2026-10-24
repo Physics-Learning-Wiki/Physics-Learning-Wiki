@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "D:\\Programs\\Physics-Learning-Wiki",
   "reviewer": "Leafuke",
-  "reviewed_on": "2026-10-23",
+  "reviewed_on": "2026-10-24",
   "dimensions": [
     "physics",
     "pedagogy",
@@ -10,22 +10,245 @@
   ],
   "questions": [
     {
-      "id": "q-000653",
+      "id": "q-000655",
       "version": 1,
-      "content_fingerprint": "sha256:a62410a38ce0131c613288855ca163ed00e8e96cccd7548fb1378206330a48a2",
-      "path": "question-bank/questions/general-relativity/q-000653.yml"
+      "content_fingerprint": "sha256:f74145ba779213a7fdd71a834f5028b9491e3fb89bbe453edeb2c4bfab20759f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000655.yml"
     },
     {
-      "id": "q-000654",
+      "id": "q-000656",
       "version": 1,
-      "content_fingerprint": "sha256:18d7c8fa494d4cbba5a6a349fa7ce699e8d8d750809b79c30b7e6b1e22ead7f7",
-      "path": "question-bank/questions/general-relativity/q-000654.yml"
+      "content_fingerprint": "sha256:382f940e38df86a2d83d755d700968b349150366400fbc2a01e3a9cfdea60e75",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000656.yml"
+    },
+    {
+      "id": "q-000657",
+      "version": 1,
+      "content_fingerprint": "sha256:8c87ab6470f910c7433119c9cd2f4c6b74cb89ac94884896b2b04725d1c3816c",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000657.yml"
+    },
+    {
+      "id": "q-000658",
+      "version": 1,
+      "content_fingerprint": "sha256:d3e1e7e65e3080aebc013a2e453819458d1a9b852bcc8733ce4cef42e9494b3c",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000658.yml"
+    },
+    {
+      "id": "q-000659",
+      "version": 1,
+      "content_fingerprint": "sha256:d961e1aa93d22b2b2ae028d4c990a93568f5d460ed00cded8ebe66081f4b9f45",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000659.yml"
+    },
+    {
+      "id": "q-000660",
+      "version": 1,
+      "content_fingerprint": "sha256:bcf659f61cc8e8d63175741c98aeef0dabf98bcc357f67059230e5b3b9042b68",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000660.yml"
+    },
+    {
+      "id": "q-000661",
+      "version": 1,
+      "content_fingerprint": "sha256:835a03d7256f8145f51cd7b63d05bf7490b604c82c09068635932f047f567df1",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000661.yml"
+    },
+    {
+      "id": "q-000662",
+      "version": 1,
+      "content_fingerprint": "sha256:c80d5ed868b79525d32ee71ff99c8328dc1a3fca66b750333c4303b5524802f5",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000662.yml"
+    },
+    {
+      "id": "q-000663",
+      "version": 1,
+      "content_fingerprint": "sha256:c05e808e17982f04b9912478cb30686688da56a5b56c483196fdcaae58b562ab",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000663.yml"
+    },
+    {
+      "id": "q-000664",
+      "version": 1,
+      "content_fingerprint": "sha256:79766373a30b19ee1ccf2a29b01e19f95fadc70c511aa600219756750e14f380",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000664.yml"
+    },
+    {
+      "id": "q-000665",
+      "version": 1,
+      "content_fingerprint": "sha256:c5afe2f4c9a65a75b769c35dd62baca567dd0434ba00fece61bf06878b795937",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000665.yml"
+    },
+    {
+      "id": "q-000666",
+      "version": 1,
+      "content_fingerprint": "sha256:19afe9570428f2c551f610738a3d77ddd4d3f7d7d794e64e26cdb122b6ca17c7",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000666.yml"
+    },
+    {
+      "id": "q-000667",
+      "version": 1,
+      "content_fingerprint": "sha256:b6f4b65e51fca8ba34124c32cf7b4525cc3ee65db64b47b7516c087d45c8eaf9",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000667.yml"
+    },
+    {
+      "id": "q-000668",
+      "version": 1,
+      "content_fingerprint": "sha256:627ff69df7ea6c4e3d5638566d60cbb3f91d01247782e5d98b848ee58b7094ab",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000668.yml"
+    },
+    {
+      "id": "q-000669",
+      "version": 1,
+      "content_fingerprint": "sha256:a57fa5179189e97460077a6b7c41a89765d0948cd6373eed6120322996c27827",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000669.yml"
+    },
+    {
+      "id": "q-000670",
+      "version": 1,
+      "content_fingerprint": "sha256:6b7ab20d4cef30aa7ab5bdaf2cafa9fa55f90d41de221919a3b4a3fe95a348ac",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000670.yml"
+    },
+    {
+      "id": "q-000671",
+      "version": 1,
+      "content_fingerprint": "sha256:edfca7c7ca4eebdcc688191d1f21ed554c82b28ad7499a197cfa7dea8eb09b5d",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000671.yml"
+    },
+    {
+      "id": "q-000672",
+      "version": 1,
+      "content_fingerprint": "sha256:9b47ad7871310c6be181a1d1493d7d2e291b0c816eb88ca4232e2a9d42407ee3",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000672.yml"
+    },
+    {
+      "id": "q-000673",
+      "version": 1,
+      "content_fingerprint": "sha256:3736b7f5c21343bc8cb335c0fc94488764967004ae1e868f6d40a4d89010eb60",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000673.yml"
+    },
+    {
+      "id": "q-000674",
+      "version": 1,
+      "content_fingerprint": "sha256:274fe9a4aefe5103b55286583d9d6068f24a3718fbb6d1fe190e5fb3ae78755f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000674.yml"
+    },
+    {
+      "id": "q-000675",
+      "version": 1,
+      "content_fingerprint": "sha256:07b82026b17ca72e8cf61d3d56dd11dbed69e1eeaf9817686d1d83ed11093b1e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000675.yml"
+    },
+    {
+      "id": "q-000676",
+      "version": 1,
+      "content_fingerprint": "sha256:3b387cd1f98eda73be907aace627a5dc57ff6c1acb84de80e34a564e85a28906",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000676.yml"
+    },
+    {
+      "id": "q-000677",
+      "version": 1,
+      "content_fingerprint": "sha256:147ae72cbb7c719fecc5dae3b6f1116d12881384bc43579216339b838c7852c8",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000677.yml"
+    },
+    {
+      "id": "q-000678",
+      "version": 1,
+      "content_fingerprint": "sha256:140698f8ea7e00c0772ca8a7e93ce06095d5c5e500696d9914f284852b6895d7",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000678.yml"
+    },
+    {
+      "id": "q-000679",
+      "version": 1,
+      "content_fingerprint": "sha256:ea6e81b88332660e26fc4accf369e713176cfa44efbe74ee90885ff986c4c014",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000679.yml"
+    },
+    {
+      "id": "q-000680",
+      "version": 1,
+      "content_fingerprint": "sha256:89b55ff02d114eae82a39d25e34034315cea21175c37884f98bf4883a9e81530",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000680.yml"
+    },
+    {
+      "id": "q-000681",
+      "version": 1,
+      "content_fingerprint": "sha256:0187e8ca77a66535f815618ca04ddf7e7491569736ff4d8020aea281d7a2a3b5",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000681.yml"
+    },
+    {
+      "id": "q-000682",
+      "version": 1,
+      "content_fingerprint": "sha256:cc6f42451ad140dc6c6c43a753ff4308e6eb7255d3a11b1122c84d76173c3f3f",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000682.yml"
+    },
+    {
+      "id": "q-000683",
+      "version": 1,
+      "content_fingerprint": "sha256:701be2e8549794ae45de2b2fb4ba85fcf89717df4b894876873b6b5518749f15",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000683.yml"
+    },
+    {
+      "id": "q-000684",
+      "version": 1,
+      "content_fingerprint": "sha256:33f92ca479b04f0f6c00577211f11f6249e95983081ea715f56e8db2d3a15d58",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000684.yml"
+    },
+    {
+      "id": "q-000685",
+      "version": 1,
+      "content_fingerprint": "sha256:214dc87b4ace696b1ae0278ab13d780d61627bbedd53acffc2e76115730257ed",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000685.yml"
+    },
+    {
+      "id": "q-000686",
+      "version": 1,
+      "content_fingerprint": "sha256:424a5cef0e9c14dfbf3759fbdbd6516464aee530452ab0baa51efd56d843e648",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000686.yml"
+    },
+    {
+      "id": "q-000687",
+      "version": 1,
+      "content_fingerprint": "sha256:096c375161c6ed96985a48f5e2bb60bd94ab3e594f2878a8dfde97b946167000",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000687.yml"
+    },
+    {
+      "id": "q-000688",
+      "version": 1,
+      "content_fingerprint": "sha256:e0a9a54deffc1aee52e6d07aa3a83ecca7926ed9f509f7caab497ed8ba5899f9",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000688.yml"
+    },
+    {
+      "id": "q-000689",
+      "version": 1,
+      "content_fingerprint": "sha256:fb849e8e839ad8efa545832740308804c77f0809e7933083d269a688140c9c1c",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000689.yml"
+    },
+    {
+      "id": "q-000690",
+      "version": 1,
+      "content_fingerprint": "sha256:7ff0a957c2c1297690439b96ef380437e00f697c076ec4e70c2ba593551cc15e",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000690.yml"
+    },
+    {
+      "id": "q-000691",
+      "version": 1,
+      "content_fingerprint": "sha256:feb95ff3e5405a10bd5a3f407f35507783be3ba9f64cc5273eb9f0dabbaf277a",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000691.yml"
+    },
+    {
+      "id": "q-000692",
+      "version": 1,
+      "content_fingerprint": "sha256:2291cde06c6b973622c844cd9b83f30bf21c3eb3df518812ec441e449720f871",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000692.yml"
+    },
+    {
+      "id": "q-000693",
+      "version": 1,
+      "content_fingerprint": "sha256:7a3c6e197f423281a248621dc1fbd30e3eac44ee9e422f2c3a4cdbae15f36fb9",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000693.yml"
+    },
+    {
+      "id": "q-000694",
+      "version": 1,
+      "content_fingerprint": "sha256:a4a72ef0fd3bd74388757b8f2845b94f6ce4c53f1c664b9306cbd8061713e134",
+      "path": "question-bank/questions/math/linear-algebra/sps-seminar/q-000694.yml"
     }
   ],
-  "related_sets": [
-    {
-      "id": "modern.general-relativity.foundations",
-      "fingerprint": "sha256:af686f2a6bbb445ca093e7230cc76338a4565758fa5b9d78cca5a04e84a5670a"
-    }
-  ]
+  "related_sets": []
 }

@@ -1,17 +1,17 @@
 schema_version: 3
 id: q-000688
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
 - linalg.change-of-basis
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
 
-  在原基中 $A\mathbf v=\lambda\mathbf v$，$\mathbf v\ne0$。换基后 $A^{\prime}=C^{-1}AC$，向量的新坐标为 $\mathbf v^{\prime}=C^{-1}\mathbf v$。新特征值会怎样？
+
+  在原基中 $A\mathbf v=\lambda\mathbf v$，$\mathbf v\ne0$。换基后 $A^{\prime}=C^{-1}AC$，向量的新坐标为 $\mathbf v^{\prime}=C^{-1}\mathbf v$。新特征值会怎样？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -40,8 +40,8 @@ answer:
   choice: C
 hints:
 - 直接计算 $A^{\prime}\mathbf v^{\prime}$，相邻的 C 与其逆会抵消。
-solution: $A^{\prime}\mathbf v^{\prime}=C^{-1}ACC^{-1}\mathbf v=C^{-1}A\mathbf v=\lambda C^{-1}\mathbf v=\lambda\mathbf
-  v^{\prime}$。C 可逆保证新坐标仍非零，因此特征值不变，改变的是同一特征向量的坐标。
+solution: $A^{\prime}\mathbf v^{\prime}=C^{-1}ACC^{-1}\mathbf v=C^{-1}A\mathbf v=\lambda C^{-1}\mathbf v=\lambda\mathbf v^{\prime}$。C
+  可逆保证新坐标仍非零，因此特征值不变，改变的是同一特征向量的坐标。
 feedback:
   correct: 正确。同一变换的特征值与选基无关。
   incorrect: 再想一想：直接计算 $A^{\prime}\mathbf v^{\prime}$，相邻的 C 与其逆会抵消。
@@ -49,3 +49,19 @@ feedback:
     A: 换基的行列式因子不改变这个特征值。
     B: 取逆矩阵才涉及非零特征值的倒数；换基不是取 A 的逆。
     C: 同一变换的特征值与选基无关。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:e0a9a54deffc1aee52e6d07aa3a83ecca7926ed9f509f7caab497ed8ba5899f9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:e0a9a54deffc1aee52e6d07aa3a83ecca7926ed9f509f7caab497ed8ba5899f9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:e0a9a54deffc1aee52e6d07aa3a83ecca7926ed9f509f7caab497ed8ba5899f9

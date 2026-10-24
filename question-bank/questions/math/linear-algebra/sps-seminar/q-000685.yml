@@ -1,17 +1,17 @@
 schema_version: 3
 id: q-000685
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
 - linalg.change-of-basis
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
 
-  对给定数域上的 $n\times n$ 矩阵 A，若想把它在某组基下表示成对角矩阵，需要找到什么？
+
+  对给定数域上的 $n\times n$ 矩阵 A，若想把它在某组基下表示成对角矩阵，需要找到什么？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -48,3 +48,19 @@ feedback:
     A: 一个方向通常不足以组成 n 维空间的基。
     B: 独立的特征向量基正是对角化所需条件。
     C: 互不相同仍可能共线，不能保证构成基。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:214dc87b4ace696b1ae0278ab13d780d61627bbedd53acffc2e76115730257ed
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:214dc87b4ace696b1ae0278ab13d780d61627bbedd53acffc2e76115730257ed
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:214dc87b4ace696b1ae0278ab13d780d61627bbedd53acffc2e76115730257ed

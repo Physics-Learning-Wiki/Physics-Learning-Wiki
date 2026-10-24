@@ -1,23 +1,27 @@
 schema_version: 3
 id: q-000663
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
 - linalg.inner-product
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.5 体积保持与正交性 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.5 体积保持与正交性 · 2026-10-24 更新稿**
+
 
   剪切矩阵
 
-  $$
-  H=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+
   $$
 
-  的行列式为 $1$。能否仅据此判断它是正交矩阵？
+  H=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+
+  $$
+
+
+  的行列式为 $1$。能否仅据此判断它是正交矩阵？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -54,3 +58,19 @@ feedback:
     A: 面积由多个方向共同决定，面积保持不等于逐个长度保持。
     B: 一个长度改变的例子就能否定正交性。
     C: 可逆只保证可恢复输入，不保证长度保持。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c05e808e17982f04b9912478cb30686688da56a5b56c483196fdcaae58b562ab
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c05e808e17982f04b9912478cb30686688da56a5b56c483196fdcaae58b562ab
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c05e808e17982f04b9912478cb30686688da56a5b56c483196fdcaae58b562ab

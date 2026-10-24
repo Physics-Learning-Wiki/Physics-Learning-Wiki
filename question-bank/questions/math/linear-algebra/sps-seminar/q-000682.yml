@@ -1,22 +1,26 @@
 schema_version: 3
 id: q-000682
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
 
   已知
 
-  $$
-  A=\begin{pmatrix}3&1\\0&2\end{pmatrix}.
+
   $$
 
-  将 $A\mathbf v=\lambda\mathbf v$ 移项后，矩阵 $A-\lambda I_2$ 是什么？
+  A=\begin{pmatrix}3&1\\0&2\end{pmatrix}.
+
+  $$
+
+
+  将 $A\mathbf v=\lambda\mathbf v$ 移项后，矩阵 $A-\lambda I_2$ 是什么？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -45,8 +49,7 @@ answer:
   choice: B
 hints:
 - λ 乘的是单位矩阵，所以只改变对角元素。
-solution: $\lambda I_2=\left(\begin{smallmatrix}\lambda&0\\0&\lambda\end{smallmatrix}\right)$。逐项相减，只在 A 的两个对角位置减
-  λ，非对角位置保持不变。
+solution: $\lambda I_2=\left(\begin{smallmatrix}\lambda&0\\0&\lambda\end{smallmatrix}\right)$。逐项相减，只在 A 的两个对角位置减 λ，非对角位置保持不变。
 feedback:
   correct: 正确。单位矩阵只有对角元素非零。
   incorrect: 再想一想：λ 乘的是单位矩阵，所以只改变对角元素。
@@ -54,3 +57,19 @@ feedback:
     A: 不能把 λ 从每一个元素中都减掉。
     B: 单位矩阵只有对角元素非零。
     C: 移项使用减法，不是把整个矩阵乘以 λ。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:cc6f42451ad140dc6c6c43a753ff4308e6eb7255d3a11b1122c84d76173c3f3f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:cc6f42451ad140dc6c6c43a753ff4308e6eb7255d3a11b1122c84d76173c3f3f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:cc6f42451ad140dc6c6c43a753ff4308e6eb7255d3a11b1122c84d76173c3f3f

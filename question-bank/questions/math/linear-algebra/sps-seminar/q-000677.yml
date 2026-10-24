@@ -1,23 +1,27 @@
 schema_version: 3
 id: q-000677
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
 
   从新坐标回到原坐标的矩阵为
 
-  $$
-  C=\begin{pmatrix}1&0\\1&1\end{pmatrix}.
+
   $$
 
-  若某次计算得到输出的新坐标 $[\mathbf y]_{\mathcal B^{\prime}}=(2,-1)^{\mathsf T}$，则输出的原坐标是什么？
+  C=\begin{pmatrix}1&0\\1&1\end{pmatrix}.
+
+  $$
+
+
+  若某次计算得到输出的新坐标 $[\mathbf y]_{\mathcal B^{\prime}}=(2,-1)^{\mathsf T}$，则输出的原坐标是什么？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -54,3 +58,19 @@ feedback:
     A: 这是误用逆矩阵得到的反方向结果。
     B: 第二个原坐标为 2 加上负 1。
     C: 矩阵乘列向量时，需要按行计算每个输出分量。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:147ae72cbb7c719fecc5dae3b6f1116d12881384bc43579216339b838c7852c8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:147ae72cbb7c719fecc5dae3b6f1116d12881384bc43579216339b838c7852c8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:147ae72cbb7c719fecc5dae3b6f1116d12881384bc43579216339b838c7852c8

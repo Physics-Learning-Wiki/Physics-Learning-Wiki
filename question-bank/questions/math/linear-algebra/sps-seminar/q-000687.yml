@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000687
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
 
-  实平面中的旋转矩阵 $R=-I_2$ 表示旋转 $180^\circ$。对 $\mathbf v=(1,2)^{\mathsf T}$，它对应的特征值是多少？
+
+  实平面中的旋转矩阵 $R=-I_2$ 表示旋转 $180^\circ$。对 $\mathbf v=(1,2)^{\mathsf T}$，它对应的特征值是多少？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -47,3 +47,19 @@ feedback:
     A: 反向但保持长度，对应特征值负 1。
     B: 特征值 1 意味着向量不变，这里方向反了。
     C: 180° 旋转保持每条过原点的直线，与 90° 情况不同。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:096c375161c6ed96985a48f5e2bb60bd94ab3e594f2878a8dfde97b946167000
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:096c375161c6ed96985a48f5e2bb60bd94ab3e594f2878a8dfde97b946167000
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:096c375161c6ed96985a48f5e2bb60bd94ab3e594f2878a8dfde97b946167000

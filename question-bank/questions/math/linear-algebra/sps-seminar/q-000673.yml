@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000673
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  同一线性变换的两种表示满足 $A^{\prime}=C^{-1}AC$，$C$ 可逆。已知 $\det A=-4$，以下哪项必然成立？
+
+  同一线性变换的两种表示满足 $A^{\prime}=C^{-1}AC$，$C$ 可逆。已知 $\det A=-4$，以下哪项必然成立？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -49,3 +49,19 @@ feedback:
     A: 取向符号属于所研究的变换，不会被相似变换去掉。
     B: 去程与回程的行列式互为倒数，会相消。
     C: 相似变换保持行列式。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3736b7f5c21343bc8cb335c0fc94488764967004ae1e868f6d40a4d89010eb60
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3736b7f5c21343bc8cb335c0fc94488764967004ae1e868f6d40a4d89010eb60
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:3736b7f5c21343bc8cb335c0fc94488764967004ae1e868f6d40a4d89010eb60

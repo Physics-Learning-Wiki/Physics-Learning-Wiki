@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000659
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.5 逆矩阵的行列式 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.5 逆矩阵的行列式 · 2026-10-24 更新稿**
 
-  可逆实矩阵 $A$ 满足 $\det A=-2$，那么 $\det(A^{-1})$ 是多少？
+
+  可逆实矩阵 $A$ 满足 $\det A=-2$，那么 $\det(A^{-1})$ 是多少？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -47,3 +47,19 @@ feedback:
     A: 取倒数不会把负号去掉。
     B: 逆变换的缩放因子应与原因子相乘为 1。
     C: 负数的倒数仍为负数。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d961e1aa93d22b2b2ae028d4c990a93568f5d460ed00cded8ebe66081f4b9f45
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d961e1aa93d22b2b2ae028d4c990a93568f5d460ed00cded8ebe66081f4b9f45
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:d961e1aa93d22b2b2ae028d4c990a93568f5d460ed00cded8ebe66081f4b9f45

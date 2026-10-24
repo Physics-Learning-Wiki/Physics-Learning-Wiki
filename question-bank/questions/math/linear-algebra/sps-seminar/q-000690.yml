@@ -1,26 +1,33 @@
 schema_version: 3
 id: q-000690
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
 
   考虑实数或复数范围内的矩阵
 
+
   $$
+
   J=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+
   $$
+
 
   已经知道它的唯一特征值是 $1$。令 $\mathbf v=(x,y)^{\mathsf T}$。
 
+
   1. 把 $J\mathbf v=\mathbf v$ 写成两个分量的等式，找出全部非零特征向量。
+
   2. 能否选出两个线性无关的特征向量？能否对角化？
-  3. 允许 x、y 为复数，会改变上述结论吗？
+
+  3. 允许 x、y 为复数，会改变上述结论吗？'
 difficulty: 2
 cognitive_level: understand
 style: conceptual
@@ -65,3 +72,19 @@ solution: $J\mathbf v=(x+y,y)^{\mathsf T}$，等式要求 $x+y=x$，即 $y=0$；
 feedback:
   correct: 请对照参考答案检查每一步，并按量规自评。
   incorrect: 先根据提示写出关键关系，再对照解析补充。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7ff0a957c2c1297690439b96ef380437e00f697c076ec4e70c2ba593551cc15e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7ff0a957c2c1297690439b96ef380437e00f697c076ec4e70c2ba593551cc15e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7ff0a957c2c1297690439b96ef380437e00f697c076ec4e70c2ba593551cc15e

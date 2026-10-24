@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000686
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
 
-  在实平面中，逆时针旋转 $90^\circ$ 的矩阵为 $R=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$。它是否有非零实特征向量？
+
+  在实平面中，逆时针旋转 $90^\circ$ 的矩阵为 $R=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$。它是否有非零实特征向量？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -47,3 +47,19 @@ feedback:
     A: 每个非零向量都转到另一条直线上。
     B: 长度保持不代表向量本身不变。
     C: 没有实特征向量，但允许复数后会出现特征值。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:424a5cef0e9c14dfbf3759fbdbd6516464aee530452ab0baa51efd56d843e648
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:424a5cef0e9c14dfbf3759fbdbd6516464aee530452ab0baa51efd56d843e648
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:424a5cef0e9c14dfbf3759fbdbd6516464aee530452ab0baa51efd56d843e648

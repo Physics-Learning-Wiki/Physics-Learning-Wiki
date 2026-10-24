@@ -1,20 +1,23 @@
 schema_version: 3
 id: q-000666
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3–§2.6.5 行列式性质综合 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3–§2.6.5 行列式性质综合 · 2026-10-24 更新稿**
+
 
   已知三阶实矩阵 $A$ 满足 $\det A=2$。先交换第 1、2 列，再把第 3 列乘以 $3$，得到 $B$。
 
+
   1. 不展开矩阵，求 $\det B$。
+
   2. $B$ 是否可逆？若可逆，求 $\det(B^{-1})$。
-  3. 对应变换把普通体积放大多少倍，是否保持取向？
+
+  3. 对应变换把普通体积放大多少倍，是否保持取向？'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -58,3 +61,19 @@ solution: 交换两列后行列式为 $-2$，第三列乘以 $3$ 后为 $-6$。�
 feedback:
   correct: 请对照参考答案检查每一步，并按量规自评。
   incorrect: 先根据提示写出关键关系，再对照解析补充。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:19afe9570428f2c551f610738a3d77ddd4d3f7d7d794e64e26cdb122b6ca17c7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:19afe9570428f2c551f610738a3d77ddd4d3f7d7d794e64e26cdb122b6ca17c7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:19afe9570428f2c551f610738a3d77ddd4d3f7d7d794e64e26cdb122b6ca17c7

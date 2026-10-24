@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000692
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,16 +9,20 @@ concepts:
 - linalg.eigenvalues
 - linalg.determinant
 - linalg.image-kernel
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
 
   矩阵
 
-  $$
-  A=\begin{pmatrix}3&1\\1&3\end{pmatrix}
+
   $$
 
-  满足 $\det(A-2I)=0$。哪一个非零向量属于特征值 $2$？
+  A=\begin{pmatrix}3&1\\1&3\end{pmatrix}
+
+  $$
+
+
+  满足 $\det(A-2I)=0$。哪一个非零向量属于特征值 $2$？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -47,8 +51,8 @@ answer:
   choice: A
 hints:
 - 求解 $(A-2I)(x,y)^{\mathsf T}=0$，两行都给出 $x+y=0$。
-solution: $A-2I=\left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$，所以非零解满足 $y=-x$。选 $x=1$ 得 $(1,-1)^{\mathsf
-  T}$；直接相乘也得到 $(2,-2)^{\mathsf T}=2(1,-1)^{\mathsf T}$。
+solution: $A-2I=\left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$，所以非零解满足 $y=-x$。选 $x=1$ 得 $(1,-1)^{\mathsf T}$；直接相乘也得到
+  $(2,-2)^{\mathsf T}=2(1,-1)^{\mathsf T}$。
 feedback:
   correct: 正确。两个分量相反，满足核方程。
   incorrect: 再想一想：求解 $(A-2I)(x,y)^{\mathsf T}=0$，两行都给出 $x+y=0$。
@@ -56,3 +60,19 @@ feedback:
     A: 两个分量相反，满足核方程。
     B: 这个向量对应特征值 4，而不是 2。
     C: A 把它变成 (3,1)，不是其两倍。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:2291cde06c6b973622c844cd9b83f30bf21c3eb3df518812ec441e449720f871
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:2291cde06c6b973622c844cd9b83f30bf21c3eb3df518812ec441e449720f871
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:2291cde06c6b973622c844cd9b83f30bf21c3eb3df518812ec441e449720f871

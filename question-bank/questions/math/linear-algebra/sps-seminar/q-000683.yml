@@ -1,23 +1,27 @@
 schema_version: 3
 id: q-000683
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
 
   对矩阵
 
-  $$
-  A=\begin{pmatrix}4&1\\0&2\end{pmatrix},
+
   $$
 
-  解 $\det(A-\lambda I_2)=0$，得到哪些特征值？
+  A=\begin{pmatrix}4&1\\0&2\end{pmatrix},
+
+  $$
+
+
+  解 $\det(A-\lambda I_2)=0$，得到哪些特征值？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -54,3 +58,19 @@ feedback:
     A: 两个因子分别为零，得到这两个根。
     B: 非对角元素不直接给出本题的特征值。
     C: 8 是 det A，不能把行列式当作唯一特征值。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:701be2e8549794ae45de2b2fb4ba85fcf89717df4b894876873b6b5518749f15
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:701be2e8549794ae45de2b2fb4ba85fcf89717df4b894876873b6b5518749f15
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:701be2e8549794ae45de2b2fb4ba85fcf89717df4b894876873b6b5518749f15

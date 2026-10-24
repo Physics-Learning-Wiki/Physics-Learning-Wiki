@@ -1,16 +1,16 @@
 schema_version: 3
 id: q-000655
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.3 转置与行列式 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.3 转置与行列式 · 2026-10-24 更新稿**
 
-  已知实方阵 $A$ 的行列式为 $-3$。把所有行和列互换得到 $A^{\mathsf T}$，其行列式是多少？
+
+  已知实方阵 $A$ 的行列式为 $-3$。把所有行和列互换得到 $A^{\mathsf T}$，其行列式是多少？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -47,3 +47,19 @@ feedback:
     A: 转置保持行列式，包括原来的负号。
     B: 交换两列才会变号；转置不是这一操作。
     C: 倒数对应逆矩阵的行列式，不是转置。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:f74145ba779213a7fdd71a834f5028b9491e3fb89bbe453edeb2c4bfab20759f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:f74145ba779213a7fdd71a834f5028b9491e3fb89bbe453edeb2c4bfab20759f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:f74145ba779213a7fdd71a834f5028b9491e3fb89bbe453edeb2c4bfab20759f

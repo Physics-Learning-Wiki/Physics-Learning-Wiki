@@ -1,25 +1,31 @@
 schema_version: 3
 id: q-000689
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.eigenvalues
 - linalg.change-of-basis
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
 
   设
 
-  $$
-  A=\begin{pmatrix}3&1\\0&2\end{pmatrix},\qquad
-  \mathbf v_1=\begin{pmatrix}1\\0\end{pmatrix},\qquad
-  \mathbf v_2=\begin{pmatrix}-1\\1\end{pmatrix}.
+
   $$
 
-  可直接验证 $A\mathbf v_1=3\mathbf v_1$、$A\mathbf v_2=2\mathbf v_2$。令 $C=(\mathbf v_1\ \mathbf v_2)$，则 $C^{-1}AC$ 是什么？
+  A=\begin{pmatrix}3&1\\0&2\end{pmatrix},\qquad
+
+  \mathbf v_1=\begin{pmatrix}1\\0\end{pmatrix},\qquad
+
+  \mathbf v_2=\begin{pmatrix}-1\\1\end{pmatrix}.
+
+  $$
+
+
+  可直接验证 $A\mathbf v_1=3\mathbf v_1$、$A\mathbf v_2=2\mathbf v_2$。令 $C=(\mathbf v_1\ \mathbf v_2)$，则 $C^{-1}AC$ 是什么？'
 difficulty: 1
 cognitive_level: apply
 style: computational
@@ -56,3 +62,19 @@ feedback:
     A: 这需要先交换特征向量在 C 中的列顺序。
     B: 新基的顺序决定对应特征值的对角位置。
     C: 特征向量的一个负分量不会把其特征值变号。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:fb849e8e839ad8efa545832740308804c77f0809e7933083d269a688140c9c1c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:fb849e8e839ad8efa545832740308804c77f0809e7933083d269a688140c9c1c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:fb849e8e839ad8efa545832740308804c77f0809e7933083d269a688140c9c1c

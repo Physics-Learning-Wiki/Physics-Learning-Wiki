@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000678
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,23 +9,33 @@ concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
 - linalg.matrix-representation
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
 
   原基与新基的坐标满足 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$。给定
 
+
   $$
+
   C=\begin{pmatrix}1&1\\0&1\end{pmatrix},\quad
+
   C^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\quad
+
   A=\begin{pmatrix}3&0\\0&1\end{pmatrix},\quad
-  A'=\begin{pmatrix}3&2\\0&1\end{pmatrix}.
+
+  A''=\begin{pmatrix}3&2\\0&1\end{pmatrix}.
+
   $$
+
 
   输入的原坐标为 $(2,1)^{\mathsf T}$。
 
+
   1. 求输入的新坐标。
+
   2. 用 $A^{\prime}$ 求输出的新坐标，再换回原坐标。
-  3. 与直接用 $A$ 作用于原坐标的结果比较，并说明哪一步执行了实际变换。
+
+  3. 与直接用 $A$ 作用于原坐标的结果比较，并说明哪一步执行了实际变换。'
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -62,8 +72,8 @@ grading:
   - id: complete
     label: 基本掌握：逐步计算、直接验证和几何解释均正确。
     points: 1
-reference_answer: 输入新坐标 $(1,1)^{\mathsf T}$，输出新坐标 $(5,1)^{\mathsf T}$，返回原坐标 $(6,1)^{\mathsf T}$，与直接计算一致。中间乘 $A^{\prime}$
-  执行 T。
+reference_answer: 输入新坐标 $(1,1)^{\mathsf T}$，输出新坐标 $(5,1)^{\mathsf T}$，返回原坐标 $(6,1)^{\mathsf T}$，与直接计算一致。中间乘 $A^{\prime}$ 执行
+  T。
 hints:
 - 按“原坐标乘逆矩阵 → 新表示 → 乘 C 返回”的顺序。
 solution: 先算 $C^{-1}(2,1)^{\mathsf T}=(1,1)^{\mathsf T}$；再算 $A^{\prime}(1,1)^{\mathsf T}=(5,1)^{\mathsf T}$；最后 $C(5,1)^{\mathsf
@@ -71,3 +81,19 @@ solution: 先算 $C^{-1}(2,1)^{\mathsf T}=(1,1)^{\mathsf T}$；再算 $A^{\prime
 feedback:
   correct: 请对照参考答案检查每一步，并按量规自评。
   incorrect: 先根据提示写出关键关系，再对照解析补充。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:140698f8ea7e00c0772ca8a7e93ce06095d5c5e500696d9914f284852b6895d7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:140698f8ea7e00c0772ca8a7e93ce06095d5c5e500696d9914f284852b6895d7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:140698f8ea7e00c0772ca8a7e93ce06095d5c5e500696d9914f284852b6895d7

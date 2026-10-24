@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000693
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,16 +9,20 @@ concepts:
 - linalg.eigenvalues
 - linalg.determinant
 - linalg.image-kernel
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
 
   矩阵
 
-  $$
-  M=A-\lambda I=\begin{pmatrix}1&1\\1&1\end{pmatrix}
+
   $$
 
-  没有全零行。能否因此断言 $\det M\ne0$、λ 不是 A 的特征值？
+  M=A-\lambda I=\begin{pmatrix}1&1\\1&1\end{pmatrix}
+
+  $$
+
+
+  没有全零行。能否因此断言 $\det M\ne0$、λ 不是 A 的特征值？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -47,8 +51,7 @@ answer:
   choice: C
 hints:
 - 行列式为零的关键是列线性相关，不是原矩阵是否有全零行。
-solution: 本题两列相同，$\det M=1\cdot1-1\cdot1=0$。并且 $M(1,-1)^{\mathsf T}=0$，故 $A(1,-1)^{\mathsf T}=\lambda(1,-1)^{\mathsf
-  T}$。原矩阵不必直接出现零行；行列式判据关注线性相关性。
+solution: 本题两列相同，$\det M=1\cdot1-1\cdot1=0$。并且 $M(1,-1)^{\mathsf T}=0$，故 $A(1,-1)^{\mathsf T}=\lambda(1,-1)^{\mathsf T}$。原矩阵不必直接出现零行；行列式判据关注线性相关性。
 feedback:
   correct: 正确。一个非零核向量已经证明存在 λ 对应的特征方向。
   incorrect: 再想一想：行列式为零的关键是列线性相关，不是原矩阵是否有全零行。
@@ -56,3 +59,19 @@ feedback:
     A: 全零行是充分情形，但不是行列式为零的必要条件。
     B: 元素是否非零不能决定矩阵是否可逆。
     C: 一个非零核向量已经证明存在 λ 对应的特征方向。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7a3c6e197f423281a248621dc1fbd30e3eac44ee9e422f2c3a4cdbae15f36fb9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7a3c6e197f423281a248621dc1fbd30e3eac44ee9e422f2c3a4cdbae15f36fb9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:7a3c6e197f423281a248621dc1fbd30e3eac44ee9e422f2c3a4cdbae15f36fb9

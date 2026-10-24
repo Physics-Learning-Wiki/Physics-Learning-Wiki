@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000694
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
@@ -9,10 +9,10 @@ concepts:
 - linalg.eigenvalues
 - linalg.determinant
 - linalg.image-kernel
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
 
-  设 $A$ 为 $n$ 阶实方阵，$\lambda$ 为实数。$\det(A-\lambda I)=0$ 保证有非零特征向量。它是否保证每个非零向量都满足 $A\mathbf v=\lambda\mathbf v$？
+
+  设 $A$ 为 $n$ 阶实方阵，$\lambda$ 为实数。$\det(A-\lambda I)=0$ 保证有非零特征向量。它是否保证每个非零向量都满足 $A\mathbf v=\lambda\mathbf v$？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -41,8 +41,8 @@ answer:
   choice: B
 hints:
 - “至少存在一个非零解”与“所有非零向量都是解”是不同的命题。
-solution: 行列式为零保证核中至少有一个非零向量，并不保证核是整个空间。例如 $A=\operatorname{diag}(2,5)$、$\lambda=2$ 时，$(1,0)^{\mathsf T}$ 是特征向量，但
-  $(0,1)^{\mathsf T}$ 不满足该方程。只有 $A=\lambda I$ 时，每个非零向量才都属于这一特征值。
+solution: 行列式为零保证核中至少有一个非零向量，并不保证核是整个空间。例如 $A=\operatorname{diag}(2,5)$、$\lambda=2$ 时，$(1,0)^{\mathsf T}$ 是特征向量，但 $(0,1)^{\mathsf
+  T}$ 不满足该方程。只有 $A=\lambda I$ 时，每个非零向量才都属于这一特征值。
 feedback:
   correct: 正确。解集是核去掉零向量，通常只占空间的一部分。
   incorrect: 再想一想：“至少存在一个非零解”与“所有非零向量都是解”是不同的命题。
@@ -50,3 +50,19 @@ feedback:
     A: 矩阵的一个整体条件不意味着所有向量都落在其核里。
     B: 解集是核去掉零向量，通常只占空间的一部分。
     C: 在题设数域内，行列式方程的根确实是特征值；问题在于并非所有向量都适用。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:a4a72ef0fd3bd74388757b8f2845b94f6ce4c53f1c664b9306cbd8061713e134
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:a4a72ef0fd3bd74388757b8f2845b94f6ce4c53f1c664b9306cbd8061713e134
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:a4a72ef0fd3bd74388757b8f2845b94f6ce4c53f1c664b9306cbd8061713e134

@@ -1,17 +1,17 @@
 schema_version: 3
 id: q-000662
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.determinant
 - linalg.inner-product
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.5 正交矩阵的行列式 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.5 正交矩阵的行列式 · 2026-10-24 更新稿**
 
-  实方阵 $Q$ 满足 $Q^{\mathsf T}Q=I$。为什么它的行列式只能是 $+1$ 或 $-1$？
+
+  实方阵 $Q$ 满足 $Q^{\mathsf T}Q=I$。为什么它的行列式只能是 $+1$ 或 $-1$？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -48,3 +48,19 @@ feedback:
     A: 旋转矩阵也可含正弦、余弦，元素不必是正负 1。
     B: 镜像也保持长度，是必须保留的可能性。
     C: 这个等式同时保留了两种取向。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c80d5ed868b79525d32ee71ff99c8328dc1a3fca66b750333c4303b5524802f5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c80d5ed868b79525d32ee71ff99c8328dc1a3fca66b750333c4303b5524802f5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:c80d5ed868b79525d32ee71ff99c8328dc1a3fca66b750333c4303b5524802f5

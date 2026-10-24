@@ -1,17 +1,17 @@
 schema_version: 3
 id: q-000668
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.linear-algebra
 concepts:
 - linalg.change-of-basis
 - linalg.basis-coordinates
-stem: |-
-  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+stem: '**SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
 
-  $C$ 的各列是新基 $\mathcal B^{\prime}$ 的基向量在原基 $\mathcal B$ 下的坐标。对同一个向量 $\mathbf x$，正确的坐标关系是哪一个？
+
+  $C$ 的各列是新基 $\mathcal B^{\prime}$ 的基向量在原基 $\mathcal B$ 下的坐标。对同一个向量 $\mathbf x$，正确的坐标关系是哪一个？'
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -40,8 +40,8 @@ answer:
   choice: A
 hints:
 - 用新基的系数对 C 的各列作线性组合。
-solution: 若新坐标为 $(x^{\prime}_1,x^{\prime}_2)^{\mathsf T}$，向量就是 $x^{\prime}_1\mathbf e^{\prime}_1+x^{\prime}_2\mathbf
-  e^{\prime}_2$。在原基下展开，得到 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$；反方向使用 $C^{-1}$。
+solution: 若新坐标为 $(x^{\prime}_1,x^{\prime}_2)^{\mathsf T}$，向量就是 $x^{\prime}_1\mathbf e^{\prime}_1+x^{\prime}_2\mathbf e^{\prime}_2$。在原基下展开，得到
+  $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$；反方向使用 $C^{-1}$。
 feedback:
   correct: 正确。C 将新坐标转回原坐标。
   incorrect: 再想一想：用新基的系数对 C 的各列作线性组合。
@@ -49,3 +49,19 @@ feedback:
     A: C 将新坐标转回原坐标。
     B: 由原坐标求新坐标应使用 C 的逆。
     C: 列向量线性组合不需要转置。
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:627ff69df7ea6c4e3d5638566d60cbb3f91d01247782e5d98b848ee58b7094ab
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:627ff69df7ea6c4e3d5638566d60cbb3f91d01247782e5d98b848ee58b7094ab
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-24'
+    question_version: 1
+    content_fingerprint: sha256:627ff69df7ea6c4e3d5638566d60cbb3f91d01247782e5d98b848ee58b7094ab
