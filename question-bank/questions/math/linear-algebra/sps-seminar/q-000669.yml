@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000669
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  原基为 $\mathcal B=(\mathbf e_1,\mathbf e_2)$，新基为 $\mathcal B^{\prime}=(\mathbf e_1,\mathbf e_1+\mathbf e_2)$。向量 $\mathbf x=3\mathbf e_1+2\mathbf e_2$ 的新坐标是多少？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $(3,2)^{\mathsf T}$
+- id: B
+  content: $(5,2)^{\mathsf T}$
+- id: C
+  content: $(1,2)^{\mathsf T}$
+answer:
+  choice: C
+hints:
+- 写成 $a\mathbf e_1+b(\mathbf e_1+\mathbf e_2)$，再比较系数。
+solution: 比较 $a+b=3$ 与 $b=2$，得到 $a=1$。因此 $[\mathbf x]_{\mathcal B^{\prime}}=(1,2)^{\mathsf T}$。这两个新系数组合出的仍是原向量。
+feedback:
+  correct: 正确。代回新基展开式，恰好得到原向量。
+  incorrect: 再想一想：写成 $a\mathbf e_1+b(\mathbf e_1+\mathbf e_2)$，再比较系数。
+  choices:
+    A: 基变了，同一向量的坐标通常随之改变。
+    B: 这是把原坐标误当成新坐标后再乘 C 的结果。
+    C: 代回新基展开式，恰好得到原向量。

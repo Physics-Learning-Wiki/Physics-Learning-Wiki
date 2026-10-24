@@ -1,0 +1,58 @@
+schema_version: 3
+id: q-000693
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.determinant
+- linalg.image-kernel
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
+  矩阵
+
+  $$
+  M=A-\lambda I=\begin{pmatrix}1&1\\1&1\end{pmatrix}
+  $$
+
+  没有全零行。能否因此断言 $\det M\ne0$、λ 不是 A 的特征值？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程的充分性；源文件 SHA-256: e61eb903d56eaa5d46e8509d1f1246fe91e77800413f5f1b3259be31d8a1a2bd。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 能，只有出现全零行，行列式才能为零
+- id: B
+  content: 能，矩阵元素都非零就能求逆
+- id: C
+  content: 不能；两列相同，所以行列式为零，而且 $(1,-1)^{\mathsf T}$ 是非零核向量
+answer:
+  choice: C
+hints:
+- 行列式为零的关键是列线性相关，不是原矩阵是否有全零行。
+solution: 本题两列相同，$\det M=1\cdot1-1\cdot1=0$。并且 $M(1,-1)^{\mathsf T}=0$，故 $A(1,-1)^{\mathsf T}=\lambda(1,-1)^{\mathsf
+  T}$。原矩阵不必直接出现零行；行列式判据关注线性相关性。
+feedback:
+  correct: 正确。一个非零核向量已经证明存在 λ 对应的特征方向。
+  incorrect: 再想一想：行列式为零的关键是列线性相关，不是原矩阵是否有全零行。
+  choices:
+    A: 全零行是充分情形，但不是行列式为零的必要条件。
+    B: 元素是否非零不能决定矩阵是否可逆。
+    C: 一个非零核向量已经证明存在 λ 对应的特征方向。

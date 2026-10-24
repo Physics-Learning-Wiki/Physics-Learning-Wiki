@@ -1,0 +1,58 @@
+schema_version: 3
+id: q-000692
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.determinant
+- linalg.image-kernel
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程的充分性 · 2026-10-24 更新稿**
+
+  矩阵
+
+  $$
+  A=\begin{pmatrix}3&1\\1&3\end{pmatrix}
+  $$
+
+  满足 $\det(A-2I)=0$。哪一个非零向量属于特征值 $2$？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程的充分性；源文件 SHA-256: e61eb903d56eaa5d46e8509d1f1246fe91e77800413f5f1b3259be31d8a1a2bd。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $(1,-1)^{\mathsf T}$
+- id: B
+  content: $(1,1)^{\mathsf T}$
+- id: C
+  content: $(1,0)^{\mathsf T}$
+answer:
+  choice: A
+hints:
+- 求解 $(A-2I)(x,y)^{\mathsf T}=0$，两行都给出 $x+y=0$。
+solution: $A-2I=\left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$，所以非零解满足 $y=-x$。选 $x=1$ 得 $(1,-1)^{\mathsf
+  T}$；直接相乘也得到 $(2,-2)^{\mathsf T}=2(1,-1)^{\mathsf T}$。
+feedback:
+  correct: 正确。两个分量相反，满足核方程。
+  incorrect: 再想一想：求解 $(A-2I)(x,y)^{\mathsf T}=0$，两行都给出 $x+y=0$。
+  choices:
+    A: 两个分量相反，满足核方程。
+    B: 这个向量对应特征值 4，而不是 2。
+    C: A 把它变成 (3,1)，不是其两倍。

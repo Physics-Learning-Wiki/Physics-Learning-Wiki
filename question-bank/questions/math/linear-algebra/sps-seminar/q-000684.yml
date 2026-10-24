@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000684
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  已知 $A\mathbf v=3\mathbf v$ 且 $\mathbf v\ne\mathbf0$。以下哪个判断必然正确？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $-2\mathbf v$ 的特征值变为 $-6$
+- id: B
+  content: $-2\mathbf v$ 不再是特征向量，因为方向反了
+- id: C
+  content: $-2\mathbf v$ 仍是特征值 $3$ 的特征向量
+answer:
+  choice: C
+hints:
+- 对输入整体乘以非零常数，利用 A 的线性性。
+solution: $A(-2\mathbf v)=-2A\mathbf v=-6\mathbf v=3(-2\mathbf v)$。输入和输出同时乘以相同常数，比例 3 不变。
+feedback:
+  correct: 正确。非零倍数不改变输出相对于输入的比例。
+  incorrect: 再想一想：对输入整体乘以非零常数，利用 A 的线性性。
+  choices:
+    A: 负 6 是相对于原向量 v 的系数；相对于新输入仍为 3。
+    B: 特征方向是一条直线，非零倍数仍是同一特征值的特征向量。
+    C: 非零倍数不改变输出相对于输入的比例。

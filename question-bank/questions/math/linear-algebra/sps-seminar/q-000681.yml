@@ -1,0 +1,50 @@
+schema_version: 3
+id: q-000681
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.image-kernel
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  投影矩阵 $A=\operatorname{diag}(1,0)$ 将非零向量 $\mathbf v=(0,1)^{\mathsf T}$ 映为零。关于 $\mathbf v$，哪种说法正确？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 不是特征向量，因为输出是零
+- id: B
+  content: 是特征向量，对应的特征值为 1
+- id: C
+  content: 是特征向量，对应的特征值为 0
+answer:
+  choice: C
+hints:
+- 检查是否满足 $A\mathbf v=0\mathbf v$；注意输入不为零。
+solution: $A\mathbf v=\mathbf0=0\mathbf v$，且 $\mathbf v\ne\mathbf0$，所以它是特征值 $0$ 的特征向量。零特征值表示某个非零方向被压到零。
+feedback:
+  correct: 正确。零特征值对应非平凡的核。
+  incorrect: 再想一想：检查是否满足 $A\mathbf v=0\mathbf v$；注意输入不为零。
+  choices:
+    A: 定义要求输入向量非零，输出可以为零。
+    B: 特征值 1 要求输出等于输入，这里不成立。
+    C: 零特征值对应非平凡的核。

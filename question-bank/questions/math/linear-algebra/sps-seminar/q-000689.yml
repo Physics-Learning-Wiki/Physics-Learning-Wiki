@@ -1,0 +1,58 @@
+schema_version: 3
+id: q-000689
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+- linalg.change-of-basis
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  设
+
+  $$
+  A=\begin{pmatrix}3&1\\0&2\end{pmatrix},\qquad
+  \mathbf v_1=\begin{pmatrix}1\\0\end{pmatrix},\qquad
+  \mathbf v_2=\begin{pmatrix}-1\\1\end{pmatrix}.
+  $$
+
+  可直接验证 $A\mathbf v_1=3\mathbf v_1$、$A\mathbf v_2=2\mathbf v_2$。令 $C=(\mathbf v_1\ \mathbf v_2)$，则 $C^{-1}AC$ 是什么？
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $\operatorname{diag}(2,3)$
+- id: B
+  content: $\operatorname{diag}(3,2)$
+- id: C
+  content: $\operatorname{diag}(3,-2)$
+answer:
+  choice: B
+hints:
+- 新基的第 1、2 个向量分别按什么倍率变化？
+solution: 两列线性无关，所以 C 可逆。在有序特征向量基中，第一列为 $(3,0)^{\mathsf T}$，第二列为 $(0,2)^{\mathsf T}$，因此得到 $\operatorname{diag}(3,2)$。对角元素的顺序跟随特征向量的列顺序。
+feedback:
+  correct: 正确。新基的顺序决定对应特征值的对角位置。
+  incorrect: 再想一想：新基的第 1、2 个向量分别按什么倍率变化？
+  choices:
+    A: 这需要先交换特征向量在 C 中的列顺序。
+    B: 新基的顺序决定对应特征值的对角位置。
+    C: 特征向量的一个负分量不会把其特征值变号。

@@ -1,0 +1,59 @@
+schema_version: 3
+id: q-000672
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+- linalg.matrix-representation
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  已知
+
+  $$
+  C=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+  C^{-1}=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\qquad
+  A=\begin{pmatrix}2&0\\0&1\end{pmatrix}.
+  $$
+
+  坐标关系为 $[\mathbf x]_{\mathcal B}=C[\mathbf x]_{\mathcal B^{\prime}}$。新表示 $A^{\prime}=C^{-1}AC$ 是什么？
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: $\begin{pmatrix}2&1\\0&1\end{pmatrix}$
+- id: B
+  content: $\begin{pmatrix}2&-1\\0&1\end{pmatrix}$
+- id: C
+  content: $\begin{pmatrix}2&0\\0&1\end{pmatrix}$
+answer:
+  choice: A
+hints:
+- 先算 $AC$，再在左侧乘 $C^{-1}$。
+solution: $AC=\left(\begin{smallmatrix}2&2\\0&1\end{smallmatrix}\right)$；再左乘 $C^{-1}$ 得到 $A^{\prime}=\left(\begin{smallmatrix}2&1\\0&1\end{smallmatrix}\right)$。非对角项来自换基，不表示原几何变换变了。
+feedback:
+  correct: 正确。按从右向左的次序相乘得到此矩阵。
+  incorrect: 再想一想：先算 $AC$，再在左侧乘 $C^{-1}$。
+  choices:
+    A: 按从右向左的次序相乘得到此矩阵。
+    B: 这个符号来自误用 $CAC^{-1}$ 的反向公式。
+    C: 在这组斜基下，原来的对角矩阵不再是对角形式。

@@ -1,0 +1,60 @@
+schema_version: 3
+id: q-000666
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.3–§2.6.5 行列式性质综合 · 2026-10-24 更新稿**
+
+  已知三阶实矩阵 $A$ 满足 $\det A=2$。先交换第 1、2 列，再把第 3 列乘以 $3$，得到 $B$。
+
+  1. 不展开矩阵，求 $\det B$。
+  2. $B$ 是否可逆？若可逆，求 $\det(B^{-1})$。
+  3. 对应变换把普通体积放大多少倍，是否保持取向？
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.3–§2.6.5 行列式性质综合；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: free_response
+choice_order: fixed
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 3000
+  rows: 6
+  placeholder: 逐步写出计算或说明理由；普通文字和数字即可。
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：还不能区分换列与单列缩放的影响。
+    points: 0
+  - id: partial
+    label: 部分掌握：正确完成行列式计算、逆矩阵判断、体积与取向解释中的一部分。
+    points: 0.5
+  - id: complete
+    label: 基本掌握：三问均正确，并能说明每个符号与倍率的来源。
+    points: 1
+reference_answer: $\det B=-6$；可逆，$\det(B^{-1})=-1/6$；普通体积放大 6 倍，取向反转。
+hints:
+- 交换两列变号；只缩放一列就只引入一次缩放因子。
+solution: 交换两列后行列式为 $-2$，第三列乘以 $3$ 后为 $-6$。行列式非零，所以 $B$ 可逆，其逆矩阵的行列式为 $1/(-6)=-1/6$。普通体积倍率为 $|-6|=6$；负号表示取向反转。
+feedback:
+  correct: 请对照参考答案检查每一步，并按量规自评。
+  incorrect: 先根据提示写出关键关系，再对照解析补充。

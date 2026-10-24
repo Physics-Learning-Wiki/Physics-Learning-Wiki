@@ -1,0 +1,49 @@
+schema_version: 3
+id: q-000686
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.eigenvalues
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.7 特征方程、特征值与对角化 · 2026-10-24 更新稿**
+
+  在实平面中，逆时针旋转 $90^\circ$ 的矩阵为 $R=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$。它是否有非零实特征向量？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.7 特征方程、特征值与对角化；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 有，所有非零向量都是
+- id: B
+  content: 有，旋转不改变长度，所以特征值必为 1
+- id: C
+  content: 没有，因为每个非零向量都被旋到与自身垂直的方向
+answer:
+  choice: C
+hints:
+- 实数倍的向量与原向量共线；比较这与 90° 旋转。
+solution: 非零实特征向量要求旋转后的向量仍与原向量共线，但 90° 旋转使它们垂直。也可算出 $\det(R-\lambda I)=\lambda^2+1$，在实数范围没有根。这里明确限定为实平面与 90°。
+feedback:
+  correct: 正确。没有实特征向量，但允许复数后会出现特征值。
+  incorrect: 再想一想：实数倍的向量与原向量共线；比较这与 90° 旋转。
+  choices:
+    A: 每个非零向量都转到另一条直线上。
+    B: 长度保持不代表向量本身不变。
+    C: 没有实特征向量，但允许复数后会出现特征值。

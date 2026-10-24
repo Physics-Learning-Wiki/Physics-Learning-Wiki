@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000674
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+- linalg.determinant
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  两个二阶矩阵 $A=I_2$ 与 $B=\operatorname{diag}(2,1/2)$ 的行列式都为 $1$。能否因此断定它们相似？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 能，行列式相同就代表同一个线性变换
+- id: B
+  content: 不能；任意可逆 C 都满足 $C^{-1}I_2C=I_2$，不可能变成 B
+- id: C
+  content: 不能，因为 B 不可逆
+answer:
+  choice: B
+hints:
+- 先判断恒等变换换基后会变成什么。
+solution: 相似矩阵的行列式相同，但反过来不成立。恒等矩阵在任意基下仍为恒等矩阵，$C^{-1}I_2C=I_2\ne B$。B 本身是可逆的。
+feedback:
+  correct: 正确。恒等矩阵的相似变换给出了直接反例。
+  incorrect: 再想一想：先判断恒等变换换基后会变成什么。
+  choices:
+    A: 同一行列式只记录一个数，不能确定整个线性变换。
+    B: 恒等矩阵的相似变换给出了直接反例。
+    C: B 的行列式为 1，所以它可逆。

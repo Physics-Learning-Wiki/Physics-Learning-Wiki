@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000675
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.linear-algebra
+concepts:
+- linalg.change-of-basis
+- linalg.basis-coordinates
+- linalg.inner-product
+stem: |-
+  **SPS 线性代数研讨班配套 · §2.6.6 换基与相似变换 · 2026-10-24 更新稿**
+
+  同一个平面旋转，在标准正交归一基下的矩阵满足 $A^{\mathsf T}A=I$。换到任意斜基后，关于新矩阵 $A^{\prime}$，哪种说法正确？
+difficulty: 1
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 60
+provenance:
+  type: original
+  note: '对应张梓超《SPS线性代数研讨班第一、二讲》2026-10-24 本地更新稿 §2.6.6 换基与相似变换；源文件 SHA-256: 01fba536c273b9ed112e63ad338a556d724eb2422119464b2e33a976f0d1682a。题目、提示与解析独立编写，仅按教学范围组织，未转载讲义文字或图像。'
+  ai_assisted: true
+authors:
+- name: farawayshore
+  kind: human
+  github: farawayshore
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+type: single_choice
+choice_order: shuffle
+choices:
+- id: A
+  content: 仍然必有 $(A^{\prime})^{\mathsf T}A^{\prime}=I$，因为矩阵元素不受基影响
+- id: B
+  content: 如果新矩阵不满足该等式，旋转就不再保持几何长度
+- id: C
+  content: 几何旋转仍保持长度，但新坐标的通常平方和未必表示几何长度，故该矩阵等式不必保持
+answer:
+  choice: C
+hints:
+- 斜基的坐标轴不垂直时，不能直接用坐标平方和计算几何长度。
+solution: 旋转是否保持几何长度，与选择哪组基无关。然而矩阵的普通转置条件使用标准坐标内积；在任意斜基中，坐标平方和通常不等于原空间的长度平方，所以新矩阵不必满足该等式。
+feedback:
+  correct: 正确。必须区分几何内积与任意坐标列的普通点积。
+  incorrect: 再想一想：斜基的坐标轴不垂直时，不能直接用坐标平方和计算几何长度。
+  choices:
+    A: 矩阵表示依赖基，普通转置条件也不能直接搬到任意斜基。
+    B: 改变记录方式不会破坏原几何旋转的长度保持性。
+    C: 必须区分几何内积与任意坐标列的普通点积。
