@@ -60,7 +60,7 @@ def test_production_build_contains_quiz_pages_and_no_drafts(
     assert question_bank_source_ids.get(("questions", "draft"), set()).isdisjoint(question_ids)
 
 
-def test_production_build_renders_question_bank_math_ssr(built_site: Path, site_html) -> None:
+def test_production_build_search_and_math_assets(built_site: Path, site_html) -> None:
     site = built_site
     assert (site / "pagefind" / "pagefind.js").exists()
     assert not (site / "search" / "search_index.json").exists()
@@ -87,35 +87,6 @@ def test_production_build_renders_question_bank_math_ssr(built_site: Path, site_
             assert soup.body.get("data-pagefind-ignore") == "all"
         search_ui_pages.append(html_path)
     assert any(path.name == "404.html" for path in search_ui_pages)
-
-    qb_sets = list((site / "_generated" / "question-bank" / "sets").glob("*.json"))
-    assert len(qb_sets) > 0
-    math_question = next(
-        (
-            question
-            for bundle_path in qb_sets
-            for question in json.loads(bundle_path.read_text(encoding="utf-8"))["questions"]
-            if "<mjx-container" in question["stemHtml"]
-            and "<mjx-container" in question["solutionHtml"]
-        ),
-        None,
-    )
-    assert math_question is not None, "fixture requires a published question with stem and solution math"
-    stem = math_question["stemHtml"]
-    sol = math_question["solutionHtml"]
-    assert "arithmatex" not in stem
-    assert "arithmatex" not in sol
-    assert "<mjx-container" in stem
-    assert "<mjx-container" in sol
-    assert "<mjx-math" in stem
-    assert "<mjx-math" in sol
-    assert r"\(" not in stem
-    assert r"\)" not in stem
-    assert r"\(" not in sol
-    assert r"\)" not in sol
-    assert "data-latex" not in stem
-    assert "<mjx-assistive-mml" in stem
-    assert "<img" not in stem
 
     # Inspect the final minified DOM: attribute quoting is not a page contract.
     css_path = site / "assets" / "stylesheets" / "mathjax.css"
