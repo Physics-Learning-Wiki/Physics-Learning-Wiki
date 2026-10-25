@@ -205,10 +205,10 @@ $$
     **解答：**
     
     $$
-    \Delta E_p = mgh_1 - mgh_2 = 2 \times 10 \times 10 - 2 \times 10 \times 0 = 200\,\mathrm{J}  
+    \Delta E_p = mgh_2 - mgh_1 = 0 - 2 \times 10 \times 10 = -200\,\mathrm{J}
     $$
     
-    重力势能的变化量为 $200\,\mathrm{J}$．
+    取地面为势能零点，势能变化按末态减初态计算，因此为 $-200\,\mathrm{J}$．也可以说「势能减少了 $200\,\mathrm{J}$」，但减少量与带符号的变化量不同．相应的重力功为 $W_g=-\Delta E_p=+200\,\mathrm{J}$．
 
 <a id="24-机械能守恒定律-conservation-of-mechanical-energy"></a>
 

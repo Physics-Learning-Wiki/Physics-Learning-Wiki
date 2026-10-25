@@ -1,12 +1,14 @@
 :+1::tada: 首先，感谢您抽出宝贵时间为 **Physics Learning Wiki** 做出贡献！ :tada::+1:
 
+内容贡献先读简短的 [内容编写指引](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/writing/)，需要时参考 [教学示例](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/teaching-examples/) 与 [编辑审校](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/editorial-review/)．修改说明请简述保留了什么、修改范围、科学核验依据以及未验证事项；小勘误说明定位、正确理由与影响即可．
+
 请您在提交拉取请求（Pull Request）前再次阅读[如何参与的有关内容](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/htc/)，尤其应再次确认**对于目录和引用的变更**和**信息格式规范**。
 
 如果有关内容**尚未完成**，请考虑先新建 issue 或本次作为 draft pr 提交。
 
 如果内容**已经完成**，您无需新建 issue ，但仍需要核对[格式手册](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/intro/format/)中文档的基本格式要求。在机器人修改、测试构建完成后，建议您检查实际效果，并持续跟进审核或修改意见。
 
-在提交 pull request 的[描述](.github/pull_request_template.md)中，勾选已阅读贡献指南，表明**您已知晓**：
+在提交 pull request 的[描述](pull_request_template.md)中，勾选已阅读贡献指南，表明**您已知晓**：
 
 + 请在回应建议、问题或 pull request 之前仔细阅读，并详细说明自己的看法，以免引起不必要的误会。
 
@@ -16,4 +18,4 @@
 
 + 请记住，您在一个社区中，您需要学会接受其他人的贡献，以及他们贡献的内容，甚至可能和他们协作。如果您不同意这个观点，您可以创建分支并自己进行更改。另一方面，你的想法可能不够完善，所以要听取别人的意见。
 
-最后，当您为社区做出贡献时，您亦同意 Physics Learning Wiki 组织可以禁止违反社区准则并破坏社区和谐的用户访问组织。如果您发现有人不遵守此处的指南，欢迎联系 。感谢您为本项目及其社区和谐发展提供的支持和力量！:joy:
+最后，当您为社区做出贡献时，您亦同意 Physics Learning Wiki 组织可以禁止违反社区准则并破坏社区和谐的用户访问组织。如果您发现有人不遵守此处的指南，请通过项目的 [Issue 入口](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/issues) 向维护者反馈．感谢您为本项目及其社区和谐发展提供的支持和力量！:joy:

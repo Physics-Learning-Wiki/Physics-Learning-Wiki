@@ -4,9 +4,7 @@ status: review
 description: "本站 Markdown、中文标点、数学公式和资源文件的排版规范．"
 ---
 
-在文章开始之前，**Physics Learning Wiki** 项目组全体成员十分欢迎您为本项目贡献页面．正因为有了上百位像您一样的人，才有了 **Physics Learning Wiki** 的今天！
-
-本页面将列出在 **Physics Learning Wiki** 编写过程时推荐使用的格式规范与编辑方针．请您在撰稿或者修正 Wiki 页面以前，仔细阅读以下内容，以帮助您完成更高质量的内容．
+本页维护 **Physics Learning Wiki** 的 Markdown、公式与资源排版规则．教学组织和术语以 [内容编写指引](./writing.md) 为准；按实际编辑任务查阅对应规则即可．
 
 如果您已迫不及待，想要快速上手，建议先阅读 [太长不看版](#太长不看版) 与 [图片举例](#图解) 的章节．
 
@@ -58,7 +56,7 @@ description: "本站 Markdown、中文标点、数学公式和资源文件的排
 
     -   行内公式应该使用单个 `$` 并且应当使用单个空格与周围内容隔开，写作 `文字 $a^{2}=b^{2}+c^{2}$ 文字` 而不是 `文字$a^{2}=b^{2}+c^{2}$文字`．详见 [LINT-4.3](#LINT-4.3)．
 
-    -   使用折叠框而不是块引用（Blockquotes）．详见 [MDFM-5](#MDFM-5)．
+    -   补充与答案使用信息框的条件见 [MDFM-5](#MDFM-5)，核心主线保持可见．
 
     -   代码块只应使用 ` ``` ` 语法，且须标注语言．详见 [LINT-7](#LINT-7)、[MDFM-3](#MDFM-3)．
 
@@ -73,9 +71,9 @@ description: "本站 Markdown、中文标点、数学公式和资源文件的排
 
 -   代码：
 
-    -   尽可能简洁易懂，避免压行等不良习惯．尽可能保证可读性，突出算法思想．详见 [CONT-10](#CONT-10)．
+    -   尽可能简洁易懂，避免压行，说明计算对象与方法．语法见 [MDFM-3](#MDFM-3)．
 
-    -   不推荐直接把代码插入 Markdown 文档中．详见 [CODE-1.1](#CODE-1.1)、[CODE-1.2](#CODE-1.2)．
+    -   代码示例使用带实际语言标记的围栏．详见 [MDFM-3](#MDFM-3)．
 
     -   不推荐在无关场合滥用计算机工具，应先介绍物理内容的概念及思想，而非直接进行计算．
 
@@ -106,39 +104,26 @@ description: "本站 Markdown、中文标点、数学公式和资源文件的排
 
 -   <a id="SAVE-5"></a>SAVE-5：同时具有源文件和导出图像的图片（例如 JPG 文件与 PSD 文件或者 SVG 图像与 TikZ TeX 源代码），建议将源文件以与图片相同的文件名保存于同一目录下．
 
--   <a id="SAVE-6"></a>SAVE-6：请确保您的文档中的引用链接的稳定性．**不推荐** 引用 **自建** 服务中的资源（如自建 OJ 里的题目）．建议在添加时同时将该外链存于互联网档案馆[^webarchive]，以防无法替代的链接失效．
+-   <a id="SAVE-6"></a>SAVE-6：请确保您的文档中的引用链接的稳定性．**不推荐** 引用 **自建** 服务中的资源（如缺少长期归档的个人题目页面）．建议在添加时同时将该外链存于互联网档案馆[^webarchive]，以防无法替代的链接失效．
 
 -   <a id="SAVE-7"></a>SAVE-7：站内链接请去掉网站域名，并且使用相对路径链接对应 `.md` 文件．例如，在本页面（`intro/format`）中链接杂项简介（`misc`），应使用 `[杂项简介](../misc/index.md)`．可以在链接中添加 hash 来链接到某一节，例如 [`[Pull Request 信息格式规范](./htc.md#pull-request-信息格式规范)`](./htc.md#pull-request-信息格式规范)，hash 的值可以通过位于每个标题右侧的按钮或者位于网页右侧的目录中的链接得到．
 
 ### 文档的合理性
 
-**合理性**，指所编写的 **内容** 必须具有如下的特性：
+<a id="STRC-1"></a>STRC-1：读者、任务与难度安排以 [内容编写指引](./writing.md) 为准．本手册负责格式，不重复规定教学结构．
 
--   <a id="STRC-1"></a>STRC-1：由浅入深，内容的难度应该具有渐进性．
--   <a id="STRC-2"></a>STRC-2：逻辑性．
+<a id="STRC-2"></a>STRC-2：正文中的条件、推理与结论应能连续阅读；组织方式按页面任务选择．
 
-    -   <a id="STRC-2.1"></a>STRC-2.1：对于物理或数学概念类内容的撰写应该尽量包含以下的内容：
+-   <a id="STRC-2.1"></a>STRC-2.1：概念、证明、导读和速查页承担不同任务，不要求相同的栏目或例题数量．取舍见 [教学示例](./teaching-examples.md)．
+-   <a id="STRC-2.2"></a>STRC-2.2：工具页说明输入、输出、适用条件和实际操作，下载与配置链接优先使用官方文档．
 
-        1.  原理：说明该内容对应的原理；
-        2.  例子：给出 1 \~ 2 个典型的例子；
-        3.  题目：例题需切合主题，提供引用链接或书目，并给出详细解答．
-
-        示例页面：[IDA\*](../search/idastar.md)
-
-    -   <a id="STRC-2.2"></a>STRC-2.2：对于工具类内容的撰写应该尽量包含以下的内容：
-
-        1.  简介：阐明该工具的背景与用途．
-        2.  配置方式：详细给出配置环境与使用的过程，下载与安装方法建议尽量引用官方文档．
-
-        示例页面：[WSL (Windows 10)](../tools/wsl.md)
-
-除现有内容质量较低的情况外，建议尽量从 **补充** 的角度来做贡献，而非采取直接覆盖的方式．如果拿不准主意，可以参考 [关于本项目的交流方式](./about.md#交流方式) 一节，与 **Physics Learning Wiki** 项目组联系．
+修改已有文章先保留有效解释，再定位需要替换或合并的片段；追加说明时避免重复．审校与验证流程见 [编辑审校](./editorial-review.md)．
 
 ### 文档的基本格式要求
 
 #### Remark-lint 的格式要求
 
-[remark-lint](https://github.com/remarkjs/remark-lint) 可以自动给项目内文件统一风格．**Physics Learning Wiki** 现在启用的配置文件托管在 [.remarkrc](https://github.com/OI-wiki/OI-wiki/blob/master/.remarkrc)．
+[remark-lint](https://github.com/remarkjs/remark-lint) 可以自动给项目内文件统一风格．**Physics Learning Wiki** 现在启用的配置文件托管在 [.remarkrc](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki/blob/main/.remarkrc)．
 
 在配置过程中 **Physics Learning Wiki** 项目组也遇到了一些 remark-lint 不能很好处理的问题，所以请严格按照下列要求编辑文档：
 
@@ -185,40 +170,31 @@ description: "本站 Markdown、中文标点、数学公式和资源文件的排
 -   <a id="PUNC-8"></a>PUNC-8：注意区分各种不同的连接号，如 hyphen（一般使用 U+002D hyphen-minus（-），即键盘上的「减号」代替），U+2013 en dash（–）和 U+2014 em dash（—）．（英文中连接多个人名时，须用 en dash，但是极常误用为 hyphen．其他误用较为罕见，基本上只需记住这一点即可．）详见 [连接号 - 维基百科](https://zh.wikipedia.org/wiki/%E8%BF%9E%E6%8E%A5%E5%8F%B7)．
 
     ???+ success "示例"
-        -   中学生学科竞赛主要包括信息学奥林匹克竞赛、信息学奥林匹克竞赛、信息学奥林匹克竞赛、信息学奥林匹克竞赛和信息学奥林匹克竞赛（谁写的这个示例，建议抬走）．
-        -   「你吃了吗？」李四问张三．
-        -   我想对你说：「我真是太喜欢你了．」
-        -   「苟利国家生死以，岂因祸福避趋之！」
-        -   张华考上了大学；李萍进了技校；我当了工人：我们都有美好的前途．[^note1]
-        -   以下是这个算法的基本流程：
-            1.  初始化到各点的距离为无穷大，将所有点设置为未被访问过，初始化一个队列；
-            2.  将起点放入队列，将起点设置为已被访问过，更新到起点的距离为 $0$；
-            3.  取出队首元素，将该元素设置为未被访问过；
-            4.  遍历所有与此元素相连的边，若到这个点存在更短的距离，则进行松弛操作；
-            5.  若这个点未被访问过，则将这个点放入队列，且设置这个点为已经访问过；
-            6.  回到第三步，直到队列为空．
-        -   KMP 算法（Knuth–Morris–Pratt algorithm, KMP algorithm）由 Knuth、Pratt 和 Morris 在 1977 年共同发布．[^note2]
+        -   测量前先说明：「本次以向右为正方向．」
+        -   受力分析先选研究对象，再辨认外力：重力、支持力和摩擦力．[^note1]
+        -   下面依次检查三个步骤：
+            1.  指定系统和参考系；
+            2.  写出模型条件与方程；
+            3.  核对方向、单位和适用边界．
+        -   Euler–Lagrange 方程的英文人名之间使用 en dash．
 
 #### Markdown 格式与主题扩展格式要求
 
 -   <a id="MDFM-1"></a>MDFM-1：表示强调时请使用 `**SOMETHING**` 和 `「」`，而非某级标题，因为使用标题会导致文章结构层次混乱和（或）目录出现问题．
 
--   <a id="MDFM-2"></a>MDFM-2：当需要引用题目链接时，应尽可能使用原 OJ 题库中的链接而不是镜像链接．
+-   <a id="MDFM-2"></a>MDFM-2：当需要引用题目链接时，应尽可能使用原始题目或正式题库中的链接而不是镜像链接．
 
--   <a id="MDFM-3"></a>MDFM-3：请正确使用 Markdown 的区块功能．插入行内代码请使用一对反引号包围代码区块；行间代码请使用一对 ` ``` ` 包围代码区块，其中反引号就是键盘左上角波浪线下面那个符号，行间代码请在第一个 ` ``` ` 的后面加上语言名称（如：` ```cpp`）．
+-   <a id="MDFM-3"></a>MDFM-3：行内代码使用一对反引号，代码块使用围栏并标注实际语言．代码标识不放进数学模式．例如：
 
     ???+ success "示例"
-        ````text
-        ```cpp
-        // #include<stdio.h>    //不好的写法
-        #include <cstdio>  //好的写法
-        ```
-        ````
+        函数 `kinetic_energy` 返回质点的动能．
         
-        ```cpp
-        // #include<stdio.h>    //不好的写法
-        #include <cstdio>  //好的写法
+        ```python
+        def kinetic_energy(mass, speed):
+            return 0.5 * mass * speed**2
         ```
+        
+        质量以 kg、速率以 m/s 输入时，返回值以 J 表示．
 
 -   <a id="MDFM-4"></a>MDFM-4：「参考资料与注释」使用 Markdown 的脚注功能进行编写．格式为：
 
@@ -233,124 +209,50 @@ description: "本站 Markdown、中文标点、数学公式和资源文件的排
 
     ???+ success "示例"
         ```markdown
-        当 `#include <cxxxx>` 可以替代 `#include <xxxx.h>` 时，应使用前者．[^ref1]
-        
-        2020年1月21日，CCF宣布恢复NOIP．[^ref2]
+        单位定义应查阅现行的国际单位制手册．[^si-example]
         
         ## 参考资料与注释
         
-        [^ref1]: [cstdio stdio.h namespace](https://stackoverflow.com/questions/10460250/cstdio-stdio-h-namespace)
-        
-        [^ref2]: [CCF关于恢复NOIP竞赛的公告-中国计算机学会](https://www.ccf.org.cn/c/2020-01-21/694716.shtml)
+        [^si-example]: [BIPM：国际单位制手册](https://www.bipm.org/en/publications/si-brochure)．
         ```
-        
-        当 `#include <cxxxx>` 可以替代 `#include <xxxx.h>` 时，应使用前者．[^ref1]
-        
-        2020 年 1 月 21 日，CCF 宣布恢复 NOIP．[^ref2]
 
--   <a id="MDFM-5"></a>MDFM-5：建议使用主题扩展的 `???+note` 格式（即 [Collapsible Blocks](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#collapsible-blocks)）来描述题面和参考代码．也可以用这种格式来展示其他需要补充介绍的内容．
+-   <a id="MDFM-5"></a>MDFM-5：信息框语义由 [信息框规范](./admonitions.md) 维护．下面展示默认折叠的答案；主线定义与必要证明不采用这种放置方式．
 
-    示例代码（下面的代码中用 `␣` 表示空格 ` `）：
+    示例代码（`␣` 表示一个半角空格）：
 
     ```text
-    ??? note "标题"
-    ␣␣␣␣这个文本框会被默认折叠．
+    ??? note "核对理由"
+    ␣␣␣␣位移为零只表示始末位置相同．
     ␣␣␣␣
-    ␣␣␣␣推荐将 **解题代码** 放在折叠文本框内．
-
-    ???+note "[HDOJ 的「A + B Problem」](https://acm.hdu.edu.cn/showproblem.php?pid=1000)"
-    ␣␣␣␣标题也可以使用 Markdown 的超链接．这里的超链接是 HDOJ 的「A + B Problem」．
-    ␣␣␣␣
-    ␣␣␣␣而且推荐以这种方式**标注原题链接**．
-    ␣␣␣␣
-    ␣␣␣␣注意双引号的位置．
+    ␣␣␣␣路程仍可以大于零．
     ```
 
-    效果：
+    ??? note "核对理由"
+        位移为零只表示始末位置相同．
+        
+        路程仍可以大于零．
 
-    ??? note "标题"
-        这个文本框会被默认折叠．
-        
-        推荐将 **解题代码** 放在折叠文本框内．
+-   <a id="MDFM-6"></a>MDFM-6：可用选项卡并列展示同一任务的不同表述，框内内容缩进四个空格，空行同样保留缩进．使用条件和更多语法见 [Material 选项卡文档](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage)．例如：
 
-    ???+ note "[HDOJ 的「A + B Problem」](https://acm.hdu.edu.cn/showproblem.php?pid=1000)"
-        标题也可以使用 Markdown 的超链接．这里的超链接是 HDOJ 的「A + B Problem」．
+    === "牛顿方法"
+        从受力和加速度的关系出发，保留运动过程的信息．
         
-        而且推荐以这种方式 **标注原题链接**．
-        
-        注意双引号的位置．
+        需要时可以继续求位置随时间的变化．
 
-    两种格式的区别是，带 `+` 的会默认保持展开，而不带 `+` 的会默认保持折叠．
+    === "能量方法"
+        只问始末速率时，可以沿运动路径累计功．
+        
+        所用关系本身不直接给出到达时间．
 
-    折叠框的标题，即 `???+note` 中 `note` 后的内容应以 `"` 包裹起来．其中的内容支持 Markdown 语法．详见 [Admonition - Changing the title](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#changing-the-title)．（不具备折叠功能的为一般的 Admonitions，参考 [Admonitions - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/reference/admonitions)）
-
--   <a id="MDFM-6"></a>MDFM-6：当需要添加不同语言的代码时，推荐使用 Content tabs，可以实现不同语言代码的切换．Content tabs 还有其他的用法，详见 [Content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage)．其使用方法和效果如下．
-
-    ???+ success "示例"
-        注意需要在文本前面添加 4 个空格（下面用 `␣` 表示）．其他的语法还是与 Markdown 语法一致．
-        
-        ````text
-        === "C"
-        ␣␣␣␣```c
-        ␣␣␣␣#include <stdio.h>
-        ␣␣␣␣
-        ␣␣␣␣int main(void) {
-        ␣␣␣␣  printf("Hello world!\n");
-        ␣␣␣␣  return 0;
-        ␣␣␣␣}
-        ␣␣␣␣```
-        
-        === "C++"
-        ␣␣␣␣```cpp
-        ␣␣␣␣#include <iostream>
-        ␣␣␣␣
-        ␣␣␣␣int main(void) {
-        ␣␣␣␣  std::cout << "Hello world!" << std::endl;
-        ␣␣␣␣  return 0;
-        ␣␣␣␣}
-        ␣␣␣␣```
-        
-        ````
-        
-        === "C"
-            ```c
-            #include <stdio.h>
-            
-            int main(void) {
-              printf("Hello world!\n");
-              return 0;
-            }
-            ```
-        
-        === "C++"
-            ```cpp
-            #include <iostream>
-            
-            int main(void) {
-              std::cout << "Hello world!" << std::endl;
-              return 0;
-            }
-            ```
-
-如果对 mkdocs-material（我们使用的这个主题）还有什么问题，还可以查阅 [MkDocs 使用说明](https://github.com/ctf-wiki/ctf-wiki/wiki/Mkdocs-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E)，其介绍了 mkdocs-material 主题的插件使用方式．
+主题扩展语法以 [Material 官方参考](https://squidfunk.github.io/mkdocs-material/reference/) 为准，本站约定仍以本手册及信息框规范为准．
 
 #### 文本内容的格式要求
 
 -   <a id="CONT-1"></a>CONT-1：所有的 **Physics Learning Wiki** 文本都应使用粗体标记．
 
--   <a id="CONT-2"></a>CONT-2：在页面的开头应有一段简短的文字（如「本页面将介绍……」），用于概述页面内容．
+-   <a id="CONT-2"></a>CONT-2：开场应让目标读者辨认本页任务，可以从定义、问题、实验、结果或已有方法开始；不强制「本页面将介绍」式概述．教学组织由 [内容编写指引](./writing.md) 维护．
 
-    ???+ success "示例"
-        本页面将列出在 **Physics Learning Wiki** 编写过程时推荐使用的格式规范与编辑方针．
-
--   <a id="CONT-3"></a>CONT-3：涉及到「前置知识」的页面，请在开头添加一行 **前置知识：……**，放在页面概述前．格式如下：
-
-    `前置知识：[站内页面1](url1)、[站内页面2](url2)和[站内页面3](url3)`
-
-    ???+ success "示例"
-        前置知识：[时间复杂度](../basic/complexity.md)
-        
-        本页面将介绍基础的计算理论的知识．
+-   <a id="CONT-3"></a>CONT-3：直接先修使用 frontmatter 的 `prerequisites` 声明，正文可补充具体操作要求，不重复自动生成的知识名单，也不强制将手写先修行放在开场之前．
 
 -   <a id="CONT-4"></a>CONT-4：请注意文档结构．文档结构应当十分条理，层次清晰．请不要让诸如「五级标题」这种事情再次发生了，一篇正常的文章是用不到如此复杂的结构层次的．
 
@@ -432,7 +334,7 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对�
 
 -   <a id="MATH-1.9"></a>MATH-1.9：请注意，不要在非代码区域使用任何程序设计语言的表示方式，而是使用 LaTeX 公式．例如，使用 `$=$` 而不是 `$==$`（如 $a=b$，而不是 $a==b$）、使用 `` `a<<1` `` 或者 `$a\times 2$` 而不是 `$a<<1$`、使用 `$a\bmod b$` 代替 `$a\%b$`（如 $a\bmod b$，而不是 $a\%b$）等．
 
--   <a id="MATH-1.10"></a>MATH-1.10：公式中不要使用中括号连缀（即 C++ 高维数组的表示方式）而多使用下标．即 $a_{i,j,k}$ 而不是 $a[i][j][k]$．在公式中下标较复杂的情况下建议改用多元函数（$f(i,j,k)$）或内联代码格式．对于一元简单函数使用 `$f_i$`、`$f(i)$` 或 `$f[i]$` 均可．
+-   <a id="MATH-1.10"></a>MATH-1.10：公式中不要使用中括号连缀（易与代码中的数组索引混淆）而多使用下标．即 $a_{i,j,k}$ 而不是 $a[i][j][k]$．在公式中下标较复杂的情况下建议改用多元函数（$f(i,j,k)$）或内联代码格式．对于一元简单函数使用 `$f_i$`、`$f(i)$` 或 `$f[i]$` 均可．
 
 -   <a id="MATH-1.12"></a>MATH-1.12：在表示等价关系时，请使用 `$\iff$`，效果 $\iff$，而不是 `$\Leftrightarrow$`，效果 $\Leftrightarrow$．
 
@@ -441,7 +343,7 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对�
 -   <a id="MATH-1.14"></a>MATH-1.14：请不要滥用 LaTeX 公式．这不仅会造成页面加载缓慢（因为 MathJax 的效率低是出了名的），同时也会导致页面的排版混乱．我们通常使用 LaTeX 公式字体表示变量名称．我们的建议是，如非必要，尽量减少公式与普通正文字体的 **大量** 混合使用，如非必要，尽量不要使用公式，如：
 
     ```LaTeX
-    我们将要学习 $Network-flow$ 中的 $SPFA$ 最小费用流，需要使用 $Edmonds–Karp$ 算法进行增广．
+    使用 $Python$ 中的 $numpy$ 数组记录位置，再计算 $velocity$．
     ```
 
     就是一个典型的 **滥用公式字体** 的例子．（在页面中使用斜体请用 `*文本*` 表示．）
@@ -462,7 +364,7 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对�
 | `$ 小于 a 的质数 $`               | $小于 a 的质数$        | `小于 $a$ 的质数`                             | 小于 $a$ 的质数                          |
 | `$...$`                      | $...$             | `$\cdots$, $\ldots$, $\vdots$, $\ddots$` | $\cdots$，$\ldots$，$\vdots$，$\ddots$ |
 | `$a*b$`（两个数相乘）               | $a*b$             | `$a\times b$, $a\cdot b$`                | $a\times b$，$a\cdot b$              |
-| `$SPFA$`（英文名称）               | $SPFA$            | `SPFA`                                   | SPFA                                |
+| `$Python$`（软件名称）             | $Python$          | `Python`                                 | Python                              |
 | `$a==b$`                     | $a==b$            | `$a=b$`                                  | $a=b$                               |
 | `$f[i][j][k]$`               | $f[i][j][k]$      | `$f_{i,j,k}$, $f(i,j,k)$`                | $f_{i,j,k}$，$f(i,j,k)$              |
 | `$R,N^*$`（集合）                | $R,N^*$           | `$\mathbf{R}$, $\mathbf{N}^*$`           | $\mathbf{R}$，$\mathbf{N}^*$         |
@@ -504,101 +406,57 @@ LaTeX 作为公式排版的首选，我们应当正确地使用它．因此对�
 
 #### 伪代码格式
 
-伪代码具体格式没有严格要求，请参考算法导论或学术论文．注意不要写成 Python．
+<a id="PCOD-1"></a>PCOD-1：伪代码按计算任务选择清楚的记法；自然语言步骤、带语言标记的代码或 LaTeX 都可使用，不强制特定编程语言．明确输入、步长、更新顺序和输出；若属于近似算法，应说明误差与适用范围．
 
-<a id="PCOD-1"></a>PCOD-1：Wiki 内使用 LaTeX 书写伪代码，整体处于 array 环境中，缩进使用 `$\qquad$`，文字描述使用 `$\text$`，关键字使用 `$\textbf$`，多字母变量使用 `$\textit$`，赋值使用 `$\gets$`．
+例如，用显式 Euler 方法近似解 $\dot x=v$、$\dot v=a(x)$ 时，两个新量都使用旧时刻的值，不能在未说明时变成另一种更新顺序：
 
-参考示例：
-
-$$
-\begin{array}{l}
-\textbf{Input. } \text{The edges of the graph } e , \text{ where each element in } e \text{ is } (u, v, w) \\
-\text{ denoting that there is an edge between } u \text{ and } v \text{ weighted } w . \\
-\textbf{Output. } \text{The edges of the MST of the input graph}. \\
-\textbf{Method. } \\
-\begin{array}{ll} 
-1 &  \textit{result} \gets \varnothing \\
-2 &  \text{sort } e \text{ into nondecreasing order by weight } w \\ 
-3 &  \textbf{for} \text{ each } (u, v, w) \text{ in the sorted } e \\ 
-4 &  \qquad \textbf{if } u \text{ and } v \text{ are not connected in the union-find set } \\
-5 &  \qquad\qquad \text{connect } u \text{ and } v \text{ in the union-find set} \\
-6 &  \qquad\qquad \textit{result} \gets \textit{result}\;\bigcup\ \{(u, v, w)\} \\
-7 &  \textbf{return } \textit{result}
-\end{array}
-\end{array}
-$$
-
-```latex
-$$
-\begin{array}{l}
-\textbf{Input. } \text{The edges of the graph } e , \text{ where each element in } e \text{ is } (u, v, w) \\
-\text{ denoting that there is an edge between } u \text{ and } v \text{ weighted } w . \\
-\textbf{Output. } \text{The edges of the MST of the input graph}. \\
-\textbf{Method. } \\
-\begin{array}{ll} 
-1 &  \textit{result} \gets \varnothing \\
-2 &  \text{sort } e \text{ into nondecreasing order by weight } w \\ 
-3 &  \textbf{for} \text{ each } (u, v, w) \text{ in the sorted } e \\ 
-4 &  \qquad \textbf{if } u \text{ and } v \text{ are not connected in the union-find set } \\
-5 &  \qquad\qquad \text{connect } u \text{ and } v \text{ in the union-find set} \\
-6 &  \qquad\qquad \textit{result} \gets \textit{result}\;\bigcup\ \{(u, v, w)\} \\
-7 &  \textbf{return } \textit{result}
-\end{array}
-\end{array}
-$$
+```text
+输入 x、v、步长 dt，以及步数 n
+重复 n 次：
+    x_next = x + v * dt
+    v_next = v + a(x) * dt
+    x = x_next
+    v = v_next
+输出 x、v
 ```
+
+该步骤只是数值近似，不保证机械能严格守恒；具体误差分析属于相应计算工具页．
 
 ## 图解
 
-可能上述要求把握起来有些困难，接下来我们给出一些图片来具体分析哪种格式应该使用，哪种不该使用：
+以下用物理写作场景说明排版判断；配图与否由教学任务决定，不使用无关的算法截图作通用范例．
 
 ### 例 1
 
-![](./images/format-1.png)
-
-将复杂的 LaTeX 公式使用行间格式，可以使得页面错落有致．但 **Physics Learning Wiki** 作为一个以中文为主体的站点，我们希望大部分纲领性的信息（如标题）尽量使用中文（除英文专有名词）．
+复杂等式用显示公式，并在两侧留空行；标题用可检索的中文对象名，公式留在正文．例如标题写「动能定理」，不直接用整条等式作标题．
 
 ### 例 2
 
-![](./images/format-2.png)
-
-较复杂度的 LaTeX 公式请注意等号的对齐，同时可以适当引用 Wiki 的页面 **链接** 来完善内容．
+同一推导的连续等号可用 `aligned` 对齐．决定性投影、近似与变量替换仍需要文字解释，不能用对齐代替论证．
 
 ### 例 3
 
-![](./images/format-3.png)
-
-一般情况下，我们建议将引用的资料列在文末的 `##参考资料与注释` 一节，并在原句后面加上脚注，而不是直接给出链接．同时一定要避免使用 LaTeX 公式表达代码，上图中两个中括号就是不规范的写法．我们建议使用 `dp(i,j)` 或者 `dp_{i,j}`．
+代码中的数组索引用行内代码 `position[i]`；数学分量写成 $x_i$．来源用脚注说明，并在文末列出可复查的资料．
 
 ### 例 4
 
-![](./images/format-4.png)
-
-注意我们描述 **乘法** 的时侯一般使用 `\times` 或者 `\cdot`，特殊情况（如卷积）下会使用 `*`（也可以写成 `\ast`）．标题是简洁的词组，但我们不希望正文部分由词组拼凑而成．上图中「两个要素」，建议更改为「动态规划的原理具有以下两个要素」，上下文保持连贯．可取的地方是，适当使用 **有序** 列表可以更有条理地表述内容．再次提醒，在使用列表的时侯，每一项如果是一句话，需要在末位添加 **标点符号**．有序列表通常添加分号，在最后一项末位添加句号；无序列表统一添加句号．
+乘法使用 $\times$ 或 $\cdot$；星号只在已定义的特殊运算中使用．段落写清物理关系，操作步骤可用有序列表，不让短语堆叠取代解释．
 
 ### 例 5
 
-![](./images/format-5.png)
-
-适当引用 **图片** 可以增强文章易读性．使用 **伪代码** 的方式表达算法过程可以方便又简洁地描述算法过程，相比于直接贴模板代码更加好懂．
+几何图与正文统一角度、正方向、源点和场点．替代文字应描述学习所需关系；若图只起装饰作用，可省略．
 
 ### 例 6
 
-![](./images/format-6.png)
-
-同样的问题，标题使用英文．并且在使用完括号后没有句号．另外，上图中的行间公式虽然没有使用括号，但是由于下标嵌套过多，使得最底层的下标字体很小，整个公式也并不美观．建议将 `son_{now,i}` 更换为 `son(now,i)`，或者把 `f_{now}` 替换为 `f(now)`．我们希望尽量控制上下标嵌套在两层以内（需要多次嵌套上标时建议使用 Knuth 箭头，如用 $2 \uparrow (2 \uparrow (2 \uparrow (2 \uparrow \cdots)))$ 代替 $2^{2^{2^{2^{\cdots}}}}$，《上帝造题的七分钟》）．
+下标过多时可改用清楚定义的函数或辅助变量．例如先定义源到场点的距离，再写场强投影，避免把全部坐标表达式挤进多层下标．
 
 ### 例 7
 
-![](./images/format-7.png)
-
-使用 MkDocs 扩展语法，让例题题面与算法描述区分开．将代码折叠，可以让文章更紧凑．（毕竟看 Wiki 的大多数是了解思路，除了模板代码需要阅读外，习题的代码大多可以折叠．）在描述函数操作时，使用行内代码和 LaTeX 公式都是不错的选择．
+题目及作答条件留在可见正文；核对答案可折叠，首次方法示范与必要推导则默认可读．具体语义见 [信息框规范](./admonitions.md)．
 
 ### 例 8
 
-![](./images/format-8.png)
-
-在文末罗列出参考文献，可以使页面的内容更严谨，真实可信．
+文末的来源应支持对应命题，数据表给出单位与条件．页面呈现检查和来源核验是不同工作，二者都要诚实记录范围．
 
 ## 外部链接
 
@@ -611,21 +469,15 @@ $$
 
 ## 参考资料与注释
 
-[^note1]: （冒号）表示总结上文．
+### 修订记录
 
-[^note2]: 科学技术名称的英文全称与其缩略形式间，应使用英文逗号．中文句子内夹用了用以注释、补充或说明的英文句子或语段，该英文句子或语段用中文圆括号标示．
+-   2026-10-25：将教学结构与先修要求归并到内容编写指引，保留 STRC、CONT 等原规则入口；用物理和数值计算示例替换失配内容，并修正配置与失效规则链接．
+
+[^note1]: （冒号）表示总结上文．
 
 [^note3]: 折叠框：参见 [Collapsible Blocks](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#collapsible-blocks)，有时我们也用「Details 语法」指代该语法，因其从功能上与 HTML 中的 [`<details>` 元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/details) 功能一致．
 
-[^note4]: 移至 [如何贡献](./htc.md)．
-
-[^note5]: 该规范写入了 [编辑前须知](../edit-landing.md) 并发布了公告，并未写入本文档．
-
 [^note6]: 选项卡：参见 [Content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs)．
-
-[^ref1]: [cstdio stdio.h namespace](https://stackoverflow.com/questions/10460250/cstdio-stdio-h-namespace)
-
-[^ref2]: [CCF 关于恢复 NOIP 竞赛的公告 - 中国计算机学会](https://www.ccf.org.cn/c/2020-01-21/694716.shtml)
 
 [^ref3]: [我的公式为什么在目录里没有正常显示？好像双倍了](faq.md)
 

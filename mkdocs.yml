@@ -43,6 +43,8 @@ nav:
       - 投稿进度与管理: submission/status.md
       - 社区角: community/index.md
       - 内容编写指引: intro/writing.md
+      - 教学编辑示例: intro/teaching-examples.md
+      - 编辑审校与 AI 辅助: intro/editorial-review.md
       - 信息框与补充内容规范: intro/admonitions.md
       - 格式手册: intro/format.md
       - 力学章节编写说明: mechanics/mechanics-writing.md
