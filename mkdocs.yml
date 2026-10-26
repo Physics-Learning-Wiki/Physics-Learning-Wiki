@@ -160,6 +160,9 @@ nav:
       - 拉格朗日方程: mechanics/analytical/lagrangian.md
       - 拉格朗日建模实例: mechanics/analytical/lagrangian-modeling.md
       - 非保守广义力与耗散: mechanics/analytical/nonconservative-forces.md
+      - 平衡附近的小振动: mechanics/analytical/small-oscillations.md
+      - 简正模与简正坐标: mechanics/analytical/normal-modes.md
+      - 双摆的小振动与模态: mechanics/analytical/double-pendulum-modes.md
       - 哈密顿力学（建设中）: mechanics/analytical/hamiltonian.md
   - 热学与统计物理:
     - 热学简介: thermodynamics/index.md

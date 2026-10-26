@@ -308,6 +308,9 @@ const NAV_TREE = [
         "label": "contributors"
       },
       {
+        "label": "editorial-review"
+      },
+      {
         "label": "faq"
       },
       {
@@ -324,6 +327,9 @@ const NAV_TREE = [
       },
       {
         "label": "symbol"
+      },
+      {
+        "label": "teaching-examples"
       },
       {
         "label": "thanks"
@@ -592,6 +598,9 @@ const NAV_TREE = [
             "label": "dalembert-principle"
           },
           {
+            "label": "double-pendulum-modes"
+          },
+          {
             "label": "hamiltonian"
           },
           {
@@ -602,6 +611,12 @@ const NAV_TREE = [
           },
           {
             "label": "nonconservative-forces"
+          },
+          {
+            "label": "normal-modes"
+          },
+          {
+            "label": "small-oscillations"
           },
           {
             "label": "virtual-work"

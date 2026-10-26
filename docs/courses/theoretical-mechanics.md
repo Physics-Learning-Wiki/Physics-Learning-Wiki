@@ -10,7 +10,7 @@ description: 面向大学物理与力学专业理论力学课程的学习路线�
 
 很多同学从大一经典力学进入大二理论力学时，最直观的感受是：*「明明又是质点、刚体和振动，为什么算起来完全不一样了？」*
 
-本页是跟课阅读参考．[分析力学导论](../mechanics/analytical/index.md)已提供约束、虚功、达朗贝尔原理、拉格朗日建模与耗散主线；作用量、诺特定理、哈密顿体系及进阶刚体仍待建设，请配合课程教材使用．
+本页是跟课阅读参考．[分析力学导论](../mechanics/analytical/index.md)已提供约束、虚功、达朗贝尔原理、拉格朗日建模、耗散与小振动主线；作用量、诺特定理、哈密顿体系及进阶刚体仍待建设，请配合课程教材使用．
 
 这门课程的一条核心主线，是从牛顿力学进入拉格朗日与哈密顿表述：研究对象仍是同一类力学系统，组织约束、方程和守恒关系的方式逐步变化．
 
@@ -31,7 +31,7 @@ flowchart TD
     B --> C["动力学普遍原理：约束、虚位移与达朗贝尔原理"]
     C --> D["拉格朗日体系：方程、建模与耗散（正文已提供）"]
     D --> E["经典应用：中心力场有效势能法与开普勒轨道"]
-    D --> F["经典应用：多自由度微振动与简正坐标"]
+    D --> F["正文已提供：小振动、简正坐标与双摆模态"]
     D -.-> N["待建设：作用量、对称性与守恒律"]
     N -.-> G["待建设：勒让德变换、哈密顿正则方程与相空间"]
     G -.-> H["待建设：泊松括号、正则变换与哈密顿—雅可比理论"]
@@ -55,7 +55,7 @@ flowchart TD
 | **6. 约束与广义坐标** | 完整与非完整约束、位形空间、独立约束、位形自由度与容许速度数 | [约束、自由度与广义坐标](../mechanics/analytical/constraints-generalized-coordinates.md) | **[正文已提供]** 用单摆、球面质点与圆盘辨析坐标和速度计数；非完整动力学留到后续 |
 | **7. 虚功与达朗贝尔原理** | 等时虚位移、理想约束、平衡、广义力与惯性项的投影 | [虚功与理想约束](../mechanics/analytical/virtual-work.md) · [达朗贝尔原理与广义力](../mechanics/analytical/dalembert-principle.md) | **[正文已提供]** 先区分虚功与实功，再把静力平衡思路推广到动力学 |
 | **8. 拉格朗日力学** | 第二类拉格朗日方程、动能与位置势能、单摆与双摆建模、非保守广义力 | [拉格朗日方程](../mechanics/analytical/lagrangian.md) · [建模实例](../mechanics/analytical/lagrangian-modeling.md) · [非保守力与耗散](../mechanics/analytical/nonconservative-forces.md) | **[导论正文已提供]** 乘子法、作用量、循环坐标与诺特定理为下一阶段待建设内容 |
-| **9. 多自由度微振动**        | 平衡位置附近的泰勒展开、简正模、固有频率矩阵特征值求解、简正坐标解耦                                                           | [线性振动](../mechanics/oscillation-wave/linear-oscillation.md)<br/>[振动的合成](../mechanics/oscillation-wave/superposition.md)                                                                                                            | **\[普物已完备，待扩充]** 可复用一维振动，多自由度简正模拓展为后续重点                                           |
+| **9. 多自由度小振动** | 平衡附近的二次近似、质量与刚度矩阵、固有角频率、简正坐标与初态分解 | [小振动近似](../mechanics/analytical/small-oscillations.md) · [简正模](../mechanics/analytical/normal-modes.md) · [双摆应用](../mechanics/analytical/double-pendulum-modes.md) | **[正文已提供]** 先复习单自由度振动，再从二次能量求解多自由度运动 |
 | **10. 哈密顿力学**         | 勒让德变换（Legendre Transformation）、哈密顿函数 $H=p\dot{q}-L$、哈密顿正则方程、相空间几何图景与刘维尔定理（Liouville Theorem） | [哈密顿力学](../mechanics/analytical/hamiltonian.md)                                                                                                                                                                                    | **\[重点建设中]** 一阶微分方程组的对称结构，量子力学算符表象的直接前身                                           |
 | **11. 进阶形式理论**        | 正则变换、母函数、泊松括号（Poisson Bracket）、哈密顿 - 雅可比方程（Hamilton-Jacobi Equation）                         | - 分析力学进阶（规划中）                                                                                                                                                                                                                      | **\[高阶选修]** 奠定经典力学与量子力学对应原理的基石                                                    |
 

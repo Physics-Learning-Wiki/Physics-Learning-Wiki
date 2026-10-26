@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 760 420" width="760" height="420" role="img" aria-labelledby="title desc">
+  <title id="title">等长等质量双摆的两个振型</title>
+  <desc id="desc">低频模中两杆都向竖直线右侧偏，第二杆角度是第一杆的根号二倍。高频模中上杆向右、下杆向左，两角符号相反，角振幅绝对值比仍为根号二。各角均以本杆上端的竖直向下方向为参考。</desc>
+  <rect width="760" height="420" rx="14" fill="#f8fafc"/>
+  <path d="M380 25V390" stroke="#cbd5e1"/>
+  <g font-family="sans-serif" fill="#172554" text-anchor="middle">
+    <text x="190" y="35" font-size="21">低频模：两角同相</text>
+    <text x="570" y="35" font-size="21">高频模：两角反相</text>
+    <text x="190" y="65" font-size="17">ω₋² = (2 − √2) g/l</text>
+    <text x="570" y="65" font-size="17">ω₊² = (2 + √2) g/l</text>
+  </g>
+  <g stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5">
+    <path d="M145 105V250M170.8 232.4V368"/>
+    <path d="M565 105V250M590.8 232.4V368"/>
+  </g>
+  <g stroke="#2563eb" stroke-width="5" fill="none">
+    <path d="M145 105L170.8 232.4L207.1 357.2"/>
+  </g>
+  <g stroke="#b45309" stroke-width="5" fill="none">
+    <path d="M565 105L590.8 232.4L554.5 357.2"/>
+  </g>
+  <g fill="#2563eb"><circle cx="170.8" cy="232.4" r="10"/><circle cx="207.1" cy="357.2" r="10"/></g>
+  <g fill="#b45309"><circle cx="590.8" cy="232.4" r="10"/><circle cx="554.5" cy="357.2" r="10"/></g>
+  <g fill="#334155"><circle cx="145" cy="105" r="5"/><circle cx="565" cy="105" r="5"/></g>
+  <g stroke="#334155" stroke-width="1.5" fill="none">
+    <path d="M145 145A40 40 0 0 0 152.9 144.2M170.8 277.4A45 45 0 0 0 183.4 275.6"/>
+    <path d="M565 145A40 40 0 0 0 572.9 144.2M590.8 277.4A45 45 0 0 1 578.2 275.6"/>
+  </g>
+  <g font-family="sans-serif" fill="#334155" font-size="17">
+    <text x="95" y="163">θ₁</text><text x="205" y="287">θ₂</text>
+    <text x="518" y="163">θ₁</text><text x="615" y="287">θ₂</text>
+    <text x="195" y="227">m</text><text x="230" y="352">m</text>
+    <text x="615" y="227">m</text><text x="513" y="352">m</text>
+  </g>
+  <g font-family="sans-serif" fill="#172554" font-size="18" text-anchor="middle">
+    <text x="190" y="396">θ₂ = √2 θ₁</text>
+    <text x="570" y="396">θ₂ = −√2 θ₁</text>
+  </g>
+</svg>

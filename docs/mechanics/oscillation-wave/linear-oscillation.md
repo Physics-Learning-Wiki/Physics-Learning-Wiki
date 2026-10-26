@@ -1,431 +1,342 @@
 ---
-author: Leafuke, 匿名同学
+author: Leafuke, 匿名同学, Physics Learning Wiki Team
 prerequisites:
-- derivative
-- differential-equation
+  - derivative
+  - differential-equation
 status: review
-description: "介绍简谐振动，内容包括运动方程推导、解的形式、周期与频率．"
+description: 从单自由度模型求自由、阻尼与受迫振动，解释初态、相位、能量和共振条件，并衔接多自由度简正模．
 ---
 
-线性振动是物理学中一种重要的运动形式，广泛存在于各种物理系统中．它通常指系统在平衡位置附近的小幅度振动，其运动方程可以用线性 [微分方程](concept:differential-equation) 描述．
+线性振动用对位移及其导数为线性的 [微分方程](concept:differential-equation) 描述．小幅度运动常可作这种近似，但「小」本身不是充分条件；为什么平衡附近会出现线性回复作用，见 [平衡附近的小振动](../analytical/small-oscillations.md)．本页先掌握单自由度的求解工具，再进入多自由度系统．
 
 <a id="简单谐振动"></a>
 
 ## 简谐振动
 
-如果某一物理量在平衡点附近往复振动，且随时间的变化是余弦（或正弦）的函数形式，我们就把这种振动称为简谐振动．
+位移按单一正弦或余弦规律变化的运动称为简谐振动．先明确一个模型：质量 $m>0$ 的滑块在固定水平轨道上运动，弹簧劲度系数 $k>0$，以平衡位置为 $x=0$，向右为正，忽略阻力和外驱动．
 
 ### 运动方程推导
 
-简谐振动是最基本的线性振动形式，其运动方程为：
+弹簧回复力为 $F=-kx$，牛顿第二定律给出
 
 $$
-\dfrac{d^2x}{dt^2} + \omega^2 x = 0
+m\ddot x=-kx,\qquad
+\ddot x+\omega_0^2x=0,\qquad
+\omega_0=\sqrt{\dfrac{k}{m}}.
 $$
 
-这一方程可以通过牛顿第二定律推导得到．例如，对于一个质量为 $m$ 的物体，受到的回复力 $F$ 满足胡克定律：
-
-$$
-F = -kx
-$$
-
-根据牛顿第二定律：
-
-$$
-F = m\dfrac{d^2x}{dt^2}
-$$
-
-代入回复力表达式：
-
-$$
-m\dfrac{d^2x}{dt^2} = -kx
-$$
-
-整理得：
-
-$$
-\dfrac{d^2x}{dt^2} + \dfrac{k}{m}x = 0
-$$
-
-令 $\omega = \sqrt{\frac{k}{m}}$，即得简谐振动的运动方程．
+负号表示位移为正时加速度为负，不表示速度始终为负．滑块越过平衡位置时仍有速度，因而不会停在那里．$\omega_0$ 是模型决定的固有角频率，不由初始振幅决定．
 
 ### 解的形式
 
-该方程的通解为：
+试探 $x=\mathrm e^{rt}$，得到 $r^2+\omega_0^2=0$，故实通解可写为
 
 $$
-x(t) = A \cos(\omega t + \phi)
+x(t)=C\cos\omega_0t+D\sin\omega_0t
+=A\cos(\omega_0t+\phi).
 $$
 
-其中：
+给定 $x(0)=x_0$、$\dot x(0)=v_0$，直接得到
 
--   $A$ 为振幅，振子离开平衡位置的最大位移的绝对值，由初始条件决定．是求解上述微分方程时引入的常量；
--   $\phi$ 为初相位，初始时刻振子的相位，由初始条件决定．是求解上述微分方程时引入的常量；
--   $\omega$ 为角频率（圆频率），在简谐振动的几何表示中，表示旋转矢量的角速度；
--   $x$ 为位移，表示振子相对于平衡位置的偏移量．
+$$
+\boxed{x(t)=x_0\cos\omega_0t+\dfrac{v_0}{\omega_0}\sin\omega_0t},
+$$
 
-??? note "例 1"
-    设一个质量为 $m$ 的物体连接在弹簧上，弹簧劲度系数为 $k$．求该系统的角频率 $\omega$ 及其运动方程．
-    
-    **解：**   
-    易得运动方程为：
-    
-    $$
-    \dfrac{d^2x}{dt^2} + \dfrac{k}{m}x = 0  
-    $$
-    
-    角频率：
-    
-    $$
-    \omega = \sqrt{\dfrac{k}{m}}  
-    $$
-    
-    因此，运动方程为：
-    
-    $$
-    x(t) = A \cos\left(\sqrt{\dfrac{k}{m}}t + \phi\right)  
-    $$
-    
-    其中 $A$ 和 $\phi$ 由初始条件决定．
+$$
+A=\sqrt{x_0^2+\dfrac{v_0^2}{\omega_0^2}},\qquad
+A\cos\phi=x_0,\quad -A\omega_0\sin\phi=v_0.
+$$
 
-??? note "例 2"
-    设一个质量为 $m$ 的物体连接在摆绳上，摆长为 $l$．求该单摆系统的角频率 $\omega$ 及其运动方程．
-    
-    **解：**
-    
-    $$
-    M = -mgl\sin\theta = I\beta = ml^2 \dfrac{d^2\theta}{dt^2}  
-    $$
-    
-    对于小角度摆动，$\sin\theta \approx \theta$，单摆的运动方程为：
-    
-    $$
-    \dfrac{d^2\theta}{dt^2} + \dfrac{g}{l}\theta = 0  
-    $$
-    
-    角频率：
-    
-    $$
-    \omega = \sqrt{\dfrac{g}{l}}  
-    $$
-    
-    因此，运动方程为：
-    
-    $$
-    \theta(t) = A \cos\left(\sqrt{\dfrac{g}{l}}t + \phi\right)  
-    $$
-    
-    其中 $A$ 和 $\phi$ 由初始条件决定．
+求相位时要同时满足这两个关系，不能只用正切忽略象限．$A=0$ 时物体静止在平衡位置，相位没有物理意义．「运动方程」指微分方程，而 $x(t)$ 是满足初态的一条运动解．
 
-??? warning "小角度近似"
-    在单摆的例子中，我们使用了小角度近似 $\sin\theta \approx \theta$．这一近似仅在摆动角度较小时成立（通常小于约 10 度）．对于较大的摆动角度，运动方程将变得非线性，不能再用简谐振动的形式描述．
+例如从正位移 $x_0$ 静止释放，解为 $x=x_0\cos\omega_0t$；若从平衡处以速度 $v_0$ 向右出发，解为 $x=(v_0/\omega_0)\sin\omega_0t$．同一模型的频率相同，初态改变振幅与相位．
 
-??? warning "简谐振动的判断"
-    并非所有往复振动都是简谐振动．简谐振动要求回复力与位移成正比且方向相反，即满足 **胡克定律的形式**．对于非线性系统或大幅度振动，运动方程可能不再是线性的，不能用简谐振动的形式描述．我们往往也可以通过得到相应的 **特征微分方程** 来判断振动是否为简谐振动．
+固定悬点单摆则满足 $\ddot\theta+(g/l)\sin\theta=0$．在下垂位置附近、角度以弧度计且 $|\theta|\ll1$ 时，用 $\sin\theta\approx\theta$ 得 $\omega_0=\sqrt{g/l}$．角振幅必须与初速度一起保证运动始终在小角度范围内．若使用轻绳，还须保持张力非负；完整建模见 [单摆例题](../analytical/lagrangian-modeling.md#例题一固定悬点单摆)．
+
+近似精度取决于所需误差，不能用一个固定角度界限替代判断．例如 $\sin\theta=\theta-\theta^3/6+\cdots$ 表明回复项的相对修正约为 $\theta^2/6$；长期相位误差还会积累．
 
 ### 周期与频率
 
-振动的周期 $T$ 和频率 $f$ 分别为：
+$$
+T_{\rm period}=\dfrac{2\pi}{\omega_0},\qquad
+f=\dfrac{1}{T_{\rm period}}=\dfrac{\omega_0}{2\pi}.
+$$
 
-$$
-T = \dfrac{2\pi}{\omega}, \quad f = \dfrac{1}{T} = \dfrac{\omega}{2\pi}.
-$$
+$f$ 的单位为赫兹，$\omega_0$ 的单位为 $\mathrm{rad/s}$．本页以 $T_{\rm period}$ 表示周期，避免与动能混淆．
 
 ### 相位
 
-振动的相位 $\theta$ 定义为：
+相位 $\psi=\omega_0t+\phi$ 同时决定位置和速度，不能只凭一个位置判断相位：同一位置可能正在向左或向右运动．相位可连续增长，也可按模 $2\pi$ 表示，不必强制限制在某个开区间．
 
-$$
-\theta = \omega t + \phi.
-$$
-
-相位表示振动在某一时刻所处的位置状态．规定 $0 < \theta < 2\pi$．
-
-对于两个同频简谐振动，其相位差 $\Delta \theta$ 为：
-
-$$
-\Delta \theta = \theta_1 - \theta_2 = \phi_1 - \phi_2.
-$$
-
-若 $\Delta \theta = 0$，则两振动 **同相**，若 $\Delta \theta = \pi$，则两振动 **反相**．
-若 $0 < \Delta \theta < \pi$，则称 $x_1$ 比 $x_2$  **超前**，若 $\pi < \Delta \theta < 2\pi$，则称 $x_1$ 比 $x_2$  **落后**．
+两个同频振动相位差为 $\Delta\phi=\phi_1-\phi_2$．差为 $0$（模 $2\pi$）时同相，差为 $\pi$ 时反相．讨论超前或滞后需指定所取的相位差分支．
 
 #### x, v, a 三者的相位关系
 
-$$
-x(t) = A \cos(\omega t + \phi)
-$$
+对位移逐次求导：
 
 $$
-v(t) = -A\omega \cos(\omega t + \phi + \dfrac{\pi}{2}) = A\omega \sin(\omega t + \phi)
+\begin{aligned}
+x&=A\cos\psi,\\
+v&=-A\omega_0\sin\psi
+=A\omega_0\cos(\psi+\pi/2),\\
+a&=-A\omega_0^2\cos\psi
+=A\omega_0^2\cos(\psi+\pi).
+\end{aligned}
 $$
 
+取各振幅为正，速度相位比位移超前 $\pi/2$，加速度与位移反相．在正向最大位移处，速度为零、加速度向负方向，能直接检查这些符号．
+
+### 用复数表示简谐振动
+
+由 Euler 公式，可以用复数记号统一处理正弦、余弦：
+
 $$
-a(t) = -A\omega^2 \cos(\omega t + \phi + \pi) = -A\omega^2 \cos(\omega t + \phi)
+\widetilde x(t)=\widetilde A\mathrm e^{\mathrm i\omega_0t},
+\qquad \widetilde A=A\mathrm e^{\mathrm i\phi},\qquad
+x(t)=\operatorname{Re}\widetilde x(t).
 $$
 
-由此可见，速度 $v$ 比位移 $x$ 超前 $\frac{\pi}{2}$，加速度 $a$ 与位移 $x$ 反相．你可以想想为什么会有这样的相位关系．
+实际位移始终取实部．求导对应乘 $\mathrm i\omega_0$，二次求导对应乘 $-\omega_0^2$．线性实系数方程允许先求复解再取实部；计算能量这样的平方量时则应先恢复实位移与实速度，不能直接把复数平方当成真实能量．
 
 ## 能量分析
 
 ### 动能与势能
 
-简谐振动的能量包括动能和势能，其表达式分别为：
-
--   动能：
+取平衡处势能为零：
 
 $$
-E_k = \dfrac{1}{2}mv^2 = \dfrac{1}{2}m\omega^2A^2\sin^2(\omega t + \phi)
+E_k=\dfrac12m\dot x^2,\qquad E_p=\dfrac12kx^2.
 $$
 
-在一个周期内的平均值：
-
-$$
-\overline{E_k} = \dfrac{1}{T}\int_0^T E_k dt = \dfrac{1}{4}kA^2
-$$
-
--   势能：
-
-$$
-E_p = \dfrac{1}{2}kx^2 = \dfrac{1}{2}kA^2\cos^2(\omega t + \phi)
-$$
-
-在一个周期内的平均值：
-
-$$
-\overline{E_p} = \dfrac{1}{T}\int_0^T E_p dt = \dfrac{1}{4}kA^2
-$$
+代入简谐解，动能与势能分别正比于 $\sin^2\psi$ 和 $\cos^2\psi$．转向点能量全部为势能，经过平衡位置时全部为动能．
 
 ### 总能量守恒
 
-总能量为动能与势能之和：
-
 $$
-E = E_k + E_p = \dfrac{1}{2}kA^2 = \dfrac{1}{2}m\omega^2A^2
+E=E_k+E_p=\dfrac12kA^2,\qquad
+\dot E=\dot x(m\ddot x+kx)=0.
 $$
 
-总能量在振动过程中保持不变，动能和势能在振动过程中相互转化．
+周期平均给出 $\langle E_k\rangle=\langle E_p\rangle=E/2$．这里是同一个经典振子运动的时间平均，不是在讨论热平衡下的统计分配．
+
+给定振幅 $A$，由能量还可求速度大小 $|v|=\omega_0\sqrt{A^2-x^2}$，但速度方向须由运动阶段判断．
 
 ### 简谐振动的几何表示
 
-简谐振动可以通过旋转矢量的投影来几何表示．设一个长度为 $A$ 的旋转矢量以角速度 $\omega$ 绕原点逆时针旋转，其在水平轴上的投影即为简谐振动的位移 $x(t)$：
+长度为 $A$ 的旋转矢量以角速度 $\omega_0$ 转动，其水平投影为 $A\cos\psi$．这个表示帮助追踪相位；滑块本身仍沿直线运动，并没有在圆周上转动．
 
 ## 简正模
 
-在多自由度系统中，线性振动可以分解为若干个独立的简正模（Normal Modes）．每个简正模对应一个特定的频率和振动模式，系统的总振动可以看作这些简正模的叠加．
-
-### 用复数表示简谐振动
-
-简谐振动
-
-$$
-x(t) = A \cos(\omega t + \varphi)
-$$
-
-也可以用复数的实部和虚部表示：
-
-$$
-\widetilde{x}(t)=Ae^{i(\omega t+\varphi)}\
-$$
-
-其中，$A$ 为振幅，$\omega$ 为角频率，$\varphi$ 为初相位．
-
-上式的右端又可以写为 $(Ae^{i\varphi})e^{i\omega t}=\widetilde{A}e^{i\omega t}$，其中 $Ae^{i\varphi}=\widetilde{A}$ 是一个复常数，表示振动的初始状态，称为 **复振幅**．
-
-$$
-\widetilde{x}(t)=\widetilde{A}e^{i\omega t}
-$$
-
-如果我们取上式的实部，就得到了简谐振动的标准形式：
-
-$$
-x(t)=\mathrm{Re}(\widetilde{x}(t))=\mathrm{Re}(\widetilde{A}e^{i\omega t})=A\cos(\omega t+\varphi)
-$$
-
-用 $\widetilde{x}(t)$ 表示简谐振动，则速度和加速度为
-
-$$
-\begin{cases}
-\widetilde{v}(t)=\dfrac{d\widetilde{x}(t)}{dt}=i\omega \widetilde{A}e^{i\omega t}=i\omega \widetilde{x}(t)\\
-\widetilde{a}(t)=\dfrac{d\widetilde{v}(t)}{dt}=\dfrac{d^2\widetilde{x}(t)}{dt^2}=-\omega^2 \widetilde{A}e^{i\omega t}=-\omega^2 \widetilde{x}(t)
-\end{cases}
-$$
-
-??? note "例题"
-    已知一个线性三原子分子 $A_2B$ 的纵向振动模型：质量为 $m$ 的两个 $A$ 原子位于两端，质量为 $M$ 的 $B$ 原子位于中间；相邻原子间由劲度系数均为 $k$ 的弹簧连接（$A$–$B$ 与 $B$–$A$）．求简正模与对应角频率．
-    
-    **解：** 设三原子沿直线位移为 $x_1,x_2,x_3$（分别对应 $A,B,A$），取平衡位置为零．  
-    弹簧形变为 $x_1-x_2$ 与 $x_3-x_2$，于是运动方程为
-    
-    $$
-    \begin{cases}  
-    m\ddot x_1=-k(x_1-x_2),\\  
-    M\ddot x_2=-k(x_2-x_1)-k(x_2-x_3)=-k(2x_2-x_1-x_3),\\  
-    m\ddot x_3=-k(x_3-x_2).  
-    \end{cases}  
-    $$
-    
-    取简正模形式 $x_j(t)=a_j e^{i\omega t}$，得到代数方程
-    
-    $$
-    \begin{cases}  
-    m\omega^2 a_1=k(a_1-a_2),\\  
-    M\omega^2 a_2=k(2a_2-a_1-a_3),\\  
-    m\omega^2 a_3=k(a_3-a_2).  
-    \end{cases}  
-    $$
-    
-    利用对称性分两类：
-    
-    1.  **整体平移模**：$a_1=a_2=a_3$，此时弹簧不伸长，$\omega_0=0$．
-    
-    2.  **反对称伸缩模**：$a_1=-a_3$，由对称性得 $a_2=0$．  
-        代入第一式得 $m\omega^2 a_1=k a_1$，因此
-    
-    $$
-    \omega_- = \sqrt{\dfrac{k}{m}},\quad (a_1,a_2,a_3)\propto(1,0,-1).  
-    $$
-    
-    3.  **对称伸缩模**：$a_1=a_3=a$，$a_2=b$．  
-        由第一式 $m\omega^2 a=k(a-b)$，第二式 $M\omega^2 b=2k(b-a)$．  
-        联立消去 $b$ 可得
-    
-    $$
-    \omega_+^2=\dfrac{k}{m}+\dfrac{2k}{M},\quad (a_1,a_2,a_3)\propto\left(1,-\dfrac{2m}{M},1\right).  
-    $$
-    
-    因此该分子有一个零频平移模与两个非零振动模 $\omega_-,\omega_+$．
-
-??? note "例题：受迫振动中「功率共振」的频率"
-    对线性受迫振动
-    
-    $$
-    \ddot x+2\gamma\dot x+\omega_0^2x=\dfrac{F_0}{m}\cos(\Omega t),  
-    $$
-    
-    证明稳态下平均耗散功率 $\langle P\rangle$ 取最大值时的驱动频率为 $\Omega=\omega_0$．
-    
-    **解：** 稳态响应 $x=A\cos(\Omega t-\delta)$．  
-    阻尼耗散功率 $P_d=b\dot x^2$，周期平均
-    
-    $$
-    \langle P\rangle=b\langle\dot x^2\rangle=b\cdot\frac12A^2\Omega^2.  
-    $$
-    
-    用 $b=2m\gamma$ 与
-    
-    $$
-    A^2=\dfrac{(F_0/m)^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}  
-    $$
-    
-    得
-    
-    $$
-    \langle P\rangle\propto \dfrac{\Omega^2}{(\omega_0^2-\Omega^2)^2+(2\gamma\Omega)^2}.  
-    $$
-    
-    对 $\Omega$ 求极值可得最大值发生在 $\Omega=\omega_0$．
+多个坐标耦合后，一个坐标一般同时包含多个频率．简正模是各坐标以固定比例、同一固有角频率变化的特殊运动．完整的 [简正模与简正坐标](../analytical/normal-modes.md) 在分析力学模块统一讲授，需要先掌握拉格朗日建模和二次近似．原有 [三原子纵向振动例题](../analytical/normal-modes.md#零模三原子纵向振动) 已并入该页，包含整体平移零模与两个内部振动模的完整求解．
 
 ## 阻尼振动
 
-### 运动方程
+<a id="运动方程"></a>
 
-当系统受到阻尼力作用时，振动会逐渐衰减，其运动方程为：
+### 阻尼运动方程
+
+加入相对于静止介质的线性黏滞阻力 $-c\dot x$，其中 $c>0$，得
 
 $$
-\dfrac{d^2x}{dt^2} + 2\beta \dfrac{dx}{dt} + \omega^2 x = 0
+m\ddot x+c\dot x+kx=0,\qquad
+\ddot x+2\gamma\dot x+\omega_0^2x=0,\qquad
+\gamma=\dfrac{c}{2m}.
 $$
 
-其中 $\beta$ 为阻尼系数，描述阻尼的强弱．
+$c$ 的单位为 $\mathrm{kg/s}$，$\gamma$ 的单位为 $\mathrm{s^{-1}}$．从广义力与耗散函数建立同一方程，见 [非保守广义力与耗散](../analytical/nonconservative-forces.md)．
 
 ### 解的形式
 
-根据阻尼的大小，解的形式不同：
+试探指数解，得到特征根 $r=-\gamma\pm\sqrt{\gamma^2-\omega_0^2}$．判别式决定三种运动：
 
-1.  **欠阻尼振动**（$\beta < \omega$）：
+| 条件 | 通解 | 运动特征 |
+| --- | --- | --- |
+| 欠阻尼：$0<\gamma<\omega_0$ | $x=A\mathrm e^{-\gamma t}\cos(\omega_dt+\phi)$，$\omega_d=\sqrt{\omega_0^2-\gamma^2}$ | 振荡包络衰减 |
+| 临界阻尼：$\gamma=\omega_0$ | $x=(C_1+C_2t)\mathrm e^{-\omega_0t}$ | 重根，无周期振荡 |
+| 过阻尼：$\gamma>\omega_0$ | $x=C_1\mathrm e^{r_1t}+C_2\mathrm e^{r_2t}$ | 两个负实根，无周期振荡 |
 
-$$
-x(t) = A e^{-\beta t} \cos(\omega_d t + \phi)
-$$
+临界阻尼是振荡与非振荡根之间的边界．不能不指定初态和「回到平衡」的判据，就把它称为任意情况下返回最快的运动．无周期振荡也不保证任意初态下都不穿过平衡位置．
 
-其中 $\omega_d = \sqrt{\omega^2 - \beta^2}$ 为阻尼振动的角频率．
+??? note "三种运动的示意图"
+    ![欠阻尼运动的振荡包络逐渐收缩](../images/underdamped_oscillation.png)
+    
+    ![临界阻尼运动示意](../images/critically_damped_oscillation.png)
+    
+    ![过阻尼运动示意](../images/overdamped_oscillation.png)
 
-??? note "图例"
-    ![欠阻尼振动](../images/underdamped_oscillation.png)
-
-2.  **临界阻尼**（$\beta = \omega$）：
-
-$$
-x(t) = (C_1 + C_2 t)e^{-\beta t}
-$$
-
-??? note "图例"
-    ![临界阻尼振动](../images/critically_damped_oscillation.png)
-
-3.  **过阻尼**（$\beta > \omega$）：
+对欠阻尼运动，初始条件形式为
 
 $$
-x(t) = C_1 e^{r_1 t} + C_2 e^{r_2 t}
+x(t)=\mathrm e^{-\gamma t}
+\left[x_0\cos\omega_dt+
+\dfrac{v_0+\gamma x_0}{\omega_d}\sin\omega_dt\right].
 $$
 
-其中 $r_1$ 和 $r_2$ 为两个负实根．
-
-??? note "图例"
-    ![过阻尼振动](../images/overdamped_oscillation.png)
+额外的 $\gamma x_0$ 来自对指数因子求导．因此静止释放时，不能简单地把初相位设为零．
 
 ### 能量衰减
 
-欠阻尼振动中，系统的总能量随时间指数衰减：
+精确的机械能变化率是
 
 $$
-E(t) = E_0 e^{-2\beta t}
+E=\dfrac12m\dot x^2+\dfrac12kx^2,\qquad
+\dot E=-c\dot x^2\le0.
 $$
+
+位移包络按 $\mathrm e^{-\gamma t}$ 衰减，不表示瞬时能量严格等于 $E(0)\mathrm e^{-2\gamma t}$．例如静止释放瞬间 $\dot E(0)=0$，而后一个表达式会给出非零损失率．弱阻尼 $\gamma\ll\omega_0$ 时，对快速振荡作局部周期平均，才可用平滑的指数衰减近似描述平均能量．
+
+同一线性欠阻尼模型中，相邻同向峰值相隔 $T_d=2\pi/\omega_d$，其绝对值之比给出对数减缩：
+
+$$
+\delta_{\log}=\ln\dfrac{|x(t_p)|}{|x(t_p+T_d)|}=\gamma T_d.
+$$
+
+这条同相位取样关系是精确的；它与瞬时能量为纯指数是不同命题．
 
 <a id="强迫振动"></a>
 
 ## 受迫振动
 
-### 运动方程
+<a id="运动方程_1"></a>
 
-当系统受到周期性外力作用时，其运动方程为：
+### 驱动运动方程
+
+施加沿正方向的简谐外力 $F(t)=F_0\cos\Omega t$，其中 $F_0>0$ 为力的幅值、$\Omega>0$ 为驱动角频率：
 
 $$
-\dfrac{d^2x}{dt^2} + 2\beta \dfrac{dx}{dt} + \omega^2 x = F_0 \cos(\Omega t)
+m\ddot x+c\dot x+kx=F_0\cos\Omega t,
+\qquad
+\ddot x+2\gamma\dot x+\omega_0^2x=\dfrac{F_0}{m}\cos\Omega t.
 $$
 
-其中：
+除以质量后，右侧必须是加速度量纲．外力可持续输入能量，完整解为齐次解加一个特解；初始条件由二者共同满足．
 
--   $F_0$ 为外力的振幅；
--   $\Omega$ 为外力的角频率．
+### 无阻尼驱动与共振增长
+
+先令 $c=0$．当 $\Omega\ne\omega_0$，取 $x_p=C\cos\Omega t$，代入得
+
+$$
+C=\dfrac{F_0}{m(\omega_0^2-\Omega^2)}.
+$$
+
+从平衡处静止出发的完整解为
+
+$$
+x(t)=\dfrac{F_0}{m(\omega_0^2-\Omega^2)}
+\left(\cos\Omega t-\cos\omega_0t\right).
+$$
+
+无阻尼时齐次振动不会自行消失，不能说足够久后一定只剩驱动频率．共振 $\Omega=\omega_0$ 时，原来的特解形式失效，取极限或直接代入验证可得
+
+$$
+x(t)=\dfrac{F_0}{2m\omega_0}t\sin\omega_0t.
+$$
+
+它满足零初位移与零初速度．振荡包络随时间增长；真实系统中阻尼、非线性或装置限制会终止这种无限增长，小振动近似也可能先失效．
 
 ### 稳态解
 
-稳态解为：
+现在取 $c>0$．齐次解会衰减，长时间响应由同频特解支配．用上一节的复数工具，设 $x_p=\operatorname{Re}(\widetilde X\mathrm e^{\mathrm i\Omega t})$，得到
 
 $$
-x(t) = A \cos(\Omega t - \delta)
+\widetilde X=\dfrac{F_0/m}{\omega_0^2-\Omega^2+2\mathrm i\gamma\Omega}.
 $$
 
-其中：
+写成 $\widetilde X=A\mathrm e^{-\mathrm i\delta}$：
 
--   $A = \frac{F_0}{\sqrt{(\omega^2 - \Omega^2)^2 + (2\beta\Omega)^2}}$ 为稳态振幅；
--   $\delta = \arctan\left(\frac{2\beta\Omega}{\omega^2 - \Omega^2}\right)$ 为相位差．
+$$
+x_p=A\cos(\Omega t-\delta),\qquad
+A=\dfrac{F_0/m}{\sqrt{(\omega_0^2-\Omega^2)^2+4\gamma^2\Omega^2}},
+$$
+
+$$
+\delta=\operatorname{atan2}(2\gamma\Omega,\omega_0^2-\Omega^2).
+$$
+
+$\operatorname{atan2}(y,x)$ 同时用两个分量确定象限，这里 $0<\delta<\pi$．低频时响应近乎同相，高频时近乎反相；在 $\Omega=\omega_0$ 时滞后 $\pi/2$．只用普通反正切会丢掉高频分支．
+
+暂态究竟多久可忽略，应看衰减最慢的特征根．欠阻尼包络时间尺度为 $1/\gamma$；过阻尼时慢根为 $-\gamma+\sqrt{\gamma^2-\omega_0^2}$，不能一概使用 $t\gg1/\gamma$．
 
 ### 共振现象
 
-当驱动力频率接近系统的固有频率时，即 $\Omega \approx \omega$，系统的振幅达到最大值，称为 **共振**．
-
-共振条件下的振幅为：
+固定 $m,k,c,F_0$ 扫描驱动频率，位移振幅最大等价于其分母平方
 
 $$
-A_{\text{res}} = \dfrac{F_0}{2\beta\omega}
+D(\Omega)=(\omega_0^2-\Omega^2)^2+4\gamma^2\Omega^2
 $$
+
+最小．求导得
+
+$$
+D'(\Omega)=4\Omega(\Omega^2-\omega_0^2+2\gamma^2).
+$$
+
+因此只有 $0<\gamma<\omega_0/\sqrt2$ 时存在非零频率的位移共振峰：
+
+$$
+\Omega_r=\sqrt{\omega_0^2-2\gamma^2},\qquad
+A(\Omega_r)=\dfrac{F_0/m}{2\gamma\sqrt{\omega_0^2-\gamma^2}}.
+$$
+
+阻尼更大时，振幅随正频率增加而下降，最大值在静态极限．「欠阻尼」并不足以保证存在位移共振峰．在 $\Omega=\omega_0$ 处，
+
+$$
+A(\omega_0)=\dfrac{F_0/m}{2\gamma\omega_0},
+$$
+
+但它一般不是峰值；弱阻尼时两者才很接近．
+
+![不同阻尼强度下的受迫振动振幅与相位响应](../images/driven_response.png)
+
+### 功率共振与品质因数
+
+将原方程乘 $\dot x$，得 $\dot E=F(t)\dot x-c\dot x^2$．稳态一个周期后能量回到原值，所以外力平均功率等于耗散功率：
+
+$$
+\langle P\rangle=\dfrac12cA^2\Omega^2
+=\dfrac{F_0^2\gamma}{m}\dfrac{\Omega^2}{D(\Omega)}.
+$$
+
+令 $y=\Omega^2$，比例因子的导数为
+
+$$
+\dfrac{\mathrm d}{\mathrm dy}
+\dfrac{y}{y^2+(4\gamma^2-2\omega_0^2)y+\omega_0^4}
+=
+\dfrac{\omega_0^4-y^2}
+{\left[y^2+(4\gamma^2-2\omega_0^2)y+\omega_0^4\right]^2}.
+$$
+
+因此正频率的平均功率峰在 $\Omega=\omega_0$，与位移峰的频率一般不同．这里假定驱动力幅值不随扫描频率变化，且阻尼为线性常系数．
+
+对这个模型定义品质因数 $Q=\omega_0/(2\gamma)$．半功率点满足 $|\omega_0^2-\Omega^2|=2\gamma\Omega$，所以
+
+$$
+\Omega_1=\sqrt{\omega_0^2+\gamma^2}-\gamma,\qquad
+\Omega_2=\sqrt{\omega_0^2+\gamma^2}+\gamma,\qquad
+\Delta\Omega=2\gamma.
+$$
+
+在本模型中这个功率带宽关系精确成立；弱阻尼时两半功率点近似关于 $\omega_0$ 对称，且 $Q$ 越大，峰相对越窄．
+
+例如设定一组教学数据：半功率点为 $98$ 与 $102\,\mathrm{rad/s}$．则 $\gamma=2\,\mathrm{s^{-1}}$，$\omega_0=\sqrt{\Omega_1\Omega_2}\approx100\,\mathrm{rad/s}$，$Q\approx25$．这些数值用于练习，不是实验测量记录．
+
+## 文内自测
+
+1. 滑块在正向最大位移处静止释放，它此刻的加速度与能量损失率分别怎样？
+
+??? note "核对"
+    无论有无线性阻尼，加速度均为 $-\omega_0^2x_0$；无驱动时损失率为 $c\dot x^2=0$．零瞬时损失率不代表后续无耗散．
+    
+2. 若 $\gamma=0.8\omega_0$，自由运动是否振荡？扫描驱动频率时是否有非零位移共振峰？
+
+??? note "核对"
+    自由运动欠阻尼，仍振荡；但 $\gamma>\omega_0/\sqrt2$，没有非零位移共振峰．两个判据回答的是不同问题．
 
 ## 应用
 
-线性振动在工程、物理和日常生活中有广泛的应用，例如：
+单摆与弹簧振子训练机械建模；线性电路可出现相同形式的微分方程，但参数与能量含义需重新对应．多自由度应用接续 [小振动近似](../analytical/small-oscillations.md)、[简正模](../analytical/normal-modes.md) 与 [双摆模态](../analytical/double-pendulum-modes.md)．振幅大到不能忽略高阶回复项时，进入 [非线性振动](nonlinear.md)．
 
--   钟摆的运动：简谐振动的经典例子；
--   弹簧 - 质量系统：描述机械振动；
--   电路中的交流电振荡：电感 - 电容回路的振荡；
--   建筑物的抗震设计：利用阻尼减小振幅．
+## 参考资料
+
+- 阻尼与受迫振动的求解工具见 [二阶常系数微分方程](../../math/differential-equations/second-order-ode.md)；本页以同一机械模型推导能量、位移峰和功率峰．

@@ -18,12 +18,16 @@ prerequisites:
 将位置势能能描述的力计入 $V(q,t)$，把其余主动力的广义力记作 $Q_\alpha^{\rm extra}$，则
 
 $$
-\frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot q_\alpha}
--\frac{\partial L}{\partial q_\alpha}=Q_\alpha^{\rm extra},
+\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial L}{\partial\dot q_\alpha}
+-\dfrac{\partial L}{\partial q_\alpha}=Q_\alpha^{\rm extra},
 \qquad L=T-V
 $$
 
 例如角度为 $\theta$ 的单摆若受到水平外力 $F(t)$，其额外广义力是 $Fl\cos\theta$；若受到切向黏滞阻力，广义力与 $\dot\theta$ 成反向比例．这两种作用都应从力的方向和位置映射计算，不能只凭大小往角度方程右侧添加．
+
+外驱动不一定无法用势能表示．例如沿直线的已知力 $F(t)$ 可以写成 $V_{\rm ext}(x,t)=-xF(t)$；加入 $V_{\rm ext}$，或保留右侧广义力 $F(t)$，都得到同一方程，二者只能选一种．势能显含时间时，装置可以交换能量，因此「能写成位置势能」不保证机械能守恒．
+
+对于一般外势能，展开到 $V_{\rm ext}(0,t)+x\,\partial_xV_{\rm ext}(0,t)$ 可以得到这种均匀驱动模型．舍去外势能二阶项还需要它的曲率影响可忽略，例如驱动本身也按小量计数；若曲率不可忽略，会出现随时间变化的回复系数，不能仍套用常系数受迫振子．
 
 ## 瑞利耗散函数从哪里来
 
@@ -39,7 +43,7 @@ $$
 
 $$
 \mathcal R(q,\dot q,t)
-=\frac12\sum_i\left(c_{ix}v_{ix}^2+c_{iy}v_{iy}^2+c_{iz}v_{iz}^2\right)
+=\dfrac12\sum_i\left(c_{ix}v_{ix}^2+c_{iy}v_{iy}^2+c_{iz}v_{iz}^2\right)
 $$
 
 先把它看作物理速度的函数，就有 $\boldsymbol F_{Di}=-\partial\mathcal R/\partial\boldsymbol v_i$．再使用运动学恒等式 $\partial\boldsymbol v_i/\partial\dot q_\alpha=\partial\boldsymbol r_i/\partial q_\alpha$，链式法则给出
@@ -47,19 +51,19 @@ $$
 $$
 \begin{aligned}
 Q_\alpha^D
-&=\sum_i\boldsymbol F_{Di}\cdot\frac{\partial\boldsymbol r_i}{\partial q_\alpha}\\
-&=-\sum_i\frac{\partial\mathcal R}{\partial\boldsymbol v_i}\cdot
-\frac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
-=-\frac{\partial\mathcal R}{\partial\dot q_\alpha}
+&=\sum_i\boldsymbol F_{Di}\cdot\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}\\
+&=-\sum_i\dfrac{\partial\mathcal R}{\partial\boldsymbol v_i}\cdot
+\dfrac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
+=-\dfrac{\partial\mathcal R}{\partial\dot q_\alpha}
 \end{aligned}
 $$
 
 如果还受到没有计入 $V$ 的外驱动力，记其广义力为 $Q_\alpha^{\rm drive}$，方程便为
 
 $$
-\boxed{\frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot q_\alpha}
--\frac{\partial L}{\partial q_\alpha}
-+\frac{\partial\mathcal R}{\partial\dot q_\alpha}
+\boxed{\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial L}{\partial\dot q_\alpha}
+-\dfrac{\partial L}{\partial q_\alpha}
++\dfrac{\partial\mathcal R}{\partial\dot q_\alpha}
 =Q_\alpha^{\rm drive}}
 $$
 
@@ -91,9 +95,9 @@ $$
 能量与耗散函数为
 
 $$
-T=\frac12m\dot x^2,\qquad
-V=\frac12kx^2,\qquad
-\mathcal R=\frac12c\dot x^2,
+T=\dfrac12m\dot x^2,\qquad
+V=\dfrac12kx^2,\qquad
+\mathcal R=\dfrac12c\dot x^2,
 \qquad Q_x^{\rm drive}=F(t)
 $$
 
@@ -110,7 +114,7 @@ $$
 机械能为 $E=T+V$．将方程乘 $\dot x$，可得
 
 $$
-\frac{\mathrm dE}{\mathrm dt}=F(t)\dot x-c\dot x^2
+\dfrac{\mathrm dE}{\mathrm dt}=F(t)\dot x-c\dot x^2
 $$
 
 外力输入功率为 $F\dot x$，阻力损失功率为 $c\dot x^2=2\mathcal R$．外力不一定总在输入能量，输入功率的符号取决于力与速度．
@@ -130,7 +134,7 @@ $A,\varphi$ 由初始位置和速度确定．若给定 $x(0)=x_0$、$\dot x(0)=0
 
 $$
 x(t)=x_0\mathrm e^{-\gamma t}
-\left[\cos(\omega_dt)+\frac{\gamma}{\omega_d}\sin(\omega_dt)\right]
+\left[\cos(\omega_dt)+\dfrac{\gamma}{\omega_d}\sin(\omega_dt)\right]
 $$
 
 临界阻尼和过阻尼不再采用这个振荡形式，具体解法见 [二阶常系数线性微分方程](../../math/differential-equations/second-order-ode.md) 和 [线性振动](../oscillation-wave/linear-oscillation.md)．这里的机械能瞬时变化不是简单地把位移包络平方当成精确的能量表达式，仍应使用 $T+V$ 检查．
@@ -144,7 +148,7 @@ $$
     
     $$
     ml^2\ddot\theta+cl^2\dot\theta+mgl\sin\theta=0,
-    \qquad \frac{\mathrm dE}{\mathrm dt}=-cl^2\dot\theta^2
+    \qquad \dfrac{\mathrm dE}{\mathrm dt}=-cl^2\dot\theta^2
     $$
     
     角度是无量纲量，$\partial\mathcal R/\partial\dot\theta=cl^2\dot\theta$ 具有力矩单位．
@@ -156,7 +160,7 @@ $$
 
 ## 继续学习与参考资料
 
-上一页：[拉格朗日建模实例](lagrangian-modeling.md)．首批主线到此完成，可返回 [分析力学导读](index.md)，选择下一阶段的作用量与守恒律路线．[哈密顿力学](hamiltonian.md) 仍在建设中．
+上一页：[拉格朗日建模实例](lagrangian-modeling.md)．下一页：[平衡附近的小振动](small-oscillations.md)，先回到无阻尼、无驱动的保守系统，学习如何求解多自由度运动．阻尼与驱动的单自由度解继续见 [线性振动](../oscillation-wave/linear-oscillation.md#阻尼振动)；返回 [分析力学导读](index.md) 可选择阅读路线．
 
 - 高显，《经典力学》，科学出版社，2023 年．
 - [MIT OpenCourseWare，弹簧、阻尼器与拉格朗日运动方程](https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec14/)．

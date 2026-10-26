@@ -46,9 +46,9 @@ $$
 两项速度平方相加后得 $v^2=l^2\dot\theta^2$．取悬点高度的势能为零：
 
 $$
-T=\frac12ml^2\dot\theta^2,\qquad
+T=\dfrac12ml^2\dot\theta^2,\qquad
 V=-mgl\cos\theta,\qquad
-L=\frac12ml^2\dot\theta^2+mgl\cos\theta
+L=\dfrac12ml^2\dot\theta^2+mgl\cos\theta
 $$
 
 ### 方程与检查
@@ -56,7 +56,7 @@ $$
 将 $\partial L/\partial\dot\theta=ml^2\dot\theta$ 和 $\partial L/\partial\theta=-mgl\sin\theta$ 代入方程：
 
 $$
-\ddot\theta+\frac{g}{l}\sin\theta=0
+\ddot\theta+\dfrac{g}{l}\sin\theta=0
 $$
 
 - $g/l$ 的量纲为 $\mathrm{s^{-2}}$，与角加速度匹配．质量约掉，符合重力与惯性质量同比例的模型．
@@ -78,15 +78,15 @@ $$
     在下半圆且 $|x|<l$ 时，可令 $y=-\sqrt{l^2-x^2}$．得到
     
     $$
-    L=\frac{ml^2\dot x^2}{2(l^2-x^2)}+mg\sqrt{l^2-x^2},
+    L=\dfrac{ml^2\dot x^2}{2(l^2-x^2)}+mg\sqrt{l^2-x^2},
     $$
     
     对 $x$ 建立方程为
     
     $$
-    \frac{ml^2\ddot x}{l^2-x^2}
-    +\frac{ml^2x\dot x^2}{(l^2-x^2)^2}
-    +\frac{mgx}{\sqrt{l^2-x^2}}=0
+    \dfrac{ml^2\ddot x}{l^2-x^2}
+    +\dfrac{ml^2x\dot x^2}{(l^2-x^2)^2}
+    +\dfrac{mgx}{\sqrt{l^2-x^2}}=0
     $$
     
     在这段坐标有效区域内代入 $x=l\sin\theta$、$\cos\theta>0$，可还原角度方程．它增加了计算量，也无法跨过 $x=\pm l$，说明选坐标既要正确，也要方便．
@@ -111,14 +111,14 @@ v_2^2=l_1^2\dot\theta_1^2+l_2^2\dot\theta_2^2
 +2l_1l_2\dot\theta_1\dot\theta_2\cos\Delta
 $$
 
-交叉项来自两个速度贡献的标量积：上杆带动第一个关节，下杆相对关节转动；第二质点的绝对速度是二者之和．它不是另外添加的一种力，也不能因为“两根杆”就删掉．
+交叉项来自两个速度贡献的标量积：上杆带动第一个关节，下杆相对关节转动；第二质点的绝对速度是二者之和．它不是另外添加的一种力，也不能因为「两根杆」就删掉．
 
 ### 构造能量
 
 $$
 \begin{aligned}
-T&=\frac12(m_1+m_2)l_1^2\dot\theta_1^2
-+\frac12m_2l_2^2\dot\theta_2^2
+T&=\dfrac12(m_1+m_2)l_1^2\dot\theta_1^2
++\dfrac12m_2l_2^2\dot\theta_2^2
 +m_2l_1l_2\dot\theta_1\dot\theta_2\cos\Delta,\\
 V&=-(m_1+m_2)gl_1\cos\theta_1-m_2gl_2\cos\theta_2
 \end{aligned}
@@ -132,12 +132,12 @@ $$
 
 $$
 \begin{aligned}
-\frac{\partial L}{\partial\dot\theta_1}
+\dfrac{\partial L}{\partial\dot\theta_1}
 &=(m_1+m_2)l_1^2\dot\theta_1+B\dot\theta_2\cos\Delta,\\
-\frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot\theta_1}
+\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial L}{\partial\dot\theta_1}
 &=(m_1+m_2)l_1^2\ddot\theta_1+B\ddot\theta_2\cos\Delta
 -B\dot\theta_2(\dot\theta_1-\dot\theta_2)\sin\Delta,\\
-\frac{\partial L}{\partial\theta_1}
+\dfrac{\partial L}{\partial\theta_1}
 &=-B\dot\theta_1\dot\theta_2\sin\Delta-(m_1+m_2)gl_1\sin\theta_1
 \end{aligned}
 $$
@@ -146,12 +146,12 @@ $$
 
 $$
 \begin{aligned}
-\frac{\partial L}{\partial\dot\theta_2}
+\dfrac{\partial L}{\partial\dot\theta_2}
 &=m_2l_2^2\dot\theta_2+B\dot\theta_1\cos\Delta,\\
-\frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot\theta_2}
+\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial L}{\partial\dot\theta_2}
 &=m_2l_2^2\ddot\theta_2+B\ddot\theta_1\cos\Delta
 -B\dot\theta_1(\dot\theta_1-\dot\theta_2)\sin\Delta,\\
-\frac{\partial L}{\partial\theta_2}
+\dfrac{\partial L}{\partial\theta_2}
 &=B\dot\theta_1\dot\theta_2\sin\Delta-m_2gl_2\sin\theta_2
 \end{aligned}
 $$
@@ -184,7 +184,7 @@ B\ddot\theta_1+m_2l_2^2\ddot\theta_2+m_2gl_2\theta_2&=0
 \end{aligned}
 $$
 
-小角度并没有消除耦合．若两质量均为 $m$、两杆长均为 $l$，寻找同频运动可得 $\omega_\pm^2=(2\pm\sqrt2)g/l$，对应两个简正模；详细讨论留到 [振动模块](../oscillation-wave/linear-oscillation.md) 的后续拓展．
+小角度并没有消除耦合：第一条方程仍含第二角的加速度，第二条也仍含第一角的加速度．若两质量均为 $m$、两杆长均为 $l$，频率为 $\omega_\pm^2=(2\pm\sqrt2)g/l$，但只知道这两个数还不能确定运动；还需要每个频率对应的振型及初态在振型上的分量．[平衡附近的小振动](small-oscillations.md) 从能量解释上述近似，[双摆模态](double-pendulum-modes.md) 接着完成频率、振型与初态求解．
 
 加速度系数矩阵的行列式为
 

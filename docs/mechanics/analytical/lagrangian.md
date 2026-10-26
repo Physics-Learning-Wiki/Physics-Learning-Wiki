@@ -21,7 +21,7 @@ prerequisites:
 
 $$
 \boldsymbol r_i=\boldsymbol r_i(q,t),\qquad
-T(q,\dot q,t)=\frac12\sum_i m_i\boldsymbol v_i^2
+T(q,\dot q,t)=\dfrac12\sum_i m_i\boldsymbol v_i^2
 $$
 
 $T$ 为总动能，$q$、$\dot q$ 分别表示全部坐标和广义速度．坐标映射可以显含时间，因此包括已知运动的完整约束．本页假定映射足够光滑，能交换所用偏导次序．
@@ -35,24 +35,24 @@ $T$ 为总动能，$q$、$\dot q$ 分别表示全部坐标和广义速度．坐�
 
 $$
 \boldsymbol v_i
-=\sum_\beta\frac{\partial\boldsymbol r_i}{\partial q_\beta}\dot q_\beta
-+\frac{\partial\boldsymbol r_i}{\partial t}
+=\sum_\beta\dfrac{\partial\boldsymbol r_i}{\partial q_\beta}\dot q_\beta
++\dfrac{\partial\boldsymbol r_i}{\partial t}
 $$
 
 把 $\boldsymbol v_i$ 看成 $q,\dot q,t$ 的函数，对 $\dot q_\alpha$ 求偏导时，固定所有 $q$、$t$ 和其他速度，得到第一个恒等式：
 
 $$
-\frac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
-=\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
+\dfrac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
+=\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
 $$
 
 第二个恒等式来自对同一速度表达式求 $q_\alpha$ 偏导：
 
 $$
-\frac{\partial\boldsymbol v_i}{\partial q_\alpha}
-=\sum_\beta\frac{\partial^2\boldsymbol r_i}{\partial q_\alpha\partial q_\beta}\dot q_\beta
-+\frac{\partial^2\boldsymbol r_i}{\partial q_\alpha\partial t}
-=\frac{\mathrm d}{\mathrm dt}\left(\frac{\partial\boldsymbol r_i}{\partial q_\alpha}\right)
+\dfrac{\partial\boldsymbol v_i}{\partial q_\alpha}
+=\sum_\beta\dfrac{\partial^2\boldsymbol r_i}{\partial q_\alpha\partial q_\beta}\dot q_\beta
++\dfrac{\partial^2\boldsymbol r_i}{\partial q_\alpha\partial t}
+=\dfrac{\mathrm d}{\mathrm dt}\left(\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}\right)
 $$
 
 最后一个等号是对 $\partial\boldsymbol r_i/\partial q_\alpha$ 沿真实运动求全导数，包含坐标变化和显式时间变化．它并不是任意函数上全导数与偏导都可随意交换的声明．
@@ -63,42 +63,52 @@ $$
 
 例如单摆 $T=ml^2\dot\theta^2/2$，求 $\partial T/\partial\theta$ 时固定 $\dot\theta$，结果为零．不能先把某个特定解的 $\dot\theta(\theta)$ 代入，再把那条轨迹上的导数当成这个偏导．
 
+若惯性系数依赖位置，例如 $T=a(q)\dot q^2/2$，两个操作的区别就更加明显：
+
+$$
+\dfrac{\partial T}{\partial q}=\dfrac12a'(q)\dot q^2,\qquad
+\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial T}{\partial\dot q}
+=a(q)\ddot q+a'(q)\dot q^2.
+$$
+
+相减后惯性项为 $a(q)\ddot q+a'(q)\dot q^2/2$，并非总是「常数乘广义加速度」．后面研究平衡附近的小振动时，才会在明确的阶数近似下把惯性系数取为常数．
+
 ## 从惯性投影重写为动能导数
 
 达朗贝尔原理已经给出每个独立坐标方向上的关系
 
 $$
 \sum_i m_i\ddot{\boldsymbol r}_i\cdot
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}=Q_\alpha,
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}=Q_\alpha,
 $$
 
 其中 $Q_\alpha$ 是主动力的广义力．对左侧使用乘积求导，并代入刚才两个恒等式：
 
 $$
 \begin{aligned}
-\sum_i m_i\ddot{\boldsymbol r}_i\cdot\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
-&=\frac{\mathrm d}{\mathrm dt}\sum_i m_i\boldsymbol v_i\cdot\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
--\sum_i m_i\boldsymbol v_i\cdot\frac{\mathrm d}{\mathrm dt}\frac{\partial\boldsymbol r_i}{\partial q_\alpha}\\
-&=\frac{\mathrm d}{\mathrm dt}\sum_i m_i\boldsymbol v_i\cdot\frac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
--\sum_i m_i\boldsymbol v_i\cdot\frac{\partial\boldsymbol v_i}{\partial q_\alpha}
+\sum_i m_i\ddot{\boldsymbol r}_i\cdot\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
+&=\dfrac{\mathrm d}{\mathrm dt}\sum_i m_i\boldsymbol v_i\cdot\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
+-\sum_i m_i\boldsymbol v_i\cdot\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}\\
+&=\dfrac{\mathrm d}{\mathrm dt}\sum_i m_i\boldsymbol v_i\cdot\dfrac{\partial\boldsymbol v_i}{\partial\dot q_\alpha}
+-\sum_i m_i\boldsymbol v_i\cdot\dfrac{\partial\boldsymbol v_i}{\partial q_\alpha}
 \end{aligned}
 $$
 
 由动能的定义，分别求偏导有
 
 $$
-\frac{\partial T}{\partial\dot q_\alpha}
-=\sum_i m_i\boldsymbol v_i\cdot\frac{\partial\boldsymbol v_i}{\partial\dot q_\alpha},
+\dfrac{\partial T}{\partial\dot q_\alpha}
+=\sum_i m_i\boldsymbol v_i\cdot\dfrac{\partial\boldsymbol v_i}{\partial\dot q_\alpha},
 \qquad
-\frac{\partial T}{\partial q_\alpha}
-=\sum_i m_i\boldsymbol v_i\cdot\frac{\partial\boldsymbol v_i}{\partial q_\alpha}
+\dfrac{\partial T}{\partial q_\alpha}
+=\sum_i m_i\boldsymbol v_i\cdot\dfrac{\partial\boldsymbol v_i}{\partial q_\alpha}
 $$
 
 于是惯性项全部被动能组织起来，得到动能形式的 **第二类拉格朗日方程**：
 
 $$
-\boxed{\frac{\mathrm d}{\mathrm dt}\frac{\partial T}{\partial\dot q_\alpha}
--\frac{\partial T}{\partial q_\alpha}=Q_\alpha},\qquad \alpha=1,\ldots,n
+\boxed{\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial T}{\partial\dot q_\alpha}
+-\dfrac{\partial T}{\partial q_\alpha}=Q_\alpha},\qquad \alpha=1,\ldots,n
 $$
 
 共有 $n$ 个方程，正好对应 $n$ 个独立坐标．这一形式仍能容纳没有写成势能的主动力．
@@ -114,8 +124,8 @@ $$
 由于 $\partial V/\partial\dot q_\alpha=0$，把势能项移到左侧，即得
 
 $$
-\boxed{\frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot q_\alpha}
--\frac{\partial L}{\partial q_\alpha}=0}
+\boxed{\dfrac{\mathrm d}{\mathrm dt}\dfrac{\partial L}{\partial\dot q_\alpha}
+-\dfrac{\partial L}{\partial q_\alpha}=0}
 $$
 
 这就是本模型的 **欧拉—拉格朗日方程（Euler–Lagrange equation）**．若还有额外主动力，其广义力记作 $Q_\alpha^{\rm extra}$，则右侧改为 $Q_\alpha^{\rm extra}$．不能一面把某个力计入势能，一面又在右边重复加入它．
@@ -124,9 +134,9 @@ $$
     固定悬点、不可伸长轻杆、质量 $m$、杆长 $l$、均匀重力，无阻力．坐标与前页一致，$\theta=0$ 指向下方．由位置映射可得速度平方 $v^2=l^2\dot\theta^2$．取悬点高度为势能零点：
     
     $$
-    T=\frac12ml^2\dot\theta^2,\qquad
+    T=\dfrac12ml^2\dot\theta^2,\qquad
     V=-mgl\cos\theta,\qquad
-    L=\frac12ml^2\dot\theta^2+mgl\cos\theta
+    L=\dfrac12ml^2\dot\theta^2+mgl\cos\theta
     $$
     
     分别计算 $\partial L/\partial\dot\theta=ml^2\dot\theta$、$\partial L/\partial\theta=-mgl\sin\theta$，得到
@@ -139,7 +149,7 @@ $$
 
 ## 方程与作用量的后续连接
 
-本页的推导是“牛顿方程 → 理想约束的投影 → 动能导数”，没有先假设作用量原理．下一阶段会研究 $S[q]=\int L\,\mathrm dt$ 的驻值条件如何给出同一方程，并讨论对称性和守恒量．通用数学推导见 [变分法](../../math/variational-methods/calculus-of-variations.md)．“平稳”是一阶变分为零，不保证作用量一定最小．
+本页的推导是「牛顿方程 → 理想约束的投影 → 动能导数」，没有先假设作用量原理．下一阶段会研究 $S[q]=\int L\,\mathrm dt$ 的驻值条件如何给出同一方程，并讨论对称性和守恒量．通用数学推导见 [变分法](../../math/variational-methods/calculus-of-variations.md)．「平稳」是一阶变分为零，不保证作用量一定最小．
 
 牛顿力学也能使用曲线坐标；分析力学的优势在于用统一程序处理独立参数与约束，而不是牛顿方程只能用直角坐标．另一方面，任意写下一个函数并称它为 $L$，并不能保证它描述了所研究的物理系统．
 

@@ -26,7 +26,7 @@ $$
 
 $$
 \sum_i\nabla_i f_a\cdot\boldsymbol v_i
-+\frac{\partial f_a}{\partial t}=0
++\dfrac{\partial f_a}{\partial t}=0
 $$
 
 非定常约束下，两者的区别正是是否包含约束自身随时间移动的项．即使约束定常，虚位移也是所有容许方向中的任意选择，真实速度却由当前运动状态决定．
@@ -35,10 +35,10 @@ $$
 
 $$
 \delta\boldsymbol r_i
-=\sum_\alpha\frac{\partial\boldsymbol r_i}{\partial q_\alpha}\delta q_\alpha
+=\sum_\alpha\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}\delta q_\alpha
 $$
 
-这里的 $\delta q_\alpha$ 相互独立，可以逐个取正、负或零．
+这里的 $\delta q_\alpha$ 相互独立，可以逐个取正、负或零．这是一阶的切向变化：例如圆周上两个相邻点的有限弦位移并不严格沿切线，取无穷小变化时才得到上面的关系．「满足约束」在此指满足约束的一阶变分，不能把虚位移理解成离开圆周沿切线走过一段有限距离．
 
 <div style="overflow-x: auto;" markdown="1">
 
@@ -111,8 +111,7 @@ $$
     
     势能 $V=-mgR\cos\theta$ 的二阶导数是 $mgR\cos\theta$．最低点二阶导数为正，微小偏离后受回复作用，是稳定平衡；最高点为负，是不稳定平衡．不必先求法向支持力，就能完成这两项判断．
 
-??? note "补充：稳定性判断的范围"
-    多自由度系统要检查势能二阶型；正定二阶型是标准自然力学系统稳定平衡的充分条件．若二阶项为零或存在速度相关作用，不能只沿用本例的一维判据．
+多自由度时，一阶导数为零只说明所有方向都没有一阶驱动力，还需检查所有方向的二阶变化．对定常完整理想约束下、动能正定且只有位置势能的系统，正定势能二阶型给出非退化稳定平衡．若某个方向二阶项为零，需检查高阶项或对称性，不能直接判为稳定或不稳定；具体方法见 [平衡附近的小振动](small-oscillations.md)．
 
 ## 文内自测
 

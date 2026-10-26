@@ -28,7 +28,7 @@ $$
 \cdot\delta\boldsymbol r_i=0
 $$
 
-它的意思是：主动力与惯性项的差在每个容许方向上的投影都为零，剩余法向部分由反力补足．“动平衡”是一种方程改写，不表示运动质点真的处于静止平衡．
+它的意思是：主动力与惯性项的差在每个容许方向上的投影都为零，剩余法向部分由反力补足．「动平衡」是一种方程改写，不表示运动质点真的处于静止平衡．
 
 ???+ warning "惯性项的含义"
     这里的 $-m_i\ddot{\boldsymbol r}_i=-\dot{\boldsymbol p}_i$ 是移到左边的动力学项，不是 $-\boldsymbol p_i$，也不是新增加的物理相互作用．它与 [非惯性参考系的惯性力](../dynamics/inertial-force.md) 需要区分；本页没有变换参考系．
@@ -39,7 +39,7 @@ $$
 
 $$
 \delta\boldsymbol r_i=\sum_{\alpha=1}^n
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}\delta q_\alpha,
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}\delta q_\alpha,
 $$
 
 主动力的总虚功成为
@@ -48,10 +48,10 @@ $$
 \delta W^{(a)}=\sum_\alpha Q_\alpha\delta q_\alpha,
 \qquad
 Q_\alpha=\sum_i\boldsymbol F_i^{(a)}\cdot
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
 $$
 
-$Q_\alpha$ 是与坐标 $q_\alpha$ 配对的广义力．它不是把某个矢量力简单改名；多个质点的力可以共同贡献于同一个 $Q_\alpha$．
+$Q_\alpha$ 是与坐标 $q_\alpha$ 配对的广义力．它不是把某个矢量力简单改名；多个质点的力可以共同贡献于同一个 $Q_\alpha$．实际计算时，先固定其他坐标，让 $q_\alpha$ 单独增加；用位置映射求出各质点对应的移动方向，再与各自的力作标量积并求和．这个程序同时保留方向、几何比例和多个受力点的贡献．
 
 <div style="overflow-x: auto;" markdown="1">
 
@@ -67,8 +67,8 @@ $Q_\alpha\delta q_\alpha$ 必须具有能量量纲．若 $q_\alpha$ 是长度，
 
 $$
 Q_\alpha=\sum_i(-\nabla_i V)\cdot
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
-=-\frac{\partial V}{\partial q_\alpha}
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
+=-\dfrac{\partial V}{\partial q_\alpha}
 $$
 
 这一步不要求约束定常，但这里的势能不含速度．对于额外阻力或外驱动力，可以直接从虚功求相应广义力．
@@ -80,15 +80,15 @@ $$
 $$
 \sum_\alpha\left[
 Q_\alpha-\sum_i m_i\ddot{\boldsymbol r}_i\cdot
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}
 \right]\delta q_\alpha=0
 $$
 
-独立坐标的变分可任意选择，所以每个方括号分别为零：
+可以令除 $\delta q_1$ 外的其他变化都为零，而 $\delta q_1$ 任意，得到第一个方括号为零；再逐个选择其他方向，便得到每个方括号分别为零：
 
 $$
 \sum_i m_i\ddot{\boldsymbol r}_i\cdot
-\frac{\partial\boldsymbol r_i}{\partial q_\alpha}=Q_\alpha
+\dfrac{\partial\boldsymbol r_i}{\partial q_\alpha}=Q_\alpha
 $$
 
 现在已消去了理想反力，但左边仍涉及位置矢量的二阶导数．下一页把它重写为动能的导数，就得到统一的拉格朗日方程．
@@ -115,7 +115,7 @@ $$
     $$
     \left(-mgR\sin\theta-mR^2\ddot\theta\right)\delta\theta=0,
     \qquad
-    \ddot\theta+\frac{g}{R}\sin\theta=0
+    \ddot\theta+\dfrac{g}{R}\sin\theta=0
     $$
     
     正的小角度偏离最低点会产生负角加速度，方向符合回复作用．$g/R$ 的量纲是时间的负二次方．小角度下得到角频率 $\sqrt{g/R}$；把角度移到最高点附近则得到不稳定运动．

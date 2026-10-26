@@ -91,6 +91,23 @@ concepts:
     english: Rayleigh dissipation function
     summary: 本入门模型中表示线性黏滞阻力的速度二次函数，其速度偏导给出反号的阻力广义力；静止介质中两倍函数值为损失功率。
     target: mechanics/analytical/nonconservative-forces.md#瑞利耗散函数从哪里来
+  small-oscillation:
+    name: 小振动
+    english: Small oscillation
+    summary: 静止平衡附近的小幅运动；非退化稳定平衡下可保留能量二次项，得到线性振动方程，须同时控制位移与速度的尺度．
+    target: mechanics/analytical/small-oscillations.md
+  normal-mode:
+    name: 简正模
+    english: Normal mode
+    aliases:
+      - 简正振动
+    summary: 在线性保守振动系统中，各坐标按固定比例以同一固有角频率变化的集体运动；一般运动可由一组完整模态叠加．
+    target: mechanics/analytical/normal-modes.md#寻找保持形状的运动
+  normal-coordinate:
+    name: 简正坐标
+    english: Normal coordinate
+    summary: 沿各振型表示运动的模态幅值坐标，使线性保守振动方程解耦；质量归一化后，各模态惯性系数为一．
+    target: mechanics/analytical/normal-modes.md#简正坐标怎样解耦
   metrological-traceability:
     name: 计量溯源性
     english: Metrological traceability
