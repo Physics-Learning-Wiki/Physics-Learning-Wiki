@@ -8,7 +8,7 @@ page_id: math.differential-geometry
 ???+ note "阅读前提"
     本页假设你熟悉偏导数、线性代数中的基与线性变换，以及矢量分析中的梯度、散度与旋度．如果这些内容还不熟，可以先读 [线性代数](./linear-algebra/space.md) 与 [矢量分析与场论](./vector-analysis/operators.md)．
 
-本页以 Sean Carroll 的 *Spacetime and Geometry* 第 2–3 章为主线，把广义相对论所需的微分几何压缩成一条可以独立阅读的路线．这里不追求公理化数学的完整性，而是优先回答三个问题：**为什么需要它、它在物理中表示什么、怎样在具体坐标里计算**．
+本页以 Sean Carroll 的*Spacetime and Geometry*第 2–3 章为主线，把广义相对论所需的微分几何压缩成一条可以独立阅读的路线．这里不追求公理化数学的完整性，而是优先回答三个问题：**为什么需要它、它在物理中表示什么、怎样在具体坐标里计算**．
 
 ## 0. 为什么物理需要微分几何
 
@@ -17,7 +17,7 @@ page_id: math.differential-geometry
 1.  **坐标只能是局部的．** 在球面上无法用一个全局笛卡尔坐标覆盖所有点；在弯曲时空中也没有一张「万能坐标纸」．
 2.  **普通导数不再张量．** 在不同点比较矢量时，必须先说明「怎样把矢量平行移动过去」；否则偏导数的结果会依赖坐标选择．
 
-微分几何提供的正是这两件事的语言：**流形**描述局部像欧氏空间的弯曲空间，**度规**给出长度与角度，**联络**给出平行移动，**曲率**衡量平行移动是否与路径有关．
+微分几何提供的正是这两件事的语言：**流形** 描述局部像欧氏空间的弯曲空间，**度规** 给出长度与角度，**联络** 给出平行移动，**曲率** 衡量平行移动是否与路径有关．
 
 ```mermaid
 flowchart LR
@@ -36,11 +36,11 @@ flowchart LR
 
 ### 1.1 流形的直观定义
 
-一个 $n$ 维 **流形**（manifold）是一个空间，它在每一点的足够小邻域内都「看起来像」 $\mathbb{R}^n$．更具体地说，对每一点都能找到一个 **坐标卡** $(U,\varphi)$：
+一个 $n$ 维 **流形**（manifold）是一个空间，它在每一点的足够小邻域内都「看起来像」$\mathbb{R}^n$．更具体地说，对每一点都能找到一个 **坐标卡** $(U,\varphi)$：
 
-- $U$ 是流形上的一个开集；
-- $\varphi:U\to\mathbb{R}^n$ 把 $U$ 中的点映射到 $n$ 个实数；
-- $\varphi$ 是连续且可逆的，逆映射也连续．
+-   $U$ 是流形上的一个开集；
+-   $\varphi:U\to\mathbb{R}^n$ 把 $U$ 中的点映射到 $n$ 个实数；
+-   $\varphi$ 是连续且可逆的，逆映射也连续．
 
 如果两个坐标卡 $(U,\varphi)$ 与 $(V,\psi)$ 有重叠，那么在重叠区域上可以定义 **坐标变换**
 
@@ -105,7 +105,7 @@ $$
 v'^{\mu}=v^{\nu}\frac{\partial x'^{\mu}}{\partial x^{\nu}} .
 $$
 
-这就是逆变矢量（contravariant vector）的变换律．**上指标**表示它按雅可比矩阵变换．
+这就是逆变矢量（contravariant vector）的变换律．**上指标** 表示它按雅可比矩阵变换．
 
 ### 2.2 余切矢量与一形式
 
@@ -129,7 +129,7 @@ $$
 \omega'_{\mu}=\omega_{\nu}\frac{\partial x^{\nu}}{\partial x'^{\mu}} .
 $$
 
-**下指标**按雅可比矩阵的逆变换．一形式的一个自然例子是标量函数的微分：
+**下指标** 按雅可比矩阵的逆变换．一形式的一个自然例子是标量函数的微分：
 
 $$
 \mathrm{d}f=\frac{\partial f}{\partial x^{\mu}}\,\mathrm{d}x^{\mu} .
@@ -145,9 +145,9 @@ $$
 
 在坐标变换下，每个上指标乘 $\partial x'^{\mu}/\partial x^{\nu}$，每个下指标乘 $\partial x^{\nu}/\partial x'^{\mu}$．因此：
 
-- 只有上下指标完全缩并的表达式才是标量；
-- 单独一个 $\partial_{\mu}V^{\nu}$ 一般不是张量；
-- 指标位置不是装饰，$T^{\mu}{}_{\nu}$ 与 $T_{\nu}{}^{\mu}$ 一般是不同的对象．
+-   只有上下指标完全缩并的表达式才是标量；
+-   单独一个 $\partial_{\mu}V^{\nu}$ 一般不是张量；
+-   指标位置不是装饰，$T^{\mu}{}_{\nu}$ 与 $T_{\nu}{}^{\mu}$ 一般是不同的对象．
 
 ???+ tip "把张量当作「多线性机器」"
     不必一开始就记住所有变换律．先记住：张量是一个与坐标无关的多线性对象；只要把它的分量和基写出来，变换律就自动由基的变换决定．
@@ -366,9 +366,9 @@ $$
 
 ### 5.3 物理意义
 
-- 自由落体沿类时测地线运动；
-- 光沿类光测地线传播；
-- 在弱场、低速极限下，测地线方程退化为牛顿运动方程 $\ddot{\mathbf x}=-\nabla\Phi$，其中 $g_{00}\approx-(1+2\Phi)$．
+-   自由落体沿类时测地线运动；
+-   光沿类光测地线传播；
+-   在弱场、低速极限下，测地线方程退化为牛顿运动方程 $\ddot{\mathbf x}=-\nabla\Phi$，其中 $g_{00}\approx-(1+2\Phi)$．
 
 测地线不是「在图上看起来最直的线」，而是切矢量被平行移动的曲线；在弯曲时空中，它可能看起来是弯的．
 
@@ -447,8 +447,8 @@ $$
 
 ### 6.4 两个典型例子
 
-- **平面极坐标**：联络非零，但 $R^{\rho}{}_{\sigma\mu\nu}=0$．空间是平的，非零联络只反映坐标基在变化．
-- **半径为 $a$ 的球面**：$R_{\theta\varphi\theta\varphi}=a^{2}\sin^{2}\theta$，$R_{\mu\nu}=a^{-2}g_{\mu\nu}$，$R=2a^{-2}$．球面是内禀弯曲的；即使不把它嵌入三维空间，也能通过测地线偏离测量曲率．
+-   **平面极坐标**：联络非零，但 $R^{\rho}{}_{\sigma\mu\nu}=0$．空间是平的，非零联络只反映坐标基在变化．
+-   **半径为 $a$ 的球面**：$R_{\theta\varphi\theta\varphi}=a^{2}\sin^{2}\theta$，$R_{\mu\nu}=a^{-2}g_{\mu\nu}$，$R=2a^{-2}$．球面是内禀弯曲的；即使不把它嵌入三维空间，也能通过测地线偏离测量曲率．
 
 真空中的 Schwarzschild 时空满足 $R_{\mu\nu}=0$，但黎曼张量并不为零；曲率仍然存在，只是它的「迹」为零．这与引力波可以在真空中传播是同一件事．
 
@@ -518,33 +518,33 @@ $$
 
 ## 9. 与广义相对论的联系
 
-| 微分几何对象 | 广义相对论中的含义 |
-| :--- | :--- |
-| 流形 | 时空 |
-| 度规 $g_{\mu\nu}$ | 引力场；时钟与尺子的读数 |
-| 测地线 | 自由落体与光的传播路径 |
+| 微分几何对象                        | 广义相对论中的含义     |
+| :---------------------------- | :------------ |
+| 流形                            | 时空            |
+| 度规 $g_{\mu\nu}$               | 引力场；时钟与尺子的读数  |
+| 测地线                           | 自由落体与光的传播路径   |
 | 联络 $\Gamma^{\rho}{}_{\mu\nu}$ | 平行移动与惯性系的局部结构 |
-| 黎曼张量 | 潮汐力与时空曲率 |
-| Ricci 张量、Ricci 标量 | 场方程中的曲率组合 |
-| Einstein 张量 | 场方程左边；散度自动为零 |
-| Killing 矢量 | 能量、角动量等守恒量 |
-| 微分形式 | 电磁场、通量与积分守恒律 |
+| 黎曼张量                          | 潮汐力与时空曲率      |
+| Ricci 张量、Ricci 标量             | 场方程中的曲率组合     |
+| Einstein 张量                   | 场方程左边；散度自动为零  |
+| Killing 矢量                    | 能量、角动量等守恒量    |
+| 微分形式                          | 电磁场、通量与积分守恒律  |
 
 ### 对照 Carroll 的阅读顺序
 
 如果想把本页与教材逐节对应，可以按下面的顺序阅读：
 
-| 本页主题 | Carroll, *Spacetime and Geometry* |
-| :--- | :--- |
-| 流形与坐标 | §2.2 What Is a Manifold? |
-| 切矢量与张量 | §2.3 Vectors Again；§2.4 Tensors Again |
-| 度规 | §2.5 The Metric；§2.7 Causality |
-| 微分形式与积分 | §2.9 Differential Forms；§2.10 Integration |
-| 协变导数与测地线 | §3.2 Covariant Derivatives；§3.3 Parallel Transport and Geodesics |
-| 黎曼张量与性质 | §3.6 The Riemann Curvature Tensor；§3.7 Properties of the Riemann Tensor |
-| 对称性与 Killing 矢量 | §3.8 Symmetries and Killing Vectors |
-| 测地偏离 | §3.10 Geodesic Deviation |
-| 场方程 | 第 4 章 Gravitation |
+| 本页主题            | Carroll,*Spacetime and Geometry*                                        |
+| :-------------- | :---------------------------------------------------------------------- |
+| 流形与坐标           | §2.2 What Is a Manifold?                                                |
+| 切矢量与张量          | §2.3 Vectors Again；§2.4 Tensors Again                                   |
+| 度规              | §2.5 The Metric；§2.7 Causality                                          |
+| 微分形式与积分         | §2.9 Differential Forms；§2.10 Integration                               |
+| 协变导数与测地线        | §3.2 Covariant Derivatives；§3.3 Parallel Transport and Geodesics        |
+| 黎曼张量与性质         | §3.6 The Riemann Curvature Tensor；§3.7 Properties of the Riemann Tensor |
+| 对称性与 Killing 矢量 | §3.8 Symmetries and Killing Vectors                                     |
+| 测地偏离            | §3.10 Geodesic Deviation                                                |
+| 场方程             | 第 4 章 Gravitation                                                       |
 
 ***
 
@@ -561,26 +561,26 @@ $$
 
 ## 11. 小结与符号表
 
-| 符号 | 名称 | 一句话含义 |
-| :--- | :--- | :--- |
-| $x^{\mu}$ | 坐标 | 流形上的局部编号 |
-| $\partial_{\mu}$ | 坐标基矢量 | 沿坐标方向的方向导数 |
-| $\mathrm{d}x^{\mu}$ | 坐标一形式 | 与 $\partial_{\nu}$ 配对为 $\delta^{\mu}{}_{\nu}$ |
-| $g_{\mu\nu}$ | 度规 | 长度、角度与因果结构 |
-| $\Gamma^{\rho}{}_{\mu\nu}$ | 联络 | 平行移动与协变导数 |
-| $R^{\rho}{}_{\sigma\mu\nu}$ | 黎曼张量 | 曲率；平行移动的路径依赖 |
-| $R_{\mu\nu}$ | Ricci 张量 | 黎曼张量的迹 |
-| $R$ | Ricci 标量 | Ricci 张量的迹 |
-| $G_{\mu\nu}$ | Einstein 张量 | 场方程左边的曲率组合 |
-| $\nabla_{\mu}$ | 协变导数 | 把普通导数修正为张量 |
-| $\mathcal{L}_{X}$ | 李导数 | 沿矢量场 $X$ 的流的变化 |
-| $K^{\mu}$ | Killing 矢量 | 保持度规不变的连续对称性 |
+| 符号                          | 名称          | 一句话含义                                         |
+| :-------------------------- | :---------- | :-------------------------------------------- |
+| $x^{\mu}$                   | 坐标          | 流形上的局部编号                                      |
+| $\partial_{\mu}$            | 坐标基矢量       | 沿坐标方向的方向导数                                    |
+| $\mathrm{d}x^{\mu}$         | 坐标一形式       | 与 $\partial_{\nu}$ 配对为 $\delta^{\mu}{}_{\nu}$ |
+| $g_{\mu\nu}$                | 度规          | 长度、角度与因果结构                                    |
+| $\Gamma^{\rho}{}_{\mu\nu}$  | 联络          | 平行移动与协变导数                                     |
+| $R^{\rho}{}_{\sigma\mu\nu}$ | 黎曼张量        | 曲率；平行移动的路径依赖                                  |
+| $R_{\mu\nu}$                | Ricci 张量    | 黎曼张量的迹                                        |
+| $R$                         | Ricci 标量    | Ricci 张量的迹                                    |
+| $G_{\mu\nu}$                | Einstein 张量 | 场方程左边的曲率组合                                    |
+| $\nabla_{\mu}$              | 协变导数        | 把普通导数修正为张量                                    |
+| $\mathcal{L}_{X}$           | 李导数         | 沿矢量场 $X$ 的流的变化                                |
+| $K^{\mu}$                   | Killing 矢量  | 保持度规不变的连续对称性                                  |
 
-!!! note "下一步"
-    读完本页后，建议接着读 [广义相对论基础](../modern/general-relativity.md)：那里会把度规、测地线、曲率与 Einstein 方程放到具体的史瓦西时空与经典检验中．若想进一步深入，可以阅读 Carroll 第 2–3 章的完整推导，以及 Schutz 的 *A First Course in General Relativity*．
+???+ note "下一步"
+    读完本页后，建议接着读 [广义相对论基础](../modern/general-relativity.md)：那里会把度规、测地线、曲率与 Einstein 方程放到具体的史瓦西时空与经典检验中．若想进一步深入，可以阅读 Carroll 第 2–3 章的完整推导，以及 Schutz 的*A First Course in General Relativity*．
 
 ## 参考资料与注释
 
-1.  Sean M. Carroll, *Spacetime and Geometry: An Introduction to General Relativity*, Cambridge University Press．第 2 章（Manifolds）与第 3 章（Curvature）是本页的主要依据．
-2.  Bernard Schutz, *A First Course in General Relativity*, Cambridge University Press．适合作为第一遍入门读物．
-3.  Mikio Nakahara, *Geometry, Topology and Physics*, CRC Press．适合进一步学习纤维丛、示性类与规范场论．
+1.  Sean M. Carroll,*Spacetime and Geometry: An Introduction to General Relativity*, Cambridge University Press．第 2 章（Manifolds）与第 3 章（Curvature）是本页的主要依据．
+2.  Bernard Schutz,*A First Course in General Relativity*, Cambridge University Press．适合作为第一遍入门读物．
+3.  Mikio Nakahara,*Geometry, Topology and Physics*, CRC Press．适合进一步学习纤维丛、示性类与规范场论．
