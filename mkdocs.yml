@@ -77,6 +77,7 @@ nav:
       - 梯度、散度与旋度: math/vector-analysis/operators.md
       - 积分定理: math/vector-analysis/integral-theorems.md
       - 曲线坐标系: math/vector-analysis/curvilinear-coordinates.md
+    - 微分几何: math/differential-geometry.md
     - 复数与复变函数:
       - 模块概览: math/complex.md
       - 复数与几何表示: math/complex-analysis/complex-numbers.md
