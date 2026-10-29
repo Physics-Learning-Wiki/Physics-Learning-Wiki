@@ -1,7 +1,7 @@
 ---
 status: review
-author: Physics Learning Wiki Team
-description: 数学工具知识模块导学看板与知识骨架，系统梳理微积分、线性代数、矢量分析、微分方程、积分变换、复分析、本征函数方法、特殊函数、变分法与概率统计，并提供大学数学物理方法课程路线直达通道．
+author: Physics Learning Wiki Team, WbZhou-phys
+description: 数学工具知识模块导学看板与知识骨架，系统梳理微积分、线性代数、矢量分析、微分几何、微分方程、积分变换、复分析、本征函数方法、特殊函数、变分法与概率统计，并提供大学数学物理方法课程路线直达通道．
 ---
 
 ## 数学工具概览
@@ -51,13 +51,14 @@ flowchart TD
 
 ## 2. 知识模块全景与建设看板
 
-根据 **Issue #14** 的长远规划，底层数学工具库划分为 10 个专业领域，兼顾自学者的 **顺序学习** 与物理正文的 **最小原子化引用**：
+根据 **Issue #14** 的长远规划，底层数学工具库划分为 11 个专业领域，兼顾自学者的 **顺序学习** 与物理正文的 **最小原子化引用**：
 
 | 知识领域          | 包含的核心主题                                                                                                                                                                                                                                                                                                                                                                     | 建设状态                 | 支撑物理课程                             |
 | :------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------- | :--------------------------------- |
 | **基础微积分**     | [极限与连续](./calculus/limit.md)、[导数与微分](./calculus/derivative.md)、[积分学](./calculus/integral.md)                                                                                                                                                                                                                                                                                | **`status: review`** | 普通物理力学、热学宏观定律                      |
 | **线性代数与算符代数** | [向量与矩阵](./linear-algebra/matrix.md)、[线性空间](./linear-algebra/space.md)、[线性算符](./linear-algebra/operators.md)、[本征值与对角化](./linear-algebra/eigenvalues.md)、[内积空间](./linear-algebra/inner-product.md)、[厄米与酉变换](./linear-algebra/hermitian-unitary.md)                                                                                                                            | **`status: review`** | 理论力学微振动简正坐标、量子力学力学量算符与表象变换         |
 | **矢量分析与场论**   | [梯度、散度与旋度](./vector-analysis/operators.md)、[积分定理](./vector-analysis/integral-theorems.md)、[曲线坐标系](./vector-analysis/curvilinear-coordinates.md)                                                                                                                                                                                                                             | **`status: review`** | 流体力学、电磁场论、麦克斯韦方程组                  |
+| **微分几何**      | [流形、张量、联络与曲率](./differential-geometry.md)：流形与坐标、切空间与张量、度规、微分形式、协变导数、测地线、黎曼/Ricci 曲率、Killing 矢量与积分                                                                                                                                                                                                                                                                           | **`status: review`** | 广义相对论、黎曼几何、场论与引力理论                 |
 | **常微分与偏微分方程** | [常微分方程基础](./differential-equations/ode-intro.md)、[二阶线性微分方程](./differential-equations/second-order-ode.md)、[幂级数解法](./differential-equations/series-solution.md)、[三类物理偏微分方程](./differential-equations/pde-intro.md)、[分离变量法定解](./differential-equations/separation-of-variables.md)                                                                                            | **`status: review`** | 质点动力学、阻尼受迫振子、弦振动、静电边值问题            |
 | **积分变换与广义函数** | [狄拉克 Delta 函数](./transforms/delta-function.md)、[傅里叶级数](./transforms/fourier-series.md)、[傅里叶变换](./transforms/fourier-transform.md)、[拉普拉斯变换](./transforms/laplace-transform.md)                                                                                                                                                                                               | **`status: review`** | 交流电分析、光学干涉与衍射、不确定性原理               |
 | **复分析体系**     | [复数与几何表示](./complex-analysis/complex-numbers.md)、[解析函数](./complex-analysis/analytic-functions.md)、[复积分与柯西定理](./complex-analysis/contour-integrals.md)、[洛朗级数展开](./complex-analysis/series-expansion.md)、[留数定理与实积分计算](./complex-analysis/residue-calculus.md)                                                                                                                 | **`status: review`** | 简谐振动相量法、二维静电复势、因果响应与色散关系           |
@@ -73,6 +74,7 @@ flowchart TD
 1.  **从物理场景出发**：当你遇到数学难点时，不要孤立地死记公式，应通过页面开头的「物理问题引入」弄清其产生原因与几何图像；
 2.  **渐进式依赖**：
     -   基础微积分与矢量分析是全站所有物理学科的共同地基；
+    -   微分几何是矢量分析与线性代数之后、通往广义相对论与黎曼几何的桥梁；
     -   微分方程、积分变换、复分析与特殊函数是进入大二大三理论物理的必修桥梁；
     -   概率与数理统计优先配合实验物理与统计物理阅读；
 3.  **内容贡献约定**：参与数学工具编写时，请遵循统一的 LaTeX 公式与三态页面生命周期规范，详情参见 [内容编写指引](../intro/writing.md)．
