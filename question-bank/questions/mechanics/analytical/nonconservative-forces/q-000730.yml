@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000730
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+type: single_choice
+choice_order: shuffle
+stem: 线性阻力为 $F_D=-c\dot x$，$c>0$．若取 $\mathcal R=c\dot x^2$ 并用 $Q^D=-\partial\mathcal R/\partial\dot x$，会怎样？
+choices:
+- id: A
+  content: 得到正确阻力 $-c\dot x$．
+- id: B
+  content: 得到 $-2c\dot x$，把阻力加倍．
+- id: C
+  content: 得到 $+2c\dot x$，仅方向反了．
+- id: D
+  content: 不能对速度求偏导．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 对速度平方求导会产生系数二．
+    B: 正确的二次耗散函数应含系数 $1/2$．
+    C: 公式中仍有负号，错误是大小加倍．
+    D: 给定线性模型正是用速度偏导生成阻力．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 分别写出耗散函数、阻力和损失功率三个对象．
+solution: $-\partial_{\dot x}(c\dot x^2)=-2c\dot x$．因此与 $-c\dot x$ 对应的是 $\mathcal R=c\dot x^2/2$．在静止介质中的线性模型内，损失功率为 $c\dot
+  x^2=2\mathcal R$，不能把损失功率本身直接用作 $\mathcal R$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:15d3ee50a3d7651314330c991447bb696e4fa4cd8f144710a552e792795f734f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:15d3ee50a3d7651314330c991447bb696e4fa4cd8f144710a552e792795f734f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:15d3ee50a3d7651314330c991447bb696e4fa4cd8f144710a552e792795f734f

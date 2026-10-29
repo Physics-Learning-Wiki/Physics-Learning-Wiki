@@ -1,0 +1,100 @@
+schema_version: 3
+id: q-000704
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.virtual-work
+- analytical.ideal-constraint
+- analytical.equilibrium-stability
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.equilibrium
+type: free_response
+choice_order: fixed
+stem: '质量 $m>0$ 的小环套在固定光滑竖直圆形铁丝上，不会脱离，半径 $R>0$．取 $x$ 向右、$y$ 向上，$\theta$ 从竖直向下逆时针量取．除重力外，小环还受恒定水平向右的力 $F\ge0$．
+
+
+  用虚功求出一个周期内的全部平衡位形，并用势能曲率区分稳定性．说明为何无需先求铁丝反力，以及「平衡」为何不等于「稳定」．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：只令重力虚功为零，或把一个稳定解当成全部平衡解．
+    points: 0
+  - id: partial
+    label: 部分掌握：平衡角正确，但漏掉一个平衡点、曲率分类或反力消去条件．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：得到全部平衡角及稳定性，并解释零虚功条件、势能曲率和 $F=0$ 极限．
+    points: 1
+reference_answer: 令 $\alpha=\arctan(F/(mg))$，则 $\theta=\alpha$ 为稳定平衡，$\theta=\alpha+\pi$ 为不稳定平衡，均按 $2\pi$ 取模．
+hints:
+- 把水平力和重力的虚功相加，要求对任意 $\delta\theta$ 为零．
+- 将势能写成平移后的余弦，能同时找出两个驻点和曲率符号．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '位置为 $(R\sin\theta,-R\cos\theta)$，等时虚位移为 $R(\cos\theta,\sin\theta)\delta\theta$．主动力虚功为
+
+
+  $$
+
+  \delta W=R(F\cos\theta-mg\sin\theta)\delta\theta.
+
+  $$
+
+
+  理想反力沿法向，对任意容许切向虚位移总虚功为零，因此平衡只需令括号为零．记 $A=\sqrt{F^2+(mg)^2}>0$，并取 $\alpha=\arctan(F/(mg))\in[0,\pi/2)$，有 $F=A\sin\alpha$、$mg=A\cos\alpha$．条件化为
+  $\sin(\theta-\alpha)=0$，故两类解是 $\alpha$ 与 $\alpha+\pi$．
+
+
+  势能可取
+
+
+  $$
+
+  V=-mgR\cos\theta-FR\sin\theta=-RA\cos(\theta-\alpha).
+
+  $$
+
+
+  在 $\alpha$ 处 $V''''=RA>0$；在 $\alpha+\pi$ 处 $V''''=-RA<0$．动能系数 $mR^2$ 正，前者为非退化稳定平衡，后者不稳定．当 $F=0$ 时回到最低点与最高点．两点的一阶主动力虚功都为零，稳定性差别来自二阶变化．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fe0ffb668a0b2ad87d22dbc80a45312454858814d83e3fbc122cc0d12f2c5759
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fe0ffb668a0b2ad87d22dbc80a45312454858814d83e3fbc122cc0d12f2c5759
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fe0ffb668a0b2ad87d22dbc80a45312454858814d83e3fbc122cc0d12f2c5759

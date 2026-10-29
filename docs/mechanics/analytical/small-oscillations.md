@@ -6,6 +6,23 @@ description: 从单摆的势能展开建立小振动近似，说明质量矩阵�
 prerequisites:
   - lagrangian
   - generalized-coordinate
+page_id: mechanics.analytical.small-oscillations
+learning_objectives:
+  - id: mechanics.analytical.small-oscillations.equilibrium-curvature
+    title: 区分平衡、非退化稳定与零二阶曲率
+    anchor: analytical-equilibrium-curvature
+  - id: mechanics.analytical.small-oscillations.energy-matrices
+    title: 按阶数构造二次能量及质量和刚度矩阵
+    anchor: analytical-energy-matrices
+  - id: mechanics.analytical.small-oscillations.linear-system
+    title: 从二次能量建立线性方程并检查正定性
+    anchor: analytical-linear-system
+assessments:
+  - set: mechanics.analytical.small-oscillations.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.small-oscillations.exercises
+    placement: footer
 ---
 
 ## 从建立方程到求出运动
@@ -13,6 +30,8 @@ prerequisites:
 [双摆建模](lagrangian-modeling.md#例题二平面双摆) 已经给出了两条运动方程，但其中的三角函数和速度乘积使求解不再像单摆的小角度方程那样简单．若只研究双摆在下垂位置附近的轻微摆动，哪些项可以略去，又有哪些耦合必须留下？
 
 本页先用单摆说明近似的依据，再推广到多自由度系统．目标是从给定的动能、势能构造两个常数矩阵，得到可求解的线性方程．需要会求偏导和二阶泰勒展开；矩阵乘法可回看 [矩阵](../../math/linear-algebra/matrix.md)．[线性振动](../oscillation-wave/linear-oscillation.md) 中的单自由度解将在下一页被反复使用．
+
+<span id="analytical-equilibrium-curvature"></span>
 
 ## 平衡不一定意味着简谐振动
 
@@ -64,6 +83,8 @@ a(q_0)\ddot\eta+V''(q_0)\eta=0,\qquad
 $$
 
 单摆代入后便是 $\omega_0^2=g/l$．比值的量纲为时间的负二次方，即使 $q$ 是角度而不是长度，这个检查仍然成立．
+
+<span id="analytical-energy-matrices"></span>
 
 ## 多自由度系统的适用条件
 
@@ -135,6 +156,8 @@ $M$ 是常数实对称矩阵．对于独立、正则坐标，非零广义速度�
 
 「质量矩阵」是惯性系数矩阵的名称，不表示每个元素都有千克单位．角坐标的对角元可以有转动惯量单位；长度与角度混合时，不同元素还可能有不同单位，但每一项动能必须具有能量单位．
 
+<span id="analytical-linear-system"></span>
+
 ## 从二次能量得到线性耦合方程
 
 将上面两式组合：
@@ -193,6 +216,8 @@ $$
 
 ??? note "核对：检查所有方向"
     不能．$\det K=-3<0$；沿 $\boldsymbol z=(1,-1)^{\mathsf T}$ 有 $\boldsymbol z^{\mathsf T}K\boldsymbol z=-2$，势能沿这一方向下降．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

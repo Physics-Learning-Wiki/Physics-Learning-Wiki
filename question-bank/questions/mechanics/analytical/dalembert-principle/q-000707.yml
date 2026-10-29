@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000707
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.dalembert-principle
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.projection
+type: true_false
+choice_order: fixed
+stem: 固定圆轨道上质点的向心加速度很大，因此其径向惯性项必对切向虚位移产生非零投影．
+answer:
+  value: false
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 检查方向是否正交，而不只比较加速度大小．
+solution: 固定半径时，径向加速度 $-R\dot\theta^2\boldsymbol e_r$ 与容许虚位移 $R\boldsymbol e_\theta\delta\theta$ 正交．投影为零与加速度大小无关．切向投影仍含 $R\ddot\theta$，不能把全部惯性项一起删除．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6b599085d551c5320652674d99a9bcea1d6e3bab1eab8843b221a5f3a476a2a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6b599085d551c5320652674d99a9bcea1d6e3bab1eab8843b221a5f3a476a2a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6b599085d551c5320652674d99a9bcea1d6e3bab1eab8843b221a5f3a476a2a

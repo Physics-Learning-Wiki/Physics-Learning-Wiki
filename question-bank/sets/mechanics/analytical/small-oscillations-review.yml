@@ -1,0 +1,25 @@
+schema_version: 1
+id: mechanics.analytical.small-oscillations-review
+title: 小振动与简正模：阶段测验
+description: 从二次近似、简正坐标与双摆应用各选四题，整卷提交后检查条件、投影与物理解释．草稿预览，待人工审核．
+status: draft
+tags:
+- 分析力学
+- 小振动
+feedback_mode: deferred
+selection:
+  type: fixed
+  questions:
+  - q-000738
+  - q-000740
+  - q-000743
+  - q-000745
+  - q-000749
+  - q-000751
+  - q-000754
+  - q-000756
+  - q-000760
+  - q-000762
+  - q-000763
+  - q-000765
+  order: fixed

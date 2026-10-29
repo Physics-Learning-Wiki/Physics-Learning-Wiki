@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000724
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.double-pendulum-model
+type: numeric
+choice_order: fixed
+stem: 一般双摆的质量为 $m_1=2.0\,\mathrm{kg}$、$m_2=1.0\,\mathrm{kg}$，杆长 $l_1=0.50\,\mathrm m$、$l_2=0.40\,\mathrm m$．某瞬时两绝对角均为零，而 $\dot\theta_1=1.0\,\mathrm{rad/s}$、$\dot\theta_2=2.0\,\mathrm{rad/s}$．总动能是多少？
+answer:
+  value: 1.095
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - J
+    canonical: J
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 在两角为零的瞬时，先把第二质点两个同向速度贡献相加．
+solution: '两质点速度分别为 $v_1=l_1\dot\theta_1=0.50\,\mathrm{m/s}$ 和 $v_2=l_1\dot\theta_1+l_2\dot\theta_2=1.30\,\mathrm{m/s}$，方向均水平．因此
+
+
+  $$
+
+  T=\frac12(2.0)(0.50)^2+\frac12(1.0)(1.30)^2=1.095\,\mathrm J.
+
+  $$
+
+
+  也可用一般动能式：平方项为 $0.375\,\mathrm J$ 与 $0.320\,\mathrm J$，交叉项为 $0.400\,\mathrm J$．两种计算一致．'
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0d5105bd619e537e4df340701faa5c1419cad07ee0acd706e48dfbeb58f988f2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0d5105bd619e537e4df340701faa5c1419cad07ee0acd706e48dfbeb58f988f2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0d5105bd619e537e4df340701faa5c1419cad07ee0acd706e48dfbeb58f988f2

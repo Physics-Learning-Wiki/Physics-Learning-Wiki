@@ -5,6 +5,23 @@ description: 从达朗贝尔原理和两个运动学恒等式完整推导拉格�
 prerequisites:
   - generalized-force
   - ideal-constraint
+page_id: mechanics.analytical.lagrangian
+learning_objectives:
+  - id: mechanics.analytical.lagrangian.kinematic-identities
+    title: 区分状态变量偏导与沿轨迹全导数
+    anchor: analytical-kinematic-identities
+  - id: mechanics.analytical.lagrangian.kinetic-equation
+    title: 由动能导数计算广义惯性项
+    anchor: analytical-kinetic-equation
+  - id: mechanics.analytical.lagrangian.lagrangian-equation
+    title: 组合位置势能与额外广义力建立方程
+    anchor: analytical-lagrangian-equation
+assessments:
+  - set: mechanics.analytical.lagrangian.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.lagrangian.exercises
+    placement: footer
 ---
 
 <a id="拉格朗日力学"></a>
@@ -28,6 +45,8 @@ $T$ 为总动能，$q$、$\dot q$ 分别表示全部坐标和广义速度．坐�
 
 ???+ warning "先修不是把公式背下来"
     必须先确认所选坐标独立、约束理想、模型仍处于该约束有效区域．未知的非理想反力、非完整速度限制和接触切换，不能在普通独立坐标方程里无说明地略去．
+
+<span id="analytical-kinematic-identities"></span>
 
 ## 两个运动学恒等式
 
@@ -73,6 +92,8 @@ $$
 
 相减后惯性项为 $a(q)\ddot q+a'(q)\dot q^2/2$，并非总是「常数乘广义加速度」．后面研究平衡附近的小振动时，才会在明确的阶数近似下把惯性系数取为常数．
 
+<span id="analytical-kinetic-equation"></span>
+
 ## 从惯性投影重写为动能导数
 
 达朗贝尔原理已经给出每个独立坐标方向上的关系
@@ -112,6 +133,8 @@ $$
 $$
 
 共有 $n$ 个方程，正好对应 $n$ 个独立坐标．这一形式仍能容纳没有写成势能的主动力．
+
+<span id="analytical-lagrangian-equation"></span>
 
 ## 把位置势能并入拉格朗日量
 
@@ -164,6 +187,8 @@ $$
 
 ??? note "自测二解答"
     不会．$V'=V+mgl$ 只改变零点，$L'=L-mgl$ 与原来相差常量，相关偏导不变．但额外驱动力必须单独处理，不能通过改变势能零点消除．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

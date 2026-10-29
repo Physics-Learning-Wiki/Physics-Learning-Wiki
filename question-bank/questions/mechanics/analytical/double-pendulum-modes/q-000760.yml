@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000760
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.physical-amplitudes
+type: single_choice
+choice_order: shuffle
+stem: 等长等质量双摆采用两个绝对角，高频小振动振型为 $(1,-\sqrt2)^{\mathsf T}$．小角度下，在第一质点水平位移非零的时刻，第二质点与第一质点的水平位移比是多少？
+choices:
+- id: A
+  content: $-\sqrt2$．
+- id: B
+  content: $1-\sqrt2$．
+- id: C
+  content: $1+\sqrt2$．
+- id: D
+  content: $-1$．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 这是两个绝对摆角的比例，第二质点还被第一杆带动．
+    B: 由 $x_1\simeq l\theta_1$、$x_2\simeq l(\theta_1+\theta_2)$ 得到．
+    C: 这是低频模对应的质点水平位移比．
+    D: 反向并不代表等大，振型规定了具体振幅比．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先把绝对角转换成各质点的水平位移，再求比．
+solution: 两个角均相对竖直向下量取，故第二质点水平位移是两根杆贡献之和．高频模有 $\theta_2=-\sqrt2\theta_1$，所以 $x_2/x_1=1+\theta_2/\theta_1=1-\sqrt2$．在两位移都过零时不宜写比值，但线性关系 $x_2=(1-\sqrt2)x_1$ 仍成立．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

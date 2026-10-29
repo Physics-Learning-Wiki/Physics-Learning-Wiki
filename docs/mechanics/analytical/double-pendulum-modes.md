@@ -7,6 +7,26 @@ prerequisites:
   - small-oscillation
   - normal-mode
   - normal-coordinate
+page_id: mechanics.analytical.double-pendulum-modes
+learning_objectives:
+  - id: mechanics.analytical.double-pendulum-modes.matrices
+    title: 从双摆二次能量构造耦合矩阵
+    anchor: analytical-matrices
+  - id: mechanics.analytical.double-pendulum-modes.frequencies-shapes
+    title: 求双摆固有角频率、振型并检查尺度变化
+    anchor: analytical-frequencies-shapes
+  - id: mechanics.analytical.double-pendulum-modes.initial-state
+    title: 用简正坐标处理一般位移和速度初态
+    anchor: analytical-initial-state
+  - id: mechanics.analytical.double-pendulum-modes.physical-amplitudes
+    title: 区分杆的角振幅比与质点位移比
+    anchor: analytical-physical-amplitudes
+assessments:
+  - set: mechanics.analytical.double-pendulum-modes.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.double-pendulum-modes.exercises
+    placement: footer
 ---
 
 ## 从双摆方程接着往下求
@@ -22,6 +42,8 @@ prerequisites:
 </div>
 
 图中虚线是竖直参考方向，角度为示意；振型比例指杆的角度，不是两个质点的水平位移比．
+
+<span id="analytical-matrices"></span>
 
 ## 二次能量与矩阵
 
@@ -65,6 +87,8 @@ $$
 
 势能没有交叉项，动能却有，故两角仍然耦合．这正与从完整双摆方程线性化得到的结果一致．
 
+<span id="analytical-frequencies-shapes"></span>
+
 ## 两个固有角频率与振型
 
 令 $\lambda=\omega^2l/g$，频率方程化成
@@ -96,6 +120,8 @@ $$
 \boldsymbol a_+=\begin{pmatrix}1\\-\sqrt2\end{pmatrix}.
 $$
 
+<span id="analytical-physical-amplitudes"></span>
+
 低频模的两角同相，高频模的两角反相；两模中第二杆的角振幅都是第一杆的 $\sqrt2$ 倍．这不是两杆夹角的比例．小角度下质点水平位移为 $x_1\approx l\theta_1$、$x_2\approx l(\theta_1+\theta_2)$，故质点水平位移比为 $1\pm\sqrt2$，与角度比不同．
 
 ### 质量归一化
@@ -116,6 +142,8 @@ n_+=\sqrt{ml^2(4-2\sqrt2)}.
 $$
 
 归一化振型为 $\boldsymbol b_-=\boldsymbol a_-/n_-$、$\boldsymbol b_+=\boldsymbol a_+/n_+$．注意普通点积 $\boldsymbol a_-^{\mathsf T}\boldsymbol a_+=-1$ 并不为零；正交性使用的是质量矩阵．
+
+<span id="analytical-initial-state"></span>
 
 ## 简正坐标与一般初态
 
@@ -267,6 +295,8 @@ $$
 
 ??? note "核对：尺度与比例"
     角频率都变为原来的一半，未归一化振型 $(1,\pm\sqrt2)^{\mathsf T}$ 不变．质量归一化系数会改变，因此应区分振型比例不变和归一化向量数值不变．
+
+<span id="analytical-selftest"></span>
 
 <span id="继续学习与参考资料"></span>
 

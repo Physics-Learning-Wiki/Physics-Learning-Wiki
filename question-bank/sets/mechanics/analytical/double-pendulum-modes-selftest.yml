@@ -1,0 +1,19 @@
+schema_version: 1
+id: mechanics.analytical.double-pendulum-modes.selftest
+title: 双摆的小振动与模态：概念与方法自测
+description: 与分析力学正文配套，提供提示、参考解答与回学入口．本题集仍待人工审核，仅供草稿预览．
+status: draft
+tags:
+- 分析力学
+- 小振动
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000760
+  - q-000761
+  - q-000762
+  - q-000763
+  - q-000764
+  - q-000765
+  order: fixed

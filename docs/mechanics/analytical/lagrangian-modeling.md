@@ -5,6 +5,23 @@ description: 用统一建模步骤完整推导单摆和双摆运动方程，解�
 prerequisites:
   - lagrangian
   - differential-equation
+page_id: mechanics.analytical.lagrangian-modeling
+learning_objectives:
+  - id: mechanics.analytical.lagrangian-modeling.modeling-workflow
+    title: 从模型与位置映射构造能量并检验方程
+    anchor: analytical-modeling-workflow
+  - id: mechanics.analytical.lagrangian-modeling.pendulum-model
+    title: 检查单摆的约束有效性与动力学条件
+    anchor: analytical-pendulum-model
+  - id: mechanics.analytical.lagrangian-modeling.double-pendulum-model
+    title: 构造耦合动能并正确变换双摆坐标
+    anchor: analytical-double-pendulum-model
+assessments:
+  - set: mechanics.analytical.lagrangian-modeling.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.lagrangian-modeling.exercises
+    placement: footer
 ---
 
 ## 拉格朗日建模实例
@@ -12,6 +29,8 @@ prerequisites:
 会写欧拉—拉格朗日方程，并不意味着已经会构造它的输入．单摆与双摆很适合训练这个过程：新增一根杆后，难点不在换一种方程，而在正确表达两个质点的速度与耦合．
 
 本页假定已读 [拉格朗日方程](lagrangian.md)，能对坐标表达式求时间导数．读完应能从模型自己写出动能与势能，建立方程，并判断结果是否合理．这里先得到运动方程，不要求求出全部解析解．
+
+<span id="analytical-modeling-workflow"></span>
 
 ## 一套可重复的建模步骤
 
@@ -27,6 +46,8 @@ prerequisites:
 ![采用统一坐标与绝对摆角的单摆和双摆模型](images/pendulum-models.svg){ style="min-width: 600px;" }
 
 </div>
+
+<span id="analytical-pendulum-model"></span>
 
 ## 例题一：固定悬点单摆
 
@@ -90,6 +111,8 @@ $$
     $$
     
     在这段坐标有效区域内代入 $x=l\sin\theta$、$\cos\theta>0$，可还原角度方程．它增加了计算量，也无法跨过 $x=\pm l$，说明选坐标既要正确，也要方便．
+
+<span id="analytical-double-pendulum-model"></span>
 
 ## 例题二：平面双摆
 
@@ -207,6 +230,8 @@ $$
 
 ??? note "自测二解答"
     不能．必须代入 $\theta_2=\theta_1+\psi$、$\dot\theta_2=\dot\theta_1+\dot\psi$，重新表达 $L$ 后对新坐标求导．独立坐标变换不改变物理运动，但改变了偏导时固定哪些变量．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

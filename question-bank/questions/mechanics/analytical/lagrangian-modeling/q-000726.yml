@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000726
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.modeling-workflow
+type: single_choice
+choice_order: shuffle
+stem: 质量 $M$ 的小车沿固定水平轨道运动，悬挂质量 $m$、杆长 $l$ 的轻杆单摆．车位置为 $X$，摆角 $\theta$ 从竖直向下量起．动能中的交叉项是哪一个？
+choices:
+- id: A
+  content: $Ml\dot X\dot\theta\cos\theta$．
+- id: B
+  content: $ml\dot X\dot\theta\cos\theta$．
+- id: C
+  content: $ml\dot X\dot\theta\sin\theta$．
+- id: D
+  content: 没有交叉项，因为两个坐标独立．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 交叉项来自摆球的速度平方，质量应为摆球质量．
+    B: 摆球绝对速度的两部分产生这一标量积．
+    C: 车速水平，角速度带来的水平速度含 $\cos\theta$．
+    D: 坐标独立不意味着动能没有耦合．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先求摆球绝对速度，交叉项来自哪一物体就使用哪一质量．
+solution: 摆球位置为 $(X+l\sin\theta,-l\cos\theta)$，所以 $v^2=\dot X^2+2l\dot X\dot\theta\cos\theta+l^2\dot\theta^2$．总动能是 $(M+m)\dot
+  X^2/2+ml\dot X\dot\theta\cos\theta+ml^2\dot\theta^2/2$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:65b99cd4b5a13381649e00df7786e9d847c879069b0462b232f10897a362c8a9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:65b99cd4b5a13381649e00df7786e9d847c879069b0462b232f10897a362c8a9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:65b99cd4b5a13381649e00df7786e9d847c879069b0462b232f10897a362c8a9

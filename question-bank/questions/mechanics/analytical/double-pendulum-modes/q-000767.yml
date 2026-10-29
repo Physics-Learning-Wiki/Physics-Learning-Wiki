@@ -1,0 +1,94 @@
+schema_version: 3
+id: q-000767
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.mass-matrix
+- analytical.model-validity
+- analytical.scaling
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.matrices
+- mechanics.analytical.double-pendulum-modes.frequencies-shapes
+type: free_response
+choice_order: fixed
+stem: |-
+  两杆等长的平面双摆，上质点质量 $m_1=m>0$，下质点质量 $m_2=\mu m$，$\mu>0$，杆长均为 $l>0$．两角仍为相对竖直向下的绝对角，支承固定、无阻力，在下垂位置附近小振动．
+
+  从一般双摆的二次能量得到质量与刚度矩阵，求两固有角频率和各自的角振幅比．核对 $\mu=1$ 的结果，并解释 $\mu\to0^+$ 时频率数值的极限为何不代表零质量端点仍有两个正常动力学自由度．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：沿用等质量频率而忽略质量比，或把退化端点当成正常两自由度模型．
+    points: 0
+  - id: partial
+    label: 部分掌握：一般频率与振型基本正确，但等质量检查或退化端点解释不完整．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：由能量得到矩阵，求出两频率及振幅比，并正确区分参数极限与零质量退化模型．
+    points: 1
+reference_answer: $\omega_{L,H}^2=(g/l)[1+\mu\mp\sqrt{\mu(1+\mu)}]$，角振幅比为 $a_2/a_1=\pm\sqrt{(1+\mu)/\mu}$，低频取正，高频取负．
+hints:
+- 先保留正的质量比，再求无量纲频率；不要在推导中提前令 $\mu=0$．
+- 振幅比可从第二行直接求，再用等质量情形与质量矩阵行列式检查．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: |-
+  线性化后的矩阵为
+
+  $$
+  M=ml^2\begin{pmatrix}1+\mu&\mu\\\mu&\mu\end{pmatrix},\qquad
+  K=mgl\begin{pmatrix}1+\mu&0\\0&\mu\end{pmatrix}.
+  $$
+
+  两矩阵在 $\mu>0$ 时正定．令 $\lambda=\omega^2l/g$，约去正的公因子后，频率方程是
+
+  $$
+  (1+\mu)(1-\lambda)^2-\mu\lambda^2
+  =\lambda^2-2(1+\mu)\lambda+(1+\mu)=0.
+  $$
+
+  因此
+
+  $$
+  \lambda_{L,H}=1+\mu\mp\sqrt{\mu(1+\mu)},\qquad
+  \omega_{L,H}^2=\frac gl\lambda_{L,H}.
+  $$
+
+  两个根均正．第二行给出 $-\lambda a_1+(1-\lambda)a_2=0$，代入两根可得
+
+  $$
+  \frac{a_{2L}}{a_{1L}}=\sqrt{\frac{1+\mu}{\mu}},\qquad
+  \frac{a_{2H}}{a_{1H}}=-\sqrt{\frac{1+\mu}{\mu}}.
+  $$
+
+  当 $\mu=1$ 时恢复 $(2\mp\sqrt2)g/l$ 与 $\pm\sqrt2$．共同乘大两质量不改变频率，但改变质量比会改变频率．
+
+  当 $\mu\to0^+$ 时两个 $\lambda$ 都趋近一，以上选取的振幅比发散；在 $\mu=0$ 处 $\det M=(ml^2)^2\mu=0$，原模型退化．数值极限不能代替端点模型的重新识别；若物理上移除下质点及下杆，只剩一个单摆自由度．
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 900
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

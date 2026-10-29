@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000740
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-matrix
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+type: numeric
+choice_order: fixed
+stem: 两个坐标 $x,y$ 都是长度，二次动能为 $T^{(2)}=(3\dot x^2+4\dot x\dot y+5\dot y^2)/2$，括号内系数以千克计．在 $T^{(2)}=\dot{\boldsymbol\eta}^{\mathsf
+  T}M\dot{\boldsymbol\eta}/2$ 中，$M_{12}=M_{21}$ 是多少？
+answer:
+  value: 2.0
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - kg
+    canonical: kg
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先把外面的 $1/2$ 乘进去，再比较交叉项系数．
+solution: 对称二阶矩阵展开给出 $T^{(2)}=M_{11}\dot x^2/2+M_{12}\dot x\dot y+M_{22}\dot y^2/2$．题面的交叉项系数为 $4/2=2$，所以 $M_{12}=2\,\mathrm{kg}$；不是四千克，也不是一千克．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:30ef7ce8801911403384af2be47d05494b251c01cc4157745679180c7a7ae388
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:30ef7ce8801911403384af2be47d05494b251c01cc4157745679180c7a7ae388
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:30ef7ce8801911403384af2be47d05494b251c01cc4157745679180c7a7ae388

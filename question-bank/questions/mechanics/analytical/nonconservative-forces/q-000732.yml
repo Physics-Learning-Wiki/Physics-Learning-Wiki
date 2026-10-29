@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000732
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+- analytical.time-dependent-lagrangian
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+- mechanics.analytical.nonconservative-forces.energy-balance
+type: multiple_choice
+choice_order: shuffle
+stem: 对本章的线性黏滞阻力模型，以下哪些说法成立？
+choices:
+- id: A
+  content: 相对静止介质定义的 $\mathcal R$ 有功率单位．
+- id: B
+  content: 无论坐标映射是否显含时间，总有 $\sum Q_\alpha^D\dot q_\alpha=-2\mathcal R$．
+- id: C
+  content: 固定约束、无驱动时，机械能变化率不大于零．
+- id: D
+  content: 把 $\mathcal R$ 加入势能后，再由速度偏导加入阻力．
+answer:
+  choices:
+  - A
+  - C
+feedback:
+  choices:
+    A: 阻力系数乘速度平方的单位为瓦特．
+    B: 移动约束还贡献已知运动的速度项，广义功率不能无条件等同物理功率．
+    C: 非负线性阻力系数使损失功率非负．
+    D: 这既混淆能量与功率，又会错误处理同一作用．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 检查介质、坐标映射与是否有外驱动这三个条件．
+solution: 相对于静止介质的线性阻力满足物理功率 $P_D=-2\mathcal R$．坐标映射不显含时间时，才可直接用 $\sum Q_\alpha^D\dot q_\alpha$ 表示这项物理功率．$\mathcal R$ 通过速度偏导产生阻力，不属于位置势能．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b85c20b8b958c6215664916dcb50b1e4c03d17b0cabdcfa92efae8c194ab6c14
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b85c20b8b958c6215664916dcb50b1e4c03d17b0cabdcfa92efae8c194ab6c14
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b85c20b8b958c6215664916dcb50b1e4c03d17b0cabdcfa92efae8c194ab6c14

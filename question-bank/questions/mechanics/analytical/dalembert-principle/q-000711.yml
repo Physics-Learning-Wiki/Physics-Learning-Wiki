@@ -1,0 +1,109 @@
+schema_version: 3
+id: q-000711
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.generalized-force
+type: free_response
+choice_order: fixed
+stem: '平面双摆采用绝对角 $\theta_1,\theta_2$，均从竖直向下逆时针量取，$x$ 向右、$y$ 向上．杆长 $l_1,l_2>0$，位置为
+
+
+  $$
+
+  \boldsymbol r_1=(l_1\sin\theta_1,-l_1\cos\theta_1),\qquad
+
+  \boldsymbol r_2=\boldsymbol r_1+(l_2\sin\theta_2,-l_2\cos\theta_2).
+
+  $$
+
+
+  两个质点分别受到水平向右的已知外力 $F_1(t),F_2(t)$．只计算这两个外力的广义力，暂不计重力：求 $Q_1,Q_2$，检查量纲，并验证固定支承下 $\sum_\alpha Q_\alpha\dot\theta_\alpha=F_1\dot
+  x_1+F_2\dot x_2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：漏掉第二质点对第一角的贡献，或把外力大小直接当作角度广义力．
+    points: 0
+  - id: partial
+    label: 部分掌握：两个广义力正确，但受力点求和、量纲或功率验证有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：逐个计算两个受力点的贡献，并完成量纲与功率恒等式检验．
+    points: 1
+reference_answer: $Q_1=(F_1+F_2)l_1\cos\theta_1$，$Q_2=F_2l_2\cos\theta_2$；二者都有力矩单位，合广义功率等于两个物理力的总功率．
+hints:
+- 依次固定另一个角，列出两个质点的位置偏导．
+- 用物理力乘各自受力点的水平速度，检验广义功率．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '只增加 $\theta_1$ 会使两个受力点都移动，且它们的位置偏导同为 $l_1(\cos\theta_1,\sin\theta_1)$．只增加 $\theta_2$ 不移动第一质点，第二质点的位置偏导为 $l_2(\cos\theta_2,\sin\theta_2)$．因此
+
+
+  $$
+
+  Q_1=(F_1+F_2)l_1\cos\theta_1,\qquad
+
+  Q_2=F_2l_2\cos\theta_2.
+
+  $$
+
+
+  两个角均无量纲，两个广义力均有 $\mathrm{N\,m}$ 单位．从位置映射求速度：
+
+
+  $$
+
+  \dot x_1=l_1\dot\theta_1\cos\theta_1,\qquad
+
+  \dot x_2=l_1\dot\theta_1\cos\theta_1+l_2\dot\theta_2\cos\theta_2.
+
+  $$
+
+
+  于是 $F_1\dot x_1+F_2\dot x_2=Q_1\dot\theta_1+Q_2\dot\theta_2$．该功率检验使用固定支承、不显含时间的位置映射；外力大小可以随时间变化．遗漏 $F_2$ 对 $Q_1$ 的贡献，就会破坏这个恒等式．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:07231f3448b6b1e45016545c9ae6ec697267e25d7c5887cea154ff582fb982de
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:07231f3448b6b1e45016545c9ae6ec697267e25d7c5887cea154ff582fb982de
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:07231f3448b6b1e45016545c9ae6ec697267e25d7c5887cea154ff582fb982de

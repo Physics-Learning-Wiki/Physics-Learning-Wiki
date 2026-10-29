@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000762
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.initial-condition-projection
+- analytical.normal-mode
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.initial-state
+type: multiple_choice
+choice_order: shuffle
+stem: 对等长等质量双摆的线性小振动，哪些初态条件能保证纯模运动？
+choices:
+- id: A
+  content: $\theta_2(0)=\sqrt2\theta_1(0)$ 且 $\dot\theta_2(0)=\sqrt2\dot\theta_1(0)$，得到低频纯模．
+- id: B
+  content: $\theta_2(0)=-\sqrt2\theta_1(0)$ 且 $\dot\theta_2(0)=-\sqrt2\dot\theta_1(0)$，得到高频纯模．
+- id: C
+  content: 只要初始两角符号相反，就必是高频纯模．
+- id: D
+  content: 只要初位移沿低频振型，无论初速度如何都是低频纯模．
+answer:
+  choices:
+  - A
+  - B
+feedback:
+  choices:
+    A: 初位移和初速度都沿低频振型．
+    B: 两组初态都不含低频投影．
+    C: 反号不保证振幅比，也未限制初速度．
+    D: 其他模态的速度投影会激发正弦项．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 用 $u_-,u_+$ 的初始值和初始导数逐一检查．
+solution: 振型幅值 $u_\mp=(\theta_1\pm\theta_2/\sqrt2)/2$．纯模要求另一幅值及其初导数同时为零，所以需对位移与速度施加同样的振型比例．这包括某组初态为零的情形，且仅在线性近似范围内成立．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

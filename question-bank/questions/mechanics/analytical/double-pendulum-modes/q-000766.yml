@@ -1,0 +1,87 @@
+schema_version: 3
+id: q-000766
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.initial-condition-projection
+- analytical.normal-coordinate
+- analytical.energy-integral
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.initial-state
+type: free_response
+choice_order: fixed
+stem: |-
+  等长等质量轻杆双摆在下垂平衡附近运动，两质点质量均为 $m>0$，两杆长均为 $l>0$．两角都是从竖直向下量取的绝对角．已知振型 $\boldsymbol a_-=(1,\sqrt2)^{\mathsf T}$、$\boldsymbol a_+=(1,-\sqrt2)^{\mathsf T}$，以及 $\omega_\mp^2=(2\mp\sqrt2)g/l$．
+
+  给定 $\theta_1(0)=a$、$\theta_2(0)=0$、$\dot\theta_1(0)=0$、$\dot\theta_2(0)=v$，其中 $a$ 与 $v/\omega_-$ 都满足小振动尺度．求两角完整时间解，并用初态、线性方程与二次能量检查．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：遗漏速度激发的正弦项，或把两模态初速度取成同号．
+    points: 0
+  - id: partial
+    label: 部分掌握：时间解基本正确，但只验证一组初态或遗漏质量因子的能量检查．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：给出两模态及两角时间解，恢复全部初态，并核对方程和二次能量．
+    points: 1
+reference_answer: $u_-=\tfrac a2\cos\omega_-t+\tfrac{v}{2\sqrt2\omega_-}\sin\omega_-t$，$u_+=\tfrac a2\cos\omega_+t-\tfrac{v}{2\sqrt2\omega_+}\sin\omega_+t$；$\theta_1=u_-+u_+$、$\theta_2=\sqrt2(u_--u_+)$．
+hints:
+- 分别变换初角度和初角速度，注意两个速度投影符号相反．
+- 能量检查需使用未归一化幅值的质量范数 $n_\mp^2$．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: |-
+  逆变换给出 $u_\mp=(\theta_1\pm\theta_2/\sqrt2)/2$，因此
+
+  $$
+  u_-(0)=u_+(0)=a/2,\qquad
+  \dot u_-(0)=v/(2\sqrt2),\quad
+  \dot u_+(0)=-v/(2\sqrt2).
+  $$
+
+  分别求两个独立振子，得到
+
+  $$
+  u_-(t)=\frac a2\cos\omega_-t+\frac{v}{2\sqrt2\omega_-}\sin\omega_-t,\qquad
+  u_+(t)=\frac a2\cos\omega_+t-\frac{v}{2\sqrt2\omega_+}\sin\omega_+t.
+  $$
+
+  再由 $\theta_1=u_-+u_+$、$\theta_2=\sqrt2(u_--u_+)$ 还原两角．在 $t=0$ 直接得到 $(a,0)$，求导得到 $(0,v)$，两组初态均被恢复．每个振型满足 $K\boldsymbol a_\mp=\omega_\mp^2M\boldsymbol a_\mp$，所以该叠加解满足两条线性双摆方程．
+
+  取 $n_\mp^2=ml^2(4\pm2\sqrt2)$，两模态能量之和在初始时刻为
+
+  $$
+  E^{(2)}=\frac12\sum_{\sigma=-,+}
+  n_\sigma^2\left[\dot u_\sigma(0)^2+\omega_\sigma^2u_\sigma(0)^2\right]
+  =\frac12ml^2v^2+mgl a^2.
+  $$
+
+  这与原二次能量 $T^{(2)}+V^{(2)}$ 一致，且各模态能量分别守恒．这是线性小振动的能量检查，不是把该近似解当成完整非线性双摆的精确解．
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 720
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

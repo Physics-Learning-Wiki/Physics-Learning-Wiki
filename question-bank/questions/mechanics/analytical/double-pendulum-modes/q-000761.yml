@@ -1,0 +1,45 @@
+schema_version: 3
+id: q-000761
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.frequencies-shapes
+type: numeric
+choice_order: fixed
+stem: 等长等质量双摆在下垂平衡附近小振动，两杆长均为 $l=2.0\,\mathrm m$．本题教学模型取 $g=10.0\,\mathrm{m/s^2}$，低频满足 $\omega_-^2=(2-\sqrt2)g/l$．求低频固有角频率．
+answer:
+  value: 1.7114123372625676
+  tolerance:
+    type: absolute
+    value: 0.0001
+  unit:
+    required: true
+    accepted:
+    - rad/s
+    canonical: rad/s
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先算角频率平方，再取正平方根；不要除以 $2\pi$．
+solution: 代入得到 $\omega_-^2=5(2-\sqrt2)\,\mathrm{s^{-2}}$，故 $\omega_-=\sqrt{5(2-\sqrt2)}\simeq1.7114\,\mathrm{rad/s}$．若求普通频率，还需除以 $2\pi$；本题要求的是角频率．给定 $g$ 是教学设定，不是精密测量值．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

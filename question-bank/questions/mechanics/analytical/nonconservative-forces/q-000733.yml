@@ -1,0 +1,55 @@
+schema_version: 3
+id: q-000733
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+type: true_false
+choice_order: fixed
+stem: 固定轻杆单摆受相对静止空气的各向同性线性阻力 $\boldsymbol F_D=-c\boldsymbol v$ 时，$\mathcal R=cl^2\dot\theta^2/2$，不能把角速度直接代入 $c\dot\theta^2/2$
+  取代物理速度平方．
+answer:
+  value: true
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 角速度的单位与小球线速度的单位不同．
+solution: 固定杆长给出 $v^2=l^2\dot\theta^2$．系数 $c$ 是物理线速度的阻力系数，必须保留几何尺度 $l^2$．相应广义阻力为 $-cl^2\dot\theta$，具有力矩单位．若另定义角阻尼系数，也需明确其单位与
+  $c$ 的换算．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9f844048a5a9064463bb5ba1bf96eacc6c9969fb8ba5dc8a50ea5d51dc3a6bd9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9f844048a5a9064463bb5ba1bf96eacc6c9969fb8ba5dc8a50ea5d51dc3a6bd9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9f844048a5a9064463bb5ba1bf96eacc6c9969fb8ba5dc8a50ea5d51dc3a6bd9

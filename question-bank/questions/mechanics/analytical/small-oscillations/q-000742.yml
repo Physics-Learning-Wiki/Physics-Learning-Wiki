@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000742
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.small-oscillation
+- analytical.model-validity
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+type: true_false
+choice_order: fixed
+stem: 只要初始位移足够小，即使初始速度足以让系统很快远离平衡，也已经满足本页小振动近似的条件．
+answer:
+  value: false
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 把初始位移很小和整个运动只在平衡附近区分开．
+solution: 小振动展开需要位移与相应速度满足共同的小量计数，并在所讨论的运动范围内维持近似．大初速度可使动能不小、轨迹迅速离开展开区域．初始位置小不是充分条件，必须结合速度尺度和模型的几何尺度检查．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5306a174e9eadaab714901e6778b0bd94787f79fa64717034f72770f19985566
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5306a174e9eadaab714901e6778b0bd94787f79fa64717034f72770f19985566
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5306a174e9eadaab714901e6778b0bd94787f79fa64717034f72770f19985566

@@ -1,0 +1,116 @@
+schema_version: 3
+id: q-000747
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.quadratic-approximation
+- analytical.mass-matrix
+- analytical.stiffness-matrix
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+- mechanics.analytical.small-oscillations.linear-system
+type: free_response
+choice_order: fixed
+stem: '带弹簧小车悬摆模型中，车质量 $M>0$、摆球质量 $m>0$、杆长 $l>0$、车的对地弹簧劲度 $k>0$．车位移 $X$ 从弹簧自然长度位置向右量取，摆角 $\theta$ 从竖直向下逆时针量取，支承固定、无阻力．其能量为
+
+
+  $$
+
+  T=\frac12(M+m)\dot X^2+ml\dot X\dot\theta\cos\theta+\frac12ml^2\dot\theta^2,\qquad
+
+  V=\frac12kX^2+mgl(1-\cos\theta).
+
+  $$
+
+
+  在 $(X,\theta)=(0,0)$ 附近构造二次拉格朗日量、$M_q,K_q$ 和线性方程．说明为何动能交叉项不能删除，检查正定性及混合量纲坐标的矩阵单位．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：因小角度或坐标独立而删除交叉动能，或把全部矩阵元素当成同一单位．
+    points: 0
+  - id: partial
+    label: 部分掌握：二次矩阵与方程正确，但阶数、正定性或混合单位说明不完整．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：保留二阶交叉项，给出全部矩阵和方程，并完成阶数、正定性及量纲检查．
+    points: 1
+reference_answer: $M_q=\begin{pmatrix}M+m&ml\\ml&ml^2\end{pmatrix}$，$K_q=\operatorname{diag}(k,mgl)$；$\det M_q=Mml^2>0$，$\det
+  K_q=kmgl>0$．
+hints:
+- 只对余弦作展开，并给每个速度因子计阶，避免把二阶交叉项一起删除．
+- 用行列式检查质量矩阵，并按各坐标的单位逐项检查动能．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '在共同小量计数下，$\dot X\dot\theta$ 已是二阶，故其中 $\cos\theta$ 只取零阶的一．余弦二阶修正乘速度乘积是四阶．势能用 $1-\cos\theta=\theta^2/2+O(\theta^4)$，得到
+
+
+  $$
+
+  L^{(2)}=\frac12(M+m)\dot X^2+ml\dot X\dot\theta+\frac12ml^2\dot\theta^2
+
+  -\frac12kX^2-\frac12mgl\theta^2.
+
+  $$
+
+
+  按坐标顺序 $(X,\theta)$ 读出
+
+
+  $$
+
+  M_q=\begin{pmatrix}M+m&ml\\ml&ml^2\end{pmatrix},\qquad
+
+  K_q=\begin{pmatrix}k&0\\0&mgl\end{pmatrix}.
+
+  $$
+
+
+  方程为 $(M+m)\ddot X+ml\ddot\theta+kX=0$、$ml\ddot X+ml^2\ddot\theta+mgl\theta=0$．交叉动能本身就是二阶，小角度并不使它成为高阶．
+
+
+  $M_q$ 的第一主子式正、行列式为 $Mml^2>0$，$K_q$ 的两对角元均正，故两矩阵正定．$M_{11},M_{12},M_{22}$ 的单位分别是 $\mathrm{kg}$、$\mathrm{kg\,m}$、$\mathrm{kg\,m^2}$；$K_{11}$
+  是 $\mathrm{N/m}$，$K_{22}$ 是 $\mathrm{N\,m}$．第一行方程是力、第二行是力矩，每个能量项仍具有焦耳单位．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6481f9ad139fe3ff79016d174ba3bc191bee885258ac25db498a288205e7648
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6481f9ad139fe3ff79016d174ba3bc191bee885258ac25db498a288205e7648
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d6481f9ad139fe3ff79016d174ba3bc191bee885258ac25db498a288205e7648

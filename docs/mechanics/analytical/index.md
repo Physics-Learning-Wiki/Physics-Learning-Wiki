@@ -5,6 +5,12 @@ description: 从单摆与双摆的约束问题进入分析力学，提供导论�
 prerequisites:
   - derivative
   - differential-equation
+page_id: mechanics.analytical
+assessments:
+  - set: mechanics.analytical.foundations-review
+    placement: footer
+  - set: mechanics.analytical.small-oscillations-review
+    placement: footer
 ---
 
 ## 分析力学导读
@@ -63,6 +69,14 @@ flowchart TD
 ```
 
 实线表示已提供正文的阅读主线，虚线表示后续建设方向．
+
+## 怎样使用配套练习
+
+文内自测用于读到当下时检查一个判断；配套题库把概念、计算和方法选择组织成可反复作答的短自测，较长的建模与推导题由各页末尾的入口进入．建议先独立写出模型、关键方程和结果检查，再查看提示与参考解答．自由作答题按各题的条件、推导与检验标准自评，系统不会自动判断文字答案．
+
+完成前六页后，用导论与建模阶段测验回看约束、广义力、方程和耗散；完成后三页后，用小振动阶段测验检查二次近似、振型和初态分解．两套测验各十二题，均复用逐页题目；阶段测验采用整卷反馈，逐页短题和推导练习采用即时反馈．迁移题会更换物理模型，仍使用对应正文已经讲过的方法．
+
+正式页面按题集的发布状态显示练习，尚未完成真实人工审核的题目只在草稿预览中开放，并带有草稿标识．原有文内自测始终可读；没有看到配套题集时，可先使用这些问题检查当前理解．
 
 ## 贯穿主线的三个判断
 

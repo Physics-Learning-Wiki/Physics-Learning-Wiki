@@ -1,0 +1,21 @@
+schema_version: 1
+id: mechanics.analytical.normal-modes.selftest
+title: 简正模与简正坐标：概念与方法自测
+description: 与分析力学正文配套，提供提示、参考解答与回学入口．本题集仍待人工审核，仅供草稿预览．
+status: published
+tags:
+- 分析力学
+- 小振动
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000749
+  - q-000750
+  - q-000751
+  - q-000752
+  - q-000753
+  - q-000754
+  - q-000755
+  - q-000756
+  order: fixed

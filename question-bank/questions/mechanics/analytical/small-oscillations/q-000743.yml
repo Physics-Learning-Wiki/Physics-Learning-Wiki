@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000743
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.stiffness-matrix
+- analytical.equilibrium-stability
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.linear-system
+type: single_choice
+choice_order: shuffle
+stem: 一个二自由度保守系统在驻点处的刚度矩阵为 $K=\kappa\begin{pmatrix}2&-3\\-3&2\end{pmatrix}$，$\kappa>0$，两坐标单位一致，质量矩阵正定．以下判断哪项正确？
+choices:
+- id: A
+  content: 对角元都正，所以该驻点是非退化稳定平衡．
+- id: B
+  content: $\det K=-5\kappa^2<0$，存在负曲率方向．
+- id: C
+  content: 质量矩阵正定就足以保证稳定．
+- id: D
+  content: 只需把非对角元改成正号便能用于原系统．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 非对角项可能使某个方向的二次势能下降．
+    B: 例如沿 $(1,1)$ 方向的二次型为负．
+    C: 惯性正定不保证势能回复作用为正．
+    D: 矩阵来自原能量，不能为得到稳定性而改系数．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 尝试同向位移，或直接计算二阶行列式．
+solution: 顺序主子式中 $\det K=(4-9)\kappa^2=-5\kappa^2<0$．取 $\boldsymbol z=(1,1)^{\mathsf T}$，有 $\boldsymbol z^{\mathsf T}K\boldsymbol
+  z=-2\kappa<0$，故不是正定刚度矩阵．该驻点在这个方向上有线性不稳定性．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d9d911d98ba88b5e042ffc3dbf5526515896770d672d01a24597e560e949d0a4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d9d911d98ba88b5e042ffc3dbf5526515896770d672d01a24597e560e949d0a4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d9d911d98ba88b5e042ffc3dbf5526515896770d672d01a24597e560e949d0a4

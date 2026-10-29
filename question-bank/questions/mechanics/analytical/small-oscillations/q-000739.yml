@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000739
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.small-oscillation
+- analytical.model-validity
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+type: multiple_choice
+choice_order: shuffle
+stem: 要直接使用本页的常数矩阵形式 $M\ddot{\boldsymbol\eta}+K\boldsymbol\eta=0$，以下哪些条件属于其建模范围？
+choices:
+- id: A
+  content: 在正则独立坐标中研究静止平衡附近的自由运动．
+- id: B
+  content: 约束定常、完整且理想，主动力来自不含速度和时间的位置势能．
+- id: C
+  content: 只要初始位移小，即使外驱动力与速度相关力很大也可直接使用．
+- id: D
+  content: 位移和相应速度在所用尺度下都满足小量计数．
+answer:
+  choices:
+  - A
+  - B
+  - D
+feedback:
+  choices:
+    A: 这一条件保证平衡处的二次展开有明确对象．
+    B: 这是本页自然保守系统的范围．
+    C: 驱动和速度相关项会改变线性方程结构．
+    D: 仅位置小不足以保证二次近似．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 区分一般拉格朗日方程的范围与本页二次能量模型的范围．
+solution: 本页的形式来自定常坐标映射下的二次动能和时间无关位置势能，在静止平衡附近研究无驱动、无阻尼运动．一般拉格朗日方程可以处理更广模型，但不能因此把本页常数对称矩阵方程无条件推广到它们．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b075ac36167a25df0119a2e01e3032ed63d3635eb10478096f399dafa7c899d4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b075ac36167a25df0119a2e01e3032ed63d3635eb10478096f399dafa7c899d4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b075ac36167a25df0119a2e01e3032ed63d3635eb10478096f399dafa7c899d4

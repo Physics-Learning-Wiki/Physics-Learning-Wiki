@@ -1,0 +1,25 @@
+schema_version: 1
+id: mechanics.analytical.foundations-review
+title: 分析力学导论与建模：阶段测验
+description: 按约束、虚功、广义力、方程、建模与耗散六个任务各选两题，整卷提交后回看反馈．草稿预览，待人工审核．
+status: published
+tags:
+- 分析力学
+- 导论与建模
+feedback_mode: deferred
+selection:
+  type: fixed
+  questions:
+  - q-000094
+  - q-000100
+  - q-000697
+  - q-000702
+  - q-000705
+  - q-000708
+  - q-000713
+  - q-000717
+  - q-000722
+  - q-000726
+  - q-000730
+  - q-000734
+  order: fixed

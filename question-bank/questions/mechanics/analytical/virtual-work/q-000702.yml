@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000702
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.virtual-work
+- analytical.equilibrium-stability
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.equilibrium
+type: single_choice
+choice_order: shuffle
+stem: 一个固定约束下的保守单自由度系统有 $V(q)=b(q^2-a^2)^2$，$a,b>0$，动能系数正．哪些位置是平衡位形？
+choices:
+- id: A
+  content: 只有 $q=\pm a$．
+- id: B
+  content: 只有 $q=0$．
+- id: C
+  content: $q=0,\pm a$．
+- id: D
+  content: 所有 $q$ 都平衡，因为总能量守恒．
+answer:
+  choice: C
+feedback:
+  choices:
+    A: 势能极大点也可能满足平衡条件．
+    B: 两个势能极小点同样使一阶导数为零．
+    C: 三处均有 $V'=4bq(q^2-a^2)=0$．
+    D: 能量守恒不能替代各容许方向上的平衡条件．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先令势能一阶导数为零，不要只找极小值．
+solution: 任意 $\delta q$ 下 $-\delta V=-V'(q)\delta q=0$ 要求 $V'=0$，故有 $q=0,\pm a$．另外 $V''=4b(3q^2-a^2)$，所以 $q=0$ 不稳定、$\pm a$
+  为非退化稳定平衡．平衡的集合应先于稳定性分类确定．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d7086ec6d33f0da01404609c03e306710ae5a825529182330d880341b2a24a1e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d7086ec6d33f0da01404609c03e306710ae5a825529182330d880341b2a24a1e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:d7086ec6d33f0da01404609c03e306710ae5a825529182330d880341b2a24a1e

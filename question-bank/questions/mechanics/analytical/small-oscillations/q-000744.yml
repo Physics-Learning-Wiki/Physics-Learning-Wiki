@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000744
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-matrix
+- analytical.stiffness-matrix
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.linear-system
+type: numeric
+choice_order: fixed
+stem: 一个角坐标的二次能量为 $T^{(2)}=J\dot\theta^2/2$、$V^{(2)}=\kappa\theta^2/2$，其中 $J=0.50\,\mathrm{kg\,m^2}$、$\kappa=2.0\,\mathrm{N\,m}$．求固有角频率．
+answer:
+  value: 2.0
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - rad/s
+    canonical: rad/s
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先用两个能量系数的比求角频率平方，并检查单位．
+solution: 方程为 $J\ddot\theta+\kappa\theta=0$，所以 $\omega_0=\sqrt{\kappa/J}=\sqrt{4.0\,\mathrm{s^{-2}}}=2.0\,\mathrm{rad/s}$．质量矩阵元素此处是转动惯量，刚度系数有能量单位，两者的比仍给出角频率平方．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9de40edea74be5519503eb0d711d47094bec84de948d8ff17bb65cd26c9423fa
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9de40edea74be5519503eb0d711d47094bec84de948d8ff17bb65cd26c9423fa
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9de40edea74be5519503eb0d711d47094bec84de948d8ff17bb65cd26c9423fa

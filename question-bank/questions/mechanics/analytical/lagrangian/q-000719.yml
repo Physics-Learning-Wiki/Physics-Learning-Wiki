@@ -1,0 +1,97 @@
+schema_version: 3
+id: q-000719
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.kinetic-equation
+- mechanics.analytical.lagrangian.lagrangian-equation
+type: free_response
+choice_order: fixed
+stem: '质量 $m>0$ 的质点在平面内运动，用极坐标 $r>0,\theta$ 表示．动能为 $T=m(\dot r^2+r^2\dot\theta^2)/2$，位置势能为光滑函数 $V(r)$．另有切向驱动力，其对角度的广义力为已知力矩
+  $\tau(t)$，对 $r$ 的广义力为零．
+
+
+  分别建立两条拉格朗日方程，展示关键偏导和全导数，并检查径向方程与角向方程的量纲为何不同．不要求求解轨迹．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把 $\partial_rT$ 当成零，或把 $mr^2$ 未经说明地视为常量．
+    points: 0
+  - id: partial
+    label: 部分掌握：两条方程基本正确，但遗漏乘积求导解释、单位或坐标条件．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：给出全部关键导数与两条方程，解释不同量纲并检查固定半径极限．
+    points: 1
+reference_answer: $m\ddot r-mr\dot\theta^2+V'(r)=0$，$m(r^2\ddot\theta+2r\dot r\dot\theta)=\tau(t)$．
+hints:
+- 求 $\partial_rT$ 时仍需保留 $r^2\dot\theta^2$ 的位置依赖．
+- 对 $mr^2\dot\theta$ 作乘积求导，并分别用对应坐标的单位检查两行．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '径向偏导为 $\partial_{\dot r}L=m\dot r$、$\partial_rL=mr\dot\theta^2-V''(r)$，故
+
+
+  $$
+
+  m\ddot r-mr\dot\theta^2+V''(r)=0.
+
+  $$
+
+
+  角向偏导为 $\partial_{\dot\theta}L=mr^2\dot\theta$、$\partial_\theta L=0$．对前者求全时间导数必须同时微分 $r^2$ 与 $\dot\theta$：
+
+
+  $$
+
+  m(r^2\ddot\theta+2r\dot r\dot\theta)=\tau(t).
+
+  $$
+
+
+  径向方程各项为力，角向方程各项为力矩，因为对应坐标分别是长度与角度．当 $r$ 恰为常量时，角向惯性项退为 $mr^2\ddot\theta$；但不能在原问题中未说明就预先令 $\dot r=0$．$r>0$ 排除了极坐标原点的坐标奇点．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e039b05bc69ccd10016c27c960b90533fb1f036b6858f0c1f8b2ebfe8c6bdca3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e039b05bc69ccd10016c27c960b90533fb1f036b6858f0c1f8b2ebfe8c6bdca3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e039b05bc69ccd10016c27c960b90533fb1f036b6858f0c1f8b2ebfe8c6bdca3

@@ -5,6 +5,26 @@ description: 从阻力虚功建立非保守广义力，构造线性黏滞阻力�
 prerequisites:
   - lagrangian
   - generalized-force
+page_id: mechanics.analytical.nonconservative-forces
+learning_objectives:
+  - id: mechanics.analytical.nonconservative-forces.extra-force
+    title: 选择势能或额外广义力并避免重复计力
+    anchor: analytical-extra-force
+  - id: mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+    title: 由线性黏滞阻力构造瑞利耗散函数
+    anchor: analytical-rayleigh-dissipation
+  - id: mechanics.analytical.nonconservative-forces.energy-balance
+    title: 从运动方程核对输入与损失功率
+    anchor: analytical-energy-balance
+  - id: mechanics.analytical.nonconservative-forces.damped-motion
+    title: 区分阻尼参数、固有角频率与衰减角频率
+    anchor: analytical-damped-motion
+assessments:
+  - set: mechanics.analytical.nonconservative-forces.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.nonconservative-forces.exercises
+    placement: footer
 ---
 
 ## 非保守广义力与耗散
@@ -12,6 +32,8 @@ prerequisites:
 真实摆会停下来，弹簧振子也常受到阻力．如果仍只用保守部分的 $L=T-V$ 并令方程右侧为零，就把导致能量损失的作用遗漏了．解决办法是保留这些力的广义力；对于线性黏滞阻力，还可以用一个标量函数统一表达．
 
 本页需要 [拉格朗日方程](lagrangian.md) 和 [广义力的虚功定义](dalembert-principle.md)．读完应能区分势能、额外广义力和耗散函数，建立阻尼振子方程，并核对耗散功率．
+
+<span id="analytical-extra-force"></span>
 
 ## 不把所有主动力都塞进势能
 
@@ -28,6 +50,8 @@ $$
 外驱动不一定无法用势能表示．例如沿直线的已知力 $F(t)$ 可以写成 $V_{\rm ext}(x,t)=-xF(t)$；加入 $V_{\rm ext}$，或保留右侧广义力 $F(t)$，都得到同一方程，二者只能选一种．势能显含时间时，装置可以交换能量，因此「能写成位置势能」不保证机械能守恒．
 
 对于一般外势能，展开到 $V_{\rm ext}(0,t)+x\,\partial_xV_{\rm ext}(0,t)$ 可以得到这种均匀驱动模型．舍去外势能二阶项还需要它的曲率影响可忽略，例如驱动本身也按小量计数；若曲率不可忽略，会出现随时间变化的回复系数，不能仍套用常系数受迫振子．
+
+<span id="analytical-rayleigh-dissipation"></span>
 
 ## 瑞利耗散函数从哪里来
 
@@ -109,6 +133,8 @@ $$
 
 每一项都是力，$c$ 的单位为 $\mathrm{kg/s}$．这个方程与直接写牛顿方程完全一致，说明新方法仍描述同一个物理模型．
 
+<span id="analytical-energy-balance"></span>
+
 ### 从运动方程检查能量
 
 机械能为 $E=T+V$．将方程乘 $\dot x$，可得
@@ -120,6 +146,8 @@ $$
 外力输入功率为 $F\dot x$，阻力损失功率为 $c\dot x^2=2\mathcal R$．外力不一定总在输入能量，输入功率的符号取决于力与速度．
 
 无驱动时 $\mathrm dE/\mathrm dt\le0$；若 $c>0$，只有瞬时 $\dot x=0$ 时损失率为零，这不代表阻尼消失．关闭阻尼 $c=0$ 后，恢复无阻尼弹簧振子；同时令 $F=0$，能量守恒．
+
+<span id="analytical-damped-motion"></span>
 
 ### 方程如何描述衰减
 
@@ -157,6 +185,8 @@ $$
 
 ??? note "自测二解答"
     求导得到 $2c\dot x$，会把阻力加倍．在线性模型中，$1/2$ 保证速度偏导恰好给出所需阻力；对应损失功率才是 $2\mathcal R$．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

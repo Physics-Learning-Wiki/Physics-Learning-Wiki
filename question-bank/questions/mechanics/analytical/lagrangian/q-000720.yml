@@ -1,0 +1,120 @@
+schema_version: 3
+id: q-000720
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+- analytical.energy-integral
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.kinetic-equation
+type: free_response
+choice_order: fixed
+stem: '一个单自由度模型的独立角坐标为 $\theta$，其拉格朗日量是
+
+
+  $$
+
+  L=\frac12 I_0(1+\varepsilon\sin^2\theta)\dot\theta^2-\kappa(1-\cos\theta),
+
+  \qquad I_0,\kappa>0,\quad\varepsilon\ge0.
+
+  $$
+
+
+  $I_0$ 为转动惯量，$\kappa$ 的单位为能量；无额外广义力．推导运动方程，写出机械能，并沿所得运动方程验证能量守恒．说明为什么不能把位置相关的惯性系数直接移到 $\ddot\theta$ 前便结束计算．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：遗漏惯性系数的导数，或从能量关系在所有时刻直接约去角速度．
+    points: 0
+  - id: partial
+    label: 部分掌握：运动方程正确，但能量检查、位置相关惯性解释或常系数极限缺失．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：保留正确的半个惯性系数导数项，并完成能量、量纲和 $\varepsilon=0$ 检查．
+    points: 1
+reference_answer: $I_0(1+\varepsilon\sin^2\theta)\ddot\theta+I_0\varepsilon\sin\theta\cos\theta\,\dot\theta^2+\kappa\sin\theta=0$．
+hints:
+- 先用一般 $I(\theta)$ 计算两个导数，再代入给定函数．
+- 能量求导后应出现运动方程乘 $\dot\theta$，无需除以角速度．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '记 $I(\theta)=I_0(1+\varepsilon\sin^2\theta)>0$，则
+
+
+  $$
+
+  \frac{\partial L}{\partial\dot\theta}=I\dot\theta,\qquad
+
+  \frac{\mathrm d}{\mathrm dt}\frac{\partial L}{\partial\dot\theta}=I\ddot\theta+I''\dot\theta^2,\qquad
+
+  \frac{\partial L}{\partial\theta}=\frac12I''\dot\theta^2-\kappa\sin\theta.
+
+  $$
+
+
+  相减后只剩半个 $I''\dot\theta^2$．因 $I''=2I_0\varepsilon\sin\theta\cos\theta$，运动方程是
+
+
+  $$
+
+  I_0(1+\varepsilon\sin^2\theta)\ddot\theta+
+
+  I_0\varepsilon\sin\theta\cos\theta\,\dot\theta^2+\kappa\sin\theta=0.
+
+  $$
+
+
+  机械能 $E=I\dot\theta^2/2+\kappa(1-\cos\theta)$ 满足
+
+
+  $$
+
+  \dot E=\dot\theta\left(I\ddot\theta+\frac12I''\dot\theta^2+\kappa\sin\theta\right)=0.
+
+  $$
+
+
+  这是把已建立的方程用于检查，不需要在转向点除以 $\dot\theta$．当 $\varepsilon=0$ 时恢复常惯性系数模型；各项均具有力矩单位．遗漏 $I''$ 项会使原能量关系一般不再成立．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bff92d307bb37b2278051993a2317bf04ab5062370f66c812e230f79ac81e0b8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bff92d307bb37b2278051993a2317bf04ab5062370f66c812e230f79ac81e0b8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bff92d307bb37b2278051993a2317bf04ab5062370f66c812e230f79ac81e0b8

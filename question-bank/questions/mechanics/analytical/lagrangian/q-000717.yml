@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000717
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+- analytical.time-dependent-lagrangian
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.lagrangian-equation
+type: single_choice
+choice_order: shuffle
+stem: 滑块受弹簧力 $-kx$ 和已知外力 $F(t)$．若已取 $V=kx^2/2-xF(t)$，拉格朗日方程右侧应怎样处理这个外力？
+choices:
+- id: A
+  content: 再次加入 $F(t)$．
+- id: B
+  content: 不再加入它，右侧对该外力取零．
+- id: C
+  content: 加入 $-F(t)$ 以抵消显式时间项．
+- id: D
+  content: 因为势能显含时间，不能使用拉格朗日方程．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 同一外力已通过势能的坐标导数计入，再加会重复．
+    B: 位置势能已给出该外力贡献．
+    C: 显式时间变化不通过任意增添右侧来抵消．
+    D: 拉格朗日量可以显含时间．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 检查 $-\partial V/\partial x$ 已经包含哪些力．
+solution: 取 $L=m\dot x^2/2-kx^2/2+xF(t)$，无额外右侧即可得到 $m\ddot x+kx=F(t)$．也可以只取弹簧势能，把 $F(t)$ 放在右侧，但两种记账方式不能同时使用．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e24b6b00f83e678a1a03865d053740fa55cff5b2b7c2949dacdcdcac4bd611db
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e24b6b00f83e678a1a03865d053740fa55cff5b2b7c2949dacdcdcac4bd611db
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:e24b6b00f83e678a1a03865d053740fa55cff5b2b7c2949dacdcdcac4bd611db

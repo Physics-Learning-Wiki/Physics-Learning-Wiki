@@ -1,0 +1,51 @@
+schema_version: 3
+id: q-000765
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-coordinate
+- analytical.energy-integral
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.initial-state
+type: numeric
+choice_order: fixed
+stem: 等长等质量双摆在小振动范围取初态 $\theta_1(0)=d$、$\theta_2(0)=0$，两初角速度为零，$d\ne0$．令低频与高频模态能量分别为 $E_-,E_+$，求无量纲比值 $E_-/E_+$．可用 $n_\mp^2=ml^2(4\pm2\sqrt2)$ 和 $\omega_\mp^2=(2\mp\sqrt2)g/l$．
+answer:
+  value: 1.0
+  tolerance:
+    type: absolute
+    value: 1.0e-09
+  unit:
+    required: false
+    accepted: []
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先把 $u$ 换成归一化的 $Q$，再分别计算两模态能量．
+solution: |-
+  两未归一化幅值初态均为 $u_-(0)=u_+(0)=d/2$．质量归一化坐标为 $Q_\mp=n_\mp u_\mp$，所以
+
+  $$
+  E_\mp=\frac18 n_\mp^2\omega_\mp^2d^2.
+  $$
+
+  两个乘积均为 $n_\mp^2\omega_\mp^2=4mgl$，因此 $E_-=E_+=mgl d^2/2$，比值为一．两者之和 $mgl d^2$ 等于原二次势能．不能仅凭相同的 $u$ 幅值就断言能量相同，仍需检查各自惯性与频率因子．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

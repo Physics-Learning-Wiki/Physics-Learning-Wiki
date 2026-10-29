@@ -1,0 +1,70 @@
+analytical.virtual-displacement:
+  title: 等时容许虚位移
+  topics:
+  - mechanics.analytical
+analytical.ideal-constraint:
+  title: 理想约束与总约束虚功
+  topics:
+  - mechanics.analytical
+analytical.dalembert-principle:
+  title: 达朗贝尔原理
+  topics:
+  - mechanics.analytical
+analytical.generalized-force:
+  title: 广义力与广义功率
+  topics:
+  - mechanics.analytical
+analytical.lagrangian:
+  title: 动能势能与拉格朗日量
+  topics:
+  - mechanics.analytical
+analytical.euler-lagrange-equation:
+  title: 独立坐标下的拉格朗日方程
+  topics:
+  - mechanics.analytical
+analytical.coordinate-transformation:
+  title: 广义坐标与速度变换
+  topics:
+  - mechanics.analytical
+analytical.rayleigh-dissipation:
+  title: 瑞利耗散函数与损失功率
+  topics:
+  - mechanics.analytical
+analytical.quadratic-approximation:
+  title: 平衡附近的阶数计数与二次近似
+  topics:
+  - mechanics.analytical
+analytical.mass-matrix:
+  title: 质量矩阵与惯性正定性
+  topics:
+  - mechanics.analytical
+analytical.small-oscillation:
+  title: 非退化稳定平衡附近的小振动
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations
+analytical.normal-mode:
+  title: 广义特征值与简正模
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations
+analytical.mass-orthogonality:
+  title: 振型的质量正交与归一化
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations
+analytical.normal-coordinate:
+  title: 简正坐标与能量解耦
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations
+analytical.initial-condition-projection:
+  title: 模态初始条件投影
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations
+analytical.zero-mode:
+  title: 零模与二次近似边界
+  topics:
+  - mechanics.analytical
+  - mechanics.oscillations

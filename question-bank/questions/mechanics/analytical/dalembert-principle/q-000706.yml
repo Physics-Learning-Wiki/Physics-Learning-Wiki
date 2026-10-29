@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000706
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.generalized-force
+type: multiple_choice
+choice_order: shuffle
+stem: 以下关于广义力的说法，哪些成立？
+choices:
+- id: A
+  content: $Q_\alpha\delta q_\alpha$ 具有能量量纲．
+- id: B
+  content: 每个广义力只能来自一个质点上的力．
+- id: C
+  content: 角坐标的广义力可具有力矩单位．
+- id: D
+  content: 广义力总等于某个力矢量的模．
+answer:
+  choices:
+  - A
+  - C
+feedback:
+  choices:
+    A: 它是主动力虚功的一项．
+    B: 同一坐标变化可移动多个受力点，需要求和．
+    C: 其单位为能量除以无量纲角度．
+    D: 它含正方向、投影及几何尺度，可以为负．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 从虚功定义检查单位、求和和符号．
+solution: 定义 $Q_\alpha=\sum_i\boldsymbol F_i^{(a)}\cdot\partial\boldsymbol r_i/\partial q_\alpha$ 保留了全部受力点的投影．因 $Q_\alpha\delta
+  q_\alpha$ 是虚功，广义力的量纲取决于坐标，不能一律当成牛顿．
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:145d2f699604a9d25ab5f0201aa40715c7547f19a140449100c9678cd147dd74
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:145d2f699604a9d25ab5f0201aa40715c7547f19a140449100c9678cd147dd74
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:145d2f699604a9d25ab5f0201aa40715c7547f19a140449100c9678cd147dd74

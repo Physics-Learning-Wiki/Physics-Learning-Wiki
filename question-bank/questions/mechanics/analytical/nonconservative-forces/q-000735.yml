@@ -1,0 +1,61 @@
+schema_version: 3
+id: q-000735
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- oscillations.damping
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.damped-motion
+type: numeric
+choice_order: fixed
+stem: 无驱动振子满足 $m\ddot x+c\dot x+kx=0$，$m=2.0\,\mathrm{kg}$、$c=4.0\,\mathrm{kg/s}$、$k=10.0\,\mathrm{N/m}$．求欠阻尼运动的角频率 $\omega_d$．
+answer:
+  value: 2.0
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - rad/s
+    canonical: rad/s
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先计算衰减常量 $c/(2m)$，再判断阻尼类别．
+solution: $\gamma=c/(2m)=1.0\,\mathrm{s^{-1}}$，$\omega_0^2=k/m=5.0\,\mathrm{s^{-2}}$，所以 $\gamma<\omega_0$ 且 $\omega_d=\sqrt{\omega_0^2-\gamma^2}=2.0\,\mathrm{rad/s}$．它与固有角频率
+  $\sqrt5\,\mathrm{rad/s}$ 不同．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c11b0b2cc3bf9a063eabbfaf59c5c6e49b5697e39638cf20462669b0af5309bb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c11b0b2cc3bf9a063eabbfaf59c5c6e49b5697e39638cf20462669b0af5309bb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c11b0b2cc3bf9a063eabbfaf59c5c6e49b5697e39638cf20462669b0af5309bb

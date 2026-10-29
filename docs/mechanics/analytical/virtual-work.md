@@ -4,6 +4,23 @@ author: Physics Learning Wiki Team
 description: 在固定时刻辨认容许虚位移，理解理想约束的零虚功条件，并用虚功判断圆环质点的平衡与稳定性．
 prerequisites:
   - generalized-coordinate
+page_id: mechanics.analytical.virtual-work
+learning_objectives:
+  - id: mechanics.analytical.virtual-work.virtual-displacement
+    title: 在固定时刻构造容许虚位移
+    anchor: analytical-virtual-displacement
+  - id: mechanics.analytical.virtual-work.ideal-constraint
+    title: 辨析总约束虚功与实际功率
+    anchor: analytical-ideal-constraint
+  - id: mechanics.analytical.virtual-work.equilibrium
+    title: 用虚功判定平衡并另查稳定性
+    anchor: analytical-equilibrium
+assessments:
+  - set: mechanics.analytical.virtual-work.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.virtual-work.exercises
+    placement: footer
 ---
 
 ## 虚位移、理想约束与虚功
@@ -11,6 +28,8 @@ prerequisites:
 把小球限制在光滑圆环上时，支持力保证它不离开轨道，却未必决定沿轨道的运动．如果只问小球沿轨道是否平衡，能否不先求出支持力？关键是把力投影到约束容许的方向．
 
 本页学习如何构造 **虚位移（virtual displacement）**，以及何时可以利用理想约束消去反力．先读 [约束与广义坐标](constraints-generalized-coordinates.md)，并复习 [功与势能](../dynamics/momentum-energy.md)．
+
+<span id="analytical-virtual-displacement"></span>
 
 ## 冻结时间后，哪些位置变化仍被允许
 
@@ -61,6 +80,8 @@ $$
 
 虚位移切于冻结后的圆周．真实位移还包含悬点移动，通常不切于同一条冻结的圆周．
 
+<span id="analytical-ideal-constraint"></span>
+
 ## 理想约束为什么能消去反力
 
 把每个质点所受力分成主动力 $\boldsymbol F_i^{(a)}$ 和约束力 $\boldsymbol f_i$．主动力是重力、弹簧力等用于驱动运动的力；这种划分取决于模型，并不等同于外力／内力划分．
@@ -85,6 +106,8 @@ $$
     $$
     
     通常不为零．驱动悬点的装置能够向小球传递能量．
+
+<span id="analytical-equilibrium"></span>
 
 ## 虚功原理：沿每个容许方向都没有剩余驱动力
 
@@ -124,6 +147,8 @@ $$
 
 ??? note "自测二解答"
     不一定．设两个端力为 $\boldsymbol f$ 和 $-\boldsymbol f$，两端虚位移为 $\delta\boldsymbol r_1$、$\delta\boldsymbol r_2$．总虚功为 $\boldsymbol f\cdot(\delta\boldsymbol r_1-\delta\boldsymbol r_2)$．杆长不变使差位移的轴向分量为零，所以总和为零；单个端力的虚功仍可能非零．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000701
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.ideal-constraint
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.ideal-constraint
+type: single_choice
+choice_order: shuffle
+stem: 两个质点由理想轻杆相连．以下哪一条件准确表达杆的理想约束性质？
+choices:
+- id: A
+  content: 每个端力与各自端点虚位移的标量积都必须为零．
+- id: B
+  content: 两个端力的总虚功对任意容许虚位移为零．
+- id: C
+  content: 两个端点的虚位移必须完全相同．
+- id: D
+  content: 杆的两个端力必定各自为零．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 端力可对端点分别做非零虚功；需要为零的是总和．
+    B: 杆长约束消去了两端相对虚位移的轴向分量．
+    C: 杆还可转动，两端虚位移不必相同．
+    D: 零总虚功不意味着反力不存在．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先把两个端点的虚功相加，再使用长度约束．
+solution: 两端力写为 $\boldsymbol f,-\boldsymbol f$ 时，总虚功为 $\boldsymbol f\cdot(\delta\boldsymbol r_1-\delta\boldsymbol r_2)$．轻杆的轴向相对虚位移为零，所以总和为零；分别的两项不必为零．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:54606e8f4232932e32bb49b9428c747bf2ea7e78d8f0aaf7a86bfd89df158fb0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:54606e8f4232932e32bb49b9428c747bf2ea7e78d8f0aaf7a86bfd89df158fb0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:54606e8f4232932e32bb49b9428c747bf2ea7e78d8f0aaf7a86bfd89df158fb0

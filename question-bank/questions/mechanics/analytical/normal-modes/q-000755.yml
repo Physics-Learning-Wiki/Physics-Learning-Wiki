@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000755
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.zero-mode
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.zero-mode
+type: single_choice
+choice_order: shuffle
+stem: 某简正方向的刚度为零，且原势能对该方向的平移严格不变．若该简正坐标的初态为 $Q_0(0)=A$、$\dot Q_0(0)=V$，运动应写成什么？
+choices:
+- id: A
+  content: $Q_0(t)=A+Vt$．
+- id: B
+  content: $Q_0(t)=A\cos0t+(V/0)\sin0t$，无需另作处理．
+- id: C
+  content: $Q_0(t)=A$，任何 $V$ 都会被约束消去．
+- id: D
+  content: $Q_0(t)=A\mathrm e^{-t}$．
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 零模满足 $\ddot Q_0=0$，可含匀速项．
+    B: 包含除以零的写法没有定义，应先求解零模方程．
+    C: 零刚度不消去初速度．
+    D: 题面没有阻尼，不能引入指数衰减．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 直接求解零角频率对应的微分方程，避免使用含除法的振动通式．
+solution: 零模方程是 $\ddot Q_0=0$，直接积分得 $A+Vt$．原势能严格平移不变确保这一方向确实无回复力．若仅知道二阶曲率为零而原势能含高阶项，则不能把此结论直接用于原系统．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a0d726bef99234f7a5a80842a3c81e9242bedff29bc60928f62d406fd331e042
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a0d726bef99234f7a5a80842a3c81e9242bedff29bc60928f62d406fd331e042
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a0d726bef99234f7a5a80842a3c81e9242bedff29bc60928f62d406fd331e042

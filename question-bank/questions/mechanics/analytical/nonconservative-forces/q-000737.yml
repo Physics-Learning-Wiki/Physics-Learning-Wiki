@@ -1,0 +1,118 @@
+schema_version: 3
+id: q-000737
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+- analytical.rayleigh-dissipation
+- analytical.time-dependent-lagrangian
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.extra-force
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+- mechanics.analytical.nonconservative-forces.energy-balance
+type: free_response
+choice_order: fixed
+stem: '固定悬点轻杆单摆的摆球质量 $m>0$、杆长 $l>0$，$\theta$ 从竖直向下逆时针量取．摆球受到水平向右的已知力 $F(t)$，以及相对于静止空气的阻力 $\boldsymbol F_D=-c\boldsymbol v$，$c\ge0$．取下垂位置的重力势能为零．
+
+
+  构造保守部分的 $L$、耗散函数和驱动广义力，建立完整角度方程，并求「动能＋重力势能」的变化率．再说明若改用外势能 $V_{\rm ext}=-F(t)l\sin\theta$，怎样避免重复计入驱动．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：遗漏投影或几何尺度，或同时在势能和右侧重复加入驱动．
+    points: 0
+  - id: partial
+    label: 部分掌握：阻尼驱动方程正确，但功率、外势能等价处理或能量对象区分有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确建立方程与功率平衡，并解释外势能方案及避免重复计力的做法．
+    points: 1
+reference_answer: $ml^2\ddot\theta+cl^2\dot\theta+mgl\sin\theta=F(t)l\cos\theta$；$\dot E=F(t)l\cos\theta\,\dot\theta-cl^2\dot\theta^2$．
+hints:
+- 水平力先与 $\partial_\theta\boldsymbol r$ 作标量积，不可直接把 $F$ 放进力矩方程．
+- 验证驱动功率时使用摆球水平速度，并明确能量是否包含外势能．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '位置为 $(l\sin\theta,-l\cos\theta)$，因此
+
+
+  $$
+
+  L=\frac12ml^2\dot\theta^2-mgl(1-\cos\theta),\quad
+
+  \mathcal R=\frac12cl^2\dot\theta^2,\quad
+
+  Q_\theta^{\rm drive}=F(t)l\cos\theta.
+
+  $$
+
+
+  含耗散方程给出
+
+
+  $$
+
+  ml^2\ddot\theta+cl^2\dot\theta+mgl\sin\theta=F(t)l\cos\theta.
+
+  $$
+
+
+  机械能 $E=ml^2\dot\theta^2/2+mgl(1-\cos\theta)$ 的变化率为
+
+
+  $$
+
+  \dot E=\dot\theta(ml^2\ddot\theta+mgl\sin\theta)
+
+  =F(t)l\cos\theta\,\dot\theta-cl^2\dot\theta^2.
+
+  $$
+
+
+  第一项正是水平力乘摆球水平速度，第二项为阻力损失功率．驱动功率可正可负．
+
+
+  若将 $V_{\rm ext}$ 并入势能，则 $L$ 需增加 $F(t)l\sin\theta$，右侧不再保留同一个驱动广义力，得到相同方程．此时若定义 $E_{\rm tot}=E+V_{\rm ext}$，则 $\dot E_{\rm
+  tot}=-cl^2\dot\theta^2-\dot F(t)l\sin\theta$；它和题目先前定义的 $E$ 是不同的能量记账对象．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:751856a55c7cbaa0acebd95d48a17dbeead9a807b5d776fc6cc75c0d49920c5e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:751856a55c7cbaa0acebd95d48a17dbeead9a807b5d776fc6cc75c0d49920c5e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:751856a55c7cbaa0acebd95d48a17dbeead9a807b5d776fc6cc75c0d49920c5e

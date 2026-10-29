@@ -1,0 +1,126 @@
+schema_version: 3
+id: q-000758
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-orthogonality
+- analytical.normal-coordinate
+- analytical.normal-mode
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.mass-orthogonality
+- mechanics.analytical.normal-modes.normal-coordinates
+type: free_response
+choice_order: fixed
+stem: '一个二自由度保守线性系统有 $M=m\operatorname{diag}(1,2)$、$K=\omega_0^2M$，$m,\omega_0>0$，两个位移坐标都具有长度单位．给定同一频率子空间内的两个独立振型 $\boldsymbol
+  a_1=(1,0)^{\mathsf T}$、$\boldsymbol a_2=(1,1)^{\mathsf T}$．
+
+
+  检验这两个振型是否质量正交，按质量内积正交化并归一化，写出简正坐标．说明频率简并为什么不造成振型缺失；对任意初始位移 $\boldsymbol x_0$ 和初始速度 $\boldsymbol v_0$ 写出运动，并说明更换该子空间的正交基是否改变运动．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把两个同频振型当作一个模态，或直接将原基底判为质量正交．
+    points: 0
+  - id: partial
+    label: 部分掌握：正交归一化基本正确，但简正坐标、一般初态或基底不唯一解释有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完成质量正交化、坐标变换和一般初态解，并解释简并中的基底自由度．
+    points: 1
+reference_answer: 可取 $\boldsymbol b_1=(1,0)^{\mathsf T}/\sqrt m$、$\boldsymbol b_2=(0,1)^{\mathsf T}/\sqrt{2m}$，$Q_1=\sqrt
+  m\,x_1$、$Q_2=\sqrt{2m}\,x_2$；$\boldsymbol x=\boldsymbol x_0\cos\omega_0t+\boldsymbol v_0\sin\omega_0t/\omega_0$．
+hints:
+- Gram–Schmidt 的投影分子与分母都使用质量内积．
+- 两简正坐标频率相同，可以先在模态中求解，再还原为一个向量表达式．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '给定矩阵使每个非零向量都满足 $K\boldsymbol a=\omega_0^2M\boldsymbol a$，所以整个二维空间都是同一频率的特征子空间．原基底不正交，因为 $\boldsymbol a_1^{\mathsf
+  T}M\boldsymbol a_2=m$．
+
+
+  从第二个向量减去在第一个上的质量投影：
+
+
+  $$
+
+  \widetilde{\boldsymbol a}_2=\boldsymbol a_2-
+
+  \frac{\boldsymbol a_1^{\mathsf T}M\boldsymbol a_2}
+
+  {\boldsymbol a_1^{\mathsf T}M\boldsymbol a_1}\boldsymbol a_1
+
+  =(0,1)^{\mathsf T}.
+
+  $$
+
+
+  质量范数分别为 $\sqrt m,\sqrt{2m}$，故可取
+
+
+  $$
+
+  B=\begin{pmatrix}1/\sqrt m&0\\0&1/\sqrt{2m}\end{pmatrix},\qquad
+
+  \boldsymbol Q=B^{\mathsf T}M\boldsymbol x
+
+  =(\sqrt m\,x_1,\sqrt{2m}\,x_2)^{\mathsf T}.
+
+  $$
+
+
+  两坐标均满足 $\ddot Q+\omega_0^2Q=0$，还原任意初态即得
+
+
+  $$
+
+  \boldsymbol x(t)=\boldsymbol x_0\cos\omega_0t+
+
+  \frac{\boldsymbol v_0}{\omega_0}\sin\omega_0t.
+
+  $$
+
+
+  频差为零时并不自动保证最初基底正交，但可在完整子空间内另选质量正交基．更换基底会改变坐标分量及投影系数；二者同步变换后，实际 $\boldsymbol x(t)$ 不变．该式同时恢复两组初态并满足原矩阵方程．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:2240d1db6f1375b8c776d7c718aac690b8333b41abbf3817667708cd0dc6a737
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:2240d1db6f1375b8c776d7c718aac690b8333b41abbf3817667708cd0dc6a737
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:2240d1db6f1375b8c776d7c718aac690b8333b41abbf3817667708cd0dc6a737

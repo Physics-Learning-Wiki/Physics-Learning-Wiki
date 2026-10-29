@@ -1,0 +1,16 @@
+schema_version: 1
+id: mechanics.analytical.lagrangian-modeling.exercises
+title: 拉格朗日建模实例：建模与推导自评
+description: 先独立作答，再核对条件、推导、结果与检验，按本题标准自评．题目未经人工审核，仅供草稿预览．
+status: published
+tags:
+- 分析力学
+- 导论与建模
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000727
+  - q-000728
+  - q-000729
+  order: fixed

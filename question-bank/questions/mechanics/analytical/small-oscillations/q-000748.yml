@@ -1,0 +1,97 @@
+schema_version: 3
+id: q-000748
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.equilibrium-stability
+- analytical.quadratic-approximation
+- analytical.small-oscillation
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.equilibrium-curvature
+type: free_response
+choice_order: fixed
+stem: '一个长度坐标模型有 $T=m\dot x^2/2$、$V(x)=kx^2/2+\alpha x^4/4$，其中 $m,\alpha>0$，$k$ 可正、可零、可负．无驱动与阻力．
+
+
+  分别讨论 $k>0$、$k=0$、$k<0$ 时全部平衡位置及其稳定性．对每个非退化稳定平衡求线性小振动角频率；解释零曲率情形为什么不能当作原系统自由运动．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把零曲率直接当作不稳定或自由运动，或遗漏非零平衡位置．
+    points: 0
+  - id: partial
+    label: 部分掌握：多数平衡与频率正确，但遗漏负 $k$ 的额外平衡或零曲率情形的解释．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整分类全部平衡，计算非退化频率，并说明四次回复力与稳定性的关系．
+    points: 1
+reference_answer: $k>0$ 时零点稳定，$\omega=\sqrt{k/m}$；$k=0$ 时零点稳定但二阶近似退化；$k<0$ 时零点不稳定，$\pm\sqrt{-k/\alpha}$ 稳定，$\omega=\sqrt{-2k/m}$．
+hints:
+- 先求全部驻点，再在各驻点计算曲率，不要只检查原点．
+- 二阶项消失时回到原势能和原方程，区分稳定与线性简谐近似．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '平衡条件是 $V''=x(k+\alpha x^2)=0$，曲率为 $V''''=k+3\alpha x^2$．
+
+
+  当 $k>0$ 时只有 $x_0=0$，曲率为 $k>0$，故 $\omega_0=\sqrt{k/m}$．
+
+
+  当 $k=0$ 时也只有零点．原势能 $\alpha x^4/4$ 在零点有严格极小值，且正定动能与势能一起限制足够小能量的位移和速度，因此该平衡稳定．但 $V''''(0)=0$，二次近似没有回复项，不能给出正的线性振动频率．原方程仍是
+  $m\ddot x+\alpha x^3=0$，并非自由运动．
+
+
+  当 $k<0$ 时有三处平衡．零点曲率为负，故不稳定．另外两点为 $x_0=\pm\sqrt{-k/\alpha}$，代回曲率得
+
+
+  $$
+
+  V''''(x_0)=k+3\alpha(-k/\alpha)=-2k>0.
+
+  $$
+
+
+  故两处均非退化稳定，置 $\eta=x-x_0$ 后线性方程为 $m\ddot\eta-2k\eta=0$，角频率为 $\sqrt{-2k/m}$．这里 $k$ 的单位是 $\mathrm{N/m}$、$\alpha$ 是 $\mathrm{N/m^3}$，各频率量纲均正确．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1cc7569d08c812861b238d268dcf8dc9b6e146c9b5111f936be9971d9284555e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1cc7569d08c812861b238d268dcf8dc9b6e146c9b5111f936be9971d9284555e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1cc7569d08c812861b238d268dcf8dc9b6e146c9b5111f936be9971d9284555e

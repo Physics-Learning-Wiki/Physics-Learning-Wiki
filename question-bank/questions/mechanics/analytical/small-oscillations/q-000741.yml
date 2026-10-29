@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000741
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.equilibrium-stability
+- analytical.quadratic-approximation
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.equilibrium-curvature
+type: single_choice
+choice_order: shuffle
+stem: 两个系统的势能分别为 $V_1=a\eta^4$ 与 $V_2=-a\eta^4$，$a>0$，动能都是 $m\dot\eta^2/2$，$m>0$．在 $\eta=0$ 处的二阶曲率都为零，可得出什么？
+choices:
+- id: A
+  content: 两个原系统都没有回复力．
+- id: B
+  content: 两个原系统都稳定．
+- id: C
+  content: 二次近似无法区分其稳定性，需查看高阶势能．
+- id: D
+  content: 两个系统都具有同一个正固有角频率．
+answer:
+  choice: C
+feedback:
+  choices:
+    A: 零二阶曲率不排除高阶力．
+    B: 负四次势沿偏离方向下降．
+    C: 正负四次项具有相同零二次项，却有不同局部行为．
+    D: 二次近似没有给出正的线性回复系数．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 回到原势能检查偏离零点后能量是升高还是降低．
+solution: 两者都有 $V''(0)=0$，但 $V_1$ 在零点为严格极小值，$V_2$ 为极大值．原回复力分别为 $-4a\eta^3$ 和 $+4a\eta^3$．二次近似漏掉这些项，不能仅由其零曲率判定原系统自由运动或稳定性．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:370f6b79f4588d5685b68c7e229587c463ea0b4949b3c15cf2938808d2d76d77
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:370f6b79f4588d5685b68c7e229587c463ea0b4949b3c15cf2938808d2d76d77
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:370f6b79f4588d5685b68c7e229587c463ea0b4949b3c15cf2938808d2d76d77

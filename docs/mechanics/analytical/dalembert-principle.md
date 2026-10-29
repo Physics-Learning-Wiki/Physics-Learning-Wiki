@@ -5,6 +5,23 @@ description: 从牛顿定律与零虚功条件建立达朗贝尔原理，定义�
 prerequisites:
   - virtual-displacement
   - ideal-constraint
+page_id: mechanics.analytical.dalembert-principle
+learning_objectives:
+  - id: mechanics.analytical.dalembert-principle.projection
+    title: 把主动力与惯性项投影到容许方向
+    anchor: analytical-projection
+  - id: mechanics.analytical.dalembert-principle.generalized-force
+    title: 从位置映射计算广义力及其量纲
+    anchor: analytical-generalized-force
+  - id: mechanics.analytical.dalembert-principle.equations
+    title: 利用独立虚变化建立动力学方程
+    anchor: analytical-equations
+assessments:
+  - set: mechanics.analytical.dalembert-principle.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.dalembert-principle.exercises
+    placement: footer
 ---
 
 ## 达朗贝尔原理与广义力
@@ -12,6 +29,8 @@ prerequisites:
 虚功原理能判断平衡，但圆环上的小环通常正在加速，主动力的切向投影不为零．要把同一思路用于动力学，必须把加速度项一起投影，而不是继续令主动力虚功为零．
 
 本页从 [牛顿运动定律](../dynamics/newton-laws.md) 出发，学习达朗贝尔原理和 **广义力（generalized force）**．需要掌握 [虚位移与理想约束](virtual-work.md)，会使用矢量标量积．
+
+<span id="analytical-projection"></span>
 
 ## 把牛顿方程投影到容许方向
 
@@ -32,6 +51,8 @@ $$
 
 ???+ warning "惯性项的含义"
     这里的 $-m_i\ddot{\boldsymbol r}_i=-\dot{\boldsymbol p}_i$ 是移到左边的动力学项，不是 $-\boldsymbol p_i$，也不是新增加的物理相互作用．它与 [非惯性参考系的惯性力](../dynamics/inertial-force.md) 需要区分；本页没有变换参考系．
+
+<span id="analytical-generalized-force"></span>
 
 ## 广义力：每个坐标变化对应的虚功系数
 
@@ -72,6 +93,8 @@ Q_\alpha=\sum_i(-\nabla_i V)\cdot
 $$
 
 这一步不要求约束定常，但这里的势能不含速度．对于额外阻力或外驱动力，可以直接从虚功求相应广义力．
+
+<span id="analytical-equations"></span>
 
 ## 独立坐标下的动力学投影
 
@@ -140,6 +163,8 @@ $$
     $$
     
     $c$ 的单位为 $\mathrm{kg/s}$，每项都是力矩．令 $c=0$ 恢复无阻力方程．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

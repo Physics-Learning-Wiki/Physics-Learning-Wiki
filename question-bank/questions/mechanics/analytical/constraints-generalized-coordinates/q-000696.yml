@@ -1,0 +1,99 @@
+schema_version: 3
+id: q-000696
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.nonholonomic-constraint
+- analytical.degrees-of-freedom
+related_pages:
+- mechanics.analytical.constraints-generalized-coordinates
+objectives:
+- mechanics.analytical.constraints-generalized-coordinates.velocity-constraints
+type: free_response
+choice_order: fixed
+stem: '一个运动学模型用三个长度坐标 $(x,y,z)$ 标记位形，容许速度满足
+
+
+  $$
+
+  \dot z=\frac{x}{L}\dot y,\qquad L>0.
+
+  $$
+
+
+  不讨论其动力学．从 $(x,y)=(0,0)$ 出发，依次沿矩形四边运动：先将 $x$ 增至 $a$，再将 $y$ 增至 $b$，然后把 $x$ 降至零，最后把 $y$ 降至零，其中 $a,b>0$，每个拐角均可停下．
+
+
+  计算这一过程的净 $\Delta z$，解释能否把 $z$ 普遍消去为当前 $x,y$ 的单值函数，并分别给出位形维数和每个位形处的独立容许速度数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把速度约束直接计作位置约束，或认为回路必有零增量．
+    points: 0
+  - id: partial
+    label: 部分掌握：回路增量正确，但未区分位形维数和容许速度数，或缺少不可积解释．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：算出回路增量，解释路径依赖，并分别得到三维位形和二维容许速度集合．
+    points: 1
+reference_answer: $\Delta z=ab/L$；速度约束不可普遍积分为 $z=z(x,y)$，位形维数为三，独立容许速度数为二．
+hints:
+- 逐段积分，不要在整个回路把 $x$ 当成同一常量．
+- 速度限制的秩与位置等式的秩承担不同的计数任务．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '把约束沿真实路径写为 $\mathrm dz=(x/L)\,\mathrm dy$．两段水平边上 $\mathrm dy=0$，没有 $z$ 增量．向上的一边有 $x=a$，给出 $ab/L$；向下的一边有 $x=0$，增量为零．所以
+
+
+  $$
+
+  \Delta z=\oint\frac{x}{L}\,\mathrm dy=\frac{ab}{L}.
+
+  $$
+
+
+  相同的最终 $x,y$ 可以伴随不同的 $z$，因此不能只根据当前 $x,y$ 消去 $z$．这个计算也表明增量依赖路径，而非只依赖端点．在足够小的区域可用正反向小回路调整 $z$，并独立调整 $x,y$，没有额外位置等式把位形限制在二维曲面上．
+
+
+  速度式的系数向量为 $(0,-x/L,1)$，始终非零，秩为一．给定 $\dot x,\dot y$ 后即确定 $\dot z$，所以三个位置变量对应两个独立容许速度分量．不能把这一个非完整速度限制直接当成一个已消去的位置约束．$ab/L$
+  具有长度单位，与 $z$ 一致．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b09fefe9415da768d3519016656c3531b2078888faab8275416e98e41bf0f784
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b09fefe9415da768d3519016656c3531b2078888faab8275416e98e41bf0f784
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:b09fefe9415da768d3519016656c3531b2078888faab8275416e98e41bf0f784

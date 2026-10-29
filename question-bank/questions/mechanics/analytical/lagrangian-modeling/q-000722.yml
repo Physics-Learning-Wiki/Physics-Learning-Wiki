@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000722
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.coordinate-transformation
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.double-pendulum-model
+type: multiple_choice
+choice_order: shuffle
+stem: 将双摆坐标从绝对角 $(\theta_1,\theta_2)$ 改成 $(\theta_1,\psi)$，其中 $\psi=\theta_2-\theta_1$．以下操作哪些正确？
+choices:
+- id: A
+  content: 代入 $\theta_2=\theta_1+\psi$．
+- id: B
+  content: 同时代入 $\dot\theta_2=\dot\theta_1+\dot\psi$．
+- id: C
+  content: 保留原动能，只把变量名 $\theta_2$ 换成 $\psi$．
+- id: D
+  content: 用新拉格朗日量对新独立变量求导．
+answer:
+  choices:
+  - A
+  - B
+  - D
+feedback:
+  choices:
+    A: 位置关系必须按新坐标重新表达．
+    B: 速度变换由坐标关系求导得到．
+    C: 这会改变物理速度而没有反映到动能．
+    D: 新偏导固定的其他变量与原来不同．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 把位置关系对时间求导，再检查所有速度项．
+solution: 坐标和速度需要成套变换．例如原动能中的 $\dot\theta_2^2$ 成为 $(\dot\theta_1+\dot\psi)^2$，从而改变多个惯性系数．坐标变换不改变同一状态的物理能量，却会改变函数表达式及偏导时固定的变量．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:93a985b2845c8ea4534d7dc2e2655aa0e158b48cb3e9dbd0be71afc99ef424b0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:93a985b2845c8ea4534d7dc2e2655aa0e158b48cb3e9dbd0be71afc99ef424b0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:93a985b2845c8ea4534d7dc2e2655aa0e158b48cb3e9dbd0be71afc99ef424b0

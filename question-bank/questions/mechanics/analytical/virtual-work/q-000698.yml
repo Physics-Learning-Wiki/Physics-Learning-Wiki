@@ -1,0 +1,53 @@
+schema_version: 3
+id: q-000698
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.ideal-constraint
+- analytical.virtual-displacement
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.ideal-constraint
+type: true_false
+choice_order: fixed
+stem: 光滑移动导轨的反力可以对所有容许虚位移做零虚功，同时对质点做非零实功．
+answer:
+  value: true
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 把真实速度拆成沿轨道部分和导轨自身移动部分．
+solution: 理想性约束的是反力与等时容许虚位移的标量积．移动导轨带来的已知速度项不属于该虚位移，却可以沿反力方向，因此实际功率 $\boldsymbol f\cdot\boldsymbol v$ 可以非零．
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a4eef753b0356ec16a1486ff0dbaa67a3b50a81fe1a585ec6e3d516945d56419
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a4eef753b0356ec16a1486ff0dbaa67a3b50a81fe1a585ec6e3d516945d56419
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a4eef753b0356ec16a1486ff0dbaa67a3b50a81fe1a585ec6e3d516945d56419

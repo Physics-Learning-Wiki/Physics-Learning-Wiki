@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000708
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.generalized-force
+type: single_choice
+choice_order: shuffle
+stem: 理想机构的位置映射为 $x_1=q$、$x_2=2q$，其余位置分量固定．两质点分别受沿 $x$ 正向的力 $F_1,F_2$．与长度坐标 $q$ 配对的广义力是哪一个？
+choices:
+- id: A
+  content: $F_1+F_2$．
+- id: B
+  content: $F_1+2F_2$．
+- id: C
+  content: $F_1-2F_2$．
+- id: D
+  content: $2F_1+F_2$．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 第二受力点对应两倍位移，不能省略几何系数．
+    B: 分别乘 $\partial x_1/\partial q=1$ 和 $\partial x_2/\partial q=2$ 再求和．
+    C: 题面中两位置都随 $q$ 同向增加．
+    D: 几何系数需要与对应受力点配对．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 比较两个受力点在同一 $\delta q$ 下分别移动多少．
+solution: 固定时间有 $\delta x_1=\delta q$、$\delta x_2=2\delta q$．主动力虚功为 $(F_1+2F_2)\delta q$，因此 $Q_q=F_1+2F_2$．它是多个受力点共同贡献的一个广义力．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8a8ffd0c6aa5f7782ad9119425d3e576383e87a35e6d1cbc7cbbad9e34a9e2c9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8a8ffd0c6aa5f7782ad9119425d3e576383e87a35e6d1cbc7cbbad9e34a9e2c9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8a8ffd0c6aa5f7782ad9119425d3e576383e87a35e6d1cbc7cbbad9e34a9e2c9

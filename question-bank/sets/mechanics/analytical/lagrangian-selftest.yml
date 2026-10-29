@@ -1,0 +1,19 @@
+schema_version: 1
+id: mechanics.analytical.lagrangian.selftest
+title: 拉格朗日方程：概念与方法自测
+description: 与分析力学正文配套，提供提示、参考解答与回学入口．本题集仍待人工审核，仅供草稿预览．
+status: published
+tags:
+- 分析力学
+- 导论与建模
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000713
+  - q-000714
+  - q-000715
+  - q-000716
+  - q-000717
+  - q-000718
+  order: fixed

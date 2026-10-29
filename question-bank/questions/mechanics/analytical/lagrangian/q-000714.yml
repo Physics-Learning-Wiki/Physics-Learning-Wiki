@@ -1,0 +1,53 @@
+schema_version: 3
+id: q-000714
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+- analytical.time-dependent-lagrangian
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.kinematic-identities
+type: true_false
+choice_order: fixed
+stem: 完整且理想的约束若按已知规律随时间移动，在独立正则坐标中仍可使用含显式时间的拉格朗日方程．
+answer:
+  value: true
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 普通拉格朗日方程的推导是否要求位置映射不显含时间？
+solution: 一般位置映射允许 $\boldsymbol r_i=\boldsymbol r_i(q,t)$，速度中保留 $\partial_t\boldsymbol r_i$．满足独立坐标、恒定质点质量和理想完整约束等条件时，推导依然成立；只是动能可能含广义速度的一次项和显式时间项，不能省略它们．
+difficulty: 2
+cognitive_level: understand
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9d2cd21622de03b5f8244869910bc9ff5b5aea10c04efae7dc173d2ba81f7663
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9d2cd21622de03b5f8244869910bc9ff5b5aea10c04efae7dc173d2ba81f7663
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9d2cd21622de03b5f8244869910bc9ff5b5aea10c04efae7dc173d2ba81f7663

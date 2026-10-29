@@ -55,9 +55,11 @@ flowchart TD
 | **6. 约束与广义坐标** | 完整与非完整约束、位形空间、独立约束、位形自由度与容许速度数 | [约束、自由度与广义坐标](../mechanics/analytical/constraints-generalized-coordinates.md) | **[正文已提供]** 用单摆、球面质点与圆盘辨析坐标和速度计数；非完整动力学留到后续 |
 | **7. 虚功与达朗贝尔原理** | 等时虚位移、理想约束、平衡、广义力与惯性项的投影 | [虚功与理想约束](../mechanics/analytical/virtual-work.md) · [达朗贝尔原理与广义力](../mechanics/analytical/dalembert-principle.md) | **[正文已提供]** 先区分虚功与实功，再把静力平衡思路推广到动力学 |
 | **8. 拉格朗日力学** | 第二类拉格朗日方程、动能与位置势能、单摆与双摆建模、非保守广义力 | [拉格朗日方程](../mechanics/analytical/lagrangian.md) · [建模实例](../mechanics/analytical/lagrangian-modeling.md) · [非保守力与耗散](../mechanics/analytical/nonconservative-forces.md) | **[导论正文已提供]** 乘子法、作用量、循环坐标与诺特定理为下一阶段待建设内容 |
-| **9. 多自由度小振动** | 平衡附近的二次近似、质量与刚度矩阵、固有角频率、简正坐标与初态分解 | [小振动近似](../mechanics/analytical/small-oscillations.md) · [简正模](../mechanics/analytical/normal-modes.md) · [双摆应用](../mechanics/analytical/double-pendulum-modes.md) | **[正文已提供]** 先复习单自由度振动，再从二次能量求解多自由度运动 |
+| **9. 多自由度小振动** | 平衡附近的二次近似、质量与刚度矩阵、固有角频率、简正坐标与初态分解 | [小振动近似](../mechanics/analytical/small-oscillations.md) · [简正模](../mechanics/analytical/normal-modes.md) · [双摆应用](../mechanics/analytical/double-pendulum-modes.md) | **[正文已提供]** 先复习单自由度振动，再从二次能量求解多自由度运动；练习按近似、模态和双摆初态衔接 |
 | **10. 哈密顿力学**         | 勒让德变换（Legendre Transformation）、哈密顿函数 $H=p\dot{q}-L$、哈密顿正则方程、相空间几何图景与刘维尔定理（Liouville Theorem） | [哈密顿力学](../mechanics/analytical/hamiltonian.md)                                                                                                                                                                                    | **\[重点建设中]** 一阶微分方程组的对称结构，量子力学算符表象的直接前身                                           |
 | **11. 进阶形式理论**        | 正则变换、母函数、泊松括号（Poisson Bracket）、哈密顿 - 雅可比方程（Hamilton-Jacobi Equation）                         | - 分析力学进阶（规划中）                                                                                                                                                                                                                      | **\[高阶选修]** 奠定经典力学与量子力学对应原理的基石                                                    |
+
+分析力学正文各页保留文内自测，并接入短题与建模推导练习；阶段复习安排见 [分析力学导读](../mechanics/analytical/index.md#怎样使用配套练习)．新增题集完成真实人工审核前，仅在草稿预览开放，不把后续建设内容当作本轮练习的先修．
 
 ***
 

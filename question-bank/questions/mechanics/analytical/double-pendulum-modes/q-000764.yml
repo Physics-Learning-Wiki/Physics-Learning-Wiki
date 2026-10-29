@@ -1,0 +1,39 @@
+schema_version: 3
+id: q-000764
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.mass-orthogonality
+- analytical.scaling
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.frequencies-shapes
+type: true_false
+choice_order: fixed
+stem: 等长等质量双摆保持杆长和重力加速度不变，把两质量同时乘四：固有角频率与未归一化振型比例不变，而质量归一化振型整体缩小为原来的一半．
+answer:
+  value: true
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 分别检查频率方程、振型比例与质量范数，不要把它们混为一个对象．
+solution: 共同质量使 $M,K$ 同时乘四，广义特征值与振型比例不变．原振型的质量范数乘二，因此归一化向量要除以二．对应简正坐标会随尺度变化，实际摆角由二者乘积给出，不因此改变．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

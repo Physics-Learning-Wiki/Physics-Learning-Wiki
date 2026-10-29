@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000710
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.dalembert-principle
+- analytical.nonholonomic-constraint
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.equations
+type: single_choice
+choice_order: shuffle
+stem: 当所用坐标还满足未消去的非完整速度限制时，为什么不能从达朗贝尔式直接把每个坐标系数分别置零？
+choices:
+- id: A
+  content: 因为牛顿第二定律失效．
+- id: B
+  content: 因为容许虚变化一般彼此受限，不能任意逐个选取．
+- id: C
+  content: 因为这时每个主动力都做零虚功．
+- id: D
+  content: 因为所有广义力都必定为零．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 问题在容许变化的独立性，不在牛顿定律．
+    B: 分别置零依赖全部变化相互独立这一条件．
+    C: 非完整性不推出主动力虚功为零．
+    D: 约束类型不能决定主动力全部消失．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 回看「令其余虚变化为零，只让一个变化任意」是否仍被约束允许．
+solution: 从任意独立变化的线性组合为零推出每个系数为零，需要能单独改变各变量．存在未处理的非完整限制时，容许虚变化通常受额外关系限制，不能执行这一步．应使用适合该约束模型的动力学方法．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:6bd9b78876a4edbea4fd7313dd5718874eed6d559d17f3d32bb967d62ea5bbca
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:6bd9b78876a4edbea4fd7313dd5718874eed6d559d17f3d32bb967d62ea5bbca
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:6bd9b78876a4edbea4fd7313dd5718874eed6d559d17f3d32bb967d62ea5bbca

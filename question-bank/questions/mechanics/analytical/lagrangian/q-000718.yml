@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000718
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+- analytical.euler-lagrange-equation
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.lagrangian-equation
+type: single_choice
+choice_order: shuffle
+stem: 把固定单摆势能从 $V=-mgl\cos\theta$ 改为 $V'=mgl(1-\cos\theta)$，会出现什么变化？
+choices:
+- id: A
+  content: 运动方程多出常力矩 $mgl$．
+- id: B
+  content: 运动方程不变，机械能数值整体增加 $mgl$．
+- id: C
+  content: 摆角的正方向反转．
+- id: D
+  content: 原有阻力自动消失．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 与角度无关的常量对角度的偏导为零．
+    B: 势能零点只改变常量，不改变相关偏导．
+    C: 改变势能零点不改变几何坐标约定．
+    D: 额外广义力不能靠改变势能零点消去．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 比较两个拉格朗日量相差什么，再检查该项的偏导．
+solution: $V'=V+mgl$，因此 $L'=L-mgl$．常量既不影响坐标偏导也不影响速度偏导，运动方程相同；同一状态的 $T+V'$ 比 $T+V$ 大 $mgl$，能量差与守恒性不变．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bc6e93885188404bb3410d634eb7744798b11745832eeb8cc4e8d0659194c07c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bc6e93885188404bb3410d634eb7744798b11745832eeb8cc4e8d0659194c07c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:bc6e93885188404bb3410d634eb7744798b11745832eeb8cc4e8d0659194c07c

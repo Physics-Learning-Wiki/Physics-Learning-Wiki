@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000725
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.model-validity
+- analytical.mass-matrix
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.double-pendulum-model
+type: single_choice
+choice_order: shuffle
+stem: 一般双摆的质量矩阵含第二质点质量 $m_2>0$．若直接令 $m_2=0$，应怎样理解结果？
+choices:
+- id: A
+  content: 仍然保留两个正常动力学自由度，只是第二个频率变为零．
+- id: B
+  content: 可检查剩余第一质点的单摆方程，但不能照搬两自由度求解结论．
+- id: C
+  content: 所有惯性项都会消失．
+- id: D
+  content: 第二个质点会改成负质量．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 质量矩阵退化后，原来的正则两自由度模型已不成立．
+    B: 移除第二质点及杆后恢复单摆，退化极限需重新识别模型．
+    C: 第一质点的惯性仍然存在．
+    D: 零质量极限不引入负质量．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先检查质量矩阵是否仍可逆，再解释移除物体后的物理系统．
+solution: 一般双摆加速度系数行列式含因子 $m_2$，令它为零会失去正常的两角加速度求解结构．物理上移除第二质点和第二根杆后，剩余系统是单摆．这是检查第一方程的极限，不能据此声称原两自由度理论在退化点仍完整适用．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5aef244c51299e7297d6b30234f39b2bed4e5c3f92d3d556f7d4b01b9e1e596f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5aef244c51299e7297d6b30234f39b2bed4e5c3f92d3d556f7d4b01b9e1e596f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5aef244c51299e7297d6b30234f39b2bed4e5c3f92d3d556f7d4b01b9e1e596f

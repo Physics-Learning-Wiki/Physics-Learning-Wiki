@@ -4,6 +4,23 @@ author: Physics Learning Wiki Team
 description: 从单摆、球面质点和滚动圆盘理解约束、位形自由度与广义坐标，区分位置描述和容许速度的计数．
 prerequisites:
   - derivative
+page_id: mechanics.analytical.constraints-generalized-coordinates
+learning_objectives:
+  - id: mechanics.analytical.constraints-generalized-coordinates.constraint-count
+    title: 按独立约束的秩计算位形自由度
+    anchor: analytical-constraint-count
+  - id: mechanics.analytical.constraints-generalized-coordinates.coordinate-map
+    title: 选取广义坐标并写出位置与速度映射
+    anchor: analytical-coordinate-map
+  - id: mechanics.analytical.constraints-generalized-coordinates.velocity-constraints
+    title: 区分位形维数、速度限制与可积性
+    anchor: analytical-velocity-constraints
+assessments:
+  - set: mechanics.analytical.degrees-of-freedom
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.constraints-generalized-coordinates.exercises
+    placement: footer
 ---
 
 ## 约束、自由度与广义坐标
@@ -17,6 +34,8 @@ prerequisites:
 **约束（constraint）** 是模型对位置或速度施加的运动学限制．它与实现限制的力有关，但两者不是同一个对象：轻杆长度不变是约束，杆对质点的作用力是约束力．
 
 本文采用惯性参考系，质量和杆长保持不变．先讨论持续成立的等式约束，不处理碰撞、脱离接触等约束切换过程．
+
+<span id="analytical-constraint-count"></span>
 
 ### 完整约束与独立性
 
@@ -59,6 +78,8 @@ $$
 
 它仍是完整约束，仍可用一个摆角表示位置，只是坐标映射也显含时间．「非定常」不表示运动不稳定．
 
+<span id="analytical-coordinate-map"></span>
+
 ## 位形空间与广义坐标
 
 **位形（configuration）** 描述系统的几何位置与姿态，不包含速度．所有容许位形的集合称为 **位形空间（configuration space）**．本文以它的维数作为 **位形自由度**；没有特别限定时，「自由度」指这一数量．
@@ -91,6 +112,8 @@ $$
 
 ???+ warning "易错点：位置相同不代表运动状态相同"
     给定位形 $q$ 后，通常还需要速度 $\dot q$ 才能确定动力学初态．「一个坐标足以描述单摆位形」不表示「一个数足以预测它的整个运动」．
+
+<span id="analytical-velocity-constraints"></span>
 
 ## 非完整约束：坐标数与速度数为什么不同
 
@@ -153,6 +176,8 @@ $$
     $$
     
     位形自由度为一，固定时刻容许速度的集合是带已知平移项的直线，而不是必须穿过零速度的直线．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

@@ -1,0 +1,126 @@
+schema_version: 3
+id: q-000736
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+- mechanics.analytical.nonconservative-forces.energy-balance
+type: free_response
+choice_order: fixed
+stem: '两个质量 $m_1,m_2>0$ 的滑块在固定光滑水平导轨上运动，以各自静止平衡位置的位移 $x_1,x_2$ 为坐标．左右对地弹簧劲度为 $k_1,k_2>0$，两滑块之间的弹簧劲度为 $k_c>0$．另有对地黏滞阻尼器 $c_1,c_2\ge0$
+  和连接两滑块的阻尼器 $c_{12}\ge0$；连接阻尼器只阻碍相对速度．已知外力 $F(t)$ 仅作用于第二滑块，正向与 $x_2$ 一致．
+
+
+  构造 $T,V,\mathcal R$，建立两条运动方程，并求机械能变化率．说明连接阻尼器对两滑块的广义力如何配对，以及无驱动时的能量结论．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把连接阻尼器写成两个独立对地阻尼器，或得到正的耗散功率贡献．
+    points: 0
+  - id: partial
+    label: 部分掌握：方程基本正确，但连接阻尼力、能量平方项或零损失条件解释有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：建立全部能量与耗散函数，给出配对阻尼力和两条方程，并验证能量不增条件．
+    points: 1
+reference_answer: $\mathcal R=[c_1\dot x_1^2+c_2\dot x_2^2+c_{12}(\dot x_2-\dot x_1)^2]/2$；$\dot E=F\dot x_2-c_1\dot x_1^2-c_2\dot
+  x_2^2-c_{12}(\dot x_2-\dot x_1)^2$．
+hints:
+- 连接元件使用相对位移或相对速度，对地元件使用各滑块相对固定支座的量．
+- 用两条方程乘速度求和，检查交叉阻尼项是否组成一个负平方．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '由各弹簧伸长和各阻尼器的相对速度写出
+
+
+  $$
+
+  T=\frac12m_1\dot x_1^2+\frac12m_2\dot x_2^2,\quad
+
+  V=\frac12k_1x_1^2+\frac12k_c(x_2-x_1)^2+\frac12k_2x_2^2,
+
+  $$
+
+
+  $$
+
+  \mathcal R=\frac12c_1\dot x_1^2+\frac12c_2\dot x_2^2+
+
+  \frac12c_{12}(\dot x_2-\dot x_1)^2.
+
+  $$
+
+
+  对速度求偏导，连接阻尼器对第一、第二滑块的力分别为 $c_{12}(\dot x_2-\dot x_1)$、$-c_{12}(\dot x_2-\dot x_1)$．含耗散的方程是
+
+
+  $$
+
+  m_1\ddot x_1+(c_1+c_{12})\dot x_1-c_{12}\dot x_2+(k_1+k_c)x_1-k_cx_2=0,
+
+  $$
+
+
+  $$
+
+  m_2\ddot x_2+(c_2+c_{12})\dot x_2-c_{12}\dot x_1+(k_2+k_c)x_2-k_cx_1=F(t).
+
+  $$
+
+
+  将两行分别乘相应速度并相加，得到
+
+
+  $$
+
+  \dot E=F\dot x_2-c_1\dot x_1^2-c_2\dot x_2^2-c_{12}(\dot x_2-\dot x_1)^2,\qquad E=T+V.
+
+  $$
+
+
+  当 $F=0$ 时右侧不大于零；若某些阻尼系数或对应相对速度为零，可以出现瞬时零损失，不能无条件声称每个非静止状态都严格衰减．连接阻尼器不阻碍两滑块的共同匀速运动，但对地阻尼器可能仍耗散．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:127c4460d4f408fc19440d7fe3b31a3cd1ba8694c38317c818785a2317bc100d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:127c4460d4f408fc19440d7fe3b31a3cd1ba8694c38317c818785a2317bc100d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:127c4460d4f408fc19440d7fe3b31a3cd1ba8694c38317c818785a2317bc100d

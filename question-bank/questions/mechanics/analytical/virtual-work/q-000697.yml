@@ -1,0 +1,66 @@
+schema_version: 3
+id: q-000697
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.virtual-displacement
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.virtual-displacement
+type: single_choice
+choice_order: shuffle
+stem: 质点受光滑移动直导轨约束 $y=h(t)+a x$，$a$ 为常量．在固定时刻的容许虚位移满足哪一式？
+choices:
+- id: A
+  content: $\delta y=a\,\delta x$．
+- id: B
+  content: $\delta y=\dot h\,\delta t+a\,\delta x$，且 $\delta t$ 可任意．
+- id: C
+  content: $\delta y=0$．
+- id: D
+  content: $\delta x=\dot x\,\mathrm dt$，只能沿真实运动方向．
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 固定时间时 $h(t)$ 不发生虚变化．
+    B: 虚位移的等时条件是 $\delta t=0$．
+    C: 导轨斜率不一定为零，沿轨道的变化一般含竖直分量．
+    D: 容许虚位移不是某条真实轨迹已经发生的位移．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 对约束取变分时先写出 $\delta t=0$．
+solution: 对约束在同一时刻取一阶变分，得到 $\delta y-a\delta x=0$．而真实速度满足 $\dot y-a\dot x=\dot h$．两式分别固定时间和沿真实时间演化，不能混用．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3ecd2075a845948d8350914121a89efb4db971badd9f6ebc704fd626be8d4b57
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3ecd2075a845948d8350914121a89efb4db971badd9f6ebc704fd626be8d4b57
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3ecd2075a845948d8350914121a89efb4db971badd9f6ebc704fd626be8d4b57

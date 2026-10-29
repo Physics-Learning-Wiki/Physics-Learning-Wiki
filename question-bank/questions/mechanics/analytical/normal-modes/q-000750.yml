@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000750
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.mass-orthogonality
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.eigenproblem
+type: true_false
+choice_order: fixed
+stem: 若 $M,K$ 都实对称正定，但 $M^{-1}K$ 不对称，那么至少有一个固有角频率一定是复数．
+answer:
+  value: false
+feedback:
+  correct: 判断正确．关键条件与理由见解析．
+  incorrect: 需要区分题面中的模型条件与额外推断．
+hints:
+- 回看质量矩阵平方根怎样把问题变成实对称矩阵问题．
+solution: $M^{-1}K$ 与实对称正定矩阵 $M^{-1/2}KM^{-1/2}$ 相似，所以其特征值仍为正实数．问题是一般不能用普通点积断言原振型正交，应使用质量内积．非对称的矩阵外形不直接决定它是否有复特征值．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:34c6a8401012ca5c396ee6ed648d9299f7454f70dc0a1fa4f7fe831f3d59ab5a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:34c6a8401012ca5c396ee6ed648d9299f7454f70dc0a1fa4f7fe831f3d59ab5a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:34c6a8401012ca5c396ee6ed648d9299f7454f70dc0a1fa4f7fe831f3d59ab5a

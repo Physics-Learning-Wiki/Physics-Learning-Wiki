@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000727
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+- analytical.euler-lagrange-equation
+- analytical.mass-matrix
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.modeling-workflow
+type: free_response
+choice_order: fixed
+stem: '质量 $M>0$ 的小车在固定水平光滑轨道上运动，由劲度系数 $k>0$ 的水平弹簧连接固定支座．车在弹簧自然长度位置时记 $X=0$．车上固定悬点挂有长度 $l>0$、摆球质量 $m>0$ 的轻杆单摆，运动限制在竖直平面，无阻力，重力加速度为
+  $g>0$．
+
+
+  取惯性系 $x$ 向右、$y$ 向上，车位置为 $X$，摆角 $\theta$ 从竖直向下逆时针量取．建立完整非线性方程：先给出位置映射，再写动能、势能和两条方程．以下垂摆球和 $X=0$ 为势能零点，并用能量或质量矩阵检查结果．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把摆球关节视为固定，或遗漏车速与摆角速度的交叉项．
+    points: 0
+  - id: partial
+    label: 部分掌握：能量与耦合方程基本正确，但位置映射、交叉项说明或独立检查有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：从位置映射建立两条非线性方程，说明交叉项，并完成量纲及能量或正则性检查．
+    points: 1
+reference_answer: $(M+m)\ddot X+ml\cos\theta\,\ddot\theta-ml\sin\theta\,\dot\theta^2+kX=0$；$ml\cos\theta\,\ddot X+ml^2\ddot\theta+mgl\sin\theta=0$．
+hints:
+- 先分别计算车与摆球的动能，摆球的绝对速度含车速．
+- 求角方程时检查两处混合速度项是否抵消；再用两行的不同单位检查．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '车的速度为 $(\dot X,0)$，摆球位置和速度是
+
+
+  $$
+
+  \boldsymbol r=(X+l\sin\theta,-l\cos\theta),\qquad
+
+  \boldsymbol v=(\dot X+l\dot\theta\cos\theta,\ l\dot\theta\sin\theta).
+
+  $$
+
+
+  相加车与摆球动能，得到
+
+
+  $$
+
+  T=\frac12(M+m)\dot X^2+ml\dot X\dot\theta\cos\theta+\frac12ml^2\dot\theta^2,\qquad
+
+  V=\frac12kX^2+mgl(1-\cos\theta).
+
+  $$
+
+
+  对 $X$ 求导：$\partial_{\dot X}L=(M+m)\dot X+ml\dot\theta\cos\theta$、$\partial_XL=-kX$，因此
+
+
+  $$
+
+  (M+m)\ddot X+ml\cos\theta\,\ddot\theta-ml\sin\theta\,\dot\theta^2+kX=0.
+
+  $$
+
+
+  对 $\theta$ 求导时，$\mathrm d(ml\dot X\cos\theta)/\mathrm dt$ 中的混合速度项与 $\partial_\theta T$ 抵消，留下
+
+
+  $$
+
+  ml\cos\theta\,\ddot X+ml^2\ddot\theta+mgl\sin\theta=0.
+
+  $$
+
+
+  第一行各项为力，第二行各项为力矩．惯性矩阵行列式为 $ml^2(M+m\sin^2\theta)>0$，符合正质量模型的正则性．把两行分别乘 $\dot X,\dot\theta$ 后相加，得到 $\mathrm d(T+V)/\mathrm
+  dt=0$．车固定时，第二式恢复轻杆单摆方程；该检查不意味着原来车可以无说明地固定．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 720
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b5bb8c77cedca3fc8e0c854671ea8ec515d71d139c5dd2143f5a36352031704
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b5bb8c77cedca3fc8e0c854671ea8ec515d71d139c5dd2143f5a36352031704
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b5bb8c77cedca3fc8e0c854671ea8ec515d71d139c5dd2143f5a36352031704

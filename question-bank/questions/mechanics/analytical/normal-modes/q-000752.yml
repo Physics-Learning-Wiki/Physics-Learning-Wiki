@@ -1,0 +1,71 @@
+schema_version: 3
+id: q-000752
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-coordinate
+- analytical.mass-orthogonality
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.normal-coordinates
+type: multiple_choice
+choice_order: shuffle
+stem: 归一化振型按列组成可逆矩阵 $B$，并满足 $B^{\mathsf T}MB=I$．以下哪些关系成立？
+choices:
+- id: A
+  content: $B^{-1}=B^{\mathsf T}M$．
+- id: B
+  content: $\boldsymbol Q=B^{\mathsf T}\boldsymbol\eta$ 对任意 $M$ 均成立．
+- id: C
+  content: 若各列满足特征值方程，则 $B^{\mathsf T}KB$ 为角频率平方的对角矩阵．
+- id: D
+  content: 给某列振型反号，并给对应简正坐标反号，不改变物理运动．
+answer:
+  choices:
+  - A
+  - C
+  - D
+feedback:
+  choices:
+    A: 给定等式表明 $B^{\mathsf T}M$ 是左逆，对方阵也就是逆．
+    B: 一般还需要质量矩阵因子．
+    C: 由 $KB=MB\Omega^2$ 左乘 $B^{\mathsf T}$ 即得．
+    D: 两者在乘积 $\boldsymbol b_\alpha Q_\alpha$ 中抵消．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 从 $\boldsymbol\eta=B\boldsymbol Q$ 出发实际求逆，而不是凭普通正交矩阵的经验判断．
+solution: 定义 $\boldsymbol\eta=B\boldsymbol Q$，逆变换必须是 $\boldsymbol Q=B^{\mathsf T}M\boldsymbol\eta$．质量归一化还使势能变成对角二次型．振型整体符号是一种基底选择，只要坐标同步改变，实际运动不变．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4fb8e45c86006df73e1da2cd294d3264ff6631688a6f8a3da47768c7eda97dcf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4fb8e45c86006df73e1da2cd294d3264ff6631688a6f8a3da47768c7eda97dcf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4fb8e45c86006df73e1da2cd294d3264ff6631688a6f8a3da47768c7eda97dcf

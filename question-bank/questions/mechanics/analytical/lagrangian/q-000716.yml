@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000716
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+- oscillations.harmonic-motion
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.lagrangian-equation
+type: numeric
+choice_order: fixed
+stem: 给定 $L=m\dot q^2/2-kq^2/2$，$q$ 是长度，$m=2.0\,\mathrm{kg}$、$k=8.0\,\mathrm{N/m}$，无额外广义力．由拉格朗日方程求固有角频率．
+answer:
+  value: 2.0
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - rad/s
+    canonical: rad/s
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先建立运动方程，再区分角频率与角频率平方．
+solution: $\mathrm d(\partial_{\dot q}L)/\mathrm dt=m\ddot q$，$\partial_qL=-kq$，故 $m\ddot q+kq=0$．角频率 $\omega_0=\sqrt{k/m}=2.0\,\mathrm{rad/s}$，不是
+  $k/m=4.0\,\mathrm{s^{-2}}$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:669bef39bf91038c7b5fa1a3e023b87e2f6a6ac1c884dd6ee276cbdf22a2e113
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:669bef39bf91038c7b5fa1a3e023b87e2f6a6ac1c884dd6ee276cbdf22a2e113
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:669bef39bf91038c7b5fa1a3e023b87e2f6a6ac1c884dd6ee276cbdf22a2e113

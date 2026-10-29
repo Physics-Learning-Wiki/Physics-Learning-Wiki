@@ -1,0 +1,62 @@
+schema_version: 3
+id: q-000751
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-orthogonality
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.mass-orthogonality
+type: numeric
+choice_order: fixed
+stem: 质量矩阵 $M=\operatorname{diag}(1,2)\,\mathrm{kg}$，两个无量纲振型方向为 $\boldsymbol a=(2,1)^{\mathsf T}$、$\boldsymbol b=(1,-1)^{\mathsf
+  T}$．它们的质量内积 $\boldsymbol a^{\mathsf T}M\boldsymbol b$ 是多少？
+answer:
+  value: 0.0
+  tolerance:
+    type: absolute
+    value: 1.0e-09
+  unit:
+    required: true
+    accepted:
+    - kg
+    canonical: kg
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 先让质量矩阵作用于一个振型，再与另一个作点积．
+solution: $M\boldsymbol b=(1,-2)^{\mathsf T}\,\mathrm{kg}$，故质量内积为 $2(1)+1(-2)=0\,\mathrm{kg}$．普通点积却为 $2-1=1$．此例说明普通点积非零不排斥质量正交．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8bffbc9f5fe95b21455fea600c4c3eea8422115fb02e42d23335f8e42c63de83
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8bffbc9f5fe95b21455fea600c4c3eea8422115fb02e42d23335f8e42c63de83
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:8bffbc9f5fe95b21455fea600c4c3eea8422115fb02e42d23335f8e42c63de83

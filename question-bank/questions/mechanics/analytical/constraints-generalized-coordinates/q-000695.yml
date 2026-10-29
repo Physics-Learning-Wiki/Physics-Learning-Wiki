@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000695
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.degrees-of-freedom
+- analytical.holonomic-constraint
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.constraints-generalized-coordinates
+objectives:
+- mechanics.analytical.constraints-generalized-coordinates.constraint-count
+- mechanics.analytical.constraints-generalized-coordinates.coordinate-map
+type: free_response
+choice_order: fixed
+stem: '两个质点在平面内运动，只由长度为 $l>0$ 的不可伸长轻杆相连，没有固定端，也没有其他约束．用杆中点的位置 $(X,Y)$ 和从 $x$ 正向逆时针量取的杆方向角 $\phi$ 描述位形．
+
+
+  从四个笛卡尔位置分量出发计算位形自由度；写出两端的位置与速度映射，并验证杆长恒定．说明只用 $\phi$ 为什么不足，以及角度的周期性是否意味着多出一个自由度．本题只研究运动学．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把轻杆视为固定端，或只保留方向角而漏掉平移自由度．
+    points: 0
+  - id: partial
+    label: 部分掌握：约束计数和位置映射正确，但速度、长度验证或周期性解释有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：给出三自由度、两端位置与速度，验证距离，并解释平移变量与角度周期性．
+    points: 1
+reference_answer: 一个独立距离约束留下三个位形自由度；$\boldsymbol r_{1,2}=(X,Y)\mp(l/2)(\cos\phi,\sin\phi)$，速度由全时间导数得到．
+hints:
+- 先检查距离约束的梯度是否可能在杆长非零时消失．
+- 两端位置等于中点位置加减半根杆矢量；求速度时中点也可移动．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '距离约束为 $f=(x_2-x_1)^2+(y_2-y_1)^2-l^2=0$．因 $l>0$，两端不重合，梯度非零，约束秩为一，因此自由度为 $4-1=3$．
+
+
+  按题面定义，取
+
+
+  $$
+
+  \boldsymbol r_1=(X-\tfrac l2\cos\phi,\ Y-\tfrac l2\sin\phi),\qquad
+
+  \boldsymbol r_2=(X+\tfrac l2\cos\phi,\ Y+\tfrac l2\sin\phi).
+
+  $$
+
+
+  对时间求导：
+
+
+  $$
+
+  \boldsymbol v_1=(\dot X+\tfrac l2\dot\phi\sin\phi,\ \dot Y-\tfrac l2\dot\phi\cos\phi),\qquad
+
+  \boldsymbol v_2=(\dot X-\tfrac l2\dot\phi\sin\phi,\ \dot Y+\tfrac l2\dot\phi\cos\phi).
+
+  $$
+
+
+  两端差矢量为 $l(\cos\phi,\sin\phi)$，长度恒为 $l$．仅给杆方向不能确定杆中点，故只用 $\phi$ 漏掉两个平移变量．$\phi$ 与 $\phi+2\pi$ 标记同一方向，是坐标的周期识别，不增加局部维数．这里的中点不必是质心，计数不依赖两质点质量是否相等．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9ba8cd8de35adcb28b79c7ceb8d548037f02cbe7ac81fd254e57cdaa5eaee35d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9ba8cd8de35adcb28b79c7ceb8d548037f02cbe7ac81fd254e57cdaa5eaee35d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9ba8cd8de35adcb28b79c7ceb8d548037f02cbe7ac81fd254e57cdaa5eaee35d

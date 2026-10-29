@@ -1,0 +1,60 @@
+schema_version: 3
+id: q-000731
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.rayleigh-dissipation
+type: numeric
+choice_order: fixed
+stem: 滑块相对静止介质的阻力为 $-c\dot x$，$c=4.0\,\mathrm{kg/s}$，某瞬时 $\dot x=3.0\,\mathrm{m/s}$．这一瞬时瑞利耗散函数 $\mathcal R$ 的值是多少？
+answer:
+  value: 18.0
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - W
+    canonical: W
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 题目问的是 $\mathcal R$，并非 $2\mathcal R$ 或累计能量损失．
+solution: $\mathcal R=c\dot x^2/2=4.0\times9.0/2=18.0\,\mathrm W$．阻力做功功率为 $-36.0\,\mathrm W$，损失功率的正值为 $36.0\,\mathrm W$．耗散函数本身具有功率单位，不是已损失的能量．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:896c9886a7d5dbc77b2b4c2b599f62fc0365c4631ff1905d238a5ec252f97929
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:896c9886a7d5dbc77b2b4c2b599f62fc0365c4631ff1905d238a5ec252f97929
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:896c9886a7d5dbc77b2b4c2b599f62fc0365c4631ff1905d238a5ec252f97929

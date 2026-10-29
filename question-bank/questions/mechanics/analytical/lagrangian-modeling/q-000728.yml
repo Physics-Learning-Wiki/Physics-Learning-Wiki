@@ -1,0 +1,91 @@
+schema_version: 3
+id: q-000728
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.coordinate-transformation
+- analytical.mass-matrix
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.double-pendulum-model
+type: free_response
+choice_order: fixed
+stem: '一般双摆的绝对角为 $\theta_1,\theta_2$，杆长 $l_1,l_2>0$，质点质量 $m_1,m_2>0$．已有
+
+
+  $$
+
+  T=\frac12A\dot\theta_1^2+B\dot\theta_1\dot\theta_2\cos(\theta_1-\theta_2)+\frac12C\dot\theta_2^2,
+
+  $$
+
+
+  其中 $A=(m_1+m_2)l_1^2$、$B=m_2l_1l_2$、$C=m_2l_2^2$；势能为 $V=-(m_1+m_2)gl_1\cos\theta_1-m_2gl_2\cos\theta_2$．
+
+
+  改用独立坐标 $(\theta_1,\psi)$，$\psi=\theta_2-\theta_1$．写出新动能、势能及质量矩阵，验证同一物理状态的能量不变，并检查新质量矩阵是否正定．不必展开新的两条运动方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：只重命名角度，未变换角速度，导致动能不对应同一物理状态．
+    points: 0
+  - id: partial
+    label: 部分掌握：新能量表达正确，但质量矩阵、正定性或同一状态能量验证缺失．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完成坐标和速度的成套替换，得到质量矩阵并证明能量等价及正定性．
+    points: 1
+reference_answer: $T=\tfrac12(A+C+2B\cos\psi)\dot\theta_1^2+(C+B\cos\psi)\dot\theta_1\dot\psi+\tfrac12C\dot\psi^2$；新质量矩阵行列式为
+  $AC-B^2\cos^2\psi>0$．
+hints:
+- 先变换速度，再把各平方与交叉项按新速度整理．
+- 质量矩阵非对角元等于动能交叉项的系数；检验行列式而非只看对角元．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: "同时代入 $\\theta_2=\\theta_1+\\psi$、$\\dot\\theta_2=\\dot\\theta_1+\\dot\\psi$，再展开平方，得到\n\n$$\nT=\\frac12(A+C+2B\\\
+  cos\\psi)\\dot\\theta_1^2\n +(C+B\\cos\\psi)\\dot\\theta_1\\dot\\psi+\\frac12C\\dot\\psi^2,\n$$\n\n$$\nV=-(m_1+m_2)gl_1\\\
+  cos\\theta_1-m_2gl_2\\cos(\\theta_1+\\psi).\n$$\n\n故新质量矩阵是\n\n$$\nM'=\\begin{pmatrix}\nA+C+2B\\cos\\psi&C+B\\cos\\psi\\\\\
+  \nC+B\\cos\\psi&C\n\\end{pmatrix}.\n$$\n\n其行列式为 $AC-B^2\\cos^2\\psi=m_2l_1^2l_2^2(m_1+m_2\\sin^2\\psi)>0$，且 $C>0$，因此矩阵正定．也可把坐标变换写成\
+  \ $\\boldsymbol\\theta=J(\\theta_1,\\psi)^{\\mathsf T}$，$J=\\begin{pmatrix}1&0\\\\1&1\\end{pmatrix}$，由速度关系得 $M'=J^{\\mathsf\
+  \ T}MJ$．\n\n直接代入原能量式得到新能量式，保证同一状态的能量一致．简单改变量名会漏掉 $\\dot\\theta_1$ 在第二角速度中的贡献，不能代表该坐标变换．"
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a6f0f13bc11f9e6d343bb5d513c6984fd4ad641f469600e983970cc31b205a45
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a6f0f13bc11f9e6d343bb5d513c6984fd4ad641f469600e983970cc31b205a45
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:a6f0f13bc11f9e6d343bb5d513c6984fd4ad641f469600e983970cc31b205a45

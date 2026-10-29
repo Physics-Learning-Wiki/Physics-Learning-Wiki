@@ -1,0 +1,115 @@
+schema_version: 3
+id: q-000759
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.zero-mode
+- analytical.initial-condition-projection
+- analytical.energy-integral
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.zero-mode
+- mechanics.analytical.normal-modes.initial-projection
+type: free_response
+choice_order: fixed
+stem: '三个质量均为 $m>0$ 的质点在同一直线上运动，只以两根劲度系数均为 $k>0$ 的相邻弹簧相连，无端部固定弹簧、无外力．相对平衡位移为 $\boldsymbol x=(x_1,x_2,x_3)^{\mathsf T}$，弹簧处于线性范围．
+
+
+  初态为 $\boldsymbol x(0)=(d,0,0)^{\mathsf T}$，$\dot{\boldsymbol x}(0)=v(1,1,1)^{\mathsf T}$．求三个模态并写出完整运动，说明质心运动和内部振动分别由哪些模态承担，并核对初态与能量．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：遗漏零模或在零角频率处直接除以零，导致不能恢复共同初速度．
+    points: 0
+  - id: partial
+    label: 部分掌握：模态频率或运动基本正确，但漏掉质心匀速项、能量分解或零模解释．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：写出全部模态和含匀速零模的解，并完成初态、质心与能量检查．
+    points: 1
+reference_answer: $\boldsymbol x=(d/3+vt)(1,1,1)^{\mathsf T}+(d/2)\cos(\sqrt{k/m}\,t)(1,0,-1)^{\mathsf T}+(d/6)\cos(\sqrt{3k/m}\,t)(1,-2,1)^{\mathsf
+  T}$．
+hints:
+- 先利用整体平移和两端对称性猜振型，再代回矩阵方程核对．
+- 分别分解初位移与初速度；共同初速度只进入零模．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '矩阵为 $M=mI$、$K=k\begin{pmatrix}1&-1&0\\-1&2&-1\\0&-1&1\end{pmatrix}$．可直接检验三个振型和频率：
+
+
+  $$
+
+  \boldsymbol a_0=(1,1,1)^{\mathsf T},\quad\omega_0=0;\qquad
+
+  \boldsymbol a_1=(1,0,-1)^{\mathsf T},\quad\omega_1^2=k/m;
+
+  $$
+
+
+  $$
+
+  \boldsymbol a_2=(1,-2,1)^{\mathsf T},\qquad\omega_2^2=3k/m.
+
+  $$
+
+
+  质量范数平方分别为 $3m,2m,6m$，三者两两质量正交．初位移分解为 $(d/3)\boldsymbol a_0+(d/2)\boldsymbol a_1+(d/6)\boldsymbol a_2$，初速度只有零模分量．因此
+
+
+  $$
+
+  \boldsymbol x(t)=\left(\frac d3+vt\right)\boldsymbol a_0+
+
+  \frac d2\cos\omega_1t\,\boldsymbol a_1+
+
+  \frac d6\cos\omega_2t\,\boldsymbol a_2.
+
+  $$
+
+
+  零模必须直接解 $\ddot u_0=0$，不可代入含 $1/\omega_0$ 的表达式．质心位置变化为 $d/3+vt$；另外两振型分量和为零，只承担内部振动．原势能对整体平移严格不变，因此这里的自由零模不是二次展开遗漏四次回复力的结果．
+
+
+  初态由上述分解直接恢复．初总能量为 $3mv^2/2+kd^2/2$；零模动能为 $3mv^2/2$，两个非零模能量各为 $kd^2/4$．三项相加与原能量一致．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 720
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:73c68f3ce3ceea8773cf54128d921385713f72778662bafbb62db52fe5ddb306
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:73c68f3ce3ceea8773cf54128d921385713f72778662bafbb62db52fe5ddb306
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:73c68f3ce3ceea8773cf54128d921385713f72778662bafbb62db52fe5ddb306

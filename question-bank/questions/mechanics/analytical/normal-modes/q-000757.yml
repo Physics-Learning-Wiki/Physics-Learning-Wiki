@@ -1,0 +1,143 @@
+schema_version: 3
+id: q-000757
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.mass-orthogonality
+- analytical.initial-condition-projection
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.eigenproblem
+- mechanics.analytical.normal-modes.mass-orthogonality
+- mechanics.analytical.normal-modes.initial-projection
+type: free_response
+choice_order: fixed
+stem: '两个水平滑块质量为 $m,2m$，三根劲度系数均为 $k>0$ 的弹簧依次连接左墙、两滑块和右墙，支承固定，无阻力．相对平衡位移为 $\boldsymbol x=(x_1,x_2)^{\mathsf T}$，已有
+
+
+  $$
+
+  M=m\begin{pmatrix}1&0\\0&2\end{pmatrix},\qquad
+
+  K=k\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.
+
+  $$
+
+
+  求两固有角频率、振型及质量归一化因子．再求初态 $\boldsymbol x(0)=(d,0)^{\mathsf T}$、$\dot{\boldsymbol x}(0)=0$ 下的运动，验证质量正交、初态和能量．$d$ 处于弹簧线性范围内．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把质量矩阵当成单位矩阵，或得到不能恢复初态的模态系数．
+    points: 0
+  - id: partial
+    label: 部分掌握：频率与振型正确，但质量归一化、初态系数或能量核验不完整．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完成频率、振型、质量归一化和初态解，并验证正交、运动方程及总能量．
+    points: 1
+reference_answer: $\omega_{L,H}^2=(k/m)(3\mp\sqrt3)/2$，振型可取 $(1,(1\pm\sqrt3)/2)^{\mathsf T}$；$x_1=d[\cos\omega_Lt/(3+\sqrt3)+\cos\omega_Ht/(3-\sqrt3)]$，$x_2=d(\cos\omega_Lt-\cos\omega_Ht)/(2\sqrt3)$．
+hints:
+- 先以 $\lambda=m\omega^2/k$ 无量纲化；第一行即可得到振幅比．
+- 投影必须使用 $M$；用初态和 $kd^2$ 的总能量独立检查系数．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '令 $\lambda=m\omega^2/k$，频率方程为 $(2-\lambda)(2-2\lambda)-1=0$，所以
+
+
+  $$
+
+  \lambda_L=\frac{3-\sqrt3}{2},\qquad
+
+  \lambda_H=\frac{3+\sqrt3}{2},\qquad
+
+  \omega_{L,H}=\sqrt{\frac{k}{m}\lambda_{L,H}}.
+
+  $$
+
+
+  由第一行得到振幅比 $r=2-\lambda$．取 $r_L=(1+\sqrt3)/2$、$r_H=(1-\sqrt3)/2$，振型为 $\boldsymbol a_L=(1,r_L)^{\mathsf T}$、$\boldsymbol a_H=(1,r_H)^{\mathsf
+  T}$．两者满足 $r_Lr_H=-1/2$，故
+
+
+  $$
+
+  \boldsymbol a_L^{\mathsf T}M\boldsymbol a_H=m(1+2r_Lr_H)=0.
+
+  $$
+
+
+  质量范数平方是 $n_L^2=m(3+\sqrt3)$、$n_H^2=m(3-\sqrt3)$，归一化振型为 $\boldsymbol b_{L,H}=\boldsymbol a_{L,H}/n_{L,H}$．初态投影给出 $Q_{L,H}(0)=md/n_{L,H}$、$\dot
+  Q_{L,H}(0)=0$．还原后
+
+
+  $$
+
+  x_1(t)=\frac{d}{3+\sqrt3}\cos\omega_Lt+\frac{d}{3-\sqrt3}\cos\omega_Ht,
+
+  $$
+
+
+  $$
+
+  x_2(t)=\frac{d}{2\sqrt3}(\cos\omega_Lt-\cos\omega_Ht).
+
+  $$
+
+
+  利用 $1/(3+\sqrt3)+1/(3-\sqrt3)=1$，可恢复初位移；两式初导数均为零．每一振型均满足 $K\boldsymbol a=\omega^2M\boldsymbol a$，所以叠加满足运动方程．初能量为 $kd^2$，模态能量之和也为
+
+
+  $$
+
+  \frac12\omega_L^2\frac{m^2d^2}{n_L^2}
+
+  +\frac12\omega_H^2\frac{m^2d^2}{n_H^2}=kd^2.
+
+  $$
+
+
+  普通点积一般不为零，不影响质量正交结论．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 900
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3b9044fe09b8eff837fa13cfd73f34af919db701e7c14081922e03e50fea4a3c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3b9044fe09b8eff837fa13cfd73f34af919db701e7c14081922e03e50fea4a3c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:3b9044fe09b8eff837fa13cfd73f34af919db701e7c14081922e03e50fea4a3c

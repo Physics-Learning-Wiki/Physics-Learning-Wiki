@@ -1,0 +1,69 @@
+schema_version: 3
+id: q-000749
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.mass-matrix
+related_pages:
+- mechanics.analytical.normal-modes
+objectives:
+- mechanics.analytical.normal-modes.eigenproblem
+type: single_choice
+choice_order: shuffle
+stem: 已知 $M=m\operatorname{diag}(1,2)$、$K=k\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$，$m,k>0$．令 $\lambda=m\omega^2/k$，频率方程化成哪一个？
+choices:
+- id: A
+  content: $\lambda^2-4\lambda+3=0$．
+- id: B
+  content: $2\lambda^2-6\lambda+3=0$．
+- id: C
+  content: $2\lambda^2-4\lambda+3=0$．
+- id: D
+  content: $\lambda^2-6\lambda+3=0$．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 这相当于错误地把两质量都取成 $m$．
+    B: 行列式为 $(2-\lambda)(2-2\lambda)-1$．
+    C: 需把两个对角因子中的一次项全部展开．
+    D: 二次项系数来自两个惯性系数的乘积，应为二．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 保留第二质量的系数二，先写出 $K-\omega^2M$．
+solution: $\det(K-\omega^2M)=k^2[(2-\lambda)(2-2\lambda)-1]$，所以频率方程为 $2\lambda^2-6\lambda+3=0$．得到的是 $\lambda$ 或 $\omega^2$
+  的根，尚需开平方才得到正角频率．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1b28fc6e6579ad9a2f9b5b8c235e7083480d09eab3513fcdd4ab2717e152c9fd
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1b28fc6e6579ad9a2f9b5b8c235e7083480d09eab3513fcdd4ab2717e152c9fd
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:1b28fc6e6579ad9a2f9b5b8c235e7083480d09eab3513fcdd4ab2717e152c9fd

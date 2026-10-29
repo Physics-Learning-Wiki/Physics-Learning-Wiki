@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000705
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.generalized-force
+type: single_choice
+choice_order: shuffle
+stem: 固定悬点单摆长 $l=2.0\,\mathrm m$，摆角从竖直向下逆时针量取．小球受水平向右外力 $F=3.0\,\mathrm N$．在 $\theta=\pi/3$ 时，该外力对 $\theta$ 的广义力是多少？
+choices:
+- id: A
+  content: $3.0\,\mathrm{N\,m}$．
+- id: B
+  content: $6.0\,\mathrm N$．
+- id: C
+  content: $3\sqrt3\,\mathrm{N\,m}$．
+- id: D
+  content: $-3.0\,\mathrm{N\,m}$．
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 应计算 $Fl\cos\theta=3.0\,\mathrm{N\,m}$．
+    B: 角度的广义力应有力矩单位，并需保留投影因子．
+    C: 水平力与角度增加方向的投影含 $\cos\theta$．
+    D: 给定角度下水平向右力推动摆角增加，符号为正．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 先求位置对摆角的偏导，再与外力作标量积．
+solution: $\partial\boldsymbol r/\partial\theta=l(\cos\theta,\sin\theta)$，所以 $Q_\theta=(F,0)\cdot\partial_\theta\boldsymbol
+  r=Fl\cos\theta=3.0\,\mathrm{N\,m}$．角度无量纲，但其共轭广义力仍具有能量或力矩单位．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c5b6552ec47ba4c53d1d92c6e605c41b8a1b137488a1b44c177255d758d9cb1d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c5b6552ec47ba4c53d1d92c6e605c41b8a1b137488a1b44c177255d758d9cb1d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:c5b6552ec47ba4c53d1d92c6e605c41b8a1b137488a1b44c177255d758d9cb1d

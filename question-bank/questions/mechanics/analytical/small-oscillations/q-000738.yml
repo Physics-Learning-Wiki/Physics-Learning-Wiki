@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000738
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.quadratic-approximation
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+type: single_choice
+choice_order: shuffle
+stem: 按 $\eta=\varepsilon u(t)$ 且在固定时间尺度上 $u,\dot u$ 有界计数，动能项 $a\eta\dot\eta^2$（$a$ 为常量）是几阶？
+choices:
+- id: A
+  content: 一阶．
+- id: B
+  content: 二阶．
+- id: C
+  content: 三阶．
+- id: D
+  content: 无法计数，因为速度不是小量．
+answer:
+  choice: C
+feedback:
+  choices:
+    A: 需要同时计入位移和两个速度因子．
+    B: 速度平方是二阶，再乘位移会升一阶．
+    C: 三个一阶因子相乘给出三阶．
+    D: 题面已给共同小参数的速度计数条件．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 把每个因子中的 $\varepsilon$ 都写出来．
+solution: $\dot\eta=\varepsilon\dot u$，因此 $a\eta\dot\eta^2=a\varepsilon^3u\dot u^2$，是三阶．二次动能中可舍去该项，但这依赖位移与速度在所用时间尺度上都按同一个小参数计数．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:116140da1d06cd493deeb6716a911d7930c58a168c824963c246626c7000ee0a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:116140da1d06cd493deeb6716a911d7930c58a168c824963c246626c7000ee0a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:116140da1d06cd493deeb6716a911d7930c58a168c824963c246626c7000ee0a

@@ -1,0 +1,52 @@
+schema_version: 3
+id: q-000763
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.initial-condition-projection
+- analytical.normal-coordinate
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.initial-state
+type: single_choice
+choice_order: shuffle
+stem: 等长等质量双摆的初始两角均为零，初角速度为 $(v,0)$，$v\ne0$ 且足够小．对振型幅值 $u_\mp=(\theta_1\pm\theta_2/\sqrt2)/2$，哪组时间函数正确？
+choices:
+- id: A
+  content: $u_\mp(t)=\frac{v}{2\omega_\mp}\sin\omega_\mp t$．
+- id: B
+  content: $u_\mp(t)=\frac v2\cos\omega_\mp t$．
+- id: C
+  content: $u_-(t)=0$、$u_+(t)=v\sin\omega_+t/\omega_+$．
+- id: D
+  content: $u_\mp(t)=\frac v2\sin\omega_\mp t$．
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 两幅值初导数均为 $v/2$，两模态均被激发．
+    B: 余弦项会使初角度非零，而且量纲不符．
+    C: 给定速度并不沿高频振型．
+    D: 初导数会多出角频率因子，且幅值单位错误．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 正弦项的系数应是初速度除以角频率．
+solution: 初位移为零，所以两模态都没有余弦项．由逆变换得 $\dot u_-(0)=\dot u_+(0)=v/2$，因此必须除以各自 $\omega_\mp$ 才恢复该初速度．代回 $\theta_1=u_-+u_+$、$\theta_2=\sqrt2(u_--u_+)$，可检验给定的两角速度．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

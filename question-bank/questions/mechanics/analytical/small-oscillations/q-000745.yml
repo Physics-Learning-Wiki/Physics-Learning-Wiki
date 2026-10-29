@@ -1,0 +1,73 @@
+schema_version: 3
+id: q-000745
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-matrix
+- analytical.stiffness-matrix
+- analytical.zero-mode
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+- mechanics.analytical.small-oscillations.linear-system
+type: multiple_choice
+choice_order: shuffle
+stem: 对二次拉格朗日量 $L^{(2)}=\dot{\boldsymbol\eta}^{\mathsf T}M\dot{\boldsymbol\eta}/2-\boldsymbol\eta^{\mathsf T}K\boldsymbol\eta/2$，以下哪些说法成立？
+choices:
+- id: A
+  content: 即使 $K$ 对角，非对角的 $M$ 仍可使方程耦合．
+- id: B
+  content: 质量矩阵每个元素都必须有千克单位．
+- id: C
+  content: 质量矩阵奇异时应先检查坐标冗余、坐标奇点或退化模型．
+- id: D
+  content: 刚度矩阵出现零方向后，原系统可能有平移对称性，也可能有高阶回复力．
+answer:
+  choices:
+  - A
+  - C
+  - D
+feedback:
+  choices:
+    A: 一行方程可以包含其他坐标的加速度．
+    B: 角坐标和混合量纲坐标使惯性系数单位不同．
+    C: 不能直接假定其逆存在．
+    D: 需回到原模型区分真正自由运动与二次近似遗漏．
+  correct: 已选出全部成立的陈述．请核对每条结论的条件．
+  incorrect: 逐条检查陈述，不要用一条正确结论替代其余判断．
+hints:
+- 分别检查动能、势能与坐标条件，而不是仅看其中一个矩阵．
+solution: 耦合可以来自惯性或回复项，判断时要同时查看 $M,K$．矩阵元素的量纲随所配坐标变化，能量中每一项才必须具有统一能量单位．退化质量或零刚度都需要检查其来源，不能机械套用正定情形的全部结论．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:ee51c9e63b23f293ce7c8fe487247b41fb36338258608a14ad80a3456551b0dd
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:ee51c9e63b23f293ce7c8fe487247b41fb36338258608a14ad80a3456551b0dd
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:ee51c9e63b23f293ce7c8fe487247b41fb36338258608a14ad80a3456551b0dd

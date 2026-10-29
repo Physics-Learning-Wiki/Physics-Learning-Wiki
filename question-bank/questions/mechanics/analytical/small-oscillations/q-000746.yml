@@ -1,0 +1,106 @@
+schema_version: 3
+id: q-000746
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.mass-matrix
+- analytical.stiffness-matrix
+- analytical.equilibrium-stability
+related_pages:
+- mechanics.analytical.small-oscillations
+objectives:
+- mechanics.analytical.small-oscillations.energy-matrices
+- mechanics.analytical.small-oscillations.linear-system
+type: free_response
+choice_order: fixed
+stem: '两个滑块在固定光滑水平导轨上运动，质量分别为 $m$ 与 $2m$，$m>0$．两端各用劲度系数 $k>0$ 的弹簧连到固定墙，中间也以劲度系数 $k$ 的弹簧相连．用相对静止平衡位置的位移 $x_1,x_2$ 作坐标，各弹簧均在线性范围内，无阻力．
+
+
+  从各弹簧的长度变化构造二次能量、质量矩阵与刚度矩阵，并写出两条方程．证明两矩阵正定，再用 $x_1=x_2$ 的位形检查中间弹簧的贡献．本题不要求求频率．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：将第二质量当成 $m$，或遗漏中间弹簧导致的交叉回复项．
+    points: 0
+  - id: partial
+    label: 部分掌握：矩阵与方程正确，但缺少弹簧来源、正定性证明或同向位移检查．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：从能量得到矩阵和方程，证明正定，并解释同向位移检查的适用边界．
+    points: 1
+reference_answer: $M=m\operatorname{diag}(1,2)$，$K=k\begin{pmatrix}2&-1\\-1&2\end{pmatrix}$；$m\ddot x_1+2kx_1-kx_2=0$，$2m\ddot
+  x_2+2kx_2-kx_1=0$．
+hints:
+- 从三根弹簧分别写势能，再展开中间伸长的平方．
+- 相同位移是一种瞬时检查位形，不一定是该不等质量系统的振型．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '端部弹簧长度变化的大小由 $x_1,x_2$ 给出，中间弹簧的变化为 $x_2-x_1$，所以
+
+
+  $$
+
+  T=\frac12m\dot x_1^2+\frac12(2m)\dot x_2^2,\qquad
+
+  V=\frac12kx_1^2+\frac12k(x_2-x_1)^2+\frac12kx_2^2.
+
+  $$
+
+
+  展开势能，交叉项为 $-kx_1x_2$，因此
+
+
+  $$
+
+  M=m\begin{pmatrix}1&0\\0&2\end{pmatrix},\qquad
+
+  K=k\begin{pmatrix}2&-1\\-1&2\end{pmatrix}.
+
+  $$
+
+
+  从矩阵方程得到 $m\ddot x_1+2kx_1-kx_2=0$、$2m\ddot x_2+2kx_2-kx_1=0$．$M$ 对角元正；$K$ 的第一顺序主子式为 $2k>0$，行列式为 $3k^2>0$，故两矩阵正定．
+
+
+  当两位移相同为 $a$ 时，中间弹簧不伸长，势能仅来自两端，为 $ka^2$；各滑块的回复力均为 $-ka$．这验证了交叉项的符号与系数，但不表示两质量在这种位形下必有相同加速度．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5a793c89ac7481d094d1c4599d505af95d69a0c164c57b8135c99239885d7ef3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5a793c89ac7481d094d1c4599d505af95d69a0c164c57b8135c99239885d7ef3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:5a793c89ac7481d094d1c4599d505af95d69a0c164c57b8135c99239885d7ef3

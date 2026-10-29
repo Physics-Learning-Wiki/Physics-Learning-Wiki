@@ -1,0 +1,16 @@
+schema_version: 1
+id: mechanics.analytical.small-oscillations.exercises
+title: 平衡附近的小振动：建模与推导自评
+description: 先独立作答，再核对条件、推导、结果与检验，按本题标准自评．题目未经人工审核，仅供草稿预览．
+status: published
+tags:
+- 分析力学
+- 小振动
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000746
+  - q-000747
+  - q-000748
+  order: fixed

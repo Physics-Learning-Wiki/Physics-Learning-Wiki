@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000713
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.euler-lagrange-equation
+related_pages:
+- mechanics.analytical.lagrangian
+objectives:
+- mechanics.analytical.lagrangian.kinematic-identities
+- mechanics.analytical.lagrangian.kinetic-equation
+type: single_choice
+choice_order: shuffle
+stem: 单自由度动能为 $T=a(q)\dot q^2/2$，$a(q)>0$．广义惯性项 $\mathrm d(\partial T/\partial\dot q)/\mathrm dt-\partial T/\partial q$ 是哪一个？
+choices:
+- id: A
+  content: $a(q)\ddot q$．
+- id: B
+  content: $a(q)\ddot q+a'(q)\dot q^2$．
+- id: C
+  content: $a(q)\ddot q+\tfrac12a'(q)\dot q^2$．
+- id: D
+  content: $a(q)\ddot q-\tfrac12a'(q)\dot q^2$．
+answer:
+  choice: C
+feedback:
+  choices:
+    A: 系数随位置变化会带来额外项．
+    B: 全导数中的附加项还需减去 $\partial T/\partial q$．
+    C: 全导数与坐标偏导相减后留下半个系数导数项．
+    D: 乘积求导给出正的 $a'\dot q^2$，相减后仍为正的半项．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 分别完成两个导数，再相减；不要提前把 $a(q)$ 当作常量．
+solution: 固定 $\dot q$ 求偏导，有 $\partial_qT=a'\dot q^2/2$；而 $\partial_{\dot q}T=a\dot q$ 沿轨迹求导为 $a\ddot q+a'\dot q^2$．两者相减即得
+  $a\ddot q+a'\dot q^2/2$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:256b4f7562d2f944a5433778869e6e6dbd5e50bfc875123c3eee5f5056d7a6e9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:256b4f7562d2f944a5433778869e6e6dbd5e50bfc875123c3eee5f5056d7a6e9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:256b4f7562d2f944a5433778869e6e6dbd5e50bfc875123c3eee5f5056d7a6e9

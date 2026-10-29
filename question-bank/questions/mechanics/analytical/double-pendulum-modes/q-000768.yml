@@ -1,0 +1,93 @@
+schema_version: 3
+id: q-000768
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- mechanics.analytical
+- mechanics.oscillations
+concepts:
+- analytical.normal-mode
+- analytical.initial-condition-projection
+- analytical.normal-coordinate
+related_pages:
+- mechanics.analytical.double-pendulum-modes
+objectives:
+- mechanics.analytical.double-pendulum-modes.physical-amplitudes
+- mechanics.analytical.double-pendulum-modes.initial-state
+type: free_response
+choice_order: fixed
+stem: |-
+  等长等质量双摆处于小振动范围，两质点质量均为 $m>0$、杆长均为 $l>0$．在最低点附近，以两个质点的水平位移 $x_1,x_2$ 描述准备的初态：
+
+  $$
+  x_1(0)=A,\quad x_2(0)=B,\quad \dot x_1(0)=U,\quad \dot x_2(0)=W.
+  $$
+
+  各初始量均足够小．已知高频角振型为 $(1,-\sqrt2)^{\mathsf T}$．求只激发高频模所需的 $B,W$，给出随后的两质点水平运动，并计算质量归一化高频坐标及该纯模的二次能量．解释为什么不能直接令 $B=-\sqrt2 A$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：直接把角振幅比套到两个质点水平位移上，或只约束初位移而不约束速度．
+    points: 0
+  - id: partial
+    label: 部分掌握：纯模的位移与速度条件正确，但运动、归一化坐标或能量计算有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整转换两组初态，给出水平运动、归一化坐标与能量，并解释两类振幅比的区别．
+    points: 1
+reference_answer: $B=(1-\sqrt2)A$、$W=(1-\sqrt2)U$；$x_1=A\cos\omega_+t+(U/\omega_+)\sin\omega_+t$，$x_2=(1-\sqrt2)x_1$；$E_+=m(2-\sqrt2)U^2+2mgA^2/l$．
+hints:
+- 先用 $x_2=l(\theta_1+\theta_2)$ 转换成两角，再对位移与速度各施加一次纯模条件．
+- 未归一化幅值是 $\theta_1$；乘质量范数后才可用单位惯性系数的能量式．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: |-
+  小角度几何给出 $x_1=l\theta_1$、$x_2=l(\theta_1+\theta_2)$，故 $\theta_2=(x_2-x_1)/l$，角速度也有相同的线性关系．高频纯模要求两组初态均满足 $\theta_2=-\sqrt2\theta_1$，因此
+
+  $$
+  B=(1-\sqrt2)A,\qquad W=(1-\sqrt2)U.
+  $$
+
+  高频角频率为 $\omega_+=\sqrt{(2+\sqrt2)g/l}$，于是
+
+  $$
+  x_1(t)=A\cos\omega_+t+\frac{U}{\omega_+}\sin\omega_+t,\qquad
+  x_2(t)=(1-\sqrt2)x_1(t).
+  $$
+
+  未归一化高频幅值等于 $\theta_1=x_1/l$，其质量范数为 $n_+=\sqrt{ml^2(4-2\sqrt2)}$．所以
+
+  $$
+  Q_+(t)=\sqrt{m(4-2\sqrt2)}\,x_1(t),\qquad Q_-(t)=0.
+  $$
+
+  纯模二次能量为
+
+  $$
+  E_+=\frac12m(4-2\sqrt2)\bigl[U^2+\omega_+^2A^2\bigr]
+  =m(2-\sqrt2)U^2+\frac{2mg}{l}A^2.
+  $$
+
+  也可将 $\theta_1=A/l$、$\theta_2=-\sqrt2 A/l$ 及相应角速度代入原二次能量验证．角振幅比不同于质点水平位移比；忽略第二质点随第一杆的平移，会得到错误的 $B,W$．所有关系均在线性小角度精度内成立．
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

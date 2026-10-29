@@ -1,0 +1,68 @@
+schema_version: 3
+id: q-000721
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+- analytical.generalized-coordinate
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.double-pendulum-model
+type: single_choice
+choice_order: shuffle
+stem: 一般平面双摆使用两个绝对角．若瞬时 $\dot\theta_2=0$ 而 $\dot\theta_1\ne0$，关于第二质点的动能，哪项正确？
+choices:
+- id: A
+  content: 为零，因为第二杆不转动．
+- id: B
+  content: 含 $m_2l_1^2\dot\theta_1^2/2$．
+- id: C
+  content: 只能含 $m_2l_2^2\dot\theta_1^2/2$．
+- id: D
+  content: 只能由两质点相对速度计算．
+answer:
+  choice: B
+feedback:
+  choices:
+    A: 第二质点仍被第一关节的平移带动．
+    B: 第二质点的绝对速度保留第一杆带来的速度贡献．
+    C: 这里的转动几何尺度来自第一杆长度．
+    D: 总动能应使用所选惯性系中的各质点绝对速度．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 计算第二质点相对惯性系的速度，而不是只看第二杆的角速度．
+solution: 位置 $\boldsymbol r_2=\boldsymbol r_1+l_2(\sin\theta_2,-\cos\theta_2)$ 的导数在 $\dot\theta_2=0$ 时等于 $\dot{\boldsymbol
+  r}_1$，故 $v_2^2=l_1^2\dot\theta_1^2$．总动能中第一角的平方项因此含质量 $m_1+m_2$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4f3a173d6242455d4fce0496a198bb3789f1b83ac95661d152d05724561a523f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4f3a173d6242455d4fce0496a198bb3789f1b83ac95661d152d05724561a523f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:4f3a173d6242455d4fce0496a198bb3789f1b83ac95661d152d05724561a523f

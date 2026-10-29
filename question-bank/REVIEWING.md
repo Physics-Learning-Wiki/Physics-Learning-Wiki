@@ -62,7 +62,7 @@ uv run python -m scripts.question_bank.batch_review apply --plan reports/residue
 第二步默认只写审核标记，题目仍为草稿。若还要将题目和清单中的关联题集一并正式发布，在第二步添加 `--publish --publish-sets`：
 
 ```powershell
-uv run python -m scripts.question_bank.batch_review apply --plan reports/residue-review-plan.json --confirm-human-review --publish --publish-sets
+uv run python -m scripts.question_bank.batch_review apply --plan reports/tmp-review-plan.json --confirm-human-review --publish --publish-sets
 
 # 发布后检查并重建站点
 uv run python -m scripts.question_bank validate

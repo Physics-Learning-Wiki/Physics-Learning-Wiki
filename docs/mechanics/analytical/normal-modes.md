@@ -6,6 +6,29 @@ description: 求解小振动的广义特征值问题，推导质量正交与简�
 prerequisites:
   - small-oscillation
   - differential-equation
+page_id: mechanics.analytical.normal-modes
+learning_objectives:
+  - id: mechanics.analytical.normal-modes.eigenproblem
+    title: 求解广义特征值问题并区分角频率与其平方
+    anchor: analytical-eigenproblem
+  - id: mechanics.analytical.normal-modes.mass-orthogonality
+    title: 使用质量内积正交归一化并处理简并
+    anchor: analytical-mass-orthogonality
+  - id: mechanics.analytical.normal-modes.normal-coordinates
+    title: 建立简正坐标并检查能量解耦
+    anchor: analytical-normal-coordinates
+  - id: mechanics.analytical.normal-modes.initial-projection
+    title: 投影初始位移与速度以恢复运动
+    anchor: analytical-initial-projection
+  - id: mechanics.analytical.normal-modes.zero-mode
+    title: 识别零模并区分整体自由运动与高阶回复
+    anchor: analytical-zero-mode
+assessments:
+  - set: mechanics.analytical.normal-modes.selftest
+    placement: inline
+    anchor: analytical-selftest
+  - set: mechanics.analytical.normal-modes.exercises
+    placement: footer
 ---
 
 ## 寻找保持形状的运动
@@ -15,6 +38,8 @@ prerequisites:
 这种运动称为 **简正模（normal mode）**．它的振型规定各坐标的相对振幅与正负号，时间变化由一个固有角频率决定．一般运动则可由这些特殊运动叠加而成．
 
 本页沿用 [小振动近似](small-oscillations.md) 的条件，先假定 $M,K$ 实对称且正定，最后单独处理零模．需要会矩阵乘法、特征值与内积；可随用随查 [特征值与特征向量](../../math/linear-algebra/eigenvalues.md) 和 [内积](../../math/linear-algebra/inner-product.md)．
+
+<span id="analytical-eigenproblem"></span>
 
 ## 从同频运动到广义特征值问题
 
@@ -71,6 +96,8 @@ $$
 
 分子表示这一振型的回复作用，分母表示惯性．这里的比值检查不能单独代替前面的完备性论证．
 
+<span id="analytical-mass-orthogonality"></span>
+
 ## 质量正交与归一化
 
 上标 $(\alpha)$ 标记第几个模，下标 $i$ 标记原坐标的第几个分量．对两个振型，利用 $K,M$ 的对称性，分别有
@@ -106,6 +133,8 @@ $$
 $$
 
 这叫质量归一化，右边是 Kronecker 符号：同指标为一，不同指标为零．归一化并没有规定真实运动的振幅，真实振幅仍由初始条件决定．整体反号也不改变振型所代表的模态．
+
+<span id="analytical-normal-coordinates"></span>
 
 ## 简正坐标怎样解耦
 
@@ -144,6 +173,8 @@ $$
 
 质量归一化把惯性系数吸收进了坐标．因此 $Q_\alpha$ 一般不再是长度或角度，其单位使 $\dot Q_\alpha^2$ 具有能量单位；不要把系数一误读成「每个振子的实际质量都是一千克」．
 
+<span id="analytical-initial-projection"></span>
+
 ## 用初始条件恢复实际运动
 
 给定初始位移 $\boldsymbol\eta_0$ 和速度 $\boldsymbol v_0$，先投影：
@@ -163,6 +194,8 @@ Q_\alpha(t)=Q_\alpha(0)\cos\omega_\alpha t
 $$
 
 这比先解振幅与相位更直接，尤其适合某个模态振幅为零的情况．一共有 $2s$ 个初始量，变换并没有减少初态信息．若要激发一个纯模，初始位移与初始速度都必须沿该振型，其他模态的两项投影都为零．
+
+<span id="analytical-zero-mode"></span>
 
 ## 零模：三原子纵向振动
 
@@ -221,6 +254,8 @@ $$
 
 ??? note "核对：零模初态"
     不会．$\boldsymbol x(t)=vt(1,1,1)^{\mathsf T}$，弹簧形变始终为零，能量全部是质心平移动能．
+
+<span id="analytical-selftest"></span>
 
 ## 继续学习与参考资料
 

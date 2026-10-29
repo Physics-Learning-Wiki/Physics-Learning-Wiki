@@ -1,0 +1,112 @@
+schema_version: 3
+id: q-000712
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.dalembert-principle
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.projection
+- mechanics.analytical.dalembert-principle.equations
+type: free_response
+choice_order: fixed
+stem: '质量 $m>0$ 的小环被固定光滑抛物线铁丝约束在 $y=x^2/(2a)$ 上，$a>0$ 为长度常量，套环不会脱离．取 $x$ 向右、$y$ 向上，小环受重力和水平力 $F(t)$．
+
+
+  取 $x$ 为独立坐标，用达朗贝尔原理建立运动方程．需直接计算位置、加速度、容许虚位移与惯性项投影，暂不使用拉格朗日方程；说明反力为何不出现，并检查各项单位．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：仅写 $m\ddot x=F$ 或没有把加速度完整投影到容许方向．
+    points: 0
+  - id: partial
+    label: 部分掌握：投影方法正确，但速度平方项、符号或量纲检查有遗漏．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：从位置映射独立建立含速度平方项的方程，说明零约束虚功并检查单位．
+    points: 1
+reference_answer: $m(1+x^2/a^2)\ddot x+(mx/a^2)\dot x^2+mgx/a=F(t)$．
+hints:
+- 先求 $\ddot y=(\dot x^2+x\ddot x)/a$，不要漏掉速度平方项．
+- 把主动力和惯性项都投影到 $(1,x/a)$，它不是单位切向矢量．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '由位置映射得到
+
+
+  $$
+
+  \boldsymbol r=(x,x^2/(2a)),\quad
+
+  \delta\boldsymbol r=(1,x/a)\delta x,\quad
+
+  \ddot{\boldsymbol r}=(\ddot x,(\dot x^2+x\ddot x)/a).
+
+  $$
+
+
+  光滑固定双侧约束的反力垂直于容许切向，所以它的虚功为零．主动力 $(F,-mg)$ 的投影系数为 $F-mgx/a$；惯性项投影系数为
+
+
+  $$
+
+  m\ddot{\boldsymbol r}\cdot(1,x/a)
+
+  =m(1+x^2/a^2)\ddot x+\frac{mx}{a^2}\dot x^2.
+
+  $$
+
+
+  对任意 $\delta x$ 使用达朗贝尔原理，得到
+
+
+  $$
+
+  m(1+x^2/a^2)\ddot x+\frac{mx}{a^2}\dot x^2+\frac{mgx}{a}=F(t).
+
+  $$
+
+
+  每项均是力．在 $x=0$ 的瞬时，竖直重力无水平切向投影，但轨道其他位置会有 $mgx/a$ 回复项；不能把整条轨道上的竖直运动删去．变惯性项反映位置映射的几何变化．'
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9c6f4e2d344ea702d5e90a740816dd0de9c1c36c34d767b0366323f32f1e6f5f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9c6f4e2d344ea702d5e90a740816dd0de9c1c36c34d767b0366323f32f1e6f5f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:9c6f4e2d344ea702d5e90a740816dd0de9c1c36c34d767b0366323f32f1e6f5f

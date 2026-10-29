@@ -1,0 +1,64 @@
+schema_version: 3
+id: q-000709
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.generalized-force
+related_pages:
+- mechanics.analytical.dalembert-principle
+objectives:
+- mechanics.analytical.dalembert-principle.generalized-force
+type: numeric
+choice_order: fixed
+stem: 半径 $R=0.50\,\mathrm m$ 的固定圆轨道上，小环的切向阻力为 $\boldsymbol F_D=-cR\dot\theta\boldsymbol e_\theta$，$c=2.0\,\mathrm{kg/s}$．在
+  $\dot\theta=3.0\,\mathrm{rad/s}$ 时，阻力的广义力 $Q_\theta^D$ 是多少？
+answer:
+  value: -1.5
+  tolerance:
+    type: absolute
+    value: 1.0e-06
+  unit:
+    required: true
+    accepted:
+    - N·m
+    - N m
+    - N*m
+    canonical: N·m
+feedback:
+  correct: 数值与容差要求相符．请继续核对解析中的单位和符号．
+  incorrect: 按提示重算，并检查单位、正方向及是否遗漏几何系数．
+hints:
+- 阻力已经含一个 $R$，与位置偏导作标量积时还需另一个 $R$．
+solution: $\partial_\theta\boldsymbol r=R\boldsymbol e_\theta$，故 $Q_\theta^D=-cR^2\dot\theta=-2.0(0.50)^2(3.0)=-1.50\,\mathrm{N\,m}$．负号表示阻碍正向角运动；两个
+  $R$ 分别来自物理阻力与虚位移的几何尺度．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fcbdd262e3fb36f07043d2344d8acc956c7d1f9c680f12a3a2fc2a71a420748d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fcbdd262e3fb36f07043d2344d8acc956c7d1f9c680f12a3a2fc2a71a420748d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:fcbdd262e3fb36f07043d2344d8acc956c7d1f9c680f12a3a2fc2a71a420748d

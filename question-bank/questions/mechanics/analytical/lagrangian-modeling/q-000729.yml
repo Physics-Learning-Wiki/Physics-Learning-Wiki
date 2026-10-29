@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000729
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.lagrangian
+- analytical.euler-lagrange-equation
+- oscillations.harmonic-motion
+related_pages:
+- mechanics.analytical.lagrangian-modeling
+objectives:
+- mechanics.analytical.lagrangian-modeling.modeling-workflow
+type: free_response
+choice_order: fixed
+stem: '质量 $m>0$ 的滑块套在固定光滑斜直导轨上，不会脱离．导轨与水平夹角 $\alpha\in(0,\pi/2)$，正坐标 $x$ 沿斜面向下．滑块由沿导轨的理想弹簧连接上方固定端，$x=0$ 为弹簧自然长度位置，劲度系数 $k>0$．重力加速度为
+  $g$，无阻力．
+
+
+  从位置与高度变化建立 $T,V,L$ 和运动方程，找出静止平衡位置．改用相对平衡的位移 $\eta$，说明重力如何影响平衡位置与振动角频率，并检查量纲．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：重力势能符号错误，或把沿轨道的重力误写成 $mg\cos\alpha$．
+    points: 0
+  - id: partial
+    label: 部分掌握：方程和平衡位置正确，但未完成坐标平移、频率解释或量纲检查．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：从几何建立能量，推导方程，完成平衡坐标变换，并核对频率与极限．
+    points: 1
+reference_answer: $V=kx^2/2-mgx\sin\alpha$，$m\ddot x+kx-mg\sin\alpha=0$；$x_0=mg\sin\alpha/k$，$m\ddot\eta+k\eta=0$．
+hints:
+- 先用正方向确定高度变化的符号，再写重力势能．
+- 将势能配成关于平衡位移的平方，可独立检查重力项是否只移动平衡．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '滑块沿导轨的速率为 $|\dot x|$，高度相对 $x=0$ 的变化为 $-x\sin\alpha$，所以
+
+
+  $$
+
+  T=\frac12m\dot x^2,\quad
+
+  V=\frac12kx^2-mgx\sin\alpha,\quad
+
+  L=T-V.
+
+  $$
+
+
+  独立坐标的拉格朗日方程给出
+
+
+  $$
+
+  m\ddot x+kx-mg\sin\alpha=0.
+
+  $$
+
+
+  令加速度为零可得 $x_0=mg\sin\alpha/k$．置 $\eta=x-x_0$ 后，恒定重力分量与静态弹簧力抵消，得到 $m\ddot\eta+k\eta=0$，故 $\omega_0=\sqrt{k/m}$．本题在理想线性弹簧的有效范围内不需另作小位移近似．
+
+
+  将势能配方得 $V=k\eta^2/2-kx_0^2/2$，与平衡附近的回复系数一致．$mg/k$ 是长度，$\sqrt{k/m}$ 是时间的负一次方；$\alpha\to0$ 时平衡偏移趋零．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7c2ff91dfa8f2cde69916a9595c59b3484a4dd5f8175bad07ef6125fafb063ff
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7c2ff91dfa8f2cde69916a9595c59b3484a4dd5f8175bad07ef6125fafb063ff
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7c2ff91dfa8f2cde69916a9595c59b3484a4dd5f8175bad07ef6125fafb063ff

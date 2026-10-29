@@ -1,0 +1,15 @@
+schema_version: 1
+id: mechanics.analytical.constraints-generalized-coordinates.exercises
+title: 约束与广义坐标：建模与推导自评
+description: 先独立作答，再核对条件、推导、结果与检验，按本题标准自评．题目未经人工审核，仅供草稿预览．
+status: published
+tags:
+- 分析力学
+- 导论与建模
+feedback_mode: immediate
+selection:
+  type: fixed
+  questions:
+  - q-000695
+  - q-000696
+  order: fixed

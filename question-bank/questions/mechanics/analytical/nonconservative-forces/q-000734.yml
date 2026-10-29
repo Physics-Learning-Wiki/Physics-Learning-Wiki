@@ -1,0 +1,67 @@
+schema_version: 3
+id: q-000734
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.rayleigh-dissipation
+- oscillations.driven-motion
+related_pages:
+- mechanics.analytical.nonconservative-forces
+objectives:
+- mechanics.analytical.nonconservative-forces.energy-balance
+type: single_choice
+choice_order: shuffle
+stem: 固定水平弹簧振子的方程为 $m\ddot x+c\dot x+kx=F(t)$．取机械能 $E=m\dot x^2/2+kx^2/2$，哪条关系正确？
+choices:
+- id: A
+  content: $\dot E=F(t)\dot x-c\dot x^2$．
+- id: B
+  content: $\dot E=F(t)-c\dot x$．
+- id: C
+  content: $\dot E=F(t)\dot x+c\dot x^2$．
+- id: D
+  content: $\dot E$ 必为正，因为有驱动．
+answer:
+  choice: A
+feedback:
+  choices:
+    A: 方程乘 $\dot x$ 即得到输入与损失功率．
+    B: 右侧仍是力，缺少速度因子．
+    C: 阻力应减小机械能，损失项符号错误．
+    D: 驱动力与速度反向时可取走能量．
+  correct: 判断正确．请结合解析检查所用条件．
+  incorrect: 先按提示重建所需关系，再对照各项反馈．
+hints:
+- 把运动方程乘速度，识别哪些项组成机械能的导数．
+solution: 对 $E$ 求导，有 $\dot E=\dot x(m\ddot x+kx)$．用方程替换括号，得 $F\dot x-c\dot x^2$．驱动力是否输入能量由 $F\dot x$ 的瞬时符号决定；无驱动时能量不增，但转向点的瞬时损失率可为零．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 90
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0b5461eab7edf08a4795bdeafc096a2a926f397b822d8f26099b2c68749a1c21
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0b5461eab7edf08a4795bdeafc096a2a926f397b822d8f26099b2c68749a1c21
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:0b5461eab7edf08a4795bdeafc096a2a926f397b822d8f26099b2c68749a1c21

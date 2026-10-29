@@ -1,0 +1,116 @@
+schema_version: 3
+id: q-000703
+version: 1
+status: published
+locale: zh-CN
+topics:
+- mechanics.analytical
+concepts:
+- analytical.virtual-displacement
+- analytical.ideal-constraint
+related_pages:
+- mechanics.analytical.virtual-work
+objectives:
+- mechanics.analytical.virtual-work.virtual-displacement
+- mechanics.analytical.virtual-work.ideal-constraint
+type: free_response
+choice_order: fixed
+stem: '质点在光滑移动抛物线导轨上运动，约束为 $y=h(t)+x^2/(2a)$，$a>0$ 为长度常量，$h(t)$ 是已知高度．取 $x$ 为广义坐标，反力写成 $\boldsymbol f=\lambda(-x/a,1)$，其中
+  $\lambda$ 的单位为牛顿．
+
+
+  写出位置、真实速度、容许虚位移，验证反力零虚功，并求反力的实际功率．明确在哪一步固定时间，说明已知导轨运动怎样参与能量交换．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 8000
+  rows: 8
+  placeholder: 写出模型、关键步骤和检查；也可记录纸笔作答的结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：把 $\dot h$ 计入虚位移，或由零虚功直接断言零实功．
+    points: 0
+  - id: partial
+    label: 部分掌握：速度和虚位移正确，但实际功率或装置做功解释不完整．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：写出两类变化，验证总约束虚功为零，得到实际功率并检查固定导轨极限．
+    points: 1
+reference_answer: $\boldsymbol v=(\dot x,\dot h+x\dot x/a)$，$\delta\boldsymbol r=(1,x/a)\delta x$，$\delta W_f=0$，$P_f=\lambda\dot
+  h$．
+hints:
+- 先分别求全时间导数与等时变分，不要让 $\delta h$ 带入已知时间演化．
+- 实际功率使用完整真实速度，包括 $\dot h$．
+feedback:
+  correct: 已记录你的自评．请按本题标准确认推导和检查是否齐全．
+  incorrect: 对照参考解答定位缺失步骤，再记录自评；本题不自动判断文字答案．
+solution: '位置映射为 $\boldsymbol r=(x,h(t)+x^2/(2a))$．沿真实运动求全导数得到
+
+
+  $$
+
+  \boldsymbol v=(\dot x,\dot h+x\dot x/a).
+
+  $$
+
+
+  虚位移在同一时刻进行，故 $\delta t=0$、$\delta h=0$，只有坐标 $x$ 改变：
+
+
+  $$
+
+  \delta\boldsymbol r=(1,x/a)\delta x,\qquad
+
+  \boldsymbol f\cdot\delta\boldsymbol r
+
+  =\lambda(-x/a+x/a)\delta x=0.
+
+  $$
+
+
+  实际功率则是
+
+
+  $$
+
+  P_f=\boldsymbol f\cdot\boldsymbol v
+
+  =\lambda[-(x/a)\dot x+\dot h+(x/a)\dot x]
+
+  =\lambda\dot h.
+
+  $$
+
+
+  维持导轨运动的装置可向质点传递或取走能量，符号由 $\lambda\dot h$ 决定．当 $\dot h=0$ 时恢复固定光滑导轨的零实际功率．功率结果的单位是 $\mathrm{N\,m/s}$．'
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 480
+provenance:
+  type: original
+  note: 与 PLW 分析力学导论及小振动主线配套．题面、干扰项、提示和解答独立编写，未转载教材或课件的题目与插图．AI 辅助编写与复算，尚待真实人工审核．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b133cc2f7c7bd55875d078093c4f6803b63c5cd2a45a043a9f6627e623b2310
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b133cc2f7c7bd55875d078093c4f6803b63c5cd2a45a043a9f6627e623b2310
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-29'
+    question_version: 1
+    content_fingerprint: sha256:7b133cc2f7c7bd55875d078093c4f6803b63c5cd2a45a043a9f6627e623b2310
