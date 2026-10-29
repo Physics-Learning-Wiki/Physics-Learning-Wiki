@@ -1,0 +1,166 @@
+schema_version: 3
+id: q-000771
+version: 1
+status: draft
+locale: zh-CN
+topics:
+  - math.differential-geometry
+concepts:
+  - dg.coordinates.spherical
+  - dg.tangent-vector.components
+related_pages:
+  - math.differential-geometry
+type: free_response
+choice_order: fixed
+stem: |
+  在平直欧氏空间 $\mathbb{R}^{3}$ 中使用球坐标 $(r,\theta,\varphi)$：
+
+  $$
+  x=r\sin\theta\cos\varphi,\qquad
+  y=r\sin\theta\sin\varphi,\qquad
+  z=r\cos\theta,
+  $$
+
+  度规为
+
+  $$
+  \mathrm{d}s^{2}=\mathrm{d}r^{2}+r^{2}\mathrm{d}\theta^{2}
+  +r^{2}\sin^{2}\theta\,\mathrm{d}\varphi^{2}.
+  $$
+
+  一条曲线由
+
+  $$
+  x(\lambda)=\cos\lambda,\qquad
+  y(\lambda)=\sin\lambda,\qquad
+  z(\lambda)=\lambda
+  $$
+
+  给出。
+
+  1. 把这条曲线写成 $(r(\lambda),\theta(\lambda),\varphi(\lambda))$；
+  2. 分别求切矢量在笛卡尔坐标与球坐标中的分量；
+  3. 用两种坐标下的分量分别计算切矢量的模长，并核对结果一致。
+response:
+  format: plain_text
+  required: true
+  min_chars: 100
+  max_chars: 8000
+  rows: 12
+  placeholder: '先由 $x,y,z$ 求 $r,\theta,\varphi$，再对 $\lambda$ 求导……'
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  $$
+  r=\sqrt{1+\lambda^{2}},\qquad
+  \theta=\arccos\left(\frac{\lambda}{\sqrt{1+\lambda^{2}}}\right),
+  \qquad \varphi=\lambda .
+  $$
+
+  笛卡尔切矢量为 $(-\sin\lambda,\cos\lambda,1)$．球坐标切矢量为
+
+  $$
+  \left(\frac{\mathrm{d}r}{\mathrm{d}\lambda},
+  \frac{\mathrm{d}\theta}{\mathrm{d}\lambda},
+  \frac{\mathrm{d}\varphi}{\mathrm{d}\lambda}\right)
+  =\left(\frac{\lambda}{\sqrt{1+\lambda^{2}}},
+  -\frac{1}{1+\lambda^{2}},1\right).
+  $$
+
+  笛卡尔模长为 $\sqrt{2}$；球坐标下
+  $\lambda^{2}/(1+\lambda^{2})+1/(1+\lambda^{2})+1=2$，也等于 $2$，两边一致．
+solution: |
+  由 $x^{2}+y^{2}=\cos^{2}\lambda+\sin^{2}\lambda=1$，得
+
+  $$
+  r=\sqrt{x^{2}+y^{2}+z^{2}}=\sqrt{1+\lambda^{2}}.
+  $$
+
+  又 $z=r\cos\theta$，所以
+
+  $$
+  \theta=\arccos\left(\frac{z}{r}\right)
+  =\arccos\left(\frac{\lambda}{\sqrt{1+\lambda^{2}}}\right).
+  $$
+
+  最后 $y/x=\tan\lambda$，故 $\varphi=\lambda$（相差 $2\pi$ 不影响曲线）．
+
+  笛卡尔坐标下直接对 $\lambda$ 求导：
+
+  $$
+  \left(\frac{\mathrm{d}x}{\mathrm{d}\lambda},
+  \frac{\mathrm{d}y}{\mathrm{d}\lambda},
+  \frac{\mathrm{d}z}{\mathrm{d}\lambda}\right)
+  =(-\sin\lambda,\cos\lambda,1).
+  $$
+
+  球坐标下逐项求导：
+
+  $$
+  \frac{\mathrm{d}r}{\mathrm{d}\lambda}
+  =\frac{\lambda}{\sqrt{1+\lambda^{2}}},
+  $$
+
+  $$
+  \frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+  =-\frac{1}{1+\lambda^{2}},
+  \qquad
+  \frac{\mathrm{d}\varphi}{\mathrm{d}\lambda}=1.
+  $$
+
+  因此球坐标下的切矢量分量为
+
+  $$
+  V^{\mu}
+  =\left(\frac{\lambda}{\sqrt{1+\lambda^{2}}},
+  -\frac{1}{1+\lambda^{2}},1\right).
+  $$
+
+  核对模长：笛卡尔坐标下
+
+  $$
+  |V|^{2}=\sin^{2}\lambda+\cos^{2}\lambda+1=2.
+  $$
+
+  球坐标下
+
+  $$
+  |V|^{2}
+  =\left(\frac{\lambda}{\sqrt{1+\lambda^{2}}}\right)^{2}
+  +(1+\lambda^{2})\left(-\frac{1}{1+\lambda^{2}}\right)^{2}
+  +(1+\lambda^{2})\sin^{2}\theta .
+  $$
+
+  而 $\sin^{2}\theta=1-\lambda^{2}/(1+\lambda^{2})=1/(1+\lambda^{2})$，所以
+
+  $$
+  |V|^{2}=\frac{\lambda^{2}}{1+\lambda^{2}}
+  +\frac{1}{1+\lambda^{2}}+1=2.
+  $$
+
+  两种坐标给出同一个几何结果，这正是切矢量作为几何对象与坐标无关的体现．
+
+  **参考定位：** Carroll, *Spacetime and Geometry*, 第 2 章 Exercise 6．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+provenance:
+  type: original
+  note: '原创中文题面、数据与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 6，未复制原文措辞或插图。'
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0

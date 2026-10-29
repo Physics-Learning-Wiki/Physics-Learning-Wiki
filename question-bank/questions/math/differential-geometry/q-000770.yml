@@ -1,0 +1,93 @@
+schema_version: 3
+id: q-000770
+version: 1
+status: draft
+locale: zh-CN
+topics:
+  - math.differential-geometry
+concepts:
+  - dg.manifold.atlas
+  - dg.manifold.torus
+related_pages:
+  - math.differential-geometry
+type: free_response
+choice_order: fixed
+stem: |
+  令 $T^{2}=S^{1}\times S^{1}$．请构造一个有限的图册，使 $T^{2}$ 成为二维光滑流形。
+
+  要求：
+
+  1. 至少写出四张坐标卡，并说明它们覆盖整个 $T^{2}$；
+  2. 写出重叠区域上的坐标转移函数；
+  3. 说明这些转移函数为什么是光滑的。
+response:
+  format: plain_text
+  required: true
+  min_chars: 100
+  max_chars: 8000
+  rows: 12
+  placeholder: '写出 S¹ 的两张角坐标卡，再取乘积……'
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  把 $S^{1}$ 用两张角坐标卡覆盖：
+
+  $$
+  U_{1}=S^{1}\setminus\{e^{\mathrm{i}0}\},\quad \theta_{1}\in(0,2\pi),
+  \qquad
+  U_{2}=S^{1}\setminus\{e^{\mathrm{i}\pi}\},\quad \theta_{2}\in(-\pi,\pi).
+  $$
+
+  取四张乘积坐标卡 $U_{i}\times U_{j}$（$i,j=1,2$），坐标为 $(\theta_{i},\varphi_{j})$．它们覆盖 $S^{1}\times S^{1}$．在重叠区域上，两个角坐标只相差 $0$ 或 $\pm2\pi$，因此转移函数是平移
+
+  $$
+  \theta_{2}=\theta_{1}\quad\text{或}\quad\theta_{2}=\theta_{1}-2\pi,
+  $$
+
+  以及对 $\varphi$ 的同类关系；这些都是光滑映射．因此四张卡构成一个光滑图册（不必是极大的）．
+solution: |
+  参数化 $S^{1}$ 的最简单方式是角坐标 $\theta\sim\theta+2\pi$．单个角坐标在 $0$ 与 $2\pi$ 的粘合处不单值，所以至少需要两张卡．取
+
+  $$
+  U_{1}=S^{1}-\{1\},\qquad \theta_{1}\in(0,2\pi),
+  $$
+
+  $$
+  U_{2}=S^{1}-\{-1\},\qquad \theta_{2}\in(-\pi,\pi).
+  $$
+
+  在 $U_{1}\cap U_{2}$ 上，$\theta_{1}=\theta_{2}$（当 $\theta_{2}\in(0,\pi)$）或 $\theta_{1}=\theta_{2}+2\pi$（当 $\theta_{2}\in(-\pi,0)$）．可见转移函数是恒等映射或平移 $2\pi$，两者都光滑．
+
+  对 $T^{2}=S^{1}\times S^{1}$，取
+
+  $$
+  (U_{i}\times U_{j},\;(\theta_{i},\varphi_{j})),
+  \qquad i,j\in\{1,2\}.
+  $$
+
+  四张卡覆盖 $T^{2}$．在任意重叠区域，每个角坐标的转移都是恒等或平移 $2\pi$，所以乘积转移函数也是光滑的．这就是 $T^{2}$ 的一个光滑图册；它自然不是极大的，但已经足以证明 $T^{2}$ 是二维光滑流形．
+
+  **参考定位：** Carroll, *Spacetime and Geometry*, 第 2 章 Exercise 3．
+difficulty: 2
+cognitive_level: apply
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: '原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 3，未复制原文措辞或插图。'
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0

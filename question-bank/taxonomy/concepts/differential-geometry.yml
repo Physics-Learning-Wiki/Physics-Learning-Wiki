@@ -1,0 +1,107 @@
+dg.manifold.dimension:
+  title: 流形的维数
+  topics:
+    - math.differential-geometry
+  aliases:
+    - manifold-dimension
+
+dg.manifold.atlas:
+  title: 图册与坐标卡
+  topics:
+    - math.differential-geometry
+  aliases:
+    - atlas
+    - coordinate-chart
+
+dg.manifold.torus:
+  title: 环面流形
+  topics:
+    - math.differential-geometry
+  aliases:
+    - torus
+
+dg.coordinates.spherical:
+  title: 球坐标
+  topics:
+    - math.differential-geometry
+  aliases:
+    - spherical-coordinates
+
+dg.tangent-vector.components:
+  title: 切矢量的分量变换
+  topics:
+    - math.differential-geometry
+  aliases:
+    - tangent-vector-components
+
+dg.vector-field.commutator:
+  title: 矢量场的对易子
+  topics:
+    - math.differential-geometry
+  aliases:
+    - commutator
+    - lie-bracket
+
+dg.coordinate-basis:
+  title: 坐标基
+  topics:
+    - math.differential-geometry
+  aliases:
+    - coordinate-basis
+
+dg.differential-form.exterior-derivative:
+  title: 外微分
+  topics:
+    - math.differential-geometry
+  aliases:
+    - exterior-derivative
+
+dg.differential-form.wedge-product:
+  title: 楔积
+  topics:
+    - math.differential-geometry
+  aliases:
+    - wedge-product
+
+dg.connection.christoffel:
+  title: Christoffel 符号
+  topics:
+    - math.differential-geometry
+  aliases:
+    - christoffel-symbols
+
+dg.metric.diagonal:
+  title: 对角度规
+  topics:
+    - math.differential-geometry
+  aliases:
+    - diagonal-metric
+
+dg.geodesic.sphere:
+  title: 球面测地线
+  topics:
+    - math.differential-geometry
+  aliases:
+    - sphere-geodesics
+
+dg.parallel-transport.holonomy:
+  title: 平行移动与和乐
+  topics:
+    - math.differential-geometry
+  aliases:
+    - parallel-transport
+    - holonomy
+
+dg.curvature.riemann:
+  title: 黎曼曲率张量
+  topics:
+    - math.differential-geometry
+  aliases:
+    - riemann-tensor
+
+dg.curvature.maximally-symmetric:
+  title: 最大对称空间
+  topics:
+    - math.differential-geometry
+  aliases:
+    - maximally-symmetric-space

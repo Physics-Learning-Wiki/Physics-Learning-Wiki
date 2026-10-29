@@ -1,0 +1,119 @@
+schema_version: 3
+id: q-000773
+version: 1
+status: draft
+locale: zh-CN
+topics:
+  - math.differential-geometry
+concepts:
+  - dg.differential-form.exterior-derivative
+  - dg.differential-form.wedge-product
+related_pages:
+  - math.differential-geometry
+type: free_response
+choice_order: fixed
+stem: |
+  设 $\omega$ 是 $p$ 形式，$\eta$ 是 $q$ 形式。证明分次 Leibniz 规则
+
+  $$
+  \mathrm{d}(\omega\wedge\eta)
+  =\mathrm{d}\omega\wedge\eta
+  +(-1)^{p}\omega\wedge\mathrm{d}\eta .
+  $$
+
+  可以只在局部坐标中证明，然后说明为什么结果与坐标选择无关。
+response:
+  format: plain_text
+  required: true
+  min_chars: 80
+  max_chars: 6000
+  rows: 10
+  placeholder: '把 ω、η 写成局部坐标下的分量形式，再逐项计算……'
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  在局部坐标中写成
+  $\omega=f\,\mathrm{d}x^{I}$、$\eta=g\,\mathrm{d}x^{J}$，
+  其中 $\mathrm{d}x^{I}$ 是 $p$ 个坐标一形式的楔积，$\mathrm{d}x^{J}$ 类似．则
+
+  $$
+  \mathrm{d}(\omega\wedge\eta)
+  =\mathrm{d}(fg)\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}
+  =g\,\mathrm{d}f\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}
+  +f\,\mathrm{d}g\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}.
+  $$
+
+  第一项就是 $\mathrm{d}\omega\wedge\eta$；第二项把 $\mathrm{d}g$ 移过 $p$ 个一形式，产生因子 $(-1)^{p}$，于是得到
+  $(-1)^{p}\omega\wedge\mathrm{d}\eta$．逐项相加并用线性性即得结论．
+solution: |
+  由于外微分与楔积都是局部算子，可以在一个坐标卡中验证．取单项形式
+
+  $$
+  \omega=f\,\mathrm{d}x^{i_{1}}\wedge\cdots\wedge\mathrm{d}x^{i_{p}}
+  =f\,\mathrm{d}x^{I},
+  $$
+
+  $$
+  \eta=g\,\mathrm{d}x^{j_{1}}\wedge\cdots\wedge\mathrm{d}x^{j_{q}}
+  =g\,\mathrm{d}x^{J}.
+  $$
+
+  普通函数的乘积法则给出
+
+  $$
+  \mathrm{d}(fg)=\mathrm{d}f\,g+f\,\mathrm{d}g.
+  $$
+
+  因此
+
+  $$
+  \mathrm{d}(\omega\wedge\eta)
+  =\mathrm{d}(fg)\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}
+  $$
+
+  $$
+  =\mathrm{d}f\wedge\mathrm{d}x^{I}\wedge g\,\mathrm{d}x^{J}
+  +f\,\mathrm{d}g\wedge\mathrm{d}x^{I}\wedge\mathrm{d}x^{J}.
+  $$
+
+  第一项可直接写成 $\mathrm{d}\omega\wedge\eta$．第二项中 $\mathrm{d}g$ 是一个一形式，要与 $\mathrm{d}x^{I}$ 交换位置需要越过 $p$ 个一形式，每次交换产生一个负号，共产生 $(-1)^{p}$：
+
+  $$
+  \mathrm{d}g\wedge\mathrm{d}x^{I}
+  =(-1)^{p}\mathrm{d}x^{I}\wedge\mathrm{d}g.
+  $$
+
+  于是第二项等于 $(-1)^{p}\omega\wedge\mathrm{d}\eta$．对一般的 $\omega,\eta$ 用线性性叠加，就得到
+
+  $$
+  \mathrm{d}(\omega\wedge\eta)
+  =\mathrm{d}\omega\wedge\eta
+  +(-1)^{p}\omega\wedge\mathrm{d}\eta .
+  $$
+
+  这个等式在局部坐标中成立；而等式两边都是坐标无关的几何对象，所以它在整个流形上成立，与坐标选择无关．
+
+  **参考定位：** Carroll, *Spacetime and Geometry*, 第 2 章 Exercise 8．
+difficulty: 2
+cognitive_level: analyze
+style: computational
+estimated_seconds: 480
+provenance:
+  type: original
+  note: '原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 8，未复制原文措辞或插图。'
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0

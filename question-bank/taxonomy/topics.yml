@@ -61,3 +61,7 @@ modern:
 modern.general-relativity:
   title: 广义相对论
   parent: modern
+
+math.differential-geometry:
+  title: 微分几何
+  parent: math
