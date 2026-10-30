@@ -1,0 +1,16 @@
+measurement-basics.md
+metrology.md
+data-recording.md
+repeated-measurements.md
+weighted-measurements.md
+systematic-errors-outliers.md
+outlier-tests.md
+uncertainty-evaluation.md
+uncertainty-propagation.md
+error-allocation.md
+least-squares.md
+linear-parameters.md
+nonlinear-fitting.md
+combined-measurements.md
+case-studies.md
+examples

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" role="img" aria-labelledby="title">
+  <title id="title">水平面上的方块</title>
+  <path d="M40 170H440" stroke="#607d8b" stroke-width="6"/>
+  <rect x="190" y="90" width="100" height="80" rx="4" fill="#90caf9" stroke="#1565c0" stroke-width="4"/>
+  <text x="240" y="138" text-anchor="middle" font-size="24">物体</text>
+</svg>

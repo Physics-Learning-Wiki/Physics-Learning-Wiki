@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 760 360" width="760" height="360" role="img" aria-labelledby="title desc">
+  <title id="title">单摆与双摆的角度坐标</title>
+  <desc id="desc">两图坐标轴向右和向上，角度从竖直向下逆时针量取。单摆一根轻杆，双摆两根轻杆，各自的摆角均相对于竖直方向。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+  <rect width="760" height="360" rx="12" fill="#f8fafc"/>
+  <g font-family="sans-serif" fill="#172554" font-size="17">
+    <text x="36" y="30">单摆：一个角度</text><text x="408" y="30">双摆：两个独立角度</text>
+    <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)"><path d="M115 90H290"/><path d="M115 90V42"/><path d="M460 90H690"/><path d="M460 90V42"/></g>
+    <g stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5" fill="none"><path d="M115 90V308"/><path d="M460 90V270"/><path d="M525 225V335"/></g>
+    <g stroke="#2563eb" stroke-width="5"><path d="M115 90L205 275"/><path d="M460 90L525 225L620 300"/></g>
+    <g fill="#2563eb"><circle cx="205" cy="275" r="12"/><circle cx="525" cy="225" r="11"/><circle cx="620" cy="300" r="11"/></g>
+    <g fill="#334155"><circle cx="115" cy="90" r="5"/><circle cx="460" cy="90" r="5"/></g>
+    <g stroke="#b45309" fill="none" stroke-width="2" marker-end="url(#arrow)"><path d="M115 149A59 59 0 0 0 141 143"/><path d="M460 147A57 57 0 0 0 485 141"/><path d="M525 276A51 51 0 0 0 565 257"/></g>
+    <text x="150" y="165">θ</text><text x="489" y="166">θ₁</text><text x="554" y="282">θ₂</text>
+    <text x="95" y="85">O</text><text x="439" y="85">O</text><text x="294" y="96">x</text><text x="695" y="96">x</text><text x="96" y="46">y</text><text x="440" y="46">y</text>
+    <text x="176" y="180">l</text><text x="511" y="151">l₁</text><text x="592" y="252">l₂</text><text x="226" y="284">m</text><text x="541" y="226">m₁</text><text x="637" y="312">m₂</text>
+    <text x="36" y="338" font-size="15">不可伸长轻杆；y 向上；θ = 0 为竖直向下</text><text x="408" y="338" font-size="15">θ₂ 是绝对摆角，不是两杆之间的夹角</text>
+  </g>
+</svg>
