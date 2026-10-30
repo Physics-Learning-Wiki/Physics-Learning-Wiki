@@ -117,6 +117,7 @@ test("search supports q deep links, keyboard navigation, and reset", async ({ pa
   await input.press("s");
   await expect(input).toHaveValue("牛顿s");
   await input.fill("热力学");
+  await expect(page).toHaveURL(url => url.searchParams.get("q") === "热力学");
   await expect(page.locator(".md-search-result__meta")).toHaveText(/已显示 \d+ 条，共 \d+ 条/);
 
   await input.press("ArrowDown");
@@ -130,6 +131,50 @@ test("search supports q deep links, keyboard navigation, and reset", async ({ pa
 
   await page.keyboard.press("Escape");
   await expect(page.locator("#__search")).not.toBeChecked();
+});
+
+test("editing a query clears stale results before debounce and keeps keyboard navigation on the current query", async ({
+  page
+}) => {
+  await page.clock.install({ time: new Date("2026-01-01T00:00:00Z") });
+  await page.route("**/pagefind/pagefind.js", route =>
+    route.fulfill({
+      contentType: "text/javascript",
+      body: `export const options=async()=>{}, init=async()=>{};
+      export const search=async query=>({results:[{data:async()=>({
+        url:'/Physics-Learning-Wiki/mechanics/?query='+encodeURIComponent(query),
+        meta:{title:query}
+      })}]});`
+    })
+  );
+  await page.goto(`${basePath}intro/about/?q=${encodeURIComponent("旧查询")}`);
+  const input = page.locator(".md-search__input");
+  const links = page.locator(".md-search-result__link");
+  const meta = page.locator(".md-search-result__meta");
+  await expect(links.first()).toHaveText("旧查询");
+
+  // Hold the debounce timer so every assertion observes the pending query.
+  await page.clock.pauseAt(new Date("2026-01-01T01:00:00Z"));
+  await input.fill("新查询");
+  await expect(links).toHaveCount(0);
+  await expect(meta).toHaveText("正在搜索…");
+  await input.press("ArrowDown");
+  await expect(input).toBeFocused();
+
+  // Enter submits the new query immediately instead of opening an old result.
+  await input.press("Enter");
+  await expect(page).toHaveURL(
+    url => url.pathname === `${basePath}intro/about/` && url.searchParams.get("q") === "新查询"
+  );
+  await expect(links.first()).toHaveText("新查询");
+  await input.press("ArrowDown");
+  await expect(links.first()).toBeFocused();
+  await page.keyboard.press("ArrowUp");
+  await expect(input).toBeFocused();
+
+  await input.fill("");
+  await expect(links).toHaveCount(0);
+  await expect(meta).toHaveText("输入关键词开始搜索");
 });
 
 test("desktop search expands on focus and shows Pagefind results", async ({ page }) => {

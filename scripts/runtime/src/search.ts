@@ -300,7 +300,13 @@ export function mountSearch(
 
   const handleInput = () => {
     invalidate();
+    // Retire the previous query's results before the debounce timer runs.
+    matches = [];
+    displayed = 0;
+    retry = undefined;
+    resultList.replaceChildren();
     more.hidden = true;
+    resultMeta.textContent = input.value.trim() ? "正在搜索…" : "输入关键词开始搜索";
     searchTimer = window.setTimeout(() => void runSearch(input.value), 120);
   };
 
