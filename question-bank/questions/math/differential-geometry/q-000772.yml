@@ -44,6 +44,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：$(E_{1},E_{2})$ 的行列式为 $1$，对易子为 $[E_{1},E_{2}]=E_{1}\ne0$，这与坐标基对易子必为零矛盾。
+  incorrect: 请重新计算 $\partial_{x}(x\partial_{x}f)$ 中的乘积项；同时检查你是否把逐点线性无关与能够成为坐标基这两个不同条件混为一谈。
 reference_answer: |
   在 $(x,y)$ 基下 $E_{1}=(1,0)$、$E_{2}=(x,1)$，行列式为 $1$，故处处线性无关；两者也都不为零．
 

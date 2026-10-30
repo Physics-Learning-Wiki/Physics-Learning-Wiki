@@ -41,6 +41,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：经线满足测地线方程，纬线测地条件化为 $\sin\theta\cos\theta=0$；平行移动一整圈后分量由 $\cos(2\pi\cos\theta_{0})$ 与 $\sin(2\pi\cos\theta_{0})$ 给出。
+  incorrect: 请检查球面联络中 $\Gamma^{\theta}{}_{\varphi\varphi}$ 的符号，并确认平行移动返回时的分量仍满足原度规给出的长度；不要遗漏 $V^{\varphi}$ 中的因子 $1/\sin\theta_{0}$。
 reference_answer: |
   非零联络为
 
