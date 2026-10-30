@@ -1,0 +1,176 @@
+schema_version: 3
+id: q-000775
+version: 1
+status: draft
+locale: zh-CN
+topics:
+  - math.differential-geometry
+concepts:
+  - dg.geodesic.sphere
+  - dg.parallel-transport.holonomy
+related_pages:
+  - math.differential-geometry
+type: free_response
+choice_order: fixed
+stem: |
+  考虑单位二维球面，坐标为 $(\theta,\varphi)$，度规为
+
+  $$
+  \mathrm{d}s^{2}=\mathrm{d}\theta^{2}
+  +\sin^{2}\theta\,\mathrm{d}\varphi^{2}.
+  $$
+
+  1. 证明经线 $\varphi=\text{常数}$ 是测地线；并证明在所有纬线 $\theta=\text{常数}$ 中，只有赤道 $\theta=\pi/2$ 是测地线．
+  2. 把矢量 $V^{\mu}=(1,0)$ 沿纬线 $\theta=\theta_{0}$ 平行移动一整圈（$\varphi:0\to2\pi$），求回到起点时 $V^{\mu}$ 的分量．
+response:
+  format: plain_text
+  required: true
+  min_chars: 120
+  max_chars: 8000
+  rows: 12
+  placeholder: '先写出球面的 Christoffel 符号，再分别代入测地线与平行移动方程……'
+grading:
+  mode: self_assessed
+  rubric:
+    - id: incomplete
+      label: 尚未掌握
+      points: 0
+    - id: partial
+      label: 部分掌握
+      points: 0.5
+    - id: complete
+      label: 基本掌握
+      points: 1
+reference_answer: |
+  非零联络为
+
+  $$
+  \Gamma^{\theta}{}_{\varphi\varphi}=-\sin\theta\cos\theta,
+  \qquad
+  \Gamma^{\varphi}{}_{\theta\varphi}
+  =\Gamma^{\varphi}{}_{\varphi\theta}=\cot\theta .
+  $$
+
+  经线以 $\theta$ 为仿射参数，测地线方程退化为 $\theta''=0$，故是测地线．纬线以 $\varphi$ 为参数，$\theta$ 方程为
+  $-\sin\theta\cos\theta=0$，因此只有 $\theta=\pi/2$（赤道）是测地线．
+
+  沿 $\theta=\theta_{0}$ 平行移动时
+
+  $$
+  V^{\theta}=\cos(\varphi\cos\theta_{0}),
+  \qquad
+  V^{\varphi}
+  =-\frac{1}{\sin\theta_{0}}
+  \sin(\varphi\cos\theta_{0}).
+  $$
+
+  绕一圈后
+
+  $$
+  V^{\mu}(2\pi)=
+  \left(
+  \cos(2\pi\cos\theta_{0}),
+  -\frac{1}{\sin\theta_{0}}\sin(2\pi\cos\theta_{0})
+  \right).
+  $$
+solution: |
+  球面度规的非零 Christoffel 符号可以由
+
+  $$
+  \Gamma^{\rho}{}_{\mu\nu}
+  =\frac12 g^{\rho\sigma}
+  \left(\partial_\mu g_{\nu\sigma}
+  +\partial_\nu g_{\mu\sigma}
+  -\partial_\sigma g_{\mu\nu}\right)
+  $$
+
+  得到：
+
+  $$
+  \Gamma^{\theta}{}_{\varphi\varphi}
+  =-\sin\theta\cos\theta,
+  \qquad
+  \Gamma^{\varphi}{}_{\theta\varphi}
+  =\Gamma^{\varphi}{}_{\varphi\theta}
+  =\cot\theta .
+  $$
+
+  **经线．** 令 $\varphi=\varphi_{0}$，以 $\theta$ 为参数．此时 $\varphi'=0$，测地线方程
+
+  $$
+  \theta''+\Gamma^{\theta}{}_{\varphi\varphi}\varphi'^{2}=0,
+  \qquad
+  \varphi''+2\Gamma^{\varphi}{}_{\theta\varphi}\theta'\varphi'=0
+  $$
+
+  化为 $\theta''=0$ 与 $0=0$，所以经线是测地线．
+
+  **纬线．** 令 $\theta=\theta_{0}$，以 $\varphi$ 为参数．此时 $\theta'=0$，$\theta$ 方程给出
+
+  $$
+  \Gamma^{\theta}{}_{\varphi\varphi}
+  =-\sin\theta_{0}\cos\theta_{0}=0.
+  $$
+
+  因此 $\sin\theta_{0}\cos\theta_{0}=0$，即 $\theta_{0}=\pi/2$（赤道；两极是坐标退化点）．只有赤道是测地线．
+
+  **平行移动．** 沿纬线，切矢量为 $u^{\mu}=(0,1)$．平行移动方程
+
+  $$
+  \frac{\mathrm{d}V^{\mu}}{\mathrm{d}\varphi}
+  +\Gamma^{\mu}{}_{\nu\lambda}u^{\nu}V^{\lambda}=0
+  $$
+
+  给出
+
+  $$
+  \frac{\mathrm{d}V^{\theta}}{\mathrm{d}\varphi}
+  -\sin\theta_{0}\cos\theta_{0}V^{\varphi}=0,
+  $$
+
+  $$
+  \frac{\mathrm{d}V^{\varphi}}{\mathrm{d}\varphi}
+  +\cot\theta_{0}V^{\theta}=0.
+  $$
+
+  令 $c=\cos\theta_{0}$、$s=\sin\theta_{0}$，则
+
+  $$
+  \frac{\mathrm{d}V^{\theta}}{\mathrm{d}\varphi}=sc\,V^{\varphi},
+  \qquad
+  \frac{\mathrm{d}V^{\varphi}}{\mathrm{d}\varphi}
+  =-\frac{c}{s}V^{\theta}.
+  $$
+
+  由此 $V^{\theta\prime\prime}=-c^{2}V^{\theta}$．初始条件 $V^{\theta}(0)=1$、$V^{\varphi}(0)=0$ 给出
+
+  $$
+  V^{\theta}=\cos(c\varphi),
+  \qquad
+  V^{\varphi}=-\frac{1}{s}\sin(c\varphi).
+  $$
+
+  回到 $\varphi=2\pi$ 时
+
+  $$
+  V^{\theta}=\cos(2\pi c),
+  \qquad
+  V^{\varphi}=-\frac{1}{s}\sin(2\pi c).
+  $$
+
+  一般情况下它与初始矢量不同；这种绕闭合回路平行移动产生的转动就是 **和乐**（holonomy），它反映了球面的曲率．
+
+  **参考定位：** Carroll, *Spacetime and Geometry*, 第 3 章 Exercise 5．
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 900
+provenance:
+  type: original
+  note: '原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 3 章 Exercise 5，未复制原文措辞或插图。'
+  ai_assisted: true
+authors:
+  - name: WbZhou-phys
+    kind: human
+    github: WbZhou-phys
+license: CC-BY-SA-4.0

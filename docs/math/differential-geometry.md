@@ -3,6 +3,10 @@ status: review
 author: WbZhou-phys
 description: "面向物理学生的微分几何模块：流形与坐标、切空间与张量、度规与联络、测地线、曲率、微分形式与积分，并连接到广义相对论．"
 page_id: math.differential-geometry
+assessments:
+  - set: math.differential-geometry.foundations
+    placement: footer
+    title: 微分几何基础自测
 ---
 
 ???+ note "阅读前提"
