@@ -1,142 +1,227 @@
 schema_version: 3
 id: q-000774
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
-  - math.differential-geometry
+- math.differential-geometry
 concepts:
-  - dg.connection.christoffel
-  - dg.metric.diagonal
+- dg.connection.christoffel
+- dg.metric.diagonal
 related_pages:
-  - math.differential-geometry
+- math.differential-geometry
 type: free_response
 choice_order: fixed
-stem: |
-  设度规 $g_{\mu\nu}$ 在坐标基下是对角的。证明以下 Christoffel 符号公式（下式中重复指标不求和）：
+stem: '设度规 $g_{\mu\nu}$ 在坐标基下是对角的。证明以下 Christoffel 符号公式（下式中重复指标不求和）：
+
 
   1. 若 $\mu,\nu,\lambda$ 两两不同，则 $\Gamma^{\mu}{}_{\nu\lambda}=0$；
+
   2. 若 $\nu\ne\mu$，则
 
+
   $$
+
   \Gamma^{\mu}{}_{\nu\nu}
+
   =-\frac{1}{2g_{\mu\mu}}\partial_{\mu}g_{\nu\nu};
+
   $$
+
 
   3. 若 $\nu\ne\mu$，则
 
+
   $$
+
   \Gamma^{\mu}{}_{\mu\nu}
+
   =\Gamma^{\mu}{}_{\nu\mu}
+
   =\partial_{\nu}\ln\sqrt{|g_{\mu\mu}|}.
+
   $$
+
+  '
 response:
   format: plain_text
   required: true
   min_chars: 80
   max_chars: 6000
   rows: 10
-  placeholder: '从 Levi-Civita 公式出发，利用对角性逐项判断非零分量……'
+  placeholder: 从 Levi-Civita 公式出发，利用对角性逐项判断非零分量……
 grading:
   mode: self_assessed
   rubric:
-    - id: incomplete
-      label: 尚未掌握
-      points: 0
-    - id: partial
-      label: 部分掌握
-      points: 0.5
-    - id: complete
-      label: 基本掌握
-      points: 1
+  - id: incomplete
+    label: 尚未掌握
+    points: 0
+  - id: partial
+    label: 部分掌握
+    points: 0.5
+  - id: complete
+    label: 基本掌握
+    points: 1
 feedback:
   correct: 正确：对角度规使逆度规只保留 $\sigma=\mu$ 一项；再按 $\mu,\nu,\lambda$ 中哪些指标重合分类，即可得到三条公式。
   incorrect: 请检查求和是否只留下 $\sigma=\mu$ 的一项，并逐项判断 $g_{\lambda\mu}$、$g_{\nu\mu}$、$g_{\nu\lambda}$ 在对角度规下是否为零；对数形式的系数也需核对。
-reference_answer: |
-  对角度规下 Levi-Civita 公式中的 $g^{\mu\sigma}$ 只有 $\sigma=\mu$ 一项（不求和）：
+reference_answer: '对角度规下 Levi-Civita 公式中的 $g^{\mu\sigma}$ 只有 $\sigma=\mu$ 一项（不求和）：
+
 
   $$
+
   \Gamma^{\mu}{}_{\nu\lambda}
+
   =\frac{1}{2g_{\mu\mu}}
+
   \left(\partial_{\nu}g_{\lambda\mu}
+
   +\partial_{\lambda}g_{\nu\mu}
+
   -\partial_{\mu}g_{\nu\lambda}\right).
+
   $$
+
 
   若 $\mu,\nu,\lambda$ 两两不同，右端三个 $g$ 分量都含不同指标，度规分量为零，故 $\Gamma=0$．
 
+
   若 $\nu=\lambda\ne\mu$，第一、二项为零，只剩
 
+
   $$
+
   \Gamma^{\mu}{}_{\nu\nu}
+
   =-\frac{1}{2g_{\mu\mu}}\partial_{\mu}g_{\nu\nu}.
+
   $$
+
 
   若 $\mu=\nu\ne\lambda$（或 $\mu=\lambda\ne\nu$），第二项为零，剩下
 
-  $$
-  \Gamma^{\mu}{}_{\mu\lambda}
-  =\frac{1}{2g_{\mu\mu}}\partial_{\lambda}g_{\mu\mu}
-  =\partial_{\lambda}\ln\sqrt{|g_{\mu\mu}|}.
-  $$
-solution: |
-  从 Levi-Civita 联络的显式形式出发：
 
   $$
-  \Gamma^{\mu}{}_{\nu\lambda}
-  =\frac{1}{2}g^{\mu\sigma}
-  \left(
-  \partial_{\nu}g_{\lambda\sigma}
-  +\partial_{\lambda}g_{\nu\sigma}
-  -\partial_{\sigma}g_{\nu\lambda}
-  \right).
+
+  \Gamma^{\mu}{}_{\mu\lambda}
+
+  =\frac{1}{2g_{\mu\mu}}\partial_{\lambda}g_{\mu\mu}
+
+  =\partial_{\lambda}\ln\sqrt{|g_{\mu\mu}|}.
+
   $$
+
+  '
+solution: '从 Levi-Civita 联络的显式形式出发：
+
+
+  $$
+
+  \Gamma^{\mu}{}_{\nu\lambda}
+
+  =\frac{1}{2}g^{\mu\sigma}
+
+  \left(
+
+  \partial_{\nu}g_{\lambda\sigma}
+
+  +\partial_{\lambda}g_{\nu\sigma}
+
+  -\partial_{\sigma}g_{\nu\lambda}
+
+  \right).
+
+  $$
+
 
   由于度规对角，$g^{\mu\sigma}$ 只在 $\sigma=\mu$ 时非零，且 $g^{\mu\mu}=1/g_{\mu\mu}$．因此
 
-  $$
-  \Gamma^{\mu}{}_{\nu\lambda}
-  =\frac{1}{2g_{\mu\mu}}
-  \left(
-  \partial_{\nu}g_{\lambda\mu}
-  +\partial_{\lambda}g_{\nu\mu}
-  -\partial_{\mu}g_{\nu\lambda}
-  \right).
+
   $$
 
+  \Gamma^{\mu}{}_{\nu\lambda}
+
+  =\frac{1}{2g_{\mu\mu}}
+
+  \left(
+
+  \partial_{\nu}g_{\lambda\mu}
+
+  +\partial_{\lambda}g_{\nu\mu}
+
+  -\partial_{\mu}g_{\nu\lambda}
+
+  \right).
+
+  $$
+
+
   **情形一：** $\mu,\nu,\lambda$ 两两不同．此时 $g_{\lambda\mu}=0$、$g_{\nu\mu}=0$、$g_{\nu\lambda}=0$，所以
+
   $\Gamma^{\mu}{}_{\nu\lambda}=0$．
+
 
   **情形二：** $\nu=\lambda\ne\mu$．前两项消失，只剩
 
+
   $$
+
   \Gamma^{\mu}{}_{\nu\nu}
+
   =-\frac{1}{2g_{\mu\mu}}\partial_{\mu}g_{\nu\nu}.
+
   $$
+
 
   **情形三：** $\mu=\nu\ne\lambda$．此时 $g_{\lambda\mu}=0$、$g_{\nu\lambda}=0$，于是
 
+
   $$
+
   \Gamma^{\mu}{}_{\mu\lambda}
+
   =\frac{1}{2g_{\mu\mu}}\partial_{\lambda}g_{\mu\mu}
+
   =\partial_{\lambda}\ln\sqrt{|g_{\mu\mu}|}.
+
   $$
+
 
   由联络在下指标上的对称性，$\Gamma^{\mu}{}_{\lambda\mu}=\Gamma^{\mu}{}_{\mu\lambda}$，得到第三个公式．
 
+
   这些公式在球坐标、Schwarzschild 度规以及宇宙学度规中都很实用．
 
+
   **参考定位：** Carroll, *Spacetime and Geometry*, 第 3 章 Exercise 3．
+
+  '
 difficulty: 2
 cognitive_level: apply
 style: computational
 estimated_seconds: 600
 provenance:
   type: original
-  note: '原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 3 章 Exercise 3，未复制原文措辞或插图。'
+  note: 原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 3 章 Exercise 3，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8310a05bf3086d05e5b5ca45911ae32e890e3f6e744084ba1a09410933edb750
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8310a05bf3086d05e5b5ca45911ae32e890e3f6e744084ba1a09410933edb750
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8310a05bf3086d05e5b5ca45911ae32e890e3f6e744084ba1a09410933edb750

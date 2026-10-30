@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "D:\\Programs\\Physics-Learning-Wiki",
   "reviewer": "Leafuke",
-  "reviewed_on": "2026-10-29",
+  "reviewed_on": "2026-10-30",
   "dimensions": [
     "physics",
     "pedagogy",
@@ -10,460 +10,58 @@
   ],
   "questions": [
     {
-      "id": "q-000695",
+      "id": "q-000769",
       "version": 1,
-      "content_fingerprint": "sha256:9ba8cd8de35adcb28b79c7ceb8d548037f02cbe7ac81fd254e57cdaa5eaee35d",
-      "path": "question-bank/questions/mechanics/analytical/constraints-generalized-coordinates/q-000695.yml"
+      "content_fingerprint": "sha256:0cbb8a8ec2f570600124251212c92681f14de12c7fba4f1e8a9205f594ce33d9",
+      "path": "question-bank/questions/math/differential-geometry/q-000769.yml"
     },
     {
-      "id": "q-000696",
+      "id": "q-000770",
       "version": 1,
-      "content_fingerprint": "sha256:b09fefe9415da768d3519016656c3531b2078888faab8275416e98e41bf0f784",
-      "path": "question-bank/questions/mechanics/analytical/constraints-generalized-coordinates/q-000696.yml"
+      "content_fingerprint": "sha256:d8385acd3842c0f6be1e491424ef468653156a7bb5989762b51fa4dd6f3b3fc1",
+      "path": "question-bank/questions/math/differential-geometry/q-000770.yml"
     },
     {
-      "id": "q-000697",
+      "id": "q-000771",
       "version": 1,
-      "content_fingerprint": "sha256:3ecd2075a845948d8350914121a89efb4db971badd9f6ebc704fd626be8d4b57",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000697.yml"
+      "content_fingerprint": "sha256:6ce9f431eb6bdd49d385564fbe4dde2b8794ddc479f21fa05cf901baa1e354c8",
+      "path": "question-bank/questions/math/differential-geometry/q-000771.yml"
     },
     {
-      "id": "q-000698",
+      "id": "q-000772",
       "version": 1,
-      "content_fingerprint": "sha256:a4eef753b0356ec16a1486ff0dbaa67a3b50a81fe1a585ec6e3d516945d56419",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000698.yml"
+      "content_fingerprint": "sha256:9e01d750bddd0b74b64d32beec3ef9d6290ecbf93fd6feb28c691b54de639df4",
+      "path": "question-bank/questions/math/differential-geometry/q-000772.yml"
     },
     {
-      "id": "q-000699",
+      "id": "q-000773",
       "version": 1,
-      "content_fingerprint": "sha256:a60b1141ddc456b44cff11670b1cbe03720aa9886f49857e52deb1c3c293e549",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000699.yml"
+      "content_fingerprint": "sha256:94461b4d76a4bd00bf1ca3eb5d8a387524518b4e0ae77228851b9208b73c1d28",
+      "path": "question-bank/questions/math/differential-geometry/q-000773.yml"
     },
     {
-      "id": "q-000700",
+      "id": "q-000774",
       "version": 1,
-      "content_fingerprint": "sha256:e00cb3b87447b673435bece46a98d327f7d9da851b3166c116e42da8269bd577",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000700.yml"
+      "content_fingerprint": "sha256:8310a05bf3086d05e5b5ca45911ae32e890e3f6e744084ba1a09410933edb750",
+      "path": "question-bank/questions/math/differential-geometry/q-000774.yml"
     },
     {
-      "id": "q-000701",
+      "id": "q-000775",
       "version": 1,
-      "content_fingerprint": "sha256:54606e8f4232932e32bb49b9428c747bf2ea7e78d8f0aaf7a86bfd89df158fb0",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000701.yml"
+      "content_fingerprint": "sha256:bfefd547c9226c2bba5e98c6c60cbb99912122d27bafb139d9af0724f9c6168d",
+      "path": "question-bank/questions/math/differential-geometry/q-000775.yml"
     },
     {
-      "id": "q-000702",
+      "id": "q-000776",
       "version": 1,
-      "content_fingerprint": "sha256:d7086ec6d33f0da01404609c03e306710ae5a825529182330d880341b2a24a1e",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000702.yml"
-    },
-    {
-      "id": "q-000703",
-      "version": 1,
-      "content_fingerprint": "sha256:7b133cc2f7c7bd55875d078093c4f6803b63c5cd2a45a043a9f6627e623b2310",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000703.yml"
-    },
-    {
-      "id": "q-000704",
-      "version": 1,
-      "content_fingerprint": "sha256:fe0ffb668a0b2ad87d22dbc80a45312454858814d83e3fbc122cc0d12f2c5759",
-      "path": "question-bank/questions/mechanics/analytical/virtual-work/q-000704.yml"
-    },
-    {
-      "id": "q-000705",
-      "version": 1,
-      "content_fingerprint": "sha256:c5b6552ec47ba4c53d1d92c6e605c41b8a1b137488a1b44c177255d758d9cb1d",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000705.yml"
-    },
-    {
-      "id": "q-000706",
-      "version": 1,
-      "content_fingerprint": "sha256:145d2f699604a9d25ab5f0201aa40715c7547f19a140449100c9678cd147dd74",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000706.yml"
-    },
-    {
-      "id": "q-000707",
-      "version": 1,
-      "content_fingerprint": "sha256:d6b599085d551c5320652674d99a9bcea1d6e3bab1eab8843b221a5f3a476a2a",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000707.yml"
-    },
-    {
-      "id": "q-000708",
-      "version": 1,
-      "content_fingerprint": "sha256:8a8ffd0c6aa5f7782ad9119425d3e576383e87a35e6d1cbc7cbbad9e34a9e2c9",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000708.yml"
-    },
-    {
-      "id": "q-000709",
-      "version": 1,
-      "content_fingerprint": "sha256:fcbdd262e3fb36f07043d2344d8acc956c7d1f9c680f12a3a2fc2a71a420748d",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000709.yml"
-    },
-    {
-      "id": "q-000710",
-      "version": 1,
-      "content_fingerprint": "sha256:6bd9b78876a4edbea4fd7313dd5718874eed6d559d17f3d32bb967d62ea5bbca",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000710.yml"
-    },
-    {
-      "id": "q-000711",
-      "version": 1,
-      "content_fingerprint": "sha256:07231f3448b6b1e45016545c9ae6ec697267e25d7c5887cea154ff582fb982de",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000711.yml"
-    },
-    {
-      "id": "q-000712",
-      "version": 1,
-      "content_fingerprint": "sha256:9c6f4e2d344ea702d5e90a740816dd0de9c1c36c34d767b0366323f32f1e6f5f",
-      "path": "question-bank/questions/mechanics/analytical/dalembert-principle/q-000712.yml"
-    },
-    {
-      "id": "q-000713",
-      "version": 1,
-      "content_fingerprint": "sha256:256b4f7562d2f944a5433778869e6e6dbd5e50bfc875123c3eee5f5056d7a6e9",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000713.yml"
-    },
-    {
-      "id": "q-000714",
-      "version": 1,
-      "content_fingerprint": "sha256:9d2cd21622de03b5f8244869910bc9ff5b5aea10c04efae7dc173d2ba81f7663",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000714.yml"
-    },
-    {
-      "id": "q-000715",
-      "version": 1,
-      "content_fingerprint": "sha256:85e75f39f35889cb5191e702b672b40e7a4eafd3963a25680107517706353d14",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000715.yml"
-    },
-    {
-      "id": "q-000716",
-      "version": 1,
-      "content_fingerprint": "sha256:669bef39bf91038c7b5fa1a3e023b87e2f6a6ac1c884dd6ee276cbdf22a2e113",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000716.yml"
-    },
-    {
-      "id": "q-000717",
-      "version": 1,
-      "content_fingerprint": "sha256:e24b6b00f83e678a1a03865d053740fa55cff5b2b7c2949dacdcdcac4bd611db",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000717.yml"
-    },
-    {
-      "id": "q-000718",
-      "version": 1,
-      "content_fingerprint": "sha256:bc6e93885188404bb3410d634eb7744798b11745832eeb8cc4e8d0659194c07c",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000718.yml"
-    },
-    {
-      "id": "q-000719",
-      "version": 1,
-      "content_fingerprint": "sha256:e039b05bc69ccd10016c27c960b90533fb1f036b6858f0c1f8b2ebfe8c6bdca3",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000719.yml"
-    },
-    {
-      "id": "q-000720",
-      "version": 1,
-      "content_fingerprint": "sha256:bff92d307bb37b2278051993a2317bf04ab5062370f66c812e230f79ac81e0b8",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian/q-000720.yml"
-    },
-    {
-      "id": "q-000721",
-      "version": 1,
-      "content_fingerprint": "sha256:4f3a173d6242455d4fce0496a198bb3789f1b83ac95661d152d05724561a523f",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000721.yml"
-    },
-    {
-      "id": "q-000722",
-      "version": 1,
-      "content_fingerprint": "sha256:93a985b2845c8ea4534d7dc2e2655aa0e158b48cb3e9dbd0be71afc99ef424b0",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000722.yml"
-    },
-    {
-      "id": "q-000723",
-      "version": 1,
-      "content_fingerprint": "sha256:55c331272f6e7c06b826cc6900371c599bda288972e6ade859f780cd9482977f",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000723.yml"
-    },
-    {
-      "id": "q-000724",
-      "version": 1,
-      "content_fingerprint": "sha256:0d5105bd619e537e4df340701faa5c1419cad07ee0acd706e48dfbeb58f988f2",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000724.yml"
-    },
-    {
-      "id": "q-000725",
-      "version": 1,
-      "content_fingerprint": "sha256:5aef244c51299e7297d6b30234f39b2bed4e5c3f92d3d556f7d4b01b9e1e596f",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000725.yml"
-    },
-    {
-      "id": "q-000726",
-      "version": 1,
-      "content_fingerprint": "sha256:65b99cd4b5a13381649e00df7786e9d847c879069b0462b232f10897a362c8a9",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000726.yml"
-    },
-    {
-      "id": "q-000727",
-      "version": 1,
-      "content_fingerprint": "sha256:7b5bb8c77cedca3fc8e0c854671ea8ec515d71d139c5dd2143f5a36352031704",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000727.yml"
-    },
-    {
-      "id": "q-000728",
-      "version": 1,
-      "content_fingerprint": "sha256:a6f0f13bc11f9e6d343bb5d513c6984fd4ad641f469600e983970cc31b205a45",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000728.yml"
-    },
-    {
-      "id": "q-000729",
-      "version": 1,
-      "content_fingerprint": "sha256:7c2ff91dfa8f2cde69916a9595c59b3484a4dd5f8175bad07ef6125fafb063ff",
-      "path": "question-bank/questions/mechanics/analytical/lagrangian-modeling/q-000729.yml"
-    },
-    {
-      "id": "q-000730",
-      "version": 1,
-      "content_fingerprint": "sha256:15d3ee50a3d7651314330c991447bb696e4fa4cd8f144710a552e792795f734f",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000730.yml"
-    },
-    {
-      "id": "q-000731",
-      "version": 1,
-      "content_fingerprint": "sha256:896c9886a7d5dbc77b2b4c2b599f62fc0365c4631ff1905d238a5ec252f97929",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000731.yml"
-    },
-    {
-      "id": "q-000732",
-      "version": 1,
-      "content_fingerprint": "sha256:b85c20b8b958c6215664916dcb50b1e4c03d17b0cabdcfa92efae8c194ab6c14",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000732.yml"
-    },
-    {
-      "id": "q-000733",
-      "version": 1,
-      "content_fingerprint": "sha256:9f844048a5a9064463bb5ba1bf96eacc6c9969fb8ba5dc8a50ea5d51dc3a6bd9",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000733.yml"
-    },
-    {
-      "id": "q-000734",
-      "version": 1,
-      "content_fingerprint": "sha256:0b5461eab7edf08a4795bdeafc096a2a926f397b822d8f26099b2c68749a1c21",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000734.yml"
-    },
-    {
-      "id": "q-000735",
-      "version": 1,
-      "content_fingerprint": "sha256:c11b0b2cc3bf9a063eabbfaf59c5c6e49b5697e39638cf20462669b0af5309bb",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000735.yml"
-    },
-    {
-      "id": "q-000736",
-      "version": 1,
-      "content_fingerprint": "sha256:127c4460d4f408fc19440d7fe3b31a3cd1ba8694c38317c818785a2317bc100d",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000736.yml"
-    },
-    {
-      "id": "q-000737",
-      "version": 1,
-      "content_fingerprint": "sha256:751856a55c7cbaa0acebd95d48a17dbeead9a807b5d776fc6cc75c0d49920c5e",
-      "path": "question-bank/questions/mechanics/analytical/nonconservative-forces/q-000737.yml"
-    },
-    {
-      "id": "q-000738",
-      "version": 1,
-      "content_fingerprint": "sha256:116140da1d06cd493deeb6716a911d7930c58a168c824963c246626c7000ee0a",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000738.yml"
-    },
-    {
-      "id": "q-000739",
-      "version": 1,
-      "content_fingerprint": "sha256:b075ac36167a25df0119a2e01e3032ed63d3635eb10478096f399dafa7c899d4",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000739.yml"
-    },
-    {
-      "id": "q-000740",
-      "version": 1,
-      "content_fingerprint": "sha256:30ef7ce8801911403384af2be47d05494b251c01cc4157745679180c7a7ae388",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000740.yml"
-    },
-    {
-      "id": "q-000741",
-      "version": 1,
-      "content_fingerprint": "sha256:370f6b79f4588d5685b68c7e229587c463ea0b4949b3c15cf2938808d2d76d77",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000741.yml"
-    },
-    {
-      "id": "q-000742",
-      "version": 1,
-      "content_fingerprint": "sha256:5306a174e9eadaab714901e6778b0bd94787f79fa64717034f72770f19985566",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000742.yml"
-    },
-    {
-      "id": "q-000743",
-      "version": 1,
-      "content_fingerprint": "sha256:d9d911d98ba88b5e042ffc3dbf5526515896770d672d01a24597e560e949d0a4",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000743.yml"
-    },
-    {
-      "id": "q-000744",
-      "version": 1,
-      "content_fingerprint": "sha256:9de40edea74be5519503eb0d711d47094bec84de948d8ff17bb65cd26c9423fa",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000744.yml"
-    },
-    {
-      "id": "q-000745",
-      "version": 1,
-      "content_fingerprint": "sha256:ee51c9e63b23f293ce7c8fe487247b41fb36338258608a14ad80a3456551b0dd",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000745.yml"
-    },
-    {
-      "id": "q-000746",
-      "version": 1,
-      "content_fingerprint": "sha256:5a793c89ac7481d094d1c4599d505af95d69a0c164c57b8135c99239885d7ef3",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000746.yml"
-    },
-    {
-      "id": "q-000747",
-      "version": 1,
-      "content_fingerprint": "sha256:d6481f9ad139fe3ff79016d174ba3bc191bee885258ac25db498a288205e7648",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000747.yml"
-    },
-    {
-      "id": "q-000748",
-      "version": 1,
-      "content_fingerprint": "sha256:1cc7569d08c812861b238d268dcf8dc9b6e146c9b5111f936be9971d9284555e",
-      "path": "question-bank/questions/mechanics/analytical/small-oscillations/q-000748.yml"
-    },
-    {
-      "id": "q-000749",
-      "version": 1,
-      "content_fingerprint": "sha256:1b28fc6e6579ad9a2f9b5b8c235e7083480d09eab3513fcdd4ab2717e152c9fd",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000749.yml"
-    },
-    {
-      "id": "q-000750",
-      "version": 1,
-      "content_fingerprint": "sha256:34c6a8401012ca5c396ee6ed648d9299f7454f70dc0a1fa4f7fe831f3d59ab5a",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000750.yml"
-    },
-    {
-      "id": "q-000751",
-      "version": 1,
-      "content_fingerprint": "sha256:8bffbc9f5fe95b21455fea600c4c3eea8422115fb02e42d23335f8e42c63de83",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000751.yml"
-    },
-    {
-      "id": "q-000752",
-      "version": 1,
-      "content_fingerprint": "sha256:4fb8e45c86006df73e1da2cd294d3264ff6631688a6f8a3da47768c7eda97dcf",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000752.yml"
-    },
-    {
-      "id": "q-000753",
-      "version": 1,
-      "content_fingerprint": "sha256:5d0684e18af347fb0ac6bf7445991445793690f25b60e6c76a4bdd3654dfd86a",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000753.yml"
-    },
-    {
-      "id": "q-000754",
-      "version": 1,
-      "content_fingerprint": "sha256:04162b624130d21ff28b8834f14a8392929bd81660af1884b8d7455fb0f8e795",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000754.yml"
-    },
-    {
-      "id": "q-000755",
-      "version": 1,
-      "content_fingerprint": "sha256:a0d726bef99234f7a5a80842a3c81e9242bedff29bc60928f62d406fd331e042",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000755.yml"
-    },
-    {
-      "id": "q-000756",
-      "version": 1,
-      "content_fingerprint": "sha256:c6761fcf0407be2f3c913bf76c734e77b3881b7454cc8934f1e224bb3c1a76a7",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000756.yml"
-    },
-    {
-      "id": "q-000757",
-      "version": 1,
-      "content_fingerprint": "sha256:3b9044fe09b8eff837fa13cfd73f34af919db701e7c14081922e03e50fea4a3c",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000757.yml"
-    },
-    {
-      "id": "q-000758",
-      "version": 1,
-      "content_fingerprint": "sha256:2240d1db6f1375b8c776d7c718aac690b8333b41abbf3817667708cd0dc6a737",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000758.yml"
-    },
-    {
-      "id": "q-000759",
-      "version": 1,
-      "content_fingerprint": "sha256:73c68f3ce3ceea8773cf54128d921385713f72778662bafbb62db52fe5ddb306",
-      "path": "question-bank/questions/mechanics/analytical/normal-modes/q-000759.yml"
+      "content_fingerprint": "sha256:8e671ff43e55a452ef8fe1f750cdc29b9886576591b40e3d3cb4d7f1228ffbc9",
+      "path": "question-bank/questions/math/differential-geometry/q-000776.yml"
     }
   ],
   "related_sets": [
     {
-      "id": "mechanics.analytical.constraints-generalized-coordinates.exercises",
-      "fingerprint": "sha256:6041896ab63c0f9c381baa3693880630bc9df1033d43d9de8da4ddbd6fd61fa8"
-    },
-    {
-      "id": "mechanics.analytical.dalembert-principle.exercises",
-      "fingerprint": "sha256:17a44568b9f51a3dc694811eb1d1f52b9cd967d2fa39318c6b593d941d831ca4"
-    },
-    {
-      "id": "mechanics.analytical.dalembert-principle.selftest",
-      "fingerprint": "sha256:bfd37e4d296093d9f6aa483994eada104f4ca41443af5df409d8eb25c4097e90"
-    },
-    {
-      "id": "mechanics.analytical.foundations-review",
-      "fingerprint": "sha256:8d00004510a4b2444326a8c4e6247d5faafe89feb04492b24cb8d04853a99bc1"
-    },
-    {
-      "id": "mechanics.analytical.lagrangian-modeling.exercises",
-      "fingerprint": "sha256:676f58131007f1ff6b02d0ae4b6845753088a92c1013dbf2b9bd1861338cfd0f"
-    },
-    {
-      "id": "mechanics.analytical.lagrangian-modeling.selftest",
-      "fingerprint": "sha256:cef012728f3a74d9c751a2348df6c468852fb85ed23cc0c8f17ede6851041533"
-    },
-    {
-      "id": "mechanics.analytical.lagrangian.exercises",
-      "fingerprint": "sha256:785213e40f2b689288ee190584afa0c798f75e56c96361422afb86da726c4a75"
-    },
-    {
-      "id": "mechanics.analytical.lagrangian.selftest",
-      "fingerprint": "sha256:bf2e2beb6a2159f5791ade05ad9e594f72a900d984a709e2afb2aa3cd6123201"
-    },
-    {
-      "id": "mechanics.analytical.nonconservative-forces.exercises",
-      "fingerprint": "sha256:d9eb720d13d41209bf780d5ba209b863660a06d281374932b3bacfd0b9eab140"
-    },
-    {
-      "id": "mechanics.analytical.nonconservative-forces.selftest",
-      "fingerprint": "sha256:739bf7799d63e292f7743fabd586afb1d5d6d9fdec8add5b094a8ba7325abe26"
-    },
-    {
-      "id": "mechanics.analytical.normal-modes.exercises",
-      "fingerprint": "sha256:483190e86a9e2cfe776ca61fd77ad99513cc5082cf02aa231f9a9a4c8ad42ca5"
-    },
-    {
-      "id": "mechanics.analytical.normal-modes.selftest",
-      "fingerprint": "sha256:f2b13ffba7caf83a566c5643b3e8a523ff06eb714b556d8819ace1e7654e3698"
-    },
-    {
-      "id": "mechanics.analytical.small-oscillations.exercises",
-      "fingerprint": "sha256:d2b63a12d68c222d1dbd0f68e0ab86d5bbc6306370139e23fba818c29e6ce031"
-    },
-    {
-      "id": "mechanics.analytical.small-oscillations.selftest",
-      "fingerprint": "sha256:7e2060fcf83b65327cbd6dafe916d6cdaad21a43803b98541345f0cc43bf7c4c"
-    },
-    {
-      "id": "mechanics.analytical.virtual-work.exercises",
-      "fingerprint": "sha256:b09cb6cb56d9a6a1579d4cfe9fac4337e58e203d08276a1fa2003a712da9f0a5"
-    },
-    {
-      "id": "mechanics.analytical.virtual-work.selftest",
-      "fingerprint": "sha256:d6605bbfd359c583bcc8081ebbccfff9ebfbb4672ea4640ac3f16822acb98344"
+      "id": "math.differential-geometry.foundations",
+      "fingerprint": "sha256:0847e41981d227dd56a19d7dfab2bf74423c5337d0eb3eabd0a05e085863289d"
     }
   ]
 }

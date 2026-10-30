@@ -1,237 +1,400 @@
 schema_version: 3
 id: q-000776
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
-  - math.differential-geometry
+- math.differential-geometry
 concepts:
-  - dg.curvature.riemann
-  - dg.curvature.maximally-symmetric
+- dg.curvature.riemann
+- dg.curvature.maximally-symmetric
 related_pages:
-  - math.differential-geometry
+- math.differential-geometry
 type: free_response
 choice_order: fixed
-stem: |
-  单位三维球面 $S^{3}$ 在坐标 $(\chi,\theta,\varphi)$ 中的度规为
+stem: '单位三维球面 $S^{3}$ 在坐标 $(\chi,\theta,\varphi)$ 中的度规为
+
 
   $$
+
   \mathrm{d}s^{2}
+
   =\mathrm{d}\chi^{2}
+
   +\sin^{2}\chi\left(
+
   \mathrm{d}\theta^{2}
+
   +\sin^{2}\theta\,\mathrm{d}\varphi^{2}
+
   \right).
+
   $$
+
 
   1. 求所有非零的 Christoffel 符号；
+
   2. 求黎曼张量的独立非零分量、Ricci 张量与 Ricci 标量；
+
   3. 验证最大对称空间的关系
 
+
   $$
+
   R_{abcd}
+
   =\frac{R}{n(n-1)}
+
   \left(g_{ac}g_{bd}-g_{ad}g_{bc}\right),
+
   \qquad n=3 .
+
   $$
+
+  '
 response:
   format: plain_text
   required: true
   min_chars: 120
   max_chars: 12000
   rows: 16
-  placeholder: '先写出度规分量，再由对角度规公式求联络……'
+  placeholder: 先写出度规分量，再由对角度规公式求联络……
 grading:
   mode: self_assessed
   rubric:
-    - id: incomplete
-      label: 尚未掌握
-      points: 0
-    - id: partial
-      label: 部分掌握
-      points: 0.5
-    - id: complete
-      label: 基本掌握
-      points: 1
+  - id: incomplete
+    label: 尚未掌握
+    points: 0
+  - id: partial
+    label: 部分掌握
+    points: 0.5
+  - id: complete
+    label: 基本掌握
+    points: 1
 feedback:
   correct: 正确：联络中出现了 $\cot\chi$、$\cot\theta$ 等项，独立的黎曼分量给出 $R_{ab}=2g_{ab}$、$R=6$，最大对称系数为 $1$。
   incorrect: 请检查 $\sin\chi$ 与 $\sin\theta$ 的幂次，以及黎曼张量缩并时是否使用了逆度规；还需区分协变分量 $R_{\theta\theta}$ 与逆度规因子在 Ricci 标量中的贡献。
-reference_answer: |
-  非零联络为
+reference_answer: '非零联络为
+
 
   $$
+
   \Gamma^{\chi}{}_{\theta\theta}=-\sin\chi\cos\chi,
+
   \quad
+
   \Gamma^{\chi}{}_{\varphi\varphi}
+
   =-\sin\chi\cos\chi\sin^{2}\theta,
-  $$
 
   $$
+
+
+  $$
+
   \Gamma^{\theta}{}_{\chi\theta}
+
   =\Gamma^{\theta}{}_{\theta\chi}=\cot\chi,
+
   \quad
+
   \Gamma^{\varphi}{}_{\chi\varphi}
+
   =\Gamma^{\varphi}{}_{\varphi\chi}=\cot\chi,
-  $$
 
   $$
-  \Gamma^{\theta}{}_{\varphi\varphi}
-  =-\sin\theta\cos\theta,
-  \quad
-  \Gamma^{\varphi}{}_{\theta\varphi}
-  =\Gamma^{\varphi}{}_{\varphi\theta}=\cot\theta .
+
+
   $$
+
+  \Gamma^{\theta}{}_{\varphi\varphi}
+
+  =-\sin\theta\cos\theta,
+
+  \quad
+
+  \Gamma^{\varphi}{}_{\theta\varphi}
+
+  =\Gamma^{\varphi}{}_{\varphi\theta}=\cot\theta .
+
+  $$
+
 
   独立非零黎曼分量为
 
+
   $$
+
   R_{\chi\theta\chi\theta}=\sin^{2}\chi,
+
   \quad
+
   R_{\chi\varphi\chi\varphi}
+
   =\sin^{2}\chi\sin^{2}\theta,
+
   \quad
+
   R_{\theta\varphi\theta\varphi}
+
   =\sin^{4}\chi\sin^{2}\theta .
+
   $$
+
 
   Ricci 张量与标量为
 
+
   $$
+
   R_{\chi\chi}=2,\qquad
+
   R_{\theta\theta}=2\sin^{2}\chi,\qquad
+
   R_{\varphi\varphi}=2\sin^{2}\chi\sin^{2}\theta,
+
   \qquad R=6.
+
   $$
+
 
   因为 $n=3$，$R/[n(n-1)]=6/6=1$，而
+
   $R_{abcd}=g_{ac}g_{bd}-g_{ad}g_{bc}$ 确实给出上面的分量，所以 $S^{3}$ 是最大对称空间．
-solution: |
-  度规分量为
+
+  '
+solution: '度规分量为
+
 
   $$
+
   g_{\chi\chi}=1,\qquad
+
   g_{\theta\theta}=\sin^{2}\chi,\qquad
+
   g_{\varphi\varphi}=\sin^{2}\chi\sin^{2}\theta .
+
   $$
+
 
   由对角度规的 Christoffel 公式（或直接代入 Levi-Civita 公式）得
 
+
   $$
+
   \Gamma^{\chi}{}_{\theta\theta}
+
   =-\frac12\partial_{\chi}g_{\theta\theta}
+
   =-\sin\chi\cos\chi,
-  $$
 
   $$
+
+
+  $$
+
   \Gamma^{\chi}{}_{\varphi\varphi}
+
   =-\frac12\partial_{\chi}g_{\varphi\varphi}
+
   =-\sin\chi\cos\chi\sin^{2}\theta,
-  $$
 
   $$
+
+
+  $$
+
   \Gamma^{\theta}{}_{\chi\theta}
+
   =\Gamma^{\theta}{}_{\theta\chi}
+
   =\frac{1}{2g_{\theta\theta}}\partial_{\chi}g_{\theta\theta}
+
   =\cot\chi,
-  $$
 
   $$
+
+
+  $$
+
   \Gamma^{\varphi}{}_{\chi\varphi}
+
   =\Gamma^{\varphi}{}_{\varphi\chi}
+
   =\frac{1}{2g_{\varphi\varphi}}\partial_{\chi}g_{\varphi\varphi}
+
   =\cot\chi,
-  $$
 
   $$
+
+
+  $$
+
   \Gamma^{\theta}{}_{\varphi\varphi}
+
   =-\frac{1}{2g_{\theta\theta}}\partial_{\theta}g_{\varphi\varphi}
+
   =-\sin\theta\cos\theta,
-  $$
 
   $$
-  \Gamma^{\varphi}{}_{\theta\varphi}
-  =\Gamma^{\varphi}{}_{\varphi\theta}
-  =\frac{1}{2g_{\varphi\varphi}}\partial_{\theta}g_{\varphi\varphi}
-  =\cot\theta .
+
+
   $$
+
+  \Gamma^{\varphi}{}_{\theta\varphi}
+
+  =\Gamma^{\varphi}{}_{\varphi\theta}
+
+  =\frac{1}{2g_{\varphi\varphi}}\partial_{\theta}g_{\varphi\varphi}
+
+  =\cot\theta .
+
+  $$
+
 
   其余分量为零（或由对称性给出）．
 
+
   计算黎曼张量
 
+
   $$
+
   R^{\rho}{}_{\sigma\mu\nu}
+
   =\partial_{\mu}\Gamma^{\rho}{}_{\nu\sigma}
+
   -\partial_{\nu}\Gamma^{\rho}{}_{\mu\sigma}
+
   +\Gamma^{\rho}{}_{\mu\lambda}\Gamma^{\lambda}{}_{\nu\sigma}
+
   -\Gamma^{\rho}{}_{\nu\lambda}\Gamma^{\lambda}{}_{\mu\sigma}
+
   $$
+
 
   可得独立非零分量
 
+
   $$
+
   R_{\chi\theta\chi\theta}=\sin^{2}\chi,
-  $$
 
   $$
+
+
+  $$
+
   R_{\chi\varphi\chi\varphi}
+
   =\sin^{2}\chi\sin^{2}\theta,
-  $$
 
   $$
-  R_{\theta\varphi\theta\varphi}
-  =\sin^{4}\chi\sin^{2}\theta .
+
+
   $$
+
+  R_{\theta\varphi\theta\varphi}
+
+  =\sin^{4}\chi\sin^{2}\theta .
+
+  $$
+
 
   缩并得到
 
+
   $$
+
   R_{\chi\chi}=2,\qquad
+
   R_{\theta\theta}=2\sin^{2}\chi,\qquad
+
   R_{\varphi\varphi}=2\sin^{2}\chi\sin^{2}\theta,
+
   $$
+
 
   即 $R_{ab}=2g_{ab}$．再缩并：
 
+
   $$
+
   R=g^{ab}R_{ab}=2\cdot3=6 .
+
   $$
+
 
   对于单位 $S^{3}$，最大对称空间的一般形式为
 
+
   $$
+
   R_{abcd}
+
   =\frac{R}{n(n-1)}
+
   \left(g_{ac}g_{bd}-g_{ad}g_{bc}\right).
+
   $$
+
 
   代入 $n=3$、$R=6$，系数为 $6/(3\cdot2)=1$，所以
 
+
   $$
+
   R_{abcd}=g_{ac}g_{bd}-g_{ad}g_{bc}.
+
   $$
+
 
   例如
 
+
   $$
+
   R_{\chi\theta\chi\theta}
+
   =g_{\chi\chi}g_{\theta\theta}
+
   =\sin^{2}\chi,
+
   $$
+
 
   与直接计算一致；其他分量同理．因此 $S^{3}$ 是最大对称空间．
 
+
   **参考定位：** Carroll, *Spacetime and Geometry*, 第 3 章 Exercise 8．
+
+  '
 difficulty: 3
 cognitive_level: analyze
 style: computational
 estimated_seconds: 1500
 provenance:
   type: original
-  note: '原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 3 章 Exercise 8，未复制原文措辞或插图。'
+  note: 原创中文题面与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 3 章 Exercise 8，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8e671ff43e55a452ef8fe1f750cdc29b9886576591b40e3d3cb4d7f1228ffbc9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8e671ff43e55a452ef8fe1f750cdc29b9886576591b40e3d3cb4d7f1228ffbc9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:8e671ff43e55a452ef8fe1f750cdc29b9886576591b40e3d3cb4d7f1228ffbc9

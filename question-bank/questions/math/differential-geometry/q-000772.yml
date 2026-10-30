@@ -1,124 +1,194 @@
 schema_version: 3
 id: q-000772
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
-  - math.differential-geometry
+- math.differential-geometry
 concepts:
-  - dg.vector-field.commutator
-  - dg.coordinate-basis
+- dg.vector-field.commutator
+- dg.coordinate-basis
 related_pages:
-  - math.differential-geometry
+- math.differential-geometry
 type: free_response
 choice_order: fixed
-stem: |
-  在 $\mathbb{R}^{2}$ 上取两个矢量场
+stem: '在 $\mathbb{R}^{2}$ 上取两个矢量场
+
 
   $$
+
   E_{1}=\frac{\partial}{\partial x},
+
   \qquad
+
   E_{2}=x\frac{\partial}{\partial x}
+
   +\frac{\partial}{\partial y}.
+
   $$
+
 
   1. 证明 $E_{1}$ 与 $E_{2}$ 在每一点都线性无关且都不为零；
+
   2. 计算对易子 $[E_{1},E_{2}]$；
+
   3. 解释为什么不存在坐标 $(u,v)$，使 $E_{1}=\partial_{u}$、$E_{2}=\partial_{v}$．
+
+  '
 response:
   format: plain_text
   required: true
   min_chars: 80
   max_chars: 6000
   rows: 10
-  placeholder: '把 E₁、E₂ 写成坐标分量，再算对易子……'
+  placeholder: 把 E₁、E₂ 写成坐标分量，再算对易子……
 grading:
   mode: self_assessed
   rubric:
-    - id: incomplete
-      label: 尚未掌握
-      points: 0
-    - id: partial
-      label: 部分掌握
-      points: 0.5
-    - id: complete
-      label: 基本掌握
-      points: 1
+  - id: incomplete
+    label: 尚未掌握
+    points: 0
+  - id: partial
+    label: 部分掌握
+    points: 0.5
+  - id: complete
+    label: 基本掌握
+    points: 1
 feedback:
   correct: 正确：$(E_{1},E_{2})$ 的行列式为 $1$，对易子为 $[E_{1},E_{2}]=E_{1}\ne0$，这与坐标基对易子必为零矛盾。
   incorrect: 请重新计算 $\partial_{x}(x\partial_{x}f)$ 中的乘积项；同时检查你是否把逐点线性无关与能够成为坐标基这两个不同条件混为一谈。
-reference_answer: |
-  在 $(x,y)$ 基下 $E_{1}=(1,0)$、$E_{2}=(x,1)$，行列式为 $1$，故处处线性无关；两者也都不为零．
+reference_answer: '在 $(x,y)$ 基下 $E_{1}=(1,0)$、$E_{2}=(x,1)$，行列式为 $1$，故处处线性无关；两者也都不为零．
+
 
   $$
+
   [E_{1},E_{2}]
+
   =\left[\partial_{x},\,x\partial_{x}+\partial_{y}\right]
+
   =\partial_{x}=E_{1}\ne0.
+
   $$
+
 
   若 $E_{1}=\partial_{u}$、$E_{2}=\partial_{v}$ 是某组坐标的坐标基，则
+
   $[\partial_{u},\partial_{v}]=0$，与上面的非零对易子矛盾．因此这组基不能来自任何坐标系．
-solution: |
-  先看线性无关性．把两个矢量场写成坐标基 $\partial_{x},\partial_{y}$ 下的列向量：
+
+  '
+solution: '先看线性无关性．把两个矢量场写成坐标基 $\partial_{x},\partial_{y}$ 下的列向量：
+
 
   $$
+
   E_{1}=
+
   \begin{pmatrix}1\\0\end{pmatrix},
+
   \qquad
+
   E_{2}=
+
   \begin{pmatrix}x\\1\end{pmatrix}.
+
   $$
+
 
   它们组成的矩阵行列式为 $1$，对任意 $x$ 都非零，所以 $E_{1}$ 与 $E_{2}$ 在每一点线性无关；并且 $E_{2}$ 的第二个分量恒为 $1$，故它处处不为零．
 
+
   对易子作用在任意光滑函数 $f$ 上：
 
+
   $$
+
   [E_{1},E_{2}]f
+
   =E_{1}(E_{2}f)-E_{2}(E_{1}f).
+
   $$
+
 
   逐项计算：
 
-  $$
-  E_{1}(E_{2}f)
-  =\partial_{x}\left(x\partial_{x}f+\partial_{y}f\right)
-  =\partial_{x}f+x\partial_{x}^{2}f+\partial_{x}\partial_{y}f,
-  $$
 
   $$
-  E_{2}(E_{1}f)
-  =\left(x\partial_{x}+\partial_{y}\right)\partial_{x}f
-  =x\partial_{x}^{2}f+\partial_{y}\partial_{x}f.
+
+  E_{1}(E_{2}f)
+
+  =\partial_{x}\left(x\partial_{x}f+\partial_{y}f\right)
+
+  =\partial_{x}f+x\partial_{x}^{2}f+\partial_{x}\partial_{y}f,
+
   $$
+
+
+  $$
+
+  E_{2}(E_{1}f)
+
+  =\left(x\partial_{x}+\partial_{y}\right)\partial_{x}f
+
+  =x\partial_{x}^{2}f+\partial_{y}\partial_{x}f.
+
+  $$
+
 
   两式相减，混合偏导相消：
 
+
   $$
+
   [E_{1},E_{2}]f=\partial_{x}f=E_{1}f.
+
   $$
+
 
   所以 $[E_{1},E_{2}]=E_{1}\ne0$．
 
+
   如果存在坐标 $(u,v)$ 使 $E_{1}=\partial_{u}$、$E_{2}=\partial_{v}$，那么由偏导数的可交换性必有
 
+
   $$
+
   [E_{1},E_{2}]=[\partial_{u},\partial_{v}]=0,
+
   $$
+
 
   这与 $[E_{1},E_{2}]=E_{1}\ne0$ 矛盾．因此 $(E_{1},E_{2})$ 是一个逐点基，但不是坐标基．
 
+
   **参考定位：** Carroll, *Spacetime and Geometry*, 第 2 章 Exercise 5．
+
+  '
 difficulty: 2
 cognitive_level: analyze
 style: computational
 estimated_seconds: 480
 provenance:
   type: original
-  note: '原创中文题面、数据与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 5，未复制原文措辞或插图。'
+  note: 原创中文题面、数据与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 5，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:9e01d750bddd0b74b64d32beec3ef9d6290ecbf93fd6feb28c691b54de639df4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:9e01d750bddd0b74b64d32beec3ef9d6290ecbf93fd6feb28c691b54de639df4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:9e01d750bddd0b74b64d32beec3ef9d6290ecbf93fd6feb28c691b54de639df4

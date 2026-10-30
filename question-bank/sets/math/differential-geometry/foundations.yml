@@ -2,32 +2,32 @@ schema_version: 1
 id: math.differential-geometry.foundations
 title: 微分几何基础自测
 description: 八道自评题，覆盖流形与图册、球坐标与切矢量、矢量场对易子、外微分、Christoffel 符号、球面测地线与平行移动、三维球面曲率。题目参考 Carroll《Spacetime and Geometry》第 2–3 章课后习题。
-status: draft
+status: published
 tags:
-  - 微分几何
-  - 流形
-  - 曲率
-  - 自评
+- 微分几何
+- 流形
+- 曲率
+- 自评
 feedback_mode: deferred
 selection:
   type: fixed
   questions:
-    - q-000769
-    - q-000770
-    - q-000771
-    - q-000772
-    - q-000773
-    - q-000774
-    - q-000775
-    - q-000776
+  - q-000769
+  - q-000770
+  - q-000771
+  - q-000772
+  - q-000773
+  - q-000774
+  - q-000775
+  - q-000776
   order: fixed
 version: 1
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 provenance:
   type: original
-  note: '题集编排为原创；题目选题参考 Sean Carroll, Spacetime and Geometry, 第 2–3 章课后习题，题干、数据与解答均为独立撰写，未复制原文措辞或插图。'
+  note: 题集编排为原创；题目选题参考 Sean Carroll, Spacetime and Geometry, 第 2–3 章课后习题，题干、数据与解答均为独立撰写，未复制原文措辞或插图。
   ai_assisted: true
 license: CC-BY-SA-4.0

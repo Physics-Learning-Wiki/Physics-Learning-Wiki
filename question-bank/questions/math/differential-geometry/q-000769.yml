@@ -1,56 +1,77 @@
 schema_version: 3
 id: q-000769
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
-  - math.differential-geometry
+- math.differential-geometry
 concepts:
-  - dg.manifold.dimension
+- dg.manifold.dimension
 related_pages:
-  - math.differential-geometry
+- math.differential-geometry
 type: single_choice
 choice_order: fixed
-stem: |
-  关于拓扑流形的维数，下列说法哪一项正确？
+stem: '关于拓扑流形的维数，下列说法哪一项正确？
+
+  '
 choices:
-  - id: A
-    content: '只要选取足够巧妙的图册，$\mathbb{R}^{2}$ 也可以成为一维流形。'
-  - id: B
-    content: '只要选取足够巧妙的图册，$\mathbb{R}^{1}$ 也可以成为二维流形。'
-  - id: C
-    content: '非空拓扑流形的维数由它的拓扑决定；$\mathbb{R}^{2}$ 不能成为一维流形，$\mathbb{R}^{1}$ 也不能成为二维流形。'
-  - id: D
-    content: '维数取决于图册的选择，因此同一个集合可以同时是一维和二维流形。'
+- id: A
+  content: 只要选取足够巧妙的图册，$\mathbb{R}^{2}$ 也可以成为一维流形。
+- id: B
+  content: 只要选取足够巧妙的图册，$\mathbb{R}^{1}$ 也可以成为二维流形。
+- id: C
+  content: 非空拓扑流形的维数由它的拓扑决定；$\mathbb{R}^{2}$ 不能成为一维流形，$\mathbb{R}^{1}$ 也不能成为二维流形。
+- id: D
+  content: 维数取决于图册的选择，因此同一个集合可以同时是一维和二维流形。
 answer:
   choice: C
 feedback:
-  correct: '正确：维数是拓扑不变量，坐标自由不能改变它。'
-  incorrect: '请再想一想：图册只是局部坐标，不能把 $\mathbb{R}^{n}$ 与 $\mathbb{R}^{m}$ 在 $n\ne m$ 时变成同一个拓扑流形。'
+  correct: 正确：维数是拓扑不变量，坐标自由不能改变它。
+  incorrect: 请再想一想：图册只是局部坐标，不能把 $\mathbb{R}^{n}$ 与 $\mathbb{R}^{m}$ 在 $n\ne m$ 时变成同一个拓扑流形。
   choices:
-    A: '改变图册只能改变坐标，不能改变局部欧氏空间的维数。'
-    B: '同上；维数不是由坐标命名方式决定的。'
-    C: '正确。维数由拓扑决定。'
-    D: '同一个点不可能同时拥有不同维数的欧氏邻域。'
+    A: 改变图册只能改变坐标，不能改变局部欧氏空间的维数。
+    B: 同上；维数不是由坐标命名方式决定的。
+    C: 正确。维数由拓扑决定。
+    D: 同一个点不可能同时拥有不同维数的欧氏邻域。
 hints:
-  - '流形的每个坐标卡都同胚于 $\mathbb{R}^{n}$ 的开集。'
-  - '回忆拓扑学中的“区域不变性”：$\mathbb{R}^{n}$ 与 $\mathbb{R}^{m}$ 的开集在 $n\ne m$ 时不能同胚。'
-solution: |
-  流形的定义要求每一点都有一个坐标卡 $(U,\varphi)$，其中 $\varphi$ 是 $U$ 到 $\mathbb{R}^{n}$ 的某个开集的同胚。若同一个点同时属于一个 $n$ 维图和 $m$ 维图，那么这两个欧氏开集之间就存在同胚，而这在 $n\ne m$ 时不可能（区域不变性定理）。
+- 流形的每个坐标卡都同胚于 $\mathbb{R}^{n}$ 的开集。
+- 回忆拓扑学中的“区域不变性”：$\mathbb{R}^{n}$ 与 $\mathbb{R}^{m}$ 的开集在 $n\ne m$ 时不能同胚。
+solution: '流形的定义要求每一点都有一个坐标卡 $(U,\varphi)$，其中 $\varphi$ 是 $U$ 到 $\mathbb{R}^{n}$ 的某个开集的同胚。若同一个点同时属于一个 $n$ 维图和 $m$ 维图，那么这两个欧氏开集之间就存在同胚，而这在
+  $n\ne m$ 时不可能（区域不变性定理）。
+
 
   因此维数是流形的拓扑不变量，不随图册或坐标的选取而改变。$\mathbb{R}^{2}$ 只能是二维流形，$\mathbb{R}^{1}$ 只能是一维流形。
 
+
   **参考定位：** Carroll, *Spacetime and Geometry*, 第 2 章 Exercise 2．
+
+  '
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 120
 provenance:
   type: original
-  note: '原创中文题面、选项与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 2，未复制原文措辞或插图。'
+  note: 原创中文题面、选项与解答；选题参考 Sean Carroll, Spacetime and Geometry, 第 2 章 Exercise 2，未复制原文措辞或插图。
   ai_assisted: true
 authors:
-  - name: WbZhou-phys
-    kind: human
-    github: WbZhou-phys
+- name: WbZhou-phys
+  kind: human
+  github: WbZhou-phys
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:0cbb8a8ec2f570600124251212c92681f14de12c7fba4f1e8a9205f594ce33d9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:0cbb8a8ec2f570600124251212c92681f14de12c7fba4f1e8a9205f594ce33d9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-10-30'
+    question_version: 1
+    content_fingerprint: sha256:0cbb8a8ec2f570600124251212c92681f14de12c7fba4f1e8a9205f594ce33d9
