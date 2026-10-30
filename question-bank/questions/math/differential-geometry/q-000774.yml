@@ -49,6 +49,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：对角度规使逆度规只保留 $\sigma=\mu$ 一项；再按 $\mu,\nu,\lambda$ 中哪些指标重合分类，即可得到三条公式。
+  incorrect: 请检查求和是否只留下 $\sigma=\mu$ 的一项，并逐项判断 $g_{\lambda\mu}$、$g_{\nu\mu}$、$g_{\nu\lambda}$ 在对角度规下是否为零；对数形式的系数也需核对。
 reference_answer: |
   对角度规下 Levi-Civita 公式中的 $g^{\mu\sigma}$ 只有 $\sigma=\mu$ 一项（不求和）：
 

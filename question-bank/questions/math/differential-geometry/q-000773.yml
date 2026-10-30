@@ -41,6 +41,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：先用函数乘积法则展开 $\mathrm{d}(fg)$，再把 $\mathrm{d}g$ 移过 $p$ 个一形式，便得到 $(-1)^{p}$。
+  incorrect: 请检查是否漏掉了函数乘积法则的一项，以及把 $\mathrm{d}g$ 移到 $\omega$ 前方时越过的是几个一形式；符号指数应为 $p$。
 reference_answer: |
   在局部坐标中写成
   $\omega=f\,\mathrm{d}x^{I}$、$\eta=g\,\mathrm{d}x^{J}$，

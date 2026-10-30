@@ -53,6 +53,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：联络中出现了 $\cot\chi$、$\cot\theta$ 等项，独立的黎曼分量给出 $R_{ab}=2g_{ab}$、$R=6$，最大对称系数为 $1$。
+  incorrect: 请检查 $\sin\chi$ 与 $\sin\theta$ 的幂次，以及黎曼张量缩并时是否使用了逆度规；还需区分协变分量 $R_{\theta\theta}$ 与逆度规因子在 Ricci 标量中的贡献。
 reference_answer: |
   非零联络为
 

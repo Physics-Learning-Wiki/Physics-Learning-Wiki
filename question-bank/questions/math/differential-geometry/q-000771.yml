@@ -60,6 +60,9 @@ grading:
     - id: complete
       label: 基本掌握
       points: 1
+feedback:
+  correct: 正确：球坐标和笛卡尔坐标给出同一组切矢量分量，并按各自度规都得到模长平方为 $2$。
+  incorrect: 请检查 $\mathrm{d}\theta/\mathrm{d}\lambda$ 的求导，以及球坐标模长中的度规因子 $g_{\theta\theta}=r^{2}$、$g_{\varphi\varphi}=r^{2}\sin^{2}\theta$ 是否都已计入。
 reference_answer: |
   $$
   r=\sqrt{1+\lambda^{2}},\qquad
