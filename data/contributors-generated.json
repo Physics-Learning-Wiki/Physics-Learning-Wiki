@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "sha256": "e0c0a6979f9159c23460e806e8564b4be43dc175bde61b569ba988845c8d3323",
-  "generated": "---\ntitle: 贡献者墙\n---\n\n> 最后更新：2026-10-01\n\n感谢每一位参与 Physics Learning Wiki 的朋友！下表保留既有主分支统计，下一次审核更新将同时展示按实际发布清单核验的投稿贡献．\n\n## GitHub 贡献者\n\n| 贡献者                     | 提交次数 |\n| ----------------------- | ---- |\n| Leafuke | 371 |\n| Find_Light | 8 |\n| copilot-swe-agent[bot] | 2 |\n| Find-Light1130 | 1 |\n| atexcuseme | 1 |\n\n---\n\n此页面每月生成审核 PR，人工合并后更新．"
+  "sha256": "312dec9074ca44a61e447df5aec8a3668ba4494a0649a2a1af7a5ad3aa521c71",
+  "generated": "---\ntitle: 贡献者墙\n---\n\n感谢每一位参与 Physics Learning Wiki 的朋友！\n\nGit 提交按主分支历史统计，投稿贡献按已核验的线上发布清单统计．匿名稿件不公开个人统计．\n\n## GitHub 贡献者\n\n<table><thead><tr><th>贡献者</th><th>提交次数</th></tr></thead><tbody>\n<tr><td>Leafuke</td><td>440</td></tr>\n<tr><td>WbZhou-phys</td><td>28</td></tr>\n<tr><td>Find_Light</td><td>8</td></tr>\n<tr><td>grassman_number</td><td>7</td></tr>\n<tr><td>farawayshore</td><td>3</td></tr>\n<tr><td>Laqrymal</td><td>1</td></tr>\n<tr><td>Find-Light1130</td><td>1</td></tr>\n<tr><td>atexcuseme</td><td>1</td></tr>\n</tbody></table>\n\n## 投稿贡献者\n\n当前线上清单没有可公开署名的投稿记录．\n\n此页由自动化生成，更新需经人工审核 PR 合并后展示．\n"
 }
