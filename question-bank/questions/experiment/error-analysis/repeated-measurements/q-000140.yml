@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000140
 version: 3
-status: draft
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -52,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf

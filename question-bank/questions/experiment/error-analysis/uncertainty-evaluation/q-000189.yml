@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000189
 version: 2
-status: draft
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -16,8 +16,8 @@ type: free_response
 stem: 历史 s 用于当前均值，怎样判断评定可靠度和自由度？
 reference_answer: 核对历史数据与当前测量的仪器、量程、环境和稳定性是否相容．若历史标准差 sₕᵢₛₜ 能代表当前单次观测，且当前 n 次独立同方差，则当前均值分量 u=sₕᵢₛₜ/√n．尺度的自由度来自历史样本和估计方法；例如历史
   20 次独立正态观测用样本标准差时为 19，而不是当前 n−1．
-solution: 核对历史数据与当前测量的仪器、量程、环境和稳定性是否相容．若历史标准差 sₕᵢₛₜ 能代表当前单次观测，且当前 n 次独立同方差，则当前均值分量 u=sₕᵢₛₜ/√n．尺度的自由度来自历史样本和估计方法；例如历史
-  20 次独立正态观测用样本标准差时为 19，而不是当前 n−1．
+solution: 核对历史数据与当前测量的仪器、量程、环境和稳定性是否相容．若历史标准差 sₕᵢₛₜ 能代表当前单次观测，且当前 n 次独立同方差，则当前均值分量 u=sₕᵢₛₜ/√n．尺度的自由度来自历史样本和估计方法；例如历史 20 次独立正态观测用样本标准差时为
+  19，而不是当前 n−1．
 response:
   format: plain_text
   required: true
@@ -54,3 +54,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b603170ad231e76298974eaace05bc46d2fcfa5044faaca490b9e91de50992d9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b603170ad231e76298974eaace05bc46d2fcfa5044faaca490b9e91de50992d9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b603170ad231e76298974eaace05bc46d2fcfa5044faaca490b9e91de50992d9

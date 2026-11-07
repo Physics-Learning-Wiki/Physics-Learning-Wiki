@@ -2,7 +2,7 @@
   "schema_version": 1,
   "repository": "D:\\Programs\\Physics-Learning-Wiki",
   "reviewer": "Leafuke",
-  "reviewed_on": "2026-10-30",
+  "reviewed_on": "2026-11-07",
   "dimensions": [
     "physics",
     "pedagogy",
@@ -10,58 +10,1052 @@
   ],
   "questions": [
     {
-      "id": "q-000769",
-      "version": 1,
-      "content_fingerprint": "sha256:0cbb8a8ec2f570600124251212c92681f14de12c7fba4f1e8a9205f594ce33d9",
-      "path": "question-bank/questions/math/differential-geometry/q-000769.yml"
+      "id": "q-000102",
+      "version": 3,
+      "content_fingerprint": "sha256:38edfeb943c558f021ebc5304f890c4f6d3b73eb588f77479af0a994804ebed6",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000102.yml"
     },
     {
-      "id": "q-000770",
-      "version": 1,
-      "content_fingerprint": "sha256:d8385acd3842c0f6be1e491424ef468653156a7bb5989762b51fa4dd6f3b3fc1",
-      "path": "question-bank/questions/math/differential-geometry/q-000770.yml"
+      "id": "q-000103",
+      "version": 3,
+      "content_fingerprint": "sha256:696fd19054b7c827de4694116922c97dce0239f685742c0d6e1736c8fd46252c",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000103.yml"
     },
     {
-      "id": "q-000771",
-      "version": 1,
-      "content_fingerprint": "sha256:6ce9f431eb6bdd49d385564fbe4dde2b8794ddc479f21fa05cf901baa1e354c8",
-      "path": "question-bank/questions/math/differential-geometry/q-000771.yml"
+      "id": "q-000104",
+      "version": 2,
+      "content_fingerprint": "sha256:e143c3054adaedb68b0790b6d10ed04c2c660e8c7075121ba013ee62fbb5b817",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000104.yml"
     },
     {
-      "id": "q-000772",
-      "version": 1,
-      "content_fingerprint": "sha256:9e01d750bddd0b74b64d32beec3ef9d6290ecbf93fd6feb28c691b54de639df4",
-      "path": "question-bank/questions/math/differential-geometry/q-000772.yml"
+      "id": "q-000105",
+      "version": 2,
+      "content_fingerprint": "sha256:7701a72379ebc6e64a6f4bb81a571468f81d64281e61eef3e17e7a7d1342563d",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000105.yml"
     },
     {
-      "id": "q-000773",
-      "version": 1,
-      "content_fingerprint": "sha256:94461b4d76a4bd00bf1ca3eb5d8a387524518b4e0ae77228851b9208b73c1d28",
-      "path": "question-bank/questions/math/differential-geometry/q-000773.yml"
+      "id": "q-000106",
+      "version": 2,
+      "content_fingerprint": "sha256:df5ed3e71ef941dc93e40886adcf737a7657b9d5da285d752acbecc7352e28f1",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000106.yml"
     },
     {
-      "id": "q-000774",
-      "version": 1,
-      "content_fingerprint": "sha256:8310a05bf3086d05e5b5ca45911ae32e890e3f6e744084ba1a09410933edb750",
-      "path": "question-bank/questions/math/differential-geometry/q-000774.yml"
+      "id": "q-000107",
+      "version": 3,
+      "content_fingerprint": "sha256:ccc7510fa798541b91510f9331f486394d1ad07bec0c07c8d4f32125dfef3a71",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000107.yml"
     },
     {
-      "id": "q-000775",
-      "version": 1,
-      "content_fingerprint": "sha256:bfefd547c9226c2bba5e98c6c60cbb99912122d27bafb139d9af0724f9c6168d",
-      "path": "question-bank/questions/math/differential-geometry/q-000775.yml"
+      "id": "q-000108",
+      "version": 3,
+      "content_fingerprint": "sha256:ebe3fee54406e8601d8f5a6f32544be0384209464b8f1f0697975f9fdf094856",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000108.yml"
     },
     {
-      "id": "q-000776",
+      "id": "q-000109",
+      "version": 3,
+      "content_fingerprint": "sha256:6f1c8961e50b80afd58774d9e3312b93695597af19af2a1757a91a3b8bcfd8a8",
+      "path": "question-bank/questions/experiment/error-analysis/measurement-basics/q-000109.yml"
+    },
+    {
+      "id": "q-000110",
+      "version": 3,
+      "content_fingerprint": "sha256:9e3165bd3f043be24ff84aca5f527e03eea5b9b6db21939f7a2d84bc17594f0c",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000110.yml"
+    },
+    {
+      "id": "q-000111",
+      "version": 3,
+      "content_fingerprint": "sha256:8e189d94d7e8b15a5e8539f4aaf4510a065279c0886245c8247d365a3a3e88d7",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000111.yml"
+    },
+    {
+      "id": "q-000112",
+      "version": 2,
+      "content_fingerprint": "sha256:04623ec2bc7bbec26bec91b291991b07a665d4cc892b2019d0e3d25c592dbd94",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000112.yml"
+    },
+    {
+      "id": "q-000113",
+      "version": 2,
+      "content_fingerprint": "sha256:807faedbd6d2181fb91d88cf5ad31e1a5b4d5f3d27df1d0ef66070c5f01cbc2f",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000113.yml"
+    },
+    {
+      "id": "q-000114",
+      "version": 2,
+      "content_fingerprint": "sha256:0a75c04888732734a81721ccfbd6188f8e6db5170d8c958f7bf045f0f5dc294a",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000114.yml"
+    },
+    {
+      "id": "q-000115",
+      "version": 2,
+      "content_fingerprint": "sha256:1dea7bd5379dd2aafa9f2450d0b5dcb433ed11b12024c9e9e171c349e5c1c8a8",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000115.yml"
+    },
+    {
+      "id": "q-000116",
+      "version": 3,
+      "content_fingerprint": "sha256:a75794aa66af5f6e7f6932b76ca8ba471da50e057eae3330793edfd4000d7292",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000116.yml"
+    },
+    {
+      "id": "q-000117",
+      "version": 3,
+      "content_fingerprint": "sha256:68fa89c6878357da37b0065022bcefa732cae159a828aa912c758240cc350464",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000117.yml"
+    },
+    {
+      "id": "q-000118",
+      "version": 3,
+      "content_fingerprint": "sha256:674651b692e70d3e89908412a49fd4a86fda782957d25967bce888736545cd96",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000118.yml"
+    },
+    {
+      "id": "q-000119",
+      "version": 3,
+      "content_fingerprint": "sha256:d8be715be088315c934f7c0d2ae1e253a0d438e56b2a6d512c149946e7818739",
+      "path": "question-bank/questions/experiment/error-analysis/metrology/q-000119.yml"
+    },
+    {
+      "id": "q-000120",
+      "version": 3,
+      "content_fingerprint": "sha256:d9cfc6575fa1f7a7afdf567a386b93882b4d170cb3e5eeae28f5ca26cace4cd2",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000120.yml"
+    },
+    {
+      "id": "q-000121",
+      "version": 3,
+      "content_fingerprint": "sha256:ce395422c2a63120e2fc5dcc9ad946a4199afdf05411545855e6520b31bcd4e5",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000121.yml"
+    },
+    {
+      "id": "q-000122",
+      "version": 2,
+      "content_fingerprint": "sha256:3542ad0593329e4b8942849b915c383db4e91a5fac5698331b5799285f398d10",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000122.yml"
+    },
+    {
+      "id": "q-000123",
+      "version": 2,
+      "content_fingerprint": "sha256:7ad34c5ada52002a6477dd1e7614cdb475d9000c063a53b0d1ad739f518e30cb",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000123.yml"
+    },
+    {
+      "id": "q-000124",
+      "version": 2,
+      "content_fingerprint": "sha256:4ea3a322f106942415207435f2d6c3fd84bf61e9e1152e550295f1adb5b09979",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000124.yml"
+    },
+    {
+      "id": "q-000125",
+      "version": 3,
+      "content_fingerprint": "sha256:77f6bfa40f85a0333a901acd62fa53c556ce374424696384922a8a0aabf8fac1",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000125.yml"
+    },
+    {
+      "id": "q-000126",
+      "version": 3,
+      "content_fingerprint": "sha256:62ded28f9b1775143e163c4e6d5257defe20d9e8043e3518ace8c8629df2eea6",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000126.yml"
+    },
+    {
+      "id": "q-000127",
+      "version": 3,
+      "content_fingerprint": "sha256:07b141ba6a70048a2b72d031538553e0afc2b36b5c78b6b0857353e1ffe2cee6",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000127.yml"
+    },
+    {
+      "id": "q-000128",
+      "version": 3,
+      "content_fingerprint": "sha256:fc0f9926e9db0fa162b32d41e4611d170e68524f36133a7fb9c6eeac7b510dbf",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000128.yml"
+    },
+    {
+      "id": "q-000129",
+      "version": 3,
+      "content_fingerprint": "sha256:166e802c21047b104230a121b5d9ff180fe2489d902894ed4cc7ec6f559c3e4e",
+      "path": "question-bank/questions/experiment/error-analysis/data-recording/q-000129.yml"
+    },
+    {
+      "id": "q-000130",
+      "version": 3,
+      "content_fingerprint": "sha256:5f4e43a81fc8b079481b99bb901cdbe9eb671068ffc38b7ee547b826d9b1041a",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000130.yml"
+    },
+    {
+      "id": "q-000131",
+      "version": 3,
+      "content_fingerprint": "sha256:093fd1b793dd996e9bbca23a2ff6b98eb16d1ac4088d3ac4a3dd33d6a77fd70b",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000131.yml"
+    },
+    {
+      "id": "q-000132",
+      "version": 3,
+      "content_fingerprint": "sha256:843ca1a41283e92b03b1ce15e21cf84fd443e877fcfcbbb256cdf6dcec7c4b0c",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000132.yml"
+    },
+    {
+      "id": "q-000133",
+      "version": 3,
+      "content_fingerprint": "sha256:1fa8da70fa7b8e022698e5fced6891bf1f1d5f4182be37488404a561dff5ff19",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000133.yml"
+    },
+    {
+      "id": "q-000134",
+      "version": 3,
+      "content_fingerprint": "sha256:44212c9bf34a8c382303a06db173c36dca2fb5f6a88289e98aa3090793ebafc1",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000134.yml"
+    },
+    {
+      "id": "q-000135",
+      "version": 3,
+      "content_fingerprint": "sha256:2636cace468840d0a05c4735e71ee3d1dd1571d66fbdc4eac3867ab0d3f0231d",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000135.yml"
+    },
+    {
+      "id": "q-000136",
+      "version": 3,
+      "content_fingerprint": "sha256:e9c407a6f98a0fc6eca9a10fc462f489dc2b3f82cc224c2df67ddae706cc5693",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000136.yml"
+    },
+    {
+      "id": "q-000137",
+      "version": 3,
+      "content_fingerprint": "sha256:ee421153f713ffdc534a86db7addc0171627f44f2e9a4cfb8dd25327878dea03",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000137.yml"
+    },
+    {
+      "id": "q-000138",
+      "version": 3,
+      "content_fingerprint": "sha256:3a9583aee6e5712a354fa1d3d0751242a0ba5d8f4785b85d3017293bc32ea4f7",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000138.yml"
+    },
+    {
+      "id": "q-000139",
+      "version": 3,
+      "content_fingerprint": "sha256:be805b5865f1ade388e49332a0e4c72f0f34509ef24eb32dc290dc002611cb16",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000139.yml"
+    },
+    {
+      "id": "q-000140",
+      "version": 3,
+      "content_fingerprint": "sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000140.yml"
+    },
+    {
+      "id": "q-000141",
+      "version": 3,
+      "content_fingerprint": "sha256:c20d4d4bcbd5e9d65181f3ae131325837589ce45b5451e78b73c5cd788b3aeb4",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000141.yml"
+    },
+    {
+      "id": "q-000142",
+      "version": 3,
+      "content_fingerprint": "sha256:23b9076c7782e90a5d208d4657c634d9bf90219f627a02f4b68f2414cc974d7e",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000142.yml"
+    },
+    {
+      "id": "q-000143",
+      "version": 3,
+      "content_fingerprint": "sha256:ba315aec1812e6bccf87df301e29fe4597d2ce1fd4e9edddd65f966d378b3c62",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000143.yml"
+    },
+    {
+      "id": "q-000144",
+      "version": 3,
+      "content_fingerprint": "sha256:af55e247a3edac6e4a061b9ce0ba021f187068f1a7e5cbdea9cbfcf7e1a2d093",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000144.yml"
+    },
+    {
+      "id": "q-000145",
+      "version": 3,
+      "content_fingerprint": "sha256:4954330b70e682993e06431ea9dfd2be3b9bb3c42c5fcdac5b0264518b37252f",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000145.yml"
+    },
+    {
+      "id": "q-000146",
+      "version": 2,
+      "content_fingerprint": "sha256:acc211a9da62fba8b226366371ea079f4beca271f4b0891e7ae1d5a9f6ff1999",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000146.yml"
+    },
+    {
+      "id": "q-000147",
+      "version": 2,
+      "content_fingerprint": "sha256:e91b0f81d7b16cf8b3adea08e084cdeb860cde7f7171a1afbd6f5d171883ac18",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000147.yml"
+    },
+    {
+      "id": "q-000148",
+      "version": 2,
+      "content_fingerprint": "sha256:6e66b15cdf5dfcc76850c845a24ffed6f22823dcab64b9e39b15f85e39903444",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000148.yml"
+    },
+    {
+      "id": "q-000149",
+      "version": 2,
+      "content_fingerprint": "sha256:bcead6f4122d6f048f1176a8fcba5a891417d1654190b4eb3c7dabef9b7d433a",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000149.yml"
+    },
+    {
+      "id": "q-000150",
+      "version": 3,
+      "content_fingerprint": "sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000150.yml"
+    },
+    {
+      "id": "q-000151",
+      "version": 3,
+      "content_fingerprint": "sha256:94661efb87f30ff4581c6da32279acddbb7277b783ed6e46e85d652bf0efba17",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000151.yml"
+    },
+    {
+      "id": "q-000152",
+      "version": 3,
+      "content_fingerprint": "sha256:4e6186af1b2bdba3fb06bd4772fde76aded826fed34b16972db1f98b620d8d54",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000152.yml"
+    },
+    {
+      "id": "q-000153",
+      "version": 3,
+      "content_fingerprint": "sha256:d7a35b64a755ce7eb477bff65b9493de81719e1bd7fe90ef5e2994564a728438",
+      "path": "question-bank/questions/experiment/error-analysis/weighted-measurements/q-000153.yml"
+    },
+    {
+      "id": "q-000154",
+      "version": 2,
+      "content_fingerprint": "sha256:f7c622e5457e05da1b9f874f358dc88fd28659b63d9207b6c455417faf812042",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000154.yml"
+    },
+    {
+      "id": "q-000155",
+      "version": 2,
+      "content_fingerprint": "sha256:e640c298687842b956aad153ff21285814ccbfec9f7df3beed766aaf87d327cf",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000155.yml"
+    },
+    {
+      "id": "q-000156",
+      "version": 2,
+      "content_fingerprint": "sha256:c4b0d366d275c1bb981d56b583353f524e237a213a199c8deb8f692b252a8612",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000156.yml"
+    },
+    {
+      "id": "q-000157",
+      "version": 2,
+      "content_fingerprint": "sha256:44604f7a166ba661e29af6858ad8c66693361a54faf1e8b9ffbd788bdb3da5bf",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000157.yml"
+    },
+    {
+      "id": "q-000158",
+      "version": 2,
+      "content_fingerprint": "sha256:8090810c2d4b5962ed4d6a0b4e36387bd863aa862663936dd6fc92f3b4284472",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000158.yml"
+    },
+    {
+      "id": "q-000159",
+      "version": 2,
+      "content_fingerprint": "sha256:6130b2f045487dbb3fe76edf9e556ccd33e15438c48b19730991e50a0c259f3e",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000159.yml"
+    },
+    {
+      "id": "q-000160",
+      "version": 2,
+      "content_fingerprint": "sha256:03ed0303364a44becd843882ae34e734840d30c96dde91f2e551c8115fd7dcf5",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000160.yml"
+    },
+    {
+      "id": "q-000161",
+      "version": 2,
+      "content_fingerprint": "sha256:3d1ac53f841b3084fec3be63632f34737da39977b93005674f18cba744ae0405",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000161.yml"
+    },
+    {
+      "id": "q-000162",
+      "version": 2,
+      "content_fingerprint": "sha256:b6877d48d90d344111c84351f3e5ba31d16361008e77b752f86a1773b3d51249",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000162.yml"
+    },
+    {
+      "id": "q-000163",
+      "version": 2,
+      "content_fingerprint": "sha256:ac6a85b945fdb94fadd48d047f696f555fa1360564f931baf4742e754247a283",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000163.yml"
+    },
+    {
+      "id": "q-000164",
+      "version": 2,
+      "content_fingerprint": "sha256:3d7910ea91a6e571832189167350693021ec533c16ca98cbc23887a6e6fa4504",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000164.yml"
+    },
+    {
+      "id": "q-000165",
+      "version": 2,
+      "content_fingerprint": "sha256:332d75a7a2d214048ead301ff21c3f50ba429167fb5f3f1e20aa62f2add13441",
+      "path": "question-bank/questions/experiment/error-analysis/systematic-errors-outliers/q-000165.yml"
+    },
+    {
+      "id": "q-000166",
+      "version": 2,
+      "content_fingerprint": "sha256:d232ecae2f4a0b712db6be0cd3c922a1237d47b6cf7fdc1f6781b29075ea56ea",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000166.yml"
+    },
+    {
+      "id": "q-000167",
+      "version": 2,
+      "content_fingerprint": "sha256:c87dbe794c0fb1c51dca911f4d2cfe491b2ef6d0cb7c92f9d426d1f231f21da5",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000167.yml"
+    },
+    {
+      "id": "q-000168",
+      "version": 2,
+      "content_fingerprint": "sha256:28c458a8f8beb3c74e2dcc13e5b629c1c4f0e89c27594341666e149bf1ac0009",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000168.yml"
+    },
+    {
+      "id": "q-000169",
+      "version": 2,
+      "content_fingerprint": "sha256:6d51d9e2e16fba85c3b227364da2f868045382d81615124dc420859bcd2aabfa",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000169.yml"
+    },
+    {
+      "id": "q-000170",
+      "version": 2,
+      "content_fingerprint": "sha256:30e2242a154a804cd7b0c443243a8afb894e84defae9d12417663e0a20122d78",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000170.yml"
+    },
+    {
+      "id": "q-000171",
+      "version": 2,
+      "content_fingerprint": "sha256:ac7c0febb018ab1aa4f48602ac0c01c71593e3acae5fef70256168734b29a611",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000171.yml"
+    },
+    {
+      "id": "q-000172",
+      "version": 2,
+      "content_fingerprint": "sha256:a103cf9e44f242108eb82137263941e8d50b537434ad720d7128278e450b7fd3",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000172.yml"
+    },
+    {
+      "id": "q-000173",
+      "version": 2,
+      "content_fingerprint": "sha256:93bd21b5ee4ffecb34aa605d55ce34334f713206f073a7946053fc76c50f9d07",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000173.yml"
+    },
+    {
+      "id": "q-000174",
+      "version": 2,
+      "content_fingerprint": "sha256:6a9ddfb598a13e33216ae68f8c61fbb0527a78040f928931f3ccc1db865a0ab0",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000174.yml"
+    },
+    {
+      "id": "q-000175",
+      "version": 2,
+      "content_fingerprint": "sha256:cba0d2de015021f927b8aacd82778bda74ca07fa7cf2eafb6054d50d998f9b3b",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000175.yml"
+    },
+    {
+      "id": "q-000176",
+      "version": 2,
+      "content_fingerprint": "sha256:d9d0ee53a08f95b458b8a4cc010de278d3497b53256943628808238509d27470",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000176.yml"
+    },
+    {
+      "id": "q-000177",
+      "version": 2,
+      "content_fingerprint": "sha256:b3e62aa2abdaf31ed8586b68220fbfd2efc4d6dd18b1d6650ab3dc8f2ba25831",
+      "path": "question-bank/questions/experiment/error-analysis/outlier-tests/q-000177.yml"
+    },
+    {
+      "id": "q-000178",
+      "version": 2,
+      "content_fingerprint": "sha256:88c7e8cc91fb9c367588380b1b929c05f2db6aaae7d5021e71ec2adab1a6c9bc",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000178.yml"
+    },
+    {
+      "id": "q-000179",
+      "version": 2,
+      "content_fingerprint": "sha256:2cc21b5498ebe8a496841fdf057ba13011688cd3cd749805b90198e648188926",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000179.yml"
+    },
+    {
+      "id": "q-000180",
+      "version": 2,
+      "content_fingerprint": "sha256:2a2ffc1f8e73081dcaf699fcac26019a2a80020d769da5a294303215aafb9270",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000180.yml"
+    },
+    {
+      "id": "q-000181",
+      "version": 2,
+      "content_fingerprint": "sha256:9979e2e517142b91d3cf0dd5fbbbe88513d8671393e147b35f93dd6f49226859",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000181.yml"
+    },
+    {
+      "id": "q-000182",
+      "version": 2,
+      "content_fingerprint": "sha256:d4727169489256d57d4cab235ed25c57e86c56c8acdab48228efde792639b7fb",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000182.yml"
+    },
+    {
+      "id": "q-000183",
+      "version": 2,
+      "content_fingerprint": "sha256:9e9a4261cd325339cb6c2fd705e1fa41d100d67b1ade333b7019714ba3a7ad6d",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000183.yml"
+    },
+    {
+      "id": "q-000184",
+      "version": 2,
+      "content_fingerprint": "sha256:037234875ca074082965cd897febfed1bb4401929efeb3fc39b3f24c02d7bfda",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000184.yml"
+    },
+    {
+      "id": "q-000185",
+      "version": 2,
+      "content_fingerprint": "sha256:b17ebe6b4f47c1910097506d91ff0bb302fa2af168d0213c96a6b11ce4f988a9",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000185.yml"
+    },
+    {
+      "id": "q-000186",
+      "version": 2,
+      "content_fingerprint": "sha256:c725ca34385f46964e5286457021d0aaaafbf89a7a08e44aab93547454a0d6e4",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000186.yml"
+    },
+    {
+      "id": "q-000187",
+      "version": 2,
+      "content_fingerprint": "sha256:a129417aef15bbdff8cd1902188a81e855cd289df990d176bb595177b96eae09",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000187.yml"
+    },
+    {
+      "id": "q-000188",
+      "version": 2,
+      "content_fingerprint": "sha256:a14006ab5dbdd41ca5fcfd919dc59b9ad5b027223ec5760195714274097be922",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000188.yml"
+    },
+    {
+      "id": "q-000189",
+      "version": 2,
+      "content_fingerprint": "sha256:b603170ad231e76298974eaace05bc46d2fcfa5044faaca490b9e91de50992d9",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-evaluation/q-000189.yml"
+    },
+    {
+      "id": "q-000190",
+      "version": 2,
+      "content_fingerprint": "sha256:2f632c97bba9e5f4c8cd2d2a40be28ef6980827c03dbf07249e9acfe7504667a",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000190.yml"
+    },
+    {
+      "id": "q-000191",
+      "version": 2,
+      "content_fingerprint": "sha256:2e964c9fb73d394b0baf67af4db47d84619cdf46054f2ff2f0fca7828e7030c8",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000191.yml"
+    },
+    {
+      "id": "q-000192",
+      "version": 2,
+      "content_fingerprint": "sha256:03de39df5c0f336307cae4795faabd1259ecaf996d8af4bc830735088105c490",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000192.yml"
+    },
+    {
+      "id": "q-000193",
+      "version": 2,
+      "content_fingerprint": "sha256:3ffd55a03d689790897a9f68c7cf852c6251ee1fea89917f8f895a0cf6c64d7b",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000193.yml"
+    },
+    {
+      "id": "q-000194",
+      "version": 2,
+      "content_fingerprint": "sha256:9437b5a047fdbaf541ac641b031db720552ce27dc4f73925a07ea8c5636c4750",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000194.yml"
+    },
+    {
+      "id": "q-000195",
+      "version": 2,
+      "content_fingerprint": "sha256:a080228f8174ef13952dfd6de7a1460493e6c34fe0d0c0147368b9271ee7f8e6",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000195.yml"
+    },
+    {
+      "id": "q-000196",
+      "version": 2,
+      "content_fingerprint": "sha256:6e82e62b8fb4e60a2081a1833c33a3b9fd27ad8d9cbcbd80ed61d74358c0aad9",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000196.yml"
+    },
+    {
+      "id": "q-000197",
+      "version": 2,
+      "content_fingerprint": "sha256:504c8d20cb50f66c089401a2e075190d4bafcc8ee3985bb8f3735808d7bf7d1e",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000197.yml"
+    },
+    {
+      "id": "q-000198",
+      "version": 2,
+      "content_fingerprint": "sha256:8094ebab8a67cbf2e51708992248fa71bf4fb53ebdd01c3c38d8ea939ff1163f",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000198.yml"
+    },
+    {
+      "id": "q-000199",
+      "version": 2,
+      "content_fingerprint": "sha256:db21449ed1407b75638e7bc7a95eacb5ce55f4c89f791358884890dd7aa61278",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000199.yml"
+    },
+    {
+      "id": "q-000200",
+      "version": 2,
+      "content_fingerprint": "sha256:1880feb0643b8d907a5ea9097b4406c06d40b1dad7cb245ea009afe3b5ac0676",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000200.yml"
+    },
+    {
+      "id": "q-000201",
+      "version": 2,
+      "content_fingerprint": "sha256:5c194ca22381fc5feef05c7543adaa00516801b3ce09c29f538179b38abfdf1c",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000201.yml"
+    },
+    {
+      "id": "q-000202",
+      "version": 2,
+      "content_fingerprint": "sha256:51f3253c53efae1282a71ad00d3c079c650d36a3d77ba2bf8b131d6f5508ccb3",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000202.yml"
+    },
+    {
+      "id": "q-000203",
+      "version": 2,
+      "content_fingerprint": "sha256:b1784ec3638eed50d497eeaf4b96552c17a7c87497e2bb9df607c0e51938f394",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000203.yml"
+    },
+    {
+      "id": "q-000204",
+      "version": 2,
+      "content_fingerprint": "sha256:8c539f290c9479f033c4e57ebc631a6fa5249223b1f33149816be0a15eb27c05",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000204.yml"
+    },
+    {
+      "id": "q-000205",
+      "version": 2,
+      "content_fingerprint": "sha256:f0cbafaf417c88bc076eec13fa0686ae7139ed9df72eddf2bf9d99a3f35740dd",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000205.yml"
+    },
+    {
+      "id": "q-000206",
+      "version": 2,
+      "content_fingerprint": "sha256:e69cef5275f419487d34a0eed09999cf2aaae3d2f8f50e8f55a9657fbc13916e",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000206.yml"
+    },
+    {
+      "id": "q-000207",
+      "version": 2,
+      "content_fingerprint": "sha256:3e75fe677dff6bd50061a6d8a1764989b93e60ba33bd6f09158a75c775a45109",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000207.yml"
+    },
+    {
+      "id": "q-000208",
+      "version": 2,
+      "content_fingerprint": "sha256:dca3d718581427d7649d5fea0444b4f016f6fe2f6d2d392eec4f132252505bc2",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000208.yml"
+    },
+    {
+      "id": "q-000209",
+      "version": 2,
+      "content_fingerprint": "sha256:10f3fc2ed5ccd1ce0857d6116b9616fccd0aeaf62d8d650224135af0dc666085",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000209.yml"
+    },
+    {
+      "id": "q-000210",
+      "version": 2,
+      "content_fingerprint": "sha256:79f0fbd25e6b0c0727d12c3ca97916f10e50bf47da8a9ec85489567bddbdb80a",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000210.yml"
+    },
+    {
+      "id": "q-000211",
+      "version": 2,
+      "content_fingerprint": "sha256:6e98fcb2d9f8b98da54a0f2ec0f9f9352e9eb83067ce46127ebf9ab43ccfe736",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000211.yml"
+    },
+    {
+      "id": "q-000212",
+      "version": 2,
+      "content_fingerprint": "sha256:0b9d46fe756f26816787713b54e544bceafe3b208de1b04432c0f594bf9cd68c",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000212.yml"
+    },
+    {
+      "id": "q-000213",
+      "version": 2,
+      "content_fingerprint": "sha256:4e0fe88f1ef6f07397b278a04f2d34877f1ed8dc9a0a1d46eabefb229704282c",
+      "path": "question-bank/questions/experiment/error-analysis/error-allocation/q-000213.yml"
+    },
+    {
+      "id": "q-000214",
+      "version": 2,
+      "content_fingerprint": "sha256:59cd527e6416fe5e011d29f7d1254a11cc4c1ea0ff81548f61cdc5efe540019d",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000214.yml"
+    },
+    {
+      "id": "q-000215",
+      "version": 2,
+      "content_fingerprint": "sha256:c9f0ca659c985a755b724bf003d3e1df1f449bf69d7616578b3abb1c2775946d",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000215.yml"
+    },
+    {
+      "id": "q-000216",
+      "version": 2,
+      "content_fingerprint": "sha256:764c8d097e1862c944c5a2d1933f4fa1d47ec2f43571f24cda127f6079f40f9f",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000216.yml"
+    },
+    {
+      "id": "q-000217",
+      "version": 2,
+      "content_fingerprint": "sha256:8ff0ce38f604051f7b92ce7a40d4adf861060ddba7637071fb51bae2071b27af",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000217.yml"
+    },
+    {
+      "id": "q-000218",
+      "version": 2,
+      "content_fingerprint": "sha256:a64e8cc7a9fc8e93481f2d0d9fd15475753b4fc62a6b285f88deb2ac714f2a17",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000218.yml"
+    },
+    {
+      "id": "q-000219",
+      "version": 2,
+      "content_fingerprint": "sha256:77bea0719b5148f9990240205b95a55bedc29fe34d3ab9e8933dd9072a8eece8",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000219.yml"
+    },
+    {
+      "id": "q-000220",
+      "version": 2,
+      "content_fingerprint": "sha256:604433c7d0f9c5b6c838027259d9339b5f4e714d24deeac36827d578b287138d",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000220.yml"
+    },
+    {
+      "id": "q-000221",
+      "version": 2,
+      "content_fingerprint": "sha256:51eea6e90cd66c855d733e74aa974710b48116e4a375dfa6fc87d2197a0479f6",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000221.yml"
+    },
+    {
+      "id": "q-000222",
+      "version": 2,
+      "content_fingerprint": "sha256:95cc29ed96ce446dc14c6ee7014886c3d97570c30d224cd7ffb850e7064d5fc2",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000222.yml"
+    },
+    {
+      "id": "q-000223",
+      "version": 2,
+      "content_fingerprint": "sha256:03380f05638239a5733421a0bbe4b474731c9f9692be4f3b0cefcf708880c8aa",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000223.yml"
+    },
+    {
+      "id": "q-000224",
+      "version": 2,
+      "content_fingerprint": "sha256:54a295a7ac7f8838a33bdd8342d50f6807535c0399a526f395e650bd2fa2ea4b",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000224.yml"
+    },
+    {
+      "id": "q-000225",
+      "version": 2,
+      "content_fingerprint": "sha256:11ccc7287fe5a796a6991ebf5112f14ee9a2b34bb6df230e11f546bdc7b75685",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000225.yml"
+    },
+    {
+      "id": "q-000226",
+      "version": 2,
+      "content_fingerprint": "sha256:d7e80dc95c76ab3ae8f2441fc0186dc54f23d8a432f2df70d38ceb3c5fb0d98a",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000226.yml"
+    },
+    {
+      "id": "q-000227",
+      "version": 2,
+      "content_fingerprint": "sha256:1507a2e74edddff9a2af213c7bced57f153790dad6034a5a89089fa291e0ba4d",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000227.yml"
+    },
+    {
+      "id": "q-000228",
+      "version": 2,
+      "content_fingerprint": "sha256:587f96f29af27102c60ef3751f13993d2b2fb9d118385e92ac6c337dd3285a91",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000228.yml"
+    },
+    {
+      "id": "q-000229",
+      "version": 2,
+      "content_fingerprint": "sha256:989cbe1ac59dbea29ca3f7d84f2ba6d7e2fbec96d0e1e828e12657e2b0a06922",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000229.yml"
+    },
+    {
+      "id": "q-000230",
+      "version": 2,
+      "content_fingerprint": "sha256:fa1dae8de8b80bd21ebcb3abb32780cf2c95363f6a6c1d3bc4661200a4502ce0",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000230.yml"
+    },
+    {
+      "id": "q-000231",
+      "version": 2,
+      "content_fingerprint": "sha256:61daecaffd14e6f9aa5411838fd83935d6012d1f72e6c9e9fb3aa496fe3e92bb",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000231.yml"
+    },
+    {
+      "id": "q-000232",
+      "version": 2,
+      "content_fingerprint": "sha256:b094bc96321693b1a6e316e91e9e781ba8f7a7241763efe5ce0f44b5b5d6813f",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000232.yml"
+    },
+    {
+      "id": "q-000233",
+      "version": 2,
+      "content_fingerprint": "sha256:391835c05c51c4acf027ee09bc98b7a0014dca399a04965bc2c94c74f9e96a27",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000233.yml"
+    },
+    {
+      "id": "q-000234",
+      "version": 2,
+      "content_fingerprint": "sha256:5c3efd184dcd2b881d3cc9463c57b56e161a0091aa353c419bfe9f61fce57b58",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000234.yml"
+    },
+    {
+      "id": "q-000235",
+      "version": 2,
+      "content_fingerprint": "sha256:1742321f31afade65e5140aa53bcc1c35fe8901f646bfe53c32cb736f46fb8ad",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000235.yml"
+    },
+    {
+      "id": "q-000236",
+      "version": 2,
+      "content_fingerprint": "sha256:e4166f97afa58989500dd5058eb263de3815aa6cd4b0c1903ddd5e4d05d3f1de",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000236.yml"
+    },
+    {
+      "id": "q-000237",
+      "version": 2,
+      "content_fingerprint": "sha256:fdf9d6234d9991d02240dc97d641415e83556d34ebf8d050ba35a640b15ede3d",
+      "path": "question-bank/questions/experiment/error-analysis/linear-parameters/q-000237.yml"
+    },
+    {
+      "id": "q-000238",
+      "version": 2,
+      "content_fingerprint": "sha256:818719efd61b6df3f25d6dfeaae00c8412f22346efb0440062d44e4abce76616",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000238.yml"
+    },
+    {
+      "id": "q-000239",
+      "version": 2,
+      "content_fingerprint": "sha256:58e99f62491e1f3ee365458c94bda988c13ff4a840a88a94b31c5713a16bda92",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000239.yml"
+    },
+    {
+      "id": "q-000240",
+      "version": 2,
+      "content_fingerprint": "sha256:078b085ba03ac9bcd8ebea40198dc0bf24743cefb87df4f62374a1825d1f8155",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000240.yml"
+    },
+    {
+      "id": "q-000241",
+      "version": 2,
+      "content_fingerprint": "sha256:189a2063ed03480056c7809c8876254d4b289bf66a4a7cf8fcb3ff31e8423997",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000241.yml"
+    },
+    {
+      "id": "q-000242",
+      "version": 2,
+      "content_fingerprint": "sha256:33c49f8aba34ad20f062c953671e421282d66fdd7ff6157246ec350a194e9808",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000242.yml"
+    },
+    {
+      "id": "q-000243",
+      "version": 2,
+      "content_fingerprint": "sha256:2cd1c1100bd11e8a8eb64aa7355579748c38b414dd17036d31a188aab897b970",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000243.yml"
+    },
+    {
+      "id": "q-000244",
+      "version": 2,
+      "content_fingerprint": "sha256:e8eed9836be13e232bfec4b1d4efbbb66d190394c7ace04705f04227ef3cc14e",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000244.yml"
+    },
+    {
+      "id": "q-000245",
+      "version": 2,
+      "content_fingerprint": "sha256:53235028b1b881dce073c38e53c31a80185b628a2a22259546754f040568bda4",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000245.yml"
+    },
+    {
+      "id": "q-000246",
+      "version": 2,
+      "content_fingerprint": "sha256:fb9d6b8312ffc4030b5d137aa0d4a48e0c9b66792e5cb527f1218d90038552a9",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000246.yml"
+    },
+    {
+      "id": "q-000247",
+      "version": 2,
+      "content_fingerprint": "sha256:5d6e0e557c476686a4486fb55cd0fc70d878e4393dd4fdd7ca06bb7164487e60",
+      "path": "question-bank/questions/experiment/error-analysis/nonlinear-fitting/q-000247.yml"
+    },
+    {
+      "id": "q-000248",
+      "version": 2,
+      "content_fingerprint": "sha256:ef4c3efb3d9b39c7ebf498a02ee4dd4394306d7192999c5178f9556468a82095",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000248.yml"
+    },
+    {
+      "id": "q-000249",
+      "version": 2,
+      "content_fingerprint": "sha256:e49ff773735a036da92c6173b027a054368ea5f774e06c25704dba42a443dea9",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000249.yml"
+    },
+    {
+      "id": "q-000250",
+      "version": 2,
+      "content_fingerprint": "sha256:ad8407082c7c15e60d8f4ef59ad10ccadf0edd4e4a736541a2a615051eb09b0a",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000250.yml"
+    },
+    {
+      "id": "q-000251",
+      "version": 2,
+      "content_fingerprint": "sha256:a640adaab251ff785ad3b267af8d3f1796a7b1308e876be0e0a9ae8532efdd48",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000251.yml"
+    },
+    {
+      "id": "q-000252",
+      "version": 2,
+      "content_fingerprint": "sha256:fba3bc777d733d72f9fc3590e5975f644db5c937a39737ef14cf5437c8584a46",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000252.yml"
+    },
+    {
+      "id": "q-000253",
+      "version": 2,
+      "content_fingerprint": "sha256:a23a3d5d47a35a70eb9d6d24fa0316d4a776d12c0645c344516d7bb17a3af67d",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000253.yml"
+    },
+    {
+      "id": "q-000254",
+      "version": 2,
+      "content_fingerprint": "sha256:7cc2f49e68de31813c799c1e131bf405dca2f16324733257bd6b7bce90e917a8",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000254.yml"
+    },
+    {
+      "id": "q-000255",
+      "version": 2,
+      "content_fingerprint": "sha256:6edd1257095e8e908848835592fc47da17f000cb1b5da4ab64703f1d88b5291d",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000255.yml"
+    },
+    {
+      "id": "q-000256",
+      "version": 2,
+      "content_fingerprint": "sha256:75623a570fc53bc10e5b688e3aa2d703e6bb881c664c7979de27772c97bce1c2",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000256.yml"
+    },
+    {
+      "id": "q-000257",
+      "version": 2,
+      "content_fingerprint": "sha256:de96345b35ad1f36be4331e262e7d054ad6c42380f197de15f75985d61e24863",
+      "path": "question-bank/questions/experiment/error-analysis/combined-measurements/q-000257.yml"
+    },
+    {
+      "id": "q-000777",
+      "version": 2,
+      "content_fingerprint": "sha256:90984f3080bba4a57f47c349daa9ffc78be3d7443f7beeb8c6b607282885d29d",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000777.yml"
+    },
+    {
+      "id": "q-000778",
+      "version": 2,
+      "content_fingerprint": "sha256:8850d5a5dbee038d2c088608b62b1fede4617c9202246ab647ab9e24ec319839",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000778.yml"
+    },
+    {
+      "id": "q-000779",
+      "version": 2,
+      "content_fingerprint": "sha256:dd7bb9a0303910fd98dddf7572ff4e33ea14b52b24feaf3197f2ce6d52088394",
+      "path": "question-bank/questions/experiment/error-analysis/repeated-measurements/q-000779.yml"
+    },
+    {
+      "id": "q-000787",
       "version": 1,
-      "content_fingerprint": "sha256:8e671ff43e55a452ef8fe1f750cdc29b9886576591b40e3d3cb4d7f1228ffbc9",
-      "path": "question-bank/questions/math/differential-geometry/q-000776.yml"
+      "content_fingerprint": "sha256:4a4a13a0be46e6aadd4ff3bd71fe9e922a81a926d861b9929d8ba34e791914ba",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000787.yml"
+    },
+    {
+      "id": "q-000788",
+      "version": 1,
+      "content_fingerprint": "sha256:b3a0a20a50dddc88443fb964941c70d2397866ee6124b3c98923259d582ff774",
+      "path": "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000788.yml"
+    },
+    {
+      "id": "q-000797",
+      "version": 1,
+      "content_fingerprint": "sha256:53a52465939b99fb30a2904118bc58a309773ee82c5aec8cc05f2542b9b9d9df",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000797.yml"
+    },
+    {
+      "id": "q-000798",
+      "version": 1,
+      "content_fingerprint": "sha256:844ce5721aca87c4ca6fc64b18647866132fdd8faf2e686be12af453c1f13e84",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000798.yml"
+    },
+    {
+      "id": "q-000799",
+      "version": 1,
+      "content_fingerprint": "sha256:6619e1a42f1b93ccb4519160a972fd316958ca30ce29b0d686e9caf1b3e2e593",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000799.yml"
+    },
+    {
+      "id": "q-000800",
+      "version": 1,
+      "content_fingerprint": "sha256:a24809793f35ca6f031ad71dde3f91133f8bea8169ff2954173785fe4efa0f08",
+      "path": "question-bank/questions/experiment/error-analysis/least-squares/q-000800.yml"
     }
   ],
   "related_sets": [
     {
-      "id": "math.differential-geometry.foundations",
-      "fingerprint": "sha256:0847e41981d227dd56a19d7dfab2bf74423c5337d0eb3eabd0a05e085863289d"
+      "id": "experiment.error-analysis.combined-measurements",
+      "fingerprint": "sha256:dc8b6f19a94fdf7f87f2f26e4001982aea1cec20fffad3f37ca2c5a4185f08c2"
+    },
+    {
+      "id": "experiment.error-analysis.data-recording",
+      "fingerprint": "sha256:32ee6af36f7d22503f964221442b65c62d080f628bf9cffcea6a6d4b0629c8da"
+    },
+    {
+      "id": "experiment.error-analysis.error-allocation",
+      "fingerprint": "sha256:4d0f3e0865d3e65176a9ad82e7d6839a518e4525892e05fb2d81728258c9e69b"
+    },
+    {
+      "id": "experiment.error-analysis.least-squares",
+      "fingerprint": "sha256:cba00bc518a3bd659d7bfb6cf237451f252b8affd13eb7794e4c922f444d60a9"
+    },
+    {
+      "id": "experiment.error-analysis.linear-parameters",
+      "fingerprint": "sha256:f5de343fa536e0936e8a8bffee12c20be12b4dfd0e3e56aeffd83f55b08e60ae"
+    },
+    {
+      "id": "experiment.error-analysis.measurement-basics",
+      "fingerprint": "sha256:1f8e6c28b956c7800e9de5204847fd6b76ec1adb8661379125f796c1a0b39511"
+    },
+    {
+      "id": "experiment.error-analysis.metrology",
+      "fingerprint": "sha256:2949260c10d9a6f401728ec39133c7d2e0e62bc94c47dfc8bb0ccdeb8da8c1d2"
+    },
+    {
+      "id": "experiment.error-analysis.nonlinear-fitting",
+      "fingerprint": "sha256:d7c2836de9429405013f24b238c3895d9893881c8ae20029fbf11428bdaf0e53"
+    },
+    {
+      "id": "experiment.error-analysis.outlier-tests",
+      "fingerprint": "sha256:ddb7e5a190cb0c3515454814642c7d0408b49a43a559f1e9e640721885b56d5d"
+    },
+    {
+      "id": "experiment.error-analysis.repeated-measurements",
+      "fingerprint": "sha256:c07fcbb57215f85c9fcca5252163209c3762b69b01a5e1251a3b1e11ce31f860"
+    },
+    {
+      "id": "experiment.error-analysis.systematic-errors-outliers",
+      "fingerprint": "sha256:dc38670f07fdf30a8b4335126ab360f938b51496e5ca297a28fef68097c58640"
+    },
+    {
+      "id": "experiment.error-analysis.uncertainty-evaluation",
+      "fingerprint": "sha256:0605db4aa10b61ead4e85232f31f892159b807c470ad009706d027930ac17af2"
+    },
+    {
+      "id": "experiment.error-analysis.uncertainty-propagation",
+      "fingerprint": "sha256:6f9232cbc1e43469b58baf4e9f384bd9edfaa66db149faed9cb9cd55a2d1d46a"
+    },
+    {
+      "id": "experiment.error-analysis.weighted-measurements",
+      "fingerprint": "sha256:6da658a7903486daa2df558c0b8221ebf7ce07baab8652d3c123a6557f51cccd"
     }
   ]
 }

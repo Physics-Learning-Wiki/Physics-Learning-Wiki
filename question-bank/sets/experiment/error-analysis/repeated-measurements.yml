@@ -2,7 +2,7 @@ schema_version: 1
 id: experiment.error-analysis.repeated-measurements
 title: 重复测量与统计描述：专题习题
 description: 15 道草稿练习，覆盖重复测量的数值计算、置信区间和推导自评．
-status: draft
+status: published
 tags:
 - 误差分析与数据处理
 - 重复测量与统计描述

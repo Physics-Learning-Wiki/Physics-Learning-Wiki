@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000174
 version: 2
-status: draft
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -16,8 +16,8 @@ type: free_response
 stem: 写出固定候选暂剔预测式，并解释根号因子从何而来．
 reference_answer: 记其余样本数 m=n−1，均值为 x̄₋ⱼ、样本标准差为 s₋ⱼ．候选事先独立指定且各观测独立同分布正态时，Var(Xⱼ−X̄₋ⱼ)=σ²+σ²/m=σ²(1+1/m)．用其余 m 个观测估计尺度，自由度为
   m−1，故 T=(xⱼ−x̄₋ⱼ)/[s₋ⱼ√(1+1/m)] 服从自由度 m−1 的 t 分布．候选本身的方差产生根号里的 1．
-solution: 记其余样本数 m=n−1，均值为 x̄₋ⱼ、样本标准差为 s₋ⱼ．候选事先独立指定且各观测独立同分布正态时，Var(Xⱼ−X̄₋ⱼ)=σ²+σ²/m=σ²(1+1/m)．用其余 m 个观测估计尺度，自由度为
-  m−1，故 T=(xⱼ−x̄₋ⱼ)/[s₋ⱼ√(1+1/m)] 服从自由度 m−1 的 t 分布．候选本身的方差产生根号里的 1．
+solution: 记其余样本数 m=n−1，均值为 x̄₋ⱼ、样本标准差为 s₋ⱼ．候选事先独立指定且各观测独立同分布正态时，Var(Xⱼ−X̄₋ⱼ)=σ²+σ²/m=σ²(1+1/m)．用其余 m 个观测估计尺度，自由度为 m−1，故 T=(xⱼ−x̄₋ⱼ)/[s₋ⱼ√(1+1/m)]
+  服从自由度 m−1 的 t 分布．候选本身的方差产生根号里的 1．
 response:
   format: plain_text
   required: true
@@ -54,3 +54,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:6a9ddfb598a13e33216ae68f8c61fbb0527a78040f928931f3ccc1db865a0ab0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:6a9ddfb598a13e33216ae68f8c61fbb0527a78040f928931f3ccc1db865a0ab0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:6a9ddfb598a13e33216ae68f8c61fbb0527a78040f928931f3ccc1db865a0ab0

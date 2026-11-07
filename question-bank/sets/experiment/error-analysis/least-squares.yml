@@ -2,7 +2,7 @@ schema_version: 1
 id: experiment.error-analysis.least-squares
 title: 直线拟合与结果检验：专题习题
 description: 16 道交互练习，覆盖直线拟合、参数不确定度与回归推断．
-status: draft
+status: published
 tags:
 - 误差分析与数据处理
 - 直线拟合与结果检验

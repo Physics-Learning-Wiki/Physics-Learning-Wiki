@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000150
 version: 3
-status: draft
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,8 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 在约束权系数和为一的条件下推导逆方差加权．
 reference_answer: 最小化 Σa_i²u_i²，用乘子得 a_i∝1/u_i²．
-solution: 设独立无偏观测的正方差为 uᵢ²，线性估计为 ΣaᵢXᵢ．无偏性要求 Σaᵢ=1，方差为 Σaᵢ²uᵢ²．构造 F=Σaᵢ²uᵢ²−λ(Σaᵢ−1)，对各 aᵢ 求导得 2aᵢuᵢ²=λ，故 aᵢ 与 1/uᵢ²
-  成正比．利用系数和为一归一化，得到 aᵢ=uᵢ⁻²/Σⱼuⱼ⁻²，合并方差为 1/Σⱼuⱼ⁻²．此线性最小方差推导不要求正态．
+solution: 设独立无偏观测的正方差为 uᵢ²，线性估计为 ΣaᵢXᵢ．无偏性要求 Σaᵢ=1，方差为 Σaᵢ²uᵢ²．构造 F=Σaᵢ²uᵢ²−λ(Σaᵢ−1)，对各 aᵢ 求导得 2aᵢuᵢ²=λ，故 aᵢ 与 1/uᵢ² 成正比．利用系数和为一归一化，得到
+  aᵢ=uᵢ⁻²/Σⱼuⱼ⁻²，合并方差为 1/Σⱼuⱼ⁻²．此线性最小方差推导不要求正态．
 response:
   format: plain_text
   required: true
@@ -53,3 +53,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310

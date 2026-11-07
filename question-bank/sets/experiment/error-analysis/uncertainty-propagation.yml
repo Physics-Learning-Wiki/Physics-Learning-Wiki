@@ -2,7 +2,7 @@ schema_version: 1
 id: experiment.error-analysis.uncertainty-propagation
 title: 不确定度传播与合成：专题习题
 description: 14 道练习，覆盖有符号偏差、严格界限、协方差传播和模型条件．
-status: draft
+status: published
 tags:
 - 误差分析与数据处理
 - 不确定度传播与合成

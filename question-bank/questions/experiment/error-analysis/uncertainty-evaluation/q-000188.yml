@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000188
 version: 2
-status: draft
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -14,8 +14,7 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: 证书和重复性都包含显示量化时怎样避免重复预算？
-reference_answer: 先查证书说明：证书给出的校准不确定度是否已经包含显示量化；再查重复测量和所采用的读数模型是否也把同一量化影响计入．按实际模型保留一次并记录理由；若两项只部分重叠，须拆分或建相关模型，不能按
-  A/B 标签机械相加．
+reference_answer: 先查证书说明：证书给出的校准不确定度是否已经包含显示量化；再查重复测量和所采用的读数模型是否也把同一量化影响计入．按实际模型保留一次并记录理由；若两项只部分重叠，须拆分或建相关模型，不能按 A/B 标签机械相加．
 solution: 先查证书说明：证书给出的校准不确定度是否已经包含显示量化；再查重复测量和所采用的读数模型是否也把同一量化影响计入．按实际模型保留一次并记录理由；若两项只部分重叠，须拆分或建相关模型，不能按 A/B 标签机械相加．
 response:
   format: plain_text
@@ -53,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a14006ab5dbdd41ca5fcfd919dc59b9ad5b027223ec5760195714274097be922
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a14006ab5dbdd41ca5fcfd919dc59b9ad5b027223ec5760195714274097be922
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a14006ab5dbdd41ca5fcfd919dc59b9ad5b027223ec5760195714274097be922
