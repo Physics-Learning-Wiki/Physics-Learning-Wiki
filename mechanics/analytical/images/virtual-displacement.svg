@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 640 360" width="640" height="360" role="img" aria-labelledby="title desc">
+  <title id="title">移动悬点单摆的虚位移与实位移</title><desc id="desc">冻结时刻的圆周上虚位移沿切向，大小任意。图中的绿色箭头表示真实角度变化的切向分量，蓝色真实位移是这个分量与悬点水平移动的和。虚位移与切向分量方向平行，但不要求大小相同。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+  <rect width="640" height="360" rx="12" fill="#f8fafc"/>
+  <g font-family="sans-serif" fill="#172554" font-size="16">
+    <path d="M70 90H350M70 90V42" stroke="#334155" stroke-width="2" fill="none" marker-end="url(#arrow)"/><text x="355" y="94">x</text><text x="52" y="44">y</text><text x="50" y="110">O</text>
+    <path d="M200 90V286" stroke="#94a3b8" stroke-dasharray="6 5"/><path d="M69 217A182 182 0 0 0 360 177" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+    <path d="M200 90L291 248" stroke="#2563eb" stroke-width="4"/><circle cx="200" cy="90" r="5" fill="#334155"/><circle cx="291" cy="248" r="9" fill="#2563eb"/>
+    <path d="M200 143A53 53 0 0 0 226 136" stroke="#b45309" fill="none"/><text x="231" y="151">θ</text><text x="252" y="171">l</text><text x="167" y="75">X(t)</text>
+    <path d="M212 66H267" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/><text x="290" y="68">悬点移动</text>
+    <path d="M291 248L351 213" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/><text x="362" y="203">真实切向分量 rθ dθ</text>
+    <path d="M351 213H407" stroke="#b45309" stroke-width="2" marker-end="url(#arrow)"/><text x="426" y="238">(dX, 0)</text>
+    <path d="M291 248L407 213" stroke="#2563eb" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#arrow)"/><text x="364" y="278">dr：真实运动的总位移</text>
+    <text x="36" y="326">虚位移 δr 沿同一切向任意选择；δt = 0；rθ = ∂r/∂θ</text>
+  </g>
+</svg>

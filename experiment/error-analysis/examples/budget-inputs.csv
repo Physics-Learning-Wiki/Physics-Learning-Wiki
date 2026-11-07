@@ -1,0 +1,3 @@
+source,estimate,standard_uncertainty,sensitivity,df,unit
+repeatability,20.00,0.03,1,9,mm
+certificate_correction,0,0.04,1,8,mm

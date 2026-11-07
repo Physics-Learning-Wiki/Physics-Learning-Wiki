@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" role="img" aria-labelledby="title desc"><title id="title">接地平面的镜像构造</title><desc id="desc">实线右侧为物理求解区域；左侧虚设电荷只用于构造右半空间解．</desc>
+<rect width="720" height="380" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#475569"/></marker></defs>
+<g font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" fill="#172033">
+<text x="24" y="30" fill="#172033" font-size="17">接地平面的镜像构造</text>
+<rect x="340" y="65" width="15" height="245" fill="#e5edf5" stroke="#475569" stroke-width="2"/>
+<path d="M347 60 L347 320" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="505" cy="185" r="15" fill="#fff1f2" stroke="#ba2636" stroke-width="2"/>
+<text x="495" y="191" fill="#172033" font-size="14">+q</text>
+<circle cx="190" cy="185" r="15" fill="#e4f2ff" stroke="#155da0" stroke-width="2"/>
+<text x="180" y="191" fill="#172033" font-size="14">−q</text>
+<text x="455" y="100" fill="#172033" font-size="17">真实区域 z &gt; 0</text>
+<text x="110" y="280" fill="#172033" font-size="17">虚设镜像</text>
+<text x="390" y="280" fill="#172033" font-size="17">φ = 0</text>
+<path d="M355 235 L505 235" fill="none" stroke="#475569" stroke-width="2"/>
+<text x="415" y="260" fill="#172033" font-size="17">d</text>
+<text x="24" y="365" fill="#475569" font-size="13">PLW 原创 · 示意图非比例；曲线按正文公式采样</text>
+</g></svg>

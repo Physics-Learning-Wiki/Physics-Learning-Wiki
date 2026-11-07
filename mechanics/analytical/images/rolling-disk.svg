@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 760 320" width="760" height="320" role="img" aria-labelledby="title desc">
+  <title id="title">竖直圆盘的无滑动滚动坐标</title><desc id="desc">侧视图展示半径与自转角。俯视图展示平面坐标轴与前进方向角，圆盘保持竖直，自转正向选为沿前进方向滚动。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+  <rect width="760" height="320" rx="12" fill="#f8fafc"/>
+  <g font-family="sans-serif" fill="#172554" font-size="17">
+    <text x="34" y="30">侧视：保持竖直</text><text x="405" y="30">俯视：前进方向可改变</text>
+    <path d="M30 245H345" stroke="#64748b" stroke-width="3"/>
+    <circle cx="170" cy="160" r="85" stroke="#2563eb" stroke-width="4" fill="#dbeafe"/>
+    <path d="M170 160V245" stroke="#64748b" stroke-width="2"/><text x="182" y="211">a</text>
+    <path d="M170 160L232 101" stroke="#2563eb" stroke-width="2"/><circle cx="232" cy="101" r="6" fill="#b45309"/>
+    <path d="M143 107A60 60 0 0 1 215 116" fill="none" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/><text x="168" y="90">θ 正向</text>
+    <path d="M263 178H330" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/><text x="270" y="161">前进</text>
+    <circle cx="170" cy="245" r="5" fill="#b45309"/><text x="34" y="277">接触点无滑动；盘心高度为 a</text>
+    <g stroke="#334155" stroke-width="2" marker-end="url(#arrow)"><path d="M420 248H710"/><path d="M420 248V65"/><path d="M542 180L638 111"/></g>
+    <g stroke="#94a3b8" stroke-dasharray="5 4" fill="none"><path d="M542 248V180H420"/><path d="M542 180H625"/></g>
+    <path d="M502 209L582 151" stroke="#2563eb" stroke-width="7"/>
+    <path d="M588 180A46 46 0 0 0 580 153" stroke="#b45309" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <text x="592" y="167">φ</text><text x="645" y="110">前进方向</text><text x="713" y="253">x</text><text x="403" y="65">y</text><text x="410" y="270">O</text><text x="529" y="270">x</text><text x="400" y="181">y</text><text x="477" y="283">四个位形坐标：(x, y, φ, θ)</text>
+  </g>
+</svg>

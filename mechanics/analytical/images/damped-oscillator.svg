@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 640 270" width="640" height="270" role="img" aria-labelledby="title desc">
+  <title id="title">水平阻尼弹簧振子</title><desc id="desc">固定墙上连接弹簧，弹簧连接水平运动的滑块。位移和速度正方向向右，外驱动力箭头向右。黏滞阻力在速度向右时指向左。原点是弹簧平衡位置。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#334155"/></marker></defs>
+  <rect width="640" height="270" rx="12" fill="#f8fafc"/>
+  <path d="M45 45V190M45 190H580" stroke="#64748b" stroke-width="3" fill="none"/>
+  <path d="M45 127H73L84 111L106 143L128 111L150 143L172 111L194 143L216 111L238 143L250 127H287" stroke="#2563eb" stroke-width="3" fill="none"/>
+  <rect x="287" y="88" width="95" height="100" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <g font-family="sans-serif" fill="#172554" font-size="17">
+    <text x="323" y="145">m</text><text x="159" y="84">k</text><text x="36" y="30">固定支承；x = 0 为弹簧平衡伸长位置</text>
+    <path d="M337 68H408" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/><text x="418" y="74">速度向右</text>
+    <path d="M290 157H217" stroke="#b45309" stroke-width="3" marker-end="url(#arrow)"/><text x="133" y="180">阻力 −c dx/dt</text>
+    <path d="M382 128H485" stroke="#0f766e" stroke-width="3" marker-end="url(#arrow)"/><text x="497" y="133">F(t)</text>
+    <path d="M226 203V242" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/><path d="M226 222H559" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/><text x="210" y="257">0</text><text x="565" y="229">x</text><text x="312" y="257">正方向向右</text>
+  </g>
+</svg>
