@@ -12,7 +12,7 @@ on:
       - package.json
       - yarn.lock
       - .prettierrc
-      - tsconfig.json
+      - tsconfig*.json
   workflow_dispatch:
 
 jobs:
@@ -32,4 +32,11 @@ jobs:
       - name: Check Prettier Format
         run: corepack yarn scripts:format:check
       - name: Check TypeScript Compile
-        run: corepack yarn tsc
+        # Node build tools use the root config; browser modules own stricter
+        # configs (including their tests). Do not mix in theme or E2E projects.
+        run: |
+          corepack yarn tsc
+          corepack yarn quiz:typecheck
+          corepack yarn runtime:typecheck
+          corepack yarn forms:typecheck
+          corepack yarn features:typecheck

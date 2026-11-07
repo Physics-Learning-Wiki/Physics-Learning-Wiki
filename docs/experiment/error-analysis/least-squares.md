@@ -204,7 +204,7 @@ $$
 s_{\rm mean}=s_{\rm res}\sqrt{\frac1n+\frac{(x_*-\bar x)^2}{S_{xx}}}.
 $$
 
-预测同一条件下**一次新的独立观测**时，还需加上这次观测本身的随机方差，所以其标准误差是
+预测同一条件下 **一次新的独立观测** 时，还需加上这次观测本身的随机方差，所以其标准误差是
 
 $$
 s_{\rm pred}=s_{\rm res}\sqrt{1+\frac1n+\frac{(x_*-\bar x)^2}{S_{xx}}}.
@@ -236,8 +236,11 @@ def linear_model(theta, a, b):
 
 
 params, covariance = curve_fit(
-    linear_model, temperature, length,
-    sigma=u_length, absolute_sigma=True,
+    linear_model,
+    temperature,
+    length,
+    sigma=u_length,
+    absolute_sigma=True,
 )
 ```
 

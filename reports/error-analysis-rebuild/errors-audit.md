@@ -137,8 +137,8 @@ PDF 实际页数依次为 03：43、04：53、05：33、06：41，以下页码�
 | 17 | 4. 其他几种常见的分布；已知估计值x落在区间（x－a，x＋a）内服从下列分布， | uncertainty-evaluation | q-000178–q-000189 |
 | 18 | 5. 界限不对称的考虑；在输入量X可能值的下界a- 和上界a+相对于其最佳估计值x不 | uncertainty-evaluation | q-000178–q-000189 |
 | 19 | ；例如：设手册中给出的铜膨胀系数为 20 (Cu ) = 16.52  10 −6 | uncertainty-evaluation | q-000178–q-000189 |
-| 20 | 6. 以“级”使用仪器的不确定度计算；当测量仪器检定证书上给出准确度级别时，可按检定系 | uncertainty-evaluation | q-000178–q-000189 |
-| 21 | 标准量传递的“等与级”；长度：量块 | uncertainty-evaluation | q-000178–q-000189 |
+| 20 | 6. 以「级」使用仪器的不确定度计算；当测量仪器检定证书上给出准确度级别时，可按检定系 | uncertainty-evaluation | q-000178–q-000189 |
+| 21 | 标准量传递的「等与级」；长度：量块 | uncertainty-evaluation | q-000178–q-000189 |
 | 22 | 长度标准量传递；长度：量块 gage block | uncertainty-evaluation | q-000178–q-000189 |
 | 23 | 量块的等与级：；量块按级划分，是依据生产厂出厂公差带来确定的 | uncertainty-evaluation | q-000178–q-000189 |
 | 24 | 未提取到文字：需图页检查 | uncertainty-evaluation | q-000178–q-000189 |

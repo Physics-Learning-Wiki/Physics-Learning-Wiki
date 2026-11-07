@@ -19,12 +19,12 @@ description: 从原始测量记录出发，学习重复测量、系统效应、�
 
 ## 推荐阅读顺序
 
-1. [测量、误差与不确定度](error-analysis/measurement-basics.md)、[测量仪器与计量溯源](error-analysis/metrology.md)、[数据记录与有效数字](error-analysis/data-recording.md)：确定被测量，读懂仪器并保留可复查的原始记录．
-2. [重复测量与统计描述](error-analysis/repeated-measurements.md)、[不等精度测量与结果合并](error-analysis/weighted-measurements.md)：从残差估计分散，再按信息量合并独立结果．
-3. [系统效应与异常数据](error-analysis/systematic-errors-outliers.md)、[异常值检验与处理](error-analysis/outlier-tests.md)：调查共同偏移、漂移及异常观测，决定能否修正或剔除．
-4. [标准不确定度的评定](error-analysis/uncertainty-evaluation.md)、[不确定度传播与合成](error-analysis/uncertainty-propagation.md)、[误差分配与测量方案优化](error-analysis/error-allocation.md)：建立输入模型、合成贡献，再比较改进方案．
-5. [直线拟合与结果检验](error-analysis/least-squares.md)、[一般线性参数估计](error-analysis/linear-parameters.md)、[非线性拟合与线性化](error-analysis/nonlinear-fitting.md)、[组合测量的数据处理](error-analysis/combined-measurements.md)：从拟合直线推广到参数和模型的估计．
-6. [综合数据处理与实验报告](error-analysis/case-studies.md)：沿单摆与铜棒案例复现从原始记录到报告的过程．正在写报告的读者也可先浏览此页，再回查所需步骤．
+1.  [测量、误差与不确定度](error-analysis/measurement-basics.md)、[测量仪器与计量溯源](error-analysis/metrology.md)、[数据记录与有效数字](error-analysis/data-recording.md)：确定被测量，读懂仪器并保留可复查的原始记录．
+2.  [重复测量与统计描述](error-analysis/repeated-measurements.md)、[不等精度测量与结果合并](error-analysis/weighted-measurements.md)：从残差估计分散，再按信息量合并独立结果．
+3.  [系统效应与异常数据](error-analysis/systematic-errors-outliers.md)、[异常值检验与处理](error-analysis/outlier-tests.md)：调查共同偏移、漂移及异常观测，决定能否修正或剔除．
+4.  [标准不确定度的评定](error-analysis/uncertainty-evaluation.md)、[不确定度传播与合成](error-analysis/uncertainty-propagation.md)、[误差分配与测量方案优化](error-analysis/error-allocation.md)：建立输入模型、合成贡献，再比较改进方案．
+5.  [直线拟合与结果检验](error-analysis/least-squares.md)、[一般线性参数估计](error-analysis/linear-parameters.md)、[非线性拟合与线性化](error-analysis/nonlinear-fitting.md)、[组合测量的数据处理](error-analysis/combined-measurements.md)：从拟合直线推广到参数和模型的估计．
+6.  [综合数据处理与实验报告](error-analysis/case-studies.md)：沿单摆与铜棒案例复现从原始记录到报告的过程．正在写报告的读者也可先浏览此页，再回查所需步骤．
 
 综合案例的题集已公开，可直接练习；其他专题的题集目前是草稿，仅在草稿预览中可见，等待人工审核后发布．自由作答按参考答案和评分标准自评．
 
