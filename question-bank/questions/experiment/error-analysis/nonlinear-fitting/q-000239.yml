@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000239
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．局部对数噪声约为原噪声除电压，尺度随信号改变；对数图可猜初值但须核查最终模型．
   incorrect: 请重新检查模型、条件和计算：局部对数噪声约为原噪声除电压，尺度随信号改变；对数图可猜初值但须核查最终模型．
   choices:
-    A: 此项符合题设．局部对数噪声约为原噪声除电压，尺度随信号改变；对数图可猜初值但须核查最终模型．
-    B: 此项不符合题设：局部对数噪声约为原噪声除电压，尺度随信号改变；对数图可猜初值但须核查最终模型．
-    C: 此项不符合题设：局部对数噪声约为原噪声除电压，尺度随信号改变；对数图可猜初值但须核查最终模型．
+    A: 加性等方差噪声取对数后近似除以模型值，方差随信号变化．
+    B: 对数导数为 1/y，因而原量等方差一般不会保持．
+    C: 变量变换不会自动消除校准或其他系统效应．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:58e99f62491e1f3ee365458c94bda988c13ff4a840a88a94b31c5713a16bda92
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:58e99f62491e1f3ee365458c94bda988c13ff4a840a88a94b31c5713a16bda92
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:58e99f62491e1f3ee365458c94bda988c13ff4a840a88a94b31c5713a16bda92

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000251
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: 'n−p=6−3=3．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=3
-
-  $$
-
-  '
+solution: 六个独立观测估计三个可辨识参数，残差自由度为 $n-p=6-3=3$．
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．n−p=6−3=3．
-  incorrect: 请重新检查模型、条件和计算：n−p=6−3=3．
+  correct: 六个独立观测估计三个可辨识参数，残差自由度为 $n-p=6-3=3$．
+  incorrect: 六个独立观测估计三个可辨识参数，残差自由度为 $n-p=6-3=3$．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a640adaab251ff785ad3b267af8d3f1796a7b1308e876be0e0a9ae8532efdd48
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a640adaab251ff785ad3b267af8d3f1796a7b1308e876be0e0a9ae8532efdd48
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a640adaab251ff785ad3b267af8d3f1796a7b1308e876be0e0a9ae8532efdd48

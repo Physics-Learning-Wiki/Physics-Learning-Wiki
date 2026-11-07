@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000236
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 区分已知绝对协方差与只知相对权的参数协方差式．
 reference_answer: 前者 (AᵀΣ⁻¹A)⁻¹；后者以 s0²(AᵀPA)⁻¹ 估计．
-solution: '未知尺度 s0²=vᵀPv/(n−p)，正态下可谈精确残差卡方；不定乘数即逆正规矩阵列的求解系数．
-
-
-  关键算式：
-
-
-  $$
-
-  s_0^2=\boldsymbol v^TP\boldsymbol v/(n-p),\quad\operatorname{Cov}(\hat{\boldsymbol\theta})\approx s_0^2(A^TPA)^{-1}
-
-  $$
-
-  '
+solution: 已知 $\Sigma$ 时参数协方差为 $(A^T\Sigma^{-1}A)^{-1}$；仅知相对权 $P$ 且 $\Sigma=\sigma_0^2P^{-1}$ 时，先以 $v^TPv/(n-p)$ 估计共同尺度，再乘
+  $(A^TPA)^{-1}$．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：知道两种公式不同，但遗漏共同尺度或残差自由度
     points: 0.5
   - id: complete
-    label: 基本掌握：前者 (AᵀΣ⁻¹A)⁻¹；后者以 s0²(AᵀPA)⁻¹ 估计．
+    label: 基本掌握：列出两种协方差式，并解释相对权情况下如何估计共同尺度
     points: 1
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．未知尺度 s0²=vᵀPv/(n−p)，正态下可谈精确残差卡方；不定乘数即逆正规矩阵列的求解系数．
-  incorrect: 请重新检查模型、条件和计算：未知尺度 s0²=vᵀPv/(n−p)，正态下可谈精确残差卡方；不定乘数即逆正规矩阵列的求解系数．
+  correct: 已知 $\Sigma$ 时参数协方差为 $(A^T\Sigma^{-1}A)^{-1}$；仅知相对权 $P$ 且 $\Sigma=\sigma_0^2P^{-1}$ 时，先以 $v^TPv/(n-p)$ 估计共同尺度，再乘
+    $(A^TPA)^{-1}$．
+  incorrect: 已知 $\Sigma$ 时参数协方差为 $(A^T\Sigma^{-1}A)^{-1}$；仅知相对权 $P$ 且 $\Sigma=\sigma_0^2P^{-1}$ 时，先以 $v^TPv/(n-p)$ 估计共同尺度，再乘
+    $(A^TPA)^{-1}$．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +55,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e4166f97afa58989500dd5058eb263de3815aa6cd4b0c1903ddd5e4d05d3f1de
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e4166f97afa58989500dd5058eb263de3815aa6cd4b0c1903ddd5e4d05d3f1de
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e4166f97afa58989500dd5058eb263de3815aa6cd4b0c1903ddd5e4d05d3f1de

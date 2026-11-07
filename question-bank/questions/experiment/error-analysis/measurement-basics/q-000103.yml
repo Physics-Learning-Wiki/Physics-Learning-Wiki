@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000103
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,12 +27,12 @@ solution: 绝对误差为测得量值减参考值，有量纲、有符号；大�
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
-  incorrect: 请重新检查模型、条件和计算：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+  correct: 绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+  incorrect: 先保留测得值减参考值的正负号，再区分差值与绝对值．
   choices:
-    A: 此项符合题设．绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
-    B: 此项不符合题设：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
-    C: 此项不符合题设：绝对误差为测得量值减参考值，有量纲、有符号；大小另用绝对值表示．
+    A: 这里绝对指以被测量单位表达；相减的结果可以有正负．
+    B: 误差是有符号的差；只有误差的绝对值总是非负．
+    C: 绝对误差与相对误差都可以有符号，相对误差是除以参考值后的比值．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:696fd19054b7c827de4694116922c97dce0239f685742c0d6e1736c8fd46252c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:696fd19054b7c827de4694116922c97dce0239f685742c0d6e1736c8fd46252c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:696fd19054b7c827de4694116922c97dce0239f685742c0d6e1736c8fd46252c

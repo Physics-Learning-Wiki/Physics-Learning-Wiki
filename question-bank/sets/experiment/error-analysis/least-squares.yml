@@ -1,8 +1,8 @@
 schema_version: 1
 id: experiment.error-analysis.least-squares
 title: 直线拟合与结果检验：专题习题
-description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
-status: draft
+description: 16 道交互练习，覆盖直线拟合、参数不确定度与回归推断．
+status: published
 tags:
 - 误差分析与数据处理
 - 直线拟合与结果检验
@@ -22,8 +22,12 @@ selection:
   - q-000223
   - q-000224
   - q-000225
+  - q-000797
+  - q-000798
+  - q-000799
+  - q-000800
   order: fixed
-version: 1
+version: 2
 authors:
 - name: Codex
   kind: ai

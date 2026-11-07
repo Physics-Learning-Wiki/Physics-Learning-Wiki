@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000120
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,12 +27,12 @@ solution: 原始值、修正和最终结果分列，保证可复查，不冒充�
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
-  incorrect: 请重新检查模型、条件和计算：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+  correct: 原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+  incorrect: 同时保留示值和零点，再单独记录修正后结果．
   choices:
-    A: 此项符合题设．原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
-    B: 此项不符合题设：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
-    C: 此项不符合题设：原始值、修正和最终结果分列，保证可复查，不冒充更高分辨率．
+    A: 保留原始示值与零点，并另列 12.10 mm，读者才能复算修正．
+    B: 覆盖原始读数会丢失修正前的信息．
+    C: 添零会改变读数所表达的末位信息，原始记录应忠实保留．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d9cfc6575fa1f7a7afdf567a386b93882b4d170cb3e5eeae28f5ca26cace4cd2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d9cfc6575fa1f7a7afdf567a386b93882b4d170cb3e5eeae28f5ca26cace4cd2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d9cfc6575fa1f7a7afdf567a386b93882b4d170cb3e5eeae28f5ca26cace4cd2

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000219
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '数据精确落在 y=1+2x，Sxy/Sxx=4/2=2．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=2
-
-  $$
-
-  '
+solution: 由 $\bar x=1$、$\bar y=3$ 得 $S_{xx}=2$、$S_{xy}=4$，故斜率 $b=S_{xy}/S_{xx}=2$．
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．数据精确落在 y=1+2x，Sxy/Sxx=4/2=2．
-  incorrect: 请重新检查模型、条件和计算：数据精确落在 y=1+2x，Sxy/Sxx=4/2=2．
+  correct: 由 $\bar x=1$、$\bar y=3$ 得 $S_{xx}=2$、$S_{xy}=4$，故斜率 $b=S_{xy}/S_{xx}=2$．
+  incorrect: 由 $\bar x=1$、$\bar y=3$ 得 $S_{xx}=2$、$S_{xy}=4$，故斜率 $b=S_{xy}/S_{xx}=2$．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:77bea0719b5148f9990240205b95a55bedc29fe34d3ab9e8933dd9072a8eece8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:77bea0719b5148f9990240205b95a55bedc29fe34d3ab9e8933dd9072a8eece8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:77bea0719b5148f9990240205b95a55bedc29fe34d3ab9e8933dd9072a8eece8

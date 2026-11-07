@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000225
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,7 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 残差随温度明显弯曲，但 R² 很高，怎样处理？
 reference_answer: 检查模型不足、温标与相关影响，必要时在物理依据下扩展模型．
-solution: 高 R² 不保证线性；保留范围限制，勿随意外推或只删弯曲处数据．
+solution: 先画残差对温度图并核查校准与观测过程；若弯曲稳定且有物理依据，在明确适用范围后比较更合适的模型，再用新模型重新估计参数和不确定度．
 response:
   format: plain_text
   required: true
@@ -27,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：发现残差弯曲，但只依据 R² 作结论
     points: 0.5
   - id: complete
-    label: 基本掌握：检查模型不足、温标与相关影响，必要时在物理依据下扩展模型．
+    label: 基本掌握：检查残差及测量过程，并解释合理比较模型和外推限制
     points: 1
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．高 R² 不保证线性；保留范围限制，勿随意外推或只删弯曲处数据．
-  incorrect: 请重新检查模型、条件和计算：高 R² 不保证线性；保留范围限制，勿随意外推或只删弯曲处数据．
+  correct: 先画残差对温度图并核查校准与观测过程；若弯曲稳定且有物理依据，在明确适用范围后比较更合适的模型，再用新模型重新估计参数和不确定度．
+  incorrect: 先画残差对温度图并核查校准与观测过程；若弯曲稳定且有物理依据，在明确适用范围后比较更合适的模型，再用新模型重新估计参数和不确定度．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -52,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:11ccc7287fe5a796a6991ebf5112f14ee9a2b34bb6df230e11f546bdc7b75685
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:11ccc7287fe5a796a6991ebf5112f14ee9a2b34bb6df230e11f546bdc7b75685
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:11ccc7287fe5a796a6991ebf5112f14ee9a2b34bb6df230e11f546bdc7b75685

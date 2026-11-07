@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000119
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,12 +13,9 @@ related_pages:
 - experiment.error-analysis.metrology
 choice_order: fixed
 type: free_response
-stem: 为工作砝码列出溯源所需信息．另说明校准是否已涵盖量具安装的阿贝误差：偏置80mm、转角标准不确定度5×10^-6 rad时的长度贡献是多少？
+stem: 为工作砝码列出溯源所需信息．量具安装的轴线偏置为 80 mm、转角标准不确定度为 5×10⁻⁶ rad 时，小角线性模型给出的长度标准不确定度贡献是多少？
 reference_answer: 溯源链须有参考、校准、条件、修正和不确定度；偏置转角贡献为0.0004mm，不能默认已含在证书．
 solution: '校准链连续且有记录，每环贡献不确定度并检查共享来源．阿贝几何误差小角近似 e=hθ，u项为80×5×10^-6=0.0004mm；实际使用安装误差须另建模，除非证书范围明确已覆盖．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 未给出校准链信息且无法建立偏置与转角的关系．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 列出校准信息或算出 0.0004 mm 中一项，但另一项或证书适用范围遗漏．
     points: 0.5
   - id: complete
-    label: 基本掌握：溯源链须有参考、校准、条件、修正和不确定度；偏置转角贡献为0.0004mm，不能默认已含在证书．
+    label: 列出参考、连续校准、修正、条件及各环不确定度，并用 80×5×10⁻⁶ 算出 0.0004 mm，检查证书是否覆盖现场安装．
     points: 1
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 请对照关键条件与步骤自评．校准链连续且有记录，每环贡献不确定度并检查共享来源．阿贝几何误差小角近似 e=hθ，u项为80×5×10^-6=0.0004mm；实际使用安装误差须另建模，除非证书范围明确已覆盖．
-  incorrect: 请先复查模型与条件．校准链连续且有记录，每环贡献不确定度并检查共享来源．阿贝几何误差小角近似 e=hθ，u项为80×5×10^-6=0.0004mm；实际使用安装误差须另建模，除非证书范围明确已覆盖．
+  correct: 列出参考、连续校准、修正、条件及各环不确定度，并用 80×5×10⁻⁶ 算出 0.0004 mm，检查证书是否覆盖现场安装．
+  incorrect: 列出校准信息或算出 0.0004 mm 中一项，但另一项或证书适用范围遗漏．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -64,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d8be715be088315c934f7c0d2ae1e253a0d438e56b2a6d512c149946e7818739
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d8be715be088315c934f7c0d2ae1e253a0d438e56b2a6d512c149946e7818739
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d8be715be088315c934f7c0d2ae1e253a0d438e56b2a6d512c149946e7818739

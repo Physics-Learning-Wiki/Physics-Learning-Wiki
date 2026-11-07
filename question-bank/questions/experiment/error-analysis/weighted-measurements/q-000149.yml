@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000149
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: mm
     accepted:
     - mm
-solution: '共同项不平均掉，√(0.06²+0.08²)=0.10 mm．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.1\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 共同项不平均掉，√(0.06²+0.08²)=0.10 mm．
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．共同项不平均掉，√(0.06²+0.08²)=0.10 mm．
-  incorrect: 请重新检查模型、条件和计算：共同项不平均掉，√(0.06²+0.08²)=0.10 mm．
+  correct: 共同项不平均掉，√(0.06²+0.08²)=0.10 mm．
+  incorrect: 共同校准项不因平均而消失；与独立部分按方差相加．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:bcead6f4122d6f048f1176a8fcba5a891417d1654190b4eb3c7dabef9b7d433a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:bcead6f4122d6f048f1176a8fcba5a891417d1654190b4eb3c7dabef9b7d433a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:bcead6f4122d6f048f1176a8fcba5a891417d1654190b4eb3c7dabef9b7d433a

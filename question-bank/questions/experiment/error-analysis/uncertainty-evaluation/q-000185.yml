@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000185
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,44 +13,48 @@ related_pages:
 - experiment.error-analysis.uncertainty-evaluation
 choice_order: fixed
 type: numeric
-stem: 偏离均匀在 [-0.02,+0.06] mm，校正中心偏移后标准不确定度多少 mm？
+stem: 偏离均匀在 [-0.02,+0.06] mm，校正中心偏移后标准不确定度多少 mm？（结果至少保留三位有效数字）．
 answer:
   value: 0.023094010767585032
   tolerance:
     type: absolute
-    value: 4.618802153517006e-06
+    value: 5.001e-05
   unit:
     required: true
     canonical: mm
     accepted:
     - mm
-solution: '中心 +0.02 mm；宽度 0.08，u=0.08/√12≈0.0230940 mm．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0230940108\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 中心 +0.02 mm；宽度 0.08，u=0.08/√12≈0.0230940 mm．
 hints:
 - 范围须配分布；标准不确定度的可靠度不是覆盖概率，先统一为输出贡献．
 feedback:
-  correct: 关键结论与题设条件相符．中心 +0.02 mm；宽度 0.08，u=0.08/√12≈0.0230940 mm．
-  incorrect: 请重新检查模型、条件和计算：中心 +0.02 mm；宽度 0.08，u=0.08/√12≈0.0230940 mm．
+  correct: 数值与题设模型一致；请核对单位和计算步骤．
+  incorrect: 检查题干给出的模型、数量级和单位，再比较解析中的计算步骤．
 difficulty: 2
 cognitive_level: apply
 style: computational
 estimated_seconds: 180
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b17ebe6b4f47c1910097506d91ff0bb302fa2af168d0213c96a6b11ce4f988a9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b17ebe6b4f47c1910097506d91ff0bb302fa2af168d0213c96a6b11ce4f988a9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b17ebe6b4f47c1910097506d91ff0bb302fa2af168d0213c96a6b11ce4f988a9

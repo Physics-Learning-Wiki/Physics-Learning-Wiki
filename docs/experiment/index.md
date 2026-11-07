@@ -35,7 +35,7 @@ status: review
 
 ## 并行补充的支撑内容
 
-误差分析已提供[八篇专题的完整路线](./error-analysis.md#推荐阅读顺序)，从原始记录逐步进入不确定度与拟合；[单摆和铜棒综合案例](./error-analysis/case-studies.md)附教学 CSV 与可复现 Python 脚本．常用仪器和基础实验页面仍待建设，阅读时可先使用案例中明确给出的教学条件．
+误差分析已提供 [从测量基础到拟合与报告的学习路线](./error-analysis.md#推荐阅读顺序)，从原始记录逐步进入不确定度与拟合；[单摆和铜棒综合案例](./error-analysis/case-studies.md) 附教学 CSV 与可复现 Python 脚本．常用仪器和基础实验页面仍待建设，阅读时可先使用案例中明确给出的教学条件．
 
 -   [数学工具](../math/probability.md)：帮助理解分布、平均值和误差传播．
 -   [计算物理与工具](../tools/index.md)：适合做数据处理、绘图和拟合．

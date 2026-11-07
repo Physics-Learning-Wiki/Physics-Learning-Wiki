@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000140
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,21 +13,9 @@ related_pages:
 - experiment.error-analysis.repeated-measurements
 choice_order: fixed
 type: free_response
-stem: 四个独立等精度组均值为 10.0、10.2、9.8、10.0 mm，求组间总均值标准不确定度．
+stem: 四个相互独立、来自同一稳定分布的组均值为 10.0、10.2、9.8、10.0 mm，求组均值的总平均值标准不确定度．
 reference_answer: 总均值 10.0 mm，组间 s=0.163299 mm，均值 u=0.0816497 mm，自由度 3．
-solution: '平方和为 0.08；除以 3 后开方，再除以 √4．说明组内与组间来源不可重复计入；次数不同可转加权模型．
-
-
-  关键算式：
-
-
-  $$
-
-  u(\bar x)=\sqrt{0.08/(3\cdot4)}=0.0816497\ldots\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 组均值的总平均为 10.0 mm，残差平方和为 0.08 mm²；除以 3 后开方，再除以 √4，得均值标准不确定度约 0.0816497 mm．组内与组间来源应按模型处理，避免重复计入；只有独立同单次方差等条件成立时，次数不同的组才可按次数加权．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 未得到正确中心或误将单组标准差直接当总平均值标准差．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 求出均值及平方和，但漏掉 n−1、√4 或组均值相容条件．
     points: 0.5
   - id: complete
-    label: 基本掌握：总均值 10.0 mm，组间 s=0.163299 mm，均值 u=0.0816497 mm，自由度 3．
+    label: 算出均值 10.0 mm、平方和 0.08 mm²、s=0.1633 mm、u=0.08165 mm，并说明组均值独立同分布和自由度 3．
     points: 1
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 先计算组均值的样本标准差，再对四组平均．
 feedback:
-  correct: 关键结论与题设条件相符．平方和为 0.08；除以 3 后开方，再除以 √4．说明组内与组间来源不可重复计入；次数不同可转加权模型．
-  incorrect: 请重新检查模型、条件和计算：平方和为 0.08；除以 3 后开方，再除以 √4．说明组内与组间来源不可重复计入；次数不同可转加权模型．
+  correct: 算出均值 10.0 mm、平方和 0.08 mm²、s=0.1633 mm、u=0.08165 mm，并说明组均值独立同分布和自由度 3．
+  incorrect: 求出均值及平方和，但漏掉 n−1、√4 或组均值相容条件．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d1fd2672214f38933b9a1df707596cb8e30eced6cd93f463c355b06d3e646ebf

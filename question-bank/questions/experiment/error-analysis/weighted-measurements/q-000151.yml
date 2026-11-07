@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000151
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 怎样从独立正态似然得到同样的加权平均？
 reference_answer: 对联合密度取对数并对共同均值求导为零．
-solution: '对数似然的均值相关部分为 -Σ(x_i−μ)²/(2u_i²)；零导数得权均值，说明这不是参数的概率密度．
-
-
-  关键算式：
-
-
-  $$
-
-  \frac{\partial\log L}{\partial\mu}=\sum_i(x_i-\mu)/u_i^2=0
-
-  $$
-
-  '
+solution: 独立正态观测的联合似然是各正态密度之积，已知方差时，与 μ 有关的对数似然为 −Σ(xᵢ−μ)²/(2uᵢ²) 加常数．对 μ 求导得 Σ(xᵢ−μ)/uᵢ²；令其为零并整理，μ 的估计为 Σ(xᵢ/uᵢ²)/Σ(1/uᵢ²)．二阶导数为
+  −Σ1/uᵢ²<0，故为极大值．似然是观测数据给定后关于参数的函数，不是参数概率密度．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 把似然直接当成均值参数的概率密度，或未使用独立正态模型．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 写出对数似然或一阶导数，但未解出逆方差加权均值．
     points: 0.5
   - id: complete
-    label: 基本掌握：对联合密度取对数并对共同均值求导为零．
+    label: 将独立正态密度相乘，取对数并对共同均值求导，令 Σ(xᵢ−μ)/uᵢ²=0，得到归一化逆方差加权均值．
     points: 1
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．对数似然的均值相关部分为 -Σ(x_i−μ)²/(2u_i²)；零导数得权均值，说明这不是参数的概率密度．
-  incorrect: 请重新检查模型、条件和计算：对数似然的均值相关部分为 -Σ(x_i−μ)²/(2u_i²)；零导数得权均值，说明这不是参数的概率密度．
+  correct: 将独立正态密度相乘，取对数并对共同均值求导，令 Σ(xᵢ−μ)/uᵢ²=0，得到归一化逆方差加权均值．
+  incorrect: 写出对数似然或一阶导数，但未解出逆方差加权均值．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +53,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:94661efb87f30ff4581c6da32279acddbb7277b783ed6e46e85d652bf0efba17
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:94661efb87f30ff4581c6da32279acddbb7277b783ed6e46e85d652bf0efba17
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:94661efb87f30ff4581c6da32279acddbb7277b783ed6e46e85d652bf0efba17

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000222
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 从残差平方和推导直线斜率和截距公式．
 reference_answer: Σv=0、Σxv=0，b=Sxy/Sxx，a=平均y−b平均x．
-solution: '需 Sxx>0；说明横坐标角色和有截距，两个点可定线但不能从残差估共同方差．
-
-
-  关键算式：
-
-
-  $$
-
-  b=S_{xy}/S_{xx},\quad a=\bar y-b\bar x
-
-  $$
-
-  '
+solution: 分别对截距和斜率求导得到 $\sum v_i=0$ 与 $\sum x_i v_i=0$；第一式得 $a=\bar y-b\bar x$，代入第二式得 $bS_{xx}=S_{xy}$，当 $S_{xx}>0$ 时解唯一．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：列出残差目标但未得到两条正规方程或唯一解条件
     points: 0.5
   - id: complete
-    label: 基本掌握：Σv=0、Σxv=0，b=Sxy/Sxx，a=平均y−b平均x．
+    label: 基本掌握：由两条正规方程推出截距、斜率并说明横坐标不全相同
     points: 1
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．需 Sxx>0；说明横坐标角色和有截距，两个点可定线但不能从残差估共同方差．
-  incorrect: 请重新检查模型、条件和计算：需 Sxx>0；说明横坐标角色和有截距，两个点可定线但不能从残差估共同方差．
+  correct: 分别对截距和斜率求导得到 $\sum v_i=0$ 与 $\sum x_i v_i=0$；第一式得 $a=\bar y-b\bar x$，代入第二式得 $bS_{xx}=S_{xy}$，当 $S_{xx}>0$ 时解唯一．
+  incorrect: 分别对截距和斜率求导得到 $\sum v_i=0$ 与 $\sum x_i v_i=0$；第一式得 $a=\bar y-b\bar x$，代入第二式得 $bS_{xx}=S_{xy}$，当 $S_{xx}>0$ 时解唯一．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:95cc29ed96ce446dc14c6ee7014886c3d97570c30d224cd7ffb850e7064d5fc2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:95cc29ed96ce446dc14c6ee7014886c3d97570c30d224cd7ffb850e7064d5fc2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:95cc29ed96ce446dc14c6ee7014886c3d97570c30d224cd7ffb850e7064d5fc2

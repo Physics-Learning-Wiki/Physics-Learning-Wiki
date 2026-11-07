@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000229
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 正规方程可用于推导；数值上通常用 QR/SVD 或 lstsq，�
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．正规方程可用于推导；数值上通常用 QR/SVD 或 lstsq，避免病态和显式求逆．
-  incorrect: 请重新检查模型、条件和计算：正规方程可用于推导；数值上通常用 QR/SVD 或 lstsq，避免病态和显式求逆．
+  correct: 正规方程可用于推导；数值上通常用 QR/SVD 或 lstsq，避免病态和显式求逆．
+  incorrect: 正规方程可用于推导；数值上通常用 QR/SVD 或 lstsq，避免病态和显式求逆．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:989cbe1ac59dbea29ca3f7d84f2ba6d7e2fbec96d0e1e828e12657e2b0a06922
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:989cbe1ac59dbea29ca3f7d84f2ba6d7e2fbec96d0e1e828e12657e2b0a06922
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:989cbe1ac59dbea29ca3f7d84f2ba6d7e2fbec96d0e1e828e12657e2b0a06922

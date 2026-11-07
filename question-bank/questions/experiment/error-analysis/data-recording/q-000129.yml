@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000129
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 只记录最终结果，遗漏原始读数和单位．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 记录各次读数和单位，但缺少仪器、环境、顺序或修正信息．
     points: 0.5
   - id: complete
-    label: 基本掌握：顺序/时刻、温度、单位、每次读数、仪器与分辨率、校准和异常备注、修正栏．
+    label: 列出顺序或时刻、温度与长度单位、每次读数、仪器分辨率、校准和异常备注，原始读数与修正分列．
     points: 1
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．保留原始值、更正痕迹、条件和证书引用；不要用最终位数倒改原始数据，也避免量化效应重复计入．
-  incorrect: 请重新检查模型、条件和计算：保留原始值、更正痕迹、条件和证书引用；不要用最终位数倒改原始数据，也避免量化效应重复计入．
+  correct: 列出顺序或时刻、温度与长度单位、每次读数、仪器分辨率、校准和异常备注，原始读数与修正分列．
+  incorrect: 记录各次读数和单位，但缺少仪器、环境、顺序或修正信息．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -52,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:166e802c21047b104230a121b5d9ff180fe2489d902894ed4cc7ec6f559c3e4e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:166e802c21047b104230a121b5d9ff180fe2489d902894ed4cc7ec6f559c3e4e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:166e802c21047b104230a121b5d9ff180fe2489d902894ed4cc7ec6f559c3e4e

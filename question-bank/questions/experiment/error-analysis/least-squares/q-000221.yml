@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000221
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: 1/K
     accepted:
     - 1/K
-solution: '0.017/1000=1.7×10^-5 K^-1，不能把 b 本身当膨胀系数．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=1.7\times10^{-5}\,\mathrm{K^{-1}}
-
-  $$
-
-  '
+solution: 由 $\alpha=b/a$，代入 $a=1000\,\mathrm{mm}$ 和 $b=0.017\,\mathrm{mm/K}$，得 $\alpha=1.7\times10^{-5}\,\mathrm{K^{-1}}$；长度单位相消．
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．0.017/1000=1.7×10^-5 K^-1，不能把 b 本身当膨胀系数．
-  incorrect: 请重新检查模型、条件和计算：0.017/1000=1.7×10^-5 K^-1，不能把 b 本身当膨胀系数．
+  correct: 由 $\alpha=b/a$，代入 $a=1000\,\mathrm{mm}$ 和 $b=0.017\,\mathrm{mm/K}$，得 $\alpha=1.7\times10^{-5}\,\mathrm{K^{-1}}$；长度单位相消．
+  incorrect: 由 $\alpha=b/a$，代入 $a=1000\,\mathrm{mm}$ 和 $b=0.017\,\mathrm{mm/K}$，得 $\alpha=1.7\times10^{-5}\,\mathrm{K^{-1}}$；长度单位相消．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:51eea6e90cd66c855d733e74aa974710b48116e4a375dfa6fc87d2197a0479f6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:51eea6e90cd66c855d733e74aa974710b48116e4a375dfa6fc87d2197a0479f6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:51eea6e90cd66c855d733e74aa974710b48116e4a375dfa6fc87d2197a0479f6

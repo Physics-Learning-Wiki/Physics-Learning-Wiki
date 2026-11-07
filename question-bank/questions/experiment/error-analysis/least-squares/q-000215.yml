@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000215
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．sigma 是标准量；True 保留已知绝对尺度，不自动乘约化残差．
   incorrect: 请重新检查模型、条件和计算：sigma 是标准量；True 保留已知绝对尺度，不自动乘约化残差．
   choices:
-    A: 此项符合题设．sigma 是标准量；True 保留已知绝对尺度，不自动乘约化残差．
-    B: 此项不符合题设：sigma 是标准量；True 保留已知绝对尺度，不自动乘约化残差．
-    C: 此项不符合题设：sigma 是标准量；True 保留已知绝对尺度，不自动乘约化残差．
+    A: sigma 输入标准不确定度，True 保留其绝对尺度．
+    B: sigma 接受标准差，传入方差会改变权重和量纲．
+    C: 忽略已知精度信息不能保证估计更精确．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:c9f0ca659c985a755b724bf003d3e1df1f449bf69d7616578b3abb1c2775946d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:c9f0ca659c985a755b724bf003d3e1df1f449bf69d7616578b3abb1c2775946d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:c9f0ca659c985a755b724bf003d3e1df1f449bf69d7616578b3abb1c2775946d

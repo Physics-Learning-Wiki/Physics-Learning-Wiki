@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000164
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -14,20 +14,8 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: 推导半周期法并给一个不能消掉的成分．
-reference_answer: sin(φ+π)=−sinφ；两次平均消去正弦基频，常数或偶次谐波可能保留．
-solution: '写出配对平均，说明周期、相位、幅度稳定的前提；不是所有周期函数都由同一半周期配对消除．
-
-
-  关键算式：
-
-
-  $$
-
-  [\sin\phi+\sin(\phi+\pi)]/2=0
-
-  $$
-
-  '
+reference_answer: 设周期偏移为 b(φ)=a sinφ．相隔半周期时 b(φ+π)=−a sinφ，因此两次平均中这项为零．若还有常数 b₀ 或偶次谐波 a₂sin(2φ)，半周期后它们不变，平均仍保留；相位或幅度变化也会留下残余．
+solution: 设周期偏移为 b(φ)=a sinφ．相隔半周期时 b(φ+π)=−a sinφ，因此两次平均中这项为零．若还有常数 b₀ 或偶次谐波 a₂sin(2φ)，半周期后它们不变，平均仍保留；相位或幅度变化也会留下残余．
 response:
   format: plain_text
   required: true
@@ -39,28 +27,44 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出正弦抵消，但未给出不能抵消的分量或必要条件．
     points: 0.5
   - id: complete
-    label: 基本掌握：sin(φ+π)=−sinφ；两次平均消去正弦基频，常数或偶次谐波可能保留．
+    label: 基本掌握：能够写出半周期正弦抵消，并指出常数或偶次谐波不消除．
     points: 1
 hints:
 - 先按顺序和物理来源检查，传统诊断量本身没有自动的显著性水平．
 feedback:
-  correct: 关键结论与题设条件相符．写出配对平均，说明周期、相位、幅度稳定的前提；不是所有周期函数都由同一半周期配对消除．
-  incorrect: 请重新检查模型、条件和计算：写出配对平均，说明周期、相位、幅度稳定的前提；不是所有周期函数都由同一半周期配对消除．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：写出正弦抵消，但未给出不能抵消的分量或必要条件．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3d7910ea91a6e571832189167350693021ec533c16ca98cbc23887a6e6fa4504
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3d7910ea91a6e571832189167350693021ec533c16ca98cbc23887a6e6fa4504
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3d7910ea91a6e571832189167350693021ec533c16ca98cbc23887a6e6fa4504

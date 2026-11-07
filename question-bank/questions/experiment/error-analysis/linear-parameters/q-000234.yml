@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000234
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 从一般残差模型推导普通正规方程并说明唯一解条件．
 reference_answer: v=l−Aθhat，Aᵀv=0，AᵀAθhat=Aᵀl，rank(A)=p．
-solution: '由 vᵀv 对参数求导，说明 AᵀA 对称正定、秩亏的不可辨识性和实际用 QR/SVD．
-
-
-  关键算式：
-
-
-  $$
-
-  A^TA\hat{\boldsymbol\theta}=A^T\boldsymbol l,\quad\operatorname{rank}(A)=p
-
-  $$
-
-  '
+solution: 令 $v=l-A\theta$，对第 $j$ 个参数求导得 $-2\sum_i A_{ij}v_i=0$；合写为 $A^Tv=0$，代入残差即得正规方程．满列秩时 $z^TA^TAz=\|Az\|^2>0$ 对非零 $z$
+  成立，解唯一．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出正规方程，但未由目标求导或解释唯一性
     points: 0.5
   - id: complete
-    label: 基本掌握：v=l−Aθhat，Aᵀv=0，AᵀAθhat=Aᵀl，rank(A)=p．
+    label: 基本掌握：由各参数偏导得到正规方程，并用满列秩解释唯一最小解
     points: 1
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．由 vᵀv 对参数求导，说明 AᵀA 对称正定、秩亏的不可辨识性和实际用 QR/SVD．
-  incorrect: 请重新检查模型、条件和计算：由 vᵀv 对参数求导，说明 AᵀA 对称正定、秩亏的不可辨识性和实际用 QR/SVD．
+  correct: 令 $v=l-A\theta$，对第 $j$ 个参数求导得 $-2\sum_i A_{ij}v_i=0$；合写为 $A^Tv=0$，代入残差即得正规方程．满列秩时 $z^TA^TAz=\|Az\|^2>0$ 对非零 $z$
+    成立，解唯一．
+  incorrect: 令 $v=l-A\theta$，对第 $j$ 个参数求导得 $-2\sum_i A_{ij}v_i=0$；合写为 $A^Tv=0$，代入残差即得正规方程．满列秩时 $z^TA^TAz=\|Az\|^2>0$ 对非零 $z$
+    成立，解唯一．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +55,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:5c3efd184dcd2b881d3cc9463c57b56e161a0091aa353c419bfe9f61fce57b58
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:5c3efd184dcd2b881d3cc9463c57b56e161a0091aa353c419bfe9f61fce57b58
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:5c3efd184dcd2b881d3cc9463c57b56e161a0091aa353c419bfe9f61fce57b58

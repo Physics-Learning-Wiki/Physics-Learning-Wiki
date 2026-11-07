@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000214
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．Σv=0 是对截距求导的方程，不证明观测相对真值误差抵消．
   incorrect: 请重新检查模型、条件和计算：Σv=0 是对截距求导的方程，不证明观测相对真值误差抵消．
   choices:
-    A: 此项符合题设．Σv=0 是对截距求导的方程，不证明观测相对真值误差抵消．
-    B: 此项不符合题设：Σv=0 是对截距求导的方程，不证明观测相对真值误差抵消．
-    C: 此项不符合题设：Σv=0 是对截距求导的方程，不证明观测相对真值误差抵消．
+    A: 对截距求导得到残差和为零．
+    B: 共同系统偏差仍可能存在，残差和为零不能排除它．
+    C: 残差是相对拟合值的偏差，不是对未知真值的误差．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:59cd527e6416fe5e011d29f7d1254a11cc4c1ea0ff81548f61cdc5efe540019d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:59cd527e6416fe5e011d29f7d1254a11cc4c1ea0ff81548f61cdc5efe540019d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:59cd527e6416fe5e011d29f7d1254a11cc4c1ea0ff81548f61cdc5efe540019d

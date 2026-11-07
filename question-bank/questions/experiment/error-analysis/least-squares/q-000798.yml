@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000798
+version: 1
+status: published
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.least-squares
+objectives:
+- experiment.error-analysis.least-squares.analysis
+related_pages:
+- experiment.error-analysis.least-squares
+choice_order: fixed
+type: free_response
+stem: 某有截距直线回归有 5 个独立观测，回归平方和 9.216，残差平方和 0.144．在固定横坐标、误差独立正态同方差的模型下，以 0.05 水平检验总体斜率是否为零．给定 F(1,3) 的 0.05 上侧临界值为 10.13．
+reference_answer: F=192，大于 10.13，拒绝零斜率；不由此证明因果或拟合充分．
+solution: 回归和残差自由度分别为 1 和 3，故 F=(9.216/1)/(0.144/3)=192．大于题给临界值，拒绝零斜率；模型是否充分仍需检查残差与实验设计．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：无法写出零斜率假设或统计量
+    points: 0
+  - id: partial
+    label: 部分掌握：知道比较 F 与临界值，但自由度、算术或结论有缺漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：给出自由度 (1,3)、F=192 并拒绝零斜率，同时说明检验不证明因果或拟合充分
+    points: 1
+hints:
+- 先列出题设模型和自由度，再逐项计算并解释结果．
+feedback:
+  correct: 回归和残差自由度分别为 1 和 3，故 F=(9.216/1)/(0.144/3)=192．大于题给临界值，拒绝零斜率；模型是否充分仍需检查残差与实验设计．
+  incorrect: 回归和残差自由度分别为 1 和 3，故 F=(9.216/1)/(0.144/3)=192．大于题给临界值，拒绝零斜率；模型是否充分仍需检查残差与实验设计．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 数据与题目为原创教学练习，由 AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:844ce5721aca87c4ca6fc64b18647866132fdd8faf2e686be12af453c1f13e84
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:844ce5721aca87c4ca6fc64b18647866132fdd8faf2e686be12af453c1f13e84
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:844ce5721aca87c4ca6fc64b18647866132fdd8faf2e686be12af453c1f13e84

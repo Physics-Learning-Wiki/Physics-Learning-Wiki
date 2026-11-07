@@ -1,0 +1,70 @@
+schema_version: 3
+id: q-000799
+version: 1
+status: published
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.least-squares
+objectives:
+- experiment.error-analysis.least-squares.analysis
+related_pages:
+- experiment.error-analysis.least-squares
+choice_order: fixed
+type: free_response
+stem: 固定 x=3 处，拟合均值为 3.96，残差标准差 s=0.219089，n=5、x 均值 2、Sxx=10．假设独立正态同方差，给定 t(0.975,3)=3.18245，求均值响应的 95% 置信区间与新独立观测的 95% 预测区间．
+reference_answer: 均值区间约 3.96±0.382；新观测区间约 3.96±0.795．
+solution: 均值标准误差为 s√(1/5+(3−2)²/10)，新观测还增加一次观测误差，标准误差为 s√(1+1/5+(3−2)²/10)．分别乘题给 t 值得半宽 0.381894 和 0.794975．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未区分均值响应和新观测
+    points: 0
+  - id: partial
+    label: 部分掌握：写出均值标准误差，但漏掉预测误差的额外方差或 t 临界值
+    points: 0.5
+  - id: complete
+    label: 基本掌握：分别给出 3.96±0.382、3.96±0.795，说明新观测增加一次观测误差
+    points: 1
+hints:
+- 先列出题设模型和自由度，再逐项计算并解释结果．
+feedback:
+  correct: 均值标准误差为 s√(1/5+(3−2)²/10)，新观测还增加一次观测误差，标准误差为 s√(1+1/5+(3−2)²/10)．分别乘题给 t 值得半宽 0.381894 和 0.794975．
+  incorrect: 均值标准误差为 s√(1/5+(3−2)²/10)，新观测还增加一次观测误差，标准误差为 s√(1+1/5+(3−2)²/10)．分别乘题给 t 值得半宽 0.381894 和 0.794975．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 数据与题目为原创教学练习，由 AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:6619e1a42f1b93ccb4519160a972fd316958ca30ce29b0d686e9caf1b3e2e593
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:6619e1a42f1b93ccb4519160a972fd316958ca30ce29b0d686e9caf1b3e2e593
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 1
+    content_fingerprint: sha256:6619e1a42f1b93ccb4519160a972fd316958ca30ce29b0d686e9caf1b3e2e593

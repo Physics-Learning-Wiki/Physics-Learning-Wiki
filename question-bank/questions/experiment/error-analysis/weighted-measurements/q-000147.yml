@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000147
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: V
     accepted:
     - V
-solution: '权比 4:1，(4×2.00+2.30)/5=2.06 V．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=2.06\,\mathrm{V}
-
-  $$
-
-  '
+solution: 权比 4:1，(4×2.00+2.30)/5=2.06 V．
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．权比 4:1，(4×2.00+2.30)/5=2.06 V．
-  incorrect: 请重新检查模型、条件和计算：权比 4:1，(4×2.00+2.30)/5=2.06 V．
+  correct: 权比 4:1，(4×2.00+2.30)/5=2.06 V．
+  incorrect: 先由标准不确定度得到 4:1 权比，再计算归一化加权平均．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e91b0f81d7b16cf8b3adea08e084cdeb860cde7f7171a1afbd6f5d171883ac18
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e91b0f81d7b16cf8b3adea08e084cdeb860cde7f7171a1afbd6f5d171883ac18
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e91b0f81d7b16cf8b3adea08e084cdeb860cde7f7171a1afbd6f5d171883ac18

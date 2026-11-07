@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000256
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 组合例三个参数同 u，为什么总长 u 不等于 √3 倍？
 reference_answer: 相邻参数有负协方差，必须用 1ᵀCov1．
-solution: '逆正规矩阵对角0.5、相邻非对角−0.25，总和0.5，故总长方差=0.5s0²，与每段方差相同．
-
-
-  关键算式：
-
-
-  $$
-
-  u^2(a+b+c)=\boldsymbol1^T\operatorname{Cov}(\hat{\boldsymbol\theta})\boldsymbol1=0.5s_0^2
-
-  $$
-
-  '
+solution: 参数方差均为 $0.5s_0^2$，但 $\operatorname{Cov}(a,b)=\operatorname{Cov}(b,c)=-0.25s_0^2$，而 $\operatorname{Cov}(a,c)=0$．总长方差是三项方差加两倍三个协方差之和，等于
+  $0.5s_0^2$，故其标准不确定度等于单段而非其 $\sqrt3$ 倍．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：知道参数相关，但没有计算协方差交叉项
     points: 0.5
   - id: complete
-    label: 基本掌握：相邻参数有负协方差，必须用 1ᵀCov1．
+    label: 基本掌握：列出三个方差与三个协方差，得到总长方差 0.5s₀²
     points: 1
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．逆正规矩阵对角0.5、相邻非对角−0.25，总和0.5，故总长方差=0.5s0²，与每段方差相同．
-  incorrect: 请重新检查模型、条件和计算：逆正规矩阵对角0.5、相邻非对角−0.25，总和0.5，故总长方差=0.5s0²，与每段方差相同．
+  correct: 参数方差均为 $0.5s_0^2$，但 $\operatorname{Cov}(a,b)=\operatorname{Cov}(b,c)=-0.25s_0^2$，而 $\operatorname{Cov}(a,c)=0$．总长方差是三项方差加两倍三个协方差之和，等于
+    $0.5s_0^2$，故其标准不确定度等于单段而非其 $\sqrt3$ 倍．
+  incorrect: 参数方差均为 $0.5s_0^2$，但 $\operatorname{Cov}(a,b)=\operatorname{Cov}(b,c)=-0.25s_0^2$，而 $\operatorname{Cov}(a,c)=0$．总长方差是三项方差加两倍三个协方差之和，等于
+    $0.5s_0^2$，故其标准不确定度等于单段而非其 $\sqrt3$ 倍．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +55,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:75623a570fc53bc10e5b688e3aa2d703e6bb881c664c7979de27772c97bce1c2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:75623a570fc53bc10e5b688e3aa2d703e6bb881c664c7979de27772c97bce1c2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:75623a570fc53bc10e5b688e3aa2d703e6bb881c664c7979de27772c97bce1c2

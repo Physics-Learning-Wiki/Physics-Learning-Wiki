@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000227
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．两列线性依赖，满列秩条件失败，重复相同设计不增加参数方向信息．
   incorrect: 请重新检查模型、条件和计算：两列线性依赖，满列秩条件失败，重复相同设计不增加参数方向信息．
   choices:
-    A: 此项符合题设．两列线性依赖，满列秩条件失败，重复相同设计不增加参数方向信息．
-    B: 此项不符合题设：两列线性依赖，满列秩条件失败，重复相同设计不增加参数方向信息．
-    C: 此项不符合题设：两列线性依赖，满列秩条件失败，重复相同设计不增加参数方向信息．
+    A: 相同列使两参数只能以其和被辨识．
+    B: 秩亏说明解不唯一，残差仍可能不为零．
+    C: 重复同一设计行不增加独立的参数方向．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1507a2e74edddff9a2af213c7bced57f153790dad6034a5a89089fa291e0ba4d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1507a2e74edddff9a2af213c7bced57f153790dad6034a5a89089fa291e0ba4d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1507a2e74edddff9a2af213c7bced57f153790dad6034a5a89089fa291e0ba4d

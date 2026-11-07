@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000122
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 精确常数不引入测量不确定度；应由实际测量信息决�
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．精确常数不引入测量不确定度；应由实际测量信息决定报告位数．
-  incorrect: 请重新检查模型、条件和计算：精确常数不引入测量不确定度；应由实际测量信息决定报告位数．
+  correct: 精确常数不引入测量不确定度；应由实际测量信息决定报告位数．
+  incorrect: 区分精确计数与由测量得到、带不确定度的数．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3542ad0593329e4b8942849b915c383db4e91a5fac5698331b5799285f398d10
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3542ad0593329e4b8942849b915c383db4e91a5fac5698331b5799285f398d10
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:3542ad0593329e4b8942849b915c383db4e91a5fac5698331b5799285f398d10

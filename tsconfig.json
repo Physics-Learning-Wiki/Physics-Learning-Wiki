@@ -12,6 +12,7 @@
     "strictBindCallApply": true,
     "skipLibCheck": true
   },
+  "include": ["scripts/checker/**/*.ts", "scripts/post-build/**/*.ts"],
   "exclude": ["node_modules"],
   "ts-node": {
     "swc": true

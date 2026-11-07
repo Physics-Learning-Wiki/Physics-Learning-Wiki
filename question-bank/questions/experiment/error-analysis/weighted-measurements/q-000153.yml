@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000153
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 已知一般协方差矩阵 Σ 时怎样写合并结果？为何不能忽略非对角项？
 reference_answer: μhat=(1ᵀΣ⁻¹x)/(1ᵀΣ⁻¹1)，方差为该分母倒数．
-solution: '从约束最小方差得公式；共同偏差导致非零协方差，忽略会虚增独立信息，需检查正定与物理来源．
-
-
-  关键算式：
-
-
-  $$
-
-  \hat\mu=\frac{\boldsymbol1^T\Sigma^{-1}\boldsymbol x}{\boldsymbol1^T\Sigma^{-1}\boldsymbol1}
-
-  $$
-
-  '
+solution: 对正定协方差矩阵 Σ，最小化 aᵀΣa 并约束 1ᵀa=1，可得 a=Σ⁻¹1/(1ᵀΣ⁻¹1)，因此合并估计为 1ᵀΣ⁻¹x/(1ᵀΣ⁻¹1)，方差为 1/(1ᵀΣ⁻¹1)．非对角元描述不同结果的协方差；共同校准可造成正相关，忽略它会低估该贡献．相关性也可能为负，影响方向应按具体模型判断．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 忽略协方差而直接写独立情形，或未说明合并权．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 给出矩阵权重公式，但遗漏正定条件、方差或非对角项意义．
     points: 0.5
   - id: complete
-    label: 基本掌握：μhat=(1ᵀΣ⁻¹x)/(1ᵀΣ⁻¹1)，方差为该分母倒数．
+    label: 在正定协方差矩阵下写出 1ᵀΣ⁻¹x/(1ᵀΣ⁻¹1) 及方差倒数，解释共同来源产生非零协方差和忽略它的影响．
     points: 1
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．从约束最小方差得公式；共同偏差导致非零协方差，忽略会虚增独立信息，需检查正定与物理来源．
-  incorrect: 请重新检查模型、条件和计算：从约束最小方差得公式；共同偏差导致非零协方差，忽略会虚增独立信息，需检查正定与物理来源．
+  correct: 在正定协方差矩阵下写出 1ᵀΣ⁻¹x/(1ᵀΣ⁻¹1) 及方差倒数，解释共同来源产生非零协方差和忽略它的影响．
+  incorrect: 给出矩阵权重公式，但遗漏正定条件、方差或非对角项意义．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d7a35b64a755ce7eb477bff65b9493de81719e1bd7fe90ef5e2994564a728438
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d7a35b64a755ce7eb477bff65b9493de81719e1bd7fe90ef5e2994564a728438
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:d7a35b64a755ce7eb477bff65b9493de81719e1bd7fe90ef5e2994564a728438

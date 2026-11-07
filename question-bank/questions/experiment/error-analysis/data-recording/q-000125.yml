@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000125
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -12,38 +12,14 @@ objectives:
 related_pages:
 - experiment.error-analysis.data-recording
 choice_order: fixed
-type: numeric
-stem: 4.51050 用最近舍入及五成双保留四位有效数字，结果是多少？
-answer:
-  value: 4.51
-  tolerance:
-    type: absolute
-    value: 1.0e-05
-  unit:
-    required: false
-    canonical: ''
-    accepted: []
-solution: '中点后无非零位，保留末位原为偶数 0，因此为 4.510．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=4.51
-
-  $$
-
-  '
+type: free_response
+stem: 将 4.51050 用最近舍入及五成双保留四位有效数字．写出结果并解释最后的零为何要保留．
+solution: 舍去部分恰为保留末位单位的一半，保留位 0 为偶数，因此写作 4.510．4.51 的数值相等，但书写并未表达同样的末位信息．
 hints:
-- 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
-feedback:
-  correct: 关键结论与题设条件相符．中点后无非零位，保留末位原为偶数 0，因此为 4.510．
-  incorrect: 请重新检查模型、条件和计算：中点后无非零位，保留末位原为偶数 0，因此为 4.510．
+- 比较舍去部分与保留末位单位的一半，并判断末位奇偶．
 difficulty: 2
 cognitive_level: apply
-style: computational
+style: conceptual
 estimated_seconds: 180
 provenance:
   type: original
@@ -53,3 +29,42 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+reference_answer: 4.510；恰为中点，末位 0 为偶数，且末尾零表示保留到千分位．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 4
+  placeholder: 写出修约结果和依据．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 结果或舍入方向错误．
+    points: 0
+  - id: partial
+    label: 写出 4.510，但未解释五成双或末尾零的意义．
+    points: 0.5
+  - id: complete
+    label: 写出 4.510，说明舍去部分恰为中点、保留末位 0 为偶数，以及末尾零表达千分位．
+    points: 1
+feedback:
+  correct: 写出 4.510，说明舍去部分恰为中点、保留末位 0 为偶数，以及末尾零表达千分位．
+  incorrect: 写出 4.510，但未解释五成双或末尾零的意义．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:77f6bfa40f85a0333a901acd62fa53c556ce374424696384922a8a0aabf8fac1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:77f6bfa40f85a0333a901acd62fa53c556ce374424696384922a8a0aabf8fac1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:77f6bfa40f85a0333a901acd62fa53c556ce374424696384922a8a0aabf8fac1

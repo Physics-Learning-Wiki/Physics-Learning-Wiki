@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000134
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -18,10 +18,10 @@ answer:
   value: false
 solution: Peters 估计来自绝对残差和；其相对波动需另算，不能套精确 n−1 卡方结论．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 比较两个估计量的构造：平方残差和与绝对残差和．
 feedback:
-  correct: 关键结论与题设条件相符．Peters 估计来自绝对残差和；其相对波动需另算，不能套精确 n−1 卡方结论．
-  incorrect: 请重新检查模型、条件和计算：Peters 估计来自绝对残差和；其相对波动需另算，不能套精确 n−1 卡方结论．
+  correct: Peters 估计来自绝对残差和；其相对波动需另算，不能套精确 n−1 卡方结论．
+  incorrect: Peters 使用绝对残差和；它与平方残差和的抽样分布不同．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:44212c9bf34a8c382303a06db173c36dca2fb5f6a88289e98aa3090793ebafc1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:44212c9bf34a8c382303a06db173c36dca2fb5f6a88289e98aa3090793ebafc1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:44212c9bf34a8c382303a06db173c36dca2fb5f6a88289e98aa3090793ebafc1

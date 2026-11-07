@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000230
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 残差自由度 n−p 为零，不得把零残差当零测量不确定
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．残差自由度 n−p 为零，不得把零残差当零测量不确定度．
-  incorrect: 请重新检查模型、条件和计算：残差自由度 n−p 为零，不得把零残差当零测量不确定度．
+  correct: 残差自由度 n−p 为零，不得把零残差当零测量不确定度．
+  incorrect: 残差自由度 n−p 为零，不得把零残差当零测量不确定度．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fa1dae8de8b80bd21ebcb3abb32780cf2c95363f6a6c1d3bc4661200a4502ce0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fa1dae8de8b80bd21ebcb3abb32780cf2c95363f6a6c1d3bc4661200a4502ce0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fa1dae8de8b80bd21ebcb3abb32780cf2c95363f6a6c1d3bc4661200a4502ce0

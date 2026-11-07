@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000118
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -16,9 +16,6 @@ type: free_response
 stem: 量块标称 100 mm，证书偏差 +0.002 mm，标准不确定度 0.0001 mm．按校准值与按标称值使用怎样不同？
 reference_answer: 按校准值取 100.002 mm 并保留证书不确定度；按标称值需处理未修正偏差和相应允差模型．
 solution: '解释具体等/级及限值取决于证书和规程；修正不使实际制造偏差消失，不能把偏差直接当标准差．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 把 0.002 mm 偏差直接当作标准不确定度，或校准值符号错误．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 求得 100.002 mm，但未区分证书不确定度与按标称值使用时的未修正偏差．
     points: 0.5
   - id: complete
-    label: 基本掌握：按校准值取 100.002 mm 并保留证书不确定度；按标称值需处理未修正偏差和相应允差模型．
+    label: 求得 100.002 mm，保留 0.0001 mm 证书标准不确定度；按标称值使用时说明偏差及适用限值模型另行处理．
     points: 1
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．解释具体等/级及限值取决于证书和规程；修正不使实际制造偏差消失，不能把偏差直接当标准差．
-  incorrect: 请重新检查模型、条件和计算：解释具体等/级及限值取决于证书和规程；修正不使实际制造偏差消失，不能把偏差直接当标准差．
+  correct: 求得 100.002 mm，保留 0.0001 mm 证书标准不确定度；按标称值使用时说明偏差及适用限值模型另行处理．
+  incorrect: 求得 100.002 mm，但未区分证书不确定度与按标称值使用时的未修正偏差．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:674651b692e70d3e89908412a49fd4a86fda782957d25967bce888736545cd96
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:674651b692e70d3e89908412a49fd4a86fda782957d25967bce888736545cd96
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:674651b692e70d3e89908412a49fd4a86fda782957d25967bce888736545cd96

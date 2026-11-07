@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000242
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '偏导 −at exp(−kt)=0，所有时间为零无法识别 k．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0
-
-  $$
-
-  '
+solution: 固定 $a,t$，有 $\partial f/\partial k=-at e^{-kt}$；在 $t=0$ 时为零．全部时间均为零时，观测不能辨识 $k$．
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．偏导 −at exp(−kt)=0，所有时间为零无法识别 k．
-  incorrect: 请重新检查模型、条件和计算：偏导 −at exp(−kt)=0，所有时间为零无法识别 k．
+  correct: 固定 $a,t$，有 $\partial f/\partial k=-at e^{-kt}$；在 $t=0$ 时为零．全部时间均为零时，观测不能辨识 $k$．
+  incorrect: 固定 $a,t$，有 $\partial f/\partial k=-at e^{-kt}$；在 $t=0$ 时为零．全部时间均为零时，观测不能辨识 $k$．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:33c49f8aba34ad20f062c953671e421282d66fdd7ff6157246ec350a194e9808
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:33c49f8aba34ad20f062c953671e421282d66fdd7ff6157246ec350a194e9808
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:33c49f8aba34ad20f062c953671e421282d66fdd7ff6157246ec350a194e9808

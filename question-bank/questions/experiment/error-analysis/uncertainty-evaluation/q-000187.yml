@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000187
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,21 +13,39 @@ related_pages:
 - experiment.error-analysis.uncertainty-evaluation
 choice_order: fixed
 type: free_response
-stem: 独立输出贡献 0.03（ν=9）、0.04（ν=8），求有效自由度及近似 95% 扩展量．
-reference_answer: uc=0.05，νeff≈15.243902，k≈2.128483，U≈0.106424．
-solution: '应用输出贡献四次方公式，解释独立、一阶和输出分布条件，报告包含因子；不是任意分布精确 t 定理．
-
-
-  关键算式：
+stem: 独立输出贡献为 0.03 mm（ν=9）和 0.04 mm（ν=8）．求有效自由度及近似 95% 扩展不确定度，并说明条件．
+reference_answer: $u_c=0.05\,\mathrm{mm}$、$\nu_{\rm eff}\approx15.243902$；在题解所述近似条件下，$k\approx2.12848$，$U\approx0.106424\,\mathrm{mm}$．
+solution: '两个输出贡献相互独立，先求合成标准不确定度：
 
 
   $$
 
-  \nu_{\rm eff}=\frac{0.05^4}{0.03^4/9+0.04^4/8}=15.243902\ldots,\quad U=ku_c
+  u_c=\sqrt{0.03^2+0.04^2}=0.05\,\mathrm{mm}.
 
   $$
 
-  '
+
+  再使用 Welch–Satterthwaite 近似：
+
+
+  $$
+
+  \nu_{\rm eff}=\frac{0.05^4}{0.03^4/9+0.04^4/8}=15.243902\ldots.
+
+  $$
+
+
+  若输出分布和自由度近似支持双侧 t 包含因子，则
+
+
+  $$
+
+  k\approx t_{0.975,15.243902}=2.12848,\qquad U=ku_c\approx0.106424\,\mathrm{mm}.
+
+  $$
+
+
+  扩展不确定度可约报 $0.11\,\mathrm{mm}$．覆盖解释依赖模型，不能把近似当成精确结论．'
 response:
   format: plain_text
   required: true
@@ -39,28 +57,44 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：算出合成量，但漏掉四次方自由度计算或覆盖因子的条件．
     points: 0.5
   - id: complete
-    label: 基本掌握：uc=0.05，νeff≈15.243902，k≈2.128483，U≈0.106424．
+    label: 基本掌握：能够计算合成量与有效自由度，再说明覆盖因子和近似条件．
     points: 1
 hints:
 - 范围须配分布；标准不确定度的可靠度不是覆盖概率，先统一为输出贡献．
 feedback:
-  correct: 关键结论与题设条件相符．应用输出贡献四次方公式，解释独立、一阶和输出分布条件，报告包含因子；不是任意分布精确 t 定理．
-  incorrect: 请重新检查模型、条件和计算：应用输出贡献四次方公式，解释独立、一阶和输出分布条件，报告包含因子；不是任意分布精确 t 定理．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：算出合成量，但漏掉四次方自由度计算或覆盖因子的条件．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a129417aef15bbdff8cd1902188a81e855cd289df990d176bb595177b96eae09
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a129417aef15bbdff8cd1902188a81e855cd289df990d176bb595177b96eae09
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:a129417aef15bbdff8cd1902188a81e855cd289df990d176bb595177b96eae09

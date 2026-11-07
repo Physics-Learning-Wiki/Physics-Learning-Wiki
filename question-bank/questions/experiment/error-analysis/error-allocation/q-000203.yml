@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000203
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,21 +27,37 @@ solution: 预算目标已被用尽，必须改变既有来源或目标，不能�
 hints:
 - 先把每项转换为输出贡献，再从总方差约束反解，检查目标可行性．
 feedback:
-  correct: 关键结论与题设条件相符．预算目标已被用尽，必须改变既有来源或目标，不能伪造可行解．
-  incorrect: 请重新检查模型、条件和计算：预算目标已被用尽，必须改变既有来源或目标，不能伪造可行解．
+  correct: 核对每项涉及的模型和条件，见各选项反馈．
+  incorrect: 请逐项检查因果关系与适用前提，见各选项反馈．
   choices:
-    A: 此项符合题设．预算目标已被用尽，必须改变既有来源或目标，不能伪造可行解．
-    B: 此项不符合题设：预算目标已被用尽，必须改变既有来源或目标，不能伪造可行解．
-    C: 此项不符合题设：预算目标已被用尽，必须改变既有来源或目标，不能伪造可行解．
+    A: 其他固定项已超过目标，应调整目标或降低已有贡献．
+    B: 负根号代表当前约束不可行，不能取绝对值．
+    C: 剩余项为零也无法使超标的其他项达标．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 90
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b1784ec3638eed50d497eeaf4b96552c17a7c87497e2bb9df607c0e51938f394
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b1784ec3638eed50d497eeaf4b96552c17a7c87497e2bb9df607c0e51938f394
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b1784ec3638eed50d497eeaf4b96552c17a7c87497e2bb9df607c0e51938f394

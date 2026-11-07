@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000257
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,7 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 组合测量若共享标尺比例和零点，怎样更新分析？
 reference_answer: 在观测修正和协方差中加入共同来源，并检查是否影响模型可辨识性．
-solution: 不要把共同源作为每行独立噪声；区分已知校准信息与待估零点，保留完整参数协方差用于后续传播．
+solution: 先确定共同零点和比例校准是独立外部信息还是未知待估参数；将其灵敏系数引入完整观测协方差或增广模型，并检查能否辨识．求解后保留参数协方差供总长传播．
 response:
   format: plain_text
   required: true
@@ -27,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：识别共同误差，但没有说明建模或辨识
     points: 0.5
   - id: complete
-    label: 基本掌握：在观测修正和协方差中加入共同来源，并检查是否影响模型可辨识性．
+    label: 基本掌握：区分共同校准与待估参数，建立协方差或增广模型并检查辨识性
     points: 1
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．不要把共同源作为每行独立噪声；区分已知校准信息与待估零点，保留完整参数协方差用于后续传播．
-  incorrect: 请重新检查模型、条件和计算：不要把共同源作为每行独立噪声；区分已知校准信息与待估零点，保留完整参数协方差用于后续传播．
+  correct: 先确定共同零点和比例校准是独立外部信息还是未知待估参数；将其灵敏系数引入完整观测协方差或增广模型，并检查能否辨识．求解后保留参数协方差供总长传播．
+  incorrect: 先确定共同零点和比例校准是独立外部信息还是未知待估参数；将其灵敏系数引入完整观测协方差或增广模型，并检查能否辨识．求解后保留参数协方差供总长传播．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -52,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:de96345b35ad1f36be4331e262e7d054ad6c42380f197de15f75985d61e24863
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:de96345b35ad1f36be4331e262e7d054ad6c42380f197de15f75985d61e24863
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:de96345b35ad1f36be4331e262e7d054ad6c42380f197de15f75985d61e24863

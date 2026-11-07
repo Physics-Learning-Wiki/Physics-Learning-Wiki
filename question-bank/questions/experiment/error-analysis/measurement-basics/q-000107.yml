@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000107
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 温度短时固定偏高、缓慢上升、无规则变化，分别怎样进入测量误差模型？
 reference_answer: 可分别表现为共同偏移、漂移和随机散布．
-solution: '分类取决于具体测量条件和时间尺度，不单由「温度」这个来源决定；能修正的显著影响应修正并评定修正量不确定度．
-
-
-  关键算式：
-
-
-  $$
-
-  X_i=\mu+B+E_i
-
-  $$
-
-  '
+solution: 固定偏高若在整组测量期间近似不变，可表现为共同偏移；缓慢上升可形成时间漂移；无规则变化可能增加随机散布．分类依赖测量条件和时间尺度；可估计的显著效应应修正并评定修正量不确定度．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 把三种温度过程都视作同一个固定误差．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 区分固定偏移、漂移、散布中的一两项，但未联系时间尺度或处理方式．
     points: 0.5
   - id: complete
-    label: 基本掌握：可分别表现为共同偏移、漂移和随机散布．
+    label: 分别说明短时偏高可形成共同偏移、缓慢变化可形成漂移、无规则变化可形成散布，并交代分类依赖测量条件、可修正效应及修正量不确定度．
     points: 1
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．分类取决于具体测量条件和时间尺度，不单由「温度」这个来源决定；能修正的显著影响应修正并评定修正量不确定度．
-  incorrect: 请重新检查模型、条件和计算：分类取决于具体测量条件和时间尺度，不单由「温度」这个来源决定；能修正的显著影响应修正并评定修正量不确定度．
+  correct: 分别说明短时偏高可形成共同偏移、缓慢变化可形成漂移、无规则变化可形成散布，并交代分类依赖测量条件、可修正效应及修正量不确定度．
+  incorrect: 区分固定偏移、漂移、散布中的一两项，但未联系时间尺度或处理方式．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ccc7510fa798541b91510f9331f486394d1ad07bec0c07c8d4f32125dfef3a71
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ccc7510fa798541b91510f9331f486394d1ad07bec0c07c8d4f32125dfef3a71
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ccc7510fa798541b91510f9331f486394d1ad07bec0c07c8d4f32125dfef3a71

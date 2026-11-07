@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000198
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -14,20 +14,42 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: 从一阶模型展开推导协方差传播式．
-reference_answer: Y−y≈Σci(Xi−xi)，方差含 Σci²ui²+2Σi<jcicjCovij．
-solution: '说明导数在估计点计算、单位转换、独立足够保证不相关但反向不成立，以及显著非线性时需检查高阶或分布传播．
-
-
-  关键算式：
+reference_answer: 一阶传播式为 $u_c^2=\sum_i c_i^2u^2(x_i)+2\sum_{i<j}c_i c_j\operatorname{Cov}(X_i,X_j)$．
+solution: '在输入估计点作一阶展开，并令 $\delta X_i=X_i-x_i$：
 
 
   $$
 
-  u_c^2=\sum_i c_i^2u_i^2+2\sum_{i\lt j}c_ic_j\operatorname{Cov}(X_i,X_j)
+  Y-y\approx\sum_i c_i\delta X_i,\qquad c_i=\left.\frac{\partial f}{\partial X_i}\right|_{X_i=x_i}.
 
   $$
 
-  '
+
+  对线性组合展开方差：
+
+
+  $$
+
+  \operatorname{Var}\!\left(\sum_i c_i\delta X_i\right)
+
+  =\sum_i c_i^2\operatorname{Var}(\delta X_i)
+
+  +\sum_{i\ne j}c_i c_j\operatorname{Cov}(\delta X_i,\delta X_j).
+
+  $$
+
+
+  协方差对称，每对交叉项出现两次．代入 $\operatorname{Var}(X_i)=u^2(x_i)$，得到
+
+
+  $$
+
+  u_c^2=\sum_i c_i^2u^2(x_i)+2\sum_{i<j}c_i c_j\operatorname{Cov}(X_i,X_j).
+
+  $$
+
+
+  不相关时交叉项为零；显著非线性时还需检查高阶影响．'
 response:
   format: plain_text
   required: true
@@ -39,28 +61,44 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出传播结果，但未展开方差交叉项或说明系数 2 的来源．
     points: 0.5
   - id: complete
-    label: 基本掌握：Y−y≈Σci(Xi−xi)，方差含 Σci²ui²+2Σi<jcicjCovij．
+    label: 基本掌握：能够一阶展开并计算方差交叉项，说明系数取值点及近似条件．
     points: 1
 hints:
 - 先写测量方程与偏导，检查单位、符号、协方差和一阶近似．
 feedback:
-  correct: 关键结论与题设条件相符．说明导数在估计点计算、单位转换、独立足够保证不相关但反向不成立，以及显著非线性时需检查高阶或分布传播．
-  incorrect: 请重新检查模型、条件和计算：说明导数在估计点计算、单位转换、独立足够保证不相关但反向不成立，以及显著非线性时需检查高阶或分布传播．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：写出传播结果，但未展开方差交叉项或说明系数 2 的来源．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8094ebab8a67cbf2e51708992248fa71bf4fb53ebdd01c3c38d8ea939ff1163f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8094ebab8a67cbf2e51708992248fa71bf4fb53ebdd01c3c38d8ea939ff1163f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8094ebab8a67cbf2e51708992248fa71bf4fb53ebdd01c3c38d8ea939ff1163f

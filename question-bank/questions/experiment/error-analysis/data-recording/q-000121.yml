@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000121
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,12 +27,12 @@ solution: 括号数字对应估计值末位，所以为 35×10^-5 g．
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．括号数字对应估计值末位，所以为 35×10^-5 g．
-  incorrect: 请重新检查模型、条件和计算：括号数字对应估计值末位，所以为 35×10^-5 g．
+  correct: 括号数字对应估计值末位，所以为 35×10^-5 g．
+  incorrect: 括号中的 35 对应估计值的最后两位，即 35 个 0.00001 g．
   choices:
-    A: 此项符合题设．括号数字对应估计值末位，所以为 35×10^-5 g．
-    B: 此项不符合题设：括号数字对应估计值末位，所以为 35×10^-5 g．
-    C: 此项不符合题设：括号数字对应估计值末位，所以为 35×10^-5 g．
+    A: 括号对应估计值末两位，因此 35 个末位单位等于 0.00035 g．
+    B: 35 表示末位单位的个数，不直接表示 35 g．
+    C: 应从估计值末位 0.00001 g 开始计数，不能移成 0.35 g．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ce395422c2a63120e2fc5dcc9ad946a4199afdf05411545855e6520b31bcd4e5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ce395422c2a63120e2fc5dcc9ad946a4199afdf05411545855e6520b31bcd4e5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ce395422c2a63120e2fc5dcc9ad946a4199afdf05411545855e6520b31bcd4e5

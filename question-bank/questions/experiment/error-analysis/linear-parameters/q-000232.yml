@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000232
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: 's0²=0.12/(9−3)=0.020，注意这不是标准差．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.02
-
-  $$
-
-  '
+solution: 未知共同尺度的单位权方差估计为 $s_0^2=0.12/(9-3)=0.020$．这是方差；标准差还要开平方．
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．s0²=0.12/(9−3)=0.020，注意这不是标准差．
-  incorrect: 请重新检查模型、条件和计算：s0²=0.12/(9−3)=0.020，注意这不是标准差．
+  correct: 未知共同尺度的单位权方差估计为 $s_0^2=0.12/(9-3)=0.020$．这是方差；标准差还要开平方．
+  incorrect: 未知共同尺度的单位权方差估计为 $s_0^2=0.12/(9-3)=0.020$．这是方差；标准差还要开平方．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b094bc96321693b1a6e316e91e9e781ba8f7a7241763efe5ce0f44b5b5d6813f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b094bc96321693b1a6e316e91e9e781ba8f7a7241763efe5ce0f44b5b5d6813f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:b094bc96321693b1a6e316e91e9e781ba8f7a7241763efe5ce0f44b5b5d6813f

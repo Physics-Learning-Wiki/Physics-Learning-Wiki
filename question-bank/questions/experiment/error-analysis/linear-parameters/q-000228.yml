@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000228
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -34,10 +34,10 @@ feedback:
   correct: 关键结论与题设条件相符．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
   incorrect: 请重新检查模型、条件和计算：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
   choices:
-    A: 此项符合题设．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
-    B: 此项符合题设．绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
-    C: 此项不符合题设：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
-    D: 此项不符合题设：绝对协方差解的参数协方差为 (AᵀΣ⁻¹A)⁻¹，不自动按残差重缩放，参数仍可相关．
+    A: 满列秩保证正规矩阵可逆并使参数可辨识．
+    B: 已知绝对协方差时权为其逆矩阵．
+    C: 绝对尺度已经给定，不应再次按残差重缩放．
+    D: 观测独立并不保证用同一组观测估计的参数独立．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -50,3 +50,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:587f96f29af27102c60ef3751f13993d2b2fb9d118385e92ac6c337dd3285a91
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:587f96f29af27102c60ef3751f13993d2b2fb9d118385e92ac6c337dd3285a91
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:587f96f29af27102c60ef3751f13993d2b2fb9d118385e92ac6c337dd3285a91

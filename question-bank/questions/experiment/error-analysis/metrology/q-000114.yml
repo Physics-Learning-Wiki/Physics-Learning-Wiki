@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000114
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '0.10/4×100=2.5，题目要求百分数数值而非小数比．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=2.5
-
-  $$
-
-  '
+solution: 0.10/4×100=2.5，题目要求百分数数值而非小数比．
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．0.10/4×100=2.5，题目要求百分数数值而非小数比．
-  incorrect: 请重新检查模型、条件和计算：0.10/4×100=2.5，题目要求百分数数值而非小数比．
+  correct: 0.10/4×100=2.5，题目要求百分数数值而非小数比．
+  incorrect: 以 0.10 V 除以 4 V，再乘 100 转为百分数数值．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:0a75c04888732734a81721ccfbd6188f8e6db5170d8c958f7bf045f0f5dc294a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:0a75c04888732734a81721ccfbd6188f8e6db5170d8c958f7bf045f0f5dc294a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:0a75c04888732734a81721ccfbd6188f8e6db5170d8c958f7bf045f0f5dc294a

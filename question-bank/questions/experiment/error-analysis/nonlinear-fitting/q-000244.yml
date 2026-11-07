@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000244
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 推导一次加权 Gauss–Newton 修正式．
 reference_answer: r=y−f(θ0)，f(θ0+δ)≈f(θ0)+Jδ，解 JᵀWJδ=JᵀWr．
-solution: '整次更新后重新计算雅可比与目标；要说明局部展开、步长和可能需要信赖域或阻尼．
-
-
-  关键算式：
-
-
-  $$
-
-  J^TWJ\boldsymbol\delta=J^TW\boldsymbol r,\quad\boldsymbol\theta_{\rm new}=\boldsymbol\theta+\boldsymbol\delta
-
-  $$
-
-  '
+solution: 取 $r=y-f(\theta)$，作 $f(\theta+\delta)\approx f(\theta)+J\delta$，局部残差约为 $r-J\delta$．最小化其加权平方和并对 $\delta$ 求导，得到 $J^TWJ\delta=J^TWr$；更新后重新计算
+  $J$ 和 $r$．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：给出修正式，但遗漏一阶展开或迭代更新
     points: 0.5
   - id: complete
-    label: 基本掌握：r=y−f(θ0)，f(θ0+δ)≈f(θ0)+Jδ，解 JᵀWJδ=JᵀWr．
+    label: 基本掌握：从局部残差平方和推导修正式并说明每步重算
     points: 1
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．整次更新后重新计算雅可比与目标；要说明局部展开、步长和可能需要信赖域或阻尼．
-  incorrect: 请重新检查模型、条件和计算：整次更新后重新计算雅可比与目标；要说明局部展开、步长和可能需要信赖域或阻尼．
+  correct: 取 $r=y-f(\theta)$，作 $f(\theta+\delta)\approx f(\theta)+J\delta$，局部残差约为 $r-J\delta$．最小化其加权平方和并对 $\delta$ 求导，得到 $J^TWJ\delta=J^TWr$；更新后重新计算
+    $J$ 和 $r$．
+  incorrect: 取 $r=y-f(\theta)$，作 $f(\theta+\delta)\approx f(\theta)+J\delta$，局部残差约为 $r-J\delta$．最小化其加权平方和并对 $\delta$ 求导，得到
+    $J^TWJ\delta=J^TWr$；更新后重新计算 $J$ 和 $r$．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +55,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e8eed9836be13e232bfec4b1d4efbbb66d190394c7ace04705f04227ef3cc14e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e8eed9836be13e232bfec4b1d4efbbb66d190394c7ace04705f04227ef3cc14e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e8eed9836be13e232bfec4b1d4efbbb66d190394c7ace04705f04227ef3cc14e

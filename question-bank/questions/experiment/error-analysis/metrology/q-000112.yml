@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000112
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 校准确定示值与参考关系，调整改变仪器状态；证书�
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．校准确定示值与参考关系，调整改变仪器状态；证书修正需落实到结果模型．
-  incorrect: 请重新检查模型、条件和计算：校准确定示值与参考关系，调整改变仪器状态；证书修正需落实到结果模型．
+  correct: 校准确定示值与参考关系，调整改变仪器状态；证书修正需落实到结果模型．
+  incorrect: 校准建立示值与参考的关系；调整才改变仪器状态．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:04623ec2bc7bbec26bec91b291991b07a665d4cc892b2019d0e3d25c592dbd94
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:04623ec2bc7bbec26bec91b291991b07a665d4cc892b2019d0e3d25c592dbd94
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:04623ec2bc7bbec26bec91b291991b07a665d4cc892b2019d0e3d25c592dbd94

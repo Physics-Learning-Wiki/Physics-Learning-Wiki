@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000146
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 均值比例不变，单位权方差也乘十，除以权和后抵消�
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．均值比例不变，单位权方差也乘十，除以权和后抵消．
-  incorrect: 请重新检查模型、条件和计算：均值比例不变，单位权方差也乘十，除以权和后抵消．
+  correct: 均值比例不变，单位权方差也乘十，除以权和后抵消．
+  incorrect: 各权乘十时，单位权方差也乘十；最终除以权和后抵消．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:acc211a9da62fba8b226366371ea079f4beca271f4b0891e7ae1d5a9f6ff1999
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:acc211a9da62fba8b226366371ea079f4beca271f4b0891e7ae1d5a9f6ff1999
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:acc211a9da62fba8b226366371ea079f4beca271f4b0891e7ae1d5a9f6ff1999

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000105
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: mm
     accepted:
     - mm
-solution: '修正值为 -0.03 mm，故 15.08-0.03=15.05 mm．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=15.05\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 修正值为 -0.03 mm，故 15.08-0.03=15.05 mm．
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．修正值为 -0.03 mm，故 15.08-0.03=15.05 mm．
-  incorrect: 请重新检查模型、条件和计算：修正值为 -0.03 mm，故 15.08-0.03=15.05 mm．
+  correct: 修正值为 -0.03 mm，故 15.08-0.03=15.05 mm．
+  incorrect: 正零点偏差表示仪器多报，应从示值中减去．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7701a72379ebc6e64a6f4bb81a571468f81d64281e61eef3e17e7a7d1342563d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7701a72379ebc6e64a6f4bb81a571468f81d64281e61eef3e17e7a7d1342563d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7701a72379ebc6e64a6f4bb81a571468f81d64281e61eef3e17e7a7d1342563d

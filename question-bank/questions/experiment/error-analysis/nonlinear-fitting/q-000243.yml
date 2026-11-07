@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000243
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: 1/s
     accepted:
     - 1/s
-solution: '新参数=当前参数+修正=0.2980523 s^-1．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.2980523\,\mathrm{s^{-1}}
-
-  $$
-
-  '
+solution: 将参数修正加到当前值：$k_{\rm new}=0.25+0.0480523=0.2980523\,\mathrm{s^{-1}}$．
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．新参数=当前参数+修正=0.2980523 s^-1．
-  incorrect: 请重新检查模型、条件和计算：新参数=当前参数+修正=0.2980523 s^-1．
+  correct: 将参数修正加到当前值：$k_{\rm new}=0.25+0.0480523=0.2980523\,\mathrm{s^{-1}}$．
+  incorrect: 将参数修正加到当前值：$k_{\rm new}=0.25+0.0480523=0.2980523\,\mathrm{s^{-1}}$．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:2cd1c1100bd11e8a8eb64aa7355579748c38b414dd17036d31a188aab897b970
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:2cd1c1100bd11e8a8eb64aa7355579748c38b414dd17036d31a188aab897b970
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:2cd1c1100bd11e8a8eb64aa7355579748c38b414dd17036d31a188aab897b970

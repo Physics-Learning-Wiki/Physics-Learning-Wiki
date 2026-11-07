@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000235
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 证明固定设计、零均值误差下最小二乘估计无偏．
 reference_answer: 设 H=(AᵀA)⁻¹Aᵀ，有 HA=I，E(Hl)=θ．
-solution: '强调固定 A、满秩、误差期望为零；无偏是重复抽样性质，模型偏差或自变量误差会破坏前提．
-
-
-  关键算式：
-
-
-  $$
-
-  HA=I,\quad E(H\boldsymbol l)=\boldsymbol\theta
-
-  $$
-
-  '
+solution: 取 $H=(A^TA)^{-1}A^T$，则 $HA=I$．代入 $l=A\theta+\epsilon$ 得 $E(\hat\theta)=HA\theta+HE(\epsilon)=\theta$．这是重复实验的平均性质，不代表单次估计没有误差．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出无偏结论，但遗漏线性估计或误差期望步骤
     points: 0.5
   - id: complete
-    label: 基本掌握：设 H=(AᵀA)⁻¹Aᵀ，有 HA=I，E(Hl)=θ．
+    label: 基本掌握：给出 H、HA=I 与期望计算，说明固定满秩设计和零均值条件
     points: 1
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．强调固定 A、满秩、误差期望为零；无偏是重复抽样性质，模型偏差或自变量误差会破坏前提．
-  incorrect: 请重新检查模型、条件和计算：强调固定 A、满秩、误差期望为零；无偏是重复抽样性质，模型偏差或自变量误差会破坏前提．
+  correct: 取 $H=(A^TA)^{-1}A^T$，则 $HA=I$．代入 $l=A\theta+\epsilon$ 得 $E(\hat\theta)=HA\theta+HE(\epsilon)=\theta$．这是重复实验的平均性质，不代表单次估计没有误差．
+  incorrect: 取 $H=(A^TA)^{-1}A^T$，则 $HA=I$．代入 $l=A\theta+\epsilon$ 得 $E(\hat\theta)=HA\theta+HE(\epsilon)=\theta$．这是重复实验的平均性质，不代表单次估计没有误差．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1742321f31afade65e5140aa53bcc1c35fe8901f646bfe53c32cb736f46fb8ad
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1742321f31afade65e5140aa53bcc1c35fe8901f646bfe53c32cb736f46fb8ad
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:1742321f31afade65e5140aa53bcc1c35fe8901f646bfe53c32cb736f46fb8ad

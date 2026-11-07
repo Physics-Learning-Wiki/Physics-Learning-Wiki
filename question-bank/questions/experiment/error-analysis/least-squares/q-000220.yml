@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000220
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '自由度 6−2=4，s²=0.04/4=0.01．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.01
-
-  $$
-
-  '
+solution: 有截距直线估计两个参数，残差自由度为 $6-2=4$，因此共同方差估计为 $s^2=0.04/4=0.01$．
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．自由度 6−2=4，s²=0.04/4=0.01．
-  incorrect: 请重新检查模型、条件和计算：自由度 6−2=4，s²=0.04/4=0.01．
+  correct: 有截距直线估计两个参数，残差自由度为 $6-2=4$，因此共同方差估计为 $s^2=0.04/4=0.01$．
+  incorrect: 有截距直线估计两个参数，残差自由度为 $6-2=4$，因此共同方差估计为 $s^2=0.04/4=0.01$．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:604433c7d0f9c5b6c838027259d9339b5f4e714d24deeac36827d578b287138d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:604433c7d0f9c5b6c838027259d9339b5f4e714d24deeac36827d578b287138d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:604433c7d0f9c5b6c838027259d9339b5f4e714d24deeac36827d578b287138d

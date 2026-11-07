@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000124
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '末位对齐到 0.001，得 9.811．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=9.811
-
-  $$
-
-  '
+solution: 末位对齐到 0.001，得 9.811．
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．末位对齐到 0.001，得 9.811．
-  incorrect: 请重新检查模型、条件和计算：末位对齐到 0.001，得 9.811．
+  correct: 末位对齐到 0.001，得 9.811．
+  incorrect: 不确定度末位在千分位，估计值应修约到同一位．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:4ea3a322f106942415207435f2d6c3fd84bf61e9e1152e550295f1adb5b09979
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:4ea3a322f106942415207435f2d6c3fd84bf61e9e1152e550295f1adb5b09979
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:4ea3a322f106942415207435f2d6c3fd84bf61e9e1152e550295f1adb5b09979

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000136
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -24,24 +24,12 @@ answer:
     canonical: mm
     accepted:
     - mm
-solution: 'E|E|=σ√(2/π)≈0.0797885 mm．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0797884561\,\mathrm{mm}
-
-  $$
-
-  '
+solution: E|E|=σ√(2/π)≈0.0797885 mm．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 正态零中心时平均绝对误差系数为 √(2/π)．
 feedback:
-  correct: 关键结论与题设条件相符．E|E|=σ√(2/π)≈0.0797885 mm．
-  incorrect: 请重新检查模型、条件和计算：E|E|=σ√(2/π)≈0.0797885 mm．
+  correct: E|E|=σ√(2/π)≈0.0797885 mm．
+  incorrect: 零中心正态分布的平均绝对误差是 σ√(2/π)．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -54,3 +42,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:e9c407a6f98a0fc6eca9a10fc462f489dc2b3f82cc224c2df67ddae706cc5693
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:e9c407a6f98a0fc6eca9a10fc462f489dc2b3f82cc224c2df67ddae706cc5693
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:e9c407a6f98a0fc6eca9a10fc462f489dc2b3f82cc224c2df67ddae706cc5693

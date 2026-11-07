@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000144
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -31,13 +31,13 @@ solution: 权重由不确定度信息决定，不能为靠近期望或让约化�
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
-  incorrect: 请重新检查模型、条件和计算：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+  correct: 权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+  incorrect: 核查被测量和测量条件相容性，以及共同来源造成的相关性．
   choices:
-    A: 此项符合题设．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
-    B: 此项符合题设．权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
-    C: 此项不符合题设：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
-    D: 此项不符合题设：权重由不确定度信息决定，不能为靠近期望或让约化量等于一任意调整．
+    A: 同一被测量和相容条件是合并的基础．
+    B: 共同校准会形成协方差，直接按独立结果定权可能低估不确定度．
+    C: 靠近期待值并非独立性或不确定度大小的证据．
+    D: 已知绝对尺度时不应为了残差大小而自动缩放，应先调查不一致．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -50,3 +50,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:af55e247a3edac6e4a061b9ce0ba021f187068f1a7e5cbdea9cbfcf7e1a2d093
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:af55e247a3edac6e4a061b9ce0ba021f187068f1a7e5cbdea9cbfcf7e1a2d093
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:af55e247a3edac6e4a061b9ce0ba021f187068f1a7e5cbdea9cbfcf7e1a2d093

@@ -1,0 +1,299 @@
+[
+  {
+    "page": "docs/experiment/error-analysis/measurement-basics.md",
+    "page_id": "experiment.error-analysis.measurement-basics",
+    "set": "experiment.error-analysis.measurement-basics",
+    "status": "draft",
+    "questions": [
+      "q-000102",
+      "q-000103",
+      "q-000104",
+      "q-000105",
+      "q-000106",
+      "q-000107",
+      "q-000108",
+      "q-000109"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/metrology.md",
+    "page_id": "experiment.error-analysis.metrology",
+    "set": "experiment.error-analysis.metrology",
+    "status": "draft",
+    "questions": [
+      "q-000110",
+      "q-000111",
+      "q-000112",
+      "q-000113",
+      "q-000114",
+      "q-000115",
+      "q-000116",
+      "q-000117",
+      "q-000118",
+      "q-000119"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/data-recording.md",
+    "page_id": "experiment.error-analysis.data-recording",
+    "set": "experiment.error-analysis.data-recording",
+    "status": "draft",
+    "questions": [
+      "q-000120",
+      "q-000121",
+      "q-000122",
+      "q-000123",
+      "q-000124",
+      "q-000125",
+      "q-000126",
+      "q-000127",
+      "q-000128",
+      "q-000129"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/repeated-measurements.md",
+    "page_id": "experiment.error-analysis.repeated-measurements",
+    "set": "experiment.error-analysis.repeated-measurements",
+    "status": "draft",
+    "questions": [
+      "q-000130",
+      "q-000131",
+      "q-000132",
+      "q-000133",
+      "q-000134",
+      "q-000135",
+      "q-000136",
+      "q-000137",
+      "q-000138",
+      "q-000139",
+      "q-000140",
+      "q-000141",
+      "q-000777",
+      "q-000778",
+      "q-000779"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/weighted-measurements.md",
+    "page_id": "experiment.error-analysis.weighted-measurements",
+    "set": "experiment.error-analysis.weighted-measurements",
+    "status": "draft",
+    "questions": [
+      "q-000142",
+      "q-000143",
+      "q-000144",
+      "q-000145",
+      "q-000146",
+      "q-000147",
+      "q-000148",
+      "q-000149",
+      "q-000150",
+      "q-000151",
+      "q-000152",
+      "q-000153"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/systematic-errors-outliers.md",
+    "page_id": "experiment.error-analysis.systematic-errors-outliers",
+    "set": "experiment.error-analysis.systematic-errors-outliers",
+    "status": "draft",
+    "questions": [
+      "q-000154",
+      "q-000155",
+      "q-000156",
+      "q-000157",
+      "q-000158",
+      "q-000159",
+      "q-000160",
+      "q-000161",
+      "q-000162",
+      "q-000163",
+      "q-000164",
+      "q-000165"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/outlier-tests.md",
+    "page_id": "experiment.error-analysis.outlier-tests",
+    "set": "experiment.error-analysis.outlier-tests",
+    "status": "draft",
+    "questions": [
+      "q-000166",
+      "q-000167",
+      "q-000168",
+      "q-000169",
+      "q-000170",
+      "q-000171",
+      "q-000172",
+      "q-000173",
+      "q-000174",
+      "q-000175",
+      "q-000176",
+      "q-000177"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/uncertainty-evaluation.md",
+    "page_id": "experiment.error-analysis.uncertainty-evaluation",
+    "set": "experiment.error-analysis.uncertainty-evaluation",
+    "status": "draft",
+    "questions": [
+      "q-000178",
+      "q-000179",
+      "q-000180",
+      "q-000181",
+      "q-000182",
+      "q-000183",
+      "q-000184",
+      "q-000185",
+      "q-000186",
+      "q-000187",
+      "q-000188",
+      "q-000189"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/uncertainty-propagation.md",
+    "page_id": "experiment.error-analysis.uncertainty-propagation",
+    "set": "experiment.error-analysis.uncertainty-propagation",
+    "status": "draft",
+    "questions": [
+      "q-000190",
+      "q-000191",
+      "q-000192",
+      "q-000193",
+      "q-000194",
+      "q-000195",
+      "q-000196",
+      "q-000197",
+      "q-000198",
+      "q-000199",
+      "q-000200",
+      "q-000201",
+      "q-000787",
+      "q-000788"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/error-allocation.md",
+    "page_id": "experiment.error-analysis.error-allocation",
+    "set": "experiment.error-analysis.error-allocation",
+    "status": "draft",
+    "questions": [
+      "q-000202",
+      "q-000203",
+      "q-000204",
+      "q-000205",
+      "q-000206",
+      "q-000207",
+      "q-000208",
+      "q-000209",
+      "q-000210",
+      "q-000211",
+      "q-000212",
+      "q-000213"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/least-squares.md",
+    "page_id": "experiment.error-analysis.least-squares",
+    "set": "experiment.error-analysis.least-squares",
+    "status": "draft",
+    "questions": [
+      "q-000214",
+      "q-000215",
+      "q-000216",
+      "q-000217",
+      "q-000218",
+      "q-000219",
+      "q-000220",
+      "q-000221",
+      "q-000222",
+      "q-000223",
+      "q-000224",
+      "q-000225",
+      "q-000797",
+      "q-000798",
+      "q-000799",
+      "q-000800"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/linear-parameters.md",
+    "page_id": "experiment.error-analysis.linear-parameters",
+    "set": "experiment.error-analysis.linear-parameters",
+    "status": "draft",
+    "questions": [
+      "q-000226",
+      "q-000227",
+      "q-000228",
+      "q-000229",
+      "q-000230",
+      "q-000231",
+      "q-000232",
+      "q-000233",
+      "q-000234",
+      "q-000235",
+      "q-000236",
+      "q-000237"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/nonlinear-fitting.md",
+    "page_id": "experiment.error-analysis.nonlinear-fitting",
+    "set": "experiment.error-analysis.nonlinear-fitting",
+    "status": "draft",
+    "questions": [
+      "q-000238",
+      "q-000239",
+      "q-000240",
+      "q-000241",
+      "q-000242",
+      "q-000243",
+      "q-000244",
+      "q-000245",
+      "q-000246",
+      "q-000247"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/combined-measurements.md",
+    "page_id": "experiment.error-analysis.combined-measurements",
+    "set": "experiment.error-analysis.combined-measurements",
+    "status": "draft",
+    "questions": [
+      "q-000248",
+      "q-000249",
+      "q-000250",
+      "q-000251",
+      "q-000252",
+      "q-000253",
+      "q-000254",
+      "q-000255",
+      "q-000256",
+      "q-000257"
+    ]
+  },
+  {
+    "page": "docs/experiment/error-analysis/case-studies.md",
+    "page_id": "experiment.error-analysis.case-studies",
+    "set": "experiment.error-analysis.case-studies",
+    "status": "published",
+    "questions": [
+      "q-000258",
+      "q-000259",
+      "q-000260",
+      "q-000261",
+      "q-000262",
+      "q-000263",
+      "q-000264",
+      "q-000265",
+      "q-000266",
+      "q-000267",
+      "q-000268",
+      "q-000269"
+    ]
+  }
+]

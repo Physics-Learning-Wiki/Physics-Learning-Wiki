@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000141
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,12 +13,9 @@ related_pages:
 - experiment.error-analysis.repeated-measurements
 choice_order: fixed
 type: free_response
-stem: 历史二十次观测的 s 用于新五次均值，尺度自由度从哪里来？如何报告？
+stem: 历史二十次独立同分布正态观测计算出的样本标准差 s，用于新五次独立观测的均值；假设两批过程具有相同方差．尺度自由度从哪里来？如何报告？
 reference_answer: 条件相容时用 s/√5，历史尺度自由度 19．
 solution: '本次结果以历史重复性资料评定，不能随意改成 4；需核查量程、环境、独立性、稳定性及资料不可靠度．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 把新样本的 4 当作历史尺度的自由度，或直接用历史标准差作为新均值标准差．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 算出 s/√5 和历史自由度 19，但未说明历史尺度估计、正态及两批过程相容性．
     points: 0.5
   - id: complete
-    label: 基本掌握：条件相容时用 s/√5，历史尺度自由度 19．
+    label: 说明历史 20 次独立正态样本给尺度自由度 19，新均值的尺度为 s/√5，并检查两批条件、独立性和共同方差．
     points: 1
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 区分新样本次数与用于估计尺度的历史样本次数．
 feedback:
-  correct: 关键结论与题设条件相符．本次结果以历史重复性资料评定，不能随意改成 4；需核查量程、环境、独立性、稳定性及资料不可靠度．
-  incorrect: 请重新检查模型、条件和计算：本次结果以历史重复性资料评定，不能随意改成 4；需核查量程、环境、独立性、稳定性及资料不可靠度．
+  correct: 说明历史 20 次独立正态样本给尺度自由度 19，新均值的尺度为 s/√5，并检查两批条件、独立性和共同方差．
+  incorrect: 算出 s/√5 和历史自由度 19，但未说明历史尺度估计、正态及两批过程相容性．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
@@ -64,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:c20d4d4bcbd5e9d65181f3ae131325837589ce45b5451e78b73c5cd788b3aeb4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:c20d4d4bcbd5e9d65181f3ae131325837589ce45b5451e78b73c5cd788b3aeb4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:c20d4d4bcbd5e9d65181f3ae131325837589ce45b5451e78b73c5cd788b3aeb4

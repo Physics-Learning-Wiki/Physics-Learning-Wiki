@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000150
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 在约束权系数和为一的条件下推导逆方差加权．
 reference_answer: 最小化 Σa_i²u_i²，用乘子得 a_i∝1/u_i²．
-solution: '说明无偏约束、独立和已知方差；归一后方差为 1/Σ1/u_i²，正态性并非线性最小方差推导的必要条件．
-
-
-  关键算式：
-
-
-  $$
-
-  \min_{\sum a_i=1}\sum_i a_i^2u_i^2,\quad a_i=\frac{u_i^{-2}}{\sum_j u_j^{-2}}
-
-  $$
-
-  '
+solution: 设独立无偏观测的正方差为 uᵢ²，线性估计为 ΣaᵢXᵢ．无偏性要求 Σaᵢ=1，方差为 Σaᵢ²uᵢ²．构造 F=Σaᵢ²uᵢ²−λ(Σaᵢ−1)，对各 aᵢ 求导得 2aᵢuᵢ²=λ，故 aᵢ 与 1/uᵢ² 成正比．利用系数和为一归一化，得到
+  aᵢ=uᵢ⁻²/Σⱼuⱼ⁻²，合并方差为 1/Σⱼuⱼ⁻²．此线性最小方差推导不要求正态．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 未建立权系数和为一的约束，或用标准差倒数当权．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 写出方差表达式或逆方差比例，但缺归一化、独立条件或最小化步骤．
     points: 0.5
   - id: complete
-    label: 基本掌握：最小化 Σa_i²u_i²，用乘子得 a_i∝1/u_i²．
+    label: 用无偏约束 Σaᵢ=1 最小化 Σaᵢ²uᵢ²，求导得 aᵢ∝1/uᵢ² 并归一化；说明独立和已知正方差．
     points: 1
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．说明无偏约束、独立和已知方差；归一后方差为 1/Σ1/u_i²，正态性并非线性最小方差推导的必要条件．
-  incorrect: 请重新检查模型、条件和计算：说明无偏约束、独立和已知方差；归一后方差为 1/Σ1/u_i²，正态性并非线性最小方差推导的必要条件．
+  correct: 用无偏约束 Σaᵢ=1 最小化 Σaᵢ²uᵢ²，求导得 aᵢ∝1/uᵢ² 并归一化；说明独立和已知正方差．
+  incorrect: 写出方差表达式或逆方差比例，但缺归一化、独立条件或最小化步骤．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +53,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fe96e728c8b156fed8bd6a78c3963ede33a52e8dd318a6393f0057493054b310

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000158
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,17 +20,33 @@ solution: A 与 B 的平均观测时刻相同，线性项在差中消失，共�
 hints:
 - 先按顺序和物理来源检查，传统诊断量本身没有自动的显著性水平．
 feedback:
-  correct: 关键结论与题设条件相符．A 与 B 的平均观测时刻相同，线性项在差中消失，共同常数仍未知．
-  incorrect: 请重新检查模型、条件和计算：A 与 B 的平均观测时刻相同，线性项在差中消失，共同常数仍未知．
+  correct: A 与 B 的平均观测时刻相同，线性项在差中消失，共同常数仍未知．
+  incorrect: 判断时注意：A 与 B 的平均观测时刻相同，线性项在差中消失，共同常数仍未知．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 90
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8090810c2d4b5962ed4d6a0b4e36387bd863aa862663936dd6fc92f3b4284472
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8090810c2d4b5962ed4d6a0b4e36387bd863aa862663936dd6fc92f3b4284472
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:8090810c2d4b5962ed4d6a0b4e36387bd863aa862663936dd6fc92f3b4284472

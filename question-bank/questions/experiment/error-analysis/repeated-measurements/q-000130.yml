@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000130
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -25,14 +25,14 @@ answer:
   choice: A
 solution: 残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 先写出总离差平方和分解，再对它取期望．
 feedback:
-  correct: 关键结论与题设条件相符．残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
-  incorrect: 请重新检查模型、条件和计算：残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
+  correct: 残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
+  incorrect: 平均值由样本估计，残差和为零；考虑平方和的期望．
   choices:
-    A: 此项符合题设．残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
-    B: 此项不符合题设：残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
-    C: 此项不符合题设：残差和约束损失一个自由度，平方和期望为 (n−1)σ²；样本标准差本身不一般无偏．
+    A: 正确：估计均值使残差平方和期望减少 σ²，故除以 n−1．
+    B: 自由度损失源于估计均值，即使所有读数都正确也存在．
+    C: 无偏的是这里的样本方差 s²；开平方后 s 一般并非无偏．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:5f4e43a81fc8b079481b99bb901cdbe9eb671068ffc38b7ee547b826d9b1041a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:5f4e43a81fc8b079481b99bb901cdbe9eb671068ffc38b7ee547b826d9b1041a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:5f4e43a81fc8b079481b99bb901cdbe9eb671068ffc38b7ee547b826d9b1041a

@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000104
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 不确定度是基于信息的分散性指标，不是已知的实际�
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．不确定度是基于信息的分散性指标，不是已知的实际误差．
-  incorrect: 请重新检查模型、条件和计算：不确定度是基于信息的分散性指标，不是已知的实际误差．
+  correct: 不确定度是基于信息的分散性指标，不是已知的实际误差．
+  incorrect: 标准不确定度描述量值分散，真实误差不由它直接给出．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e143c3054adaedb68b0790b6d10ed04c2c660e8c7075121ba013ee62fbb5b817
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e143c3054adaedb68b0790b6d10ed04c2c660e8c7075121ba013ee62fbb5b817
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:e143c3054adaedb68b0790b6d10ed04c2c660e8c7075121ba013ee62fbb5b817

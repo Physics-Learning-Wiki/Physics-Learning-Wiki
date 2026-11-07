@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000110
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,12 +27,12 @@ solution: 题设明确引用满量程；允许误差限为 10×0.005=0.05 V，�
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
-  incorrect: 请重新检查模型、条件和计算：题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
+  correct: 题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
+  incorrect: 题设的百分比以满量程 10 V 为引用量，不是以本次读数为准．
   choices:
-    A: 此项符合题设．题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
-    B: 此项不符合题设：题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
-    C: 此项不符合题设：题设明确引用满量程；允许误差限为 10×0.005=0.05 V，不等于按读数百分比计算．
+    A: 规格明确以 10 V 为引用值，因此限值为 10×0.5%．
+    B: 按读数计算会误把满量程百分比当作读数百分比．
+    C: 样本标准差反映重复散布，不是此规格规定的引用量．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:9e3165bd3f043be24ff84aca5f527e03eea5b9b6db21939f7a2d84bc17594f0c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:9e3165bd3f043be24ff84aca5f527e03eea5b9b6db21939f7a2d84bc17594f0c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:9e3165bd3f043be24ff84aca5f527e03eea5b9b6db21939f7a2d84bc17594f0c

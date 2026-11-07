@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000128
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -16,9 +16,6 @@ type: free_response
 stem: 0.01231 按两位最近舍入和两位向上进位分别为何值？哪种适用于本章？
 reference_answer: 0.012 与 0.013；本章采用最近舍入和五成双．
 solution: '不同规程可规定保守进位或一位三分之一等约定，必须说明依据，不能混用并把另一种约定当计算错误．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 两种规则的结果均不正确，或把两种规则混用．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 给出 0.012 或 0.013 中一个，但未正确区分两种规则及本章约定．
     points: 0.5
   - id: complete
-    label: 基本掌握：0.012 与 0.013；本章采用最近舍入和五成双．
+    label: 分别给出最近舍入 0.012 和向上进位 0.013，并说明本章采用最近舍入与五成双．
     points: 1
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．不同规程可规定保守进位或一位三分之一等约定，必须说明依据，不能混用并把另一种约定当计算错误．
-  incorrect: 请重新检查模型、条件和计算：不同规程可规定保守进位或一位三分之一等约定，必须说明依据，不能混用并把另一种约定当计算错误．
+  correct: 分别给出最近舍入 0.012 和向上进位 0.013，并说明本章采用最近舍入与五成双．
+  incorrect: 给出 0.012 或 0.013 中一个，但未正确区分两种规则及本章约定．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fc0f9926e9db0fa162b32d41e4611d170e68524f36133a7fb9c6eeac7b510dbf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fc0f9926e9db0fa162b32d41e4611d170e68524f36133a7fb9c6eeac7b510dbf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:fc0f9926e9db0fa162b32d41e4611d170e68524f36133a7fb9c6eeac7b510dbf

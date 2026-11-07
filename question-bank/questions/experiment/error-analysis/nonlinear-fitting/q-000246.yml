@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000246
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: 给定正文五点指数数据和初值 a=4.8、k=0.25，如何复核第一步与最终结果？
 reference_answer: 第一步约 (5.007779,0.298052)，收敛约 (5.013523,0.299970)．
-solution: '列 J 的两列 exp(−kt)、−at exp(−kt)，用线性最小二乘解修正；再与独立非线性求解器和残差平方和比较．
-
-
-  关键算式：
-
-
-  $$
-
-  (a_1,k_1)\approx(5.007779,0.298052)
-
-  $$
-
-  '
+solution: 初值处 $J^TJ\approx[[2.332876,-12.254502],[-12.254502,144.036505]]$，$J^Tr\approx(-0.104134,4.375056)$；解得修正 $(0.207779,0.0480523)$，故第一次为
+  $(5.007779,0.2980523)$．重算雅可比迭代后约为 $(5.013523,0.299970)$，SSE 约 $0.000482288\,\mathrm{V^2}$．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出迭代结果但没有复核第一步线性方程
     points: 0.5
   - id: complete
-    label: 基本掌握：第一步约 (5.007779,0.298052)，收敛约 (5.013523,0.299970)．
+    label: 基本掌握：计算初值雅可比、修正、更新及最终残差平方和
     points: 1
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．列 J 的两列 exp(−kt)、−at exp(−kt)，用线性最小二乘解修正；再与独立非线性求解器和残差平方和比较．
-  incorrect: 请重新检查模型、条件和计算：列 J 的两列 exp(−kt)、−at exp(−kt)，用线性最小二乘解修正；再与独立非线性求解器和残差平方和比较．
+  correct: 初值处 $J^TJ\approx[[2.332876,-12.254502],[-12.254502,144.036505]]$，$J^Tr\approx(-0.104134,4.375056)$；解得修正 $(0.207779,0.0480523)$，故第一次为
+    $(5.007779,0.2980523)$．重算雅可比迭代后约为 $(5.013523,0.299970)$，SSE 约 $0.000482288\,\mathrm{V^2}$．
+  incorrect: 初值处 $J^TJ\approx[[2.332876,-12.254502],[-12.254502,144.036505]]$，$J^Tr\approx(-0.104134,4.375056)$；解得修正 $(0.207779,0.0480523)$，故第一次为
+    $(5.007779,0.2980523)$．重算雅可比迭代后约为 $(5.013523,0.299970)$，SSE 约 $0.000482288\,\mathrm{V^2}$．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +55,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fb9d6b8312ffc4030b5d137aa0d4a48e0c9b66792e5cb527f1218d90038552a9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fb9d6b8312ffc4030b5d137aa0d4a48e0c9b66792e5cb527f1218d90038552a9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:fb9d6b8312ffc4030b5d137aa0d4a48e0c9b66792e5cb527f1218d90038552a9

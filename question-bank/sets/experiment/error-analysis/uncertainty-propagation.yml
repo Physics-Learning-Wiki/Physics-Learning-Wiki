@@ -1,8 +1,8 @@
 schema_version: 1
 id: experiment.error-analysis.uncertainty-propagation
 title: 不确定度传播与合成：专题习题
-description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
-status: draft
+description: 14 道练习，覆盖有符号偏差、严格界限、协方差传播和模型条件．
+status: published
 tags:
 - 误差分析与数据处理
 - 不确定度传播与合成
@@ -22,8 +22,10 @@ selection:
   - q-000199
   - q-000200
   - q-000201
+  - q-000787
+  - q-000788
   order: fixed
-version: 1
+version: 2
 authors:
 - name: Codex
   kind: ai

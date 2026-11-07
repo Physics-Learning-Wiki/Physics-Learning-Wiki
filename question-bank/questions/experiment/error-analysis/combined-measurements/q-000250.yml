@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000250
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,8 +20,8 @@ solution: 所有设计行相同，矩阵秩为一，只能识别一个参数组�
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．所有设计行相同，矩阵秩为一，只能识别一个参数组合．
-  incorrect: 请重新检查模型、条件和计算：所有设计行相同，矩阵秩为一，只能识别一个参数组合．
+  correct: 所有设计行相同，矩阵秩为一，只能识别一个参数组合．
+  incorrect: 所有设计行相同，矩阵秩为一，只能识别一个参数组合．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -34,3 +34,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:ad8407082c7c15e60d8f4ef59ad10ccadf0edd4e4a736541a2a615051eb09b0a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:ad8407082c7c15e60d8f4ef59ad10ccadf0edd4e4a736541a2a615051eb09b0a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:ad8407082c7c15e60d8f4ef59ad10ccadf0edd4e4a736541a2a615051eb09b0a

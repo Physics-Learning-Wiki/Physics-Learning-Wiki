@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000102
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -27,12 +27,12 @@ solution: 集中反映分散小；与参考整体偏离提示共同效应，需�
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
-  incorrect: 请重新检查模型、条件和计算：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+  correct: 集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+  incorrect: 比较数据内部的集中程度与相对标准器的整体偏移．
   choices:
-    A: 此项符合题设．集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
-    B: 此项不符合题设：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
-    C: 此项不符合题设：集中反映分散小；与参考整体偏离提示共同效应，需要核查参考不确定度和修正模型．
+    A: 集中反映重复性好；相对标准器的整体偏移是共同效应线索，还需考虑标准器不确定度．
+    B: 集中程度不能单独说明与真值接近，也不能证明准确度高．
+    C: 共同偏移在每次观测中相同，取平均不会自动消除．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:38edfeb943c558f021ebc5304f890c4f6d3b73eb588f77479af0a994804ebed6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:38edfeb943c558f021ebc5304f890c4f6d3b73eb588f77479af0a994804ebed6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:38edfeb943c558f021ebc5304f890c4f6d3b73eb588f77479af0a994804ebed6

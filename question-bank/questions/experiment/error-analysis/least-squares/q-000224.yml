@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000224
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 某加权拟合约化 χ²=0.18，可否自动缩小给定标准不确定度？
 reference_answer: 不可；先看样本偶然性、输入设定、相关性与模型．
-solution: '已知绝对尺度与未知共同尺度不同；不能为了逼近一修改权重，报告假设差异．
-
-
-  关键算式：
-
-
-  $$
-
-  \chi^2_{\rm red}=\chi^2/(n-2)
-
-  $$
-
-  '
+solution: 已知各输入标准不确定度是绝对尺度时，用它们形成权重和参数协方差；小的约化卡方可来自随机波动或模型与输入尺度不匹配，应检查数据和相关性而非自动修改尺度．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：识别卡方偏小，但混淆已知绝对尺度与未知共同尺度
     points: 0.5
   - id: complete
-    label: 基本掌握：不可；先看样本偶然性、输入设定、相关性与模型．
+    label: 基本掌握：说明绝对尺度不能自动重缩放，并指出应核查的模型或相关性
     points: 1
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．已知绝对尺度与未知共同尺度不同；不能为了逼近一修改权重，报告假设差异．
-  incorrect: 请重新检查模型、条件和计算：已知绝对尺度与未知共同尺度不同；不能为了逼近一修改权重，报告假设差异．
+  correct: 已知各输入标准不确定度是绝对尺度时，用它们形成权重和参数协方差；小的约化卡方可来自随机波动或模型与输入尺度不匹配，应检查数据和相关性而非自动修改尺度．
+  incorrect: 已知各输入标准不确定度是绝对尺度时，用它们形成权重和参数协方差；小的约化卡方可来自随机波动或模型与输入尺度不匹配，应检查数据和相关性而非自动修改尺度．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:54a295a7ac7f8838a33bdd8342d50f6807535c0399a526f395e650bd2fa2ea4b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:54a295a7ac7f8838a33bdd8342d50f6807535c0399a526f395e650bd2fa2ea4b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:54a295a7ac7f8838a33bdd8342d50f6807535c0399a526f395e650bd2fa2ea4b

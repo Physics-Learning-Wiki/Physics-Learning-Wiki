@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000254
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 为 a,b,c,a+b,b+c,a+b+c 六次观测列设计矩阵，并说明满秩．
 reference_answer: 六行依次 (1,0,0)、(0,1,0)、(0,0,1)、(1,1,0)、(0,1,1)、(1,1,1)．
-solution: '前三行已含单位阵故满列秩，后三行提供冗余；应交代同一温度和稳定对象及独立假设．
-
-
-  关键算式：
-
-
-  $$
-
-  A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&1\\1&1&0\\0&1&1\\1&1&1\end{pmatrix}
-
-  $$
-
-  '
+solution: 六行依次为 $(1,0,0)$、$(0,1,0)$、$(0,0,1)$、$(1,1,0)$、$(0,1,1)$、$(1,1,1)$．前三行组成单位阵，故三列线性无关；后三行给出额外一致性信息．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：列出部分设计行，但未证明可辨识
     points: 0.5
   - id: complete
-    label: 基本掌握：六行依次 (1,0,0)、(0,1,0)、(0,0,1)、(1,1,0)、(0,1,1)、(1,1,1)．
+    label: 基本掌握：写出六行设计矩阵并由前三行证明满列秩
     points: 1
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．前三行已含单位阵故满列秩，后三行提供冗余；应交代同一温度和稳定对象及独立假设．
-  incorrect: 请重新检查模型、条件和计算：前三行已含单位阵故满列秩，后三行提供冗余；应交代同一温度和稳定对象及独立假设．
+  correct: 六行依次为 $(1,0,0)$、$(0,1,0)$、$(0,0,1)$、$(1,1,0)$、$(0,1,1)$、$(1,1,1)$．前三行组成单位阵，故三列线性无关；后三行给出额外一致性信息．
+  incorrect: 六行依次为 $(1,0,0)$、$(0,1,0)$、$(0,0,1)$、$(1,1,0)$、$(0,1,1)$、$(1,1,1)$．前三行组成单位阵，故三列线性无关；后三行给出额外一致性信息．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7cc2f49e68de31813c799c1e131bf405dca2f16324733257bd6b7bce90e917a8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7cc2f49e68de31813c799c1e131bf405dca2f16324733257bd6b7bce90e917a8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:7cc2f49e68de31813c799c1e131bf405dca2f16324733257bd6b7bce90e917a8

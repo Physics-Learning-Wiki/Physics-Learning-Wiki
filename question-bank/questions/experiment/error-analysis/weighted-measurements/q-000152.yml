@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000152
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -16,9 +16,6 @@ type: free_response
 stem: 10.0、10.2、9.9 mm 相对权相同，共同方差未知，求均值 u．
 reference_answer: 均值 10.033333 mm，s0²=0.0233333 mm²，u=0.0881917 mm．
 solution: '先以 m−1=2 估单位权方差，再除以权和 3；与已知绝对不确定度公式分清．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 直接将样本标准差当作均值标准不确定度，或未计算残差．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 求出均值 10.0333 mm，但在残差自由度、单位权方差或除以权和时有遗漏．
     points: 0.5
   - id: complete
-    label: 基本掌握：均值 10.033333 mm，s0²=0.0233333 mm²，u=0.0881917 mm．
+    label: 得到均值 10.0333 mm、残差平方和 0.0466667 mm²，除以 2 得 0.0233333 mm²，再除以权和 3 并开方得 0.0881917 mm．
     points: 1
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．先以 m−1=2 估单位权方差，再除以权和 3；与已知绝对不确定度公式分清．
-  incorrect: 请重新检查模型、条件和计算：先以 m−1=2 估单位权方差，再除以权和 3；与已知绝对不确定度公式分清．
+  correct: 得到均值 10.0333 mm、残差平方和 0.0466667 mm²，除以 2 得 0.0233333 mm²，再除以权和 3 并开方得 0.0881917 mm．
+  incorrect: 求出均值 10.0333 mm，但在残差自由度、单位权方差或除以权和时有遗漏．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +61,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:4e6186af1b2bdba3fb06bd4772fde76aded826fed34b16972db1f98b620d8d54
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:4e6186af1b2bdba3fb06bd4772fde76aded826fed34b16972db1f98b620d8d54
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:4e6186af1b2bdba3fb06bd4772fde76aded826fed34b16972db1f98b620d8d54

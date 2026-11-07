@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000137
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -13,7 +13,7 @@ related_pages:
 - experiment.error-analysis.repeated-measurements
 choice_order: fixed
 type: numeric
-stem: 1.00、1.01、1.01 的均值修为 1.01．按该均值算残差和多少？
+stem: 无量纲数据 1.00、1.01、1.01 的均值修为 1.01．按该均值算残差和多少？
 answer:
   value: -0.01
   tolerance:
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '残差为 -0.01、0、0，和 -0.01；由 -nΔ 可交叉核对．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=-0.01
-
-  $$
-
-  '
+solution: 残差为 -0.01、0、0，和 -0.01；由 -nΔ 可交叉核对．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 分别减去修约后的均值，保留符号再相加．
 feedback:
-  correct: 关键结论与题设条件相符．残差为 -0.01、0、0，和 -0.01；由 -nΔ 可交叉核对．
-  incorrect: 请重新检查模型、条件和计算：残差为 -0.01、0、0，和 -0.01；由 -nΔ 可交叉核对．
+  correct: 残差为 -0.01、0、0，和 -0.01；由 -nΔ 可交叉核对．
+  incorrect: 依次用每个读数减去 1.01，并保留残差符号．
 difficulty: 2
 cognitive_level: apply
 style: computational
@@ -53,3 +41,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ee421153f713ffdc534a86db7addc0171627f44f2e9a4cfb8dd25327878dea03
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ee421153f713ffdc534a86db7addc0171627f44f2e9a4cfb8dd25327878dea03
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:ee421153f713ffdc534a86db7addc0171627f44f2e9a4cfb8dd25327878dea03

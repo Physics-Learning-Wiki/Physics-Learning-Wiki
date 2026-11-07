@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000238
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．雅可比是模型对参数导数，解局部残差最小化再更新，与误差传播任务不同．
   incorrect: 请重新检查模型、条件和计算：雅可比是模型对参数导数，解局部残差最小化再更新，与误差传播任务不同．
   choices:
-    A: 此项符合题设．雅可比是模型对参数导数，解局部残差最小化再更新，与误差传播任务不同．
-    B: 此项不符合题设：雅可比是模型对参数导数，解局部残差最小化再更新，与误差传播任务不同．
-    C: 此项不符合题设：雅可比是模型对参数导数，解局部残差最小化再更新，与误差传播任务不同．
+    A: 在当前参数处对模型作一阶展开，并求参数修正．
+    B: 取对数是另一种变换，既非必要也会改变误差模型．
+    C: 参数修正来自局部残差最小化，输出不确定度不是修正量．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
@@ -45,3 +45,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:818719efd61b6df3f25d6dfeaae00c8412f22346efb0440062d44e4abce76616
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:818719efd61b6df3f25d6dfeaae00c8412f22346efb0440062d44e4abce76616
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:818719efd61b6df3f25d6dfeaae00c8412f22346efb0440062d44e4abce76616

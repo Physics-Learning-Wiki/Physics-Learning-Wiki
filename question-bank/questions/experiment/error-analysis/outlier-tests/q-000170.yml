@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000170
-version: 1
-status: draft
+version: 2
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -20,17 +20,33 @@ solution: 统计量分母为零而未定义，相同显示值也不证明总不�
 hints:
 - 先说明候选是否预先指定，再核对分母尺度、自由度和单双端阈值．
 feedback:
-  correct: 关键结论与题设条件相符．统计量分母为零而未定义，相同显示值也不证明总不确定度为零．
-  incorrect: 请重新检查模型、条件和计算：统计量分母为零而未定义，相同显示值也不证明总不确定度为零．
+  correct: 统计量分母为零而未定义，相同显示值也不证明总不确定度为零．
+  incorrect: 判断时注意：统计量分母为零而未定义，相同显示值也不证明总不确定度为零．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
 estimated_seconds: 90
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:30e2242a154a804cd7b0c443243a8afb894e84defae9d12417663e0a20122d78
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:30e2242a154a804cd7b0c443243a8afb894e84defae9d12417663e0a20122d78
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 2
+    content_fingerprint: sha256:30e2242a154a804cd7b0c443243a8afb894e84defae9d12417663e0a20122d78

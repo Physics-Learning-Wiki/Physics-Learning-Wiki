@@ -1,7 +1,7 @@
 schema_version: 3
 id: q-000127
-version: 1
-status: draft
+version: 3
+status: published
 locale: zh-CN
 topics:
 - experiment.error-analysis
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 说明乘除、开方、对数与三角函数的位数规则和局限．
 reference_answer: 乘除开方可按有效数字粗估；对数用相对变化；三角函数须按角度与导数处理．
-solution: '给出 ln(x/x0) 的无量纲要求，角度导数使用弧度；接近奇异点或相消时不能仅按口诀．
-
-
-  关键算式：
-
-
-  $$
-
-  u(\ln(x/x_0))\approx u(x)/|x|,\quad u(\sin\phi)\approx|\cos\phi|u(\phi)
-
-  $$
-
-  '
+solution: 乘除和开方可按最少有效数字粗估；对数应写成无量纲比值 ln(x/x₀)，固定 x₀ 且局部线性近似时 u(ln(x/x₀))≈u(x)/|x|．三角函数角度须用弧度，例如 u(sinφ)≈|cosφ|u(φ)．靠近奇异点、发生相消或相关时，应回到测量模型评估．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 对数使用有量纲的自变量，或三角函数直接把角度数当弧度．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 说明乘除开方的有效位规则或对数、三角函数的传播条件，但遗漏其他部分．
     points: 0.5
   - id: complete
-    label: 基本掌握：乘除开方可按有效数字粗估；对数用相对变化；三角函数须按角度与导数处理．
+    label: 说明乘除开方可按有效位粗估；对数使用无量纲比值和相对变化，三角函数以弧度与导数传播，并说明口诀的局限．
     points: 1
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．给出 ln(x/x0) 的无量纲要求，角度导数使用弧度；接近奇异点或相消时不能仅按口诀．
-  incorrect: 请重新检查模型、条件和计算：给出 ln(x/x0) 的无量纲要求，角度导数使用弧度；接近奇异点或相消时不能仅按口诀．
+  correct: 说明乘除开方可按有效位粗估；对数使用无量纲比值和相对变化，三角函数以弧度与导数传播，并说明口诀的局限．
+  incorrect: 说明乘除开方的有效位规则或对数、三角函数的传播条件，但遗漏其他部分．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
@@ -64,3 +52,19 @@ authors:
 - name: Codex
   kind: ai
 license: CC-BY-SA-4.0
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:07b141ba6a70048a2b72d031538553e0afc2b36b5c78b6b0857353e1ffe2cee6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:07b141ba6a70048a2b72d031538553e0afc2b36b5c78b6b0857353e1ffe2cee6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-07'
+    question_version: 3
+    content_fingerprint: sha256:07b141ba6a70048a2b72d031538553e0afc2b36b5c78b6b0857353e1ffe2cee6
