@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+from html import escape
 
 import bleach
 import markdown
@@ -22,6 +23,13 @@ ALLOWED_ATTRIBUTES = {
     "img": ["src", "alt", "title", "class", "data-plw-asset", "loading", "decoding"],
 }
 ASSET_SRC_RE = re.compile(r'\ssrc="asset:([a-z][a-z0-9-]{0,31})"')
+
+
+def _format_fenced_math(source: str, *args, **kwargs) -> str:
+    # The generic fence formatter inserts TeX as raw HTML. Escape the text so
+    # sanitizing cannot interpret comparisons such as i<j as HTML tags.
+    formatter = arithmatex_fenced_format(mode="generic")
+    return formatter(escape(source, quote=False), *args, **kwargs)
 
 
 def _allow_url(value: str) -> str:
@@ -203,7 +211,7 @@ def render_markdown(source: str) -> str:
                     {
                         "name": "math",
                         "class": "arithmatex",
-                        "format": arithmatex_fenced_format(mode="generic"),
+                        "format": _format_fenced_math,
                     }
                 ]
             },

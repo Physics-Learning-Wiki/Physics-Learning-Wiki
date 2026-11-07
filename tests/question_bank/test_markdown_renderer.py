@@ -1,6 +1,9 @@
 import copy
 from pathlib import Path
 
+import pytest
+from bs4 import BeautifulSoup
+
 from scripts.question_bank.loader import load_yaml
 from scripts.question_bank.markdown_renderer import (
     normalize_compact_display_math,
@@ -12,6 +15,64 @@ from scripts.question_bank.media import question_content_fingerprint
 def test_math_markup_survives_sanitizing() -> None:
     rendered = render_markdown(r"速度为 \(v\)")
     assert "arithmatex" in rendered
+
+
+@pytest.mark.parametrize(
+    "tex",
+    [
+        r"\sum_{i<j}c_i c_j\operatorname{Cov}(X_i,X_j)",
+        r"x>y",
+        r"\begin{pmatrix}a&b\\c&d\end{pmatrix}",
+        r"\text{&lt;}",
+        r"\text{<img src=x>}",
+    ],
+)
+@pytest.mark.parametrize(
+    "template",
+    [
+        "$$\n{tex}\n$$",
+        "$${tex}$$",
+        "> $$\n> {tex}\n> $$",
+        "1. 结论：\n\n    $$\n    {tex}\n    $$",
+        "```math\n{tex}\n```",
+    ],
+)
+def test_display_math_preserves_html_characters(tex: str, template: str) -> None:
+    source = template.format(tex=tex) + "\n\n公式之后的说明．"
+    soup = BeautifulSoup(render_markdown(source), "html.parser")
+
+    formulas = soup.select("div.arithmatex")
+    assert len(formulas) == 1
+    assert formulas[0].get_text().strip() == f"\\[\n{tex}\n\\]"
+    assert formulas[0].find(True) is None
+
+    following_prose = soup.find("p", string="公式之后的说明．")
+    assert following_prose is not None
+    assert following_prose.find_parent(class_="arithmatex") is None
+
+
+def test_covariance_solution_preserves_formula_and_following_prose() -> None:
+    root = Path.cwd()
+    doc, issues = load_yaml(
+        root / "question-bank/questions/experiment/error-analysis/uncertainty-propagation/q-000198.yml"
+    )
+    assert doc is not None
+    assert not issues
+    original_data = copy.deepcopy(doc.data)
+    initial_fingerprint = question_content_fingerprint(doc.data, root)
+
+    soup = BeautifulSoup(render_markdown(doc.data["solution"]), "html.parser")
+    formulas = soup.select("div.arithmatex")
+    assert len(formulas) == 3
+    expected_tex = r"u_c^2=\sum_i c_i^2u^2(x_i)+2\sum_{i<j}c_i c_j\operatorname{Cov}(X_i,X_j)."
+    assert formulas[-1].get_text().strip() == f"\\[\n{expected_tex}\n\\]"
+    assert formulas[-1].find(True) is None
+    following_prose = formulas[-1].find_next_sibling("p")
+    assert following_prose is not None
+    assert following_prose.get_text() == "不相关时交叉项为零；显著非线性时还需检查高阶影响．"
+
+    assert doc.data == original_data
+    assert question_content_fingerprint(doc.data, root) == initial_fingerprint
 
 
 def test_script_markup_is_removed() -> None:
