@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000223
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 为什么 α=b/a 传播必须保留截距与斜率协方差？
 reference_answer: 二者由同组数据估计通常相关，交叉项为 −2b Cov(a,b)/a³．
-solution: '写完整方差 b²u²(a)/a⁴+u²(b)/a²−2bCov(a,b)/a³；输入观测独立不能推出参数独立．
-
-
-  关键算式：
-
-
-  $$
-
-  u^2(\alpha)=b^2u^2(a)/a^4+u^2(b)/a^2-2b\operatorname{Cov}(a,b)/a^3
-
-  $$
-
-  '
+solution: 对 $\alpha=b/a$ 有 $\partial\alpha/\partial a=-b/a^2$、$\partial\alpha/\partial b=1/a$；乘以完整协方差矩阵后交叉项符号为负，是否可忽略取决于实际协方差．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：写出偏导或方差项，但遗漏协方差或交叉项符号
     points: 0.5
   - id: complete
-    label: 基本掌握：二者由同组数据估计通常相关，交叉项为 −2b Cov(a,b)/a³．
+    label: 基本掌握：给出两个偏导及含交叉项的传播式，说明参数可能相关
     points: 1
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．写完整方差 b²u²(a)/a⁴+u²(b)/a²−2bCov(a,b)/a³；输入观测独立不能推出参数独立．
-  incorrect: 请重新检查模型、条件和计算：写完整方差 b²u²(a)/a⁴+u²(b)/a²−2bCov(a,b)/a³；输入观测独立不能推出参数独立．
+  correct: 对 $\alpha=b/a$ 有 $\partial\alpha/\partial a=-b/a^2$、$\partial\alpha/\partial b=1/a$；乘以完整协方差矩阵后交叉项符号为负，是否可忽略取决于实际协方差．
+  incorrect: 对 $\alpha=b/a$ 有 $\partial\alpha/\partial a=-b/a^2$、$\partial\alpha/\partial b=1/a$；乘以完整协方差矩阵后交叉项符号为负，是否可忽略取决于实际协方差．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

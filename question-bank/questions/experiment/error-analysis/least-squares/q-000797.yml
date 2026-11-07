@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000797
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.least-squares
+objectives:
+- experiment.error-analysis.least-squares.analysis
+related_pages:
+- experiment.error-analysis.least-squares
+choice_order: fixed
+type: free_response
+stem: 自编数据 x=(0,1,2,3,4)、y=(1,2.2,2.8,4.2,4.8)，已有拟合值 ŷ=1.08+0.96x．计算总平方和、回归平方和、残差平方和并解释它们为何相加．
+reference_answer: 总平方和 9.36，回归平方和 9.216，残差平方和 0.144，满足 9.36=9.216+0.144．
+solution: 平均值为 3；将每个总偏差拆成拟合偏差和残差．有截距的最小二乘满足残差与常数列、x 列正交，因此平方展开后的交叉项为零．逐项求和得 9.36=9.216+0.144．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：没有区分总偏差、拟合偏差和残差
+    points: 0
+  - id: partial
+    label: 部分掌握：列出三种偏差或部分平方和，但漏掉残差正交及其交叉项
+    points: 0.5
+  - id: complete
+    label: 基本掌握：得到 9.36、9.216、0.144，并说明有截距正规方程使交叉项为零
+    points: 1
+hints:
+- 先列出题设模型和自由度，再逐项计算并解释结果．
+feedback:
+  correct: 平均值为 3；将每个总偏差拆成拟合偏差和残差．有截距的最小二乘满足残差与常数列、x 列正交，因此平方展开后的交叉项为零．逐项求和得 9.36=9.216+0.144．
+  incorrect: 平均值为 3；将每个总偏差拆成拟合偏差和残差．有截距的最小二乘满足残差与常数列、x 列正交，因此平方展开后的交叉项为零．逐项求和得 9.36=9.216+0.144．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 数据与题目为原创教学练习，由 AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000138
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -16,9 +16,6 @@ type: free_response
 stem: 推导 Var(平均值)=σ²/n，并说明共同校准改变什么．
 reference_answer: 独立等方差时方差和除以 n²；共同项留下 u²(B)．
 solution: '从一般协方差和出发；共用 B 的各观测协方差不为零，所以只有独立 E_i 的部分除以 n．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 未正确计算独立项方差，也未识别共同校准项．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 得到 σ²/n 或共同项之一，但没有说明独立同方差条件及共同项保留的原因．
     points: 0.5
   - id: complete
-    label: 基本掌握：独立等方差时方差和除以 n²；共同项留下 u²(B)．
+    label: 由方差和得到 σ²/n，并写 Xᵢ=μ+B+εᵢ；说明 B 与独立项的假设及均值方差 u²(B)+σ²ε/n．
     points: 1
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 先写平均的方差，再把每个观测分解为共同项和独立项．
 feedback:
-  correct: 关键结论与题设条件相符．从一般协方差和出发；共用 B 的各观测协方差不为零，所以只有独立 E_i 的部分除以 n．
-  incorrect: 请重新检查模型、条件和计算：从一般协方差和出发；共用 B 的各观测协方差不为零，所以只有独立 E_i 的部分除以 n．
+  correct: 由方差和得到 σ²/n，并写 Xᵢ=μ+B+εᵢ；说明 B 与独立项的假设及均值方差 u²(B)+σ²ε/n．
+  incorrect: 得到 σ²/n 或共同项之一，但没有说明独立同方差条件及共同项保留的原因．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000145
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -13,15 +13,15 @@ related_pages:
 - experiment.error-analysis.weighted-measurements
 choice_order: fixed
 type: true_false
-stem: 同单次方差但组内次数不同，独立组均值可按各组次数定权．
+stem: 若单次观测方差相同，组内和组间观测均独立，但各组次数不同，则各组均值可按次数定权．
 answer:
   value: true
 solution: 组均值方差 σ²/n_i，其逆方差权与 n_i 成比例．
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．组均值方差 σ²/n_i，其逆方差权与 n_i 成比例．
-  incorrect: 请重新检查模型、条件和计算：组均值方差 σ²/n_i，其逆方差权与 n_i 成比例．
+  correct: 组均值方差 σ²/n_i，其逆方差权与 n_i 成比例．
+  incorrect: 独立且同单次方差时，每组均值的方差为 σ²/nᵢ．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

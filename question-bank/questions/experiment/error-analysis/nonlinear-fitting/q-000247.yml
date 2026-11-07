@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000247
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 非线性参数协方差什么时候只能作局部近似？
 reference_answer: 强非线性、参数边界、缺秩、多极小点或明显非对称时不宜直接给精确对称区间．
-solution: '绝对已知尺度用 (JᵀWJ)⁻¹，未知共同尺度可近似乘 SSE/(n−p)；不宣称一般非线性残差必精确卡方或参数必无偏．
-
-
-  关键算式：
-
-
-  $$
-
-  \operatorname{Cov}(\hat{\boldsymbol\theta})\approx(J^TWJ)^{-1}
-
-  $$
-
-  '
+solution: 用最优点的雅可比近似局部曲率；强非线性、参数边界或高度相关时，局部对称近似可能失效，应比较轮廓目标或模拟．已知绝对权与仅知相对权还须区分尺度．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：知道近似局限，但未指出条件或替代检查
     points: 0.5
   - id: complete
-    label: 基本掌握：强非线性、参数边界、缺秩、多极小点或明显非对称时不宜直接给精确对称区间．
+    label: 基本掌握：说明局部线性假设、可能失效情形及轮廓或模拟检查
     points: 1
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．绝对已知尺度用 (JᵀWJ)⁻¹，未知共同尺度可近似乘 SSE/(n−p)；不宣称一般非线性残差必精确卡方或参数必无偏．
-  incorrect: 请重新检查模型、条件和计算：绝对已知尺度用 (JᵀWJ)⁻¹，未知共同尺度可近似乘 SSE/(n−p)；不宣称一般非线性残差必精确卡方或参数必无偏．
+  correct: 用最优点的雅可比近似局部曲率；强非线性、参数边界或高度相关时，局部对称近似可能失效，应比较轮廓目标或模拟．已知绝对权与仅知相对权还须区分尺度．
+  incorrect: 用最优点的雅可比近似局部曲率；强非线性、参数边界或高度相关时，局部对称近似可能失效，应比较轮廓目标或模拟．已知绝对权与仅知相对权还须区分尺度．
 difficulty: 3
 cognitive_level: analyze
 style: modeling

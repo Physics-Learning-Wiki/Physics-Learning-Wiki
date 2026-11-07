@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000135
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: s
     accepted:
     - s
-solution: '0.08/√16=0.02 s，只是均值重复性分量．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.02\,\mathrm{s}
-
-  $$
-
-  '
+solution: 0.08/√16=0.02 s，只是均值重复性分量．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 先求 √16，再判断结果描述单次还是均值．
 feedback:
-  correct: 关键结论与题设条件相符．0.08/√16=0.02 s，只是均值重复性分量．
-  incorrect: 请重新检查模型、条件和计算：0.08/√16=0.02 s，只是均值重复性分量．
+  correct: 0.08/√16=0.02 s，只是均值重复性分量．
+  incorrect: 用单次样本标准差除以 √16，结果只代表均值重复性分量．
 difficulty: 2
 cognitive_level: apply
 style: computational

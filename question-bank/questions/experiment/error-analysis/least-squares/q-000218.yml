@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000218
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -20,8 +20,8 @@ solution: 绘图不改变拟合模型，应采用适合双轴误差及相关性�
 hints:
 - 写残差和目标函数，区分已知不确定度与残差估计的共同尺度．
 feedback:
-  correct: 关键结论与题设条件相符．绘图不改变拟合模型，应采用适合双轴误差及相关性的方法．
-  incorrect: 请重新检查模型、条件和计算：绘图不改变拟合模型，应采用适合双轴误差及相关性的方法．
+  correct: 绘图不改变拟合模型，应采用适合双轴误差及相关性的方法．
+  incorrect: 绘图不改变拟合模型，应采用适合双轴误差及相关性的方法．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

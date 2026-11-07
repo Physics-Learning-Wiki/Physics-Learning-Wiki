@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000126
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -16,9 +16,6 @@ type: free_response
 stem: 为什么 11.4+2.56 可以按传统规则报 14.0，而精确传播不一定只看小数位？
 reference_answer: 未修约和为 13.96；传统规则按最粗小数位，但不替代显式不确定度模型．
 solution: '解释保护位、相关性和相消；先用未修约数计算预算，最后按报告规则修约，不能每步丢位．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 直接按计算器位数报告，或把小数位口诀当作完整不确定度评定．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 算出 13.96 并给 14.0，但未解释传统口诀的局限或保护位．
     points: 0.5
   - id: complete
-    label: 基本掌握：未修约和为 13.96；传统规则按最粗小数位，但不替代显式不确定度模型．
+    label: 给出 13.96 和按最粗小数位的 14.0，说明中间保留保护位，并考虑输入不确定度、相关性与相消．
     points: 1
 hints:
 - 保留未修约中间值，先确定不确定度末位，再对齐结果；不要倒改原始记录．
 feedback:
-  correct: 关键结论与题设条件相符．解释保护位、相关性和相消；先用未修约数计算预算，最后按报告规则修约，不能每步丢位．
-  incorrect: 请重新检查模型、条件和计算：解释保护位、相关性和相消；先用未修约数计算预算，最后按报告规则修约，不能每步丢位．
+  correct: 给出 13.96 和按最粗小数位的 14.0，说明中间保留保护位，并考虑输入不确定度、相关性与相消．
+  incorrect: 算出 13.96 并给 14.0，但未解释传统口诀的局限或保护位．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

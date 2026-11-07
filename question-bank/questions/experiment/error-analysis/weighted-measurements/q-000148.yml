@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000148
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: V
     accepted:
     - V
-solution: '方差为 1/(100+25)，标准不确定度约 0.0894427 V．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0894427191\,\mathrm{V}
-
-  $$
-
-  '
+solution: 方差为 1/(100+25)，标准不确定度约 0.0894427 V．
 hints:
 - 权取独立方差倒数；先分清已知绝对尺度、相对权和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．方差为 1/(100+25)，标准不确定度约 0.0894427 V．
-  incorrect: 请重新检查模型、条件和计算：方差为 1/(100+25)，标准不确定度约 0.0894427 V．
+  correct: 方差为 1/(100+25)，标准不确定度约 0.0894427 V．
+  incorrect: 把两项方差分别取倒数，求和后取倒数并开方．
 difficulty: 2
 cognitive_level: apply
 style: computational

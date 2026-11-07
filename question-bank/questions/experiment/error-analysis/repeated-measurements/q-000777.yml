@@ -1,0 +1,39 @@
+schema_version: 3
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.repeated-measurements
+related_pages:
+- experiment.error-analysis.repeated-measurements
+choice_order: fixed
+provenance:
+  type: original
+  note: 原创教学题，数据与情境自编，AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+id: q-000777
+objectives:
+- experiment.error-analysis.repeated-measurements.calculation
+type: numeric
+stem: 四次独立读数为 10.0、10.2、9.8、10.0 mm．求样本标准差 s，单位 mm，至少保留三位有效数字．
+answer:
+  value: 0.163299316
+  tolerance:
+    type: absolute
+    value: 0.0001
+  unit:
+    required: true
+    canonical: mm
+    accepted:
+    - mm
+solution: 平均值为 10.0 mm，残差平方和为 0.08 mm²；样本方差为 0.08/3 mm²，所以 s≈0.163299 mm．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000230
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -20,8 +20,8 @@ solution: 残差自由度 n−p 为零，不得把零残差当零测量不确定
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．残差自由度 n−p 为零，不得把零残差当零测量不确定度．
-  incorrect: 请重新检查模型、条件和计算：残差自由度 n−p 为零，不得把零残差当零测量不确定度．
+  correct: 残差自由度 n−p 为零，不得把零残差当零测量不确定度．
+  incorrect: 残差自由度 n−p 为零，不得把零残差当零测量不确定度．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

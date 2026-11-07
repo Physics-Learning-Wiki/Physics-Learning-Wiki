@@ -1,0 +1,50 @@
+schema_version: 3
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.repeated-measurements
+related_pages:
+- experiment.error-analysis.repeated-measurements
+choice_order: fixed
+provenance:
+  type: original
+  note: 原创教学题，数据与情境自编，AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+id: q-000779
+objectives:
+- experiment.error-analysis.repeated-measurements.analysis
+type: free_response
+stem: 设观测相互独立同分布，均值 μ、有限方差 σ² 均未知．推导残差平方和期望，并说明为何样本方差除以 n−1；你的推导是否表明样本标准差无偏？
+reference_answer: 将偏离总体均值的平方和分解为残差平方和与 n 倍均值偏差平方；取期望得 (n−1)σ²，故 s² 无偏，而 s 不一般无偏．
+solution: 利用 Σ(Xᵢ−μ)²=Σ(Xᵢ−X̄)²+n(X̄−μ)²，残差和为零消去交叉项．独立同方差给 Var(X̄)=σ²/n，取期望后得到 E[Σ(Xᵢ−X̄)²]=(n−1)σ²．因此
+  s²=Σ(Xᵢ−X̄)²/(n−1) 是 σ² 的无偏估计．平方根是非线性运算，不能由此断言 s 对 σ 无偏．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 8
+  placeholder: 写出恒等式、取期望及结论．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未建立平方和分解或混淆方差与标准差．
+    points: 0
+  - id: partial
+    label: 部分掌握：给出分解或自由度解释，但缺少期望计算、独立同方差条件或无偏性的限定．
+    points: 0.5
+  - id: complete
+    label: 基本掌握：说明残差和为零，写出平方和分解及两项期望，得到 n−1 并区分 s² 与 s 的无偏性．
+    points: 1
+difficulty: 3
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600

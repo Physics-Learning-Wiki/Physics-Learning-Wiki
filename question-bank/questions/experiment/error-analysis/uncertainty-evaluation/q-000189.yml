@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000189
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -14,20 +14,10 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: 历史 s 用于当前均值，怎样判断评定可靠度和自由度？
-reference_answer: 检查历史条件相容性、历史样本数/方法、当前均值次数及过程稳定．
-solution: '当前均值的除数来自当前次数，尺度自由度来自历史估计；不能把资料带来的不可靠度或漂移隐藏为零．
-
-
-  关键算式：
-
-
-  $$
-
-  u(\bar x_{\rm new})=s_{\rm hist}/\sqrt{n_{\rm new}}
-
-  $$
-
-  '
+reference_answer: 核对历史数据与当前测量的仪器、量程、环境和稳定性是否相容．若历史标准差 sₕᵢₛₜ 能代表当前单次观测，且当前 n 次独立同方差，则当前均值分量 u=sₕᵢₛₜ/√n．尺度的自由度来自历史样本和估计方法；例如历史
+  20 次独立正态观测用样本标准差时为 19，而不是当前 n−1．
+solution: 核对历史数据与当前测量的仪器、量程、环境和稳定性是否相容．若历史标准差 sₕᵢₛₜ 能代表当前单次观测，且当前 n 次独立同方差，则当前均值分量 u=sₕᵢₛₜ/√n．尺度的自由度来自历史样本和估计方法；例如历史
+  20 次独立正态观测用样本标准差时为 19，而不是当前 n−1．
 response:
   format: plain_text
   required: true
@@ -39,26 +29,26 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：给出 s/√n，但未说明历史尺度的适用条件和自由度来源．
     points: 0.5
   - id: complete
-    label: 基本掌握：检查历史条件相容性、历史样本数/方法、当前均值次数及过程稳定．
+    label: 基本掌握：能够核对历史与当前条件、尺度自由度和当前平均次数．
     points: 1
 hints:
 - 范围须配分布；标准不确定度的可靠度不是覆盖概率，先统一为输出贡献．
 feedback:
-  correct: 关键结论与题设条件相符．当前均值的除数来自当前次数，尺度自由度来自历史估计；不能把资料带来的不可靠度或漂移隐藏为零．
-  incorrect: 请重新检查模型、条件和计算：当前均值的除数来自当前次数，尺度自由度来自历史估计；不能把资料带来的不可靠度或漂移隐藏为零．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：给出 s/√n，但未说明历史尺度的适用条件和自由度来源．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex

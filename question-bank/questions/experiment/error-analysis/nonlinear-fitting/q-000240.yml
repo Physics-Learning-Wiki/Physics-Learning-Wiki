@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000240
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -20,8 +20,8 @@ solution: 还须检查目标、梯度、尺度、秩、多初值、边界和残�
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
-  incorrect: 请重新检查模型、条件和计算：还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
+  correct: 还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
+  incorrect: 还须检查目标、梯度、尺度、秩、多初值、边界和残差结构，局部停止不证明全局或模型正确．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

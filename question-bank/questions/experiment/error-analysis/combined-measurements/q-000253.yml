@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000253
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: mm
     accepted:
     - mm
-solution: '已知绝对方差时参数方差=0.020²×0.5，u=0.0141421 mm．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0141421356\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 已知独立绝对方差时，各段参数方差为 $0.020^2\times0.5\,\mathrm{mm^2}$；开平方得到标准不确定度约 $0.0141421\,\mathrm{mm}$，不再乘残差尺度．
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．已知绝对方差时参数方差=0.020²×0.5，u=0.0141421 mm．
-  incorrect: 请重新检查模型、条件和计算：已知绝对方差时参数方差=0.020²×0.5，u=0.0141421 mm．
+  correct: 已知独立绝对方差时，各段参数方差为 $0.020^2\times0.5\,\mathrm{mm^2}$；开平方得到标准不确定度约 $0.0141421\,\mathrm{mm}$，不再乘残差尺度．
+  incorrect: 已知独立绝对方差时，各段参数方差为 $0.020^2\times0.5\,\mathrm{mm^2}$；开平方得到标准不确定度约 $0.0141421\,\mathrm{mm}$，不再乘残差尺度．
 difficulty: 2
 cognitive_level: apply
 style: computational

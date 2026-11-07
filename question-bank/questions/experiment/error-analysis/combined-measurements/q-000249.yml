@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000249
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．人为重组旧读数并非新独立测量，应在协方差模型中体现而非伪重复．
   incorrect: 请重新检查模型、条件和计算：人为重组旧读数并非新独立测量，应在协方差模型中体现而非伪重复．
   choices:
-    A: 此项符合题设．人为重组旧读数并非新独立测量，应在协方差模型中体现而非伪重复．
-    B: 此项不符合题设：人为重组旧读数并非新独立测量，应在协方差模型中体现而非伪重复．
-    C: 此项不符合题设：人为重组旧读数并非新独立测量，应在协方差模型中体现而非伪重复．
+    A: 该和与原始读数完全相关，不能当新增独立信息．
+    B: 重复利用同一记录不会自动提高精度．
+    C: 相加前后单位相同，问题是相关性而非单位．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

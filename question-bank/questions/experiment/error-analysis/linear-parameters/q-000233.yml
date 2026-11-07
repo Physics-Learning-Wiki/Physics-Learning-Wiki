@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000233
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '乘√p=2，观测和模型同时缩放，使误差方差变成共同尺度．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=2
-
-  $$
-
-  '
+solution: 权为 $p$ 的残差平方项是 $pv^2=(\sqrt p\,v)^2$，因此将观测和模型同时乘 $\sqrt p=2$，而不是乘以 4．
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．乘√p=2，观测和模型同时缩放，使误差方差变成共同尺度．
-  incorrect: 请重新检查模型、条件和计算：乘√p=2，观测和模型同时缩放，使误差方差变成共同尺度．
+  correct: 权为 $p$ 的残差平方项是 $pv^2=(\sqrt p\,v)^2$，因此将观测和模型同时乘 $\sqrt p=2$，而不是乘以 4．
+  incorrect: 权为 $p$ 的残差平方项是 $pv^2=(\sqrt p\,v)^2$，因此将观测和模型同时乘 $\sqrt p=2$，而不是乘以 4．
 difficulty: 2
 cognitive_level: apply
 style: computational

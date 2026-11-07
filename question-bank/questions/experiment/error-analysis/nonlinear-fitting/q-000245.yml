@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000245
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 设计指数衰减拟合的初值与失败诊断流程．
 reference_answer: 由物理测量、图形或子方程猜初值，多组起点比较目标并检查残差与秩．
-solution: '同时看参数尺度、边界、相对更新和梯度；全在 t=0 等设计不能由增加迭代修复．
-
-
-  关键算式：
-
-
-  $$
-
-  J_{i,a}=e^{-kt_i},\quad J_{i,k}=-at_ie^{-kt_i}
-
-  $$
-
-  '
+solution: 用正电压对数图估计初值，但最终仍按给定加性误差拟合原量．用多组物理合理初值比较目标与结果，检查残差、参数尺度、雅可比秩和边界；全部在 $t=0$ 时无法识别衰减率．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：提出初值但未检查收敛、秩或误差模型
     points: 0.5
   - id: complete
-    label: 基本掌握：由物理测量、图形或子方程猜初值，多组起点比较目标并检查残差与秩．
+    label: 基本掌握：给出物理初值、多初值及残差和秩诊断，并解释对数初值的作用
     points: 1
 hints:
 - 在当前参数处求雅可比，解修正后重算目标；局部收敛不等于全局正确．
 feedback:
-  correct: 关键结论与题设条件相符．同时看参数尺度、边界、相对更新和梯度；全在 t=0 等设计不能由增加迭代修复．
-  incorrect: 请重新检查模型、条件和计算：同时看参数尺度、边界、相对更新和梯度；全在 t=0 等设计不能由增加迭代修复．
+  correct: 用正电压对数图估计初值，但最终仍按给定加性误差拟合原量．用多组物理合理初值比较目标与结果，检查残差、参数尺度、雅可比秩和边界；全部在 $t=0$ 时无法识别衰减率．
+  incorrect: 用正电压对数图估计初值，但最终仍按给定加性误差拟合原量．用多组物理合理初值比较目标与结果，检查残差、参数尺度、雅可比秩和边界；全部在 $t=0$ 时无法识别衰减率．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

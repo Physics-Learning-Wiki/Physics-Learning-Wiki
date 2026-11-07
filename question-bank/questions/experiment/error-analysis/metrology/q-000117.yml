@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000117
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -27,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 将重复性、复现性和稳定性都解释为同一条件下的散布．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 识别其中两种性质，但遗漏条件变化、时间变化或具体例子．
     points: 0.5
   - id: complete
-    label: 基本掌握：同条件短期分散；改变规定条件后的分散；计量特性随时间变化．
+    label: 分别以同人短时称量、换实验室比较和跨时段零点变化说明重复性、复现性与稳定性．
     points: 1
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．同操作者短时称量检验重复性；换实验室比较涉及复现性；一年零点变化涉及稳定性．三者信息不可互相替代．
-  incorrect: 请重新检查模型、条件和计算：同操作者短时称量检验重复性；换实验室比较涉及复现性；一年零点变化涉及稳定性．三者信息不可互相替代．
+  correct: 分别以同人短时称量、换实验室比较和跨时段零点变化说明重复性、复现性与稳定性．
+  incorrect: 识别其中两种性质，但遗漏条件变化、时间变化或具体例子．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

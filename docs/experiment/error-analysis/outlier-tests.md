@@ -23,35 +23,35 @@ title: 异常值检验与处理
 
 本页为进阶专题；首次学习可先完成导读中的基础路线，再回到这里补齐推导与应用．
 
-## 本页学习目标
-
-<span id="course-concepts"></span>
-
-异常值检验与处理：辨认概念与适用条件．
-
-<span id="course-calculation"></span>
-
-异常值检验与处理：完成定量计算并检查单位．
-
-<span id="course-analysis"></span>
-
-异常值检验与处理：说明方法、结果与限制．
-
 ## 远离平均值就应删除吗
 
 学习目标：选择与候选产生方式一致的检验，计算统计量并解释证据．先读 [系统效应与异常数据](systematic-errors-outliers.md)．以下检验依赖同一稳定总体、独立观测等条件，统计拒绝不说明异常的物理原因．
+
+<span id="course-concepts"></span>
 
 ## 三倍标准差的角色
 
 已知正态总体均值与标准差时，单个观测落到均值正负三个标准差以外的概率约为 0.0027．独立的 $n$ 个点至少一次超出的概率为 $1-(1-0.0027)^n$．若均值和标准差也由同组小样本估计，这一概率不再直接适用．例如读数 10.8 相对已知均值 10.0、标准差 0.2 的标准化偏差为 4，只能标记为可疑并调查．
 
+<span id="course-calculation"></span>
+
 ## Romanovsky 思路与固定候选预测检验
 
-传统讲义先暂移可疑点，再用其余点估计中心和分散．必须分清候选是否在看到全体数据前由独立日志指定．对于这样的固定候选 $x_j$，其余 $m=n-1$ 个独立正态观测给出 $\bar x_{-j}$ 和 $s_{-j}$，则
+一种思路是先暂移可疑点，再用其余点估计中心和分散．必须分清候选是否在看到全体数据前由独立日志指定．对于这样的固定候选 $x_j$，其余 $m=n-1$ 个独立正态观测给出 $\bar x_{-j}$ 和 $s_{-j}$，则
 
 $$
 T=\frac{x_j-\bar x_{-j}}{s_{-j}\sqrt{1+1/m}}\sim t_{m-1}.
 $$
+
+根号中的额外一项来自候选读数自身的波动．设其余 $m$ 个观测与预先指定的候选独立，且单次观测方差都是 $\sigma^2$，那么
+
+$$
+\operatorname{Var}(X_j-\bar X_{-j})
+=\sigma^2+\frac{\sigma^2}{m}
+=\sigma^2\left(1+\frac1m\right).
+$$
+
+候选是一项新观测，因此除了其余样本均值的方差，还要加上候选本身的方差．这与只估计总体均值时使用 $s/\sqrt m$ 不同．用其余 $m$ 个观测求样本标准差 $s_{-j}$，正态模型下它的自由度为 $m-1=n-2$，便得到上式中的 t 统计量．
 
 双侧水平 $\alpha$ 下比较 $|T|$ 与 $t_{1-\alpha/2,n-2}$．若写成 $|x_j-\bar x_{-j}|>Ks_{-j}$，则 $K=t_{1-\alpha/2,n-2}\sqrt{n/(n-1)}$．这里采用明确的固定候选预测检验，不宣称所有同名传统系数表都等价．
 
@@ -80,11 +80,20 @@ $$
 
 近似正态、单个端点异常、极差非零时才使用相应表．NBS Handbook 91 推荐 $r_{10}$ 用于 3–7 个观测，较大样本采用其他间隔比；这不是所有 Dixon 变体的共同表．对于 $n=5$ 双端搜索、5% 的 $r_{10}$ 教学检验，临界值约 0.710．数据 1.00、1.02、1.03、1.04、1.30 给 $Q_{\rm high}=0.26/0.30=0.866667$，超过该阈值．不得换样本数或尾部约定后沿用 0.710．
 
+<span id="course-analysis"></span>
+
 ## 决策与记录
 
 总体漂移、分段或重尾时先改模型．记录原始值、候选来源、统计量、分布假设、阈值、显著性水平、处理理由，以及包含/不包含候选时的敏感性比较．确认失效可标记排除但保留原始数据；一个 p 值不能证明误操作．下一步到 [不确定度评定](uncertainty-evaluation.md)．
 
-依据：[NIST 单点预测](https://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/predlimi.htm)、[Grubbs](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h1.htm)、[多异常 ESD](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm)；Dixon 表见 [NBS Handbook 91](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook91.pdf)，第 391–392 个 PDF 页面．Romanovsky 名称对照本地讲义 03，本页明确说明所用预测分布．
+依据：[NIST 单点预测](https://www.itl.nist.gov/div898/software/dataplot/refman1/auxillar/predlimi.htm)、[Grubbs](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h1.htm)、[多异常 ESD](https://www.itl.nist.gov/div898/handbook/eda/section3/eda35h3.htm)；Dixon 表见 [NBS Handbook 91](https://nvlpubs.nist.gov/nistpubs/Legacy/hb/nbshandbook91.pdf)，第 391–392 个 PDF 页面．本页明确说明所用预测分布．
+
+## 自己试一试
+
+已知稳定正态总体的均值为 10.0、标准差为 0.2，某次读数为 10.8．它离均值几个标准差？能否仅凭这个数字断言操作有误？
+
+??? note "答案"
+    标准化偏差为 $(10.8-10.0)/0.2=4$．它提示应调查，但不能判定具体原因；还要核对记录、仪器和总体模型．这里的均值与标准差是已知的，不是用同一小样本估出来的．
 
 ## 阅读连接
 

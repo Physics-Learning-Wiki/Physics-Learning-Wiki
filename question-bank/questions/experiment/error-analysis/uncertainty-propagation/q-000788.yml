@@ -1,0 +1,44 @@
+schema_version: 3
+id: q-000788
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-propagation
+objectives:
+- experiment.error-analysis.uncertainty-propagation.calculation
+related_pages:
+- experiment.error-analysis.uncertainty-propagation
+choice_order: fixed
+type: numeric
+stem: 弓高弦长模型为 D=s²/(4h)+h．在 s=500 mm、h=50 mm 处，弦长与弓高的有符号偏差分别是 +1 mm 和 −0.1 mm．求直径的一阶有符号偏差，单位 mm（结果至少保留三位有效数字）．
+answer:
+  value: 7.4
+  tolerance:
+    type: absolute
+    value: 0.005001
+  unit:
+    required: true
+    canonical: mm
+    accepted:
+    - mm
+solution: 灵敏系数 cₛ=s/(2h)=5，cₕ=1−s²/(4h²)=−24．因此 eᴅ≈5×1+(−24)×(−0.1)=+7.40 mm．偏差为正意味着未经修正的直径偏大．
+hints:
+- 分别对 s 和 h 求偏导，保留各项符号．
+feedback:
+  correct: 弓高的偏差和灵敏系数都为负，贡献为正．
+  incorrect: 核对高度灵敏系数 1−s²/(4h²) 的符号，且不要将有符号偏差按平方和相加．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: original
+  note: 原创改写的教学练习；使用 AI 辅助编写，模型与数值用于展示一阶误差传播．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

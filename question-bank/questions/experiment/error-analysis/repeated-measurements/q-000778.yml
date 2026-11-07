@@ -1,0 +1,40 @@
+schema_version: 3
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.repeated-measurements
+related_pages:
+- experiment.error-analysis.repeated-measurements
+choice_order: fixed
+provenance:
+  type: original
+  note: 原创教学题，数据与情境自编，AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0
+id: q-000778
+objectives:
+- experiment.error-analysis.repeated-measurements.calculation
+type: numeric
+stem: 四次独立正态读数为 10.0、10.2、9.8、10.0 mm，总体标准差未知．给定双侧 95% 临界值 t(0.975,3)=3.18245，求均值置信区间的半宽，单位 mm，至少保留三位有效数字．
+answer:
+  value: 0.25984565
+  tolerance:
+    type: absolute
+    value: 0.0002
+  unit:
+    required: true
+    canonical: mm
+    accepted:
+    - mm
+solution: 平均值 10.0 mm，残差平方和 0.08 mm²，s=√(0.08/3) mm，均值标准差估计为 s/2≈0.0816497 mm；半宽 3.18245×0.0816497≈0.259846
+  mm．该区间只含所建模的重复性．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240

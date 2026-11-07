@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000231
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -23,24 +23,12 @@ answer:
     required: false
     canonical: ''
     accepted: []
-solution: '8−3=5，要求设计矩阵满列秩．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=5
-
-  $$
-
-  '
+solution: 设计矩阵满列秩，估计三个参数后剩余的残差自由度为 $n-p=8-3=5$．
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．8−3=5，要求设计矩阵满列秩．
-  incorrect: 请重新检查模型、条件和计算：8−3=5，要求设计矩阵满列秩．
+  correct: 设计矩阵满列秩，估计三个参数后剩余的残差自由度为 $n-p=8-3=5$．
+  incorrect: 设计矩阵满列秩，估计三个参数后剩余的残差自由度为 $n-p=8-3=5$．
 difficulty: 2
 cognitive_level: apply
 style: computational

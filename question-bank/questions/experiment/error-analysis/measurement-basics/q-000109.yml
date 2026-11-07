@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000109
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -13,21 +13,9 @@ related_pages:
 - experiment.error-analysis.measurement-basics
 choice_order: fixed
 type: free_response
-stem: 建立非标准温度下铜棒长度的测量说明，至少交代什么？另说明单摆有限摆幅、空气阻尼和悬线质量为何属于模型检查．
-reference_answer: 铜棒须交代端点、温度、受力、参考条件和修正；单摆须核查振幅、阻尼和质量分布模型．
-solution: '定义不清可能把真实变化当误差．单摆有限振幅以弧度展开，首项相对周期修正为 θ0²/16；阻尼与悬线质量需按实际动力学建模，不能把修正本身当标准差，也不能用不满足条件的通用补丁．
-
-
-  关键算式：
-
-
-  $$
-
-  T/T_0\approx1+\theta_0^2/16
-
-  $$
-
-  '
+stem: 定义非标准温度下铜棒长度的测量对象时，应交代哪些条件？说明为何模型中需要温度修正．
+reference_answer: 交代温度、端点、受力与目标温度；长度会随温度变化，须在膨胀模型下修正并评定输入的不确定度．
+solution: 明确铜棒两端、温度和机械载荷．非目标温度下的长度不同于目标温度下的长度；应给出热膨胀模型及温度、膨胀系数的不确定度，再判断近似是否适用．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 未定义被测量，或把温度引起的真实长度变化直接当作读数误差．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 列出温度或端点，但未说明目标温度、热膨胀修正及输入不确定度．
     points: 0.5
   - id: complete
-    label: 基本掌握：铜棒须交代端点、温度、受力、参考条件和修正；单摆须核查振幅、阻尼和质量分布模型．
+    label: 明确端点、温度和载荷，说明目标温度及热膨胀模型，并指出温度与膨胀系数的不确定度．
     points: 1
 hints:
-- 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
+- 想想温度和受力变化时，铜棒长度是否仍是同一个被测量．
 feedback:
-  correct: 请对照关键条件与步骤自评．定义不清可能把真实变化当误差．单摆有限振幅以弧度展开，首项相对周期修正为 θ0²/16；阻尼与悬线质量需按实际动力学建模，不能把修正本身当标准差，也不能用不满足条件的通用补丁．
-  incorrect: 请先复查模型与条件．定义不清可能把真实变化当误差．单摆有限振幅以弧度展开，首项相对周期修正为 θ0²/16；阻尼与悬线质量需按实际动力学建模，不能把修正本身当标准差，也不能用不满足条件的通用补丁．
+  correct: 明确端点、温度和载荷，说明目标温度及热膨胀模型，并指出温度与膨胀系数的不确定度．
+  incorrect: 列出温度或端点，但未说明目标温度、热膨胀修正及输入不确定度．
 difficulty: 3
 cognitive_level: analyze
 style: modeling

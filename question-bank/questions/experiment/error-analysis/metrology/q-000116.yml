@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000116
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -13,21 +13,9 @@ related_pages:
 - experiment.error-analysis.metrology
 choice_order: fixed
 type: free_response
-stem: 同等级的 0–3 V 与 0–10 V 表测 2 V 时，如何选量程？还须检查什么？
+stem: 两块表的等级规格均为满量程的 s%，量程分别为 0–3 V 与 0–10 V，用来测 2 V 时如何选量程？还须检查什么？
 reference_answer: 不超量程且适用时，满量程允差规格下 0–3 V 表给较小限值．
-solution: '分别计算限值，同时检查输入阻抗、过载、动态响应、环境和具体等级定义；数字表不一定遵循满量程公式．
-
-
-  关键算式：
-
-
-  $$
-
-  e_{\max}=x_Ns/100
-
-  $$
-
-  '
+solution: 按题设满量程规格，0–3 V 表的允许误差半宽为 3s/100 V，0–10 V 表为 10s/100 V．测 2 V 时前者限值较小，还要检查过载、输入阻抗、动态响应、环境与规格适用性．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 直接按读数百分比计算满量程允差，或选用会过载的量程．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 根据满量程比较出较小量程更有利，但遗漏适用条件或仪器负载．
     points: 0.5
   - id: complete
-    label: 基本掌握：不超量程且适用时，满量程允差规格下 0–3 V 表给较小限值．
+    label: 以共同等级 s% 分别计算半宽 3s/100 V 与 10s/100 V，比较 2 V 时的量程，并检查负载、过载、响应及规格定义．
     points: 1
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．分别计算限值，同时检查输入阻抗、过载、动态响应、环境和具体等级定义；数字表不一定遵循满量程公式．
-  incorrect: 请重新检查模型、条件和计算：分别计算限值，同时检查输入阻抗、过载、动态响应、环境和具体等级定义；数字表不一定遵循满量程公式．
+  correct: 以共同等级 s% 分别计算半宽 3s/100 V 与 10s/100 V，比较 2 V 时的量程，并检查负载、过载、响应及规格定义．
+  incorrect: 根据满量程比较出较小量程更有利，但遗漏适用条件或仪器负载．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

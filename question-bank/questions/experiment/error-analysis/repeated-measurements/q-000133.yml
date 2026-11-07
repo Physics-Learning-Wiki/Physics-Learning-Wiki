@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000133
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -18,10 +18,10 @@ answer:
   value: false
 solution: 只说明显示值未表现分散，分辨率、校准等仍可能给非零贡献．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 考虑显示分辨率遮住的小变化和共同校准．
 feedback:
-  correct: 关键结论与题设条件相符．只说明显示值未表现分散，分辨率、校准等仍可能给非零贡献．
-  incorrect: 请重新检查模型、条件和计算：只说明显示值未表现分散，分辨率、校准等仍可能给非零贡献．
+  correct: 只说明显示值未表现分散，分辨率、校准等仍可能给非零贡献．
+  incorrect: 相同显示值仍可能掩盖分辨率以下的变化及共同校准影响．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

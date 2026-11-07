@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000132
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -13,7 +13,7 @@ related_pages:
 - experiment.error-analysis.repeated-measurements
 choice_order: shuffle
 type: multiple_choice
-stem: 哪些信息支持使用 s/√n 评定均值的重复性分量？
+stem: 哪些信息支持使用 s/√n 评定均值的重复性分量？假设各次观测方差相同．
 choices:
 - id: A
   content: 观测独立且条件稳定
@@ -29,15 +29,15 @@ answer:
   - B
 solution: 均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 分别检查所求量、各观测的方差和相关性．
 feedback:
-  correct: 关键结论与题设条件相符．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
-  incorrect: 请重新检查模型、条件和计算：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+  correct: 均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+  incorrect: 分别判断独立性、稳定性、所求量和共同校准的影响．
   choices:
-    A: 此项符合题设．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
-    B: 此项符合题设．均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
-    C: 此项不符合题设：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
-    D: 此项不符合题设：均值、独立与稳定是相应模型条件；漂移需另建模，共同校准不随次数降低．
+    A: 独立且稳定支持方差相加；还需相同单次方差或适合的模型．
+    B: s/√n 描述均值的重复性尺度；s 本身描述单次观测散布．
+    C: 线性漂移破坏共同稳定均值模型，应先调查或建模．
+    D: 共同校准项在每次读数中相同，平均后仍保留．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000177
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -14,8 +14,8 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: 日志显示温度突变，某读数离群，应先删点还是改模型？
-reference_answer: 先调查条件变化，可能分段或重测，并保存原始数据．
-solution: 统计离群可能是真实对象变化；确认失效才标记排除，原因不明报告敏感性和限制，不反复删除到满意为止．
+reference_answer: 先核对温度日志、读数时刻与仪器状态．如果温度确实改变了被测对象或测量模型，可按条件分段分析或重新测量；如果有独立证据证明该次测量失效，可标记排除并保留原始记录．仅凭离群和温度变化不能直接认定误操作，原因不明时比较包含与不包含该值的结果．
+solution: 先核对温度日志、读数时刻与仪器状态．如果温度确实改变了被测对象或测量模型，可按条件分段分析或重新测量；如果有独立证据证明该次测量失效，可标记排除并保留原始记录．仅凭离群和温度变化不能直接认定误操作，原因不明时比较包含与不包含该值的结果．
 response:
   format: plain_text
   required: true
@@ -27,26 +27,26 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：提出分段或重测，但未说明原始记录和排除依据．
     points: 0.5
   - id: complete
-    label: 基本掌握：先调查条件变化，可能分段或重测，并保存原始数据．
+    label: 基本掌握：能够结合温度记录评估分段或重测，并保留原始值与处理依据．
     points: 1
 hints:
 - 先说明候选是否预先指定，再核对分母尺度、自由度和单双端阈值．
 feedback:
-  correct: 关键结论与题设条件相符．统计离群可能是真实对象变化；确认失效才标记排除，原因不明报告敏感性和限制，不反复删除到满意为止．
-  incorrect: 请重新检查模型、条件和计算：统计离群可能是真实对象变化；确认失效才标记排除，原因不明报告敏感性和限制，不反复删除到满意为止．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：提出分段或重测，但未说明原始记录和排除依据．
 difficulty: 3
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex

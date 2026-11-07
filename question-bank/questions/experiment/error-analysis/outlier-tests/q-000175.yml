@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000175
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -14,20 +14,8 @@ related_pages:
 choice_order: fixed
 type: free_response
 stem: n=6 的双侧 5% Grubbs 检验，阈值 1.88715，若 G=2.00 应怎样解释？
-reference_answer: 拒绝单一正态总体下无异常的假设，并调查候选，而非直接证明读数错误．
-solution: '说明模型条件、单异常备择与全样本选择，保留原始数据，报告包含/不含候选的敏感性；若多疑点则程序不匹配．
-
-
-  关键算式：
-
-
-  $$
-
-  G=2.00\gt G_{\rm crit}=1.88715
-
-  $$
-
-  '
+reference_answer: G=2.00 大于给定临界值 1.88715，所以在题设双侧 5% 单异常检验下拒绝无异常的正态总体模型．该结论依赖观测独立、近似正态和单异常备择；它提示调查候选，并不证明误操作，也应保留原始记录．
+solution: G=2.00 大于给定临界值 1.88715，所以在题设双侧 5% 单异常检验下拒绝无异常的正态总体模型．该结论依赖观测独立、近似正态和单异常备择；它提示调查候选，并不证明误操作，也应保留原始记录．
 response:
   format: plain_text
   required: true
@@ -39,26 +27,26 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立本题所需模型或主要结论错误
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：比较了统计量和阈值，但未说明模型条件或统计拒绝的含义．
     points: 0.5
   - id: complete
-    label: 基本掌握：拒绝单一正态总体下无异常的假设，并调查候选，而非直接证明读数错误．
+    label: 基本掌握：能够比较统计量和阈值，说明单异常正态模型及调查而非自动判错．
     points: 1
 hints:
 - 先说明候选是否预先指定，再核对分母尺度、自由度和单双端阈值．
 feedback:
-  correct: 关键结论与题设条件相符．说明模型条件、单异常备择与全样本选择，保留原始数据，报告包含/不含候选的敏感性；若多疑点则程序不匹配．
-  incorrect: 请重新检查模型、条件和计算：说明模型条件、单异常备择与全样本选择，保留原始数据，报告包含/不含候选的敏感性；若多疑点则程序不匹配．
+  correct: 对照参考解核对推理和适用条件．
+  incorrect: 重点检查：比较了统计量和阈值，但未说明模型条件或统计拒绝的含义．
 difficulty: 2
 cognitive_level: analyze
 style: modeling
 estimated_seconds: 600
 provenance:
   type: original
-  note: 独立编写的误差分析课程训练题；学习范围参考本仓库误差分析讲义及页面所列权威资料，数据与情境自编．
+  note: 原创草稿，经 AI 辅助修订题目反馈与自评标准；数据和情境为自编．
   ai_assisted: true
 authors:
 - name: Codex

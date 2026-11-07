@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000237
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -15,19 +15,8 @@ choice_order: fixed
 type: free_response
 stem: x=−1、0、1，y=1.1、1.9、3.0，求普通直线参数与未知尺度协方差．
 reference_answer: a=2、b=0.95；残差 0.05、−0.10、0.05，协方差对角 0.005、0.0075．
-solution: 'AᵀA=diag(3,2)，SSE=0.015、自由度1；对角除以相应3和2，中心化设计使本例交叉项为零．
-
-
-  关键算式：
-
-
-  $$
-
-  \hat a=2,\quad\hat b=0.95,\quad\operatorname{Cov}(\hat a,\hat b)=0
-
-  $$
-
-  '
+solution: $A^Ty=(6,1.9)^T$、$A^TA=\operatorname{diag}(3,2)$，故 $a=2$、$b=0.95$．残差为 $(0.05,-0.10,0.05)$，平方和 0.015 除以自由度 1 得方差尺度
+  0.015；乘逆正规矩阵得对角 0.005、0.0075，交叉项为零．
 response:
   format: plain_text
   required: true
@@ -39,19 +28,21 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：得到拟合参数，但遗漏残差方差或参数协方差
     points: 0.5
   - id: complete
-    label: 基本掌握：a=2、b=0.95；残差 0.05、−0.10、0.05，协方差对角 0.005、0.0075．
+    label: 基本掌握：计算参数、残差、自由度和完整协方差，并指出交叉项为零
     points: 1
 hints:
 - 先列设计矩阵并查秩；未知尺度使用 n−p，自变量角色要清楚．
 feedback:
-  correct: 关键结论与题设条件相符．AᵀA=diag(3,2)，SSE=0.015、自由度1；对角除以相应3和2，中心化设计使本例交叉项为零．
-  incorrect: 请重新检查模型、条件和计算：AᵀA=diag(3,2)，SSE=0.015、自由度1；对角除以相应3和2，中心化设计使本例交叉项为零．
+  correct: $A^Ty=(6,1.9)^T$、$A^TA=\operatorname{diag}(3,2)$，故 $a=2$、$b=0.95$．残差为 $(0.05,-0.10,0.05)$，平方和 0.015 除以自由度 1 得方差尺度
+    0.015；乘逆正规矩阵得对角 0.005、0.0075，交叉项为零．
+  incorrect: $A^Ty=(6,1.9)^T$、$A^TA=\operatorname{diag}(3,2)$，故 $a=2$、$b=0.95$．残差为 $(0.05,-0.10,0.05)$，平方和 0.015 除以自由度 1 得方差尺度
+    0.015；乘逆正规矩阵得对角 0.005、0.0075，交叉项为零．
 difficulty: 3
 cognitive_level: analyze
 style: modeling

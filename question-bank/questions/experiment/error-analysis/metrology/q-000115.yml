@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000115
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: g
     accepted:
     - g
-solution: '标准不确定度为 0.0004/2=0.0002 g，修正量与它不同．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0002\,\mathrm{g}
-
-  $$
-
-  '
+solution: 标准不确定度为 0.0004/2=0.0002 g，修正量与它不同．
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．标准不确定度为 0.0004/2=0.0002 g，修正量与它不同．
-  incorrect: 请重新检查模型、条件和计算：标准不确定度为 0.0004/2=0.0002 g，修正量与它不同．
+  correct: 标准不确定度为 0.0004/2=0.0002 g，修正量与它不同．
+  incorrect: 用扩展不确定度除以给定包含因子 2，不要使用修正量作为不确定度．
 difficulty: 2
 cognitive_level: apply
 style: computational

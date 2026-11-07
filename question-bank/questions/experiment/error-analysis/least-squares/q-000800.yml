@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000800
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.least-squares
+objectives:
+- experiment.error-analysis.least-squares.analysis
+related_pages:
+- experiment.error-analysis.least-squares
+choice_order: fixed
+type: free_response
+stem: 在三个不同固定横坐标 x=0、1、2 处各独立观测两次，数据依次为 (0.9,1.1)、(2.4,2.6)、(4.9,5.1)．设误差独立正态同方差，计算直线模型的纯误差平方和、失拟平方和和失拟 F 值，给出两个自由度．
+reference_answer: 纯误差 0.06，失拟 1/3，F=16.67，自由度 (1,3)．
+solution: 各组均值为 1、2.5、5，直线拟合值为 5/6、17/6、29/6．组内六个偏差各为 ±0.1，纯误差为 0.06，组均值偏离拟合线的加权平方和为 1/3．失拟与纯误差自由度分别为 3−2=1、6−3=3，故 F=(1/3)/(0.06/3)=16.67．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：无法区分组内纯误差与各组均值的失拟
+    points: 0
+  - id: partial
+    label: 部分掌握：组均值或纯误差算对，但漏掉每组次数的权重或误用自由度
+    points: 0.5
+  - id: complete
+    label: 基本掌握：分解出纯误差 0.06 与失拟 1/3，给出自由度 (1,3) 和 F=16.67，并解释大值提示失拟而非证明原因
+    points: 1
+hints:
+- 先列出题设模型和自由度，再逐项计算并解释结果．
+feedback:
+  correct: 各组均值为 1、2.5、5，直线拟合值为 5/6、17/6、29/6．组内六个偏差各为 ±0.1，纯误差为 0.06，组均值偏离拟合线的加权平方和为 1/3．失拟与纯误差自由度分别为 3−2=1、6−3=3，故 F=(1/3)/(0.06/3)=16.67．
+  incorrect: 各组均值为 1、2.5、5，直线拟合值为 5/6、17/6、29/6．组内六个偏差各为 ±0.1，纯误差为 0.06，组均值偏离拟合线的加权平方和为 1/3．失拟与纯误差自由度分别为 3−2=1、6−3=3，故 F=(1/3)/(0.06/3)=16.67．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 数据与题目为原创教学练习，由 AI 辅助编写．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000252
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: mm
     accepted:
     - mm
-solution: 's0=√(SSE/3)=0.0147196 mm，不能直接用 SSE/3 当标准差．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.0147196014\,\mathrm{mm}
-
-  $$
-
-  '
+solution: 单位权方差估计是 $s_0^2=0.000650/3\,\mathrm{mm^2}$，开平方得 $s_0\approx0.0147196\,\mathrm{mm}$．
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．s0=√(SSE/3)=0.0147196 mm，不能直接用 SSE/3 当标准差．
-  incorrect: 请重新检查模型、条件和计算：s0=√(SSE/3)=0.0147196 mm，不能直接用 SSE/3 当标准差．
+  correct: 单位权方差估计是 $s_0^2=0.000650/3\,\mathrm{mm^2}$，开平方得 $s_0\approx0.0147196\,\mathrm{mm}$．
+  incorrect: 单位权方差估计是 $s_0^2=0.000650/3\,\mathrm{mm^2}$，开平方得 $s_0\approx0.0147196\,\mathrm{mm}$．
 difficulty: 2
 cognitive_level: apply
 style: computational

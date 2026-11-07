@@ -1,7 +1,7 @@
 schema_version: 1
 id: experiment.error-analysis.repeated-measurements
 title: 重复测量与统计描述：专题习题
-description: 12 道分层交互练习，覆盖概念、计算和推导判断；自由作答题依据完整解析自评．
+description: 15 道草稿练习，覆盖重复测量的数值计算、置信区间和推导自评．
 status: draft
 tags:
 - 误差分析与数据处理
@@ -22,8 +22,11 @@ selection:
   - q-000139
   - q-000140
   - q-000141
+  - q-000777
+  - q-000778
+  - q-000779
   order: fixed
-version: 1
+version: 2
 authors:
 - name: Codex
   kind: ai

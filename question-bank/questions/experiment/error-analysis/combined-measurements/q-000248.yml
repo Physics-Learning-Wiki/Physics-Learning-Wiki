@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000248
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．设计矩阵行是该观测对各参数的线性系数，总长包含两项各一次．
   incorrect: 请重新检查模型、条件和计算：设计矩阵行是该观测对各参数的线性系数，总长包含两项各一次．
   choices:
-    A: 此项符合题设．设计矩阵行是该观测对各参数的线性系数，总长包含两项各一次．
-    B: 此项不符合题设：设计矩阵行是该观测对各参数的线性系数，总长包含两项各一次．
-    C: 此项不符合题设：设计矩阵行是该观测对各参数的线性系数，总长包含两项各一次．
+    A: 总长为 a+b，两个参数的系数都是 1．
+    B: 此行只对应 a，不包含 b．
+    C: 零行表示观测不依赖任何参数，不是总长．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

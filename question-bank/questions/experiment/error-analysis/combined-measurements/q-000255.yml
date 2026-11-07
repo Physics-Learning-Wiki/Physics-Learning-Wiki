@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000255
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -15,19 +15,7 @@ choice_order: fixed
 type: free_response
 stem: 正文六个读数为 10.02、19.99、30.01、30.04、49.98、60.03 mm，给出参数与残差校核．
 reference_answer: 参数 (10.035,19.9925,30.000) mm，残差 (−.015,−.0025,.010,.0125,−.0125,.0025) mm．
-solution: '校核 Aᵀv=0；此模型没有全1截距列，因此普通残差和不必为零，不能套直线截距模型性质．
-
-
-  关键算式：
-
-
-  $$
-
-  A^T\boldsymbol v=0
-
-  $$
-
-  '
+solution: 将六个残差平方和对 $a,b,c$ 分别求导，得到 $3a+2b+c=100.09$、$2a+4b+2c=160.04$、$a+2b+3c=140.02$，解得 $(10.035,19.9925,30.000)$ mm．代回得到题解所列六个残差，并检验每列对应的残差加和为零．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 尚未掌握：未建立与题意对应的模型或方法
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 部分掌握：列出方程或部分结果，但未校核全部残差
     points: 0.5
   - id: complete
-    label: 基本掌握：参数 (10.035,19.9925,30.000) mm，残差 (−.015,−.0025,.010,.0125,−.0125,.0025) mm．
+    label: 基本掌握：写出正规方程、三个参数和六个残差，并检查 Aᵀv=0
     points: 1
 hints:
 - 每行对应一个真实独立观测，求 Aᵀv 并保留参数非对角协方差．
 feedback:
-  correct: 关键结论与题设条件相符．校核 Aᵀv=0；此模型没有全1截距列，因此普通残差和不必为零，不能套直线截距模型性质．
-  incorrect: 请重新检查模型、条件和计算：校核 Aᵀv=0；此模型没有全1截距列，因此普通残差和不必为零，不能套直线截距模型性质．
+  correct: 将六个残差平方和对 $a,b,c$ 分别求导，得到 $3a+2b+c=100.09$、$2a+4b+2c=160.04$、$a+2b+3c=140.02$，解得 $(10.035,19.9925,30.000)$ mm．代回得到题解所列六个残差，并检验每列对应的残差加和为零．
+  incorrect: 将六个残差平方和对 $a,b,c$ 分别求导，得到 $3a+2b+c=100.09$、$2a+4b+2c=160.04$、$a+2b+3c=140.02$，解得 $(10.035,19.9925,30.000)$ mm．代回得到题解所列六个残差，并检验每列对应的残差加和为零．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

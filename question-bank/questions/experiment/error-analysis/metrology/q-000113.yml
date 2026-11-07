@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000113
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -24,24 +24,12 @@ answer:
     canonical: V
     accepted:
     - V
-solution: '20×0.5%=0.10 V，是允差界限而非标准不确定度．
-
-
-  关键算式：
-
-
-  $$
-
-  \text{计算结果}=0.1\,\mathrm{V}
-
-  $$
-
-  '
+solution: 20×0.5%=0.10 V，是允差界限而非标准不确定度．
 hints:
 - 先核对引用量、证书修正和包含因子，区分仪器状态与结果溯源．
 feedback:
-  correct: 关键结论与题设条件相符．20×0.5%=0.10 V，是允差界限而非标准不确定度．
-  incorrect: 请重新检查模型、条件和计算：20×0.5%=0.10 V，是允差界限而非标准不确定度．
+  correct: 20×0.5%=0.10 V，是允差界限而非标准不确定度．
+  incorrect: 将 0.5% 乘以 20 V 满量程，并注意百分数换算．
 difficulty: 2
 cognitive_level: apply
 style: computational

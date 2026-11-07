@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000216
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -18,7 +18,7 @@ choices:
 - id: A
   content: 横坐标可视为已知且 Sxx>0
 - id: B
-  content: 独立同方差零均值误差和充分模型
+  content: 独立同方差零均值误差、充分模型且 n>2
 - id: C
   content: 只有两个点也可估残差方差
 - id: D
@@ -34,10 +34,10 @@ feedback:
   correct: 关键结论与题设条件相符．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
   incorrect: 请重新检查模型、条件和计算：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
   choices:
-    A: 此项符合题设．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
-    B: 此项符合题设．两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
-    C: 此项不符合题设：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
-    D: 此项不符合题设：两个参数需正残差自由度，R² 不能替代残差结构和物理条件检查．
+    A: 横坐标视为已知且不同，才能确定唯一斜率．
+    B: 独立同方差与零均值使残差方差可估共同方差；还需正自由度．
+    C: 两点拟合两个参数，残差自由度为零．
+    D: 高 R² 不能排除弯曲和系统偏差．
 difficulty: 1
 cognitive_level: understand
 style: conceptual

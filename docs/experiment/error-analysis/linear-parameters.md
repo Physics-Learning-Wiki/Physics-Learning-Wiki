@@ -23,23 +23,11 @@ title: 一般线性参数估计
 
 本页为进阶专题；首次学习可先完成导读中的基础路线，再回到这里补齐推导与应用．
 
-## 本页学习目标
-
-<span id="course-concepts"></span>
-
-一般线性参数估计：辨认概念与适用条件．
-
-<span id="course-calculation"></span>
-
-一般线性参数估计：完成定量计算并检查单位．
-
-<span id="course-analysis"></span>
-
-一般线性参数估计：说明方法、结果与限制．
-
 ## 直线只是两个参数的特例
 
 学习目标：将多观测、多参数问题写成矩阵，检查可辨识性，选择正确的方差尺度，并报告参数间相关性．需会矩阵乘法与线性方程；先读 [直线拟合](least-squares.md)．「线性」指对待估参数线性，多项式的系数仍是线性参数．
+
+<span id="course-concepts"></span>
 
 ## 观测方程与设计矩阵
 
@@ -49,7 +37,7 @@ title: 一般线性参数估计
 
 ## 正规方程和满列秩
 
-使 $S=\boldsymbol v^T\boldsymbol v$ 最小，对参数求导得
+使 $S=\boldsymbol v^T\boldsymbol v$ 最小．对第 $j$ 个参数求偏导，每个残差的导数是 $-A_{ij}$，于是 $\partial S/\partial\theta_j=-2\sum_i A_{ij}v_i$．把所有偏导置零并合并，得到
 
 $$
 A^T\boldsymbol v=0,\qquad
@@ -60,7 +48,11 @@ $$
 
 在固定 $A$、$E(\boldsymbol\epsilon)=0$ 条件下，令 $H=(A^TA)^{-1}A^T$，有 $HA=I$，所以 $E(\hat{\boldsymbol\theta})=\boldsymbol\theta$．这是估计无偏，不代表某一组估计恰为真值．
 
+<span id="course-analysis"></span>
+
 ## 加权与一般协方差
+
+先看一个参数：三次测得 $l=(1.1,1.9,3.0)$，假定它们都测量同一常量 $c$，则最小化 $(1.1-c)^2+(1.9-c)^2+(3.0-c)^2$ 给出 $3c=6$，所以 $c=2$．增加待估参数时，矩阵只是把这样的标量正规方程一起记下．
 
 已知观测协方差 $\Sigma$ 正定时，最小化 $\boldsymbol v^T\Sigma^{-1}\boldsymbol v$，得
 
@@ -68,6 +60,8 @@ $$
 \hat{\boldsymbol\theta}=(A^T\Sigma^{-1}A)^{-1}A^T\Sigma^{-1}\boldsymbol l,\qquad
 \operatorname{Cov}(\hat{\boldsymbol\theta})=(A^T\Sigma^{-1}A)^{-1}.
 $$
+
+令 $H=(A^T\Sigma^{-1}A)^{-1}A^T\Sigma^{-1}$，估计误差为 $H\boldsymbol\epsilon$．因此按线性传播，$\operatorname{Cov}(\hat{\boldsymbol\theta})=H\Sigma H^T$，化简就得到上式．这也说明来自相同观测的参数可以相关．
 
 独立输入有 $\Sigma=\operatorname{diag}(u_i^2)$．把各方程乘 $1/u_i$ 后成为单位方差问题，这叫加权转换；相关输入可用协方差的 Cholesky 分解作相应转换．
 
@@ -80,13 +74,15 @@ $$
 
 等权情形 $P=I$．独立正态误差时，$\boldsymbol v^TP\boldsymbol v/\sigma_0^2$ 服从自由度 $n-p$ 的卡方分布，故 $s_0^2$ 对共同方差无偏；其平方根不一般无偏．已知绝对协方差时不能再乘 $s_0^2$．
 
+<span id="course-calculation"></span>
+
 ## 例题：三个读数估两个参数
 
 取 $x=(-1,0,1)$，$y=(1.1,1.9,3.0)$，拟合 $y=a+bx$．设计矩阵三行分别为 $(1,-1)$、$(1,0)$、$(1,1)$，$A^TA=\operatorname{diag}(3,2)$．因此 $a=2$、$b=0.95$，残差为 $(0.05,-0.10,0.05)$．
 
-残差平方和为 0.015，自由度 1，若共同方差未知，$s_0^2=0.015$，参数方差分别为 0.005 和 0.0075，协方差为零．若题目另给每点已知标准不确定度 0.1，则参数方差应为 $0.01/3$ 与 $0.01/2$，不得再拿样本残差重缩放．
+这里 $A^T\boldsymbol y=(6,1.9)^T$，解方程 $3a=6$、$2b=1.9$ 得上面的参数．由 $v=(0.05,-0.10,0.05)$ 逐项平方可得残差平方和为 0.015，自由度 1，若共同方差未知，$s_0^2=0.015$，参数方差分别为 0.005 和 0.0075，协方差为零．若题目另给每点已知标准不确定度 0.1，则参数方差应为 $0.01/3$ 与 $0.01/2$，不得再拿样本残差重缩放．
 
-逆矩阵元素 $d_{jk}$ 也可通过解 $(A^TPA)\boldsymbol d_k=\boldsymbol e_k$ 获得，传统讲义称相关系数求解中的「不定乘数」．对角项给参数方差系数，非对角项保留相关信息．派生量 $g(\boldsymbol\theta)$ 的方差用梯度和整个协方差矩阵传播．
+逆矩阵元素 $d_{jk}$ 也可通过解 $(A^TPA)\boldsymbol d_k=\boldsymbol e_k$ 获得，这相当于逐列求解逆矩阵．对角项给参数方差系数，非对角项保留相关信息．派生量 $g(\boldsymbol\theta)$ 的方差用梯度和整个协方差矩阵传播．
 
 ## 常见误区与阅读连接
 

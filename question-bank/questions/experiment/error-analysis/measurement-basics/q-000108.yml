@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000108
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -13,21 +13,9 @@ related_pages:
 - experiment.error-analysis.measurement-basics
 choice_order: fixed
 type: free_response
-stem: 旧讲义的「准确度、精确度」与当前页面用词不同，怎样避免概念混淆？
+stem: 不同教材对「准确度、精确度」的使用可能不同，怎样避免概念混淆？
 reference_answer: 先对应英文术语和所指性质，再使用本章正确度、精密度、准确度约定．
-solution: 'trueness 关注系统偏移，precision 关注重复分散，accuracy 是接近真值的定性概念；不能只按中文名称互换或给准确度直接赋标准差．
-
-
-  关键算式：
-
-
-  $$
-
-  e=x-x_{\rm ref},\qquad u\geq0
-
-  $$
-
-  '
+solution: trueness 关注系统偏移，precision 关注重复分散，accuracy 是接近真值的定性概念；不能只按中文名称互换或给准确度直接赋标准差．
 response:
   format: plain_text
   required: true
@@ -39,19 +27,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 把三个术语当成同义词，或按中文名称直接等同．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 能区分集中程度与偏移，但未完整对应三个英文术语及其含义．
     points: 0.5
   - id: complete
-    label: 基本掌握：先对应英文术语和所指性质，再使用本章正确度、精密度、准确度约定．
+    label: 对应 trueness、precision、accuracy 与正确度、精密度、准确度，分别说明系统偏移、观测分散和接近真值的定性关系．
     points: 1
 hints:
 - 先区别集中、整体偏移和基于信息的分散性；写出参考值与修正符号．
 feedback:
-  correct: 关键结论与题设条件相符．trueness 关注系统偏移，precision 关注重复分散，accuracy 是接近真值的定性概念；不能只按中文名称互换或给准确度直接赋标准差．
-  incorrect: 请重新检查模型、条件和计算：trueness 关注系统偏移，precision 关注重复分散，accuracy 是接近真值的定性概念；不能只按中文名称互换或给准确度直接赋标准差．
+  correct: 对应 trueness、precision、accuracy 与正确度、精密度、准确度，分别说明系统偏移、观测分散和接近真值的定性关系．
+  incorrect: 能区分集中程度与偏移，但未完整对应三个英文术语及其含义．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

@@ -24,7 +24,7 @@ uv run --with numpy==2.5.4 --with scipy==1.18.1 --with matplotlib==3.11.2 python
 uv run --with numpy==2.5.4 --with scipy==1.18.1 --with matplotlib==3.11.2 python docs/experiment/error-analysis/examples/copper-analysis.py
 ```
 
-验证环境为 Python 3.14.4、NumPy 2.5.4、SciPy 1.18.1、Matplotlib 3.11.2，日期为 2026-10-19．也可以使用兼容的较新版本运行，但应检查数值与绘图差异．Python 和 uv 的安装说明见 [Python 科学计算](../../../tools/python-scicomp.md)．
+验证环境为 Python 3.12.15、NumPy 2.5.4、SciPy 1.18.1、Matplotlib 3.11.2，日期为 2026-11-07．也可以使用兼容的较新版本运行，但应检查数值与绘图差异．Python 和 uv 的安装说明见 [Python 科学计算](../../../tools/python-scicomp.md)．
 
 单独下载时，把脚本与对应 CSV 放在同一文件夹，命令中的脚本路径换成下载路径即可．数据始终按脚本位置读取；默认输出相对于当前工作目录，也可指定 `--output-dir`．输出目录应与源文件目录分开，以保留原始资料．
 

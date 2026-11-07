@@ -1,0 +1,54 @@
+schema_version: 3
+id: q-000787
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- experiment.error-analysis
+concepts:
+- measurement.uncertainty-propagation
+objectives:
+- experiment.error-analysis.uncertainty-propagation.analysis
+related_pages:
+- experiment.error-analysis.uncertainty-propagation
+choice_order: fixed
+type: free_response
+stem: 线性模型 y=x₁−2x₂ 中，已知两项有符号偏差严格满足 |e₁|≤0.03、|e₂|≤0.01．求输出偏差的保守绝对界限，并解释为什么独立正态模型下的方和根概率范围是另一种结论．
+reference_answer: 由三角不等式 |eᵧ|≤0.03+2×0.01=0.05；方和根描述给定分布及覆盖条件下的概率范围，不能仅凭严格界限导出．
+solution: 线性模型给 eᵧ=e₁−2e₂．三角不等式给 |eᵧ|≤|e₁|+2|e₂|≤0.05．两项同时取 e₁=0.03、e₂=−0.01 可达到该界．概率合成需要额外给出分布、相关性与覆盖因子；正态模型具有无界尾部，不能把严格有限界与正态假设视为同一条件．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 6
+  placeholder: 写出模型、假设、关键计算及结果解释．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未给出带符号传播或界限错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求得 0.05，但未区分严格界限与概率范围
+    points: 0.5
+  - id: complete
+    label: 基本掌握：由三角不等式求得 0.05，并说明概率范围需要额外模型．
+    points: 1
+hints:
+- 先传播有符号偏差，再对各项取绝对值；概率范围还需要分布假设．
+feedback:
+  correct: 检查两项是否按灵敏系数 1 和 −2 传播，并区分确定界限与概率覆盖．
+  incorrect: 先写 eᵧ=e₁−2e₂，再对绝对值应用三角不等式．
+difficulty: 2
+cognitive_level: analyze
+style: modeling
+estimated_seconds: 600
+provenance:
+  type: original
+  note: 原创草稿；使用 AI 辅助编写，情境与数据自编．
+  ai_assisted: true
+authors:
+- name: Codex
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000139
-version: 1
+version: 3
 status: draft
 locale: zh-CN
 topics:
@@ -16,9 +16,6 @@ type: free_response
 stem: Peters、极差和最大误差法能否统一赋 n−1 自由度？
 reference_answer: 不能；须定义估计量、中心和分布，评估相对波动或相应抽样分布．
 solution: '给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
-
-
-  关键算式：
 
 
   $$
@@ -39,19 +36,19 @@ grading:
   mode: self_assessed
   rubric:
   - id: incomplete
-    label: 尚未掌握：结论或模型错误
+    label: 将三种方法都当作精确 n−1 自由度，或未区分估计量．
     points: 0
   - id: partial
-    label: 部分掌握：主要思路正确，但条件、推导或解释不完整
+    label: 识别不同估计量，但没有说明中心、分布和等效自由度条件．
     points: 0.5
   - id: complete
-    label: 基本掌握：不能；须定义估计量、中心和分布，评估相对波动或相应抽样分布．
+    label: 区分绝对残差、极差和最大残差，说明系数依赖样本量与模型，等效自由度由抽样波动评估而非直接取 n−1．
     points: 1
 hints:
-- 区分单次、均值与组间量；写残差和及估计量的分布条件．
+- 比较估计量的构造和抽样分布，而非仅看观测数．
 feedback:
-  correct: 关键结论与题设条件相符．给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
-  incorrect: 请重新检查模型、条件和计算：给 Peters 正态系数√(π/2)，极差依赖 d2(n)；最大样本残差不同于先验允差，等效自由度不是普遍精确卡方自由度．
+  correct: 区分绝对残差、极差和最大残差，说明系数依赖样本量与模型，等效自由度由抽样波动评估而非直接取 n−1．
+  incorrect: 识别不同估计量，但没有说明中心、分布和等效自由度条件．
 difficulty: 2
 cognitive_level: analyze
 style: modeling

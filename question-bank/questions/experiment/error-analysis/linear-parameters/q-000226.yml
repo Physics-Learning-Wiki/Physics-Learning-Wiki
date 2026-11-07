@@ -1,6 +1,6 @@
 schema_version: 3
 id: q-000226
-version: 1
+version: 2
 status: draft
 locale: zh-CN
 topics:
@@ -30,9 +30,9 @@ feedback:
   correct: 关键结论与题设条件相符．线性指参数以一次线性组合出现，已知自变量可非线性进入设计矩阵．
   incorrect: 请重新检查模型、条件和计算：线性指参数以一次线性组合出现，已知自变量可非线性进入设计矩阵．
   choices:
-    A: 此项符合题设．线性指参数以一次线性组合出现，已知自变量可非线性进入设计矩阵．
-    B: 此项不符合题设：线性指参数以一次线性组合出现，已知自变量可非线性进入设计矩阵．
-    C: 此项不符合题设：线性指参数以一次线性组合出现，已知自变量可非线性进入设计矩阵．
+    A: 参数各以一次幂线性组合，系数是 1、x 和 x²．
+    B: 对参数线性不要求对自变量也是直线．
+    C: 参数数量与参数是否线性是不同问题．
 difficulty: 1
 cognitive_level: understand
 style: conceptual
