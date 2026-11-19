@@ -17,7 +17,7 @@ learning_objectives:
 page_id: experiment.error-analysis.data-recording
 prerequisites:
 - measurement-error
-status: review
+status: stable
 title: 数据记录与有效数字
 ---
 

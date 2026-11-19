@@ -17,7 +17,7 @@ learning_objectives:
 page_id: experiment.error-analysis.linear-parameters
 prerequisites:
 - least-squares
-status: review
+status: stable
 title: 一般线性参数估计
 ---
 

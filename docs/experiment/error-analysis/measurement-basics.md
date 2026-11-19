@@ -15,7 +15,7 @@ learning_objectives:
   id: experiment.error-analysis.measurement-basics.analysis
   title: 测量、误差与不确定度：说明方法、结果与限制
 page_id: experiment.error-analysis.measurement-basics
-status: review
+status: stable
 title: 测量、误差与不确定度
 ---
 

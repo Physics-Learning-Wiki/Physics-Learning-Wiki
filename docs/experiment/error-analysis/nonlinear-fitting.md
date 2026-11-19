@@ -18,7 +18,7 @@ page_id: experiment.error-analysis.nonlinear-fitting
 prerequisites:
 - linear-parameter-estimation
 - derivative
-status: review
+status: stable
 title: 非线性拟合与线性化
 ---
 

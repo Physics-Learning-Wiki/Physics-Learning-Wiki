@@ -1,7 +1,7 @@
 ---
 title: 振动与波导读
 author: ChatGPT, Physics Learning Wiki Team
-status: review
+status: stable
 description: 按单自由度振动、叠加、多自由度模态、非线性与波动组织阅读，连接普通力学与分析力学的应用路线．
 ---
 

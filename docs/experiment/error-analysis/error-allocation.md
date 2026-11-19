@@ -17,7 +17,7 @@ learning_objectives:
 page_id: experiment.error-analysis.error-allocation
 prerequisites:
 - uncertainty-propagation
-status: review
+status: stable
 title: 误差分配与测量方案优化
 ---
 

@@ -18,7 +18,7 @@ page_id: experiment.error-analysis.uncertainty-propagation
 prerequisites:
 - standard-uncertainty
 - derivative
-status: review
+status: stable
 title: 不确定度传播与合成
 ---
 
