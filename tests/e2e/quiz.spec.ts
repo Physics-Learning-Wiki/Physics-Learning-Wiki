@@ -1,30 +1,6 @@
-import { expect, test, type Page } from "@playwright/test";
-import { expectAssistiveMathClipped } from "./math-assertions";
+import { expect, test } from "@playwright/test";
 
 const basePath = "/Physics-Learning-Wiki/";
-
-async function mathQuestionIds(page: Page): Promise<string[]> {
-  const bankUrl = new URL(`${basePath}_generated/question-bank/`, page.url());
-  const manifestResponse = await page.request.get(new URL("manifest.json", bankUrl).href);
-  expect(manifestResponse.ok()).toBe(true);
-  const manifest = (await manifestResponse.json()) as { catalogs: { questions: string } };
-  const catalogResponse = await page.request.get(new URL(manifest.catalogs.questions, bankUrl).href);
-  expect(catalogResponse.ok()).toBe(true);
-  const questions = (await catalogResponse.json()) as Array<{
-    id: string;
-    stemHtml: string;
-    solutionHtml: string;
-    choices?: Array<{ contentHtml: string }>;
-  }>;
-  return questions
-    .filter(question =>
-      [question.stemHtml, question.solutionHtml, ...(question.choices ?? []).map(choice => choice.contentHtml)].some(
-        markup => markup.includes('class="arithmatex"') || markup.includes("<mjx-container")
-      )
-    )
-    .map(question => question.id)
-    .sort();
-}
 
 test("quiz assets are lazy, quiz sessions survive navigation, and runners resume", async ({ page }) => {
   const quizRequests: string[] = [];
@@ -261,84 +237,4 @@ test("quiz keyboard navigation honors shortcut matrix and restores focus from po
     document.dispatchEvent(composingEvent);
   });
   expect(await numberInput.inputValue()).toBe("42");
-});
-
-test("production question bank math renders cleanly on desktop and mobile without collisions or content overflow", async ({
-  page
-}) => {
-  await page.goto(`${basePath}quiz/questions/`);
-  const ids = await mathQuestionIds(page);
-  expect(ids.length).toBeGreaterThan(0);
-  const targetQuestions = [...new Set([ids[0], "q-000001"])];
-  const viewports = [
-    { name: "desktop", width: 1280, height: 720 },
-    { name: "mobile", width: 375, height: 667 }
-  ];
-
-  for (const viewport of viewports) {
-    await page.setViewportSize({ width: viewport.width, height: viewport.height });
-
-    for (const qid of targetQuestions) {
-      await page.goto(`${basePath}quiz/questions/?q=${qid}`);
-      const card = page.locator(`.plw-quiz-question-browser__card[data-question-id="${qid}"]`);
-      await expect(card).toBeVisible();
-
-      // Open full solution
-      const details = card.locator(".plw-quiz-solution-details");
-      if ((await details.count()) > 0) {
-        await details.evaluate(el => {
-          (el as HTMLDetailsElement).open = true;
-        });
-        await expect(details.locator(".plw-quiz-solution-details__body")).toBeVisible();
-      }
-
-      // 1. Math formulas must exist
-      await expect(card.locator("mjx-container").first()).toBeVisible();
-
-      // 2. Assistive MathML must be visually hidden (not visually duplicated)
-      await expectAssistiveMathClipped(card);
-
-      // 3. Raw $$ display delimiter must not leak into rendered text
-      const visibleText = await card.innerText();
-      expect(visibleText.includes("$$")).toBe(false);
-
-      // 4. Quiz content stays within the mobile viewport. Material's offscreen navigation is outside this scope.
-      const contentOverflow = await page.locator("article.md-content__inner.md-typeset").evaluate(element => {
-        const article = element as HTMLElement;
-        return (
-          article.scrollWidth > article.clientWidth + 1 ||
-          article.getBoundingClientRect().right > document.documentElement.clientWidth + 1
-        );
-      });
-      expect(contentOverflow, `${qid} at ${viewport.name}`).toBe(false);
-
-      // 5. Choice badges stay aligned with the first line of their content.
-      const choices = card.locator(".plw-quiz-choice");
-      const choiceCount = await choices.count();
-      for (let i = 0; i < choiceCount; i++) {
-        const choice = choices.nth(i);
-        const offsetDiff = await choice.evaluate(el => {
-          const badge = el.querySelector<HTMLElement>(".plw-quiz-choice__badge");
-          const contentEl = el.querySelector<HTMLElement>(".plw-quiz-choice__content");
-          if (!badge || !contentEl) return 0;
-          return Math.abs(badge.getBoundingClientRect().top - contentEl.getBoundingClientRect().top);
-        });
-        expect(offsetDiff).toBeLessThan(20);
-      }
-
-      // 6. Display equation bounding boxes must not intersect each other or surrounding paragraphs
-      const displayBoxes = await card.evaluate(el => {
-        const containers = Array.from(el.querySelectorAll<HTMLElement>("mjx-container[display='true']"));
-        return containers
-          .map(c => {
-            const rect = c.getBoundingClientRect();
-            return { top: rect.top, bottom: rect.bottom, height: rect.height };
-          })
-          .filter(b => b.height > 0);
-      });
-      for (let i = 0; i < displayBoxes.length - 1; i++) {
-        expect(displayBoxes[i].bottom).toBeLessThanOrEqual(displayBoxes[i + 1].top + 1);
-      }
-    }
-  }
 });

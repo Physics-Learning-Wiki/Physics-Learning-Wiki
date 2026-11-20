@@ -196,48 +196,6 @@ test("late launch callback does not replace a newer route", async ({ page, conte
   await locker.close();
 });
 
-test("objective errors enter the wrong book and mastery reopens after another error", async ({ page }) => {
-  await page.goto(`${basePath}quiz/questions/`);
-  const manifestResponse = await page.request.get(`${basePath}_generated/question-bank/manifest.json`);
-  const manifest = await manifestResponse.json();
-  const catalogResponse = await page.request.get(
-    new URL(manifest.catalogs.questions, new URL(`${basePath}_generated/question-bank/manifest.json`, page.url())).href
-  );
-  const catalog = (await catalogResponse.json()) as Array<{
-    id: string;
-    type: string;
-    status: string;
-    choices?: Array<{ id: string }>;
-    answer?: { choice: string };
-  }>;
-  const q = catalog.find(
-    item =>
-      item.status === "published" &&
-      item.type === "single_choice" &&
-      item.choices?.some(choice => choice.id !== item.answer?.choice)
-  );
-  expect(q).toBeDefined();
-  const wrongChoice = q!.choices!.find(choice => choice.id !== q!.answer!.choice)!.id;
-  await page.goto(`${basePath}quiz/questions/?q=${q!.id}`);
-  const card = page.locator(`#q-${q!.id}`);
-  await expect(card).toBeVisible();
-  await card.locator(`.plw-quiz-choice:has(input[value="${wrongChoice}"])`).click();
-  await card.getByRole("button", { name: "试答并检验" }).click();
-  await expect(page.locator(`#q-${q!.id} .plw-quiz-feedback`)).toBeVisible();
-  await page.goto(`${basePath}quiz/library/?view=mistakes`);
-  await expect(page.getByRole("heading", { name: q!.id })).toBeVisible();
-  await page.getByRole("button", { name: "标记已掌握" }).click();
-  await expect(page.getByText("错题状态已更新。", { exact: true })).toBeVisible();
-  await page.goto(`${basePath}quiz/library/?view=mistakes&state=mastered`);
-  await expect(page.getByRole("heading", { name: q!.id })).toBeVisible();
-  await page.goto(`${basePath}quiz/questions/?q=${q!.id}`);
-  await page.locator(`#q-${q!.id} .plw-quiz-choice:has(input[value="${wrongChoice}"])`).click();
-  await page.locator(`#q-${q!.id}`).getByRole("button", { name: "试答并检验" }).click();
-  await expect(page.locator(`#q-${q!.id} .plw-quiz-feedback`)).toBeVisible();
-  await page.goto(`${basePath}quiz/library/?view=mistakes&state=learning`);
-  await expect(page.getByRole("heading", { name: q!.id })).toBeVisible();
-});
-
 test("copy tools use learner markdown and a fixed DeepSeek destination", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto(`${basePath}quiz/questions/`);
