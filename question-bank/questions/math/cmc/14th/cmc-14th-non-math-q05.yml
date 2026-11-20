@@ -1,19 +1,18 @@
 schema_version: 3
 id: cmc-14th-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 记 $D = \left\{(x,y)\mid 0\leqslant x+y\leqslant \frac{\pi}{2}, 0\leqslant x-y\leqslant
-  \frac{\pi}{2}\right\}$，则 $\iint_D y\sin(x+y)\mathrm{d}x\mathrm{d}y =$ ______．
+stem: 记 $D = \left\{(x,y)\mid 0\leqslant x+y\leqslant \frac{\pi}{2}, 0\leqslant x-y\leqslant \frac{\pi}{2}\right\}$，则 $\iint_D
+  y\sin(x+y)\mathrm{d}x\mathrm{d}y =$ ______．
 reference_answer: $\frac{\pi}{8} - \frac{\pi^2}{32}$
-solution: 作二元变量代换 $u = x+y, v = x-y$，对应 $x = \frac{u+v}{2}, y = \frac{u-v}{2}$，雅可比行列式绝对值
-  $|J| = \frac{1}{2}$．积分化为：$\iint_D y\sin(x+y)\mathrm{d}x\mathrm{d}y = \frac{1}{4}\int_0^{\pi/2}\mathrm{d}v\int_0^{\pi/2}(u-v)\sin
-  u\mathrm{d}u = \frac{1}{4}\left(\frac{\pi}{2}\times 1 - \frac{\pi^2}{8}\times 1\right)
-  = \frac{\pi}{8} - \frac{\pi^2}{32}$
+solution: 作二元变量代换 $u = x+y, v = x-y$，对应 $x = \frac{u+v}{2}, y = \frac{u-v}{2}$，雅可比行列式绝对值 $|J| = \frac{1}{2}$．积分化为：$\iint_D
+  y\sin(x+y)\mathrm{d}x\mathrm{d}y = \frac{1}{4}\int_0^{\pi/2}\mathrm{d}v\int_0^{\pi/2}(u-v)\sin u\mathrm{d}u = \frac{1}{4}\left(\frac{\pi}{2}\times
+  1 - \frac{\pi^2}{8}\times 1\right) = \frac{\pi}{8} - \frac{\pi^2}{32}$
 response:
   format: plain_text
   required: true
@@ -34,11 +33,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(5)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multiple-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了重积分计算与对称性化简的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查重积分计算与对称性化简．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c75f8e304a15e8105bd73f12149238e4b81f99a654824d2e90e480ae4ea33043
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c75f8e304a15e8105bd73f12149238e4b81f99a654824d2e90e480ae4ea33043
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c75f8e304a15e8105bd73f12149238e4b81f99a654824d2e90e480ae4ea33043

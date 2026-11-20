@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-10th-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,8 +9,7 @@ type: free_response
 choice_order: fixed
 stem: 设 $\alpha \in (0, 1)$，则 $\lim_{n\to+\infty}((n+1)^\alpha - n^\alpha) =$ ______．
 reference_answer: $0$
-solution: '利用 Lagrange 中值定理，$(n+1)^\alpha - n^\alpha = \alpha \xi^{\alpha-1}$，其中 $n
-  < \xi < n+1$．
+solution: '利用 Lagrange 中值定理，$(n+1)^\alpha - n^\alpha = \alpha \xi^{\alpha-1}$，其中 $n < \xi < n+1$．
 
 
   因为 $\alpha \in (0, 1)$，$\alpha - 1 < 0$．所以：
@@ -19,8 +18,7 @@ solution: '利用 Lagrange 中值定理，$(n+1)^\alpha - n^\alpha = \alpha \xi^
   $$0 < (n+1)^\alpha - n^\alpha < \alpha n^{\alpha-1} = \frac{\alpha}{n^{1-\alpha}}$$
 
 
-  当 $n\to+\infty$ 时，因为 $1-\alpha > 0$，$\frac{\alpha}{n^{1-\alpha}} \to 0$．由夹逼准则得极限为
-  $0$．'
+  当 $n\to+\infty$ 时，因为 $1-\alpha > 0$，$\frac{\alpha}{n^{1-\alpha}} \to 0$．由夹逼准则得极限为 $0$．'
 response:
   format: plain_text
   required: true
@@ -41,11 +39,35 @@ provenance:
   type: adapted
   note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第一大题第(1)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分中值定理与辅助函数构造的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分中值定理与辅助函数构造．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d8178a5bf05772784789b7ba2665645ecbd6f759c1f15eac23f37531400c822
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d8178a5bf05772784789b7ba2665645ecbd6f759c1f15eac23f37531400c822
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d8178a5bf05772784789b7ba2665645ecbd6f759c1f15eac23f37531400c822

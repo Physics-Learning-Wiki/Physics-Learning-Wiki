@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q04
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,8 +9,8 @@ type: free_response
 choice_order: fixed
 stem: 幂级数 $\sum_{n=1}^\infty \frac{(-1)^{n-1}x^{2n}}{n(2n-1)}$ 的收敛域为 ______．
 reference_answer: $[-1, 1]$
-solution: 计算收敛半径：由比值法易得收敛半径 $R = 1$．当 $x = \pm 1$ 时，级数成为 $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n(2n-1)}$，由于通项阶为
-  $O(1/n^2)$，绝对收敛．故收敛域为 $[-1, 1]$．
+solution: 计算收敛半径：由比值法易得收敛半径 $R = 1$．当 $x = \pm 1$ 时，级数成为 $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n(2n-1)}$，由于通项阶为 $O(1/n^2)$，绝对收敛．故收敛域为
+  $[-1, 1]$．
 response:
   format: plain_text
   required: true
@@ -31,11 +31,34 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第一大题第(4)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.power-series
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了幂级数展开式与收敛性分析的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查幂级数展开式与收敛性分析．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a67d8932f31846ccee47f0fe5a0450fe97834b899c25fb2e78d3e7bab30ec03f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a67d8932f31846ccee47f0fe5a0450fe97834b899c25fb2e78d3e7bab30ec03f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a67d8932f31846ccee47f0fe5a0450fe97834b899c25fb2e78d3e7bab30ec03f

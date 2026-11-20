@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,13 +9,10 @@ type: free_response
 choice_order: fixed
 stem: （本题 14 分）解微分方程 $(x^2+y^2+3)\frac{\mathrm{d}y}{\mathrm{d}x} = 2x\left(2y - \frac{x^2}{y}\right)$．
 reference_answer: $(y^2 - 2x^2 - 3)^3 = C(y^2 - x^2 - 1)^2$
-solution: 方程改写为：$\frac{y\mathrm{d}y}{x\mathrm{d}x} = \frac{2(2y^2-x^2)}{x^2+y^2+3}$令
-  $u = x^2, v = y^2$，则方程化为：$\frac{\mathrm{d}v}{\mathrm{d}u} = \frac{2(2v-u)}{u+v+3}
-  \quad (得 5 分)$解代数方程组 $2v-u = 0, u+v+3 = 0$ 得平移交点 $u = -2, v = -1$．再令 $U = u+2, V
-  = v+1$，方程化为齐次微分方程：$\frac{\mathrm{d}V}{\mathrm{d}U} = \frac{2(2V-U)}{U+V} \quad (得
-  8 分)$作变量替换 $W = V/U$，变量分离：$U\frac{\mathrm{d}W}{\mathrm{d}U} = -\frac{W^2-3W+2}{W+1}
-  \quad (得 11 分)$积分得 $U(W-2)^3 = C(W-1)^2$．回代原变量得通解为：$(y^2 - 2x^2 - 3)^3 = C(y^2 -
-  x^2 - 1)^2 \quad (满分 14 分)$
+solution: 方程改写为：$\frac{y\mathrm{d}y}{x\mathrm{d}x} = \frac{2(2y^2-x^2)}{x^2+y^2+3}$令 $u = x^2, v = y^2$，则方程化为：$\frac{\mathrm{d}v}{\mathrm{d}u}
+  = \frac{2(2v-u)}{u+v+3} \quad (得 5 分)$解代数方程组 $2v-u = 0, u+v+3 = 0$ 得平移交点 $u = -2, v = -1$．再令 $U = u+2, V = v+1$，方程化为齐次微分方程：$\frac{\mathrm{d}V}{\mathrm{d}U}
+  = \frac{2(2V-U)}{U+V} \quad (得 8 分)$作变量替换 $W = V/U$，变量分离：$U\frac{\mathrm{d}W}{\mathrm{d}U} = -\frac{W^2-3W+2}{W+1} \quad
+  (得 11 分)$积分得 $U(W-2)^3 = C(W-1)^2$．回代原变量得通解为：$(y^2 - 2x^2 - 3)^3 = C(y^2 - x^2 - 1)^2 \quad (满分 14 分)$
 response:
   format: plain_text
   required: true
@@ -45,11 +42,34 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用微分方程解法与定解问题建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查微分方程解法与定解问题的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7514249d5fb7312d97953bcf03c049e636cb7788ad16129f82eabda7918d6e3d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7514249d5fb7312d97953bcf03c049e636cb7788ad16129f82eabda7918d6e3d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7514249d5fb7312d97953bcf03c049e636cb7788ad16129f82eabda7918d6e3d

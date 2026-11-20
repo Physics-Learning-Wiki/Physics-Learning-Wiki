@@ -1,28 +1,25 @@
 schema_version: 3
 id: cmc-15th-b-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题 14 分）设 $f(x)$ 在 $[0,1]$ 上可导且 $f(0) > 0, f(1) > 0, \int_0^1 f(x)\mathrm{d}x
-  = 0$．证明：
+stem: '（本题 14 分）设 $f(x)$ 在 $[0,1]$ 上可导且 $f(0) > 0, f(1) > 0, \int_0^1 f(x)\mathrm{d}x = 0$．证明：
 
   (1) $f(x)$ 在 $[0,1]$ 上至少有两个零点；
 
   (2) 在 $(0,1)$ 内至少存在一点 $\xi$，使得 $f''(\xi) + 3f^3(\xi) = 0$．'
 reference_answer: 详见参考解答（通过介值定理与罗尔微分中值定理构造辅助指数函数证明）
-solution: '(1) 首先在 $(0,1)$ 上至少存在一点 $x_0$ 使得 $f(x_0) < 0$．否则若对任意 $x\in[0,1]$ 均有 $f(x)\geqslant
-  0$，因连续且不恒为零，必有 $\int_0^1 f(x)\mathrm{d}x > 0$，与题设矛盾（得 5 分）．因为 $f(0)>0, f(x_0)<0,
-  f(1)>0$，由连续函数介值零点定理，存在 $\xi_1\in(0,x_0), \xi_2\in(x_0,1)$ 使得 $f(\xi_1) = 0, f(\xi_2)
+solution: '(1) 首先在 $(0,1)$ 上至少存在一点 $x_0$ 使得 $f(x_0) < 0$．否则若对任意 $x\in[0,1]$ 均有 $f(x)\geqslant 0$，因连续且不恒为零，必有 $\int_0^1 f(x)\mathrm{d}x
+  > 0$，与题设矛盾（得 5 分）．因为 $f(0)>0, f(x_0)<0, f(1)>0$，由连续函数介值零点定理，存在 $\xi_1\in(0,x_0), \xi_2\in(x_0,1)$ 使得 $f(\xi_1) = 0, f(\xi_2)
   = 0$（得 8 分）．
 
-  (2) 构造辅助函数 $F(x) = f(x)\mathrm{e}^{\int_0^x 3f^2(s)\mathrm{d}s}$．则 $F(x)$ 在 $[0,1]$
-  上连续，在 $(0,1)$ 可导，且 $F(\xi_1) = F(\xi_2) = 0$．由 Rolle 定理，存在 $\xi\in(\xi_1,\xi_2)\subset(0,1)$
-  使得 $F''(\xi) = 0$．由于：$F''(x) = (f''(x) + 3f^3(x))\mathrm{e}^{\int_0^x 3f^2(s)\mathrm{d}s}$由指数恒正知
-  $f''(\xi) + 3f^3(\xi) = 0$（满分 14 分）．'
+  (2) 构造辅助函数 $F(x) = f(x)\mathrm{e}^{\int_0^x 3f^2(s)\mathrm{d}s}$．则 $F(x)$ 在 $[0,1]$ 上连续，在 $(0,1)$ 可导，且 $F(\xi_1) = F(\xi_2)
+  = 0$．由 Rolle 定理，存在 $\xi\in(\xi_1,\xi_2)\subset(0,1)$ 使得 $F''(\xi) = 0$．由于：$F''(x) = (f''(x) + 3f^3(x))\mathrm{e}^{\int_0^x
+  3f^2(s)\mathrm{d}s}$由指数恒正知 $f''(\xi) + 3f^3(\xi) = 0$（满分 14 分）．'
 response:
   format: plain_text
   required: true
@@ -49,11 +46,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第五大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.integral
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 900
+feedback:
+  correct: 论证严密！准确抓住了微分中值定理与辅助函数构造的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查微分中值定理与辅助函数构造的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb852f34fad5dedd593f9bdbf332b8b59f68ae084e2f17db72c8cbc6c78b149f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb852f34fad5dedd593f9bdbf332b8b59f68ae084e2f17db72c8cbc6c78b149f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb852f34fad5dedd593f9bdbf332b8b59f68ae084e2f17db72c8cbc6c78b149f

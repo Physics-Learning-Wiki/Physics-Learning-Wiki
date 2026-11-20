@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-b-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -14,15 +14,14 @@ solution: '利用分部积分法：
 
   $$
 
-  \int_1^{+\infty}\frac{\ln x}{(1+x)^2}\mathrm{d}x = \int_1^{+\infty}\ln x\mathrm{d}\left(-\frac{1}{1+x}\right)
-  = \left.-\frac{\ln x}{1+x}\right|_1^{+\infty} + \int_1^{+\infty}\frac{\mathrm{d}x}{x(1+x)}
+  \int_1^{+\infty}\frac{\ln x}{(1+x)^2}\mathrm{d}x = \int_1^{+\infty}\ln x\mathrm{d}\left(-\frac{1}{1+x}\right) = \left.-\frac{\ln
+  x}{1+x}\right|_1^{+\infty} + \int_1^{+\infty}\frac{\mathrm{d}x}{x(1+x)}
 
   $$
 
 
-  当 $x\to +\infty$ 时 $\frac{\ln x}{1+x}\to 0$，在 $x=1$ 处值为 $0$．拆分分式积分：$\int_1^{+\infty}\left(\frac{1}{x}
-  - \frac{1}{1+x}\right)\mathrm{d}x = \left.\ln\frac{x}{1+x}\right|_1^{+\infty} =
-  0 - (-\ln 2) = \ln 2$．因此积分为 $\ln 2$．'
+  当 $x\to +\infty$ 时 $\frac{\ln x}{1+x}\to 0$，在 $x=1$ 处值为 $0$．拆分分式积分：$\int_1^{+\infty}\left(\frac{1}{x} - \frac{1}{1+x}\right)\mathrm{d}x
+  = \left.\ln\frac{x}{1+x}\right|_1^{+\infty} = 0 - (-\ln 2) = \ln 2$．因此积分为 $\ln 2$．'
 response:
   format: plain_text
   required: true
@@ -43,11 +42,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(5)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了定积分与反常积分计算技巧的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查定积分与反常积分计算技巧．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b957426cf8c2d7a098934b5dad6b53cd517090d9dfc1f4949dd58bd2b6b71c5d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b957426cf8c2d7a098934b5dad6b53cd517090d9dfc1f4949dd58bd2b6b71c5d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b957426cf8c2d7a098934b5dad6b53cd517090d9dfc1f4949dd58bd2b6b71c5d

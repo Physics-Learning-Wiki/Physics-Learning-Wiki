@@ -1,22 +1,19 @@
 schema_version: 3
 id: cmc-16th-b-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）用 Lagrange 乘数法求函数 $f(x,y,z) = x + 2y + 3z$ 在平面 $x - y + z = 1$ 和圆柱面
-  $x^2 + y^2 = 1$ 的交线上的最大值．
+stem: （本题 14 分）用 Lagrange 乘数法求函数 $f(x,y,z) = x + 2y + 3z$ 在平面 $x - y + z = 1$ 和圆柱面 $x^2 + y^2 = 1$ 的交线上的最大值．
 reference_answer: $3 + \sqrt{29}$
-solution: 构造 Lagrange 辅助函数：$L(x,y,z; \lambda, \mu) = x + 2y + 3z - \lambda(x - y +
-  z - 1) - \mu(x^2 + y^2 - 1) \quad (得 2 分)$求解驻点方程组：$L_x = 1 - \lambda - 2\mu x =
-  0$, $L_y = 2 + \lambda - 2\mu y = 0$, $L_z = 3 - \lambda = 0$, $x - y + z - 1 =
-  0$, $x^2 + y^2 - 1 = 0$．由 $L_z=0$ 得 $\lambda = 3$．代入前两式得 $x = -\frac{1}{\mu}, y
-  = \frac{5}{2\mu}$．代入 $x^2+y^2=1$ 得 $\frac{1}{\mu^2} + \frac{25}{4\mu^2} = 1 \implies
-  \mu = \pm\frac{\sqrt{29}}{2}$（得 12 分）．代入求得两驻点处函数值分别为 $3 \pm \sqrt{29}$，故最大值为 $3
-  + \sqrt{29}$（满分 14 分）．
+solution: 构造 Lagrange 辅助函数：$L(x,y,z; \lambda, \mu) = x + 2y + 3z - \lambda(x - y + z - 1) - \mu(x^2 + y^2 - 1) \quad (得 2
+  分)$求解驻点方程组：$L_x = 1 - \lambda - 2\mu x = 0$, $L_y = 2 + \lambda - 2\mu y = 0$, $L_z = 3 - \lambda = 0$, $x - y + z - 1 =
+  0$, $x^2 + y^2 - 1 = 0$．由 $L_z=0$ 得 $\lambda = 3$．代入前两式得 $x = -\frac{1}{\mu}, y = \frac{5}{2\mu}$．代入 $x^2+y^2=1$ 得 $\frac{1}{\mu^2}
+  + \frac{25}{4\mu^2} = 1 \implies \mu = \pm\frac{\sqrt{29}}{2}$（得 12 分）．代入求得两驻点处函数值分别为 $3 \pm \sqrt{29}$，故最大值为 $3 + \sqrt{29}$（满分
+  14 分）．
 response:
   format: plain_text
   required: true
@@ -43,11 +40,34 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.derivative-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微积分综合运算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微积分综合运算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4d826bbeb5dfbacc240b67e3f89d022e7b416ab6ebddaff9109cae5debf29f4b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4d826bbeb5dfbacc240b67e3f89d022e7b416ab6ebddaff9109cae5debf29f4b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4d826bbeb5dfbacc240b67e3f89d022e7b416ab6ebddaff9109cae5debf29f4b

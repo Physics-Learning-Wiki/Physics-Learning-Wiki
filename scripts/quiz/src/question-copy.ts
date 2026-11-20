@@ -1,3 +1,4 @@
+import { quizLicenseNotices, RIGHTS_CONTACT } from "./licenses.js";
 import type { Question, UserAnswer } from "./types.js";
 
 export function formatQuestionMarkdown(question: Question, manifestUrl: URL): string {
@@ -13,6 +14,16 @@ export function formatQuestionMarkdown(question: Question, manifestUrl: URL): st
   const parts = [`题目 ID：${question.id}`, "", replaceAssets(question.source.stemMarkdown)];
   for (const choice of question.source.choices) {
     parts.push("", `${choice.id}. ${replaceAssets(choice.contentMarkdown)}`);
+  }
+  const rights = quizLicenseNotices.get(question.license ?? "");
+  if (rights) {
+    const link = rights.url ? ` <${rights.url}>` : "";
+    parts.push("", `许可：${rights.title}${link}`);
+    if (question.authors?.length) parts.push(`署名：${question.authors.map(author => author.name).join("、")}`);
+    if (question.provenance?.note) parts.push(question.provenance.note);
+    if (question.provenance?.source) parts.push(`来源：${question.provenance.source}`);
+    if (question.provenance?.permission) parts.push(question.provenance.permission);
+    parts.push(`权利人联系：${RIGHTS_CONTACT}`);
   }
   return parts.join("\n").trim();
 }

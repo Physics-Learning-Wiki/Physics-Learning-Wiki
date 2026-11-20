@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-15th-b-non-math-q04
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,8 +9,8 @@ type: free_response
 choice_order: fixed
 stem: 设函数 $y = y(x)$ 由方程 $y = 1+\arctan(xy)$ 所确定，则 $y'(0) =$ ______．
 reference_answer: $1$
-solution: 由方程在 $x=0$ 处得 $y(0) = 1$．两端关于 $x$ 求偏导：$y' = \frac{y + xy'}{1+x^2y^2}$将 $x=0,
-  y=1$ 代入上式得 $y'(0) = \frac{1 + 0}{1 + 0} = 1$．
+solution: 由方程在 $x=0$ 处得 $y(0) = 1$．两端关于 $x$ 求偏导：$y' = \frac{y + xy'}{1+x^2y^2}$将 $x=0, y=1$ 代入上式得 $y'(0) = \frac{1 + 0}{1
+  + 0} = 1$．
 response:
   format: plain_text
   required: true
@@ -31,11 +31,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第一大题第(4)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.multivariable-diff
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca41fdd1e1a7706e90484842aa683ecb890b780dd55d7d367e090de5e770872c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca41fdd1e1a7706e90484842aa683ecb890b780dd55d7d367e090de5e770872c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca41fdd1e1a7706e90484842aa683ecb890b780dd55d7d367e090de5e770872c

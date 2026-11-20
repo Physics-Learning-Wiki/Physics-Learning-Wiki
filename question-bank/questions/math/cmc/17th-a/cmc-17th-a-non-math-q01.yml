@@ -1,19 +1,17 @@
 schema_version: 3
 id: cmc-17th-a-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(x) = x - \ln(1+x) - \frac{1}{2}x\sin x$，$g(x) = ax^3$，且满足 $\lim_{x\to
-  0}\frac{f(x)}{g(x)} = 1$，则 $a =$ ______．
+stem: 设函数 $f(x) = x - \ln(1+x) - \frac{1}{2}x\sin x$，$g(x) = ax^3$，且满足 $\lim_{x\to 0}\frac{f(x)}{g(x)} = 1$，则 $a =$ ______．
 reference_answer: $a = -\frac{1}{3}$
-solution: 根据 Taylor 公式，$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + o(x^3)$，$\sin
-  x = x - \frac{x^3}{6} + o(x^3)$，所以 $f(x) = -\frac{1}{3}x^3 + o(x^3)$．由 $\lim_{x\to
-  0}\frac{f(x)}{g(x)} = 1$ 即 $\lim_{x\to 0}\frac{-\frac{1}{3}x^3+o(x^3)}{ax^3} = 1$，得
-  $a = -\frac{1}{3}$．
+solution: 根据 Taylor 公式，$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + o(x^3)$，$\sin x = x - \frac{x^3}{6} + o(x^3)$，所以 $f(x)
+  = -\frac{1}{3}x^3 + o(x^3)$．由 $\lim_{x\to 0}\frac{f(x)}{g(x)} = 1$ 即 $\lim_{x\to 0}\frac{-\frac{1}{3}x^3+o(x^3)}{ax^3} =
+  1$，得 $a = -\frac{1}{3}$．
 response:
   format: plain_text
   required: true
@@ -34,11 +32,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第一大题第(1)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca292b9393e30f232b48c32ccab1583de2fcaa15abe68128b6f445b70521e51e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca292b9393e30f232b48c32ccab1583de2fcaa15abe68128b6f445b70521e51e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ca292b9393e30f232b48c32ccab1583de2fcaa15abe68128b6f445b70521e51e

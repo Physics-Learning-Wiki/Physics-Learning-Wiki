@@ -1,10 +1,11 @@
 calculus.limit:
-  title: 极限计算与夹逼准则
+  title: 极限计算与无穷小分析
   topics:
   - math.calculus
   aliases:
   - limit
   - squeeze theorem
+  - infinitesimal
 calculus.derivative-integral:
   title: 微分与定积分计算
   topics:
@@ -12,3 +13,95 @@ calculus.derivative-integral:
   aliases:
   - derivative
   - definite integral
+calculus.derivative:
+  title: 导数、高阶导数与微分应用
+  topics:
+  - math.calculus
+  aliases:
+  - derivative
+  - Leibniz rule
+  - tangent line
+calculus.mean-value-theorem:
+  title: 微分中值定理与零点构造
+  topics:
+  - math.calculus
+  aliases:
+  - mean value theorem
+  - Rolle theorem
+  - Lagrange theorem
+  - Cauchy theorem
+calculus.integral:
+  title: 定积分、反常积分与积分技巧
+  topics:
+  - math.calculus
+  aliases:
+  - integration
+  - improper integral
+  - substitution
+  - integration by parts
+calculus.integral-inequality:
+  title: 积分不等式与估计
+  topics:
+  - math.calculus
+  aliases:
+  - integral inequality
+  - Cauchy-Schwarz inequality
+  - AM-GM inequality
+calculus.series:
+  title: 数项级数敛散性与求和
+  topics:
+  - math.calculus
+  aliases:
+  - series convergence
+  - alternating series
+  - Dirichlet test
+calculus.power-series:
+  title: 幂级数与函数展开
+  topics:
+  - math.calculus
+  aliases:
+  - power series
+  - Taylor series
+  - radius of convergence
+calculus.multivariable-diff:
+  title: 多元函数微分与极值
+  topics:
+  - math.calculus
+  aliases:
+  - partial derivative
+  - total differential
+  - implicit function
+  - directional derivative
+calculus.multiple-integral:
+  title: 多重积分与坐标变换
+  topics:
+  - math.calculus
+  aliases:
+  - double integral
+  - triple integral
+  - polar coordinates
+  - spherical coordinates
+calculus.line-integral:
+  title: 曲线积分与格林公式
+  topics:
+  - math.calculus
+  aliases:
+  - line integral
+  - Green theorem
+  - path independence
+calculus.surface-integral:
+  title: 曲面积分与高斯定理
+  topics:
+  - math.calculus
+  aliases:
+  - surface integral
+  - Gauss theorem
+  - flux
+calculus.ode:
+  title: 常微分方程与初边值问题
+  topics:
+  - math.calculus
+  aliases:
+  - differential equation
+  - linear ODE
+  - separation of variables

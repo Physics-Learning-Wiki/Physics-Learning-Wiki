@@ -184,6 +184,8 @@ uv run mkdocs serve
 
 ### 手工编写 Question v3 YAML
 
+学校或竞赛真题通过仓库录入，由维护者记录出处、已知授权条件和可查的依据。授权待核实的材料用 `LicenseRef-Pending`，详见 [第三方试题与题集的许可](REVIEWING.md#第三方试题与题集的许可)。
+
 新题目应放在 `question-bank/questions/`，并使用尚未占用的 `q-NNNNNN` ID。以下是可通过 Question v3 结构校验的最小判断题草稿：
 
 ```yaml

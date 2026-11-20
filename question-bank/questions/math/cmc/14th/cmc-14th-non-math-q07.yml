@@ -1,23 +1,21 @@
 schema_version: 3
 id: cmc-14th-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题满分 14 分）设函数 $f(x)$ 在 $(-1,1)$ 上二阶可导，$f(0) = 1$，且当 $x\geqslant 0$ 时 $f(x)\geqslant
-  0, f'(x)\leqslant 0, f''(x)\leqslant f(x)$，证明：$f'(0)\geqslant -\sqrt{2}$．
+stem: （本题满分 14 分）设函数 $f(x)$ 在 $(-1,1)$ 上二阶可导，$f(0) = 1$，且当 $x\geqslant 0$ 时 $f(x)\geqslant 0, f'(x)\leqslant 0, f''(x)\leqslant
+  f(x)$，证明：$f'(0)\geqslant -\sqrt{2}$．
 reference_answer: 详见参考解答（通过 Lagrange 中值定理与构造辅助单调函数 $F(x) = [f'(x)]^2 - [f(x)]^2$ 证明）
-solution: 任取 $x\in(0,1)$，在 $[0,x]$ 上利用 Lagrange 中值定理，存在 $\xi\in(0,x)$ 使得 $f(x)-f(0)
-  = x f'(\xi)$．因为 $f(0)=1, f(x)\geqslant 0$，所以 $-\frac{1}{x} \leqslant f'(\xi) \leqslant
-  0$（得 5 分）．令辅助函数 $F(x) = [f'(x)]^2 - [f(x)]^2$，求导：$F'(x) = 2f'(x)[f''(x) - f(x)]$因
-  $f'(x)\leqslant 0$ 且 $f''(x)\leqslant f(x)$，故 $F'(x)\geqslant 0$，$F(x)$ 在 $[0,1)$
-  上单调递增．从而 $F(\xi)\geqslant F(0)$，即 $[f'(\xi)]^2 - [f(\xi)]^2 \geqslant [f'(0)]^2
-  - 1$．由此得：$[f'(0)]^2 \leqslant [f'(\xi)]^2 + 1 - [f(\xi)]^2 \leqslant \frac{1}{x^2}
-  + 1 \quad (得 12 分)$令 $x\to 1^-$，得 $[f'(0)]^2 \leqslant 2$．又已知 $f'(0)\leqslant 0$（由
-  $f'(x)\leqslant 0$），故开方即证得 $f'(0)\geqslant -\sqrt{2}$（满分 14 分）．
+solution: 任取 $x\in(0,1)$，在 $[0,x]$ 上利用 Lagrange 中值定理，存在 $\xi\in(0,x)$ 使得 $f(x)-f(0) = x f'(\xi)$．因为 $f(0)=1, f(x)\geqslant
+  0$，所以 $-\frac{1}{x} \leqslant f'(\xi) \leqslant 0$（得 5 分）．令辅助函数 $F(x) = [f'(x)]^2 - [f(x)]^2$，求导：$F'(x) = 2f'(x)[f''(x)
+  - f(x)]$因 $f'(x)\leqslant 0$ 且 $f''(x)\leqslant f(x)$，故 $F'(x)\geqslant 0$，$F(x)$ 在 $[0,1)$ 上单调递增．从而 $F(\xi)\geqslant F(0)$，即
+  $[f'(\xi)]^2 - [f(\xi)]^2 \geqslant [f'(0)]^2 - 1$．由此得：$[f'(0)]^2 \leqslant [f'(\xi)]^2 + 1 - [f(\xi)]^2 \leqslant \frac{1}{x^2}
+  + 1 \quad (得 12 分)$令 $x\to 1^-$，得 $[f'(0)]^2 \leqslant 2$．又已知 $f'(0)\leqslant 0$（由 $f'(x)\leqslant 0$），故开方即证得 $f'(0)\geqslant
+  -\sqrt{2}$（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -44,11 +42,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 720
+feedback:
+  correct: 论证严密！准确抓住了微分中值定理与辅助函数构造的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查微分中值定理与辅助函数构造的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f229b56eda16461236a6bf756584b35ccbf1c39eb8568bda551608e526acbda7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f229b56eda16461236a6bf756584b35ccbf1c39eb8568bda551608e526acbda7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f229b56eda16461236a6bf756584b35ccbf1c39eb8568bda551608e526acbda7

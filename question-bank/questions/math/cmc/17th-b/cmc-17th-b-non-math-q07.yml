@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-b-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,12 +9,10 @@ type: free_response
 choice_order: fixed
 stem: （本题 14 分）求由方程 $2x^2 + 2y^2 + z^2 + 8xz - z + 8 = 0$ 所确定的函数 $z = z(x,y)$ 的极值．
 reference_answer: 在 $(-2,0)$ 处取得极小值 $z = 1$；在 $(\frac{16}{7},0)$ 处取得极大值 $z = -\frac{8}{7}$
-solution: 方程两边分别对 $x,y$ 求偏导：$z_x = -\frac{4x+8z}{2z+8x-1}, z_y = -\frac{4y}{2z+8x-1}$．令
-  $z_x = 0, z_y = 0$，由 $z_y=0$ 得 $y=0$；由 $z_x=0$ 得 $x = -2z$．代入原方程得 $-7z^2 - z + 8
-  = 0 \implies (7z+8)(z-1) = 0$．解得两驻点 $(-2,0)$（$z_1=1$）和 $(\frac{16}{7},0)$（$z_2=-\frac{8}{7}$）（得
-  5 分）．求二阶偏导数判别：在 $(-2,0)$ 处 $A = z_{xx} = \frac{4}{15}, B = 0, C = z_{yy} = \frac{4}{15}$，因
-  $AC-B^2 > 0$ 且 $A > 0$，故取得极小值 $z = 1$；在 $(\frac{16}{7},0)$ 处 $A = -\frac{4}{15},
-  B = 0, C = -\frac{4}{15}$，因 $AC-B^2 > 0$ 且 $A < 0$，故取得极大值 $z = -\frac{8}{7}$（满分
+solution: 方程两边分别对 $x,y$ 求偏导：$z_x = -\frac{4x+8z}{2z+8x-1}, z_y = -\frac{4y}{2z+8x-1}$．令 $z_x = 0, z_y = 0$，由 $z_y=0$ 得 $y=0$；由
+  $z_x=0$ 得 $x = -2z$．代入原方程得 $-7z^2 - z + 8 = 0 \implies (7z+8)(z-1) = 0$．解得两驻点 $(-2,0)$（$z_1=1$）和 $(\frac{16}{7},0)$（$z_2=-\frac{8}{7}$）（得
+  5 分）．求二阶偏导数判别：在 $(-2,0)$ 处 $A = z_{xx} = \frac{4}{15}, B = 0, C = z_{yy} = \frac{4}{15}$，因 $AC-B^2 > 0$ 且 $A > 0$，故取得极小值
+  $z = 1$；在 $(\frac{16}{7},0)$ 处 $A = -\frac{4}{15}, B = 0, C = -\frac{4}{15}$，因 $AC-B^2 > 0$ 且 $A < 0$，故取得极大值 $z = -\frac{8}{7}$（满分
   14 分）．
 response:
   format: plain_text
@@ -42,11 +40,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用多元函数微分学与隐函数求导建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查多元函数微分学与隐函数求导的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d5382c5e5299ac859535e7d0f05392398eb1bf662eca7c86e7ba087a8cbf5904
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d5382c5e5299ac859535e7d0f05392398eb1bf662eca7c86e7ba087a8cbf5904
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d5382c5e5299ac859535e7d0f05392398eb1bf662eca7c86e7ba087a8cbf5904

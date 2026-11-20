@@ -1,20 +1,18 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设曲面 $\Sigma$ 是平面 $y+z=5$ 被柱面 $x^2+y^2=25$ 所截得的部分，则曲面积分 $\iint_\Sigma (x+y+z)\mathrm{d}S
-  =$ ______．
+stem: 设曲面 $\Sigma$ 是平面 $y+z=5$ 被柱面 $x^2+y^2=25$ 所截得的部分，则曲面积分 $\iint_\Sigma (x+y+z)\mathrm{d}S =$ ______．
 reference_answer: $125\sqrt{2}\pi$
-solution: '在曲面 $\Sigma$ 上 $y+z=5$，故被积函数为 $x+5$．投影区域 $D_{xy}: x^2+y^2\leqslant 25$，面积微元
-  $\mathrm{d}S = \sqrt{1 + 0^2 + (-1)^2}\mathrm{d}x\mathrm{d}y = \sqrt{2}\mathrm{d}x\mathrm{d}y$．利用对称性
-  $\iint_{D_{xy}} x\mathrm{d}x\mathrm{d}y = 0$：$\iint_\Sigma (x+y+z)\mathrm{d}S =
-  \sqrt{2}\iint_{D_{xy}} (x+5)\mathrm{d}x\mathrm{d}y = 5\sqrt{2}\iint_{D_{xy}}\mathrm{d}x\mathrm{d}y
-  = 5\sqrt{2}\times \pi(5^2) = 125\sqrt{2}\pi$'
+solution: '在曲面 $\Sigma$ 上 $y+z=5$，故被积函数为 $x+5$．投影区域 $D_{xy}: x^2+y^2\leqslant 25$，面积微元 $\mathrm{d}S = \sqrt{1 + 0^2 + (-1)^2}\mathrm{d}x\mathrm{d}y
+  = \sqrt{2}\mathrm{d}x\mathrm{d}y$．利用对称性 $\iint_{D_{xy}} x\mathrm{d}x\mathrm{d}y = 0$：$\iint_\Sigma (x+y+z)\mathrm{d}S =
+  \sqrt{2}\iint_{D_{xy}} (x+5)\mathrm{d}x\mathrm{d}y = 5\sqrt{2}\iint_{D_{xy}}\mathrm{d}x\mathrm{d}y = 5\sqrt{2}\times \pi(5^2)
+  = 125\sqrt{2}\pi$'
 response:
   format: plain_text
   required: true
@@ -35,11 +33,34 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.surface-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了曲面积分与高斯散度定理的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查曲面积分与高斯散度定理．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82ad57adf520b15e74172bc1d188edca21a7d084fafb76481e097e749ef63ef4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82ad57adf520b15e74172bc1d188edca21a7d084fafb76481e097e749ef63ef4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82ad57adf520b15e74172bc1d188edca21a7d084fafb76481e097e749ef63ef4

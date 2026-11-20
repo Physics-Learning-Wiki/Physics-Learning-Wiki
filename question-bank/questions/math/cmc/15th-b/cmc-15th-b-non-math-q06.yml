@@ -1,22 +1,19 @@
 schema_version: 3
 id: cmc-15th-b-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）设曲线 $y = 3ax^2+2bx+\ln c$ 经过 $(0,0)$ 点，且当 $0\leqslant x\leqslant 1$
-  时 $y\geqslant 0$．设该曲线与直线 $x=1, x$ 轴所围图形的平面图形 $D$ 的面积为 $1$．试求常数 $a,b,c$ 的值，使得 $D$
-  绕 $x$ 轴一周后，所得旋转体的体积最小．
+stem: （本题 14 分）设曲线 $y = 3ax^2+2bx+\ln c$ 经过 $(0,0)$ 点，且当 $0\leqslant x\leqslant 1$ 时 $y\geqslant 0$．设该曲线与直线 $x=1, x$ 轴所围图形的平面图形
+  $D$ 的面积为 $1$．试求常数 $a,b,c$ 的值，使得 $D$ 绕 $x$ 轴一周后，所得旋转体的体积最小．
 reference_answer: $a = -\frac{5}{4}, b = \frac{9}{4}, c = 1$
-solution: 曲线过原点得 $\ln c = 0 \implies c = 1$．面积为 $A = \int_0^1 (3ax^2+2bx)\mathrm{d}x
-  = a+b = 1$（得 4 分）．旋转体体积：$V = \pi\int_0^1 (3ax^2+2bx)^2\mathrm{d}x = \pi\left(\frac{9}{5}a^2
-  + 3ab + \frac{4}{3}b^2\right)$将 $b = 1-a$ 代入整理得：$V(a) = \pi\left(\frac{2}{15}a^2
-  + \frac{1}{3}a + \frac{4}{3}\right) \quad (得 10 分)$求导或配方得驻点 $V'(a) = \pi(\frac{4}{15}a
-  + \frac{1}{3}) = 0 \implies a = -\frac{5}{4}$．此时 $b = \frac{9}{4}, c = 1$．在 $[0,1]$
-  上 $y = -\frac{15}{4}x^2+\frac{9}{2}x = \frac{3}{4}x(6-5x) \geqslant 0$ 满足条件．故最小体积时常数为
+solution: 曲线过原点得 $\ln c = 0 \implies c = 1$．面积为 $A = \int_0^1 (3ax^2+2bx)\mathrm{d}x = a+b = 1$（得 4 分）．旋转体体积：$V = \pi\int_0^1
+  (3ax^2+2bx)^2\mathrm{d}x = \pi\left(\frac{9}{5}a^2 + 3ab + \frac{4}{3}b^2\right)$将 $b = 1-a$ 代入整理得：$V(a) = \pi\left(\frac{2}{15}a^2
+  + \frac{1}{3}a + \frac{4}{3}\right) \quad (得 10 分)$求导或配方得驻点 $V'(a) = \pi(\frac{4}{15}a + \frac{1}{3}) = 0 \implies a = -\frac{5}{4}$．此时
+  $b = \frac{9}{4}, c = 1$．在 $[0,1]$ 上 $y = -\frac{15}{4}x^2+\frac{9}{2}x = \frac{3}{4}x(6-5x) \geqslant 0$ 满足条件．故最小体积时常数为
   $a = -\frac{5}{4}, b = \frac{9}{4}, c = 1$（满分 14 分）．
 response:
   format: plain_text
@@ -44,11 +41,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.derivative
+- calculus.integral
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用导数运算与高阶微分法则建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查导数运算与高阶微分法则的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:67fadaa3c29dee08346009bdc8adca5f0c1e08e69c9525b91d9279e11b61e8fe
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:67fadaa3c29dee08346009bdc8adca5f0c1e08e69c9525b91d9279e11b61e8fe
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:67fadaa3c29dee08346009bdc8adca5f0c1e08e69c9525b91d9279e11b61e8fe

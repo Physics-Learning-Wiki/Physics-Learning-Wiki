@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-b-non-math-q03
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -12,19 +12,17 @@ stem: '设 $f(x)$ 连续，且 $f(x) + f(-x) = 2$．求定积分：
 
   $$
 
-  \int_{-1}^1\left(f(x) + x^2\ln\left(x + \sqrt{x^2+1}\right)\right)\mathrm{d}x =
-  \text{______}．
+  \int_{-1}^1\left(f(x) + x^2\ln\left(x + \sqrt{x^2+1}\right)\right)\mathrm{d}x = \text{______}．
 
   $$'
 reference_answer: $2$
-solution: '因为 $\ln\left(x+\sqrt{x^2+1}\right)$ 是奇函数，且 $x^2$ 为偶函数，所以 $x^2\ln\left(x+\sqrt{x^2+1}\right)$
-  为奇函数，在对称区间 $[-1,1]$ 上的定积分为 $0$．原积分化为：
+solution: '因为 $\ln\left(x+\sqrt{x^2+1}\right)$ 是奇函数，且 $x^2$ 为偶函数，所以 $x^2\ln\left(x+\sqrt{x^2+1}\right)$ 为奇函数，在对称区间 $[-1,1]$
+  上的定积分为 $0$．原积分化为：
 
 
   $$
 
-  \int_{-1}^1 f(x)\mathrm{d}x = \int_0^1 (f(x) + f(-x))\mathrm{d}x = \int_0^1 2\mathrm{d}x
-  = 2
+  \int_{-1}^1 f(x)\mathrm{d}x = \int_0^1 (f(x) + f(-x))\mathrm{d}x = \int_0^1 2\mathrm{d}x = 2
 
   $$
 
@@ -50,11 +48,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(3)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了定积分与反常积分计算技巧的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查定积分与反常积分计算技巧．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3af059982dcef53192073a3dcf7355f922f57b6d088fd0560d97d8da48a81a51
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3af059982dcef53192073a3dcf7355f922f57b6d088fd0560d97d8da48a81a51
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3af059982dcef53192073a3dcf7355f922f57b6d088fd0560d97d8da48a81a51

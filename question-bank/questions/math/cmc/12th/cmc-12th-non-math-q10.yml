@@ -1,28 +1,27 @@
 schema_version: 3
 id: cmc-12th-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 证明 $f(n) = \sum_{m=1}^n \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x$ 等于 $n$
-  的所有因子（包括 $1$ 和 $n$ 本身）之和，其中 $[x+1]$ 表示不超过 $x+1$ 的最大整数，并计算 $f(2021)$．
+stem: 证明 $f(n) = \sum_{m=1}^n \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x$ 等于 $n$ 的所有因子（包括 $1$ 和 $n$ 本身）之和，其中 $[x+1]$ 表示不超过
+  $x+1$ 的最大整数，并计算 $f(2021)$．
 reference_answer: $2112$
 solution: '将区间分段，在每一个区间 $[k-1, k]$ 上 $[x+1] = k$ 为常数：
 
 
   $$
 
-  \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x = \sum_{k=1}^m \int_{k-1}^k \cos\frac{2\pi
-  n k}{m}\mathrm{d}x = \sum_{k=1}^m \cos\frac{2\pi n k}{m}
+  \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x = \sum_{k=1}^m \int_{k-1}^k \cos\frac{2\pi n k}{m}\mathrm{d}x = \sum_{k=1}^m
+  \cos\frac{2\pi n k}{m}
 
   $$
 
 
-  若 $m$ 是 $n$ 的因子，则 $\frac{n}{m}$ 为整数，对于所有 $k$，$\cos\frac{2\pi n k}{m} = 1$，积分和等于
-  $m$．
+  若 $m$ 是 $n$ 的因子，则 $\frac{n}{m}$ 为整数，对于所有 $k$，$\cos\frac{2\pi n k}{m} = 1$，积分和等于 $m$．
 
 
   若 $m$ 不是 $n$ 的因子，由三角级数求和公式：
@@ -68,11 +67,35 @@ provenance:
   type: adapted
   note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2c2d5fc14c64b5687b8191dbe35dc25625ce210bc6f0f8c003a868b07fc90003
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2c2d5fc14c64b5687b8191dbe35dc25625ce210bc6f0f8c003a868b07fc90003
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2c2d5fc14c64b5687b8191dbe35dc25625ce210bc6f0f8c003a868b07fc90003

@@ -1,24 +1,22 @@
 schema_version: 3
 id: cmc-13th-non-math-q03
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(x)$ 连续，且 $f(0) \neq 0$，则 $\lim_{x\to 0}\frac{2\int_0^x (x-t)f(t)\mathrm{d}t}{x\int_0^x
-  f(x-t)\mathrm{d}t} =$ ______．
+stem: 设函数 $f(x)$ 连续，且 $f(0) \neq 0$，则 $\lim_{x\to 0}\frac{2\int_0^x (x-t)f(t)\mathrm{d}t}{x\int_0^x f(x-t)\mathrm{d}t} =$
+  ______．
 reference_answer: $1$
-solution: '分子改写为 $2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t$；分母换元 $u
-  = x-t$ 得 $x\int_0^x f(u)\mathrm{d}u$．应用洛必达法则：
+solution: '分子改写为 $2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t$；分母换元 $u = x-t$ 得 $x\int_0^x f(u)\mathrm{d}u$．应用洛必达法则：
 
 
   $$
 
-  \lim_{x\to 0}\frac{2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t}{x\int_0^x
-  f(u)\mathrm{d}u} = \lim_{x\to 0}\frac{2\int_0^x f(t)\mathrm{d}t + 2x f(x) - 2x f(x)}{\int_0^x
-  f(u)\mathrm{d}u + x f(x)} = \lim_{x\to 0}\frac{2\int_0^x f(t)\mathrm{d}t}{\int_0^x
+  \lim_{x\to 0}\frac{2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t}{x\int_0^x f(u)\mathrm{d}u} = \lim_{x\to 0}\frac{2\int_0^x
+  f(t)\mathrm{d}t + 2x f(x) - 2x f(x)}{\int_0^x f(u)\mathrm{d}u + x f(x)} = \lim_{x\to 0}\frac{2\int_0^x f(t)\mathrm{d}t}{\int_0^x
   f(u)\mathrm{d}u + x f(x)}
 
   $$
@@ -29,8 +27,7 @@ solution: '分子改写为 $2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm
 
   $$
 
-  \lim_{x\to 0}\frac{2x f(\xi)}{x f(\xi) + x f(x)} = \lim_{x\to 0}\frac{2f(\xi)}{f(\xi)+f(x)}
-  = \frac{2f(0)}{2f(0)} = 1
+  \lim_{x\to 0}\frac{2x f(\xi)}{x f(\xi) + x f(x)} = \lim_{x\to 0}\frac{2f(\xi)}{f(\xi)+f(x)} = \frac{2f(0)}{2f(0)} = 1
 
   $$
 
@@ -56,11 +53,36 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第3小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.limit
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分中值定理与辅助函数构造的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分中值定理与辅助函数构造．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82a47c87c07febae3cfc961123c58920c0da0e13d57c41b8d5e61af6313d9517
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82a47c87c07febae3cfc961123c58920c0da0e13d57c41b8d5e61af6313d9517
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:82a47c87c07febae3cfc961123c58920c0da0e13d57c41b8d5e61af6313d9517

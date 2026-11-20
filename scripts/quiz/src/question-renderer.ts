@@ -1,5 +1,6 @@
 import { isAnswerComplete, makeResult } from "./grading.js";
-import type { Question, SelfAssessedAnswer, UserAnswer } from "./types.js";
+import { quizLicenseNotices, RIGHTS_CONTACT } from "./licenses.js";
+import type { Question, QuizRights, SelfAssessedAnswer, UserAnswer } from "./types.js";
 
 export function escapeHtml(value: string): string {
   const element = document.createElement("span");
@@ -11,7 +12,43 @@ export function renderQuestionStem(question: Question): HTMLElement {
   const stem = document.createElement("div");
   stem.className = "plw-quiz-stem";
   stem.innerHTML = question.stemHtml;
+  const notice = renderLicenseNotice(question, "本题");
+  if (notice) stem.append(notice);
   return stem;
+}
+
+export function renderLicenseNotice(resource: QuizRights & { id: string }, label: string): HTMLElement | null {
+  const { license, authors, provenance, id } = resource;
+  const rights = quizLicenseNotices.get(license ?? "");
+  if (!rights) return null;
+
+  const paragraph = document.createElement("p");
+  paragraph.className = "plw-quiz-license";
+  const notice = document.createElement("small");
+  paragraph.append(notice);
+  notice.append(`${label}许可：`);
+  if (rights.url) {
+    const link = document.createElement("a");
+    link.href = rights.url;
+    link.textContent = rights.title;
+    notice.append(link);
+  } else {
+    notice.append(rights.title);
+  }
+  if (authors?.length) notice.append(` · 署名：${authors.map(author => author.name).join("、")}`);
+  if (provenance?.note) notice.append(` · ${provenance.note}`);
+  if (provenance?.permission) notice.append(` · ${provenance.permission}`);
+  if (provenance?.source && /^https?:\/\//i.test(provenance.source)) {
+    const source = document.createElement("a");
+    source.href = provenance.source;
+    source.textContent = "来源";
+    notice.append(" · ", source);
+  }
+  const contact = document.createElement("a");
+  contact.href = `mailto:${RIGHTS_CONTACT}?subject=${encodeURIComponent(`[题库版权] ${id}`)}`;
+  contact.textContent = "权利人申请移除";
+  notice.append(" · ", contact);
+  return paragraph;
 }
 
 export interface AnswerControlOptions {

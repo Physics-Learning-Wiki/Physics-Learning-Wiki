@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q02
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -10,10 +10,9 @@ choice_order: fixed
 stem: '设 $D: x^2 + y^2 \leqslant r^2$，其中 $r > 0$，则 $\lim_{r\to 0^+}\frac{\iint_D (\mathrm{e}^{x^2+y^2}-1)\mathrm{d}x\mathrm{d}y}{r^4}
   =$ ______．'
 reference_answer: $\frac{\pi}{2}$
-solution: 利用极坐标变换 $x = \rho\cos\theta, y = \rho\sin\theta$：$\iint_D (\mathrm{e}^{x^2+y^2}-1)\mathrm{d}x\mathrm{d}y
-  = \int_0^{2\pi}\mathrm{d}\theta\int_0^r (\mathrm{e}^{\rho^2}-1)\rho\mathrm{d}\rho
-  = \pi(\mathrm{e}^{r^2} - 1 - r^2)$当 $r\to 0^+$ 时，$\mathrm{e}^{r^2} - 1 - r^2 = \frac{r^4}{2}
-  + o(r^4)$，故原极限为 $\frac{\pi}{2}$．
+solution: 利用极坐标变换 $x = \rho\cos\theta, y = \rho\sin\theta$：$\iint_D (\mathrm{e}^{x^2+y^2}-1)\mathrm{d}x\mathrm{d}y = \int_0^{2\pi}\mathrm{d}\theta\int_0^r
+  (\mathrm{e}^{\rho^2}-1)\rho\mathrm{d}\rho = \pi(\mathrm{e}^{r^2} - 1 - r^2)$当 $r\to 0^+$ 时，$\mathrm{e}^{r^2} - 1 - r^2 =
+  \frac{r^4}{2} + o(r^4)$，故原极限为 $\frac{\pi}{2}$．
 response:
   format: plain_text
   required: true
@@ -34,11 +33,35 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multiple-integral
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了重积分计算与对称性化简的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查重积分计算与对称性化简．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:324a8762ff1ed6b01f91e302c114e85d71c01724bb4cc5156174e1af03634817
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:324a8762ff1ed6b01f91e302c114e85d71c01724bb4cc5156174e1af03634817
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:324a8762ff1ed6b01f91e302c114e85d71c01724bb4cc5156174e1af03634817

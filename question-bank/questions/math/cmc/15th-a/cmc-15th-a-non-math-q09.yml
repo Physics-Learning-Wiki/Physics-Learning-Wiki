@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q09
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -19,14 +19,11 @@ stem: '（本题 14 分）设 $f(x)$ 在 $[0,1]$ 上有连续的导数，且 $f(
 
   并求使上式成为等式的 $f(x)$．'
 reference_answer: 等号成立当且仅当 $f(x) \equiv 0$
-solution: 由分部积分法：$\int_0^1 f^2(x)\mathrm{d}x = \left.(x-1)f^2(x)\right|_0^1 - \int_0^1
-  (x-1)\cdot 2f(x)f'(x)\mathrm{d}x = 2\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \quad (得
-  4 分)$由柯西–施瓦茨积分不等式：$\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \leqslant \left(\int_0^1 (1-x)^2
-  (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1 f^2(x)\mathrm{d}x\right)^{1/2}$代入得：$\int_0^1
-  f^2(x)\mathrm{d}x \leqslant 2\left(\int_0^1 (1-x)^2 (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1
-  f^2(x)\mathrm{d}x\right)^{1/2}$两边平方即得不等式（得 10 分）．等号成立时必存在常数 $c$ 使得 $(1-x)f'(x) =
-  c f(x)$，解得 $f(x) = d(1-x)^{-c}$．当 $x\to 0$ 时 $f(x)\to 0$，故 $d = 0$，即唯一极值函数为 $f(x)
-  \equiv 0$（满分 14 分）．
+solution: 由分部积分法：$\int_0^1 f^2(x)\mathrm{d}x = \left.(x-1)f^2(x)\right|_0^1 - \int_0^1 (x-1)\cdot 2f(x)f'(x)\mathrm{d}x =
+  2\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \quad (得 4 分)$由柯西–施瓦茨积分不等式：$\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \leqslant \left(\int_0^1
+  (1-x)^2 (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1 f^2(x)\mathrm{d}x\right)^{1/2}$代入得：$\int_0^1 f^2(x)\mathrm{d}x \leqslant
+  2\left(\int_0^1 (1-x)^2 (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1 f^2(x)\mathrm{d}x\right)^{1/2}$两边平方即得不等式（得 10 分）．等号成立时必存在常数
+  $c$ 使得 $(1-x)f'(x) = c f(x)$，解得 $f(x) = d(1-x)^{-c}$．当 $x\to 0$ 时 $f(x)\to 0$，故 $d = 0$，即唯一极值函数为 $f(x) \equiv 0$（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -53,11 +50,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第五大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.integral-inequality
+- calculus.derivative
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了积分不等式放缩与估计的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查积分不等式放缩与估计．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b7ad8450b37d9768a6502d8f36de7072e97583810a3f7d4df53320fc11381200
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b7ad8450b37d9768a6502d8f36de7072e97583810a3f7d4df53320fc11381200
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b7ad8450b37d9768a6502d8f36de7072e97583810a3f7d4df53320fc11381200

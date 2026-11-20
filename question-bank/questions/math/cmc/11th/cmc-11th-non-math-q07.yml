@@ -1,24 +1,22 @@
 schema_version: 3
 id: cmc-11th-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $f(x)$ 在 $[0, +\infty)$ 上可微，$f(0)=0$，且存在常数 $A > 0$，使得 $|f'(x)| \le A |f(x)|$
-  在 $[0, +\infty)$ 上成立．试证明：在 $(0, +\infty)$ 上有 $f(x)=0$．
+stem: 设 $f(x)$ 在 $[0, +\infty)$ 上可微，$f(0)=0$，且存在常数 $A > 0$，使得 $|f'(x)| \le A |f(x)|$ 在 $[0, +\infty)$ 上成立．试证明：在 $(0, +\infty)$
+  上有 $f(x)=0$．
 reference_answer: 见推导步骤
-solution: '设 $x_0 \in \left[0, \frac{1}{2A}\right]$ 使得 $|f(x_0)| = \max_{x\in [0,
-  1/(2A)]} |f(x)|$．
+solution: '设 $x_0 \in \left[0, \frac{1}{2A}\right]$ 使得 $|f(x_0)| = \max_{x\in [0, 1/(2A)]} |f(x)|$．
 
 
   由 Lagrange 中值定理，存在 $\xi \in (0, x_0)$：
 
 
-  $$|f(x_0)| = |f(x_0) - f(0)| = |f''(\xi)| x_0 \le A |f(\xi)| x_0 \le A |f(x_0)|
-  \frac{1}{2A} = \frac{1}{2}|f(x_0)|$$
+  $$|f(x_0)| = |f(x_0) - f(0)| = |f''(\xi)| x_0 \le A |f(\xi)| x_0 \le A |f(x_0)| \frac{1}{2A} = \frac{1}{2}|f(x_0)|$$
 
 
   因此 $|f(x_0)| \le \frac{1}{2}|f(x_0)| \implies |f(x_0)| = 0$．
@@ -27,8 +25,7 @@ solution: '设 $x_0 \in \left[0, \frac{1}{2A}\right]$ 使得 $|f(x_0)| = \max_{x
   故在区间 $\left[0, \frac{1}{2A}\right]$ 上 $f(x) \equiv 0$．
 
 
-  递推考虑区间 $\left[\frac{k-1}{2A}, \frac{k}{2A}\right]$ ($k=1, 2, \dots$)，同理以左端点为 0 重复上述放缩，可得对一切
-  $x \ge 0$ 均有 $f(x) = 0$．'
+  递推考虑区间 $\left[\frac{k-1}{2A}, \frac{k}{2A}\right]$ ($k=1, 2, \dots$)，同理以左端点为 0 重复上述放缩，可得对一切 $x \ge 0$ 均有 $f(x) = 0$．'
 response:
   format: plain_text
   required: true
@@ -52,11 +49,34 @@ provenance:
   type: adapted
   note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分中值定理与辅助函数构造的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分中值定理与辅助函数构造．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d79fe642f04601da9e820c4aa2e55ec6208d925a2b0826114a2ea6a6442671a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d79fe642f04601da9e820c4aa2e55ec6208d925a2b0826114a2ea6a6442671a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0d79fe642f04601da9e820c4aa2e55ec6208d925a2b0826114a2ea6a6442671a

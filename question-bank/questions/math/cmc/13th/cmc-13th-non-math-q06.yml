@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-13th-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $x_1 = 2021$，$x_n^2 - 2(x_n+1)x_{n+1} + 2021 = 0$ ($n \ge 1$)．证明数列 $\{x_n\}$
-  收敛，并求极限 $\lim_{n\to\infty} x_n$．
+stem: 设 $x_1 = 2021$，$x_n^2 - 2(x_n+1)x_{n+1} + 2021 = 0$ ($n \ge 1$)．证明数列 $\{x_n\}$ 收敛，并求极限 $\lim_{n\to\infty} x_n$．
 reference_answer: $\sqrt{2022} - 1$
 solution: '记 $a = 1011$，$y_n = 1 + x_n$．代入原递推式：
 
@@ -33,12 +32,11 @@ solution: '记 $a = 1011$，$y_n = 1 + x_n$．代入原递推式：
   定义函数 $f(y) = \frac{1}{2}\left(y + \frac{2a}{y}\right)$ ($y > 0$)．$y_1 = 2022 = 2a$．
 
 
-  由均值不等式，当 $y > \sqrt{2a}$ 时，$f(y) > \sqrt{2a}$ 且 $f(y) < y$．因此 $\{y_n\}$ 单调减少且有下界
-  $\sqrt{2a} = \sqrt{2022}$，故数列 $\{y_n\}$ 收敛，从而 $\{x_n\}$ 收敛．
+  由均值不等式，当 $y > \sqrt{2a}$ 时，$f(y) > \sqrt{2a}$ 且 $f(y) < y$．因此 $\{y_n\}$ 单调减少且有下界 $\sqrt{2a} = \sqrt{2022}$，故数列 $\{y_n\}$
+  收敛，从而 $\{x_n\}$ 收敛．
 
 
-  设 $\lim_{n\to\infty} y_n = A$ ($A > 0$)，由 $A = \frac{1}{2}\left(A + \frac{2022}{A}\right)$
-  解得 $A = \sqrt{2022}$．
+  设 $\lim_{n\to\infty} y_n = A$ ($A > 0$)，由 $A = \frac{1}{2}\left(A + \frac{2022}{A}\right)$ 解得 $A = \sqrt{2022}$．
 
 
   因此 $\lim_{n\to\infty} x_n = A - 1 = \sqrt{2022} - 1$．'
@@ -65,11 +63,35 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+- calculus.derivative
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:84af36049a02c65d41159fd7f74b16e7330d9f5798e8537d0aa54c43bc7f6c03
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:84af36049a02c65d41159fd7f74b16e7330d9f5798e8537d0aa54c43bc7f6c03
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:84af36049a02c65d41159fd7f74b16e7330d9f5798e8537d0aa54c43bc7f6c03

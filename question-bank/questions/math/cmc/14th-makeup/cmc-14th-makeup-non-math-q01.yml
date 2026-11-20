@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -10,8 +10,7 @@ choice_order: fixed
 stem: 极限 $\lim_{n\to\infty}\frac{1}{n^3}[1^2 + 3^2 + \cdots + (2n-1)^2] =$ ______．
 reference_answer: $\frac{4}{3}$
 solution: 利用定积分的定义转化为黎曼和：$\lim_{n\to\infty}\frac{1}{n^3}\sum_{k=1}^n (2k-1)^2 = 4\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n
-  \left(\frac{k}{n} - \frac{1}{2n}\right)^2 = 4\int_0^1 x^2\mathrm{d}x = \left.4\cdot\frac{x^3}{3}\right|_0^1
-  = \frac{4}{3}$
+  \left(\frac{k}{n} - \frac{1}{2n}\right)^2 = 4\int_0^1 x^2\mathrm{d}x = \left.4\cdot\frac{x^3}{3}\right|_0^1 = \frac{4}{3}$
 response:
   format: plain_text
   required: true
@@ -32,11 +31,36 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(1)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:965ff3e75fc912e0fc11350ba4730efaea41468b58272d74d0dcfe51803fe1d6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:965ff3e75fc912e0fc11350ba4730efaea41468b58272d74d0dcfe51803fe1d6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:965ff3e75fc912e0fc11350ba4730efaea41468b58272d74d0dcfe51803fe1d6

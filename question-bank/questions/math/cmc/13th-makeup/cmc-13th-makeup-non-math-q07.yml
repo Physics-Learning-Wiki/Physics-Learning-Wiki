@@ -1,15 +1,14 @@
 schema_version: 3
 id: cmc-13th-makeup-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(x, y)$ 在闭区域 $D = \{(x, y)\mid x^2+y^2 \le 1\}$ 上具有二阶连续偏导数，且 $\frac{\partial^2
-  f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = x^2+y^2$，求 $\lim_{r\to 0^+}
-  \frac{\iint_{x^2+y^2 \le r^2}\left(x\frac{\partial f}{\partial x} + y\frac{\partial
+stem: 设函数 $f(x, y)$ 在闭区域 $D = \{(x, y)\mid x^2+y^2 \le 1\}$ 上具有二阶连续偏导数，且 $\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2
+  f}{\partial y^2} = x^2+y^2$，求 $\lim_{r\to 0^+} \frac{\iint_{x^2+y^2 \le r^2}\left(x\frac{\partial f}{\partial x} + y\frac{\partial
   f}{\partial y}\right)\mathrm{d}x\mathrm{d}y}{(\tan r - \sin r)^2}$．
 reference_answer: $\frac{\pi}{3}$
 solution: '设 $D_r = \{(x, y)\mid x^2+y^2 \le r^2\}$．由 Green 公式：
@@ -17,9 +16,8 @@ solution: '设 $D_r = \{(x, y)\mid x^2+y^2 \le r^2\}$．由 Green 公式：
 
   $$
 
-  \iint_{D_r}\left(x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y}\right)\mathrm{d}x\mathrm{d}y
-  = \frac{r^2}{2}\iint_{D_r}\left(\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2
-  f}{\partial y^2}\right)\mathrm{d}x\mathrm{d}y - \frac{1}{2}\iint_{D_r}(x^2+y^2)\left(\frac{\partial^2
+  \iint_{D_r}\left(x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y}\right)\mathrm{d}x\mathrm{d}y = \frac{r^2}{2}\iint_{D_r}\left(\frac{\partial^2
+  f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}\right)\mathrm{d}x\mathrm{d}y - \frac{1}{2}\iint_{D_r}(x^2+y^2)\left(\frac{\partial^2
   f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}\right)\mathrm{d}x\mathrm{d}y
 
   $$
@@ -30,8 +28,8 @@ solution: '设 $D_r = \{(x, y)\mid x^2+y^2 \le r^2\}$．由 Green 公式：
 
   $$
 
-  = \frac{r^2}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^r s^3\mathrm{d}s - \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta
-  \int_0^r s^5\mathrm{d}s = \frac{\pi r^6}{4} - \frac{\pi r^6}{6} = \frac{\pi r^6}{12}
+  = \frac{r^2}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^r s^3\mathrm{d}s - \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^r
+  s^5\mathrm{d}s = \frac{\pi r^6}{4} - \frac{\pi r^6}{6} = \frac{\pi r^6}{12}
 
   $$
 
@@ -41,8 +39,7 @@ solution: '设 $D_r = \{(x, y)\mid x^2+y^2 \le r^2\}$．由 Green 公式：
 
   $$
 
-  \tan r - \sin r = \left(r + \frac{r^3}{3} + o(r^3)\right) - \left(r - \frac{r^3}{6}
-  + o(r^3)\right) = \frac{r^3}{2} + o(r^3)
+  \tan r - \sin r = \left(r + \frac{r^3}{3} + o(r^3)\right) - \left(r - \frac{r^3}{6} + o(r^3)\right) = \frac{r^3}{2} + o(r^3)
 
   $$
 
@@ -84,11 +81,36 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.line-integral
+- calculus.limit
+- calculus.multivariable-diff
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了曲线积分与格林公式的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查曲线积分与格林公式．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f969da079d13827670d06eca331aeb8cb9f8219ea589e5481cfb0a56904004b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f969da079d13827670d06eca331aeb8cb9f8219ea589e5481cfb0a56904004b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f969da079d13827670d06eca331aeb8cb9f8219ea589e5481cfb0a56904004b

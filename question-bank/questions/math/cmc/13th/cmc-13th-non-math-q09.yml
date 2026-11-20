@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-13th-non-math-q09
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -12,13 +12,13 @@ stem: '设函数 $f(x)$ 在闭区间 $[a, b]$ 上有连续的二阶导数，证�
 
   $$
 
-  \lim_{n\to\infty} n^2 \left[\int_a^b f(x)\mathrm{d}x - \frac{b-a}{n}\sum_{k=1}^n
-  f\left(a + \frac{2k-1}{2n}(b-a)\right)\right] = \frac{(b-a)^2}{24}[f''(b)-f''(a)]
+  \lim_{n\to\infty} n^2 \left[\int_a^b f(x)\mathrm{d}x - \frac{b-a}{n}\sum_{k=1}^n f\left(a + \frac{2k-1}{2n}(b-a)\right)\right]
+  = \frac{(b-a)^2}{24}[f''(b)-f''(a)]
 
   $$'
 reference_answer: 见推导步骤
-solution: '记 $x_k = a + \frac{k(b-a)}{n}$，中点 $\xi_k = a + \frac{2k-1}{2n}(b-a)$ ($k=1,2,\dots,n$)．在区间
-  $[x_{k-1}, x_k]$ 上 Taylor 展开：
+solution: '记 $x_k = a + \frac{k(b-a)}{n}$，中点 $\xi_k = a + \frac{2k-1}{2n}(b-a)$ ($k=1,2,\dots,n$)．在区间 $[x_{k-1}, x_k]$ 上 Taylor
+  展开：
 
 
   $$
@@ -33,20 +33,17 @@ solution: '记 $x_k = a + \frac{k(b-a)}{n}$，中点 $\xi_k = a + \frac{2k-1}{2n
 
   $$
 
-  \int_{x_{k-1}}^{x_k} (f(x) - f(\xi_k))\mathrm{d}x = \frac{1}{2}\int_{x_{k-1}}^{x_k}
-  f''''(\eta_k)(x-\xi_k)^2\mathrm{d}x
+  \int_{x_{k-1}}^{x_k} (f(x) - f(\xi_k))\mathrm{d}x = \frac{1}{2}\int_{x_{k-1}}^{x_k} f''''(\eta_k)(x-\xi_k)^2\mathrm{d}x
 
   $$
 
 
-  设 $f''''(x)$ 在 $[x_{k-1}, x_k]$ 上的最大值和最小值分别为 $M_k, m_k$．由 $\int_{x_{k-1}}^{x_k}(x-\xi_k)^2\mathrm{d}x
-  = \frac{(b-a)^3}{12n^3}$，求和并放缩可得：
+  设 $f''''(x)$ 在 $[x_{k-1}, x_k]$ 上的最大值和最小值分别为 $M_k, m_k$．由 $\int_{x_{k-1}}^{x_k}(x-\xi_k)^2\mathrm{d}x = \frac{(b-a)^3}{12n^3}$，求和并放缩可得：
 
 
   $$
 
-  \frac{(b-a)^2}{24}\sum_{k=1}^n m_k \frac{b-a}{n} \le n^2 B_n \le \frac{(b-a)^2}{24}\sum_{k=1}^n
-  M_k \frac{b-a}{n}
+  \frac{(b-a)^2}{24}\sum_{k=1}^n m_k \frac{b-a}{n} \le n^2 B_n \le \frac{(b-a)^2}{24}\sum_{k=1}^n M_k \frac{b-a}{n}
 
   $$
 
@@ -56,8 +53,8 @@ solution: '记 $x_k = a + \frac{k(b-a)}{n}$，中点 $\xi_k = a + \frac{2k-1}{2n
 
   $$
 
-  \lim_{n\to\infty}\sum_{k=1}^n m_k \frac{b-a}{n} = \lim_{n\to\infty}\sum_{k=1}^n
-  M_k \frac{b-a}{n} = \int_a^b f''''(x)\mathrm{d}x = f''(b) - f''(a)
+  \lim_{n\to\infty}\sum_{k=1}^n m_k \frac{b-a}{n} = \lim_{n\to\infty}\sum_{k=1}^n M_k \frac{b-a}{n} = \int_a^b f''''(x)\mathrm{d}x
+  = f''(b) - f''(a)
 
   $$
 
@@ -86,11 +83,37 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第五大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+- calculus.derivative
+- calculus.integral
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f88b2b8f506289b8fedf85815ab8a765bf4406d46d423ce08aa209e87c7cab41
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f88b2b8f506289b8fedf85815ab8a765bf4406d46d423ce08aa209e87c7cab41
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f88b2b8f506289b8fedf85815ab8a765bf4406d46d423ce08aa209e87c7cab41

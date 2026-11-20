@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-13th-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 记 $D = \{(x, y)\mid x^2+y^2 \le \pi\}$，则 $\iint_D (\sin x^2\cos y^2 + x\sqrt{x^2+y^2})\mathrm{d}x\mathrm{d}y
-  =$ ______．
+stem: 记 $D = \{(x, y)\mid x^2+y^2 \le \pi\}$，则 $\iint_D (\sin x^2\cos y^2 + x\sqrt{x^2+y^2})\mathrm{d}x\mathrm{d}y =$ ______．
 reference_answer: $\pi$
 solution: '根据对称性，奇函数部分积分为零：$\iint_D x\sqrt{x^2+y^2}\mathrm{d}x\mathrm{d}y = 0$．
 
@@ -18,9 +17,8 @@ solution: '根据对称性，奇函数部分积分为零：$\iint_D x\sqrt{x^2+y
 
   $$
 
-  \iint_D \sin x^2\cos y^2\mathrm{d}x\mathrm{d}y = \iint_D \sin y^2\cos x^2\mathrm{d}x\mathrm{d}y
-  = \frac{1}{2}\iint_D (\sin x^2\cos y^2 + \cos x^2\sin y^2)\mathrm{d}x\mathrm{d}y
-  = \frac{1}{2}\iint_D \sin(x^2+y^2)\mathrm{d}x\mathrm{d}y
+  \iint_D \sin x^2\cos y^2\mathrm{d}x\mathrm{d}y = \iint_D \sin y^2\cos x^2\mathrm{d}x\mathrm{d}y = \frac{1}{2}\iint_D (\sin
+  x^2\cos y^2 + \cos x^2\sin y^2)\mathrm{d}x\mathrm{d}y = \frac{1}{2}\iint_D \sin(x^2+y^2)\mathrm{d}x\mathrm{d}y
 
   $$
 
@@ -30,9 +28,8 @@ solution: '根据对称性，奇函数部分积分为零：$\iint_D x\sqrt{x^2+y
 
   $$
 
-  \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^{\sqrt{\pi}} r\sin r^2\mathrm{d}r
-  = \frac{\pi}{2}\left[-\cos r^2\right]_0^{\sqrt{\pi}} = \frac{\pi}{2}(-\cos\pi +
-  \cos 0) = \pi
+  \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^{\sqrt{\pi}} r\sin r^2\mathrm{d}r = \frac{\pi}{2}\left[-\cos r^2\right]_0^{\sqrt{\pi}}
+  = \frac{\pi}{2}(-\cos\pi + \cos 0) = \pi
 
   $$
 
@@ -58,11 +55,34 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第5小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multiple-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了重积分计算与对称性化简的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查重积分计算与对称性化简．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f08629d0570408f4a3d45639cf64edd8d3a43e1eeb790499c427fc113d65fdf4
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f08629d0570408f4a3d45639cf64edd8d3a43e1eeb790499c427fc113d65fdf4
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f08629d0570408f4a3d45639cf64edd8d3a43e1eeb790499c427fc113d65fdf4

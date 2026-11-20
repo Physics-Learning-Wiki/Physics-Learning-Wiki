@@ -1,20 +1,18 @@
 schema_version: 3
 id: cmc-17th-a-non-math-q04
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(u,v)$ 具有一阶连续偏导数，$f(2,0) = 3$，$f'_u(2,0) = 5$，又设 $z = z(x,y)$ 是由方程 $xz
-  = f(2x-y, xyz)$ 确定的隐函数，则 $\left.\frac{\partial z}{\partial x}\right|_{\substack{x=1\\y=0}}
-  =$ ______．
+stem: 设函数 $f(u,v)$ 具有一阶连续偏导数，$f(2,0) = 3$，$f'_u(2,0) = 5$，又设 $z = z(x,y)$ 是由方程 $xz = f(2x-y, xyz)$ 确定的隐函数，则 $\left.\frac{\partial
+  z}{\partial x}\right|_{\substack{x=1\\y=0}} =$ ______．
 reference_answer: $7$
-solution: 对隐函数方程两边关于 $x$ 求偏导：$z + x\frac{\partial z}{\partial x} = 2f'_u + yf'_v\left(z
-  + x\frac{\partial z}{\partial x}\right)$．由此解得 $\frac{\partial z}{\partial x} = \frac{1}{x}\left(\frac{2f'_u}{1-yf'_v}
-  - z\right)$．当 $x=1, y=0$ 时，$z = f(2,0) = 3$，$f'_u(2,0) = 5$．代入得 $\left.\frac{\partial
-  z}{\partial x}\right|_{\substack{x=1\\y=0}} = 2f'_u(2,0) - 3 = 2\times 5 - 3 = 7$．
+solution: 对隐函数方程两边关于 $x$ 求偏导：$z + x\frac{\partial z}{\partial x} = 2f'_u + yf'_v\left(z + x\frac{\partial z}{\partial x}\right)$．由此解得
+  $\frac{\partial z}{\partial x} = \frac{1}{x}\left(\frac{2f'_u}{1-yf'_v} - z\right)$．当 $x=1, y=0$ 时，$z = f(2,0) = 3$，$f'_u(2,0)
+  = 5$．代入得 $\left.\frac{\partial z}{\partial x}\right|_{\substack{x=1\\y=0}} = 2f'_u(2,0) - 3 = 2\times 5 - 3 = 7$．
 response:
   format: plain_text
   required: true
@@ -35,11 +33,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题第(4)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了多元函数微分学与隐函数求导的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查多元函数微分学与隐函数求导．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aaae46908fff2e97968548a4fc2fd2401fbe89edbb962295c34aa57d7fac7232
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aaae46908fff2e97968548a4fc2fd2401fbe89edbb962295c34aa57d7fac7232
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aaae46908fff2e97968548a4fc2fd2401fbe89edbb962295c34aa57d7fac7232

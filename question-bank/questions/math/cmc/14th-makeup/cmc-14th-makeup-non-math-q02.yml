@@ -1,19 +1,18 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q02
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(x)$ 在 $x=1$ 的某一邻域内可微，且满足 $f(1+x)-3f(1-x) = 4+2x+o(x)$，其中 $o(x)$ 是当 $x\to
-  0$ 时 $x$ 的高阶无穷小，则曲线 $y=f(x)$ 在点 $(1,f(1))$ 处的切线方程为 ______．
+stem: 设函数 $f(x)$ 在 $x=1$ 的某一邻域内可微，且满足 $f(1+x)-3f(1-x) = 4+2x+o(x)$，其中 $o(x)$ 是当 $x\to 0$ 时 $x$ 的高阶无穷小，则曲线 $y=f(x)$ 在点 $(1,f(1))$
+  处的切线方程为 ______．
 reference_answer: $x - 2y - 5 = 0$
-solution: 由连续性令 $x\to 0$ 得 $-2f(1) = 4 \implies f(1) = -2$．改写等式两端求导数：$\frac{f(1+x)-f(1)}{x}
-  + 3\frac{f(1-x)-f(1)}{-x} = 2 + \frac{o(x)}{x}$两边取 $x\to 0$ 极限，由导数定义得 $4f'(1) =
-  2 \implies f'(1) = \frac{1}{2}$．切线方程为 $y - (-2) = \frac{1}{2}(x-1)$，即 $x - 2y -
-  5 = 0$．
+solution: 由连续性令 $x\to 0$ 得 $-2f(1) = 4 \implies f(1) = -2$．改写等式两端求导数：$\frac{f(1+x)-f(1)}{x} + 3\frac{f(1-x)-f(1)}{-x} = 2
+  + \frac{o(x)}{x}$两边取 $x\to 0$ 极限，由导数定义得 $4f'(1) = 2 \implies f'(1) = \frac{1}{2}$．切线方程为 $y - (-2) = \frac{1}{2}(x-1)$，即
+  $x - 2y - 5 = 0$．
 response:
   format: plain_text
   required: true
@@ -34,11 +33,35 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(2)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:13b3a044f712e6450b1cbece8efb85837118b2c0a9b41aec9548cc23be7be1ba
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:13b3a044f712e6450b1cbece8efb85837118b2c0a9b41aec9548cc23be7be1ba
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:13b3a044f712e6450b1cbece8efb85837118b2c0a9b41aec9548cc23be7be1ba

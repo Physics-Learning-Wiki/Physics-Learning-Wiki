@@ -71,7 +71,10 @@
     },
     "license": {
       "enum": [
-        "CC-BY-SA-4.0"
+        "CC-BY-SA-4.0",
+        "CC-BY-NC-SA-4.0",
+        "LicenseRef-Third-Party-Permission",
+        "LicenseRef-Pending"
       ]
     },
     "submission": {
@@ -421,7 +424,8 @@
         "type": {
           "enum": [
             "original",
-            "adapted"
+            "adapted",
+            "reproduced"
           ]
         },
         "note": {
@@ -432,6 +436,9 @@
           "format": "uri"
         },
         "permission": {
+          "$ref": "#/$defs/nonEmpty"
+        },
+        "permission_evidence": {
           "$ref": "#/$defs/nonEmpty"
         },
         "ai_assisted": {

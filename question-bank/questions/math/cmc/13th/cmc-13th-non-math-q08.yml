@@ -1,15 +1,14 @@
 schema_version: 3
 id: cmc-13th-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '对于 $4$ 次齐次函数 $f(x, y, z) = a_1 x^4 + a_2 y^4 + a_3 z^4 + 3a_4 x^2 y^2 + 3a_5
-  y^2 z^2 + 3a_6 x^2 z^2$，计算曲面积分 $\iint_\Sigma f(x, y, z)\mathrm{d}S$，其中 $\Sigma:
-  x^2+y^2+z^2=1$．'
+stem: '对于 $4$ 次齐次函数 $f(x, y, z) = a_1 x^4 + a_2 y^4 + a_3 z^4 + 3a_4 x^2 y^2 + 3a_5 y^2 z^2 + 3a_6 x^2 z^2$，计算曲面积分 $\iint_\Sigma
+  f(x, y, z)\mathrm{d}S$，其中 $\Sigma: x^2+y^2+z^2=1$．'
 reference_answer: $\frac{4\pi}{5}\sum_{i=1}^6 a_i$
 solution: '因为 $f(x, y, z)$ 为 4 次齐次函数，由 Euler 齐次函数定理：
 
@@ -26,9 +25,8 @@ solution: '因为 $f(x, y, z)$ 为 4 次齐次函数，由 Euler 齐次函数定
 
   $$
 
-  \iint_\Sigma f(x, y, z)\mathrm{d}S = \frac{1}{4}\iint_\Sigma (x f_x'' + y f_y''
-  + z f_z'')\mathrm{d}S = \frac{1}{4}\iint_\Sigma (f_x''\mathrm{d}y\mathrm{d}z + f_y''\mathrm{d}z\mathrm{d}x
-  + f_z''\mathrm{d}x\mathrm{d}y)
+  \iint_\Sigma f(x, y, z)\mathrm{d}S = \frac{1}{4}\iint_\Sigma (x f_x'' + y f_y'' + z f_z'')\mathrm{d}S = \frac{1}{4}\iint_\Sigma
+  (f_x''\mathrm{d}y\mathrm{d}z + f_y''\mathrm{d}z\mathrm{d}x + f_z''\mathrm{d}x\mathrm{d}y)
 
   $$
 
@@ -48,21 +46,18 @@ solution: '因为 $f(x, y, z)$ 为 4 次齐次函数，由 Euler 齐次函数定
 
   $$
 
-  f_{xx}'''' + f_{yy}'''' + f_{zz}'''' = 6\left[(2a_1+a_4+a_6)x^2 + (2a_2+a_4+a_5)y^2
-  + (2a_3+a_5+a_6)z^2\right]
+  f_{xx}'''' + f_{yy}'''' + f_{zz}'''' = 6\left[(2a_1+a_4+a_6)x^2 + (2a_2+a_4+a_5)y^2 + (2a_3+a_5+a_6)z^2\right]
 
   $$
 
 
-  利用球对称性 $\iiint x^2\mathrm{d}V = \iiint y^2\mathrm{d}V = \iiint z^2\mathrm{d}V =
-  \frac{1}{3}\iiint (x^2+y^2+z^2)\mathrm{d}V$：
+  利用球对称性 $\iiint x^2\mathrm{d}V = \iiint y^2\mathrm{d}V = \iiint z^2\mathrm{d}V = \frac{1}{3}\iiint (x^2+y^2+z^2)\mathrm{d}V$：
 
 
   $$
 
-  = \sum_{i=1}^6 a_i \iiint_{x^2+y^2+z^2\le 1} (x^2+y^2+z^2)\mathrm{d}V = \sum_{i=1}^6
-  a_i \int_0^{2\pi}\mathrm{d}\theta \int_0^\pi \sin\varphi\mathrm{d}\varphi \int_0^1
-  \rho^4\mathrm{d}\rho = \frac{4\pi}{5}\sum_{i=1}^6 a_i
+  = \sum_{i=1}^6 a_i \iiint_{x^2+y^2+z^2\le 1} (x^2+y^2+z^2)\mathrm{d}V = \sum_{i=1}^6 a_i \int_0^{2\pi}\mathrm{d}\theta \int_0^\pi
+  \sin\varphi\mathrm{d}\varphi \int_0^1 \rho^4\mathrm{d}\rho = \frac{4\pi}{5}\sum_{i=1}^6 a_i
 
   $$
 
@@ -91,11 +86,37 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.surface-integral
+- calculus.series
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用微分方程解法与定解问题建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查微分方程解法与定解问题的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f96498f2f98575329d56fa309e41742451d08a293e55a998cc0b0ea7b4086742
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f96498f2f98575329d56fa309e41742451d08a293e55a998cc0b0ea7b4086742
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f96498f2f98575329d56fa309e41742451d08a293e55a998cc0b0ea7b4086742

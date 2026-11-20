@@ -408,7 +408,7 @@ extra:
     dark_theme: 'dark'
     lang: 'zh-CN'
     loading: 'lazy'
-  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>'
+  copyright: '本站原创内容默认采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> 和 <a href="https://github.com/zTrix/sata-license">SATA</a>，第三方内容以各自的权利声明为准'
   pagetime: 'on'
   manifest: 'manifest.webmanifest'
   githash: ''

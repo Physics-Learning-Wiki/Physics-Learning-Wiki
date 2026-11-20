@@ -1,21 +1,18 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）设 $I_n = n\int_1^a \frac{\mathrm{d}x}{1+x^n}$，其中 $a > 1$．求极限 $\lim_{n\to\infty}
-  I_n$．
+stem: （本题 14 分）设 $I_n = n\int_1^a \frac{\mathrm{d}x}{1+x^n}$，其中 $a > 1$．求极限 $\lim_{n\to\infty} I_n$．
 reference_answer: $\ln 2$
-solution: 记 $b = 1/a$，则 $0 < b < 1$．作代换 $x = 1/t$：$I_n = \int_b^1 \frac{n t^{n-1}}{t(1+t^n)}\mathrm{d}t
-  = \int_b^1 \frac{\mathrm{d}(\ln(1+t^n))}{t}$分部积分得：$I_n = \ln 2 - \frac{\ln(1+b^n)}{b}
-  + \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t \quad (得 8 分)$当 $t\in[b,1]$ 时，由不等式
-  $\ln(1+t^n) \leqslant t^n$ 可得：$0 \leqslant \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t
-  \leqslant \int_b^1 t^{n-2}\mathrm{d}t = \frac{1-b^{n-1}}{n-1} \to 0 \quad (n\to\infty)$由于
-  $b^n\to 0$，第二项趋于 0，由夹逼准则得 $\lim_{n\to\infty} I_n = \ln 2$（满分 14 分）．
+solution: 记 $b = 1/a$，则 $0 < b < 1$．作代换 $x = 1/t$：$I_n = \int_b^1 \frac{n t^{n-1}}{t(1+t^n)}\mathrm{d}t = \int_b^1 \frac{\mathrm{d}(\ln(1+t^n))}{t}$分部积分得：$I_n
+  = \ln 2 - \frac{\ln(1+b^n)}{b} + \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t \quad (得 8 分)$当 $t\in[b,1]$ 时，由不等式 $\ln(1+t^n)
+  \leqslant t^n$ 可得：$0 \leqslant \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t \leqslant \int_b^1 t^{n-2}\mathrm{d}t = \frac{1-b^{n-1}}{n-1}
+  \to 0 \quad (n\to\infty)$由于 $b^n\to 0$，第二项趋于 0，由夹逼准则得 $\lim_{n\to\infty} I_n = \ln 2$（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -39,11 +36,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.integral-inequality
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了积分不等式放缩与估计的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查积分不等式放缩与估计．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2652c810e4f87f8fcc02c5bc1668ab42dc30914800f43fba2e6ba3ab100710f7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2652c810e4f87f8fcc02c5bc1668ab42dc30914800f43fba2e6ba3ab100710f7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2652c810e4f87f8fcc02c5bc1668ab42dc30914800f43fba2e6ba3ab100710f7

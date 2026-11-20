@@ -1,25 +1,23 @@
 schema_version: 3
 id: cmc-13th-makeup-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 若对于 $\mathbb{R}^3$ 中半空间 $\{(x, y, z)\in\mathbb{R}^3\mid x > 0\}$ 内的任意有向光滑封闭曲面
-  $S$，都有 $\iint_S [x f'(x)\mathrm{d}y\mathrm{d}z + y(x f(x) - f'(x))\mathrm{d}z\mathrm{d}x
-  - xz(\sin x + f'(x))\mathrm{d}x\mathrm{d}y] = 0$，其中 $f$ 在 $(0, +\infty)$ 上二阶导数连续且
+stem: 若对于 $\mathbb{R}^3$ 中半空间 $\{(x, y, z)\in\mathbb{R}^3\mid x > 0\}$ 内的任意有向光滑封闭曲面 $S$，都有 $\iint_S [x f'(x)\mathrm{d}y\mathrm{d}z
+  + y(x f(x) - f'(x))\mathrm{d}z\mathrm{d}x - xz(\sin x + f'(x))\mathrm{d}x\mathrm{d}y] = 0$，其中 $f$ 在 $(0, +\infty)$ 上二阶导数连续且
   $\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+} f'(x) = 0$，求 $f(x)$．
-reference_answer: $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x -
-  \cos\frac{\sqrt{3}}{2}x\right) + \cos x$
+reference_answer: $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x - \cos\frac{\sqrt{3}}{2}x\right) + \cos x$
 solution: '由 Gauss 公式，任取闭球域 $B_\varepsilon(P)$，积分恒为 0 意味着被积向量场的散度在半空间内恒为零：
 
 
   $$
 
-  \frac{\partial}{\partial x}[x f''(x)] + \frac{\partial}{\partial y}[y(x f(x) - f''(x))]
-  - \frac{\partial}{\partial z}[xz(\sin x + f''(x))] = 0
+  \frac{\partial}{\partial x}[x f''(x)] + \frac{\partial}{\partial y}[y(x f(x) - f''(x))] - \frac{\partial}{\partial z}[xz(\sin
+  x + f''(x))] = 0
 
   $$
 
@@ -27,8 +25,7 @@ solution: '由 Gauss 公式，任取闭球域 $B_\varepsilon(P)$，积分恒为 
   展开化简：
 
 
-  $$[f''(x) + x f''''(x)] + [x f(x) - f''(x)] - [x\sin x + x f''(x)] = x[f''''(x)
-  - f''(x) + f(x) - \sin x] = 0$$
+  $$[f''(x) + x f''''(x)] + [x f(x) - f''(x)] - [x\sin x + x f''(x)] = x[f''''(x) - f''(x) + f(x) - \sin x] = 0$$
 
 
   因为 $x > 0$，所以：
@@ -41,8 +38,7 @@ solution: '由 Gauss 公式，任取闭球域 $B_\varepsilon(P)$，积分恒为 
   $$
 
 
-  特征方程 $r^2 - r + 1 = 0$ 的根为 $r = \frac{1 \pm \sqrt{3}i}{2}$，齐次通解为 $e^{x/2}\left(c_1
-  \cos\frac{\sqrt{3}}{2}x + c_2 \sin\frac{\sqrt{3}}{2}x\right)$．
+  特征方程 $r^2 - r + 1 = 0$ 的根为 $r = \frac{1 \pm \sqrt{3}i}{2}$，齐次通解为 $e^{x/2}\left(c_1 \cos\frac{\sqrt{3}}{2}x + c_2 \sin\frac{\sqrt{3}}{2}x\right)$．
 
 
   非齐次特解易得 $y^* = \cos x$．
@@ -51,12 +47,10 @@ solution: '由 Gauss 公式，任取闭球域 $B_\varepsilon(P)$，积分恒为 
   由 $\lim_{x\to 0^+} f(x) = 0 \implies c_1 + 1 = 0 \implies c_1 = -1$．
 
 
-  由 $\lim_{x\to 0^+} f''(x) = 0 \implies \frac{c_1 + \sqrt{3}c_2}{2} = 0 \implies
-  c_2 = \frac{\sqrt{3}}{3}$．
+  由 $\lim_{x\to 0^+} f''(x) = 0 \implies \frac{c_1 + \sqrt{3}c_2}{2} = 0 \implies c_2 = \frac{\sqrt{3}}{3}$．
 
 
-  故所求函数为 $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x - \cos\frac{\sqrt{3}}{2}x\right)
-  + \cos x$．'
+  故所求函数为 $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x - \cos\frac{\sqrt{3}}{2}x\right) + \cos x$．'
 response:
   format: plain_text
   required: true
@@ -80,11 +74,37 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.surface-integral
+- calculus.limit
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用微分方程解法与定解问题建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查微分方程解法与定解问题的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e4827194d58b23ddf58a4e518317a19d52c36fbc54e9ea7610f498b4f24177e1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e4827194d58b23ddf58a4e518317a19d52c36fbc54e9ea7610f498b4f24177e1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e4827194d58b23ddf58a4e518317a19d52c36fbc54e9ea7610f498b4f24177e1

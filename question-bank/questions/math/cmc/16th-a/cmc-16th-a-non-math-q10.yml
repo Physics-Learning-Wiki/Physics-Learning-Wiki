@@ -1,23 +1,20 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）证明：级数 $\sum_{n=1}^\infty \sum_{k=1}^\infty \frac{(-1)^{[\sqrt{n}]}}{n^2+k^2}$
-  收敛，其中 $[x]$ 表示不超过 $x$ 的最大整数．
+stem: （本题 14 分）证明：级数 $\sum_{n=1}^\infty \sum_{k=1}^\infty \frac{(-1)^{[\sqrt{n}]}}{n^2+k^2}$ 收敛，其中 $[x]$ 表示不超过 $x$ 的最大整数．
 reference_answer: 详见参考解答（通过内层定积分逼近放缩与分组交错级数判定法证明）
-solution: 对于任意固定的 $n$，利用积分判别估计：$\frac{1}{n}\left(\arctan\frac{N+1}{n} - \arctan\frac{1}{n}\right)
-  \leqslant \sum_{k=1}^N \frac{1}{k^2+n^2} \leqslant \frac{1}{n}\arctan\frac{N}{n}$令
-  $N\to\infty$，得 $\left|\sum_{k=1}^\infty \frac{1}{k^2+n^2} - \frac{\pi}{2n}\right|
-  \leqslant \frac{1}{n}\arctan\frac{1}{n}$（得 4 分）．因为 $\sum_{n=1}^\infty \frac{1}{n}\arctan\frac{1}{n}
-  \leqslant \sum_{n=1}^\infty \frac{1}{n^2} < \infty$，故差值级数绝对收敛，原级数与 $\frac{\pi}{2}\sum_{n=1}^\infty
-  \frac{(-1)^{[\sqrt{n}]}}{n}$ 同敛散（得 8 分）．设部分和 $S_{n^2} = \sum_{m=1}^{n-1}(-1)^m C_m
-  + \frac{(-1)^n}{n^2}$，其中 $C_m = \sum_{k=m^2}^{(m+1)^2-1}\frac{1}{k}$．易证 $C_m$ 单调递减趋于
-  0，由莱布尼茨判别法知交错级数收敛，进而证得原级数收敛（满分 14 分）．
+solution: 对于任意固定的 $n$，利用积分判别估计：$\frac{1}{n}\left(\arctan\frac{N+1}{n} - \arctan\frac{1}{n}\right) \leqslant \sum_{k=1}^N \frac{1}{k^2+n^2}
+  \leqslant \frac{1}{n}\arctan\frac{N}{n}$令 $N\to\infty$，得 $\left|\sum_{k=1}^\infty \frac{1}{k^2+n^2} - \frac{\pi}{2n}\right|
+  \leqslant \frac{1}{n}\arctan\frac{1}{n}$（得 4 分）．因为 $\sum_{n=1}^\infty \frac{1}{n}\arctan\frac{1}{n} \leqslant \sum_{n=1}^\infty
+  \frac{1}{n^2} < \infty$，故差值级数绝对收敛，原级数与 $\frac{\pi}{2}\sum_{n=1}^\infty \frac{(-1)^{[\sqrt{n}]}}{n}$ 同敛散（得 8 分）．设部分和 $S_{n^2}
+  = \sum_{m=1}^{n-1}(-1)^m C_m + \frac{(-1)^n}{n^2}$，其中 $C_m = \sum_{k=m^2}^{(m+1)^2-1}\frac{1}{k}$．易证 $C_m$ 单调递减趋于 0，由莱布尼茨判别法知交错级数收敛，进而证得原级数收敛（满分
+  14 分）．
 response:
   format: plain_text
   required: true
@@ -44,11 +41,35 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.derivative
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 900
+feedback:
+  correct: 论证严密！准确抓住了数项级数敛散性判别与求和的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查数项级数敛散性判别与求和的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a83e872a4f58453290b74aa64f0fbc89136a019e047b604f395bcba7f58fcfb1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a83e872a4f58453290b74aa64f0fbc89136a019e047b604f395bcba7f58fcfb1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a83e872a4f58453290b74aa64f0fbc89136a019e047b604f395bcba7f58fcfb1

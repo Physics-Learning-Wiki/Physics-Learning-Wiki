@@ -1,24 +1,21 @@
 schema_version: 3
 id: cmc-14th-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题满分 14 分）设正项级数 $\sum_{n=1}^\infty a_n$ 收敛，证明：存在收敛的正项级数 $\sum_{n=1}^\infty
-  b_n$，使得 $\lim_{n\to\infty}\frac{a_n}{b_n} = 0$．
+stem: （本题满分 14 分）设正项级数 $\sum_{n=1}^\infty a_n$ 收敛，证明：存在收敛的正项级数 $\sum_{n=1}^\infty b_n$，使得 $\lim_{n\to\infty}\frac{a_n}{b_n}
+  = 0$．
 reference_answer: 详见参考解答（通过收敛级数余和构造逐段放大系数的序列 $b_n$ 证明）
-solution: 由于正项级数 $\sum_{n=1}^\infty a_n$ 收敛，由 Cauchy 收敛准则，对任意正整数 $k$，取 $\varepsilon_k
-  = \frac{1}{3^k}$，存在严格递增的下标数列 $n_1 < n_2 < \cdots < n_k < \cdots$ 使得余和满足：$\sum_{l=n_k}^\infty
-  a_l < \frac{1}{3^k} \quad (得 4 分)$分段构造数列 $\{b_n\}$ 如下：当 $1\leqslant n < n_1$ 时，令
-  $b_n = a_n$；当 $n_k \leqslant n < n_{k+1}$ 时，令 $b_n = 2^k a_n$ ($k=1,2,\cdots$)（得
-  9 分）．当 $n\to\infty$ 时 $k\to\infty$，比值满足 $\frac{a_n}{b_n} = \frac{1}{2^k} \to 0$．进一步估算级数总和：$\sum_{n=1}^\infty
-  b_n = \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty \sum_{l=n_k}^{n_{k+1}-1} 2^k a_l
-  \leqslant \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty 2^k \left(\frac{1}{3^k}\right)
-  = \sum_{n=1}^{n_1-1} a_n + 2 < \infty$因此构造的正项级数 $\sum_{n=1}^\infty b_n$ 收敛且满足极限为
-  0（满分 14 分）．
+solution: 由于正项级数 $\sum_{n=1}^\infty a_n$ 收敛，由 Cauchy 收敛准则，对任意正整数 $k$，取 $\varepsilon_k = \frac{1}{3^k}$，存在严格递增的下标数列 $n_1 <
+  n_2 < \cdots < n_k < \cdots$ 使得余和满足：$\sum_{l=n_k}^\infty a_l < \frac{1}{3^k} \quad (得 4 分)$分段构造数列 $\{b_n\}$ 如下：当 $1\leqslant
+  n < n_1$ 时，令 $b_n = a_n$；当 $n_k \leqslant n < n_{k+1}$ 时，令 $b_n = 2^k a_n$ ($k=1,2,\cdots$)（得 9 分）．当 $n\to\infty$ 时 $k\to\infty$，比值满足
+  $\frac{a_n}{b_n} = \frac{1}{2^k} \to 0$．进一步估算级数总和：$\sum_{n=1}^\infty b_n = \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty \sum_{l=n_k}^{n_{k+1}-1}
+  2^k a_l \leqslant \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty 2^k \left(\frac{1}{3^k}\right) = \sum_{n=1}^{n_1-1} a_n + 2
+  < \infty$因此构造的正项级数 $\sum_{n=1}^\infty b_n$ 收敛且满足极限为 0（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -45,11 +42,36 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.integral-inequality
+- calculus.limit
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 900
+feedback:
+  correct: 论证严密！准确抓住了数项级数敛散性判别与求和的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查数项级数敛散性判别与求和的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7637330c620e3115659574bb455bb7f26289f3772f96671be75a17cd3240fc32
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7637330c620e3115659574bb455bb7f26289f3772f96671be75a17cd3240fc32
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7637330c620e3115659574bb455bb7f26289f3772f96671be75a17cd3240fc32

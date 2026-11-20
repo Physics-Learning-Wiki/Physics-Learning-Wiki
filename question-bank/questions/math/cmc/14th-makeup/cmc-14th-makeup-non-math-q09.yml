@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q09
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -19,12 +19,10 @@ stem: '（本题满分 14 分）设 $f(x)$ 是 $[-1,1]$ 上的连续偶函数，
 
   其中曲线 $L$ 为正向圆周 $x^2+y^2 = -2y$．'
 reference_answer: $4$
-solution: 圆周方程改写为 $x^2 + (y+1)^2 = 1$，引入参数方程 $x = \cos\theta, y = -1+\sin\theta$ ($0\leqslant
-  \theta \leqslant 2\pi$)（得 4 分）．将线积分拆分为两部分 $I = I_1 + I_2$：第一项中 $x^2+y^2 = -2y =
-  2(1-\sin\theta)$，$\sqrt{1-x^2} = |\sin\theta|$，$\mathrm{d}x = -\sin\theta\mathrm{d}\theta$：$I_1
-  = \int_0^{2\pi} \frac{2(1-\sin\theta)}{2|\sin\theta|}(-\sin\theta)\mathrm{d}\theta
-  = -\int_0^\pi (1-\sin\theta)\mathrm{d}\theta + \int_\pi^{2\pi} (1-\sin\theta)\mathrm{d}\theta
-  = 4 \quad (得 9 分)$第二项为 $I_2 = \int_0^{2\pi} f(\cos\theta)\cos\theta\mathrm{d}\theta$．令
+solution: 圆周方程改写为 $x^2 + (y+1)^2 = 1$，引入参数方程 $x = \cos\theta, y = -1+\sin\theta$ ($0\leqslant \theta \leqslant 2\pi$)（得 4
+  分）．将线积分拆分为两部分 $I = I_1 + I_2$：第一项中 $x^2+y^2 = -2y = 2(1-\sin\theta)$，$\sqrt{1-x^2} = |\sin\theta|$，$\mathrm{d}x = -\sin\theta\mathrm{d}\theta$：$I_1
+  = \int_0^{2\pi} \frac{2(1-\sin\theta)}{2|\sin\theta|}(-\sin\theta)\mathrm{d}\theta = -\int_0^\pi (1-\sin\theta)\mathrm{d}\theta
+  + \int_\pi^{2\pi} (1-\sin\theta)\mathrm{d}\theta = 4 \quad (得 9 分)$第二项为 $I_2 = \int_0^{2\pi} f(\cos\theta)\cos\theta\mathrm{d}\theta$．令
   $\theta = t+\pi$ 可知被积函数具有半周期反号性质，积分恰为 0（得 12 分）．故原曲线积分为 $I = 4+0 = 4$（满分 14 分）．
 response:
   format: plain_text
@@ -52,11 +50,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第五大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.line-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了曲线积分与格林公式的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查曲线积分与格林公式．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bdeb247c87d907265393df3d80e14b5bc7335f83f881e58f97c84614a9e90b81
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bdeb247c87d907265393df3d80e14b5bc7335f83f881e58f97c84614a9e90b81
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bdeb247c87d907265393df3d80e14b5bc7335f83f881e58f97c84614a9e90b81

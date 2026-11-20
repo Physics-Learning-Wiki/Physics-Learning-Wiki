@@ -24,6 +24,10 @@ def _render_list(values: list[str]) -> list[str]:
     return [render_markdown(value) for value in values]
 
 
+def _public_provenance(provenance: dict[str, Any]) -> dict[str, Any]:
+    return {key: value for key, value in provenance.items() if key != "permission_evidence"}
+
+
 def _expand_topic_ancestors(topic_id: str, taxonomy: TaxonomyRegistry) -> set[str]:
     result = {topic_id}
     curr = topic_id
@@ -55,7 +59,7 @@ def compile_question(
         "relatedPages": list(source.get("related_pages", [])),
         "stemHtml": render_markdown(source.get("stem", "")),
         "authors": source.get("authors", []),
-        "provenance": source.get("provenance", {}),
+        "provenance": _public_provenance(source.get("provenance", {})),
         "license": source.get("license", ""),
         "source": {
             "stemMarkdown": source.get("stem", ""),
@@ -278,12 +282,15 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             estimated_minutes = max(1, math.ceil(total_seconds / 60))
 
         # Set Bundle
+        public_set = dict(set_data)
+        if "provenance" in public_set:
+            public_set["provenance"] = _public_provenance(set_data["provenance"])
         bundle = {
             "schemaVersion": 3,
             "bankFingerprint": bank_fingerprint,
             "selectionAlgorithmVersion": 1,
             "preview": preview,
-            "set": set_data,
+            "set": public_set,
             "runnable": runnable,
             "unavailableReason": unavailable_reason,
             "questions": candidate_qs,
@@ -316,6 +323,9 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
         }
         if "self_assessment_timing" in set_data:
             catalog_entry["selfAssessmentTiming"] = set_data["self_assessment_timing"]
+        for field in ("license", "provenance"):
+            if field in public_set:
+                catalog_entry[field] = public_set[field]
         sets_catalog_data.append(catalog_entry)
 
     digest = fingerprint(sets_catalog_data).split(":", 1)[1][:12]

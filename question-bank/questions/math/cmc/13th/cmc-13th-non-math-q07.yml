@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-13th-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $f(x)$ 在 $[0, +\infty)$ 上是有界连续函数，证明：方程 $y'' + 14y' + 13y = f(x)$ 的每一个解在 $[0,
-  +\infty)$ 上都是有界函数．
+stem: 设 $f(x)$ 在 $[0, +\infty)$ 上是有界连续函数，证明：方程 $y'' + 14y' + 13y = f(x)$ 的每一个解在 $[0, +\infty)$ 上都是有界函数．
 reference_answer: 见推导步骤
 solution: '齐次方程 $y'''' + 14y'' + 13y = 0$ 的通解为 $y_h = C_1 e^{-x} + C_2 e^{-13x}$．
 
@@ -22,8 +21,7 @@ solution: '齐次方程 $y'''' + 14y'' + 13y = 0$ 的通解为 $y_h = C_1 e^{-x}
   令 $y_1 = y'' + y$，解得 $y_1 = e^{-13x}\left(\int_0^x f(t)e^{13t}\mathrm{d}t + C_3\right)$．
 
 
-  同理，$(y'' + 13y)'' + (y'' + 13y) = f(x)$，令 $y_2 = y'' + 13y$，解得 $y_2 = e^{-x}\left(\int_0^x
-  f(t)e^t\mathrm{d}t + C_4\right)$．
+  同理，$(y'' + 13y)'' + (y'' + 13y) = f(x)$，令 $y_2 = y'' + 13y$，解得 $y_2 = e^{-x}\left(\int_0^x f(t)e^t\mathrm{d}t + C_4\right)$．
 
 
   消去 $y''$ 可得原方程通解：
@@ -31,8 +29,7 @@ solution: '齐次方程 $y'''' + 14y'' + 13y = 0$ 的通解为 $y_h = C_1 e^{-x}
 
   $$
 
-  y = C_1 e^{-x} + C_2 e^{-13x} + \frac{1}{12}e^{-x}\int_0^x f(t)e^t\mathrm{d}t -
-  \frac{1}{12}e^{-13x}\int_0^x f(t)e^{13t}\mathrm{d}t
+  y = C_1 e^{-x} + C_2 e^{-13x} + \frac{1}{12}e^{-x}\int_0^x f(t)e^t\mathrm{d}t - \frac{1}{12}e^{-13x}\int_0^x f(t)e^{13t}\mathrm{d}t
 
   $$
 
@@ -42,22 +39,20 @@ solution: '齐次方程 $y'''' + 14y'' + 13y = 0$ 的通解为 $y_h = C_1 e^{-x}
 
   $$
 
-  \left|e^{-x}\int_0^x f(t)e^t\mathrm{d}t\right| \le M e^{-x}\int_0^x e^t\mathrm{d}t
-  = M(1 - e^{-x}) \le M
+  \left|e^{-x}\int_0^x f(t)e^t\mathrm{d}t\right| \le M e^{-x}\int_0^x e^t\mathrm{d}t = M(1 - e^{-x}) \le M
 
   $$
 
 
   $$
 
-  \left|e^{-13x}\int_0^x f(t)e^{13t}\mathrm{d}t\right| \le M e^{-13x}\int_0^x e^{13t}\mathrm{d}t
-  = \frac{M}{13}(1 - e^{-13x}) \le \frac{M}{13}
+  \left|e^{-13x}\int_0^x f(t)e^{13t}\mathrm{d}t\right| \le M e^{-13x}\int_0^x e^{13t}\mathrm{d}t = \frac{M}{13}(1 - e^{-13x})
+  \le \frac{M}{13}
 
   $$
 
 
-  因此对任意固定解，常数 $C_1, C_2$ 确定，有 $|y| \le |C_1| + |C_2| + \frac{7M}{78} < +\infty$，即每一个解在
-  $[0, +\infty)$ 上均有界．'
+  因此对任意固定解，常数 $C_1, C_2$ 确定，有 $|y| \le |C_1| + |C_2| + \frac{7M}{78} < +\infty$，即每一个解在 $[0, +\infty)$ 上均有界．'
 response:
   format: plain_text
   required: true
@@ -81,11 +76,35 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b6726e58b2c9ad10f8c990dec85be7eeebdeda39dbad0864af7c1d1d831150e6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b6726e58b2c9ad10f8c990dec85be7eeebdeda39dbad0864af7c1d1d831150e6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b6726e58b2c9ad10f8c990dec85be7eeebdeda39dbad0864af7c1d1d831150e6

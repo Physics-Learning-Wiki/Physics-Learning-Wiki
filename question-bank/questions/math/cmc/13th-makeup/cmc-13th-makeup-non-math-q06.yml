@@ -1,23 +1,21 @@
 schema_version: 3
 id: cmc-13th-makeup-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^1 |x-t|e^{-t^2}\mathrm{d}t$．证明：在区间
-  $(-1, 1)$ 内，$f(x)$ 有且仅有两个实根．
+stem: 设 $f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^1 |x-t|e^{-t^2}\mathrm{d}t$．证明：在区间 $(-1, 1)$ 内，$f(x)$ 有且仅有两个实根．
 reference_answer: 见推导步骤
 solution: '拆分绝对值积分：
 
 
   $$
 
-  f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^x (x-t)e^{-t^2}\mathrm{d}t
-  + \int_x^1 (t-x)e^{-t^2}\mathrm{d}t = -\frac{1}{2} - \frac{3}{2e} + e^{-x^2} + 2x\int_0^x
-  e^{-t^2}\mathrm{d}t
+  f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^x (x-t)e^{-t^2}\mathrm{d}t + \int_x^1 (t-x)e^{-t^2}\mathrm{d}t
+  = -\frac{1}{2} - \frac{3}{2e} + e^{-x^2} + 2x\int_0^x e^{-t^2}\mathrm{d}t
 
   $$
 
@@ -27,8 +25,7 @@ solution: '拆分绝对值积分：
 
   $$
 
-  f''(x) = -2x e^{-x^2} + 2\int_0^x e^{-t^2}\mathrm{d}t + 2x e^{-x^2} = 2\int_0^x
-  e^{-t^2}\mathrm{d}t
+  f''(x) = -2x e^{-x^2} + 2\int_0^x e^{-t^2}\mathrm{d}t + 2x e^{-x^2} = 2\int_0^x e^{-t^2}\mathrm{d}t
 
   $$
 
@@ -49,8 +46,7 @@ solution: '拆分绝对值积分：
   由介值定理与严格单调性，$f(x)$ 在 $(0, 1)$ 内有且仅有一个实根．
 
 
-  由偶函数对称性，$f(x)$ 在 $(-1, 0)$ 内也恰有一个实根．而在 $x=0$ 处 $f(0) < 0$．因此 $f(x)$ 在 $(-1, 1)$
-  内有且仅有两个实根．'
+  由偶函数对称性，$f(x)$ 在 $(-1, 0)$ 内也恰有一个实根．而在 $x=0$ 处 $f(0) < 0$．因此 $f(x)$ 在 $(-1, 1)$ 内有且仅有两个实根．'
 response:
   format: plain_text
   required: true
@@ -74,11 +70,35 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分中值定理与辅助函数构造的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分中值定理与辅助函数构造．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:280b8d1777cc5087e235da1fc9bcee5a39ad39dab31c16f528e3949db636e9a1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:280b8d1777cc5087e235da1fc9bcee5a39ad39dab31c16f528e3949db636e9a1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:280b8d1777cc5087e235da1fc9bcee5a39ad39dab31c16f528e3949db636e9a1

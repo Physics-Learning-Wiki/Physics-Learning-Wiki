@@ -1,0 +1,793 @@
+{
+  "schema_version": 1,
+  "repository": "D:\\Programs\\Physics-Learning-Wiki",
+  "reviewer": "Leafuke",
+  "reviewed_on": "2026-11-20",
+  "dimensions": [
+    "physics",
+    "pedagogy",
+    "copyright"
+  ],
+  "questions": [
+    {
+      "id": "cmc-10th-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:0d8178a5bf05772784789b7ba2665645ecbd6f759c1f15eac23f37531400c822",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:8f95f4c5ba26e8a7a46f0356ca6638f0044c5febb1f11ffc0958dfe26e0a39e3",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:eb4989d901752fad4254edf81dbc3a6f2bc14ab76d984beaea5e935b0f6b11b3",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:55c1913b139b59e25c3b46c1d864475ad1878474a7b4844c0755782cf74d8a98",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:b993a7a28c2d08deb9051ba1aa68b45f6f24058075fafe5c7f3b254dc6db98c5",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:4bb1ee5424754275a84f2c255d872e5b37f301efd8e84baea95b07f0e57de998",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:99351a5baeb1c9c549b74a6e074178f1a169812da3fe0eea6600e95234ad5230",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:2c316e76abdae8163dfc792208f8a0ffa919f77fc30ade8b8f81c4a0e666761e",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:7504bdc3acd0edda2d20a19859f5fc455413a0abd6123b32e8158878079a17bf",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-10th-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:97a235c1ce1a3ac61206d02bce6996733dba7bfeaaa489fd50b6a58d58924b00",
+      "path": "question-bank/questions/math/cmc/10th/cmc-10th-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:e8b7cfeed09e22a843bbdd764f36797b83a7b8e12df38a8a06c1e611d3715c28",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:cbd7e88884abd8ceda277ec373383f1a57f7038f67878bc6bce22072d6e4bc73",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:6ec27a0acc059c654e894e922ea9f7765494d8bc350ca171f918754c4ea1c5dd",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:fa9ba378d8facf4019622f0a87c3c4c80505a658db8da150738e8d186457d988",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:305a9037a8825c807984e0afcb9f54dd9076e47ec0afb2b4fcc8831aff24b115",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:59536ee613c631baa49be72282fc584c4c7b4a83c6ae2a27e8b7ce66b0c3cc8b",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:0d79fe642f04601da9e820c4aa2e55ec6208d925a2b0826114a2ea6a6442671a",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:a143f1c90bda843ff114a7a399c702a4b73a5819b68ce8014647a95e28544f06",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:59532d4118b5e87bcf75157724d6e393fe075f508ea85a6d6ff728af1276eecf",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-11th-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:aa2d95944861e2a38ca58d3c9a77b37173ace11635d30ceff4de740f1d7a31ec",
+      "path": "question-bank/questions/math/cmc/11th/cmc-11th-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:96cb7de0cc04e2a88cb747be7199ce19d42b84f4c93efc952e9894eb6a894b8d",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:8936185ef2b7f65773f08e98d47c293f0638e39aefb32f77076b7d2743503ff2",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:2b9a04f08364beb63245ed2abcb7c972e4f09dd44c5e6a462b61da56141c4c3b",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:132ce97cabb152bfc3561c8980aae9ac4ffcee8efc1109155e189be60ec50c28",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:8c81b04d6fe9c013c93f2ee18c9a1015648188fb634b3a1190b6a629bb714c22",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:329040ac54c49ea370e16263d41d53e395d5476112572ff819007f93a296d053",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:45da063c686fcc923f7989589085ce5984aa573dc950ede40cdc39952eaec962",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:fec903a3e34ab867ec1bb5f8dec29b33e28d9cbf2194c080dcbc99433acb2e47",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:dcf0d52d71892eae34cf78f1b7ed724501e74288a5f019f84fb18f118d88008a",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:2c2d5fc14c64b5687b8191dbe35dc25625ce210bc6f0f8c003a868b07fc90003",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-12th-non-math-q11",
+      "version": 1,
+      "content_fingerprint": "sha256:aa65cba35223c81788d11cc3a1833f73927ea9c29dea355dc56f5435d9be1216",
+      "path": "question-bank/questions/math/cmc/12th/cmc-12th-non-math-q11.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:c167eb3a0d96b8f60b9ca4b59a2ffa0acf5ce3c5ee0365a8aff818ffdebde3b9",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:4300b78556604dc7327618c1be935393a82a255c830ec4d19f31a314779799c8",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:0858268180e3d599457b737eb11d293806e65f36d5006d286191890220d2baa5",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:1eca32f616b5c8101ed70d08885fd76ea6803468c4144f673b7ed142b63b8adf",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:19321dba2e1d4152eb83ad629c8f3a511840a558627c0020a33aa7bbdba652de",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:280b8d1777cc5087e235da1fc9bcee5a39ad39dab31c16f528e3949db636e9a1",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:0f969da079d13827670d06eca331aeb8cb9f8219ea589e5481cfb0a56904004b",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:e4827194d58b23ddf58a4e518317a19d52c36fbc54e9ea7610f498b4f24177e1",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:ee2857c151f02aae0c112193aeef5690066bd0353c68350fd7194e02c737640f",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-13th-makeup-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:dd596eb901cc75fe5b3677660bef74ec87b5a75cb6e2a54af3b0888eea048767",
+      "path": "question-bank/questions/math/cmc/13th-makeup/cmc-13th-makeup-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:0addca23e3de540f6367985e75e78693f0692e06d81b3714de54362f8bdbbf19",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:4096393123601a568a4548de595d074eddf3227499de93ccd50a922940968773",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:82a47c87c07febae3cfc961123c58920c0da0e13d57c41b8d5e61af6313d9517",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:aa925041930d14eeec90b372497ab593fdfd039f04a83a8f100f91e5580be4ec",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:f08629d0570408f4a3d45639cf64edd8d3a43e1eeb790499c427fc113d65fdf4",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:84af36049a02c65d41159fd7f74b16e7330d9f5798e8537d0aa54c43bc7f6c03",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:b6726e58b2c9ad10f8c990dec85be7eeebdeda39dbad0864af7c1d1d831150e6",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:f96498f2f98575329d56fa309e41742451d08a293e55a998cc0b0ea7b4086742",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:f88b2b8f506289b8fedf85815ab8a765bf4406d46d423ce08aa209e87c7cab41",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-13th-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:1171a06370cbd092fb72e8f0caab4439e5e3a01a87023b930cfcfba881975554",
+      "path": "question-bank/questions/math/cmc/13th/cmc-13th-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:965ff3e75fc912e0fc11350ba4730efaea41468b58272d74d0dcfe51803fe1d6",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:13b3a044f712e6450b1cbece8efb85837118b2c0a9b41aec9548cc23be7be1ba",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:207860298d353918f7b05cb8d346a11d9656361ce01c0f66382ddf0f91a85366",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:7b6a525276ff891740ad745e1eab4681294c9bb6ca1f4d4c362bbcfac74d2aa2",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:81cacc1ffe2a48662d849d5384300495245d7a6adda03df8be46ec04629473f3",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:cf799314656ca1641eb03fc855e8a9d91f8a997742f86ec8b11b931814024404",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:bc20f913af2341c62de9d38f2874bef88b73a01fc92519e133ccf2888b30c08d",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:4fdb21f19c7ad10e1f5f7157a8766953d414011abbb439f688369b611bb57663",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:bdeb247c87d907265393df3d80e14b5bc7335f83f881e58f97c84614a9e90b81",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-14th-makeup-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:32bfba0cad15ef3a5026358c15ab3adb78dcd7bc0f3fcc6be6fe7089e4b96499",
+      "path": "question-bank/questions/math/cmc/14th-makeup/cmc-14th-makeup-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:ca052e23f5603180416d07f1d1464062e1344ad1ed66d146dfeb8da7d8f36b9c",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:86eca0633e7196f63b514150b8e065da41f9595e7b40f2fa8c521201a72bef66",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:84b6150d5008ab783b7d468cc655cc01dd03af7aa9c3d9f78f00d495339f618a",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:a53855affb0003e065a1635904d8dd91ab81d60e3fc3f6449d06e658174a184b",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:c75f8e304a15e8105bd73f12149238e4b81f99a654824d2e90e480ae4ea33043",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:05f262880a351d7fc33ef472917b8e2935694436f58abc565590d945e26c7111",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:f229b56eda16461236a6bf756584b35ccbf1c39eb8568bda551608e526acbda7",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:3641466c38beca4fd63340fc226567e31f5aff9176608a259a83ce1338d731c2",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:6f6bf60e9ccef0aef20131db5bf292366495802e728d0cea5ef6b8b0b11b9815",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-14th-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:7637330c620e3115659574bb455bb7f26289f3772f96671be75a17cd3240fc32",
+      "path": "question-bank/questions/math/cmc/14th/cmc-14th-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:b67b1da1dde64ad2366af4ff18a8b04cd5cec0276f0fb653ff64ee0e9c1ac49a",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:8c8ff76e3bd88a2d7241ae50d92362514c6d43fae4be388676a0ccfde00a706d",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:27448ba91db7bbd10dc9eac884767c31d758f6c55f104a3a3d26f1198c654f39",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:a67d8932f31846ccee47f0fe5a0450fe97834b899c25fb2e78d3e7bab30ec03f",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:82ad57adf520b15e74172bc1d188edca21a7d084fafb76481e097e749ef63ef4",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:7514249d5fb7312d97953bcf03c049e636cb7788ad16129f82eabda7918d6e3d",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:9c1de9d683e456f9b267644bd7228212fe81fdf71980ffbf4544354222bc0e4b",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:2652c810e4f87f8fcc02c5bc1668ab42dc30914800f43fba2e6ba3ab100710f7",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:b7ad8450b37d9768a6502d8f36de7072e97583810a3f7d4df53320fc11381200",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-15th-a-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:32ca5b6694791842921508e91c9007da6d2b93d40ae57d806dd9270ae0c77573",
+      "path": "question-bank/questions/math/cmc/15th-a/cmc-15th-a-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:0c5baaa63b9dd678a25aa7f9059e4d46a2a9a8d769f4a25bcc8cdc490c5b75b0",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:98a10a6cd7794670b4e909d4d102123b3f856d2c108f435ac98d64dab1d2007f",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:ca41fdd1e1a7706e90484842aa683ecb890b780dd55d7d367e090de5e770872c",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:f3be7ccf6a9039c5daad0b04a615a0021b08b611b968f980a6a28d866fde0130",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:67fadaa3c29dee08346009bdc8adca5f0c1e08e69c9525b91d9279e11b61e8fe",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:deeb18ce198ec0d9bc091826fed30e91af1c1e8f4d0b768a714f0a1f4bc3d5e0",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-15th-b-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:cb852f34fad5dedd593f9bdbf332b8b59f68ae084e2f17db72c8cbc6c78b149f",
+      "path": "question-bank/questions/math/cmc/15th-b/cmc-15th-b-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:b985aa636bc757c6cff96c760ce14fd5e89297067d1499ca4cac8e195dea25d1",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:324a8762ff1ed6b01f91e302c114e85d71c01724bb4cc5156174e1af03634817",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:40871092b140c61b2be77e20b399c8243dd6cf9fe4e925d1ec2d040c12333ef2",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:b1bab6e325e96154f8b46161684f9114bb7697cb63bb06371cdc5ffebf765fa1",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:393627f56b9babdb206eea7bf589def62f3e5e2ff2478040793aacb3290bcc76",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:3d3f99132392775067782610cde4c14d2940b87cc8e5d177c58c688ac3a8603b",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:b9dcc0a316497a667bceffa0e5280e336d6ce3f1920c8ea865dab2906674ed89",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:251eec46e93b90b64244f98b8df6db80da05e961e243500a47113120ba2832d8",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:db324389f6466575f1b36b0be27be532b82f239a82e57113dfc51ba45489a975",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-16th-a-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:a83e872a4f58453290b74aa64f0fbc89136a019e047b604f395bcba7f58fcfb1",
+      "path": "question-bank/questions/math/cmc/16th-a/cmc-16th-a-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:001e1c6a12455a6c2d701a0109210c2db4018524e15e350e3c82227940e9896f",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:6aac501631b1a79fac74ae21ad3a9d2bd9247508395c5bad86aba139eb2c142c",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:e5da38936b881a5472b7dddb45f809d0706c29031c371caff0f4c1f7fd36d48e",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:4d826bbeb5dfbacc240b67e3f89d022e7b416ab6ebddaff9109cae5debf29f4b",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:4ae477377233a4bc7a34b7940031375f2bf8f1f30649f2cd193370d4c243cce0",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-16th-b-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:989ad55de63ecc5268c7de9cf82421cfdce7bf1fbfd76bcc7612802ce2bdf3d6",
+      "path": "question-bank/questions/math/cmc/16th-b/cmc-16th-b-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:ca292b9393e30f232b48c32ccab1583de2fcaa15abe68128b6f445b70521e51e",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q02",
+      "version": 1,
+      "content_fingerprint": "sha256:07ca0091402466532020a3d1e3f70f175ad36fbe727fe0262915abef3d4e1e55",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q02.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:bca87d9fcc92c66e7d0eecb80e7a3441c5eed68446cecb883f8dfd94e1007ef3",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q04",
+      "version": 1,
+      "content_fingerprint": "sha256:aaae46908fff2e97968548a4fc2fd2401fbe89edbb962295c34aa57d7fac7232",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q04.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:94cd3359cdd49f7966752380f47c1e13cf2206663967865c677db0ab4897165e",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:d43d9d72b6187aed0c189e0c5b891bfa0ef836e93f695679578f051f098e5ec9",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:7bc448eede1c170a021f73a27234a9adc105860b0cd8820c6321f479bcf6d1c3",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q08",
+      "version": 1,
+      "content_fingerprint": "sha256:de161bed92d28f1864a02ff5f5d381e6ed00d2f7b4c806c5cb899c04f3443be8",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q08.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:a83d150bd77615c2e8f6b72b2de416197562f421b60cb925de90055226c5a1e6",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-17th-a-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:a5b4b2a0bfe55e8d871f5318df743703b3b42ab257087106e0374a35f0ca0670",
+      "path": "question-bank/questions/math/cmc/17th-a/cmc-17th-a-non-math-q10.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q01",
+      "version": 1,
+      "content_fingerprint": "sha256:f243b70d83f3c147b7e009cfa3cc849a121eb73e22bdf6e36beb5f2bf28a169e",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q01.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q03",
+      "version": 1,
+      "content_fingerprint": "sha256:3af059982dcef53192073a3dcf7355f922f57b6d088fd0560d97d8da48a81a51",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q03.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q05",
+      "version": 1,
+      "content_fingerprint": "sha256:b957426cf8c2d7a098934b5dad6b53cd517090d9dfc1f4949dd58bd2b6b71c5d",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q05.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q06",
+      "version": 1,
+      "content_fingerprint": "sha256:092f5742cd31abaab6f97b3d0f1dc1a1323331bf4f6d841e95b54e650e69430f",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q06.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q07",
+      "version": 1,
+      "content_fingerprint": "sha256:d5382c5e5299ac859535e7d0f05392398eb1bf662eca7c86e7ba087a8cbf5904",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q07.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q09",
+      "version": 1,
+      "content_fingerprint": "sha256:aa4615642dce0e2b73a178acd66dcbaf0d90a057a5ee79e1da0d294061f8308c",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q09.yml"
+    },
+    {
+      "id": "cmc-17th-b-non-math-q10",
+      "version": 1,
+      "content_fingerprint": "sha256:802fe58f827e17424cc31560d1df466697381eba1e1391395eb883e3b326face",
+      "path": "question-bank/questions/math/cmc/17th-b/cmc-17th-b-non-math-q10.yml"
+    }
+  ],
+  "related_sets": [
+    {
+      "id": "math.cmc.preliminary-10th.non-math",
+      "fingerprint": "sha256:c2090679af8da03f5fe564d74d94b4d95f0e05472e8e157fd2e79363545d5e17"
+    },
+    {
+      "id": "math.cmc.preliminary-11th.non-math",
+      "fingerprint": "sha256:bdf6d9294a89041f7335064a30f034baed4ab2f3994f83dbc611f33d684c35da"
+    },
+    {
+      "id": "math.cmc.preliminary-12th.non-math",
+      "fingerprint": "sha256:2236a0d729ece47e60e03fcdbfa351281d210bf6daa1a53fe4371af16fd922bd"
+    },
+    {
+      "id": "math.cmc.preliminary-13th-makeup.non-math",
+      "fingerprint": "sha256:4b625f4afa2dc7ef07e5221d566a5fee2a2cd490301107380b33b374448bf72f"
+    },
+    {
+      "id": "math.cmc.preliminary-13th.non-math",
+      "fingerprint": "sha256:c142d673abf2f0c2e0066e469241da753104ff0c6182e88a3a7ff6ae571f8fe0"
+    },
+    {
+      "id": "math.cmc.preliminary-14th-makeup.non-math",
+      "fingerprint": "sha256:6b6d260265b7b3a93193f8259517b193562072759793334979b738ec4ea96444"
+    },
+    {
+      "id": "math.cmc.preliminary-14th.non-math",
+      "fingerprint": "sha256:e7682330976da55830c8a3c7b5e70665b939cb34957d4f4567a86b7fa826b232"
+    },
+    {
+      "id": "math.cmc.preliminary-15th-a.non-math",
+      "fingerprint": "sha256:fa7176c4b9598b6f8ecfc4cdff603ec5f9793590173a3dd538d383de2b2cee1a"
+    },
+    {
+      "id": "math.cmc.preliminary-15th-b.non-math",
+      "fingerprint": "sha256:09d72c4af1d22400cc83a6b94ec19cff882a182a8fe5d13e8ffbfddf3b98edea"
+    },
+    {
+      "id": "math.cmc.preliminary-16th-a.non-math",
+      "fingerprint": "sha256:bd112b6e9261ad27a7293a1df82f7e2d4a5755dc0936123fb3d5032ef1cbfae5"
+    },
+    {
+      "id": "math.cmc.preliminary-16th-b.non-math",
+      "fingerprint": "sha256:31dc284eb9c28622cc7d641179aef526480f09f87fe537a20ddf7ffcab7b976c"
+    },
+    {
+      "id": "math.cmc.preliminary-17th-a.non-math",
+      "fingerprint": "sha256:e625536c61ae7d496459ddac4f0344dfbac8745441463afe4a4533ec7443c07c"
+    },
+    {
+      "id": "math.cmc.preliminary-17th-b.non-math",
+      "fingerprint": "sha256:daa192e8603e4b247b2358723db5ee6264b1202f58dd20eb547832f88b3088e8"
+    }
+  ]
+}

@@ -1,14 +1,14 @@
 schema_version: 3
 id: cmc-13th-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $\{a_n\}$ 与 $\{b_n\}$ 均为正实数列，满足：$a_1=b_1=1$，且 $b_n = a_n b_{n-1} - 2$ ($n=2,3,\dots$)．又设
-  $\{b_n\}$ 为有界数列，证明级数 $\sum_{n=1}^\infty \frac{1}{a_1 a_2 \cdots a_n}$ 收敛，并求该级数的和．
+stem: 设 $\{a_n\}$ 与 $\{b_n\}$ 均为正实数列，满足：$a_1=b_1=1$，且 $b_n = a_n b_{n-1} - 2$ ($n=2,3,\dots$)．又设 $\{b_n\}$ 为有界数列，证明级数 $\sum_{n=1}^\infty
+  \frac{1}{a_1 a_2 \cdots a_n}$ 收敛，并求该级数的和．
 reference_answer: $\frac{3}{2}$
 solution: '由递推式 $a_n = \frac{b_n+2}{b_{n-1}} = \left(1 + \frac{2}{b_n}\right)\frac{b_n}{b_{n-1}}$，递推可得：
 
@@ -25,8 +25,7 @@ solution: '由递推式 $a_n = \frac{b_n+2}{b_{n-1}} = \left(1 + \frac{2}{b_n}\r
 
   $$
 
-  0 < \frac{b_n}{a_1 a_2 \cdots a_n} \le \left(1+\frac{2}{M}\right)^{-n+1} \to 0 \quad
-  (n\to\infty)
+  0 < \frac{b_n}{a_1 a_2 \cdots a_n} \le \left(1+\frac{2}{M}\right)^{-n+1} \to 0 \quad (n\to\infty)
 
   $$
 
@@ -36,9 +35,8 @@ solution: '由递推式 $a_n = \frac{b_n+2}{b_{n-1}} = \left(1 + \frac{2}{b_n}\r
 
   $$
 
-  S_n = \frac{1}{a_1} + \sum_{k=2}^n \frac{1}{a_1\cdots a_k} = 1 + \frac{1}{2}\sum_{k=2}^n
-  \left(\frac{b_{k-1}}{a_1\cdots a_{k-1}} - \frac{b_k}{a_1\cdots a_k}\right) = \frac{3}{2}
-  - \frac{b_n}{2a_1\cdots a_n}
+  S_n = \frac{1}{a_1} + \sum_{k=2}^n \frac{1}{a_1\cdots a_k} = 1 + \frac{1}{2}\sum_{k=2}^n \left(\frac{b_{k-1}}{a_1\cdots
+  a_{k-1}} - \frac{b_k}{a_1\cdots a_k}\right) = \frac{3}{2} - \frac{b_n}{2a_1\cdots a_n}
 
   $$
 
@@ -67,11 +65,35 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1171a06370cbd092fb72e8f0caab4439e5e3a01a87023b930cfcfba881975554
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1171a06370cbd092fb72e8f0caab4439e5e3a01a87023b930cfcfba881975554
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1171a06370cbd092fb72e8f0caab4439e5e3a01a87023b930cfcfba881975554

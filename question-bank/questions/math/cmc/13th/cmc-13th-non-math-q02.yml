@@ -1,30 +1,28 @@
 schema_version: 3
 id: cmc-13th-non-math-q02
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $z = z(x, y)$ 是由方程 $2\sin(x+2y-3z) = x+2y-3z$ 所确定的二元隐函数，则 $\frac{\partial
-  z}{\partial x} + \frac{\partial z}{\partial y} =$ ______．
+stem: 设 $z = z(x, y)$ 是由方程 $2\sin(x+2y-3z) = x+2y-3z$ 所确定的二元隐函数，则 $\frac{\partial z}{\partial x} + \frac{\partial z}{\partial
+  y} =$ ______．
 reference_answer: $1$
 solution: '将方程两边分别关于 $x$ 和 $y$ 求偏导：
 
 
   $$
 
-  2\cos(x+2y-3z)\left(1 - 3\frac{\partial z}{\partial x}\right) = 1 - 3\frac{\partial
-  z}{\partial x}
+  2\cos(x+2y-3z)\left(1 - 3\frac{\partial z}{\partial x}\right) = 1 - 3\frac{\partial z}{\partial x}
 
   $$
 
 
   $$
 
-  2\cos(x+2y-3z)\left(2 - 3\frac{\partial z}{\partial y}\right) = 2 - 3\frac{\partial
-  z}{\partial y}
+  2\cos(x+2y-3z)\left(2 - 3\frac{\partial z}{\partial y}\right) = 2 - 3\frac{\partial z}{\partial y}
 
   $$
 
@@ -34,14 +32,12 @@ solution: '将方程两边分别关于 $x$ 和 $y$ 求偏导：
 
   $$
 
-  \frac{\partial z}{\partial x} = \frac{1}{3}, \quad \frac{\partial z}{\partial y}
-  = \frac{2}{3}
+  \frac{\partial z}{\partial x} = \frac{1}{3}, \quad \frac{\partial z}{\partial y} = \frac{2}{3}
 
   $$
 
 
-  因此 $\frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} = \frac{1}{3}
-  + \frac{2}{3} = 1$．'
+  因此 $\frac{\partial z}{\partial x} + \frac{\partial z}{\partial y} = \frac{1}{3} + \frac{2}{3} = 1$．'
 response:
   format: plain_text
   required: true
@@ -62,11 +58,34 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第2小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了多元函数微分学与隐函数求导的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查多元函数微分学与隐函数求导．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4096393123601a568a4548de595d074eddf3227499de93ccd50a922940968773
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4096393123601a568a4548de595d074eddf3227499de93ccd50a922940968773
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4096393123601a568a4548de595d074eddf3227499de93ccd50a922940968773

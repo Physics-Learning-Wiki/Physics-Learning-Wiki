@@ -15,6 +15,7 @@ import {
   renderAnswerControl,
   renderFeedback,
   renderHints,
+  renderLicenseNotice,
   renderQuestionStem
 } from "../question-renderer.js";
 import { newSeed } from "../random.js";
@@ -404,18 +405,11 @@ export class PlaySurface {
   }
 
   private get isDeferredSelfAssessment(): boolean {
-    return (
-      this.bundle.set.feedback_mode === "deferred" &&
-      this.bundle.set.self_assessment_timing === "after_submit"
-    );
+    return this.bundle.set.feedback_mode === "deferred" && this.bundle.set.self_assessment_timing === "after_submit";
   }
 
   private get isPendingSelfAssessment(): boolean {
-    return (
-      this.isDeferredSelfAssessment &&
-      Boolean(this.session?.submittedAt) &&
-      this.session?.state === "active"
-    );
+    return this.isDeferredSelfAssessment && Boolean(this.session?.submittedAt) && this.session?.state === "active";
   }
 
   private move(delta: number): void {
@@ -499,8 +493,7 @@ export class PlaySurface {
       );
       const pendingFR = answeredFR.filter(q => !isAnswerComplete(q, this.session.answers[q.id] ?? null));
       finishBtn.disabled = pendingFR.length > 0;
-      finishBtn.textContent =
-        pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
+      finishBtn.textContent = pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
     }
   }
 
@@ -538,7 +531,9 @@ export class PlaySurface {
         q => q.type === "free_response" && isResponseEntered(q, this.session.answers[q.id] ?? null)
       );
       const assessedFR = answeredFR.filter(q => isAnswerComplete(q, this.session.answers[q.id] ?? null));
-      progressText = `${this.session.currentIndex + 1} / ${this.questions.length}（自评 ${assessedFR.length}/${answeredFR.length}）`;
+      progressText = `${this.session.currentIndex + 1} / ${this.questions.length}（自评 ${assessedFR.length}/${
+        answeredFR.length
+      }）`;
     }
 
     header.innerHTML = `
@@ -555,6 +550,8 @@ export class PlaySurface {
 
     header.querySelector("#plw-btn-exit")?.addEventListener("click", () => this.handleExit());
     container.append(header);
+    const licenseNotice = renderLicenseNotice(this.bundle.set, "题集编排");
+    if (licenseNotice) container.append(licenseNotice);
 
     // 2. Segmented Stepper Bar
     const stepper = document.createElement("nav");
@@ -779,8 +776,7 @@ export class PlaySurface {
       finishBtn.type = "button";
       finishBtn.className = "plw-quiz-btn--primary";
       finishBtn.disabled = pendingFR.length > 0;
-      finishBtn.textContent =
-        pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
+      finishBtn.textContent = pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
       finishBtn.addEventListener("click", () => this.finalizeSession());
       actions.append(finishBtn);
     } else if (immediate) {
@@ -854,7 +850,8 @@ export class PlaySurface {
     backdrop.setAttribute("aria-labelledby", "plw-submit-modal-title");
 
     const reviewIndex = this.questions.findIndex(
-      question => !isAnswered(question, this.session.answers[question.id] ?? null) || this.session.uncertain[question.id]
+      question =>
+        !isAnswered(question, this.session.answers[question.id] ?? null) || this.session.uncertain[question.id]
     );
     backdrop.innerHTML = `
       <div class="plw-quiz-modal">
@@ -1105,13 +1102,13 @@ export class PlaySurface {
             <span class="plw-quiz-result__score-label">${
               this.isDeferredSelfAssessment ? "练习积分 " : ""
             }${pointsEarned} / ${pointsAvailable} 分${
-              (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
-            }</span>
+      (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
+    }</span>
           </div>
         </div>
         <p class="plw-quiz-result__progress">已作答 ${answeredCount} / ${
-          attempt.total
-        } 题 · 未作答 ${unansweredCount} 题 · 标记存疑 ${uncertainCount} 题</p>
+      attempt.total
+    } 题 · 未作答 ${unansweredCount} 题 · 标记存疑 ${uncertainCount} 题</p>
         ${
           this.isDeferredSelfAssessment
             ? `<p class="plw-quiz-badge-tag" style="display:block; margin: 0.5rem auto; text-align: center;">说明：练习积分包含客观题自动得分与主观解答题自评得分。仅客观题错误会计入错题本。</p>`
@@ -1144,6 +1141,9 @@ export class PlaySurface {
         <div class="plw-quiz-result__review-list"></div>
       </section>
     `;
+
+    const licenseNotice = renderLicenseNotice(this.bundle.set, "题集编排");
+    if (licenseNotice) container.querySelector("h2")?.after(licenseNotice);
 
     container.querySelector("#plw-btn-restart-new")?.addEventListener("click", () => {
       this.onRestart(newSeed());

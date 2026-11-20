@@ -1,21 +1,19 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题满分 14 分）设函数 $f(x)$ 在区间 $(0,1)$ 内有定义，$\lim_{x\to 0^+} f(x) = 0$，且 $\lim_{x\to
-  0^+}\frac{f(x)-f(x/3)}{x} = 0$．证明：$\lim_{x\to 0^+}\frac{f(x)}{x} = 0$．
+stem: （本题满分 14 分）设函数 $f(x)$ 在区间 $(0,1)$ 内有定义，$\lim_{x\to 0^+} f(x) = 0$，且 $\lim_{x\to 0^+}\frac{f(x)-f(x/3)}{x} = 0$．证明：$\lim_{x\to
+  0^+}\frac{f(x)}{x} = 0$．
 reference_answer: 详见参考解答（通过几何级数裂项相消与极限一致逼近证明）
-solution: 由题设，对任意非负整数 $k$：$\lim_{x\to 0^+}\frac{f(x/3^k) - f(x/3^{k+1})}{x/3^k} =
-  0 \quad (得 4 分)$求和得：$\lim_{x\to 0^+}\frac{f(x) - f(x/3^n)}{x} = \lim_{x\to 0^+}\sum_{k=0}^{n-1}\frac{f(x/3^k)
-  - f(x/3^{k+1})}{x/3^k}\cdot\frac{1}{3^k} = 0 \quad (得 9 分)$因此对任意 $\varepsilon >
-  0$，存在 $\delta > 0$ 使得当 $0<x<\delta$ 时 $|f(x)-f(x/3^n)| < \varepsilon x$．令 $n\to\infty$，因
-  $\lim_{x\to 0^+} f(x) = 0$，有 $|f(x)| \leqslant \varepsilon x$．由此证得 $\lim_{x\to 0^+}\frac{f(x)}{x}
-  = 0$（满分 14 分）．
+solution: 由题设，对任意非负整数 $k$：$\lim_{x\to 0^+}\frac{f(x/3^k) - f(x/3^{k+1})}{x/3^k} = 0 \quad (得 4 分)$求和得：$\lim_{x\to 0^+}\frac{f(x)
+  - f(x/3^n)}{x} = \lim_{x\to 0^+}\sum_{k=0}^{n-1}\frac{f(x/3^k) - f(x/3^{k+1})}{x/3^k}\cdot\frac{1}{3^k} = 0 \quad (得 9 分)$因此对任意
+  $\varepsilon > 0$，存在 $\delta > 0$ 使得当 $0<x<\delta$ 时 $|f(x)-f(x/3^n)| < \varepsilon x$．令 $n\to\infty$，因 $\lim_{x\to 0^+}
+  f(x) = 0$，有 $|f(x)| \leqslant \varepsilon x$．由此证得 $\lim_{x\to 0^+}\frac{f(x)}{x} = 0$（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -42,11 +40,35 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bc20f913af2341c62de9d38f2874bef88b73a01fc92519e133ccf2888b30c08d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bc20f913af2341c62de9d38f2874bef88b73a01fc92519e133ccf2888b30c08d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bc20f913af2341c62de9d38f2874bef88b73a01fc92519e133ccf2888b30c08d

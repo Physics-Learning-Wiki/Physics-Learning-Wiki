@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-12th-non-math-q11
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -16,38 +16,33 @@ stem: '设 $u_n = \int_0^1 \frac{\mathrm{d}t}{(1+t^4)^n}$ ($n\ge 1$)．
   (2) 证明级数 $\sum_{n=1}^\infty (-1)^n u_n$ 条件收敛；
 
 
-  (3) 证明当 $p\ge 1$ 时级数 $\sum_{n=1}^\infty \frac{u_n}{n^p}$ 收敛，并求级数 $\sum_{n=1}^\infty
-  \frac{u_n}{n}$ 的和．'
+  (3) 证明当 $p\ge 1$ 时级数 $\sum_{n=1}^\infty \frac{u_n}{n^p}$ 收敛，并求级数 $\sum_{n=1}^\infty \frac{u_n}{n}$ 的和．'
 reference_answer: (1) 极限为 0；(2) 见证明步骤；(3) 和为 $\ln 2 + \frac{\sqrt{2}}{2}[\pi + 2\ln(1+\sqrt{2})]$
 solution: '(1) 对任意 $\varepsilon > 0$，取 $0 < a < \frac{\varepsilon}{2}$：
 
 
-  $$u_n = \int_0^a \frac{\mathrm{d}t}{(1+t^4)^n} + \int_a^1 \frac{\mathrm{d}t}{(1+t^4)^n}
-  < a + \frac{1}{(1+a^4)^n}$$
+  $$u_n = \int_0^a \frac{\mathrm{d}t}{(1+t^4)^n} + \int_a^1 \frac{\mathrm{d}t}{(1+t^4)^n} < a + \frac{1}{(1+a^4)^n}$$
 
 
-  当 $n\to\infty$ 时第二项趋于 0，因此 $0 \le u_n < \varepsilon$，即 $\lim_{n\to\infty} u_n =
-  0$．
+  当 $n\to\infty$ 时第二项趋于 0，因此 $0 \le u_n < \varepsilon$，即 $\lim_{n\to\infty} u_n = 0$．
 
 
-  (2) 易知 $0 < u_{n+1} \le u_n$，即 $\{u_n\}$ 单调递减且极限为 0，由 Leibniz 判别法知交错级数收敛．当 $n\ge
-  2$ 时，$u_n \ge \int_0^1 \frac{\mathrm{d}t}{(1+t)^n} = \frac{1}{n-1}(1-2^{1-n})$，因
-  $\sum \frac{1}{n-1}$ 发散，故原级数条件收敛．
+  (2) 易知 $0 < u_{n+1} \le u_n$，即 $\{u_n\}$ 单调递减且极限为 0，由 Leibniz 判别法知交错级数收敛．当 $n\ge 2$ 时，$u_n \ge \int_0^1 \frac{\mathrm{d}t}{(1+t)^n}
+  = \frac{1}{n-1}(1-2^{1-n})$，因 $\sum \frac{1}{n-1}$ 发散，故原级数条件收敛．
 
 
   (3) 由分部积分：
 
 
-  $$u_n = \left[\frac{t}{(1+t^4)^n}\right]_0^1 + 4n\int_0^1 \frac{t^4}{(1+t^4)^{n+1}}\mathrm{d}t
-  = \frac{1}{2^n} + 4n(u_n - u_{n+1})$$
+  $$u_n = \left[\frac{t}{(1+t^4)^n}\right]_0^1 + 4n\int_0^1 \frac{t^4}{(1+t^4)^{n+1}}\mathrm{d}t = \frac{1}{2^n} + 4n(u_n
+  - u_{n+1})$$
 
 
-  两边除以 $n$ 求和得 $\sum_{n=1}^\infty \frac{u_n}{n} = \sum_{n=1}^\infty \frac{1}{n 2^n}
-  + 4u_1 = \ln 2 + 4u_1$．
+  两边除以 $n$ 求和得 $\sum_{n=1}^\infty \frac{u_n}{n} = \sum_{n=1}^\infty \frac{1}{n 2^n} + 4u_1 = \ln 2 + 4u_1$．
 
 
-  计算 $u_1 = \int_0^1 \frac{\mathrm{d}t}{1+t^4} = \frac{\sqrt{2}}{8}[\pi + 2\ln(1+\sqrt{2})]$，故和为
-  $\ln 2 + \frac{\sqrt{2}}{2}[\pi + 2\ln(1+\sqrt{2})]$．当 $p\ge 1$ 时由比较法知级数亦收敛．'
+  计算 $u_1 = \int_0^1 \frac{\mathrm{d}t}{1+t^4} = \frac{\sqrt{2}}{8}[\pi + 2\ln(1+\sqrt{2})]$，故和为 $\ln 2 + \frac{\sqrt{2}}{2}[\pi
+  + 2\ln(1+\sqrt{2})]$．当 $p\ge 1$ 时由比较法知级数亦收敛．'
 response:
   format: plain_text
   required: true
@@ -71,11 +66,37 @@ provenance:
   type: adapted
   note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第七大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+- calculus.derivative
+- calculus.integral
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 900
+feedback:
+  correct: 论证严密！准确抓住了数项级数敛散性判别与求和的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查数项级数敛散性判别与求和的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa65cba35223c81788d11cc3a1833f73927ea9c29dea355dc56f5435d9be1216
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa65cba35223c81788d11cc3a1833f73927ea9c29dea355dc56f5435d9be1216
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa65cba35223c81788d11cc3a1833f73927ea9c29dea355dc56f5435d9be1216

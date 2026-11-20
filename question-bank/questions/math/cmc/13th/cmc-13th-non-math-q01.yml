@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-13th-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -17,15 +17,14 @@ solution: '原式可变形为 $\lim_{x\to+\infty}\left[\sqrt{x^2+x+1} - \ln(e^x+
 
   $$
 
-  \sqrt{x^2+x+1} - \ln(e^x+x) = x\sqrt{1+\frac{1}{x}+\frac{1}{x^2}} - x - \ln\left(1+\frac{x}{e^x}\right)
-  = x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right) - \ln\left(1+\frac{x}{e^x}\right)
+  \sqrt{x^2+x+1} - \ln(e^x+x) = x\sqrt{1+\frac{1}{x}+\frac{1}{x^2}} - x - \ln\left(1+\frac{x}{e^x}\right) = x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right)
+  - \ln\left(1+\frac{x}{e^x}\right)
 
   $$
 
 
-  当 $x\to+\infty$ 时，$x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right) \sim x\cdot\frac{1}{2x}
-  = \frac{1}{2}$；同时 $\frac{x}{e^x}\to 0$，故 $\ln\left(1+\frac{x}{e^x}\right)\to 0$．因此极限为
-  $0$（或由原题式直接化简 $-\lim_{x\to+\infty}\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}\ln\left(1+\frac{x}{e^x}\right)
+  当 $x\to+\infty$ 时，$x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right) \sim x\cdot\frac{1}{2x} = \frac{1}{2}$；同时 $\frac{x}{e^x}\to
+  0$，故 $\ln\left(1+\frac{x}{e^x}\right)\to 0$．因此极限为 $0$（或由原题式直接化简 $-\lim_{x\to+\infty}\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}\ln\left(1+\frac{x}{e^x}\right)
   = 0$）．'
 response:
   format: plain_text
@@ -47,11 +46,34 @@ provenance:
   type: adapted
   note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第1小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0addca23e3de540f6367985e75e78693f0692e06d81b3714de54362f8bdbbf19
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0addca23e3de540f6367985e75e78693f0692e06d81b3714de54362f8bdbbf19
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0addca23e3de540f6367985e75e78693f0692e06d81b3714de54362f8bdbbf19

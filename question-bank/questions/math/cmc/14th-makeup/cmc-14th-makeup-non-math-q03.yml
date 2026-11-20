@@ -1,18 +1,17 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q03
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $y=y(x)$ 是初值问题 $\begin{cases} y''-2y'-3y=1, \\ y(0)=0, y'(0)=1 \end{cases}$
-  的解，则 $y(x) =$ ______．
+stem: 设 $y=y(x)$ 是初值问题 $\begin{cases} y''-2y'-3y=1, \\ y(0)=0, y'(0)=1 \end{cases}$ 的解，则 $y(x) =$ ______．
 reference_answer: $\frac{1}{3}(\mathrm{e}^{3x}-1)$
-solution: 齐次特征方程 $\lambda^2 - 2\lambda - 3 = 0$ 的根为 $\lambda_1 = 3, \lambda_2 = -1$．非齐次方程特解设为
-  $y_0 = A$，代入解得 $y_0 = -\frac{1}{3}$．通解为 $y(x) = C_1\mathrm{e}^{3x} + C_2\mathrm{e}^{-x}
-  - \frac{1}{3}$．由 $y(0)=0, y'(0)=1$ 联立解得 $C_1 = \frac{1}{3}, C_2 = 0$．故 $y(x) = \frac{1}{3}(\mathrm{e}^{3x}-1)$．
+solution: 齐次特征方程 $\lambda^2 - 2\lambda - 3 = 0$ 的根为 $\lambda_1 = 3, \lambda_2 = -1$．非齐次方程特解设为 $y_0 = A$，代入解得 $y_0 = -\frac{1}{3}$．通解为
+  $y(x) = C_1\mathrm{e}^{3x} + C_2\mathrm{e}^{-x} - \frac{1}{3}$．由 $y(0)=0, y'(0)=1$ 联立解得 $C_1 = \frac{1}{3}, C_2 = 0$．故 $y(x)
+  = \frac{1}{3}(\mathrm{e}^{3x}-1)$．
 response:
   format: plain_text
   required: true
@@ -33,11 +32,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(3)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:207860298d353918f7b05cb8d346a11d9656361ce01c0f66382ddf0f91a85366
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:207860298d353918f7b05cb8d346a11d9656361ce01c0f66382ddf0f91a85366
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:207860298d353918f7b05cb8d346a11d9656361ce01c0f66382ddf0f91a85366

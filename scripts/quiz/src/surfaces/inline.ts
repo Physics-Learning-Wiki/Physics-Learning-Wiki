@@ -8,6 +8,7 @@ import {
   renderAnswerControl,
   renderFeedback,
   renderHints,
+  renderLicenseNotice,
   renderQuestionStem
 } from "../question-renderer.js";
 import { newSeed } from "../random.js";
@@ -157,6 +158,8 @@ export class InlineSurface {
       </div>
     `;
     container.append(header);
+    const licenseNotice = renderLicenseNotice(this.bundle.set, "题集编排");
+    if (licenseNotice) container.append(licenseNotice);
 
     // 3. UX Hint for long or deferred inline set
     if (this.bundle.set.self_assessment_timing === "after_submit") {
@@ -164,10 +167,14 @@ export class InlineSurface {
       card.className = "plw-quiz-inline__card";
       card.innerHTML = `
         <div class="plw-quiz-inline__hint" style="margin-bottom: 1.5rem;">
-          💡 <strong>此自测包含交卷后自评流程</strong>：本卷包含 <strong>${this.questions.length}</strong> 道题目，并在整卷交卷后提供参考答案与分步自评，请前往全屏作答运行器完成练习。
+          💡 <strong>此自测包含交卷后自评流程</strong>：本卷包含 <strong>${
+            this.questions.length
+          }</strong> 道题目，并在整卷交卷后提供参考答案与分步自评，请前往全屏作答运行器完成练习。
         </div>
         <div class="plw-quiz-modal__actions" style="justify-content: flex-start;">
-          <a class="plw-quiz-btn--primary" href="${escapeHtml(runnerUrl)}" target="_blank" rel="noopener">前往全屏答题运行器 ↗</a>
+          <a class="plw-quiz-btn--primary" href="${escapeHtml(
+            runnerUrl
+          )}" target="_blank" rel="noopener">前往全屏答题运行器 ↗</a>
         </div>
       `;
       container.append(card);

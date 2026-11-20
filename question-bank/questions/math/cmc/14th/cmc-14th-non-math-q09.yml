@@ -1,14 +1,14 @@
 schema_version: 3
 id: cmc-14th-non-math-q09
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题满分 14 分）设 $z = f(x,y)$ 是区域 $D = \{(x,y)\mid 0\leqslant x\leqslant 1, 0\leqslant
-  y\leqslant 1\}$ 上的可微函数，$f(0,0)=0$，且 $\left.\mathrm{d}z\right|_{(0,0)} = 3\mathrm{d}x+2\mathrm{d}y$，求极限：
+stem: '（本题满分 14 分）设 $z = f(x,y)$ 是区域 $D = \{(x,y)\mid 0\leqslant x\leqslant 1, 0\leqslant y\leqslant 1\}$ 上的可微函数，$f(0,0)=0$，且
+  $\left.\mathrm{d}z\right|_{(0,0)} = 3\mathrm{d}x+2\mathrm{d}y$，求极限：
 
 
   $$
@@ -17,15 +17,12 @@ stem: '（本题满分 14 分）设 $z = f(x,y)$ 是区域 $D = \{(x,y)\mid 0\le
 
   $$'
 reference_answer: $-2$
-solution: 交换二次积分次序：$\int_0^{x^2}\mathrm{d}t\int_x^{\sqrt{t}} f(t,u)\mathrm{d}u = -\int_0^x
-  \mathrm{d}u\int_0^{u^2} f(t,u)\mathrm{d}t \quad (得 3 分)$分母当 $x\to 0^+$ 时 $1-\sqrt[4]{1-x^4}
-  = \frac{1}{4}x^4 + o(x^4)$．应用洛必达法则：$\lim_{x\to 0^+}\frac{-\int_0^x \mathrm{d}u\int_0^{u^2}
-  f(t,u)\mathrm{d}t}{\frac{1}{4}x^4} = -\lim_{x\to 0^+}\frac{\int_0^{x^2} f(t,x)\mathrm{d}t}{x^3}$由积分第一中值定理，存在
-  $\xi\in(0,x^2)$ 使 $\int_0^{x^2} f(t,x)\mathrm{d}t = f(\xi,x)x^2$（得 6 分）．根据多元函数在原点的全微分展开式：$f(\xi,x)
-  = f(0,0) + f_x(0,0)\xi + f_y(0,0)x + o(\sqrt{\xi^2+x^2}) = 3\xi + 2x + o(\sqrt{\xi^2+x^2})$因为
-  $0 < \xi < x^2$，故 $\lim_{x\to 0^+}\frac{\xi}{x} = 0$．因此：$-\lim_{x\to 0^+}\frac{f(\xi,x)}{x}
-  = -\lim_{x\to 0^+}\left(3\frac{\xi}{x} + 2 + \frac{o(x)}{x}\right) = -2 \quad (满分
-  14 分)$
+solution: 交换二次积分次序：$\int_0^{x^2}\mathrm{d}t\int_x^{\sqrt{t}} f(t,u)\mathrm{d}u = -\int_0^x \mathrm{d}u\int_0^{u^2} f(t,u)\mathrm{d}t
+  \quad (得 3 分)$分母当 $x\to 0^+$ 时 $1-\sqrt[4]{1-x^4} = \frac{1}{4}x^4 + o(x^4)$．应用洛必达法则：$\lim_{x\to 0^+}\frac{-\int_0^x \mathrm{d}u\int_0^{u^2}
+  f(t,u)\mathrm{d}t}{\frac{1}{4}x^4} = -\lim_{x\to 0^+}\frac{\int_0^{x^2} f(t,x)\mathrm{d}t}{x^3}$由积分第一中值定理，存在 $\xi\in(0,x^2)$
+  使 $\int_0^{x^2} f(t,x)\mathrm{d}t = f(\xi,x)x^2$（得 6 分）．根据多元函数在原点的全微分展开式：$f(\xi,x) = f(0,0) + f_x(0,0)\xi + f_y(0,0)x +
+  o(\sqrt{\xi^2+x^2}) = 3\xi + 2x + o(\sqrt{\xi^2+x^2})$因为 $0 < \xi < x^2$，故 $\lim_{x\to 0^+}\frac{\xi}{x} = 0$．因此：$-\lim_{x\to
+  0^+}\frac{f(\xi,x)}{x} = -\lim_{x\to 0^+}\left(3\frac{\xi}{x} + 2 + \frac{o(x)}{x}\right) = -2 \quad (满分 14 分)$
 response:
   format: plain_text
   required: true
@@ -52,11 +49,36 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第五大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.limit
+- calculus.integral
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了微分中值定理与辅助函数构造的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分中值定理与辅助函数构造．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6f6bf60e9ccef0aef20131db5bf292366495802e728d0cea5ef6b8b0b11b9815
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6f6bf60e9ccef0aef20131db5bf292366495802e728d0cea5ef6b8b0b11b9815
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6f6bf60e9ccef0aef20131db5bf292366495802e728d0cea5ef6b8b0b11b9815

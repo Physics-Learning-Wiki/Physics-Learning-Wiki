@@ -1,23 +1,22 @@
 schema_version: 3
 id: cmc-12th-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $f(x), g(x)$ 在 $x=0$ 的某一邻域 $U$ 内有定义，对任意 $x\in U$，$f(x)\neq g(x)$，且 $\lim_{x\to
-  0} f(x) = \lim_{x\to 0} g(x) = a > 0$，则 $\lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)}
-  =$ ______．
+stem: 设 $f(x), g(x)$ 在 $x=0$ 的某一邻域 $U$ 内有定义，对任意 $x\in U$，$f(x)\neq g(x)$，且 $\lim_{x\to 0} f(x) = \lim_{x\to 0} g(x) = a >
+  0$，则 $\lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)} =$ ______．
 reference_answer: $a^a$
 solution: '由保号性，在去心邻域内 $f(x) > 0, g(x) > 0$．提取因子改写分子：
 
 
   $$
 
-  [f(x)]^{g(x)} - [g(x)]^{g(x)} = [g(x)]^{g(x)}\left[\left(\frac{f(x)}{g(x)}\right)^{g(x)}
-  - 1\right] = [g(x)]^{g(x)}\left[e^{g(x)\ln\frac{f(x)}{g(x)}} - 1\right]
+  [f(x)]^{g(x)} - [g(x)]^{g(x)} = [g(x)]^{g(x)}\left[\left(\frac{f(x)}{g(x)}\right)^{g(x)} - 1\right] = [g(x)]^{g(x)}\left[e^{g(x)\ln\frac{f(x)}{g(x)}}
+  - 1\right]
 
   $$
 
@@ -27,8 +26,7 @@ solution: '由保号性，在去心邻域内 $f(x) > 0, g(x) > 0$．提取因子
 
   $$
 
-  e^{g(x)\ln\left(1 + \frac{f(x)-g(x)}{g(x)}\right)} - 1 \sim g(x)\cdot\frac{f(x)-g(x)}{g(x)}
-  = f(x)-g(x)
+  e^{g(x)\ln\left(1 + \frac{f(x)-g(x)}{g(x)}\right)} - 1 \sim g(x)\cdot\frac{f(x)-g(x)}{g(x)} = f(x)-g(x)
 
   $$
 
@@ -38,8 +36,7 @@ solution: '由保号性，在去心邻域内 $f(x) > 0, g(x) > 0$．提取因子
 
   $$
 
-  \lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)} = \lim_{x\to 0}[g(x)]^{g(x)}
-  = a^a
+  \lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)} = \lim_{x\to 0}[g(x)]^{g(x)} = a^a
 
   $$
 
@@ -65,11 +62,34 @@ provenance:
   type: adapted
   note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第5小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8c81b04d6fe9c013c93f2ee18c9a1015648188fb634b3a1190b6a629bb714c22
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8c81b04d6fe9c013c93f2ee18c9a1015648188fb634b3a1190b6a629bb714c22
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8c81b04d6fe9c013c93f2ee18c9a1015648188fb634b3a1190b6a629bb714c22

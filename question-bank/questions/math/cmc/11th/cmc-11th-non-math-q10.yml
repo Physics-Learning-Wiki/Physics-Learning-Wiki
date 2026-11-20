@@ -1,14 +1,14 @@
 schema_version: 3
 id: cmc-11th-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设函数 $f(x)$ 在 $[0, +\infty)$ 上具有连续导数，满足 $3[3+f^2(x)]f'(x) = 2[1+f^2(x)]^2 e^{-x^2}$，且
-  $f(0)\le 1$．证明：存在常数 $M > 0$，使得 $x\in [0, +\infty)$ 时，恒有 $|f(x)| \le M$．
+stem: 设函数 $f(x)$ 在 $[0, +\infty)$ 上具有连续导数，满足 $3[3+f^2(x)]f'(x) = 2[1+f^2(x)]^2 e^{-x^2}$，且 $f(0)\le 1$．证明：存在常数 $M > 0$，使得
+  $x\in [0, +\infty)$ 时，恒有 $|f(x)| \le M$．
 reference_answer: 见推导步骤
 solution: '由已知条件，由于 $e^{-x^2} > 0$ 及平方式非负，$f''(x) > 0$，故 $f(x)$ 在 $[0, +\infty)$ 上严格单调递增．
 
@@ -31,26 +31,22 @@ solution: '由已知条件，由于 $e^{-x^2} > 0$ 及平方式非负，$f''(x) 
   从而有：
 
 
-  $$\frac{f(x)}{1+f^2(x)} + 2\arctan f(x) = \frac{2}{3}\int_0^x e^{-t^2}\mathrm{d}t
-  + C$$
+  $$\frac{f(x)}{1+f^2(x)} + 2\arctan f(x) = \frac{2}{3}\int_0^x e^{-t^2}\mathrm{d}t + C$$
 
 
   其中 $C = \frac{f(0)}{1+f^2(0)} + 2\arctan f(0)$．
 
 
-  若 $L = +\infty$，令 $x\to+\infty$：左端趋于 $\pi$，右端为 $\frac{\sqrt{\pi}}{3} + C$，解得 $C
-  = \pi - \frac{\sqrt{\pi}}{3}$．
+  若 $L = +\infty$，令 $x\to+\infty$：左端趋于 $\pi$，右端为 $\frac{\sqrt{\pi}}{3} + C$，解得 $C = \pi - \frac{\sqrt{\pi}}{3}$．
 
 
-  另一方面，定义函数 $g(u) = \frac{u}{1+u^2} + 2\arctan u$ 在实数轴上严格单增．由 $f(0)\le 1$ 得 $C \le
-  g(1) = \frac{1+\pi}{2}$．
+  另一方面，定义函数 $g(u) = \frac{u}{1+u^2} + 2\arctan u$ 在实数轴上严格单增．由 $f(0)\le 1$ 得 $C \le g(1) = \frac{1+\pi}{2}$．
 
 
   但 $\pi - \frac{\sqrt{\pi}}{3} > \frac{1+\pi}{2}$，产生矛盾！
 
 
-  因此 $L < +\infty$，取 $M = \max\{|f(0)|, L\}$，即有 $|f(x)| \le M$ 对所有 $x\in [0, +\infty)$
-  恒成立．'
+  因此 $L < +\infty$，取 $M = \max\{|f(0)|, L\}$，即有 $|f(x)| \le M$ 对所有 $x\in [0, +\infty)$ 恒成立．'
 response:
   format: plain_text
   required: true
@@ -74,11 +70,36 @@ provenance:
   type: adapted
   note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+- calculus.derivative
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa2d95944861e2a38ca58d3c9a77b37173ace11635d30ceff4de740f1d7a31ec
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa2d95944861e2a38ca58d3c9a77b37173ace11635d30ceff4de740f1d7a31ec
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:aa2d95944861e2a38ca58d3c9a77b37173ace11635d30ceff4de740f1d7a31ec

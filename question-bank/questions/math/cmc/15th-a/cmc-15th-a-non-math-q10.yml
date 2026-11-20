@@ -1,21 +1,19 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）设数列 $\{x_n\}$ 满足 $x_0 = \frac{1}{3}$，$x_{n+1} = \frac{x_n^2}{1-x_n+x_n^2}$
-  ($n\geqslant 0$)．证明：无穷级数 $\sum_{n=0}^\infty x_n$ 收敛并求其和．
+stem: （本题 14 分）设数列 $\{x_n\}$ 满足 $x_0 = \frac{1}{3}$，$x_{n+1} = \frac{x_n^2}{1-x_n+x_n^2}$ ($n\geqslant 0$)．证明：无穷级数 $\sum_{n=0}^\infty
+  x_n$ 收敛并求其和．
 reference_answer: 级数收敛，其和为 $\frac{1}{2}$
-solution: 由数学归纳法易知 $x_n > 0$．计算差分：$x_{n+1} - x_n = -\frac{x_n(1-x_n)^2}{1-x_n+x_n^2}
-  < 0$故 $\{x_n\}$ 严格单调递减有下界，极限存在．令 $L = \frac{L^2}{1-L+L^2}$ 解得 $\lim_{n\to\infty}
-  x_n = 0$（得 6 分）．将递推关系改写为裂项形式：$x_n = \frac{x_n}{1-x_n} - \frac{x_{n+1}}{1-x_{n+1}}$对前
-  $n$ 项求和：$\sum_{i=0}^n x_i = \frac{x_0}{1-x_0} - \frac{x_{n+1}}{1-x_{n+1}}$令 $n\to\infty$，由于
-  $x_{n+1}\to 0$：$\sum_{i=0}^\infty x_i = \frac{x_0}{1-x_0} = \frac{1/3}{1-1/3} =
-  \frac{1}{2} \quad (满分 14 分)$
+solution: 由数学归纳法易知 $x_n > 0$．计算差分：$x_{n+1} - x_n = -\frac{x_n(1-x_n)^2}{1-x_n+x_n^2} < 0$故 $\{x_n\}$ 严格单调递减有下界，极限存在．令 $L =
+  \frac{L^2}{1-L+L^2}$ 解得 $\lim_{n\to\infty} x_n = 0$（得 6 分）．将递推关系改写为裂项形式：$x_n = \frac{x_n}{1-x_n} - \frac{x_{n+1}}{1-x_{n+1}}$对前
+  $n$ 项求和：$\sum_{i=0}^n x_i = \frac{x_0}{1-x_0} - \frac{x_{n+1}}{1-x_{n+1}}$令 $n\to\infty$，由于 $x_{n+1}\to 0$：$\sum_{i=0}^\infty
+  x_i = \frac{x_0}{1-x_0} = \frac{1/3}{1-1/3} = \frac{1}{2} \quad (满分 14 分)$
 response:
   format: plain_text
   required: true
@@ -39,11 +37,36 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+- calculus.derivative
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:32ca5b6694791842921508e91c9007da6d2b93d40ae57d806dd9270ae0c77573
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:32ca5b6694791842921508e91c9007da6d2b93d40ae57d806dd9270ae0c77573
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:32ca5b6694791842921508e91c9007da6d2b93d40ae57d806dd9270ae0c77573

@@ -1,30 +1,26 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题 14 分）设函数 $f(x) = \begin{cases} \frac{1}{\ln(1+x)} - \frac{1}{x}, & 0 <
-  x \leqslant 1, \\ k, & x = 0. \end{cases}$
+stem: '（本题 14 分）设函数 $f(x) = \begin{cases} \frac{1}{\ln(1+x)} - \frac{1}{x}, & 0 < x \leqslant 1, \\ k, & x = 0. \end{cases}$
 
   (1) 求常数 $k$ 的值，使得 $f(x)$ 在区间 $[0,1]$ 上连续；
 
   (2) 对 (1) 中的 $k$ 值，求函数 $f(x)$ 的最小值 $\lambda$ 与最大值 $\mu$．'
-reference_answer: (1) $k = \frac{1}{2}$；(2) 最小值 $\lambda = \frac{1}{\ln 2} - 1$，最大值
-  $\mu = \frac{1}{2}$
-solution: '(1) 由洛必达法则：$\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x\ln(1+x)}
-  = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x^2} = \lim_{x\to 0^+}\frac{1 - \frac{1}{1+x}}{2x}
-  = \frac{1}{2}$令 $k = \frac{1}{2}$，则 $\lim_{x\to 0^+} f(x) = f(0)$，所以 $f(x)$ 在 $[0,1]$
-  上连续（得 4 分）．
+reference_answer: (1) $k = \frac{1}{2}$；(2) 最小值 $\lambda = \frac{1}{\ln 2} - 1$，最大值 $\mu = \frac{1}{2}$
+solution: '(1) 由洛必达法则：$\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x\ln(1+x)} = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x^2}
+  = \lim_{x\to 0^+}\frac{1 - \frac{1}{1+x}}{2x} = \frac{1}{2}$令 $k = \frac{1}{2}$，则 $\lim_{x\to 0^+} f(x) = f(0)$，所以 $f(x)$
+  在 $[0,1]$ 上连续（得 4 分）．
 
-  (2) 在 $(0,1)$ 内可导：$f''(x) = -\frac{1}{(1+x)\ln^2(1+x)} + \frac{1}{x^2} = \frac{g(x)}{x^2(1+x)\ln^2(1+x)}$其中
-  $g(x) = (1+x)\ln^2(1+x) - x^2$（得 8 分）．求导 $g''(x) = \ln^2(1+x) + 2\ln(1+x) - 2x$，$g''''(x)
-  = \frac{2\ln(1+x) - 2x}{1+x} < 0$．由 $g''(0)=0$ 知 $g''(x)<0$，再由 $g(0)=0$ 知 $g(x)<0$．因此
-  $f''(x)<0$，$f(x)$ 在 $[0,1]$ 上单调递减．故最小值 $\lambda = f(1) = \frac{1}{\ln 2} - 1$，最大值
-  $\mu = f(0) = \frac{1}{2}$（满分 14 分）．'
+  (2) 在 $(0,1)$ 内可导：$f''(x) = -\frac{1}{(1+x)\ln^2(1+x)} + \frac{1}{x^2} = \frac{g(x)}{x^2(1+x)\ln^2(1+x)}$其中 $g(x) = (1+x)\ln^2(1+x)
+  - x^2$（得 8 分）．求导 $g''(x) = \ln^2(1+x) + 2\ln(1+x) - 2x$，$g''''(x) = \frac{2\ln(1+x) - 2x}{1+x} < 0$．由 $g''(0)=0$ 知 $g''(x)<0$，再由
+  $g(0)=0$ 知 $g(x)<0$．因此 $f''(x)<0$，$f(x)$ 在 $[0,1]$ 上单调递减．故最小值 $\lambda = f(1) = \frac{1}{\ln 2} - 1$，最大值 $\mu = f(0) = \frac{1}{2}$（满分
+  14 分）．'
 response:
   format: plain_text
   required: true
@@ -51,11 +47,35 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+- calculus.derivative
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用极限分析与未定式计算建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查极限分析与未定式计算的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b9dcc0a316497a667bceffa0e5280e336d6ce3f1920c8ea865dab2906674ed89
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b9dcc0a316497a667bceffa0e5280e336d6ce3f1920c8ea865dab2906674ed89
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b9dcc0a316497a667bceffa0e5280e336d6ce3f1920c8ea865dab2906674ed89

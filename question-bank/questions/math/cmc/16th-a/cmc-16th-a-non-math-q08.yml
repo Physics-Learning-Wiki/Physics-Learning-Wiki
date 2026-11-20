@@ -1,23 +1,20 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: （本题 14 分）求曲面积分 $I = \iint_S (x^2-x)\mathrm{d}y\mathrm{d}z + (y^2-y)\mathrm{d}z\mathrm{d}x
-  + (z^2-z)\mathrm{d}x\mathrm{d}y$，其中 $S$ 是上半球面 $x^2+y^2+z^2 = R^2$ ($z\geqslant 0$)
-  的上侧．
+stem: （本题 14 分）求曲面积分 $I = \iint_S (x^2-x)\mathrm{d}y\mathrm{d}z + (y^2-y)\mathrm{d}z\mathrm{d}x + (z^2-z)\mathrm{d}x\mathrm{d}y$，其中
+  $S$ 是上半球面 $x^2+y^2+z^2 = R^2$ ($z\geqslant 0$) 的上侧．
 reference_answer: $\frac{\pi R^4}{2} - 2\pi R^3$
-solution: '补底面 $\Sigma: z = 0, x^2+y^2\leqslant R^2$ 取下侧，由高斯公式：$\iint_{S+\Sigma} =
-  \iiint_\Omega (2x+2y+2z-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z \quad (得 4 分)$在底面 $\Sigma$
-  上 $z=0,\mathrm{d}x\mathrm{d}y = -\mathrm{d}x\mathrm{d}y$，其余两项为 $0$，故 $\iint_\Sigma
-  (z^2-z)\mathrm{d}x\mathrm{d}y = 0$．因此 $I = \iiint_\Omega (2(x+y+z)-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z$（得
-  8 分）．由对称性 $\iiint_\Omega x = \iiint_\Omega y = 0$．球坐标变换：$I = \int_0^{2\pi}\mathrm{d}\theta\int_0^{\pi/2}\mathrm{d}\varphi\int_0^R
-  (2r\cos\varphi - 3)r^2\sin\varphi\mathrm{d}r = \frac{\pi R^4}{2} - 2\pi R^3 \quad
-  (满分 14 分)$'
+solution: '补底面 $\Sigma: z = 0, x^2+y^2\leqslant R^2$ 取下侧，由高斯公式：$\iint_{S+\Sigma} = \iiint_\Omega (2x+2y+2z-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z
+  \quad (得 4 分)$在底面 $\Sigma$ 上 $z=0,\mathrm{d}x\mathrm{d}y = -\mathrm{d}x\mathrm{d}y$，其余两项为 $0$，故 $\iint_\Sigma (z^2-z)\mathrm{d}x\mathrm{d}y
+  = 0$．因此 $I = \iiint_\Omega (2(x+y+z)-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z$（得 8 分）．由对称性 $\iiint_\Omega x = \iiint_\Omega y
+  = 0$．球坐标变换：$I = \int_0^{2\pi}\mathrm{d}\theta\int_0^{\pi/2}\mathrm{d}\varphi\int_0^R (2r\cos\varphi - 3)r^2\sin\varphi\mathrm{d}r
+  = \frac{\pi R^4}{2} - 2\pi R^3 \quad (满分 14 分)$'
 response:
   format: plain_text
   required: true
@@ -44,11 +41,34 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.surface-integral
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 600
+feedback:
+  correct: 求解完整准确！能够熟练运用曲面积分与高斯散度定理建立方程并化简求解，中间积分与变量代换准确到位．
+  incorrect: 求解存在计算或逻辑偏差．本题主要考查曲面积分与高斯散度定理的综合应用．常见错误包括曲面/曲线参数化时方向或法向量判定错误、雅可比行列式漏乘、或特征方程求根失误导致通解结构不完整，建议对照官方步骤进行分步纠错．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251eec46e93b90b64244f98b8df6db80da05e961e243500a47113120ba2832d8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251eec46e93b90b64244f98b8df6db80da05e961e243500a47113120ba2832d8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251eec46e93b90b64244f98b8df6db80da05e961e243500a47113120ba2832d8

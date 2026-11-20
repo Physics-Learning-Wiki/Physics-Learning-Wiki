@@ -1,6 +1,6 @@
 import { loadManifest, loadSetCatalog, loadTaxonomyCatalog, resolveSiteUrl } from "../data.js";
 import { createAbortScope } from "../abort-scope.js";
-import { escapeHtml } from "../question-renderer.js";
+import { escapeHtml, renderLicenseNotice } from "../question-renderer.js";
 import { TopicTree } from "../topics.js";
 import { fillTopicSelect } from "../topic-select.js";
 import type { Manifest, SetCatalogItem, TaxonomyCatalog } from "../types.js";
@@ -280,6 +280,9 @@ export class SetsSurface {
           }
         </div>
       `;
+
+      const licenseNotice = renderLicenseNotice(item, "题集编排");
+      if (licenseNotice) card.firstElementChild?.append(licenseNotice);
 
       if (!item.runnable && this.manifest.preview && item.unavailableReason) {
         const reason = document.createElement("p");

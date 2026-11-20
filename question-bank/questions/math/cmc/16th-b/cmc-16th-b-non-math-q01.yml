@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-16th-b-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,8 +9,8 @@ type: free_response
 choice_order: fixed
 stem: 极限 $\lim_{x\to 0}\frac{\ln(1+x^2)-x^2}{\sin^4 x} =$ ______．
 reference_answer: $-\frac{1}{2}$
-solution: 当 $x\to 0$ 时，$\ln(1+x^2) = x^2 - \frac{x^4}{2} + o(x^4)$，$\sin^4 x = x^4
-  + o(x^4)$．故原式极限为：$\lim_{x\to 0}\frac{-\frac{x^4}{2} + o(x^4)}{x^4 + o(x^4)} = -\frac{1}{2}$
+solution: 当 $x\to 0$ 时，$\ln(1+x^2) = x^2 - \frac{x^4}{2} + o(x^4)$，$\sin^4 x = x^4 + o(x^4)$．故原式极限为：$\lim_{x\to 0}\frac{-\frac{x^4}{2}
+  + o(x^4)}{x^4 + o(x^4)} = -\frac{1}{2}$
 response:
   format: plain_text
   required: true
@@ -31,11 +31,34 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第一大题第(1)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了极限分析与未定式计算的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查极限分析与未定式计算．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:001e1c6a12455a6c2d701a0109210c2db4018524e15e350e3c82227940e9896f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:001e1c6a12455a6c2d701a0109210c2db4018524e15e350e3c82227940e9896f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:001e1c6a12455a6c2d701a0109210c2db4018524e15e350e3c82227940e9896f

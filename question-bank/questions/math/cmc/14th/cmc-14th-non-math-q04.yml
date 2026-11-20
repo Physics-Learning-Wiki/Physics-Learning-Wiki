@@ -1,18 +1,16 @@
 schema_version: 3
 id: cmc-14th-non-math-q04
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 微分方程 $\frac{\mathrm{d}y}{\mathrm{d}x}x\ln x\sin y + \cos y(1 - x\cos y) = 0$
-  的通解为 ______．
+stem: 微分方程 $\frac{\mathrm{d}y}{\mathrm{d}x}x\ln x\sin y + \cos y(1 - x\cos y) = 0$ 的通解为 ______．
 reference_answer: $(x + C)\cos y = \ln x$ 或 $\frac{1}{\cos y} = \frac{x+C}{\ln x}$
-solution: 改写为 $y'\sin y + \frac{1}{x\ln x}\cos y = \frac{1}{\ln x}\cos^2 y$．令 $z =
-  \cos y$ 转化为 Bernoulli 方程，再令 $w = 1/z$ 转化为一阶线性方程，求解得 $w = \frac{1}{\ln x}(x+C)$，回代得
-  $(x+C)\cos y = \ln x$．
+solution: 改写为 $y'\sin y + \frac{1}{x\ln x}\cos y = \frac{1}{\ln x}\cos^2 y$．令 $z = \cos y$ 转化为 Bernoulli 方程，再令 $w = 1/z$ 转化为一阶线性方程，求解得
+  $w = \frac{1}{\ln x}(x+C)$，回代得 $(x+C)\cos y = \ln x$．
 response:
   format: plain_text
   required: true
@@ -33,11 +31,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(4)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a53855affb0003e065a1635904d8dd91ab81d60e3fc3f6449d06e658174a184b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a53855affb0003e065a1635904d8dd91ab81d60e3fc3f6449d06e658174a184b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a53855affb0003e065a1635904d8dd91ab81d60e3fc3f6449d06e658174a184b

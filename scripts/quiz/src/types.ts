@@ -22,10 +22,13 @@ export interface Choice {
   contentHtml: string;
 }
 
-export interface QuestionBase {
+export interface QuizRights {
   authors?: Array<{ name: string; kind: "human" | "ai" }>;
   provenance?: { type?: string; note?: string; source?: string; permission?: string };
   license?: string;
+}
+
+export interface QuestionBase extends QuizRights {
   id: string;
   version: number;
   status: "draft" | "published" | "retired";
@@ -163,11 +166,8 @@ export interface SetSelectionQuery {
 
 export type SetSelection = SetSelectionFixed | SetSelectionQuery;
 
-export interface QuizSetDef {
+export interface QuizSetDef extends QuizRights {
   version?: number;
-  authors?: Array<{ name: string; kind: "human" | "ai" }>;
-  provenance?: Record<string, unknown>;
-  license?: string;
   submission?: Record<string, unknown>;
   schema_version: 1;
   id: string;
@@ -204,8 +204,7 @@ export interface Manifest {
   sets: Record<string, { title: string; status: SetStatus; bundle: string }>;
 }
 
-export interface SetCatalogItem {
-  authors?: Array<{ name: string; kind: "human" | "ai" }>;
+export interface SetCatalogItem extends QuizRights {
   version?: number;
   id: string;
   title: string;

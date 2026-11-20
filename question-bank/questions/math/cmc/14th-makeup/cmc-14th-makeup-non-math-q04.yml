@@ -1,22 +1,19 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q04
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设可微函数 $z=z(x,y)$ 满足 $x^2\frac{\partial z}{\partial x}+y^2\frac{\partial z}{\partial
-  y}=2z^2$，又设 $u=x, v=\frac{1}{y}-\frac{1}{x}, w=\frac{1}{z}-\frac{1}{x}$，则对函数 $w=w(u,v)$，偏导数
-  $\left.\frac{\partial w}{\partial u}\right|_{\substack{u=2\\v=1}} =$ ______．
+stem: 设可微函数 $z=z(x,y)$ 满足 $x^2\frac{\partial z}{\partial x}+y^2\frac{\partial z}{\partial y}=2z^2$，又设 $u=x, v=\frac{1}{y}-\frac{1}{x},
+  w=\frac{1}{z}-\frac{1}{x}$，则对函数 $w=w(u,v)$，偏导数 $\left.\frac{\partial w}{\partial u}\right|_{\substack{u=2\\v=1}} =$ ______．
 reference_answer: $-\frac{1}{4}$
-solution: 由变量关系 $x = u, y = \frac{u}{uv+1}, \frac{1}{z} = w+\frac{1}{u}$．链式求导：$\frac{\partial
-  w}{\partial u} = -\frac{1}{z^2}\frac{\partial z}{\partial u} + \frac{1}{u^2} = -\frac{1}{z^2}\left(z_x\cdot
-  1 + z_y\cdot \frac{1}{(uv+1)^2}\right) + \frac{1}{u^2} = -\frac{1}{z^2 u^2}\left(x^2
-  z_x + y^2 z_y\right) + \frac{1}{u^2}$利用已知条件 $x^2 z_x+y^2 z_y = 2z^2$：$\frac{\partial
-  w}{\partial u} = -\frac{2z^2}{z^2 u^2} + \frac{1}{u^2} = -\frac{1}{u^2}$代入 $u=2,
-  v=1$ 得 $\left.\frac{\partial w}{\partial u}\right|_{(2,1)} = -\frac{1}{4}$．
+solution: 由变量关系 $x = u, y = \frac{u}{uv+1}, \frac{1}{z} = w+\frac{1}{u}$．链式求导：$\frac{\partial w}{\partial u} = -\frac{1}{z^2}\frac{\partial
+  z}{\partial u} + \frac{1}{u^2} = -\frac{1}{z^2}\left(z_x\cdot 1 + z_y\cdot \frac{1}{(uv+1)^2}\right) + \frac{1}{u^2} = -\frac{1}{z^2
+  u^2}\left(x^2 z_x + y^2 z_y\right) + \frac{1}{u^2}$利用已知条件 $x^2 z_x+y^2 z_y = 2z^2$：$\frac{\partial w}{\partial u} = -\frac{2z^2}{z^2
+  u^2} + \frac{1}{u^2} = -\frac{1}{u^2}$代入 $u=2, v=1$ 得 $\left.\frac{\partial w}{\partial u}\right|_{(2,1)} = -\frac{1}{4}$．
 response:
   format: plain_text
   required: true
@@ -37,11 +34,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(4)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了多元函数微分学与隐函数求导的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查多元函数微分学与隐函数求导．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7b6a525276ff891740ad745e1eab4681294c9bb6ca1f4d4c362bbcfac74d2aa2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7b6a525276ff891740ad745e1eab4681294c9bb6ca1f4d4c362bbcfac74d2aa2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7b6a525276ff891740ad745e1eab4681294c9bb6ca1f4d4c362bbcfac74d2aa2

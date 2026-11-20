@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-b-non-math-q01
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -9,14 +9,13 @@ type: free_response
 choice_order: fixed
 stem: 已知函数 $y = x^2\mathrm{e}^{\sin x}$，则 $y''(0) =$ ______．
 reference_answer: $2$
-solution: '方法一（Taylor 展开）：由 $\mathrm{e}^{\sin x} = 1 + \sin x + o(x) = 1 + x + o(x)$，得
-  $y = x^2(1 + x + o(x)) = x^2 + x^3 + o(x^3)$．根据 Maclaurin 展开系数 $y = y(0) + y''(0)x
-  + \frac{y''''(0)}{2!}x^2 + \cdots$，可知 $\frac{y''''(0)}{2!} = 1$，故 $y''''(0) = 2$．
+solution: '方法一（Taylor 展开）：由 $\mathrm{e}^{\sin x} = 1 + \sin x + o(x) = 1 + x + o(x)$，得 $y = x^2(1 + x + o(x)) = x^2 + x^3
+  + o(x^3)$．根据 Maclaurin 展开系数 $y = y(0) + y''(0)x + \frac{y''''(0)}{2!}x^2 + \cdots$，可知 $\frac{y''''(0)}{2!} = 1$，故 $y''''(0)
+  = 2$．
 
 
-  方法二（Leibniz 求导法则）：$y'''' = (x^2)''''\mathrm{e}^{\sin x} + 2(x^2)''(\mathrm{e}^{\sin
-  x})'' + x^2(\mathrm{e}^{\sin x})'''' = 2\mathrm{e}^{\sin x} + 4x(\mathrm{e}^{\sin
-  x})'' + x^2(\mathrm{e}^{\sin x})''''$．代入 $x=0$，得 $y''''(0) = 2$．'
+  方法二（Leibniz 求导法则）：$y'''' = (x^2)''''\mathrm{e}^{\sin x} + 2(x^2)''(\mathrm{e}^{\sin x})'' + x^2(\mathrm{e}^{\sin x})''''
+  = 2\mathrm{e}^{\sin x} + 4x(\mathrm{e}^{\sin x})'' + x^2(\mathrm{e}^{\sin x})''''$．代入 $x=0$，得 $y''''(0) = 2$．'
 response:
   format: plain_text
   required: true
@@ -37,11 +36,36 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(1)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.limit
+- calculus.derivative
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f243b70d83f3c147b7e009cfa3cc849a121eb73e22bdf6e36beb5f2bf28a169e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f243b70d83f3c147b7e009cfa3cc849a121eb73e22bdf6e36beb5f2bf28a169e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f243b70d83f3c147b7e009cfa3cc849a121eb73e22bdf6e36beb5f2bf28a169e

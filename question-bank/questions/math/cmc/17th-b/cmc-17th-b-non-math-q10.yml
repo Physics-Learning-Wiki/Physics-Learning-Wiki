@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-b-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -16,21 +16,18 @@ stem: '（本题 14 分）设 $f(x)$ 在 $[a,b]$ 上有连续的导数，记 $A 
 
   $$'
 reference_answer: 详见参考解答（通过积分第一中值定理与柯西–施瓦茨积分不等式放缩）
-solution: '根据积分中值定理，存在 $c\in[a,b]$ 使得 $A = f(c)$（得 3 分）．由微积分基本定理 $f(x) - f(c) = \int_c^x
-  f''(t)\mathrm{d}t$．应用柯西–施瓦茨积分不等式：
+solution: '根据积分中值定理，存在 $c\in[a,b]$ 使得 $A = f(c)$（得 3 分）．由微积分基本定理 $f(x) - f(c) = \int_c^x f''(t)\mathrm{d}t$．应用柯西–施瓦茨积分不等式：
 
 
   $$
 
-  |f(x) - A|^2 = \left|\int_c^x f''(t)\mathrm{d}t\right|^2 \leqslant |x-c|\int_a^b
-  |f''(t)|^2\mathrm{d}t
+  |f(x) - A|^2 = \left|\int_c^x f''(t)\mathrm{d}t\right|^2 \leqslant |x-c|\int_a^b |f''(t)|^2\mathrm{d}t
 
   $$
 
 
-  两边对 $x$ 在 $[a,b]$ 上求定积分：$\int_a^b |f(x)-A|^2\mathrm{d}x \leqslant \left(\int_a^b
-  |x-c|\mathrm{d}x\right)\int_a^b |f''(x)|^2\mathrm{d}x$（得 9 分）．计算定积分 $\int_a^b |x-c|\mathrm{d}x
-  = \frac{1}{2}[(c-a)^2 + (b-c)^2] \leqslant \frac{(a-b)^2}{2}$．代入即证得：$\int_a^b |f(x)-A|^2\mathrm{d}x
+  两边对 $x$ 在 $[a,b]$ 上求定积分：$\int_a^b |f(x)-A|^2\mathrm{d}x \leqslant \left(\int_a^b |x-c|\mathrm{d}x\right)\int_a^b |f''(x)|^2\mathrm{d}x$（得
+  9 分）．计算定积分 $\int_a^b |x-c|\mathrm{d}x = \frac{1}{2}[(c-a)^2 + (b-c)^2] \leqslant \frac{(a-b)^2}{2}$．代入即证得：$\int_a^b |f(x)-A|^2\mathrm{d}x
   \leqslant \frac{(a-b)^2}{2}\int_a^b |f''(x)|^2\mathrm{d}x$（满分 14 分）．'
 response:
   format: plain_text
@@ -58,11 +55,35 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+- calculus.integral-inequality
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 720
+feedback:
+  correct: 论证严密！准确抓住了微分中值定理与辅助函数构造的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查微分中值定理与辅助函数构造的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:802fe58f827e17424cc31560d1df466697381eba1e1391395eb883e3b326face
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:802fe58f827e17424cc31560d1df466697381eba1e1391395eb883e3b326face
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:802fe58f827e17424cc31560d1df466697381eba1e1391395eb883e3b326face

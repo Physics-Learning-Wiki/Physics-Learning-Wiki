@@ -1,20 +1,19 @@
 schema_version: 3
 id: cmc-16th-b-non-math-q03
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $y = y(x)$ 由方程 $\mathrm{e}^{3y} + \int_0^{x+y}\cos t^2\mathrm{d}t = 1$ 确定，则
-  $\left.\frac{\mathrm{d}^2 y}{\mathrm{d}x^2}\right|_{(0,0)} =$ ______．
+stem: 设 $y = y(x)$ 由方程 $\mathrm{e}^{3y} + \int_0^{x+y}\cos t^2\mathrm{d}t = 1$ 确定，则 $\left.\frac{\mathrm{d}^2 y}{\mathrm{d}x^2}\right|_{(0,0)}
+  =$ ______．
 reference_answer: $-\frac{9}{64}$
-solution: 方程两端对 $x$ 求导：$3y'\mathrm{e}^{3y} + (1+y')\cos(x+y)^2 = 0$将 $x=0, y=0$ 代入得
-  $3y'(0) + 1 + y'(0) = 0 \implies y'(0) = -\frac{1}{4}$．继续求导：$3y''\mathrm{e}^{3y}
-  + 9(y')^2\mathrm{e}^{3y} + y''\cos(x+y)^2 - 2(x+y)(1+y')^2\sin(x+y)^2 = 0$将 $x=0,
-  y=0, y'(0)=-\frac{1}{4}$ 代入：$3y''(0) + 9\left(-\frac{1}{4}\right)^2 + y''(0) - 0
-  = 0 \implies 4y''(0) = -\frac{9}{16} \implies y''(0) = -\frac{9}{64}$
+solution: 方程两端对 $x$ 求导：$3y'\mathrm{e}^{3y} + (1+y')\cos(x+y)^2 = 0$将 $x=0, y=0$ 代入得 $3y'(0) + 1 + y'(0) = 0 \implies y'(0)
+  = -\frac{1}{4}$．继续求导：$3y''\mathrm{e}^{3y} + 9(y')^2\mathrm{e}^{3y} + y''\cos(x+y)^2 - 2(x+y)(1+y')^2\sin(x+y)^2 = 0$将 $x=0,
+  y=0, y'(0)=-\frac{1}{4}$ 代入：$3y''(0) + 9\left(-\frac{1}{4}\right)^2 + y''(0) - 0 = 0 \implies 4y''(0) = -\frac{9}{16} \implies
+  y''(0) = -\frac{9}{64}$
 response:
   format: plain_text
   required: true
@@ -35,11 +34,36 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第一大题第(3)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.derivative
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5da38936b881a5472b7dddb45f809d0706c29031c371caff0f4c1f7fd36d48e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5da38936b881a5472b7dddb45f809d0706c29031c371caff0f4c1f7fd36d48e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5da38936b881a5472b7dddb45f809d0706c29031c371caff0f4c1f7fd36d48e

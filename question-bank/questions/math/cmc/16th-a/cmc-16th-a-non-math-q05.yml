@@ -1,21 +1,18 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设 $L$ 为圆周 $x^2+y^2=9$，取逆时针方向，则第二类曲线积分 $\int_L \frac{-y}{4x^2+y^2}\mathrm{d}x
-  + \frac{x}{4x^2+y^2}\mathrm{d}y =$ ______．
+stem: 设 $L$ 为圆周 $x^2+y^2=9$，取逆时针方向，则第二类曲线积分 $\int_L \frac{-y}{4x^2+y^2}\mathrm{d}x + \frac{x}{4x^2+y^2}\mathrm{d}y =$ ______．
 reference_answer: $\pi$
-solution: '记 $P = \frac{-y}{4x^2+y^2}, Q = \frac{x}{4x^2+y^2}$．易知在原点外 $Q_x - P_y \equiv
-  0$．引入顺时针方向的辅助椭圆 $L_1: 4x^2+y^2=4$，由格林公式：$\int_{L+L_1} P\mathrm{d}x + Q\mathrm{d}y
-  = 0 \implies \int_L P\mathrm{d}x + Q\mathrm{d}y = \frac{1}{4}\int_{-L_1} (-y\mathrm{d}x
-  + x\mathrm{d}y) = \frac{1}{4}\iint_{4x^2+y^2\leqslant 4} 2\mathrm{d}x\mathrm{d}y
-  = \frac{1}{2}\sigma(D) = \pi$其中椭圆面积 $\sigma(D) = \pi \times 1 \times 2 = 2\pi$．故积分为
-  $\pi$．'
+solution: '记 $P = \frac{-y}{4x^2+y^2}, Q = \frac{x}{4x^2+y^2}$．易知在原点外 $Q_x - P_y \equiv 0$．引入顺时针方向的辅助椭圆 $L_1: 4x^2+y^2=4$，由格林公式：$\int_{L+L_1}
+  P\mathrm{d}x + Q\mathrm{d}y = 0 \implies \int_L P\mathrm{d}x + Q\mathrm{d}y = \frac{1}{4}\int_{-L_1} (-y\mathrm{d}x + x\mathrm{d}y)
+  = \frac{1}{4}\iint_{4x^2+y^2\leqslant 4} 2\mathrm{d}x\mathrm{d}y = \frac{1}{2}\sigma(D) = \pi$其中椭圆面积 $\sigma(D) = \pi \times
+  1 \times 2 = 2\pi$．故积分为 $\pi$．'
 response:
   format: plain_text
   required: true
@@ -36,11 +33,34 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.line-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了曲线积分与格林公式的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查曲线积分与格林公式．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:393627f56b9babdb206eea7bf589def62f3e5e2ff2478040793aacb3290bcc76
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:393627f56b9babdb206eea7bf589def62f3e5e2ff2478040793aacb3290bcc76
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:393627f56b9babdb206eea7bf589def62f3e5e2ff2478040793aacb3290bcc76

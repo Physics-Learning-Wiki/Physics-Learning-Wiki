@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-14th-makeup-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题满分 14 分）设函数 $f(x)$ 在区间 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0, f(1)=2$．证明：存在两两互异的点
-  $\xi_1, \xi_2, \xi_3 \in (0,1)$，使得
+stem: '（本题满分 14 分）设函数 $f(x)$ 在区间 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0, f(1)=2$．证明：存在两两互异的点 $\xi_1, \xi_2, \xi_3 \in (0,1)$，使得
 
 
   $$
@@ -17,13 +16,11 @@ stem: '（本题满分 14 分）设函数 $f(x)$ 在区间 $[0,1]$ 上连续，�
 
   $$'
 reference_answer: 详见参考解答（通过连续函数零点介值定理构造中间节点 $\xi_3$ 并利用 Lagrange 中值定理与不等式证明）
-solution: 令辅助函数 $F(x) = f(x) - 2 + x$．则 $F(0) = -2, F(1) = 1$．由介值定理，存在 $\xi_3\in(0,1)$
-  使得 $F(\xi_3) = 0$，即 $f(\xi_3) = 2 - \xi_3$（得 5 分）．在区间 $[0,\xi_3]$ 与 $[\xi_3,1]$
-  上分别应用 Lagrange 中值定理，存在 $\xi_1\in(0,\xi_3), \xi_2\in(\xi_3,1)$ 使得：$f'(\xi_1) = \frac{f(\xi_3)-f(0)}{\xi_3}
-  = \frac{2-\xi_3}{\xi_3}, \quad f'(\xi_2) = \frac{f(1)-f(\xi_3)}{1-\xi_3} = \frac{\xi_3}{1-\xi_3}
-  \quad (得 10 分)$相乘得：$f'(\xi_1)f'(\xi_2) = \frac{2-\xi_3}{1-\xi_3} = 1 + \frac{1}{1-\xi_3}
-  \geqslant \frac{2}{\sqrt{1-\xi_3}}$两边同乘 $\sqrt{1-\xi_3}$ 即证得 $f'(\xi_1)f'(\xi_2)\sqrt{1-\xi_3}
-  \geqslant 2$．显然 $0 < \xi_1 < \xi_3 < \xi_2 < 1$，三点两两互异（满分 14 分）．
+solution: 令辅助函数 $F(x) = f(x) - 2 + x$．则 $F(0) = -2, F(1) = 1$．由介值定理，存在 $\xi_3\in(0,1)$ 使得 $F(\xi_3) = 0$，即 $f(\xi_3) = 2 -
+  \xi_3$（得 5 分）．在区间 $[0,\xi_3]$ 与 $[\xi_3,1]$ 上分别应用 Lagrange 中值定理，存在 $\xi_1\in(0,\xi_3), \xi_2\in(\xi_3,1)$ 使得：$f'(\xi_1)
+  = \frac{f(\xi_3)-f(0)}{\xi_3} = \frac{2-\xi_3}{\xi_3}, \quad f'(\xi_2) = \frac{f(1)-f(\xi_3)}{1-\xi_3} = \frac{\xi_3}{1-\xi_3}
+  \quad (得 10 分)$相乘得：$f'(\xi_1)f'(\xi_2) = \frac{2-\xi_3}{1-\xi_3} = 1 + \frac{1}{1-\xi_3} \geqslant \frac{2}{\sqrt{1-\xi_3}}$两边同乘
+  $\sqrt{1-\xi_3}$ 即证得 $f'(\xi_1)f'(\xi_2)\sqrt{1-\xi_3} \geqslant 2$．显然 $0 < \xi_1 < \xi_3 < \xi_2 < 1$，三点两两互异（满分 14 分）．
 response:
   format: plain_text
   required: true
@@ -50,11 +47,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.mean-value-theorem
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 720
+feedback:
+  correct: 论证严密！准确抓住了微分中值定理与辅助函数构造的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查微分中值定理与辅助函数构造的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4fdb21f19c7ad10e1f5f7157a8766953d414011abbb439f688369b611bb57663
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4fdb21f19c7ad10e1f5f7157a8766953d414011abbb439f688369b611bb57663
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4fdb21f19c7ad10e1f5f7157a8766953d414011abbb439f688369b611bb57663

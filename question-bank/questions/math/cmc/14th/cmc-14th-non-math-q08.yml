@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-14th-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -16,18 +16,14 @@ stem: '（本题满分 14 分）证明：对任意正整数 $n$，恒有：
 
   $$'
 reference_answer: 详见参考解答（通过区间分段放缩与 Jordan 不等式积分估计证明）
-solution: 首先由数学归纳法当 $x\in[0,\pi/2]$ 时有 $|\sin nx|\leqslant n\sin x$（得 2 分）．当 $n>1$
-  时，将积分区间拆分为 $[0, \frac{\pi}{2n}]$ 与 $[\frac{\pi}{2n}, \frac{\pi}{2}]$ 两段：$\int_0^{\pi/2}
-  x\left(\frac{\sin nx}{\sin x}\right)^4\mathrm{d}x = \int_0^{\frac{\pi}{2n}} x\left(\frac{\sin
-  nx}{\sin x}\right)^4\mathrm{d}x + \int_{\frac{\pi}{2n}}^{\pi/2} x\left(\frac{\sin
-  nx}{\sin x}\right)^4\mathrm{d}x$第一段利用 $\frac{\sin nx}{\sin x} \leqslant n$ 放缩：$\int_0^{\frac{\pi}{2n}}
-  n^4 x\mathrm{d}x = \frac{n^4}{2}\left(\frac{\pi}{2n}\right)^2 = \frac{n^2\pi^2}{8}$第二段利用
-  $|\sin nx|\leqslant 1$ 及 Jordan 不等式 $\sin x \geqslant \frac{2}{\pi}x$：$\int_{\frac{\pi}{2n}}^{\pi/2}
-  x\left(\frac{\pi}{2x}\right)^4\mathrm{d}x = \frac{\pi^4}{16}\int_{\frac{\pi}{2n}}^{\pi/2}
-  \frac{\mathrm{d}x}{x^3} = \frac{\pi^4}{16}\left.\left(-\frac{1}{2x^2}\right)\right|_{\frac{\pi}{2n}}^{\pi/2}
-  = \frac{\pi^2}{8}\left(n^2 - 1\right)$两段相加：$\frac{n^2\pi^2}{8} + \frac{(n^2-1)\pi^2}{8}
-  = \frac{2n^2-1}{8}\pi^2 = \left(\frac{n^2}{4} - \frac{1}{8}\right)\pi^2 \quad (得
-  12 分)$当 $n=1$ 时，左端等于 $\int_0^{\pi/2} x\mathrm{d}x = \frac{\pi^2}{8}$，右端为 $(\frac{1}{4}-\frac{1}{8})\pi^2
+solution: 首先由数学归纳法当 $x\in[0,\pi/2]$ 时有 $|\sin nx|\leqslant n\sin x$（得 2 分）．当 $n>1$ 时，将积分区间拆分为 $[0, \frac{\pi}{2n}]$ 与 $[\frac{\pi}{2n},
+  \frac{\pi}{2}]$ 两段：$\int_0^{\pi/2} x\left(\frac{\sin nx}{\sin x}\right)^4\mathrm{d}x = \int_0^{\frac{\pi}{2n}} x\left(\frac{\sin
+  nx}{\sin x}\right)^4\mathrm{d}x + \int_{\frac{\pi}{2n}}^{\pi/2} x\left(\frac{\sin nx}{\sin x}\right)^4\mathrm{d}x$第一段利用
+  $\frac{\sin nx}{\sin x} \leqslant n$ 放缩：$\int_0^{\frac{\pi}{2n}} n^4 x\mathrm{d}x = \frac{n^4}{2}\left(\frac{\pi}{2n}\right)^2
+  = \frac{n^2\pi^2}{8}$第二段利用 $|\sin nx|\leqslant 1$ 及 Jordan 不等式 $\sin x \geqslant \frac{2}{\pi}x$：$\int_{\frac{\pi}{2n}}^{\pi/2}
+  x\left(\frac{\pi}{2x}\right)^4\mathrm{d}x = \frac{\pi^4}{16}\int_{\frac{\pi}{2n}}^{\pi/2} \frac{\mathrm{d}x}{x^3} = \frac{\pi^4}{16}\left.\left(-\frac{1}{2x^2}\right)\right|_{\frac{\pi}{2n}}^{\pi/2}
+  = \frac{\pi^2}{8}\left(n^2 - 1\right)$两段相加：$\frac{n^2\pi^2}{8} + \frac{(n^2-1)\pi^2}{8} = \frac{2n^2-1}{8}\pi^2 = \left(\frac{n^2}{4}
+  - \frac{1}{8}\right)\pi^2 \quad (得 12 分)$当 $n=1$ 时，左端等于 $\int_0^{\pi/2} x\mathrm{d}x = \frac{\pi^2}{8}$，右端为 $(\frac{1}{4}-\frac{1}{8})\pi^2
   = \frac{\pi^2}{8}$ 等号成立．综合即证得不等式（满分 14 分）．
 response:
   format: plain_text
@@ -55,11 +51,34 @@ provenance:
   type: adapted
   note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.integral-inequality
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 900
+feedback:
+  correct: 论证严密！准确抓住了积分不等式放缩与估计的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查积分不等式放缩与估计的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3641466c38beca4fd63340fc226567e31f5aff9176608a259a83ce1338d731c2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3641466c38beca4fd63340fc226567e31f5aff9176608a259a83ce1338d731c2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3641466c38beca4fd63340fc226567e31f5aff9176608a259a83ce1338d731c2

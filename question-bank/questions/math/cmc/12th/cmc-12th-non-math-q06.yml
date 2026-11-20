@@ -1,22 +1,20 @@
 schema_version: 3
 id: cmc-12th-non-math-q06
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设数列 $\{a_n\}$ 满足：$a_1=1$，且 $a_{n+1} = \frac{a_n}{(n+1)(a_n+1)}$ ($n\ge 1$)．求极限
-  $\lim_{n\to\infty} n! a_n$．
+stem: 设数列 $\{a_n\}$ 满足：$a_1=1$，且 $a_{n+1} = \frac{a_n}{(n+1)(a_n+1)}$ ($n\ge 1$)．求极限 $\lim_{n\to\infty} n! a_n$．
 reference_answer: $\frac{1}{e}$
 solution: '利用归纳法易知 $a_n > 0$ ($n\ge 1$)．考虑倒数关系：
 
 
   $$
 
-  \frac{1}{a_{n+1}} = (n+1)\left(1 + \frac{1}{a_n}\right) = (n+1) + (n+1)\frac{1}{a_n}
-  = (n+1) + (n+1)n + (n+1)n\frac{1}{a_{n-1}}
+  \frac{1}{a_{n+1}} = (n+1)\left(1 + \frac{1}{a_n}\right) = (n+1) + (n+1)\frac{1}{a_n} = (n+1) + (n+1)n + (n+1)n\frac{1}{a_{n-1}}
 
   $$
 
@@ -26,8 +24,7 @@ solution: '利用归纳法易知 $a_n > 0$ ($n\ge 1$)．考虑倒数关系：
 
   $$
 
-  \frac{1}{a_{n+1}} = (n+1)!\left(\sum_{k=1}^n \frac{1}{k!} + \frac{1}{a_1}\right)
-  = (n+1)!\sum_{k=0}^n \frac{1}{k!}
+  \frac{1}{a_{n+1}} = (n+1)!\left(\sum_{k=1}^n \frac{1}{k!} + \frac{1}{a_1}\right) = (n+1)!\sum_{k=0}^n \frac{1}{k!}
 
   $$
 
@@ -42,8 +39,7 @@ solution: '利用归纳法易知 $a_n > 0$ ($n\ge 1$)．考虑倒数关系：
   $$
 
 
-  因为 $\lim_{n\to\infty}\sum_{k=0}^{n-1}\frac{1}{k!} = e$，所以 $\lim_{n\to\infty} n!
-  a_n = \frac{1}{e}$．'
+  因为 $\lim_{n\to\infty}\sum_{k=0}^{n-1}\frac{1}{k!} = e$，所以 $\lim_{n\to\infty} n! a_n = \frac{1}{e}$．'
 response:
   format: plain_text
   required: true
@@ -67,11 +63,35 @@ provenance:
   type: adapted
   note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第二大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.series
+- calculus.limit
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了数项级数敛散性判别与求和的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查数项级数敛散性判别与求和．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:329040ac54c49ea370e16263d41d53e395d5476112572ff819007f93a296d053
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:329040ac54c49ea370e16263d41d53e395d5476112572ff819007f93a296d053
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:329040ac54c49ea370e16263d41d53e395d5476112572ff819007f93a296d053

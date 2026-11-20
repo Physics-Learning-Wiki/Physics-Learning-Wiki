@@ -1,7 +1,7 @@
 schema_version: 3
 id: cmc-17th-a-non-math-q10
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
@@ -18,8 +18,7 @@ stem: '（本题 14 分）设函数 $f(x), g(x)$ 在 $[a,b]$ 上连续可导且�
 
   证明：
 
-  (1) $\int_a^b f(x)\left(\int_a^x g(s)\mathrm{d}s\right)\mathrm{d}x = -\int_a^b g(x)\left(\int_a^x
-  f(s)\mathrm{d}s\right)\mathrm{d}x$；
+  (1) $\int_a^b f(x)\left(\int_a^x g(s)\mathrm{d}s\right)\mathrm{d}x = -\int_a^b g(x)\left(\int_a^x f(s)\mathrm{d}s\right)\mathrm{d}x$；
 
   (2) $\int_a^b f(x)\left(\int_a^x g(s)\mathrm{d}s\right)\mathrm{d}x > 0$．'
 reference_answer: 详见参考解答（通过分部积分与利用条件 (ii) 建立比值单调性及符号判别）
@@ -35,9 +34,9 @@ solution: '(1) 记 $F(x) = \int_a^x f(s)\mathrm{d}s, G(x) = \int_a^x g(s)\mathrm
 
   因 $F(b) = G(b) = 0$ 且 $F(a) = G(a) = 0$，首末项为 0，即证得结论（得 4 分）．
 
-  (2) 记积分 $I = \int_a^b f(x)G(x)\mathrm{d}x$．由对称性 $I = \frac{1}{2}\iint_D (f(x)g(s)-f(s)g(x))\mathrm{d}s\mathrm{d}x$（得
-  8 分）．由条件 (ii) 知商函数 $f(x)/g(x)$ 在除零点 $\xi$ 外严格单调递增．结合条件 (iii) $g(x)$ 在 $\xi$ 变号，可将积分区域细分证明被积函数非负且不恒为零（得
-  12 分），从而严格证得 $I > 0$（满分 14 分）．'
+  (2) 记积分 $I = \int_a^b f(x)G(x)\mathrm{d}x$．由对称性 $I = \frac{1}{2}\iint_D (f(x)g(s)-f(s)g(x))\mathrm{d}s\mathrm{d}x$（得 8 分）．由条件
+  (ii) 知商函数 $f(x)/g(x)$ 在除零点 $\xi$ 外严格单调递增．结合条件 (iii) $g(x)$ 在 $\xi$ 变号，可将积分区域细分证明被积函数非负且不恒为零（得 12 分），从而严格证得 $I > 0$（满分 14
+  分）．'
 response:
   format: plain_text
   required: true
@@ -64,11 +63,35 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第六大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multiple-integral
+- calculus.derivative
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 720
+feedback:
+  correct: 论证严密！准确抓住了重积分计算与对称性化简的核心本质，构造的辅助函数或放缩估计准确无误，逻辑链条完整闭合．
+  incorrect: 论证存在疏漏．本题重点考查重积分计算与对称性化简的分析与证明能力．常见失误在于辅助函数构造不满足中值定理区间端点条件、积分不等式放缩过宽导致余项无法控制、或者极限与求和交换次序缺乏一致收敛性支持，请对照评分细则核对各步骤得分点．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a5b4b2a0bfe55e8d871f5318df743703b3b42ab257087106e0374a35f0ca0670
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a5b4b2a0bfe55e8d871f5318df743703b3b42ab257087106e0374a35f0ca0670
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a5b4b2a0bfe55e8d871f5318df743703b3b42ab257087106e0374a35f0ca0670

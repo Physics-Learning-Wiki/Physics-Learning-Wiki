@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-17th-a-non-math-q08
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题 14 分）设 $\Omega$ 是由平面 $\Pi_1: x = 0$, $\Pi_2: x = y$, $\Pi_3: y = z$, $\Pi_4:
-  z = 1$, $\Pi_5: z = 2$ 围成的空间区域，求三重积分：
+stem: '（本题 14 分）设 $\Omega$ 是由平面 $\Pi_1: x = 0$, $\Pi_2: x = y$, $\Pi_3: y = z$, $\Pi_4: z = 1$, $\Pi_5: z = 2$ 围成的空间区域，求三重积分：
 
 
   $$
@@ -17,15 +16,14 @@ stem: '（本题 14 分）设 $\Omega$ 是由平面 $\Pi_1: x = 0$, $\Pi_2: x = 
 
   $$'
 reference_answer: $\frac{3(\sqrt{2}-1)}{2}$
-solution: '采用截面投影法（先二后一），对 $1 \leqslant z \leqslant 2$，平面截区域为 $D_z = \{(x,y)\mid 0
-  \leqslant x \leqslant y, 0 \leqslant y \leqslant z\}$：
+solution: '采用截面投影法（先二后一），对 $1 \leqslant z \leqslant 2$，平面截区域为 $D_z = \{(x,y)\mid 0 \leqslant x \leqslant y, 0 \leqslant y
+  \leqslant z\}$：
 
 
   $$
 
-  \iiint_\Omega \frac{\mathrm{d}x\mathrm{d}y\mathrm{d}z}{\sqrt{y^2+z^2}} = \int_1^2
-  \mathrm{d}z \iint_{D_z} \frac{\mathrm{d}x\mathrm{d}y}{\sqrt{y^2+z^2}} \quad (得 5
-  分)
+  \iiint_\Omega \frac{\mathrm{d}x\mathrm{d}y\mathrm{d}z}{\sqrt{y^2+z^2}} = \int_1^2 \mathrm{d}z \iint_{D_z} \frac{\mathrm{d}x\mathrm{d}y}{\sqrt{y^2+z^2}}
+  \quad (得 5 分)
 
   $$
 
@@ -35,15 +33,14 @@ solution: '采用截面投影法（先二后一），对 $1 \leqslant z \leqslan
 
   $$
 
-  = \int_1^2 \mathrm{d}z \int_0^z \mathrm{d}y \int_0^y \frac{\mathrm{d}x}{\sqrt{y^2+z^2}}
-  = \int_1^2 \mathrm{d}z \int_0^z \frac{y}{\sqrt{y^2+z^2}}\mathrm{d}y \quad (得 10
-  分)
+  = \int_1^2 \mathrm{d}z \int_0^z \mathrm{d}y \int_0^y \frac{\mathrm{d}x}{\sqrt{y^2+z^2}} = \int_1^2 \mathrm{d}z \int_0^z
+  \frac{y}{\sqrt{y^2+z^2}}\mathrm{d}y \quad (得 10 分)
 
   $$
 
 
-  内层积分为 $\left.\sqrt{y^2+z^2}\right|_0^z = (\sqrt{2}-1)z$．最后关于 $z$ 积分：$\int_1^2 (\sqrt{2}-1)z\mathrm{d}z
-  = (\sqrt{2}-1)\left.\frac{z^2}{2}\right|_1^2 = \frac{3(\sqrt{2}-1)}{2}$（满分 14 分）．'
+  内层积分为 $\left.\sqrt{y^2+z^2}\right|_0^z = (\sqrt{2}-1)z$．最后关于 $z$ 积分：$\int_1^2 (\sqrt{2}-1)z\mathrm{d}z = (\sqrt{2}-1)\left.\frac{z^2}{2}\right|_1^2
+  = \frac{3(\sqrt{2}-1)}{2}$（满分 14 分）．'
 response:
   format: plain_text
   required: true
@@ -70,11 +67,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第四大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multiple-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了重积分计算与对称性化简的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查重积分计算与对称性化简．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de161bed92d28f1864a02ff5f5d381e6ed00d2f7b4c806c5cb899c04f3443be8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de161bed92d28f1864a02ff5f5d381e6ed00d2f7b4c806c5cb899c04f3443be8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de161bed92d28f1864a02ff5f5d381e6ed00d2f7b4c806c5cb899c04f3443be8

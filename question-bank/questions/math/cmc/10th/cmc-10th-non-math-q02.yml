@@ -1,14 +1,13 @@
 schema_version: 3
 id: cmc-10th-non-math-q02
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 若曲线 $y=y(x)$ 由 $\begin{cases}x = t+\cos t,\\ e^y + ty + \sin t = 1\end{cases}$
-  确定，则此曲线在 $t=0$ 对应点处的切线方程为 ______．
+stem: 若曲线 $y=y(x)$ 由 $\begin{cases}x = t+\cos t,\\ e^y + ty + \sin t = 1\end{cases}$ 确定，则此曲线在 $t=0$ 对应点处的切线方程为 ______．
 reference_answer: $x+y=1$
 solution: '当 $t = 0$ 时，$x = 1$，$e^y = 1 \implies y = 0$．
 
@@ -16,12 +15,11 @@ solution: '当 $t = 0$ 时，$x = 1$，$e^y = 1 \implies y = 0$．
   分别关于 $t$ 求导：
 
 
-  $$\frac{\mathrm{d}x}{\mathrm{d}t} = 1 - \sin t, \quad \left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=0}
-  = 1$$
+  $$\frac{\mathrm{d}x}{\mathrm{d}t} = 1 - \sin t, \quad \left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=0} = 1$$
 
 
-  $$e^y \frac{\mathrm{d}y}{\mathrm{d}t} + y + t\frac{\mathrm{d}y}{\mathrm{d}t} + \cos
-  t = 0, \quad \left.\frac{\mathrm{d}y}{\mathrm{d}t}\right|_{t=0} = -1$$
+  $$e^y \frac{\mathrm{d}y}{\mathrm{d}t} + y + t\frac{\mathrm{d}y}{\mathrm{d}t} + \cos t = 0, \quad \left.\frac{\mathrm{d}y}{\mathrm{d}t}\right|_{t=0}
+  = -1$$
 
 
   切线斜率为 $\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{1} = -1$．
@@ -48,11 +46,35 @@ provenance:
   type: adapted
   note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第一大题第(2)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.ode
+- calculus.multivariable-diff
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了微分方程解法与定解问题的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查微分方程解法与定解问题．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8f95f4c5ba26e8a7a46f0356ca6638f0044c5febb1f11ffc0958dfe26e0a39e3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8f95f4c5ba26e8a7a46f0356ca6638f0044c5febb1f11ffc0958dfe26e0a39e3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8f95f4c5ba26e8a7a46f0356ca6638f0044c5febb1f11ffc0958dfe26e0a39e3

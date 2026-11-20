@@ -1,19 +1,17 @@
 schema_version: 3
 id: cmc-17th-a-non-math-q05
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 设曲线 $L$ 为球面 $x^2+y^2+z^2=4$ 与平面 $x+y+z=3$ 的交线，则第一类曲线积分 $\int_L (x^2+2xy)\mathrm{d}s
-  =$ ______．
+stem: 设曲线 $L$ 为球面 $x^2+y^2+z^2=4$ 与平面 $x+y+z=3$ 的交线，则第一类曲线积分 $\int_L (x^2+2xy)\mathrm{d}s =$ ______．
 reference_answer: $6\pi$
-solution: 根据轮换对称性，在交线 $L$ 上：$\int_L (x^2+2xy)\mathrm{d}s = \frac{1}{3}\int_L (x^2+y^2+z^2)\mathrm{d}s
-  + \frac{2}{3}\int_L (xy+yz+zx)\mathrm{d}s = \frac{1}{3}\int_L (x+y+z)^2\mathrm{d}s$．在
-  $L$ 上 $x+y+z=3$，故 $(x+y+z)^2 = 9$．交线 $L$ 为圆周，球心到平面距离 $d = \frac{3}{\sqrt{3}} = \sqrt{3}$，圆半径
-  $r = \sqrt{4-3} = 1$，周长 $\int_L\mathrm{d}s = 2\pi$．故积分值为 $\frac{1}{3}\times 9\times
+solution: 根据轮换对称性，在交线 $L$ 上：$\int_L (x^2+2xy)\mathrm{d}s = \frac{1}{3}\int_L (x^2+y^2+z^2)\mathrm{d}s + \frac{2}{3}\int_L
+  (xy+yz+zx)\mathrm{d}s = \frac{1}{3}\int_L (x+y+z)^2\mathrm{d}s$．在 $L$ 上 $x+y+z=3$，故 $(x+y+z)^2 = 9$．交线 $L$ 为圆周，球心到平面距离 $d
+  = \frac{3}{\sqrt{3}} = \sqrt{3}$，圆半径 $r = \sqrt{4-3} = 1$，周长 $\int_L\mathrm{d}s = 2\pi$．故积分值为 $\frac{1}{3}\times 9\times
   2\pi = 6\pi$．
 response:
   format: plain_text
@@ -35,11 +33,34 @@ provenance:
   type: adapted
   note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.line-integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了曲线积分与格林公式的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查曲线积分与格林公式．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:94cd3359cdd49f7966752380f47c1e13cf2206663967865c677db0ab4897165e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:94cd3359cdd49f7966752380f47c1e13cf2206663967865c677db0ab4897165e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:94cd3359cdd49f7966752380f47c1e13cf2206663967865c677db0ab4897165e

@@ -1,21 +1,19 @@
 schema_version: 3
 id: cmc-15th-a-non-math-q07
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: '（本题 14 分）设 $\Sigma_1$ 是以 $(0,4,0)$ 为顶点且与曲面 $\Sigma_2: \frac{x^2}{3}+\frac{y^2}{4}+\frac{z^2}{3}
-  = 1$ ($y>0$) 相切的圆锥面，求曲面 $\Sigma_1$ 与 $\Sigma_2$ 所围成的空间区域的体积．'
+stem: '（本题 14 分）设 $\Sigma_1$ 是以 $(0,4,0)$ 为顶点且与曲面 $\Sigma_2: \frac{x^2}{3}+\frac{y^2}{4}+\frac{z^2}{3} = 1$ ($y>0$) 相切的圆锥面，求曲面
+  $\Sigma_1$ 与 $\Sigma_2$ 所围成的空间区域的体积．'
 reference_answer: $\pi$
-solution: 设切线在 $xOy$ 平面上切点为 $(x_0,y_0)$，切线斜率满足：$\frac{y_0-4}{x_0} = -\frac{4x_0}{3y_0},
-  \quad \frac{x_0^2}{3} + \frac{y_0^2}{4} = 1$联立解得 $x_0 = \pm\frac{3}{2}, y_0 = 1$（得
-  5 分）．圆锥面 $\Sigma_1$ 与椭球面 $\Sigma_2$ 为绕 $y$ 轴旋转曲面，交线位于平面 $y_0 = 1$ 上（得 8 分）．圆锥体底面半径
-  $\frac{3}{2}$、高 $3$，体积为 $V_1 = \frac{1}{3}\pi\left(\frac{3}{2}\right)^2\times 3
-  = \frac{9\pi}{4}$．椭球冠体积为 $V_2 = \int_1^2 \pi \cdot 3(1-\frac{y^2}{4})\mathrm{d}y
-  = \frac{5\pi}{4}$．故所围区域体积为 $V_1 - V_2 = \frac{9\pi}{4} - \frac{5\pi}{4} = \pi$（满分
+solution: 设切线在 $xOy$ 平面上切点为 $(x_0,y_0)$，切线斜率满足：$\frac{y_0-4}{x_0} = -\frac{4x_0}{3y_0}, \quad \frac{x_0^2}{3} + \frac{y_0^2}{4}
+  = 1$联立解得 $x_0 = \pm\frac{3}{2}, y_0 = 1$（得 5 分）．圆锥面 $\Sigma_1$ 与椭球面 $\Sigma_2$ 为绕 $y$ 轴旋转曲面，交线位于平面 $y_0 = 1$ 上（得 8 分）．圆锥体底面半径
+  $\frac{3}{2}$、高 $3$，体积为 $V_1 = \frac{1}{3}\pi\left(\frac{3}{2}\right)^2\times 3 = \frac{9\pi}{4}$．椭球冠体积为 $V_2 = \int_1^2
+  \pi \cdot 3(1-\frac{y^2}{4})\mathrm{d}y = \frac{5\pi}{4}$．故所围区域体积为 $V_1 - V_2 = \frac{9\pi}{4} - \frac{5\pi}{4} = \pi$（满分
   14 分）．
 response:
   format: plain_text
@@ -43,11 +41,35 @@ provenance:
   type: adapted
   note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第三大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+- calculus.integral
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了多元函数微分学与隐函数求导的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查多元函数微分学与隐函数求导．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9c1de9d683e456f9b267644bd7228212fe81fdf71980ffbf4544354222bc0e4b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9c1de9d683e456f9b267644bd7228212fe81fdf71980ffbf4544354222bc0e4b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9c1de9d683e456f9b267644bd7228212fe81fdf71980ffbf4544354222bc0e4b

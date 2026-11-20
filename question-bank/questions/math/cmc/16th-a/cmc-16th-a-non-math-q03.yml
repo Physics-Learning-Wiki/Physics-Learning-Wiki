@@ -1,19 +1,16 @@
 schema_version: 3
 id: cmc-16th-a-non-math-q03
 version: 1
-status: draft
+status: published
 locale: zh-CN
 topics:
 - math.calculus
 type: free_response
 choice_order: fixed
-stem: 已知函数 $z = f(xy, \mathrm{e}^{x+y})$，且 $f(x,y)$ 具有二阶连续偏导数，则 $\frac{\partial^2
-  z}{\partial x\partial y} =$ ______．
-reference_answer: $xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22}
-  + f_1 + \mathrm{e}^{x+y}f_2$
-solution: 求一阶偏导数：$z_x = y f_1 + \mathrm{e}^{x+y}f_2$．再对 $y$ 求偏导：$z_{xy} = (x f_{11}
-  + \mathrm{e}^{x+y}f_{12})y + f_1 + (x f_{21} + \mathrm{e}^{x+y}f_{22})\mathrm{e}^{x+y}
-  + \mathrm{e}^{x+y}f_2 = xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22}
+stem: 已知函数 $z = f(xy, \mathrm{e}^{x+y})$，且 $f(x,y)$ 具有二阶连续偏导数，则 $\frac{\partial^2 z}{\partial x\partial y} =$ ______．
+reference_answer: $xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22} + f_1 + \mathrm{e}^{x+y}f_2$
+solution: 求一阶偏导数：$z_x = y f_1 + \mathrm{e}^{x+y}f_2$．再对 $y$ 求偏导：$z_{xy} = (x f_{11} + \mathrm{e}^{x+y}f_{12})y + f_1 + (x
+  f_{21} + \mathrm{e}^{x+y}f_{22})\mathrm{e}^{x+y} + \mathrm{e}^{x+y}f_2 = xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22}
   + f_1 + \mathrm{e}^{x+y}f_2$式中利用了二阶混合偏导数的连续对称性 $f_{12} = f_{21}$．
 response:
   format: plain_text
@@ -35,11 +32,34 @@ provenance:
   type: adapted
   note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题．
   source: https://www.cmathc.cn/
-  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  permission: 待核实．现有材料未提供可核验的公开转载或改编授权．全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
   ai_assisted: true
 authors:
 - name: 全国大学生数学竞赛委员会
   kind: human
-- name: Antigravity
-  kind: ai
-license: CC-BY-SA-4.0
+license: LicenseRef-Pending
+concepts:
+- calculus.multivariable-diff
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+feedback:
+  correct: 解答正确！准确掌握了多元函数微分学与隐函数求导的核心方法，计算步骤严谨，代数变形与边界取值无误．
+  incorrect: 解答有误．本题考查多元函数微分学与隐函数求导．常见失误包括等价无穷小代换条件不满足、复合求导链式法则漏项、积分限与对称性判断失误，或代数通分符号错误，建议仔细复查核心推导步骤．
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:40871092b140c61b2be77e20b399c8243dd6cf9fe4e925d1ec2d040c12333ef2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:40871092b140c61b2be77e20b399c8243dd6cf9fe4e925d1ec2d040c12333ef2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:40871092b140c61b2be77e20b399c8243dd6cf9fe4e925d1ec2d040c12333ef2
