@@ -37,7 +37,8 @@ export class SetsSurface {
       if (this.abort.signal.aborted) return;
       const requiredTag = this.root.dataset.requiredTag;
       this.catalog = catalog.filter(
-        item => (this.manifest.preview || item.status === "published") && (!requiredTag || item.tags.includes(requiredTag))
+        item =>
+          (this.manifest.preview || item.status === "published") && (!requiredTag || item.tags.includes(requiredTag))
       );
       if (requiredTag && this.catalog.length === 0) {
         this.root.innerHTML = '<div class="plw-quiz-empty"><p role="status">暂无可作答的课程真题．</p></div>';
@@ -78,7 +79,10 @@ export class SetsSurface {
 
   private updateSearchUrl(): void {
     const url = new URL(window.location.href);
-    for (const [key, value] of [["keyword", this.keyword], ["tag", this.selectedTag === "all" ? "" : this.selectedTag]]) {
+    for (const [key, value] of [
+      ["keyword", this.keyword],
+      ["tag", this.selectedTag === "all" ? "" : this.selectedTag]
+    ]) {
       if (value) url.searchParams.set(key, value);
       else url.searchParams.delete(key);
     }
