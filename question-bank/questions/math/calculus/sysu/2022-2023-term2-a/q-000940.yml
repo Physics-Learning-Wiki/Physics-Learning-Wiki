@@ -1,0 +1,106 @@
+schema_version: 3
+id: q-000940
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.series
+type: free_response
+choice_order: fixed
+stem: '对于函数项级数 $\sum_{n=1}^\infty 2^n \sin\frac{x}{3^n}$，证明：
+
+
+  1. 在任意有界闭区间 $[-M, M]$（$M > 0$ 为给定常数）上一致收敛；
+
+  2. 在全实轴 $(-\infty, +\infty)$ 上不一致收敛．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 命题成立，通过魏尔斯特拉斯 M 判别法与柯西准则反例获证．
+solution: '1. 证明在 $[-M, M]$ 上一致收敛：
+
+  利用不等式 $|\sin u| \le |u|$，对任意 $x \in [-M, M]$，级数通项满足：
+
+
+  $$
+
+  |u_n(x)| = \left| 2^n \sin\frac{x}{3^n} \right| \le 2^n \cdot \frac{|x|}{3^n} \le M \left( \frac{2}{3} \right)^n
+
+  $$
+
+
+  因为等比级数 $\sum_{n=1}^\infty M\left(\frac{2}{3}\right)^n$ 公比 $q = \frac{2}{3} < 1$，级数收敛．
+
+  根据魏尔斯特拉斯 M 判别法（优级数判别法），函数项级数在 $[-M, M]$ 上一致收敛．
+
+
+  2. 证明在 $(-\infty, +\infty)$ 上不一致收敛：
+
+  若级数在 $\mathbb{R}$ 上一致收敛，则其通项必须在 $\mathbb{R}$ 上一致趋于零，即 $\sup_{x \in \mathbb{R}} |u_n(x)| \to 0$（当 $n \to \infty$）．
+
+  取特殊点列 $x_n = 3^n \in \mathbb{R}$，代入通项：
+
+
+  $$
+
+  |u_n(x_n)| = 2^n \sin\frac{3^n}{3^n} = 2^n \sin 1
+
+  $$
+
+
+  由于 $\sin 1 > 0$ 且当 $n \to \infty$ 时 $2^n \to +\infty$，显然 $|u_n(x_n)| \to +\infty \neq 0$．
+
+  通项在全实轴上并不一致趋于 0，因此级数在 $(-\infty, +\infty)$ 上不一致收敛．'
+feedback:
+  correct: 魏尔斯特拉斯判别法与通项不一致趋于 0 的反例论证准确规范．
+  incorrect: 否定全实轴一致收敛的最有力武器是构造点列 $x_n$ 使得通项不趋于 0．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第9题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:882fceba739eedaf7f8031a8749a263cb9bc3e0f2d4a7b99c76861ea033ce653
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:882fceba739eedaf7f8031a8749a263cb9bc3e0f2d4a7b99c76861ea033ce653
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:882fceba739eedaf7f8031a8749a263cb9bc3e0f2d4a7b99c76861ea033ce653

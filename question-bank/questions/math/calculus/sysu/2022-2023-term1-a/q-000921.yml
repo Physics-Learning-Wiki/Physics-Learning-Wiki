@@ -1,0 +1,105 @@
+schema_version: 3
+id: q-000921
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{5\sin x + 2x^2 \cos\frac{1}{x}}{\ln(1+2x)(1+\cos x)}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \frac{5\sin x + 2x^2 \cos\frac{1}{x}}{\ln(1+2x)(1+\cos x)} = \frac{5}{4}$．
+solution: '当 $x \to 0$ 时，$\ln(1+2x) \sim 2x$，$\lim_{x \to 0} (1 + \cos x) = 2$．分母等价于 $2x \cdot 2 = 4x$．
+
+
+  将分子拆开逐项计算：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{5\sin x}{4x} = \frac{5}{4} \lim_{x \to 0} \frac{\sin x}{x} = \frac{5}{4}
+
+  $$
+
+
+  对于第二项，由于 $|\cos(1/x)| \le 1$ 有界：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{2x^2 \cos(1/x)}{4x} = \lim_{x \to 0} \frac{1}{2} x \cos\frac{1}{x} = 0
+
+  $$
+
+
+  由极限四则运算法则：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{5\sin x + 2x^2 \cos(1/x)}{\ln(1+2x)(1+\cos x)} = \frac{5}{4} + 0 = \frac{5}{4}
+
+  $$'
+feedback:
+  correct: 正确分离有界量与等价无穷小项求得 5/4．
+  incorrect: 无穷小量与有界量乘积为无穷小量，即 $x \cos(1/x) \to 0$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:85622a8fee8a7bb5e609faa5897235d92f66b0aa04e47ce0ba9ba3532079c677
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:85622a8fee8a7bb5e609faa5897235d92f66b0aa04e47ce0ba9ba3532079c677
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:85622a8fee8a7bb5e609faa5897235d92f66b0aa04e47ce0ba9ba3532079c677

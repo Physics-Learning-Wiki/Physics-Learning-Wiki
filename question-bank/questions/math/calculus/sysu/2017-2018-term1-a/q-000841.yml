@@ -1,0 +1,147 @@
+schema_version: 3
+id: q-000841
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设 $f(x), g(x)$ 在区间 $[-a, a]$（$a > 0$）上连续，$g(x)$ 为偶函数，$f(x)$ 满足 $f(x) + f(-x) = A$（$A$ 为常数）．
+
+
+  (1) 证明：$\int_{-a}^a f(x)g(x)\,\mathrm{d}x = A \int_0^a g(x)\,\mathrm{d}x$；
+
+
+  (2) 利用该结论计算定积分 $\int_{-1}^1 \frac{x^2}{1 + e^{\frac{1}{x}}}\,\mathrm{d}x$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未写出区间换元对称证明或无法计算定积分
+    points: 0
+  - id: partial
+    label: 部分掌握：证明正确，但第 (2) 问未识别对应函数或计算有误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成证明并求得定积分 1/3
+    points: 1
+reference_answer: (1) 利用换元 $x = -t$ 可证 $\int_{-a}^a f(x)g(x)\,\mathrm{d}x = A \int_0^a g(x)\,\mathrm{d}x$；(2) 积分值为 $\frac{1}{3}$．
+solution: '**(1) 证明：**
+
+
+  记 $I = \int_{-a}^a f(x)g(x)\,\mathrm{d}x$．做换元 $x = -t, \mathrm{d}x = -\mathrm{d}t$：
+
+
+  $$
+
+  I = \int_a^{-a} f(-t)g(-t)\,(-\mathrm{d}t) = \int_{-a}^a f(-t)g(t)\,\mathrm{d}t = \int_{-a}^a f(-x)g(x)\,\mathrm{d}x
+
+  $$
+
+
+  将两式相加：
+
+
+  $$
+
+  2I = \int_{-a}^a [f(x) + f(-x)] g(x)\,\mathrm{d}x = \int_{-a}^a A g(x)\,\mathrm{d}x
+
+  $$
+
+
+  因为 $g(x)$ 是偶函数，所以 $\int_{-a}^a g(x)\,\mathrm{d}x = 2\int_0^a g(x)\,\mathrm{d}x$．代入得：
+
+
+  $$
+
+  2I = A \cdot 2\int_0^a g(x)\,\mathrm{d}x \implies I = A \int_0^a g(x)\,\mathrm{d}x
+
+  $$
+
+
+  证毕．
+
+
+  **(2) 计算积分：**
+
+
+  原积分为 $\int_{-1}^1 \frac{x^2}{1 + e^{\frac{1}{x}}}\,\mathrm{d}x$．
+
+
+  令 $g(x) = x^2$（显然为偶函数），$f(x) = \frac{1}{1 + e^{\frac{1}{x}}}$．
+
+
+  验证 $f(x) + f(-x)$：
+
+
+  $$
+
+  f(-x) = \frac{1}{1 + e^{-\frac{1}{x}}} = \frac{e^{\frac{1}{x}}}{e^{\frac{1}{x}} + 1}
+
+  $$
+
+
+  $$
+
+  f(x) + f(-x) = \frac{1}{1 + e^{\frac{1}{x}}} + \frac{e^{\frac{1}{x}}}{1 + e^{\frac{1}{x}}} = 1
+
+  $$
+
+
+  满足条件，常数 $A = 1$．
+
+
+  由第 (1) 问的结论，直接得到：
+
+
+  $$
+
+  \int_{-1}^1 \frac{x^2}{1 + e^{\frac{1}{x}}}\,\mathrm{d}x = 1 \cdot \int_0^1 x^2\,\mathrm{d}x = \left[\frac{x^3}{3}\right]_0^1
+  = \frac{1}{3}
+
+  $$'
+feedback:
+  correct: 严密使用区间倒换技巧证明恒等式，并巧妙分解 $x^2 \cdot \frac{1}{1+e^{1/x}}$ 求得积分值 1/3．
+  incorrect: 区间对称积分经典变换：令 $x=-t$，两式相加利用 $f(x)+f(-x)=1$ 消除复杂的指数项．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第13题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a1ec4420b152c06015b4677c5a320e459138de925afdeb69801798d9a7ea260e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a1ec4420b152c06015b4677c5a320e459138de925afdeb69801798d9a7ea260e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a1ec4420b152c06015b4677c5a320e459138de925afdeb69801798d9a7ea260e

@@ -1,0 +1,110 @@
+schema_version: 3
+id: q-000856
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求数列极限：
+
+
+  $$
+
+  \lim_{n\to\infty} \left(1 + \frac{1}{n} - \frac{1}{n^2}\right)^n
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出 1^inf 型或化简错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确对数化，但在指数极限计算中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成极限计算得出 e
+    points: 1
+reference_answer: $\lim_{n\to\infty} \left(1 + \frac{1}{n} - \frac{1}{n^2}\right)^n = e$．
+solution: '**方法一（重要极限法）：**
+
+
+  原式可变形为：
+
+
+  $$
+
+  \lim_{n\to\infty} \left(1 + \frac{n-1}{n^2}\right)^n = \lim_{n\to\infty} \left[\left(1 + \frac{n-1}{n^2}\right)^{\frac{n^2}{n-1}}\right]^{\frac{n(n-1)}{n^2}}
+
+  $$
+
+
+  当 $n \to \infty$ 时，$\frac{n-1}{n^2} \to 0$，内层底数趋于重要极限底数 $e$；
+
+
+  外层指数为 $\lim_{n\to\infty} \frac{n^2 - n}{n^2} = 1$．
+
+
+  因此极限为 $e^1 = e$．
+
+
+  **方法二（对数化与等价无穷小）：**
+
+
+  令 $y_n = \left(1 + \frac{1}{n} - \frac{1}{n^2}\right)^n$．取对数：
+
+
+  $$
+
+  \ln y_n = n \ln\left(1 + \frac{n-1}{n^2}\right) \sim n \cdot \frac{n-1}{n^2} = \frac{n-1}{n} \to 1
+
+  $$
+
+
+  故 $\lim_{n\to\infty} y_n = e^1 = e$．'
+feedback:
+  correct: 正确使用重要极限 $1^\infty$ 型变形或对数等价无穷小求得极限 e．
+  incorrect: 请注意：$1 + 1/n - 1/n^2 = 1 + (n-1)/n^2$，取对数后为 $n \cdot \frac{n-1}{n^2} \to 1$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第1(1)题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9023048af212ec749e4414636243cb8e0fdd041f5a5511a3799d85f1d1b7e98
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9023048af212ec749e4414636243cb8e0fdd041f5a5511a3799d85f1d1b7e98
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9023048af212ec749e4414636243cb8e0fdd041f5a5511a3799d85f1d1b7e98

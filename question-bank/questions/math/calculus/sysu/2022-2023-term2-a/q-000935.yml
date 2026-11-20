@@ -1,0 +1,108 @@
+schema_version: 3
+id: q-000935
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.surface-integral
+type: free_response
+choice_order: fixed
+stem: '计算曲面积分：
+
+
+  $$
+
+  I = \oiint_S x^2\sin y\,\mathrm{d}y\mathrm{d}z + y^2 e^z\,\mathrm{d}z\mathrm{d}x + z^3\,\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  其中 $S$ 为圆锥体立体 $\Omega: x^2 + y^2 \le z^2 \, (0 \le z \le 1)$ 全表面的外侧．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $I = \frac{3\pi}{5}$．
+solution: '曲面 $S$ 为封闭光滑边界，且取外侧，应用高斯公式：
+
+
+  $$
+
+  I = \iiint_\Omega \left( \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \right)\,\mathrm{d}V
+  = \iiint_\Omega (2x\sin y + 2y e^z + 3z^2)\,\mathrm{d}x\mathrm{d}y\mathrm{d}z
+
+  $$
+
+
+  由于立体 $\Omega$ 关于 $x = 0$ 和 $y = 0$ 均对称：
+
+  - 被积函数 $2x\sin y$ 关于 $x$ 为奇函数，关于对称区域的积分为 0；
+
+  - 被积函数 $2y e^z$ 关于 $y$ 为奇函数，关于对称区域的积分为 0．
+
+
+  因此只需计算最后一项：
+
+
+  $$
+
+  I = \iiint_\Omega 3z^2\,\mathrm{d}x\mathrm{d}y\mathrm{d}z = 3 \int_0^1 z^2\,\mathrm{d}z \iint_{x^2+y^2 \le z^2} 1\,\mathrm{d}x\mathrm{d}y
+  = 3 \int_0^1 z^2 \cdot (\pi z^2)\,\mathrm{d}z = 3\pi \int_0^1 z^4\,\mathrm{d}z = \left. 3\pi \frac{z^5}{5} \right|_0^1 =
+  \frac{3\pi}{5}
+
+  $$
+
+
+  因此曲面积分值为 $\frac{3\pi}{5}$．'
+feedback:
+  correct: 正确使用高斯公式结合区域对称性化简，求出 $3\pi/5$．
+  incorrect: 高斯公式将封闭闭曲面积分化为三重积分，优先观察被积函数的奇偶对称性．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:22943cd0ee0db391a90441c384d08e0494316c221d4ea61bab65928e46dc7916
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:22943cd0ee0db391a90441c384d08e0494316c221d4ea61bab65928e46dc7916
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:22943cd0ee0db391a90441c384d08e0494316c221d4ea61bab65928e46dc7916

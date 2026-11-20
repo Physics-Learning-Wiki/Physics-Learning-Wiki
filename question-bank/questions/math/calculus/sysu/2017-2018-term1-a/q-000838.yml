@@ -1,0 +1,129 @@
+schema_version: 3
+id: q-000838
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求函数 $u = \sin x \sin y \sin z$ 在约束条件 $x + y + z = \frac{\pi}{2}$（其中 $x > 0, y > 0, z > 0$）下的极值和极值点．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未建立拉格朗日函数或求导错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求出驻点坐标，但极值计算或类型判定有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成拉格朗日乘数法求解得出极值点与极大值 1/8
+    points: 1
+reference_answer: 极值点为 $\left(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6}\right)$，极大值为 $\frac{1}{8}$．
+solution: '目标函数 $u = \sin x \sin y \sin z$ 在开区域 $x > 0, y > 0, z > 0, x+y+z = \frac{\pi}{2}$ 上为正．
+
+
+  取对数求极值：设 $F(x, y, z) = \ln u = \ln\sin x + \ln\sin y + \ln\sin z$．
+
+
+  构造拉格朗日函数：
+
+
+  $$
+
+  L(x, y, z, \lambda) = \ln\sin x + \ln\sin y + \ln\sin z - \lambda\left(x + y + z - \frac{\pi}{2}\right)
+
+  $$
+
+
+  求一阶偏导数并令其为 0：
+
+
+  $$
+
+  \begin{cases} \frac{\partial L}{\partial x} = \cot x - \lambda = 0 \\ \frac{\partial L}{\partial y} = \cot y - \lambda =
+  0 \\ \frac{\partial L}{\partial z} = \cot z - \lambda = 0 \end{cases}
+
+  $$
+
+
+  由此可知 $\cot x = \cot y = \cot z = \lambda$．
+
+
+  在 $(0, \frac{\pi}{2})$ 内，余切函数 $\cot t$ 单调递减，因此：
+
+
+  $$
+
+  x = y = z
+
+  $$
+
+
+  代入约束条件 $x + y + z = 3x = \frac{\pi}{2}$：
+
+
+  $$
+
+  x = y = z = \frac{\pi}{6}
+
+  $$
+
+
+  代入目标函数计算极值：
+
+
+  $$
+
+  u\left(\frac{\pi}{6}, \frac{\pi}{6}, \frac{\pi}{6}\right) = \sin\frac{\pi}{6} \sin\frac{\pi}{6} \sin\frac{\pi}{6} = \left(\frac{1}{2}\right)^3
+  = \frac{1}{8}
+
+  $$
+
+
+  在区域边界上（当 $x, y$ 或 $z \to 0$ 时），$u \to 0$；而在区域内部 $u > 0$ 且驻点唯一，故该点为极大值点，极大值为 $\frac{1}{8}$．'
+feedback:
+  correct: 正确使用拉格朗日乘数法求得对称驻点并得出极大值 1/8．
+  incorrect: 请注意利用对数化简求导 $\frac{\mathrm{d}}{\mathrm{d}x}(\ln\sin x) = \cot x$，由对称性得出 $x=y=z=\pi/6$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c314db798825765d321e069b590c678a0d511eca4ea2c35200f1452e7e49f62
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c314db798825765d321e069b590c678a0d511eca4ea2c35200f1452e7e49f62
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c314db798825765d321e069b590c678a0d511eca4ea2c35200f1452e7e49f62

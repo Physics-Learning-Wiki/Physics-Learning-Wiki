@@ -1,0 +1,100 @@
+schema_version: 3
+id: q-000879
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '计算由星形线参数方程：
+
+
+  $$
+
+  \begin{cases} x = a \cos^3 t \\ y = a \sin^3 t \end{cases} \quad (a > 0, \, 0 \le t \le 2\pi)
+
+  $$
+
+
+  所围成平面图形的面积．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 星形线所围图形面积为 $\frac{3}{8}\pi a^2$．
+solution: '由对称性，总面积等于第一象限面积的 $4$ 倍：
+
+
+  $$
+
+  A = 4 \int_0^a y\,\mathrm{d}x = 4 \int_{\pi/2}^0 (a \sin^3 t)(-3a \cos^2 t \sin t)\,\mathrm{d}t = 12a^2 \int_0^{\pi/2} \sin^4
+  t \cos^2 t\,\mathrm{d}t
+
+  $$
+
+
+  改写为 $\int_0^{\pi/2} (\sin^4 t - \sin^6 t)\,\mathrm{d}t$，应用点夫（Wallis）公式：
+
+
+  $$
+
+  \int_0^{\pi/2} \sin^4 t\,\mathrm{d}t = \frac{3}{4} \cdot \frac{1}{2} \cdot \frac{\pi}{2} = \frac{3\pi}{16}, \quad \int_0^{\pi/2}
+  \sin^6 t\,\mathrm{d}t = \frac{5}{6} \cdot \frac{3\pi}{16} = \frac{5\pi}{32}
+
+  $$
+
+
+  差值为 $\frac{\pi}{32}$，乘以 $12a^2$ 得总面积 $A = \frac{3}{8}\pi a^2$．'
+feedback:
+  correct: 正确利用对称性与 Wallis 公式求得星形线面积．
+  incorrect: 注意定积分换元时上限与下限对应的参数范围，微元 $\mathrm{d}x = -3a\cos^2 t\sin t\,\mathrm{d}t$ 附带负号．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学期末试题（南校数院）第12题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-south
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:850d07137c4866aac66831fa24655ee0fc9349b7386775db487aaab8bf46c5a1
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:850d07137c4866aac66831fa24655ee0fc9349b7386775db487aaab8bf46c5a1
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:850d07137c4866aac66831fa24655ee0fc9349b7386775db487aaab8bf46c5a1

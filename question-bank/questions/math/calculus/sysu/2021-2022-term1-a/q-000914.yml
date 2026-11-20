@@ -1,0 +1,141 @@
+schema_version: 3
+id: q-000914
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '证明：当 $e < a < b < e^2$ 时，恒有不等式成立：
+
+
+  $$
+
+  (b - a)\frac{2}{e^2} < \ln^2 b - \ln^2 a < \frac{4}{e}(b - a)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 命题成立，通过令 $f(x) = \ln^2 x$ 并应用拉格朗日中值定理获证．
+solution: '设函数 $f(x) = \ln^2 x$．在区间 $[a, b]$ 上，$f(x)$ 连续，在 $(a, b)$ 内可导，其导数为：
+
+
+  $$
+
+  f''(x) = 2\ln x \cdot \frac{1}{x} = \frac{2\ln x}{x}
+
+  $$
+
+
+  由拉格朗日中值定理，存在 $\xi \in (a, b)$，使得：
+
+
+  $$
+
+  \ln^2 b - \ln^2 a = f''(\xi)(b - a) = \frac{2\ln \xi}{\xi}(b - a)
+
+  $$
+
+
+  考察导数函数 $g(x) = \frac{2\ln x}{x}$ 在区间 $[e, e^2]$ 上的单调性：
+
+
+  $$
+
+  g''(x) = 2 \cdot \frac{\frac{1}{x} \cdot x - \ln x \cdot 1}{x^2} = \frac{2(1 - \ln x)}{x^2}
+
+  $$
+
+
+  当 $x > e$ 时，$\ln x > 1$，故 $g''(x) < 0$，$g(x)$ 严格单调递减．
+
+
+  因为 $e < a < \xi < b < e^2$，所以在 $[e, e^2]$ 内有：
+
+
+  $$
+
+  g(e^2) < g(\xi) < g(e)
+
+  $$
+
+
+  代入端点值：
+
+
+  $$
+
+  g(e^2) = \frac{2\ln(e^2)}{e^2} = \frac{4}{e^2} > \frac{2}{e^2}, \quad g(e) = \frac{2\ln e}{e} = \frac{2}{e} < \frac{4}{e}
+
+  $$
+
+
+  事实上，由更紧的单调性界限：$\frac{2}{e^2} < \frac{4}{e^2} < g(\xi) < \frac{2}{e} < \frac{4}{e}$．
+
+
+  两边同乘以正数 $(b - a)$ 即得：
+
+
+  $$
+
+  (b - a)\frac{2}{e^2} < \ln^2 b - \ln^2 a < \frac{4}{e}(b - a)
+
+  $$
+
+
+  不等式获证．'
+feedback:
+  correct: 正确运用拉格朗日中值定理并分析导函数单调性放缩．
+  incorrect: 求差式不等式通常构造辅助函数并应用拉格朗日中值定理．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第8题（10分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5a602ba1b01683d982fbb633f0e504f28355e1e6592af4eff64d2134304198fa
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5a602ba1b01683d982fbb633f0e504f28355e1e6592af4eff64d2134304198fa
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5a602ba1b01683d982fbb633f0e504f28355e1e6592af4eff64d2134304198fa

@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000822
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 设 $y = x^3 + \frac{1}{12x}$，求该曲线从 $x = 1$ 到 $x = 2$ 的弧长．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：弧长公式写错或无法配方开方
+    points: 0
+  - id: partial
+    label: 部分掌握：正确配方开方，但在定积分上下限代入时出现算术失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完全正确配方积分得出 169/24
+    points: 1
+reference_answer: $s = \frac{169}{24}$．
+solution: '求导数：
+
+
+  $$
+
+  y'' = 3x^2 - \frac{1}{12x^2}
+
+  $$
+
+
+  计算 $1 + (y'')^2$：
+
+
+  $$
+
+  1 + (y'')^2 = 1 + \left(3x^2 - \frac{1}{12x^2}\right)^2 = 1 + 9x^4 - \frac{1}{2} + \frac{1}{144x^4} = 9x^4 + \frac{1}{2}
+  + \frac{1}{144x^4} = \left(3x^2 + \frac{1}{12x^2}\right)^2
+
+  $$
+
+
+  弧长微元为：
+
+
+  $$
+
+  \mathrm{d}s = \sqrt{1 + (y'')^2}\,\mathrm{d}x = \left(3x^2 + \frac{1}{12x^2}\right)\,\mathrm{d}x
+
+  $$
+
+
+  代入弧长积分公式：
+
+
+  $$
+
+  s = \int_1^2 \left(3x^2 + \frac{1}{12x^2}\right)\,\mathrm{d}x = \left[x^3 - \frac{1}{12x}\right]_1^2
+
+  $$
+
+
+  $$
+
+  = \left(8 - \frac{1}{24}\right) - \left(1 - \frac{1}{12}\right) = 7 - \frac{1}{24} + \frac{2}{24} = 7 + \frac{1}{24} = \frac{169}{24}
+
+  $$'
+feedback:
+  correct: 成功完成完全平方式配方 $\sqrt{1+(y')^2} = 3x^2 + \frac{1}{12x^2}$ 并准确求出弧长．
+  incorrect: 经典的完全平方式配方：$1 + (A - B)^2 = (A + B)^2$ 其中交叉项 $2AB = 2 \cdot 3x^2 \cdot \frac{1}{12x^2} = \frac{1}{2}$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第8题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4adef0057a555cc1b30eb51b5e19d3b9aa331a761cb202d6506c03ef26ca7d85
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4adef0057a555cc1b30eb51b5e19d3b9aa331a761cb202d6506c03ef26ca7d85
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4adef0057a555cc1b30eb51b5e19d3b9aa331a761cb202d6506c03ef26ca7d85

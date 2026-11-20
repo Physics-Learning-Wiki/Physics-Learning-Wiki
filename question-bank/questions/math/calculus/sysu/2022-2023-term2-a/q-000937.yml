@@ -1,0 +1,142 @@
+schema_version: 3
+id: q-000937
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.ode
+type: free_response
+choice_order: fixed
+stem: 求可降阶微分方程 $x y'' = y' + x\sin\frac{y'}{x}$ 的通解．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 原方程通解为 $y = x^2 \arctan(C_1 x) - \frac{x}{C_1} + \frac{1}{C_1^2}\arctan(C_1 x) + C_2$（当 $C_1 \neq 0$）或 $y
+  = C_2$（当 $C_1 = 0$）．
+solution: '方程不显含未知函数 $y$，令 $p = y''$，则 $y'''' = p''$．原方程化为一阶方程：
+
+
+  $$
+
+  x p'' = p + x\sin\frac{p}{x} \implies p'' = \frac{p}{x} + \sin\frac{p}{x}
+
+  $$
+
+
+  这是一个关于 $p$ 的一阶齐次微分方程．令 $u = \frac{p}{x}$，则 $p = xu$，$p'' = u + xu''$：
+
+
+  $$
+
+  u + xu'' = u + \sin u \implies x\frac{\mathrm{d}u}{\mathrm{d}x} = \sin u
+
+  $$
+
+
+  分离变量：
+
+
+  $$
+
+  \frac{\mathrm{d}u}{\sin u} = \frac{\mathrm{d}x}{x} \implies \ln\left|\tan\frac{u}{2}\right| = \ln|x| + \ln|C_1| \implies
+  \tan\frac{u}{2} = C_1 x
+
+  $$
+
+
+  从而：
+
+
+  $$
+
+  u = 2\arctan(C_1 x) \implies p = \frac{\mathrm{d}y}{\mathrm{d}x} = 2x\arctan(C_1 x)
+
+  $$
+
+
+  两边积分求 $y$：
+
+
+  $$
+
+  y = \int 2x\arctan(C_1 x)\,\mathrm{d}x = \int \arctan(C_1 x)\,\mathrm{d}(x^2) = x^2 \arctan(C_1 x) - \int x^2 \frac{C_1}{1
+  + C_1^2 x^2}\,\mathrm{d}x
+
+  $$
+
+
+  拆分有理分式：
+
+
+  $$
+
+  \int \frac{C_1 x^2}{1 + C_1^2 x^2}\,\mathrm{d}x = \frac{1}{C_1} \int \left( 1 - \frac{1}{1 + C_1^2 x^2} \right)\,\mathrm{d}x
+  = \frac{x}{C_1} - \frac{1}{C_1^2} \arctan(C_1 x)
+
+  $$
+
+
+  因此原微分方程的通解为：
+
+
+  $$
+
+  y = x^2 \arctan(C_1 x) - \frac{x}{C_1} + \frac{1}{C_1^2}\arctan(C_1 x) + C_2 \quad (C_1 \neq 0)
+
+  $$
+
+
+  当 $C_1 = 0$ 时，$u = 0 \implies y'' = 0 \implies y = C_2$ 亦为解．'
+feedback:
+  correct: 正确降阶并利用齐次方程与分部积分求解通解．
+  incorrect: 可降阶方程令 $y'=p$ 后化为齐次方程令 $u=p/x$，两步降阶求积分．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第6题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5d8463745311e40f3aa162b80c462ba3c5eca5b199bebaeeb929d0b099c6d7e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5d8463745311e40f3aa162b80c462ba3c5eca5b199bebaeeb929d0b099c6d7e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e5d8463745311e40f3aa162b80c462ba3c5eca5b199bebaeeb929d0b099c6d7e

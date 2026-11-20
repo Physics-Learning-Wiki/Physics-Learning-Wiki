@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000910
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '证明反三角函数恒等式：当 $\alpha \in [-1, 1]$ 时，恒有：
+
+
+  $$
+
+  \arcsin \alpha + \arccos \alpha = \frac{\pi}{2}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 恒等式成立，通过定义函数求导证明导数为零且原点取值为 $\pi/2$ 获证．
+solution: '构造函数 $f(x) = \arcsin x + \arccos x$（$x \in [-1, 1]$）．
+
+
+  在开区间 $(-1, 1)$ 内对 $f(x)$ 求导：
+
+
+  $$
+
+  f''(x) = (\arcsin x)'' + (\arccos x)'' = \frac{1}{\sqrt{1-x^2}} + \left( -\frac{1}{\sqrt{1-x^2}} \right) = 0
+
+  $$
+
+
+  由拉格朗日中值定理推论，导数在开区间内恒为零的函数必为常数：$f(x) \equiv C$．
+
+
+  代入特殊点 $x = 0$ 确定常数：
+
+
+  $$
+
+  C = f(0) = \arcsin 0 + \arccos 0 = 0 + \frac{\pi}{2} = \frac{\pi}{2}
+
+  $$
+
+
+  由于 $f(x)$ 在闭区间 $[-1, 1]$ 上连续，由连续性知端点处亦成立：$f(-1) = -\frac{\pi}{2} + \pi = \frac{\pi}{2}$，$f(1) = \frac{\pi}{2} + 0 = \frac{\pi}{2}$．
+
+
+  因此对任意 $\alpha \in [-1, 1]$，恒有 $\arcsin \alpha + \arccos \alpha = \frac{\pi}{2}$．'
+feedback:
+  correct: 导数验证为 0 并准确由端点/特殊点定常数，证明规范严谨．
+  incorrect: 利用导数恒等于 0 证明恒等式是微积分的标准方法．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d71e7b605191c31b639f97d84c9769df55a21ec1dc3e95bda70baf4b2dc40c0f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d71e7b605191c31b639f97d84c9769df55a21ec1dc3e95bda70baf4b2dc40c0f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d71e7b605191c31b639f97d84c9769df55a21ec1dc3e95bda70baf4b2dc40c0f

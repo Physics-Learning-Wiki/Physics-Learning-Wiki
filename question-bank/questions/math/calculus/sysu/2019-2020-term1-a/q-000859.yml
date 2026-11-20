@@ -1,0 +1,134 @@
+schema_version: 3
+id: q-000859
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '过原点作曲线 $y = \sqrt{x-1}$ 的切线，设 $D$ 是该切线与上述曲线及 $x$ 轴所围成的平面区域．
+
+
+  求区域 $D$ 绕 $x$ 轴旋转一周所得旋转体的体积．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：切点求解错误或旋转体积积分公式错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求出切点 (2, 1) 与积分形式，但在定积分计算中有差错
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成切点、切线方程与旋转体积计算得出 pi/6
+    points: 1
+reference_answer: $V = \frac{\pi}{6}$．
+solution: '**1. 求切线方程与切点：**
+
+
+  设切点为 $(x_0, y_0)$，满足 $y_0 = \sqrt{x_0 - 1}$（$x_0 > 1$）．
+
+
+  求导数：$y'' = \frac{1}{2\sqrt{x-1}}$，所以切线斜率为 $k = \frac{1}{2\sqrt{x_0 - 1}}$．
+
+
+  因为切线过原点 $(0, 0)$，斜率又等于 $\frac{y_0 - 0}{x_0 - 0} = \frac{\sqrt{x_0 - 1}}{x_0}$．
+
+
+  列方程：
+
+
+  $$
+
+  \frac{\sqrt{x_0 - 1}}{x_0} = \frac{1}{2\sqrt{x_0 - 1}} \implies 2(x_0 - 1) = x_0 \implies x_0 = 2
+
+  $$
+
+
+  代入得 $y_0 = 1$．切线斜率为 $k = \frac{1}{2}$，切线方程为 $y = \frac{1}{2}x$．
+
+
+  **2. 计算旋转体体积：**
+
+
+  区域 $D$ 由切线 $y = \frac{1}{2}x$（$0 \le x \le 2$）、曲线 $y = \sqrt{x-1}$（$1 \le x \le 2$）以及 $x$ 轴（$0 \le x \le 1$）围成．
+
+
+  绕 $x$ 轴旋转所得旋转体的体积等于圆锥体体积减去旋转抛物面体体积：
+
+
+  $$
+
+  V_1 = \pi \int_0^2 \left(\frac{1}{2}x\right)^2 \,\mathrm{d}x = \frac{\pi}{4} \left[\frac{x^3}{3}\right]_0^2 = \frac{2\pi}{3}
+
+  $$
+
+
+  （或者圆锥体积公式：$\frac{1}{3} \pi r^2 h = \frac{1}{3} \pi (1)^2 \cdot 2 = \frac{2\pi}{3}$）．
+
+
+  曲线下方旋转体体积：
+
+
+  $$
+
+  V_2 = \pi \int_1^2 (\sqrt{x-1})^2 \,\mathrm{d}x = \pi \int_1^2 (x-1)\,\mathrm{d}x = \pi \left[\frac{(x-1)^2}{2}\right]_1^2
+  = \frac{\pi}{2}
+
+  $$
+
+
+  因此区域 $D$ 的旋转体体积为：
+
+
+  $$
+
+  V = V_1 - V_2 = \frac{2\pi}{3} - \frac{\pi}{2} = \frac{\pi}{6}
+
+  $$'
+feedback:
+  correct: 正确求出切点 (2, 1) 与切线方程，并通过体积相减求得 pi/6．
+  incorrect: 请注意切线过原点建立斜率等式求出切点为 (2, 1)，原卷参考解答计算有笔误写为 pi，正确差值为 $2\pi/3 - \pi/2 = \pi/6$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb601552bc2be4773063a6d853db83331a93066680a49d84f75ae1eff4d1aae9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb601552bc2be4773063a6d853db83331a93066680a49d84f75ae1eff4d1aae9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb601552bc2be4773063a6d853db83331a93066680a49d84f75ae1eff4d1aae9

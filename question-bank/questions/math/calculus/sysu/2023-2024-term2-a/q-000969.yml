@@ -1,0 +1,105 @@
+schema_version: 3
+id: q-000969
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 判断反常积分 $\int_0^1 \frac{\ln x}{1-x}\,\mathrm{d}x$ 的敛散性．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 该反常积分收敛．
+solution: '积分区间为 $(0, 1)$，分别考察区间两个端点的奇点性质：
+
+
+  1. 考察端点 $x = 1$：
+
+  计算极限（$0/0$ 型应用洛必达法则）：
+
+
+  $$
+
+  \lim_{x \to 1^-} \frac{\ln x}{1-x} = \lim_{x \to 1^-} \frac{1/x}{-1} = -1
+
+  $$
+
+
+  极限存在且有限，因此 $x = 1$ 不是瑕点．
+
+
+  2. 考察端点 $x = 0$：
+
+  当 $x \to 0^+$ 时，$\ln x \to -\infty$，$1-x \to 1$，故 $x = 0$ 为唯一瑕点．
+
+  取比较基准幂次 $p = \frac{1}{2} < 1$，考察极限：
+
+
+  $$
+
+  \lim_{x \to 0^+} x^{1/2} \left| \frac{\ln x}{1-x} \right| = \lim_{x \to 0^+} \frac{x^{1/2}|\ln x|}{1-x} = \frac{0}{1} =
+  0
+
+  $$
+
+
+  因为当 $p = \frac{1}{2} < 1$ 时，基准瑕积分 $\int_0^1 \frac{1}{x^{1/2}}\,\mathrm{d}x$ 收敛，根据瑕积分比较判别法的极限形式（$\lim_{x \to 0^+} \frac{f(x)}{1/x^p}
+  = 0$），原反常积分在瑕点 $x = 0$ 处收敛．
+
+
+  综上所述，反常积分 $\int_0^1 \frac{\ln x}{1-x}\,\mathrm{d}x$ 收敛．'
+feedback:
+  correct: 正确辨识两端点奇点性质，排除 $x=1$ 瑕点并用比较法证明 $x=0$ 瑕点收敛．
+  incorrect: $\lim_{x \to 0^+} x^p \ln x = 0$ 对任意正数 $p > 0$ 均成立，故对数瑕点比任何负幂次奇性都要弱．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第12题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:58b8cfcdeb9e633b556ff0a0315f38d492f74fc0e63933b651bee2c62bb3a026
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:58b8cfcdeb9e633b556ff0a0315f38d492f74fc0e63933b651bee2c62bb3a026
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:58b8cfcdeb9e633b556ff0a0315f38d492f74fc0e63933b651bee2c62bb3a026

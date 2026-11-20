@@ -1,0 +1,89 @@
+schema_version: 3
+id: q-000958
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multiple-integral
+type: free_response
+choice_order: fixed
+stem: 求二重积分 $\iint_D y\,\mathrm{d}x\mathrm{d}y$，其中 $D$ 是由 $y = 0$ 以及 $y = \sin x$（$0 \le x \le \pi$）所围成的平面区域．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{\pi}{4}$
+solution: '积分区域 $D$ 为 $X$-型区域：$0 \le x \le \pi$，$0 \le y \le \sin x$．
+
+
+  化为二次积分：
+
+
+  $$
+
+  I = \int_0^\pi \mathrm{d}x \int_0^{\sin x} y\,\mathrm{d}y = \int_0^\pi \left. \left[ \frac{y^2}{2} \right] \right|_0^{\sin
+  x}\,\mathrm{d}x = \frac{1}{2}\int_0^\pi \sin^2 x\,\mathrm{d}x
+
+  $$
+
+
+  利用降幂公式 $\sin^2 x = \frac{1 - \cos 2x}{2}$：
+
+
+  $$
+
+  I = \frac{1}{4}\int_0^\pi (1 - \cos 2x)\,\mathrm{d}x = \frac{1}{4}\left[ x - \frac{\sin 2x}{2} \right]_0^\pi = \frac{\pi}{4}
+
+  $$'
+feedback:
+  correct: 正确表示区域积分限并利用降幂公式完成二次积分．
+  incorrect: 正弦平方在半个周期 $[0, \pi]$ 上的平均值为 $1/2$，定积分直接为 $\pi/2$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第1题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:48546076a9ec88952e4a1c88b78dfa320b856b2eebaffec9b1858236747bd4b0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:48546076a9ec88952e4a1c88b78dfa320b856b2eebaffec9b1858236747bd4b0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:48546076a9ec88952e4a1c88b78dfa320b856b2eebaffec9b1858236747bd4b0

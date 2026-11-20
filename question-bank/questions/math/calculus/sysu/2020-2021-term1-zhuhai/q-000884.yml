@@ -1,0 +1,95 @@
+schema_version: 3
+id: q-000884
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设实数 $a, b, c$ 满足：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{ax - \sin x}{\int_b^x \frac{\ln(1+t^3)}{t}\,\mathrm{d}t} = c \neq 0
+
+  $$
+
+
+  求常数 $a, b, c$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $a = 1, b = 0, c = \frac{1}{2}$．
+solution: '由于极限值非零且分子趋于 0，分母在 $x \to 0$ 处极限必为 0，故 $b = 0$．
+
+
+  应用洛必达法则：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{a - \cos x}{\frac{\ln(1+x^3)}{x}} = \lim_{x \to 0} \frac{a - \cos x}{x^2}
+
+  $$
+
+
+  分母趋于 0，要使极限有限非零，分子必须趋于 0，得 $a = 1$．
+
+
+  代入得 $c = \lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2}$．'
+feedback:
+  correct: 正确分析极限非零的存在条件并求得参数 $a=1, b=0, c=1/2$．
+  incorrect: 分子分母同阶是未定式极限非零的根本条件．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第一学期高等数学一期末考试试题（珠海数院）第1(2)题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-zhuhai
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:781e472f6e6c12560dcf4ba64f85acb67b5ec02b9d95605d14f7e37f166d6a6a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:781e472f6e6c12560dcf4ba64f85acb67b5ec02b9d95605d14f7e37f166d6a6a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:781e472f6e6c12560dcf4ba64f85acb67b5ec02b9d95605d14f7e37f166d6a6a

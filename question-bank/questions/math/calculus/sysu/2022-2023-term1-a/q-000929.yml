@@ -1,0 +1,98 @@
+schema_version: 3
+id: q-000929
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{1}{n} \left( \sqrt{1 + \cos\frac{1}{n}} + \sqrt{1 + \cos\frac{2}{n}} + \dots + \sqrt{1 + \cos\frac{n}{n}}
+  \right)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \sqrt{1 + \cos\frac{k}{n}} = 2\sqrt{2}\sin\frac{1}{2}$．
+solution: '原式为黎曼和形式：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{1}{n} \sum_{k=1}^n \sqrt{1 + \cos\frac{k}{n}} = \int_0^1 \sqrt{1 + \cos x}\,\mathrm{d}x
+
+  $$
+
+
+  利用半角恒等式 $1 + \cos x = 2\cos^2\frac{x}{2}$．在 $x \in [0, 1]$ 上，$\frac{x}{2} \in [0, 1/2]$，$\cos\frac{x}{2} > 0$：
+
+
+  $$
+
+  \int_0^1 \sqrt{2\cos^2\frac{x}{2}}\,\mathrm{d}x = \sqrt{2} \int_0^1 \cos\frac{x}{2}\,\mathrm{d}x = \left. \sqrt{2} \cdot
+  2\sin\frac{x}{2} \right|_0^1 = 2\sqrt{2} \sin\frac{1}{2}
+
+  $$
+
+
+  因此所求极限为 $2\sqrt{2}\sin\frac{1}{2}$．'
+feedback:
+  correct: 正确转化为定积分并利用半角公式化简求出 $2\sqrt{2}\sin(1/2)$．
+  incorrect: 利用 $1+\cos x = 2\cos^2(x/2)$ 开根号是三角化简基本技巧．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:07866502b9c7ddefac926e9fae8d086d4caae7d1c1c8f7685057580f033e098a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:07866502b9c7ddefac926e9fae8d086d4caae7d1c1c8f7685057580f033e098a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:07866502b9c7ddefac926e9fae8d086d4caae7d1c1c8f7685057580f033e098a

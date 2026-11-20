@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000892
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '讨论二元函数：
+
+
+  $$
+
+  f(x, y) = \begin{cases} \frac{xy}{x^2+y^2}, & x^2+y^2 \neq 0 \\[2mm] 0, & x^2+y^2 = 0 \end{cases}
+
+  $$
+
+
+  在点 $(0, 0)$ 处的一阶偏导数和全微分是否存在？'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 偏导数存在且 $f_x(0,0)=0, f_y(0,0)=0$；全微分不存在（不可微）．
+solution: '由偏导数定义：$f_x(0,0) = \lim_{\Delta x \to 0} \frac{0-0}{\Delta x} = 0, f_y(0,0) = 0$，偏导数均存在．
+
+
+  考察全微分定义式极限：沿 $y=x$ 方向，$\frac{\Delta x \Delta y}{[(\Delta x)^2 + (\Delta y)^2]^{3/2}} = \frac{(\Delta x)^2}{2\sqrt{2}(\Delta
+  x)^3} = \frac{1}{2\sqrt{2}\Delta x} \to \infty \neq 0$．故不可微．'
+feedback:
+  correct: 正确求得偏导数为 0 并证明不可微．
+  incorrect: 偏导数存在不保证连续或可微，该函数在原点甚至不连续．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第一学期高等数学一期末考试试题（珠海数院）第6题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-zhuhai
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b756db546f924137f8d64ff1e96b39ca5c1142d862b195943bda9d614d9ba020
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b756db546f924137f8d64ff1e96b39ca5c1142d862b195943bda9d614d9ba020
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b756db546f924137f8d64ff1e96b39ca5c1142d862b195943bda9d614d9ba020

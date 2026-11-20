@@ -1,0 +1,121 @@
+schema_version: 3
+id: q-000965
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.ode
+type: free_response
+choice_order: fixed
+stem: 求微分方程 $y'' + 9y = e^{5x}$ 的通解．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $y = C_1\cos 3x + C_2\sin 3x + \frac{1}{34}e^{5x}$（$C_1, C_2$ 为任意常数）
+solution: '1. 求对应齐次方程 $y'''' + 9y = 0$ 的通解：
+
+  特征方程为 $r^2 + 9 = 0$，特征根为一对共轭纯虚根 $r = \pm 3i$．
+
+  齐次通解为：
+
+
+  $$
+
+  Y(x) = C_1\cos 3x + C_2\sin 3x
+
+  $$
+
+
+  2. 求非齐次特解：
+
+  自由项为 $f(x) = e^{5x}$，对应的指数特征数 $\lambda = 5$ 不是特征根（$5 \neq \pm 3i$）．
+
+  因此设非齐次方程的特解形式为 $y^* = Ae^{5x}$．
+
+  求导代入：
+
+
+  $$
+
+  (y^*)'' = 5Ae^{5x}, \quad (y^*)'''' = 25Ae^{5x}
+
+  $$
+
+
+  代入原方程：
+
+
+  $$
+
+  25Ae^{5x} + 9Ae^{5x} = 34Ae^{5x} = e^{5x} \implies 34A = 1 \implies A = \frac{1}{34}
+
+  $$
+
+
+  故特解为 $y^* = \frac{1}{34}e^{5x}$．
+
+
+  3. 得到原非齐次方程的通解：
+
+
+  $$
+
+  y(x) = Y(x) + y^* = C_1\cos 3x + C_2\sin 3x + \frac{1}{34}e^{5x}
+
+  $$
+
+
+  其中 $C_1, C_2$ 为任意常数．'
+feedback:
+  correct: 正确求出二阶常系数齐次通解与待定系数特解并组合出通解．
+  incorrect: 注意特征根为纯虚数时对应三角函数组合，自由项指数不是特征根时不产生乘因子 $x$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第8题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3f732c0e976543207b513800f0c5591cd405938c624718733922eb584dfd55da
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3f732c0e976543207b513800f0c5591cd405938c624718733922eb584dfd55da
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3f732c0e976543207b513800f0c5591cd405938c624718733922eb584dfd55da

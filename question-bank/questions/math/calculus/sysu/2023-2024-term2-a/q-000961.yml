@@ -1,0 +1,141 @@
+schema_version: 3
+id: q-000961
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.surface-integral
+type: free_response
+choice_order: fixed
+stem: '求第二类曲面积分：
+
+
+  $$
+
+  I = \iint_{S^+} (y-z)\,\mathrm{d}y\mathrm{d}z + (z-x)\,\mathrm{d}z\mathrm{d}x + (x-y^2)\,\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  其中 $S^+$ 是锥面 $x^2+y^2=z^2$ 在 $0 \le z \le 1$ 中的部分的外侧（背向 $z$ 轴）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{\pi}{4}$
+solution: '曲面 $S$ 不是封闭曲面．补加上顶面 $S_1\colon z = 1$（$x^2+y^2 \le 1$），取上侧（法向量沿 $+z$ 轴方向），使 $S \cup S_1$ 构成封闭立体 $\Omega$ 的边界外侧面．
+
+
+  在闭曲面上应用高斯公式：
+
+
+  $$
+
+  \iint_{(S \cup S_1)^+} (y-z)\,\mathrm{d}y\mathrm{d}z + (z-x)\,\mathrm{d}z\mathrm{d}x + (x-y^2)\,\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  $$
+
+  = \iiint_\Omega \left( \frac{\partial(y-z)}{\partial x} + \frac{\partial(z-x)}{\partial y} + \frac{\partial(x-y^2)}{\partial
+  z} \right)\,\mathrm{d}V = \iiint_\Omega (0 + 0 + 0)\,\mathrm{d}V = 0
+
+  $$
+
+
+  由封闭曲面积分为零可知：
+
+
+  $$
+
+  I = \iint_{S^+} = -\iint_{S_1^+}
+
+  $$
+
+
+  在顶面 $S_1$ 上，$z = 1$，$\mathrm{d}z = 0$，故 $\mathrm{d}y\mathrm{d}z = 0$，$\mathrm{d}z\mathrm{d}x = 0$．
+
+  取上侧时曲面微元 $\mathrm{d}x\mathrm{d}y > 0$，因此：
+
+
+  $$
+
+  \iint_{S_1^+} = \iint_{x^2+y^2 \le 1} (x - y^2)\,\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  由对称性，$\iint_{x^2+y^2 \le 1} x\,\mathrm{d}x\mathrm{d}y = 0$．
+
+  转极坐标计算第二项：
+
+
+  $$
+
+  \iint_{x^2+y^2 \le 1} y^2\,\mathrm{d}x\mathrm{d}y = \int_0^{2\pi} \sin^2\theta\,\mathrm{d}\theta \int_0^1 r^3\,\mathrm{d}r
+  = \pi \cdot \frac{1}{4} = \frac{\pi}{4}
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  I = -\left( 0 - \frac{\pi}{4} \right) = \frac{\pi}{4}
+
+  $$'
+feedback:
+  correct: 正确添加辅助顶盖封闭曲面应用高斯公式并计算辅助面积分．
+  incorrect: 高斯公式将原本复杂的锥面积分直接简化为平面圆盘上的二重积分．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第4题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:12c0bdb2280653e1f8ac4fb37a7a0ff4582877afaf6ad74691c3254d589d96d9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:12c0bdb2280653e1f8ac4fb37a7a0ff4582877afaf6ad74691c3254d589d96d9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:12c0bdb2280653e1f8ac4fb37a7a0ff4582877afaf6ad74691c3254d589d96d9

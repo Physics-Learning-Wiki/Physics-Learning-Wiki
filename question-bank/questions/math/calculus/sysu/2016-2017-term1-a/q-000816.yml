@@ -1,0 +1,118 @@
+schema_version: 3
+id: q-000816
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求定积分：
+
+
+  $$
+
+  \int_{\frac{1}{e}}^e |\ln x|\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未拆分绝对值或对数原函数求错
+    points: 0
+  - id: partial
+    label: 部分掌握：正确拆分区间，但在代入计算上下限时出现正负号错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确分段并计算求得 2 - 2/e
+    points: 1
+reference_answer: $\int_{\frac{1}{e}}^e |\ln x|\,\mathrm{d}x = 2 - \frac{2}{e}$．
+solution: '被积函数包含绝对值，按零点 $x = 1$ 分段去绝对值：
+
+
+  - 当 $x \in [\frac{1}{e}, 1]$ 时，$\ln x \le 0$，所以 $|\ln x| = -\ln x$；
+
+  - 当 $x \in [1, e]$ 时，$\ln x \ge 0$，所以 $|\ln x| = \ln x$．
+
+
+  拆分积分区间：
+
+
+  $$
+
+  \int_{\frac{1}{e}}^e |\ln x|\,\mathrm{d}x = -\int_{\frac{1}{e}}^1 \ln x\,\mathrm{d}x + \int_1^e \ln x\,\mathrm{d}x
+
+  $$
+
+
+  已知 $\int \ln x\,\mathrm{d}x = x\ln x - x + C$．分别代入上下限：
+
+
+  $$
+
+  \int_{\frac{1}{e}}^1 \ln x\,\mathrm{d}x = [x\ln x - x]_{\frac{1}{e}}^1 = (0 - 1) - \left(\frac{1}{e}(-1) - \frac{1}{e}\right)
+  = -1 + \frac{2}{e}
+
+  $$
+
+
+  $$
+
+  \int_1^e \ln x\,\mathrm{d}x = [x\ln x - x]_1^e = (e - e) - (0 - 1) = 1
+
+  $$
+
+
+  相加得：
+
+
+  $$
+
+  \int_{\frac{1}{e}}^e |\ln x|\,\mathrm{d}x = -\left(-1 + \frac{2}{e}\right) + 1 = 2 - \frac{2}{e}
+
+  $$'
+feedback:
+  correct: 正确以 $x=1$ 为界拆开绝对值并准确应用牛顿–莱布尼茨公式．
+  incorrect: 请注意绝对值在 $x \in [1/e, 1]$ 上的符号为负，牛顿–莱布尼茨公式计算 $[x\ln x - x]_{1/e}^1$ 时注意下限正负号．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8bc7dc619e289765e925e8f9762571394d32144c3832f3358ee2cb8f9c7067d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8bc7dc619e289765e925e8f9762571394d32144c3832f3358ee2cb8f9c7067d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8bc7dc619e289765e925e8f9762571394d32144c3832f3358ee2cb8f9c7067d

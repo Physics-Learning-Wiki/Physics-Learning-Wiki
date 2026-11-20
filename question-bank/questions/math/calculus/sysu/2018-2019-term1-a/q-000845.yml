@@ -1,0 +1,112 @@
+schema_version: 3
+id: q-000845
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求由方程 $y\sin x - \cos(x^2 + y) = 3$ 所确定的隐函数的导数 $\frac{\mathrm{d}y}{\mathrm{d}x}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：隐函数链式求导错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求导基本正确，但在移项整理 y' 时出现符号错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求导并解出 dy/dx
+    points: 1
+reference_answer: $\frac{\mathrm{d}y}{\mathrm{d}x} = -\frac{y\cos x + 2x\sin(x^2+y)}{\sin x + \sin(x^2+y)}$．
+solution: '方程两边关于 $x$ 求导（将 $y$ 视为 $x$ 的函数）：
+
+
+  $$
+
+  \frac{\mathrm{d}}{\mathrm{d}x}[y\sin x] - \frac{\mathrm{d}}{\mathrm{d}x}[\cos(x^2+y)] = 0
+
+  $$
+
+
+  分别求导：
+
+
+  $$
+
+  y'' \sin x + y \cos x - [-\sin(x^2+y)] \cdot (2x + y'') = 0
+
+  $$
+
+
+  $$
+
+  y'' \sin x + y \cos x + 2x \sin(x^2+y) + y'' \sin(x^2+y) = 0
+
+  $$
+
+
+  合并 $y''$ 的系数：
+
+
+  $$
+
+  [\sin x + \sin(x^2+y)] y'' = -[y\cos x + 2x\sin(x^2+y)]
+
+  $$
+
+
+  当分母不为 0 时：
+
+
+  $$
+
+  \frac{\mathrm{d}y}{\mathrm{d}x} = -\frac{y\cos x + 2x\sin(x^2+y)}{\sin x + \sin(x^2+y)}
+
+  $$'
+feedback:
+  correct: 正确应用隐函数链式法则解得一阶导数．
+  incorrect: 求导注意复合函数求导：$\frac{\mathrm{d}}{\mathrm{d}x}\cos(x^2+y) = -\sin(x^2+y) \cdot (2x + y')$，不要漏掉内部的 $y'$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:887dab1fc870996db35fb177e66031ebe011c3a10a47b9fe36b8e1aa0f273a4f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:887dab1fc870996db35fb177e66031ebe011c3a10a47b9fe36b8e1aa0f273a4f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:887dab1fc870996db35fb177e66031ebe011c3a10a47b9fe36b8e1aa0f273a4f

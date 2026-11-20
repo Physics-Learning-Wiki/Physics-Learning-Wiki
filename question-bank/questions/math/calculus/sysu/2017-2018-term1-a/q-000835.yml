@@ -1,0 +1,102 @@
+schema_version: 3
+id: q-000835
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 设 $z = e^x \cos(ax + by)$，求混合二阶偏导数 $\frac{\partial^2 z}{\partial x \partial y}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：链式法则或乘积法则求偏导错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求得一阶偏导，但在二阶乘积求导中漏掉某项
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完整求得混合二阶偏导数
+    points: 1
+reference_answer: $\frac{\partial^2 z}{\partial x \partial y} = -b e^x [\sin(ax+by) + a\cos(ax+by)]$．
+solution: '先对 $y$ 求一阶偏导数（注意此时 $e^x$ 视为常数）：
+
+
+  $$
+
+  \frac{\partial z}{\partial y} = e^x [-\sin(ax + by)] \cdot b = -b e^x \sin(ax + by)
+
+  $$
+
+
+  再对 $x$ 求偏导数（应用乘积法则）：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x \partial y} = -b \frac{\partial}{\partial x} [e^x \sin(ax + by)]
+
+  $$
+
+
+  $$
+
+  = -b \left(e^x \sin(ax + by) + e^x [\cos(ax + by) \cdot a]\right)
+
+  $$
+
+
+  提取公因式 $e^x$：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x \partial y} = -b e^x [\sin(ax + by) + a\cos(ax + by)]
+
+  $$'
+feedback:
+  correct: 正确应用链式法则与乘积法则计算混合二阶偏导数．
+  incorrect: 先对 $y$ 求偏导再对 $x$ 求偏导时，乘积项 $e^x \sin(ax+by)$ 两项都含 $x$，必须使用乘积法则求导．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第7题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b481e559c72e95b977b3bd636c9c0a7b534da4eca8fc0fa8ef83f0eb69f8f076
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b481e559c72e95b977b3bd636c9c0a7b534da4eca8fc0fa8ef83f0eb69f8f076
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b481e559c72e95b977b3bd636c9c0a7b534da4eca8fc0fa8ef83f0eb69f8f076

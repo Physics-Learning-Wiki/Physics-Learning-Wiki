@@ -33,7 +33,16 @@ export class SetsSurface {
       this.manifestUrl = new URL(manifestPath, window.location.href);
       this.manifest = await loadManifest(this.manifestUrl, this.abort.signal);
 
-      this.catalog = await loadSetCatalog(this.manifestUrl, this.manifest.catalogs.sets, this.abort.signal);
+      const catalog = await loadSetCatalog(this.manifestUrl, this.manifest.catalogs.sets, this.abort.signal);
+      if (this.abort.signal.aborted) return;
+      const requiredTag = this.root.dataset.requiredTag;
+      this.catalog = catalog.filter(
+        item => (this.manifest.preview || item.status === "published") && (!requiredTag || item.tags.includes(requiredTag))
+      );
+      if (requiredTag && this.catalog.length === 0) {
+        this.root.innerHTML = '<div class="plw-quiz-empty"><p role="status">暂无可作答的课程真题．</p></div>';
+        return;
+      }
 
       if (this.manifest.catalogs.taxonomy) {
         try {
@@ -48,6 +57,9 @@ export class SetsSurface {
       }
 
       if (this.abort.signal.aborted) return;
+      const params = new URL(window.location.href).searchParams;
+      this.keyword = params.get("keyword")?.trim() ?? "";
+      this.selectedTag = params.get("tag")?.trim() || "all";
       this.render();
     } catch (err) {
       if (this.abort.signal.aborted) return;
@@ -64,6 +76,15 @@ export class SetsSurface {
     this.root.innerHTML = "";
   }
 
+  private updateSearchUrl(): void {
+    const url = new URL(window.location.href);
+    for (const [key, value] of [["keyword", this.keyword], ["tag", this.selectedTag === "all" ? "" : this.selectedTag]]) {
+      if (value) url.searchParams.set(key, value);
+      else url.searchParams.delete(key);
+    }
+    if (url.href !== window.location.href) history.replaceState(history.state, "", url);
+  }
+
   private render(): void {
     this.root.innerHTML = "";
     const container = document.createElement("div");
@@ -73,12 +94,12 @@ export class SetsSurface {
     const allTopics = new Set<string>();
     const allTags = new Set<string>();
 
-    const visibleItems = this.catalog.filter(item => this.manifest.preview || item.status === "published");
-
-    for (const item of visibleItems) {
+    for (const item of this.catalog) {
       for (const tid of item.topicIds) allTopics.add(tid);
       for (const tag of item.tags) allTags.add(tag);
     }
+    allTags.delete(this.root.dataset.requiredTag ?? "");
+    if (this.selectedTag !== "all") allTags.add(this.selectedTag);
     this.topicTree = new TopicTree(this.taxonomy, allTopics);
 
     // 2. Filter Bar
@@ -151,10 +172,12 @@ export class SetsSurface {
     compactMedia.addEventListener("change", onCompactChange);
     this.filterMediaCleanup = () => compactMedia.removeEventListener("change", onCompactChange);
 
-    filterBar.querySelector(".plw-quiz-search-input")?.addEventListener("input", e => {
-      this.keyword = (e.target as HTMLInputElement).value.trim().toLowerCase();
+    const searchInput = filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")!;
+    searchInput.addEventListener("input", () => {
+      this.keyword = searchInput.value.trim();
       this.renderList(cardsGrid, countNotice);
     });
+    searchInput.addEventListener("change", () => this.updateSearchUrl());
 
     filterBar.querySelector("#plw-select-topic")?.addEventListener("change", e => {
       this.selectedTopic = (e.target as HTMLSelectElement).value;
@@ -175,17 +198,19 @@ export class SetsSurface {
 
     filterBar.querySelector("#plw-select-tag")?.addEventListener("change", e => {
       this.selectedTag = (e.target as HTMLSelectElement).value;
+      this.updateSearchUrl();
       this.renderList(cardsGrid, countNotice);
     });
 
     filterBar.querySelector("#plw-btn-reset-sets-filters")?.addEventListener("click", () => {
       this.keyword = "";
       this.selectedTopic = this.selectedSubtopic = this.selectedFeedbackMode = this.selectedTag = "all";
-      filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")!.value = "";
+      searchInput.value = "";
       filterBar.querySelectorAll<HTMLSelectElement>("select").forEach(select => (select.value = "all"));
       updateSubtopics();
+      this.updateSearchUrl();
       this.renderList(cardsGrid, countNotice);
-      filterBar.querySelector<HTMLInputElement>(".plw-quiz-search-input")?.focus();
+      searchInput.focus();
     });
 
     container.append(filterBar);
@@ -207,12 +232,11 @@ export class SetsSurface {
   private renderList(grid: HTMLElement, countNotice: HTMLElement): void {
     grid.innerHTML = "";
 
+    const keyword = this.keyword.toLowerCase();
     const filtered = this.catalog.filter(item => {
-      if (!this.manifest.preview && item.status !== "published") return false;
-
-      if (this.keyword) {
+      if (keyword) {
         const text = `${item.title} ${item.description} ${item.tags.join(" ")}`.toLowerCase();
-        if (!text.includes(this.keyword)) return false;
+        if (!text.includes(keyword)) return false;
       }
 
       const topicId = this.selectedSubtopic !== "all" ? this.selectedSubtopic : this.selectedTopic;

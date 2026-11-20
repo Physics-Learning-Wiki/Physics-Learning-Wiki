@@ -1,0 +1,121 @@
+schema_version: 3
+id: q-000803
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '计算不定积分：
+
+
+  $$
+
+  \int e^x \arctan(e^{-x})\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：分部积分方向错误或导数求错
+    points: 0
+  - id: partial
+    label: 部分掌握：正确完成分部积分，但有理化积分计算有误或遗漏常数 C
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成分部积分与剩余积分，写出完整的原函数与任意常数 C
+    points: 1
+reference_answer: $e^x \arctan(e^{-x}) + \frac{1}{2}\ln(1+e^{2x}) + C$（或等价形式 $e^x \arctan(e^{-x}) + x + \frac{1}{2}\ln(1+e^{-2x})
+  + C$）．
+solution: '采用分部积分法，设 $u = \arctan(e^{-x}), \mathrm{d}v = e^x \,\mathrm{d}x$：
+
+
+  $$
+
+  v = e^x, \quad \mathrm{d}u = \frac{1}{1+(e^{-x})^2} \cdot (-e^{-x})\,\mathrm{d}x = -\frac{e^{-x}}{1+e^{-2x}}\,\mathrm{d}x
+
+  $$
+
+
+  代入分部积分公式：
+
+
+  $$
+
+  \int e^x \arctan(e^{-x})\,\mathrm{d}x = e^x \arctan(e^{-x}) - \int e^x \left(-\frac{e^{-x}}{1+e^{-2x}}\right)\,\mathrm{d}x
+
+  $$
+
+
+  $$
+
+  = e^x \arctan(e^{-x}) + \int \frac{1}{1+e^{-2x}}\,\mathrm{d}x
+
+  $$
+
+
+  计算剩余积分，分子分母同乘 $e^{2x}$：
+
+
+  $$
+
+  \int \frac{1}{1+e^{-2x}}\,\mathrm{d}x = \int \frac{e^{2x}}{e^{2x}+1}\,\mathrm{d}x = \frac{1}{2}\int \frac{\mathrm{d}(e^{2x}+1)}{e^{2x}+1}
+  = \frac{1}{2}\ln(e^{2x}+1) + C
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  \int e^x \arctan(e^{-x})\,\mathrm{d}x = e^x \arctan(e^{-x}) + \frac{1}{2}\ln(1+e^{2x}) + C
+
+  $$'
+feedback:
+  correct: 正确运用分部积分法与有理化换元求得原函数．
+  incorrect: 请注意分部积分中 $\mathrm{d}(\arctan(e^{-x}))$ 的复合函数求导链式法则，以及剩余积分 $\int \frac{1}{1+e^{-2x}}\,\mathrm{d}x$ 的计算．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:36555726837968ad9bcf7c845508cc384b8b63cbc5e536d5d9889d2afeb8dc96
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:36555726837968ad9bcf7c845508cc384b8b63cbc5e536d5d9889d2afeb8dc96
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:36555726837968ad9bcf7c845508cc384b8b63cbc5e536d5d9889d2afeb8dc96

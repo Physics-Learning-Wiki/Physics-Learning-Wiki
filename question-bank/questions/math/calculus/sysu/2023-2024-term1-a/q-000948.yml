@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000948
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 求星形线 $x = \cos^3 t$，$y = \sin^3 t$（$t \in [0, 2\pi]$）的周长．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $6$
+solution: '曲线具有关于坐标轴与原点的对称性，全长等于第一象限弧长（$t \in [0, \frac{\pi}{2}]$）的 4 倍：
+
+
+  $$ s = 4 \int_0^{\pi/2} \sqrt{x''(t)^2 + y''(t)^2}\,\mathrm{d}t $$
+
+
+  计算导数：
+
+
+  $$
+
+  x''(t) = -3\cos^2 t \sin t, \quad y''(t) = 3\sin^2 t \cos t
+
+  $$
+
+
+  弧长微分平方：
+
+
+  $$
+
+  x''(t)^2 + y''(t)^2 = 9\cos^4 t\sin^2 t + 9\sin^4 t\cos^2 t = 9\sin^2 t\cos^2 t (\cos^2 t + \sin^2 t) = 9\sin^2 t\cos^2
+  t
+
+  $$
+
+
+  在 $t \in [0, \frac{\pi}{2}]$ 上，$\sin t \ge 0, \cos t \ge 0$：
+
+
+  $$
+
+  \sqrt{x''(t)^2 + y''(t)^2} = 3\sin t\cos t
+
+  $$
+
+
+  计算积分：
+
+
+  $$
+
+  s = 4 \int_0^{\pi/2} 3\sin t\cos t\,\mathrm{d}t = 12 \left. \left[ \frac{\sin^2 t}{2} \right] \right|_0^{\pi/2} = 12 \cdot
+  \frac{1}{2} = 6
+
+  $$'
+feedback:
+  correct: 正确利用对称性与参数方程弧长公式计算曲线周长．
+  incorrect: 开根号时注意三角函数的符号，利用第一象限弧长再乘以 4 可以避免绝对值讨论．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c667768414c5b0c706e50a37088bf43496bd47fe721a6a96f598f6958c27c64f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c667768414c5b0c706e50a37088bf43496bd47fe721a6a96f598f6958c27c64f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c667768414c5b0c706e50a37088bf43496bd47fe721a6a96f598f6958c27c64f

@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000843
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x\to 0} \left(\frac{1+x}{1-e^{-x}} - \frac{1}{x}\right)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：通分错误或泰勒展开阶数不足
+    points: 0
+  - id: partial
+    label: 部分掌握：正确通分，但在展开二次项系数时有算术错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确通分展开求得极限 3/2
+    points: 1
+reference_answer: $\lim_{x\to 0} \left(\frac{1+x}{1-e^{-x}} - \frac{1}{x}\right) = \frac{3}{2}$．
+solution: '极限为 $\infty - \infty$ 型未定式，先通分化为分式：
+
+
+  $$
+
+  \frac{1+x}{1-e^{-x}} - \frac{1}{x} = \frac{x(1+x) - (1-e^{-x})}{x(1-e^{-x})}
+
+  $$
+
+
+  当 $x \to 0$ 时，分母等价无穷小代换：$1 - e^{-x} \sim x$，故分母为 $x \cdot x = x^2$：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{x + x^2 - 1 + e^{-x}}{x^2}
+
+  $$
+
+
+  利用 $e^{-x}$ 在 $x=0$ 处的泰勒展开：
+
+
+  $$
+
+  e^{-x} = 1 - x + \frac{x^2}{2} + o(x^2)
+
+  $$
+
+
+  分子为：
+
+
+  $$
+
+  x + x^2 - 1 + \left(1 - x + \frac{x^2}{2} + o(x^2)\right) = \frac{3}{2}x^2 + o(x^2)
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{\frac{3}{2}x^2 + o(x^2)}{x^2} = \frac{3}{2}
+
+  $$'
+feedback:
+  correct: 正确通分并利用分母等价无穷小与分子泰勒展开求得 3/2．
+  incorrect: 通分后分子展开：$e^{-x} = 1 - x + x^2/2 + o(x^2)$，注意分子一次项抵消后二次项系数为 $1 + 1/2 = 3/2$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cccaa7f040b2f85a31cf7301a5aa5a004f651b4ccbe4bd0e2302302b2a66a85e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cccaa7f040b2f85a31cf7301a5aa5a004f651b4ccbe4bd0e2302302b2a66a85e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cccaa7f040b2f85a31cf7301a5aa5a004f651b4ccbe4bd0e2302302b2a66a85e

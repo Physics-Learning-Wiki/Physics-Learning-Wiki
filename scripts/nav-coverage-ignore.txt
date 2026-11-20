@@ -9,6 +9,7 @@ edit-landing.md
 experiment/basic-experiments.md
 math/calculus/ode.md
 math/calculus/variational.md
+math/calculus/sysu-exams.md
 
 # Internal planning & design documents
 superpowers/plans/

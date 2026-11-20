@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000933
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.line-integral
+type: free_response
+choice_order: fixed
+stem: '计算第一类曲线积分：
+
+
+  $$
+
+  \oint_L (x^2 + y^2)\,\mathrm{d}s
+
+  $$
+
+
+  其中闭曲线 $L$ 的方程为 $|x| + |y| = 1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\oint_L (x^2 + y^2)\,\mathrm{d}s = \frac{8\sqrt{2}}{3}$．
+solution: '闭曲线 $L$ 为由顶点 $(\pm 1, 0), (0, \pm 1)$ 围成的正方形闭折线．
+
+
+  由区域与被积函数的对称性，积分在四个象限的直线上完全相等，且具有 $x, y$ 轮换对称性：
+
+
+  $$
+
+  \oint_L (x^2 + y^2)\,\mathrm{d}s = 2\oint_L x^2\,\mathrm{d}s = 2 \times 4 \int_{L_1} x^2\,\mathrm{d}s = 8\int_{L_1} x^2\,\mathrm{d}s
+
+  $$
+
+
+  其中 $L_1$ 为第一象限线段：$x + y = 1$（$0 \le x \le 1$）．其弧长微元为 $\mathrm{d}s = \sqrt{1 + (-1)^2}\,\mathrm{d}x = \sqrt{2}\,\mathrm{d}x$．
+
+
+  代入计算：
+
+
+  $$
+
+  8\int_0^1 x^2 \sqrt{2}\,\mathrm{d}x = 8\sqrt{2} \left. \frac{x^3}{3} \right|_0^1 = \frac{8\sqrt{2}}{3}
+
+  $$
+
+
+  因此积分值为 $\frac{8\sqrt{2}}{3}$．'
+feedback:
+  correct: 利用对称性化为第一象限单段积分并准确得出结果．
+  incorrect: 第一类曲线积分充分利用对称性与轮换对称性可极大简化运算．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c635ea060f577c7732e159cc22f4401ad802644a29c1d1304ec68798191ab8c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c635ea060f577c7732e159cc22f4401ad802644a29c1d1304ec68798191ab8c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c635ea060f577c7732e159cc22f4401ad802644a29c1d1304ec68798191ab8c

@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000818
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求通过 $y$ 轴且与平面 $9x - 4y - 2z - 1 = 0$ 垂直的平面方程．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出过 y 轴平面的代数特征
+    points: 0
+  - id: partial
+    label: 部分掌握：设定正确形式，但在法向量点积中出现符号错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确列式并求得平面方程 2x + 9z = 0
+    points: 1
+reference_answer: $2x + 9z = 0$．
+solution: '平面通过 $y$ 轴，因而经过原点 $(0, 0, 0)$，且其法向量垂直于 $y$ 轴的方向向量 $(0, 1, 0)$．
+
+
+  因此该平面的法向量必然没有 $y$ 分量，设其方程为：
+
+
+  $$
+
+  Ax + Cz = 0 \quad (A^2 + C^2 \neq 0)
+
+  $$
+
+
+  其法向量为 $\mathbf{n}_1 = (A, 0, C)$．
+
+
+  已知平面 $9x - 4y - 2z - 1 = 0$ 的法向量为 $\mathbf{n}_2 = (9, -4, -2)$．
+
+
+  由两平面垂直的充要条件：
+
+
+  $$
+
+  \mathbf{n}_1 \cdot \mathbf{n}_2 = 0 \implies 9A + 0(-4) - 2C = 0 \implies 9A - 2C = 0
+
+  $$
+
+
+  取 $A = 2, C = 9$（此时法向量为 $(2, 0, 9)$），代入所设方程得：
+
+
+  $$
+
+  2x + 9z = 0
+
+  $$'
+feedback:
+  correct: 正确利用过 $y$ 轴的平面方程形式与法向量垂直条件求得结果．
+  incorrect: 过 $y$ 轴的平面经过原点且法向量垂直于 $(0,1,0)$，故方程不含 $y$ 和常数项，形如 $Ax+Cz=0$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:edeb776b13126b069eac101fab27b7b778ddbdcb68240a1908b92c948d2b1e53
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:edeb776b13126b069eac101fab27b7b778ddbdcb68240a1908b92c948d2b1e53
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:edeb776b13126b069eac101fab27b7b778ddbdcb68240a1908b92c948d2b1e53

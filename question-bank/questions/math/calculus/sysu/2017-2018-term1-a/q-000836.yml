@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000836
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求曲线 $y = 3e^{-\frac{x^2}{2}}$ 的凹凸区间、拐点及渐近线．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：求导错误或凹凸性判断错误
+    points: 0
+  - id: partial
+    label: 部分掌握：凹凸性判定正确，但拐点未写坐标或渐近线遗漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成凹凸区间、两个拐点与水平渐近线的完整解答
+    points: 1
+reference_answer: '凹区间为 $(-\infty, -1)$ 和 $(1, +\infty)$；凸区间为 $(-1, 1)$；
+
+
+  拐点为 $(-1, 3e^{-\frac{1}{2}})$ 和 $(1, 3e^{-\frac{1}{2}})$；
+
+
+  水平渐近线为 $y = 0$（$x$ 轴），无垂直或斜渐近线．'
+solution: '函数的定义域为 $(-\infty, +\infty)$，为偶函数．
+
+
+  求一阶导数：
+
+
+  $$
+
+  y'' = 3 e^{-\frac{x^2}{2}} (-x) = -3x e^{-\frac{x^2}{2}}
+
+  $$
+
+
+  求二阶导数：
+
+
+  $$
+
+  y'''' = -3 e^{-\frac{x^2}{2}} + (-3x) e^{-\frac{x^2}{2}} (-x) = 3(x^2 - 1) e^{-\frac{x^2}{2}}
+
+  $$
+
+
+  令 $y'''' = 0$，解得 $x = \pm 1$．因为 $e^{-\frac{x^2}{2}} > 0$ 恒成立，符号完全由 $x^2 - 1$ 决定：
+
+
+  - 当 $x \in (-\infty, -1)$ 时，$y'''' > 0$，曲线为凹；
+
+  - 当 $x \in (-1, 1)$ 时，$y'''' < 0$，曲线为凸；
+
+  - 当 $x \in (1, +\infty)$ 时，$y'''' > 0$，曲线为凹．
+
+
+  拐点坐标：代入原函数得 $y(\pm 1) = 3e^{-\frac{1}{2}} = \frac{3}{\sqrt{e}}$．拐点为 $(-1, \frac{3}{\sqrt{e}})$ 和 $(1, \frac{3}{\sqrt{e}})$．
+
+
+  渐近线：
+
+
+  当 $x \to \pm\infty$ 时，$\lim_{x\to\pm\infty} 3e^{-\frac{x^2}{2}} = 0$．所以水平渐近线为 $y = 0$（$x$ 轴）．'
+feedback:
+  correct: 正确求得二阶导数并准确给出凹凸区间、拐点与渐近线．
+  incorrect: 请注意拐点必须写成点坐标 $(x, y)$ 形式，水平渐近线方程应写为 $y = 0$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第8题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251832228b21d626ff3b410a2838d4fbe0ed38a52f6e658a80a5564364451280
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251832228b21d626ff3b410a2838d4fbe0ed38a52f6e658a80a5564364451280
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:251832228b21d626ff3b410a2838d4fbe0ed38a52f6e658a80a5564364451280

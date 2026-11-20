@@ -1,0 +1,132 @@
+schema_version: 3
+id: q-000850
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = x^3 e^{-x}$ 的极值点与极值、拐点和渐近线．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：求导错误或极值点判断错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求得极大值点，但在二阶导数拐点或渐近线分析上有遗漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整正确给出极值、3个拐点及渐近线方程
+    points: 1
+reference_answer: '极值点：极大值点 $x = 3$（极大值为 $\frac{27}{e^3}$），$x = 0$ 不是极值点；
+
+
+  拐点：$(0, 0)$ 和 $(3 \pm \sqrt{3}, f(3 \pm \sqrt{3}))$；
+
+
+  渐近线：水平渐近线 $y = 0$（当 $x \to +\infty$ 时），无铅直渐近线．'
+solution: '定义域为 $(-\infty, +\infty)$．
+
+
+  **1. 单调性与极值：**
+
+
+  求一阶导数：
+
+
+  $$
+
+  f''(x) = 3x^2 e^{-x} - x^3 e^{-x} = x^2(3 - x)e^{-x}
+
+  $$
+
+
+  令 $f''(x) = 0$，驻点为 $x = 0$ 和 $x = 3$．
+
+
+  - 当 $x < 0$ 时，$f''(x) > 0$，单调递增；
+
+  - 当 $0 < x < 3$ 时，$f''(x) > 0$，单调递增；
+
+  - 当 $x > 3$ 时，$f''(x) < 0$，单调递减．
+
+
+  在 $x=0$ 两侧导数不改变符号，故 $x=0$ 不是极值点；
+
+
+  在 $x=3$ 处导数由正变负，故 $x=3$ 是极大值点，极大值为 $f(3) = 27e^{-3} = \frac{27}{e^3}$．
+
+
+  **2. 凹凸性与拐点：**
+
+
+  求二阶导数：
+
+
+  $$
+
+  f''''(x) = (2x(3-x) - x^2)e^{-x} - x^2(3-x)e^{-x} = x(x^2 - 6x + 6)e^{-x}
+
+  $$
+
+
+  令 $f''''(x) = 0$，解得 $x_1 = 0, x_{2,3} = 3 \pm \sqrt{3}$．
+
+
+  在这三点两侧二阶导数均变号，因此拐点有 3 个：$(0, 0)$，$(3-\sqrt{3}, f(3-\sqrt{3}))$，$(3+\sqrt{3}, f(3+\sqrt{3}))$．
+
+
+  **3. 渐近线：**
+
+
+  - 当 $x \to +\infty$ 时，$\lim_{x\to+\infty} x^3 e^{-x} = 0$，所以水平渐近线为 $y = 0$；
+
+  - 当 $x \to -\infty$ 时，$\lim_{x\to-\infty} x^3 e^{-x} = -\infty$，且 $\lim_{x\to-\infty} \frac{f(x)}{x} = +\infty$，无斜渐近线；
+
+  - 在实数轴上连续，无铅直渐近线．'
+feedback:
+  correct: 正确分析驻点并指出 $x=0$ 不是极值点，完整求得极大值、3个拐点与水平渐近线．
+  incorrect: 易错点：$x=0$ 处一阶导数为 0 但两侧导数均大于 0，故不是极值点而是拐点；拐点由 $x(x^2-6x+6)=0$ 给出 3 个点．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 420
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第8题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c12adad6c340f1a97fadc127b8f5b1e7c68bc6752900dd82bd420b2958580f17
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c12adad6c340f1a97fadc127b8f5b1e7c68bc6752900dd82bd420b2958580f17
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c12adad6c340f1a97fadc127b8f5b1e7c68bc6752900dd82bd420b2958580f17

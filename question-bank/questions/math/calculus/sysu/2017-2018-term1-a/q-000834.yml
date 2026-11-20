@@ -1,0 +1,167 @@
+schema_version: 3
+id: q-000834
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '在曲线 $C: y = 1 - x^2$（$x > 0$）上的点 $P$ 处作曲线的切线，该切线与两坐标轴分别交于 $A, B$ 两点．
+
+
+  (1) 试确定点 $P$ 的位置，使得 $A, B$ 两点与坐标原点 $O$ 所围成的三角形 $\triangle OAB$ 的面积最小；
+
+
+  (2) 求此时在点 $P$ 处的切线方程；
+
+
+  (3) 求曲线 $C$ 与 $x$ 轴、$y$ 轴所围成图形的面积．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：切线或面积函数建立错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求得最小面积点 P，但在切线方程或积分面积上有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整正确回答全部三问
+    points: 1
+reference_answer: '(1) 点 $P$ 的坐标为 $\left(\frac{\sqrt{3}}{3}, \frac{2}{3}\right)$，最小面积为 $\frac{4\sqrt{3}}{9}$．
+
+
+  (2) 切线方程为 $2\sqrt{3}x + 3y - 4 = 0$（或 $y = -\frac{2\sqrt{3}}{3}x + \frac{4}{3}$）．
+
+
+  (3) 所围图形面积为 $\frac{2}{3}$．'
+solution: '**(1) 确定点 $P$ 使得 $\triangle OAB$ 面积最小：**
+
+
+  设点 $P$ 的坐标为 $(m, 1 - m^2)$，其中 $0 < m < 1$．
+
+
+  因为 $y'' = -2x$，所以在点 $P$ 处的切线斜率为 $k = -2m$．
+
+
+  切线方程为：
+
+
+  $$
+
+  y - (1 - m^2) = -2m(x - m) \implies y = -2mx + 1 + m^2
+
+  $$
+
+
+  求与坐标轴的交点：
+
+
+  - 令 $x = 0$，得点 $A(0, 1 + m^2)$；
+
+  - 令 $y = 0$，得点 $B\left(\frac{1+m^2}{2m}, 0\right)$．
+
+
+  直角三角形 $\triangle OAB$ 的面积为：
+
+
+  $$
+
+  S(m) = \frac{1}{2} OA \cdot OB = \frac{1}{2} (1 + m^2) \cdot \frac{1 + m^2}{2m} = \frac{(1 + m^2)^2}{4m}
+
+  $$
+
+
+  对 $S(m)$ 关于 $m$ 求导：
+
+
+  $$
+
+  S''(m) = \frac{2(1+m^2)(2m)(4m) - 4(1+m^2)^2}{16m^2} = \frac{4(1+m^2)[4m^2 - (1+m^2)]}{16m^2} = \frac{(1+m^2)(3m^2 - 1)}{4m^2}
+
+  $$
+
+
+  令 $S''(m) = 0$，在 $m > 0$ 内的唯一驻点为 $m = \frac{1}{\sqrt{3}} = \frac{\sqrt{3}}{3}$．
+
+
+  由于在 $m \in (0, 1)$ 上连续且两端趋向无穷大，驻点处取得最小值．
+
+
+  代入纵坐标：$1 - m^2 = 1 - \frac{1}{3} = \frac{2}{3}$．所以点 $P$ 为 $\left(\frac{\sqrt{3}}{3}, \frac{2}{3}\right)$．
+
+
+  最小面积为 $S\left(\frac{\sqrt{3}}{3}\right) = \frac{\left(\frac{4}{3}\right)^2}{4 \cdot \frac{\sqrt{3}}{3}} = \frac{16/9}{4\sqrt{3}/3}
+  = \frac{4\sqrt{3}}{9}$．
+
+
+  **(2) 切线方程：**
+
+
+  将 $m = \frac{\sqrt{3}}{3}$ 代入切线方程：
+
+
+  $$
+
+  y = -\frac{2\sqrt{3}}{3}x + \frac{4}{3} \implies 2\sqrt{3}x + 3y - 4 = 0
+
+  $$
+
+
+  **(3) 曲线与两坐标轴所围面积：**
+
+
+  曲线 $y = 1 - x^2$ 与 $x$ 轴交于 $x = 1$，与 $y$ 轴交于 $y = 1$：
+
+
+  $$
+
+  S_0 = \int_0^1 (1 - x^2)\,\mathrm{d}x = \left[x - \frac{x^3}{3}\right]_0^1 = 1 - \frac{1}{3} = \frac{2}{3}
+
+  $$'
+feedback:
+  correct: 完整准确求解了切线方程、截距、面积函数极值与定积分面积．
+  incorrect: 请注意：三角形面积为 $\frac{(1+m^2)^2}{4m}$，驻点由分子 $3m^2-1=0$ 给出 $m=\frac{\sqrt{3}}{3}$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 420
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第6题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0654a3afbbf8b6c3dfefab41225a98edcec5653d1b4b3ff67519c940fae03c6a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0654a3afbbf8b6c3dfefab41225a98edcec5653d1b4b3ff67519c940fae03c6a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0654a3afbbf8b6c3dfefab41225a98edcec5653d1b4b3ff67519c940fae03c6a

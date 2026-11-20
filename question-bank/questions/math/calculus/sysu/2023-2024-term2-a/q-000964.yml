@@ -1,0 +1,111 @@
+schema_version: 3
+id: q-000964
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.ode
+type: free_response
+choice_order: fixed
+stem: 求微分方程 $\frac{\mathrm{d}y}{\mathrm{d}x} + xy = x$ 的通解．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $y = Ce^{-x^2/2} + 1$（$C$ 为任意常数）
+solution: '分离变量法：
+
+
+  $$
+
+  \frac{\mathrm{d}y}{\mathrm{d}x} = x(1 - y) \implies \frac{\mathrm{d}y}{1-y} = x\,\mathrm{d}x \quad (y \neq 1)
+
+  $$
+
+
+  两边同时积分：
+
+
+  $$
+
+  -\ln|1-y| = \frac{x^2}{2} + C_1 \implies |1-y| = e^{-C_1} e^{-x^2/2} \implies 1-y = C_2 e^{-x^2/2}
+
+  $$
+
+
+  整理得：
+
+
+  $$
+
+  y = C e^{-x^2/2} + 1
+
+  $$
+
+
+  当 $C = 0$ 时对应特解 $y = 1$，因此 $y = C e^{-x^2/2} + 1$ 为该微分方程的通解（其中 $C$ 为任意常数）．
+
+
+  【另解（一阶线性微分方程公式）】：
+
+  $P(x) = x$，$Q(x) = x$．通解公式：
+
+
+  $$
+
+  y = e^{-\int x\,\mathrm{d}x}\left( \int x e^{\int x\,\mathrm{d}x}\,\mathrm{d}x + C \right) = e^{-x^2/2}\left( \int x e^{x^2/2}\,\mathrm{d}x
+  + C \right) = e^{-x^2/2}(e^{x^2/2} + C) = 1 + C e^{-x^2/2}
+
+  $$'
+feedback:
+  correct: 正确运用分离变量法或一阶线性方程通解公式求出通解．
+  incorrect: 分离变量后务必验证 $y=1$ 是否被常数 $C=0$ 涵盖．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第7题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3662c9c68d74c01d5b4aa511d195114aafbbc96f5e0ee58956072932a9f4ef5a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3662c9c68d74c01d5b4aa511d195114aafbbc96f5e0ee58956072932a9f4ef5a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3662c9c68d74c01d5b4aa511d195114aafbbc96f5e0ee58956072932a9f4ef5a

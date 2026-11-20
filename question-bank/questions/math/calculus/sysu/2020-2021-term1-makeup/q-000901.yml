@@ -1,0 +1,75 @@
+schema_version: 3
+id: q-000901
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 过点 $(1, 0)$ 作对数曲线 $y = \ln(x-1)$ 的切线，求该切线、$x$ 轴以及曲线 $y = \ln(x-1)$ 所围成平面图形的面积．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 所围图形面积为 $\frac{e}{2} - 1$．
+solution: '设切点为 $(x_0, \ln(x_0-1))$，斜率 $\frac{\ln(x_0-1)}{x_0-1} = \frac{1}{x_0-1} \implies x_0 = 1+e$．切线方程为 $y = \frac{x-1}{e}$．
+
+
+  三角形面积为 $\frac{1}{2} e \cdot 1 = \frac{e}{2}$．曲线与 $x$ 轴围成面积为 $\int_2^{1+e} \ln(x-1)\,\mathrm{d}x = 1$．
+
+
+  总面积为 $\frac{e}{2} - 1$．'
+feedback:
+  correct: 切点求解与面积积分计算准确．
+  incorrect: 点 $(1,0)$ 在曲线外，必须先设切点求切线．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第6题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:119995f24bfd4d27f0bd2e994a3ee8dad4f9e1b601c6fc2060216fa755a735ff
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:119995f24bfd4d27f0bd2e994a3ee8dad4f9e1b601c6fc2060216fa755a735ff
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:119995f24bfd4d27f0bd2e994a3ee8dad4f9e1b601c6fc2060216fa755a735ff

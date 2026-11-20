@@ -1,0 +1,94 @@
+schema_version: 3
+id: q-000877
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '证明：当 $x \in \left(0, \frac{\pi}{2}\right)$ 时，恒有不等式成立：
+
+
+  $$
+
+  \frac{\tan x}{x} > \frac{x}{\sin x}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 不等式在区间 $(0, \pi/2)$ 上恒成立．
+solution: '不等式等价于 $\tan x \sin x - x^2 > 0$．令辅助函数 $f(x) = \tan x \sin x - x^2$（$x \in [0, \pi/2)$），$f(0) = 0$．
+
+
+  求导得：
+
+
+  $$
+
+  f''(x) = \sec^2 x \sin x + \tan x \cos x - 2x = \tan x \left( \frac{1}{\cos x} + \cos x \right) - 2x
+
+  $$
+
+
+  在 $(0, \pi/2)$ 内，由均值不等式 $\frac{1}{\cos x} + \cos x \ge 2$（仅在 $x=0$ 取等），且 $\tan x > x > 0$．
+
+
+  故 $f''(x) > x \cdot 2 - 2x = 0$．函数 $f(x)$ 在 $[0, \pi/2)$ 上严格单调递增．
+
+
+  因此当 $x \in (0, \pi/2)$ 时，$f(x) > f(0) = 0$，即 $\frac{\tan x}{x} > \frac{x}{\sin x}$ 恒成立．'
+feedback:
+  correct: 正确构造辅助函数并通过导数放缩证明严格递增．
+  incorrect: 利用 $u + 1/u \ge 2$ 与 $\tan x > x$ 可免去繁复的二阶求导．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学期末试题（南校数院）第10题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-south
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9d1bc81780e82dc5d414db85a6077f228b3144d6c436a8c30c66abcf807b609a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9d1bc81780e82dc5d414db85a6077f228b3144d6c436a8c30c66abcf807b609a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9d1bc81780e82dc5d414db85a6077f228b3144d6c436a8c30c66abcf807b609a

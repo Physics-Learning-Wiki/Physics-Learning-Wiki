@@ -1,0 +1,84 @@
+schema_version: 3
+id: q-000906
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 设 $w = f(x+y+z, xyz)$，其中函数 $f(u, v)$ 具有二阶连续的偏导数，求一阶偏导数 $\frac{\partial w}{\partial x}$ 以及二阶混合偏导数 $\frac{\partial^2 w}{\partial
+  x \partial z}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\frac{\partial w}{\partial x} = f_1' + yz f_2'$，$\frac{\partial^2 w}{\partial x \partial z} = f_{11}''
+  + y(x+z)f_{12}'' + xy^2 z f_{22}'' + y f_2'$．
+solution: '中间变量 $u = x+y+z, v = xyz$．
+
+
+  1. $\frac{\partial w}{\partial x} = f_1'' \cdot 1 + f_2'' \cdot yz = f_1'' + yz f_2''$．
+
+
+  2. 对 $z$ 求导：$\frac{\partial}{\partial z}(f_1'' + yz f_2'') = \frac{\partial f_1''}{\partial z} + y f_2'' + yz \frac{\partial
+  f_2''}{\partial z}$．
+
+
+  其中 $\frac{\partial f_1''}{\partial z} = f_{11}'''' \cdot 1 + f_{12}'''' \cdot xy$；$\frac{\partial f_2''}{\partial z} = f_{21}''''
+  \cdot 1 + f_{22}'''' \cdot xy$．
+
+
+  代入整理得 $\frac{\partial^2 w}{\partial x \partial z} = f_{11}'''' + y(x+z)f_{12}'''' + xy^2 z f_{22}'''' + y f_2''$．'
+feedback:
+  correct: 链式法则与乘积法则运用严密，二阶偏导各项完整．
+  incorrect: 注意 $f_1', f_2'$ 仍是复合函数，再次求导须继续使用链式法则．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第11题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2ab0755169d399c202123d9d471aeed3dc150dc83dc1869a6f16dc315ab66aeb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2ab0755169d399c202123d9d471aeed3dc150dc83dc1869a6f16dc315ab66aeb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2ab0755169d399c202123d9d471aeed3dc150dc83dc1869a6f16dc315ab66aeb

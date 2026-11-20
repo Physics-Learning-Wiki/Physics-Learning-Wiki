@@ -1,0 +1,120 @@
+schema_version: 3
+id: q-000860
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求不定积分：
+
+
+  $$
+
+  \int \frac{x^2 - 7}{x^2 + x - 2}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：部分分式分解错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确拆分，但在对数项系数或对数合并上有小疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成多项式除法与部分分式积分
+    points: 1
+reference_answer: $x + \ln\left|\frac{x+2}{(x-1)^2}\right| + C$（或 $x + \ln|x+2| - 2\ln|x-1| + C$）．
+solution: '对假分式进行多项式除法：
+
+
+  $$
+
+  \frac{x^2 - 7}{x^2 + x - 2} = \frac{(x^2 + x - 2) - (x + 5)}{x^2 + x - 2} = 1 - \frac{x + 5}{x^2 + x - 2}
+
+  $$
+
+
+  分母因式分解：$x^2 + x - 2 = (x+2)(x-1)$．
+
+
+  部分分式分解：设 $\frac{x+5}{(x+2)(x-1)} = \frac{A}{x+2} + \frac{B}{x-1}$．
+
+
+  - 用遮掩法：令 $x = -2$，得 $A = \frac{-2+5}{-2-1} = \frac{3}{-3} = -1$；
+
+  - 令 $x = 1$，得 $B = \frac{1+5}{1+2} = \frac{6}{3} = 2$．
+
+
+  所以：
+
+
+  $$
+
+  \frac{x+5}{x^2+x-2} = -\frac{1}{x+2} + \frac{2}{x-1}
+
+  $$
+
+
+  代入被积函数：
+
+
+  $$
+
+  \int \frac{x^2 - 7}{x^2 + x - 2}\,\mathrm{d}x = \int \left(1 + \frac{1}{x+2} - \frac{2}{x-1}\right)\,\mathrm{d}x
+
+  $$
+
+
+  $$
+
+  = x + \ln|x+2| - 2\ln|x-1| + C = x + \ln\left|\frac{x+2}{(x-1)^2}\right| + C
+
+  $$'
+feedback:
+  correct: 正确完成真分式化简与部分分式分解求得原函数．
+  incorrect: 请注意部分分式拆分系数：$A=-1, B=2$，积分后包含绝对值符号与积分常数 C．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第3(1)题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:46d2b583888c3e06462091f304d9e20f9b18b94e0a1e4821cf77a2aa8f4d719b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:46d2b583888c3e06462091f304d9e20f9b18b94e0a1e4821cf77a2aa8f4d719b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:46d2b583888c3e06462091f304d9e20f9b18b94e0a1e4821cf77a2aa8f4d719b

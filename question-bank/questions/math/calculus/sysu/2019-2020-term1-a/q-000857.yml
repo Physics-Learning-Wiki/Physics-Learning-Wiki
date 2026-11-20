@@ -1,0 +1,117 @@
+schema_version: 3
+id: q-000857
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.derivative-integral
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{\int_0^x (x-t)f(t)\,\mathrm{d}t}{x^2}
+
+  $$
+
+
+  其中 $f(x)$ 是连续函数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未拆开变量 x 导致积分求导错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确拆分求导，但第二次求导或连续性代入有误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确拆分并求得极限 f(0)/2
+    points: 1
+reference_answer: $\lim_{x\to 0} \frac{\int_0^x (x-t)f(t)\,\mathrm{d}t}{x^2} = \frac{f(0)}{2}$．
+solution: '拆分变上限积分中的变量 $x$（注意积分变量为 $t$）：
+
+
+  $$
+
+  \int_0^x (x-t)f(t)\,\mathrm{d}t = x \int_0^x f(t)\,\mathrm{d}t - \int_0^x t f(t)\,\mathrm{d}t
+
+  $$
+
+
+  该极限为 $\frac{0}{0}$ 型未定式，应用洛必达法则对分子分母关于 $x$ 求导：
+
+
+  $$
+
+  \frac{\mathrm{d}}{\mathrm{d}x}\left(x \int_0^x f(t)\,\mathrm{d}t - \int_0^x t f(t)\,\mathrm{d}t\right) = \int_0^x f(t)\,\mathrm{d}t
+  + x f(x) - x f(x) = \int_0^x f(t)\,\mathrm{d}t
+
+  $$
+
+
+  分母求导为 $2x$．所以：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{\int_0^x (x-t)f(t)\,\mathrm{d}t}{x^2} = \lim_{x\to 0} \frac{\int_0^x f(t)\,\mathrm{d}t}{2x}
+
+  $$
+
+
+  再次应用洛必达法则（或微积分基本定理导数定义）：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{\int_0^x f(t)\,\mathrm{d}t}{2x} = \lim_{x\to 0} \frac{f(x)}{2} = \frac{f(0)}{2}
+
+  $$'
+feedback:
+  correct: 正确拆分变上限积分提出变量 $x$ 并两次应用洛必达法则求得 $f(0)/2$．
+  incorrect: 求导关键：积分内含被积变量 $x$，必须先拆成 $x\int_0^x f(t)\,\mathrm{d}t - \int_0^x tf(t)\,\mathrm{d}t$ 才能对 $x$ 求导．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第1(2)题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0cfead9c86f7e2bdf03691f0f430632a7cae94397f86574f0b575a70ae703f1b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0cfead9c86f7e2bdf03691f0f430632a7cae94397f86574f0b575a70ae703f1b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0cfead9c86f7e2bdf03691f0f430632a7cae94397f86574f0b575a70ae703f1b

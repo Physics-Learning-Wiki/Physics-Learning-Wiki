@@ -1,0 +1,143 @@
+schema_version: 3
+id: q-000968
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '1. 证明含参变量反常积分 $\int_0^{+\infty} \frac{\sin xy}{x}\,\mathrm{d}x$ 在 $y \in [2023, 2024]$ 上一致收敛；
+
+  2. 求积分 $\int_0^{+\infty} \frac{\cos 2023x - \cos 2024x}{x^2}\,\mathrm{d}x$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: (1) 见详细证明过程；(2) 原积分值为 $\frac{\pi}{2}$．
+solution: '1. 证明一致收敛：
+
+  采用狄利克雷（Dirichlet）一致收敛判别法．
+
+  对任意 $A > 0$ 及 $y \in [2023, 2024]$，计算三角部分的积分：
+
+
+  $$
+
+  \left| \int_0^A \sin xy\,\mathrm{d}x \right| = \left| \left. -\frac{\cos xy}{y} \right|_0^A \right| = \left| \frac{1 - \cos
+  Ay}{y} \right| \le \frac{2}{y} \le \frac{2}{2023}
+
+  $$
+
+
+  因此其变上限积分关于 $y \in [2023, 2024]$ 一致有界．
+
+  另一方面，函数 $g(x) = \frac{1}{x}$ 在 $(0, +\infty)$ 上关于 $x$ 单调减少，且 $\lim_{x \to +\infty} \frac{1}{x} = 0$ 与 $y$ 无关，因此关于 $y \in
+  [2023, 2024]$ 一致趋于 0．
+
+  由狄利克雷判别法，含参反常积分 $\int_0^{+\infty} \frac{\sin xy}{x}\,\mathrm{d}x$ 在 $[2023, 2024]$ 上一致收敛．
+
+
+  2. 计算积分：
+
+  利用定积分表示余弦之差：
+
+
+  $$
+
+  \frac{\cos 2023x - \cos 2024x}{x} = \int_{2023}^{2024} \sin xy\,\mathrm{d}y
+
+  $$
+
+
+  故被积函数可表示为：
+
+
+  $$
+
+  \frac{\cos 2023x - \cos 2024x}{x^2} = \int_{2023}^{2024} \frac{\sin xy}{x}\,\mathrm{d}y
+
+  $$
+
+
+  因为 $\int_0^{+\infty} \frac{\sin xy}{x}\,\mathrm{d}x$ 在 $y \in [2023, 2024]$ 上一致收敛，可以交换积分次序：
+
+
+  $$
+
+  I = \int_0^{+\infty} \mathrm{d}x \int_{2023}^{2024} \frac{\sin xy}{x}\,\mathrm{d}y = \int_{2023}^{2024} \mathrm{d}y \int_0^{+\infty}
+  \frac{\sin xy}{x}\,\mathrm{d}x
+
+  $$
+
+
+  由著名的狄利克雷积分公式，对任意 $y > 0$：
+
+
+  $$
+
+  \int_0^{+\infty} \frac{\sin xy}{x}\,\mathrm{d}x = \frac{\pi}{2}
+
+  $$
+
+
+  代入计算：
+
+
+  $$
+
+  I = \int_{2023}^{2024} \frac{\pi}{2}\,\mathrm{d}y = \frac{\pi}{2} (2024 - 2023) = \frac{\pi}{2}
+
+  $$'
+feedback:
+  correct: 正确运用狄利克雷判别法证明含参积分一致收敛，并利用交换积分次序结合狄利克雷积分求出数值．
+  incorrect: 含参反常积分交换积分次序是计算许多无法求出原函数的反常积分（如狄利克雷型积分）的经典有力工具．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第11题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9e6787b60875e5c0ca1f7f7c5b8434175ae4bc5fb75be39e028464e5d674335
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9e6787b60875e5c0ca1f7f7c5b8434175ae4bc5fb75be39e028464e5d674335
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e9e6787b60875e5c0ca1f7f7c5b8434175ae4bc5fb75be39e028464e5d674335

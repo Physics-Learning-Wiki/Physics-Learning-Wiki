@@ -1,0 +1,98 @@
+schema_version: 3
+id: q-000880
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求过空间直线：
+
+
+  $$
+
+  \begin{cases} 4x - y + 3z - 3 = 0 \\ -2x + 2y - 3z = 0 \end{cases}
+
+  $$
+
+
+  且与 $xOy$ 坐标面垂直的平面方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 平面方程为 $2x + y - 3 = 0$．
+solution: '设过交线的平面束方程为：
+
+
+  $$
+
+  (4x - y + 3z - 3) + \lambda (-2x + 2y - 3z) = 0 \implies (4 - 2\lambda)x + (-1 + 2\lambda)y + (3 - 3\lambda)z - 3 = 0
+
+  $$
+
+
+  该平面与 $xOy$ 面垂直，其法向量需与 $(0, 0, 1)$ 垂直，故 $z$ 分量为 $0$：
+
+
+  $$
+
+  3 - 3\lambda = 0 \implies \lambda = 1
+
+  $$
+
+
+  代入 $\lambda = 1$ 即得 $2x + y - 3 = 0$．'
+feedback:
+  correct: 正确利用平面束方程或消去法求得垂直平面的方程．
+  incorrect: 与 $xOy$ 垂直即平面方程中不含 $z$ 项，直接将两原方程相加消去 $z$ 即可秒解．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学期末试题（南校数院）第13题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-south
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e305a7d8a6e7290d7501ea3bc48ecdaa8da075d04f7e4033e56b5e5496e984f8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e305a7d8a6e7290d7501ea3bc48ecdaa8da075d04f7e4033e56b5e5496e984f8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e305a7d8a6e7290d7501ea3bc48ecdaa8da075d04f7e4033e56b5e5496e984f8

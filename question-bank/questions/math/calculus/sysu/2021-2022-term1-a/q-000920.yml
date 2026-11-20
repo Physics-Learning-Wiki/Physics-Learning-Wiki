@@ -1,0 +1,132 @@
+schema_version: 3
+id: q-000920
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 连续，$g(x) = \int_0^1 f(tx)\,\mathrm{d}t$，且已知 $\lim_{x \to 0} \frac{f(x)}{x} = A$（其中 $A$ 为有限常数）：
+
+
+  1. 求导函数 $g''(x)$（对 $x \neq 0$）；
+
+  2. 讨论 $g''(x)$ 在 $x = 0$ 处的连续性．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 当 $x \neq 0$ 时 $g'(x) = \frac{f(x) - g(x)}{x}$；且 $g'(0) = \frac{A}{2}$，导函数在 $x=0$ 处连续．
+solution: '1. 求 $g''(x)$（$x \neq 0$）：
+
+  作变量代换：令 $u = tx$，则 $\mathrm{d}t = \frac{1}{x}\,\mathrm{d}u$．当 $t=0$ 时 $u=0$；当 $t=1$ 时 $u=x$：
+
+
+  $$
+
+  g(x) = \frac{1}{x} \int_0^x f(u)\,\mathrm{d}u \implies x g(x) = \int_0^x f(u)\,\mathrm{d}u
+
+  $$
+
+
+  两边关于 $x$ 求导：
+
+
+  $$
+
+  g(x) + x g''(x) = f(x) \implies g''(x) = \frac{f(x) - g(x)}{x} \quad (x \neq 0)
+
+  $$
+
+
+  2. 讨论 $g''(x)$ 在 $x = 0$ 处的连续性：
+
+  已知 $\lim_{x \to 0} \frac{f(x)}{x} = A$ 且 $f$ 连续，从而 $f(0) = 0$．
+
+
+  由导数定义计算 $g''(0)$：由于 $g(0) = \int_0^1 f(0)\,\mathrm{d}t = 0$，
+
+
+  $$
+
+  g''(0) = \lim_{x \to 0} \frac{g(x) - g(0)}{x} = \lim_{x \to 0} \frac{\int_0^x f(u)\,\mathrm{d}u}{x^2}
+
+  $$
+
+
+  应用洛必达法则：
+
+
+  $$
+
+  g''(0) = \lim_{x \to 0} \frac{f(x)}{2x} = \frac{1}{2} \lim_{x \to 0} \frac{f(x)}{x} = \frac{A}{2}
+
+  $$
+
+
+  再考察当 $x \to 0$ 时 $g''(x)$ 的极限：
+
+
+  $$
+
+  \lim_{x \to 0} g''(x) = \lim_{x \to 0} \frac{f(x) - g(x)}{x} = \lim_{x \to 0} \left[ \frac{f(x)}{x} - \frac{g(x)}{x} \right]
+  = A - g''(0) = A - \frac{A}{2} = \frac{A}{2}
+
+  $$
+
+
+  因为 $\lim_{x \to 0} g''(x) = g''(0) = \frac{A}{2}$，所以导函数 $g''(x)$ 在 $x = 0$ 处连续．'
+feedback:
+  correct: 变量代换求变限积分导数规范，利用导数定义与洛必达严密证明导函数连续．
+  incorrect: 遇到含参数积分 $g(x)=\int_0^1 f(tx)\,\mathrm{d}t$，换元为 $\frac{1}{x}\int_0^x f(u)\,\mathrm{d}u$ 后再求导最简捷．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第15题（12分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:65aae0b259cbe9f1e70aec67ec9b37e6a9b629ba4729de8bba3c44b82b42b268
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:65aae0b259cbe9f1e70aec67ec9b37e6a9b629ba4729de8bba3c44b82b42b268
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:65aae0b259cbe9f1e70aec67ec9b37e6a9b629ba4729de8bba3c44b82b42b268

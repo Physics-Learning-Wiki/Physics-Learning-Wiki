@@ -1,0 +1,151 @@
+schema_version: 3
+id: q-000810
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '讨论二元函数
+
+
+  $$
+
+  f(x, y) = \begin{cases} \frac{x\sin x\sin y}{x^2+y^2}, & x^2+y^2 \neq 0, \\ 0, & x^2+y^2 = 0 \end{cases}
+
+  $$
+
+
+  在点 $(0, 0)$ 处的连续性、偏导数的存在性及可微性．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：连续性证明不成立或未按定义计算偏导数与可微性极限
+    points: 0
+  - id: partial
+    label: 部分掌握：正确得出连续性与偏导数，但在可微性极限检验上有失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成连续性、偏导数存在性以及不可微性的全部严密证明
+    points: 1
+reference_answer: 函数在 $(0, 0)$ 处连续，偏导数 $f_x(0,0)=0, f_y(0,0)=0$ 均存在，但在 $(0, 0)$ 处不可微．
+solution: '**1. 连续性：**
+
+
+  因为 $|\sin x| \le |x|, |\sin y| \le |y|$，所以当 $(x, y) \neq (0, 0)$ 时：
+
+
+  $$
+
+  |f(x, y)| = \frac{|x||\sin x||\sin y|}{x^2+y^2} \le \frac{x^2 |y|}{x^2+y^2} \le |y|
+
+  $$
+
+
+  当 $(x, y) \to (0, 0)$ 时，$|y| \to 0$，由夹逼定理可知：
+
+
+  $$
+
+  \lim_{(x, y)\to(0, 0)} f(x, y) = 0 = f(0, 0)
+
+  $$
+
+
+  因此 $f(x, y)$ 在 $(0, 0)$ 处连续．
+
+
+  **2. 偏导数的存在性：**
+
+
+  由偏导数定义：
+
+
+  $$
+
+  f_x(0, 0) = \lim_{x\to 0} \frac{f(x, 0) - f(0, 0)}{x} = \lim_{x\to 0} \frac{0 - 0}{x} = 0
+
+  $$
+
+
+  $$
+
+  f_y(0, 0) = \lim_{y\to 0} \frac{f(0, y) - f(0, 0)}{y} = \lim_{y\to 0} \frac{0 - 0}{y} = 0
+
+  $$
+
+
+  两偏导数均存在且均为 0．
+
+
+  **3. 可微性：**
+
+
+  考察可微性判别极限：
+
+
+  $$
+
+  \lim_{(x, y)\to(0, 0)} \frac{f(x, y) - f(0, 0) - f_x(0,0)x - f_y(0,0)y}{\sqrt{x^2+y^2}} = \lim_{(x, y)\to(0, 0)} \frac{x\sin
+  x\sin y}{(x^2+y^2)^{\frac{3}{2}}}
+
+  $$
+
+
+  沿射线 $y = x$（$x > 0$）趋近于原点：
+
+
+  $$
+
+  \frac{x\sin^2 x}{(2x^2)^{\frac{3}{2}}} \sim \frac{x \cdot x^2}{2\sqrt{2}x^3} = \frac{1}{2\sqrt{2}} \neq 0
+
+  $$
+
+
+  极限不为 0，因此 $f(x, y)$ 在 $(0, 0)$ 处不可微．'
+feedback:
+  correct: 严密论证了连续性（夹逼放大）、偏导数（定义求导均为 0）以及不可微性（沿射线 $y=x$ 极限非零）．
+  incorrect: 注意多元函数可微性检验必须检验误差量与距离比值的全极限是否为 0，不能仅由偏导数存在断言可微．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 420
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9b13e4d3205497b1b9c1a3e8b561981eeddd8d57afaa233ea04f332e5b62dbf0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9b13e4d3205497b1b9c1a3e8b561981eeddd8d57afaa233ea04f332e5b62dbf0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9b13e4d3205497b1b9c1a3e8b561981eeddd8d57afaa233ea04f332e5b62dbf0

@@ -1,0 +1,146 @@
+schema_version: 3
+id: q-000967
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: 求幂级数 $\sum_{n=1}^\infty (-1)^{n-1}\frac{x^n}{n+1}$ 的收敛域与和函数．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 收敛域为 $(-1, 1]$；和函数为 $s(x) = \begin{cases} \frac{x - \ln(1+x)}{x}, & x \in (-1, 0) \cup (0, 1] \\[2mm] 0,
+  & x = 0 \end{cases}$．
+solution: '1. 求收敛域：
+
+  系数 $a_n = \frac{(-1)^{n-1}}{n+1}$．
+
+
+  $$
+
+  \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \lim_{n \to \infty} \frac{n+1}{n+2} = 1 \implies R = 1
+
+  $$
+
+
+  收敛开区间为 $(-1, 1)$．考察端点：
+
+  - 当 $x = 1$ 时，级数为 $\sum_{n=1}^\infty (-1)^{n-1}\frac{1}{n+1} = \frac{1}{2} - \frac{1}{3} + \dots$，满足莱布尼茨条件，收敛；
+
+  - 当 $x = -1$ 时，级数为 $\sum_{n=1}^\infty (-1)^{n-1}\frac{(-1)^n}{n+1} = -\sum_{n=1}^\infty \frac{1}{n+1}$，为发散的调和级数．
+
+  因此，该幂级数的收敛域为 $(-1, 1]$．
+
+
+  2. 求和函数：
+
+  设 $s(x) = \sum_{n=1}^\infty (-1)^{n-1}\frac{x^n}{n+1}$．
+
+  当 $x \neq 0$ 时，两边同乘 $x$：
+
+
+  $$
+
+  x s(x) = \sum_{n=1}^\infty (-1)^{n-1}\frac{x^{n+1}}{n+1}
+
+  $$
+
+
+  在收敛区间 $(-1, 1)$ 内逐项求导：
+
+
+  $$
+
+  [x s(x)]'' = \sum_{n=1}^\infty (-1)^{n-1} x^n = x - x^2 + x^3 - \dots = \frac{x}{1+x} = 1 - \frac{1}{1+x}
+
+  $$
+
+
+  两边从 $0$ 到 $x$ 积分（注意当 $x=0$ 时 $x s(x) = 0$）：
+
+
+  $$
+
+  x s(x) = \int_0^x \left( 1 - \frac{1}{1+t} \right)\,\mathrm{d}t = x - \ln(1+x)
+
+  $$
+
+
+  当 $x \neq 0$ 时：
+
+
+  $$
+
+  s(x) = \frac{x - \ln(1+x)}{x}
+
+  $$
+
+
+  当 $x = 0$ 时，原级数各项为 0，故 $s(0) = 0$（亦等于 $\lim_{x \to 0} \frac{x-\ln(1+x)}{x} = 0$）．
+
+  由阿贝尔定理，和函数在端点 $x=1$ 处左连续：$s(1) = 1 - \ln 2$．
+
+
+  综上，和函数为：
+
+
+  $$
+
+  s(x) = \begin{cases} \frac{x - \ln(1+x)}{x}, & x \in (-1, 0) \cup (0, 1] \\[2mm] 0, & x = 0 \end{cases}
+
+  $$'
+feedback:
+  correct: 正确计算收敛半径与端点敛散性，并通过逐项求导积分求得和函数分段表达式．
+  incorrect: 乘 $x$ 后导数化为几何级数，求和后再积分除以 $x$，注意补全 $x=0$ 的连续点定义．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第10题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b34eb3999b1ffad37b83f9e827d1e2095a89f53e893f5668f84bb665234ac929
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b34eb3999b1ffad37b83f9e827d1e2095a89f53e893f5668f84bb665234ac929
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b34eb3999b1ffad37b83f9e827d1e2095a89f53e893f5668f84bb665234ac929

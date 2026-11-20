@@ -1,0 +1,117 @@
+schema_version: 3
+id: q-000949
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求过点 $M(3, 3, 0)$ 且与直线 $L_1\colon \frac{x}{1} = \frac{y}{1} = \frac{z}{2}$ 垂直相交的直线 $L$ 的方程．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{x-3}{-1} = \frac{y-3}{-1} = \frac{z}{1}$（或 $\frac{x-3}{1} = \frac{y-3}{1} = \frac{z}{-1}$）
+solution: '设直线 $L$ 与 $L_1$ 相交于点 $A$．
+
+
+  因为点 $A$ 在直线 $L_1$ 上，可设其参数坐标为 $A(t, t, 2t)$．
+
+
+  直线 $L_1$ 的方向向量为 $\mathbf{s}_1 = (1, 1, 2)$．
+
+
+  连接 $M(3, 3, 0)$ 与 $A$ 的向量为：
+
+
+  $$
+
+  \vec{MA} = (t-3, t-3, 2t)
+
+  $$
+
+
+  因为直线 $L$ 与 $L_1$ 垂直，故 $\vec{MA} \perp \mathbf{s}_1$，即数量积为零：
+
+
+  $$
+
+  \vec{MA} \cdot \mathbf{s}_1 = (t-3)\cdot 1 + (t-3)\cdot 1 + 2t\cdot 2 = 6t - 6 = 0 \implies t = 1
+
+  $$
+
+
+  由此得到垂足坐标为 $A(1, 1, 2)$．
+
+
+  直线 $L$ 的方向向量可取为：
+
+
+  $$
+
+  \mathbf{s} = \vec{MA} = (1-3, 1-3, 2-0) = (-2, -2, 2) \sim (-1, -1, 1)
+
+  $$
+
+
+  因此所求直线 $L$ 的对称式方程为：
+
+
+  $$
+
+  \frac{x-3}{-1} = \frac{y-3}{-1} = \frac{z}{1}
+
+  $$'
+feedback:
+  correct: 正确设出垂足参数坐标并利用垂直条件确定交点与方向向量．
+  incorrect: 两直线垂直相交意味着必须有交点（垂足），点到直线的垂线方向向量即为连接已知点与垂足的向量．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第5题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f46717b40d2abcfc58167cab717716b188897627a161a3fe1c4a53c74192a972
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f46717b40d2abcfc58167cab717716b188897627a161a3fe1c4a53c74192a972
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f46717b40d2abcfc58167cab717716b188897627a161a3fe1c4a53c74192a972

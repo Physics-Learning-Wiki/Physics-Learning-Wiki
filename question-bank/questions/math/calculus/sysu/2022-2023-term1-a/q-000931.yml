@@ -1,0 +1,123 @@
+schema_version: 3
+id: q-000931
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 连续，且 $f(0) \neq 0$，求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\int_0^x (x-t)f(t)\,\mathrm{d}t}{x \int_0^x f(x-t)\,\mathrm{d}t}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \frac{\int_0^x (x-t)f(t)\,\mathrm{d}t}{x \int_0^x f(x-t)\,\mathrm{d}t} = \frac{1}{2}$．
+solution: '首先拆开分子与分母中的变限积分：
+
+
+  分子：$\int_0^x (x-t)f(t)\,\mathrm{d}t = x\int_0^x f(t)\,\mathrm{d}t - \int_0^x t f(t)\,\mathrm{d}t$．
+
+  分母：在积分中令 $u = x - t$，则 $\mathrm{d}t = -\mathrm{d}u$，$\int_0^x f(x-t)\,\mathrm{d}t = \int_0^x f(u)\,\mathrm{d}u$．故分母为 $x\int_0^x
+  f(u)\,\mathrm{d}u$．
+
+
+  原式化为：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{x\int_0^x f(t)\,\mathrm{d}t - \int_0^x t f(t)\,\mathrm{d}t}{x\int_0^x f(t)\,\mathrm{d}t}
+
+  $$
+
+
+  当 $x \to 0$ 时属于 $\frac{0}{0}$ 型未定式，应用洛必达法则：
+
+
+  分子导数：$\left( \int_0^x f(t)\,\mathrm{d}t + x f(x) \right) - x f(x) = \int_0^x f(t)\,\mathrm{d}t$．
+
+  分母导数：$\int_0^x f(t)\,\mathrm{d}t + x f(x)$．
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\int_0^x f(t)\,\mathrm{d}t}{\int_0^x f(t)\,\mathrm{d}t + x f(x)}
+
+  $$
+
+
+  由积分第一中值定理：$\int_0^x f(t)\,\mathrm{d}t = x f(\xi)$（$\xi$ 介于 $0$ 与 $x$ 之间）．分子分母同除以 $x$：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{f(\xi)}{f(\xi) + f(x)} = \frac{f(0)}{f(0) + f(0)} = \frac{f(0)}{2f(0)} = \frac{1}{2}
+
+  $$
+
+
+  （由于 $f(0) \neq 0$，可约去 $f(0)$）．因此极限值为 $\frac{1}{2}$．'
+feedback:
+  correct: 换元化简卷积分母并应用洛必达法则与积分中值定理求得 1/2．
+  incorrect: 对 $\int_0^x f(x-t)\,\mathrm{d}t$ 作换元 $u = x-t$ 还原为普通变上限积分是化简关键．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第12题（6分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ad2f7acc5b80554117f1bb8b4961d16919c46346645aa90359e5717ebe938198
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ad2f7acc5b80554117f1bb8b4961d16919c46346645aa90359e5717ebe938198
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ad2f7acc5b80554117f1bb8b4961d16919c46346645aa90359e5717ebe938198

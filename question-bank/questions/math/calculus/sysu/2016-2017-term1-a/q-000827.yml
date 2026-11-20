@@ -1,0 +1,121 @@
+schema_version: 3
+id: q-000827
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 设 $F(x, x+y, x+y+z) = 0$ 且 $F$ 具有一阶连续偏导数，函数 $z = z(x, y)$，求 $z = z(x, y)$ 的全微分 $\mathrm{d}z$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：链式法则求全微分错误
+    points: 0
+  - id: partial
+    label: 部分掌握：微分形式正确，但在系数合并或解 dz 时有局部疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确合并同类项并解出 dz 的完整表达式
+    points: 1
+reference_answer: $\mathrm{d}z = -\frac{F_1 + F_2 + F_3}{F_3}\,\mathrm{d}x - \frac{F_2 + F_3}{F_3}\,\mathrm{d}y$（其中假定 $F_3
+  \neq 0$）．
+solution: '设复合中间变量 $u = x, v = x+y, w = x+y+z$．方程为 $F(u, v, w) = 0$．
+
+
+  两边取全微分：
+
+
+  $$
+
+  \mathrm{d}F = F_1 \,\mathrm{d}u + F_2 \,\mathrm{d}v + F_3 \,\mathrm{d}w = 0
+
+  $$
+
+
+  计算各中间变量的微分：
+
+
+  $$
+
+  \mathrm{d}u = \mathrm{d}x, \quad \mathrm{d}v = \mathrm{d}x + \mathrm{d}y, \quad \mathrm{d}w = \mathrm{d}x + \mathrm{d}y
+  + \mathrm{d}z
+
+  $$
+
+
+  代入微分等式：
+
+
+  $$
+
+  F_1 \,\mathrm{d}x + F_2 (\mathrm{d}x + \mathrm{d}y) + F_3 (\mathrm{d}x + \mathrm{d}y + \mathrm{d}z) = 0
+
+  $$
+
+
+  按自变量 $\mathrm{d}x, \mathrm{d}y, \mathrm{d}z$ 合并同类项：
+
+
+  $$
+
+  (F_1 + F_2 + F_3)\,\mathrm{d}x + (F_2 + F_3)\,\mathrm{d}y + F_3 \,\mathrm{d}z = 0
+
+  $$
+
+
+  若 $F_3 \neq 0$，解出 $\mathrm{d}z$：
+
+
+  $$
+
+  \mathrm{d}z = -\frac{F_1 + F_2 + F_3}{F_3}\,\mathrm{d}x - \frac{F_2 + F_3}{F_3}\,\mathrm{d}y
+
+  $$'
+feedback:
+  correct: 正确使用全微分形式不变性与链式法则解出 $\mathrm{d}z$．
+  incorrect: 全微分法则：$\mathrm{d}F = 0$，将 $\mathrm{d}u, \mathrm{d}v, \mathrm{d}w$ 展开后合并 $\mathrm{d}x, \mathrm{d}y, \mathrm{d}z$
+    的系数即可直接解得 $\mathrm{d}z$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第13题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05372201d053692c78e044e9c1d7f0a802636a3b6bfdba180c4bd74b9f1887a0
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05372201d053692c78e044e9c1d7f0a802636a3b6bfdba180c4bd74b9f1887a0
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05372201d053692c78e044e9c1d7f0a802636a3b6bfdba180c4bd74b9f1887a0

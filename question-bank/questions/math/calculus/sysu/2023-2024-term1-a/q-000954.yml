@@ -1,0 +1,98 @@
+schema_version: 3
+id: q-000954
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{1}{n^{2024}}\left( 1^{2023} + 2^{2023} + \dots + n^{2023} \right)
+
+  $$
+
+
+  其中 $n$ 为正整数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{1}{2024}$
+solution: '将求和式改写为定积分的黎曼和形式：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{1}{n^{2024}} \sum_{i=1}^n i^{2023} = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \left( \frac{i}{n}
+  \right)^{2023}
+
+  $$
+
+
+  根据定积分定义，这是函数 $f(x) = x^{2023}$ 在区间 $[0, 1]$ 上的定积分：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n \left( \frac{i}{n} \right)^{2023} = \int_0^1 x^{2023}\,\mathrm{d}x = \left.
+  \left[ \frac{x^{2024}}{2024} \right] \right|_0^1 = \frac{1}{2024}
+
+  $$'
+feedback:
+  correct: 正确将幂和极限识别为定积分定义并求出数值．
+  incorrect: 提取因子 $1/n$ 将和项化为 $(i/n)^p$，是定积分定义求和式极限的标准范式．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第11题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bf56d4ecfdde3beaff081e15d26a8a0d16e6f5777c7384be6f58c1e366ae2402
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bf56d4ecfdde3beaff081e15d26a8a0d16e6f5777c7384be6f58c1e366ae2402
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bf56d4ecfdde3beaff081e15d26a8a0d16e6f5777c7384be6f58c1e366ae2402

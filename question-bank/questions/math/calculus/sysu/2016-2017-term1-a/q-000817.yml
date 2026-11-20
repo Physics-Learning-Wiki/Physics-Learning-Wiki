@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000817
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求不定积分：
+
+
+  $$
+
+  \int \frac{x e^{-x}}{(1+e^{-x})^2}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未完成凑微分或分部积分结构错误
+    points: 0
+  - id: partial
+    label: 部分掌握：分部积分方向正确，但在剩余积分或整理项上有局部失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成凑微分与分部积分，写出完整的原函数与常数 C
+    points: 1
+reference_answer: $\frac{x}{1+e^{-x}} - \ln(1+e^x) + C$（或等价形式 $\frac{x}{1+e^{-x}} - x - \ln(1+e^{-x}) + C$）．
+solution: '观察微分式：
+
+
+  $$
+
+  \mathrm{d}\left(\frac{1}{1+e^{-x}}\right) = -\frac{-e^{-x}}{(1+e^{-x})^2}\,\mathrm{d}x = \frac{e^{-x}}{(1+e^{-x})^2}\,\mathrm{d}x
+
+  $$
+
+
+  因此可采用分部积分法：
+
+
+  $$
+
+  \int \frac{x e^{-x}}{(1+e^{-x})^2}\,\mathrm{d}x = \int x \,\mathrm{d}\left(\frac{1}{1+e^{-x}}\right)
+
+  $$
+
+
+  $$
+
+  = \frac{x}{1+e^{-x}} - \int \frac{1}{1+e^{-x}}\,\mathrm{d}x
+
+  $$
+
+
+  计算剩余积分，分子分母同乘以 $e^x$：
+
+
+  $$
+
+  \int \frac{1}{1+e^{-x}}\,\mathrm{d}x = \int \frac{e^x}{e^x+1}\,\mathrm{d}x = \ln(e^x+1) + C_1
+
+  $$
+
+
+  因此最终结果为：
+
+
+  $$
+
+  \int \frac{x e^{-x}}{(1+e^{-x})^2}\,\mathrm{d}x = \frac{x}{1+e^{-x}} - \ln(1+e^x) + C
+
+  $$
+
+
+  （若将后项拆为 $-x - \ln(1+e^{-x})$，亦完全等价）．'
+feedback:
+  correct: 准确凑微分 $\mathrm{d}(1/(1+e^{-x}))$ 并应用分部积分法．
+  incorrect: 请注意分部积分后的剩余积分需分子分母同乘 $e^x$ 凑微分求解，原卷参考解答漏写了首项 $\frac{x}{1+e^{-x}}$，本解析已予核实订正．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:04405763cd989a7d2d8ad9b923db574f14c901d1915fe8fdb1dbc5792600303c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:04405763cd989a7d2d8ad9b923db574f14c901d1915fe8fdb1dbc5792600303c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:04405763cd989a7d2d8ad9b923db574f14c901d1915fe8fdb1dbc5792600303c

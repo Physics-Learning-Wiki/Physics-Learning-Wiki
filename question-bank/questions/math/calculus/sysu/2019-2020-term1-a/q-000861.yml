@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000861
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求不定积分：
+
+
+  $$
+
+  \int \arctan\sqrt{x}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未完成换元或分部积分结构错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确分部积分，但在剩余积分或回代上有失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成换元与分部积分并准确回代
+    points: 1
+reference_answer: $(x+1)\arctan\sqrt{x} - \sqrt{x} + C$．
+solution: '做换元法：令 $t = \sqrt{x}$（$t \ge 0$），则 $x = t^2, \mathrm{d}x = 2t\,\mathrm{d}t$．
+
+
+  $$
+
+  \int \arctan\sqrt{x}\,\mathrm{d}x = \int \arctan t \cdot 2t\,\mathrm{d}t = \int \arctan t \,\mathrm{d}(t^2)
+
+  $$
+
+
+  采用分部积分法：
+
+
+  $$
+
+  = t^2 \arctan t - \int t^2 \,\mathrm{d}(\arctan t) = t^2 \arctan t - \int \frac{t^2}{1+t^2}\,\mathrm{d}t
+
+  $$
+
+
+  拆分有理式：
+
+
+  $$
+
+  \int \frac{t^2}{1+t^2}\,\mathrm{d}t = \int \left(1 - \frac{1}{1+t^2}\right)\,\mathrm{d}t = t - \arctan t
+
+  $$
+
+
+  代回：
+
+
+  $$
+
+  = t^2 \arctan t - (t - \arctan t) + C = (t^2 + 1)\arctan t - t + C
+
+  $$
+
+
+  回代 $t = \sqrt{x}$：
+
+
+  $$
+
+  \int \arctan\sqrt{x}\,\mathrm{d}x = (x + 1)\arctan\sqrt{x} - \sqrt{x} + C
+
+  $$'
+feedback:
+  correct: 正确利用根式换元与分部积分求得原函数．
+  incorrect: 分部积分后 $\int \frac{t^2}{1+t^2}\,\mathrm{d}t = t - \arctan t$，注意负号分配与回代．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第3(2)题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:14c3ad4689eb5f489edbcf88a58203cdd1f012cb23729aff72a6cbdf6fb8d1c9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:14c3ad4689eb5f489edbcf88a58203cdd1f012cb23729aff72a6cbdf6fb8d1c9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:14c3ad4689eb5f489edbcf88a58203cdd1f012cb23729aff72a6cbdf6fb8d1c9

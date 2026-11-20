@@ -1,0 +1,129 @@
+schema_version: 3
+id: q-000848
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 求极坐标系下的封闭曲线 $\rho = a \sin^3\left(\frac{\theta}{3}\right)$ 的全长，其中常数 $a > 0$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：极坐标弧长公式写错或范围确定错误
+    points: 0
+  - id: partial
+    label: 部分掌握：弧长微元化简正确，但在定积分代入时计算有失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整求得弧长微元并严谨积分得出 3*pi*a/2
+    points: 1
+reference_answer: $L = \frac{3\pi a}{2}$．
+solution: '在极坐标系下，由于 $\rho \ge 0$，要求 $\sin^3\left(\frac{\theta}{3}\right) \ge 0$，从而 $0 \le \frac{\theta}{3} \le \pi$，即 $\theta
+  \in [0, 3\pi]$．
+
+
+  计算 $\rho$ 关于 $\theta$ 的导数：
+
+
+  $$
+
+  \frac{\mathrm{d}\rho}{\mathrm{d}\theta} = 3a \sin^2\left(\frac{\theta}{3}\right) \cos\left(\frac{\theta}{3}\right) \cdot
+  \frac{1}{3} = a \sin^2\left(\frac{\theta}{3}\right) \cos\left(\frac{\theta}{3}\right)
+
+  $$
+
+
+  计算弧长微元 $\mathrm{d}s = \sqrt{\rho^2 + \left(\frac{\mathrm{d}\rho}{\mathrm{d}\theta}\right)^2}\,\mathrm{d}\theta$：
+
+
+  $$
+
+  \rho^2 + \left(\frac{\mathrm{d}\rho}{\mathrm{d}\theta}\right)^2 = a^2 \sin^6\left(\frac{\theta}{3}\right) + a^2 \sin^4\left(\frac{\theta}{3}\right)
+  \cos^2\left(\frac{\theta}{3}\right)
+
+  $$
+
+
+  $$
+
+  = a^2 \sin^4\left(\frac{\theta}{3}\right) \left[\sin^2\left(\frac{\theta}{3}\right) + \cos^2\left(\frac{\theta}{3}\right)\right]
+  = a^2 \sin^4\left(\frac{\theta}{3}\right)
+
+  $$
+
+
+  开根号（由于 $\frac{\theta}{3} \in [0, \pi]$，$\sin\left(\frac{\theta}{3}\right) \ge 0$）：
+
+
+  $$
+
+  \mathrm{d}s = a \sin^2\left(\frac{\theta}{3}\right)\,\mathrm{d}\theta
+
+  $$
+
+
+  计算全长积分：
+
+
+  $$
+
+  L = \int_0^{3\pi} a \sin^2\left(\frac{\theta}{3}\right)\,\mathrm{d}\theta
+
+  $$
+
+
+  令 $u = \frac{\theta}{3}$，$\mathrm{d}\theta = 3\,\mathrm{d}u$，$u \in [0, \pi]$：
+
+
+  $$
+
+  L = 3a \int_0^\pi \sin^2 u\,\mathrm{d}u = 3a \cdot \frac{\pi}{2} = \frac{3\pi a}{2}
+
+  $$'
+feedback:
+  correct: 正确确定极角范围 $[0, 3\pi]$，熟练计算极坐标弧长微元并求得 $\frac{3\pi a}{2}$．
+  incorrect: 请注意：极坐标封闭曲线范围由 $\rho \ge 0$ 确定为 $\theta \in [0, 3\pi]$；弧长微元为 $\sqrt{\rho^2 + (\rho')^2}\,\mathrm{d}\theta$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第6题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8affb0a339b022d81d10d4221c936780537dcee133e9252b9faba7d6e8976bf5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8affb0a339b022d81d10d4221c936780537dcee133e9252b9faba7d6e8976bf5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8affb0a339b022d81d10d4221c936780537dcee133e9252b9faba7d6e8976bf5

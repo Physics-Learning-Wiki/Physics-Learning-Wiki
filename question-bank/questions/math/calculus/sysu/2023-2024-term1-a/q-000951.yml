@@ -1,0 +1,107 @@
+schema_version: 3
+id: q-000951
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{(x,y) \to (0,0)} xy\ln(x^2+y^2)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $0$
+solution: '利用基本不等式 $|xy| \le \frac{x^2+y^2}{2}$ 进行放缩：
+
+
+  $$
+
+  0 \le |xy\ln(x^2+y^2)| \le \frac{x^2+y^2}{2} |\ln(x^2+y^2)|
+
+  $$
+
+
+  令 $t = x^2+y^2$．当 $(x, y) \to (0, 0)$ 时，$t \to 0^+$．
+
+
+  考察一元极限：
+
+
+  $$
+
+  \lim_{t \to 0^+} t\ln t = \lim_{t \to 0^+} \frac{\ln t}{\frac{1}{t}} = \lim_{t \to 0^+} \frac{\frac{1}{t}}{-\frac{1}{t^2}}
+  = \lim_{t \to 0^+} (-t) = 0
+
+  $$
+
+
+  由夹逼准则可知：
+
+
+  $$
+
+  \lim_{(x,y) \to (0,0)} |xy\ln(x^2+y^2)| = 0 \implies \lim_{(x,y) \to (0,0)} xy\ln(x^2+y^2) = 0
+
+  $$'
+feedback:
+  correct: 正确应用均值不等式放缩与一元极限结论由夹逼准则求得多元极限．
+  incorrect: 多元极坐标下 $xy\ln(r^2) = r^2\sin\theta\cos\theta \cdot 2\ln r$，其中 $\lim_{r \to 0^+} r^2\ln r = 0$ 且三角函数有界，亦可直接得出结论．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第8题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:248c608abd35730055db8b814741f8ae29c02bac5ec7a68f280703d56bcdfb80
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:248c608abd35730055db8b814741f8ae29c02bac5ec7a68f280703d56bcdfb80
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:248c608abd35730055db8b814741f8ae29c02bac5ec7a68f280703d56bcdfb80

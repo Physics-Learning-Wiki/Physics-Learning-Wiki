@@ -1,0 +1,84 @@
+schema_version: 3
+id: q-000905
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求过点 $A(2, 1, 3)$，并与空间直线：
+
+
+  $$
+
+  L: \frac{x+2}{2} = \frac{y-2}{1} = \frac{z}{-1}
+
+  $$
+
+
+  垂直相交的垂线方程（对称式方程）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 垂线方程为 $\frac{x-2}{-8} = \frac{y-1}{5} = \frac{z-3}{-11}$．
+solution: '设垂足为 $P(-2+2t, 2+t, -t)$，方向向量 $\vec{AP} = (2t-4, t+1, -t-3)$．
+
+
+  由垂直条件 $\vec{AP} \cdot (2, 1, -1) = 0 \implies 2(2t-4) + (t+1) - (-t-3) = 6t - 4 = 0 \implies t = 2/3$．
+
+
+  方向向量为 $(-8/3, 5/3, -11/3)$，同向向量为 $(-8, 5, -11)$．点向式方程为 $\frac{x-2}{-8} = \frac{y-1}{5} = \frac{z-3}{-11}$．'
+feedback:
+  correct: 垂足参数求解准确，点向式垂线方程规范．
+  incorrect: 利用直线参数方程求垂足是解决过点作垂线的最简方法．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第10题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2a7d656ef01d5631d7b34a4f605e211b4295e29a805ca65bfea4995f6ac39b3a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2a7d656ef01d5631d7b34a4f605e211b4295e29a805ca65bfea4995f6ac39b3a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2a7d656ef01d5631d7b34a4f605e211b4295e29a805ca65bfea4995f6ac39b3a

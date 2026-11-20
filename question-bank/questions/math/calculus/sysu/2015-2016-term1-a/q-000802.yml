@@ -1,0 +1,125 @@
+schema_version: 3
+id: q-000802
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x\to 0} \left(\frac{1+\tan x}{1+\sin x}\right)^{\frac{1}{x^3}}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未识别 $1^\infty$ 型或化简错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确化为对数形式，但在等价无穷小展开或计算中出现计算偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确推导对数极限为 1/2，得到最终极限 sqrt(e)
+    points: 1
+reference_answer: $\lim_{x\to 0} \left(\frac{1+\tan x}{1+\sin x}\right)^{\frac{1}{x^3}} = \sqrt{e} = e^{\frac{1}{2}}$．
+solution: '该极限为 $1^\infty$ 型未定式．
+
+
+  设 $y = \left(\frac{1+\tan x}{1+\sin x}\right)^{\frac{1}{x^3}}$，取对数：
+
+
+  $$
+
+  \ln y = \frac{1}{x^3} \ln\left(1 + \frac{\tan x - \sin x}{1+\sin x}\right)
+
+  $$
+
+
+  当 $x \to 0$ 时，$\frac{\tan x - \sin x}{1+\sin x} \to 0$，利用等价无穷小 $\ln(1+u) \sim u$：
+
+
+  $$
+
+  \ln y \sim \frac{1}{x^3} \cdot \frac{\tan x - \sin x}{1+\sin x}
+
+  $$
+
+
+  又因为：
+
+
+  $$
+
+  \tan x - \sin x = \tan x(1 - \cos x) \sim x \cdot \frac{1}{2}x^2 = \frac{1}{2}x^3
+
+  $$
+
+
+  且 $\lim_{x\to 0} (1+\sin x) = 1$，所以：
+
+
+  $$
+
+  \lim_{x\to 0} \ln y = \lim_{x\to 0} \frac{1}{x^3} \cdot \frac{\frac{1}{2}x^3}{1} = \frac{1}{2}
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x\to 0} y = e^{\frac{1}{2}} = \sqrt{e}
+
+  $$'
+feedback:
+  correct: 正确使用对数化或 $1^\infty$ 型标准公式结合 $\tan x - \sin x \sim \frac{1}{2}x^3$ 等价无穷小．
+  incorrect: 请注意：$\tan x - \sin x$ 在 $x\to 0$ 时的首项为 $\frac{1}{2}x^3$，分母 $1+\sin x \to 1$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8b20c43ac27b4710b5e00df1030f3e51f5463d20e53d6fc7aeb939611592ac2e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8b20c43ac27b4710b5e00df1030f3e51f5463d20e53d6fc7aeb939611592ac2e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8b20c43ac27b4710b5e00df1030f3e51f5463d20e53d6fc7aeb939611592ac2e

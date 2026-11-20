@@ -1,0 +1,143 @@
+schema_version: 3
+id: q-000938
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.ode
+type: free_response
+choice_order: fixed
+stem: '求三阶变系数微分方程（欧拉方程）：
+
+
+  $$
+
+  x^3 y'''''' + x^2 y'''' - 4xy'' = 3x^2
+
+  $$
+
+
+  的通解（其中 $x > 0$）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 通解为 $y = C_1 + \frac{C_2}{x} + C_3 x^3 - \frac{x^2}{2}$．
+solution: '该方程为三阶欧拉方程．作自变量代换 $x = e^t$（即 $t = \ln x$）．
+
+
+  利用微分算子关系：$x y'' = Dy$，$x^2 y'''' = D(D-1)y$，$x^3 y'''''' = D(D-1)(D-2)y$（其中 $D = \frac{\mathrm{d}}{\mathrm{d}t}$）：
+
+
+  $$
+
+  D(D-1)(D-2)y + D(D-1)y - 4Dy = 3e^{2t}
+
+  $$
+
+
+  化简左端算子：
+
+
+  $$
+
+  (D^3 - 3D^2 + 2D) + (D^2 - D) - 4D = D^3 - 2D^2 - 3D = D(D+1)(D-3)
+
+  $$
+
+
+  方程化为常系数线性微分方程：
+
+
+  $$
+
+  \frac{\mathrm{d}^3 y}{\mathrm{d}t^3} - 2\frac{\mathrm{d}^2 y}{\mathrm{d}t^2} - 3\frac{\mathrm{d}y}{\mathrm{d}t} = 3e^{2t}
+
+  $$
+
+
+  1. 求对应齐次方程的通解：
+
+  特征方程为 $r^3 - 2r^2 - 3r = 0 \implies r(r+1)(r-3) = 0$，特征根为 $r_1 = 0, r_2 = -1, r_3 = 3$．
+
+  齐次通解为 $Y(t) = C_1 + C_2 e^{-t} + C_3 e^{3t}$．
+
+
+  2. 求非齐次特解：
+
+  右端项为 $3e^{2t}$，$\lambda = 2$ 不是特征根．设特解形式为 $y^* = A e^{2t}$：
+
+
+  $$
+
+  (2^3 - 2 \cdot 2^2 - 3 \cdot 2) A e^{2t} = (8 - 8 - 6)A e^{2t} = -6A e^{2t} = 3e^{2t} \implies A = -\frac{1}{2}
+
+  $$
+
+
+  特解为 $y^* = -\frac{1}{2}e^{2t}$．
+
+
+  3. 回代 $t = \ln x$：$e^{-t} = \frac{1}{x}, e^{3t} = x^3, e^{2t} = x^2$．
+
+
+  因此原方程的通解为：
+
+
+  $$
+
+  y = C_1 + \frac{C_2}{x} + C_3 x^3 - \frac{x^2}{2}
+
+  $$'
+feedback:
+  correct: 熟练运用欧拉方程变换化为常系数微分方程并准确求得通解．
+  incorrect: 欧拉方程通过 $x = e^t$ 换元转换为常系数微分方程，算子代数化简特征多项式最快捷．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第7题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:441c1e922cbbcf259b4624e7db25dbd62ff2438959a6ea5e870e46f5c786bf37
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:441c1e922cbbcf259b4624e7db25dbd62ff2438959a6ea5e870e46f5c786bf37
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:441c1e922cbbcf259b4624e7db25dbd62ff2438959a6ea5e870e46f5c786bf37

@@ -54,7 +54,7 @@ id: math.calculus.sysu-2015-2016-term1-a
 title: 中山大学高等数学一（I）期末 A 卷（2015–2016 学年第 1 学期）
 description: 中山大学高等数学一（I）期末 A 卷整卷练习，按原卷顺序作答，交卷后可核对解析并自评．
 status: draft
-tags: [中山大学, 高等数学, 期末考试]
+tags: [课程真题, 中山大学, 高等数学, 期末考试]
 license: LicenseRef-Pending
 feedback_mode: deferred
 self_assessment_timing: after_submit
@@ -64,7 +64,7 @@ selection:
   order: fixed
 ```
 
-首批题集完成审核并可公开访问时，在「数学工具 → 微积分」下增加一页「中山大学高等数学期末练习」，可用 `docs/math/calculus/sysu-exams.md`，并登记在 `mkdocs.yml`。页面按学期或上、下册列出题集和可用状态，提供进入全屏答题的入口。固定展示的题集可用现有 `assessments` 页脚入口，供读者从专题进入全屏作答。待审核试卷可列出整理状态，公开入口指向已发布题集。保留 [小测首页的权利声明和编辑组联系方式](../docs/quiz/index.md)。
+试卷统一使用 `课程真题`、`中山大学`、`高等数学` 标签，从「知识小测 → 测试集合 → [课程真题](../docs/quiz/course-exams.md)」进入。目录从题库读取试卷和作答入口，正式构建显示已发布题集，本地预览可核对草稿。数学工具导读链接到高等数学筛选结果。[中山大学高等数学指引](../docs/math/calculus/sysu-exams.md)提供选卷说明和回学链接。保留 [小测首页的权利声明和编辑组联系方式](../docs/quiz/index.md)。
 
 ## 本地验收与人工交接
 

@@ -1,0 +1,117 @@
+schema_version: 3
+id: q-000916
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '计算定积分：
+
+
+  $$
+
+  \int_{-1/2}^{1/2} \frac{\sin x + x^2}{\sqrt{1-x^2}}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\int_{-1/2}^{1/2} \frac{\sin x + x^2}{\sqrt{1-x^2}}\,\mathrm{d}x = \frac{\pi}{6} - \frac{\sqrt{3}}{4}$．
+solution: '积分区间为对称区间 $[-1/2, 1/2]$，将被积函数拆为两项：
+
+
+  $$
+
+  \int_{-1/2}^{1/2} \frac{\sin x}{\sqrt{1-x^2}}\,\mathrm{d}x + \int_{-1/2}^{1/2} \frac{x^2}{\sqrt{1-x^2}}\,\mathrm{d}x
+
+  $$
+
+
+  第一项由于被积函数为奇函数，在对称区间上的积分为零：
+
+
+  $$
+
+  \int_{-1/2}^{1/2} \frac{\sin x}{\sqrt{1-x^2}}\,\mathrm{d}x = 0
+
+  $$
+
+
+  第二项被积函数为偶函数，化为半区间积分的两倍：
+
+
+  $$
+
+  I = 2\int_0^{1/2} \frac{x^2}{\sqrt{1-x^2}}\,\mathrm{d}x
+
+  $$
+
+
+  令 $x = \sin t$，则 $\mathrm{d}x = \cos t\,\mathrm{d}t$．当 $x = 0$ 时 $t = 0$；当 $x = 1/2$ 时 $t = \pi/6$：
+
+
+  $$
+
+  I = 2\int_0^{\pi/6} \frac{\sin^2 t}{\cos t} \cos t\,\mathrm{d}t = 2\int_0^{\pi/6} \sin^2 t\,\mathrm{d}t = \int_0^{\pi/6}
+  (1 - \cos 2t)\,\mathrm{d}t = \left[ t - \frac{\sin 2t}{2} \right]_0^{\pi/6} = \frac{\pi}{6} - \frac{\sin(\pi/3)}{2} = \frac{\pi}{6}
+  - \frac{\sqrt{3}}{4}
+
+  $$
+
+
+  因此所求积分值为 $\frac{\pi}{6} - \frac{\sqrt{3}}{4}$．'
+feedback:
+  correct: 正确利用奇函数积分为零简化计算，并通过三角代换求出结果．
+  incorrect: 对称区间积分第一步务必检验被积函数奇偶性．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第11题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ed15a1645f4eed3a935332e60e1901f02063d0ec6f020c629aa0ac37ac8e4ff5
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ed15a1645f4eed3a935332e60e1901f02063d0ec6f020c629aa0ac37ac8e4ff5
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ed15a1645f4eed3a935332e60e1901f02063d0ec6f020c629aa0ac37ac8e4ff5

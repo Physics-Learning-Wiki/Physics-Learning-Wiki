@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000890
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 已知 $\arctan x = \sum_{n=0}^\infty (-1)^n \frac{x^{2n+1}}{2n+1}$（$-1 \le x \le 1$）．设函数 $f(x) = \int_0^x t^2 \arctan t\,\mathrm{d}t$，求
+  $f(x)$ 在 $x = 0$ 处的麦克劳林展开式中 $x^6$ 项的系数．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $f(x)$ 在 $x=0$ 的展开式中 $x^6$ 项系数为 $-\frac{1}{18}$．
+solution: '由于 $\arctan t = t - \frac{t^3}{3} + o(t^4)$，被积函数为 $t^2 \arctan t = t^3 - \frac{t^5}{3} + o(t^6)$．
+
+
+  逐项积分：
+
+
+  $$
+
+  f(x) = \int_0^x \left( t^3 - \frac{t^5}{3} + o(t^6) \right)\,\mathrm{d}t = \frac{x^4}{4} - \frac{x^6}{18} + o(x^7)
+
+  $$
+
+
+  故 $x^6$ 项的系数为 $-\frac{1}{18}$．'
+feedback:
+  correct: 正确展开被积函数并逐项积分求得系数 $-1/18$．
+  incorrect: 避免直接对变限积分连求六阶导数，级数逐项积分是最有效手段．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第一学期高等数学一期末考试试题（珠海数院）第4题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-zhuhai
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb09bbcb18c3c85df5088a1202e66b249a0fbaf45a917840c77050bba970aa4a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb09bbcb18c3c85df5088a1202e66b249a0fbaf45a917840c77050bba970aa4a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cb09bbcb18c3c85df5088a1202e66b249a0fbaf45a917840c77050bba970aa4a

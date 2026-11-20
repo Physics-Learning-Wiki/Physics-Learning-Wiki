@@ -1,0 +1,100 @@
+schema_version: 3
+id: q-000925
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '已知函数 $f(x) = \frac{x^3 + 4}{x^2}$：
+
+
+  1. 求 $f(x)$ 的单调区间、极值点和极值；
+
+  2. 求 $f(x)$ 的凹凸区间，并判断其有无拐点；
+
+  3. 求 $f(x)$ 的所有渐近线方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 在 $(-\infty, 0)$ 和 $(2, +\infty)$ 递增，在 $(0, 2)$ 递减；极小值点 $x=2$（极小值 $3$）；全定义域为凹无拐点；垂直渐近线 $x=0$，斜渐近线 $y=x$．
+solution: '函数定义域为 $(-\infty, 0) \cup (0, +\infty)$．改写 $f(x) = x + \frac{4}{x^2}$．
+
+
+  1. 单调性与极值：
+
+  $f''(x) = 1 - \frac{8}{x^3} = \frac{x^3-8}{x^3}$．令 $f''(x) = 0$ 得驻点 $x = 2$．
+
+  - 当 $x < 0$ 时，$x^3 < 0, x^3-8 < 0$，故 $f''(x) > 0$，单调递增；
+
+  - 当 $0 < x < 2$ 时，$x^3 > 0, x^3-8 < 0$，故 $f''(x) < 0$，单调递减；
+
+  - 当 $x > 2$ 时，$x^3 > 0, x^3-8 > 0$，故 $f''(x) > 0$，单调递增．
+
+  因此 $x = 2$ 为唯一极小值点，极小值为 $f(2) = 2 + 1 = 3$．
+
+
+  2. 凹凸性：
+
+  $f''''(x) = \frac{24}{x^4} > 0$（对所有 $x \neq 0$）．因此在 $(-\infty, 0)$ 和 $(0, +\infty)$ 上均为凹（Concave up），图象无拐点．
+
+
+  3. 渐近线：
+
+  $\lim_{x \to 0} f(x) = +\infty$，垂直渐近线为 $x = 0$（$y$ 轴）．
+
+  当 $x \to \pm\infty$ 时，$f(x) - x = \frac{4}{x^2} \to 0$，斜渐近线为 $y = x$．'
+feedback:
+  correct: 全面准确分析函数单调性、极值、凹凸区间与渐近线．
+  incorrect: 改写为 $f(x) = x + 4x^{-2}$ 求导极为简明快捷．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第6题（15分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:98f73e7e9d0bf55c4609f5b3938827afcd69971fa63c824ff2fc427d6440e175
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:98f73e7e9d0bf55c4609f5b3938827afcd69971fa63c824ff2fc427d6440e175
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:98f73e7e9d0bf55c4609f5b3938827afcd69971fa63c824ff2fc427d6440e175

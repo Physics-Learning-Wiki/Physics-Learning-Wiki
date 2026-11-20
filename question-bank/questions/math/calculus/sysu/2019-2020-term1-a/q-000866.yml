@@ -1,0 +1,157 @@
+schema_version: 3
+id: q-000866
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '设 $2n$ 次多项式
+
+
+  $$
+
+  P_{2n}(x) = 1 + \sum_{k=1}^{2n} \frac{(-1)^k}{k} x^k = 1 - x + \frac{x^2}{2} - \frac{x^3}{3} + \dots + \frac{x^{2n}}{2n}
+
+  $$
+
+
+  分析该多项式的单调性，由此证明该多项式在实数域内没有零点．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：导数化简不完整或单调性判断错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求出最小值点在 x=1，但在证明 P_{2n}(1)>0 上不够严谨
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整求得导数因式分解、单调性分析并严密证明无零点
+    points: 1
+reference_answer: 多项式在 $(-\infty, 1)$ 上严格单调递减，在 $(1, +\infty)$ 上严格单调递增，最小值为 $P_{2n}(1) > 0$，故无实零点．
+solution: '求多项式的一阶导数：
+
+
+  $$
+
+  P''_{2n}(x) = \sum_{k=1}^{2n} (-1)^k x^{k-1} = -1 + x - x^2 + x^3 - \dots - x^{2n-1}
+
+  $$
+
+
+  这是一个公比为 $-x$ 的等比数列求和（首项为 $-1$，共有 $2n$ 项）：
+
+
+  $$
+
+  P''_{2n}(x) = - (1 - x + x^2 - x^3 + \dots + x^{2n-1}) = - \frac{1 - (-x)^{2n}}{1 - (-x)} = - \frac{1 - x^{2n}}{1 + x} =
+  \frac{x^{2n} - 1}{x + 1}
+
+  $$
+
+
+  因式分解分子：$x^{2n} - 1 = (x^2 - 1)(x^{2n-2} + x^{2n-4} + \dots + 1) = (x-1)(x+1) Q(x)$，其中 $Q(x) > 0$（对任意实数 $x$）．
+
+
+  消去因子 $x+1$（在 $x \neq -1$ 处）：
+
+
+  $$
+
+  P''_{2n}(x) = (x - 1)(x^{2n-2} + x^{2n-4} + \dots + x^2 + 1)
+
+  $$
+
+
+  在 $x = -1$ 处，直接求导代入同样满足连续性．
+
+
+  因为第二因式各项为偶数次幂，其值严格大于等于 1（恒为正），所以 $P''_{2n}(x)$ 的符号完全由因式 $x - 1$ 决定：
+
+
+  - 当 $x < 1$ 时，$P''_{2n}(x) < 0$，$P_{2n}(x)$ 严格单调递减；
+
+  - 当 $x > 1$ 时，$P''_{2n}(x) > 0$，$P_{2n}(x)$ 严格单调递增．
+
+
+  因此 $x = 1$ 是全局唯一样本极小值点，也是最小值点．
+
+
+  计算最小值 $P_{2n}(1)$：
+
+
+  $$
+
+  P_{2n}(1) = 1 - 1 + \frac{1}{2} - \frac{1}{3} + \frac{1}{4} - \dots - \frac{1}{2n-1} + \frac{1}{2n}
+
+  $$
+
+
+  将各项两两分组：
+
+
+  $$
+
+  P_{2n}(1) = 0 + \left(\frac{1}{2} - \frac{1}{3}\right) + \left(\frac{1}{4} - \frac{1}{5}\right) + \dots + \left(\frac{1}{2n-2}
+  - \frac{1}{2n-1}\right) + \frac{1}{2n} > 0
+
+  $$
+
+
+  因为每个括号内的差值均为正数，且最后一项 $\frac{1}{2n} > 0$，所以：
+
+
+  $$
+
+  \min_{x\in\mathbb{R}} P_{2n}(x) = P_{2n}(1) > 0
+
+  $$
+
+
+  因此，对任意实数 $x$，都有 $P_{2n}(x) \ge P_{2n}(1) > 0$，多项式在实数范围内没有零点．'
+feedback:
+  correct: 极其优美地由等比求和化简导数，确定唯一极小值点 $x=1$，并利用交错两两配对证明最小值大于 0．
+  incorrect: 求导关键：$P'_{2n}(x) = (x-1)(x^{2n-2}+\dots+1)$，符号仅由 $x-1$ 决定；最小值在 $x=1$ 处，两两分组证明正性．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 420
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第8题（7分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c09059893e72b1b12dc6f52d7b09b7a3afd3369bed46ca3a57d3267c08c30c01
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c09059893e72b1b12dc6f52d7b09b7a3afd3369bed46ca3a57d3267c08c30c01
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c09059893e72b1b12dc6f52d7b09b7a3afd3369bed46ca3a57d3267c08c30c01

@@ -1,0 +1,87 @@
+schema_version: 3
+id: q-000919
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '设数列 $\{a_n\}$ 满足递推关系：$a_1 = \sqrt{2}$，$a_n = \sqrt{2 + a_{n-1}}$（$n \ge 2$）．
+
+
+  1. 证明数列 $\{a_n\}$ 的极限存在；
+
+  2. 求数列 $\{a_n\}$ 的极限值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 数列收敛，极限值为 $2$．
+solution: '1. 证明极限存在：
+
+  - 有上界：用数学归纳法证明 $a_n < 2$．$a_1 = \sqrt{2} < 2$；若 $a_k < 2$，则 $a_{k+1} = \sqrt{2+a_k} < \sqrt{4} = 2$．故对一切 $n \ge 1$ 均有 $a_n
+  < 2$．
+
+  - 单调递增：$a_n^2 - a_{n-1}^2 = (2+a_{n-1}) - a_{n-1}^2 = -(a_{n-1}-2)(a_{n-1}+1) > 0$，故 $a_n > a_{n-1}$．
+
+  由单调有界收敛准则，数列 $\{a_n\}$ 极限存在．
+
+
+  2. 求极限值：
+
+  设 $\lim_{n \to \infty} a_n = A$（$A > 0$）．两边取极限：$A = \sqrt{2+A} \implies A^2 - A - 2 = 0 \implies A = 2$（舍去负根 $A=-1$）．
+
+  因此极限值为 $2$．'
+feedback:
+  correct: 单调有界性证明规范完整，极限求解正确．
+  incorrect: 递推数列必须先用单调有界定理证明极限存在，再对递推式两边取极限．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第14题（10分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3589dbb76469d6a8b0c42fd2932db52d2620c47e7c9573d53b405719d083754a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3589dbb76469d6a8b0c42fd2932db52d2620c47e7c9573d53b405719d083754a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3589dbb76469d6a8b0c42fd2932db52d2620c47e7c9573d53b405719d083754a

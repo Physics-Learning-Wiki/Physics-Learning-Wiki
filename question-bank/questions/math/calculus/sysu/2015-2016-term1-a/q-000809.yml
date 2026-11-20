@@ -1,0 +1,131 @@
+schema_version: 3
+id: q-000809
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = \frac{1}{x^2}$ 在 $x=3$ 处的带皮亚诺余项的 $n$ 阶泰勒公式，并写出 $f^{(n)}(3)$ 的值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：高阶导数通项推错或泰勒展开形式错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求对 f^(n)(3)，但泰勒展开中系数或余项书写有误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求得 f^(n)(3) 并给出规范的带皮亚诺余项 n 阶泰勒公式
+    points: 1
+reference_answer: $f^{(n)}(3) = (-1)^n \frac{(n+1)!}{3^{n+2}}$，泰勒公式为 $\frac{1}{x^2} = \sum_{k=0}^n (-1)^k \frac{k+1}{3^{k+2}}
+  (x-3)^k + o((x-3)^n)$．
+solution: '函数 $f(x) = x^{-2}$．逐阶求导：
+
+
+  $$
+
+  f''(x) = -2x^{-3}
+
+  $$
+
+
+  $$
+
+  f''''(x) = (-2)(-3)x^{-4} = 3! x^{-4}
+
+  $$
+
+
+  $$
+
+  f''''''(x) = (-2)(-3)(-4)x^{-5} = -4! x^{-5}
+
+  $$
+
+
+  一般地，对任意非负整数 $k$：
+
+
+  $$
+
+  f^{(k)}(x) = (-1)^k (k+1)! x^{-(k+2)}
+
+  $$
+
+
+  在 $x = 3$ 处：
+
+
+  $$
+
+  f^{(k)}(3) = (-1)^k \frac{(k+1)!}{3^{k+2}}
+
+  $$
+
+
+  因此 $n$ 阶导数值为：
+
+
+  $$
+
+  f^{(n)}(3) = (-1)^n \frac{(n+1)!}{3^{n+2}}
+
+  $$
+
+
+  带皮亚诺余项的 $n$ 阶泰勒公式为：
+
+
+  $$
+
+  f(x) = \sum_{k=0}^n \frac{f^{(k)}(3)}{k!} (x-3)^k + o((x-3)^n) = \sum_{k=0}^n (-1)^k \frac{k+1}{3^{k+2}} (x-3)^k + o((x-3)^n)
+
+  $$'
+feedback:
+  correct: 正确归纳 $n$ 阶导数通项公式并规范写出带皮亚诺余项的泰勒多项式．
+  incorrect: 请注意符号 $(-1)^n$、阶乘 $(n+1)!$ 与除以 $k!$ 后的系数化简 $\frac{(k+1)!}{k!} = k+1$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第9题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f11af47352e8b6cde99369565535d685afddbc664994e8c241d0fdca6cbd34e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f11af47352e8b6cde99369565535d685afddbc664994e8c241d0fdca6cbd34e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0f11af47352e8b6cde99369565535d685afddbc664994e8c241d0fdca6cbd34e

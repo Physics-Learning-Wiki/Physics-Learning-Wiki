@@ -1,0 +1,89 @@
+schema_version: 3
+id: q-000909
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to +\infty} \left( \frac{3x+2}{3x-1} \right)^{2x-1}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to +\infty} \left( \frac{3x+2}{3x-1} \right)^{2x-1} = e^2$．
+solution: '底数 $\frac{3x+2}{3x-1} = 1 + \frac{3}{3x-1} \to 1$，指数 $2x-1 \to +\infty$，属于 $1^\infty$ 型未定式．
+
+
+  变形计算极限：
+
+
+  $$
+
+  \lim_{x \to +\infty} \left( 1 + \frac{3}{3x-1} \right)^{2x-1} = e^{\lim_{x \to +\infty} \frac{3(2x-1)}{3x-1}} = e^{\lim_{x
+  \to +\infty} \frac{6x-3}{3x-1}} = e^2
+
+  $$
+
+
+  因此所求极限为 $e^2$．'
+feedback:
+  correct: 正确变形为重要极限形式并求得指数为 2．
+  incorrect: $1^\infty$ 型极限公式为 $e^{\lim (u-1)v}$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:33e418233386a1c29247fbe59671862c4bf53b8427108c85f24e52972e4e0af6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:33e418233386a1c29247fbe59671862c4bf53b8427108c85f24e52972e4e0af6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:33e418233386a1c29247fbe59671862c4bf53b8427108c85f24e52972e4e0af6

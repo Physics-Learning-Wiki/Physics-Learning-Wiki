@@ -1,0 +1,93 @@
+schema_version: 3
+id: q-000829
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求数列极限：
+
+
+  $$
+
+  \lim_{n\to\infty} (\sqrt{n+1} - \sqrt{n})
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未完成有理化或得出非零极限
+    points: 0
+  - id: partial
+    label: 部分掌握：写出有理化形式但极限推理不够完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成有理化并求得极限为 0
+    points: 1
+reference_answer: $\lim_{n\to\infty} (\sqrt{n+1} - \sqrt{n}) = 0$．
+solution: '采用分子有理化：
+
+
+  $$
+
+  \sqrt{n+1} - \sqrt{n} = \frac{(\sqrt{n+1} - \sqrt{n})(\sqrt{n+1} + \sqrt{n})}{\sqrt{n+1} + \sqrt{n}} = \frac{(n+1) - n}{\sqrt{n+1}
+  + \sqrt{n}} = \frac{1}{\sqrt{n+1} + \sqrt{n}}
+
+  $$
+
+
+  当 $n \to \infty$ 时，分母 $\sqrt{n+1} + \sqrt{n} \to +\infty$，因此：
+
+
+  $$
+
+  \lim_{n\to\infty} (\sqrt{n+1} - \sqrt{n}) = \lim_{n\to\infty} \frac{1}{\sqrt{n+1} + \sqrt{n}} = 0
+
+  $$'
+feedback:
+  correct: 正确通过分子有理化求出极限 0．
+  incorrect: $\infty - \infty$ 型根式差极限的标准方法是分子有理化，将差化为分母和的形式．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8fec4b6172e973e22e1bc22c743dfbed0ae7f809bec5dfb997329402673d9382
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8fec4b6172e973e22e1bc22c743dfbed0ae7f809bec5dfb997329402673d9382
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8fec4b6172e973e22e1bc22c743dfbed0ae7f809bec5dfb997329402673d9382

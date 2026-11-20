@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000895
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \left( \frac{1+x}{1-e^x} + \frac{1}{x} \right)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \left( \frac{1+x}{1-e^x} + \frac{1}{x} \right) = -\frac{1}{2}$．
+solution: '通分：$\lim_{x \to 0} \frac{x(1+x) + (1-e^x)}{x(1-e^x)} = \lim_{x \to 0} \frac{x + x^2 + 1 - e^x}{-x^2}$．
+
+
+  利用 $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$，分子化为 $\frac{x^2}{2} + o(x^2)$．
+
+
+  代入得极限为 $\frac{x^2/2}{-x^2} = -\frac{1}{2}$．（注：分母 $1-e^x \sim -x$，注意负号）．'
+feedback:
+  correct: 通分与泰勒展开准确，符号无误求得 $-1/2$．
+  incorrect: 注意 $1-e^x \sim -x$，遗漏负号是常见失误．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第2(1)题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:35bad42590f071ddbde3e150bdee969b8c114568d49bb1c97ed31d7afa1bba09
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:35bad42590f071ddbde3e150bdee969b8c114568d49bb1c97ed31d7afa1bba09
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:35bad42590f071ddbde3e150bdee969b8c114568d49bb1c97ed31d7afa1bba09

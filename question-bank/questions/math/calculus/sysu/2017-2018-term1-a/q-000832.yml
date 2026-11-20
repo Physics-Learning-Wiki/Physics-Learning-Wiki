@@ -1,0 +1,116 @@
+schema_version: 3
+id: q-000832
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 求曲线 $y = \sin x$（$0 \le x \le \pi$）绕 $x$ 轴旋转一周所得旋转体的侧面积．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：侧面积公式写错（如误写为体积公式）
+    points: 0
+  - id: partial
+    label: 部分掌握：公式正确且换元正确，但在根式积分代入上下限时有算术失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成侧面积积分并求得 2*pi*(sqrt(2) + ln(1+sqrt(2)))
+    points: 1
+reference_answer: $S = 2\pi (\sqrt{2} + \ln(1+\sqrt{2}))$．
+solution: '曲线 $y = \sin x$ 绕 $x$ 轴旋转所得旋转曲面的侧面积微元为：
+
+
+  $$
+
+  \mathrm{d}S = 2\pi y \,\mathrm{d}s = 2\pi y \sqrt{1 + (y'')^2}\,\mathrm{d}x
+
+  $$
+
+
+  已知 $y'' = \cos x$，所以在 $[0, \pi]$ 上：
+
+
+  $$
+
+  S = 2\pi \int_0^\pi \sin x \sqrt{1 + \cos^2 x}\,\mathrm{d}x
+
+  $$
+
+
+  令 $u = \cos x, \mathrm{d}u = -\sin x\,\mathrm{d}x$．当 $x=0$ 时 $u=1$；$x=\pi$ 时 $u=-1$：
+
+
+  $$
+
+  S = 2\pi \int_{-1}^1 \sqrt{1 + u^2}\,\mathrm{d}u = 4\pi \int_0^1 \sqrt{1 + u^2}\,\mathrm{d}u
+
+  $$
+
+
+  利用标准积分公式 $\int \sqrt{1+u^2}\,\mathrm{d}u = \frac{1}{2} u\sqrt{1+u^2} + \frac{1}{2}\ln(u+\sqrt{1+u^2})$：
+
+
+  $$
+
+  \int_0^1 \sqrt{1+u^2}\,\mathrm{d}u = \left[\frac{1}{2}u\sqrt{1+u^2} + \frac{1}{2}\ln(u+\sqrt{1+u^2})\right]_0^1 = \frac{\sqrt{2}}{2}
+  + \frac{1}{2}\ln(1+\sqrt{2})
+
+  $$
+
+
+  乘以 $4\pi$：
+
+
+  $$
+
+  S = 4\pi \left(\frac{\sqrt{2}}{2} + \frac{1}{2}\ln(1+\sqrt{2})\right) = 2\pi (\sqrt{2} + \ln(1+\sqrt{2}))
+
+  $$'
+feedback:
+  correct: 正确写出旋转曲面侧面积积分公式并完成 $\int \sqrt{1+u^2}\,\mathrm{d}u$ 积分．
+  incorrect: 请注意旋转曲面侧面积公式为 $2\pi \int y \sqrt{1+(y')^2}\,\mathrm{d}x$，不是截面面积积分 $\pi \int y^2\,\mathrm{d}x$（后者为体积）．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e1dc2c9104e51551a6adf15e64ca9c2e82de2aabeaf5b3e9d0ab57604a0083bb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e1dc2c9104e51551a6adf15e64ca9c2e82de2aabeaf5b3e9d0ab57604a0083bb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:e1dc2c9104e51551a6adf15e64ca9c2e82de2aabeaf5b3e9d0ab57604a0083bb

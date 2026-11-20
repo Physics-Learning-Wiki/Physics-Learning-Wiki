@@ -1,0 +1,120 @@
+schema_version: 3
+id: q-000941
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: '求幂级数：
+
+
+  $$
+
+  \sum_{n=1}^\infty \frac{3^n}{n}(x+1)^n
+
+  $$
+
+
+  的收敛域及和函数 $S(x)$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 收敛域为 $\left[ -\frac{4}{3}, -\frac{2}{3} \right)$；和函数为 $S(x) = -\ln(-2-3x)$．
+solution: '1. 求收敛域：
+
+  令 $t = 3(x+1)$，原级数化为 $\sum_{n=1}^\infty \frac{t^n}{n}$．
+
+  收敛半径：$\rho = \lim_{n\to\infty} \sqrt[n]{\frac{3^n}{n}} = 3 \implies R = \frac{1}{3}$．
+
+  开区间为 $|x+1| < \frac{1}{3} \iff -\frac{4}{3} < x < -\frac{2}{3}$．
+
+  检验端点：
+
+  - 当 $x = -\frac{2}{3}$ 时，$t = 1$，级数成为调和级数 $\sum_{n=1}^\infty \frac{1}{n}$，发散；
+
+  - 当 $x = -\frac{4}{3}$ 时，$t = -1$，级数成为交错调和级数 $\sum_{n=1}^\infty \frac{(-1)^n}{n}$，收敛．
+
+  因此收敛域为 $\left[ -\frac{4}{3}, -\frac{2}{3} \right)$．
+
+
+  2. 求和函数：
+
+  在开区间 $\left( -\frac{4}{3}, -\frac{2}{3} \right)$ 内，逐项求导：
+
+
+  $$
+
+  S''(x) = \sum_{n=1}^\infty 3^n (x+1)^{n-1} = 3 \sum_{n=1}^\infty [3(x+1)]^{n-1} = \frac{3}{1 - 3(x+1)} = \frac{3}{-2 - 3x}
+  = -\frac{3}{3x+2}
+
+  $$
+
+
+  对 $S''(x)$ 积分，且 $S(-1) = 0$：
+
+
+  $$
+
+  S(x) = \int_{-1}^x -\frac{3}{3t+2}\,\mathrm{d}t = -\left. \ln|3t+2| \right|_{-1}^x = -\ln|3x+2| + \ln|-1| = -\ln(-2-3x)
+
+  $$
+
+
+  由阿贝尔定理，和函数在左端点 $x = -\frac{4}{3}$ 连续，$S(-4/3) = -\ln 2 = \sum_{n=1}^\infty \frac{(-1)^n}{n}$．
+
+  因此在收敛域 $\left[ -\frac{4}{3}, -\frac{2}{3} \right)$ 上，和函数为 $S(x) = -\ln(-2-3x)$．'
+feedback:
+  correct: 正确判断端点敛散性确定收敛域，并通过逐项求导积分求得和函数．
+  incorrect: 利用已知对数级数展开式 $\sum_{n=1}^\infty \frac{t^n}{n} = -\ln(1-t)$ 亦可直接验证和函数．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3196cb989cd3996b24b69f9963b5cfcc3d4ee6d1244062c6e9384c9598b48ddb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3196cb989cd3996b24b69f9963b5cfcc3d4ee6d1244062c6e9384c9598b48ddb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3196cb989cd3996b24b69f9963b5cfcc3d4ee6d1244062c6e9384c9598b48ddb

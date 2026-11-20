@@ -1,0 +1,149 @@
+schema_version: 3
+id: q-000828
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 在 $[0, 2]$ 上连续，在 $(0, 2)$ 上二阶可导，且满足 $f(1) = f(2) = 0$．
+
+
+  证明：在 $(0, 2)$ 内存在 $\xi$，使得 $2f''(\xi) + \xi f''''(\xi) = 0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未找到正确的辅助函数或证明逻辑不成立
+    points: 0
+  - id: partial
+    label: 部分掌握：构造出有效辅助函数，但在罗尔定理两次应用的区间说明上有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：严密构造辅助函数并两次应用罗尔定理完成证明
+    points: 1
+reference_answer: 构造辅助函数 $H(x) = x^2 f'(x)$（或 $F(x) = x f(x)$）并应用罗尔中值定理，可证在 $(0, 2)$ 内存在 $\xi$ 满足 $2f'(\xi) + \xi f''(\xi)
+  = 0$．
+solution: '**方法一（构造 $F(x) = x f(x)$ 两次应用罗尔定理）：**
+
+
+  观察待证式 $2f''(\xi) + \xi f''''(\xi) = 0$．注意：
+
+
+  $$
+
+  (f(x) + x f''(x))'' = f''(x) + f''(x) + x f''''(x) = 2f''(x) + x f''''(x)
+
+  $$
+
+
+  而 $f(x) + x f''(x) = (x f(x))''$．因此构造辅助函数：
+
+
+  $$
+
+  F(x) = x f(x)
+
+  $$
+
+
+  由条件：
+
+
+  - $F(0) = 0 \cdot f(0) = 0$；
+
+  - $F(1) = 1 \cdot f(1) = 0$；
+
+  - $F(2) = 2 \cdot f(2) = 0$．
+
+
+  因为 $f(x)$ 在 $[0, 2]$ 上连续，在 $(0, 2)$ 上可导，所以 $F(x)$ 在 $[0, 1]$ 和 $[1, 2]$ 上均满足罗尔中值定理的条件：
+
+
+  1. 存在 $\eta_1 \in (0, 1)$ 使得 $F''(\eta_1) = 0$；
+
+  2. 存在 $\eta_2 \in (1, 2)$ 使得 $F''(\eta_2) = 0$．
+
+
+  显然 $0 < \eta_1 < 1 < \eta_2 < 2$．考察函数 $F''(x)$ 在闭区间 $[\eta_1, \eta_2]$ 上的性质：
+
+
+  $F''(x) = f(x) + x f''(x)$ 在 $[\eta_1, \eta_2]$ 上连续，在 $(\eta_1, \eta_2)$ 内可导，且 $F''(\eta_1) = F''(\eta_2) = 0$．
+
+
+  再次应用罗尔中值定理，存在 $\xi \in (\eta_1, \eta_2) \subset (0, 2)$ 使得：
+
+
+  $$
+
+  F''''(\xi) = 0
+
+  $$
+
+
+  计算 $F''''(x)$：
+
+
+  $$
+
+  F''''(x) = (F''(x))'' = (f(x) + x f''(x))'' = 2f''(x) + x f''''(x)
+
+  $$
+
+
+  代入 $x = \xi$ 即得：
+
+
+  $$
+
+  2f''(\xi) + \xi f''''(\xi) = 0
+
+  $$
+
+
+  证毕．'
+feedback:
+  correct: 极其巧妙地利用 $(x f(x))'' = 2f'(x) + x f''(x)$ 构造辅助函数 $F(x) = x f(x)$，结合零点 $0, 1, 2$ 两次应用罗尔定理完成严密证明．
+  incorrect: 证明关键点：注意到待证式是 $(xf(x))'' = (f(x) + xf'(x))' = 2f'(x) + xf''(x)$，构造 $F(x) = xf(x)$ 并在 $0, 1, 2$ 三个零点上应用罗尔定理．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第14题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5ddb03cf7a0a7aa31f7ef3e2168b6cad5a4580bf852d4586131d8b9e19215163
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5ddb03cf7a0a7aa31f7ef3e2168b6cad5a4580bf852d4586131d8b9e19215163
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5ddb03cf7a0a7aa31f7ef3e2168b6cad5a4580bf852d4586131d8b9e19215163

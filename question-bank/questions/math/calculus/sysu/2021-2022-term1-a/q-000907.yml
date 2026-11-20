@@ -1,0 +1,91 @@
+schema_version: 3
+id: q-000907
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\sin \alpha x}{\tan \beta x}
+
+  $$
+
+
+  其中 $\alpha, \beta$ 为常数且 $\beta \neq 0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \frac{\sin \alpha x}{\tan \beta x} = \frac{\alpha}{\beta}$．
+solution: '当 $x \to 0$ 时，利用等价无穷小代换：$\sin \alpha x \sim \alpha x$，$\tan \beta x \sim \beta x$．
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\sin \alpha x}{\tan \beta x} = \lim_{x \to 0} \frac{\alpha x}{\beta x} = \frac{\alpha}{\beta}
+
+  $$
+
+
+  极限值为 $\frac{\alpha}{\beta}$．'
+feedback:
+  correct: 正确运用基本等价无穷小求得极限．
+  incorrect: 当 $u \to 0$ 时，$\sin u \sim u$ 且 $\tan u \sim u$．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0643aaa39ec08b7d01d0bc260f8a5f15e35a41814941be3016e8972cef7b7e71
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0643aaa39ec08b7d01d0bc260f8a5f15e35a41814941be3016e8972cef7b7e71
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0643aaa39ec08b7d01d0bc260f8a5f15e35a41814941be3016e8972cef7b7e71

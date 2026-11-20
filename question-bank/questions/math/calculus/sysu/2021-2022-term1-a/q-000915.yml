@@ -1,0 +1,118 @@
+schema_version: 3
+id: q-000915
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设平面区域 $A$ 由曲线 $y = e^x$、直线 $x = 1$、圆弧 $y = \sqrt{1-x^2}$（$x \in [0, 1]$）及 $y$ 轴围成：
+
+
+  1. 求区域 $A$ 的面积；
+
+  2. 求区域 $A$ 绕 $y$ 轴旋转所形成的旋转体的体积．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 区域面积为 $e - 1 - \frac{\pi}{4}$；旋转体体积为 $\frac{\pi}{3}$ 或相应柱壳积分值．
+solution: '在区间 $x \in [0, 1]$ 上，$e^x \ge \sqrt{1-x^2}$（因为 $e^x \ge 1$ 且 $\sqrt{1-x^2} \le 1$）．
+
+
+  1. 计算面积：
+
+
+  $$
+
+  S = \int_0^1 (e^x - \sqrt{1-x^2})\,\mathrm{d}x = \int_0^1 e^x\,\mathrm{d}x - \int_0^1 \sqrt{1-x^2}\,\mathrm{d}x
+
+  $$
+
+
+  其中 $\int_0^1 e^x\,\mathrm{d}x = e - 1$，$\int_0^1 \sqrt{1-x^2}\,\mathrm{d}x$ 为单位圆在第一象限的面积 $\frac{\pi}{4}$．
+
+
+  因此面积为 $S = e - 1 - \frac{\pi}{4}$．
+
+
+  2. 计算绕 $y$ 轴旋转体体积：
+
+  利用柱壳法（Cylindrical shells）：
+
+
+  $$
+
+  V = 2\pi \int_0^1 x(e^x - \sqrt{1-x^2})\,\mathrm{d}x = 2\pi \int_0^1 x e^x\,\mathrm{d}x - 2\pi \int_0^1 x\sqrt{1-x^2}\,\mathrm{d}x
+
+  $$
+
+
+  第一项分部积分：$\int_0^1 x e^x\,\mathrm{d}x = [x e^x - e^x]_0^1 = (e - e) - (0 - 1) = 1$．
+
+
+  第二项凑微分：$\int_0^1 x\sqrt{1-x^2}\,\mathrm{d}x = -\frac{1}{2}\int_0^1 (1-x^2)^{1/2}\,\mathrm{d}(1-x^2) = \left. -\frac{1}{3}(1-x^2)^{3/2}
+  \right|_0^1 = \frac{1}{3}$．
+
+
+  因此总旋转体积为：
+
+
+  $$
+
+  V = 2\pi \left( 1 - \frac{1}{3} \right) = \frac{4\pi}{3}
+
+  $$'
+feedback:
+  correct: 正确运用定积分几何应用计算平面面积与柱壳旋转体积．
+  incorrect: 绕 $y$ 轴旋转体体积利用柱壳公式 $V = 2\pi\int x(y_1-y_2)\,\mathrm{d}x$ 比沿 $y$ 轴切片积分简便得多．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第10题（10分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:56050b850465260aedb88e4e7d7ac675c5ea94facecd2bd8d1ef6640812db41b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:56050b850465260aedb88e4e7d7ac675c5ea94facecd2bd8d1ef6640812db41b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:56050b850465260aedb88e4e7d7ac675c5ea94facecd2bd8d1ef6640812db41b

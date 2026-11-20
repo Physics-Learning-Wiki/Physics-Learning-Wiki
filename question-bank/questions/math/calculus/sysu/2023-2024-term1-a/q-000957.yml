@@ -1,0 +1,144 @@
+schema_version: 3
+id: q-000957
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '若函数 $f(x)$ 在 $[0, 3]$ 上连续，在 $(0, 3)$ 内可导，且 $f(0) = 0$，$f(1) + f(2) + f(3) = 0$．证明：
+
+
+  1. 在 $[1, 3]$ 上存在一点 $\eta$，使得 $f(\eta) = 0$；
+
+  2. 在 $(0, 3)$ 内存在一点 $\xi$，使得 $f(\xi) + 2f''(\xi) = 0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 见详细证明过程．
+solution: '1. 证明存在 $\eta \in [1, 3]$ 使得 $f(\eta) = 0$：
+
+
+  因为 $f(1) + f(2) + f(3) = 0$：
+
+  - 若 $f(1) = f(2) = f(3) = 0$，则结论显然成立（可取 $\eta = 1$）；
+
+  - 若 $f(1), f(2), f(3)$ 不全为 $0$，因为三数之和为 $0$，所以在 $\{f(1), f(2), f(3)\}$ 中必至少有一个正数和一个负数．记这两个取值对应的自变量为 $a, b \in \{1, 2, 3\}$，使得
+  $f(a) < 0$ 且 $f(b) > 0$．
+
+  因为 $f(x)$ 在闭区间 $[0, 3]$ 上连续，在以 $a$ 和 $b$ 为端点的闭区间上也连续．由介值定理（零点定理），在 $a$ 与 $b$ 之间必存在一点 $\eta \in (a, b) \subset [1, 3]$（或端点），使得
+  $f(\eta) = 0$．
+
+
+  2. 证明存在 $\xi \in (0, 3)$ 使得 $f(\xi) + 2f''(\xi) = 0$：
+
+
+  目标等式等价于 $\frac{1}{2}f(\xi) + f''(\xi) = 0$．
+
+  构造辅助函数：
+
+
+  $$
+
+  F(x) = e^{\frac{1}{2}x} f(x)
+
+  $$
+
+
+  因为 $f(x)$ 在 $[0, 3]$ 连续、在 $(0, 3)$ 可导，显然 $F(x)$ 在 $[0, \eta] \subset [0, 3]$ 上连续，在 $(0, \eta)$ 内可导．
+
+  计算端点值：
+
+
+  $$
+
+  F(0) = e^0 f(0) = 0
+
+  $$
+
+
+  $$
+
+  F(\eta) = e^{\frac{1}{2}\eta} f(\eta) = 0
+
+  $$
+
+
+  由罗尔中值定理，必存在 $\xi \in (0, \eta) \subset (0, 3)$，使得 $F''(\xi) = 0$．
+
+  计算导数：
+
+
+  $$
+
+  F''(x) = \frac{1}{2}e^{\frac{1}{2}x} f(x) + e^{\frac{1}{2}x} f''(x) = e^{\frac{1}{2}x}\left( \frac{1}{2}f(x) + f''(x) \right)
+
+  $$
+
+
+  由于 $e^{\frac{1}{2}\xi} \neq 0$：
+
+
+  $$
+
+  F''(\xi) = 0 \implies \frac{1}{2}f(\xi) + f''(\xi) = 0 \implies f(\xi) + 2f''(\xi) = 0
+
+  $$
+
+
+  结论得证．'
+feedback:
+  correct: 正确运用零点定理确定第一个零点并构造指数辅助函数应用罗尔定理．
+  incorrect: 证明含有 $k f(x) + f'(x) = 0$ 的导数中值问题，标准辅助函数为 $F(x) = e^{kx} f(x)$．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第14题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:81b1a5eb399917e6322f68f2cd9bac6c5264d3fae8eb5a989c57e5302529ff40
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:81b1a5eb399917e6322f68f2cd9bac6c5264d3fae8eb5a989c57e5302529ff40
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:81b1a5eb399917e6322f68f2cd9bac6c5264d3fae8eb5a989c57e5302529ff40

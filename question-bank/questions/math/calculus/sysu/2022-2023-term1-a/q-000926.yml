@@ -1,0 +1,104 @@
+schema_version: 3
+id: q-000926
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '设二元函数 $f(x, y) = \begin{cases} (|x|^{3/2} + |y|^{3/2})\sin\frac{1}{\sqrt{x^2+y^2}}, & (x, y) \neq (0, 0) \\[2mm] 0,
+  & (x, y) = (0, 0) \end{cases}$：
+
+
+  1. 判断 $f(x, y)$ 在 $(0, 0)$ 处是否连续；
+
+  2. 判断 $f(x, y)$ 在 $(0, 0)$ 处的偏导数是否存在？若存在，求其偏导数值；
+
+  3. 判断 $f(x, y)$ 在 $(0, 0)$ 处是否可微？若可微，求其全微分 $\mathrm{d}z|_{(0,0)}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 函数在 $(0,0)$ 处连续；偏导数存在且 $f_x(0,0)=0, f_y(0,0)=0$；函数在 $(0,0)$ 处可微，全微分为 $\mathrm{d}z = 0\,\mathrm{d}x + 0\,\mathrm{d}y
+  = 0$．
+solution: '1. 连续性：
+
+  由于 $|\sin\frac{1}{\sqrt{x^2+y^2}}| \le 1$，有 $0 \le |f(x, y)| \le |x|^{3/2} + |y|^{3/2}$．当 $(x, y) \to (0, 0)$ 时上界趋于 0．由夹逼定理
+  $\lim_{(x,y)\to(0,0)} f(x, y) = 0 = f(0, 0)$，函数在 $(0, 0)$ 处连续．
+
+
+  2. 偏导数：
+
+  $f_x(0, 0) = \lim_{x \to 0} \frac{f(x, 0) - 0}{x} = \lim_{x \to 0} \frac{|x|^{3/2} \sin(1/|x|)}{x} = \lim_{x \to 0} x^{1/2}
+  \text{sgn}(x) \sin\frac{1}{|x|} = 0$．同理由对称性 $f_y(0, 0) = 0$．偏导数均存在且为 0．
+
+
+  3. 可微性：
+
+  考察全增量减线性主部比距离的极限：令 $x = r\cos\theta, y = r\sin\theta$：
+
+
+  $$
+
+  \frac{f(x, y) - [f_x(0,0)x + f_y(0,0)y]}{\sqrt{x^2+y^2}} = \frac{r^{3/2}(|\cos\theta|^{3/2} + |\sin\theta|^{3/2})\sin(1/r)}{r}
+  = r^{1/2}(|\cos\theta|^{3/2} + |\sin\theta|^{3/2})\sin\frac{1}{r}
+
+  $$
+
+
+  当 $r \to 0^+$ 时，因三角有界，整个表达式绝对值 $\le 2r^{1/2} \to 0$．
+
+  极限为 0，因此函数在 $(0, 0)$ 处可微，全微分为 $\mathrm{d}z = 0$．'
+feedback:
+  correct: 连续性、偏导数与全微分判定严密，放缩步骤规范完整．
+  incorrect: 极坐标下剩余径向项为 $r^{1/2} \to 0$，幂次大于 1 保证了原点可微性．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第7题（15分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3a7e34fc9ac0f23b5d56827fdc76559ecef1adcd68bc2277fd13ed2a9123a42f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3a7e34fc9ac0f23b5d56827fdc76559ecef1adcd68bc2277fd13ed2a9123a42f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:3a7e34fc9ac0f23b5d56827fdc76559ecef1adcd68bc2277fd13ed2a9123a42f

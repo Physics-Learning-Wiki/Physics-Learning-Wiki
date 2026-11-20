@@ -1,0 +1,130 @@
+schema_version: 3
+id: q-000862
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '证明定积分等式：
+
+
+  $$
+
+  \int_0^{\frac{\pi}{2}} \frac{x}{1 + \cos x + \sin x}\,\mathrm{d}x = \frac{\pi}{4} \int_0^{\frac{\pi}{2}} \frac{1}{1 + \sin
+  x + \cos x}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未想到 x = pi/2 - t 换元法
+    points: 0
+  - id: partial
+    label: 部分掌握：换元形式正确，但在移项消去 I 时书写不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成换元与移项求解证明
+    points: 1
+reference_answer: 利用区间对称变换 $x = \frac{\pi}{2} - t$ 及三角恒等式两式相加可证结论．
+solution: '记原积分左端为 $I = \int_0^{\frac{\pi}{2}} \frac{x}{1 + \cos x + \sin x}\,\mathrm{d}x$．
+
+
+  做变量代换：令 $x = \frac{\pi}{2} - t$，则 $\mathrm{d}x = -\mathrm{d}t$．
+
+
+  当 $x = 0$ 时 $t = \frac{\pi}{2}$；当 $x = \frac{\pi}{2}$ 时 $t = 0$．
+
+
+  根据诱导公式：$\cos x = \cos\left(\frac{\pi}{2} - t\right) = \sin t$，$\sin x = \sin\left(\frac{\pi}{2} - t\right) = \cos t$．
+
+
+  代入积分式：
+
+
+  $$
+
+  I = \int_{\frac{\pi}{2}}^0 \frac{\frac{\pi}{2} - t}{1 + \sin t + \cos t} \,(-\mathrm{d}t) = \int_0^{\frac{\pi}{2}} \frac{\frac{\pi}{2}
+  - t}{1 + \cos t + \sin t}\,\mathrm{d}t
+
+  $$
+
+
+  将积分变量改记为 $x$：
+
+
+  $$
+
+  I = \frac{\pi}{2} \int_0^{\frac{\pi}{2}} \frac{1}{1 + \cos x + \sin x}\,\mathrm{d}x - \int_0^{\frac{\pi}{2}} \frac{x}{1
+  + \cos x + \sin x}\,\mathrm{d}x
+
+  $$
+
+
+  后一项正好就是原积分 $I$，移项得：
+
+
+  $$
+
+  2I = \frac{\pi}{2} \int_0^{\frac{\pi}{2}} \frac{1}{1 + \cos x + \sin x}\,\mathrm{d}x
+
+  $$
+
+
+  两边同除以 2：
+
+
+  $$
+
+  I = \frac{\pi}{4} \int_0^{\frac{\pi}{2}} \frac{1}{1 + \sin x + \cos x}\,\mathrm{d}x
+
+  $$
+
+
+  证毕．'
+feedback:
+  correct: 熟练运用区间倒换 $x = \pi/2 - t$ 与三角诱导公式两式相加完成证明．
+  incorrect: 证明提示：经典定积分变换 $x = \pi/2 - t$，分母对称不变，分子分离出 $\pi/2 - x$ 移项即得系数 $\pi/4$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第4题（7分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8b0edafcc416237d481750c66a79fc49143b7f730c3382addda47fcca17c3ee
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8b0edafcc416237d481750c66a79fc49143b7f730c3382addda47fcca17c3ee
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8b0edafcc416237d481750c66a79fc49143b7f730c3382addda47fcca17c3ee

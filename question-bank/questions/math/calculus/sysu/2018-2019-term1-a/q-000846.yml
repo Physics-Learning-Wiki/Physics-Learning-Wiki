@@ -1,0 +1,123 @@
+schema_version: 3
+id: q-000846
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '求不定积分：
+
+
+  $$
+
+  \int \sqrt{e^x - 2}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：换元微分错误导致被积表达式不正确
+    points: 0
+  - id: partial
+    label: 部分掌握：正确化为关于 t 的积分，但在 arctan 系数或回代上有失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成换元积分并准确回代写出常数 C
+    points: 1
+reference_answer: $2\sqrt{e^x - 2} - 2\sqrt{2}\arctan\left(\frac{\sqrt{e^x-2}}{\sqrt{2}}\right) + C$．
+solution: '令 $t = \sqrt{e^x - 2}$（$t \ge 0$），则 $e^x - 2 = t^2 \implies e^x = t^2 + 2$．
+
+
+  两边取对数求微分：$x = \ln(t^2 + 2) \implies \mathrm{d}x = \frac{2t}{t^2 + 2}\,\mathrm{d}t$．
+
+
+  代入不定积分：
+
+
+  $$
+
+  \int \sqrt{e^x - 2}\,\mathrm{d}x = \int t \cdot \frac{2t}{t^2 + 2}\,\mathrm{d}t = 2 \int \frac{t^2}{t^2 + 2}\,\mathrm{d}t
+
+  $$
+
+
+  拆分分子：
+
+
+  $$
+
+  2 \int \frac{(t^2 + 2) - 2}{t^2 + 2}\,\mathrm{d}t = 2 \int \left(1 - \frac{2}{t^2 + 2}\right)\,\mathrm{d}t
+
+  $$
+
+
+  $$
+
+  = 2t - 4 \int \frac{1}{t^2 + (\sqrt{2})^2}\,\mathrm{d}t = 2t - 4 \cdot \frac{1}{\sqrt{2}} \arctan\left(\frac{t}{\sqrt{2}}\right)
+  + C
+
+  $$
+
+
+  $$
+
+  = 2t - 2\sqrt{2} \arctan\left(\frac{t}{\sqrt{2}}\right) + C
+
+  $$
+
+
+  回代 $t = \sqrt{e^x - 2}$：
+
+
+  $$
+
+  \int \sqrt{e^x - 2}\,\mathrm{d}x = 2\sqrt{e^x - 2} - 2\sqrt{2}\arctan\left(\frac{\sqrt{e^x-2}}{\sqrt{2}}\right) + C
+
+  $$'
+feedback:
+  correct: 正确设根式为 $t$ 完成换元并准确积分回代．
+  incorrect: 换元后 $\mathrm{d}x = \frac{2t}{t^2+2}\,\mathrm{d}t$，有理分式积分利用 $\int \frac{1}{t^2+a^2}\,\mathrm{d}t = \frac{1}{a}\arctan(t/a)$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第4题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:214a71bcec449394d1c90ffddeb73e8c6a851f5e2e8d414948e5842aa5298edf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:214a71bcec449394d1c90ffddeb73e8c6a851f5e2e8d414948e5842aa5298edf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:214a71bcec449394d1c90ffddeb73e8c6a851f5e2e8d414948e5842aa5298edf

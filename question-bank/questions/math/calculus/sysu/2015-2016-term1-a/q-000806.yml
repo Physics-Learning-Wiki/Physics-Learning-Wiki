@@ -1,0 +1,160 @@
+schema_version: 3
+id: q-000806
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 在 $x=0$ 的某个邻域内有二阶导数，且
+
+
+  $$
+
+  \lim_{x\to 0} \left(1 + x + \frac{f(x)}{x}\right)^{\frac{1}{x}} = e^3
+
+  $$
+
+
+  求 $f(0), f''(0), f''''(0)$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出 f(0)=0 或对数极限转换错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求得 f(0)=0, f'(0)=0，但 f''(0) 计算错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整严密推导得出 f(0)=0, f'(0)=0, f''(0)=4
+    points: 1
+reference_answer: $f(0) = 0, \quad f'(0) = 0, \quad f''(0) = 4$．
+solution: '由已知极限 $\lim_{x\to 0} \left(1 + x + \frac{f(x)}{x}\right)^{\frac{1}{x}} = e^3$ 取对数：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{1}{x} \ln\left(1 + x + \frac{f(x)}{x}\right) = 3
+
+  $$
+
+
+  若极限有限非零，底数必须趋于 1，即：
+
+
+  $$
+
+  \lim_{x\to 0} \left(x + \frac{f(x)}{x}\right) = 0 \implies \lim_{x\to 0} \frac{f(x)}{x} = 0
+
+  $$
+
+
+  因为 $f(x)$ 二阶可导必在 $x=0$ 处连续，所以 $\lim_{x\to 0} f(x) = 0 = f(0)$，即：
+
+
+  $$
+
+  f(0) = 0
+
+  $$
+
+
+  进而由导数定义：
+
+
+  $$
+
+  f''(0) = \lim_{x\to 0} \frac{f(x) - f(0)}{x} = \lim_{x\to 0} \frac{f(x)}{x} = 0
+
+  $$
+
+
+  利用 $f(x)$ 在 $x=0$ 处的带皮亚诺余项的二阶泰勒展开：
+
+
+  $$
+
+  f(x) = f(0) + f''(0)x + \frac{1}{2}f''''(0)x^2 + o(x^2) = \frac{1}{2}f''''(0)x^2 + o(x^2)
+
+  $$
+
+
+  代入 $\frac{f(x)}{x} = \frac{1}{2}f''''(0)x + o(x)$，则：
+
+
+  $$
+
+  x + \frac{f(x)}{x} = \left(1 + \frac{1}{2}f''''(0)\right)x + o(x)
+
+  $$
+
+
+  再利用 $\ln(1+u) = u + o(u)$：
+
+
+  $$
+
+  \lim_{x\to 0} \frac{1}{x} \ln\left(1 + x + \frac{f(x)}{x}\right) = \lim_{x\to 0} \frac{\left(1 + \frac{1}{2}f''''(0)\right)x
+  + o(x)}{x} = 1 + \frac{1}{2}f''''(0)
+
+  $$
+
+
+  由已知该极限等于 3：
+
+
+  $$
+
+  1 + \frac{1}{2}f''''(0) = 3 \implies \frac{1}{2}f''''(0) = 2 \implies f''''(0) = 4
+
+  $$
+
+
+  综上：$f(0) = 0, f''(0) = 0, f''''(0) = 4$．'
+feedback:
+  correct: 正确由未定式底数趋于 1 定出 $f(0)=0, f'(0)=0$，再利用泰勒展开确定 $f''(0)=4$．
+  incorrect: 易错点：底数趋于 1 要求 $\lim \frac{f(x)}{x}=0$，结合连续性得到 $f(0)=0$；二阶项系数需由泰勒展开或洛必达法则精确匹配．
+difficulty: 3
+cognitive_level: analyze
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第6题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:89a75f366f55745dfad04ac6216b28a58daf1628c5499a388bd8b780145caa3c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:89a75f366f55745dfad04ac6216b28a58daf1628c5499a388bd8b780145caa3c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:89a75f366f55745dfad04ac6216b28a58daf1628c5499a388bd8b780145caa3c

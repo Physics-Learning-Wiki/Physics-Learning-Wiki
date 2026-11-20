@@ -1,0 +1,127 @@
+schema_version: 3
+id: q-000814
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 在 $[a, b]$ 上连续，在 $(a, b)$ 内有二阶导数，且满足 $f(a) = f(b) = 0, f(c) > 0$（其中 $a < c < b$）．
+
+
+  证明：在 $(a, b)$ 内至少存在一点 $\xi$，使得 $f''''(\xi) < 0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未写出中值定理应用或思路无法推出负导数
+    points: 0
+  - id: partial
+    label: 部分掌握：成功证明存在点使一阶导数正负相异，但在推导二阶导数时逻辑不够严密
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整严谨应用拉格朗日中值定理完成证明
+    points: 1
+reference_answer: 利用两次拉格朗日中值定理（或极值点费马引理与二阶导数性质）可证在 $(a, b)$ 内必存在 $\xi$ 使得 $f''(\xi) < 0$．
+solution: '**证法一（拉格朗日中值定理两次应用）：**
+
+
+  因为 $f(x)$ 在 $[a, c]$ 上连续，在 $(a, c)$ 内可导，由拉格朗日中值定理，存在 $\xi_1 \in (a, c)$ 使得：
+
+
+  $$
+
+  f''(\xi_1) = \frac{f(c) - f(a)}{c - a} = \frac{f(c)}{c - a} > 0
+
+  $$
+
+
+  同理，因为 $f(x)$ 在 $[c, b]$ 上连续，在 $(c, b)$ 内可导，由拉格朗日中值定理，存在 $\xi_2 \in (c, b)$ 使得：
+
+
+  $$
+
+  f''(\xi_2) = \frac{f(b) - f(c)}{b - c} = \frac{-f(c)}{b - c} < 0
+
+  $$
+
+
+  显然 $a < \xi_1 < c < \xi_2 < b$．考察函数 $f''(x)$ 在闭区间 $[\xi_1, \xi_2]$ 上的性质：
+
+
+  $f''(x)$ 在 $[\xi_1, \xi_2]$ 上连续，在 $(\xi_1, \xi_2)$ 内可导．由拉格朗日中值定理，存在 $\xi \in (\xi_1, \xi_2) \subset (a, b)$ 使得：
+
+
+  $$
+
+  f''''(\xi) = \frac{f''(\xi_2) - f''(\xi_1)}{\xi_2 - \xi_1}
+
+  $$
+
+
+  因为 $\xi_2 > \xi_1$，分母 $\xi_2 - \xi_1 > 0$；而分子中 $f''(\xi_2) < 0$ 且 $f''(\xi_1) > 0$，所以分子：
+
+
+  $$
+
+  f''(\xi_2) - f''(\xi_1) < 0
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  f''''(\xi) < 0
+
+  $$
+
+
+  证毕．'
+feedback:
+  correct: 严谨地在 $[a,c]$ 与 $[c,b]$ 上分别使用拉格朗日中值定理得到异号的一阶导数，再对导函数应用中值定理得出二阶导数严格为负．
+  incorrect: 证明思路提示：在点 $c$ 的两侧分别应用拉格朗日中值定理得到 $f'(\xi_1) > 0$ 与 $f'(\xi_2) < 0$，再利用微分中值定理考察 $f'(\xi_2)-f'(\xi_1)$ 的符号．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第14题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:70d75212528c69590580693bfa9eb9df0b3a6974721db26ea7ac9c5ebac3678f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:70d75212528c69590580693bfa9eb9df0b3a6974721db26ea7ac9c5ebac3678f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:70d75212528c69590580693bfa9eb9df0b3a6974721db26ea7ac9c5ebac3678f

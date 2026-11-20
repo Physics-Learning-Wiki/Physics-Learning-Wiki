@@ -1,0 +1,81 @@
+schema_version: 3
+id: q-000896
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0^+} x^x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0^+} x^x = 1$．
+solution: '指数恒等式变形：$\lim_{x \to 0^+} x^x = e^{\lim_{x \to 0^+} x\ln x}$．
+
+
+  求指数极限：$\lim_{x \to 0^+} \frac{\ln x}{1/x} = \lim_{x \to 0^+} \frac{1/x}{-1/x^2} = \lim_{x \to 0^+} (-x) = 0$．
+
+
+  因此原极限为 $e^0 = 1$．'
+feedback:
+  correct: 正确对数化并用洛必达求得极限 1．
+  incorrect: $0^0$ 型极限恒等变形为 $e^{x\ln x}$．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第2(2)题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f130510817e109221f7513fff7c98d88a5d99fe209c19eef7b81aa3e5b9f86e7
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f130510817e109221f7513fff7c98d88a5d99fe209c19eef7b81aa3e5b9f86e7
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f130510817e109221f7513fff7c98d88a5d99fe209c19eef7b81aa3e5b9f86e7

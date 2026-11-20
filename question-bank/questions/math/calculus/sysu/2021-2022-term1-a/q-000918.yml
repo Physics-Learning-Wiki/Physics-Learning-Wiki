@@ -1,0 +1,121 @@
+schema_version: 3
+id: q-000918
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = \frac{x^3 + x + 1}{(x+1)^2}$ 的所有渐近线方程．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 垂直渐近线为 $x = -1$；斜渐近线为 $y = x - 2$．
+solution: '函数的定义域为 $x \neq -1$．
+
+
+  1. 垂直渐近线：
+
+  考察 $x \to -1$ 处的极限：
+
+
+  $$
+
+  \lim_{x \to -1} f(x) = \lim_{x \to -1} \frac{x^3+x+1}{(x+1)^2} = \frac{-1-1+1}{0^+} = \frac{-1}{0^+} = -\infty
+
+  $$
+
+
+  极限为无穷大，因此直线 $x = -1$ 是垂直渐近线．
+
+
+  2. 斜渐近线：
+
+  展开分母 $(x+1)^2 = x^2 + 2x + 1$．进行多项式长除法：
+
+
+  $$
+
+  x^3 + x + 1 = (x - 2)(x^2 + 2x + 1) + (4x + 3)
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  f(x) = x - 2 + \frac{4x+3}{(x+1)^2}
+
+  $$
+
+
+  当 $x \to \pm\infty$ 时：
+
+
+  $$
+
+  \lim_{x \to \pm\infty} [f(x) - (x - 2)] = \lim_{x \to \pm\infty} \frac{4x+3}{(x+1)^2} = 0
+
+  $$
+
+
+  因此直线 $y = x - 2$ 是斜渐近线．
+
+
+  综上，该函数的渐近线为垂直渐近线 $x = -1$ 与斜渐近线 $y = x - 2$．'
+feedback:
+  correct: 长除法分离线性主部准确，完整求出两条渐近线．
+  incorrect: 有理分式分子次数比分母高 1 时必有斜渐近线，长除法可一步分离出渐近线方程．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第13题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5e25dc17811813e5e8e0b3a4b4d6f2354c4aecace4bb8505f3d7115f47930598
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5e25dc17811813e5e8e0b3a4b4d6f2354c4aecace4bb8505f3d7115f47930598
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:5e25dc17811813e5e8e0b3a4b4d6f2354c4aecace4bb8505f3d7115f47930598

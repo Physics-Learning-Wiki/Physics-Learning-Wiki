@@ -1,0 +1,117 @@
+schema_version: 3
+id: q-000953
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求函数 $z = 3x+4y$ 在约束条件 $x^2+y^2=1$ 下的最小值及最大值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 最小值 $z_{\min} = -5$，最大值 $z_{\max} = 5$
+solution: '构造拉格朗日乘数函数：
+
+
+  $$
+
+  F(x, y, \lambda) = 3x + 4y + \lambda(x^2 + y^2 - 1)
+
+  $$
+
+
+  求偏导并令其为零：
+
+
+  $$
+
+  \begin{cases} F_x = 3 + 2\lambda x = 0 \\[2mm] F_y = 4 + 2\lambda y = 0 \\[2mm] F_\lambda = x^2 + y^2 - 1 = 0 \end{cases}
+
+  $$
+
+
+  由前两式解得：
+
+
+  $$
+
+  x = -\frac{3}{2\lambda}, \quad y = -\frac{2}{\lambda}
+
+  $$
+
+
+  代入单位圆方程：
+
+
+  $$
+
+  \left(-\frac{3}{2\lambda}\right)^2 + \left(-\frac{2}{\lambda}\right)^2 = \frac{9}{4\lambda^2} + \frac{16}{4\lambda^2} =
+  \frac{25}{4\lambda^2} = 1 \implies \lambda^2 = \frac{25}{4} \implies \lambda = \pm \frac{5}{2}
+
+  $$
+
+
+  - 当 $\lambda = \frac{5}{2}$ 时：$x = -\frac{3}{5}$，$y = -\frac{4}{5}$，此时 $z = 3(-\frac{3}{5}) + 4(-\frac{4}{5}) = -5$；
+
+  - 当 $\lambda = -\frac{5}{2}$ 时：$x = \frac{3}{5}$，$y = \frac{4}{5}$，此时 $z = 3(\frac{3}{5}) + 4(\frac{4}{5}) = 5$．
+
+
+  因为平面闭曲线 $x^2+y^2=1$ 是有界闭集，连续函数 $z = 3x+4y$ 必存在最大值与最小值．
+
+
+  故最小值 $z_{\min} = -5$，最大值 $z_{\max} = 5$．'
+feedback:
+  correct: 正确构建拉格朗日乘数方程组并求解得到条件极值．
+  incorrect: 本题亦可用柯西不等式 $(3x+4y)^2 \le (3^2+4^2)(x^2+y^2) = 25$ 直接验证最值取值范围．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1c104fc28f564756fe27a771d2ec1d6b67a0038915b697ce0aa4b19ba984cb98
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1c104fc28f564756fe27a771d2ec1d6b67a0038915b697ce0aa4b19ba984cb98
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1c104fc28f564756fe27a771d2ec1d6b67a0038915b697ce0aa4b19ba984cb98

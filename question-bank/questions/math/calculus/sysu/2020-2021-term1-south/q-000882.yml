@@ -1,0 +1,89 @@
+schema_version: 3
+id: q-000882
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 立体 $V$ 由平面 $z = 1$ 和椭圆锥面 $z^2 = \frac{x^2}{a^2} + \frac{y^2}{b^2}$（其中 $a > 0, b > 0, z \ge 0$）所围成，求该立体 $V$ 的体积．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 立体 $V$ 的体积为 $\frac{1}{3}\pi ab$．
+solution: '取高度为 $z$（$0 \le z \le 1$）的水平截面，截痕为椭圆：
+
+
+  $$
+
+  \frac{x^2}{(az)^2} + \frac{y^2}{(bz)^2} = 1
+
+  $$
+
+
+  截面面积为 $S(z) = \pi (az)(bz) = \pi ab z^2$．
+
+
+  利用平行截面面积分计算立体体积：
+
+
+  $$
+
+  V = \int_0^1 S(z)\,\mathrm{d}z = \int_0^1 \pi ab z^2\,\mathrm{d}z = \left. \pi ab \frac{z^3}{3} \right|_0^1 = \frac{1}{3}\pi
+  ab
+
+  $$'
+feedback:
+  correct: 正确写出水平截面椭圆面积函数并积分得出体积．
+  incorrect: 平行截面面积公式 $V = \int S(z)\,\mathrm{d}z$ 是求柱体、锥体体积的基本工具．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学期末试题（南校数院）第15题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-south
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:88ab2ec035e97ed7f26ba5b26f4407bec9593179b28eb228aa4ceb9f91e816df
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:88ab2ec035e97ed7f26ba5b26f4407bec9593179b28eb228aa4ceb9f91e816df
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:88ab2ec035e97ed7f26ba5b26f4407bec9593179b28eb228aa4ceb9f91e816df

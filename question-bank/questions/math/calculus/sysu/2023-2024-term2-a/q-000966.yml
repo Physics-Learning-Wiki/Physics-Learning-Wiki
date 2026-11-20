@@ -1,0 +1,109 @@
+schema_version: 3
+id: q-000966
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.series
+type: free_response
+choice_order: fixed
+stem: 判断级数 $\sum_{n=1}^\infty (-1)^{n-1}\frac{2n+1}{n(n+1)}$ 的敛散性；若收敛，进一步判断是绝对收敛还是条件收敛．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 条件收敛
+solution: '设正数列 $u_n = \frac{2n+1}{n(n+1)} > 0$．原级数为交错级数 $\sum_{n=1}^\infty (-1)^{n-1} u_n$．
+
+
+  1. 考察交错级数的敛散性（莱布尼茨判别法）：
+
+  - 极限条件：$\lim_{n \to \infty} u_n = \lim_{n \to \infty} \frac{2n+1}{n^2+n} = 0$；
+
+  - 单调性条件：考察连续函数 $f(x) = \frac{2x+1}{x(x+1)} = \frac{1}{x} + \frac{1}{x+1}$，其导数 $f''(x) = -\frac{1}{x^2} - \frac{1}{(x+1)^2}
+  < 0$，因此数列 $\{u_n\}$ 严格单调递减（亦可由比值 $\frac{u_{n+1}}{u_n} = \frac{2n+3}{(n+1)(n+2)} \cdot \frac{n(n+1)}{2n+1} = \frac{2n^2+3n}{2n^2+3n+1}
+  < 1$ 得出）．
+
+  由莱布尼茨判别法，交错级数 $\sum_{n=1}^\infty (-1)^{n-1} u_n$ 收敛．
+
+
+  2. 考察绝对收敛性：
+
+  考察各项绝对值组成的正项级数：
+
+
+  $$
+
+  \sum_{n=1}^\infty |(-1)^{n-1} u_n| = \sum_{n=1}^\infty \frac{2n+1}{n(n+1)}
+
+  $$
+
+
+  当 $n \to \infty$ 时，$\frac{2n+1}{n^2+n} \sim \frac{2}{n}$．
+
+  取比较基准数列 $v_n = \frac{1}{n}$：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{u_n}{v_n} = \lim_{n \to \infty} \frac{2n^2+n}{n^2+n} = 2 \neq 0
+
+  $$
+
+
+  因为调和级数 $\sum_{n=1}^\infty \frac{1}{n}$ 发散，由比较审敛法的极限形式，正项级数 $\sum_{n=1}^\infty u_n$ 发散．
+
+
+  综上所述，原级数条件收敛．'
+feedback:
+  correct: 正确使用莱布尼茨判别法证明交错级数收敛，并用比较法证明绝对值级数发散，最终确定条件收敛．
+  incorrect: 审交错级数必须先由莱布尼茨法确定收敛，再取绝对值判别绝对收敛性与条件收敛性．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第9题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b19142d56221a00a0c68cf85242db0a54b5077582fbd60192c790c726bcc42df
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b19142d56221a00a0c68cf85242db0a54b5077582fbd60192c790c726bcc42df
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b19142d56221a00a0c68cf85242db0a54b5077582fbd60192c790c726bcc42df

@@ -1,0 +1,82 @@
+schema_version: 3
+id: q-000883
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \left( \frac{1}{\ln(1+x)} - \frac{1}{x} \right)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \left( \frac{1}{\ln(1+x)} - \frac{1}{x} \right) = \frac{1}{2}$．
+solution: '通分后应用泰勒展开：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{x - \ln(1+x)}{x\ln(1+x)} = \lim_{x \to 0} \frac{x - (x - x^2/2 + o(x^2))}{x^2} = \frac{1}{2}
+
+  $$'
+feedback:
+  correct: 正确通分并展开得出极限 1/2．
+  incorrect: 通分后利用 $\ln(1+x) = x - x^2/2 + o(x^2)$ 最简捷．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第一学期高等数学一期末考试试题（珠海数院）第1(1)题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-zhuhai
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:239200fe2f08b0331bc6cd4b9baa5e1216088bc2d3cc3d748b666ad10eb2f7b8
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:239200fe2f08b0331bc6cd4b9baa5e1216088bc2d3cc3d748b666ad10eb2f7b8
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:239200fe2f08b0331bc6cd4b9baa5e1216088bc2d3cc3d748b666ad10eb2f7b8

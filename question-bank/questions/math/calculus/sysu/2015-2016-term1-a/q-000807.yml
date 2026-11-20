@@ -1,0 +1,133 @@
+schema_version: 3
+id: q-000807
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+- calculus.integral-inequality
+type: free_response
+choice_order: fixed
+stem: 将给定的正数 $12$ 分成三个非负数 $x, 2y, 3z$ 之和，使得 $x y^2 z^3$ 最大．求这三个非负数及最大值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未建立正确的条件极值模型或均值不等式拆项错误
+    points: 0
+  - id: partial
+    label: 部分掌握：求出 x=y=z=2，但在三个数或最大值表达上有遗漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求出三个数为 2, 4, 6（对应 x=2, y=2, z=2）且最大值为 64
+    points: 1
+reference_answer: $x = 2, \quad 2y = 4, \quad 3z = 6$（即 $x = 2, y = 2, z = 2$），最大值为 $64$．
+solution: '已知条件为 $x + 2y + 3z = 12$，且 $x \ge 0, y \ge 0, z \ge 0$．
+
+
+  目标函数为 $u = x y^2 z^3$．
+
+
+  **方法一（均值不等式法）：**
+
+
+  将条件和式拆为目标函数各变量对应因子的和：
+
+
+  $$
+
+  x + 2y + 3z = x + y + y + z + z + z = 12
+
+  $$
+
+
+  这正好是 6 个非负数 $x, y, y, z, z, z$ 之和．
+
+
+  对这 6 个数应用算术–几何均值不等式（AM–GM）：
+
+
+  $$
+
+  \frac{x + y + y + z + z + z}{6} \ge \sqrt[6]{x \cdot y \cdot y \cdot z \cdot z \cdot z} = \sqrt[6]{x y^2 z^3}
+
+  $$
+
+
+  代入和为 12：
+
+
+  $$
+
+  \frac{12}{6} = 2 \ge \sqrt[6]{x y^2 z^3} \implies x y^2 z^3 \le 2^6 = 64
+
+  $$
+
+
+  等号成立的充要条件是这 6 个数全部相等：
+
+
+  $$
+
+  x = y = z = 2
+
+  $$
+
+
+  此时三个非负数分别为 $x = 2$，$2y = 4$，$3z = 6$（满足 $2 + 4 + 6 = 12$），目标函数的最大值为 $2 \cdot 2^2 \cdot 2^3 = 64$．
+
+
+  **方法二（拉格朗日乘数法）：**
+
+
+  设 $L(x, y, z, \lambda) = \ln x + 2\ln y + 3\ln z + \lambda(x + 2y + 3z - 12)$．
+
+
+  分别求偏导：$\frac{1}{x} + \lambda = 0, \frac{2}{y} + 2\lambda = 0, \frac{3}{z} + 3\lambda = 0$，解得 $x = y = z = -\frac{1}{\lambda}$．
+
+
+  代入约束解得 $x = y = z = 2$，同样得出最大值为 $64$．'
+feedback:
+  correct: 正确利用 AM-GM 不等式或拉格朗日乘数法求得极值点与最大值．
+  incorrect: 请注意约束是 $x+2y+3z=12$，拆成 6 项 $x+y+y+z+z+z$ 均值不等式最简便，注意分清题目要求的「三个非负数」是 $x, 2y, 3z$ 还是 $x, y, z$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第7题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0c8461fc917846dcc3c424ff8b515b13711cc9a4ce6a175e936a2e222eacad3a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0c8461fc917846dcc3c424ff8b515b13711cc9a4ce6a175e936a2e222eacad3a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:0c8461fc917846dcc3c424ff8b515b13711cc9a4ce6a175e936a2e222eacad3a

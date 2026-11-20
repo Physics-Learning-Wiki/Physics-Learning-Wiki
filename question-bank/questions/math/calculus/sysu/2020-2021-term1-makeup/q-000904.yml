@@ -1,0 +1,79 @@
+schema_version: 3
+id: q-000904
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求二元函数的极限：
+
+
+  $$
+
+  \lim_{(x, y) \to (0, 0)} \frac{\sin(x^3 + y^4)}{x^2 + y^2}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{(x, y) \to (0, 0)} \frac{\sin(x^3 + y^4)}{x^2 + y^2} = 0$．
+solution: '极坐标放缩：$|\sin(x^3+y^4)| \le |x^3+y^4| = \rho^3 |\cos^3\theta + \rho\sin^4\theta| \le 2\rho^3$（当 $\rho < 1$ 时）．
+
+
+  分母为 $\rho^2$，故原式绝对值 $\le 2\rho \to 0$．由夹逼定理，极限值为 $0$．'
+feedback:
+  correct: 正确利用不等式放缩与夹逼定理求得极限 0．
+  incorrect: 分子次数高于分母次数时，转化为极坐标可简捷证明极限为 0．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学（一）（I）补考考试试卷第9题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-makeup
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:73775ddb39efc8e5fe37d8209ced874770810c369b9fde488656d7e7f8179d72
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:73775ddb39efc8e5fe37d8209ced874770810c369b9fde488656d7e7f8179d72
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:73775ddb39efc8e5fe37d8209ced874770810c369b9fde488656d7e7f8179d72

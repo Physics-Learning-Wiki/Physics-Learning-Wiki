@@ -1,0 +1,147 @@
+schema_version: 3
+id: q-000863
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求原点到空间直线
+
+
+  $$
+
+  L: \begin{cases} x - z + 2 = 0 \\ -y + 2z - 1 = 0 \end{cases}
+
+  $$
+
+
+  的垂线方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未求出直线的方向向量或垂足
+    points: 0
+  - id: partial
+    label: 部分掌握：求得直线方向与垂直条件，但垂足坐标计算有误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求得垂足并写出规范垂线方程
+    points: 1
+reference_answer: $\frac{x}{1} = \frac{y}{2} = \frac{z}{1}$（或过原点与垂足 $P(-1, -1, 1)$ 的对称式方程）．
+solution: '**1. 求直线 $L$ 的方向向量：**
+
+
+  直线的两平面法向量分别为 $\mathbf{n}_1 = (1, 0, -1), \mathbf{n}_2 = (0, -1, 2)$．
+
+
+  直线的方向向量为：
+
+
+  $$
+
+  \mathbf{s} = \mathbf{n}_1 \times \mathbf{n}_2 = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 1 & 0 & -1 \\ 0
+  & -1 & 2 \end{vmatrix} = (-1, -2, -1) \parallel (1, 2, 1)
+
+  $$
+
+
+  **2. 求垂足坐标 $P(x, y, z)$：**
+
+
+  垂足 $P$ 位于直线 $L$ 上，设参数方程：由 $x = z - 2, y = 2z - 1$．
+
+
+  向量 $\vec{OP} = (z - 2, 2z - 1, z)$．
+
+
+  因为 $OP$ 垂直于直线 $L$：
+
+
+  $$
+
+  \vec{OP} \cdot \mathbf{s} = 0 \implies 1(z - 2) + 2(2z - 1) + 1(z) = 0
+
+  $$
+
+
+  展开：
+
+
+  $$
+
+  z - 2 + 4z - 2 + z = 0 \implies 6z - 4 = 0 \implies z = \frac{2}{3}
+
+  $$
+
+
+  代入解得垂足坐标：
+
+
+  $$
+
+  x = \frac{2}{3} - 2 = -\frac{4}{3}, \quad y = 2\left(\frac{2}{3}\right) - 1 = \frac{1}{3}, \quad z = \frac{2}{3}
+
+  $$
+
+
+  **3. 写出垂线方程：**
+
+
+  垂线经过原点 $(0, 0, 0)$ 和垂足 $P\left(-\frac{4}{3}, \frac{1}{3}, \frac{2}{3}\right)$，其方向向量为 $(-4, 1, 2)$．
+
+
+  垂线的对称式方程为：
+
+
+  $$
+
+  \frac{x}{-4} = \frac{y}{1} = \frac{z}{2}
+
+  $$'
+feedback:
+  correct: 正确利用参数化直线求得垂足坐标，并写出过原点与垂足的垂线方程．
+  incorrect: 求垂足提示：将直线表示为关于 $z$ 的参数方程，由 $\vec{OP} \cdot \mathbf{s} = 0$ 确定参数 $z$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第5题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2244dcdcdd2dad955e9d9ffda8b1e50293fea7edfb3e064efe7eb5eb4a55c27d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2244dcdcdd2dad955e9d9ffda8b1e50293fea7edfb3e064efe7eb5eb4a55c27d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2244dcdcdd2dad955e9d9ffda8b1e50293fea7edfb3e064efe7eb5eb4a55c27d

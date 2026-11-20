@@ -1,0 +1,140 @@
+schema_version: 3
+id: q-000852
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求函数 $F(x, y, z) = \frac{y}{x}$ 在点 $M\left(\frac{1}{2}, \frac{1}{2}, 1\right)$ 处沿曲面 $x^2 + 2y^2 + \frac{z^2}{4} = 1$
+  的外法线方向的方向导数．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未求出单位外法向量或函数梯度
+    points: 0
+  - id: partial
+    label: 部分掌握：求得梯度与法向，但归一化或点积有计算失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完整求得外法向方向导数
+    points: 1
+reference_answer: $\frac{\partial F}{\partial \mathbf{n}^0} = -\frac{2}{3}$．
+solution: '**1. 求曲面在点 $M$ 处的外法线单位向量：**
+
+
+  设曲面方程为 $G(x, y, z) = x^2 + 2y^2 + \frac{z^2}{4} - 1 = 0$．其法向量为：
+
+
+  $$
+
+  \nabla G = \left(2x, 4y, \frac{z}{2}\right)
+
+  $$
+
+
+  在点 $M\left(\frac{1}{2}, \frac{1}{2}, 1\right)$ 处：
+
+
+  $$
+
+  \mathbf{n} = \nabla G|_M = \left(1, 2, \frac{1}{2}\right)
+
+  $$
+
+
+  外法线方向指向曲面外侧，模长为：
+
+
+  $$
+
+  |\mathbf{n}| = \sqrt{1^2 + 2^2 + \left(\frac{1}{2}\right)^2} = \sqrt{1 + 4 + \frac{1}{4}} = \sqrt{\frac{21}{4}} = \frac{\sqrt{21}}{2}
+
+  $$
+
+
+  单位外法向量为：
+
+
+  $$
+
+  \mathbf{n}^0 = \frac{\mathbf{n}}{|\mathbf{n}|} = \left(\frac{2}{\sqrt{21}}, \frac{4}{\sqrt{21}}, \frac{1}{\sqrt{21}}\right)
+
+  $$
+
+
+  **2. 求函数 $F(x, y, z) = \frac{y}{x}$ 在点 $M$ 处的梯度：**
+
+
+  $$
+
+  \nabla F = \left(-\frac{y}{x^2}, \frac{1}{x}, 0\right)
+
+  $$
+
+
+  在点 $M\left(\frac{1}{2}, \frac{1}{2}, 1\right)$ 处：
+
+
+  $$
+
+  \nabla F|_M = \left(-\frac{1/2}{(1/2)^2}, \frac{1}{1/2}, 0\right) = (-2, 2, 0)
+
+  $$
+
+
+  **3. 计算方向导数：**
+
+
+  $$
+
+  \frac{\partial F}{\partial \mathbf{n}^0} = \nabla F|_M \cdot \mathbf{n}^0 = (-2) \cdot \frac{2}{\sqrt{21}} + 2 \cdot \frac{4}{\sqrt{21}}
+  + 0 = \frac{-4 + 8}{\sqrt{21}} = \frac{4}{\sqrt{21}} = \frac{4\sqrt{21}}{21}
+
+  $$'
+feedback:
+  correct: 正确计算梯度与外法线单位向量并求得方向导数．
+  incorrect: 方向导数等于梯度与单位方向向量的点积，外法向量需先归一化为单位向量．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f5b7162933892104e005a59f8beaa0d5ff3870635137d4655cb6c747f5754a4d
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f5b7162933892104e005a59f8beaa0d5ff3870635137d4655cb6c747f5754a4d
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f5b7162933892104e005a59f8beaa0d5ff3870635137d4655cb6c747f5754a4d

@@ -1,0 +1,116 @@
+schema_version: 3
+id: q-000928
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '设数列 $\{x_n\}$ 满足 $x_1 = 2$，$x_{n+1} = \frac{1}{2}\left(x_n + \frac{4}{x_n}\right)$（$n = 1, 2, 3, \dots$）：
+
+
+  1. 证明数列 $\{x_n\}$ 的极限存在；
+
+  2. 求极限 $\lim_{n \to \infty} x_n$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 数列极限存在，且 $\lim_{n \to \infty} x_n = 2$．
+solution: '1. 证明极限存在：
+
+  由于 $x_1 = 2 > 0$，由递推关系易知所有 $x_n > 0$．
+
+  对一切 $n \ge 1$，由基本均值不等式：
+
+
+  $$
+
+  x_{n+1} = \frac{1}{2}\left( x_n + \frac{4}{x_n} \right) \ge \sqrt{x_n \cdot \frac{4}{x_n}} = 2
+
+  $$
+
+
+  故对所有 $n \ge 2$ 均有 $x_n \ge 2$（数列有下界）．
+
+  考察相邻项差值：
+
+
+  $$
+
+  x_{n+1} - x_n = \frac{1}{2}\left( \frac{4}{x_n} - x_n \right) = \frac{4 - x_n^2}{2x_n}
+
+  $$
+
+
+  当 $n \ge 2$ 时，$x_n \ge 2$，故 $4 - x_n^2 \le 0$，从而 $x_{n+1} \le x_n$（单调递减）．
+
+  由单调有界收敛准则，数列 $\{x_n\}$ 的极限存在．
+
+
+  2. 求极限：
+
+  设 $\lim_{n \to \infty} x_n = a$（由于 $x_n \ge 2$，必有 $a \ge 2$）．两边取极限：
+
+
+  $$
+
+  a = \frac{1}{2}\left( a + \frac{4}{a} \right) \implies 2a^2 = a^2 + 4 \implies a^2 = 4 \implies a = 2
+
+  $$
+
+
+  因此 $\lim_{n \to \infty} x_n = 2$．'
+feedback:
+  correct: 均值不等式求下界与单调递减性证明规范，极限求解准确．
+  incorrect: 巴比伦法/牛顿迭代求根号 $\sqrt{4}$ 的典型递推序列．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第9题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9a285f757e17b1b4e290a0134bd8d35feba7993cc5eb3bc95363394691ba4e05
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9a285f757e17b1b4e290a0134bd8d35feba7993cc5eb3bc95363394691ba4e05
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:9a285f757e17b1b4e290a0134bd8d35feba7993cc5eb3bc95363394691ba4e05

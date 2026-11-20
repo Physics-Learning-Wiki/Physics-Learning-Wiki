@@ -1,0 +1,94 @@
+schema_version: 3
+id: q-000942
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '判断含参变量反常积分：
+
+
+  $$
+
+  \int_0^{+\infty} e^{-tx}\frac{\sin x}{x}\,\mathrm{d}x
+
+  $$
+
+
+  在 $t \in [0, +\infty)$ 上是否一致收敛，并给出证明．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 该含参变量反常积分在 $t \in [0, +\infty)$ 上一致收敛．
+solution: '被积函数在 $x \to 0^+$ 处极限为 $1$，故 $x = 0$ 不是瑕点，只需考察无穷积分 $\int_1^{+\infty}$．
+
+
+  利用阿贝尔判别法（Abel Test）：
+
+  设 $f(x, t) = \frac{\sin x}{x}$，$g(x, t) = e^{-tx}$．
+
+
+  1. 积分 $\int_0^{+\infty} \frac{\sin x}{x}\,\mathrm{d}x = \frac{\pi}{2}$ 是收敛的数值反常积分，与参数 $t$ 无关，因此它关于 $t \in [0, +\infty)$
+  显然一致收敛；
+
+  2. 对于因子 $g(x, t) = e^{-tx}$，当 $t \ge 0$ 时，对每个固定的 $t$，$e^{-tx}$ 关于 $x$ 在 $[0, +\infty)$ 上单调递减；
+
+  3. 且对一切 $x \ge 0, t \ge 0$ 恒有一致界限：$|g(x, t)| = e^{-tx} \le 1$．
+
+
+  根据含参变量反常积分的阿贝尔判别法，积分 $\int_0^{+\infty} e^{-tx}\frac{\sin x}{x}\,\mathrm{d}x$ 在 $t \in [0, +\infty)$ 上一致收敛．'
+feedback:
+  correct: 准确应用阿贝尔判别法验证一致收敛的三项充分条件．
+  incorrect: 阿贝尔判别法是解决带指数衰减因子 $e^{-tx}$ 含参反常积分一致收敛的标准定理．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第11题（6分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bda6d1adb38621d8281beab708602d988e59f26da3576000d6462fcadb5fdd9b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bda6d1adb38621d8281beab708602d988e59f26da3576000d6462fcadb5fdd9b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:bda6d1adb38621d8281beab708602d988e59f26da3576000d6462fcadb5fdd9b

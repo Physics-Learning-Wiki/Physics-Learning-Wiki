@@ -1,0 +1,96 @@
+schema_version: 3
+id: q-000844
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{n\to\infty} \frac{3n^2 + 2n - 1}{\sqrt{n^4 + n^3 + 2}}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：最高次幂次数判断错误
+    points: 0
+  - id: partial
+    label: 部分掌握：同除以 n^2 但计算有小疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确同除最高次幂求得极限 3
+    points: 1
+reference_answer: $\lim_{n\to\infty} \frac{3n^2 + 2n - 1}{\sqrt{n^4 + n^3 + 2}} = 3$．
+solution: '该极限为 $\frac{\infty}{\infty}$ 型，分子分母最高次幂均为 $n^2$（分母根号下为 $n^4$）．
+
+
+  分子分母同除以 $n^2$：
+
+
+  $$
+
+  \frac{3n^2 + 2n - 1}{\sqrt{n^4 + n^3 + 2}} = \frac{3 + \frac{2}{n} - \frac{1}{n^2}}{\sqrt{1 + \frac{1}{n} + \frac{2}{n^4}}}
+
+  $$
+
+
+  当 $n \to \infty$ 时，各负幂次项均趋于 0：
+
+
+  $$
+
+  \lim_{n\to\infty} \frac{3 + \frac{2}{n} - \frac{1}{n^2}}{\sqrt{1 + \frac{1}{n} + \frac{2}{n^4}}} = \frac{3 + 0 - 0}{\sqrt{1
+  + 0 + 0}} = 3
+
+  $$'
+feedback:
+  correct: 正确提取最高阶主部 $n^2$ 得到极限 3．
+  incorrect: 分式抓大头：分子最高次项为 $3n^2$，分母最高次项为 $\sqrt{n^4} = n^2$，比值为 3．
+difficulty: 1
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:607fce3a115b4ca3d72e5e8426c6cccdea000985d10ddb0b72867514b5f6f5b9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:607fce3a115b4ca3d72e5e8426c6cccdea000985d10ddb0b72867514b5f6f5b9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:607fce3a115b4ca3d72e5e8426c6cccdea000985d10ddb0b72867514b5f6f5b9

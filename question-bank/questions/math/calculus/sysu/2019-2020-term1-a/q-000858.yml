@@ -1,0 +1,128 @@
+schema_version: 3
+id: q-000858
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求二元函数的极限：
+
+
+  $$
+
+  \lim_{(x, y)\to(0, 0)} (x + 2y) \ln(x^4 + y^4)
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出 r*ln r 极限或误判极限不存在
+    points: 0
+  - id: partial
+    label: 部分掌握：写出极坐标展开，但对角度项有界性未作说明
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成极坐标放缩求得极限为 0
+    points: 1
+reference_answer: $\lim_{(x, y)\to(0, 0)} (x + 2y) \ln(x^4 + y^4) = 0$．
+solution: '采用极坐标变换 $x = r\cos\theta, y = r\sin\theta$（$r > 0$）：
+
+
+  $$
+
+  x^4 + y^4 = r^4 (\cos^4\theta + \sin^4\theta)
+
+  $$
+
+
+  注意三角多项式满足 $\frac{1}{2} \le \cos^4\theta + \sin^4\theta \le 1$．
+
+
+  因此对数项可拆分：
+
+
+  $$
+
+  \ln(x^4 + y^4) = \ln(r^4) + \ln(\cos^4\theta + \sin^4\theta) = 4\ln r + \ln(\cos^4\theta + \sin^4\theta)
+
+  $$
+
+
+  而 $(x + 2y) = r(\cos\theta + 2\sin\theta)$．所以：
+
+
+  $$
+
+  (x + 2y) \ln(x^4 + y^4) = r(\cos\theta + 2\sin\theta) [4\ln r + \ln(\cos^4\theta + \sin^4\theta)]
+
+  $$
+
+
+  当 $(x, y) \to (0, 0)$ 时，$r \to 0^+$．
+
+
+  因为 $\cos\theta + 2\sin\theta$ 和 $\ln(\cos^4\theta + \sin^4\theta)$ 均有界，且经典极限：
+
+
+  $$
+
+  \lim_{r\to 0^+} r \ln r = 0
+
+  $$
+
+
+  由有界量乘以无穷小量仍为无穷小量，可知：
+
+
+  $$
+
+  \lim_{(x, y)\to(0, 0)} (x + 2y) \ln(x^4 + y^4) = 0
+
+  $$'
+feedback:
+  correct: 利用极坐标放缩结合 $\lim_{r\to 0} r\ln r = 0$ 严谨证明极限为 0．
+  incorrect: 请注意：$x^4+y^4 \sim r^4$，对数项为 $4\ln r$；乘以一次项 $r$ 后为 $r\ln r \to 0$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第1(3)题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b8fa99ee593d08560ec80fd6784fce2eef5071a401525e4698d4472a50601442
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b8fa99ee593d08560ec80fd6784fce2eef5071a401525e4698d4472a50601442
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b8fa99ee593d08560ec80fd6784fce2eef5071a401525e4698d4472a50601442

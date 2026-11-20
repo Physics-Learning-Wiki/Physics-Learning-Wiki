@@ -1,0 +1,148 @@
+schema_version: 3
+id: q-000855
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative-integral
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '设 $f(x)$ 在闭区间 $[a, b]$ 上连续，且 $f(x) > 0$．令
+
+
+  $$
+
+  F(x) = \int_a^x f(t)\,\mathrm{d}t + \int_b^x \frac{1}{f(t)}\,\mathrm{d}t
+
+  $$
+
+
+  证明：
+
+
+  (1) $F''(x) \ge 2$；
+
+
+  (2) 方程 $F(x) = 0$ 在开区间 $(a, b)$ 内有且仅有一个根．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：变上限求导错误或未证明存在性与唯一性
+    points: 0
+  - id: partial
+    label: 部分掌握：证明了 F'(x)>=2，但在端点符号或单调性唯一性论述上有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整严密完成存在性与唯一性全部两问的证明
+    points: 1
+reference_answer: (1) 由变上限积分求导结合基本均值不等式可得 $F'(x) = f(x) + \frac{1}{f(x)} \ge 2$；(2) 结合单调性与零点定理可证在 $(a, b)$ 内有且仅有一个根．
+solution: '**(1) 证明 $F''(x) \ge 2$：**
+
+
+  根据变上限积分的求导法则：
+
+
+  $$
+
+  F''(x) = \frac{\mathrm{d}}{\mathrm{d}x} \int_a^x f(t)\,\mathrm{d}t + \frac{\mathrm{d}}{\mathrm{d}x} \int_b^x \frac{1}{f(t)}\,\mathrm{d}t
+  = f(x) + \frac{1}{f(x)}
+
+  $$
+
+
+  因为已知 $f(x) > 0$，由基本不等式 $u + \frac{1}{u} \ge 2$（当且仅当 $u = 1$ 时等号成立）：
+
+
+  $$
+
+  F''(x) = f(x) + \frac{1}{f(x)} \ge 2\sqrt{f(x) \cdot \frac{1}{f(x)}} = 2
+
+  $$
+
+
+  **(2) 证明方程 $F(x) = 0$ 在 $(a, b)$ 内有且仅有一个根：**
+
+
+  考察两端点处 $F(x)$ 的函数值：
+
+
+  - 在 $x = a$ 处：
+
+
+  $$
+
+  F(a) = \int_a^a f(t)\,\mathrm{d}t + \int_b^a \frac{1}{f(t)}\,\mathrm{d}t = 0 - \int_a^b \frac{1}{f(t)}\,\mathrm{d}t = -\int_a^b
+  \frac{1}{f(t)}\,\mathrm{d}t
+
+  $$
+
+
+  因为在 $[a, b]$ 上 $f(t) > 0$，所以 $\frac{1}{f(t)} > 0$ 且 $b > a$，故 $\int_a^b \frac{1}{f(t)}\,\mathrm{d}t > 0$，因此 $F(a) < 0$．
+
+
+  - 在 $x = b$ 处：
+
+
+  $$
+
+  F(b) = \int_a^b f(t)\,\mathrm{d}t + \int_b^b \frac{1}{f(t)}\,\mathrm{d}t = \int_a^b f(t)\,\mathrm{d}t + 0 > 0
+
+  $$
+
+
+  因为 $F(x)$ 在 $[a, b]$ 上连续，且 $F(a) < 0, F(b) > 0$，由零点定理，存在 $\xi \in (a, b)$ 使得 $F(\xi) = 0$（根的存在性）．
+
+
+  又由第 (1) 问知，在 $[a, b]$ 上 $F''(x) \ge 2 > 0$，所以 $F(x)$ 在 $[a, b]$ 上严格单调递增．
+
+
+  由严格单调性可知零点必然唯一（根的唯一性）．
+
+
+  综上，方程 $F(x) = 0$ 在 $(a, b)$ 内有且仅有一个根．'
+feedback:
+  correct: 严密利用变上限求导、均值不等式、零点定理与单调性完成存在性与唯一性证明．
+  incorrect: 证明步骤：变上限积分导数为 $f(x)+1/f(x) \ge 2$ 保证严格单调增；验证 $F(a)<0$ 与 $F(b)>0$ 应用零点定理．
+difficulty: 2
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第13题（6分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05572b65063f3990c37076657c27ddaa0f29d93d2117a86e0e50af1743266f21
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05572b65063f3990c37076657c27ddaa0f29d93d2117a86e0e50af1743266f21
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:05572b65063f3990c37076657c27ddaa0f29d93d2117a86e0e50af1743266f21

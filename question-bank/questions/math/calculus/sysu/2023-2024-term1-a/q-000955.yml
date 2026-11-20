@@ -1,0 +1,111 @@
+schema_version: 3
+id: q-000955
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative-integral
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: 设 $f(x) = \int_0^x \frac{\sin t}{\pi-t}\,\mathrm{d}t$，求积分 $\int_0^\pi f(x)\,\mathrm{d}x$ 的值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $2$
+solution: '由微积分基本定理可知 $f''(x) = \frac{\sin x}{\pi-x}$，且 $f(0) = 0$．
+
+
+  应用分部积分法：
+
+
+  $$
+
+  \int_0^\pi f(x)\,\mathrm{d}x = [x f(x)]_0^\pi - \int_0^\pi x f''(x)\,\mathrm{d}x = \pi f(\pi) - \int_0^\pi \frac{x\sin x}{\pi-x}\,\mathrm{d}x
+
+  $$
+
+
+  由于 $\pi f(\pi) = \pi \int_0^\pi \frac{\sin x}{\pi-x}\,\mathrm{d}x$，合并两项：
+
+
+  $$
+
+  \int_0^\pi f(x)\,\mathrm{d}x = \pi \int_0^\pi \frac{\sin x}{\pi-x}\,\mathrm{d}x - \int_0^\pi \frac{x\sin x}{\pi-x}\,\mathrm{d}x
+  = \int_0^\pi \frac{(\pi-x)\sin x}{\pi-x}\,\mathrm{d}x
+
+  $$
+
+
+  化简被积函数：
+
+
+  $$
+
+  = \int_0^\pi \sin x\,\mathrm{d}x = \left. [-\cos x] \right|_0^\pi = -(-1) - (-1) = 2
+
+  $$
+
+
+  【另解（交换积分次序）】：
+
+
+  $$
+
+  \int_0^\pi \mathrm{d}x \int_0^x \frac{\sin t}{\pi-t}\,\mathrm{d}t = \int_0^\pi \frac{\sin t}{\pi-t} \left( \int_t^\pi 1\,\mathrm{d}x
+  \right)\,\mathrm{d}t = \int_0^\pi \frac{\sin t}{\pi-t} (\pi-t)\,\mathrm{d}t = \int_0^\pi \sin t\,\mathrm{d}t = 2
+
+  $$'
+feedback:
+  correct: 正确应用分部积分法或交换二次积分次序化简变限积分并计算定积分．
+  incorrect: 分部积分法与二重积分交换次序在此类变限积分问题中完全等价且都非常优美．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第12题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6c2b57068c9227c02c6da238c10e702dd72fc35b7b31148cca5d04642cadb33e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6c2b57068c9227c02c6da238c10e702dd72fc35b7b31148cca5d04642cadb33e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6c2b57068c9227c02c6da238c10e702dd72fc35b7b31148cca5d04642cadb33e

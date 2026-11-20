@@ -310,7 +310,9 @@ nav:
     - 绘图工具: tools/plotting.md
   - 知识小测:
     - 首页: quiz/index.md
-    - 测试集合: quiz/sets.md
+    - 测试集合:
+      - 全部题集: quiz/sets.md
+      - 课程真题: quiz/course-exams.md
     - 题库浏览: quiz/questions.md
     - 我的题库: quiz/library.md
     - 贡献题目: quiz/contribute.md

@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000830
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x\to 0^+} x^{\sin x}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未识别 0^0 型未定式或对数化错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确化为 x*ln x，但在洛必达计算或指数还原上有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成对数化与洛必达法则求得极限 1
+    points: 1
+reference_answer: $\lim_{x\to 0^+} x^{\sin x} = 1$．
+solution: '该极限为 $0^0$ 型未定式．取指数对数转化：
+
+
+  $$
+
+  x^{\sin x} = e^{\sin x \ln x}
+
+  $$
+
+
+  考察指数部分的极限：当 $x \to 0^+$ 时，利用等价无穷小 $\sin x \sim x$：
+
+
+  $$
+
+  \lim_{x\to 0^+} \sin x \ln x = \lim_{x\to 0^+} x \ln x
+
+  $$
+
+
+  改写为 $\frac{\infty}{\infty}$ 型并应用洛必达法则：
+
+
+  $$
+
+  \lim_{x\to 0^+} \frac{\ln x}{\frac{1}{x}} = \lim_{x\to 0^+} \frac{\frac{1}{x}}{-\frac{1}{x^2}} = \lim_{x\to 0^+} (-x) =
+  0
+
+  $$
+
+
+  由指数函数的连续性：
+
+
+  $$
+
+  \lim_{x\to 0^+} x^{\sin x} = e^{\lim_{x\to 0^+} \sin x \ln x} = e^0 = 1
+
+  $$'
+feedback:
+  correct: 正确对 $0^0$ 型未定式取对数并结合 $\lim_{x\to 0^+} x\ln x = 0$ 求得结果 1．
+  incorrect: 请注意 $0^0$ 型需取对数转化为 $0 \cdot (-\infty)$ 型，再化为分式使用洛必达法则求得指数极限为 0，底数为 $e^0=1$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:482ae410df6b2d33bcb31b9711a592f2adf0faf4a7561a27fc4b2bdafc210155
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:482ae410df6b2d33bcb31b9711a592f2adf0faf4a7561a27fc4b2bdafc210155
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:482ae410df6b2d33bcb31b9711a592f2adf0faf4a7561a27fc4b2bdafc210155

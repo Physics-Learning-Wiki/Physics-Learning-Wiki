@@ -1,0 +1,95 @@
+schema_version: 3
+id: q-000913
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求过点 $(2, 0, -3)$ 且与两已知平面 $2x - 2y + 4z + 7 = 0$ 和 $3x + y - 2z + 5 = 0$ 均垂直的平面方程．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 平面方程为 $2y + z + 3 = 0$．
+solution: '两已知平面的法向量分别为 $\mathbf{n}_1 = (2, -2, 4)$ 与 $\mathbf{n}_2 = (3, 1, -2)$．
+
+
+  所求平面的法向量 $\mathbf{n}$ 需同时垂直于 $\mathbf{n}_1$ 与 $\mathbf{n}_2$，因此可取其叉乘：
+
+
+  $$
+
+  \mathbf{n} = \mathbf{n}_1 \times \mathbf{n}_2 = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & -2 & 4 \\ 3
+  & 1 & -2 \end{vmatrix} = (4 - 4)\mathbf{i} - (-4 - 12)\mathbf{j} + (2 - (-6))\mathbf{k} = (0, 16, 8)
+
+  $$
+
+
+  化简取同向法向量 $\mathbf{n}'' = (0, 2, 1)$．
+
+
+  过已知点 $(2, 0, -3)$，应用平面的点法式方程：
+
+
+  $$
+
+  0 \cdot (x - 2) + 2(y - 0) + 1(z - (-3)) = 0 \implies 2y + z + 3 = 0
+
+  $$
+
+
+  因此所求平面方程为 $2y + z + 3 = 0$．'
+feedback:
+  correct: 法向量叉乘与点法式方程建立完全准确．
+  incorrect: 两法向量叉乘所得向量即为所求平面的法向量．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第7题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de5f95880af9caff6bc763e88238c8f85aac830b2d4b7f6032dcaf2d91933749
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de5f95880af9caff6bc763e88238c8f85aac830b2d4b7f6032dcaf2d91933749
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:de5f95880af9caff6bc763e88238c8f85aac830b2d4b7f6032dcaf2d91933749

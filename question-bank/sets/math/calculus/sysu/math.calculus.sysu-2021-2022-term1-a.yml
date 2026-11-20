@@ -1,0 +1,34 @@
+schema_version: 1
+id: math.calculus.sysu-2021-2022-term1-a
+title: 中山大学高等数学一（I）期末 A 卷（2021–2022 学年第 1 学期）
+description: 中山大学 2021–2022 学年第 1 学期《高等数学一（I）》期末考试 A 卷整卷练习，包含三角极限、幂指极限、反三角求导恒等式、黎曼和数列极限、隐函数求导、垂直平面方程、拉格朗日不等式、间断点分类、旋转体体积、奇偶定积分、ε-δ极限证明、渐近线分析、递推数列收敛及积分函数可导连续性分析等
+  15 道大题．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分一
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000907
+  - q-000908
+  - q-000909
+  - q-000910
+  - q-000911
+  - q-000912
+  - q-000913
+  - q-000914
+  - q-000819
+  - q-000915
+  - q-000916
+  - q-000917
+  - q-000918
+  - q-000919
+  - q-000920
+  order: fixed

@@ -1,0 +1,141 @@
+schema_version: 3
+id: q-000950
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = \frac{1}{2}\ln\frac{1-x}{1+x}$ 在 $x = 0$ 点的带佩亚诺余项的 $n$ 阶泰勒公式，并写出 $f(x)$ 在 $x = 0$ 处的 $n$ 阶导数 $f^{(n)}(0)$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 泰勒公式为 $f(x) = -x - \frac{x^3}{3} - \frac{x^5}{5} - \dots - \frac{x^{2k-1}}{2k-1} + o(x^n)$；$n$ 阶导数为 $f^{(n)}(0)
+  = \begin{cases} -(n-1)!, & n \text{ 为奇数} \\[2mm] 0, & n \text{ 为偶数} \end{cases}$．
+solution: '将对数拆开：
+
+
+  $$
+
+  f(x) = \frac{1}{2}\left[ \ln(1-x) - \ln(1+x) \right]
+
+  $$
+
+
+  利用基本初等函数的麦克劳林展开式：
+
+
+  $$
+
+  \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \dots + (-1)^{n-1}\frac{x^n}{n} + o(x^n)
+
+  $$
+
+
+  $$
+
+  \ln(1-x) = -x - \frac{x^2}{2} - \frac{x^3}{3} - \dots - \frac{x^n}{n} + o(x^n)
+
+  $$
+
+
+  两式相减：
+
+
+  $$
+
+  \ln(1-x) - \ln(1+x) = -2x - 2\frac{x^3}{3} - 2\frac{x^5}{5} - \dots = -2\sum_{k=1}^{\lfloor (n+1)/2 \rfloor} \frac{x^{2k-1}}{2k-1}
+  + o(x^n)
+
+  $$
+
+
+  乘以 $\frac{1}{2}$ 得 $n$ 阶麦克劳林展开式（带佩亚诺余项）：
+
+
+  $$
+
+  f(x) = -x - \frac{x^3}{3} - \frac{x^5}{5} - \dots - \frac{x^{2k-1}}{2k-1} + o(x^n) = \sum_{k=1}^n \frac{(-1)^k - 1}{2k}x^k
+  + o(x^n)
+
+  $$
+
+
+  根据泰勒公式系数与高阶导数的关系 $a_n = \frac{f^{(n)}(0)}{n!}$：
+
+
+  - 当 $n$ 为偶数时，展开式中无 $x^n$ 项，故 $f^{(n)}(0) = 0$；
+
+  - 当 $n$ 为奇数时，$x^n$ 项的系数为 $-\frac{1}{n}$，故：
+
+
+  $$
+
+  \frac{f^{(n)}(0)}{n!} = -\frac{1}{n} \implies f^{(n)}(0) = -\frac{n!}{n} = -(n-1)!
+
+  $$
+
+
+  综上：
+
+
+  $$
+
+  f^{(n)}(0) = \begin{cases} -(n-1)!, & n \text{ 为奇数} \\[2mm] 0, & n \text{ 为偶数} \end{cases}
+
+  $$'
+feedback:
+  correct: 正确展开对数差并由麦克劳林展开系数反求高阶导数．
+  incorrect: 利用已知基本泰勒级数展开求 $f^{(n)}(0)$ 远比逐阶求导简洁高效．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 280
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第7题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:02570855b0970aaf5b8988a0960f3461dfc06902e7f30a8ed16f1708e86c5e36
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:02570855b0970aaf5b8988a0960f3461dfc06902e7f30a8ed16f1708e86c5e36
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:02570855b0970aaf5b8988a0960f3461dfc06902e7f30a8ed16f1708e86c5e36

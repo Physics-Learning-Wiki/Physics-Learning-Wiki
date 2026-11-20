@@ -1,0 +1,91 @@
+schema_version: 3
+id: q-000908
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\tan x - x}{(1 - \cos x)\sin x}
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $\lim_{x \to 0} \frac{\tan x - x}{(1 - \cos x)\sin x} = \frac{2}{3}$．
+solution: '当 $x \to 0$ 时，分母中 $1 - \cos x \sim \frac{x^2}{2}$，$\sin x \sim x$，故分母等价于 $\frac{x^3}{2}$．
+
+
+  对分子利用泰勒展开：$\tan x = x + \frac{x^3}{3} + o(x^3)$，因此分子 $\tan x - x = \frac{x^3}{3} + o(x^3)$．
+
+
+  代入极限式：
+
+
+  $$
+
+  \lim_{x \to 0} \frac{\frac{x^3}{3} + o(x^3)}{\frac{x^3}{2}} = \frac{1/3}{1/2} = \frac{2}{3}
+
+  $$
+
+
+  因此所求极限为 $\frac{2}{3}$．'
+feedback:
+  correct: 正确对分子利用三阶展开并化简分母求得 2/3．
+  incorrect: 牢记 $\tan x - x \sim \frac{x^3}{3}$，结合分母 $\frac{x^3}{2}$ 即可快速得出结果．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第2题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ace9aab3f3ff3f7e391e6032ea95d0c59d10070a974ffe349f11b4abe4f37a3b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ace9aab3f3ff3f7e391e6032ea95d0c59d10070a974ffe349f11b4abe4f37a3b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ace9aab3f3ff3f7e391e6032ea95d0c59d10070a974ffe349f11b4abe4f37a3b

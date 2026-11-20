@@ -1,0 +1,110 @@
+schema_version: 3
+id: q-000831
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '计算定积分：
+
+
+  $$
+
+  \int_0^\pi \frac{\sin x \cos^2 x}{1 + \cos^2 x}\,\mathrm{d}x
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未完成换元或三角积分方向错误
+    points: 0
+  - id: partial
+    label: 部分掌握：成功换元为关于 u 的积分，但在拆分或 arctan 代限时出现符号偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成换元、有理化积分并求得 2 - pi/2
+    points: 1
+reference_answer: $\int_0^\pi \frac{\sin x \cos^2 x}{1 + \cos^2 x}\,\mathrm{d}x = 2 - \frac{\pi}{2}$．
+solution: '采用换元法（凑微分）：设 $u = \cos x$，则 $\mathrm{d}u = -\sin x\,\mathrm{d}x$．
+
+
+  当 $x = 0$ 时，$u = 1$；当 $x = \pi$ 时，$u = -1$．
+
+
+  代入定积分：
+
+
+  $$
+
+  \int_0^\pi \frac{\sin x \cos^2 x}{1 + \cos^2 x}\,\mathrm{d}x = \int_1^{-1} \frac{u^2}{1 + u^2}\,(-\mathrm{d}u) = \int_{-1}^1
+  \frac{u^2}{1 + u^2}\,\mathrm{d}u
+
+  $$
+
+
+  由于被积函数 $\frac{u^2}{1+u^2}$ 为偶函数，且区间对称：
+
+
+  $$
+
+  \int_{-1}^1 \frac{u^2}{1 + u^2}\,\mathrm{d}u = 2 \int_0^1 \frac{u^2}{1 + u^2}\,\mathrm{d}u
+
+  $$
+
+
+  拆分有理式 $\frac{u^2}{1+u^2} = 1 - \frac{1}{1+u^2}$：
+
+
+  $$
+
+  2 \int_0^1 \left(1 - \frac{1}{1+u^2}\right)\,\mathrm{d}u = 2 [u - \arctan u]_0^1 = 2\left(1 - \frac{\pi}{4}\right) = 2 -
+  \frac{\pi}{2}
+
+  $$'
+feedback:
+  correct: 正确使用换元 $u=\cos x$ 结合偶函数对称性与有理分式积分求得 $2-\pi/2$．
+  incorrect: 请注意：$\mathrm{d}(\cos x) = -\sin x\,\mathrm{d}x$ 带来的上下限翻转，以及有理分式恒等变形 $\frac{u^2}{1+u^2} = 1 - \frac{1}{1+u^2}$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2307a11f0fce724f5a490e1f84368adc4ad85cc8d38302e022568eb442865169
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2307a11f0fce724f5a490e1f84368adc4ad85cc8d38302e022568eb442865169
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:2307a11f0fce724f5a490e1f84368adc4ad85cc8d38302e022568eb442865169

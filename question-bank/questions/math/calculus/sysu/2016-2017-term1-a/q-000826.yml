@@ -1,0 +1,99 @@
+schema_version: 3
+id: q-000826
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: 求 $x \arctan x$ 在 $x=0$ 处的带皮亚诺余项的 $n$ 阶泰勒公式．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未写出 arctan x 展开或乘 x 规律错误
+    points: 0
+  - id: partial
+    label: 部分掌握：写出前几项，但未规范归纳到 n 阶通项与余项
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确规范写出到 n 阶的泰勒公式与皮亚诺余项
+    points: 1
+reference_answer: 当 $n = 2m$ 或 $2m+1$ 时，$x\arctan x = \sum_{k=1}^m (-1)^{k-1} \frac{x^{2k}}{2k-1} + o(x^n)$（即 $x^2 - \frac{x^4}{3}
+  + \frac{x^6}{5} - \dots + (-1)^{m-1}\frac{x^{2m}}{2m-1} + o(x^n)$）．
+solution: '已知 $\arctan x$ 在 $x=0$ 处的麦克劳林展开式为：
+
+
+  $$
+
+  \arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \dots + (-1)^{k-1}\frac{x^{2k-1}}{2k-1} + o(x^{2k})
+
+  $$
+
+
+  两边同乘 $x$：
+
+
+  $$
+
+  x \arctan x = x^2 - \frac{x^4}{3} + \frac{x^6}{5} - \dots + (-1)^{k-1}\frac{x^{2k}}{2k-1} + o(x^{2k+1})
+
+  $$
+
+
+  若要求展开到 $n$ 阶带皮亚诺余项，记 $m = \lfloor \frac{n}{2} \rfloor$：
+
+
+  $$
+
+  x \arctan x = \sum_{k=1}^m (-1)^{k-1} \frac{x^{2k}}{2k-1} + o(x^n)
+
+  $$
+
+
+  其中当 $n$ 为偶数 $2m$ 时，最高次项为 $(-1)^{m-1} \frac{x^{2m}}{2m-1}$，余项为 $o(x^n)$；当 $n$ 为奇数 $2m+1$ 时，奇数次项系数为 0，多项式保持一致，余项写为 $o(x^n)$．'
+feedback:
+  correct: 正确由 $\arctan x$ 展开式乘 $x$ 得到通项公式与皮亚诺余项．
+  incorrect: 请注意：展开式只含偶数次幂，系数为 $(-1)^{k-1}/(2k-1)$，余项规范写为 $o(x^n)$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第12题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8ba966a8023e11a9f03bafc48c17e953788734d56cad45bdc17c6765ae3f024f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8ba966a8023e11a9f03bafc48c17e953788734d56cad45bdc17c6765ae3f024f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8ba966a8023e11a9f03bafc48c17e953788734d56cad45bdc17c6765ae3f024f

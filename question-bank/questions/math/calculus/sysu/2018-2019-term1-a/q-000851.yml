@@ -1,0 +1,113 @@
+schema_version: 3
+id: q-000851
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求通过两平行直线 $l_1: \frac{x-1}{2} = \frac{y+1}{-1} = \frac{z+1}{1}$ 和 $l_2: \frac{x+2}{-4} = \frac{y-2}{2} = \frac{z}{-2}$
+  的平面方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出平行直线共面法向量的求法
+    points: 0
+  - id: partial
+    label: 部分掌握：求得位移向量与法向量，但点法式常数项计算有失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成叉乘并求出平面方程
+    points: 1
+reference_answer: $4x + 5y - 3z + 2 = 0$（或 $-4x - 5y + 3z - 2 = 0$）．
+solution: '直线 $l_1$ 经过点 $M_1(1, -1, -1)$，方向向量为 $\mathbf{s}_1 = (2, -1, 1)$．
+
+
+  直线 $l_2$ 经过点 $M_2(-2, 2, 0)$，方向向量为 $\mathbf{s}_2 = (-4, 2, -2) = -2\mathbf{s}_1$，两直线平行．
+
+
+  两直线确定的平面包含向量 $\mathbf{s}_1$ 以及连接两直线上两点的向量 $\vec{M_1 M_2}$：
+
+
+  $$
+
+  \vec{M_1 M_2} = (-2 - 1, 2 - (-1), 0 - (-1)) = (-3, 3, 1)
+
+  $$
+
+
+  平面的法向量垂直于 $\mathbf{s}_1$ 与 $\vec{M_1 M_2}$：
+
+
+  $$
+
+  \mathbf{n} = \mathbf{s}_1 \times \vec{M_1 M_2} = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & -1 & 1 \\ -3
+  & 3 & 1 \end{vmatrix} = (-1 - 3)\mathbf{i} - (2 - (-3))\mathbf{j} + (6 - 3)\mathbf{k} = (-4, -5, 3)
+
+  $$
+
+
+  取法向量 $\mathbf{n} = (4, 5, -3)$．平面过点 $M_1(1, -1, -1)$，代入点法式方程：
+
+
+  $$
+
+  4(x - 1) + 5(y + 1) - 3(z + 1) = 0
+
+  $$
+
+
+  展开化简：
+
+
+  $$
+
+  4x + 5y - 3z - 4 + 5 - 3 = 0 \implies 4x + 5y - 3z - 2 = 0
+
+  $$'
+feedback:
+  correct: 正确计算平行线间的位移向量并叉积求出平面法向量与平面方程．
+  incorrect: 两直线平行时方向向量线性相关，必须从两条直线上各取一点构造差向量 $\vec{M_1 M_2}$ 再做叉积．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第9题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f52e2803ce27f23d064396c517756a592f26d0a28410b17eaf0e2ccf6a550b55
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f52e2803ce27f23d064396c517756a592f26d0a28410b17eaf0e2ccf6a550b55
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f52e2803ce27f23d064396c517756a592f26d0a28410b17eaf0e2ccf6a550b55

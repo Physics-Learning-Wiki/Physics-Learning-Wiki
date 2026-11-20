@@ -1,0 +1,32 @@
+schema_version: 1
+id: math.calculus.sysu-2022-2023-term2-a
+title: 中山大学高等数学一（II）期末 A 卷（2022–2023 学年第 2 学期）
+description: 中山大学 2022–2023 学年第 2 学期《高等数学一（II）》期末考试 A 卷整卷练习，包含交换二次积分次序、第一类曲线积分、格林公式路径无关势函数、高斯公式曲面积分、第一类曲面积分、可降阶微分方程、欧拉方程、交错级数条件收敛性、函数项级数一致收敛性、幂级数和函数、含参反常积分阿贝尔审敛、瑕积分审敛及周期方波傅里叶级数展开等
+  13 道大题．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分二
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000932
+  - q-000933
+  - q-000934
+  - q-000935
+  - q-000936
+  - q-000937
+  - q-000938
+  - q-000939
+  - q-000940
+  - q-000941
+  - q-000942
+  - q-000943
+  - q-000944
+  order: fixed

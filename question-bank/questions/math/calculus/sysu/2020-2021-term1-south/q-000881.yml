@@ -1,0 +1,84 @@
+schema_version: 3
+id: q-000881
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 利用麦克劳林展开（局部泰勒公式），求函数 $y = e^{-x^2}$ 在 $x = 0$ 处的 $n$ 阶导数 $y^{(n)}(0)$（其中 $n \in \mathbb{N}^+$）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 当 $n$ 为奇数时 $y^{(n)}(0) = 0$；当 $n$ 为偶数时 $y^{(n)}(0) = (-1)^{n/2} \frac{n!}{(n/2)!}$．
+solution: '由基本麦克劳林级数 $e^u = \sum_{k=0}^\infty \frac{u^k}{k!}$，令 $u = -x^2$ 得：
+
+
+  $$
+
+  e^{-x^2} = \sum_{k=0}^\infty \frac{(-1)^k}{k!} x^{2k}
+
+  $$
+
+
+  展开式中 $x^n$ 的系数为 $\frac{y^{(n)}(0)}{n!}$：
+
+
+  - 当 $n$ 为奇数时，级数中无奇次幂项，故 $y^{(n)}(0) = 0$；
+
+  - 当 $n$ 为偶数时，令 $n = 2k$，此时对应系数为 $\frac{(-1)^{n/2}}{(n/2)!}$，因此 $y^{(n)}(0) = (-1)^{n/2} \frac{n!}{(n/2)!}$．'
+feedback:
+  correct: 正确利用麦克劳林级数系数与高阶导数关系，分类讨论奇偶阶．
+  incorrect: 奇偶函数性质：偶函数的奇阶导数在原点恒为 0．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第1学期高等数学期末试题（南校数院）第14题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-south
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:18c5312e40c3c501e1415aa3b7626cd2be29a739e69958f1b01161439d7b3a8b
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:18c5312e40c3c501e1415aa3b7626cd2be29a739e69958f1b01161439d7b3a8b
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:18c5312e40c3c501e1415aa3b7626cd2be29a739e69958f1b01161439d7b3a8b

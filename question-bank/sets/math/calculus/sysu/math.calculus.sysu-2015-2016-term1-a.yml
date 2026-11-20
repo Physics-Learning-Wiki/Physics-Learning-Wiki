@@ -1,0 +1,32 @@
+schema_version: 1
+id: math.calculus.sysu-2015-2016-term1-a
+title: 中山大学高等数学一（I）期末 A 卷（2015–2016 学年第 1 学期）
+description: 中山大学 2015–2016 学年第 1 学期《高等数学一（I）》期末考试 A 卷整卷练习，涵盖极限、导数应用、积分计算、多元函数微分与微分中值定理，按原卷顺序作答，交卷后可核对参考解析并自评．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分一
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000801
+  - q-000802
+  - q-000803
+  - q-000804
+  - q-000805
+  - q-000806
+  - q-000807
+  - q-000808
+  - q-000809
+  - q-000810
+  - q-000811
+  - q-000812
+  - q-000813
+  - q-000814
+  order: fixed

@@ -1,0 +1,111 @@
+schema_version: 3
+id: q-000825
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 求函数 $z = \ln(x+y)$ 在抛物线 $y^2 = 4x$ 上点 $(1, 2)$ 处，沿着这抛物线在该点偏向 $x$ 轴正向的切线方向的方向导数．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未求出单位方向向量或梯度
+    points: 0
+  - id: partial
+    label: 部分掌握：求得梯度与方向，但单位化或内积有算术错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整正确求得方向导数 sqrt(2)/3
+    points: 1
+reference_answer: $\frac{\partial z}{\partial \mathbf{l}} = \frac{\sqrt{2}}{3}$．
+solution: '**1. 求切线方向向量：**
+
+
+  对抛物线方程 $y^2 = 4x$ 两边关于 $x$ 求导：$2y y'' = 4 \implies y'' = \frac{2}{y}$．
+
+
+  在点 $(1, 2)$ 处，切线斜率为 $k = y''|_{(1, 2)} = \frac{2}{2} = 1$．
+
+
+  偏向 $x$ 轴正向，切线的方向角为 $\alpha = \frac{\pi}{4}$．
+
+
+  单位方向向量为：
+
+
+  $$
+
+  \mathbf{l} = \left(\cos \frac{\pi}{4}, \sin \frac{\pi}{4}\right) = \left(\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}\right)
+
+  $$
+
+
+  **2. 求函数的梯度：**
+
+
+  $$
+
+  \nabla z = \left(\frac{\partial z}{\partial x}, \frac{\partial z}{\partial y}\right) = \left(\frac{1}{x+y}, \frac{1}{x+y}\right)
+
+  $$
+
+
+  在点 $(1, 2)$ 处，$x+y = 3$，所以 $\nabla z|_{(1, 2)} = \left(\frac{1}{3}, \frac{1}{3}\right)$．
+
+
+  **3. 计算方向导数：**
+
+
+  $$
+
+  \frac{\partial z}{\partial \mathbf{l}} = \nabla z \cdot \mathbf{l} = \frac{1}{3} \cdot \frac{\sqrt{2}}{2} + \frac{1}{3}
+  \cdot \frac{\sqrt{2}}{2} = \frac{\sqrt{2}}{3}
+
+  $$'
+feedback:
+  correct: 准确求得切线单位方向向量与梯度向量，点积得出方向导数．
+  incorrect: 注意方向向量必须归一化为单位向量 $(\cos\alpha, \sin\alpha)$，且注意偏向 $x$ 轴正向的朝向．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第11题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:11f92ac1d3bc939ffc99248b39505d067236b981635cbcad5b2ead199d068092
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:11f92ac1d3bc939ffc99248b39505d067236b981635cbcad5b2ead199d068092
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:11f92ac1d3bc939ffc99248b39505d067236b981635cbcad5b2ead199d068092

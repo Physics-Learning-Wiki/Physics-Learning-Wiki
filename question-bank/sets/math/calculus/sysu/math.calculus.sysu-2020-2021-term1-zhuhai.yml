@@ -1,0 +1,29 @@
+schema_version: 1
+id: math.calculus.sysu-2020-2021-term1-zhuhai
+title: 中山大学 2020 学年第一学期高等数学一期末考试（珠海数院）
+description: 中山大学 2020 学年第一学期高等数学一期末测试真题（珠海数院），涵盖对数差分极限、变限积分参数确定、反三角不定积分、小数部分周期积分、平面的点法式方程、全微分计算、三维拉普拉斯调和函数、逐项积分泰勒展开、函数性态与渐近线全面分析、偏导与可微性判定、向量混合积中值定理推广等题型．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分一
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000883
+  - q-000884
+  - q-000861
+  - q-000886
+  - q-000887
+  - q-000888
+  - q-000889
+  - q-000890
+  - q-000891
+  - q-000892
+  - q-000893
+  order: fixed

@@ -1,0 +1,105 @@
+schema_version: 3
+id: q-000813
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '求经过直线 $L_1: \frac{x-1}{2} = \frac{y}{1} = \frac{z}{-1}$ 且平行于直线 $L_2: \frac{x}{2} = \frac{y}{1} = \frac{z+1}{-2}$ 的平面方程．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未掌握空间直线与平面的法向量关系
+    points: 0
+  - id: partial
+    label: 部分掌握：法向量求错或点法式代入有算术错误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求得法向量与平面方程 x - 2y - 1 = 0
+    points: 1
+reference_answer: $x - 2y - 1 = 0$．
+solution: '直线 $L_1$ 经过点 $M_0(1, 0, 0)$，其方向向量为 $\mathbf{s}_1 = (2, 1, -1)$．
+
+
+  直线 $L_2$ 的方向向量为 $\mathbf{s}_2 = (2, 1, -2)$．
+
+
+  因为所求平面包含直线 $L_1$ 且平行于直线 $L_2$，所以平面的法向量 $\mathbf{n}$ 垂直于 $\mathbf{s}_1$ 与 $\mathbf{s}_2$：
+
+
+  $$
+
+  \mathbf{n} = \mathbf{s}_1 \times \mathbf{s}_2 = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ 2 & 1 & -1 \\ 2
+  & 1 & -2 \end{vmatrix} = (-2 - (-1))\mathbf{i} - (-4 - (-2))\mathbf{j} + (2 - 2)\mathbf{k} = (-1, 2, 0)
+
+  $$
+
+
+  化简取法向量为 $\mathbf{n} = (1, -2, 0)$．
+
+
+  平面经过点 $M_0(1, 0, 0)$，点法式平面方程为：
+
+
+  $$
+
+  1 \cdot (x - 1) - 2 \cdot (y - 0) + 0 \cdot (z - 0) = 0
+
+  $$
+
+
+  化简即得：
+
+
+  $$
+
+  x - 2y - 1 = 0
+
+  $$'
+feedback:
+  correct: 正确通过两直线方向向量叉积确定平面法向量，并结合已知点求得平面方程．
+  incorrect: 请检查向量积 $\mathbf{s}_1 \times \mathbf{s}_2$ 的坐标计算，注意 $z$ 分量为 $2\times 1 - 1\times 2 = 0$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第13题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6e9a56ee172ec628b6e8525e6079114df874b9f5c84c75246950111f19e4c7ba
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6e9a56ee172ec628b6e8525e6079114df874b9f5c84c75246950111f19e4c7ba
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6e9a56ee172ec628b6e8525e6079114df874b9f5c84c75246950111f19e4c7ba

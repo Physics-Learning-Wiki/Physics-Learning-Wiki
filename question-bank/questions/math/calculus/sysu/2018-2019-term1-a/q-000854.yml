@@ -1,0 +1,128 @@
+schema_version: 3
+id: q-000854
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = (1 + \cos x)^2$ 在点 $x=0$ 处的带皮亚诺余项的 $n$ 阶泰勒展式，并求 $f^{(n)}(0)$ 的值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未降幂拆项或余弦展开通项错误
+    points: 0
+  - id: partial
+    label: 部分掌握：展开式正确，但在奇偶阶导数值总结上有疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成降幂、泰勒展开并求出任意阶导数值
+    points: 1
+reference_answer: '当 $n$ 为奇数时，$f^{(n)}(0) = 0$；当 $n$ 为偶数 $2m$（$m \ge 1$）时，$f^{(2m)}(0) = (-1)^m (2 + 2^{2m-1})$（$f(0)=4$）．
+
+
+  泰勒展式为 $f(x) = 4 + \sum_{m=1}^{\lfloor n/2 \rfloor} (-1)^m \frac{2 + 2^{2m-1}}{(2m)!} x^{2m} + o(x^n)$．'
+solution: '展开平方：
+
+
+  $$
+
+  f(x) = (1 + \cos x)^2 = 1 + 2\cos x + \cos^2 x = 1 + 2\cos x + \frac{1 + \cos 2x}{2} = \frac{3}{2} + 2\cos x + \frac{1}{2}\cos
+  2x
+
+  $$
+
+
+  利用标准余弦展开式 $\cos u = \sum_{m=0}^k \frac{(-1)^m}{(2m)!} u^{2m} + o(u^{2k+1})$：
+
+
+  $$
+
+  \cos x = \sum_{m=0}^{\lfloor n/2 \rfloor} \frac{(-1)^m}{(2m)!} x^{2m} + o(x^n)
+
+  $$
+
+
+  $$
+
+  \cos 2x = \sum_{m=0}^{\lfloor n/2 \rfloor} \frac{(-1)^m}{(2m)!} (2x)^{2m} + o(x^n) = \sum_{m=0}^{\lfloor n/2 \rfloor} \frac{(-1)^m
+  2^{2m}}{(2m)!} x^{2m} + o(x^n)
+
+  $$
+
+
+  合并常数项（$m=0$ 时）：
+
+
+  $$
+
+  \frac{3}{2} + 2(1) + \frac{1}{2}(1) = 4
+
+  $$
+
+
+  对 $m \ge 1$，第 $2m$ 次项系数为：
+
+
+  $$
+
+  a_{2m} = 2 \cdot \frac{(-1)^m}{(2m)!} + \frac{1}{2} \cdot \frac{(-1)^m 2^{2m}}{(2m)!} = (-1)^m \frac{2 + 2^{2m-1}}{(2m)!}
+
+  $$
+
+
+  奇数次项系数全部为 0．
+
+
+  由泰勒展开系数 $a_k = \frac{f^{(k)}(0)}{k!}$：
+
+
+  - 当 $n$ 为奇数时，$f^{(n)}(0) = 0$；
+
+  - 当 $n$ 为偶数 $2m$（$m \ge 1$）时，$f^{(2m)}(0) = (-1)^m (2 + 2^{2m-1})$；当 $n=0$ 时 $f(0) = 4$．'
+feedback:
+  correct: 正确使用半角降幂公式化为单个余弦项之和，并写出通项导数与泰勒公式．
+  incorrect: 关键化简技巧：$(1+\cos x)^2 = \frac{3}{2} + 2\cos x + \frac{1}{2}\cos 2x$，分别对 $\cos x$ 和 $\cos 2x$ 应用标准展开．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2018–2019学年第1学期《高等数学一（I）》期末A卷第12题（6分）
+  source: urn:plw:exam-source:sysu-calculus:2018-2019-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7cc4a0fe0aa244bbbd8f9dd40ab9d83716e23e22f680b7f3cb172a4fe7469b48
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7cc4a0fe0aa244bbbd8f9dd40ab9d83716e23e22f680b7f3cb172a4fe7469b48
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:7cc4a0fe0aa244bbbd8f9dd40ab9d83716e23e22f680b7f3cb172a4fe7469b48

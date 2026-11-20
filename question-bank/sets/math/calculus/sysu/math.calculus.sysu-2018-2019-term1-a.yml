@@ -1,0 +1,31 @@
+schema_version: 1
+id: math.calculus.sysu-2018-2019-term1-a
+title: 中山大学高等数学一（I）期末 A 卷（2018–2019 学年第 1 学期）
+description: 中山大学 2018–2019 学年第 1 学期《高等数学一（I）》期末考试 A 卷整卷练习，包含极限、隐函数求导、有理换元积分、极坐标弧长、空间几何与方向导数、二元可微性及变上限积分零点证明，按原卷顺序作答，交卷后可自评．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分一
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000843
+  - q-000844
+  - q-000845
+  - q-000846
+  - q-000847
+  - q-000848
+  - q-000849
+  - q-000850
+  - q-000851
+  - q-000852
+  - q-000853
+  - q-000854
+  - q-000855
+  order: fixed

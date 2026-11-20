@@ -1,0 +1,120 @@
+schema_version: 3
+id: q-000936
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.surface-integral
+type: free_response
+choice_order: fixed
+stem: '计算第一类曲面积分：
+
+
+  $$
+
+  I = \iint_S (x + y + z)\,\mathrm{d}S
+
+  $$
+
+
+  其中 $S$ 为上半球面 $z = \sqrt{a^2 - x^2 - y^2}$（$a > 0$）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: $I = \pi a^3$．
+solution: '上半球面 $S$ 关于平面 $x = 0$ 和 $y = 0$ 均具有完全对称性．由于被积函数 $x$ 和 $y$ 为奇函数：
+
+
+  $$
+
+  \iint_S x\,\mathrm{d}S = 0, \quad \iint_S y\,\mathrm{d}S = 0
+
+  $$
+
+
+  因此原积分化简为：
+
+
+  $$
+
+  I = \iint_S z\,\mathrm{d}S
+
+  $$
+
+
+  对上半球面 $z = \sqrt{a^2 - x^2 - y^2}$，投影到 $xOy$ 面上的区域为圆盘 $D_{xy}: x^2+y^2 \le a^2$．面积微元为：
+
+
+  $$
+
+  \mathrm{d}S = \sqrt{1 + (z_x'')^2 + (z_y'')^2}\,\mathrm{d}x\mathrm{d}y = \sqrt{1 + \frac{x^2}{a^2-x^2-y^2} + \frac{y^2}{a^2-x^2-y^2}}\,\mathrm{d}x\mathrm{d}y
+  = \frac{a}{\sqrt{a^2-x^2-y^2}}\,\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  代入积分：
+
+
+  $$
+
+  I = \iint_{D_{xy}} \sqrt{a^2-x^2-y^2} \cdot \frac{a}{\sqrt{a^2-x^2-y^2}}\,\mathrm{d}x\mathrm{d}y = a \iint_{D_{xy}} 1\,\mathrm{d}x\mathrm{d}y
+  = a \cdot (\pi a^2) = \pi a^3
+
+  $$
+
+
+  因此所求积分为 $\pi a^3$．'
+feedback:
+  correct: 正确运用对称性消去 x, y 项，并利用球面微元化简求得 $\pi a^3$．
+  incorrect: 球面面积微元中 $z\,\mathrm{d}S = a\,\mathrm{d}x\mathrm{d}y$ 是极其优美的简化特性．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 240
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第5题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c51f24ae555b58d9624482eb6ec770cac8d4b1fc5a0b41bbd1530c6a19dce2d3
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c51f24ae555b58d9624482eb6ec770cac8d4b1fc5a0b41bbd1530c6a19dce2d3
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c51f24ae555b58d9624482eb6ec770cac8d4b1fc5a0b41bbd1530c6a19dce2d3

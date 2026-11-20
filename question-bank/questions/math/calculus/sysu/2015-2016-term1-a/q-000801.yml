@@ -1,0 +1,145 @@
+schema_version: 3
+id: q-000801
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '设数列
+
+
+  $$
+
+  a_n = n \left(\frac{1}{n^2+\pi} + \frac{1}{n^2+2\pi} + \dots + \frac{1}{n^2+n\pi}\right)
+
+  $$
+
+
+  求极限 $\lim_{n\to\infty} a_n$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未写出有效放缩不等式或误用单项极限法则
+    points: 0
+  - id: partial
+    label: 部分掌握：写出双侧不等式，但两端极限求错或推理不完整
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确建立夹逼不等式，求出两端极限均为 1 并得出结论
+    points: 1
+reference_answer: $\lim_{n\to\infty} a_n = 1$．
+solution: '求和式共有 $n$ 项，每项的分母随着项数增加而增大．
+
+
+  对于 $1 \le k \le n$，分母满足：
+
+
+  $$
+
+  n^2 + \pi \le n^2 + k\pi \le n^2 + n\pi
+
+  $$
+
+
+  因此每一项满足不等式：
+
+
+  $$
+
+  \frac{1}{n^2 + n\pi} \le \frac{1}{n^2 + k\pi} \le \frac{1}{n^2 + \pi}
+
+  $$
+
+
+  将 $k=1, 2, \dots, n$ 的 $n$ 个不等式相加，并乘以外部的系数 $n$：
+
+
+  $$
+
+  n \cdot \frac{n}{n^2 + n\pi} \le a_n \le n \cdot \frac{n}{n^2 + \pi}
+
+  $$
+
+
+  即：
+
+
+  $$
+
+  \frac{n^2}{n^2 + n\pi} \le a_n \le \frac{n^2}{n^2 + \pi}
+
+  $$
+
+
+  当 $n \to \infty$ 时：
+
+
+  $$
+
+  \lim_{n\to\infty} \frac{n^2}{n^2 + n\pi} = \lim_{n\to\infty} \frac{1}{1 + \frac{\pi}{n}} = 1
+
+  $$
+
+
+  $$
+
+  \lim_{n\to\infty} \frac{n^2}{n^2 + \pi} = \lim_{n\to\infty} \frac{1}{1 + \frac{\pi}{n^2}} = 1
+
+  $$
+
+
+  由夹逼定理（两边夹法则），可知：
+
+
+  $$
+
+  \lim_{n\to\infty} a_n = 1
+
+  $$'
+feedback:
+  correct: 正确掌握了 $n$ 项求和数列极限的夹逼放大与缩小技巧．
+  incorrect: 请注意：项数随 $n$ 无限增多，不能直接对各项分别求极限再相加；应放缩最大项与最小项使用夹逼定理．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:dac4a234468bd225640232a0a23941d1a3ff1994673640cc8ec5ca7117819e9c
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:dac4a234468bd225640232a0a23941d1a3ff1994673640cc8ec5ca7117819e9c
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:dac4a234468bd225640232a0a23941d1a3ff1994673640cc8ec5ca7117819e9c

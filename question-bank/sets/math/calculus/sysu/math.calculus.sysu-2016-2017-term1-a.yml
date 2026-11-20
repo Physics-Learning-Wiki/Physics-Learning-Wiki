@@ -1,0 +1,32 @@
+schema_version: 1
+id: math.calculus.sysu-2016-2017-term1-a
+title: 中山大学高等数学一（I）期末 A 卷（2016–2017 学年第 1 学期）
+description: 中山大学 2016–2017 学年第 1 学期《高等数学一（I）》期末考试 A 卷整卷练习，包含极限、分段函数间断点、隐函数求导、极值与渐近线、定积分与弧长、全微分与微分中值定理证明，按原卷顺序作答，交卷后可自评．
+status: published
+tags:
+- 课程真题
+- 中山大学
+- 高等数学
+- 期末考试
+- 微积分一
+license: LicenseRef-Pending
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - q-000815
+  - q-000816
+  - q-000817
+  - q-000818
+  - q-000819
+  - q-000820
+  - q-000821
+  - q-000822
+  - q-000823
+  - q-000824
+  - q-000825
+  - q-000826
+  - q-000827
+  - q-000828
+  order: fixed

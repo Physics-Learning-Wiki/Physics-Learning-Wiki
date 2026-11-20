@@ -1,0 +1,144 @@
+schema_version: 3
+id: q-000812
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 若方程 $e^z = xyz$ 确定了隐函数 $z = z(x, y)$，求 $\frac{\partial z}{\partial x}$ 及 $\frac{\partial^2 z}{\partial x^2}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：隐函数求导法则理解有误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确求得一阶偏导数，但在二阶偏导数求导中有运算失误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完整求得一阶偏导数与二阶偏导数
+    points: 1
+reference_answer: $\frac{\partial z}{\partial x} = \frac{yz}{e^z - xy} = \frac{z}{x(z-1)}$，$\frac{\partial^2 z}{\partial x^2}
+  = \frac{y^2 z(2e^z - 2xy - ze^z)}{(e^z - xy)^3} = -\frac{z(z^2-2z+2)}{x^2(z-1)^3}$．
+solution: '**1. 求一阶偏导数 $\frac{\partial z}{\partial x}$：**
+
+
+  对等式 $e^z = xyz$ 两边关于 $x$ 求偏导：
+
+
+  $$
+
+  e^z \frac{\partial z}{\partial x} = yz + xy \frac{\partial z}{\partial x}
+
+  $$
+
+
+  移项整理：
+
+
+  $$
+
+  (e^z - xy)\frac{\partial z}{\partial x} = yz \implies \frac{\partial z}{\partial x} = \frac{yz}{e^z - xy}
+
+  $$
+
+
+  若利用原方程 $e^z = xyz$，则 $e^z - xy = xyz - xy = xy(z-1)$，代入可化简为：
+
+
+  $$
+
+  \frac{\partial z}{\partial x} = \frac{yz}{xy(z-1)} = \frac{z}{x(z-1)}
+
+  $$
+
+
+  **2. 求二阶偏导数 $\frac{\partial^2 z}{\partial x^2}$：**
+
+
+  由一阶导数等式 $(e^z - xy)\frac{\partial z}{\partial x} = yz$，两边再次对 $x$ 求偏导：
+
+
+  $$
+
+  \left(e^z \frac{\partial z}{\partial x} - y\right)\frac{\partial z}{\partial x} + (e^z - xy)\frac{\partial^2 z}{\partial
+  x^2} = y \frac{\partial z}{\partial x}
+
+  $$
+
+
+  整理得：
+
+
+  $$
+
+  (e^z - xy)\frac{\partial^2 z}{\partial x^2} = 2y \frac{\partial z}{\partial x} - e^z \left(\frac{\partial z}{\partial x}\right)^2
+
+  $$
+
+
+  将 $\frac{\partial z}{\partial x} = \frac{yz}{e^z - xy}$ 代入：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x^2} = \frac{2y \cdot \frac{yz}{e^z - xy} - e^z \frac{y^2 z^2}{(e^z - xy)^2}}{e^z - xy} = \frac{y^2
+  z[2(e^z - xy) - z e^z]}{(e^z - xy)^3}
+
+  $$
+
+
+  若利用 $e^z = xyz$，也可写成：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x^2} = -\frac{z(z^2-2z+2)}{x^2(z-1)^3}
+
+  $$'
+feedback:
+  correct: 正确应用隐函数微分法求出一阶偏导数与二阶偏导数．
+  incorrect: 求二阶偏导数时对 $(e^z - xy) z_x$ 求导需使用乘积法则：注意包含 $e^z (z_x)^2$ 项．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2015–2016学年第1学期《高等数学一（I）》期末A卷第12题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2015-2016-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6205c203c0f417e9c7a1469885a99ecc2608cef8b3f3c3a777d6840b12f395f2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6205c203c0f417e9c7a1469885a99ecc2608cef8b3f3c3a777d6840b12f395f2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6205c203c0f417e9c7a1469885a99ecc2608cef8b3f3c3a777d6840b12f395f2

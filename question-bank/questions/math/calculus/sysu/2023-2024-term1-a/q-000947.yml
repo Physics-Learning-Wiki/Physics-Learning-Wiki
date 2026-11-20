@@ -1,0 +1,143 @@
+schema_version: 3
+id: q-000947
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '设函数
+
+
+  $$
+
+  f(x) = \begin{cases} \frac{x^3}{\sqrt{1+x^2}}, & x < 1 \\[2mm] \frac{\sqrt{2x-1}}{\sqrt{2x-1} + 1}, & x \ge 1 \end{cases}
+
+  $$
+
+
+  求积分 $\int_{-1}^5 f(x)\,\mathrm{d}x$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $2 + \ln 2$
+solution: '根据分段点拆分积分区间：
+
+
+  $$
+
+  \int_{-1}^5 f(x)\,\mathrm{d}x = \int_{-1}^1 \frac{x^3}{\sqrt{1+x^2}}\,\mathrm{d}x + \int_1^5 \frac{\sqrt{2x-1}}{\sqrt{2x-1}
+  + 1}\,\mathrm{d}x
+
+  $$
+
+
+  1. 考察第一部分：
+
+  被积函数 $g(x) = \frac{x^3}{\sqrt{1+x^2}}$ 满足 $g(-x) = -g(x)$，为奇函数．因此在关于原点对称的区间 $[-1, 1]$ 上的积分为零：
+
+
+  $$
+
+  \int_{-1}^1 \frac{x^3}{\sqrt{1+x^2}}\,\mathrm{d}x = 0
+
+  $$
+
+
+  2. 考察第二部分：
+
+  作换元令 $t = \sqrt{2x-1}$，则 $x = \frac{t^2+1}{2}$，$\mathrm{d}x = t\,\mathrm{d}t$．
+
+  当 $x = 1$ 时 $t = 1$；当 $x = 5$ 时 $t = 3$．代入得：
+
+
+  $$
+
+  \int_1^5 \frac{\sqrt{2x-1}}{\sqrt{2x-1} + 1}\,\mathrm{d}x = \int_1^3 \frac{t}{t+1} \cdot t\,\mathrm{d}t = \int_1^3 \frac{t^2}{t+1}\,\mathrm{d}t
+
+  $$
+
+
+  分离多项式：
+
+
+  $$
+
+  \frac{t^2}{t+1} = \frac{(t+1)(t-1) + 1}{t+1} = t - 1 + \frac{1}{t+1}
+
+  $$
+
+
+  积分得：
+
+
+  $$
+
+  \int_1^3 \left( t - 1 + \frac{1}{t+1} \right)\,\mathrm{d}t = \left. \left[ \frac{t^2}{2} - t + \ln(t+1) \right] \right|_1^3
+
+  $$
+
+
+  $$
+
+  = \left( \frac{9}{2} - 3 + \ln 4 \right) - \left( \frac{1}{2} - 1 + \ln 2 \right) = \left( \frac{3}{2} + 2\ln 2 \right)
+  - \left( -\frac{1}{2} + \ln 2 \right) = 2 + \ln 2
+
+  $$
+
+
+  综上，原定积分的值为 $2 + \ln 2$．'
+feedback:
+  correct: 正确利用奇函数在对称区间的积分为零并完成根式换元积分．
+  incorrect: 注意换元时不仅要替换 $\mathrm{d}x$，还要相应同步变换积分上下限．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 280
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第3题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a87be73676e38c6aae74bbfd4bcbebf82dd82913f6efff593aadcf7d28d6c9bb
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a87be73676e38c6aae74bbfd4bcbebf82dd82913f6efff593aadcf7d28d6c9bb
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:a87be73676e38c6aae74bbfd4bcbebf82dd82913f6efff593aadcf7d28d6c9bb

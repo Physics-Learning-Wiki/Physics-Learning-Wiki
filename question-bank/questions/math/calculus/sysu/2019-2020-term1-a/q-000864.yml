@@ -1,0 +1,115 @@
+schema_version: 3
+id: q-000864
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '设 $f(x)$ 在闭区间 $[0, 1]$ 上连续可微，且 $f(0) = 0$．
+
+
+  证明：在开区间 $(0, 1)$ 中存在一点 $\xi$，满足 $(1 - \xi)f''(\xi) = f(\xi)$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未找到正确的辅助函数
+    points: 0
+  - id: partial
+    label: 部分掌握：写出辅助函数，但在罗尔定理端点验证或叙述上有瑕疵
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确构造辅助函数并严谨完成证明
+    points: 1
+reference_answer: 构造辅助函数 $F(x) = (1-x)f(x)$，在 $[0, 1]$ 上应用罗尔中值定理即可证明．
+solution: '将待证式改写为 $(1 - \xi)f''(\xi) - f(\xi) = 0$．
+
+
+  观察发现 $[(1 - x)f(x)]'' = -f(x) + (1 - x)f''(x) = (1 - x)f''(x) - f(x)$．
+
+
+  因此构造辅助函数：
+
+
+  $$
+
+  F(x) = (1 - x)f(x)
+
+  $$
+
+
+  验证罗尔中值定理的条件：
+
+
+  1. 因为 $f(x)$ 在 $[0, 1]$ 上连续可微，所以 $F(x)$ 在 $[0, 1]$ 上连续，在 $(0, 1)$ 上可导；
+
+  2. 端点值：$F(0) = (1 - 0)f(0) = 0$（由已知 $f(0) = 0$）；$F(1) = (1 - 1)f(1) = 0$．即 $F(0) = F(1) = 0$．
+
+
+  根据罗尔中值定理，在开区间 $(0, 1)$ 内至少存在一点 $\xi \in (0, 1)$，使得：
+
+
+  $$
+
+  F''(\xi) = 0
+
+  $$
+
+
+  即：
+
+
+  $$
+
+  (1 - \xi)f''(\xi) - f(\xi) = 0 \implies (1 - \xi)f''(\xi) = f(\xi)
+
+  $$
+
+
+  证毕．'
+feedback:
+  correct: 敏锐利用乘积求导法则构造辅助函数 $F(x)=(1-x)f(x)$ 并直接应用罗尔定理．
+  incorrect: 构造辅助函数法：由 $(1-x)f'(x)-f(x) = [(1-x)f(x)]'$ 直接构造 $F(x)=(1-x)f(x)$．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第6题（7分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b33897788be4644348bce2353ad22e78d98b628ee214bfd583f9340bd892f031
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b33897788be4644348bce2353ad22e78d98b628ee214bfd583f9340bd892f031
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:b33897788be4644348bce2353ad22e78d98b628ee214bfd583f9340bd892f031

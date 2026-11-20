@@ -1,0 +1,107 @@
+schema_version: 3
+id: q-000924
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '已知空间直线 $l: \begin{cases} x + y - 1 = 0 \\ y + z + 1 = 0 \end{cases}$，求直线 $l$ 在平面 $\Pi: 2x + y + 2z = 0$ 上的投影直线方程（一般式方程）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 投影直线的方程为 $\begin{cases} x - z - 2 = 0 \\ 2x + y + 2z = 0 \end{cases}$．
+solution: '设过直线 $l$ 的平面束方程为：
+
+
+  $$
+
+  \lambda_1(x + y - 1) + \lambda_2(y + z + 1) = 0 \implies \lambda_1 x + (\lambda_1 + \lambda_2)y + \lambda_2 z + (\lambda_2
+  - \lambda_1) = 0
+
+  $$
+
+
+  投影平面 $\Pi_1$ 需与已知平面 $\Pi: 2x + y + 2z = 0$ 垂直，两平面法向量垂直点积为零：
+
+
+  $$
+
+  2\lambda_1 + 1(\lambda_1 + \lambda_2) + 2\lambda_2 = 0 \implies 3\lambda_1 + 3\lambda_2 = 0 \implies \lambda_1 + \lambda_2
+  = 0 \implies \lambda_2 = -\lambda_1
+
+  $$
+
+
+  取 $\lambda_1 = 1, \lambda_2 = -1$，代入平面束方程得投影平面的方程：
+
+
+  $$
+
+  (x + y - 1) - (y + z + 1) = 0 \implies x - z - 2 = 0
+
+  $$
+
+
+  投影直线为投影平面与被投影平面的交线，其方程为：
+
+
+  $$
+
+  \begin{cases} x - z - 2 = 0 \\ 2x + y + 2z = 0 \end{cases}
+
+  $$'
+feedback:
+  correct: 正确运用平面束建立垂直投影平面方程并写成交线一般式．
+  incorrect: 直线在平面上的投影直线由垂直投影平面与原平面联立给出．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第1学期《高等数学一（I）》期末A卷第5题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8eb5d31838a969533854772b2ee53906f2a7e25e290836a228770de529e9d19
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8eb5d31838a969533854772b2ee53906f2a7e25e290836a228770de529e9d19
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f8eb5d31838a969533854772b2ee53906f2a7e25e290836a228770de529e9d19

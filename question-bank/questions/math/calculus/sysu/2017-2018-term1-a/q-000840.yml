@@ -1,0 +1,157 @@
+schema_version: 3
+id: q-000840
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: 设 $z = f(x^2 - y^2, e^{xy+x})$，其中 $f(u, v)$ 具有二阶连续偏导数，求 $\frac{\partial z}{\partial x}$、$\frac{\partial z}{\partial
+  y}$ 以及混合偏导数 $\frac{\partial^2 z}{\partial x \partial y}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：一阶链式法则求导错误
+    points: 0
+  - id: partial
+    label: 部分掌握：一阶导数正确，但在二阶混合偏导数的乘积求导中遗漏某些交叉项
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确完成一阶与二阶偏导数的完整推导
+    points: 1
+reference_answer: '$\frac{\partial z}{\partial x} = 2x f_1 + (y+1)e^{xy+x} f_2$；
+
+
+  $\frac{\partial z}{\partial y} = -2y f_1 + x e^{xy+x} f_2$；
+
+
+  $\frac{\partial^2 z}{\partial x \partial y} = e^{xy+x} f_2 - 4xy f_{11} + [2x^2 - 2y(y+1)]e^{xy+x} f_{12} + x(y+1)e^{2(xy+x)}
+  f_{22}$．'
+solution: '设中间变量 $u = x^2 - y^2, v = e^{xy+x}$．
+
+
+  计算中间变量偏导数：
+
+
+  $$
+
+  \frac{\partial u}{\partial x} = 2x, \quad \frac{\partial u}{\partial y} = -2y
+
+  $$
+
+
+  $$
+
+  \frac{\partial v}{\partial x} = (y+1)e^{xy+x}, \quad \frac{\partial v}{\partial y} = x e^{xy+x}
+
+  $$
+
+
+  **1. 求一阶偏导数：**
+
+
+  $$
+
+  \frac{\partial z}{\partial x} = f_1 \frac{\partial u}{\partial x} + f_2 \frac{\partial v}{\partial x} = 2x f_1 + (y+1)e^{xy+x}
+  f_2
+
+  $$
+
+
+  $$
+
+  \frac{\partial z}{\partial y} = f_1 \frac{\partial u}{\partial y} + f_2 \frac{\partial v}{\partial y} = -2y f_1 + x e^{xy+x}
+  f_2
+
+  $$
+
+
+  **2. 求混合二阶偏导数 $\frac{\partial^2 z}{\partial x \partial y}$：**
+
+
+  对 $\frac{\partial z}{\partial x}$ 关于 $y$ 求偏导：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x \partial y} = \frac{\partial}{\partial y}\left[2x f_1 + (y+1)e^{xy+x} f_2\right]
+
+  $$
+
+
+  分别求导：
+
+
+  - 第一项：$2x \frac{\partial f_1}{\partial y} = 2x [f_{11}(-2y) + f_{12}(x e^{xy+x})] = -4xy f_{11} + 2x^2 e^{xy+x} f_{12}$；
+
+  - 第二项：使用乘积法则，注意有三因式 $(y+1)$、$e^{xy+x}$ 和 $f_2$：
+
+
+  $$
+
+  \frac{\partial}{\partial y}[(y+1)e^{xy+x}] \cdot f_2 + (y+1)e^{xy+x} \frac{\partial f_2}{\partial y}
+
+  $$
+
+
+  其中 $\frac{\partial}{\partial y}[(y+1)e^{xy+x}] = e^{xy+x} + (y+1)x e^{xy+x} = [1 + x(y+1)]e^{xy+x}$；
+
+
+  而 $\frac{\partial f_2}{\partial y} = f_{21}(-2y) + f_{22}(x e^{xy+x})$．
+
+
+  合并所有项（利用 $f_{12} = f_{21}$）：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x \partial y} = [1 + x(y+1)]e^{xy+x} f_2 - 4xy f_{11} + [2x^2 - 2y(y+1)]e^{xy+x} f_{12} + x(y+1)e^{2(xy+x)}
+  f_{22}
+
+  $$'
+feedback:
+  correct: 正确使用多元复合函数链式法则求得一阶与混合二阶偏导数．
+  incorrect: 求二阶导数时需特别注意：$f_1$ 和 $f_2$ 依然是 $u, v$ 的复合函数，对 $y$ 求导必须再次展开链式法则．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2017–2018学年第1学期《高等数学一（I）》期末A卷第12题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2017-2018-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c22bab8888a1b7c484e910955ec6aace75e4e8a1e329c3845c39cf64fa36a08
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c22bab8888a1b7c484e910955ec6aace75e4e8a1e329c3845c39cf64fa36a08
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:4c22bab8888a1b7c484e910955ec6aace75e4e8a1e329c3845c39cf64fa36a08

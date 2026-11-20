@@ -1,0 +1,125 @@
+schema_version: 3
+id: q-000956
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{n \to \infty} n\left( 1 - n\ln\left(1 + \frac{1}{n}\right) \right)
+
+  $$
+
+
+  其中 $n$ 为正整数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{1}{2}$
+solution: '整理式子：
+
+
+  $$
+
+  \lim_{n \to \infty} \left[ n - n^2\ln\left(1 + \frac{1}{n}\right) \right]
+
+  $$
+
+
+  令 $t = \frac{1}{n}$，当 $n \to \infty$ 时 $t \to 0^+$：
+
+
+  $$
+
+  \lim_{t \to 0^+} \left[ \frac{1}{t} - \frac{1}{t^2}\ln(1+t) \right] = \lim_{t \to 0^+} \frac{t - \ln(1+t)}{t^2}
+
+  $$
+
+
+  利用对数函数的麦克劳林展开：
+
+
+  $$
+
+  \ln(1+t) = t - \frac{t^2}{2} + o(t^2)
+
+  $$
+
+
+  代入分子：
+
+
+  $$
+
+  t - \ln(1+t) = t - \left( t - \frac{t^2}{2} + o(t^2) \right) = \frac{t^2}{2} + o(t^2)
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  \lim_{t \to 0^+} \frac{\frac{t^2}{2} + o(t^2)}{t^2} = \frac{1}{2}
+
+  $$'
+feedback:
+  correct: 正确作倒数代换转化为零点未定式并利用泰勒展开求出极限．
+  incorrect: 也可以在转化后应用洛必达法则连续求导两次计算．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第13题（5分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d64746f201186ae9be0df4571b9fdf5477be1115c3891bac495a628bafb3bd64
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d64746f201186ae9be0df4571b9fdf5477be1115c3891bac495a628bafb3bd64
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:d64746f201186ae9be0df4571b9fdf5477be1115c3891bac495a628bafb3bd64

@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000824
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.multivariable-diff
+type: free_response
+choice_order: fixed
+stem: '设空间曲线
+
+
+  $$
+
+  L: \begin{cases} x^2 + y^2 = \frac{1}{2}z^2, \\ x + y + z = 2 \end{cases}
+
+  $$
+
+
+  求 $L$ 在点 $(1, -1, 2)$ 处的切线方程以及 $\frac{\mathrm{d}x}{\mathrm{d}z}, \frac{\mathrm{d}y}{\mathrm{d}z}$ 的值．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未建立导数方程组
+    points: 0
+  - id: partial
+    label: 部分掌握：导数求解正确，但切线方程书写有误
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确求得两个导数值与切线方程
+    points: 1
+reference_answer: $\frac{\mathrm{d}x}{\mathrm{d}z} = 0, \frac{\mathrm{d}y}{\mathrm{d}z} = -1$，切线方程为 $\frac{x-1}{0} = \frac{y+1}{-1}
+  = \frac{z-2}{1}$（即 $\begin{cases} x = 1 \\ y + z - 1 = 0 \end{cases}$）．
+solution: '将方程两边分别对 $z$ 求导：
+
+
+  $$
+
+  \begin{cases} 2x \frac{\mathrm{d}x}{\mathrm{d}z} + 2y \frac{\mathrm{d}y}{\mathrm{d}z} = z \\ \frac{\mathrm{d}x}{\mathrm{d}z}
+  + \frac{\mathrm{d}y}{\mathrm{d}z} + 1 = 0 \end{cases}
+
+  $$
+
+
+  将点 $(x, y, z) = (1, -1, 2)$ 代入方程组：
+
+
+  $$
+
+  \begin{cases} 2 \frac{\mathrm{d}x}{\mathrm{d}z} - 2 \frac{\mathrm{d}y}{\mathrm{d}z} = 2 \\ \frac{\mathrm{d}x}{\mathrm{d}z}
+  + \frac{\mathrm{d}y}{\mathrm{d}z} = -1 \end{cases}
+
+  $$
+
+
+  第一式两边除以 2 得 $\frac{\mathrm{d}x}{\mathrm{d}z} - \frac{\mathrm{d}y}{\mathrm{d}z} = 1$．与第二式联立相加解得：
+
+
+  $$
+
+  \frac{\mathrm{d}x}{\mathrm{d}z} = 0, \quad \frac{\mathrm{d}y}{\mathrm{d}z} = -1
+
+  $$
+
+
+  曲线在点 $(1, -1, 2)$ 处的切向方向向量为 $\mathbf{v} = \left(\frac{\mathrm{d}x}{\mathrm{d}z}, \frac{\mathrm{d}y}{\mathrm{d}z}, 1\right)
+  = (0, -1, 1)$．
+
+
+  故切线对称式方程为：
+
+
+  $$
+
+  \frac{x-1}{0} = \frac{y+1}{-1} = \frac{z-2}{1}
+
+  $$'
+feedback:
+  correct: 正确建立关于导数的线性方程组解得导数值并写出空间切线方程．
+  incorrect: 请检查对 $z$ 求导的方程组并在已知点 $(1, -1, 2)$ 处代入消元解出导数．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2016–2017学年第1学期《高等数学一（I）》期末A卷第10题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2016-2017-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:54fe628e68a8722bbf68c1838a50c328d96fde533cc652a8b0ff39107828858e
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:54fe628e68a8722bbf68c1838a50c328d96fde533cc652a8b0ff39107828858e
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:54fe628e68a8722bbf68c1838a50c328d96fde533cc652a8b0ff39107828858e

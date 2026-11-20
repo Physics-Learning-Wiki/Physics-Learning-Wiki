@@ -1,0 +1,115 @@
+schema_version: 3
+id: q-000945
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '求极限：
+
+
+  $$
+
+  \lim_{n \to \infty} \left( \frac{1}{\sqrt{4n^2+1}} + \frac{1}{\sqrt{4n^2+2}} + \dots + \frac{1}{\sqrt{4n^2+n}} \right)
+
+  $$
+
+
+  其中 $n$ 为正整数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{1}{2}$
+solution: '由夹逼准则进行放缩：
+
+
+  对任意 $1 \le k \le n$，显然有 $4n^2+1 \le 4n^2+k \le 4n^2+n$．由此可得和式的上下界：
+
+
+  $$
+
+  \frac{n}{\sqrt{4n^2+n}} \le \sum_{k=1}^n \frac{1}{\sqrt{4n^2+k}} \le \frac{n}{\sqrt{4n^2+1}}
+
+  $$
+
+
+  分别考察两端的极限：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{n}{\sqrt{4n^2+n}} = \lim_{n \to \infty} \frac{1}{\sqrt{4 + \frac{1}{n}}} = \frac{1}{2}
+
+  $$
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{n}{\sqrt{4n^2+1}} = \lim_{n \to \infty} \frac{1}{\sqrt{4 + \frac{1}{n^2}}} = \frac{1}{2}
+
+  $$
+
+
+  由夹逼准则可知：
+
+
+  $$
+
+  \lim_{n \to \infty} \sum_{k=1}^n \frac{1}{\sqrt{4n^2+k}} = \frac{1}{2}
+
+  $$'
+feedback:
+  correct: 正确建立和式的上下界放缩并由夹逼准则求得极限．
+  incorrect: 当和式分母中 $k$ 与 $n^2$ 相比为次阶无穷小时，通常优先使用夹逼准则而非定积分定义．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第1学期《高等数学一（I）》期末A卷第1题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:266163c027455a6f5bd2ec31a169f1fa31bb89acbb9007967f6f560c1e53e48f
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:266163c027455a6f5bd2ec31a169f1fa31bb89acbb9007967f6f560c1e53e48f
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:266163c027455a6f5bd2ec31a169f1fa31bb89acbb9007967f6f560c1e53e48f

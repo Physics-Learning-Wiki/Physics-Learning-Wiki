@@ -1,0 +1,137 @@
+schema_version: 3
+id: q-000970
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.series
+type: free_response
+choice_order: fixed
+stem: 已知数列 $\{a_n\}$ 单调递增且有界，$a_n > 1$．试证明级数 $\sum_{n=1}^\infty \frac{1}{\sqrt{a_{n+1}}}\left( 1 - \frac{a_n}{a_{n+1}} \right)$
+  收敛．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: 见详细证明过程．
+solution: '令 $u_n = \sqrt{a_n}$．因为数列 $\{a_n\}$ 单调递增且有界，$a_n > 1$，所以 $\{u_n\}$ 也单调递增且有界，且 $u_n > 1$．
+
+
+  考察原级数的通项：
+
+
+  $$
+
+  \frac{1}{\sqrt{a_{n+1}}}\left( 1 - \frac{a_n}{a_{n+1}} \right) = \frac{a_{n+1} - a_n}{a_{n+1}^{3/2}} = \frac{u_{n+1}^2 -
+  u_n^2}{u_{n+1}^3} = \frac{(u_{n+1} + u_n)(u_{n+1} - u_n)}{u_{n+1}^3}
+
+  $$
+
+
+  因为 $\{u_n\}$ 单调递增，对任意 $n$ 均有 $u_n < u_{n+1}$，故：
+
+
+  $$
+
+  u_{n+1} + u_n < 2u_{n+1}
+
+  $$
+
+
+  由此可对分子进行放缩：
+
+
+  $$
+
+  \frac{(u_{n+1} + u_n)(u_{n+1} - u_n)}{u_{n+1}^3} < \frac{2u_{n+1}(u_{n+1} - u_n)}{u_{n+1}^3} = 2 \frac{u_{n+1} - u_n}{u_{n+1}^2}
+
+  $$
+
+
+  又因为 $1 < u_n < u_{n+1}$，分母放缩有 $u_{n+1}^2 > u_n u_{n+1}$，即 $\frac{1}{u_{n+1}^2} < \frac{1}{u_n u_{n+1}}$：
+
+
+  $$
+
+  2 \frac{u_{n+1} - u_n}{u_{n+1}^2} < 2 \frac{u_{n+1} - u_n}{u_n u_{n+1}} = 2\left( \frac{1}{u_n} - \frac{1}{u_{n+1}} \right)
+
+  $$
+
+
+  现在考察级数的前 $n$ 项部分和 $S_n$：
+
+
+  $$
+
+  S_n = \sum_{k=1}^n \frac{1}{\sqrt{a_{k+1}}}\left( 1 - \frac{a_k}{a_{k+1}} \right) < 2\sum_{k=1}^n \left( \frac{1}{u_k} -
+  \frac{1}{u_{k+1}} \right)
+
+  $$
+
+
+  裂项相消求和：
+
+
+  $$
+
+  2\sum_{k=1}^n \left( \frac{1}{u_k} - \frac{1}{u_{k+1}} \right) = 2\left( \frac{1}{u_1} - \frac{1}{u_{n+1}} \right) < \frac{2}{u_1}
+  = \frac{2}{\sqrt{a_1}}
+
+  $$
+
+
+  因为 $a_{k+1} > a_k > 1$，原级数各项均为正数，部分和数列 $\{S_n\}$ 单调递增且有上界 $\frac{2}{\sqrt{a_1}}$．
+
+  由单调有界收敛准则，部分和极限 $\lim_{n \to \infty} S_n$ 存在，原正项级数收敛．'
+feedback:
+  correct: 正确进行平方差展开与单调性放缩，利用裂项求和获得部分和上界证明级数收敛．
+  incorrect: 将一般差分化为裂项相消的差分形式 $\frac{1}{u_k} - \frac{1}{u_{k+1}}$ 是处理单调有界数列级数敛散性的极精巧技巧．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第13题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8a3fd9b4905b496342f6866377d46fda55cdeac461daa2da689304a3b7fee1c2
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8a3fd9b4905b496342f6866377d46fda55cdeac461daa2da689304a3b7fee1c2
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:8a3fd9b4905b496342f6866377d46fda55cdeac461daa2da689304a3b7fee1c2

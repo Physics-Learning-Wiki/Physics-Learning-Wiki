@@ -1,0 +1,111 @@
+schema_version: 3
+id: q-000939
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.series
+type: free_response
+choice_order: fixed
+stem: '判断交错级数：
+
+
+  $$
+
+  \sum_{n=1}^\infty \frac{(-1)^{n-1}}{n^{1+1/n}}
+
+  $$
+
+
+  的敛散性，并指明其为绝对收敛还是条件收敛．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 该级数条件收敛．
+solution: '记通项 $u_n = \frac{1}{n^{1+1/n}}$．
+
+
+  1. 验证自身收敛性（莱布尼茨判别法）：
+
+  考察数列单调性与极限：$u_n = \frac{1}{n \cdot n^{1/n}}$．
+
+  因为当 $n \to \infty$ 时 $n^{1/n} \to 1$，故 $\lim_{n \to \infty} u_n = 0$．
+
+  考虑连续函数 $f(x) = x^{1+1/x} = e^{(1+1/x)\ln x}$，其指数部分导数为 $-\frac{1}{x^2}\ln x + \frac{x+1}{x^2} = \frac{1-\ln x + x}{x^2} >
+  0$（当 $x \ge 2$ 时）．故分母递增，通项 $u_n$ 单调递减．
+
+  由莱布尼茨定理，交错级数 $\sum_{n=1}^\infty (-1)^{n-1} u_n$ 收敛．
+
+
+  2. 检验绝对收敛性：
+
+  考察绝对值级数 $\sum_{n=1}^\infty u_n = \sum_{n=1}^\infty \frac{1}{n^{1+1/n}}$．
+
+  与发散的调和级数 $\sum_{n=1}^\infty \frac{1}{n}$ 作极限比值审敛：
+
+
+  $$
+
+  \lim_{n \to \infty} \frac{u_n}{1/n} = \lim_{n \to \infty} \frac{n}{n \cdot n^{1/n}} = \lim_{n \to \infty} \frac{1}{n^{1/n}}
+  = 1
+
+  $$
+
+
+  极限为非零常数 $1$．由于调和级数 $\sum_{n=1}^\infty \frac{1}{n}$ 发散，由比较判别法的极限形式知绝对值级数发散．
+
+
+  综上所述，原级数条件收敛．'
+feedback:
+  correct: 莱布尼茨判别法与比较审敛法论述严谨，准确判定为条件收敛．
+  incorrect: 注意 $n^{1/n} \to 1$，故 $n^{1+1/n}$ 与 $n$ 同阶，绝对值级数必与调和级数同发散．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第8题（8分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cac39ca2eb4af2c6ac3676b304dc3afde3f9b756504d0411161cd05a1959fd68
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cac39ca2eb4af2c6ac3676b304dc3afde3f9b756504d0411161cd05a1959fd68
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:cac39ca2eb4af2c6ac3676b304dc3afde3f9b756504d0411161cd05a1959fd68

@@ -1,0 +1,108 @@
+schema_version: 3
+id: q-000943
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.integral
+type: free_response
+choice_order: fixed
+stem: '判断反常积分（瑕积分）：
+
+
+  $$
+
+  \int_0^1 \frac{1 - \cos x}{x^{5/2}}\,\mathrm{d}x
+
+  $$
+
+
+  的敛散性．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 该反常积分收敛．
+solution: '积分区间为 $(0, 1]$，瑕点仅为 $x = 0$．
+
+
+  当 $x \to 0^+$ 时，利用等价无穷小展开：$1 - \cos x \sim \frac{x^2}{2}$．
+
+
+  考察被积函数在瑕点处的渐近阶数：
+
+
+  $$
+
+  \frac{1 - \cos x}{x^{5/2}} \sim \frac{x^2/2}{x^{5/2}} = \frac{1}{2x^{1/2}}
+
+  $$
+
+
+  取比较基准积分 $\int_0^1 \frac{1}{x^{1/2}}\,\mathrm{d}x$：
+
+
+  $$
+
+  \lim_{x \to 0^+} \frac{\frac{1-\cos x}{x^{5/2}}}{\frac{1}{x^{1/2}}} = \lim_{x \to 0^+} \frac{1-\cos x}{x^2} = \frac{1}{2}
+  \neq 0
+
+  $$
+
+
+  因为 $p = \frac{1}{2} < 1$，反常积分 $\int_0^1 \frac{1}{x^{1/2}}\,\mathrm{d}x$ 收敛．
+
+
+  根据比较判别法的极限形式，原反常积分 $\int_0^1 \frac{1 - \cos x}{x^{5/2}}\,\mathrm{d}x$ 收敛．'
+feedback:
+  correct: 正确识别瑕点并用等价无穷小化为 p-积分求得收敛．
+  incorrect: 在瑕点 $x=0$ 处，$\int_0^1 \frac{1}{x^p}\,\mathrm{d}x$ 当且仅当 $p < 1$ 时收敛．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 200
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第12题（6分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:104e9a0b64a8c53dca0d227270808adada762bda74a2e106e6826bafa453e02a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:104e9a0b64a8c53dca0d227270808adada762bda74a2e106e6826bafa453e02a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:104e9a0b64a8c53dca0d227270808adada762bda74a2e106e6826bafa453e02a

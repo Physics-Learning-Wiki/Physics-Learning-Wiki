@@ -1,0 +1,83 @@
+schema_version: 3
+id: q-000893
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.mean-value-theorem
+type: free_response
+choice_order: fixed
+stem: '回答下列关于向量混合积与微分中值定理的问题：
+
+
+  1. 叙述三维向量混合积 $\mathbf{u} \cdot (\mathbf{v} \times \mathbf{w})$ 的几何意义；
+
+  2. 设 $\mathbf{F}(x) = (f(x), g(x), h(x))$ 在 $[a,b]$ 连续、$(a,b)$ 可导，定义 $D(x) = \mathbf{F}(x) \cdot (\mathbf{F}(a) \times \mathbf{F}(b))$．证明存在
+  $c \in (a,b)$ 使得 $D''(c) = 0$；
+
+  3. 证明结论 2 是柯西中值定理的推广．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 混合积绝对值为平行六面体体积；由罗尔定理 $D'(c)=0$；取 $h(x) \equiv 1$ 退化即为柯西中值定理．
+solution: '1. 混合积的绝对值表示以三向量为棱的平行六面体体积，正负由右手系决定．
+
+
+  2. 由于两向量相等时叉乘为零，有 $D(a) = D(b) = 0$．由罗尔定理存在 $c \in (a, b)$ 使得 $D''(c) = 0$．
+
+
+  3. 取 $h(x) \equiv 1$，展开行列式即得 $[f(b)-f(a)]g''(c) = [g(b)-g(a)]f''(c)$，若 $g''(c) \neq 0$ 即为柯西中值定理 $\frac{f(b)-f(a)}{g(b)-g(a)}
+  = \frac{f''(c)}{g''(c)}$．'
+feedback:
+  correct: 完整阐释混合积几何意义、罗尔定理证明及退化导出柯西中值定理．
+  incorrect: 三阶行列式导数性质与中值定理的结合展现了代数与几何的统一性．
+difficulty: 3
+cognitive_level: analyze
+style: conceptual
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2020学年第一学期高等数学一期末考试试题（珠海数院）第7题
+  source: urn:plw:exam-source:sysu-calculus:2020-2021-term1-zhuhai
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1e955d2f099ce6cb8573a419886de375650c7182dd0093b69c4e0d91477e662a
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1e955d2f099ce6cb8573a419886de375650c7182dd0093b69c4e0d91477e662a
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:1e955d2f099ce6cb8573a419886de375650c7182dd0093b69c4e0d91477e662a

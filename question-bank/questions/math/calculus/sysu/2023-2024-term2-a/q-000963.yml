@@ -1,0 +1,106 @@
+schema_version: 3
+id: q-000963
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.line-integral
+type: free_response
+choice_order: fixed
+stem: 求第一类曲线积分 $\int_L (x+y)\,\mathrm{d}s$，其中 $L$ 是从点 $A(1, 0)$ 到点 $B(0, 2)$ 的直线段．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 在此输入你的求解步骤与最终答案，完成后对照参考解答自评．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 未得出有效结果或核心公式推导严重错误
+    points: 0
+  - id: partial
+    label: 思路正确且完成主要推导步骤，但在局部计算或最终化简上有轻微偏差
+    points: 0.5
+  - id: complete
+    label: 求解步骤完整规范，逻辑严密，最终结论准确无误
+    points: 1
+reference_answer: $\frac{3\sqrt{5}}{2}$
+solution: '直线段 $AB$ 的截距式方程为 $\frac{x}{1} + \frac{y}{2} = 1$，解得：
+
+
+  $$
+
+  y = 2 - 2x \quad (0 \le x \le 1)
+
+  $$
+
+
+  计算弧长微元：
+
+
+  $$
+
+  y'' = -2 \implies \mathrm{d}s = \sqrt{1 + (y'')^2}\,\mathrm{d}x = \sqrt{1 + (-2)^2}\,\mathrm{d}x = \sqrt{5}\,\mathrm{d}x
+
+  $$
+
+
+  被积函数化简：
+
+
+  $$
+
+  x + y = x + (2 - 2x) = 2 - x
+
+  $$
+
+
+  计算定积分：
+
+
+  $$
+
+  \int_L (x+y)\,\mathrm{d}s = \int_0^1 (2 - x)\sqrt{5}\,\mathrm{d}x = \sqrt{5} \left. \left[ 2x - \frac{x^2}{2} \right] \right|_0^1
+  = \sqrt{5} \left( 2 - \frac{1}{2} \right) = \frac{3\sqrt{5}}{2}
+
+  $$'
+feedback:
+  correct: 正确写出直线段方程与弧长微元并求得第一类曲线积分．
+  incorrect: 第一类曲线积分与方向无关，积分上下限遵循普通定积分从小到大的自然顺序．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 180
+provenance:
+  type: reproduced
+  note: 中山大学2023–2024学年第2学期《高等数学一（II）》期末A卷第6题
+  source: urn:plw:exam-source:sysu-calculus:2023-2024-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:febd18bb8d363423f9c3a266880d2bf32c14a380648cf51994ff429ca2a49918
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:febd18bb8d363423f9c3a266880d2bf32c14a380648cf51994ff429ca2a49918
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:febd18bb8d363423f9c3a266880d2bf32c14a380648cf51994ff429ca2a49918

@@ -1,0 +1,125 @@
+schema_version: 3
+id: q-000944
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.series
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 是以 $4$ 为周期的周期函数，且在基本周期 $[-2, 2)$ 上的表达式为：
+
+
+  $$
+
+  f(x) = \begin{cases} 0, & x \in [-2, 0) \\[2mm] k, & x \in [0, 2) \end{cases}
+
+  $$
+
+
+  其中 $k$ 为常数．求 $f(x)$ 的傅里叶级数展开式及其和函数．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 傅里叶级数为 $\frac{k}{2} + \frac{2k}{\pi} \sum_{m=1}^\infty \frac{1}{2m-1}\sin\frac{(2m-1)\pi x}{2}$；在连续点和函数为原值，在不连续点
+  $2n$ 处和函数为 $\frac{k}{2}$．
+solution: '半周期为 $l = 2$．函数在一个周期内分段连续可导，满足狄利克雷充分收敛条件．
+
+
+  计算傅里叶系数：
+
+
+  $$
+
+  a_0 = \frac{1}{2}\int_{-2}^2 f(x)\,\mathrm{d}x = \frac{1}{2}\left( \int_{-2}^0 0\,\mathrm{d}x + \int_0^2 k\,\mathrm{d}x
+  \right) = \frac{1}{2}(2k) = k
+
+  $$
+
+
+  $$
+
+  a_n = \frac{1}{2}\int_{-2}^2 f(x)\cos\frac{n\pi x}{2}\,\mathrm{d}x = \frac{k}{2}\int_0^2 \cos\frac{n\pi x}{2}\,\mathrm{d}x
+  = \left. \frac{k}{2} \cdot \frac{2}{n\pi}\sin\frac{n\pi x}{2} \right|_0^2 = 0 \quad (n = 1, 2, \dots)
+
+  $$
+
+
+  $$
+
+  b_n = \frac{1}{2}\int_{-2}^2 f(x)\sin\frac{n\pi x}{2}\,\mathrm{d}x = \frac{k}{2}\int_0^2 \sin\frac{n\pi x}{2}\,\mathrm{d}x
+  = \left. -\frac{k}{n\pi}\cos\frac{n\pi x}{2} \right|_0^2 = \frac{k}{n\pi}(1 - \cos n\pi) = \begin{cases} \frac{2k}{n\pi},
+  & n \text{ 为奇数} \\[2mm] 0, & n \text{ 为偶数} \end{cases}
+
+  $$
+
+
+  因此傅里叶级数展开式为：
+
+
+  $$
+
+  f(x) \sim \frac{a_0}{2} + \sum_{n=1}^\infty b_n \sin\frac{n\pi x}{2} = \frac{k}{2} + \frac{2k}{\pi} \sum_{m=1}^\infty \frac{1}{2m-1}
+  \sin\frac{(2m-1)\pi x}{2}
+
+  $$
+
+
+  由狄利克雷收敛定理，和函数 $S(x)$ 为：
+
+  - 当 $x \neq 2n$（连续点）时：$S(x) = f(x)$；
+
+  - 当 $x = 2n$（跳跃间断点）时：$S(x) = \frac{f(2n^+) + f(2n^-)}{2} = \frac{k + 0}{2} = \frac{k}{2}$．'
+feedback:
+  correct: 正确计算傅里叶系数并根据狄利克雷定理确定展开式与间断点和函数值．
+  incorrect: 方波脉冲的傅里叶级数仅含奇次正弦项，常数项为平均直流分量 $k/2$．
+difficulty: 3
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2022–2023学年第2学期《高等数学一（II）》期末A卷第13题（10分）
+  source: urn:plw:exam-source:sysu-calculus:2022-2023-term2-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6ef489fa1c9d1b7f4c3a38e76c9d2f1fe85aa4750595ccdb7b8d21a05bce75e9
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6ef489fa1c9d1b7f4c3a38e76c9d2f1fe85aa4750595ccdb7b8d21a05bce75e9
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:6ef489fa1c9d1b7f4c3a38e76c9d2f1fe85aa4750595ccdb7b8d21a05bce75e9

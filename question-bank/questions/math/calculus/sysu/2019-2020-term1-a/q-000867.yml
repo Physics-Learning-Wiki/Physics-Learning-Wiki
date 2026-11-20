@@ -1,0 +1,122 @@
+schema_version: 3
+id: q-000867
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.derivative
+type: free_response
+choice_order: fixed
+stem: 求由方程 $e^{xy} - \ln(x^2 + y) = 1$ 所确定的隐函数 $y = y(x)$ 的微分 $\mathrm{d}y$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：隐函数微分展开错误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确展开微分，但在移项系数整理中有小疏漏
+    points: 0.5
+  - id: complete
+    label: 基本掌握：正确解得完整的 dy 表达式
+    points: 1
+reference_answer: $\mathrm{d}y = \frac{2x - y(x^2+y)e^{xy}}{x(x^2+y)e^{xy} - 1}\,\mathrm{d}x$．
+solution: '对原方程两边取外微分：
+
+
+  $$
+
+  \mathrm{d}\left(e^{xy}\right) - \mathrm{d}\left(\ln(x^2+y)\right) = 0
+
+  $$
+
+
+  计算各微分式：
+
+
+  $$
+
+  e^{xy} \mathrm{d}(xy) - \frac{1}{x^2+y}\mathrm{d}(x^2+y) = 0
+
+  $$
+
+
+  $$
+
+  e^{xy}(y\,\mathrm{d}x + x\,\mathrm{d}y) - \frac{1}{x^2+y}(2x\,\mathrm{d}x + \mathrm{d}y) = 0
+
+  $$
+
+
+  两边同乘 $(x^2+y)$：
+
+
+  $$
+
+  (x^2+y)e^{xy}(y\,\mathrm{d}x + x\,\mathrm{d}y) - 2x\,\mathrm{d}x - \mathrm{d}y = 0
+
+  $$
+
+
+  合并 $\mathrm{d}x$ 与 $\mathrm{d}y$：
+
+
+  $$
+
+  \left[x(x^2+y)e^{xy} - 1\right]\mathrm{d}y = \left[2x - y(x^2+y)e^{xy}\right]\mathrm{d}x
+
+  $$
+
+
+  因此隐函数的微分表达式为：
+
+
+  $$
+
+  \mathrm{d}y = \frac{2x - y(x^2+y)e^{xy}}{x(x^2+y)e^{xy} - 1}\,\mathrm{d}x
+
+  $$'
+feedback:
+  correct: 正确使用微分运算法则分离 $\mathrm{d}x$ 与 $\mathrm{d}y$ 解出全微分．
+  incorrect: 求微分注意 $\mathrm{d}(xy) = y\mathrm{d}x + x\mathrm{d}y$ 与 $\mathrm{d}(x^2+y) = 2x\mathrm{d}x + \mathrm{d}y$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第9题（7分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f619c7fb63ac821fc14192c05931fa683d2951c88c6d5c400aadd25cc4f67caf
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f619c7fb63ac821fc14192c05931fa683d2951c88c6d5c400aadd25cc4f67caf
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:f619c7fb63ac821fc14192c05931fa683d2951c88c6d5c400aadd25cc4f67caf

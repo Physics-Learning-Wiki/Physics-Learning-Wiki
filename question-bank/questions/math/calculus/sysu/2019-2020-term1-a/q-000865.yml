@@ -1,0 +1,121 @@
+schema_version: 3
+id: q-000865
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.power-series
+type: free_response
+choice_order: fixed
+stem: 求函数 $f(x) = \sqrt{1+x}\sin x$ 在点 $x=0$ 处的带皮亚诺余项的 3 阶泰勒展式，并求 $f'''(0)$ 的值．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：初等函数展开式有误
+    points: 0
+  - id: partial
+    label: 部分掌握：正确求得泰勒展开式，但在计算导数值时漏乘 3!
+    points: 0.5
+  - id: complete
+    label: 基本掌握：完整求得 3 阶泰勒公式与导数值 -7/4
+    points: 1
+reference_answer: 泰勒展式为 $f(x) = x + \frac{1}{2}x^2 - \frac{7}{24}x^3 + o(x^3)$，$f'''(0) = -\frac{7}{4}$．
+solution: '分别写出各因式在 $x=0$ 处的标准麦克劳林展开：
+
+
+  $$
+
+  \sqrt{1+x} = (1+x)^{\frac{1}{2}} = 1 + \frac{1}{2}x + \frac{\frac{1}{2}(-\frac{1}{2})}{2!}x^2 + o(x^2) = 1 + \frac{1}{2}x
+  - \frac{1}{8}x^2 + o(x^2)
+
+  $$
+
+
+  $$
+
+  \sin x = x - \frac{x^3}{6} + o(x^3)
+
+  $$
+
+
+  相乘展开保留到 3 次项：
+
+
+  $$
+
+  f(x) = \left(1 + \frac{1}{2}x - \frac{1}{8}x^2 + o(x^2)\right)\left(x - \frac{x^3}{6} + o(x^3)\right)
+
+  $$
+
+
+  $$
+
+  = x - \frac{x^3}{6} + \frac{1}{2}x^2 - \frac{1}{8}x^3 + o(x^3) = x + \frac{1}{2}x^2 - \left(\frac{1}{6} + \frac{1}{8}\right)x^3
+  + o(x^3)
+
+  $$
+
+
+  计算系数：$\frac{1}{6} + \frac{1}{8} = \frac{4 + 3}{24} = \frac{7}{24}$．所以：
+
+
+  $$
+
+  f(x) = x + \frac{1}{2}x^2 - \frac{7}{24}x^3 + o(x^3)
+
+  $$
+
+
+  根据泰勒展开式系数定义 $a_3 = \frac{f''''''(0)}{3!}$：
+
+
+  $$
+
+  \frac{f''''''(0)}{6} = -\frac{7}{24} \implies f''''''(0) = -\frac{7 \times 6}{24} = -\frac{7}{4}
+
+  $$'
+feedback:
+  correct: 正确使用基本初等函数麦克劳林展开相乘并求得 $f'''(0) = -7/4$．
+  incorrect: 展开技巧：只需展开到 3 阶，注意合并 $x^3$ 的系数为 $-1/6 - 1/8 = -7/24$，乘以 $3!=6$ 得 $-7/4$．
+difficulty: 2
+cognitive_level: apply
+style: computational
+estimated_seconds: 360
+provenance:
+  type: reproduced
+  note: 中山大学2019–2020学年第1学期《高等数学一（I）》期末A卷第7题（7分）
+  source: urn:plw:exam-source:sysu-calculus:2019-2020-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ae28d6f7dcd5e6de1575e9b0b1112cd4dd95fe7b31456d33dfabe4de4ed6d6d6
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ae28d6f7dcd5e6de1575e9b0b1112cd4dd95fe7b31456d33dfabe4de4ed6d6d6
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:ae28d6f7dcd5e6de1575e9b0b1112cd4dd95fe7b31456d33dfabe4de4ed6d6d6

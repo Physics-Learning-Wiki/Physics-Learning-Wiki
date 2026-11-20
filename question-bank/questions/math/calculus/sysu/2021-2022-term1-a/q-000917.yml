@@ -1,0 +1,114 @@
+schema_version: 3
+id: q-000917
+version: 1
+status: published
+locale: zh-CN
+topics:
+- math.calculus
+concepts:
+- calculus.limit
+type: free_response
+choice_order: fixed
+stem: '用极限的 $\epsilon - \delta$ 语言证明：
+
+
+  $$
+
+  \lim_{x \to a} x^3 = a^3
+
+  $$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 4000
+  rows: 8
+  placeholder: 请输入你的求解步骤或证明过程……
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incomplete
+    label: 尚未掌握：未得出正确关键步骤或方法错误
+    points: 0
+  - id: partial
+    label: 部分掌握：关键思路正确，但在化简计算或论证中有偏差
+    points: 0.5
+  - id: complete
+    label: 基本掌握：推导严密规范，准确得出正确结论
+    points: 1
+reference_answer: 命题获证，通过因式分解与局部有界性取 $\delta = \min\{1, \frac{\epsilon}{3a^2+3|a|+1}\}$ 规范证明．
+solution: '任给 $\epsilon > 0$．需要找到 $\delta > 0$，使得当 $0 < |x - a| < \delta$ 时恒有 $|x^3 - a^3| < \epsilon$．
+
+
+  因式分解得：
+
+
+  $$
+
+  |x^3 - a^3| = |x - a| \cdot |x^2 + ax + a^2|
+
+  $$
+
+
+  先限制 $\delta \le 1$，即当 $|x - a| < 1$ 时，由三角不等式 $|x| \le |a| + 1$．
+
+
+  放缩二次因子：
+
+
+  $$
+
+  |x^2 + ax + a^2| \le |x|^2 + |a||x| + a^2 \le (|a|+1)^2 + |a|(|a|+1) + a^2 = 3a^2 + 3|a| + 1 = M > 0
+
+  $$
+
+
+  令 $\delta = \min\left\{ 1, \frac{\epsilon}{3a^2 + 3|a| + 1} \right\}$．
+
+
+  当 $0 < |x - a| < \delta$ 时，恒有：
+
+
+  $$
+
+  |x^3 - a^3| = |x - a| \cdot |x^2 + ax + a^2| < \frac{\epsilon}{M} \cdot M = \epsilon
+
+  $$
+
+
+  根据极限的 $\epsilon - \delta$ 定义，$\lim_{x \to a} x^3 = a^3$ 成立．'
+feedback:
+  correct: 正确限制局部邻域界限并构造合适 $\delta$，证明规范严密．
+  incorrect: 利用 $\epsilon-\delta$ 证明多项式极限时，先预设 $\delta \le 1$ 控制剩余多项式因子的界限是标准技巧．
+difficulty: 2
+cognitive_level: apply
+style: conceptual
+estimated_seconds: 300
+provenance:
+  type: reproduced
+  note: 中山大学2021–2022学年第1学期《高等数学一（I）》期末A卷第12题（10分）
+  source: urn:plw:exam-source:sysu-calculus:2021-2022-term1-a
+  permission: 待核实：中山大学本科期末试题，仅用于非商业性教学与个人自学练习
+  ai_assisted: true
+authors:
+- name: 中山大学试卷，命题者未署名
+  kind: human
+- name: Physics Learning Wiki
+  kind: human
+license: LicenseRef-Pending
+review:
+  physics:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c902618de29ae2700eba261033ea79416ae8019cbaddf1b8cf9bbd0cd4a8d518
+  pedagogy:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c902618de29ae2700eba261033ea79416ae8019cbaddf1b8cf9bbd0cd4a8d518
+  copyright:
+  - github: Leafuke
+    reviewed_on: '2026-11-20'
+    question_version: 1
+    content_fingerprint: sha256:c902618de29ae2700eba261033ea79416ae8019cbaddf1b8cf9bbd0cd4a8d518
