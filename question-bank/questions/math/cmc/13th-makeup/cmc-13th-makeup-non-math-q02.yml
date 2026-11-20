@@ -1,0 +1,72 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 积分 $\int_0^{\pi/2}\frac{\cos x}{1+\tan x}\mathrm{d}x =$ ______．
+reference_answer: $\frac{1}{\sqrt{2}}\ln(1+\sqrt{2})$
+solution: '作变量代换 $x = \frac{\pi}{2}-t$，则：
+
+
+  $$
+
+  \int_0^{\pi/2}\frac{\cos x}{1+\tan x}\mathrm{d}x = \int_0^{\pi/2}\frac{\sin x}{1+\cot
+  x}\mathrm{d}x
+
+  $$
+
+
+  两式相加并除以 2：
+
+
+  $$
+
+  \int_0^{\pi/2}\frac{\cos x}{1+\tan x}\mathrm{d}x = \frac{1}{2}\int_0^{\pi/2}\left(\frac{\cos
+  x}{1+\tan x} + \frac{\sin x}{1+\cot x}\right)\mathrm{d}x = \frac{1}{2}\int_0^{\pi/2}\frac{1}{\cos
+  x+\sin x}\mathrm{d}x
+
+  $$
+
+
+  $$
+
+  = \frac{1}{2\sqrt{2}}\int_0^{\pi/2}\csc\left(x+\frac{\pi}{4}\right)\mathrm{d}x =
+  \frac{1}{2\sqrt{2}}\left[\ln\left|\csc\left(x+\frac{\pi}{4}\right) - \cot\left(x+\frac{\pi}{4}\right)\right|\right]_0^{\pi/2}
+  = \frac{1}{\sqrt{2}}\ln(1+\sqrt{2})
+
+  $$
+
+
+  故积分为 $\frac{1}{\sqrt{2}}\ln(1+\sqrt{2})$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 对称换元或正割积分计算失误
+    points: 0
+  - id: correct
+    label: 利用区间对称性化简并准确求出原函数与结果
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第一大题第2小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

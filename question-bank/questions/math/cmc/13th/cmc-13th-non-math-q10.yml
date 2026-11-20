@@ -1,0 +1,77 @@
+schema_version: 3
+id: cmc-13th-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $\{a_n\}$ 与 $\{b_n\}$ 均为正实数列，满足：$a_1=b_1=1$，且 $b_n = a_n b_{n-1} - 2$ ($n=2,3,\dots$)．又设
+  $\{b_n\}$ 为有界数列，证明级数 $\sum_{n=1}^\infty \frac{1}{a_1 a_2 \cdots a_n}$ 收敛，并求该级数的和．
+reference_answer: $\frac{3}{2}$
+solution: '由递推式 $a_n = \frac{b_n+2}{b_{n-1}} = \left(1 + \frac{2}{b_n}\right)\frac{b_n}{b_{n-1}}$，递推可得：
+
+
+  $$
+
+  a_1 a_2 \cdots a_n = \left(1+\frac{2}{b_2}\right)\left(1+\frac{2}{b_3}\right)\cdots\left(1+\frac{2}{b_n}\right)b_n
+
+  $$
+
+
+  由于 $\{b_n\}$ 有界，存在 $M > 0$ 使得 $0 < b_n \le M$．从而：
+
+
+  $$
+
+  0 < \frac{b_n}{a_1 a_2 \cdots a_n} \le \left(1+\frac{2}{M}\right)^{-n+1} \to 0 \quad
+  (n\to\infty)
+
+  $$
+
+
+  考虑级数部分和，利用裂项 $a_k b_{k-1} - b_k = 2$：
+
+
+  $$
+
+  S_n = \frac{1}{a_1} + \sum_{k=2}^n \frac{1}{a_1\cdots a_k} = 1 + \frac{1}{2}\sum_{k=2}^n
+  \left(\frac{b_{k-1}}{a_1\cdots a_{k-1}} - \frac{b_k}{a_1\cdots a_k}\right) = \frac{3}{2}
+  - \frac{b_n}{2a_1\cdots a_n}
+
+  $$
+
+
+  取极限得 $\lim_{n\to\infty} S_n = \frac{3}{2}$．因此级数收敛且其和为 $\frac{3}{2}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未推导裂项关系（0 分）
+    points: 0
+  - id: partial_telescoping
+    label: 构造裂项递推关系并表示出前 n 项部分和（8 分）
+    points: 0.57
+  - id: correct
+    label: 严密论证余项趋于 0 并求得级数和 3/2（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

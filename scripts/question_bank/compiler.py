@@ -298,7 +298,7 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             "bundle": bundle_path,
         }
 
-        sets_catalog_data.append({
+        catalog_entry: dict[str, Any] = {
             "id": set_id,
             "title": set_data["title"],
             "description": set_data.get("description", ""),
@@ -313,7 +313,10 @@ def build_tree(report: ValidationReport, *, preview: bool) -> dict[str, bytes]:
             "topicIds": sorted_topic_ids,
             "runnable": runnable,
             "unavailableReason": unavailable_reason,
-        })
+        }
+        if "self_assessment_timing" in set_data:
+            catalog_entry["selfAssessmentTiming"] = set_data["self_assessment_timing"]
+        sets_catalog_data.append(catalog_entry)
 
     digest = fingerprint(sets_catalog_data).split(":", 1)[1][:12]
     sets_catalog_path = f"catalog/sets.{digest}.json"

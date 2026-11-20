@@ -210,3 +210,47 @@ test("session retry reuses only identical references without writing again", asy
   );
   assert.equal(store.read().revision, revision);
 });
+
+test("submitted session freezes answers and allows only self-assessment rubric updates", async () => {
+  const store = new QuizStore(new MemoryStorage(), false, new Lock());
+  const s = session();
+  s.answers = {
+    q1: { text: "Initial solution text", levelId: null }
+  };
+  const created = await store.createSession(s, 0);
+  assert.equal(created.ok, true);
+  if (!created.ok) return;
+
+  // 1. Submit session
+  const submittedAt = new Date().toISOString();
+  const submittedSession = {
+    ...created.value,
+    submittedAt,
+    locked: { q1: true }
+  };
+  const updateResult = await store.updateSession(submittedSession);
+  assert.equal(updateResult.ok, true);
+  if (!updateResult.ok) return;
+
+  // 2. Reject modifying text of free response answer
+  const textModAttempt = {
+    ...updateResult.value,
+    answers: {
+      q1: { text: "Modified solution text", levelId: null }
+    }
+  };
+  const failText = await store.updateSession(textModAttempt);
+  assert.deepEqual(failText, { ok: false, reason: "conflict" });
+
+  // 3. Allow updating levelId for rubric self-assessment
+  const rubricUpdate = {
+    ...updateResult.value,
+    answers: {
+      q1: { text: "Initial solution text", levelId: "full" }
+    }
+  };
+  const successRubric = await store.updateSession(rubricUpdate);
+  assert.equal(successRubric.ok, true);
+  if (!successRubric.ok) return;
+  assert.deepEqual(successRubric.value.answers.q1, { text: "Initial solution text", levelId: "full" });
+});

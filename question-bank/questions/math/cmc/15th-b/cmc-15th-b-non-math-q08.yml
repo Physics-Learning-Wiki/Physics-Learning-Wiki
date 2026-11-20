@@ -1,0 +1,59 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $f(x)$ 在 $[0,1]$ 上可导且 $f(0) > 0, f(1) > 0, \int_0^1 f(x)\mathrm{d}x
+  = 0$．证明：
+
+  (1) $f(x)$ 在 $[0,1]$ 上至少有两个零点；
+
+  (2) 在 $(0,1)$ 内至少存在一点 $\xi$，使得 $f''(\xi) + 3f^3(\xi) = 0$．'
+reference_answer: 详见参考解答（通过介值定理与罗尔微分中值定理构造辅助指数函数证明）
+solution: '(1) 首先在 $(0,1)$ 上至少存在一点 $x_0$ 使得 $f(x_0) < 0$．否则若对任意 $x\in[0,1]$ 均有 $f(x)\geqslant
+  0$，因连续且不恒为零，必有 $\int_0^1 f(x)\mathrm{d}x > 0$，与题设矛盾（得 5 分）．因为 $f(0)>0, f(x_0)<0,
+  f(1)>0$，由连续函数介值零点定理，存在 $\xi_1\in(0,x_0), \xi_2\in(x_0,1)$ 使得 $f(\xi_1) = 0, f(\xi_2)
+  = 0$（得 8 分）．
+
+  (2) 构造辅助函数 $F(x) = f(x)\mathrm{e}^{\int_0^x 3f^2(s)\mathrm{d}s}$．则 $F(x)$ 在 $[0,1]$
+  上连续，在 $(0,1)$ 可导，且 $F(\xi_1) = F(\xi_2) = 0$．由 Rolle 定理，存在 $\xi\in(\xi_1,\xi_2)\subset(0,1)$
+  使得 $F''(\xi) = 0$．由于：$F''(x) = (f''(x) + 3f^3(x))\mathrm{e}^{\int_0^x 3f^2(s)\mathrm{d}s}$由指数恒正知
+  $f''(\xi) + 3f^3(\xi) = 0$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未找到异号点（0 分）
+    points: 0
+  - id: step1
+    label: 反证法证明存在 f(x_0) < 0（5 分）
+    points: 0.36
+  - id: step2
+    label: 应用介值定理证得存在两个零点 xi_1, xi_2（8 分）
+    points: 0.57
+  - id: full
+    label: 构造包含指数因子的辅助函数并利用罗尔定理完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

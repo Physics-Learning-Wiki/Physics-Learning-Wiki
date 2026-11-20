@@ -1,0 +1,41 @@
+schema_version: 3
+id: cmc-14th-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{x\to 1^-}(1-x)^3\sum_{n=1}^\infty n^2 x^n =$ ______．
+reference_answer: $2$
+solution: 利用幂级数逐项求导易知：$\sum_{n=1}^\infty n^2 x^n = \frac{x^2+x}{(1-x)^3}$（$|x|<1$）．因此：$\lim_{x\to
+  1^-}(1-x)^3\sum_{n=1}^\infty n^2 x^n = \lim_{x\to 1^-}(x^2+x) = 2$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 级数和函数求错或极限计算失误
+    points: 0
+  - id: correct
+    label: 正确求出幂级数和函数并求得极限 2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

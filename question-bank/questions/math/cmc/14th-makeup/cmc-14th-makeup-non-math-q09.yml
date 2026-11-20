@@ -1,0 +1,62 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题满分 14 分）设 $f(x)$ 是 $[-1,1]$ 上的连续偶函数，计算曲线积分：
+
+
+  $$
+
+  I = \oint_L \frac{x^2+y^2}{2\sqrt{1-x^2}}\mathrm{d}x + f(x)\mathrm{d}y
+
+  $$
+
+
+  其中曲线 $L$ 为正向圆周 $x^2+y^2 = -2y$．'
+reference_answer: $4$
+solution: 圆周方程改写为 $x^2 + (y+1)^2 = 1$，引入参数方程 $x = \cos\theta, y = -1+\sin\theta$ ($0\leqslant
+  \theta \leqslant 2\pi$)（得 4 分）．将线积分拆分为两部分 $I = I_1 + I_2$：第一项中 $x^2+y^2 = -2y =
+  2(1-\sin\theta)$，$\sqrt{1-x^2} = |\sin\theta|$，$\mathrm{d}x = -\sin\theta\mathrm{d}\theta$：$I_1
+  = \int_0^{2\pi} \frac{2(1-\sin\theta)}{2|\sin\theta|}(-\sin\theta)\mathrm{d}\theta
+  = -\int_0^\pi (1-\sin\theta)\mathrm{d}\theta + \int_\pi^{2\pi} (1-\sin\theta)\mathrm{d}\theta
+  = 4 \quad (得 9 分)$第二项为 $I_2 = \int_0^{2\pi} f(\cos\theta)\cos\theta\mathrm{d}\theta$．令
+  $\theta = t+\pi$ 可知被积函数具有半周期反号性质，积分恰为 0（得 12 分）．故原曲线积分为 $I = 4+0 = 4$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 参数方程建立失误（0 分）
+    points: 0
+  - id: step1
+    label: 写出圆周参数方程与被积表达式（4 分）
+    points: 0.29
+  - id: step2
+    label: 准确拆分绝对值符号求得第一项积分为 4（9 分）
+    points: 0.64
+  - id: full
+    label: 利用偶函数对称性证明第二项积分为 0 并求得最终结果 4（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

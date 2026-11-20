@@ -1,0 +1,66 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '已知直线 $L: \begin{cases}2x-4y+z=0,\\ 3x-y-2z=9\end{cases}$ 和平面 $\pi: 4x-y+z=1$，则直线
+  $L$ 在平面 $\pi$ 上的投影直线方程为 ______．'
+reference_answer: $\begin{cases}17x+31y-37z-117=0,\\ 4x-y+z=1\end{cases}$
+solution: '设过 $L$ 的平面束方程为：
+
+
+  $$
+
+  \lambda(2x-4y+z) + \mu(3x-y-2z-9) = 0 \implies (2\lambda+3\mu)x - (4\lambda+\mu)y
+  + (\lambda-2\mu)z - 9\mu = 0
+
+  $$
+
+
+  投影平面 $\pi_1$ 垂直于平面 $\pi$，法向量内积为零：
+
+
+  $$
+
+  4(2\lambda+3\mu) - (-1)(4\lambda+\mu) + 1\cdot(\lambda-2\mu) = 0 \implies 13\lambda
+  + 11\mu = 0
+
+  $$
+
+
+  取 $\lambda = -11, \mu = 13$，代入得 $\pi_1: 17x+31y-37z-117=0$．
+
+
+  故直线 $L$ 在平面 $\pi$ 上的投影直线方程为 $\begin{cases}17x+31y-37z-117=0,\\ 4x-y+z=1\end{cases}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 平面束建立或垂直条件判定失误
+    points: 0
+  - id: correct
+    label: 正确求得投影平面方程与交线方程组
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第一大题第3小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

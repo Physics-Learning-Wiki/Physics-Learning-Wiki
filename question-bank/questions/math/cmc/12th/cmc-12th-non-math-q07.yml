@@ -1,0 +1,81 @@
+schema_version: 3
+id: cmc-12th-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设 $f(x)$ 在 $[0, 1]$ 上连续，$f(x)$ 在 $(0, 1)$ 内可导，且 $f(0)=0, f(1)=1$．
+
+
+  证明：
+
+
+  (1) 存在 $x_0 \in (0, 1)$ 使得 $f(x_0) = 2 - 3x_0$；
+
+
+  (2) 存在 $\xi, \eta \in (0, 1)$，且 $\xi \neq \eta$，使得 $[1+f''(\xi)][1+f''(\eta)] =
+  4$．'
+reference_answer: 见推导步骤
+solution: '(1) 令 $F(x) = f(x) - 2 + 3x$，则 $F(x)$ 在 $[0, 1]$ 上连续，且 $F(0) = -2 < 0,
+  F(1) = 2 > 0$．由连续函数零点定理，存在 $x_0 \in (0, 1)$ 使得 $F(x_0) = 0$，即 $f(x_0) = 2 - 3x_0$．
+
+
+  (2) 在区间 $[0, x_0]$ 与 $[x_0, 1]$ 上分别应用 Lagrange 中值定理，存在 $\xi \in (0, x_0)$ 与 $\eta
+  \in (x_0, 1)$（显然 $\xi < x_0 < \eta$，故 $\xi \neq \eta$），使得：
+
+
+  $$
+
+  f''(\xi) = \frac{f(x_0) - f(0)}{x_0 - 0} = \frac{2-3x_0}{x_0}
+
+  $$
+
+
+  $$
+
+  f''(\eta) = \frac{f(1) - f(x_0)}{1 - x_0} = \frac{1 - (2-3x_0)}{1-x_0} = \frac{3x_0-1}{1-x_0}
+
+  $$
+
+
+  从而：
+
+
+  $$1 + f''(\xi) = \frac{2(1-x_0)}{x_0}, \quad 1 + f''(\eta) = \frac{2x_0}{1-x_0}$$
+
+
+  两式相乘得 $[1+f''(\xi)][1+f''(\eta)] = 4$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用零点定理或中值定理（0 分）
+    points: 0
+  - id: step1
+    label: 构造辅助函数完成第 (1) 问证明（5 分）
+    points: 0.5
+  - id: full
+    label: 分别在两子区间应用 Lagrange 中值定理完成第 (2) 问证明（10 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

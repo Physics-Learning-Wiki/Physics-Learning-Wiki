@@ -1,0 +1,63 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $f(x)$ 在 $[0,1]$ 上有连续的导数，且 $f(0) = 0$．求证：
+
+
+  $$
+
+  \int_0^1 f^2(x)\mathrm{d}x \leqslant 4\int_0^1 (1-x)^2 |f''(x)|^2\mathrm{d}x
+
+  $$
+
+
+  并求使上式成为等式的 $f(x)$．'
+reference_answer: 等号成立当且仅当 $f(x) \equiv 0$
+solution: 由分部积分法：$\int_0^1 f^2(x)\mathrm{d}x = \left.(x-1)f^2(x)\right|_0^1 - \int_0^1
+  (x-1)\cdot 2f(x)f'(x)\mathrm{d}x = 2\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \quad (得
+  4 分)$由柯西–施瓦茨积分不等式：$\int_0^1 (1-x)f'(x)f(x)\mathrm{d}x \leqslant \left(\int_0^1 (1-x)^2
+  (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1 f^2(x)\mathrm{d}x\right)^{1/2}$代入得：$\int_0^1
+  f^2(x)\mathrm{d}x \leqslant 2\left(\int_0^1 (1-x)^2 (f'(x))^2\mathrm{d}x\right)^{1/2}\left(\int_0^1
+  f^2(x)\mathrm{d}x\right)^{1/2}$两边平方即得不等式（得 10 分）．等号成立时必存在常数 $c$ 使得 $(1-x)f'(x) =
+  c f(x)$，解得 $f(x) = d(1-x)^{-c}$．当 $x\to 0$ 时 $f(x)\to 0$，故 $d = 0$，即唯一极值函数为 $f(x)
+  \equiv 0$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未运用分部积分（0 分）
+    points: 0
+  - id: step1
+    label: 巧用权重函数 (x-1) 分部积分消除端点项（4 分）
+    points: 0.29
+  - id: step2
+    label: 应用柯西–施瓦茨积分不等式导出系数 4 的积分上界（10 分）
+    points: 0.71
+  - id: full
+    label: 严格分析等号成立的微分方程条件，证得仅恒零解满足等式（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

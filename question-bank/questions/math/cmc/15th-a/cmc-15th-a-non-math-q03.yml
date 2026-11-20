@@ -1,0 +1,43 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x) = \frac{1}{x^2 - 3x + 2}$，则 $f^{(n)}(0) =$ ______．
+reference_answer: $n!\left(1 - \frac{1}{2^{n+1}}\right)$
+solution: 拆分部分分式：$f(x) = -\frac{1}{x-1} + \frac{1}{x-2} = \frac{1}{1-x} - \frac{1}{2}\frac{1}{1-x/2}$展开为几何级数：$f(x)
+  = \sum_{n=0}^\infty x^n - \frac{1}{2}\sum_{n=0}^\infty \left(\frac{x}{2}\right)^n
+  = \sum_{n=0}^\infty \left(1 - \frac{1}{2^{n+1}}\right)x^n$由 Maclaurin 展开系数 $f^{(n)}(0)
+  = n! a_n = n!\left(1 - \frac{1}{2^{n+1}}\right)$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 部分分式拆分失误或阶乘系数遗漏
+    points: 0
+  - id: correct
+    label: 正确求得 n 阶导数在原点的值
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

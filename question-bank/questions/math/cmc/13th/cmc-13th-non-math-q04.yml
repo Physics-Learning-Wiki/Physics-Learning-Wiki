@@ -1,0 +1,63 @@
+schema_version: 3
+id: cmc-13th-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '过三条直线 $L_1: \begin{cases}x=0,\\ y-z=2,\end{cases}$ $L_2: \begin{cases}x=0,\\
+  x+y-z+2=0,\end{cases}$ 与 $L_3: \begin{cases}x=\sqrt{2},\\ y-z=0\end{cases}$ 的圆柱面方程为
+  ______．'
+reference_answer: $2x^2 + y^2 + z^2 - 2yz = 4$
+solution: '三条直线的对称式方程方向向量均为 $(0, 1, 1)$，彼此平行．
+
+
+  在 $L_1$ 上取点 $P_1(0, 1, -1)$，过该点作与三直线垂直的截平面 $y+z=0$．该平面分别与 $L_2, L_3$ 交于点 $P_2(0,
+  -1, 1)$ 与 $P_3(\sqrt{2}, 0, 0)$．
+
+
+  三点到原点距离均为 $\sqrt{2}$，截面圆圆心为 $O(0, 0, 0)$，中心轴线方程为 $\frac{x}{0} = \frac{y}{1} = \frac{z}{1}$．
+
+
+  设圆柱面上任意点为 $Q(x, y, z)$，点 $Q$ 到轴线的距离为 $\sqrt{2}$：
+
+
+  $$
+
+  \frac{|(x, y, z) \times (0, 1, 1)|^2}{0^2+1^2+1^2} = \frac{(y-z)^2 + x^2 + x^2}{2}
+  = 2
+
+  $$
+
+
+  化简即得所求圆柱面方程为 $2x^2 + y^2 + z^2 - 2yz = 4$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 轴线方程或距离几何方程建立错误
+    points: 0
+  - id: correct
+    label: 正确求得轴线与半径并化简得出圆柱面方程
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第4小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

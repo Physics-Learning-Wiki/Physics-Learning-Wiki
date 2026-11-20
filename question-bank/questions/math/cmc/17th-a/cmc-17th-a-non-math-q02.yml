@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设平面过原点与点 $(6,-3,2)$，且与平面 $4x - y + 2z - 8 = 0$ 垂直，则此平面方程为 ______．
+reference_answer: $2x + 2y - 3z = 0$（或其非零常数倍形式）
+solution: 设所求平面法向量为 $\mathbf{n} = (A,B,C)$．由平面过原点及点 $(6,-3,2)$ 知 $6A - 3B + 2C = 0$；由平面与
+  $4x-y+2z-8=0$ 垂直知 $4A - B + 2C = 0$．联立解得 $A = B$，$C = -\frac{3}{2}A$．取 $A = 2$，得法向量
+  $\mathbf{n} = (2,2,-3)$，故平面方程为 $2x + 2y - 3z = 0$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 法向量计算错误或不满足垂直与过点条件
+    points: 0
+  - id: correct
+    label: 正确解出法向量并写出平面方程 2x + 2y - 3z = 0 或等价形式
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题第(2)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

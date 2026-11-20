@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $a > 0$，则均匀曲面 $x^2+y^2+z^2=a^2$ ($x\geqslant 0, y\geqslant 0, z\geqslant 0$)
+  的重心坐标为 ______．
+reference_answer: $\left(\frac{a}{2}, \frac{a}{2}, \frac{a}{2}\right)$
+solution: 第一卦限球面面积为 $M = \frac{1}{8}(4\pi a^2) = \frac{\pi a^2}{2}$．由投影积分：$\bar{z}
+  = \frac{1}{M}\iint_\Sigma z\mathrm{d}S = \frac{2}{\pi a^2}\iint_\Sigma z\frac{a}{z}\mathrm{d}x\mathrm{d}y
+  = \frac{2}{\pi a}\iint_{D_{xy}}\mathrm{d}x\mathrm{d}y = \frac{2}{\pi a}\cdot\frac{\pi
+  a^2}{4} = \frac{a}{2}$由轮换对称性 $\bar{x} = \bar{y} = \bar{z} = \frac{a}{2}$，重心坐标为 $\left(\frac{a}{2},
+  \frac{a}{2}, \frac{a}{2}\right)$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 第一类曲面积分微元或圆面积计算失误
+    points: 0
+  - id: correct
+    label: 正确求得球面重心坐标 (a/2, a/2, a/2)
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -47,6 +47,11 @@
         "deferred"
       ]
     },
+    "self_assessment_timing": {
+      "enum": [
+        "after_submit"
+      ]
+    },
     "selection": {
       "$ref": "#/$defs/selection"
     },
@@ -483,6 +488,20 @@
     }
   },
   "allOf": [
+    {
+      "if": {
+        "required": [
+          "self_assessment_timing"
+        ]
+      },
+      "then": {
+        "properties": {
+          "feedback_mode": {
+            "const": "deferred"
+          }
+        }
+      }
+    },
     {
       "if": {
         "required": [

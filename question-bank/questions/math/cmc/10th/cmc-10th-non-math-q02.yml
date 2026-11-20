@@ -1,0 +1,58 @@
+schema_version: 3
+id: cmc-10th-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 若曲线 $y=y(x)$ 由 $\begin{cases}x = t+\cos t,\\ e^y + ty + \sin t = 1\end{cases}$
+  确定，则此曲线在 $t=0$ 对应点处的切线方程为 ______．
+reference_answer: $x+y=1$
+solution: '当 $t = 0$ 时，$x = 1$，$e^y = 1 \implies y = 0$．
+
+
+  分别关于 $t$ 求导：
+
+
+  $$\frac{\mathrm{d}x}{\mathrm{d}t} = 1 - \sin t, \quad \left.\frac{\mathrm{d}x}{\mathrm{d}t}\right|_{t=0}
+  = 1$$
+
+
+  $$e^y \frac{\mathrm{d}y}{\mathrm{d}t} + y + t\frac{\mathrm{d}y}{\mathrm{d}t} + \cos
+  t = 0, \quad \left.\frac{\mathrm{d}y}{\mathrm{d}t}\right|_{t=0} = -1$$
+
+
+  切线斜率为 $\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{1} = -1$．
+
+
+  切线方程为 $y - 0 = -(x - 1)$，即 $x+y=1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 参数导数或切点坐标计算失误
+    points: 0
+  - id: correct
+    label: 准确求得切点与斜率并写出切线方程 x+y=1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第一大题第(2)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

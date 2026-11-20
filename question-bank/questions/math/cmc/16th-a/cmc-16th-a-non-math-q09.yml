@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $f(x)$ 是 $(-\infty,+\infty)$ 上具有连续导数的非负函数，且存在 $M > 0$ 使得对任意的 $x,y\in(-\infty,+\infty)$，有
+  $|f''(x) - f''(y)| \leqslant M|x-y|$．
+
+  证明：对于任意实数 $x$，恒有 $(f''(x))^2 \leqslant 2Mf(x)$．'
+reference_answer: 详见参考解答（通过泰勒积分展开余项估计与极值参数选取法证明）
+solution: 对任意非零实数 $h$：$0 \leqslant f(x+h) = f(x) + \int_0^h f'(x+t)\mathrm{d}t = f(x)
+  + f'(x)h + \int_0^h (f'(x+t) - f'(x))\mathrm{d}t \quad (得 6 分)$取 $h$ 使 $h f'(x)
+  \leqslant 0$，则：$-f'(x)h \leqslant f(x) + \int_0^h |f'(x+t)-f'(x)|\mathrm{d}t \leqslant
+  f(x) + M\frac{h^2}{2}$即 $|f'(x)| \leqslant \frac{f(x)}{|h|} + \frac{M|h|}{2}$（得
+  12 分）．当 $f(x)=0$ 时显然 $f'(x)=0$；当 $f(x)>0$ 时，取最佳步长 $|h| = \sqrt{\frac{2f(x)}{M}}$，代入得
+  $|f'(x)| \leqslant \sqrt{2Mf(x)}$，两边平方即证得 $(f'(x))^2 \leqslant 2Mf(x)$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用非负性展开积分（0 分）
+    points: 0
+  - id: step1
+    label: 利用积分中值或导数定义将 f(x+h) 展开并隔离 f'(x)h（6 分）
+    points: 0.43
+  - id: step2
+    label: 应用 Lipschitz 条件控制余项得到包含参数 h 的上界不等式（12 分）
+    points: 0.86
+  - id: full
+    label: 选取最优参数 h = sqrt(2f/M) 严格证得 (f')^2 <= 2Mf(x)（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）证明题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

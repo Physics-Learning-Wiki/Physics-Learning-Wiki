@@ -1,0 +1,74 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设函数 $f(x), g(x)$ 在 $[a,b]$ 上连续可导且满足以下三个条件：
+
+  (i) $\int_a^b f(x)\mathrm{d}x = \int_a^b g(x)\mathrm{d}x = 0$；
+
+  (ii) $f''(x)g(x) - f(x)g''(x) > 0, x\in[a,b]$；
+
+  (iii) $g(x)$ 在 $(a,b)$ 上有唯一零点 $\xi$．
+
+
+  证明：
+
+  (1) $\int_a^b f(x)\left(\int_a^x g(s)\mathrm{d}s\right)\mathrm{d}x = -\int_a^b g(x)\left(\int_a^x
+  f(s)\mathrm{d}s\right)\mathrm{d}x$；
+
+  (2) $\int_a^b f(x)\left(\int_a^x g(s)\mathrm{d}s\right)\mathrm{d}x > 0$．'
+reference_answer: 详见参考解答（通过分部积分与利用条件 (ii) 建立比值单调性及符号判别）
+solution: '(1) 记 $F(x) = \int_a^x f(s)\mathrm{d}s, G(x) = \int_a^x g(s)\mathrm{d}s$．由分部积分：
+
+
+  $$
+
+  \int_a^b f(x)G(x)\mathrm{d}x = \left.F(x)G(x)\right|_a^b - \int_a^b F(x)g(x)\mathrm{d}x
+
+  $$
+
+
+  因 $F(b) = G(b) = 0$ 且 $F(a) = G(a) = 0$，首末项为 0，即证得结论（得 4 分）．
+
+  (2) 记积分 $I = \int_a^b f(x)G(x)\mathrm{d}x$．由对称性 $I = \frac{1}{2}\iint_D (f(x)g(s)-f(s)g(x))\mathrm{d}s\mathrm{d}x$（得
+  8 分）．由条件 (ii) 知商函数 $f(x)/g(x)$ 在除零点 $\xi$ 外严格单调递增．结合条件 (iii) $g(x)$ 在 $\xi$ 变号，可将积分区域细分证明被积函数非负且不恒为零（得
+  12 分），从而严格证得 $I > 0$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未展开有效推导（0 分）
+    points: 0
+  - id: step1
+    label: 利用分部积分法与边界条件严格证得第 (1) 问（4 分）
+    points: 0.29
+  - id: step2
+    label: 将第 (2) 问转化为二重对称积分并识别出商函数的严格单调性（8 分）
+    points: 0.57
+  - id: full
+    label: 结合唯一变号零点完成分区域符号分析，严格证得定积分大于 0（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

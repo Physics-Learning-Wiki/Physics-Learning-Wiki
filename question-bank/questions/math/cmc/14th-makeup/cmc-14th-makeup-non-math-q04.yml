@@ -1,0 +1,47 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设可微函数 $z=z(x,y)$ 满足 $x^2\frac{\partial z}{\partial x}+y^2\frac{\partial z}{\partial
+  y}=2z^2$，又设 $u=x, v=\frac{1}{y}-\frac{1}{x}, w=\frac{1}{z}-\frac{1}{x}$，则对函数 $w=w(u,v)$，偏导数
+  $\left.\frac{\partial w}{\partial u}\right|_{\substack{u=2\\v=1}} =$ ______．
+reference_answer: $-\frac{1}{4}$
+solution: 由变量关系 $x = u, y = \frac{u}{uv+1}, \frac{1}{z} = w+\frac{1}{u}$．链式求导：$\frac{\partial
+  w}{\partial u} = -\frac{1}{z^2}\frac{\partial z}{\partial u} + \frac{1}{u^2} = -\frac{1}{z^2}\left(z_x\cdot
+  1 + z_y\cdot \frac{1}{(uv+1)^2}\right) + \frac{1}{u^2} = -\frac{1}{z^2 u^2}\left(x^2
+  z_x + y^2 z_y\right) + \frac{1}{u^2}$利用已知条件 $x^2 z_x+y^2 z_y = 2z^2$：$\frac{\partial
+  w}{\partial u} = -\frac{2z^2}{z^2 u^2} + \frac{1}{u^2} = -\frac{1}{u^2}$代入 $u=2,
+  v=1$ 得 $\left.\frac{\partial w}{\partial u}\right|_{(2,1)} = -\frac{1}{4}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 链式偏导化简漏项或数值代入错误
+    points: 0
+  - id: correct
+    label: 正确化简偏导数得出 -1/4
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

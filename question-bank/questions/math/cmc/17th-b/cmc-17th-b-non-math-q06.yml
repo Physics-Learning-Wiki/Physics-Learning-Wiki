@@ -1,0 +1,67 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $a,b$ 为常数，函数 $f(x,y) = ax^2 + by^2 + 1$ 在点 $(4,3)$ 处的所有方向导数中，沿方向
+  $\mathbf{l} = -4\mathbf{i} - 3\mathbf{j}$ 的方向导数最大，最大值为 $10$．
+
+  (1) 求 $a,b$ 的值；
+
+  (2) 求曲面 $z = f(x,y)$ 被平面 $z = 0$ 所截下的有限部分的面积．'
+reference_answer: (1) $a = b = -1$；(2) 面积 $A = \frac{\pi}{6}(5\sqrt{5} - 1)$
+solution: '(1) 函数在 $(4,3)$ 处的梯度为 $\mathbf{grad} f|_{(4,3)} = (8a, 6b)$．由题设沿 $\mathbf{l}
+  = (-4,-3)$ 方向导数最大，故梯度与 $\mathbf{l}$ 同向且模长为 $10$：$\frac{8a}{-4} = \frac{6b}{-3} >
+  0, \sqrt{(8a)^2 + (6b)^2} = 10$．解得 $a = b = -1$（得 6 分）．
+
+  (2) 曲面方程为 $z = 1 - x^2 - y^2$．在 $xOy$ 平面投影区域为圆盘 $D = \{(x,y)\mid x^2+y^2\leqslant
+  1\}$．曲面面积微元为 $\mathrm{d}S = \sqrt{1 + 4x^2 + 4y^2}\mathrm{d}x\mathrm{d}y$．极坐标变换：
+
+
+  $$
+
+  A = \iint_D \sqrt{1 + 4(x^2+y^2)}\mathrm{d}x\mathrm{d}y = \int_0^{2\pi}\mathrm{d}\theta\int_0^1
+  \sqrt{1+4r^2}r\mathrm{d}r = \frac{\pi}{6}(5\sqrt{5}-1)
+
+  $$
+
+
+  故曲面面积为 $\frac{\pi}{6}(5\sqrt{5}-1)$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立梯度与方向导数关系（0 分）
+    points: 0
+  - id: step1
+    label: 求出梯度并由同向与模长条件解得 a = b = -1（6 分）
+    points: 0.43
+  - id: step2
+    label: 列出第一型曲面积分公式并转化为极坐标形式（10 分）
+    points: 0.71
+  - id: full
+    label: 正确积分计算得出面积 pi/6 * (5*sqrt(5) - 1)（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

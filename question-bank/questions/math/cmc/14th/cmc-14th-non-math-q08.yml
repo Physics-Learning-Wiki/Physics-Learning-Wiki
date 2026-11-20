@@ -1,0 +1,65 @@
+schema_version: 3
+id: cmc-14th-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题满分 14 分）证明：对任意正整数 $n$，恒有：
+
+
+  $$
+
+  \int_0^{\pi/2} x\left(\frac{\sin nx}{\sin x}\right)^4\mathrm{d}x \leqslant \left(\frac{n^2}{4}-\frac{1}{8}\right)\pi^2
+
+  $$'
+reference_answer: 详见参考解答（通过区间分段放缩与 Jordan 不等式积分估计证明）
+solution: 首先由数学归纳法当 $x\in[0,\pi/2]$ 时有 $|\sin nx|\leqslant n\sin x$（得 2 分）．当 $n>1$
+  时，将积分区间拆分为 $[0, \frac{\pi}{2n}]$ 与 $[\frac{\pi}{2n}, \frac{\pi}{2}]$ 两段：$\int_0^{\pi/2}
+  x\left(\frac{\sin nx}{\sin x}\right)^4\mathrm{d}x = \int_0^{\frac{\pi}{2n}} x\left(\frac{\sin
+  nx}{\sin x}\right)^4\mathrm{d}x + \int_{\frac{\pi}{2n}}^{\pi/2} x\left(\frac{\sin
+  nx}{\sin x}\right)^4\mathrm{d}x$第一段利用 $\frac{\sin nx}{\sin x} \leqslant n$ 放缩：$\int_0^{\frac{\pi}{2n}}
+  n^4 x\mathrm{d}x = \frac{n^4}{2}\left(\frac{\pi}{2n}\right)^2 = \frac{n^2\pi^2}{8}$第二段利用
+  $|\sin nx|\leqslant 1$ 及 Jordan 不等式 $\sin x \geqslant \frac{2}{\pi}x$：$\int_{\frac{\pi}{2n}}^{\pi/2}
+  x\left(\frac{\pi}{2x}\right)^4\mathrm{d}x = \frac{\pi^4}{16}\int_{\frac{\pi}{2n}}^{\pi/2}
+  \frac{\mathrm{d}x}{x^3} = \frac{\pi^4}{16}\left.\left(-\frac{1}{2x^2}\right)\right|_{\frac{\pi}{2n}}^{\pi/2}
+  = \frac{\pi^2}{8}\left(n^2 - 1\right)$两段相加：$\frac{n^2\pi^2}{8} + \frac{(n^2-1)\pi^2}{8}
+  = \frac{2n^2-1}{8}\pi^2 = \left(\frac{n^2}{4} - \frac{1}{8}\right)\pi^2 \quad (得
+  12 分)$当 $n=1$ 时，左端等于 $\int_0^{\pi/2} x\mathrm{d}x = \frac{\pi^2}{8}$，右端为 $(\frac{1}{4}-\frac{1}{8})\pi^2
+  = \frac{\pi^2}{8}$ 等号成立．综合即证得不等式（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未做分段处理（0 分）
+    points: 0
+  - id: step1
+    label: 利用归纳法建立正弦函数基本放缩关系（2 分）
+    points: 0.14
+  - id: step2
+    label: 以 pi/(2n) 为分界点分段并利用 Jordan 不等式逐段积分估计（12 分）
+    points: 0.86
+  - id: full
+    label: 两段求和验证系数并完成全部正整数证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

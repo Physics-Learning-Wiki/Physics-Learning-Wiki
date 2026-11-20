@@ -1,0 +1,43 @@
+schema_version: 3
+id: cmc-14th-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x) = \begin{cases} 1, & x > 0, \\ 0, & x \leqslant 0, \end{cases}$ $g(x)
+  = \begin{cases} x-1, & x \geqslant 1, \\ 1-x, & x < 1, \end{cases}$ 则复合函数 $f[g(x)]$
+  的间断点为 $x =$ ______．
+reference_answer: $1$
+solution: 易知 $g(x) = |x-1|$．当 $x \ne 1$ 时 $g(x) > 0$，故 $f[g(x)] = 1$；当 $x = 1$ 时 $g(1)
+  = 0$，故 $f[g(1)] = 0$．因此复合函数除 $x=1$ 外恒等于 1，在 $x=1$ 处不连续，唯一间断点为 $x=1$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 复合函数定义域或间断点判定失误
+    points: 0
+  - id: correct
+    label: 正确求得唯一可去间断点 x = 1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(2)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

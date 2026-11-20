@@ -1,0 +1,61 @@
+schema_version: 3
+id: cmc-11th-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设隐函数 $y = y(x)$ 由方程 $y^2(x-y) = x^2$ 所确定，则 $\int \frac{\mathrm{d}x}{y^2} =$
+  ______．
+reference_answer: $\frac{3y}{x} - 2\ln\left|\frac{y}{x}\right| + C$
+solution: '令 $y = tx$，代入原方程：
+
+
+  $$t^2 x^2 (x - tx) = x^2 \implies t^2 x (1-t) = 1 \implies x = \frac{1}{t^2(1-t)}$$
+
+
+  因此 $y = tx = \frac{1}{t(1-t)}$．求微分：
+
+
+  $$\mathrm{d}x = \frac{3t-2}{t^3(1-t)^2}\mathrm{d}t$$
+
+
+  代入被积式：
+
+
+  $$\frac{\mathrm{d}x}{y^2} = \frac{\frac{3t-2}{t^3(1-t)^2}\mathrm{d}t}{\frac{1}{t^2(1-t)^2}}
+  = \frac{3t-2}{t}\mathrm{d}t = \left(3 - \frac{2}{t}\right)\mathrm{d}t$$
+
+
+  积分得 $3t - 2\ln|t| + C$．代回 $t = \frac{y}{x}$，即得 $\frac{3y}{x} - 2\ln\left|\frac{y}{x}\right|
+  + C$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 参数化换元或积分计算错误
+    points: 0
+  - id: correct
+    label: 通过代数换元求得原函数并回代变量
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第一大题第2小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

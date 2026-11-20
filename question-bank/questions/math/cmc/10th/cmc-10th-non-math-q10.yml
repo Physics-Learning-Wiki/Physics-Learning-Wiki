@@ -1,0 +1,77 @@
+schema_version: 3
+id: cmc-10th-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 已知 $\{a_k\}, \{b_k\}$ 是正项数列，且 $b_{k+1}-b_k \ge \delta > 0$ ($k=1, 2, \dots$)，$\delta$
+  为一常数．证明：若级数 $\sum_{k=1}^\infty a_k$ 收敛，则级数 $\sum_{k=1}^\infty \frac{k\sqrt[k]{(a_1
+  a_2 \cdots a_k)(b_1 b_2 \cdots b_k)}}{b_{k+1}b_k}$ 收敛．
+reference_answer: 见推导步骤
+solution: '由算术–几何均值不等式：
+
+
+  $$\sqrt[k]{(a_1\cdots a_k)(b_1\cdots b_k)} \le \frac{1}{k}\sum_{i=1}^k a_i b_i$$
+
+
+  令 $S_k = \sum_{i=1}^k a_i b_i$，则 $a_k b_k = S_k - S_{k-1}$ ($S_0 = 0$)．
+
+
+  通项放缩为：
+
+
+  $$\frac{k\sqrt[k]{(a_1\cdots a_k)(b_1\cdots b_k)}}{b_{k+1}b_k} \le \frac{S_k}{b_{k+1}b_k}$$
+
+
+  利用 Abel 变换：
+
+
+  $$\sum_{k=1}^N a_k = \sum_{k=1}^N \frac{S_k - S_{k-1}}{b_k} = \sum_{k=1}^{N-1} S_k
+  \left(\frac{1}{b_k} - \frac{1}{b_{k+1}}\right) + \frac{S_N}{b_N} = \sum_{k=1}^{N-1}
+  \frac{b_{k+1}-b_k}{b_k b_{k+1}}S_k + \frac{S_N}{b_N}$$
+
+
+  由于 $b_{k+1}-b_k \ge \delta > 0$ 且 $\frac{S_N}{b_N} > 0$：
+
+
+  $$\sum_{k=1}^{N-1} \frac{S_k}{b_k b_{k+1}} \le \frac{1}{\delta}\sum_{k=1}^N a_k$$
+
+
+  由 $\sum a_k$ 收敛，正项级数 $\sum \frac{S_k}{b_{k+1}b_k}$ 部分和有上界，故收敛．
+
+
+  由比较审敛法，所给级数收敛．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未进行均值不等式放缩（0 分）
+    points: 0
+  - id: partial_abel
+    label: 利用均值不等式与 Abel 变换建立部分和不等式（8 分）
+    points: 0.57
+  - id: correct
+    label: 利用级数收敛与部分和有界性完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第七大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

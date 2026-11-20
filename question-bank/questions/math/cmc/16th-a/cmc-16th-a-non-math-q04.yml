@@ -1,0 +1,46 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '直线 $L: \frac{x-1}{1} = \frac{y}{1} = \frac{z-1}{-1}$ 在平面 $\pi: x - y + 2z -
+  1 = 0$ 上的投影直线 $L_0$ 的单位方向向量为 ______．'
+reference_answer: $\pm\left(-\frac{4}{\sqrt{21}}, -\frac{2}{\sqrt{21}}, \frac{1}{\sqrt{21}}\right)$
+solution: 直线 $L$ 的一般式方程为 $x - y - 1 = 0, y + z - 1 = 0$．过 $L$ 的平面束方程为 $x - y - 1 +
+  \lambda(y + z - 1) = 0$，即 $x + (\lambda-1)y + \lambda z - 1 - \lambda = 0$．平面束法向量为
+  $(1, \lambda-1, \lambda)$．此法向量与平面 $\pi$ 法向量 $(1,-1,2)$ 垂直：$1 - (\lambda-1) + 2\lambda
+  = 0 \implies \lambda = -2$．过 $L$ 与 $\pi$ 垂直的平面为 $x - 3y - 2z + 1 = 0$．两平面交线方向向量为
+  $(1,-3,-2)\times(1,-1,2) = (-8,-4,2) \parallel (-4,-2,1)$．单位化得 $\pm\left(-\frac{4}{\sqrt{21}},
+  -\frac{2}{\sqrt{21}}, \frac{1}{\sqrt{21}}\right)$（两符号任选其一均正确）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 平面束构造错误或法向量点积计算失误
+    points: 0
+  - id: correct
+    label: 正确求得投影直线单位方向向量
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,55 @@
+schema_version: 3
+id: cmc-14th-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题满分 14 分）设正项级数 $\sum_{n=1}^\infty a_n$ 收敛，证明：存在收敛的正项级数 $\sum_{n=1}^\infty
+  b_n$，使得 $\lim_{n\to\infty}\frac{a_n}{b_n} = 0$．
+reference_answer: 详见参考解答（通过收敛级数余和构造逐段放大系数的序列 $b_n$ 证明）
+solution: 由于正项级数 $\sum_{n=1}^\infty a_n$ 收敛，由 Cauchy 收敛准则，对任意正整数 $k$，取 $\varepsilon_k
+  = \frac{1}{3^k}$，存在严格递增的下标数列 $n_1 < n_2 < \cdots < n_k < \cdots$ 使得余和满足：$\sum_{l=n_k}^\infty
+  a_l < \frac{1}{3^k} \quad (得 4 分)$分段构造数列 $\{b_n\}$ 如下：当 $1\leqslant n < n_1$ 时，令
+  $b_n = a_n$；当 $n_k \leqslant n < n_{k+1}$ 时，令 $b_n = 2^k a_n$ ($k=1,2,\cdots$)（得
+  9 分）．当 $n\to\infty$ 时 $k\to\infty$，比值满足 $\frac{a_n}{b_n} = \frac{1}{2^k} \to 0$．进一步估算级数总和：$\sum_{n=1}^\infty
+  b_n = \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty \sum_{l=n_k}^{n_{k+1}-1} 2^k a_l
+  \leqslant \sum_{n=1}^{n_1-1} a_n + \sum_{k=1}^\infty 2^k \left(\frac{1}{3^k}\right)
+  = \sum_{n=1}^{n_1-1} a_n + 2 < \infty$因此构造的正项级数 $\sum_{n=1}^\infty b_n$ 收敛且满足极限为
+  0（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未运用余和性质构造（0 分）
+    points: 0
+  - id: step1
+    label: 利用级数收敛余和控制确定分段指标列 n_k（4 分）
+    points: 0.29
+  - id: step2
+    label: 分段定义 b_n = 2^k a_n 并验证比值极限趋于 0（9 分）
+    points: 0.64
+  - id: full
+    label: 通过几何级数放缩严格证明 sum b_n 收敛（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,69 @@
+schema_version: 3
+id: cmc-10th-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x, y)$ 在区域 $D$ 内可微，且 $\left(\frac{\partial f}{\partial x}\right)^2 + \left(\frac{\partial
+  f}{\partial y}\right)^2 \le M^2$，$A(x_1, y_1), B(x_2, y_2)$ 是 $D$ 内两点，线段 $AB$ 包含在
+  $D$ 内．证明：$|f(x_1, y_1) - f(x_2, y_2)| \le M |AB|$，其中 $|AB|$ 表示线段 $AB$ 的长度．
+reference_answer: 见推导步骤
+solution: '在线段 $AB$ 上作辅助一元函数：
+
+
+  $$\varphi(t) = f(x_1 + t(x_2-x_1), y_1 + t(y_2-y_1)) \quad (0 \le t \le 1)$$
+
+
+  根据多元复合函数求导法则，$\varphi(t)$ 在 $[0, 1]$ 上可导：
+
+
+  $$\varphi''(t) = \frac{\partial f}{\partial x}(x_2-x_1) + \frac{\partial f}{\partial
+  y}(y_2-y_1)$$
+
+
+  由 Lagrange 中值定理，存在 $c \in (0, 1)$ 使得 $\varphi(1) - \varphi(0) = \varphi''(c)$．
+
+
+  由 Cauchy–Schwarz 不等式：
+
+
+  $$|f(x_2, y_2) - f(x_1, y_1)| = |\varphi''(c)| \le \sqrt{\left(\frac{\partial f}{\partial
+  x}\right)^2 + \left(\frac{\partial f}{\partial y}\right)^2}\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}
+  \le M |AB|$$
+
+
+  不等式得证．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未构造沿线段的辅助函数（0 分）
+    points: 0
+  - id: step1
+    label: 应用链式法则与 Lagrange 中值定理（8 分）
+    points: 0.57
+  - id: full
+    label: 利用 Cauchy–Schwarz 不等式完成放缩（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,74 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设正数列 $\{a_n\}$ 单调减少且趋于零，$f(x) = \sum_{n=1}^\infty a_n x^n$．证明：若级数 $\sum_{n=1}^\infty
+  a_n$ 发散，则积分 $\int_1^{+\infty} \frac{\ln f(x)}{x^2}\mathrm{d}x$ 也发散．
+reference_answer: 见推导步骤
+solution: '由于 $\{a_n\}$ 递减且趋于 0，幂级数 $\sum_{n=1}^\infty a_n x^n$ 的收敛半径为 $+\infty$．
+
+
+  当 $x \in \left[\frac{e}{a_p}, \frac{e}{a_{p+1}}\right]$ 时，因数列递减，有 $a_p x \ge e$，从而：
+
+
+  $$
+
+  f(x) \ge \sum_{k=1}^p (a_k x)^k \ge \sum_{k=1}^p e^k \ge e^p \implies \ln f(x) \ge
+  p
+
+  $$
+
+
+  对于充分大的上限 $X > \frac{e}{a_n}$：
+
+
+  $$
+
+  \int_1^X \frac{\ln f(x)}{x^2}\mathrm{d}x \ge \sum_{p=1}^{n-1} p \int_{e/a_p}^{e/a_{p+1}}
+  \frac{1}{x^2}\mathrm{d}x + n \int_{e/a_n}^X \frac{1}{x^2}\mathrm{d}x = \frac{1}{e}\sum_{p=1}^n
+  a_p - \frac{n}{X}
+
+  $$
+
+
+  取 $X > \max\{n, \frac{e}{a_n}\}$ 时，有 $\int_1^X \frac{\ln f(x)}{x^2}\mathrm{d}x \ge
+  \frac{1}{e}\sum_{p=1}^n a_p - 1$．
+
+
+  因为级数 $\sum a_n$ 发散，令 $n\to+\infty$，积分趋于 $+\infty$，故反常积分发散．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未进行有效区间分段放缩（0 分）
+    points: 0
+  - id: partial_bound
+    label: 在每个区间证明 ln f(x) >= p 并得到下界求和式（8 分）
+    points: 0.57
+  - id: correct
+    label: 完成级数发散到反常积分发散的严格推导（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

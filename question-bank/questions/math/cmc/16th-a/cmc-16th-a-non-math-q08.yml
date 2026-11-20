@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）求曲面积分 $I = \iint_S (x^2-x)\mathrm{d}y\mathrm{d}z + (y^2-y)\mathrm{d}z\mathrm{d}x
+  + (z^2-z)\mathrm{d}x\mathrm{d}y$，其中 $S$ 是上半球面 $x^2+y^2+z^2 = R^2$ ($z\geqslant 0$)
+  的上侧．
+reference_answer: $\frac{\pi R^4}{2} - 2\pi R^3$
+solution: '补底面 $\Sigma: z = 0, x^2+y^2\leqslant R^2$ 取下侧，由高斯公式：$\iint_{S+\Sigma} =
+  \iiint_\Omega (2x+2y+2z-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z \quad (得 4 分)$在底面 $\Sigma$
+  上 $z=0,\mathrm{d}x\mathrm{d}y = -\mathrm{d}x\mathrm{d}y$，其余两项为 $0$，故 $\iint_\Sigma
+  (z^2-z)\mathrm{d}x\mathrm{d}y = 0$．因此 $I = \iiint_\Omega (2(x+y+z)-3)\mathrm{d}x\mathrm{d}y\mathrm{d}z$（得
+  8 分）．由对称性 $\iiint_\Omega x = \iiint_\Omega y = 0$．球坐标变换：$I = \int_0^{2\pi}\mathrm{d}\theta\int_0^{\pi/2}\mathrm{d}\varphi\int_0^R
+  (2r\cos\varphi - 3)r^2\sin\varphi\mathrm{d}r = \frac{\pi R^4}{2} - 2\pi R^3 \quad
+  (满分 14 分)$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未封闭曲面或高斯公式应用错误（0 分）
+    points: 0
+  - id: step1
+    label: 添加底面闭合曲面并写出高斯公式散度三重积分（4 分）
+    points: 0.29
+  - id: step2
+    label: 底面积分为 0 并利用轮换对称性消去 x 与 y 积分项（8 分）
+    points: 0.57
+  - id: full
+    label: 球坐标积分计算准确，得出 pi*R^4/2 - 2*pi*R^3（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,78 @@
+schema_version: 3
+id: cmc-11th-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 计算三重积分 $\iiint_\Omega \frac{xyz}{x^2+y^2}\mathrm{d}x\mathrm{d}y\mathrm{d}z$，其中
+  $\Omega$ 是由曲面 $(x^2+y^2+z^2)^2 = 2xy$ 围成的区域在第一卦限部分．
+reference_answer: $\frac{1}{72}$
+solution: '采用球面坐标系：$x = \rho\sin\varphi\cos\theta, y = \rho\sin\varphi\sin\theta,
+  z = \rho\cos\varphi$．
+
+
+  边界方程化为 $\rho^4 = 2\rho^2 \sin^2\varphi\sin\theta\cos\theta \implies \rho^2 = \sin
+  2\theta \sin^2\varphi$．
+
+
+  积分化为：
+
+
+  $$I = \int_0^{\pi/2}\mathrm{d}\theta \int_0^{\pi/2}\mathrm{d}\varphi \int_0^{\sqrt{\sin
+  2\theta}\sin\varphi} \frac{\rho^3\sin^2\varphi\cos\varphi\sin\theta\cos\theta}{\rho^2\sin^2\varphi}\rho^2\sin\varphi\mathrm{d}\rho$$
+
+
+  $$= \int_0^{\pi/2}\sin\theta\cos\theta\mathrm{d}\theta \int_0^{\pi/2}\sin\varphi\cos\varphi\mathrm{d}\varphi
+  \int_0^{\sqrt{\sin 2\theta}\sin\varphi} \rho^3\mathrm{d}\rho$$
+
+
+  逐层计算：
+
+
+  $$\int_0^{\sqrt{\sin 2\theta}\sin\varphi} \rho^3\mathrm{d}\rho = \frac{1}{4}\sin^2
+  2\theta \sin^4\varphi$$
+
+
+  $$\int_0^{\pi/2}\sin^5\varphi\cos\varphi\mathrm{d}\varphi = \frac{1}{6}$$
+
+
+  $$\int_0^{\pi/2}\frac{1}{2}\sin 2\theta \cdot \frac{1}{4}\sin^2 2\theta\mathrm{d}\theta
+  = \frac{1}{8}\int_0^{\pi/2}\sin^3 2\theta\mathrm{d}\theta = \frac{1}{16}\int_0^\pi
+  \sin^3 t\mathrm{d}t = \frac{1}{12}$$
+
+
+  因此 $I = \frac{1}{6}\times\frac{1}{12} = \frac{1}{72}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未正确建立球坐标积分限（0 分）
+    points: 0
+  - id: partial_spherical
+    label: 正确转换为球坐标多重积分并积分出径向部分（7 分）
+    points: 0.5
+  - id: correct
+    label: 分别完成角度积分并准确得出结果 1/72（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

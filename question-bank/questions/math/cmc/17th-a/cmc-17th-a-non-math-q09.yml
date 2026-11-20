@@ -1,0 +1,59 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）判断级数 $\sum_{n=1}^\infty a_n$ 的敛散性，其中：
+
+
+  $$
+
+  a_n = \sin^2 x\sin^2 2x\cdots\sin^2 2^n x, \quad x\in(-\infty,+\infty)
+
+  $$'
+reference_answer: 级数 $\sum_{n=1}^\infty a_n$ 对任意 $x\in(-\infty,+\infty)$ 均收敛
+solution: 令辅助函数 $f(x) = \sin^2 x\sin 2x$，则 $f'(x) = -8\sin^2 x\left(\sin x - \frac{\sqrt{3}}{2}\right)\left(\sin
+  x + \frac{\sqrt{3}}{2}\right)$．在 $(0,\pi)$ 驻点为 $x_1 = \frac{\pi}{3}, x_2 = \frac{2\pi}{3}$（得
+  4 分）．易知 $f(x)$ 在 $[0,\pi]$ 上最值为 $\pm \frac{3\sqrt{3}}{8}$，故 $|f(x)| \leqslant \frac{3\sqrt{3}}{8}$（得
+  9 分）．由于 $a_n^{3/2} = |\sin x|\cdot |f(x)f(2x)\cdots f(2^{n-1}x)|\cdot |\sin^2 2^n
+  x| \leqslant \left(\frac{3\sqrt{3}}{8}\right)^n$，两边取 $2/3$ 次方得 $a_n \leqslant \left(\frac{3\sqrt{3}}{8}\right)^{2n/3}
+  = \left(\frac{3}{4}\right)^n$．由于几何级数 $\sum_{n=1}^\infty \left(\frac{3}{4}\right)^n$
+  收敛，根据比较审敛法，$\sum_{n=1}^\infty a_n$ 收敛（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未找到放缩不等式（0 分）
+    points: 0
+  - id: step1
+    label: 构造辅助函数求导得到驻点（4 分）
+    points: 0.29
+  - id: step2
+    label: 证明辅助函数最大值界 |f(x)| <= 3*sqrt(3)/8（9 分）
+    points: 0.64
+  - id: full
+    label: 完成级数整体放缩 a_n <= (3/4)^n 并应用比较法得出收敛（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

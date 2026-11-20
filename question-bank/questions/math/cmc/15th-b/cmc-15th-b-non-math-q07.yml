@@ -1,0 +1,50 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）求幂级数 $\sum_{n=1}^\infty \frac{(-1)^{n-1}x^{2n}}{n(2n-1)}$ 的收敛域及和函数．
+reference_answer: 收敛域为 $[-1, 1]$，和函数 $S(x) = 2x\arctan x - \ln(1+x^2)$
+solution: 利用比值法易得收敛半径 $R = 1$，在 $x = \pm 1$ 处绝对收敛，收敛域为 $[-1, 1]$（得 5 分）．设和函数为 $S(x)$，在
+  $(-1,1)$ 上逐项求导：$\frac{1}{2}S''(x) = \sum_{n=1}^\infty (-1)^{n-1}x^{2n-2} = \frac{1}{1+x^2}
+  \quad (得 9 分)$积分得 $S'(x) = 2\int_0^x \frac{1}{1+s^2}\mathrm{d}s = 2\arctan x$．再积分：$S(x)
+  = 2\int_0^x \arctan s\mathrm{d}s = 2x\arctan x - \ln(1+x^2), \quad x\in(-1,1)$根据
+  Abel 连续性定理，端点处和函数连续，故在闭区间 $[-1,1]$ 上均成立（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 收敛域求解错误（0 分）
+    points: 0
+  - id: step1
+    label: 求出收敛半径并在端点处判定得出收敛域 [-1, 1]（5 分）
+    points: 0.36
+  - id: step2
+    label: 对幂级数逐项求二阶导数化为等比求和（9 分）
+    points: 0.64
+  - id: full
+    label: 两次积分求解原函数并由连续性扩展到闭区间（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,46 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $L$ 为圆周 $x^2+y^2=9$，取逆时针方向，则第二类曲线积分 $\int_L \frac{-y}{4x^2+y^2}\mathrm{d}x
+  + \frac{x}{4x^2+y^2}\mathrm{d}y =$ ______．
+reference_answer: $\pi$
+solution: '记 $P = \frac{-y}{4x^2+y^2}, Q = \frac{x}{4x^2+y^2}$．易知在原点外 $Q_x - P_y \equiv
+  0$．引入顺时针方向的辅助椭圆 $L_1: 4x^2+y^2=4$，由格林公式：$\int_{L+L_1} P\mathrm{d}x + Q\mathrm{d}y
+  = 0 \implies \int_L P\mathrm{d}x + Q\mathrm{d}y = \frac{1}{4}\int_{-L_1} (-y\mathrm{d}x
+  + x\mathrm{d}y) = \frac{1}{4}\iint_{4x^2+y^2\leqslant 4} 2\mathrm{d}x\mathrm{d}y
+  = \frac{1}{2}\sigma(D) = \pi$其中椭圆面积 $\sigma(D) = \pi \times 1 \times 2 = 2\pi$．故积分为
+  $\pi$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 格林公式奇点处理失误或椭圆面积计算错误
+    points: 0
+  - id: correct
+    label: 正确挖去奇点并利用 Green 公式求得积分为 pi
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

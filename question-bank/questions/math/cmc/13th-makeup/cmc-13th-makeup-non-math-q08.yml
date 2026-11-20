@@ -1,0 +1,90 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 若对于 $\mathbb{R}^3$ 中半空间 $\{(x, y, z)\in\mathbb{R}^3\mid x > 0\}$ 内的任意有向光滑封闭曲面
+  $S$，都有 $\iint_S [x f'(x)\mathrm{d}y\mathrm{d}z + y(x f(x) - f'(x))\mathrm{d}z\mathrm{d}x
+  - xz(\sin x + f'(x))\mathrm{d}x\mathrm{d}y] = 0$，其中 $f$ 在 $(0, +\infty)$ 上二阶导数连续且
+  $\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+} f'(x) = 0$，求 $f(x)$．
+reference_answer: $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x -
+  \cos\frac{\sqrt{3}}{2}x\right) + \cos x$
+solution: '由 Gauss 公式，任取闭球域 $B_\varepsilon(P)$，积分恒为 0 意味着被积向量场的散度在半空间内恒为零：
+
+
+  $$
+
+  \frac{\partial}{\partial x}[x f''(x)] + \frac{\partial}{\partial y}[y(x f(x) - f''(x))]
+  - \frac{\partial}{\partial z}[xz(\sin x + f''(x))] = 0
+
+  $$
+
+
+  展开化简：
+
+
+  $$[f''(x) + x f''''(x)] + [x f(x) - f''(x)] - [x\sin x + x f''(x)] = x[f''''(x)
+  - f''(x) + f(x) - \sin x] = 0$$
+
+
+  因为 $x > 0$，所以：
+
+
+  $$
+
+  f''''(x) - f''(x) + f(x) = \sin x
+
+  $$
+
+
+  特征方程 $r^2 - r + 1 = 0$ 的根为 $r = \frac{1 \pm \sqrt{3}i}{2}$，齐次通解为 $e^{x/2}\left(c_1
+  \cos\frac{\sqrt{3}}{2}x + c_2 \sin\frac{\sqrt{3}}{2}x\right)$．
+
+
+  非齐次特解易得 $y^* = \cos x$．
+
+
+  由 $\lim_{x\to 0^+} f(x) = 0 \implies c_1 + 1 = 0 \implies c_1 = -1$．
+
+
+  由 $\lim_{x\to 0^+} f''(x) = 0 \implies \frac{c_1 + \sqrt{3}c_2}{2} = 0 \implies
+  c_2 = \frac{\sqrt{3}}{3}$．
+
+
+  故所求函数为 $f(x) = e^{x/2}\left(\frac{\sqrt{3}}{3}\sin\frac{\sqrt{3}}{2}x - \cos\frac{\sqrt{3}}{2}x\right)
+  + \cos x$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用 Gauss 公式建立微分方程（0 分）
+    points: 0
+  - id: partial_ode
+    label: 建立微分方程并求出通解（7 分）
+    points: 0.5
+  - id: correct
+    label: 由极限初值条件定出常数获得完整解表达（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

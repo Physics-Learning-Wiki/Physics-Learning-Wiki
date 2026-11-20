@@ -1,0 +1,60 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题满分 14 分）设函数 $f(x)$ 在区间 $[0,1]$ 上连续，在 $(0,1)$ 内可导，且 $f(0)=0, f(1)=2$．证明：存在两两互异的点
+  $\xi_1, \xi_2, \xi_3 \in (0,1)$，使得
+
+
+  $$
+
+  f''(\xi_1)f''(\xi_2)\sqrt{1-\xi_3} \geqslant 2
+
+  $$'
+reference_answer: 详见参考解答（通过连续函数零点介值定理构造中间节点 $\xi_3$ 并利用 Lagrange 中值定理与不等式证明）
+solution: 令辅助函数 $F(x) = f(x) - 2 + x$．则 $F(0) = -2, F(1) = 1$．由介值定理，存在 $\xi_3\in(0,1)$
+  使得 $F(\xi_3) = 0$，即 $f(\xi_3) = 2 - \xi_3$（得 5 分）．在区间 $[0,\xi_3]$ 与 $[\xi_3,1]$
+  上分别应用 Lagrange 中值定理，存在 $\xi_1\in(0,\xi_3), \xi_2\in(\xi_3,1)$ 使得：$f'(\xi_1) = \frac{f(\xi_3)-f(0)}{\xi_3}
+  = \frac{2-\xi_3}{\xi_3}, \quad f'(\xi_2) = \frac{f(1)-f(\xi_3)}{1-\xi_3} = \frac{\xi_3}{1-\xi_3}
+  \quad (得 10 分)$相乘得：$f'(\xi_1)f'(\xi_2) = \frac{2-\xi_3}{1-\xi_3} = 1 + \frac{1}{1-\xi_3}
+  \geqslant \frac{2}{\sqrt{1-\xi_3}}$两边同乘 $\sqrt{1-\xi_3}$ 即证得 $f'(\xi_1)f'(\xi_2)\sqrt{1-\xi_3}
+  \geqslant 2$．显然 $0 < \xi_1 < \xi_3 < \xi_2 < 1$，三点两两互异（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未构造辅助函数（0 分）
+    points: 0
+  - id: step1
+    label: 利用介值定理确定满足 f(xi_3) = 2 - xi_3 的内点 xi_3（5 分）
+    points: 0.36
+  - id: step2
+    label: 在两侧子区间分别应用 Lagrange 中值定理表示出导数积（10 分）
+    points: 0.71
+  - id: full
+    label: 利用基本不等式放缩并验证三点互异严格完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

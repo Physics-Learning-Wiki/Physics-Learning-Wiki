@@ -1,0 +1,44 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设 $D: x^2 + y^2 \leqslant r^2$，其中 $r > 0$，则 $\lim_{r\to 0^+}\frac{\iint_D (\mathrm{e}^{x^2+y^2}-1)\mathrm{d}x\mathrm{d}y}{r^4}
+  =$ ______．'
+reference_answer: $\frac{\pi}{2}$
+solution: 利用极坐标变换 $x = \rho\cos\theta, y = \rho\sin\theta$：$\iint_D (\mathrm{e}^{x^2+y^2}-1)\mathrm{d}x\mathrm{d}y
+  = \int_0^{2\pi}\mathrm{d}\theta\int_0^r (\mathrm{e}^{\rho^2}-1)\rho\mathrm{d}\rho
+  = \pi(\mathrm{e}^{r^2} - 1 - r^2)$当 $r\to 0^+$ 时，$\mathrm{e}^{r^2} - 1 - r^2 = \frac{r^4}{2}
+  + o(r^4)$，故原极限为 $\frac{\pi}{2}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 极坐标计算错误或等价无穷小代换错误
+    points: 0
+  - id: correct
+    label: 正确通过极坐标积分与泰勒展开求得极限 pi/2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

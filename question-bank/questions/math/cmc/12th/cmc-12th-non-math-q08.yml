@@ -1,0 +1,103 @@
+schema_version: 3
+id: cmc-12th-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '已知 $z = x f\left(\frac{y}{x}\right) + 2y \varphi\left(\frac{x}{y}\right)$，其中
+  $f, \varphi$ 均为二次可微函数．
+
+
+  (1) 求 $\frac{\partial z}{\partial x}$，$\frac{\partial^2 z}{\partial x \partial y}$；
+
+
+  (2) 当 $f = \varphi$，且 $\left.\frac{\partial^2 z}{\partial x \partial y}\right|_{x=a}
+  = -b y^2$ 时，求 $f(y)$．'
+reference_answer: (1) $\frac{\partial z}{\partial x} = f(y/x) - \frac{y}{x}f'(y/x)
+  + 2\varphi'(x/y)$，$\frac{\partial^2 z}{\partial x\partial y} = -\frac{y}{x^2}f''(y/x)
+  - \frac{2x}{y^2}\varphi''(x/y)$；(2) $f(y) = \frac{a^3 b}{3}\left(\frac{1}{3y^2}
+  - \frac{y^3}{6}\right) + C_1 y + C_2$
+solution: '(1) 对 $x$ 求偏导：
+
+
+  $$
+
+  \frac{\partial z}{\partial x} = f\left(\frac{y}{x}\right) - \frac{y}{x}f''\left(\frac{y}{x}\right)
+  + 2\varphi''\left(\frac{x}{y}\right)
+
+  $$
+
+
+  再对 $y$ 求偏导：
+
+
+  $$
+
+  \frac{\partial^2 z}{\partial x \partial y} = -\frac{y}{x^2}f''''\left(\frac{y}{x}\right)
+  - \frac{2x}{y^2}\varphi''''\left(\frac{x}{y}\right)
+
+  $$
+
+
+  (2) 当 $f = \varphi$ 且 $x = a$ 时：
+
+
+  $$-\frac{y}{a^2}f''''\left(\frac{y}{a}\right) - \frac{2a}{y^2}f''''\left(\frac{a}{y}\right)
+  = -b y^2$$
+
+
+  令 $y = au$，则：
+
+
+  $$\frac{u}{a}f''''(u) + \frac{2}{a u^2}f''''\left(\frac{1}{u}\right) = b a^2 u^2
+  \implies u^3 f''''(u) + 2 f''''\left(\frac{1}{u}\right) = a^3 b u^4$$
+
+
+  用 $\frac{1}{u}$ 代换 $u$ 得 $2 f''''(u) + 4 u^3 f''''\left(\frac{1}{u}\right) = 2 a^3
+  b$，联立解得：
+
+
+  $$f''''(u) = \frac{a^3 b}{3}\left(\frac{2}{u^4} - u\right)$$
+
+
+  连续两次积分可得：
+
+
+  $$f(u) = \frac{a^3 b}{3}\left(\frac{1}{3u^2} - \frac{u^3}{6}\right) + C_1 u + C_2$$
+
+
+  故 $f(y) = \frac{a^3 b}{3}\left(\frac{1}{3y^2} - \frac{y^3}{6}\right) + C_1 y + C_2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 复合函数偏导计算错误（0 分）
+    points: 0
+  - id: step1
+    label: 正确求出一阶与二阶偏导数（3 分）
+    points: 0.25
+  - id: full
+    label: 利用对称换元解出微分方程并积分得出 f(y) 表达式（12 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

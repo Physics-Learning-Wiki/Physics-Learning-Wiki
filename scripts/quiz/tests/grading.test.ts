@@ -6,6 +6,7 @@ import {
   gradeQuestion,
   gradeNumericAnswer,
   isAnswerComplete,
+  isResponseEntered,
   makeResult,
   parseNumeric,
   summarizeConcepts,
@@ -183,4 +184,34 @@ test("self-assessed free responses require text and a rubric level", () => {
   assert.equal(result.evaluation?.score, 0.5);
   assert.equal(result.correct, false);
   assert.equal(result.unanswered, false);
+});
+
+test("isResponseEntered distinguishes valid text from rubric selection", () => {
+  const question = {
+    ...base,
+    id: "q-free",
+    type: "free_response",
+    response: { format: "plain_text", required: true, minChars: 5, maxChars: 100 },
+    grading: {
+      mode: "self_assessed",
+      rubric: [
+        { id: "partial", label: "部分掌握", points: 0.5 },
+        { id: "complete", label: "基本掌握", points: 1 }
+      ]
+    },
+    referenceAnswerHtml: "<p>参考答案</p>"
+  } as unknown as Question;
+
+  assert.equal(isResponseEntered(question, null), false);
+  assert.equal(isResponseEntered(question, { text: "太短", levelId: null }), false);
+  assert.equal(isResponseEntered(question, { text: "完整答案内容", levelId: null }), true);
+  assert.equal(isResponseEntered(question, { text: "完整答案内容", levelId: "complete" }), true);
+
+  const progEntered = countProgress([question], { "q-free": { text: "完整答案内容", levelId: null } }, {}, "entered");
+  assert.equal(progEntered.answered, 1);
+  assert.equal(progEntered.unanswered, 0);
+
+  const progComplete = countProgress([question], { "q-free": { text: "完整答案内容", levelId: null } }, {}, "complete");
+  assert.equal(progComplete.answered, 0);
+  assert.equal(progComplete.unanswered, 1);
 });

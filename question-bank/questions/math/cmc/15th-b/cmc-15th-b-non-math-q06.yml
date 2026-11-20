@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）设曲线 $y = 3ax^2+2bx+\ln c$ 经过 $(0,0)$ 点，且当 $0\leqslant x\leqslant 1$
+  时 $y\geqslant 0$．设该曲线与直线 $x=1, x$ 轴所围图形的平面图形 $D$ 的面积为 $1$．试求常数 $a,b,c$ 的值，使得 $D$
+  绕 $x$ 轴一周后，所得旋转体的体积最小．
+reference_answer: $a = -\frac{5}{4}, b = \frac{9}{4}, c = 1$
+solution: 曲线过原点得 $\ln c = 0 \implies c = 1$．面积为 $A = \int_0^1 (3ax^2+2bx)\mathrm{d}x
+  = a+b = 1$（得 4 分）．旋转体体积：$V = \pi\int_0^1 (3ax^2+2bx)^2\mathrm{d}x = \pi\left(\frac{9}{5}a^2
+  + 3ab + \frac{4}{3}b^2\right)$将 $b = 1-a$ 代入整理得：$V(a) = \pi\left(\frac{2}{15}a^2
+  + \frac{1}{3}a + \frac{4}{3}\right) \quad (得 10 分)$求导或配方得驻点 $V'(a) = \pi(\frac{4}{15}a
+  + \frac{1}{3}) = 0 \implies a = -\frac{5}{4}$．此时 $b = \frac{9}{4}, c = 1$．在 $[0,1]$
+  上 $y = -\frac{15}{4}x^2+\frac{9}{2}x = \frac{3}{4}x(6-5x) \geqslant 0$ 满足条件．故最小体积时常数为
+  $a = -\frac{5}{4}, b = \frac{9}{4}, c = 1$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 面积关系式建立失误（0 分）
+    points: 0
+  - id: step1
+    label: 由过原点与面积为 1 得到 c = 1 与 a + b = 1（4 分）
+    points: 0.29
+  - id: step2
+    label: 写出旋转体体积关于 a 的一元二次函数（10 分）
+    points: 0.71
+  - id: full
+    label: 求得极值常数 a = -5/4, b = 9/4 并验证非负条件（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

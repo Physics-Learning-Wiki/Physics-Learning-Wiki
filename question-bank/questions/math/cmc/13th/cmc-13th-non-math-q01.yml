@@ -1,0 +1,57 @@
+schema_version: 3
+id: cmc-13th-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{x\to +\infty}\frac{x\sqrt{x^2+x+1} - x\ln(e^x+x)}{x} =$ ______．
+reference_answer: $0$
+solution: '原式可变形为 $\lim_{x\to+\infty}\left[\sqrt{x^2+x+1} - \ln(e^x+x)\right]$．
+
+
+  注意到：
+
+
+  $$
+
+  \sqrt{x^2+x+1} - \ln(e^x+x) = x\sqrt{1+\frac{1}{x}+\frac{1}{x^2}} - x - \ln\left(1+\frac{x}{e^x}\right)
+  = x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right) - \ln\left(1+\frac{x}{e^x}\right)
+
+  $$
+
+
+  当 $x\to+\infty$ 时，$x\left(\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}-1\right) \sim x\cdot\frac{1}{2x}
+  = \frac{1}{2}$；同时 $\frac{x}{e^x}\to 0$，故 $\ln\left(1+\frac{x}{e^x}\right)\to 0$．因此极限为
+  $0$（或由原题式直接化简 $-\lim_{x\to+\infty}\sqrt{1+\frac{1}{x}+\frac{1}{x^2}}\ln\left(1+\frac{x}{e^x}\right)
+  = 0$）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 无穷大极限展开或等价无穷小计算失误
+    points: 0
+  - id: correct
+    label: 正确提取主部或 Taylor 展开求得极限 0
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第1小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

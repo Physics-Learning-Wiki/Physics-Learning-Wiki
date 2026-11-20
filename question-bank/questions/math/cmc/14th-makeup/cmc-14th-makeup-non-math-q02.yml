@@ -1,0 +1,44 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(x)$ 在 $x=1$ 的某一邻域内可微，且满足 $f(1+x)-3f(1-x) = 4+2x+o(x)$，其中 $o(x)$ 是当 $x\to
+  0$ 时 $x$ 的高阶无穷小，则曲线 $y=f(x)$ 在点 $(1,f(1))$ 处的切线方程为 ______．
+reference_answer: $x - 2y - 5 = 0$
+solution: 由连续性令 $x\to 0$ 得 $-2f(1) = 4 \implies f(1) = -2$．改写等式两端求导数：$\frac{f(1+x)-f(1)}{x}
+  + 3\frac{f(1-x)-f(1)}{-x} = 2 + \frac{o(x)}{x}$两边取 $x\to 0$ 极限，由导数定义得 $4f'(1) =
+  2 \implies f'(1) = \frac{1}{2}$．切线方程为 $y - (-2) = \frac{1}{2}(x-1)$，即 $x - 2y -
+  5 = 0$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 原点函数值或导数计算错误
+    points: 0
+  - id: correct
+    label: 正确求出切线方程 x - 2y - 5 = 0
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(2)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

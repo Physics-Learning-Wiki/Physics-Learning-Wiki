@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(u,v)$ 具有一阶连续偏导数，$f(2,0) = 3$，$f'_u(2,0) = 5$，又设 $z = z(x,y)$ 是由方程 $xz
+  = f(2x-y, xyz)$ 确定的隐函数，则 $\left.\frac{\partial z}{\partial x}\right|_{\substack{x=1\\y=0}}
+  =$ ______．
+reference_answer: $7$
+solution: 对隐函数方程两边关于 $x$ 求偏导：$z + x\frac{\partial z}{\partial x} = 2f'_u + yf'_v\left(z
+  + x\frac{\partial z}{\partial x}\right)$．由此解得 $\frac{\partial z}{\partial x} = \frac{1}{x}\left(\frac{2f'_u}{1-yf'_v}
+  - z\right)$．当 $x=1, y=0$ 时，$z = f(2,0) = 3$，$f'_u(2,0) = 5$．代入得 $\left.\frac{\partial
+  z}{\partial x}\right|_{\substack{x=1\\y=0}} = 2f'_u(2,0) - 3 = 2\times 5 - 3 = 7$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 复合求导漏项或代入数值计算错误
+    points: 0
+  - id: correct
+    label: 正确求得一阶隐函数偏导数数值为 7
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

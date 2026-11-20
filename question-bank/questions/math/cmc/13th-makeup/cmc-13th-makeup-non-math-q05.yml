@@ -1,0 +1,68 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 微分方程 $\begin{cases}(x+1)\frac{\mathrm{d}y}{\mathrm{d}x} + 1 = 2e^{-y},\\ y(0)=0\end{cases}$
+  的解是 ______．
+reference_answer: $y = \ln\frac{2x+1}{x+1}$
+solution: '原方程变形为：
+
+
+  $$
+
+  e^y \frac{\mathrm{d}y}{\mathrm{d}x} + \frac{1}{x+1}e^y = \frac{2}{x+1}
+
+  $$
+
+
+  令 $u = e^y$，得到关于 $u$ 的一阶线性非齐次微分方程：
+
+
+  $$
+
+  \frac{\mathrm{d}u}{\mathrm{d}x} + \frac{1}{x+1}u = \frac{2}{x+1}
+
+  $$
+
+
+  通解为 $u = e^{-\int\frac{1}{x+1}\mathrm{d}x}\left(\int\frac{2}{x+1}e^{\int\frac{1}{x+1}\mathrm{d}x}\mathrm{d}x
+  + C\right) = \frac{1}{x+1}(2x+C)$．
+
+
+  由初始条件 $y(0)=0 \implies u(0)=1$，得 $C=1$．
+
+
+  因此 $e^y = \frac{2x+1}{x+1}$，解为 $y = \ln\frac{2x+1}{x+1}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 微分方程变形或积分求解错误
+    points: 0
+  - id: correct
+    label: 正确变量代换转化为一阶线性方程并定出特解
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第一大题第5小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

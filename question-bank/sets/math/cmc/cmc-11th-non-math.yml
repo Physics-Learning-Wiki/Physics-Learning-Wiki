@@ -1,0 +1,27 @@
+schema_version: 1
+id: math.cmc.preliminary-11th.non-math
+title: 第 11 届全国大学生数学竞赛初赛（非数学类）
+description: 第十一届（2019年）全国大学生数学竞赛初赛（非数学类普通场）真题试卷全卷模拟．包含 5 道填空题与 5 道综合解答题，满分 100 分．支持整卷作答提交后对照官方标准答案与分步评分细则（Rubric）自评．试题版权归全国大学生数学竞赛委员会所有．
+status: draft
+tags:
+- 高等数学
+- 全国大学生数学竞赛
+- CMC
+- 初赛
+- 非数学类
+feedback_mode: deferred
+self_assessment_timing: after_submit
+selection:
+  type: fixed
+  questions:
+  - cmc-11th-non-math-q01
+  - cmc-11th-non-math-q02
+  - cmc-11th-non-math-q03
+  - cmc-11th-non-math-q04
+  - cmc-11th-non-math-q05
+  - cmc-11th-non-math-q06
+  - cmc-11th-non-math-q07
+  - cmc-11th-non-math-q08
+  - cmc-11th-non-math-q09
+  - cmc-11th-non-math-q10
+  order: fixed

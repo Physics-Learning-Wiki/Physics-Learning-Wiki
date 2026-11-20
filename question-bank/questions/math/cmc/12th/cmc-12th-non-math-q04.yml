@@ -1,0 +1,66 @@
+schema_version: 3
+id: cmc-12th-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 已知 $\int_0^{+\infty}\frac{\sin x}{x}\mathrm{d}x = \frac{\pi}{2}$，则 $\int_0^{+\infty}\int_0^{+\infty}\frac{\sin
+  x\sin(x+y)}{x(x+y)}\mathrm{d}x\mathrm{d}y =$ ______．
+reference_answer: $\frac{\pi^2}{8}$
+solution: '令 $u = x+y$，内层对 $y$ 积分转化为对 $u$ 积分：
+
+
+  $$
+
+  I = \int_0^{+\infty}\frac{\sin x}{x}\mathrm{d}x \int_x^{+\infty}\frac{\sin u}{u}\mathrm{d}u
+
+  $$
+
+
+  引入变限积分函数 $F(x) = \int_0^x \frac{\sin u}{u}\mathrm{d}u$，则 $F''(x) = \frac{\sin x}{x}$
+  且 $\lim_{x\to+\infty}F(x) = \frac{\pi}{2}$．
+
+
+  积分化为：
+
+
+  $$
+
+  I = \int_0^{+\infty}\left(\frac{\pi}{2} - F(x)\right)F''(x)\mathrm{d}x = \left[\frac{\pi}{2}F(x)
+  - \frac{1}{2}F^2(x)\right]_0^{+\infty} = \frac{\pi^2}{4} - \frac{\pi^2}{8} = \frac{\pi^2}{8}
+
+  $$
+
+
+  故积分为 $\frac{\pi^2}{8}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 换元或变限积分求导计算失误
+    points: 0
+  - id: correct
+    label: 巧妙利用变限积分将广义重积分化简求得 pi^2 / 8
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第4小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

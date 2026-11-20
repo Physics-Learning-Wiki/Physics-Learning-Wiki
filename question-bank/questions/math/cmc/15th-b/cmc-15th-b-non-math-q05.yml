@@ -1,0 +1,43 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 计算 $\int_0^1 \mathrm{d}x\int_x^{\sqrt{x}}\frac{\cos y}{y}\mathrm{d}y =$ ______．
+reference_answer: $1 - \cos 1$
+solution: 积分区域为 $D = \{(x,y)\mid 0\leqslant x\leqslant 1, x\leqslant y\leqslant \sqrt{x}\}$．交换积分次序：$\int_0^1
+  \mathrm{d}y\int_{y^2}^y \frac{\cos y}{y}\mathrm{d}x = \int_0^1 \frac{\cos y}{y}(y-y^2)\mathrm{d}y
+  = \int_0^1 (1-y)\cos y\mathrm{d}y$分部积分得：$\left.(1-y)\sin y\right|_0^1 + \int_0^1
+  \sin y\mathrm{d}y = 0 + (-\cos 1 - (-\cos 0)) = 1 - \cos 1$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 交换积分限错误或分部积分失误
+    points: 0
+  - id: correct
+    label: 正确交换积分次序并求得结果 1 - cos 1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

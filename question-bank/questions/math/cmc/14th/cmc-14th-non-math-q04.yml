@@ -1,0 +1,43 @@
+schema_version: 3
+id: cmc-14th-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 微分方程 $\frac{\mathrm{d}y}{\mathrm{d}x}x\ln x\sin y + \cos y(1 - x\cos y) = 0$
+  的通解为 ______．
+reference_answer: $(x + C)\cos y = \ln x$ 或 $\frac{1}{\cos y} = \frac{x+C}{\ln x}$
+solution: 改写为 $y'\sin y + \frac{1}{x\ln x}\cos y = \frac{1}{\ln x}\cos^2 y$．令 $z =
+  \cos y$ 转化为 Bernoulli 方程，再令 $w = 1/z$ 转化为一阶线性方程，求解得 $w = \frac{1}{\ln x}(x+C)$，回代得
+  $(x+C)\cos y = \ln x$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 一阶线性方程积分失误或变量回代错误
+    points: 0
+  - id: correct
+    label: 正确求得微分方程通解 (x+C)cos y = ln x
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

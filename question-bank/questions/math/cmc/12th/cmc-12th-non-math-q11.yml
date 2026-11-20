@@ -1,0 +1,81 @@
+schema_version: 3
+id: cmc-12th-non-math-q11
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设 $u_n = \int_0^1 \frac{\mathrm{d}t}{(1+t^4)^n}$ ($n\ge 1$)．
+
+
+  (1) 证明数列 $\{u_n\}$ 收敛，并求极限 $\lim_{n\to\infty} u_n$；
+
+
+  (2) 证明级数 $\sum_{n=1}^\infty (-1)^n u_n$ 条件收敛；
+
+
+  (3) 证明当 $p\ge 1$ 时级数 $\sum_{n=1}^\infty \frac{u_n}{n^p}$ 收敛，并求级数 $\sum_{n=1}^\infty
+  \frac{u_n}{n}$ 的和．'
+reference_answer: (1) 极限为 0；(2) 见证明步骤；(3) 和为 $\ln 2 + \frac{\sqrt{2}}{2}[\pi + 2\ln(1+\sqrt{2})]$
+solution: '(1) 对任意 $\varepsilon > 0$，取 $0 < a < \frac{\varepsilon}{2}$：
+
+
+  $$u_n = \int_0^a \frac{\mathrm{d}t}{(1+t^4)^n} + \int_a^1 \frac{\mathrm{d}t}{(1+t^4)^n}
+  < a + \frac{1}{(1+a^4)^n}$$
+
+
+  当 $n\to\infty$ 时第二项趋于 0，因此 $0 \le u_n < \varepsilon$，即 $\lim_{n\to\infty} u_n =
+  0$．
+
+
+  (2) 易知 $0 < u_{n+1} \le u_n$，即 $\{u_n\}$ 单调递减且极限为 0，由 Leibniz 判别法知交错级数收敛．当 $n\ge
+  2$ 时，$u_n \ge \int_0^1 \frac{\mathrm{d}t}{(1+t)^n} = \frac{1}{n-1}(1-2^{1-n})$，因
+  $\sum \frac{1}{n-1}$ 发散，故原级数条件收敛．
+
+
+  (3) 由分部积分：
+
+
+  $$u_n = \left[\frac{t}{(1+t^4)^n}\right]_0^1 + 4n\int_0^1 \frac{t^4}{(1+t^4)^{n+1}}\mathrm{d}t
+  = \frac{1}{2^n} + 4n(u_n - u_{n+1})$$
+
+
+  两边除以 $n$ 求和得 $\sum_{n=1}^\infty \frac{u_n}{n} = \sum_{n=1}^\infty \frac{1}{n 2^n}
+  + 4u_1 = \ln 2 + 4u_1$．
+
+
+  计算 $u_1 = \int_0^1 \frac{\mathrm{d}t}{1+t^4} = \frac{\sqrt{2}}{8}[\pi + 2\ln(1+\sqrt{2})]$，故和为
+  $\ln 2 + \frac{\sqrt{2}}{2}[\pi + 2\ln(1+\sqrt{2})]$．当 $p\ge 1$ 时由比较法知级数亦收敛．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用分段放缩或分部积分（0 分）
+    points: 0
+  - id: partial_limits
+    label: 完成 (1)(2) 问关于极限与条件收敛性的证明（7 分）
+    points: 0.5
+  - id: correct
+    label: 利用分部积分裂项求和准确求得级数和（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第七大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

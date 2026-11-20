@@ -1,0 +1,41 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 幂级数 $\sum_{n=1}^\infty \frac{(-1)^{n-1}x^{2n}}{n(2n-1)}$ 的收敛域为 ______．
+reference_answer: $[-1, 1]$
+solution: 计算收敛半径：由比值法易得收敛半径 $R = 1$．当 $x = \pm 1$ 时，级数成为 $\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n(2n-1)}$，由于通项阶为
+  $O(1/n^2)$，绝对收敛．故收敛域为 $[-1, 1]$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 端点收敛性判定失误
+    points: 0
+  - id: correct
+    label: 正确求得闭区间收敛域 [-1, 1]
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

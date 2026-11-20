@@ -1,0 +1,44 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(x) = x - \ln(1+x) - \frac{1}{2}x\sin x$，$g(x) = ax^3$，且满足 $\lim_{x\to
+  0}\frac{f(x)}{g(x)} = 1$，则 $a =$ ______．
+reference_answer: $a = -\frac{1}{3}$
+solution: 根据 Taylor 公式，$\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} + o(x^3)$，$\sin
+  x = x - \frac{x^3}{6} + o(x^3)$，所以 $f(x) = -\frac{1}{3}x^3 + o(x^3)$．由 $\lim_{x\to
+  0}\frac{f(x)}{g(x)} = 1$ 即 $\lim_{x\to 0}\frac{-\frac{1}{3}x^3+o(x^3)}{ax^3} = 1$，得
+  $a = -\frac{1}{3}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 未得出正确结果或展开阶数不足
+    points: 0
+  - id: correct
+    label: 正确使用 Taylor 展开得出 a = -1/3
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

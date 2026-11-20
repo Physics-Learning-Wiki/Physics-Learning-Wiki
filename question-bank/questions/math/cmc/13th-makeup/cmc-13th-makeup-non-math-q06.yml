@@ -1,0 +1,84 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^1 |x-t|e^{-t^2}\mathrm{d}t$．证明：在区间
+  $(-1, 1)$ 内，$f(x)$ 有且仅有两个实根．
+reference_answer: 见推导步骤
+solution: '拆分绝对值积分：
+
+
+  $$
+
+  f(x) = -\frac{1}{2}\left(1+\frac{1}{e}\right) + \int_{-1}^x (x-t)e^{-t^2}\mathrm{d}t
+  + \int_x^1 (t-x)e^{-t^2}\mathrm{d}t = -\frac{1}{2} - \frac{3}{2e} + e^{-x^2} + 2x\int_0^x
+  e^{-t^2}\mathrm{d}t
+
+  $$
+
+
+  易见 $f(-x) = f(x)$，即 $f(x)$ 为偶函数．求导得：
+
+
+  $$
+
+  f''(x) = -2x e^{-x^2} + 2\int_0^x e^{-t^2}\mathrm{d}t + 2x e^{-x^2} = 2\int_0^x
+  e^{-t^2}\mathrm{d}t
+
+  $$
+
+
+  当 $x\in(0, 1)$ 时，$f''(x) > 0$，因此 $f(x)$ 在 $[0, 1)$ 上严格单调递增．
+
+
+  计算端点与零点函数值：
+
+
+  $$
+
+  f(0) = \frac{e-3}{2e} < 0, \quad f(1) > 0
+
+  $$
+
+
+  由介值定理与严格单调性，$f(x)$ 在 $(0, 1)$ 内有且仅有一个实根．
+
+
+  由偶函数对称性，$f(x)$ 在 $(-1, 0)$ 内也恰有一个实根．而在 $x=0$ 处 $f(0) < 0$．因此 $f(x)$ 在 $(-1, 1)$
+  内有且仅有两个实根．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未化简变限积分或求导错误（0 分）
+    points: 0
+  - id: partial_deriv
+    label: 正确求出导数并分析偶函数单调性（8 分）
+    points: 0.57
+  - id: correct
+    label: 严密论证端点变号并在区间内唯二零点（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

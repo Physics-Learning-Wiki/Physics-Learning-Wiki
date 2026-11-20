@@ -1,0 +1,77 @@
+schema_version: 3
+id: cmc-12th-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设数列 $\{a_n\}$ 满足：$a_1=1$，且 $a_{n+1} = \frac{a_n}{(n+1)(a_n+1)}$ ($n\ge 1$)．求极限
+  $\lim_{n\to\infty} n! a_n$．
+reference_answer: $\frac{1}{e}$
+solution: '利用归纳法易知 $a_n > 0$ ($n\ge 1$)．考虑倒数关系：
+
+
+  $$
+
+  \frac{1}{a_{n+1}} = (n+1)\left(1 + \frac{1}{a_n}\right) = (n+1) + (n+1)\frac{1}{a_n}
+  = (n+1) + (n+1)n + (n+1)n\frac{1}{a_{n-1}}
+
+  $$
+
+
+  递推可得：
+
+
+  $$
+
+  \frac{1}{a_{n+1}} = (n+1)!\left(\sum_{k=1}^n \frac{1}{k!} + \frac{1}{a_1}\right)
+  = (n+1)!\sum_{k=0}^n \frac{1}{k!}
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  n! a_n = \frac{1}{\sum_{k=0}^{n-1}\frac{1}{k!}}
+
+  $$
+
+
+  因为 $\lim_{n\to\infty}\sum_{k=0}^{n-1}\frac{1}{k!} = e$，所以 $\lim_{n\to\infty} n!
+  a_n = \frac{1}{e}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立倒数递推关系（0 分）
+    points: 0
+  - id: partial_recur
+    label: 推导出 a_n 与阶乘级数部分和的关系（6 分）
+    points: 0.6
+  - id: correct
+    label: 求得极限为 1/e（10 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: $\int_0^1 \ln(1+x^2)\mathrm{d}x =$ ______．
+reference_answer: $\ln 2 - 2 + \frac{\pi}{2}$
+solution: 利用分部积分法：$\int_0^1 \ln(1+x^2)\mathrm{d}x = \left.x\ln(1+x^2)\right|_0^1 -
+  \int_0^1 \frac{2x^2}{1+x^2}\mathrm{d}x = \ln 2 - 2\int_0^1 \left(1 - \frac{1}{1+x^2}\right)\mathrm{d}x
+  = \ln 2 - 2 + \frac{\pi}{2}$故原式等于 $\ln 2 - 2 + \frac{\pi}{2}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 分部积分或有理分式积分计算错误
+    points: 0
+  - id: correct
+    label: 正确使用分部积分法求得结果 ln 2 - 2 + pi/2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

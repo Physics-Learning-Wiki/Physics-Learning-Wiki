@@ -1,0 +1,61 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设函数 $f(x) = \begin{cases} \frac{1}{\ln(1+x)} - \frac{1}{x}, & 0 <
+  x \leqslant 1, \\ k, & x = 0. \end{cases}$
+
+  (1) 求常数 $k$ 的值，使得 $f(x)$ 在区间 $[0,1]$ 上连续；
+
+  (2) 对 (1) 中的 $k$ 值，求函数 $f(x)$ 的最小值 $\lambda$ 与最大值 $\mu$．'
+reference_answer: (1) $k = \frac{1}{2}$；(2) 最小值 $\lambda = \frac{1}{\ln 2} - 1$，最大值
+  $\mu = \frac{1}{2}$
+solution: '(1) 由洛必达法则：$\lim_{x\to 0^+} f(x) = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x\ln(1+x)}
+  = \lim_{x\to 0^+}\frac{x - \ln(1+x)}{x^2} = \lim_{x\to 0^+}\frac{1 - \frac{1}{1+x}}{2x}
+  = \frac{1}{2}$令 $k = \frac{1}{2}$，则 $\lim_{x\to 0^+} f(x) = f(0)$，所以 $f(x)$ 在 $[0,1]$
+  上连续（得 4 分）．
+
+  (2) 在 $(0,1)$ 内可导：$f''(x) = -\frac{1}{(1+x)\ln^2(1+x)} + \frac{1}{x^2} = \frac{g(x)}{x^2(1+x)\ln^2(1+x)}$其中
+  $g(x) = (1+x)\ln^2(1+x) - x^2$（得 8 分）．求导 $g''(x) = \ln^2(1+x) + 2\ln(1+x) - 2x$，$g''''(x)
+  = \frac{2\ln(1+x) - 2x}{1+x} < 0$．由 $g''(0)=0$ 知 $g''(x)<0$，再由 $g(0)=0$ 知 $g(x)<0$．因此
+  $f''(x)<0$，$f(x)$ 在 $[0,1]$ 上单调递减．故最小值 $\lambda = f(1) = \frac{1}{\ln 2} - 1$，最大值
+  $\mu = f(0) = \frac{1}{2}$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 极限计算错误（0 分）
+    points: 0
+  - id: step1
+    label: 求得右极限并确定连续常数 k = 1/2（4 分）
+    points: 0.29
+  - id: step2
+    label: 求出一阶导数并构造辅助函数 g(x)（8 分）
+    points: 0.57
+  - id: full
+    label: 证明导数恒负与单调递减性质，得出最值 lambda 与 mu（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

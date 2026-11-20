@@ -159,6 +159,22 @@ export class InlineSurface {
     container.append(header);
 
     // 3. UX Hint for long or deferred inline set
+    if (this.bundle.set.self_assessment_timing === "after_submit") {
+      const card = document.createElement("div");
+      card.className = "plw-quiz-inline__card";
+      card.innerHTML = `
+        <div class="plw-quiz-inline__hint" style="margin-bottom: 1.5rem;">
+          💡 <strong>此自测包含交卷后自评流程</strong>：本卷包含 <strong>${this.questions.length}</strong> 道题目，并在整卷交卷后提供参考答案与分步自评，请前往全屏作答运行器完成练习。
+        </div>
+        <div class="plw-quiz-modal__actions" style="justify-content: flex-start;">
+          <a class="plw-quiz-btn--primary" href="${escapeHtml(runnerUrl)}" target="_blank" rel="noopener">前往全屏答题运行器 ↗</a>
+        </div>
+      `;
+      container.append(card);
+      this.root.append(container);
+      return;
+    }
+
     if (this.questions.length > 4 || this.bundle.set.feedback_mode === "deferred") {
       const hint = document.createElement("div");
       hint.className = "plw-quiz-inline__hint";

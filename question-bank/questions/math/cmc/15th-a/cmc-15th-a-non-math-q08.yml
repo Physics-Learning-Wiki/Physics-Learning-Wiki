@@ -1,0 +1,49 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）设 $I_n = n\int_1^a \frac{\mathrm{d}x}{1+x^n}$，其中 $a > 1$．求极限 $\lim_{n\to\infty}
+  I_n$．
+reference_answer: $\ln 2$
+solution: 记 $b = 1/a$，则 $0 < b < 1$．作代换 $x = 1/t$：$I_n = \int_b^1 \frac{n t^{n-1}}{t(1+t^n)}\mathrm{d}t
+  = \int_b^1 \frac{\mathrm{d}(\ln(1+t^n))}{t}$分部积分得：$I_n = \ln 2 - \frac{\ln(1+b^n)}{b}
+  + \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t \quad (得 8 分)$当 $t\in[b,1]$ 时，由不等式
+  $\ln(1+t^n) \leqslant t^n$ 可得：$0 \leqslant \int_b^1 \frac{\ln(1+t^n)}{t^2}\mathrm{d}t
+  \leqslant \int_b^1 t^{n-2}\mathrm{d}t = \frac{1-b^{n-1}}{n-1} \to 0 \quad (n\to\infty)$由于
+  $b^n\to 0$，第二项趋于 0，由夹逼准则得 $\lim_{n\to\infty} I_n = \ln 2$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未做有效积分变换（0 分）
+    points: 0
+  - id: step1
+    label: 令 x = 1/t 并应用分部积分分离主要常数项（8 分）
+    points: 0.57
+  - id: full
+    label: 通过夹逼定理严格证明余项积分趋于 0，求得极限 ln 2（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

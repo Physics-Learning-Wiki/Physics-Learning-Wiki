@@ -20,10 +20,22 @@ export interface AnswerControlOptions {
   locked: boolean;
   onAnswerChange: (answer: UserAnswer) => void;
   inputName?: string;
+  showRubric?: boolean;
+  showReference?: boolean;
+  allowRubricChangeWhenLocked?: boolean;
 }
 
 export function renderAnswerControl(options: AnswerControlOptions): HTMLElement {
-  const { question, answer, locked, onAnswerChange, inputName = "answer" } = options;
+  const {
+    question,
+    answer,
+    locked,
+    onAnswerChange,
+    inputName = "answer",
+    showRubric = true,
+    showReference = true,
+    allowRubricChangeWhenLocked = false
+  } = options;
   const fieldset = document.createElement("fieldset");
   fieldset.className = "plw-quiz-choice-group";
   const legend = document.createElement("legend");
@@ -111,33 +123,37 @@ export function renderAnswerControl(options: AnswerControlOptions): HTMLElement 
     wrap.className = "plw-quiz-free-response-wrap";
     wrap.append(textarea);
 
-    const reference = document.createElement("details");
-    reference.className = "plw-quiz-self-assessment__reference";
-    reference.innerHTML = `<summary>查看参考答案</summary><div>${
-      question.referenceAnswerHtml ?? question.solutionHtml
-    }</div>`;
-    wrap.append(reference);
+    if (showReference) {
+      const reference = document.createElement("details");
+      reference.className = "plw-quiz-self-assessment__reference";
+      reference.innerHTML = `<summary>查看参考答案</summary><div>${
+        question.referenceAnswerHtml ?? question.solutionHtml
+      }</div>`;
+      wrap.append(reference);
+    }
 
-    const rubric = document.createElement("div");
-    rubric.className = "plw-quiz-self-assessment";
-    rubric.innerHTML = "<strong>完成作答后，请根据参考答案选择自评：</strong>";
-    question.grading.rubric.forEach(level => {
-      const label = document.createElement("label");
-      label.className = "plw-quiz-self-assessment__option";
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = `${inputName}-level`;
-      input.value = level.id;
-      input.checked = current.levelId === level.id;
-      input.disabled = locked;
-      input.addEventListener("change", () => {
-        current.levelId = level.id;
-        onAnswerChange({ text: textarea.value, levelId: current.levelId });
+    if (showRubric) {
+      const rubric = document.createElement("div");
+      rubric.className = "plw-quiz-self-assessment";
+      rubric.innerHTML = "<strong>完成作答后，请根据参考答案选择自评：</strong>";
+      question.grading.rubric.forEach(level => {
+        const label = document.createElement("label");
+        label.className = "plw-quiz-self-assessment__option";
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `${inputName}-level`;
+        input.value = level.id;
+        input.checked = current.levelId === level.id;
+        input.disabled = locked && !allowRubricChangeWhenLocked;
+        input.addEventListener("change", () => {
+          current.levelId = level.id;
+          onAnswerChange({ text: textarea.value, levelId: current.levelId });
+        });
+        label.append(input, document.createTextNode(` ${level.label}`));
+        rubric.append(label);
       });
-      label.append(input, document.createTextNode(` ${level.label}`));
-      rubric.append(label);
-    });
-    wrap.append(rubric);
+      wrap.append(rubric);
+    }
     fieldset.append(wrap);
   } else {
     const current = isNumericAnswer(answer) ? answer : { value: "", unit: "" };

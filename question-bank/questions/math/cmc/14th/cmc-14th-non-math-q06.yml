@@ -1,0 +1,59 @@
+schema_version: 3
+id: cmc-14th-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题满分 14 分）记向量 $\vec{OA}$ 与 $\vec{OB}$ 的夹角为 $\alpha$，$|\vec{OA}| = 1, |\vec{OB}|
+  = 2$，$\vec{OP} = (1-\lambda)\vec{OA}, \vec{OQ} = \lambda\vec{OB}$ ($0\leqslant \lambda
+  \leqslant 1$)．
+
+  (1) 问当 $\lambda$ 为何值时，$|\vec{PQ}|$ 取得最小值；
+
+  (2) 设 (1) 中的 $\lambda$ 满足 $0 < \lambda < \frac{1}{5}$，求夹角 $\alpha$ 的取值范围．'
+reference_answer: (1) 当 $\lambda = \frac{1+2\cos\alpha}{5+4\cos\alpha}$ 时取得最小值；(2)
+  夹角 $\alpha\in\left(\frac{\pi}{2}, \frac{2\pi}{3}\right)$
+solution: '(1) 由余弦定理：$|\vec{PQ}|^2 = (1-\lambda)^2 + 4\lambda^2 - 4\lambda(1-\lambda)\cos\alpha
+  = (5+4\cos\alpha)\lambda^2 - 2(1+2\cos\alpha)\lambda + 1$这是关于 $\lambda$ 的二次函数，由于
+  $5+4\cos\alpha \geqslant 1 > 0$，对称轴为 $\lambda = \frac{1+2\cos\alpha}{5+4\cos\alpha}$．当
+  $\cos\alpha\in[-1/2, 1]$ 时此对称轴满足 $0\leqslant\lambda\leqslant 1$，此时 $|\vec{PQ}|$
+  取得最小值（得 6 分）．
+
+  (2) 由条件 $0 < \frac{1+2\cos\alpha}{5+4\cos\alpha} < \frac{1}{5}$：解 $1+2\cos\alpha
+  > 0 \implies \cos\alpha > -1/2$；解 $5+10\cos\alpha < 5+4\cos\alpha \implies 6\cos\alpha
+  < 0 \implies \cos\alpha < 0$．联立得 $-\frac{1}{2} < \cos\alpha < 0$．因为 $\alpha\in[0,\pi]$，反三角函数解得
+  $\alpha\in\left(\frac{\pi}{2}, \frac{2\pi}{3}\right)$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未列出模长表达式（0 分）
+    points: 0
+  - id: step1
+    label: 列出关于 lambda 的二次多项式并求得极值点公式（6 分）
+    points: 0.43
+  - id: full
+    label: 解出三角不等式得出夹角范围 (pi/2, 2pi/3)（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

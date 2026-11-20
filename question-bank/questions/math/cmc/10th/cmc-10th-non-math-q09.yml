@@ -1,0 +1,64 @@
+schema_version: 3
+id: cmc-10th-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 证明：对于连续函数 $f(x) > 0$，有 $\ln \int_0^1 f(x)\mathrm{d}x \ge \int_0^1 \ln f(x)\mathrm{d}x$．
+reference_answer: 见推导步骤
+solution: '利用定积分的 Riemann 和与离散均值不等式：
+
+
+  将 $[0, 1]$ 进行 $n$ 等分，取分点 $x_k \in [\frac{k-1}{n}, \frac{k}{n}]$．由算术–几何均值不等式：
+
+
+  $$\sqrt[n]{\prod_{k=1}^n f(x_k)} \le \frac{1}{n}\sum_{k=1}^n f(x_k)$$
+
+
+  两边取自然对数：
+
+
+  $$\frac{1}{n}\sum_{k=1}^n \ln f(x_k) \le \ln\left(\frac{1}{n}\sum_{k=1}^n f(x_k)\right)$$
+
+
+  由于 $f(x) > 0$ 连续，$\ln x$ 亦连续，令 $n\to+\infty$ 取极限：
+
+
+  $$\int_0^1 \ln f(x)\mathrm{d}x \le \ln \int_0^1 f(x)\mathrm{d}x$$
+
+
+  即得所证不等式．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用凹凸性或 Riemann 和（0 分）
+    points: 0
+  - id: step1
+    label: 在离散分割下应用算术–几何均值不等式（8 分）
+    points: 0.57
+  - id: full
+    label: 两边取极限由 Riemann 积分收敛性完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

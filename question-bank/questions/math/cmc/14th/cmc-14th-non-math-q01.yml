@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-14th-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{x\to 0}\frac{1-\sqrt{1-x^2}\cos x}{1+x^2-\cos^2 x} =$ ______．
+reference_answer: $\frac{1}{2}$
+solution: 利用泰勒展开：分子为 $1 - \left(1 - \frac{x^2}{2} + o(x^2)\right)\left(1 - \frac{x^2}{2}
+  + o(x^2)\right) = x^2 + o(x^2)$；分母为 $1 + x^2 - (1 - x^2 + o(x^2)) = 2x^2 + o(x^2)$．由此得极限为
+  $\lim_{x\to 0}\frac{x^2}{2x^2} = \frac{1}{2}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 等价无穷小代换或求导计算失误
+    points: 0
+  - id: correct
+    label: 正确使用洛必达法则或 Taylor 展开求得极限 1/2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

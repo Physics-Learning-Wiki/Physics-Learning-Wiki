@@ -1,0 +1,55 @@
+schema_version: 3
+id: cmc-12th-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{x\to 0}\frac{(x-\sin x)e^{-x^2}}{\sqrt{1-x^3}-1} =$ ______．
+reference_answer: $-\frac{1}{3}$
+solution: '利用等价无穷小与 Taylor 展开：当 $x\to 0$ 时，$\sqrt{1-x^3}-1 \sim -\frac{1}{2}x^3$，$x-\sin
+  x \sim \frac{1}{6}x^3$，$e^{-x^2}\to 1$．
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x\to 0}\frac{(x-\sin x)e^{-x^2}}{\sqrt{1-x^3}-1} = \lim_{x\to 0}\frac{\frac{1}{6}x^3}{-\frac{1}{2}x^3}
+  = -\frac{1}{3}
+
+  $$
+
+
+  故极限为 $-\frac{1}{3}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 等价无穷小展开失误
+    points: 0
+  - id: correct
+    label: 正确使用 Taylor 展开或等价无穷小求得极限 -1/3
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第1小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

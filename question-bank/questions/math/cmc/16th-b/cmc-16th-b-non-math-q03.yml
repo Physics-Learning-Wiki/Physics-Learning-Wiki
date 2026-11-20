@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-16th-b-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $y = y(x)$ 由方程 $\mathrm{e}^{3y} + \int_0^{x+y}\cos t^2\mathrm{d}t = 1$ 确定，则
+  $\left.\frac{\mathrm{d}^2 y}{\mathrm{d}x^2}\right|_{(0,0)} =$ ______．
+reference_answer: $-\frac{9}{64}$
+solution: 方程两端对 $x$ 求导：$3y'\mathrm{e}^{3y} + (1+y')\cos(x+y)^2 = 0$将 $x=0, y=0$ 代入得
+  $3y'(0) + 1 + y'(0) = 0 \implies y'(0) = -\frac{1}{4}$．继续求导：$3y''\mathrm{e}^{3y}
+  + 9(y')^2\mathrm{e}^{3y} + y''\cos(x+y)^2 - 2(x+y)(1+y')^2\sin(x+y)^2 = 0$将 $x=0,
+  y=0, y'(0)=-\frac{1}{4}$ 代入：$3y''(0) + 9\left(-\frac{1}{4}\right)^2 + y''(0) - 0
+  = 0 \implies 4y''(0) = -\frac{9}{16} \implies y''(0) = -\frac{9}{64}$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 隐函数求导漏项或代入数值计算失误
+    points: 0
+  - id: correct
+    label: 正确求出一阶与二阶导数值得到 -9/64
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

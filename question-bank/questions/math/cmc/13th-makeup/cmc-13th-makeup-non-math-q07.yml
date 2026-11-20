@@ -1,0 +1,94 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(x, y)$ 在闭区域 $D = \{(x, y)\mid x^2+y^2 \le 1\}$ 上具有二阶连续偏导数，且 $\frac{\partial^2
+  f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = x^2+y^2$，求 $\lim_{r\to 0^+}
+  \frac{\iint_{x^2+y^2 \le r^2}\left(x\frac{\partial f}{\partial x} + y\frac{\partial
+  f}{\partial y}\right)\mathrm{d}x\mathrm{d}y}{(\tan r - \sin r)^2}$．
+reference_answer: $\frac{\pi}{3}$
+solution: '设 $D_r = \{(x, y)\mid x^2+y^2 \le r^2\}$．由 Green 公式：
+
+
+  $$
+
+  \iint_{D_r}\left(x\frac{\partial f}{\partial x} + y\frac{\partial f}{\partial y}\right)\mathrm{d}x\mathrm{d}y
+  = \frac{r^2}{2}\iint_{D_r}\left(\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2
+  f}{\partial y^2}\right)\mathrm{d}x\mathrm{d}y - \frac{1}{2}\iint_{D_r}(x^2+y^2)\left(\frac{\partial^2
+  f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}\right)\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  利用 $\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = x^2+y^2$：
+
+
+  $$
+
+  = \frac{r^2}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^r s^3\mathrm{d}s - \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta
+  \int_0^r s^5\mathrm{d}s = \frac{\pi r^6}{4} - \frac{\pi r^6}{6} = \frac{\pi r^6}{12}
+
+  $$
+
+
+  分母应用 Taylor 公式：
+
+
+  $$
+
+  \tan r - \sin r = \left(r + \frac{r^3}{3} + o(r^3)\right) - \left(r - \frac{r^3}{6}
+  + o(r^3)\right) = \frac{r^3}{2} + o(r^3)
+
+  $$
+
+
+  故 $(\tan r - \sin r)^2 = \frac{r^6}{4} + o(r^6)$．
+
+
+  因此所求极限为：
+
+
+  $$
+
+  \lim_{r\to 0^+} \frac{\frac{\pi}{12}r^6}{\frac{1}{4}r^6} = \frac{\pi}{3}
+
+  $$
+
+
+  故极限为 $\frac{\pi}{3}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用 Green 公式展开（0 分）
+    points: 0
+  - id: partial_green
+    label: 正确将二重积分转化为径向多项式积分并求得 pi r^6 / 12（8 分）
+    points: 0.57
+  - id: correct
+    label: 完成分母 Taylor 展开求得极限 pi/3（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

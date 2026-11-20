@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: $\lim_{x\to\infty}\left(\frac{x+3}{x+2}\right)^{2x-1} =$ ______．
+reference_answer: $\mathrm{e}^2$
+solution: 计算未定式极限：$\lim_{x\to\infty}\left(1 + \frac{1}{x+2}\right)^{2(x+2)-5} = \lim_{x\to\infty}\left[\left(1
+  + \frac{1}{x+2}\right)^{x+2}\right]^2\cdot \left(1 + \frac{1}{x+2}\right)^{-5} =
+  \mathrm{e}^2$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 重要极限指数配凑失误
+    points: 0
+  - id: correct
+    label: 正确求得极限值为 e^2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

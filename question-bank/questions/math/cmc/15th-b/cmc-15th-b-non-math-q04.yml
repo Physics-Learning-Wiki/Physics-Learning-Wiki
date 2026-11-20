@@ -1,0 +1,41 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $y = y(x)$ 由方程 $y = 1+\arctan(xy)$ 所确定，则 $y'(0) =$ ______．
+reference_answer: $1$
+solution: 由方程在 $x=0$ 处得 $y(0) = 1$．两端关于 $x$ 求偏导：$y' = \frac{y + xy'}{1+x^2y^2}$将 $x=0,
+  y=1$ 代入上式得 $y'(0) = \frac{1 + 0}{1 + 0} = 1$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 隐函数求导失误
+    points: 0
+  - id: correct
+    label: 正确求得一阶导数值为 1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第一大题第(4)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

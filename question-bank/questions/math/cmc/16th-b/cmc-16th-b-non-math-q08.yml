@@ -1,0 +1,57 @@
+schema_version: 3
+id: cmc-16th-b-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）已知 $\int_0^{+\infty}\frac{\sin x}{x}\mathrm{d}x = \frac{\pi}{2}$．
+
+  (1) 计算 $I_1 = \int_0^{+\infty}\left(\frac{\sin x}{x}\right)^2\mathrm{d}x$；
+
+  (2) 计算 $I_2 = \int_0^{+\infty}\left(\frac{\sin x}{x}\right)^3\mathrm{d}x$．'
+reference_answer: (1) $I_1 = \frac{\pi}{2}$；(2) $I_2 = \frac{3\pi}{8}$
+solution: '(1) 由变量代换知 $\int_0^{+\infty}\frac{\sin ax}{x}\mathrm{d}x = \frac{\pi}{2}$
+  ($a>0$)（得 2 分）．利用分部积分：$I_1 = \left.-\frac{\sin^2 x}{x}\right|_0^{+\infty} + \int_0^{+\infty}\frac{2\sin
+  x\cos x}{x}\mathrm{d}x = \int_0^{+\infty}\frac{\sin 2x}{x}\mathrm{d}x = \frac{\pi}{2}
+  \quad (得 6 分)$
+
+  (2) 分部积分：$I_2 = \left.-\frac{\sin^3 x}{2x^2}\right|_0^{+\infty} + \int_0^{+\infty}\frac{3\sin^2
+  x\cos x}{2x^2}\mathrm{d}x = \frac{3}{4}\int_0^{+\infty}\frac{\sin x\sin 2x}{x^2}\mathrm{d}x
+  = \frac{3}{8}\int_0^{+\infty}\frac{\cos x - \cos 3x}{x^2}\mathrm{d}x$利用倍角公式拆分：$=
+  \frac{3}{8}\int_0^{+\infty}\frac{(1-\cos 3x) - (1-\cos x)}{x^2}\mathrm{d}x = \frac{3}{4}\left(\int_0^{+\infty}\frac{\sin^2(3x/2)}{x^2}\mathrm{d}x
+  - \int_0^{+\infty}\frac{\sin^2(x/2)}{x^2}\mathrm{d}x\right)$由 (1) 的尺度变换结论，得 $\frac{3}{4}\left(\frac{3\pi}{4}
+  - \frac{\pi}{4}\right) = \frac{3\pi}{8}$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未运用分部积分（0 分）
+    points: 0
+  - id: step1
+    label: 正确通过分部积分求得 I_1 = pi/2（6 分）
+    points: 0.43
+  - id: full
+    label: 通过积化和差与降幂积分求得 I_2 = 3pi/8（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

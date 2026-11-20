@@ -26,6 +26,19 @@ export function isAnswerComplete(question: Question, answer: UserAnswer): boolea
   return answer.unit ? question.answer.unit.accepted.includes(answer.unit) : !question.answer.unit.required;
 }
 
+export function isResponseEntered(question: Question, answer: UserAnswer): boolean {
+  if (answer === null) return false;
+  if (question.type === "free_response") {
+    if (!isSelfAssessedAnswer(answer)) return false;
+    const text = answer.text.trim();
+    if (question.response.required && text.length === 0) return false;
+    if (question.response.minChars !== undefined && text.length < question.response.minChars) return false;
+    if (question.response.maxChars !== undefined && text.length > question.response.maxChars) return false;
+    return text.length > 0;
+  }
+  return isAnswerComplete(question, answer);
+}
+
 export function gradeNumericAnswer(
   expectedAnswer: Extract<Question, { type: "numeric" }>["answer"],
   answer: { value: string; unit?: string }
@@ -129,9 +142,14 @@ function isNumericAnswer(answer: UserAnswer): answer is { value: string; unit?: 
 export function countProgress(
   questions: readonly Question[],
   answers: Readonly<Record<string, UserAnswer>>,
-  uncertain: Readonly<Record<string, boolean>>
+  uncertain: Readonly<Record<string, boolean>>,
+  mode: "complete" | "entered" = "complete"
 ): { answered: number; unanswered: number; uncertain: number } {
-  const answered = questions.filter(question => isAnswerComplete(question, answers[question.id] ?? null)).length;
+  const answered = questions.filter(question =>
+    mode === "entered"
+      ? isResponseEntered(question, answers[question.id] ?? null)
+      : isAnswerComplete(question, answers[question.id] ?? null)
+  ).length;
   return {
     answered,
     unanswered: questions.length - answered,

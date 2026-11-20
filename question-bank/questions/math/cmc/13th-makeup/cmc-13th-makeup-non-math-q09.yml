@@ -1,0 +1,78 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x) = \int_0^x \left(1 - \frac{[u]}{u}\right)\mathrm{d}u$，其中 $[x]$ 表示不超过
+  $x$ 的最大整数．试讨论反常积分 $\int_1^{+\infty} \frac{e^{f(x)}}{x^p}\cos\left(x^2 - \frac{1}{x^2}\right)\mathrm{d}x$
+  的敛散性（$p > 0$）．
+reference_answer: 当 $p > \frac{3}{2}$ 时绝对收敛；当 $0 < p \le \frac{3}{2}$ 时条件收敛
+solution: '当 $x \ge 1$ 时，展开积分易得 $f(x) = \frac{1}{2}\ln x + O(1)$，故存在常数 $0 < C_1 \le
+  C_2$，使 $C_1\sqrt{x} \le e^{f(x)} \le C_2\sqrt{x}$．
+
+
+  (1) 当 $p > \frac{3}{2}$ 时：
+
+
+  $$
+
+  \left|\frac{e^{f(x)}}{x^p}\cos\left(x^2 - \frac{1}{x^2}\right)\right| \le \frac{C_2}{x^{p-1/2}}
+
+  $$
+
+
+  由于 $p - \frac{1}{2} > 1$，由比较审敛法知原积分绝对收敛．
+
+
+  (2) 当 $0 < p \le \frac{3}{2}$ 时，改写被积函数：
+
+
+  $$
+
+  \frac{e^{f(x)}}{x^p}\cos\left(x^2 - \frac{1}{x^2}\right) = \frac{e^{f(x)}x^{3-p}}{2(x^4+1)}\cdot
+  2\left(x+\frac{1}{x^3}\right)\cos\left(x^2 - \frac{1}{x^2}\right)
+
+  $$
+
+
+  利用 Dirichlet 判别法，$\left|\int_A^B 2(x+1/x^3)\cos(x^2-1/x^2)\mathrm{d}x\right| \le
+  2$，且前项单调递减趋于 0，故原积分收敛．
+
+
+  再由 $\cos^2\alpha = \frac{1+\cos 2\alpha}{2}$ 展开可知绝对值积分发散．因此当 $0 < p \le \frac{3}{2}$
+  时条件收敛．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未估计 f(x) 的渐近阶（0 分）
+    points: 0
+  - id: partial_abs
+    label: 证明 p > 3/2 时绝对收敛（7 分）
+    points: 0.5
+  - id: correct
+    label: 利用 Dirichlet 判别法完整论证 0 < p <= 3/2 时条件收敛（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,52 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）求由方程 $2x^2 + 2y^2 + z^2 + 8xz - z + 8 = 0$ 所确定的函数 $z = z(x,y)$ 的极值．
+reference_answer: 在 $(-2,0)$ 处取得极小值 $z = 1$；在 $(\frac{16}{7},0)$ 处取得极大值 $z = -\frac{8}{7}$
+solution: 方程两边分别对 $x,y$ 求偏导：$z_x = -\frac{4x+8z}{2z+8x-1}, z_y = -\frac{4y}{2z+8x-1}$．令
+  $z_x = 0, z_y = 0$，由 $z_y=0$ 得 $y=0$；由 $z_x=0$ 得 $x = -2z$．代入原方程得 $-7z^2 - z + 8
+  = 0 \implies (7z+8)(z-1) = 0$．解得两驻点 $(-2,0)$（$z_1=1$）和 $(\frac{16}{7},0)$（$z_2=-\frac{8}{7}$）（得
+  5 分）．求二阶偏导数判别：在 $(-2,0)$ 处 $A = z_{xx} = \frac{4}{15}, B = 0, C = z_{yy} = \frac{4}{15}$，因
+  $AC-B^2 > 0$ 且 $A > 0$，故取得极小值 $z = 1$；在 $(\frac{16}{7},0)$ 处 $A = -\frac{4}{15},
+  B = 0, C = -\frac{4}{15}$，因 $AC-B^2 > 0$ 且 $A < 0$，故取得极大值 $z = -\frac{8}{7}$（满分
+  14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 偏导求导失误（0 分）
+    points: 0
+  - id: step1
+    label: 求出一阶偏导数并解出两个驻点与对应的 z 值（5 分）
+    points: 0.36
+  - id: step2
+    label: 求出二阶偏导数并计算判别式系数 A, B, C（10 分）
+    points: 0.71
+  - id: full
+    label: 正确判定极值类型并给出极小值 1 与极大值 -8/7（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

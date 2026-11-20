@@ -1,0 +1,64 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）(1) 设函数 $f(x) = \sin^2 x\sin 2x$，讨论 $f(x)$ 在区间 $(0,\pi)$ 的单调性；
+
+  (2) 判断级数 $\sum_{n=1}^\infty a_n$ 的敛散性，其中：
+
+
+  $$
+
+  a_n = \sin^2 x\sin^2 2x\cdots\sin^2 2^n x, \quad x\in(-\infty,+\infty)
+
+  $$'
+reference_answer: (1) 在 $(0,\pi/3)\cup(2\pi/3,\pi)$ 单调递增，在 $(\pi/3,2\pi/3)$ 单调递减；(2)
+  级数对任意实数 $x$ 均收敛
+solution: '(1) $f(x) = \sin^2 x\sin 2x$，求导得 $f''(x) = -8\sin^2 x\left(\sin x - \frac{\sqrt{3}}{2}\right)\left(\sin
+  x + \frac{\sqrt{3}}{2}\right)$．在 $(0,\pi)$ 内驻点为 $x_1 = \frac{\pi}{3}, x_2 = \frac{2\pi}{3}$．因此
+  $f(x)$ 在 $(0,\frac{\pi}{3})\cup(\frac{2\pi}{3},\pi)$ 上单调增加，在 $(\frac{\pi}{3},\frac{2\pi}{3})$
+  上单调减少（得 5 分）．
+
+  (2) 由 (1) 知在 $[0,\pi]$ 上最值为 $\pm \frac{3\sqrt{3}}{8}$，故 $|f(x)|\leqslant \frac{3\sqrt{3}}{8}$（得
+  9 分）．由于 $a_n^{3/2} \leqslant \left(\frac{3\sqrt{3}}{8}\right)^n$，两边取 $2/3$ 次方得 $a_n
+  \leqslant \left(\frac{3}{4}\right)^n$．公比 $3/4 < 1$ 的几何级数收敛，由比较判别法知级数 $\sum_{n=1}^\infty
+  a_n$ 收敛（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 求导或单调区间错误（0 分）
+    points: 0
+  - id: step1
+    label: 求导得出驻点并准确确定增减区间（5 分）
+    points: 0.36
+  - id: step2
+    label: 求得辅助函数绝对值最大值界 3*sqrt(3)/8（9 分）
+    points: 0.64
+  - id: full
+    label: 应用几何级数比较审敛法证明收敛（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

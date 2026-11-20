@@ -1,0 +1,78 @@
+schema_version: 3
+id: cmc-12th-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 证明 $f(n) = \sum_{m=1}^n \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x$ 等于 $n$
+  的所有因子（包括 $1$ 和 $n$ 本身）之和，其中 $[x+1]$ 表示不超过 $x+1$ 的最大整数，并计算 $f(2021)$．
+reference_answer: $2112$
+solution: '将区间分段，在每一个区间 $[k-1, k]$ 上 $[x+1] = k$ 为常数：
+
+
+  $$
+
+  \int_0^m \cos\frac{2\pi n [x+1]}{m}\mathrm{d}x = \sum_{k=1}^m \int_{k-1}^k \cos\frac{2\pi
+  n k}{m}\mathrm{d}x = \sum_{k=1}^m \cos\frac{2\pi n k}{m}
+
+  $$
+
+
+  若 $m$ 是 $n$ 的因子，则 $\frac{n}{m}$ 为整数，对于所有 $k$，$\cos\frac{2\pi n k}{m} = 1$，积分和等于
+  $m$．
+
+
+  若 $m$ 不是 $n$ 的因子，由三角级数求和公式：
+
+
+  $$
+
+  \sum_{k=1}^m \cos k t = \cos\frac{(m+1)t}{2}\frac{\sin(mt/2)}{\sin(t/2)}
+
+  $$
+
+
+  代入 $t = \frac{2\pi n}{m}$，分子为 $\sin(n\pi) = 0$ 且分母不为 0，故和为 $0$．
+
+
+  因此 $f(n) = \sum_{m\mid n} m$ 等于 $n$ 的所有正因子之和．
+
+
+  对于 $n = 2021 = 43 \times 47$（43 与 47 均为质数），其因子为 $1, 43, 47, 2021$．
+
+
+  故 $f(2021) = 1 + 43 + 47 + 2021 = 2112$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未分段积分化简（0 分）
+    points: 0
+  - id: partial_proof
+    label: 正确证明分段和在整除时为 m，不整除时为 0（9 分）
+    points: 0.75
+  - id: correct
+    label: 准确分解 2021 质因数并求得因子和 2112（12 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

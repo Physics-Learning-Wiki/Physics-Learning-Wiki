@@ -1,0 +1,41 @@
+schema_version: 3
+id: cmc-15th-b-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设曲线 $y = \ln(1+ax)+1$ 与曲线 $y = 2xy^3+b$ 在 $(0,1)$ 处相切，则 $a+b =$ ______．
+reference_answer: $3$
+solution: 曲线过点 $(0,1)$，代入第二条曲线得 $1 = 0 + b \implies b = 1$．求第一条曲线切线斜率：$y'_1(0) = a$．对第二条曲线两边求导：$y'
+  = 2y^3 + 6xy^2 y'$，代入 $(0,1)$ 得切线斜率 $y'_2(0) = 2$．由相切斜率相等得 $a = 2$，故 $a+b = 3$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 导数求错或代入点计算失误
+    points: 0
+  - id: correct
+    label: 正确求得 a = 2, b = 1 并得出 a + b = 3
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学B类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

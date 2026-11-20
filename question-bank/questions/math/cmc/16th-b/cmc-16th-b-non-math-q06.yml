@@ -1,0 +1,53 @@
+schema_version: 3
+id: cmc-16th-b-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）用 Lagrange 乘数法求函数 $f(x,y,z) = x + 2y + 3z$ 在平面 $x - y + z = 1$ 和圆柱面
+  $x^2 + y^2 = 1$ 的交线上的最大值．
+reference_answer: $3 + \sqrt{29}$
+solution: 构造 Lagrange 辅助函数：$L(x,y,z; \lambda, \mu) = x + 2y + 3z - \lambda(x - y +
+  z - 1) - \mu(x^2 + y^2 - 1) \quad (得 2 分)$求解驻点方程组：$L_x = 1 - \lambda - 2\mu x =
+  0$, $L_y = 2 + \lambda - 2\mu y = 0$, $L_z = 3 - \lambda = 0$, $x - y + z - 1 =
+  0$, $x^2 + y^2 - 1 = 0$．由 $L_z=0$ 得 $\lambda = 3$．代入前两式得 $x = -\frac{1}{\mu}, y
+  = \frac{5}{2\mu}$．代入 $x^2+y^2=1$ 得 $\frac{1}{\mu^2} + \frac{25}{4\mu^2} = 1 \implies
+  \mu = \pm\frac{\sqrt{29}}{2}$（得 12 分）．代入求得两驻点处函数值分别为 $3 \pm \sqrt{29}$，故最大值为 $3
+  + \sqrt{29}$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立拉格朗日乘数函数（0 分）
+    points: 0
+  - id: step1
+    label: 正确写出双约束拉格朗日乘数函数（2 分）
+    points: 0.14
+  - id: step2
+    label: 联立解得两组拉格朗日乘数与空间交线驻点坐标（12 分）
+    points: 0.86
+  - id: full
+    label: 比较函数值确定曲线上的最大值为 3 + sqrt(29)（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

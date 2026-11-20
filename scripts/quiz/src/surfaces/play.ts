@@ -1,6 +1,13 @@
 import { resolveSiteUrl } from "../data.js";
 import { createAbortScope } from "../abort-scope.js";
-import { countProgress, isAnswerComplete, makeResult, summarizeConcepts, summarizeObjectives } from "../grading.js";
+import {
+  countProgress,
+  isAnswerComplete,
+  isResponseEntered,
+  makeResult,
+  summarizeConcepts,
+  summarizeObjectives
+} from "../grading.js";
 import { typeset } from "../math.js";
 import {
   escapeHtml,
@@ -339,6 +346,20 @@ export class PlaySurface {
         return;
       }
       event.preventDefault();
+      if (this.isPendingSelfAssessment) {
+        if (this.session.currentIndex < this.questions.length - 1) {
+          this.move(1);
+        } else {
+          const answeredFR = this.questions.filter(
+            q => q.type === "free_response" && isResponseEntered(q, this.session.answers[q.id] ?? null)
+          );
+          const pendingFR = answeredFR.filter(q => !isAnswerComplete(q, this.session.answers[q.id] ?? null));
+          if (pendingFR.length === 0) {
+            void this.finalizeSession();
+          }
+        }
+        return;
+      }
       if (immediate && !locked) {
         const answer = this.session.answers[question.id] ?? null;
         if (isAnswerComplete(question, answer)) {
@@ -382,6 +403,21 @@ export class PlaySurface {
     }
   }
 
+  private get isDeferredSelfAssessment(): boolean {
+    return (
+      this.bundle.set.feedback_mode === "deferred" &&
+      this.bundle.set.self_assessment_timing === "after_submit"
+    );
+  }
+
+  private get isPendingSelfAssessment(): boolean {
+    return (
+      this.isDeferredSelfAssessment &&
+      Boolean(this.session?.submittedAt) &&
+      this.session?.state === "active"
+    );
+  }
+
   private move(delta: number): void {
     this.session.currentIndex = Math.max(0, Math.min(this.questions.length - 1, this.session.currentIndex + delta));
     this.markDraftChanged();
@@ -390,6 +426,27 @@ export class PlaySurface {
   }
 
   private setAnswer(questionId: string, answer: UserAnswer, render = true): void {
+    if (this.session.submittedAt) {
+      const current = this.session.answers[questionId];
+      if (
+        current &&
+        typeof current === "object" &&
+        !Array.isArray(current) &&
+        "text" in current &&
+        answer &&
+        typeof answer === "object" &&
+        !Array.isArray(answer) &&
+        "text" in answer &&
+        current.text === answer.text
+      ) {
+        this.session.answers[questionId] = answer;
+        this.markDraftChanged();
+        void this.persist();
+        if (render) this.renderQuestion();
+        else this.updateControlsState();
+      }
+      return;
+    }
     if (this.session.locked[questionId]) return;
     this.session.answers[questionId] = answer;
     this.markDraftChanged();
@@ -435,6 +492,16 @@ export class PlaySurface {
     if (this.confirmButtonElement) {
       this.confirmButtonElement.disabled = !complete;
     }
+    const finishBtn = this.root.querySelector<HTMLButtonElement>("#plw-btn-finish-self-assessment");
+    if (finishBtn) {
+      const answeredFR = this.questions.filter(
+        q => q.type === "free_response" && isResponseEntered(q, this.session.answers[q.id] ?? null)
+      );
+      const pendingFR = answeredFR.filter(q => !isAnswerComplete(q, this.session.answers[q.id] ?? null));
+      finishBtn.disabled = pendingFR.length > 0;
+      finishBtn.textContent =
+        pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
+    }
   }
 
   private renderQuestion(): void {
@@ -457,7 +524,23 @@ export class PlaySurface {
       ? `<div class="plw-quiz-preview" role="note">草稿预览模式：当前小测包含未发布草稿内容，作答仅供检查</div>`
       : "";
 
-    const feedbackText = this.bundle.set.feedback_mode === "immediate" ? "即时反馈" : "整卷提交";
+    const feedbackText = this.isPendingSelfAssessment
+      ? "已交卷 · 待自评"
+      : this.isDeferredSelfAssessment
+      ? "整卷提交 · 考后自评"
+      : this.bundle.set.feedback_mode === "immediate"
+      ? "即时反馈"
+      : "整卷提交";
+
+    let progressText = `${this.session.currentIndex + 1} / ${this.questions.length}`;
+    if (this.isPendingSelfAssessment) {
+      const answeredFR = this.questions.filter(
+        q => q.type === "free_response" && isResponseEntered(q, this.session.answers[q.id] ?? null)
+      );
+      const assessedFR = answeredFR.filter(q => isAnswerComplete(q, this.session.answers[q.id] ?? null));
+      progressText = `${this.session.currentIndex + 1} / ${this.questions.length}（自评 ${assessedFR.length}/${answeredFR.length}）`;
+    }
+
     header.innerHTML = `
       ${previewBanner}
       <div class="plw-quiz-header__meta">
@@ -465,7 +548,7 @@ export class PlaySurface {
         <span class="plw-quiz-badge-tag">${escapeHtml(feedbackText)}</span>
       </div>
       <div class="plw-quiz-header__status">
-        <span class="plw-quiz-progress-text">${this.session.currentIndex + 1} / ${this.questions.length}</span>
+        <span class="plw-quiz-progress-text">${progressText}</span>
         <button type="button" class="plw-quiz-btn--secondary plw-quiz-btn--sm" id="plw-btn-exit">保存并退出</button>
       </div>
     `;
@@ -483,12 +566,31 @@ export class PlaySurface {
       stepBtn.type = "button";
       stepBtn.className = "plw-quiz-step-btn";
       if (idx === this.session.currentIndex) stepBtn.classList.add("is-current");
-      if (this.session.answers[q.id] != null) stepBtn.classList.add("is-answered");
-      if (this.session.uncertain[q.id]) stepBtn.classList.add("is-uncertain");
 
-      if (this.session.locked[q.id]) {
-        const res = makeResult(q, this.session.answers[q.id] ?? null, false);
-        stepBtn.classList.add(res.correct ? "is-correct" : "is-incorrect");
+      if (this.isPendingSelfAssessment) {
+        if (q.type === "free_response") {
+          const ans = this.session.answers[q.id] ?? null;
+          if (!isResponseEntered(q, ans)) {
+            stepBtn.classList.add("is-unanswered");
+          } else if (isAnswerComplete(q, ans)) {
+            stepBtn.classList.add("is-correct");
+          } else {
+            stepBtn.classList.add("is-uncertain");
+          }
+        } else {
+          stepBtn.classList.add("is-answered");
+        }
+      } else {
+        const hasAns = this.isDeferredSelfAssessment
+          ? isResponseEntered(q, this.session.answers[q.id] ?? null)
+          : this.session.answers[q.id] != null;
+        if (hasAns) stepBtn.classList.add("is-answered");
+        if (this.session.uncertain[q.id]) stepBtn.classList.add("is-uncertain");
+
+        if (this.session.locked[q.id]) {
+          const res = makeResult(q, this.session.answers[q.id] ?? null, false);
+          stepBtn.classList.add(res.correct ? "is-correct" : "is-incorrect");
+        }
       }
 
       stepBtn.textContent = String(idx + 1);
@@ -527,20 +629,22 @@ export class PlaySurface {
     metaBar.append(typeInfo);
 
     const locked = Boolean(this.session.locked[question.id]);
-    const uncertainty = document.createElement("label");
-    uncertainty.className = "plw-quiz-uncertainty-pill";
-    uncertainty.innerHTML = `<input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""} ${
-      locked ? "disabled" : ""
-    }><span>🤔 标记存疑</span>`;
-    uncertainty.querySelector("input")?.addEventListener("change", event => {
-      const checked = (event.target as HTMLInputElement).checked;
-      this.session.uncertain[question.id] = checked;
-      this.markDraftChanged();
-      void this.persist();
-      const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
-      currentBtn?.classList.toggle("is-uncertain", checked);
-    });
-    metaBar.append(uncertainty);
+    if (!this.isPendingSelfAssessment) {
+      const uncertainty = document.createElement("label");
+      uncertainty.className = "plw-quiz-uncertainty-pill";
+      uncertainty.innerHTML = `<input type="checkbox" ${this.session.uncertain[question.id] ? "checked" : ""} ${
+        locked ? "disabled" : ""
+      }><span>🤔 标记存疑</span>`;
+      uncertainty.querySelector("input")?.addEventListener("change", event => {
+        const checked = (event.target as HTMLInputElement).checked;
+        this.session.uncertain[question.id] = checked;
+        this.markDraftChanged();
+        void this.persist();
+        const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
+        currentBtn?.classList.toggle("is-uncertain", checked);
+      });
+      metaBar.append(uncertainty);
+    }
     container.append(metaBar);
 
     // 4. Question Body (Stem & Answer Controls)
@@ -561,25 +665,44 @@ export class PlaySurface {
     const answer = this.session.answers[question.id] ?? null;
     const immediate = this.bundle.set.feedback_mode === "immediate";
 
-    const control = renderAnswerControl({
-      question,
-      answer,
-      locked,
-      onAnswerChange: nextAnswer => {
-        this.setAnswer(question.id, nextAnswer, false);
-        const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
-        currentBtn?.classList.toggle("is-answered", nextAnswer != null);
+    if (this.isPendingSelfAssessment) {
+      if (question.type === "free_response") {
+        if (!isResponseEntered(question, answer)) {
+          const notice = document.createElement("div");
+          notice.className = "plw-quiz-free-response-notice";
+          notice.innerHTML = `<p class="plw-quiz-badge-tag">交卷时此题未作答，计为 0 分，无需自评。</p>`;
+          body.append(notice);
+        } else {
+          const control = renderAnswerControl({
+            question,
+            answer,
+            locked: true,
+            showRubric: true,
+            showReference: true,
+            allowRubricChangeWhenLocked: true,
+            onAnswerChange: nextAnswer => {
+              this.setAnswer(question.id, nextAnswer, false);
+              const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
+              currentBtn?.classList.remove("is-uncertain");
+              currentBtn?.classList.add("is-correct");
+              this.updateControlsState();
+            }
+          });
+          body.append(control);
+        }
+      } else {
+        const control = renderAnswerControl({
+          question,
+          answer,
+          locked: true,
+          onAnswerChange: () => {}
+        });
+        body.append(control);
       }
-    });
-    control.querySelector("textarea")?.addEventListener("blur", () => void this.persist());
-    body.append(control);
 
-    // Hints
-    const hints = renderHints(question);
-    if (hints) body.append(hints);
+      const hints = renderHints(question);
+      if (hints) body.append(hints);
 
-    // Feedback (if locked in immediate mode)
-    if (immediate && locked) {
       const feedback = renderFeedback({
         question,
         answer,
@@ -588,6 +711,40 @@ export class PlaySurface {
         showSolution: true
       });
       body.append(feedback);
+    } else {
+      const control = renderAnswerControl({
+        question,
+        answer,
+        locked,
+        showRubric: !this.isDeferredSelfAssessment,
+        showReference: !this.isDeferredSelfAssessment,
+        onAnswerChange: nextAnswer => {
+          this.setAnswer(question.id, nextAnswer, false);
+          const currentBtn = stepper.children[this.session.currentIndex] as HTMLElement | undefined;
+          const hasEntered = this.isDeferredSelfAssessment
+            ? isResponseEntered(question, nextAnswer)
+            : nextAnswer != null;
+          currentBtn?.classList.toggle("is-answered", hasEntered);
+        }
+      });
+      control.querySelector("textarea")?.addEventListener("blur", () => void this.persist());
+      body.append(control);
+
+      if (!this.isDeferredSelfAssessment) {
+        const hints = renderHints(question);
+        if (hints) body.append(hints);
+      }
+
+      if (immediate && locked) {
+        const feedback = renderFeedback({
+          question,
+          answer,
+          uncertain: Boolean(this.session.uncertain[question.id]),
+          reportUrl: this.reportLink(question),
+          showSolution: true
+        });
+        body.append(feedback);
+      }
     }
 
     container.append(body);
@@ -604,7 +761,29 @@ export class PlaySurface {
     prevBtn.addEventListener("click", () => this.move(-1));
     actions.append(prevBtn);
 
-    if (immediate) {
+    if (this.isPendingSelfAssessment) {
+      if (this.session.currentIndex < this.questions.length - 1) {
+        const nextBtn = document.createElement("button");
+        nextBtn.type = "button";
+        nextBtn.className = "plw-quiz-btn--primary";
+        nextBtn.textContent = "下一题 (Enter)";
+        nextBtn.addEventListener("click", () => this.move(1));
+        actions.append(nextBtn);
+      }
+      const answeredFR = this.questions.filter(
+        q => q.type === "free_response" && isResponseEntered(q, this.session.answers[q.id] ?? null)
+      );
+      const pendingFR = answeredFR.filter(q => !isAnswerComplete(q, this.session.answers[q.id] ?? null));
+      const finishBtn = document.createElement("button");
+      finishBtn.id = "plw-btn-finish-self-assessment";
+      finishBtn.type = "button";
+      finishBtn.className = "plw-quiz-btn--primary";
+      finishBtn.disabled = pendingFR.length > 0;
+      finishBtn.textContent =
+        pendingFR.length > 0 ? `完成自评（还剩 ${pendingFR.length} 题）` : "完成自评并查看成绩";
+      finishBtn.addEventListener("click", () => this.finalizeSession());
+      actions.append(finishBtn);
+    } else if (immediate) {
       if (!locked) {
         const confirmBtn = document.createElement("button");
         confirmBtn.type = "button";
@@ -659,7 +838,9 @@ export class PlaySurface {
   }
 
   private requestSubmit(): void {
-    const progress = countProgress(this.questions, this.session.answers, this.session.uncertain);
+    const progressMode = this.isDeferredSelfAssessment ? "entered" : "complete";
+    const isAnswered = progressMode === "entered" ? isResponseEntered : isAnswerComplete;
+    const progress = countProgress(this.questions, this.session.answers, this.session.uncertain, progressMode);
     if (this.bundle.set.feedback_mode === "immediate" && progress.unanswered === 0 && progress.uncertain === 0) {
       this.submit();
       return;
@@ -673,8 +854,7 @@ export class PlaySurface {
     backdrop.setAttribute("aria-labelledby", "plw-submit-modal-title");
 
     const reviewIndex = this.questions.findIndex(
-      question =>
-        !isAnswerComplete(question, this.session.answers[question.id] ?? null) || this.session.uncertain[question.id]
+      question => !isAnswered(question, this.session.answers[question.id] ?? null) || this.session.uncertain[question.id]
     );
     backdrop.innerHTML = `
       <div class="plw-quiz-modal">
@@ -736,6 +916,54 @@ export class PlaySurface {
   }
 
   private async submit(): Promise<void> {
+    if (!this.isDeferredSelfAssessment) {
+      await this.finalizeSession();
+      return;
+    }
+
+    const runner = this.root.querySelector<HTMLElement>(".plw-quiz-runner");
+    if (!runner || runner.inert || this.session.submittedAt) return;
+    runner.inert = true;
+    try {
+      await this.persist();
+      if (this.abort.signal.aborted) return;
+      if (this.saveError) {
+        this.renderSaveError("请先保存作答");
+        return;
+      }
+
+      const firstPending = this.questions.findIndex(
+        q =>
+          q.type === "free_response" &&
+          isResponseEntered(q, this.session.answers[q.id] ?? null) &&
+          !isAnswerComplete(q, this.session.answers[q.id] ?? null)
+      );
+      const locked = { ...this.session.locked };
+      for (const question of this.questions) locked[question.id] = true;
+      const submitted = await this.store.updateSession({
+        ...this.session,
+        currentIndex: firstPending >= 0 ? firstPending : this.session.currentIndex,
+        locked,
+        submittedAt: new Date().toISOString()
+      });
+      if (this.abort.signal.aborted) return;
+      if (!submitted.ok) {
+        this.renderSaveError(`交卷保存失败：${submitted.reason}`);
+        return;
+      }
+      this.session = submitted.value;
+
+      if (firstPending < 0) {
+        await this.finalizeSession();
+        if (this.session.state === "completed" || this.abort.signal.aborted) return;
+      }
+      this.renderQuestion();
+    } finally {
+      runner.inert = false;
+    }
+  }
+
+  private async finalizeSession(): Promise<void> {
     await this.persist();
     if (this.saveError) {
       this.renderSaveError("请先保存作答");
@@ -874,14 +1102,21 @@ export class PlaySurface {
         <div class="plw-quiz-result__score-wrap">
           <div class="plw-quiz-result__score-circle">
             <span class="plw-quiz-result__score-value">${percent}%</span>
-            <span class="plw-quiz-result__score-label">${pointsEarned} / ${pointsAvailable} 分${
-      (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
-    }</span>
+            <span class="plw-quiz-result__score-label">${
+              this.isDeferredSelfAssessment ? "练习积分 " : ""
+            }${pointsEarned} / ${pointsAvailable} 分${
+              (attempt.selfAssessedCount ?? 0) > 0 ? `（含 ${attempt.selfAssessedCount} 道自评题）` : ""
+            }</span>
           </div>
         </div>
         <p class="plw-quiz-result__progress">已作答 ${answeredCount} / ${
-      attempt.total
-    } 题 · 未作答 ${unansweredCount} 题 · 标记存疑 ${uncertainCount} 题</p>
+          attempt.total
+        } 题 · 未作答 ${unansweredCount} 题 · 标记存疑 ${uncertainCount} 题</p>
+        ${
+          this.isDeferredSelfAssessment
+            ? `<p class="plw-quiz-badge-tag" style="display:block; margin: 0.5rem auto; text-align: center;">说明：练习积分包含客观题自动得分与主观解答题自评得分。仅客观题错误会计入错题本。</p>`
+            : ""
+        }
         ${
           reviewSuggestions
             ? `<div class="plw-quiz-result__next"><h3>建议优先复习</h3><ul>${reviewSuggestions}</ul></div>`

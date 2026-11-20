@@ -1,0 +1,62 @@
+schema_version: 3
+id: cmc-11th-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x)$ 在 $[0, +\infty)$ 上可微，$f(0)=0$，且存在常数 $A > 0$，使得 $|f'(x)| \le A |f(x)|$
+  在 $[0, +\infty)$ 上成立．试证明：在 $(0, +\infty)$ 上有 $f(x)=0$．
+reference_answer: 见推导步骤
+solution: '设 $x_0 \in \left[0, \frac{1}{2A}\right]$ 使得 $|f(x_0)| = \max_{x\in [0,
+  1/(2A)]} |f(x)|$．
+
+
+  由 Lagrange 中值定理，存在 $\xi \in (0, x_0)$：
+
+
+  $$|f(x_0)| = |f(x_0) - f(0)| = |f''(\xi)| x_0 \le A |f(\xi)| x_0 \le A |f(x_0)|
+  \frac{1}{2A} = \frac{1}{2}|f(x_0)|$$
+
+
+  因此 $|f(x_0)| \le \frac{1}{2}|f(x_0)| \implies |f(x_0)| = 0$．
+
+
+  故在区间 $\left[0, \frac{1}{2A}\right]$ 上 $f(x) \equiv 0$．
+
+
+  递推考虑区间 $\left[\frac{k-1}{2A}, \frac{k}{2A}\right]$ ($k=1, 2, \dots$)，同理以左端点为 0 重复上述放缩，可得对一切
+  $x \ge 0$ 均有 $f(x) = 0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用中值定理进行区间最大值放缩（0 分）
+    points: 0
+  - id: step1
+    label: 在 [0, 1/(2A)] 上证明 f(x) 恒等于 0（7 分）
+    points: 0.5
+  - id: full
+    label: 递推推广至全体正实数轴完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

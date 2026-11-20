@@ -1,0 +1,66 @@
+schema_version: 3
+id: cmc-13th-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(x)$ 连续，且 $f(0) \neq 0$，则 $\lim_{x\to 0}\frac{2\int_0^x (x-t)f(t)\mathrm{d}t}{x\int_0^x
+  f(x-t)\mathrm{d}t} =$ ______．
+reference_answer: $1$
+solution: '分子改写为 $2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t$；分母换元 $u
+  = x-t$ 得 $x\int_0^x f(u)\mathrm{d}u$．应用洛必达法则：
+
+
+  $$
+
+  \lim_{x\to 0}\frac{2x\int_0^x f(t)\mathrm{d}t - 2\int_0^x t f(t)\mathrm{d}t}{x\int_0^x
+  f(u)\mathrm{d}u} = \lim_{x\to 0}\frac{2\int_0^x f(t)\mathrm{d}t + 2x f(x) - 2x f(x)}{\int_0^x
+  f(u)\mathrm{d}u + x f(x)} = \lim_{x\to 0}\frac{2\int_0^x f(t)\mathrm{d}t}{\int_0^x
+  f(u)\mathrm{d}u + x f(x)}
+
+  $$
+
+
+  由积分中值定理，$\int_0^x f(t)\mathrm{d}t = x f(\xi)$（$\xi$ 介于 $0$ 与 $x$ 之间），代入得：
+
+
+  $$
+
+  \lim_{x\to 0}\frac{2x f(\xi)}{x f(\xi) + x f(x)} = \lim_{x\to 0}\frac{2f(\xi)}{f(\xi)+f(x)}
+  = \frac{2f(0)}{2f(0)} = 1
+
+  $$
+
+
+  故极限为 $1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 变上限积分求导或洛必达法则计算错误
+    points: 0
+  - id: correct
+    label: 正确应用换元法与洛必达法则求得极限 1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第3小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

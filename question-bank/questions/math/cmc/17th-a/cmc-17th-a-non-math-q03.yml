@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{x\to 0}\frac{\int_0^{\sin^2 x}\ln(1+t)\mathrm{d}t}{(\sqrt[3]{1+x^3}-1)\sin
+  x} =$ ______．
+reference_answer: $\frac{3}{2}$
+solution: '当 $x\to 0$ 时，$\sin x \sim x$，$\sqrt[3]{1+x^3}-1 \sim \frac{1}{3}x^3$，故分母等价于
+  $\frac{1}{3}x^4$．由洛必达法则或变上限积分等价代换：
+
+
+  $$
+
+  \lim_{x\to 0}\frac{\int_0^{\sin^2 x}\ln(1+t)\mathrm{d}t}{\frac{1}{3}x^4} = \lim_{x\to
+  0}\frac{\ln(1+\sin^2 x)\cdot 2\sin x\cos x}{\frac{4}{3}x^3} = \lim_{x\to 0}\frac{x^2\cdot
+  2x}{\frac{4}{3}x^3} = \frac{3}{2}
+
+  $$
+
+
+  因此所求极限值为 $\frac{3}{2}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 等价无穷小代换错误或洛必达求导失误
+    points: 0
+  - id: correct
+    label: 正确求得极限值为 3/2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,76 @@
+schema_version: 3
+id: cmc-11th-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x)$ 是仅有正实根的多项式函数，满足 $-\frac{f'(x)}{f(x)} = \sum_{n=0}^\infty c_n x^n$．试证：$c_n
+  > 0$ ($n \ge 0$)，极限 $\lim_{n\to\infty}\frac{1}{\sqrt[n]{c_n}}$ 存在，且等于 $f(x)$ 的最小根．
+reference_answer: 见推导步骤
+solution: '设 $f(x)$ 的全部实根为 $0 < a_1 < a_2 < \dots < a_k$，重数依次为 $r_1, r_2, \dots, r_k$．
+
+
+  因式分解得 $f(x) = A(x-a_1)^{r_1}\cdots(x-a_k)^{r_k}$．展开对数导数：
+
+
+  $$-\frac{f''(x)}{f(x)} = \sum_{i=1}^k \frac{r_i}{a_i - x} = \sum_{i=1}^k \frac{r_i}{a_i}\sum_{n=0}^\infty
+  \left(\frac{x}{a_i}\right)^n = \sum_{n=0}^\infty \left(\sum_{i=1}^k \frac{r_i}{a_i^{n+1}}\right)x^n$$
+
+
+  由幂级数系数唯一性：
+
+
+  $$c_n = \sum_{i=1}^k \frac{r_i}{a_i^{n+1}} > 0$$
+
+
+  考虑系数比值：
+
+
+  $$\lim_{n\to\infty}\frac{c_n}{c_{n+1}} = \lim_{n\to\infty}\frac{\frac{r_1}{a_1^{n+1}}
+  + \dots + \frac{r_k}{a_k^{n+1}}}{\frac{r_1}{a_1^{n+2}} + \dots + \frac{r_k}{a_k^{n+2}}}
+  = a_1 \lim_{n\to\infty}\frac{r_1 + \sum_{i=2}^k r_i (a_1/a_i)^{n+1}}{r_1 + \sum_{i=2}^k
+  r_i (a_1/a_i)^{n+2}} = a_1$$
+
+
+  由 Cauchy–Hadamard 定理：
+
+
+  $$\lim_{n\to\infty}\frac{1}{\sqrt[n]{c_n}} = \lim_{n\to\infty}\frac{c_n}{c_{n+1}}
+  = a_1$$
+
+
+  即极限存在且等于 $f(x)$ 的最小正根 $a_1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未展开对数导数（0 分）
+    points: 0
+  - id: partial_series
+    label: 展开部分分式并表达出 c_n 的求和式证明正性（7 分）
+    points: 0.5
+  - id: correct
+    label: 利用比值法严密求出根值极限等于最小根 a_1（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

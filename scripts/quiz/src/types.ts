@@ -176,6 +176,7 @@ export interface QuizSetDef {
   tags?: string[];
   status: SetStatus;
   feedback_mode: FeedbackMode;
+  self_assessment_timing?: "after_submit";
   selection: SetSelection;
 }
 
@@ -215,6 +216,7 @@ export interface SetCatalogItem {
   questionCount: number;
   estimatedMinutes: number | null;
   feedbackMode: FeedbackMode;
+  selfAssessmentTiming?: "after_submit";
   topicIds: string[];
   runnable: boolean;
   unavailableReason: string | null;
@@ -269,6 +271,7 @@ export interface Session {
   currentIndex: number;
   startedAt: string;
   updatedAt: string;
+  submittedAt?: string;
   context?: QuizContext;
 }
 

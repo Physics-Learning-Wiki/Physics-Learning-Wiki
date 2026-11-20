@@ -1,0 +1,73 @@
+schema_version: 3
+id: cmc-10th-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设 $f(x)$ 在区间 $[0, 1]$ 上连续，且 $1 \le f(x) \le 3$．证明：
+
+
+  $$1 \le \int_0^1 f(x)\mathrm{d}x \int_0^1 \frac{1}{f(x)}\mathrm{d}x \le \frac{4}{3}$$'
+reference_answer: 见推导步骤
+solution: '由 Cauchy–Schwarz 不等式：
+
+
+  $$\int_0^1 f(x)\mathrm{d}x \int_0^1 \frac{1}{f(x)}\mathrm{d}x \ge \left(\int_0^1
+  \sqrt{f(x)}\cdot\frac{1}{\sqrt{f(x)}}\mathrm{d}x\right)^2 = 1^2 = 1$$
+
+
+  左侧不等式得证．
+
+
+  对于右侧不等式，由于 $1 \le f(x) \le 3$，有 $(f(x)-1)(f(x)-3) \le 0$．两边除以 $f(x)$：
+
+
+  $$f(x) + \frac{3}{f(x)} \le 4$$
+
+
+  积分得 $\int_0^1 f(x)\mathrm{d}x + 3\int_0^1 \frac{1}{f(x)}\mathrm{d}x \le 4$．
+
+
+  由均值不等式 $u v \le \frac{1}{4}(u+v)^2$：
+
+
+  $$3\int_0^1 f(x)\mathrm{d}x \int_0^1 \frac{1}{f(x)}\mathrm{d}x = \int_0^1 f(x)\mathrm{d}x
+  \cdot 3\int_0^1 \frac{1}{f(x)}\mathrm{d}x \le \frac{1}{4}\left(\int_0^1 f(x)\mathrm{d}x
+  + 3\int_0^1 \frac{1}{f(x)}\mathrm{d}x\right)^2 \le 4$$
+
+
+  两端同除以 3 即得 $\int_0^1 f(x)\mathrm{d}x \int_0^1 \frac{1}{f(x)}\mathrm{d}x \le \frac{4}{3}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用柯西不等式证明下界（0 分）
+    points: 0
+  - id: step1
+    label: 利用柯西不等式完成左端大于等于 1 证明（4 分）
+    points: 0.29
+  - id: full
+    label: 构造二次因式不等式完成上界 4/3 证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,75 @@
+schema_version: 3
+id: cmc-12th-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '计算 $I = \oint_\Gamma |\sqrt{3}y - x|\mathrm{d}x - 5z\mathrm{d}z$，曲线 $\Gamma:
+  \begin{cases}x^2+y^2+z^2=8,\\ x^2+y^2=2z\end{cases}$，从 $z$ 轴正向往坐标原点看去取逆时针方向．'
+reference_answer: $0$
+solution: '由方程组消去 $x^2+y^2$ 得 $z^2+2z-8=0$，解得 $z=2$（$z=-4$ 舍去）．
+
+
+  因此曲线 $\Gamma$ 的参数方程为：
+
+
+  $$
+
+  x = 2\cos\theta, \quad y = 2\sin\theta, \quad z = 2 \quad (0 \le \theta \le 2\pi)
+
+  $$
+
+
+  曲线 $\Gamma$ 上 $\mathrm{d}z = 0$．代入参数方程：
+
+
+  $$
+
+  I = -\int_0^{2\pi} |2\sqrt{3}\sin\theta - 2\cos\theta| 2\sin\theta\mathrm{d}\theta
+  = -8\int_0^{2\pi} \left|\frac{\sqrt{3}}{2}\sin\theta - \frac{1}{2}\cos\theta\right|\sin\theta\mathrm{d}\theta
+
+  $$
+
+
+  令 $t = \theta + \frac{\pi}{3}$，由周期性与三角公式：
+
+
+  $$I = -8\int_{-\pi}^\pi |\cos t| \sin\left(t - \frac{\pi}{3}\right)\mathrm{d}t =
+  8\sqrt{3}\int_{-\pi}^0 |\cos t|\cos t\mathrm{d}t$$
+
+
+  再令 $u = t - \frac{\pi}{2}$，被积函数在对称区间内呈现为奇函数，最终积分值为 $0$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 曲线参数化错误（0 分）
+    points: 0
+  - id: partial_param
+    label: 求得交线平面与参数方程并代入积分表达式（4 分）
+    points: 0.33
+  - id: correct
+    label: 根据周期函数奇偶对称性准确求得积分值为 0（12 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

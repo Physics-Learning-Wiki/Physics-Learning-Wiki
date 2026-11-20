@@ -1,0 +1,75 @@
+schema_version: 3
+id: cmc-13th-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $x_1 = 2021$，$x_n^2 - 2(x_n+1)x_{n+1} + 2021 = 0$ ($n \ge 1$)．证明数列 $\{x_n\}$
+  收敛，并求极限 $\lim_{n\to\infty} x_n$．
+reference_answer: $\sqrt{2022} - 1$
+solution: '记 $a = 1011$，$y_n = 1 + x_n$．代入原递推式：
+
+
+  $$
+
+  (y_n-1)^2 - 2y_n(y_{n+1}-1) + 2021 = 0 \implies y_n^2 - 2y_n y_{n+1} + 2022 = 0
+
+  $$
+
+
+  即：
+
+
+  $$
+
+  y_{n+1} = \frac{y_n}{2} + \frac{1011}{y_n} = \frac{1}{2}\left(y_n + \frac{2a}{y_n}\right)
+
+  $$
+
+
+  定义函数 $f(y) = \frac{1}{2}\left(y + \frac{2a}{y}\right)$ ($y > 0$)．$y_1 = 2022 = 2a$．
+
+
+  由均值不等式，当 $y > \sqrt{2a}$ 时，$f(y) > \sqrt{2a}$ 且 $f(y) < y$．因此 $\{y_n\}$ 单调减少且有下界
+  $\sqrt{2a} = \sqrt{2022}$，故数列 $\{y_n\}$ 收敛，从而 $\{x_n\}$ 收敛．
+
+
+  设 $\lim_{n\to\infty} y_n = A$ ($A > 0$)，由 $A = \frac{1}{2}\left(A + \frac{2022}{A}\right)$
+  解得 $A = \sqrt{2022}$．
+
+
+  因此 $\lim_{n\to\infty} x_n = A - 1 = \sqrt{2022} - 1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立有效递推关系（0 分）
+    points: 0
+  - id: partial_mono
+    label: 通过换元证明数列有界与单调收敛（8 分）
+    points: 0.57
+  - id: correct
+    label: 完整证明单调有界并准确求得极限 sqrt(2022) - 1（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,63 @@
+schema_version: 3
+id: cmc-12th-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(x) = (x+1)^n e^{-x^2}$，则 $f^{(n)}(-1) =$ ______．
+reference_answer: $\frac{n!}{e}$
+solution: '利用 Leibniz 求导法则：
+
+
+  $$
+
+  f^{(n)}(x) = n! e^{-x^2} + \sum_{k=0}^{n-1} C_n^k [(x+1)^n]^{(k)} (e^{-x^2})^{(n-k)}
+
+  $$
+
+
+  当 $x = -1$ 时，对任意 $k < n$，导数 $[(x+1)^n]^{(k)}$ 均包含因子 $(x+1)^{n-k}$ 而取值为 0．
+
+
+  因此：
+
+
+  $$
+
+  f^{(n)}(-1) = n! e^{-(-1)^2} = \frac{n!}{e}
+
+  $$
+
+
+  故导数值为 $\frac{n!}{e}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: Leibniz 公式展开或代入计算错误
+    points: 0
+  - id: correct
+    label: 利用 Leibniz 展开式求得正确结果 n!/e
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第2小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

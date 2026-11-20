@@ -1,0 +1,14 @@
+calculus.limit:
+  title: 极限计算与夹逼准则
+  topics:
+  - math.calculus
+  aliases:
+  - limit
+  - squeeze theorem
+calculus.derivative-integral:
+  title: 微分与定积分计算
+  topics:
+  - math.calculus
+  aliases:
+  - derivative
+  - definite integral

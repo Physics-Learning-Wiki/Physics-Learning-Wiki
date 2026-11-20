@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 极限 $\lim_{n\to\infty}\frac{1}{n^3}[1^2 + 3^2 + \cdots + (2n-1)^2] =$ ______．
+reference_answer: $\frac{4}{3}$
+solution: 利用定积分的定义转化为黎曼和：$\lim_{n\to\infty}\frac{1}{n^3}\sum_{k=1}^n (2k-1)^2 = 4\lim_{n\to\infty}\frac{1}{n}\sum_{k=1}^n
+  \left(\frac{k}{n} - \frac{1}{2n}\right)^2 = 4\int_0^1 x^2\mathrm{d}x = \left.4\cdot\frac{x^3}{3}\right|_0^1
+  = \frac{4}{3}$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 平方式求和或定积分转化失误
+    points: 0
+  - id: correct
+    label: 正确使用定积分定义求得极限 4/3
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

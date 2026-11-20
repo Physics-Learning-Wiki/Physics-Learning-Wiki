@@ -415,3 +415,59 @@ def test_validate_set_rules() -> None:
     qid_retired_issues = validate_set(pub_qid_retired_doc, schema, questions, taxonomy)
     assert any(i.severity == "error" and "referenced question 'q-000003' is retired" in i.message for i in qid_retired_issues)
 
+
+def test_self_assessment_timing_validation():
+    schema = load_json(ROOT / "question-bank" / "schemas" / "set.schema.json")
+    taxonomy, _ = load_taxonomy(ROOT / "question-bank" / "taxonomy")
+    questions = {
+        "q-000001": {"id": "q-000001", "status": "published", "topics": ["mechanics.dynamics"], "difficulty": 1, "type": "numeric"}
+    }
+
+    # 1. Valid: after_submit with deferred
+    valid_doc = SourceDocument(
+        path=ROOT / "valid_sat.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-sat-valid",
+            "title": "SAT Valid",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "self_assessment_timing": "after_submit",
+            "selection": {"type": "fixed", "questions": ["q-000001"], "order": "fixed"},
+        },
+    )
+    issues = validate_set(valid_doc, schema, questions, taxonomy)
+    assert not [i for i in issues if i.severity == "error"]
+
+    # 2. Invalid: after_submit with immediate (schema violation)
+    invalid_mode_doc = SourceDocument(
+        path=ROOT / "invalid_sat_mode.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-sat-invalid-mode",
+            "title": "SAT Invalid Mode",
+            "status": "draft",
+            "feedback_mode": "immediate",
+            "self_assessment_timing": "after_submit",
+            "selection": {"type": "fixed", "questions": ["q-000001"], "order": "fixed"},
+        },
+    )
+    issues = validate_set(invalid_mode_doc, schema, questions, taxonomy)
+    assert any(i.severity == "error" for i in issues)
+
+    # 3. Invalid: unknown enum value
+    invalid_enum_doc = SourceDocument(
+        path=ROOT / "invalid_sat_enum.yml",
+        data={
+            "schema_version": 1,
+            "id": "mechanics.dynamics.test-sat-invalid-enum",
+            "title": "SAT Invalid Enum",
+            "status": "draft",
+            "feedback_mode": "deferred",
+            "self_assessment_timing": "during_exam",
+            "selection": {"type": "fixed", "questions": ["q-000001"], "order": "fixed"},
+        },
+    )
+    issues = validate_set(invalid_enum_doc, schema, questions, taxonomy)
+    assert any(i.severity == "error" for i in issues)
+

@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-11th-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 已知 $\mathrm{d}u(x, y) = \frac{y\mathrm{d}x - x\mathrm{d}y}{3x^2 - 2xy + 3y^2}$，则
+  $u(x, y) =$ ______．
+reference_answer: $\frac{1}{2\sqrt{2}}\arctan\left[\frac{3}{2\sqrt{2}}\left(\frac{x}{y}-\frac{1}{3}\right)\right]
+  + C$
+solution: '注意到 $y\mathrm{d}x - x\mathrm{d}y = y^2 \mathrm{d}(x/y)$．分子分母同除以 $y^2$：
+
+
+  $$\mathrm{d}u(x, y) = \frac{\mathrm{d}(x/y)}{3(x/y)^2 - 2(x/y) + 3} = \frac{1}{3}\frac{\mathrm{d}(x/y)}{\left(\frac{x}{y}
+  - \frac{1}{3}\right)^2 + \frac{8}{9}}$$
+
+
+  两边积分：
+
+
+  $$u(x, y) = \frac{1}{3}\cdot\frac{3}{2\sqrt{2}}\arctan\left[\frac{3}{2\sqrt{2}}\left(\frac{x}{y}-\frac{1}{3}\right)\right]
+  + C = \frac{1}{2\sqrt{2}}\arctan\left[\frac{3}{2\sqrt{2}}\left(\frac{x}{y}-\frac{1}{3}\right)\right]
+  + C$$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 全微分原函数配方或反正切积分失误
+    points: 0
+  - id: correct
+    label: 正确提取微元并完成配方积分
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第一大题第4小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

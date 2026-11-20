@@ -1,0 +1,70 @@
+schema_version: 3
+id: cmc-10th-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 计算三重积分 $\iiint_V (x^2+y^2)\mathrm{d}V$，其中 $(V)$ 是由 $x^2+y^2+(z-2)^2 \ge 4$，$x^2+y^2+(z-1)^2
+  \le 9$，$z \ge 0$ 所围成的空心立体．
+reference_answer: $\frac{256}{3}\pi$
+solution: '设大球域 $V_1: x^2+y^2+(z-1)^2 \le 9$，挖去内球域 $V_2: x^2+y^2+(z-2)^2 \le 4$ 及球冠部分
+  $V_3: 1-\sqrt{9-r^2} \le z \le 0$ ($0 \le r \le 2\sqrt{2}$)．
+
+
+  在球坐标系下分别计算：
+
+
+  $$\iiint_{V_1}(x^2+y^2)\mathrm{d}V = \frac{8}{15}\cdot 3^5 \pi$$
+
+
+  $$\iiint_{V_2}(x^2+y^2)\mathrm{d}V = \frac{8}{15}\cdot 2^5 \pi$$
+
+
+  在柱坐标下计算 $V_3$：
+
+
+  $$\iiint_{V_3}(x^2+y^2)\mathrm{d}V = 2\pi \int_0^{2\sqrt{2}} r^3 (\sqrt{9-r^2}-1)\mathrm{d}r
+  = \left(124 - \frac{2}{5}\cdot 3^5 + \frac{2}{5}\right)\pi$$
+
+
+  由区域加减性：
+
+
+  $$I = \iiint_{V_1} - \iiint_{V_2} - \iiint_{V_3} = \frac{256}{3}\pi$$
+
+
+  故三重积分值为 $\frac{256}{3}\pi$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 区域分解错误（0 分）
+    points: 0
+  - id: partial_v
+    label: 正确拆分积分区域并计算大球与小球积分（8 分）
+    points: 0.67
+  - id: correct
+    label: 扣除下半部球冠积分准确得出 256 pi / 3（12 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -62,6 +62,8 @@ function isAnswer(v: unknown): boolean {
     (v.unit === undefined || (typeof v.unit === "string" && textLength(v.unit) <= 20000))
   );
 }
+const isSelfAssessed = (v: unknown): v is { text: string; levelId: string | null } =>
+  obj(v) && typeof (v as any).text === "string";
 const epochId = () => globalThis.crypto?.randomUUID?.() ?? `epoch-${Date.now()}-${Math.random().toString(36).slice(2)}`;
 const UNCHANGED = Symbol("unchanged");
 type Unchanged<T> = { [UNCHANGED]: T };
@@ -177,7 +179,8 @@ function isSession(v: unknown, legacy = false): v is Session {
     !Object.values(v.uncertain).every(x => typeof x === "boolean") ||
     !Object.values(v.locked).every(x => typeof x === "boolean") ||
     !date(v.startedAt) ||
-    !date(v.updatedAt)
+    !date(v.updatedAt) ||
+    (v.submittedAt !== undefined && !date(v.submittedAt))
   )
     return false;
   return (
@@ -646,10 +649,35 @@ export class QuizStore {
       const list = draft.activeSessions[sourceKey(session.source)] ?? [];
       const index = list.findIndex(s => s.sessionId === session.sessionId);
       if (index < 0) return "session_missing";
-      if (list[index].sessionRevision !== session.sessionRevision) return "conflict";
+      const current = list[index];
+      if (current.sessionRevision !== session.sessionRevision) return "conflict";
+      if (current.submittedAt) {
+        if (session.submittedAt !== current.submittedAt) return "conflict";
+        for (const [qid, currentAns] of Object.entries(current.answers)) {
+          const incomingAns = session.answers[qid];
+          if (isSelfAssessed(currentAns)) {
+            if (!isSelfAssessed(incomingAns) || incomingAns.text !== currentAns.text) {
+              return "conflict";
+            }
+          } else {
+            if (JSON.stringify(currentAns) !== JSON.stringify(incomingAns)) {
+              return "conflict";
+            }
+          }
+        }
+        for (const [qid, incomingAns] of Object.entries(session.answers)) {
+          if (!(qid in current.answers)) {
+            if (isSelfAssessed(incomingAns)) {
+              if (incomingAns.text.length > 0) return "conflict";
+            } else if (incomingAns != null) {
+              return "conflict";
+            }
+          }
+        }
+      }
       const updated = {
         ...structuredClone(session),
-        committedResults: list[index].committedResults,
+        committedResults: current.committedResults,
         sessionRevision: session.sessionRevision + 1,
         updatedAt: new Date().toISOString()
       };

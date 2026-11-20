@@ -1,0 +1,71 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）求微分方程 $y'x\ln x\sin y + (1 - x\cos y)\cos y = 0$ 的通解．
+reference_answer: $\frac{1}{\cos y} = \frac{1}{\ln x}(x + C)$ 或 $\cos y = \frac{\ln
+  x}{x+C}$
+solution: '将方程整理变形为：$y''\sin y + \frac{1}{x\ln x}\cos y = \frac{1}{\ln x}\cos^2 y$．令
+  $z = \cos y$，则 $z'' = -y''\sin y$，原方程化为 Bernoulli 方程（$n=2$）：
+
+
+  $$
+
+  z'' - \frac{1}{x\ln x}z = -\frac{1}{\ln x}z^2 \quad (得 6 分)
+
+  $$
+
+
+  再令 $u = z^{-1} = \frac{1}{\cos y}$，方程转化为一阶线性非齐次方程：$u'' + \frac{1}{x\ln x}u = \frac{1}{\ln
+  x}$．应用通解公式：
+
+
+  $$
+
+  u = \mathrm{e}^{-\int \frac{\mathrm{d}x}{x\ln x}}\left(\int \frac{1}{\ln x}\mathrm{e}^{\int
+  \frac{\mathrm{d}x}{x\ln x}}\mathrm{d}x + C\right) = \frac{1}{\ln x}\left(\int 1\mathrm{d}x
+  + C\right) = \frac{1}{\ln x}(x+C) \quad (得 12 分)
+
+  $$
+
+
+  变量换回得所求通解为：$\frac{1}{\cos y} = \frac{1}{\ln x}(x+C)$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未找到有效代换分离变量（0 分）
+    points: 0
+  - id: step1
+    label: 令 z = cos y 成功化为 Bernoulli 方程（6 分）
+    points: 0.43
+  - id: step2
+    label: 令 u = 1/z 化为一阶线性方程并积分得出 u 表达式（12 分）
+    points: 0.86
+  - id: full
+    label: 正确回代得出通解表达式（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）解答题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

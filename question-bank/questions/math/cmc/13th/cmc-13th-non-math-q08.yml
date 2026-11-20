@@ -1,0 +1,101 @@
+schema_version: 3
+id: cmc-13th-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '对于 $4$ 次齐次函数 $f(x, y, z) = a_1 x^4 + a_2 y^4 + a_3 z^4 + 3a_4 x^2 y^2 + 3a_5
+  y^2 z^2 + 3a_6 x^2 z^2$，计算曲面积分 $\iint_\Sigma f(x, y, z)\mathrm{d}S$，其中 $\Sigma:
+  x^2+y^2+z^2=1$．'
+reference_answer: $\frac{4\pi}{5}\sum_{i=1}^6 a_i$
+solution: '因为 $f(x, y, z)$ 为 4 次齐次函数，由 Euler 齐次函数定理：
+
+
+  $$
+
+  x f_x'' + y f_y'' + z f_z'' = 4f(x, y, z)
+
+  $$
+
+
+  曲面 $\Sigma$ 上的外法向量为 $(x, y, z)$，故：
+
+
+  $$
+
+  \iint_\Sigma f(x, y, z)\mathrm{d}S = \frac{1}{4}\iint_\Sigma (x f_x'' + y f_y''
+  + z f_z'')\mathrm{d}S = \frac{1}{4}\iint_\Sigma (f_x''\mathrm{d}y\mathrm{d}z + f_y''\mathrm{d}z\mathrm{d}x
+  + f_z''\mathrm{d}x\mathrm{d}y)
+
+  $$
+
+
+  由高斯公式：
+
+
+  $$
+
+  = \frac{1}{4}\iiint_{x^2+y^2+z^2\le 1} (f_{xx}'''' + f_{yy}'''' + f_{zz}'''')\mathrm{d}x\mathrm{d}y\mathrm{d}z
+
+  $$
+
+
+  计算二阶偏导数之和：
+
+
+  $$
+
+  f_{xx}'''' + f_{yy}'''' + f_{zz}'''' = 6\left[(2a_1+a_4+a_6)x^2 + (2a_2+a_4+a_5)y^2
+  + (2a_3+a_5+a_6)z^2\right]
+
+  $$
+
+
+  利用球对称性 $\iiint x^2\mathrm{d}V = \iiint y^2\mathrm{d}V = \iiint z^2\mathrm{d}V =
+  \frac{1}{3}\iiint (x^2+y^2+z^2)\mathrm{d}V$：
+
+
+  $$
+
+  = \sum_{i=1}^6 a_i \iiint_{x^2+y^2+z^2\le 1} (x^2+y^2+z^2)\mathrm{d}V = \sum_{i=1}^6
+  a_i \int_0^{2\pi}\mathrm{d}\theta \int_0^\pi \sin\varphi\mathrm{d}\varphi \int_0^1
+  \rho^4\mathrm{d}\rho = \frac{4\pi}{5}\sum_{i=1}^6 a_i
+
+  $$
+
+
+  故积分为 $\frac{4\pi}{5}\sum_{i=1}^6 a_i$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未转化或高斯公式应用错误（0 分）
+    points: 0
+  - id: partial_gauss
+    label: 正确应用 Euler 齐次定理与 Gauss 公式转化为体积分（7 分）
+    points: 0.5
+  - id: correct
+    label: 利用轮换对称性与球坐标准确计算出最终结果（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

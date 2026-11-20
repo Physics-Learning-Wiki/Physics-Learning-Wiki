@@ -1,0 +1,62 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q04
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: $\sum_{n=1}^\infty \arctan\frac{2}{4n^2+4n+1} =$ ______．
+reference_answer: $\frac{\pi}{2} - \arctan 2$
+solution: '注意到 $\frac{2}{4n^2+4n+1} = \frac{(2n+2)-2n}{1+2n(2n+2)}$，由正切差角公式：
+
+
+  $$
+
+  \arctan\frac{2}{4n^2+4n+1} = \arctan(2n+2) - \arctan(2n)
+
+  $$
+
+
+  级数部分和裂项相消：
+
+
+  $$
+
+  \sum_{n=1}^N \left[\arctan(2n+2) - \arctan(2n)\right] = \arctan(2N+2) - \arctan
+  2
+
+  $$
+
+
+  令 $N\to+\infty$，由于 $\lim_{N\to+\infty}\arctan(2N+2) = \frac{\pi}{2}$，得级数和为 $\frac{\pi}{2}
+  - \arctan 2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 反正切恒等式裂项失误
+    points: 0
+  - id: correct
+    label: 正确裂项相消并求得级数极限
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第一大题第4小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

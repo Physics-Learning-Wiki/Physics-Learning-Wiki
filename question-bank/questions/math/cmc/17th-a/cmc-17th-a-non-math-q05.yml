@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设曲线 $L$ 为球面 $x^2+y^2+z^2=4$ 与平面 $x+y+z=3$ 的交线，则第一类曲线积分 $\int_L (x^2+2xy)\mathrm{d}s
+  =$ ______．
+reference_answer: $6\pi$
+solution: 根据轮换对称性，在交线 $L$ 上：$\int_L (x^2+2xy)\mathrm{d}s = \frac{1}{3}\int_L (x^2+y^2+z^2)\mathrm{d}s
+  + \frac{2}{3}\int_L (xy+yz+zx)\mathrm{d}s = \frac{1}{3}\int_L (x+y+z)^2\mathrm{d}s$．在
+  $L$ 上 $x+y+z=3$，故 $(x+y+z)^2 = 9$．交线 $L$ 为圆周，球心到平面距离 $d = \frac{3}{\sqrt{3}} = \sqrt{3}$，圆半径
+  $r = \sqrt{4-3} = 1$，周长 $\int_L\mathrm{d}s = 2\pi$．故积分值为 $\frac{1}{3}\times 9\times
+  2\pi = 6\pi$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 对称性化简失误或圆周长计算错误
+    points: 0
+  - id: correct
+    label: 正确利用轮换对称性与几何性质求得积分为 6pi
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

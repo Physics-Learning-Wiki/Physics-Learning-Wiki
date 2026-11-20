@@ -1,0 +1,96 @@
+schema_version: 3
+id: cmc-13th-non-math-q09
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设函数 $f(x)$ 在闭区间 $[a, b]$ 上有连续的二阶导数，证明：
+
+
+  $$
+
+  \lim_{n\to\infty} n^2 \left[\int_a^b f(x)\mathrm{d}x - \frac{b-a}{n}\sum_{k=1}^n
+  f\left(a + \frac{2k-1}{2n}(b-a)\right)\right] = \frac{(b-a)^2}{24}[f''(b)-f''(a)]
+
+  $$'
+reference_answer: 见推导步骤
+solution: '记 $x_k = a + \frac{k(b-a)}{n}$，中点 $\xi_k = a + \frac{2k-1}{2n}(b-a)$ ($k=1,2,\dots,n$)．在区间
+  $[x_{k-1}, x_k]$ 上 Taylor 展开：
+
+
+  $$
+
+  f(x) = f(\xi_k) + f''(\xi_k)(x-\xi_k) + \frac{f''''(\eta_k)}{2}(x-\xi_k)^2
+
+  $$
+
+
+  两端积分，因对称性 $\int_{x_{k-1}}^{x_k}(x-\xi_k)\mathrm{d}x = 0$：
+
+
+  $$
+
+  \int_{x_{k-1}}^{x_k} (f(x) - f(\xi_k))\mathrm{d}x = \frac{1}{2}\int_{x_{k-1}}^{x_k}
+  f''''(\eta_k)(x-\xi_k)^2\mathrm{d}x
+
+  $$
+
+
+  设 $f''''(x)$ 在 $[x_{k-1}, x_k]$ 上的最大值和最小值分别为 $M_k, m_k$．由 $\int_{x_{k-1}}^{x_k}(x-\xi_k)^2\mathrm{d}x
+  = \frac{(b-a)^3}{12n^3}$，求和并放缩可得：
+
+
+  $$
+
+  \frac{(b-a)^2}{24}\sum_{k=1}^n m_k \frac{b-a}{n} \le n^2 B_n \le \frac{(b-a)^2}{24}\sum_{k=1}^n
+  M_k \frac{b-a}{n}
+
+  $$
+
+
+  由 $f''''(x)$ 的连续性与定积分定义：
+
+
+  $$
+
+  \lim_{n\to\infty}\sum_{k=1}^n m_k \frac{b-a}{n} = \lim_{n\to\infty}\sum_{k=1}^n
+  M_k \frac{b-a}{n} = \int_a^b f''''(x)\mathrm{d}x = f''(b) - f''(a)
+
+  $$
+
+
+  由夹逼定理即得极限为 $\frac{(b-a)^2}{24}[f''(b)-f''(a)]$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未展开 Taylor 公式（0 分）
+    points: 0
+  - id: partial_taylor
+    label: 在小区间关于中点展开 Taylor 公式并消去一阶项（8 分）
+    points: 0.57
+  - id: correct
+    label: 利用 Riemann 和与 Newton–Leibniz 公式严密求得极限（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第五大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

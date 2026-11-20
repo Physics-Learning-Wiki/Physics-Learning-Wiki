@@ -1,0 +1,80 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $f(x)$ 在 $(-\infty,+\infty)$ 上连续，在 $x=0$ 处可导，且满足：
+
+
+  $$
+
+  f(x) = x^3 + x^2\lim_{x\to 0}\frac{f(x)}{x} - x\int_0^1 f(x)\mathrm{d}x
+
+  $$
+
+
+  求函数 $f(x)$ 的表达式．'
+reference_answer: $f(x) = x^3 - \frac{3}{22}x^2 - \frac{3}{22}x$
+solution: '由题设在原点连续可导，令 $x=0$ 可知 $f(0)=0$，故 $\lim_{x\to 0}\frac{f(x)}{x} = f''(0)$．记常数
+  $a = f''(0)$，$b = \int_0^1 f(x)\mathrm{d}x$，原式化为：
+
+
+  $$
+
+  f(x) = x^3 + ax^2 - bx \quad (1)
+
+  $$
+
+
+  由式 (1) 知 $\lim_{x\to 0}\frac{f(x)}{x} = -b$，故 $a = -b$（得 6 分）．对式 (1) 在 $[0,1]$ 上求定积分：
+
+
+  $$
+
+  b = \int_0^1 (x^3 + ax^2 - bx)\mathrm{d}x = \frac{1}{4} + \frac{1}{3}a - \frac{1}{2}b
+  \quad (得 10 分)
+
+  $$
+
+
+  将 $a = -b$ 代入得 $\frac{3}{2}b = \frac{1}{4} - \frac{1}{3}b$，解得 $b = \frac{3}{22}$，$a
+  = -\frac{3}{22}$．因此所求函数表达式为：$f(x) = x^3 - \frac{3}{22}x^2 - \frac{3}{22}x$（满分 14
+  分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立常数代换方程（0 分）
+    points: 0
+  - id: step1
+    label: 设出待定常数 a, b 并由极限关系导出 a = -b（6 分）
+    points: 0.43
+  - id: step2
+    label: 对两边积分列出关于 a, b 的定积分线性方程（10 分）
+    points: 0.71
+  - id: full
+    label: 准确联立解得 a = -3/22, b = 3/22 并给出解析式（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

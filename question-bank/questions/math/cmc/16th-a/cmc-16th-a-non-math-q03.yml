@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 已知函数 $z = f(xy, \mathrm{e}^{x+y})$，且 $f(x,y)$ 具有二阶连续偏导数，则 $\frac{\partial^2
+  z}{\partial x\partial y} =$ ______．
+reference_answer: $xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22}
+  + f_1 + \mathrm{e}^{x+y}f_2$
+solution: 求一阶偏导数：$z_x = y f_1 + \mathrm{e}^{x+y}f_2$．再对 $y$ 求偏导：$z_{xy} = (x f_{11}
+  + \mathrm{e}^{x+y}f_{12})y + f_1 + (x f_{21} + \mathrm{e}^{x+y}f_{22})\mathrm{e}^{x+y}
+  + \mathrm{e}^{x+y}f_2 = xy f_{11} + (x+y)\mathrm{e}^{x+y}f_{12} + \mathrm{e}^{2(x+y)}f_{22}
+  + f_1 + \mathrm{e}^{x+y}f_2$式中利用了二阶混合偏导数的连续对称性 $f_{12} = f_{21}$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 复合求导乘积法则漏项或二阶偏导计算失误
+    points: 0
+  - id: correct
+    label: 正确写出二阶混合偏导数完整表达式
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第一大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,47 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 已知函数 $y = x^2\mathrm{e}^{\sin x}$，则 $y''(0) =$ ______．
+reference_answer: $2$
+solution: '方法一（Taylor 展开）：由 $\mathrm{e}^{\sin x} = 1 + \sin x + o(x) = 1 + x + o(x)$，得
+  $y = x^2(1 + x + o(x)) = x^2 + x^3 + o(x^3)$．根据 Maclaurin 展开系数 $y = y(0) + y''(0)x
+  + \frac{y''''(0)}{2!}x^2 + \cdots$，可知 $\frac{y''''(0)}{2!} = 1$，故 $y''''(0) = 2$．
+
+
+  方法二（Leibniz 求导法则）：$y'''' = (x^2)''''\mathrm{e}^{\sin x} + 2(x^2)''(\mathrm{e}^{\sin
+  x})'' + x^2(\mathrm{e}^{\sin x})'''' = 2\mathrm{e}^{\sin x} + 4x(\mathrm{e}^{\sin
+  x})'' + x^2(\mathrm{e}^{\sin x})''''$．代入 $x=0$，得 $y''''(0) = 2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 二阶求导计算错误
+    points: 0
+  - id: correct
+    label: 正确求得二阶导数值为 2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(1)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

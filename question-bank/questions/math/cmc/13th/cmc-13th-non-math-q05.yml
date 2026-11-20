@@ -1,0 +1,68 @@
+schema_version: 3
+id: cmc-13th-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 记 $D = \{(x, y)\mid x^2+y^2 \le \pi\}$，则 $\iint_D (\sin x^2\cos y^2 + x\sqrt{x^2+y^2})\mathrm{d}x\mathrm{d}y
+  =$ ______．
+reference_answer: $\pi$
+solution: '根据对称性，奇函数部分积分为零：$\iint_D x\sqrt{x^2+y^2}\mathrm{d}x\mathrm{d}y = 0$．
+
+
+  对第一项利用 $x, y$ 轮换对称性：
+
+
+  $$
+
+  \iint_D \sin x^2\cos y^2\mathrm{d}x\mathrm{d}y = \iint_D \sin y^2\cos x^2\mathrm{d}x\mathrm{d}y
+  = \frac{1}{2}\iint_D (\sin x^2\cos y^2 + \cos x^2\sin y^2)\mathrm{d}x\mathrm{d}y
+  = \frac{1}{2}\iint_D \sin(x^2+y^2)\mathrm{d}x\mathrm{d}y
+
+  $$
+
+
+  变换为极坐标：
+
+
+  $$
+
+  \frac{1}{2}\int_0^{2\pi}\mathrm{d}\theta \int_0^{\sqrt{\pi}} r\sin r^2\mathrm{d}r
+  = \frac{\pi}{2}\left[-\cos r^2\right]_0^{\sqrt{\pi}} = \frac{\pi}{2}(-\cos\pi +
+  \cos 0) = \pi
+
+  $$
+
+
+  故积分为 $\pi$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 对称性判断错误或重积分计算失误
+    points: 0
+  - id: correct
+    label: 正确利用轮换对称性与极坐标化简求得结果 pi
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类）第一大题第5小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

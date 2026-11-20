@@ -1,0 +1,45 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设曲面 $\Sigma$ 是平面 $y+z=5$ 被柱面 $x^2+y^2=25$ 所截得的部分，则曲面积分 $\iint_\Sigma (x+y+z)\mathrm{d}S
+  =$ ______．
+reference_answer: $125\sqrt{2}\pi$
+solution: '在曲面 $\Sigma$ 上 $y+z=5$，故被积函数为 $x+5$．投影区域 $D_{xy}: x^2+y^2\leqslant 25$，面积微元
+  $\mathrm{d}S = \sqrt{1 + 0^2 + (-1)^2}\mathrm{d}x\mathrm{d}y = \sqrt{2}\mathrm{d}x\mathrm{d}y$．利用对称性
+  $\iint_{D_{xy}} x\mathrm{d}x\mathrm{d}y = 0$：$\iint_\Sigma (x+y+z)\mathrm{d}S =
+  \sqrt{2}\iint_{D_{xy}} (x+5)\mathrm{d}x\mathrm{d}y = 5\sqrt{2}\iint_{D_{xy}}\mathrm{d}x\mathrm{d}y
+  = 5\sqrt{2}\times \pi(5^2) = 125\sqrt{2}\pi$'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 曲面面积微元系数算错或对称性化简错误
+    points: 0
+  - id: correct
+    label: 正确求得第一类曲面积分为 125*sqrt(2)*pi
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

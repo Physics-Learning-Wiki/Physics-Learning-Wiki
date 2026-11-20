@@ -1,0 +1,80 @@
+schema_version: 3
+id: cmc-17th-a-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '（本题 14 分）设 $\Omega$ 是由平面 $\Pi_1: x = 0$, $\Pi_2: x = y$, $\Pi_3: y = z$, $\Pi_4:
+  z = 1$, $\Pi_5: z = 2$ 围成的空间区域，求三重积分：
+
+
+  $$
+
+  \iiint_\Omega \frac{\mathrm{d}x\mathrm{d}y\mathrm{d}z}{\sqrt{y^2 + z^2}}
+
+  $$'
+reference_answer: $\frac{3(\sqrt{2}-1)}{2}$
+solution: '采用截面投影法（先二后一），对 $1 \leqslant z \leqslant 2$，平面截区域为 $D_z = \{(x,y)\mid 0
+  \leqslant x \leqslant y, 0 \leqslant y \leqslant z\}$：
+
+
+  $$
+
+  \iiint_\Omega \frac{\mathrm{d}x\mathrm{d}y\mathrm{d}z}{\sqrt{y^2+z^2}} = \int_1^2
+  \mathrm{d}z \iint_{D_z} \frac{\mathrm{d}x\mathrm{d}y}{\sqrt{y^2+z^2}} \quad (得 5
+  分)
+
+  $$
+
+
+  先对 $x$ 积分：
+
+
+  $$
+
+  = \int_1^2 \mathrm{d}z \int_0^z \mathrm{d}y \int_0^y \frac{\mathrm{d}x}{\sqrt{y^2+z^2}}
+  = \int_1^2 \mathrm{d}z \int_0^z \frac{y}{\sqrt{y^2+z^2}}\mathrm{d}y \quad (得 10
+  分)
+
+  $$
+
+
+  内层积分为 $\left.\sqrt{y^2+z^2}\right|_0^z = (\sqrt{2}-1)z$．最后关于 $z$ 积分：$\int_1^2 (\sqrt{2}-1)z\mathrm{d}z
+  = (\sqrt{2}-1)\left.\frac{z^2}{2}\right|_1^2 = \frac{3(\sqrt{2}-1)}{2}$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 积分区域几何分解错误（0 分）
+    points: 0
+  - id: step1
+    label: 正确写出截面积分限并列出逐次积分（5 分）
+    points: 0.36
+  - id: step2
+    label: 完成对 x 与 y 的积分转化为单重定积分（10 分）
+    points: 0.71
+  - id: full
+    label: 最终计算准确无误，得出 3(sqrt(2)-1)/2（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学A类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

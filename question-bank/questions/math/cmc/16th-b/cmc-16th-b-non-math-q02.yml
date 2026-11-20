@@ -1,0 +1,42 @@
+schema_version: 3
+id: cmc-16th-b-non-math-q02
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: $\int_{-2}^2 (x^3\cos^5 x + \sqrt{4-x^2})\mathrm{d}x =$ ______．
+reference_answer: $2\pi$
+solution: 由于区间 $[-2,2]$ 对称，被积函数中第一项 $x^3\cos^5 x$ 为奇函数，在对称区间定积分为 0．原式等于 $\int_{-2}^2
+  \sqrt{4-x^2}\mathrm{d}x$．由定积分几何意义，此积分为圆心在原点、半径为 2 的上半圆盘面积，故积分为 $\frac{1}{2}\pi (2)^2
+  = 2\pi$．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 奇偶性判断错误或半圆面积计算失误
+    points: 0
+  - id: correct
+    label: 正确识别奇函数积分为 0 并利用几何意义求得 2pi
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学B类）第一大题第(2)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

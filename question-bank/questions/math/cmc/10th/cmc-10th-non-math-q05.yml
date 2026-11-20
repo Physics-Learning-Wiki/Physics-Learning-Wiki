@@ -1,0 +1,66 @@
+schema_version: 3
+id: cmc-10th-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设函数 $f(t)$ 在 $t\neq 0$ 时一阶连续可导，且 $f(1)=0$，求函数 $f(x^2-y^2)$，使得曲线积分 $\int_L [y(2-f(x^2-y^2))\mathrm{d}x
+  + x f(x^2-y^2)\mathrm{d}y]$ 与路径无关，其中 $L$ 为任一不与直线 $y=\pm x$ 相交的分段光滑闭曲线．
+reference_answer: $f(x^2-y^2) = 1 - \frac{1}{x^2-y^2}$
+solution: '设 $P(x, y) = y(2-f(x^2-y^2)), Q(x, y) = x f(x^2-y^2)$．积分与路径无关的充要条件为 $\frac{\partial
+  Q}{\partial x} = \frac{\partial P}{\partial y}$：
+
+
+  $$\frac{\partial Q}{\partial x} = f(x^2-y^2) + 2x^2 f''(x^2-y^2)$$
+
+
+  $$\frac{\partial P}{\partial y} = 2 - f(x^2-y^2) + 2y^2 f''(x^2-y^2)$$
+
+
+  两端相等整理得：
+
+
+  $$(x^2-y^2)f''(x^2-y^2) + f(x^2-y^2) = 1$$
+
+
+  记 $t = x^2-y^2$，方程化为 $t f''(t) + f(t) = 1 \implies (t f(t))'' = 1$．
+
+
+  积分得 $t f(t) = t + C$．由 $f(1) = 0$ 得 $C = -1$．
+
+
+  故 $f(t) = 1 - \frac{1}{t}$，即 $f(x^2-y^2) = 1 - \frac{1}{x^2-y^2}$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用路径无关偏导条件（0 分）
+    points: 0
+  - id: step1
+    label: 建立常微分方程并求通解（5 分）
+    points: 0.62
+  - id: full
+    label: 由初值定出特解 f(x^2-y^2) = 1 - 1/(x^2-y^2)（8 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十届（2018年）全国大学生数学竞赛初赛（非数学类）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

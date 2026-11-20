@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q10
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）证明：级数 $\sum_{n=1}^\infty \sum_{k=1}^\infty \frac{(-1)^{[\sqrt{n}]}}{n^2+k^2}$
+  收敛，其中 $[x]$ 表示不超过 $x$ 的最大整数．
+reference_answer: 详见参考解答（通过内层定积分逼近放缩与分组交错级数判定法证明）
+solution: 对于任意固定的 $n$，利用积分判别估计：$\frac{1}{n}\left(\arctan\frac{N+1}{n} - \arctan\frac{1}{n}\right)
+  \leqslant \sum_{k=1}^N \frac{1}{k^2+n^2} \leqslant \frac{1}{n}\arctan\frac{N}{n}$令
+  $N\to\infty$，得 $\left|\sum_{k=1}^\infty \frac{1}{k^2+n^2} - \frac{\pi}{2n}\right|
+  \leqslant \frac{1}{n}\arctan\frac{1}{n}$（得 4 分）．因为 $\sum_{n=1}^\infty \frac{1}{n}\arctan\frac{1}{n}
+  \leqslant \sum_{n=1}^\infty \frac{1}{n^2} < \infty$，故差值级数绝对收敛，原级数与 $\frac{\pi}{2}\sum_{n=1}^\infty
+  \frac{(-1)^{[\sqrt{n}]}}{n}$ 同敛散（得 8 分）．设部分和 $S_{n^2} = \sum_{m=1}^{n-1}(-1)^m C_m
+  + \frac{(-1)^n}{n^2}$，其中 $C_m = \sum_{k=m^2}^{(m+1)^2-1}\frac{1}{k}$．易证 $C_m$ 单调递减趋于
+  0，由莱布尼茨判别法知交错级数收敛，进而证得原级数收敛（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未建立级数逼近估计（0 分）
+    points: 0
+  - id: step1
+    label: 利用积分估计给出内层无穷级数与 pi/(2n) 的误差界（4 分）
+    points: 0.29
+  - id: step2
+    label: 证明误差级数绝对收敛，将原问题等价转化为交错和（8 分）
+    points: 0.57
+  - id: full
+    label: 通过平方分块证明序列 C_m 满足莱布尼茨条件，严格证得收敛（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类）第六大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

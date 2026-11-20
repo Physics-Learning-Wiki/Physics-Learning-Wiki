@@ -1,0 +1,55 @@
+schema_version: 3
+id: cmc-15th-a-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）解微分方程 $(x^2+y^2+3)\frac{\mathrm{d}y}{\mathrm{d}x} = 2x\left(2y - \frac{x^2}{y}\right)$．
+reference_answer: $(y^2 - 2x^2 - 3)^3 = C(y^2 - x^2 - 1)^2$
+solution: 方程改写为：$\frac{y\mathrm{d}y}{x\mathrm{d}x} = \frac{2(2y^2-x^2)}{x^2+y^2+3}$令
+  $u = x^2, v = y^2$，则方程化为：$\frac{\mathrm{d}v}{\mathrm{d}u} = \frac{2(2v-u)}{u+v+3}
+  \quad (得 5 分)$解代数方程组 $2v-u = 0, u+v+3 = 0$ 得平移交点 $u = -2, v = -1$．再令 $U = u+2, V
+  = v+1$，方程化为齐次微分方程：$\frac{\mathrm{d}V}{\mathrm{d}U} = \frac{2(2V-U)}{U+V} \quad (得
+  8 分)$作变量替换 $W = V/U$，变量分离：$U\frac{\mathrm{d}W}{\mathrm{d}U} = -\frac{W^2-3W+2}{W+1}
+  \quad (得 11 分)$积分得 $U(W-2)^3 = C(W-1)^2$．回代原变量得通解为：$(y^2 - 2x^2 - 3)^3 = C(y^2 -
+  x^2 - 1)^2 \quad (满分 14 分)$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未做平方代换（0 分）
+    points: 0
+  - id: step1
+    label: 令 u = x^2, v = y^2 化简导数项（5 分）
+    points: 0.36
+  - id: step2
+    label: 平移原点化为齐次微分方程（8 分）
+    points: 0.57
+  - id: step3
+    label: 完成齐次变量分离积分（11 分）
+    points: 0.79
+  - id: full
+    label: 正确回代得出代数曲线通解（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十五届（2023年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

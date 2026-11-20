@@ -1,0 +1,53 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 积分 $\int_1^{+\infty}\frac{\ln x}{(1+x)^2}\mathrm{d}x =$ ______．
+reference_answer: $\ln 2$
+solution: '利用分部积分法：
+
+
+  $$
+
+  \int_1^{+\infty}\frac{\ln x}{(1+x)^2}\mathrm{d}x = \int_1^{+\infty}\ln x\mathrm{d}\left(-\frac{1}{1+x}\right)
+  = \left.-\frac{\ln x}{1+x}\right|_1^{+\infty} + \int_1^{+\infty}\frac{\mathrm{d}x}{x(1+x)}
+
+  $$
+
+
+  当 $x\to +\infty$ 时 $\frac{\ln x}{1+x}\to 0$，在 $x=1$ 处值为 $0$．拆分分式积分：$\int_1^{+\infty}\left(\frac{1}{x}
+  - \frac{1}{1+x}\right)\mathrm{d}x = \left.\ln\frac{x}{1+x}\right|_1^{+\infty} =
+  0 - (-\ln 2) = \ln 2$．因此积分为 $\ln 2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 分部积分极限处理错误或拆分失误
+    points: 0
+  - id: correct
+    label: 正确利用分部积分法与部分分式求得结果 ln 2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,44 @@
+schema_version: 3
+id: cmc-14th-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 记 $D = \left\{(x,y)\mid 0\leqslant x+y\leqslant \frac{\pi}{2}, 0\leqslant x-y\leqslant
+  \frac{\pi}{2}\right\}$，则 $\iint_D y\sin(x+y)\mathrm{d}x\mathrm{d}y =$ ______．
+reference_answer: $\frac{\pi}{8} - \frac{\pi^2}{32}$
+solution: 作二元变量代换 $u = x+y, v = x-y$，对应 $x = \frac{u+v}{2}, y = \frac{u-v}{2}$，雅可比行列式绝对值
+  $|J| = \frac{1}{2}$．积分化为：$\iint_D y\sin(x+y)\mathrm{d}x\mathrm{d}y = \frac{1}{4}\int_0^{\pi/2}\mathrm{d}v\int_0^{\pi/2}(u-v)\sin
+  u\mathrm{d}u = \frac{1}{4}\left(\frac{\pi}{2}\times 1 - \frac{\pi^2}{8}\times 1\right)
+  = \frac{\pi}{8} - \frac{\pi^2}{32}$
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 雅可比行列式遗漏或分部积分计算失误
+    points: 0
+  - id: correct
+    label: 正确利用二元变量替换求得二重积分为 pi/8 - pi^2/32
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第一大题第(5)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

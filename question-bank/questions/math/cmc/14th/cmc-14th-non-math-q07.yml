@@ -1,0 +1,54 @@
+schema_version: 3
+id: cmc-14th-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题满分 14 分）设函数 $f(x)$ 在 $(-1,1)$ 上二阶可导，$f(0) = 1$，且当 $x\geqslant 0$ 时 $f(x)\geqslant
+  0, f'(x)\leqslant 0, f''(x)\leqslant f(x)$，证明：$f'(0)\geqslant -\sqrt{2}$．
+reference_answer: 详见参考解答（通过 Lagrange 中值定理与构造辅助单调函数 $F(x) = [f'(x)]^2 - [f(x)]^2$ 证明）
+solution: 任取 $x\in(0,1)$，在 $[0,x]$ 上利用 Lagrange 中值定理，存在 $\xi\in(0,x)$ 使得 $f(x)-f(0)
+  = x f'(\xi)$．因为 $f(0)=1, f(x)\geqslant 0$，所以 $-\frac{1}{x} \leqslant f'(\xi) \leqslant
+  0$（得 5 分）．令辅助函数 $F(x) = [f'(x)]^2 - [f(x)]^2$，求导：$F'(x) = 2f'(x)[f''(x) - f(x)]$因
+  $f'(x)\leqslant 0$ 且 $f''(x)\leqslant f(x)$，故 $F'(x)\geqslant 0$，$F(x)$ 在 $[0,1)$
+  上单调递增．从而 $F(\xi)\geqslant F(0)$，即 $[f'(\xi)]^2 - [f(\xi)]^2 \geqslant [f'(0)]^2
+  - 1$．由此得：$[f'(0)]^2 \leqslant [f'(\xi)]^2 + 1 - [f(\xi)]^2 \leqslant \frac{1}{x^2}
+  + 1 \quad (得 12 分)$令 $x\to 1^-$，得 $[f'(0)]^2 \leqslant 2$．又已知 $f'(0)\leqslant 0$（由
+  $f'(x)\leqslant 0$），故开方即证得 $f'(0)\geqslant -\sqrt{2}$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未利用中值定理（0 分）
+    points: 0
+  - id: step1
+    label: 应用中值定理建立导数边界 -1/x <= f'(xi) <= 0（5 分）
+    points: 0.36
+  - id: step2
+    label: 构造辅助函数 F(x) = [f']^2 - f^2 并证明其单调递增（12 分）
+    points: 0.86
+  - id: full
+    label: 取极限严格证得 [f'(0)]^2 <= 2 并得出结论（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2022年）全国大学生数学竞赛初赛（非数学类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

@@ -1,0 +1,52 @@
+schema_version: 3
+id: cmc-14th-makeup-non-math-q07
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题满分 14 分）设函数 $f(x)$ 在区间 $(0,1)$ 内有定义，$\lim_{x\to 0^+} f(x) = 0$，且 $\lim_{x\to
+  0^+}\frac{f(x)-f(x/3)}{x} = 0$．证明：$\lim_{x\to 0^+}\frac{f(x)}{x} = 0$．
+reference_answer: 详见参考解答（通过几何级数裂项相消与极限一致逼近证明）
+solution: 由题设，对任意非负整数 $k$：$\lim_{x\to 0^+}\frac{f(x/3^k) - f(x/3^{k+1})}{x/3^k} =
+  0 \quad (得 4 分)$求和得：$\lim_{x\to 0^+}\frac{f(x) - f(x/3^n)}{x} = \lim_{x\to 0^+}\sum_{k=0}^{n-1}\frac{f(x/3^k)
+  - f(x/3^{k+1})}{x/3^k}\cdot\frac{1}{3^k} = 0 \quad (得 9 分)$因此对任意 $\varepsilon >
+  0$，存在 $\delta > 0$ 使得当 $0<x<\delta$ 时 $|f(x)-f(x/3^n)| < \varepsilon x$．令 $n\to\infty$，因
+  $\lim_{x\to 0^+} f(x) = 0$，有 $|f(x)| \leqslant \varepsilon x$．由此证得 $\lim_{x\to 0^+}\frac{f(x)}{x}
+  = 0$（满分 14 分）．
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未做分段求和逼近（0 分）
+    points: 0
+  - id: step1
+    label: 写出缩放比例 x/3^k 的局部导数极限关系（4 分）
+    points: 0.29
+  - id: step2
+    label: 裂项求和并借助等比公比 1/3 控制误差和（9 分）
+    points: 0.64
+  - id: full
+    label: 严格利用 eps-delta 语言与函数连续趋于 0 完成证明（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十四届（2023年3月）全国大学生数学竞赛初赛第二次补赛（非数学类）第三大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

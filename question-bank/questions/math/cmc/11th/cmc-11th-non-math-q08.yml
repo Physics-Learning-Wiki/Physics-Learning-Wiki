@@ -1,0 +1,63 @@
+schema_version: 3
+id: cmc-11th-non-math-q08
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 计算积分 $I = \int_0^{2\pi}\mathrm{d}\phi \int_0^\pi e^{\sin\theta(\cos\phi-\sin\phi)}\sin\theta\mathrm{d}\theta$．
+reference_answer: $\sqrt{2}\pi(e^{\sqrt{2}} - e^{-\sqrt{2}})$
+solution: '设单位球面 $\Sigma: x^2+y^2+z^2=1$，面积微元 $\mathrm{d}S = \sin\theta\mathrm{d}\theta\mathrm{d}\phi$．积分即为第一型曲面积分：
+
+
+  $$I = \iint_\Sigma e^{x-y}\mathrm{d}S$$
+
+
+  作旋转变换，设垂直于向量 $(1, -1, 0)$ 的截平面 $P_t: \frac{x-y}{\sqrt{2}} = t$（$-1 \le t \le 1$）．
+
+
+  截面圆半径为 $r_t = \sqrt{1-t^2}$，球面环带面积为 $\mathrm{d}S = 2\pi r_t \frac{\mathrm{d}t}{\sqrt{1-t^2}}
+  = 2\pi\mathrm{d}t$．
+
+
+  在环带上 $x-y = \sqrt{2}t$ 为常数，积分转化为：
+
+
+  $$I = \int_{-1}^1 e^{\sqrt{2}t} 2\pi\mathrm{d}t = \frac{2\pi}{\sqrt{2}}\left[e^{\sqrt{2}t}\right]_{-1}^1
+  = \sqrt{2}\pi(e^{\sqrt{2}} - e^{-\sqrt{2}})$$
+
+
+  故积分为 $\sqrt{2}\pi(e^{\sqrt{2}} - e^{-\sqrt{2}})$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未转换为曲面积分（0 分）
+    points: 0
+  - id: partial_surface
+    label: 正确转化为第一型曲面积分并利用截面法写成单重积分（8 分）
+    points: 0.57
+  - id: correct
+    label: 准确积分得出最终结果 sqrt(2) pi (e^sqrt(2) - e^-sqrt(2))（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十一届（2019年）全国大学生数学竞赛初赛（非数学类）第四大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

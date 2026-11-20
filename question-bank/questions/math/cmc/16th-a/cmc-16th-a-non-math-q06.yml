@@ -1,0 +1,52 @@
+schema_version: 3
+id: cmc-16th-a-non-math-q06
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: （本题 14 分）求微分方程 $(x^3 - y^2)\mathrm{d}x + (x^2y + xy)\mathrm{d}y = 0$ 的通解．
+reference_answer: $\left(\frac{1+x}{x}\right)^2 y^2 + (1+x)^2 = C$ 或 $(1+x)\sqrt{x^2+y^2}
+  = Cx$
+solution: '解法一（降次线性化）：令 $u = y^2$，方程化为：$\frac{\mathrm{d}u}{\mathrm{d}x} = \frac{2u}{x(1+x)}
+  - \frac{2x^2}{x+1} \quad (得 6 分)$这是一阶线性非齐次方程，通解为：$\left(\frac{1+x}{x}\right)^2 u
+  + (1+x)^2 = C \implies \left(\frac{1+x}{x}\right)^2 y^2 + (1+x)^2 = C \quad (满分
+  14 分)$
+
+
+  解法二（全微分凑微分法）：原方程改写为 $x\mathrm{d}x + y\mathrm{d}y + y\frac{x\mathrm{d}y - y\mathrm{d}x}{x^2}
+  = 0$，即 $\frac{1}{2}\mathrm{d}(x^2+y^2) + y\mathrm{d}\left(\frac{y}{x}\right) = 0$（得
+  6 分）．两边同除以 $\sqrt{x^2+y^2}$ 积分得 $(1+x)\sqrt{x^2+y^2} = Cx$（满分 14 分）．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: none
+    label: 未找到有效代换或凑微分方式（0 分）
+    points: 0
+  - id: step1
+    label: 令 u = y^2 化为一阶线性方程或成功凑微分（6 分）
+    points: 0.43
+  - id: full
+    label: 完成一阶线性方程积分并给出正确通解表达式（14 分）
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十六届（2024年）全国大学生数学竞赛初赛（非数学A类与B类公用题目）第二大题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

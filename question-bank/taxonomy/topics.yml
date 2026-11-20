@@ -65,3 +65,7 @@ modern.general-relativity:
 math.differential-geometry:
   title: 微分几何
   parent: math
+
+math.calculus:
+  title: 微积分与分析基础
+  parent: math

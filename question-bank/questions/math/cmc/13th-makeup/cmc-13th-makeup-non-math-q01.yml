@@ -1,0 +1,64 @@
+schema_version: 3
+id: cmc-13th-makeup-non-math-q01
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $x_0 = 1$，$x_n = \ln(1+x_{n-1})$ ($n \ge 1$)，则 $\lim_{n\to+\infty} n x_n =$
+  ______．
+reference_answer: $2$
+solution: '由递推式可知 $x_n \in (0, 1)$ 严格单调减少且 $\lim_{n\to+\infty} x_n = 0$．由 Stolz 定理：
+
+
+  $$
+
+  \lim_{n\to+\infty} \frac{1}{n x_n} = \lim_{n\to+\infty} \frac{\frac{1}{x_{n+1}}
+  - \frac{1}{x_n}}{(n+1)-n} = \lim_{n\to+\infty} \frac{x_n - x_{n+1}}{x_n x_{n+1}}
+  = \lim_{n\to+\infty} \frac{x_n - \ln(1+x_n)}{x_n \ln(1+x_n)}
+
+  $$
+
+
+  利用等价无穷小与 Taylor 展开：
+
+
+  $$
+
+  = \lim_{x_n\to 0} \frac{x_n - \left(x_n - \frac{1}{2}x_n^2 + o(x_n^2)\right)}{x_n^2}
+  = \frac{1}{2}
+
+  $$
+
+
+  因此 $\lim_{n\to+\infty} n x_n = 2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: Stolz 定理应用或 Taylor 展开计算失误
+    points: 0
+  - id: correct
+    label: 正确应用 Stolz 定理或倒数差极限求得 2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十三届（2021年）全国大学生数学竞赛初赛（非数学类补赛）第一大题第1小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

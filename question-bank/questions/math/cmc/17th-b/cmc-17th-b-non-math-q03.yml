@@ -1,0 +1,60 @@
+schema_version: 3
+id: cmc-17th-b-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: '设 $f(x)$ 连续，且 $f(x) + f(-x) = 2$．求定积分：
+
+
+  $$
+
+  \int_{-1}^1\left(f(x) + x^2\ln\left(x + \sqrt{x^2+1}\right)\right)\mathrm{d}x =
+  \text{______}．
+
+  $$'
+reference_answer: $2$
+solution: '因为 $\ln\left(x+\sqrt{x^2+1}\right)$ 是奇函数，且 $x^2$ 为偶函数，所以 $x^2\ln\left(x+\sqrt{x^2+1}\right)$
+  为奇函数，在对称区间 $[-1,1]$ 上的定积分为 $0$．原积分化为：
+
+
+  $$
+
+  \int_{-1}^1 f(x)\mathrm{d}x = \int_0^1 (f(x) + f(-x))\mathrm{d}x = \int_0^1 2\mathrm{d}x
+  = 2
+
+  $$
+
+
+  故结果为 $2$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 奇偶性判断错误或定积分计算失误
+    points: 0
+  - id: correct
+    label: 正确识别奇偶性与对称区间积分性质，得出结果 2
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十七届（2025年）全国大学生数学竞赛初赛（非数学B类）第一大题第(3)小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

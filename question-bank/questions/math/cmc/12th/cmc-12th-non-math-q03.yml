@@ -1,0 +1,60 @@
+schema_version: 3
+id: cmc-12th-non-math-q03
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $y = f(x)$ 是由方程 $\arctan\frac{x}{y} = \ln\sqrt{x^2+y^2} - \frac{1}{2}\ln 2
+  + \frac{\pi}{4}$ 确定的隐函数，且满足 $f(1)=1$，则曲线 $y = f(x)$ 在点 $(1, 1)$ 处的切线方程为 ______．
+reference_answer: $y = 1$
+solution: '对所给方程两端关于 $x$ 求导：
+
+
+  $$
+
+  \frac{1}{1 + (x/y)^2}\cdot\frac{y - x y''}{y^2} = \frac{x + y y''}{x^2+y^2}
+
+  $$
+
+
+  整理得：
+
+
+  $$(x+y)y'' = y - x$$
+
+
+  代入点 $(1, 1)$，得 $2y''(1) = 0 \implies y''(1) = 0$．
+
+
+  因此曲线在点 $(1, 1)$ 处的切线方程为 $y - 1 = 0(x - 1)$，即 $y = 1$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 隐函数求导或斜率计算失误
+    points: 0
+  - id: correct
+    label: 准确求得导数值并写出切线方程 y = 1
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第3小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0

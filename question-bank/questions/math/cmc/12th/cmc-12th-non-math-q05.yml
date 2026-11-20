@@ -1,0 +1,75 @@
+schema_version: 3
+id: cmc-12th-non-math-q05
+version: 1
+status: draft
+locale: zh-CN
+topics:
+- math.calculus
+type: free_response
+choice_order: fixed
+stem: 设 $f(x), g(x)$ 在 $x=0$ 的某一邻域 $U$ 内有定义，对任意 $x\in U$，$f(x)\neq g(x)$，且 $\lim_{x\to
+  0} f(x) = \lim_{x\to 0} g(x) = a > 0$，则 $\lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)}
+  =$ ______．
+reference_answer: $a^a$
+solution: '由保号性，在去心邻域内 $f(x) > 0, g(x) > 0$．提取因子改写分子：
+
+
+  $$
+
+  [f(x)]^{g(x)} - [g(x)]^{g(x)} = [g(x)]^{g(x)}\left[\left(\frac{f(x)}{g(x)}\right)^{g(x)}
+  - 1\right] = [g(x)]^{g(x)}\left[e^{g(x)\ln\frac{f(x)}{g(x)}} - 1\right]
+
+  $$
+
+
+  利用等价无穷小 $e^t - 1 \sim t$ 及 $\ln(1+u) \sim u$：
+
+
+  $$
+
+  e^{g(x)\ln\left(1 + \frac{f(x)-g(x)}{g(x)}\right)} - 1 \sim g(x)\cdot\frac{f(x)-g(x)}{g(x)}
+  = f(x)-g(x)
+
+  $$
+
+
+  因此：
+
+
+  $$
+
+  \lim_{x\to 0}\frac{[f(x)]^{g(x)} - [g(x)]^{g(x)}}{f(x)-g(x)} = \lim_{x\to 0}[g(x)]^{g(x)}
+  = a^a
+
+  $$
+
+
+  故极限为 $a^a$．'
+response:
+  format: plain_text
+  required: true
+  min_chars: 1
+  max_chars: 12000
+  rows: 5
+  placeholder: 在此写出推导论证与核心结果步骤．
+grading:
+  mode: self_assessed
+  rubric:
+  - id: incorrect
+    label: 未正确展开指数幂或等价无穷小失误
+    points: 0
+  - id: correct
+    label: 正确提取主部并利用等价无穷小得出极限 a^a
+    points: 1
+provenance:
+  type: adapted
+  note: 选自第十二届（2020年）全国大学生数学竞赛初赛（非数学类）第一大题第5小题．
+  source: https://www.cmathc.cn/
+  permission: 全国大学生数学竞赛初赛公开试卷试题，用于非商业性学术教学与研讨
+  ai_assisted: true
+authors:
+- name: 全国大学生数学竞赛委员会
+  kind: human
+- name: Antigravity
+  kind: ai
+license: CC-BY-SA-4.0
