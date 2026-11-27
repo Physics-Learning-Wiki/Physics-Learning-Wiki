@@ -4,6 +4,9 @@ description: Physics Learning Wiki 是面向物理爱好者与大学本科生的
 status: stable
 ---
 
+![物理术语和符号拼成的 PL Wiki](images/pl-wiki-word-cloud.webp#only-light){ width="2864" height="664" loading="lazy" }
+![物理术语和符号拼成的 PL Wiki](images/pl-wiki-word-cloud-dark.webp#only-dark){ width="2864" height="664" loading="lazy" }
+
 这里汇集面向物理爱好者与大学本科生的物理知识、学习笔记和参考资料，内容仍在持续建设中．
 
 按学科浏览下方内容，或使用页眉搜索查找具体概念、公式与章节．

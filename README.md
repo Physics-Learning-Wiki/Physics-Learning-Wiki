@@ -1,4 +1,10 @@
-[![Word Art](docs/images/wordArt.webp)](https://physics-learning-wiki.github.io/Physics-Learning-Wiki/)
+<a href="https://physics-learning-wiki.github.io/Physics-Learning-Wiki/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/images/pl-wiki-word-cloud-dark.webp">
+    <source media="(prefers-color-scheme: light)" srcset="docs/images/pl-wiki-word-cloud.webp">
+    <img alt="访问 PL Wiki 首页" src="docs/images/pl-wiki-word-cloud.webp">
+  </picture>
+</a>
 
 # 欢迎来到 **Physics Learning Wiki**！
 
