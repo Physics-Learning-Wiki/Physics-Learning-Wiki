@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="584.39952pt" height="353.99952pt" viewBox="0 0 584.39952 353.99952" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Physics Learning Wiki; scripts/figures/error-analysis.py</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 353.99952 
+L 584.39952 353.99952 
+L 584.39952 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 47.914251 293.221225 
+L 129.342754 293.221225 
+L 292.19976 293.221225 
+L 536.485269 293.221225 
+" clip-path="url(#pd2ed185985)" style="fill: none; stroke: #53616d; stroke-width: 2; stroke-linecap: square"/>
+    <defs>
+     <path id="mf12e0e18c6" d="M 0 3 
+C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
+C 2.683901 1.55874 3 0.795609 3 0 
+C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
+C 1.55874 -2.683901 0.795609 -3 0 -3 
+C -0.795609 -3 -1.55874 -2.683901 -2.12132 -2.12132 
+C -2.683901 -1.55874 -3 -0.795609 -3 0 
+C -3 0.795609 -2.683901 1.55874 -2.12132 2.12132 
+C -1.55874 2.683901 -0.795609 3 0 3 
+z
+" style="stroke: #53616d"/>
+    </defs>
+    <g clip-path="url(#pd2ed185985)">
+     <use xlink:href="#mf12e0e18c6" x="47.914251" y="293.221225" style="fill: #53616d; stroke: #53616d"/>
+     <use xlink:href="#mf12e0e18c6" x="129.342754" y="293.221225" style="fill: #53616d; stroke: #53616d"/>
+     <use xlink:href="#mf12e0e18c6" x="292.19976" y="293.221225" style="fill: #53616d; stroke: #53616d"/>
+     <use xlink:href="#mf12e0e18c6" x="536.485269" y="293.221225" style="fill: #53616d; stroke: #53616d"/>
+    </g>
+   </g>
+   <g id="text_1">
+    <text style="font-size: 14px; font-family: 'Microsoft YaHei'; text-anchor: middle" x="47.914251" y="309.294713" transform="rotate(-0 47.914251 309.294713)">A</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 14px; font-family: 'Microsoft YaHei'; text-anchor: middle" x="129.342754" y="309.294713" transform="rotate(-0 129.342754 309.294713)">B</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 14px; font-family: 'Microsoft YaHei'; text-anchor: middle" x="292.19976" y="309.294713" transform="rotate(-0 292.19976 309.294713)">C</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 14px; font-family: 'Microsoft YaHei'; text-anchor: middle" x="536.485269" y="309.294713" transform="rotate(-0 536.485269 309.294713)">D</text>
+   </g>
+   <g id="patch_2">
+    <path d="M 127.339844 249.68886 
+Q 88.628109 249.68886 49.916374 249.68886 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 127.339844 261.68886 
+L 127.339844 261.68886 
+L 127.339844 237.68886 
+L 127.339844 237.68886 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 49.916374 237.68886 
+L 49.916374 237.68886 
+L 49.916374 261.68886 
+L 49.916374 261.68886 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="88.628503" y="244.331031" transform="rotate(-0 88.628503 244.331031)">AB  10.02 mm</text>
+   </g>
+   <g id="patch_3">
+    <path d="M 290.196849 212.853782 
+Q 210.768758 212.853782 131.340667 212.853782 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 290.196849 224.853782 
+L 290.196849 224.853782 
+L 290.196849 200.853782 
+L 290.196849 200.853782 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 131.340667 200.853782 
+L 131.340667 200.853782 
+L 131.340667 224.853782 
+L 131.340667 224.853782 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="210.771257" y="207.495953" transform="rotate(-0 210.771257 207.495953)">BC  19.99 mm</text>
+   </g>
+   <g id="patch_4">
+    <path d="M 534.483601 176.018705 
+Q 414.341707 176.018705 294.199814 176.018705 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 534.483601 188.018705 
+L 534.483601 188.018705 
+L 534.483601 164.018705 
+L 534.483601 164.018705 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 294.199814 164.018705 
+L 294.199814 164.018705 
+L 294.199814 188.018705 
+L 294.199814 188.018705 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="414.342514" y="170.660875" transform="rotate(-0 414.342514 170.660875)">CD  30.01 mm</text>
+   </g>
+   <g id="patch_5">
+    <path d="M 290.198092 139.183627 
+Q 170.056199 139.183627 49.914306 139.183627 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 290.198092 151.183627 
+L 290.198092 151.183627 
+L 290.198092 127.183627 
+L 290.198092 127.183627 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 49.914306 127.183627 
+L 49.914306 127.183627 
+L 49.914306 151.183627 
+L 49.914306 151.183627 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="170.057006" y="133.825797" transform="rotate(-0 170.057006 133.825797)">AC  30.04 mm</text>
+   </g>
+   <g id="patch_6">
+    <path d="M 534.487949 102.348549 
+Q 332.915294 102.348549 131.342639 102.348549 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 534.487949 114.348549 
+L 534.487949 114.348549 
+L 534.487949 90.348549 
+L 534.487949 90.348549 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 131.342639 90.348549 
+L 131.342639 90.348549 
+L 131.342639 114.348549 
+L 131.342639 114.348549 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="332.914011" y="96.99072" transform="rotate(-0 332.914011 96.99072)">BD  49.98 mm</text>
+   </g>
+   <g id="patch_7">
+    <path d="M 534.483601 65.513471 
+Q 292.199372 65.513471 49.915143 65.513471 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 534.483601 77.513471 
+L 534.483601 77.513471 
+L 534.483601 53.513471 
+L 534.483601 53.513471 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+    <path d="M 49.915143 53.513471 
+L 49.915143 53.513471 
+L 49.915143 77.513471 
+L 49.915143 77.513471 
+" style="fill: none; stroke: #126e91; stroke-linecap: round"/>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 11px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #126e91" x="292.19976" y="60.155642" transform="rotate(-0 292.19976 60.155642)">AD  60.03 mm</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 10px; font-family: 'Microsoft YaHei'; text-anchor: middle; fill: #53616d" x="292.19976" y="340.102233" transform="rotate(-0 292.19976 340.102233)">六个箭头对应六次独立读数；位置仅示意，不按读数逐点定标</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 14.4px; font-family: 'Microsoft YaHei'; text-anchor: middle" x="292.19976" y="19.32975" transform="rotate(-0 292.19976 19.32975)">组合测量：用跨段观测共同估计三段长度</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd2ed185985">
+   <rect x="7.2" y="25.32975" width="569.99952" height="321.46977"/>
+  </clipPath>
+ </defs>
+</svg>
