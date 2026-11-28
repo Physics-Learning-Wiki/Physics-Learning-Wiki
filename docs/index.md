@@ -4,8 +4,10 @@ description: Physics Learning Wiki 是面向物理爱好者与大学本科生的
 status: stable
 ---
 
+## 欢迎来到 **Physics Learning Wiki**！[![GitHub stars](https://img.shields.io/github/stars/Physics-Learning-Wiki/Physics-Learning-Wiki.svg?style=social&label=Stars)](https://github.com/Physics-Learning-Wiki/Physics-Learning-Wiki)
+
 ![物理术语和符号拼成的 PL Wiki](images/pl-wiki-word-cloud.webp#only-light){ width="2864" height="664" loading="lazy" }
-![物理术语和符号拼成的 PL Wiki](images/pl-wiki-word-cloud-dark.webp#only-dark){ width="2864" height="664" loading="lazy" }
+![物理术语和符号拼成的 PL Wiki](images/pl-wiki-word-cloud-dark.webp#only-dark){ width="2864" height="664" loading="lazy" style="background: transparent; filter: none" }
 
 这里汇集面向物理爱好者与大学本科生的物理知识、学习笔记和参考资料，内容仍在持续建设中．
 
